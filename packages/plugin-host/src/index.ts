@@ -109,7 +109,7 @@ function stateForManifest(candidate: unknown, manifest: PluginManifest): PluginS
 export function inspectPlugin(candidate: unknown): {allowed: false; reason: 'INVALID_MANIFEST' | 'VERIFICATION_REQUIRED'} {
   return {allowed: false, reason: PluginManifestSchema.safeParse(candidate).success ? 'VERIFICATION_REQUIRED' : 'INVALID_MANIFEST'};
 }
-export const hostAvailability = Object.freeze({install: true, execute: true, thirdParty: false, reason: 'Solo moduli first-party verificati, con installazione e consenso nel Core.'});
+export const hostAvailability = Object.freeze({install: false, execute: true, thirdParty: false, reason: 'Il runtime verifica ed esegue moduli first-party; installazioni e consensi appartengono al Core.'});
 
 export function createBrowserWorkerRuntime(verifiedBundle: Uint8Array): PluginRuntime {
   if (typeof Worker === 'undefined' || typeof URL.createObjectURL !== 'function') return failure('RUNTIME_UNAVAILABLE', 'Questo browser non supporta il runtime del plugin.');
