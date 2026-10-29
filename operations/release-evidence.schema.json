@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Ardesia Next observed release evidence",
+  "type":"object",
+  "required":["repository","visibility","commit","sourceDigest","projectId","status","target","url","deploymentId","ci","buildInfo","protection","observedAt"],
+  "properties":{
+    "repository":{"const":"AndreaMarro/ardesia-next"},
+    "visibility":{"const":"private"},
+    "commit":{"type":"string","pattern":"^[a-f0-9]{40}$"},
+    "sourceDigest":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+    "projectId":{"const":"prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd"},
+    "status":{"const":"READY"},
+    "target":{"const":"preview"},
+    "url":{"type":"string","format":"uri"},
+    "deploymentId":{"type":"string"},
+    "ci":{"type":"object","required":["headSha","conclusion","url"],"properties":{"headSha":{"type":"string"},"conclusion":{"const":"success"},"url":{"type":"string","format":"uri"}}},
+    "buildInfo":{"type":"object","required":["commit","sourceDigest"],"properties":{"commit":{"type":"string"},"sourceDigest":{"type":"string"}}},
+    "protection":{"type":"object","required":["deploymentType","anonymousStatus"],"properties":{"deploymentType":{"const":"all"},"anonymousStatus":{"enum":[401,403]}}},
+    "observedAt":{"type":"string","format":"date-time"}
+  }
+}

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+artifacts/
+test-results/
+playwright-report/
+.vercel/
+.env*
+!.env.example
+apps/web/public/build-info.json
+*.tsbuildinfo
+.DS_Store

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0.0",
+  "sequence": [
+    {"id":"M0","gate":"Private independent repository, reproducible app, boundaries, CI exact SHA, generated evidence, protected preview"},
+    {"id":"M1","gate":"Public Core and SDK contracts, independent host, verified first-party model and serializable state"},
+    {"id":"M2","gate":"Trusted catalog module installed, consented, mounted, used, saved, reopened and disabled; negative security proofs"},
+    {"id":"M3","gate":"Authoritative server Core, single auth/data authority, actual teacher/student permissions and cross-device continuity"},
+    {"id":"M4","gate":"Different scientific domain uses same contracts without host changes"},
+    {"id":"M5","gate":"Human UX, physical devices, security, performance and protected release acceptance before public authorization"}
+  ],
+  "completionRule":"No later milestone is accepted before the preceding gate has evidence. Documents and schemas do not count as working product.",
+  "publicPromotionAuthorized":false
+}

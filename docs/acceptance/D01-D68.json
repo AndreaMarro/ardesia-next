@@ -1,0 +1,701 @@
+{
+  "schemaVersion": "1.0.0",
+  "source": {
+    "libraryFileId": "libfile_b59da160269c8191ad1172cf016f8f6f",
+    "filename": "Ardesia_documento_decisionale_2026-10-28(3).md",
+    "declaredSizeBytes": 67154,
+    "documentDate": "2026-10-28",
+    "readMode": "full",
+    "totalLines": 609
+  },
+  "interpretation": {
+    "originalCriteriaPreserved": true,
+    "allCriteriaAccepted": false,
+    "status": "Requirements preserved; no acceptance implied",
+    "authority": "User mandate ARDESIA NEXT 2026-10-29 supersedes historical sequence and prohibition on refoundation/marketplace. It does not waive evidence, safety or quality criteria.",
+    "scopeNote": "Poiseuille-specific criteria retain original text and apply when that module is delivered. General acceptance is separate from M0 build/scaffold acceptance; not applicable is justified per release, never silently passed."
+  },
+  "count": 68,
+  "criteria": [
+    {
+      "id": "D01",
+      "requirement": "Una sola identità canonica della lezione nel corso Fluidi e termodinamica",
+      "acceptance": "Ingresso, pratica, fonte, feedback e ripresa riferiscono la stessa lezione/versione",
+      "sourceLine": 294,
+      "sourceSection": "F1. Perimetro e contenuto",
+      "originalMarkdown": "| D01 | Una sola identità canonica della lezione nel corso Fluidi e termodinamica | Ingresso, pratica, fonte, feedback e ripresa riferiscono la stessa lezione/versione |",
+      "scope": "poiseuille-specific-or-example",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D02",
+      "requirement": "Obiettivi circoscritti e prerequisiti espliciti",
+      "acceptance": "Il docente approva la mappa fra obiettivo, spiegazione e prova",
+      "sourceLine": 295,
+      "sourceSection": "F1. Perimetro e contenuto",
+      "originalMarkdown": "| D02 | Obiettivi circoscritti e prerequisiti espliciti | Il docente approva la mappa fra obiettivo, spiegazione e prova |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D03",
+      "requirement": "Spiegazione completa per il perimetro scelto",
+      "acceptance": "Nessun salto logico indispensabile, placeholder o rimando a materiale ancora assente",
+      "sourceLine": 296,
+      "sourceSection": "F1. Perimetro e contenuto",
+      "originalMarkdown": "| D03 | Spiegazione completa per il perimetro scelto | Nessun salto logico indispensabile, placeholder o rimando a materiale ancora assente |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D04",
+      "requirement": "Diagnosi, pratica, recupero e transfer distinti",
+      "acceptance": "Almeno un problema cambia la struttura del ragionamento, non soltanto i numeri",
+      "sourceLine": 297,
+      "sourceSection": "F1. Perimetro e contenuto",
+      "originalMarkdown": "| D04 | Diagnosi, pratica, recupero e transfer distinti | Almeno un problema cambia la struttura del ragionamento, non soltanto i numeri |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D05",
+      "requirement": "Revisioni scientifica ed editoriale umane",
+      "acceptance": "Nome del revisore, versione, osservazioni risolte e data, senza approvazioni generiche al progetto",
+      "sourceLine": 298,
+      "sourceSection": "F1. Perimetro e contenuto",
+      "originalMarkdown": "| D05 | Revisioni scientifica ed editoriale umane | Nome del revisore, versione, osservazioni risolte e data, senza approvazioni generiche al progetto |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D06",
+      "requirement": "Completamento, esito e aiuti sono concetti distinti",
+      "acceptance": "Aprire la scena o ottenere un numero corretto non attribuisce automaticamente padronanza",
+      "sourceLine": 299,
+      "sourceSection": "F1. Perimetro e contenuto",
+      "originalMarkdown": "| D06 | Completamento, esito e aiuti sono concetti distinti | Aprire la scena o ottenere un numero corretto non attribuisce automaticamente padronanza |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D07",
+      "requirement": "Prerequisiti minimi recuperabili",
+      "acceptance": "Poiseuille non viene presentato come primo argomento del syllabus se richiede concetti precedenti",
+      "sourceLine": 300,
+      "sourceSection": "F1. Perimetro e contenuto",
+      "originalMarkdown": "| D07 | Prerequisiti minimi recuperabili | Poiseuille non viene presentato come primo argomento del syllabus se richiede concetti precedenti |",
+      "scope": "poiseuille-specific-or-example",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D08",
+      "requirement": "Testo italiano curato",
+      "acceptance": "Terminologia, unità, punteggiatura, simboli, errori, titoli e suggerimenti riletti nell'interfaccia",
+      "sourceLine": 301,
+      "sourceSection": "F1. Perimetro e contenuto",
+      "originalMarkdown": "| D08 | Testo italiano curato | Terminologia, unità, punteggiatura, simboli, errori, titoli e suggerimenti riletti nell'interfaccia |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D09",
+      "requirement": "Ipotesi e dominio dichiarati",
+      "acceptance": "Fluido newtoniano incomprimibile, regime laminare stazionario e sviluppato, tubo cilindrico rigido, condizioni alla parete coerenti",
+      "sourceLine": 321,
+      "sourceSection": "F2. Contratto scientifico",
+      "originalMarkdown": "| D09 | Ipotesi e dominio dichiarati | Fluido newtoniano incomprimibile, regime laminare stazionario e sviluppato, tubo cilindrico rigido, condizioni alla parete coerenti |",
+      "scope": "poiseuille-specific-or-example",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D10",
+      "requirement": "Raggio doppio, pressione differenziale fissata",
+      "acceptance": "Portata ×16; velocità media ×4; area ×4",
+      "sourceLine": 322,
+      "sourceSection": "F2. Contratto scientifico",
+      "originalMarkdown": "| D10 | Raggio doppio, pressione differenziale fissata | Portata ×16; velocità media ×4; area ×4 |",
+      "scope": "poiseuille-specific-or-example",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D11",
+      "requirement": "Raggio doppio, portata fissata",
+      "acceptance": "Pressione differenziale ÷16; velocità media ÷4",
+      "sourceLine": 323,
+      "sourceSection": "F2. Contratto scientifico",
+      "originalMarkdown": "| D11 | Raggio doppio, portata fissata | Pressione differenziale ÷16; velocità media ÷4 |",
+      "scope": "poiseuille-specific-or-example",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D12",
+      "requirement": "Viscosità e lunghezza raddoppiate, portata e raggio fissati",
+      "acceptance": "Pressione differenziale ×4",
+      "sourceLine": 324,
+      "sourceSection": "F2. Contratto scientifico",
+      "originalMarkdown": "| D12 | Viscosità e lunghezza raddoppiate, portata e raggio fissati | Pressione differenziale ×4 |",
+      "scope": "poiseuille-specific-or-example",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D13",
+      "requirement": "Scena, numeri, grafico e formula coerenti",
+      "acceptance": "Derivano dallo stesso stato fisico; controlli indipendenti sui casi analitici",
+      "sourceLine": 325,
+      "sourceSection": "F2. Contratto scientifico",
+      "originalMarkdown": "| D13 | Scena, numeri, grafico e formula coerenti | Derivano dallo stesso stato fisico; controlli indipendenti sui casi analitici |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D14",
+      "requirement": "Unità, arrotondamenti e tolleranze espliciti",
+      "acceptance": "Nessuna risposta corretta respinta per formattazione equivalente; nessuna incoerenza dimensionale accettata",
+      "sourceLine": 326,
+      "sourceSection": "F2. Contratto scientifico",
+      "originalMarkdown": "| D14 | Unità, arrotondamenti e tolleranze espliciti | Nessuna risposta corretta respinta per formattazione equivalente; nessuna incoerenza dimensionale accettata |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D15",
+      "requirement": "Input degeneri e limiti",
+      "acceptance": "Raggio/viscosità/lunghezza non positivi, campo vuoto e fuori intervallo gestiti prima del calcolo; niente NaN/Infinity visibili",
+      "sourceLine": 327,
+      "sourceSection": "F2. Contratto scientifico",
+      "originalMarkdown": "| D15 | Input degeneri e limiti | Raggio/viscosità/lunghezza non positivi, campo vuoto e fuori intervallo gestiti prima del calcolo; niente NaN/Infinity visibili |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D16",
+      "requirement": "Animazione non ingannevole",
+      "acceptance": "Traccianti medi o locali dichiarati; eventuale profilo rispettato; densità grafica non confusa con portata",
+      "sourceLine": 328,
+      "sourceSection": "F2. Contratto scientifico",
+      "originalMarkdown": "| D16 | Animazione non ingannevole | Traccianti medi o locali dichiarati; eventuale profilo rispettato; densità grafica non confusa con portata |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D17",
+      "requirement": "Regime laminare trattato onestamente",
+      "acceptance": "Con soli rapporti è un'ipotesi, non un regime numericamente verificato; dati assoluti richiedono un riferimento fisico approvato",
+      "sourceLine": 329,
+      "sourceSection": "F2. Contratto scientifico",
+      "originalMarkdown": "| D17 | Regime laminare trattato onestamente | Con soli rapporti è un'ipotesi, non un regime numericamente verificato; dati assoluti richiedono un riferimento fisico approvato |",
+      "scope": "poiseuille-specific-or-example",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D18",
+      "requirement": "Limiti del modello",
+      "acceptance": "Nessuna promessa di descrivere turbolenza, stenosi, sangue reale o CFD generale",
+      "sourceLine": 330,
+      "sourceSection": "F2. Contratto scientifico",
+      "originalMarkdown": "| D18 | Limiti del modello | Nessuna promessa di descrivere turbolenza, stenosi, sangue reale o CFD generale |",
+      "scope": "poiseuille-specific-or-example",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D19",
+      "requirement": "Ingresso leggibile",
+      "acceptance": "Lo studente riconosce obiettivo, stato e prima azione senza una spiegazione dell'operatore",
+      "sourceLine": 336,
+      "sourceSection": "F3. Interazioni e micro-UX",
+      "originalMarkdown": "| D19 | Ingresso leggibile | Lo studente riconosce obiettivo, stato e prima azione senza una spiegazione dell'operatore |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D20",
+      "requirement": "Navigazione coerente",
+      "acceptance": "Avanti, indietro, ritorno al corso, refresh, URL diretto e cronologia browser preservano il contesto previsto",
+      "sourceLine": 337,
+      "sourceSection": "F3. Interazioni e micro-UX",
+      "originalMarkdown": "| D20 | Navigazione coerente | Avanti, indietro, ritorno al corso, refresh, URL diretto e cronologia browser preservano il contesto previsto |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D21",
+      "requirement": "Vincolo sempre identificabile",
+      "acceptance": "Cambio fra pressione e portata fissate aggiorna etichette, valori, scena e feedback; l'utente capisce che è un altro esperimento",
+      "sourceLine": 338,
+      "sourceSection": "F3. Interazioni e micro-UX",
+      "originalMarkdown": "| D21 | Vincolo sempre identificabile | Cambio fra pressione e portata fissate aggiorna etichette, valori, scena e feedback; l'utente capisce che è un altro esperimento |",
+      "scope": "poiseuille-specific-or-example",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D22",
+      "requirement": "Slider e campi concordi",
+      "acceptance": "Mouse, tastiera e touch portano allo stesso valore; min/max, passi, decimali con virgola e incolla hanno regole comprensibili",
+      "sourceLine": 339,
+      "sourceSection": "F3. Interazioni e micro-UX",
+      "originalMarkdown": "| D22 | Slider e campi concordi | Mouse, tastiera e touch portano allo stesso valore; min/max, passi, decimali con virgola e incolla hanno regole comprensibili |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D23",
+      "requirement": "Manipolazione 3D controllabile",
+      "acceptance": "Nessun trascinamento ambiguo fra raggio, camera e scroll; camera iniziale leggibile e ripristino prevedibile",
+      "sourceLine": 340,
+      "sourceSection": "F3. Interazioni e micro-UX",
+      "originalMarkdown": "| D23 | Manipolazione 3D controllabile | Nessun trascinamento ambiguo fra raggio, camera e scroll; camera iniziale leggibile e ripristino prevedibile |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D24",
+      "requirement": "Pausa e ripristino corretti",
+      "acceptance": "Pausa ferma l'animazione, non cambia la legge fisica; reset distingue stato del modello e lavoro già consegnato",
+      "sourceLine": 341,
+      "sourceSection": "F3. Interazioni e micro-UX",
+      "originalMarkdown": "| D24 | Pausa e ripristino corretti | Pausa ferma l'animazione, non cambia la legge fisica; reset distingue stato del modello e lavoro già consegnato |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D25",
+      "requirement": "Previsione conservata",
+      "acceptance": "Confronto, nuova manipolazione e cambio passo non riscrivono il tentativo precedente",
+      "sourceLine": 342,
+      "sourceSection": "F3. Interazioni e micro-UX",
+      "originalMarkdown": "| D25 | Previsione conservata | Confronto, nuova manipolazione e cambio passo non riscrivono il tentativo precedente |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D26",
+      "requirement": "Feedback specifico",
+      "acceptance": "Distingue vincolo errato, raggio/area, portata/velocità, esponente e unità; spiega il passo utile invece di un generico «sbagliato»",
+      "sourceLine": 343,
+      "sourceSection": "F3. Interazioni e micro-UX",
+      "originalMarkdown": "| D26 | Feedback specifico | Distingue vincolo errato, raggio/area, portata/velocità, esponente e unità; spiega il passo utile invece di un generico «sbagliato» |",
+      "scope": "poiseuille-specific-or-example",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D27",
+      "requirement": "Esplorazione rispettata",
+      "acceptance": "Vedere risultati e usare aiuti nell'esplorazione non viene trattato come una penalizzazione; l'assistenza è registrata quando rilevante alla prova",
+      "sourceLine": 344,
+      "sourceSection": "F3. Interazioni e micro-UX",
+      "originalMarkdown": "| D27 | Esplorazione rispettata | Vedere risultati e usare aiuti nell'esplorazione non viene trattato come una penalizzazione; l'assistenza è registrata quando rilevante alla prova |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D28",
+      "requirement": "Fonte e annotazione",
+      "acceptance": "Apri, chiudi, seleziona, modifica, annulla e riapri funzionano sul riferimento esatto; nessun salto a una fonte sostitutiva silenziosa",
+      "sourceLine": 345,
+      "sourceSection": "F3. Interazioni e micro-UX",
+      "originalMarkdown": "| D28 | Fonte e annotazione | Apri, chiudi, seleziona, modifica, annulla e riapri funzionano sul riferimento esatto; nessun salto a una fonte sostitutiva silenziosa |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D29",
+      "requirement": "Dialoghi e focus",
+      "acceptance": "Apertura, Escape, conferma, annullamento e ritorno del focus funzionano; niente interazioni invisibili sotto un overlay",
+      "sourceLine": 346,
+      "sourceSection": "F3. Interazioni e micro-UX",
+      "originalMarkdown": "| D29 | Dialoghi e focus | Apertura, Escape, conferma, annullamento e ritorno del focus funzionano; niente interazioni invisibili sotto un overlay |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D30",
+      "requirement": "Stati intermedi curati",
+      "acceptance": "Caricamento, vuoto, disabilitato, salvataggio, successo, errore ed esito incerto hanno messaggi e azioni coerenti",
+      "sourceLine": 347,
+      "sourceSection": "F3. Interazioni e micro-UX",
+      "originalMarkdown": "| D30 | Stati intermedi curati | Caricamento, vuoto, disabilitato, salvataggio, successo, errore ed esito incerto hanno messaggi e azioni coerenti |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D31",
+      "requirement": "Uscita dal lavoro",
+      "acceptance": "Nessuna perdita silenziosa; conferma proporzionata alle modifiche effettivamente non salvate",
+      "sourceLine": 348,
+      "sourceSection": "F3. Interazioni e micro-UX",
+      "originalMarkdown": "| D31 | Uscita dal lavoro | Nessuna perdita silenziosa; conferma proporzionata alle modifiche effettivamente non salvate |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D32",
+      "requirement": "Microtesti orientati allo studente",
+      "acceptance": "«Salvato» o «Risposta consegnata» dove appropriato; niente Core, CAS, adapter o chiavi tecniche nel percorso ordinario",
+      "sourceLine": 349,
+      "sourceSection": "F3. Interazioni e micro-UX",
+      "originalMarkdown": "| D32 | Microtesti orientati allo studente | «Salvato» o «Risposta consegnata» dove appropriato; niente Core, CAS, adapter o chiavi tecniche nel percorso ordinario |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D33",
+      "requirement": "Una sola direzione visiva",
+      "acceptance": "Schermate approvate di ingresso, manipolazione, errore, aiuto e ripresa; stesso sistema di testo, spaziatura, colori e controlli",
+      "sourceLine": 357,
+      "sourceSection": "F4. Qualità visiva, responsive e accessibilità",
+      "originalMarkdown": "| D33 | Una sola direzione visiva | Schermate approvate di ingresso, manipolazione, errore, aiuto e ripresa; stesso sistema di testo, spaziatura, colori e controlli |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D34",
+      "requirement": "Gerarchia del compito",
+      "acceptance": "Una scena/attività principale; pannelli secondari contestuali; niente dashboard obbligatoria prima di iniziare",
+      "sourceLine": 358,
+      "sourceSection": "F4. Qualità visiva, responsive e accessibilità",
+      "originalMarkdown": "| D34 | Gerarchia del compito | Una scena/attività principale; pannelli secondari contestuali; niente dashboard obbligatoria prima di iniziare |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D35",
+      "requirement": "Responsive intenzionale",
+      "acceptance": "Verifica a 360/390, 820 e 1440 px, portrait/landscape pertinenti; testo, formule e azioni non tagliati",
+      "sourceLine": 359,
+      "sourceSection": "F4. Qualità visiva, responsive e accessibilità",
+      "originalMarkdown": "| D35 | Responsive intenzionale | Verifica a 360/390, 820 e 1440 px, portrait/landscape pertinenti; testo, formule e azioni non tagliati |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D36",
+      "requirement": "Accesso senza mouse",
+      "acceptance": "Percorso completo via tastiera; nomi accessibili, ordine e focus visibile; nessun compito essenziale soltanto drag",
+      "sourceLine": 360,
+      "sourceSection": "F4. Qualità visiva, responsive e accessibilità",
+      "originalMarkdown": "| D36 | Accesso senza mouse | Percorso completo via tastiera; nomi accessibili, ordine e focus visibile; nessun compito essenziale soltanto drag |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D37",
+      "requirement": "Alternative alla scena",
+      "acceptance": "Dati, formula e descrizione accessibili; fallback 2D completo quando WebGL manca o viene perso",
+      "sourceLine": 361,
+      "sourceSection": "F4. Qualità visiva, responsive e accessibilità",
+      "originalMarkdown": "| D37 | Alternative alla scena | Dati, formula e descrizione accessibili; fallback 2D completo quando WebGL manca o viene perso |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D38",
+      "requirement": "Movimento e colore",
+      "acceptance": "Riduzione del movimento rispettata; significato non affidato soltanto al colore; contrasto verificato",
+      "sourceLine": 362,
+      "sourceSection": "F4. Qualità visiva, responsive e accessibilità",
+      "originalMarkdown": "| D38 | Movimento e colore | Riduzione del movimento rispettata; significato non affidato soltanto al colore; contrasto verificato |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D39",
+      "requirement": "Audio accessibile",
+      "acceptance": "Trascrizione completa e coerente; niente autoplay; azioni del player accessibili",
+      "sourceLine": 363,
+      "sourceSection": "F4. Qualità visiva, responsive e accessibilità",
+      "originalMarkdown": "| D39 | Audio accessibile | Trascrizione completa e coerente; niente autoplay; azioni del player accessibili |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D40",
+      "requirement": "Dispositivi reali della promessa",
+      "acceptance": "Chrome/Firefox desktop, Safari e tablet previsto verificati; la penna richiede una prova su dispositivo fisico prima di prometterne qualità",
+      "sourceLine": 364,
+      "sourceSection": "F4. Qualità visiva, responsive e accessibilità",
+      "originalMarkdown": "| D40 | Dispositivi reali della promessa | Chrome/Firefox desktop, Safari e tablet previsto verificati; la penna richiede una prova su dispositivo fisico prima di prometterne qualità |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D41",
+      "requirement": "Leggibilità sotto stress",
+      "acceptance": "Zoom del testo, formule lunghe, messaggi di errore e contenuto di esempio realistico non rompono il layout",
+      "sourceLine": 365,
+      "sourceSection": "F4. Qualità visiva, responsive e accessibilità",
+      "originalMarkdown": "| D41 | Leggibilità sotto stress | Zoom del testo, formule lunghe, messaggi di errore e contenuto di esempio realistico non rompono il layout |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D42",
+      "requirement": "Audio remoto realmente disponibile",
+      "acceptance": "Nessun import `.lesson` nascosto richiesto allo studente per ascoltare il passaggio della lezione",
+      "sourceLine": 373,
+      "sourceSection": "F5. Audio, memoria e persistenza",
+      "originalMarkdown": "| D42 | Audio remoto realmente disponibile | Nessun import `.lesson` nascosto richiesto allo studente per ascoltare il passaggio della lezione |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D43",
+      "requirement": "Versione e ancoraggio",
+      "acceptance": "Audio, trascrizione, fonte e timecode appartengono alla versione approvata",
+      "sourceLine": 374,
+      "sourceSection": "F5. Audio, memoria e persistenza",
+      "originalMarkdown": "| D43 | Versione e ancoraggio | Audio, trascrizione, fonte e timecode appartengono alla versione approvata |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D44",
+      "requirement": "Player affidabile",
+      "acceptance": "Play/pausa, seek, fine, buffering, errore e retry provati; un rientro non riproduce un altro passaggio",
+      "sourceLine": 375,
+      "sourceSection": "F5. Audio, memoria e persistenza",
+      "originalMarkdown": "| D44 | Player affidabile | Play/pausa, seek, fine, buffering, errore e retry provati; un rientro non riproduce un altro passaggio |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D45",
+      "requirement": "Salvataggio confermato",
+      "acceptance": "«Salvato» compare solo dopo riscontro autorevole; stato locale temporaneo distinguibile",
+      "sourceLine": 376,
+      "sourceSection": "F5. Audio, memoria e persistenza",
+      "originalMarkdown": "| D45 | Salvataggio confermato | «Salvato» compare solo dopo riscontro autorevole; stato locale temporaneo distinguibile |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D46",
+      "requirement": "Ripresa reale",
+      "acceptance": "Refresh, browser nuovo e secondo dispositivo autorizzato ritrovano passo, risposta, nota, aiuti e feedback confermati",
+      "sourceLine": 377,
+      "sourceSection": "F5. Audio, memoria e persistenza",
+      "originalMarkdown": "| D46 | Ripresa reale | Refresh, browser nuovo e secondo dispositivo autorizzato ritrovano passo, risposta, nota, aiuti e feedback confermati |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D47",
+      "requirement": "Commit con risposta persa",
+      "acceptance": "Retry con la stessa identità di comando non duplica consegna o feedback",
+      "sourceLine": 378,
+      "sourceSection": "F5. Audio, memoria e persistenza",
+      "originalMarkdown": "| D47 | Commit con risposta persa | Retry con la stessa identità di comando non duplica consegna o feedback |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D48",
+      "requirement": "Concorrenza e conflitti",
+      "acceptance": "Due tab o due modifiche non sovrascrivono silenziosamente; scelta di recupero comprensibile",
+      "sourceLine": 379,
+      "sourceSection": "F5. Audio, memoria e persistenza",
+      "originalMarkdown": "| D48 | Concorrenza e conflitti | Due tab o due modifiche non sovrascrivono silenziosamente; scelta di recupero comprensibile |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D49",
+      "requirement": "Sessione scaduta",
+      "acceptance": "Riautenticazione e recupero senza attribuire il lavoro all'account successivo",
+      "sourceLine": 380,
+      "sourceSection": "F5. Audio, memoria e persistenza",
+      "originalMarkdown": "| D49 | Sessione scaduta | Riautenticazione e recupero senza attribuire il lavoro all'account successivo |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D50",
+      "requirement": "Revisione editoriale nuova",
+      "acceptance": "Vecchi tentativi restano legati alla fonte e al problema usati; migrazione esplicita e verificabile",
+      "sourceLine": 381,
+      "sourceSection": "F5. Audio, memoria e persistenza",
+      "originalMarkdown": "| D50 | Revisione editoriale nuova | Vecchi tentativi restano legati alla fonte e al problema usati; migrazione esplicita e verificabile |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D51",
+      "requirement": "Crash e lavoro locale",
+      "acceptance": "Autosalvataggi confermati sopravvivono; eventuale intervallo non ancora salvato dichiarato, recupero locale limitato e isolato se previsto",
+      "sourceLine": 382,
+      "sourceSection": "F5. Audio, memoria e persistenza",
+      "originalMarkdown": "| D51 | Crash e lavoro locale | Autosalvataggi confermati sopravvivono; eventuale intervallo non ancora salvato dichiarato, recupero locale limitato e isolato se previsto |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D52",
+      "requirement": "Backup e ripristino",
+      "acceptance": "Prova concreta su dati sintetici del verticale, inclusi riferimenti media e autorizzazioni; non basta che il provider dichiari backup",
+      "sourceLine": 383,
+      "sourceSection": "F5. Audio, memoria e persistenza",
+      "originalMarkdown": "| D52 | Backup e ripristino | Prova concreta su dati sintetici del verticale, inclusi riferimenti media e autorizzazioni; non basta che il provider dichiari backup |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D53",
+      "requirement": "Identità reali e ruoli",
+      "acceptance": "Un docente e due studenti distinti; niente scorciatoie sintetiche nel runtime distribuito",
+      "sourceLine": 391,
+      "sourceSection": "F6. Sicurezza, qualità tecnica, prestazioni e rilascio",
+      "originalMarkdown": "| D53 | Identità reali e ruoli | Un docente e due studenti distinti; niente scorciatoie sintetiche nel runtime distribuito |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D54",
+      "requirement": "Isolamento e revoca",
+      "acceptance": "Fonte privata, risposta, nota, URL copiato e sessione revocata provati contro accessi non autorizzati",
+      "sourceLine": 392,
+      "sourceSection": "F6. Sicurezza, qualità tecnica, prestazioni e rilascio",
+      "originalMarkdown": "| D54 | Isolamento e revoca | Fonte privata, risposta, nota, URL copiato e sessione revocata provati contro accessi non autorizzati |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D55",
+      "requirement": "Dati e media controllati",
+      "acceptance": "Validazione input, limiti upload dove presenti, sanificazione rendering, diritti degli asset, gestione di cancellazione e conservazione definita",
+      "sourceLine": 393,
+      "sourceSection": "F6. Sicurezza, qualità tecnica, prestazioni e rilascio",
+      "originalMarkdown": "| D55 | Dati e media controllati | Validazione input, limiti upload dove presenti, sanificazione rendering, diritti degli asset, gestione di cancellazione e conservazione definita |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D56",
+      "requirement": "Un'autorità dei dati",
+      "acceptance": "Niente secondo store di progresso, scoring, memoria o scheduler per aggirare un'integrazione",
+      "sourceLine": 394,
+      "sourceSection": "F6. Sicurezza, qualità tecnica, prestazioni e rilascio",
+      "originalMarkdown": "| D56 | Un'autorità dei dati | Niente secondo store di progresso, scoring, memoria o scheduler per aggirare un'integrazione |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D57",
+      "requirement": "Manutenibilità",
+      "acceptance": "Separazione comprensibile fra modello scientifico, stato educativo, trasporto e renderer; dipendenze bloccate e documentazione minima utile",
+      "sourceLine": 395,
+      "sourceSection": "F6. Sicurezza, qualità tecnica, prestazioni e rilascio",
+      "originalMarkdown": "| D57 | Manutenibilità | Separazione comprensibile fra modello scientifico, stato educativo, trasporto e renderer; dipendenze bloccate e documentazione minima utile |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D58",
+      "requirement": "Test del rischio reale",
+      "acceptance": "Controprove scientifiche, contratti Core, isolamento, un percorso E2E completo e recuperi principali; niente quantità di test usata come surrogato di qualità",
+      "sourceLine": 396,
+      "sourceSection": "F6. Sicurezza, qualità tecnica, prestazioni e rilascio",
+      "originalMarkdown": "| D58 | Test del rischio reale | Controprove scientifiche, contratti Core, isolamento, un percorso E2E completo e recuperi principali; niente quantità di test usata come surrogato di qualità |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D59",
+      "requirement": "Prestazioni misurate",
+      "acceptance": "Dispositivo e rete dichiarati, budget concordati, niente misure del solo computer dello sviluppatore",
+      "sourceLine": 397,
+      "sourceSection": "F6. Sicurezza, qualità tecnica, prestazioni e rilascio",
+      "originalMarkdown": "| D59 | Prestazioni misurate | Dispositivo e rete dichiarati, budget concordati, niente misure del solo computer dello sviluppatore |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D60",
+      "requirement": "Diagnostica operativa",
+      "acceptance": "Errori e versioni ricostruibili senza esporre token o risposte private nei log; procedura di ripristino conosciuta",
+      "sourceLine": 398,
+      "sourceSection": "F6. Sicurezza, qualità tecnica, prestazioni e rilascio",
+      "originalMarkdown": "| D60 | Diagnostica operativa | Errori e versioni ricostruibili senza esporre token o risposte private nei log; procedura di ripristino conosciuta |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D61",
+      "requirement": "Identità del rilascio",
+      "acceptance": "Commit, build, flag, contenuti e ambiente corrispondono alla versione accettata; CI richiesta verde",
+      "sourceLine": 399,
+      "sourceSection": "F6. Sicurezza, qualità tecnica, prestazioni e rilascio",
+      "originalMarkdown": "| D61 | Identità del rilascio | Commit, build, flag, contenuti e ambiente corrispondono alla versione accettata; CI richiesta verde |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D62",
+      "requirement": "Browser dopo pubblicazione",
+      "acceptance": "Percorso reale verificato sulla URL destinata agli utenti con servizi effettivi, non soltanto su localhost",
+      "sourceLine": 400,
+      "sourceSection": "F6. Sicurezza, qualità tecnica, prestazioni e rilascio",
+      "originalMarkdown": "| D62 | Browser dopo pubblicazione | Percorso reale verificato sulla URL destinata agli utenti con servizi effettivi, non soltanto su localhost |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D63",
+      "requirement": "Ritorno alla versione precedente",
+      "acceptance": "Rollback esercitato su candidato e compatibilità dei dati dichiarata",
+      "sourceLine": 401,
+      "sourceSection": "F6. Sicurezza, qualità tecnica, prestazioni e rilascio",
+      "originalMarkdown": "| D63 | Ritorno alla versione precedente | Rollback esercitato su candidato e compatibilità dei dati dichiarata |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D64",
+      "requirement": "eLab eliminato dal prodotto",
+      "acceptance": "Nessun ingresso, plugin «Sim» rinominato, consumer o dipendenza runtime residua; storia conservabile come archivio",
+      "sourceLine": 402,
+      "sourceSection": "F6. Sicurezza, qualità tecnica, prestazioni e rilascio",
+      "originalMarkdown": "| D64 | eLab eliminato dal prodotto | Nessun ingresso, plugin «Sim» rinominato, consumer o dipendenza runtime residua; storia conservabile come archivio |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D65",
+      "requirement": "Revisione visiva nell'interazione",
+      "acceptance": "Andrea valuta i cinque stati principali in uso, non soltanto un mockup statico",
+      "sourceLine": 410,
+      "sourceSection": "F7. Accettazione umana",
+      "originalMarkdown": "| D65 | Revisione visiva nell'interazione | Andrea valuta i cinque stati principali in uso, non soltanto un mockup statico |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D66",
+      "requirement": "Osservazione di almeno cinque studenti rappresentativi",
+      "acceptance": "Almeno quattro su cinque completano i compiti UX principali senza suggerimenti dell'operatore; tutti i blocchi ricorrenti vengono risolti",
+      "sourceLine": 411,
+      "sourceSection": "F7. Accettazione umana",
+      "originalMarkdown": "| D66 | Osservazione di almeno cinque studenti rappresentativi | Almeno quattro su cinque completano i compiti UX principali senza suggerimenti dell'operatore; tutti i blocchi ricorrenti vengono risolti |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D67",
+      "requirement": "Transfer separato dall'usabilità",
+      "acceptance": "Risposte e motivazioni confrontate con rubrica; un insuccesso concettuale non viene nascosto da una UI facile",
+      "sourceLine": 412,
+      "sourceSection": "F7. Accettazione umana",
+      "originalMarkdown": "| D67 | Transfer separato dall'usabilità | Risposte e motivazioni confrontate con rubrica; un insuccesso concettuale non viene nascosto da una UI facile |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    },
+    {
+      "id": "D68",
+      "requirement": "Chiusura dei difetti del perimetro",
+      "acceptance": "Nessuna perdita dati, errore scientifico, accesso indebito, funzione promessa assente o blocco del percorso; le rifiniture approvate sono effettivamente presenti",
+      "sourceLine": 413,
+      "sourceSection": "F7. Accettazione umana",
+      "originalMarkdown": "| D68 | Chiusura dei difetti del perimetro | Nessuna perdita dati, errore scientifico, accesso indebito, funzione promessa assente o blocco del percorso; le rifiniture approvate sono effettivamente presenti |",
+      "scope": "cross-cutting",
+      "verificationStatus": "NOT_RUN"
+    }
+  ]
+}

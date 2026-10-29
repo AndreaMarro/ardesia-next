@@ -1,0 +1,38 @@
+{
+  "name": "ardesia-next",
+  "version": "0.1.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "plugins/*"
+  ],
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
+  "scripts": {
+    "dev": "vite --config apps/web/vite.config.ts --host 0.0.0.0",
+    "build": "node tools/build.mjs",
+    "preview": "vite preview --config apps/web/vite.config.ts --host 0.0.0.0 --port 4173",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "node tools/e2e.mjs",
+    "check:boundaries": "node tools/check-boundaries.mjs",
+    "check:budget": "node tools/check-budget.mjs",
+    "verify": "node tools/verify.mjs",
+    "status": "node tools/status.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "@types/katex": "0.16.8",
+    "@types/node": "26.6.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "typescript": "5.9.3",
+    "vite": "8.3.5",
+    "vitest": "5.0.5"
+  }
+}
