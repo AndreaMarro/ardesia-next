@@ -6,8 +6,10 @@ import {releaseEvidenceMatches, m1EvidenceMatches, M1_REQUIRED_FLOWS, unitReport
 const current = {commit: 'a'.repeat(40), sourceDigest: 'b'.repeat(64)};
 const deployment = 'https://ardesia-next-test-andreas-projects-6d4e9791.vercel.app';
 const redirect = url => `https://vercel.com/sso-api?url=${encodeURIComponent(url)}&nonce=observed-test-nonce`;
-const evidence = () => ({
-  repository: 'AndreaMarro/ardesia-next', visibility: 'private', ...current,
+const releaseFixture = (visibility = 'private') => ({
+  repository: 'AndreaMarro/ardesia-next', visibility, ...current,
+  ...(visibility === 'public' ? {sourcePublication: {kind: 'explicit-owner-instruction', owner: 'AndreaMarro',
+    repository: 'AndreaMarro/ardesia-next', visibility: 'public', scope: 'source-only', recordedAt: '2026-10-29T00:00:00.000Z'}} : {}),
   projectId: 'prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd', status: 'READY', target: 'preview', providerTarget: 'staging',
   url: deployment, deploymentId: 'dpl_TestObservedDeployment123',
   ci: {headSha: current.commit, conclusion: 'success', url: 'https://github.com/AndreaMarro/ardesia-next/actions/runs/123'},
@@ -15,7 +17,45 @@ const evidence = () => ({
   protection: {deploymentType: 'all', anonymousStatus: 302, anonymousLocation: redirect(deployment)}
 });
 
-test('observed Vercel SSO redirects are accepted only for the deployment origin', () => {
+const evidence = () => releaseFixture();
+
+test('public source requires a closed, explicit owner instruction limited to this repository source', () => {
+  assert.equal(releaseEvidenceMatches(evidence(), current), true, 'historical private evidence remains valid');
+  assert.equal(releaseEvidenceMatches(releaseFixture('public'), current), true);
+  const absent = releaseFixture('public'); delete absent.sourcePublication;
+  assert.equal(releaseEvidenceMatches(absent, current), false);
+  for (const field of Object.keys(releaseFixture('public').sourcePublication)) {
+    const remote = releaseFixture('public'); delete remote.sourcePublication[field];
+    assert.equal(releaseEvidenceMatches(remote, current), false, `missing ${field}`);
+  }
+  for (const value of [null, true, 'approved', [], {}]) {
+    const remote = releaseFixture('public'); remote.sourcePublication = value;
+    assert.equal(releaseEvidenceMatches(remote, current), false);
+  }
+  for (const [field, value] of [
+    ['kind', 'implicit'], ['owner', 'another-owner'], ['repository', 'AndreaMarro/ardesia'],
+    ['visibility', 'private'], ['scope', 'application'], ['extra', true],
+    ['recordedAt', '2026-10-29'], ['recordedAt', '2026-10-29T00:00:00+00:00'],
+    ['recordedAt', '2026-02-30T00:00:00Z'], ['recordedAt', '2026-10-29T02:00:00Z'],
+  ]) {
+    const remote = releaseFixture('public'); remote.sourcePublication[field] = value;
+    assert.equal(releaseEvidenceMatches(remote, current), false, `invalid ${field}`);
+  }
+  for (const visibility of ['internal', 'PUBLIC', true, null]) {
+    const remote = releaseFixture('public'); remote.visibility = visibility;
+    assert.equal(releaseEvidenceMatches(remote, current), false);
+  }
+  const pending = releaseFixture('public'); pending.visibility = 'private';
+  assert.equal(releaseEvidenceMatches(pending, current), true, 'an instruction does not claim a completed visibility change');
+  pending.sourcePublication.scope = 'application';
+  assert.equal(releaseEvidenceMatches(pending, current), false, 'present records must satisfy the schema even for private source');
+});
+
+for (const visibility of ['private', 'public']) {
+  const evidence = () => releaseFixture(visibility);
+  const testVisibility = (name, run) => test(`${visibility} source: ${name}`, run);
+
+testVisibility('observed Vercel SSO redirects are accepted only for the deployment origin', () => {
   for(const status of [302,303,307]) {
     const remote = evidence();
     remote.protection.anonymousStatus = status;
@@ -26,7 +66,7 @@ test('observed Vercel SSO redirects are accepted only for the deployment origin'
   assert.equal(releaseEvidenceMatches(remote, current), true);
 });
 
-test('401/403 remain valid and an explicit null provider target is preview', () => {
+testVisibility('401/403 remain valid and an explicit null provider target is preview', () => {
   for(const status of [401,403]) {
     const remote = evidence();
     remote.providerTarget = null;
@@ -36,7 +76,7 @@ test('401/403 remain valid and an explicit null provider target is preview', () 
   }
 });
 
-test('anonymous 200, unrecognized status and incomplete redirects fail closed', () => {
+testVisibility('anonymous 200, unrecognized status and incomplete redirects fail closed', () => {
   for(const status of [200,301,308,500,'302']) {
     const remote = evidence();
     remote.protection.anonymousStatus = status;
@@ -45,9 +85,11 @@ test('anonymous 200, unrecognized status and incomplete redirects fail closed', 
   const remote = evidence();
   delete remote.protection.anonymousLocation;
   assert.equal(releaseEvidenceMatches(remote, current), false);
+  const partial = evidence(); partial.protection.deploymentType = 'preview';
+  assert.equal(releaseEvidenceMatches(partial, current), false, 'all deployment protection is still required');
 });
 
-test('spoofed host, protocol, path and different decoded target origin are rejected', () => {
+testVisibility('spoofed host, protocol, path and different decoded target origin are rejected', () => {
   const invalid = [
     redirect(deployment).replace('vercel.com/', 'vercel.com.evil.example/'),
     redirect(deployment).replace('vercel.com/', 'evil.example/'),
@@ -67,7 +109,7 @@ test('spoofed host, protocol, path and different decoded target origin are rejec
   }
 });
 
-test('a production provider target never becomes a preview by relabeling evidence', () => {
+testVisibility('a production provider target never becomes a preview by relabeling evidence', () => {
   for(const providerTarget of ['production','preview',undefined,{}]) {
     const remote = evidence();
     remote.providerTarget = providerTarget;
@@ -81,7 +123,7 @@ test('a production provider target never becomes a preview by relabeling evidenc
   assert.equal(releaseEvidenceMatches(remote, current), false);
 });
 
-test('source, build-info and CI must all correspond to the current immutable revision', () => {
+testVisibility('source, build-info and CI must all correspond to the current immutable revision', () => {
   const changes = [
     remote => {remote.sourceDigest = 'c'.repeat(64);},
     remote => {remote.commit = 'c'.repeat(40);},
@@ -97,7 +139,7 @@ test('source, build-info and CI must all correspond to the current immutable rev
   }
 });
 
-test('essential state, URL, deployment identity and observation time cannot be omitted', () => {
+testVisibility('essential state, URL, deployment identity and observation time cannot be omitted', () => {
   for(const key of ['status','target','providerTarget','url','deploymentId','observedAt','ci','buildInfo','protection','projectId','repository','visibility']) {
     const remote = evidence();
     delete remote[key];
@@ -114,6 +156,8 @@ test('essential state, URL, deployment identity and observation time cannot be o
   assert.equal(releaseEvidenceMatches(null, current), false);
   assert.equal(releaseEvidenceMatches(evidence(), {}), false);
 });
+
+}
 
 const m1Evidence = () => {
   const data = {

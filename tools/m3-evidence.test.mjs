@@ -29,7 +29,7 @@ function localFixture() {
       m3Flows: [...M3_REQUIRED_FLOWS], stats, reportDigest: m3ReportDigest(playwright)},
   };
 }
-function remoteFixture() {
+function remoteReleaseFixture(visibility = 'private') {
   const evidence = localFixture();
   const accounts = {teacher: {idHash: hash('1'), role: 'teacher'}, studentA: {idHash: hash('2'), role: 'student'}, studentB: {idHash: hash('3'), role: 'student'}};
   const session = (account, digit, minute) => ({accountIdHash: accounts[account].idHash, sessionIdHash: hash(digit), contextId: 'context-' + digit, authenticatedAt: at(minute)});
@@ -59,19 +59,40 @@ function remoteFixture() {
       teacherEvidence: {...common(), accountIdHash: accounts.teacher.idHash, privateCount: 0, sharedCount: 1, afterRevokeCount: 0},
     },
   };
-  const release = {...current, repository: 'AndreaMarro/ardesia-next', visibility: 'private', status: 'READY', target: 'preview', providerTarget: 'staging',
+  const release = {...current, repository: 'AndreaMarro/ardesia-next', visibility,
+    ...(visibility === 'public' ? {sourcePublication: {kind: 'explicit-owner-instruction', owner: 'AndreaMarro',
+      repository: 'AndreaMarro/ardesia-next', visibility: 'public', scope: 'source-only', recordedAt: at(0)}} : {}),
+    status: 'READY', target: 'preview', providerTarget: 'staging',
     projectId: 'prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd', deploymentId: remote.deploymentId, url, observedAt: at(30),
     ci: {headSha: current.commit, conclusion: 'success', url: 'https://github.com/AndreaMarro/ardesia-next/actions/runs/123'},
     buildInfo: {...current}, protection: {deploymentType: 'all', anonymousStatus: 401}, m3ReportDigest: m3ReportDigest(remote)};
   return {...evidence, remote, release};
 }
+const remoteFixture = () => remoteReleaseFixture();
 const bindRemote = evidence => {evidence.release.m3ReportDigest = m3ReportDigest(evidence.remote); return evidence;};
+
+test('M3 public source needs an observed owner instruction and cannot substitute it for remote evidence', () => {
+  const absent = remoteReleaseFixture('public'); delete absent.release.sourcePublication;
+  assert.equal(m3RemoteEvidenceMatches(absent, current), false);
+  for (const mutate of [
+    e => {e.release.sourcePublication = null;},
+    e => {e.release.sourcePublication.repository = 'AndreaMarro/ardesia';},
+    e => {e.release.sourcePublication.scope = 'application';},
+    e => {e.release.sourcePublication.recordedAt = at(31);},
+    e => {e.release.sourcePublication.extra = true;},
+    e => {delete e.remote;}, e => {delete e.release.m3ReportDigest;},
+  ]) {
+    const evidence = remoteReleaseFixture('public'); mutate(evidence);
+    assert.equal(m3RemoteEvidenceMatches(evidence, current), false);
+  }
+});
 
 test('M3 local evidence passes independently; missing remote proof cannot become ACCEPTED', () => {
   assert.equal(M3_REQUIRED_FLOWS.length, 6);
   assert.equal(m3LocalEvidenceMatches(localFixture(), current), true);
   assert.equal(m3RemoteEvidenceMatches(localFixture(), current), false);
   assert.equal(m3RemoteEvidenceMatches(remoteFixture(), current), true);
+  assert.equal(m3RemoteEvidenceMatches(remoteReleaseFixture('public'), current), true);
   for (const value of [null, true, 'PASS', {}, []]) assert.equal(m3LocalEvidenceMatches(value, current), false);
 });
 
@@ -108,7 +129,11 @@ test('M3 browser summary cannot invent flows, ignore skips/flakes or substitute 
   assert.equal(m3LocalEvidenceMatches(stale, current), false);
 });
 
-test('M3 remote requires protected non-loopback Vercel, exact deployment, CI SHA and report digest', () => {
+for (const visibility of ['private', 'public']) {
+  const remoteFixture = () => remoteReleaseFixture(visibility);
+  const testVisibility = (name, run) => test(`${visibility} source: ${name}`, run);
+
+testVisibility('M3 remote requires protected non-loopback Vercel, exact deployment, CI SHA and report digest', () => {
   for (const mutate of [
     e => {e.remote.commit = 'c'.repeat(40);}, e => {e.release.ci.headSha = 'c'.repeat(40);},
     e => {e.release.buildInfo.sourceDigest = hash('c');}, e => {e.release.status = 'BUILDING';},
@@ -116,6 +141,8 @@ test('M3 remote requires protected non-loopback Vercel, exact deployment, CI SHA
     e => {e.remote.url = 'https://127.0.0.1'; e.release.url = e.remote.url;},
     e => {e.remote.url = url + '.evil.example'; e.release.url = e.remote.url;},
     e => {e.remote.deploymentId = 'dpl_Another';}, e => {e.release.protection.anonymousStatus = 200;},
+    e => {e.release.protection.deploymentType = 'preview';}, e => {delete e.release.protection;},
+    e => {e.release.protection = {deploymentType: 'all', anonymousStatus: 302, anonymousLocation: 'https://vercel.com/sso-api?url=https%3A%2F%2Fanother.vercel.app'};},
     e => {e.release.providerTarget = 'production';}, e => {e.release.ci.url = 'https://github.com.evil.example/AndreaMarro/ardesia-next/actions/runs/123';},
     e => {e.remote.database.hostname = 'localhost';}, e => {e.remote.database.remote = 'true';},
     e => {e.remote.database.authority = 'memory';}, e => {e.remote.passed = 'true';}, e => {e.remote.stats.skipped = 1;},
@@ -126,7 +153,7 @@ test('M3 remote requires protected non-loopback Vercel, exact deployment, CI SHA
   assert.equal(m3RemoteEvidenceMatches(redirect, current), true);
 });
 
-test('M3 continuity needs three identities, distinct cookie jars/sessions and exact persisted IDs, revisions and state', () => {
+testVisibility('M3 continuity needs three identities, distinct cookie jars/sessions and exact persisted IDs, revisions and state', () => {
   for (const mutate of [
     e => {e.remote.accounts.studentB.idHash = e.remote.accounts.studentA.idHash;},
     e => {e.remote.accounts.studentA.role = 'teacher';},
@@ -140,7 +167,7 @@ test('M3 continuity needs three identities, distinct cookie jars/sessions and ex
   ]) {const evidence = remoteFixture(); mutate(evidence); assert.equal(m3RemoteEvidenceMatches(bindRemote(evidence), current), false);}
 });
 
-test('M3 remote counterproofs cannot be missing, relabeled booleans, unsupported assertions or secret-bearing records', () => {
+testVisibility('M3 remote counterproofs cannot be missing, relabeled booleans, unsupported assertions or secret-bearing records', () => {
   for (const name of M3_REMOTE_CHECKS) {
     const evidence = remoteFixture(); delete evidence.remote.checks[name];
     assert.equal(m3RemoteEvidenceMatches(bindRemote(evidence), current), false, name);
@@ -161,3 +188,4 @@ test('M3 remote counterproofs cannot be missing, relabeled booleans, unsupported
     e => {e.remote.token = 'forbidden';},
   ]) {const evidence = remoteFixture(); mutate(evidence); assert.equal(m3RemoteEvidenceMatches(bindRemote(evidence), current), false);}
 });
+}

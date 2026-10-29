@@ -3,6 +3,7 @@ import {createHash} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
 import {identity} from './evidence.mjs';
 import {m3LocalEvidenceMatches, m3RemoteEvidenceMatches} from './m3-evidence.mjs';
+import {sourceVisibilityMatches} from './source-visibility.mjs';
 
 const isRecord = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 const sha = value => typeof value === 'string' && /^[a-f0-9]{40}$/.test(value);
@@ -37,7 +38,7 @@ export function releaseEvidenceMatches(remote, current) {
   return Boolean(
     sha(current.commit) && digest(current.sourceDigest)
     && remote.commit === current.commit && remote.sourceDigest === current.sourceDigest
-    && remote.repository === 'AndreaMarro/ardesia-next' && remote.visibility === 'private'
+    && remote.repository === 'AndreaMarro/ardesia-next' && sourceVisibilityMatches(remote)
     && remote.status === 'READY' && remote.target === 'preview'
     && Object.hasOwn(remote, 'providerTarget') && ['staging',null].includes(remote.providerTarget)
     && deploymentUrl && typeof remote.deploymentId === 'string' && /^dpl_[A-Za-z0-9]{1,128}$/.test(remote.deploymentId)
@@ -237,7 +238,7 @@ function runStatus() {
       infrastructure: environment,
       acceptanceRequires: 'Distinct application identities, independent sessions, authorization, recovery and remote database observations on the same protected deployment SHA/digest'
     },
-    limits: [...(acceptedM3 ? [] : ['Remote M3 acceptance incomplete; local PostgreSQL and browser tests do not establish remote continuity']), 'Only pinned first-party plugin execution; no third-party sandbox', 'No update or rollback release currently authorized in the shipped catalog', 'Physical pen/touch and human UX acceptance NOT_RUN', 'No public release'],
+    limits: [...(acceptedM3 ? [] : ['Remote M3 acceptance incomplete; local PostgreSQL and browser tests do not establish remote continuity']), 'Only pinned first-party plugin execution; no third-party sandbox', 'No update or rollback release currently authorized in the shipped catalog', 'Physical pen/touch and human UX acceptance NOT_RUN', 'No public application deployment'],
     acceptedProductCriteria: 0, preservedProductCriteria: 68
   };
   mkdirSync('artifacts', {recursive: true});
