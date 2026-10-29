@@ -5,9 +5,18 @@ import {BrowserStorage} from './adapters/browser-storage';
 // Device-owner context only. This is deliberately not an authentication provider.
 export const localActor: Actor = {actorId: 'device-owner', role: 'teacher'};
 export type EditCommand = CoreCommand extends infer C ? C extends CoreCommand ? Omit<C, 'commandId' | 'documentId' | 'expectedRevision'> : never : never;
-export async function edit(core: CoreService, documentId: string, command: EditCommand): Promise<void> {
-  const current = core.getDocument(localActor, documentId);
-  await core.execute(localActor, {...command, commandId: crypto.randomUUID(), documentId, expectedRevision: current.revision} as CoreCommand);
+
+// Serialize local UI intents, not Core authority: each accepted edit reads the newest
+// document revision when its turn begins. The Core still rejects stale external writers.
+const editQueues = new WeakMap<CoreService, Promise<void>>();
+export function edit(core: CoreService, documentId: string, command: EditCommand): Promise<void> {
+  const previous = editQueues.get(core) ?? Promise.resolve();
+  const pending = previous.catch(() => undefined).then(async () => {
+    const current = core.getDocument(localActor, documentId);
+    await core.execute(localActor, {...command, commandId: crypto.randomUUID(), documentId, expectedRevision: current.revision} as CoreCommand);
+  });
+  editQueues.set(core, pending);
+  return pending;
 }
 export async function newLesson(core: CoreService, title: string): Promise<string> {
   const documentId = crypto.randomUUID();
