@@ -1,11 +1,9 @@
 import {test, expect, type Page} from '@playwright/test';
+import {addMarketplaceSpring, openMarketplace} from './marketplace-helpers';
 
 const storageKey = 'ardesia-next.core.v1';
 async function addSpring(page: Page) {
-  await page.goto('/');
-  await page.getByRole('button', {name:'Apri moduli', exact:true}).click();
-  await page.getByRole('button', {name:'Aggiungi molla alla lezione', exact:true}).click();
-  await expect(page.getByRole('complementary', {name:'Proprietà del laboratorio'})).toHaveAttribute('data-plugin-status', 'ready');
+  await addMarketplaceSpring(page);
 }
 async function storedLab(page: Page) {
   return page.evaluate(key => {
@@ -81,8 +79,8 @@ for (const mutation of ['bundle','signature','capability'] as const) {
       }
     });
     await page.goto('/');
-    await page.getByRole('button', {name:'Apri moduli', exact:true}).click();
-    await page.getByRole('button', {name:'Aggiungi molla alla lezione', exact:true}).click();
+    await openMarketplace(page);
+    await page.getByRole('button', {name:'Verifica Molla ideale', exact:true}).click();
     await expect(page.getByRole('alert')).toContainText('non ha superato la verifica');
     await expectNoLaboratory(page);
     expect(workers).toBe(0);

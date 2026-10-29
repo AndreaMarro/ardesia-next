@@ -1,13 +1,14 @@
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useRef, useState, useSyncExternalStore} from 'react';
 import {FlaskConical, X, Trash2, RotateCcw} from 'lucide-react';
 import {LabDataSchema, toObjectInput, type LabObject, type NewEducationalObject} from '@ardesia/contracts';
 import type {PluginEvaluation} from '@ardesia/plugin-sdk';
 import type {PluginSession} from '@ardesia/plugin-host';
-import {mountLab, pluginErrorCode} from '../plugins/first-party';
+import {mountLab, pluginErrorCode, subscribeMarketplace, marketplaceVersion} from '../plugins/first-party';
 import {ScienceView} from './ScienceView';
 
 type Props = {object: LabObject; onClose: () => void; onDirtyChange: (dirty: boolean) => void; onSave: (object: NewEducationalObject) => Promise<boolean>; onRemove: (id: string) => Promise<boolean>};
 export function LabInspector({object, onClose, onDirtyChange, onSave, onRemove}: Props) {
+  const installationVersion = useSyncExternalStore(subscribeMarketplace, marketplaceVersion);
   const session = useRef<PluginSession|null>(null);
   const generation = useRef(0);
   const [evaluation, setEvaluation] = useState<PluginEvaluation|null>(null);
@@ -25,7 +26,7 @@ export function LabInspector({object, onClose, onDirtyChange, onSave, onRemove}:
       session.current = result; setEvaluation(result.current); setInputs(Object.fromEntries(result.current.view.parameters.map(p => [p.key, String(p.value)]))); setBusy(false); setDirty(false);
     }).catch(reason => {if (!cancelled) {setError(pluginErrorCode(reason)); setBusy(false);}});
     return () => {cancelled = true; generation.current += 1; session.current?.dispose(); session.current = null;};
-  }, [object.id, object.revision]);
+  }, [object.id, object.revision, installationVersion]);
   useEffect(() => {onDirtyChange(dirty);}, [dirty, onDirtyChange]);
   useEffect(() => {
     if (!dirty) return;

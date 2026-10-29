@@ -50,7 +50,7 @@ export function App({core}: {core: CoreService}) {
     try {
       const data = await createFirstPartyLab();
       const id = crypto.randomUUID();
-      if (await run({kind:'add-object', object:{id, type:'lab', title:'Molla ideale', x:55, y:540, width:430, height:320, data}}, {kind:'remove-object', objectId:id})) {
+      if (await run({kind:'add-object', object:{id, type:'lab', title:'Molla ideale', x:55, y:100, width:430, height:320, data}}, {kind:'remove-object', objectId:id})) {
         setDialog(null); select(id); setMode('notebook');
       }
     } catch {setError('Il laboratorio non ha superato la verifica. Nessun oggetto è stato aggiunto.');setDialog(null);}
@@ -84,7 +84,7 @@ export function App({core}: {core: CoreService}) {
       onSave={async object => run({kind:'replace-object',object},{kind:'replace-object',object:toObjectInput(selected)})}
       onRemove={async id => {const ok=await run({kind:'remove-object',objectId:id}); if(ok){setSelectedId(null);setUndo([]);}return ok;}}/>}
     <footer className="app-footer"><div role="status" aria-live="polite"><Smartphone size={15}/><span>{editorDirty ? 'Modifiche da salvare' : message}</span></div><button className="footer-history" aria-label="Apri storia lezione" onClick={() => setDialog('history')}><History size={15}/><span>Revisione {document.revision}</span></button><span className="footer-brand">Ardesia Next</span></footer>
-    {dialog && <WorkspaceDialogs name={dialog} core={core} document={document} onClose={() => {if (!addingLab) setDialog(null);}} onOpen={openDocument} onAddLab={addLab} addingLab={addingLab}
+    {dialog && <WorkspaceDialogs name={dialog} core={core} document={document} onClose={() => {if (!addingLab) setDialog(null);}} onOpen={openDocument} onAddLab={addLab} addingLab={addingLab} onModulesChanged={() => setVersion(value => value + 1)}
       onCreate={async title => {try {const id=await newLesson(core,title);openDocument(id);setDialog(null);setMode('board');}catch {setError('Impossibile creare la lezione. I dati esistenti sono conservati.');}}}/>}
     {pendingNavigation && <Dialog title="Hai modifiche da salvare" onClose={() => setPendingNavigation(null)}><p className="dialog-intro">Il testo nel pannello non è ancora stato applicato alla lezione.</p><div className="confirm-actions"><button className="primary-button" onClick={() => setPendingNavigation(null)}>Continua a modificare</button><button className="secondary-button" onClick={() => {const action=pendingNavigation;setPendingNavigation(null);setEditorDirty(false);action();}}>Scarta modifiche</button></div></Dialog>}
   </div>;
