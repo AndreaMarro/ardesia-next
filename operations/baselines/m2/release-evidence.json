@@ -1,0 +1,74 @@
+{
+  "repository": "AndreaMarro/ardesia-next",
+  "visibility": "private",
+  "commit": "3c2738eef34b65cfbb7ee5451f8fc5e8e6bb610d",
+  "sourceDigest": "936e0cccf9384819662dfd8fc9654deba2e59386ba62559259689246b8499bc7",
+  "projectId": "prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd",
+  "status": "READY",
+  "target": "preview",
+  "providerTarget": "staging",
+  "url": "https://ardesia-next-8yc224you-andreas-projects-6d4e9791.vercel.app/",
+  "deploymentId": "dpl_HyMgPvazeHnugQTsSNTHpQSPTpx7",
+  "ci": {
+    "headSha": "3c2738eef34b65cfbb7ee5451f8fc5e8e6bb610d",
+    "conclusion": "success",
+    "url": "https://github.com/AndreaMarro/ardesia-next/actions/runs/40855723200"
+  },
+  "buildInfo": {
+    "commit": "3c2738eef34b65cfbb7ee5451f8fc5e8e6bb610d",
+    "sourceDigest": "936e0cccf9384819662dfd8fc9654deba2e59386ba62559259689246b8499bc7"
+  },
+  "protection": {
+    "deploymentType": "all",
+    "anonymousStatus": 302,
+    "anonymousLocation": "https://vercel.com/sso-api?url=https%3A%2F%2Fardesia-next-8yc224you-andreas-projects-6d4e9791.vercel.app%2F&nonce=cdce5f473e3ec65eb4bfba5cd6daf32eb3f554daa370011f8fd7b58f72691902"
+  },
+  "observedAt": "2026-10-29T10:29:58.545Z",
+  "m1Browser": {
+    "commit": "3c2738eef34b65cfbb7ee5451f8fc5e8e6bb610d",
+    "sourceDigest": "936e0cccf9384819662dfd8fc9654deba2e59386ba62559259689246b8499bc7",
+    "url": "https://ardesia-next-8yc224you-andreas-projects-6d4e9791.vercel.app/",
+    "passed": true,
+    "objectId": "1caf0764-e2b2-4104-9c19-26c6f30a5778",
+    "instanceId": "c299323b-fba3-433f-a0e8-b3f395b3bb9a",
+    "savedRevision": 2,
+    "reopenedRevision": 2,
+    "statePreserved": true,
+    "observedAt": "2026-10-29T10:26:12.936Z"
+  },
+  "m2Browser": {
+    "commit": "3c2738eef34b65cfbb7ee5451f8fc5e8e6bb610d",
+    "sourceDigest": "936e0cccf9384819662dfd8fc9654deba2e59386ba62559259689246b8499bc7",
+    "url": "https://ardesia-next-8yc224you-andreas-projects-6d4e9791.vercel.app/",
+    "passed": true,
+    "pluginId": "ardesia.ideal-spring",
+    "pluginVersion": "1.0.0",
+    "objectId": "1caf0764-e2b2-4104-9c19-26c6f30a5778",
+    "instanceId": "c299323b-fba3-433f-a0e8-b3f395b3bb9a",
+    "installedRevision": 1,
+    "activeRevision": 3,
+    "reopenedInstallationRevision": 3,
+    "disabledRevision": 4,
+    "savedRevision": 2,
+    "reopenedRevision": 2,
+    "statePreserved": true,
+    "consentPreserved": true,
+    "capabilities": [
+      "state:read",
+      "state:write"
+    ],
+    "disabled": true,
+    "steps": [
+      "find",
+      "verify",
+      "install",
+      "consent",
+      "activate",
+      "use",
+      "save",
+      "reload",
+      "disable"
+    ],
+    "observedAt": "2026-10-29T10:28:46.291Z"
+  }
+}

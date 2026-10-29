@@ -1,0 +1,16 @@
+{
+  "observedAt": "2026-10-29",
+  "scope": "AndreaMarro/ardesia-next; protected preview only",
+  "status": "BLOCKED",
+  "providerSelected": null,
+  "checks": [
+    {"service":"Supabase","operation":"get_cost(project)","organizationId":"twwqhsykkicciejficme","quotedMonthlyUSD":0},
+    {"service":"Supabase","operation":"create_project(ardesia-next-m3)","result":"REJECTED","reason":"Owner has reached the 2 active Free projects limit. No project was created."},
+    {"service":"Vercel","operation":"GET project environment metadata","projectId":"prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd","result":"403 forbidden","reason":"Connection lacks projectEnvVars list permission."},
+    {"service":"Vercel","operation":"GET integration configurations","result":"403 forbidden","reason":"Connection lacks integrationConfiguration list permission."},
+    {"service":"Render","operation":"list_postgres_instances","workspaceId":"tea-d4gouafdiees73b2m8f0","result":"EMPTY","reason":"No existing PostgreSQL instance is available in the accessible workspace."},
+    {"service":"Render","operation":"Review Free PostgreSQL eligibility","result":"NOT_SELECTED","reason":"The Free plan expires after 30 days and requires a paid upgrade to remain accessible; it was not selected as the continuing authoritative store. No database was created.","source":"https://render.com/docs/free"}
+  ],
+  "constraintsPreserved": {"legacyUnchanged":true,"productionUnchanged":true,"newPaidServices":false,"ssoBypassUsed":false},
+  "remaining": ["Dedicated transactional database with verified zero additional cost", "Preview-only runtime credential configuration with restricted PostgreSQL role", "Remote migration and synthetic account provisioning", "Protected remote browser acceptance and recovery evidence on the integrated SHA"]
+}

@@ -1,33 +1,45 @@
 # Ardesia Next
 
-Una sola applicazione, un solo Core e un solo Plugin Host. Questo candidato integra il client remoto di PR2 con la UI e con l'API Node compilata. Il server autentica gli account, applica i comandi del Core in transazioni PostgreSQL e restituisce soltanto proiezioni autorizzate.
+Una sola applicazione, un solo Core e un solo Plugin Host. Repository privata; rilascio limitato a preview Vercel protette.
 
-## Avvio e configurazione
+## Stato M3
 
-Usare Node 24 e il lockfile incluso:
+Il codice introduce autenticazione applicativa, autorizzazioni server, persistenza PostgreSQL, assegnazioni e lavoro personale degli studenti. Il browser riceve proiezioni autorizzate e conserva soltanto navigazione e comandi ancora da confermare. Il plugin Molla ideale conserva il bundle firmato e il modello scientifico M1/M2.
+
+**M3 rimane incompleto finché il percorso remoto non supera il gate.** Le prove con PostgreSQL locale non dimostrano continuità attraverso un servizio remoto. Il tentativo di creare un progetto Supabase dedicato gratuito è stato respinto per il limite di due progetti attivi; la connessione Vercel non dispone del permesso per leggere le variabili del progetto. Le osservazioni precise e i passi residui sono in [operations/m3-environment.json](operations/m3-environment.json).
+
+La baseline M0–M2 accettata è conservata in [operations/baselines/m2](operations/baselines/m2), con commit `3c2738eef34b65cfbb7ee5451f8fc5e8e6bb610d` e [CI verificata](https://github.com/AndreaMarro/ardesia-next/actions/runs/40855723200). `npm run status` verifica quei report e li indica come baseline storica; non trasferisce il loro PASS al nuovo sorgente.
+
+## Avvio
+
+Node 24 e il lockfile incluso:
 
 ```sh
 npm ci
 npm run dev
 ```
 
-La UI e `/api/m3` sono disponibili allo stesso origin, `http://127.0.0.1:4173`. Configurare `ARDESIA_DATABASE_URL` con una credenziale del ruolo PostgreSQL runtime limitato. Il database deve essere migrato e gli account predisposti dall'operatore prima dell'avvio. Senza configurazione il servizio dichiara l'indisponibilità; la UI permette comunque di esportare gli originali locali precedenti. [API, provisioning, migrazioni, backup e ripristino](packages/server/README.md).
+Aprire `http://127.0.0.1:4173`. L'API usa `ARDESIA_DATABASE_URL`, con credenziale del ruolo PostgreSQL limitato `ardesia_next_runtime`. Senza configurazione il servizio dichiara l'indisponibilità e non crea un archivio locale alternativo. Il login richiede account già predisposti dall'operatore: la UI non sceglie ruolo o identità.
 
-`npm run build` produce gli statici e una Function Node 24 con package workspace, driver PostgreSQL e asset del Worker firmato già inclusi. Il risultato usa Build Output API v3; il runtime non richiede un loader TypeScript o Vite. `npm run preview` avvia il server locale della build. In una preview configurata, `ARDESIA_APP_ORIGIN` oppure l'URL Vercel determina l'origin autorizzato.
+Per una build completa: `npm run build`, poi `npm run preview`. Le migrazioni e gli account non vengono creati durante una richiesta HTTP. [Server: provisioning, API, backup e ripristino](packages/server/README.md).
 
-## Comportamento della UI
+## Percorso docente e studenti
 
-Il docente accede con un account predisposto, crea uno spazio e una lezione, modifica gli stessi oggetti in lavagna, taccuino e lettura, e assegna la lezione a identificativi studente esistenti. Il laboratorio richiede verifica del rilascio, installazione, consenso e attivazione. Il contenuto resta una bozza.
+Il docente accede, crea uno spazio e una lezione, inserisce oggetti e attiva la Molla ideale attraverso verifica, installazione e consenso. **Assegna** autorizza un identificativo studente già esistente. Il docente può revocare l'accesso e consultare soltanto le evidenze che lo studente ha esplicitamente condiviso.
 
-Lo studente apre le lezioni assegnate e concede il proprio consenso alla release del laboratorio. Note, tentativi e parametri appartengono al suo lavoro personale. Il docente può leggerli soltanto dopo una condivisione esplicita e revocabile. L'accesso assegnato può essere revocato dal docente.
+Lo studente accede con il proprio account, apre la lezione assegnata e concede le capacità richieste dal laboratorio. Note, tentativi e parametri appartengono al suo lavoro personale; gli ID della lezione, dell'oggetto e dell'istanza scientifica restano stabili. Un secondo login indipendente recupera il lavoro dal server. Le richieste dirette con ID conosciuti applicano le stesse autorizzazioni.
 
-La UI distingue salvataggio confermato, attesa, esito incerto e conflitto. Una bozza mantiene la sua base quando arriva un aggiornamento; un contenuto concorrente non viene sovrascritto usando automaticamente la revisione più recente. Le bozze di oggetti rimossi restano disponibili fino allo scarto esplicito. La revoca del consenso arresta il Worker e conserva i parametri locali ancora da salvare. I comandi pendenti sono separati per account e possono essere ritentati con ID e payload originali. [Contratto del client e recupero](packages/remote-client/README.md).
+La UI distingue conferma, attesa, esito incerto e conflitto. Una risposta persa può essere ritentata con lo stesso comando e la stessa ricevuta; un conflitto richiede una scelta esplicita. Uscita e cambio account sospendono i runtime del plugin e rimuovono la proiezione visibile. Il recupero pendente resta separato per account.
 
-Gli snapshot locali v1/v2/v3 non vengono importati o cancellati automaticamente. L'importazione richiede una conferma di proprietà e dell'account destinatario, crea uno spazio separato e conserva l'originale e lo storico. I consensi precedenti devono essere rinnovati. L'export personale contiene soltanto dati autorizzati; il backup amministrativo è un'operazione distinta.
+## Dati precedenti
 
-## Verifiche locali
+Gli snapshot browser v1/v2/v3 non vengono cancellati o associati automaticamente. La schermata account offre l'esportazione dei byte originali e un'importazione esplicita verso l'account autenticato, con conferma di proprietà. L'importazione crea un nuovo spazio, archivia l'originale, conserva ID, revisioni, provenienza e ricevute e respinge i duplicati anche con diversa formattazione JSON. Il consenso del dispositivo precedente deve essere rinnovato.
 
-I test usano PostgreSQL reale su database loopback dedicati. Servono un operatore di test con `CREATEDB` e `CREATEROLE`, un database con suffisso `_test` e uno con suffisso `_browser`:
+L'esportazione personale contiene solo la proiezione autorizzata. Il backup completo è un'operazione amministrativa separata, senza password o sessioni, e il ripristino richiede un database vuoto con identità predisposte coerenti.
+
+## Verifiche riproducibili
+
+Servono due database PostgreSQL locali dedicati. La CI li prepara come servizio effimero; i test falliscono se manca un database reale.
 
 ```sh
 export M3_TEST_ADMIN_DATABASE_URL=postgresql://test_operator@127.0.0.1:5432/postgres
@@ -37,16 +49,29 @@ node tools/setup-test-databases.mjs
 npm run verify
 npx playwright install chromium
 npm run test:e2e
+npm run status
 ```
 
-`verify` mantiene otto controlli, include una prova della Function compilata con Node nativo e PostgreSQL isolato, verifica la ricostruzione del Worker firmato e applica il limite di **245.760 byte gzip a tutto il JavaScript distribuito**. Il grafo iniziale e il codice differito sono misurati separatamente ma contano entrambi nel limite.
+Usare un operatore di test con `CREATEDB` e `CREATEROLE`. Le suite limitano il reset a database loopback con suffisso `_test` o `_browser`, e le richieste applicative usano un login PostgreSQL senza privilegi amministrativi. Le credenziali sintetiche vengono generate dal runner; le tracce browser che potrebbero registrarle sono disattivate.
 
-La suite browser comprende le **51 prove M0–M2 adattate al server** e **sei prove degli editor concorrenti**, sui progetti Chromium desktop e mobile. Il runner genera credenziali sintetiche; le richieste attraversano l'API reale. Le controprove e le sostituzioni dei precedenti controlli locali sono documentate in [e2e/README.md](e2e/README.md). Le tracce browser sono disattivate per evitare di registrare credenziali. Le viewport emulate non costituiscono una verifica su dispositivi fisici.
+`verify` conserva gli otto controlli esistenti, inclusi ricostruzione identica del plugin firmato e budget di **245.760 byte gzip per tutto il JavaScript distribuito**. Il report separa il grafo del caricamento iniziale dal codice differito, contando entrambi nel limite. Desktop e mobile sono emulazioni Chromium: non certificano dispositivi fisici.
 
-## Stato dell'integrazione e limiti
+La prova M3 richiede inoltre un report browser remoto, il database realmente remoto e configurato, tre identità applicative, sessioni indipendenti, controprove di sicurezza/recupero, CI e preview protetta sulla stessa SHA e impronta dei sorgenti. Un record mancante, obsoleto o riferito a un'altra build non produce `ACCEPTED`.
 
-**L'accettazione remota M3 resta incompleta.** Le prove locali non attestano una preview collegata a un servizio remoto. Il tentativo di creare un database Supabase dedicato gratuito è stato bloccato dal limite dei due progetti già attivi; la connessione Vercel non dispone del permesso necessario per accedere alle variabili del progetto. Nessuna risorsa esistente viene riutilizzata o modificata per aggirare questi blocchi.
+## Confini e rilascio
 
-PR4 raccoglierà il percorso completo con docente e due studenti in sessioni indipendenti, le controprove browser di continuità e recupero e i gate di accettazione M3. Questo candidato include la UI e il consumer API, senza dichiarare quei gate superati. Gli strumenti di stato M0–M2 rimangono quelli della baseline fino a quell'integrazione.
+| Area | Responsabilità |
+| --- | --- |
+| `packages/core`, `packages/contracts` | Unico dominio, autorizzazioni, oggetti, lavoro personale, revisioni, eventi e ricevute |
+| `packages/server` | Sessioni applicative, transazioni PostgreSQL, adapter Core, proiezioni autorizzate e operazioni amministrative |
+| `packages/remote-client` | Facciata del Core remoto, conferme, ordine delle risposte e recupero dei comandi |
+| `packages/lesson-os` | Proiezioni ricostruibili dagli eventi autorizzati |
+| `packages/plugin-sdk`, `packages/plugin-host` | Contratti, firma, SHA-256, fiducia e ciclo di vita dello stesso plugin |
+| `apps/web`, `server/m3.ts` | Unica UI e composizione dell'API same-origin |
+| `tools`, `.github`, `operations` | Verifiche, CI, prove e stato generato |
 
-Rilascio limitato a preview protette, con CI sulla SHA effettiva. Nessuna produzione, spesa, bypass di protezione o modifica del repository legacy è inclusa. Per il rollback conservare backup e originali importati, ripristinare il candidato precedente verificato e non migrare automaticamente gli snapshot v4 all'indietro.
+La [decisione M3](docs/adr/0005-m3-remote-authority.md) descrive transazioni, isolamento e limiti. La [procedura di rilascio](docs/release-runbook.md) impone preview protetta, branch di preview e verifica della SHA effettiva. Nessuna produzione, dominio pubblico, bypass SSO, spesa o modifica del legacy è autorizzata da questa consegna.
+
+Rollback: usare la precedente preview M2 verificata e revert delle PR interessate. Non eliminare dati remoti né migrare v4 all'indietro automaticamente; conservare backup e archivio degli import. M4/M5 e l'apertura del marketplace restano fuori perimetro.
+
+Codice riservato. [Dipendenze e licenze](docs/dependencies.md); [criteri D01–D68](docs/acceptance/D01-D68.json) conservati senza attribuire un'accettazione prodotto non osservata.

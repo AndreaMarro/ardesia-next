@@ -1,5 +1,7 @@
 # Architettura di Ardesia Next
 
+**Aggiornamento M3:** [autorità remota, identità e continuità](adr/0005-m3-remote-authority.md). Le sezioni M0 seguenti conservano la decisione storica di fondazione.
+
 **Aggiornamento M1:** [plugin verificato, oggetto laboratorio e migrazione v2](m1-delivery.md). Le sezioni M0 seguenti conservano la decisione di fondazione; il nuovo comportamento M1 è descritto nell’aggiornamento e nell’ADR 0004.
 
 Decisione per M0 · 29 ottobre 2026. Questo documento definisce responsabilità e limiti; gli esiti di build, test, CI e distribuzione appartengono alle prove del candidato, non a questa descrizione.

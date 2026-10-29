@@ -17,6 +17,10 @@ Nessuna dipendenza di produzione per orchestrazione agentica, microservizi, stat
 database ulteriore, autenticazione parallela, 3D o monetizzazione in M0. Il browser contiene
 solo dati della preview personale. Un service backend e il suo adapter dati unico sono gate M3.
 
+## Aggiornamento M3
+
+`pg` 8.23.1 è il driver del solo database autorevole; resta nel server e negli strumenti, fuori dal bundle browser. `@types/pg` 8.23.1 aggiunge tipi per lo stesso driver. Terser 5.51.2 ottimizza la build senza modificare il plugin firmato. La CI usa PostgreSQL effimero per verificare transazioni e ripristino. Nessun SDK di autenticazione parallelo è introdotto. Le descrizioni M0 sopra restano storiche.
+
 ## Licenze
 
 React/React DOM, Vite, TypeScript, Zod, KaTeX, Vitest e Lucide mantengono i rispettivi file di
