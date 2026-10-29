@@ -4,7 +4,7 @@
 
 Integrare tramite PR solo dopo il controllo GitHub `verify`. Verificare nuovamente CI e tree sulla SHA del merge. Per il progetto Vercel `prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd` mantenere autenticazione su **tutti** i deployment e sorgenti non pubbliche.
 
-La richiesta API deve fissare `gitSource.type=github`, `repoId=1437761277` e `sha` alla revisione verificata. Creare o aggiornare **`preview/m1` alla stessa SHA di `main`** e usare questo branch come `gitSource.ref`, con **`target: staging`** esplicito. Nelle prove del 29 ottobre, `ref: main` è stato classificato dal provider come `production` sia con target omesso sia con staging esplicito; il branch preview alla stessa SHA ha prodotto il target corretto. I due candidati production, sempre protetti, sono stati esclusi dall'accettazione e rimossi. La stringa `preview` non è accettata da questa API. Verificare sempre la risposta effettiva.
+La richiesta API deve fissare `gitSource.type=github`, `repoId=1437761277` e `sha` alla revisione verificata. Creare o aggiornare **`preview/m3` alla stessa SHA di `main`** e usare questo branch come `gitSource.ref`, con **`target: staging`** esplicito. Nelle prove del 29 ottobre, `ref: main` è stato classificato dal provider come `production` sia con target omesso sia con staging esplicito; il branch preview alla stessa SHA ha prodotto il target corretto. I due candidati production, sempre protetti, sono stati esclusi dall'accettazione e rimossi. La stringa `preview` non è accettata da questa API. Verificare sempre la risposta effettiva.
 
 Vercel riserializza `vercel.json` prima della build. Il file è quindi versionato come `JSON.stringify(JSON.parse(source))` seguito da una newline, e CI ne impone il formato. Questo conserva l'impronta dei byte reali: non canonicalizzare silenziosamente il digest, non escludere la configurazione e non sostituire il digest atteso con quello distribuito. La controprova iniziale ha riprodotto la discrepanza cambiando soltanto la serializzazione di questo file (910 → 826 byte), con gli altri 77 file identici al tree Git.
 
@@ -34,3 +34,13 @@ Prima della distribuzione eseguire anche il rebuild del bundle firmato e tutti i
 ## M2
 
 Usare `preview/m2` alla SHA esatta del candidato, con gli stessi controlli di target/protezione qui descritti. Il build-info dichiara M2. Dopo il ciclo marketplace autenticato, compilare anche `m2Browser` secondo lo schema, importare gli artefatti originali CI della stessa SHA, eseguire `npm run status` e leggere i gate effettivi. Non accettare M2 senza M1 valido, 24 flussi M2 e prove remote. Il precedente snapshot v3 richiede un reader v3 anche in un rilascio di ripristino; disattivare il modulo conserva i dati.
+
+## Gate remoto M3
+
+Prima della prova configurare un database dedicato e credenziale runtime limitata soltanto nella preview; mantenere separata la credenziale dell’operatore. Eseguire migrazione e provisioning sintetico esplicitamente. Un deployment READY senza database non chiude M3.
+
+`artifacts/m3-remote-evidence.json` deve contenere le osservazioni effettive di tre account, sessioni browser indipendenti, continuità degli ID e dello stato, rifiuti di accesso, revoche, conflitto, retry, scadenza, indisponibilità e ripristino/import. Il suo digest deve essere legato al release report. Il contratto verificabile è `tools/m3-evidence.mjs`; le fixture nei test del gate non sono prove di rilascio. Non registrare password, cookie o token.
+
+`npm run status` confronta report unitari/browser, SHA, digest sorgente, CI, build-info e protezione. La baseline M0–M2 è conservata separatamente e non sostituisce prove della build corrente. In assenza di infrastruttura o osservazioni remote il risultato M3 resta `AWAITING_COMPLETE_EVIDENCE`.
+
+La build M3 produce Build Output API v3 in `.vercel/output`: statici, routing e Function Node con tutti i workspace compilati. `framework:null` e nessun `outputDirectory` lasciano al provider il riconoscimento esplicito di quell’output. Le protezioni HTTP sono riportate nelle route generate; la protezione SSO resta una proprietà del progetto. Il bundle server e gli asset del worker non sono pubblicati nella directory statica.

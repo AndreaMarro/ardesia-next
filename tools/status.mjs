@@ -2,6 +2,7 @@ import {readFileSync, existsSync, mkdirSync, writeFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
 import {identity} from './evidence.mjs';
+import {m3LocalEvidenceMatches, m3RemoteEvidenceMatches} from './m3-evidence.mjs';
 
 const isRecord = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 const sha = value => typeof value === 'string' && /^[a-f0-9]{40}$/.test(value);
@@ -195,13 +196,22 @@ function runStatus() {
   const e2e = read('artifacts/browser-evidence.json');
   const unit = read('artifacts/unit.json');
   const remote = read('artifacts/release-evidence.json');
+  const remoteM3 = read('artifacts/m3-remote-evidence.json');
+  const environment = read('operations/m3-environment.json');
+  const m3Evidence = {verification: checks, unit, browser: e2e, playwright: read('artifacts/e2e.json'), release: remote, remote: remoteM3};
+  const localM3 = m3LocalEvidenceMatches(m3Evidence, current) && m1BrowserMatches(e2e, current) && m2BrowserMatches(e2e, current);
+  const acceptedM3 = localM3 && m3RemoteEvidenceMatches(m3Evidence, current);
+  const baselineRoot = 'operations/baselines/m2/';
+  const baseline = read(baselineRoot + 'status.json');
+  const baselineAccepted = m2EvidenceMatches({verification: read(baselineRoot + 'verification.json'), unit: read(baselineRoot + 'unit.json'), browser: read(baselineRoot + 'browser-evidence.json'), release: read(baselineRoot + 'release-evidence.json')}, baseline); 
   const verified = Boolean(checks?.passed === true && checks.sourceDigest === current.sourceDigest && checks.commit === current.commit);
   const browserPassed = verified && e2e?.passed === true && e2e.sourceDigest === current.sourceDigest && e2e.commit === current.commit;
   const remoteMatches = releaseEvidenceMatches(remote, current);
   const m1Accepted = m1EvidenceMatches({verification: checks, unit, browser: e2e, release: remote}, current);
   const m2Accepted = m2EvidenceMatches({verification: checks, unit, browser: e2e, release: remote}, current);
   const state = {
-    ...current, milestone: 'M2', foundationMilestone: 'M0',
+    ...current, milestone: 'M3', foundationMilestone: 'M0',
+    acceptedBaselines: baselineAccepted ? [{commit: baseline.commit, sourceDigest: baseline.sourceDigest, milestones: ['M0','M1','M2'], status: 'ACCEPTED', evidence: 'operations/baselines/m2', url: baseline.deployment.url}] : [],
     verification: verified ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',
     browser: browserPassed ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',
     deployment: remoteMatches ? remote : {status: 'NOT_VERIFIED_FOR_CURRENT_COMMIT'},
@@ -220,8 +230,14 @@ function runStatus() {
       browserLifecycleAndCounterproofs: m2BrowserMatches(e2e, current) ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',
       protectedRemoteLifecycle: m2RemoteBrowserMatches(remote, current) ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_COMMIT'
     },
-    M3: 'NOT_STARTED', M4: 'NOT_STARTED', M5: 'NOT_STARTED',
-    limits: ['Device-only persistence', 'No application authentication or remote student authorization', 'Only pinned first-party plugin execution; no third-party sandbox', 'No update or rollback release currently authorized in the shipped catalog', 'Physical pen/touch and human UX acceptance NOT_RUN', 'No public release'],
+    M3: acceptedM3 ? 'ACCEPTED' : 'AWAITING_COMPLETE_EVIDENCE', M4: 'NOT_STARTED', M5: 'NOT_STARTED',
+    m3Evidence: {
+      localPostgresAndBrowser: localM3 ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',
+      protectedRemoteContinuity: acceptedM3 ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_COMMIT',
+      infrastructure: environment,
+      acceptanceRequires: 'Distinct application identities, independent sessions, authorization, recovery and remote database observations on the same protected deployment SHA/digest'
+    },
+    limits: [...(acceptedM3 ? [] : ['Remote M3 acceptance incomplete; local PostgreSQL and browser tests do not establish remote continuity']), 'Only pinned first-party plugin execution; no third-party sandbox', 'No update or rollback release currently authorized in the shipped catalog', 'Physical pen/touch and human UX acceptance NOT_RUN', 'No public release'],
     acceptedProductCriteria: 0, preservedProductCriteria: 68
   };
   mkdirSync('artifacts', {recursive: true});
