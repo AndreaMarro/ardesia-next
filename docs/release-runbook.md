@@ -2,7 +2,7 @@
 
 ## Candidato
 
-Integrare tramite PR solo dopo il controllo GitHub `verify`. Verificare nuovamente CI e tree sulla SHA del merge. Per il progetto Vercel `prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd` mantenere autenticazione su **tutti** i deployment e sorgenti non pubbliche.
+Integrare tramite PR solo dopo il controllo GitHub `verify`. Verificare nuovamente CI e tree sulla SHA del merge. Per il progetto Vercel `prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd` mantenere autenticazione su **tutti** i deployment. Il mandato del 29 ottobre autorizza separatamente la pubblicazione del solo sorgente GitHub: quando la visibilità osservata è `public`, la release evidence deve includere il record `sourcePublication` previsto dallo schema. La richiesta non prova che il cambio di visibilità sia già stato eseguito. Le baseline private storiche restano immutate; la protezione della preview, le SHA, i digest e tutte le controprove M3 restano obbligatori.
 
 La richiesta API deve fissare `gitSource.type=github`, `repoId=1437761277` e `sha` alla revisione verificata. Creare o aggiornare **`preview/m3` alla stessa SHA di `main`** e usare questo branch come `gitSource.ref`, con **`target: staging`** esplicito. Nelle prove del 29 ottobre, `ref: main` è stato classificato dal provider come `production` sia con target omesso sia con staging esplicito; il branch preview alla stessa SHA ha prodotto il target corretto. I due candidati production, sempre protetti, sono stati esclusi dall'accettazione e rimossi. La stringa `preview` non è accettata da questa API. Verificare sempre la risposta effettiva.
 

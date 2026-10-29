@@ -1,12 +1,12 @@
 # Ardesia Next
 
-Una sola applicazione, un solo Core e un solo Plugin Host. Repository privata; rilascio limitato a preview Vercel protette.
+Una sola applicazione, un solo Core e un solo Plugin Host. Rilascio applicativo limitato a preview Vercel protette. Il mandato del 29 ottobre autorizza la pubblicazione dei sorgenti su GitHub; la visibilità effettiva e gli eventuali passaggi di accesso ancora richiesti sono registrati in `operations/m3-environment.json`.
 
 ## Stato M3
 
 Il codice introduce autenticazione applicativa, autorizzazioni server, persistenza PostgreSQL, assegnazioni e lavoro personale degli studenti. Il browser riceve proiezioni autorizzate e conserva soltanto navigazione e comandi ancora da confermare. Il plugin Molla ideale conserva il bundle firmato e il modello scientifico M1/M2.
 
-**M3 rimane incompleto finché il percorso remoto non supera il gate.** Le prove con PostgreSQL locale non dimostrano continuità attraverso un servizio remoto. Il tentativo di creare un progetto Supabase dedicato gratuito è stato respinto per il limite di due progetti attivi; la connessione Vercel non dispone del permesso per leggere le variabili del progetto. Le osservazioni precise e i passi residui sono in [operations/m3-environment.json](operations/m3-environment.json).
+**M3 rimane incompleto finché il percorso remoto non supera il gate.** Le prove con PostgreSQL locale non dimostrano continuità attraverso un servizio remoto. Neon Free è il candidato selezionato, con piano gratuito da confermare nell'account prima del provisioning. Il dashboard Vercel permette di gestire le variabili di Next, mentre il connettore continua a restituire 403. L'autorizzazione iniziale Neon e la conferma di accesso GitHub sono ancora richieste al titolare. Le osservazioni precise e i passi residui sono in [operations/m3-environment.json](operations/m3-environment.json).
 
 La baseline M0–M2 accettata è conservata in [operations/baselines/m2](operations/baselines/m2), con commit `3c2738eef34b65cfbb7ee5451f8fc5e8e6bb610d` e [CI verificata](https://github.com/AndreaMarro/ardesia-next/actions/runs/40855723200). `npm run status` verifica quei report e li indica come baseline storica; non trasferisce il loro PASS al nuovo sorgente.
 
@@ -74,4 +74,4 @@ La [decisione M3](docs/adr/0005-m3-remote-authority.md) descrive transazioni, is
 
 Rollback: usare la precedente preview M2 verificata e revert delle PR interessate. Non eliminare dati remoti né migrare v4 all'indietro automaticamente; conservare backup e archivio degli import. M4/M5 e l'apertura del marketplace restano fuori perimetro.
 
-Codice riservato. [Dipendenze e licenze](docs/dependencies.md); [criteri D01–D68](docs/acceptance/D01-D68.json) conservati senza attribuire un'accettazione prodotto non osservata.
+La pubblicazione autorizzata del sorgente non introduce una licenza di riuso né autorizza un deployment applicativo pubblico. [Dipendenze e licenze](docs/dependencies.md); [criteri D01–D68](docs/acceptance/D01-D68.json) conservati senza attribuire un'accettazione prodotto non osservata.

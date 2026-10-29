@@ -1,4 +1,5 @@
 import {createHash} from 'node:crypto';
+import {sourceVisibilityMatches} from './source-visibility.mjs';
 
 const record = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 const sha = value => typeof value === 'string' && /^[a-f0-9]{40}$/.test(value);
@@ -106,7 +107,7 @@ function protectedRelease(release, current) {
   if (!sameSource(release, current)) return false;
   const url = https(release.url), ci = https(release.ci?.url), protection = release.protection;
   if (!url || !/^[a-z0-9-]+\.vercel\.app$/.test(url.hostname) || url.port || url.pathname !== '/' || url.search || url.hash
-    || release.repository !== 'AndreaMarro/ardesia-next' || release.visibility !== 'private' || release.target !== 'preview'
+    || release.repository !== 'AndreaMarro/ardesia-next' || !sourceVisibilityMatches(release) || release.target !== 'preview'
     || !Object.hasOwn(release, 'providerTarget') || ![null, 'staging'].includes(release.providerTarget) || release.status !== 'READY'
     || release.projectId !== 'prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd' || !/^dpl_[A-Za-z0-9]{1,128}$/.test(release.deploymentId ?? '')
     || !sameSource(release.buildInfo, current) || release.ci?.headSha !== current.commit || release.ci.conclusion !== 'success'

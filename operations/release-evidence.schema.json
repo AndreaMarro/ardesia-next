@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Ardesia Next observed release evidence",
   "type": "object",
-  "$comment": "tools/status.mjs also verifies exact current SHA/digest and compares the decoded SSO redirect target origin with url; these cross-field checks cannot be expressed by standard JSON Schema alone.",
+  "$comment": "tools/status.mjs also verifies exact current SHA/digest, compares the decoded SSO redirect target origin with url and requires sourcePublication.recordedAt no later than observedAt; these cross-field checks cannot be expressed by standard JSON Schema alone. Source publication never authorizes public application access.",
   "required": [
     "repository",
     "visibility",
@@ -24,7 +24,45 @@
       "const": "AndreaMarro/ardesia-next"
     },
     "visibility": {
-      "const": "private"
+      "enum": [
+        "private",
+        "public"
+      ]
+    },
+    "sourcePublication": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Observed explicit owner instruction to publish only this repository's source. Required for public source visibility; not an application deployment or security bypass authorization.",
+      "required": [
+        "kind",
+        "owner",
+        "repository",
+        "visibility",
+        "scope",
+        "recordedAt"
+      ],
+      "properties": {
+        "kind": {
+          "const": "explicit-owner-instruction"
+        },
+        "owner": {
+          "const": "AndreaMarro"
+        },
+        "repository": {
+          "const": "AndreaMarro/ardesia-next"
+        },
+        "visibility": {
+          "const": "public"
+        },
+        "scope": {
+          "const": "source-only"
+        },
+        "recordedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$"
+        }
+      }
     },
     "commit": {
       "type": "string",
@@ -333,5 +371,24 @@
         }
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "visibility": {
+            "const": "public"
+          }
+        },
+        "required": [
+          "visibility"
+        ]
+      },
+      "then": {
+        "required": [
+          "sourcePublication"
+        ]
+      }
+    }
+  ]
 }
