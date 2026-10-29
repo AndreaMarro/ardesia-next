@@ -11,7 +11,8 @@ concurrency:
   cancel-in-progress: true
 jobs:
   verify:
-    runs-on: ubuntu-latest
+    # Pin the OS supported by the pinned Playwright browser, not a moving runner alias.
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     env:
       ARDESIA_COMMIT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
