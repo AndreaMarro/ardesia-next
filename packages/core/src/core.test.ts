@@ -131,7 +131,7 @@ describe('Core authority and persistence', () => {
     const document = core.getDocument(teacher, 'lesson-1');
     document.objects[0]!.title = 'Mutated projection';
     expect(core.getDocument(teacher, 'lesson-1').objects[0]!.title).toBe('Ipotesi');
-    expect(core.snapshot().receipts[0]!.documentRevision).toBe(1);
+    expect(core.snapshot().receipts[0]).toMatchObject({documentRevision: 1});
   });
 
   it('never auto-approves content and rejects injected status or script URLs', async () => {

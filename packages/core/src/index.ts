@@ -4,6 +4,7 @@ import {
   CoreError,
   CoreSnapshotSchema,
   EducationalObjectSchema,
+  PluginCommandSchema,
   emptySnapshot,
   migrateSnapshotForOpen,
   type Actor,
@@ -14,7 +15,13 @@ import {
   type EducationalObject,
   type LessonDocument,
   type NewEducationalObject,
+  type PluginCommand,
+  type PluginEvent,
+  type PluginInstallation,
+  type PluginReceipt,
 } from '@ardesia/contracts';
+import {applyPluginCommand, findInstallation, validateLabUse, type PluginPolicy} from './plugin-commands';
+export type {PluginPolicy, PluginPolicyRequest} from './plugin-commands';
 
 /** One atomic replacement is required. M0 supports one writer per adapter. */
 export interface StorageAdapter {
@@ -27,10 +34,14 @@ export interface CoreOptions {
   clock?: () => string;
   id?: () => string;
   workspaceId?: string;
+  pluginPolicy?: PluginPolicy;
 }
 
 export interface CoreService {
   execute(actor: Actor, command: CoreCommand): Promise<CommandReceipt>;
+  executePlugin(actor: Actor, command: PluginCommand): Promise<PluginReceipt>;
+  listInstallations(actor: Actor): PluginInstallation[];
+  getInstallation(actor: Actor, pluginId: string): PluginInstallation | null;
   listDocuments(actor: Actor): LessonDocument[];
   getDocument(actor: Actor, documentId: string): LessonDocument;
   getObjectRevision(actor: Actor, documentId: string, objectId: string, revision: number): EducationalObject;
@@ -61,7 +72,7 @@ function canonical(value: unknown): string {
   return JSON.stringify(value) ?? 'null';
 }
 
-async function commandFingerprint(actor: Actor, command: CoreCommand): Promise<string> {
+async function commandFingerprint(actor: Actor, command: CoreCommand | PluginCommand): Promise<string> {
   const bytes = new TextEncoder().encode(canonical({ actor, command }));
   const digest = await crypto.subtle.digest('SHA-256', bytes);
   return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
@@ -83,7 +94,7 @@ function findObject(document: LessonDocument, id: string): EducationalObject {
 function sourceRevisionExists(state: CoreSnapshot, document: LessonDocument, sourceId: string, revision: number): boolean {
   if (document.objects.some((object) => object.id === sourceId && object.type === 'source' && object.revision === revision)) return true;
   return state.events.some((event) => {
-    if (event.documentId !== document.id || !event.payload || typeof event.payload !== 'object' || Array.isArray(event.payload)) return false;
+    if (!('documentId' in event) || event.documentId !== document.id || !event.payload || typeof event.payload !== 'object' || Array.isArray(event.payload)) return false;
     return ['object', 'previous'].some((key) => {
       const object = EducationalObjectSchema.safeParse(event.payload && typeof event.payload === 'object' && !Array.isArray(event.payload) ? event.payload[key] : null);
       return object.success && object.data.type === 'source' && object.data.id === sourceId && object.data.revision === revision;
@@ -148,7 +159,7 @@ function applyCommand(state: CoreSnapshot, actor: Actor, command: CoreCommand, a
     }
     case 'add-object': {
       const previouslyUsed = state.events.some((event) => {
-        if (event.documentId !== document.id || !event.payload || typeof event.payload !== 'object' || Array.isArray(event.payload)) return false;
+        if (!('documentId' in event) || event.documentId !== document.id || !event.payload || typeof event.payload !== 'object' || Array.isArray(event.payload)) return false;
         const object = event.payload['object'];
         return object !== null && typeof object === 'object' && !Array.isArray(object) && object['id'] === command.object.id;
       });
@@ -229,6 +240,20 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
   const id = options.id ?? (() => crypto.randomUUID());
   let queue: Promise<unknown> = Promise.resolve();
 
+  async function commit(next: CoreSnapshot): Promise<void> {
+    const validated = CoreSnapshotSchema.safeParse(next);
+    if (!validated.success) throw new CoreError('INVALID_COMMAND', 'The resulting state violates a Core invariant.');
+    try { await options.storage.write(structuredClone(validated.data)); }
+    catch { throw new CoreError('STORAGE_FAILURE', 'Saving failed. The command, events and receipt were not committed in memory.'); }
+    state = validated.data;
+  }
+
+  function newEventId(next: CoreSnapshot): string {
+    const eventId = id();
+    if (next.events.some(event => event.id === eventId)) throw new CoreError('ALREADY_EXISTS', 'Event ID collision; no command was committed.');
+    return eventId;
+  }
+
   const service: CoreService = {
     execute(actorInput, commandInput) {
       // Clone and validate before queuing, so caller mutation cannot alter a pending command.
@@ -241,14 +266,16 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
         const fingerprint = await commandFingerprint(actor, command);
         const duplicate = state.receipts.find((receipt) => receipt.commandId === command.commandId);
         if (duplicate) {
-          if (duplicate.actorId !== actor.actorId || duplicate.fingerprint !== fingerprint) throw new CoreError('IDEMPOTENCY_CONFLICT', 'This command ID was already used for a different request.');
+          if (!('documentId' in duplicate) || duplicate.actorId !== actor.actorId || duplicate.fingerprint !== fingerprint) throw new CoreError('IDEMPOTENCY_CONFLICT', 'This command ID was already used for a different request.');
           return structuredClone(duplicate);
         }
         const next = structuredClone(state);
         const at = clock();
         const { document, payload } = applyCommand(next, actor, command, at);
-        const eventId = id();
-        if (next.events.some((event) => event.id === eventId)) throw new CoreError('ALREADY_EXISTS', 'Event ID collision; no command was committed.');
+        if ((command.kind === 'add-object' || command.kind === 'replace-object') && command.object.type === 'lab') {
+          await validateLabUse(next, actor, command.object.data, options.pluginPolicy);
+        }
+        const eventId = newEventId(next);
         const event: CoreEvent = {
           id: eventId,
           sequence: next.events.length + 1,
@@ -269,15 +296,61 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
         };
         next.events.push(event);
         next.receipts.push(receipt);
-        const validated = CoreSnapshotSchema.safeParse(next);
-        if (!validated.success) throw new CoreError('INVALID_COMMAND', 'The resulting state violates a Core invariant.');
-        try { await options.storage.write(structuredClone(validated.data)); }
-        catch { throw new CoreError('STORAGE_FAILURE', 'Saving failed. The command, event and receipt were not committed in memory.'); }
-        state = validated.data;
+        await commit(next);
         return structuredClone(receipt);
       });
       queue = operation.catch(() => undefined);
       return operation;
+    },
+    executePlugin(actorInput, commandInput) {
+      const actor = parseActor(actorInput);
+      const result = PluginCommandSchema.safeParse(commandInput);
+      if (!result.success) return Promise.reject(new CoreError('INVALID_COMMAND', 'Module command does not satisfy the versioned contract.'));
+      const command = structuredClone(result.data);
+      const operation = queue.then(async () => {
+        if (actor.role !== 'teacher') throw new CoreError('FORBIDDEN', 'Only the teacher owner can manage modules in this preview.');
+        const fingerprint = await commandFingerprint(actor, command);
+        const duplicate = state.receipts.find(receipt => receipt.commandId === command.commandId);
+        if (duplicate) {
+          if (!('pluginId' in duplicate) || duplicate.actorId !== actor.actorId || duplicate.fingerprint !== fingerprint) throw new CoreError('IDEMPOTENCY_CONFLICT', 'This command ID was already used for a different request.');
+          return structuredClone(duplicate);
+        }
+        const next = structuredClone(state);
+        const at = clock();
+        const result = await applyPluginCommand(next, actor, command, at, options.pluginPolicy);
+        const eventId = newEventId(next);
+        const event: PluginEvent = {
+          id: eventId, sequence: next.events.length + 1, pluginId: result.installation.pluginId,
+          installationRevision: result.installation.revision, type: command.kind,
+          actorId: actor.actorId, occurredAt: at, payload: result.payload,
+        };
+        next.events.push(event);
+        const relatedEventIds: string[] = [];
+        for (const transition of result.documents) {
+          const relatedId = newEventId(next);
+          next.events.push({id: relatedId, sequence: next.events.length + 1, documentId: transition.documentId,
+            documentRevision: transition.documentRevision, type: 'plugin-release-changed', actorId: actor.actorId,
+            occurredAt: at, payload: transition.payload});
+          relatedEventIds.push(relatedId);
+        }
+        const receipt: PluginReceipt = {
+          commandId: command.commandId, actorId: actor.actorId, fingerprint,
+          pluginId: result.installation.pluginId, installationRevision: result.installation.revision,
+          eventId, relatedEventIds,
+        };
+        next.receipts.push(receipt);
+        await commit(next);
+        return structuredClone(receipt);
+      });
+      queue = operation.catch(() => undefined);
+      return operation;
+    },
+    listInstallations(actorInput) {
+      const actor = parseActor(actorInput);
+      return structuredClone(state.installations.filter(installation => installation.ownerId === actor.actorId));
+    },
+    getInstallation(actorInput, pluginId) {
+      return structuredClone(findInstallation(state, parseActor(actorInput), pluginId) ?? null);
     },
     listDocuments(actorInput) {
       const actor = parseActor(actorInput);
@@ -291,9 +364,15 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
       const current = document.objects.find((object) => object.id === objectId && object.revision === wantedRevision);
       if (current) return structuredClone(current);
       for (const event of state.events) {
-        if (event.documentId !== documentId || !event.payload || typeof event.payload !== 'object' || Array.isArray(event.payload)) continue;
-        for (const key of ['object', 'previous']) {
-          const result = EducationalObjectSchema.safeParse(event.payload[key]);
+        if (!('documentId' in event) || event.documentId !== documentId || !event.payload || typeof event.payload !== 'object' || Array.isArray(event.payload)) continue;
+        const candidates = [event.payload.object, event.payload.previous];
+        if (event.type === 'plugin-release-changed' && Array.isArray(event.payload.objects)) {
+          for (const change of event.payload.objects) {
+            if (change && typeof change === 'object' && !Array.isArray(change)) candidates.push(change.object, change.previous);
+          }
+        }
+        for (const candidate of candidates) {
+          const result = EducationalObjectSchema.safeParse(candidate);
           if (result.success && result.data.id === objectId && result.data.revision === wantedRevision) return structuredClone(result.data);
         }
       }
@@ -301,7 +380,7 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
     },
     events(actorInput, documentId) {
       requireOwner(state, parseActor(actorInput), documentId);
-      return structuredClone(state.events.filter((event) => event.documentId === documentId));
+      return structuredClone(state.events.filter((event): event is CoreEvent => 'documentId' in event && event.documentId === documentId));
     },
     snapshot() { return structuredClone(state); },
   };
