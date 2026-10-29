@@ -27,6 +27,25 @@
       },
       "allOf":[{"if":{"properties":{"anonymousStatus":{"enum":[302,303,307]}},"required":["anonymousStatus"]},"then":{"required":["anonymousLocation"]}}]
     },
-    "observedAt":{"type":"string","format":"date-time"}
+    "observedAt":{"type":"string","format":"date-time"},
+    "m1Browser":{
+      "type":"object",
+      "additionalProperties":false,
+      "$comment":"Optional for M0, mandatory for M1. tools/status.mjs requires exact current SHA/source digest, exact release URL, savedRevision equal to reopenedRevision, and complete local M1 test evidence. This record is written only after the protected browser flow is observed; it is not a cryptographic attestation.",
+      "required":["commit","sourceDigest","url","passed","objectId","instanceId","savedRevision","reopenedRevision","statePreserved","observedAt"],
+      "properties":{
+        "commit":{"type":"string","pattern":"^[a-f0-9]{40}$"},
+        "sourceDigest":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+        "url":{"type":"string","format":"uri","pattern":"^https://","minLength":9},
+        "passed":{"const":true},
+        "objectId":{"type":"string","pattern":"^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,99}$"},
+        "instanceId":{"type":"string","pattern":"^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,99}$"},
+        "savedRevision":{"type":"integer","minimum":2,"maximum":9007199254740991},
+        "reopenedRevision":{"type":"integer","minimum":2,"maximum":9007199254740991},
+        "statePreserved":{"const":true},
+        "observedAt":{"type":"string","format":"date-time"}
+      }
+    }
   }
 }
+

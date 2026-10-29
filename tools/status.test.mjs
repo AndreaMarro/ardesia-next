@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {releaseEvidenceMatches} from './status.mjs';
+import {releaseEvidenceMatches, m1EvidenceMatches, M1_REQUIRED_FLOWS, unitReportDigest} from './status.mjs';
 
 const current = {commit: 'a'.repeat(40), sourceDigest: 'b'.repeat(64)};
 const deployment = 'https://ardesia-next-test-andreas-projects-6d4e9791.vercel.app';
@@ -113,3 +113,172 @@ test('essential state, URL, deployment identity and observation time cannot be o
   assert.equal(releaseEvidenceMatches(null, current), false);
   assert.equal(releaseEvidenceMatches(evidence(), {}), false);
 });
+
+const m1Evidence = () => {
+  const data = {
+  verification: {
+    ...current, passed: true,
+    checks: ['config-source', 'types', 'boundaries', 'release-evidence', 'unit', 'signed-plugin', 'build', 'bundle-budget']
+      .map(name => ({name, passed: true, exitCode: 0}))
+  },
+  unit: {
+    success: true, numTotalTests: 4, numPassedTests: 4, numFailedTests: 0, numPendingTests: 0, numTodoTests: 0,
+    numTotalTestSuites: 4, numPassedTestSuites: 4, numFailedTestSuites: 0, numPendingTestSuites: 0,
+    testResults: [
+      'packages/plugin-host/src/runtime.test.ts', 'plugins/ideal-spring/src/model.test.ts',
+      'plugins/ideal-spring/src/handler.test.ts', 'packages/core/src/lab.test.ts'
+    ].map(name => ({name: `/ci/ardesia-next/${name}`, status: 'passed', assertionResults: [{title: 'observed passing assertion', status: 'passed', failureMessages: []}]}))
+  },
+  browser: {
+    ...current, passed: true, m1Passed: true, m1Flows: [...M1_REQUIRED_FLOWS],
+    stats: {expected: M1_REQUIRED_FLOWS.length, skipped: 0, unexpected: 0, flaky: 0}
+  },
+  release: {
+    ...evidence(),
+    m1Browser: {
+      ...current, url: deployment, passed: true,
+      objectId: 'lab-fixture-1', instanceId: 'spring-instance-1',
+      savedRevision: 2, reopenedRevision: 2, statePreserved: true,
+      observedAt: '2026-10-29T01:05:00.000Z'
+    }
+  }
+  };
+  data.verification.unitReportDigest = unitReportDigest(data.unit);
+  return data;
+};
+
+test('M1 accepts only a complete current-source local and protected remote experiment', () => {
+  assert.equal(M1_REQUIRED_FLOWS.length, 14);
+  assert.equal(m1EvidenceMatches(m1Evidence(), current), true);
+  assert.equal(releaseEvidenceMatches(m1Evidence().release, current), true);
+  assert.equal(m1EvidenceMatches(null, current), false);
+  assert.equal(m1EvidenceMatches(m1Evidence(), {}), false);
+  const empty = m1Evidence(); delete empty.release.m1Browser;
+  assert.equal(releaseEvidenceMatches(empty.release, current), true, 'M0 remains independent of M1 browser evidence');
+  assert.equal(m1EvidenceMatches(empty, current), false);
+});
+
+test('M1 rejects every missing evidence group and non-boolean success claims', () => {
+  for(const key of ['verification', 'unit', 'browser', 'release']) {
+    const data = m1Evidence(); delete data[key];
+    assert.equal(m1EvidenceMatches(data, current), false, key);
+  }
+  for(const change of [
+    data => {data.verification.passed = 'true';},
+    data => {data.unit.success = 'true';},
+    data => {data.browser.passed = 'true';},
+    data => {data.browser.m1Passed = 'true';},
+    data => {data.release.m1Browser.passed = 'true';},
+    data => {data.release.m1Browser.statePreserved = 'true';}
+  ]) {
+    const data = m1Evidence(); change(data);
+    assert.equal(m1EvidenceMatches(data, current), false);
+  }
+});
+
+test('M1 requires all named verification checks, especially signed-plugin, on the same SHA and source digest', () => {
+  for(const checkName of m1Evidence().verification.checks.map(check => check.name)) {
+    const data = m1Evidence(); data.verification.checks = data.verification.checks.filter(check => check.name !== checkName);
+    assert.equal(m1EvidenceMatches(data, current), false, checkName);
+  }
+  for(const change of [
+    data => {data.verification.commit = 'c'.repeat(40);},
+    data => {data.verification.sourceDigest = 'c'.repeat(64);},
+    data => {data.verification.checks[0].passed = false;},
+    data => {data.verification.checks[0].exitCode = 1;},
+    data => {data.verification.checks[0].exitCode = '0';},
+    data => {data.verification.checks[0] = data.verification.checks[1];}
+  ]) {
+    const data = m1Evidence(); change(data);
+    assert.equal(m1EvidenceMatches(data, current), false);
+  }
+});
+
+test('M1 does not accept test totals without executed Host, model, protocol and Core assertions', () => {
+  const changes = [
+    data => {data.unit.testResults = [];},
+    data => {data.unit.numTotalTests = 0; data.unit.numPassedTests = 0;},
+    data => {data.unit.numPassedTests = 3;},
+    data => {data.unit.numFailedTests = 1;},
+    data => {data.unit.numPendingTests = 1;},
+    data => {data.unit.numTodoTests = 1;},
+    data => {data.unit.numFailedTestSuites = 1;},
+    data => {data.unit.numPendingTestSuites = 1;},
+    data => {data.unit.testResults[0].assertionResults = [];},
+    data => {data.unit.testResults[0].status = 'failed';},
+    data => {data.unit.testResults[0].assertionResults[0].status = 'pending';},
+    data => {data.unit.testResults[0].assertionResults[0].failureMessages = ['failure'];},
+    data => {data.unit.testResults[0] = data.unit.testResults[1];},
+    data => {data.unit.testResults[0].name = '/ci/unrelated/runtime.test.ts';},
+    data => {data.unit.numTotalTests = 5; data.unit.numPassedTests = 5;}
+  ];
+  for(const change of changes) {const data = m1Evidence(); change(data); assert.equal(m1EvidenceMatches(data, current), false);}
+  for(let index = 0; index < 4; index++) {
+    const data = m1Evidence(); data.unit.testResults[index].name = `/ci/unrelated/test-${index}.ts`;
+    assert.equal(m1EvidenceMatches(data, current), false, `required suite ${index}`);
+  }
+});
+
+test('M1 binds the parsed unit report content to current verification instead of accepting a stale success report', () => {
+  const data = m1Evidence();
+  const differentlyFormatted = JSON.parse(JSON.stringify(data.unit, null, 4));
+  assert.equal(unitReportDigest(differentlyFormatted), data.verification.unitReportDigest);
+  assert.equal(unitReportDigest({a: 1}), '015abd7f5cc57a2dd94b7590f04ad8084273905ee33ec5cebeae62276a97f862');
+  assert.equal(unitReportDigest(null), null);
+  const cyclic = {}; cyclic.self = cyclic;
+  assert.equal(unitReportDigest(cyclic), null);
+  for(const value of [undefined, '', 'not-a-digest', 'c'.repeat(64)]) {
+    const candidate = m1Evidence(); candidate.verification.unitReportDigest = value;
+    assert.equal(m1EvidenceMatches(candidate, current), false);
+  }
+  data.unit.testResults[0].assertionResults[0].title = 'Different previously passing assertion';
+  assert.notEqual(unitReportDigest(data.unit), data.verification.unitReportDigest);
+  assert.equal(m1EvidenceMatches(data, current), false);
+});
+
+test('M1 browser evidence needs every actual desktop and mobile scenario, with no skipped, failed or flaky tests', () => {
+  for(const flow of M1_REQUIRED_FLOWS) {
+    const data = m1Evidence(); data.browser.m1Flows = data.browser.m1Flows.filter(item => item !== flow);
+    assert.equal(m1EvidenceMatches(data, current), false, flow);
+  }
+  for(const change of [
+    data => {data.browser.commit = 'c'.repeat(40);},
+    data => {data.browser.sourceDigest = 'c'.repeat(64);},
+    data => {data.browser.m1Passed = false;},
+    data => {data.browser.m1Flows[0] = data.browser.m1Flows[1];},
+    data => {data.browser.m1Flows = [];},
+    data => {data.browser.stats.expected = 0;},
+    data => {data.browser.stats.expected = 13;},
+    data => {data.browser.stats.skipped = 1;},
+    data => {data.browser.stats.unexpected = 1;},
+    data => {data.browser.stats.flaky = 1;}
+  ]) {const data = m1Evidence(); change(data); assert.equal(m1EvidenceMatches(data, current), false);}
+});
+
+test('M1 requires an actual protected remote reopen on the exact current release', () => {
+  const changes = [
+    data => {data.release.ci.headSha = 'c'.repeat(40);},
+    data => {data.release.buildInfo.sourceDigest = 'c'.repeat(64);},
+    data => {data.release.protection.anonymousStatus = 200;},
+    data => {data.release.providerTarget = 'production';},
+    data => {data.release.m1Browser.commit = 'c'.repeat(40);},
+    data => {data.release.m1Browser.sourceDigest = 'c'.repeat(64);},
+    data => {data.release.m1Browser.url = 'https://other-preview.vercel.app';},
+    data => {data.release.m1Browser.url = `${deployment}/`;},
+    data => {data.release.m1Browser.savedRevision = 1; data.release.m1Browser.reopenedRevision = 1;},
+    data => {data.release.m1Browser.savedRevision = 2.5; data.release.m1Browser.reopenedRevision = 2.5;},
+    data => {data.release.m1Browser.savedRevision = Number.MAX_SAFE_INTEGER + 1; data.release.m1Browser.reopenedRevision = Number.MAX_SAFE_INTEGER + 1;},
+    data => {data.release.m1Browser.reopenedRevision = 3;},
+    data => {data.release.m1Browser.statePreserved = false;},
+    data => {data.release.m1Browser.objectId = '';},
+    data => {data.release.m1Browser.instanceId = 'other instance with spaces';},
+    data => {data.release.m1Browser.observedAt = 'yesterday';},
+    data => {data.release.m1Browser.unverifiedExtra = true;}
+  ];
+  for(const change of changes) {const data = m1Evidence(); change(data); assert.equal(m1EvidenceMatches(data, current), false);}
+  for(const key of Object.keys(m1Evidence().release.m1Browser)) {
+    const data = m1Evidence(); delete data.release.m1Browser[key];
+    assert.equal(m1EvidenceMatches(data, current), false, key);
+  }
+});
+

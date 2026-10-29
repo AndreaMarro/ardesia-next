@@ -1,5 +1,7 @@
 # Handoff operativo — Ardesia Next
 
+**Aggiornamento M1:** [plugin verificato, oggetto laboratorio e migrazione v2](m1-delivery.md). Le sezioni M0 seguenti conservano la decisione di fondazione; il nuovo comportamento M1 è descritto nell’aggiornamento e nell’ADR 0004.
+
 29 ottobre 2026. Questo documento definisce il metodo di integrazione e i gate. Gli esiti effettivi devono provenire dalle prove del candidato e dallo stato generato.
 
 ## Regola operativa

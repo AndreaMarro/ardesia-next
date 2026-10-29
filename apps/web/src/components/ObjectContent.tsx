@@ -1,9 +1,11 @@
 import {Link2} from 'lucide-react';
 import type {EducationalObject} from '@ardesia/contracts';
 import {MathFormula} from './MathFormula';
+import {LabContent} from './LabContent';
 
 export function ObjectContent({object, links = false}: {object: EducationalObject; links?: boolean}) {
   switch(object.type) {
+    case 'lab': return <LabContent object={object} compact={!links}/>;
     case 'note': return <p className="note-text">{object.data.text || 'Scrivi una nota dal pannello dell’oggetto.'}</p>;
     case 'formula': return <><MathFormula latex={object.data.latex}/><p className="formula-description">{object.data.description}</p></>;
     case 'source': return <div className="source-content"><Link2 size={19} aria-hidden/><div>{links ? <a href={object.data.url} target="_blank" rel="noreferrer">{object.data.publisher}</a> : <span>{object.data.publisher}</span>}<small>{object.data.locator}</small></div></div>;
@@ -13,3 +15,4 @@ export function ObjectContent({object, links = false}: {object: EducationalObjec
     }
   }
 }
+

@@ -39,3 +39,75 @@ export type CatalogItem = {readonly kind: 'plugin'; readonly manifest: PluginMan
 export function resolveCapabilities(requested: readonly Capability[], consent: readonly Capability[]): readonly Capability[] {
   return capabilities.filter(capability => requested.includes(capability) && consent.includes(capability));
 }
+
+export const PLUGIN_PROTOCOL = 'ardesia-plugin/1' as const;
+export const MAX_PLUGIN_STATE_BYTES = 32_768;
+export const MAX_PLUGIN_RESPONSE_BYTES = 512_000;
+
+/** JSON only: no cycles, accessors, prototypes, non-finite numbers or hidden values. */
+export function isBoundedJson(value: unknown, maxBytes = MAX_PLUGIN_STATE_BYTES): boolean {
+  try {
+    const seen = new WeakSet<object>();
+    const pending: {value: unknown; depth: number}[] = [{value, depth: 0}];
+    let nodes = 0;
+    while (pending.length) {
+      const item = pending.pop()!;
+      if (++nodes > 20_000 || item.depth > 16) return false;
+      const current = item.value;
+      if (current === null || typeof current === 'boolean') continue;
+      if (typeof current === 'number') {if (!Number.isFinite(current)) return false; continue;}
+      if (typeof current === 'string') {if (current.length > maxBytes) return false; continue;}
+      if (typeof current !== 'object' || seen.has(current)) return false;
+      seen.add(current);
+      const descriptors = Object.getOwnPropertyDescriptors(current);
+      if (Object.getOwnPropertySymbols(current).length) return false;
+      if (Array.isArray(current)) {
+        if (current.length > 10_000 || Object.keys(descriptors).length !== current.length + 1) return false;
+        for (let index = 0; index < current.length; index++) {
+          const descriptor = descriptors[String(index)];
+          if (!descriptor || !('value' in descriptor) || !descriptor.enumerable) return false;
+          pending.push({value: descriptor.value, depth: item.depth + 1});
+        }
+      } else {
+        const prototype = Object.getPrototypeOf(current);
+        if (prototype !== Object.prototype && prototype !== null) return false;
+        for (const [key, descriptor] of Object.entries(descriptors)) {
+          if (key.length > 200 || ['__proto__', 'prototype', 'constructor'].includes(key) || !descriptor.enumerable || !('value' in descriptor)) return false;
+          pending.push({value: descriptor.value, depth: item.depth + 1});
+        }
+      }
+    }
+    return new TextEncoder().encode(JSON.stringify(value)).byteLength <= maxBytes;
+  } catch {return false;}
+}
+
+export const PluginStateSchema = z.unknown()
+  .refine(value => isBoundedJson(value), 'State must be bounded JSON')
+  .pipe(z.strictObject({schemaVersion: Semver, value: z.unknown()}));
+const ShortText = z.string().min(1).max(100);
+export const PluginParameterSchema = z.strictObject({
+  key: z.string().regex(/^[a-zA-Z][a-zA-Z0-9]{0,63}$/), label: ShortText, unit: z.string().max(40),
+  min: z.number(), max: z.number(), step: z.number().positive(), value: z.number()
+}).refine(parameter => parameter.min <= parameter.max && parameter.value >= parameter.min && parameter.value <= parameter.max, 'Invalid parameter range');
+export const PluginViewSchema = z.strictObject({
+  title: ShortText, summary: z.string().max(1_000),
+  parameters: z.array(PluginParameterSchema).max(16),
+  metrics: z.array(z.strictObject({label: ShortText, value: z.number(), unit: z.string().max(40)})).max(16),
+  plot: z.strictObject({
+    xLabel: ShortText, xUnit: z.string().max(40), yLabel: ShortText, yUnit: z.string().max(40),
+    series: z.array(z.strictObject({id: ShortText, label: ShortText, points: z.array(z.strictObject({x: z.number(), y: z.number()})).min(2).max(1_000)})).min(1).max(4)
+  }),
+  explanation: z.array(z.string().min(1).max(2_000)).min(1).max(16),
+  diagram: z.strictObject({kind: z.literal('spring'), displacement: z.number(), amplitude: z.number().nonnegative()}).optional()
+});
+export type PluginView = z.infer<typeof PluginViewSchema>;
+const Envelope = {protocol: z.literal(PLUGIN_PROTOCOL), requestId: z.string().min(1).max(100), instanceId: z.string().min(1).max(100)};
+export const PluginRequestSchema = z.strictObject({...Envelope, action: z.literal('evaluate'), state: PluginStateSchema});
+export type PluginRequest = z.infer<typeof PluginRequestSchema>;
+export const PluginResponseSchema = z.discriminatedUnion('ok', [
+  z.strictObject({...Envelope, ok: z.literal(true), state: PluginStateSchema, view: PluginViewSchema}),
+  z.strictObject({...Envelope, ok: z.literal(false), error: z.strictObject({code: z.enum(['INVALID_STATE', 'INCOMPATIBLE_STATE', 'EVALUATION_FAILED']), message: z.string().min(1).max(500)})})
+]);
+export type PluginResponse = z.infer<typeof PluginResponseSchema>;
+export interface PluginEvaluation {readonly state: PluginState; readonly view: PluginView;}
+

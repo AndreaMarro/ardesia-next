@@ -1,4 +1,4 @@
-# Core M0
+# Core M0–M1
 
 The Core is the single authority for the local workspace. Board, notebook and
 reader consume the same document IDs and object IDs. This package has no React,
@@ -68,3 +68,8 @@ The event log and receipts are retained in the same snapshot, with a contract
 limit of 50,000 events and 2,000 objects per document. Storage failures surface
 to the UI. Compaction, multi-user transactions, remote backups and publication
 are separate milestones.
+
+
+## M1 laboratory objects and snapshot migration
+
+The version2 snapshot adds a bounded JSON laboratory state with immutable plugin/instance/publisher/version/digest identity. State edits use ordinary Core replace commands and keep exact prior object revisions. Valid M0 version1 snapshots migrate in memory without writes on open; the next accepted atomic command persists version2. Invalid bytes are never replaced. Version2 is not silently downgraded for M0 readers.

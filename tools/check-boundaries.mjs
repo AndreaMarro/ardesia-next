@@ -5,11 +5,11 @@ import {files, root} from './evidence.mjs';
 
 const dependencies = {
   contracts: [], core: ['contracts'], 'lesson-os': ['contracts'],
-  'plugin-sdk': [], 'plugin-host': ['plugin-sdk', 'contracts'], ui: [],
-  web: ['contracts', 'core', 'lesson-os', 'plugin-sdk', 'plugin-host', 'ui']
+  'ideal-spring': ['plugin-sdk'], 'plugin-sdk': [], 'plugin-host': ['plugin-sdk', 'contracts'], ui: [],
+  web: ['contracts', 'core', 'lesson-os', 'plugin-sdk', 'plugin-host', 'ui', 'ideal-spring']
 };
 const errors = [];
-const areaOf = path => path.match(/^(?:packages|apps)\/([^/]+)\//)?.[1];
+const areaOf = path => path.match(/^(?:packages|apps|plugins)\/([^/]+)\//)?.[1];
 for (const absolute of files().filter(file => /\.[cm]?[jt]sx?$/.test(file))) {
   const path = relative(root, absolute), area = areaOf(path);
   if(!area) continue;
@@ -36,3 +36,4 @@ for (const absolute of files().filter(file => /\.[cm]?[jt]sx?$/.test(file))) {
 }
 if(errors.length) {console.error(errors.join('\n')); process.exit(1);}
 console.log('Module boundaries: PASS (one app, public exports, declared dependency direction).');
+

@@ -9,9 +9,9 @@ const manifest = {
   integrity: {algorithm: 'SHA-256', digest: 'b'.repeat(64)}, signature: {algorithm: 'Ed25519', value: 'fixture-not-a-valid-signature'},
   capabilities: ['state:read'], stateSchemaVersion: '1.0.0', execution: 'first-party'
 };
-describe('M0 fail-closed plugin boundary', () => {
+describe('Manifest declarations remain fail-closed without cryptographic verification', () => {
   it('does not execute a well-shaped manifest or a forged candidate', () => {
-    expect(inspectPlugin(manifest)).toEqual({allowed: false, reason: 'EXECUTION_NOT_ENABLED'});
+    expect(inspectPlugin(manifest)).toEqual({allowed: false, reason: 'VERIFICATION_REQUIRED'});
     expect(inspectPlugin({entrypoint: 'https://attacker.test/code.js'}).allowed).toBe(false);
   });
   it('requires version, integrity and provenance and rejects ambient capabilities', () => {
@@ -27,3 +27,4 @@ describe('M0 fail-closed plugin boundary', () => {
     expect(resolveCapabilities(['state:read'], ['state:read', 'state:write'])).toEqual(['state:read']);
   });
 });
+

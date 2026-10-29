@@ -1,12 +1,16 @@
 import {useEffect, useState} from 'react';
-import {X, Info, Link2, Trash2, SquareFunction, Type, Pencil} from 'lucide-react';
+import {X, Info, Link2, Trash2, SquareFunction, Type, Pencil, FlaskConical} from 'lucide-react';
 import {toObjectInput, type EducationalObject, type NewEducationalObject} from '@ardesia/contracts';
 import {MathFormula} from './MathFormula';
-const labels = {note: 'Nota testuale', formula: 'Formula', source: 'Fonte', ink: 'Annotazione'};
-const icons = {note: Type, formula: SquareFunction, source: Link2, ink: Pencil};
+import {LabInspector} from './LabInspector';
+const labels = {note: 'Nota testuale', formula: 'Formula', source: 'Fonte', ink: 'Annotazione', lab: 'Laboratorio'};
+const icons = {note: Type, formula: SquareFunction, source: Link2, ink: Pencil, lab: FlaskConical};
 type Props = {object: EducationalObject; onClose: () => void; onDirtyChange: (dirty: boolean) => void; onSave: (object: NewEducationalObject) => Promise<boolean>; onRemove: (id: string) => Promise<boolean>};
 
-export function Inspector({object, onClose, onDirtyChange, onSave, onRemove}: Props) {
+export function Inspector(props: Props) {
+  return props.object.type === 'lab' ? <LabInspector {...props} object={props.object}/> : <StandardInspector {...props}/>;
+}
+function StandardInspector({object, onClose, onDirtyChange, onSave, onRemove}: Props) {
   const [draft, setDraft] = useState<NewEducationalObject>(() => toObjectInput(object));
   const [dirty, setDirty] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -52,3 +56,4 @@ export function Inspector({object, onClose, onDirtyChange, onSave, onRemove}: Pr
     <button className="text-button danger" onClick={async () => {if(await onRemove(object.id)) onClose();}}><Trash2 size={16}/> Rimuovi oggetto</button>
   </aside>;
 }
+

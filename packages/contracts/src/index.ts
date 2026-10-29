@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-export const CONTRACT_VERSION = '0.1.0' as const;
-export const SNAPSHOT_VERSION = 1 as const;
+export const CONTRACT_VERSION = '0.2.0' as const;
+export const SNAPSHOT_VERSION = 2 as const;
 
 const identifier = z.string().min(1).max(200).regex(/^[A-Za-z0-9][A-Za-z0-9._:-]*$/);
 const title = z.string().trim().min(1).max(240);
@@ -56,6 +56,44 @@ export const InkDataSchema = z.object({
   width: z.number().finite().min(0.5).max(40),
 }).strict();
 
+/** Generic persisted state, not an authority to execute plugin code. */
+export type JsonValue = null | boolean | number | string | JsonValue[] | {[key: string]: JsonValue};
+function boundedJson(value: unknown): value is JsonValue {
+  const stack: {value: unknown; depth: number}[] = [{value, depth: 0}];
+  const seen = new Set<object>();
+  let nodes = 0;
+  while (stack.length) {
+    const item = stack.pop()!;
+    if (++nodes > 4096 || item.depth > 12) return false;
+    const itemValue = item.value;
+    if (itemValue === null || typeof itemValue === 'boolean' || typeof itemValue === 'string') continue;
+    if (typeof itemValue === 'number') {if (!Number.isFinite(itemValue)) return false; continue;}
+    if (typeof itemValue !== 'object' || seen.has(itemValue)) return false;
+    if (!Array.isArray(itemValue) && Object.getPrototypeOf(itemValue) !== Object.prototype && Object.getPrototypeOf(itemValue) !== null) return false;
+    if (Object.getOwnPropertySymbols(itemValue).length) return false;
+    if (Array.isArray(itemValue) && (Object.keys(itemValue).length !== itemValue.length || Object.keys(itemValue).some((key,index) => key !== String(index)))) return false;
+    seen.add(itemValue);
+    for (const [key, descriptor] of Object.entries(Object.getOwnPropertyDescriptors(itemValue))) {
+      if (Array.isArray(itemValue) && key === 'length') continue;
+      if (!descriptor.enumerable || !('value' in descriptor) || ['__proto__', 'constructor', 'prototype'].includes(key)) return false;
+      stack.push({value: descriptor.value, depth: item.depth + 1});
+    }
+  }
+  try {return new TextEncoder().encode(JSON.stringify(value)).length <= 32768;} catch {return false;}
+}
+const semver = z.string().regex(/^\d+\.\d+\.\d+$/);
+export const LabStateSchema = z.object({schemaVersion: semver, value: z.custom<JsonValue>(boundedJson, 'State must be bounded finite JSON')}).strict().refine(boundedJson, 'State envelope exceeds the bounded JSON contract');
+export const LabDataSchema = z.object({
+  pluginId: z.string().regex(/^[a-z][a-z0-9.-]{2,80}$/),
+  pluginVersion: semver,
+  instanceId: identifier,
+  stateSchemaVersion: semver,
+  bundleDigest: z.string().regex(/^[a-f0-9]{64}$/),
+  publisher: z.object({id: identifier, keyId: identifier}).strict(),
+  state: LabStateSchema,
+}).strict().refine(value => value.state.schemaVersion === value.stateSchemaVersion, 'State version must match the instance');
+export type LabData = z.infer<typeof LabDataSchema>;
+
 const inputFields = {
   id: identifier,
   title,
@@ -71,6 +109,7 @@ export const NewObjectSchema = z.discriminatedUnion('type', [
   z.object({ ...inputFields, type: z.literal('formula'), data: FormulaDataSchema }).strict(),
   z.object({ ...inputFields, type: z.literal('source'), data: SourceDataSchema }).strict(),
   z.object({ ...inputFields, type: z.literal('ink'), data: InkDataSchema }).strict(),
+  z.object({ ...inputFields, type: z.literal('lab'), data: LabDataSchema }).strict(),
 ]);
 export type NewEducationalObject = z.infer<typeof NewObjectSchema>;
 
@@ -85,12 +124,14 @@ export const EducationalObjectSchema = z.discriminatedUnion('type', [
   z.object({ ...objectFields, type: z.literal('formula'), data: FormulaDataSchema }).strict(),
   z.object({ ...objectFields, type: z.literal('source'), data: SourceDataSchema }).strict(),
   z.object({ ...objectFields, type: z.literal('ink'), data: InkDataSchema }).strict(),
+  z.object({ ...objectFields, type: z.literal('lab'), data: LabDataSchema }).strict(),
 ]);
 export type EducationalObject = z.infer<typeof EducationalObjectSchema>;
 export type NoteObject = Extract<EducationalObject, { type: 'note' }>;
 export type FormulaObject = Extract<EducationalObject, { type: 'formula' }>;
 export type SourceObject = Extract<EducationalObject, { type: 'source' }>;
 export type InkObject = Extract<EducationalObject, { type: 'ink' }>;
+export type LabObject = Extract<EducationalObject, { type: 'lab' }>;
 
 /** Build an editable input without allowing callers to set status or authority fields. */
 export function toObjectInput(object: EducationalObject): NewEducationalObject {
@@ -98,14 +139,8 @@ export function toObjectInput(object: EducationalObject): NewEducationalObject {
   return NewObjectSchema.parse({ ...editable, provenance: { origin: provenance.origin, sources: provenance.sources } });
 }
 
-/** Reserved contract only; M0 cannot install or execute a lab. */
-export type LabInstanceReference = Readonly<{
-  pluginId: string;
-  pluginVersion: string;
-  instanceId: string;
-  stateSchemaVersion: string;
-  bundleDigest: string;
-}>;
+/** Identity is immutable across state edits. Updates need a future explicit migration. */
+export type LabInstanceReference = Readonly<Omit<LabData, 'state'>>;
 
 export const ConnectionSchema = z.object({
   id: identifier,
@@ -127,9 +162,14 @@ export const LessonDocumentSchema = z.object({
   connections: z.array(ConnectionSchema).max(5_000),
 }).strict().superRefine((document, context) => {
   const ids = new Set<string>();
+  const instances = new Set<string>();
   for (const [index, object] of document.objects.entries()) {
     if (ids.has(object.id)) context.addIssue({ code: 'custom', message: 'Duplicate object ID', path: ['objects', index, 'id'] });
     ids.add(object.id);
+    if (object.type === 'lab') {
+      if (instances.has(object.data.instanceId)) context.addIssue({code: 'custom', message: 'Duplicate plugin instance ID', path: ['objects', index, 'data', 'instanceId']});
+      instances.add(object.data.instanceId);
+    }
   }
   const connectionIds = new Set<string>();
   for (const [index, connection] of document.connections.entries()) {
@@ -220,6 +260,15 @@ export const CoreSnapshotSchema = z.object({
 });
 export type CoreSnapshot = z.infer<typeof CoreSnapshotSchema>;
 
+/** M0 → M1 is lossless and read-only on open. The next atomic commit persists v2. */
+export function migrateSnapshotForOpen(input: unknown): unknown {
+  if (!input || typeof input !== 'object' || Array.isArray(input) || !('schemaVersion' in input) || input.schemaVersion !== 1) return input;
+  const candidate = {...input, schemaVersion: SNAPSHOT_VERSION};
+  const checked = CoreSnapshotSchema.safeParse(candidate);
+  if (!checked.success || checked.data.documents.some(doc => doc.objects.some(object => object.type === 'lab'))) return input;
+  return candidate;
+}
+
 export function emptySnapshot(workspaceId = 'local-workspace'): CoreSnapshot {
   return { schemaVersion: SNAPSHOT_VERSION, workspaceId, documents: [], events: [], receipts: [] };
 }
@@ -239,3 +288,4 @@ export class CoreError extends Error {
     this.code = code;
   }
 }
+

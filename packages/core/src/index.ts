@@ -5,6 +5,7 @@ import {
   CoreSnapshotSchema,
   EducationalObjectSchema,
   emptySnapshot,
+  migrateSnapshotForOpen,
   type Actor,
   type CommandReceipt,
   type CoreCommand,
@@ -161,6 +162,11 @@ function applyCommand(state: CoreSnapshot, actor: Actor, command: CoreCommand, a
     case 'replace-object': {
       const previous = findObject(document, command.object.id);
       if (previous.type !== command.object.type) throw new CoreError('INVALID_COMMAND', 'An existing object cannot change its type.');
+      if (previous.type === 'lab' && command.object.type === 'lab') {
+        const {state: _oldState, ...beforeIdentity} = previous.data;
+        const {state: _newState, ...afterIdentity} = command.object.data;
+        if (canonical(beforeIdentity) !== canonical(afterIdentity)) throw new CoreError('INVALID_REFERENCE', 'Plugin identity, bundle and schema are immutable. An explicit migration is required.');
+      }
       validateSources(state, document, command.object);
       const object = EducationalObjectSchema.parse({
         ...command.object,
@@ -216,9 +222,9 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
   let raw: unknown;
   try { raw = await options.storage.read(); }
   catch { throw new CoreError('STORAGE_FAILURE', 'The workspace could not be read. Existing data was not replaced.'); }
-  const parsed = CoreSnapshotSchema.safeParse(raw === null ? emptySnapshot(options.workspaceId) : raw);
+  const parsed = CoreSnapshotSchema.safeParse(raw === null ? emptySnapshot(options.workspaceId) : migrateSnapshotForOpen(raw));
   if (!parsed.success) throw new CoreError('INVALID_SNAPSHOT', 'The saved workspace is invalid or incompatible. Existing data was not replaced.');
-  let state = parsed.data;
+  let state = structuredClone(parsed.data);
   const clock = options.clock ?? (() => new Date().toISOString());
   const id = options.id ?? (() => crypto.randomUUID());
   let queue: Promise<unknown> = Promise.resolve();
@@ -229,7 +235,7 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
       const actor = parseActor(actorInput);
       const result = CoreCommandSchema.safeParse(commandInput);
       if (!result.success) return Promise.reject(new CoreError('INVALID_COMMAND', 'Command does not satisfy the versioned contract.'));
-      const command = result.data;
+      const command = structuredClone(result.data);
       const operation = queue.then(async () => {
         if (actor.role !== 'teacher') throw new CoreError('FORBIDDEN', 'Only the teacher owner can edit in M0.');
         const fingerprint = await commandFingerprint(actor, command);
@@ -301,3 +307,4 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
   };
   return service;
 }
+
