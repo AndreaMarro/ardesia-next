@@ -1,8 +1,9 @@
 import type {PluginState} from '@ardesia/plugin-sdk';
 
 /** Distribution metadata only. The executable model stays behind the Host. */
-export const idealSpring = Object.freeze({
-  id: 'ardesia.ideal-spring',
+export const idealSpringId = 'ardesia.ideal-spring' as const;
+export const idealSpring = /* @__PURE__ */ Object.freeze({
+  id: idealSpringId,
   name: 'Molla ideale',
   version: '1.0.0',
   stateSchemaVersion: '1.0.0',

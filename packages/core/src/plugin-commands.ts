@@ -1,5 +1,5 @@
 import {
-  CoreError, PluginInstallationSchema,
+  CoreError, PluginInstallationSchema, canonicalJson,
   type Actor, type CoreEvent, type CoreSnapshot, type LabData, type LabObject,
   type PluginCommand, type PluginInstallation, type PluginRelease,
 } from '@ardesia/contracts';
@@ -26,12 +26,12 @@ function matchesRelease(data: LabData, release: PluginRelease): boolean {
 }
 
 function fullConsent(installation: PluginInstallation): boolean {
-  return installation.consent !== null && JSON.stringify(installation.consent.release) === JSON.stringify(installation.release)
+  return installation.consent !== null && canonicalJson(installation.consent.release) === canonicalJson(installation.release)
     && installation.release.capabilities.length === installation.consent.capabilities.length
     && installation.release.capabilities.every(capability => installation.consent!.capabilities.includes(capability));
 }
 
-async function verify(policy: PluginPolicy, request: PluginPolicyRequest): Promise<void> {
+export async function verifyPluginPolicy(policy: PluginPolicy, request: PluginPolicyRequest): Promise<void> {
   // Policy cannot mutate the authoritative release, pending command or scientific state.
   try { await policy(structuredClone(request)); }
   catch (error) {
@@ -45,18 +45,24 @@ function ownedLabs(state: CoreSnapshot, actor: Actor, pluginId: string): LabObje
     .flatMap(document => document.objects.filter((object): object is LabObject => object.type === 'lab' && object.data.pluginId === pluginId));
 }
 
+/** Pure authorization checks shared by teacher and assigned learner operations. */
+export function requireLabInstallation(state: CoreSnapshot, actor: Actor, data: LabData): PluginInstallation {
+  const installation = findInstallation(state, actor, data.pluginId);
+  if (installation?.status === 'revoked') throw new CoreError('PLUGIN_REVOKED', 'This module has been revoked. The saved laboratory is preserved.');
+  if (!installation || installation.status !== 'active') throw new CoreError('PLUGIN_NOT_ACTIVE', 'Install, authorize and activate this module before using it.');
+  if (!fullConsent(installation)) throw new CoreError('PLUGIN_CONSENT_REQUIRED', 'Explicit consent for this release is required.');
+  if (!matchesRelease(data, installation.release)) throw new CoreError('INVALID_REFERENCE', 'The laboratory must use the installed, authorized release.');
+  return installation;
+}
+
 /** The real marketplace composition supplies policy; M1 Core-only consumers retain their document API. */
 export async function validateLabUse(state: CoreSnapshot, actor: Actor, data: LabData, policy?: PluginPolicy): Promise<void> {
   if (!policy) {
     if (state.installations.length) throw new CoreError('PLUGIN_POLICY_REQUIRED', 'The marketplace workspace requires its release verifier.');
     return;
   }
-  const installation = findInstallation(state, actor, data.pluginId);
-  if (installation?.status === 'revoked') throw new CoreError('PLUGIN_REVOKED', 'This module has been revoked. The saved laboratory is preserved.');
-  if (!installation || installation.status !== 'active') throw new CoreError('PLUGIN_NOT_ACTIVE', 'Install, authorize and activate this module before using it.');
-  if (!fullConsent(installation)) throw new CoreError('PLUGIN_CONSENT_REQUIRED', 'Explicit consent for this release is required.');
-  if (!matchesRelease(data, installation.release)) throw new CoreError('INVALID_REFERENCE', 'The laboratory must use the installed, authorized release.');
-  await verify(policy, {operation: 'use', actor, release: installation.release, states: [data], consent: installation.consent!.capabilities});
+  const installation = requireLabInstallation(state, actor, data);
+  await verifyPluginPolicy(policy, {operation: 'use', actor, release: installation.release, states: [data], consent: installation.consent!.capabilities});
 }
 
 type DocumentTransition = {documentId: string; documentRevision: number; payload: CoreEvent['payload']};
@@ -80,7 +86,7 @@ export async function applyPluginCommand(state: CoreSnapshot, actor: Actor, comm
     if (current) throw new CoreError('ALREADY_EXISTS', 'This module already has an installation for this owner.');
     if (command.release.pluginId !== command.pluginId) throw new CoreError('INVALID_REFERENCE', 'Requested plugin and release identities differ.');
     // Installation verifies code but never executes it, grants capabilities or alters existing labs.
-    await verify(policy, {operation: 'install', actor, release: command.release, states: [], consent: []});
+    await verifyPluginPolicy(policy, {operation: 'install', actor, release: command.release, states: [], consent: []});
     const installation = PluginInstallationSchema.parse({
       ownerId: actor.actorId, pluginId: command.pluginId, revision: 1, status: 'installed',
       release: command.release, consent: null, history: [], createdAt: at, updatedAt: at,
@@ -100,7 +106,7 @@ export async function applyPluginCommand(state: CoreSnapshot, actor: Actor, comm
         || !current.release.capabilities.every(capability => command.capabilities.includes(capability))) {
         throw new CoreError('PLUGIN_CONSENT_REQUIRED', 'All requested capabilities must be explicitly granted; no ambient grants are added.');
       }
-      await verify(policy, {operation: 'consent', actor, release: current.release, states: [], consent: command.capabilities});
+      await verifyPluginPolicy(policy, {operation: 'consent', actor, release: current.release, states: [], consent: command.capabilities});
       current.consent = {actorId: actor.actorId, release: structuredClone(current.release), capabilities: [...command.capabilities].sort(), grantedAt: at};
       break;
     }
@@ -108,12 +114,16 @@ export async function applyPluginCommand(state: CoreSnapshot, actor: Actor, comm
       if (!fullConsent(current)) throw new CoreError('PLUGIN_CONSENT_REQUIRED', 'Authorize the capabilities of this exact release before activating it.');
       const states = ownedLabs(state, actor, command.pluginId).map(object => object.data);
       if (states.some(data => !matchesRelease(data, current.release))) throw new CoreError('INVALID_REFERENCE', 'Existing laboratories require a different release. Their saved state was preserved.');
-      await verify(policy, {operation: 'activate', actor, release: current.release, states, consent: current.consent!.capabilities});
+      await verifyPluginPolicy(policy, {operation: 'activate', actor, release: current.release, states, consent: current.consent!.capabilities});
       current.status = 'active';
       break;
     }
     case 'disable-plugin':
       current.status = 'disabled';
+      break;
+    case 'withdraw-plugin-consent':
+      current.status = 'disabled';
+      current.consent = null;
       break;
     case 'revoke-plugin':
       current.status = 'revoked';
@@ -135,7 +145,7 @@ export async function applyPluginCommand(state: CoreSnapshot, actor: Actor, comm
         ...object.data, pluginVersion: target.version, bundleDigest: target.bundleDigest,
         publisher: structuredClone(target.publisher), stateSchemaVersion: target.stateSchemaVersion,
       }]));
-      await verify(policy, {operation: command.direction, actor, release: target, previousRelease: current.release,
+      await verifyPluginPolicy(policy, {operation: command.direction, actor, release: target, previousRelease: current.release,
         states: [...targets.values()], consent: current.consent!.capabilities});
       for (const document of state.documents) {
         if (document.ownerId !== actor.actorId) continue;

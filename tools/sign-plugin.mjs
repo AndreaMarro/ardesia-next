@@ -23,7 +23,7 @@ const signature = Buffer.from(await crypto.subtle.sign({name: 'Ed25519'}, pair.p
 mkdirSync(pluginArtifactDirectory, {recursive: true});
 writeFileSync(join(pluginArtifactDirectory, 'plugin.js'), bytes);
 writeFileSync(join(pluginArtifactDirectory, 'manifest.json'), JSON.stringify({...manifest, signature: {algorithm: 'Ed25519', value: signature}}, null, 2)+'\n');
-writeFileSync('apps/web/src/plugins/release-trust.json', JSON.stringify({
+writeFileSync('packages/plugin-host/src/first-party-trust.json', JSON.stringify({
   trustStore: [{publisherId: manifest.publisher.id, keyId, publicKeyBase64}],
   allowlist: [{id: manifest.id, version: manifest.version, digest, publisherId: manifest.publisher.id, keyId}],
 }, null, 2)+'\n');

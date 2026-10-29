@@ -6,7 +6,15 @@ const previewHeaders = Object.fromEntries(deploymentConfig.headers.flatMap(block
 export default defineConfig({
   root: fileURLToPath(new URL('.', import.meta.url)),
   plugins: [react()],
-  build: {target: 'es2022', sourcemap: false, chunkSizeWarningLimit: 450},
+  build: {
+    manifest: true, target: 'es2022', minify: 'terser', modulePreload: {polyfill: false},
+    terserOptions: {ecma: 2022, safari10: false, compress: {passes: 3}, format: {comments: false, ascii_only: true}},
+    rolldownOptions: {output: {
+      charset: 'ascii', minify: {compress: {target: 'es2022'}, mangle: true},
+      codeSplitting: {groups: [{name: 'math', test: /node_modules[\\/]katex[\\/]/}]},
+    }},
+    sourcemap: false, chunkSizeWarningLimit: 450,
+  },
   server: {port: 5173, strictPort: true},
   preview: {port: 4173, strictPort: true, headers: previewHeaders}
 });

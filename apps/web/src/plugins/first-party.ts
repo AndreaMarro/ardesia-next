@@ -1,9 +1,9 @@
 import {createPluginHost, type PluginSession, type TrustedPublisherKey, type FirstPartyRelease} from '@ardesia/plugin-host';
 import {PluginCatalogSchema, PluginManifestSchema, type CatalogPlugin, type PluginManifest, type Capability} from '@ardesia/plugin-sdk';
-import {idealSpring, idealSpringInitialState} from '@ardesia/ideal-spring';
+import {idealSpringId, idealSpringInitialState} from '@ardesia/ideal-spring';
 import {LabDataSchema, PluginReleaseSchema, type LabData, type Actor, type PluginRelease, type PluginCommand} from '@ardesia/contracts';
 import type {CoreService, PluginPolicy} from '@ardesia/core';
-import trustConfiguration from './release-trust.json';
+import {firstPartyTrust as trustConfiguration} from '@ardesia/plugin-host';
 import {STORAGE_KEY} from '../adapters/browser-storage';
 
 type Transition = {pluginId: string; fromVersion: string; toVersion: string; direction: 'update'|'rollback'; stateSchemaVersion: string};
@@ -23,7 +23,7 @@ export const marketplaceVersion = () => version;
 function changed() {version += 1; for (const listener of listeners) listener();}
 const fail = (code: string): never => {throw Object.assign(new Error(code), {code});};
 function current() {if (!context) return fail('WORKSPACE_UNAVAILABLE'); return context;}
-export function getInstallation(pluginId: string = idealSpring.id) {const {core, actor} = current(); return core.getInstallation(actor, pluginId);}
+export function getInstallation(pluginId: string = idealSpringId) {const {core, actor} = current(); return core.getInstallation(actor, pluginId);}
 function syncRuntimePolicy() {
   for (const id of new Set(releaseTrust.allowlist.map(entry => entry.id))) {
     const installation = getInstallation(id);
@@ -198,7 +198,7 @@ export function pluginErrorCode(error: unknown): string {
   if (error && typeof error === 'object' && 'code' in error && typeof error.code === 'string') return error.code;
   return error instanceof Error ? error.message : 'PLUGIN_UNAVAILABLE';
 }
-export function moduleStatus(pluginId: string = idealSpring.id): string {
+export function moduleStatus(pluginId: string = idealSpringId): string {
   if (staleWorkspace) return 'Spazio aggiornato · ricarica';
   const installed = getInstallation(pluginId);
   if (installed && (revokedPublishers.has(installed.release.publisher.id) || revokedReleases.has(pluginId + '@' + installed.release.version))) return 'Revocato';

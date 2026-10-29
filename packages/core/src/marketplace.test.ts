@@ -371,16 +371,16 @@ describe('M1 to M2 migration preserves saved data without implied authority', ()
   async function legacy() {
     const core = await createCore(options(new MemoryStorage()));
     await addLab(core);
-    const {installations: _installations, ...snapshot} = core.snapshot();
+    const {installations: _installations, assignments: _assignments, learnerWork: _learnerWork, ...snapshot} = core.snapshot();
     return {...snapshot, schemaVersion: 2};
   }
 
-  it('opens v2 read-only, creates no installation or consent, and persists v3 only after an accepted command', async () => {
+  it('opens v2 read-only, creates no installation or consent, and persists v4 only after an accepted command', async () => {
     const raw = await legacy();
     const storage = new ObservedStorage(raw);
     const policy = policyFixture();
     const core = await createCore({...options(storage, 'migration'), pluginPolicy: policy.policy});
-    expect(core.snapshot()).toEqual({...raw, schemaVersion: 3, installations: []});
+    expect(core.snapshot()).toEqual({...raw, schemaVersion: 4, installations: [], assignments: [], learnerWork: []});
     expect(await storage.read()).toEqual(raw);
     expect(storage.writes).toBe(0);
     const savedLab = core.getDocument(actor, 'lesson-1').objects[0] as LabObject;
@@ -388,7 +388,7 @@ describe('M1 to M2 migration preserves saved data without implied authority', ()
     expect(await storage.read()).toEqual(raw);
     await ready(core);
     expect(core.getDocument(actor, 'lesson-1').objects[0]).toEqual(savedLab);
-    expect((await storage.read() as CoreSnapshot).schemaVersion).toBe(3);
+    expect((await storage.read() as CoreSnapshot).schemaVersion).toBe(4);
     expect(core.snapshot().events.slice(0, raw.events.length)).toEqual(raw.events);
   });
 
@@ -402,7 +402,7 @@ describe('M1 to M2 migration preserves saved data without implied authority', ()
     }
   });
 
-  it('preserves original v2 bytes when the first v3 installation write fails', async () => {
+  it('preserves original v2 bytes when the first v4 installation write fails', async () => {
     const raw = await legacy();
     const storage = new ObservedStorage(raw);
     const core = await createCore({...options(storage, 'failure'), pluginPolicy: policyFixture().policy});

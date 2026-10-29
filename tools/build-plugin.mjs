@@ -26,7 +26,7 @@ export async function checkPluginBuild() {
   const delivered = readFileSync(join(pluginArtifactDirectory, 'plugin.js'));
   if (!rebuilt.equals(delivered)) throw Error('Signed plugin bytes differ from source rebuild. Review and sign a new release.');
   const manifest = JSON.parse(readFileSync(join(pluginArtifactDirectory, 'manifest.json'), 'utf8'));
-  const trust = JSON.parse(readFileSync('apps/web/src/plugins/release-trust.json', 'utf8'));
+  const trust = JSON.parse(readFileSync('packages/plugin-host/src/first-party-trust.json', 'utf8'));
   const digest = createHash('sha256').update(delivered).digest('hex');
   const pin = trust.allowlist.find(entry => entry.id === manifest.id && entry.version === manifest.version && entry.digest === digest && entry.publisherId === manifest.publisher.id && entry.keyId === manifest.publisher.keyId);
   const publisher = trust.trustStore.find(entry => entry.publisherId === manifest.publisher.id && entry.keyId === manifest.publisher.keyId && entry.revoked !== true);
