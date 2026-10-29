@@ -5,6 +5,7 @@ mkdirSync('artifacts', {recursive: true});
 const checks = [
   ['types', 'node_modules/.bin/tsc', ['--noEmit']],
   ['boundaries', 'node', ['tools/check-boundaries.mjs']],
+  ['release-evidence', 'node', ['tools/status.test.mjs']],
   ['unit', 'node_modules/.bin/vitest', ['run', '--reporter=default', '--reporter=json', '--outputFile=artifacts/unit.json']],
   ['build', 'node', ['tools/build.mjs']],
   ['bundle-budget', 'node', ['tools/check-budget.mjs']]
