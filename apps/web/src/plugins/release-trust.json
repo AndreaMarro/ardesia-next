@@ -1,0 +1,18 @@
+{
+  "trustStore": [
+    {
+      "publisherId": "ardesia",
+      "keyId": "m1-17817d02ba877ec0",
+      "publicKeyBase64": "+wbxQHzlAnd/QSv6C4+TOJz3RiZc3kmHo3j7xWoR6WA="
+    }
+  ],
+  "allowlist": [
+    {
+      "id": "ardesia.ideal-spring",
+      "version": "1.0.0",
+      "digest": "713b10ce53337e5bb03f0da86afec8a1266a8229115e9d1f571cf49766814148",
+      "publisherId": "ardesia",
+      "keyId": "m1-17817d02ba877ec0"
+    }
+  ]
+}

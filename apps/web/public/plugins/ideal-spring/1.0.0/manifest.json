@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "ardesia.ideal-spring",
+  "name": "Molla ideale",
+  "version": "1.0.0",
+  "sdkVersion": "1.0.0",
+  "kind": "plugin",
+  "publisher": {
+    "id": "ardesia",
+    "keyId": "m1-17817d02ba877ec0"
+  },
+  "license": "UNLICENSED; bundled Zod MIT notice included",
+  "provenance": {
+    "repository": "https://github.com/AndreaMarro/ardesia-next",
+    "commit": "026b12b57de3aa6a91dfb6ae48bc8e49a9a5e1e3",
+    "path": "plugins/ideal-spring/src/worker.ts"
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "digest": "713b10ce53337e5bb03f0da86afec8a1266a8229115e9d1f571cf49766814148"
+  },
+  "capabilities": [
+    "state:read",
+    "state:write"
+  ],
+  "stateSchemaVersion": "1.0.0",
+  "execution": "first-party",
+  "signature": {
+    "algorithm": "Ed25519",
+    "value": "/qrvEwnKk7DuHNA/vFLYJQdAYYXLydl3jlZfd0I6vbUM92XMNnTa3dVkZMjOAl9oMZj5ZdOL5Kb14nrJKQwgAg=="
+  }
+}

@@ -4,7 +4,7 @@
 
 Integrare tramite PR solo dopo il controllo GitHub `verify`. Verificare nuovamente CI e tree sulla SHA del merge. Per il progetto Vercel `prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd` mantenere autenticazione su **tutti** i deployment e sorgenti non pubbliche.
 
-La richiesta API deve fissare `gitSource.type=github`, `repoId=1437761277` e `sha` alla revisione verificata. Creare o aggiornare **`preview/m0` alla stessa SHA di `main`** e usare questo branch come `gitSource.ref`, con **`target: staging`** esplicito. Nelle prove del 29 ottobre, `ref: main` è stato classificato dal provider come `production` sia con target omesso sia con staging esplicito; il branch preview alla stessa SHA ha prodotto il target corretto. I due candidati production, sempre protetti, sono stati esclusi dall'accettazione e rimossi. La stringa `preview` non è accettata da questa API. Verificare sempre la risposta effettiva.
+La richiesta API deve fissare `gitSource.type=github`, `repoId=1437761277` e `sha` alla revisione verificata. Creare o aggiornare **`preview/m1` alla stessa SHA di `main`** e usare questo branch come `gitSource.ref`, con **`target: staging`** esplicito. Nelle prove del 29 ottobre, `ref: main` è stato classificato dal provider come `production` sia con target omesso sia con staging esplicito; il branch preview alla stessa SHA ha prodotto il target corretto. I due candidati production, sempre protetti, sono stati esclusi dall'accettazione e rimossi. La stringa `preview` non è accettata da questa API. Verificare sempre la risposta effettiva.
 
 Vercel riserializza `vercel.json` prima della build. Il file è quindi versionato come `JSON.stringify(JSON.parse(source))` seguito da una newline, e CI ne impone il formato. Questo conserva l'impronta dei byte reali: non canonicalizzare silenziosamente il digest, non escludere la configurazione e non sostituire il digest atteso con quello distribuito. La controprova iniziale ha riprodotto la discrepanza cambiando soltanto la serializzazione di questo file (910 → 826 byte), con gli altri 77 file identici al tree Git.
 
@@ -25,3 +25,8 @@ Gli artefatti CI e lo stato generato nella descrizione della PR conservano le pr
 Un errore di build, un target inatteso, una discrepanza SHA/digest o un accesso anonimo alla pagina impediscono l'accettazione. Annullare un deployment ancora in costruzione; per un candidato nuovo errato già terminato, rimuovere esclusivamente quel deployment dopo averne registrato l'identità. Non modificare il vecchio progetto Ardesia.
 
 Non dichiarare un rollback dei dati: M0 non esegue migrazioni. I contenuti restano nello specifico browser e nella specifica origin della preview; esportare lo snapshot prima di cambiare origin.
+
+
+## Gate M1
+
+Prima della distribuzione eseguire anche il rebuild del bundle firmato e tutti i percorsi `e2e/plugin-lab.spec.ts`. La prova browser remota deve creare una molla, modificarne un parametro, salvare e riaprire l’oggetto conservando ID, istanza, stato e revisione. Registrare il blocco `m1Browser` nella release evidence secondo lo schema. Il solo READY o un vecchio screenshot M0 non accetta M1.

@@ -1,7 +1,13 @@
 # Ardesia Next
 
 Uno spazio educativo indipendente per lavagna, taccuino, lezioni e laboratori componibili.
-Repository privata. **Prima consegna M0: fondazione verificabile, non prodotto completo.**
+Repository privata. **M1: primo plugin scientifico attraverso il Plugin Host. Il prodotto resta non completo.**
+
+## Percorso M1
+
+Apri **Moduli → Aggiungi molla alla lezione**, modifica i parametri con unità SI, aggiorna il grafico o salva direttamente. Riapri l’oggetto da Lavagna/Taccuino/Lezione mantenendo ID, stato e revisione. Firma Ed25519, hash e publisher vengono verificati prima di eseguire gli stessi byte in un Worker.
+
+[Contratti, firma, migrazione, verifiche e limiti M1](docs/m1-delivery.md). L’accettazione deriva da `npm run status` sulla SHA candidata, non da questo testo. M2 e M3 non sono avviati.
 
 ## Avvio e verifica
 
@@ -45,7 +51,8 @@ L'esempio sul pendolo è una bozza di contenuto con formula e collegamento alla 
 | `packages/core` | Oggetti, revisioni, policy, ricevute ed eventi |
 | `packages/lesson-os` | Proiezioni ricostruibili sugli eventi Core |
 | `packages/plugin-sdk` | Manifest e contratti versionati, indipendenti dal renderer |
-| `packages/plugin-host` | Confine di esecuzione; chiuso in M0 |
+| `packages/plugin-host` | Firma, integrità, policy e runtime dei plugin first-party M1 |
+| `plugins/ideal-spring` | Primo modello scientifico; nessun accesso diretto al Core o alla UI |
 | `packages/ui` | Token condivisi |
 | `tools`, `.github`, `operations` | Verifica, CI e stato generato |
 
