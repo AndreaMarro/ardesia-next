@@ -5,6 +5,7 @@ import {
   CoreSnapshotSchema,
   EducationalObjectSchema,
   PluginCommandSchema,
+  LearningCommandSchema,
   emptySnapshot,
   migrateSnapshotForOpen,
   type Actor,
@@ -19,9 +20,16 @@ import {
   type PluginEvent,
   type PluginInstallation,
   type PluginReceipt,
+  type LearningCommand,
+  type LearningEvent,
+  type LearningReceipt,
+  type LessonAssignment,
+  type LearnerWork,
+  type AssignedLabAccess,
 } from '@ardesia/contracts';
 import {applyPluginCommand, findInstallation, validateLabUse, type PluginPolicy} from './plugin-commands';
 export type {PluginPolicy, PluginPolicyRequest} from './plugin-commands';
+import {applyLearningCommand, assignedDocument, assignedLabAccess, authorizeLearningCommand, readableLearnerWork} from './learning';
 
 /** One atomic replacement is required. M0 supports one writer per adapter. */
 export interface StorageAdapter {
@@ -40,6 +48,12 @@ export interface CoreOptions {
 export interface CoreService {
   execute(actor: Actor, command: CoreCommand): Promise<CommandReceipt>;
   executePlugin(actor: Actor, command: PluginCommand): Promise<PluginReceipt>;
+  executeLearning(actor: Actor, command: LearningCommand): Promise<LearningReceipt>;
+  listAssignments(actor: Actor): LessonAssignment[];
+  getAssignedDocument(actor: Actor, documentId: string): LessonDocument;
+  getAssignedLabAccess(actor: Actor, documentId: string, objectId: string): AssignedLabAccess;
+  getLearnerWork(actor: Actor, documentId: string, studentId?: string): LearnerWork | null;
+  learningEvents(actor: Actor, documentId: string, studentId?: string): LearningEvent[];
   listInstallations(actor: Actor): PluginInstallation[];
   getInstallation(actor: Actor, pluginId: string): PluginInstallation | null;
   listDocuments(actor: Actor): LessonDocument[];
@@ -72,7 +86,7 @@ function canonical(value: unknown): string {
   return JSON.stringify(value) ?? 'null';
 }
 
-async function commandFingerprint(actor: Actor, command: CoreCommand | PluginCommand): Promise<string> {
+async function commandFingerprint(actor: Actor, command: CoreCommand | PluginCommand | LearningCommand): Promise<string> {
   const bytes = new TextEncoder().encode(canonical({ actor, command }));
   const digest = await crypto.subtle.digest('SHA-256', bytes);
   return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
@@ -81,7 +95,7 @@ async function commandFingerprint(actor: Actor, command: CoreCommand | PluginCom
 function requireOwner(state: CoreSnapshot, actor: Actor, documentId: string): LessonDocument {
   const document = state.documents.find((entry) => entry.id === documentId);
   // Do not reveal whether a different owner's identifier exists.
-  if (!document || document.ownerId !== actor.actorId) throw new CoreError('NOT_FOUND', 'Document is unavailable in this workspace.');
+  if (!document || actor.role !== 'teacher' || document.ownerId !== actor.actorId) throw new CoreError('NOT_FOUND', 'Document is unavailable in this workspace.');
   return document;
 }
 
@@ -345,15 +359,91 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
       queue = operation.catch(() => undefined);
       return operation;
     },
+    executeLearning(actorInput, commandInput) {
+      const actor = parseActor(actorInput);
+      const result = LearningCommandSchema.safeParse(commandInput);
+      if (!result.success) return Promise.reject(new CoreError('INVALID_COMMAND', 'Learning command does not satisfy the versioned contract.'));
+      const command = structuredClone(result.data);
+      const operation = queue.then(async () => {
+        authorizeLearningCommand(state, actor, command);
+        const fingerprint = await commandFingerprint(actor, command);
+        const duplicate = state.receipts.find(receipt => receipt.commandId === command.commandId);
+        if (duplicate) {
+          if (!('lessonId' in duplicate) || duplicate.actorId !== actor.actorId || duplicate.fingerprint !== fingerprint) {
+            throw new CoreError('IDEMPOTENCY_CONFLICT', 'This command ID was already used for a different request.');
+          }
+          return structuredClone(duplicate);
+        }
+        const next = structuredClone(state);
+        const at = clock();
+        const applied = await applyLearningCommand(next, actor, command, at, options.pluginPolicy);
+        const eventId = newEventId(next);
+        const event: LearningEvent = {
+          id: eventId, sequence: next.events.length + 1, lessonId: command.documentId,
+          studentId: applied.studentId, stream: applied.stream, learningRevision: applied.revision,
+          type: command.kind, actorId: actor.actorId, occurredAt: at, payload: applied.payload,
+        };
+        const receipt: LearningReceipt = {
+          commandId: command.commandId, actorId: actor.actorId, fingerprint,
+          lessonId: command.documentId, studentId: applied.studentId, stream: applied.stream,
+          learningRevision: applied.revision, eventId,
+        };
+        next.events.push(event);
+        next.receipts.push(receipt);
+        await commit(next);
+        return structuredClone(receipt);
+      });
+      queue = operation.catch(() => undefined);
+      return operation;
+    },
+    listAssignments(actorInput) {
+      const actor = parseActor(actorInput);
+      return structuredClone(state.assignments.filter(assignment => actor.role === 'student'
+        ? assignment.studentId === actor.actorId && assignment.status === 'active'
+        : state.documents.some(document => document.id === assignment.documentId && document.ownerId === actor.actorId)));
+    },
+    getAssignedDocument(actorInput, documentId) {
+      return structuredClone(assignedDocument(state, parseActor(actorInput), documentId));
+    },
+    getAssignedLabAccess(actorInput, documentId, objectId) {
+      return structuredClone(assignedLabAccess(state, parseActor(actorInput), documentId, objectId));
+    },
+    getLearnerWork(actorInput, documentId, studentId) {
+      const actor = parseActor(actorInput);
+      const work = structuredClone(readableLearnerWork(state, actor, documentId, studentId));
+      // Consent administration is personal; sharing educational evidence does not expose permission records.
+      if (work && actor.role === 'teacher') work.consents = [];
+      return work;
+    },
+    learningEvents(actorInput, documentId, studentId) {
+      const actor = parseActor(actorInput);
+      readableLearnerWork(state, actor, documentId, studentId);
+      const owner = actor.role === 'student' ? actor.actorId : studentId;
+      const events = state.events.filter((event): event is LearningEvent => 'lessonId' in event
+        && event.lessonId === documentId && event.studentId === owner && event.stream === 'learner-work');
+      if (actor.role === 'student') return structuredClone(events);
+      return structuredClone(events.flatMap(event => {
+        const data = event.payload;
+        if (!data || typeof data !== 'object' || Array.isArray(data)) return [];
+        const work = data.work;
+        if (!work || typeof work !== 'object' || Array.isArray(work) || work.evidenceShared !== true) return [];
+        const previous = data.previous;
+        const visiblePrevious = previous && typeof previous === 'object' && !Array.isArray(previous) && previous.evidenceShared === true ? {...previous, consents: []} : null;
+        return [{...event, payload: {previous: visiblePrevious, work: {...work, consents: []}}}];
+      }));
+    },
     listInstallations(actorInput) {
       const actor = parseActor(actorInput);
+      if (actor.role !== 'teacher') return [];
       return structuredClone(state.installations.filter(installation => installation.ownerId === actor.actorId));
     },
     getInstallation(actorInput, pluginId) {
-      return structuredClone(findInstallation(state, parseActor(actorInput), pluginId) ?? null);
+      const actor = parseActor(actorInput);
+      return actor.role === 'teacher' ? structuredClone(findInstallation(state, actor, pluginId) ?? null) : null;
     },
     listDocuments(actorInput) {
       const actor = parseActor(actorInput);
+      if (actor.role !== 'teacher') return [];
       return structuredClone(state.documents.filter((document) => document.ownerId === actor.actorId));
     },
     getDocument(actorInput, documentId) {

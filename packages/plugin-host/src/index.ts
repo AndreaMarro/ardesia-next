@@ -308,3 +308,6 @@ export function createPluginHost(options: PluginHostOptions): PluginHost {
   };
 }
 
+
+/** Reviewed first-party pins shared by server and browser composition. */
+export {default as firstPartyTrust} from './first-party-trust.json';
