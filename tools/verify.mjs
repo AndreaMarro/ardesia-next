@@ -3,6 +3,7 @@ import {mkdirSync, writeFileSync} from 'node:fs';
 import {identity} from './evidence.mjs';
 mkdirSync('artifacts', {recursive: true});
 const checks = [
+  ['config-source', 'node', ['tools/check-config.mjs']],
   ['types', 'node_modules/.bin/tsc', ['--noEmit']],
   ['boundaries', 'node', ['tools/check-boundaries.mjs']],
   ['release-evidence', 'node', ['tools/status.test.mjs']],
