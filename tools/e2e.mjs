@@ -1,7 +1,8 @@
+import {randomBytes} from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 import {mkdirSync, writeFileSync, rmSync, readFileSync, existsSync} from 'node:fs';
 import {identity} from './evidence.mjs';
-import {M1_REQUIRED_FLOWS, M2_REQUIRED_FLOWS} from './status.mjs';
+import {M1_REQUIRED_FLOWS, M2_REQUIRED_FLOWS, unitReportDigest} from './status.mjs';
 const runIdentity = identity();
 mkdirSync('artifacts', {recursive:true});
 const built = existsSync('apps/web/dist/build-info.json') ? JSON.parse(readFileSync('apps/web/dist/build-info.json', 'utf8')) : null;
@@ -10,9 +11,14 @@ if(!built || built.commit !== runIdentity.commit || built.sourceDigest !== runId
   process.exit(1);
 }
 rmSync('artifacts/e2e.json', {force:true});
-const result = spawnSync('node_modules/.bin/playwright', ['test', ...process.argv.slice(2)], {stdio:'inherit'});
+const browserEnvironment = {...process.env, ARDESIA_E2E: '1'};
+for (const [name, username] of [['TEACHER','teacher-m3'],['STUDENT_A','student-a-m3'],['STUDENT_B','student-b-m3']]) {
+  browserEnvironment[`ARDESIA_E2E_${name}_USERNAME`] ||= username;
+  browserEnvironment[`ARDESIA_E2E_${name}_PASSWORD`] ||= randomBytes(24).toString('base64url');
+}
+const result = spawnSync('node_modules/.bin/playwright', ['test', ...process.argv.slice(2)], {stdio:'inherit', env:browserEnvironment});
 const report = existsSync('artifacts/e2e.json') ? JSON.parse(readFileSync('artifacts/e2e.json', 'utf8')) : null;
-const passed=result.status === 0 && report?.stats?.expected > 0 && report.stats.skipped === 0 && report.stats.unexpected === 0;
+const passed=result.status === 0 && report?.stats?.expected > 0 && report.stats.skipped === 0 && report.stats.unexpected === 0 && report.stats.flaky === 0;
 const m1Flows = [], m2Flows = [];
 function collect(suites) {
   for (const suite of suites ?? []) {
@@ -29,5 +35,5 @@ function collect(suites) {
 collect(report?.suites);
 const m1Passed = passed && M1_REQUIRED_FLOWS.every(flow => m1Flows.includes(flow)) && new Set(m1Flows).size === m1Flows.length;
 const m2Passed = passed && M2_REQUIRED_FLOWS.every(flow => m2Flows.includes(flow)) && new Set(m2Flows).size === m2Flows.length;
-writeFileSync('artifacts/browser-evidence.json', JSON.stringify({...runIdentity, passed, m1Passed, m1Flows, m2Passed, m2Flows, stats:report?.stats ?? null, physicalDevices:'NOT_RUN'}, null, 2));
+writeFileSync('artifacts/browser-evidence.json', JSON.stringify({...runIdentity, passed, m1Passed, m1Flows, m2Passed, m2Flows, reportDigest: unitReportDigest(report), stats:report?.stats ?? null, physicalDevices:'NOT_RUN'}, null, 2));
 process.exit(passed ? 0 : 1);

@@ -4,14 +4,12 @@ import {relative, resolve} from 'node:path';
 import {files, root} from './evidence.mjs';
 
 const dependencies = {
-  server: ['contracts','core','plugin-host','plugin-sdk','ideal-spring'],
-  'remote-client': ['contracts','core'],
-  contracts: [], core: ['contracts'], 'lesson-os': ['contracts'],
+  entry: ['server'], contracts: [], core: ['contracts'], server: ['contracts','core','plugin-host','plugin-sdk','ideal-spring'], 'remote-client': ['contracts','core'], 'lesson-os': ['contracts'],
   'ideal-spring': ['plugin-sdk'], 'plugin-sdk': [], 'plugin-host': ['plugin-sdk', 'contracts'], ui: [],
-  web: ['contracts', 'core', 'lesson-os', 'plugin-sdk', 'plugin-host', 'ui', 'ideal-spring']
+  web: ['contracts', 'core', 'lesson-os', 'plugin-sdk', 'plugin-host', 'ui', 'ideal-spring','remote-client']
 };
 const errors = [];
-const areaOf = path => path.match(/^(?:packages|apps|plugins)\/([^/]+)\//)?.[1];
+const areaOf = path => path.startsWith('server/') ? 'entry' : path.match(/^(?:packages|apps|plugins)\/([^/]+)\//)?.[1];
 for (const absolute of files().filter(file => /\.[cm]?[jt]sx?$/.test(file))) {
   const path = relative(root, absolute), area = areaOf(path);
   if(!area) continue;

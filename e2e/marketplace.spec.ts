@@ -1,7 +1,8 @@
-import {test, expect, type Page} from '@playwright/test';
+import type {Page} from '@playwright/test';
+import {test, expect, mutateReadProjection, selectedWorkspace, rawApi} from './fixtures';
 import {
   addMarketplaceSpring, authorizeSpring, openMarketplace, readConsentLabel,
-  springId, storageKey, storedBytes, storedSpring, storedWorkspace,
+  springId, storedBytes, storedSpring, storedWorkspace,
   verifyAndInstallSpring, writeConsentLabel,
 } from './marketplace-helpers';
 
@@ -12,6 +13,11 @@ async function saveFourKilograms(page: Page): Promise<void> {
   await expect(inspector.getByLabel('Massa (kg)', {exact: true})).toHaveValue('4');
   await expect(inspector.locator('.science-metrics div').filter({hasText: 'Periodo'})).toContainText('2,8099');
   await expect.poll(async () => (await storedSpring(page)).revision).toBe(2);
+  await expect(inspector).toHaveAttribute('data-plugin-status', 'ready');
+  await expect(inspector.getByRole('button', {name: 'Ripristina stato salvato', exact: true})).toHaveCount(0);
+  await expect(inspector.getByRole('button', {name: 'Salva laboratorio', exact: true})).toBeDisabled();
+  await expect(page.locator('.app-footer [role="status"]')).toContainText('Confermato dal server');
+  await expect.poll(() => page.workers().length).toBeGreaterThan(0);
 }
 
 test('[M2] marketplace installs consents activates saves reopens and disables', async ({page}, testInfo) => {
@@ -40,7 +46,7 @@ test('[M2] marketplace installs consents activates saves reopens and disables', 
   expect(saved.data.instanceId).toBe(original.data.instanceId);
   expect(saved.data.state.value).toMatchObject({massKg: 4});
   const savedWorkspace = await storedWorkspace(page);
-  expect(savedWorkspace.installations[0]).toMatchObject({status: 'active', consent: {actorId: 'device-owner', capabilities: ['state:read', 'state:write']}});
+  expect(savedWorkspace.installations[0]).toMatchObject({status: 'active', consent: {actorId: selectedWorkspace(page).actor.actorId, capabilities: ['state:read', 'state:write']}});
   expect(savedWorkspace.installations[0]!.consent!.release).toEqual(savedWorkspace.installations[0]!.release);
   await page.reload();
   await page.getByRole('button', {name: 'Apri Molla ideale', exact: true}).click();
@@ -67,7 +73,8 @@ test('[M2] marketplace installs consents activates saves reopens and disables', 
   await openMarketplace(page);
   await page.getByRole('button', {name: 'Disattiva Molla ideale', exact: true}).click();
   await expect.poll(async () => (await storedWorkspace(page)).installations[0]!.status).toBe('disabled');
-  expect(await page.evaluate(() => Object.keys(localStorage).filter(key => key.startsWith('ardesia')))).toEqual([storageKey]);
+  expect(await page.evaluate(() => localStorage.getItem('ardesia-next.core.v1'))).toBeNull();
+  expect(await page.evaluate(() => Object.keys(localStorage).filter(key => key.startsWith('ardesia-next.pending.v1.')))).toEqual([]);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   expect(errors).toEqual([]);
 });
@@ -105,7 +112,7 @@ test('[M2] denied capabilities prevent activation and preserve data', async ({pa
   const before = await storedBytes(page);
   await page.getByRole('checkbox', {name: readConsentLabel, exact: true}).check();
   await page.getByRole('button', {name: 'Salva autorizzazioni', exact: true}).click();
-  await expect(page.getByRole('alert')).toContainText('PLUGIN_CONSENT_REQUIRED');
+  await expect(page.getByRole('dialog').getByRole('alert')).toContainText('PLUGIN_CONSENT_REQUIRED');
   await expect(page.getByRole('button', {name: 'Attiva Molla ideale', exact: true})).toBeDisabled();
   expect(await storedBytes(page)).toBe(before);
   expect((await storedWorkspace(page)).installations[0]!.consent).toBeNull();
@@ -142,7 +149,7 @@ for (const mutation of ['signature', 'bundle'] as const) {
     }
     await openMarketplace(page);
     await page.getByRole('button', {name: 'Verifica Molla ideale', exact: true}).click();
-    await expect(page.getByRole('alert')).toContainText(mutation === 'signature' ? 'INVALID_SIGNATURE' : 'INTEGRITY_MISMATCH');
+    await expect(page.getByRole('dialog').getByRole('alert')).toContainText(mutation === 'signature' ? 'INVALID_SIGNATURE' : 'INTEGRITY_MISMATCH');
     expect(await storedBytes(page)).toBe(before);
     expect(workers).toBe(0);
   });
@@ -190,7 +197,7 @@ test('[M2] incompatible SDK is refused without modifying saved data', async ({pa
   });
   await openMarketplace(page);
   await page.getByRole('button', {name: 'Verifica Molla ideale', exact: true}).click();
-  await expect(page.getByRole('alert')).toContainText(/SDK_INCOMPATIBLE|INVALID_MANIFEST|CATALOG_MISMATCH/);
+  await expect(page.getByRole('dialog').getByRole('alert')).toContainText(/SDK_INCOMPATIBLE|INVALID_MANIFEST|CATALOG_MISMATCH/);
   expect(await storedBytes(page)).toBe(before);
   expect(workers).toBe(0);
 });
@@ -200,21 +207,20 @@ test('[M2] invalid state is refused without destroying the saved experiment', as
   await saveFourKilograms(page);
   const installation = (await storedWorkspace(page)).installations[0];
   await page.getByRole('button', {name: 'Chiudi proprietà', exact: true}).click();
-  const invalidBytes = await page.evaluate(key => {
-    const snapshot = JSON.parse(localStorage.getItem(key)!);
-    const lab = snapshot.documents.flatMap((document: {objects: Array<{type: string}>}) => document.objects).find((object: {type: string}) => object.type === 'lab');
-    lab.data.state.value.massKg = -1;
-    const bytes = JSON.stringify(snapshot);
-    localStorage.setItem(key, bytes);
-    return bytes;
-  }, storageKey);
+  const confirmed = await storedBytes(page);
+  const intercepted = await mutateReadProjection(page, projection => {
+    const object = projection.documents.flatMap(document => document.objects).find(object => object.type === 'lab');
+    if (object?.type !== 'lab') throw new Error('The authenticated server response did not contain the persisted laboratory.');
+    object.data.state.value = {...object.data.state.value as {massKg: number}, massKg: -1};
+  });
   await page.reload();
   await page.getByRole('button', {name: 'Apri Molla ideale', exact: true}).click();
   const inspector = page.getByRole('complementary', {name: 'Proprietà del laboratorio', exact: true});
   await expect(inspector).toHaveAttribute('data-plugin-status', 'error');
   await expect(inspector).toHaveAttribute('data-error-code', 'INVALID_STATE');
   await expect(inspector.getByRole('button', {name: 'Salva laboratorio', exact: true})).toBeDisabled();
-  expect(await storedBytes(page)).toBe(invalidBytes);
+  expect(intercepted()).toBeGreaterThan(0);
+  expect(await storedBytes(page)).toBe(confirmed);
   expect((await storedWorkspace(page)).installations[0]).toEqual(installation);
 });
 
@@ -238,7 +244,7 @@ test('[M2] unauthorized update preserves the installed release and experiment', 
   });
   await openMarketplace(page);
   await page.getByRole('button', {name: 'Controlla aggiornamenti', exact: true}).click();
-  await expect(page.getByRole('alert')).toContainText('RELEASE_NOT_ALLOWED');
+  await expect(page.getByRole('dialog').getByRole('alert')).toContainText('RELEASE_NOT_ALLOWED');
   expect(await storedBytes(page)).toBe(before);
   expect(await storedSpring(page)).toEqual(saved);
   expect((await storedWorkspace(page)).installations[0]!.release.version).toBe('1.0.0');
@@ -249,19 +255,22 @@ test('[M2] failed persistence preserves installation consent and experiment', as
   await saveFourKilograms(page);
   const before = await storedBytes(page);
   const saved = await storedSpring(page);
-  await page.evaluate(key => {
-    const original = Storage.prototype.setItem;
-    Storage.prototype.setItem = function(name: string, value: string) {
-      if (name === key) throw new DOMException('Deterministic storage exhaustion', 'QuotaExceededError');
-      return original.call(this, name, value);
-    };
-  }, storageKey);
+  let refused = 0;
+  await page.route('**/api/m3', async route => {
+    if (route.request().method() === 'POST' && route.request().postDataJSON()?.action === 'plugin-command') {
+      refused++; await route.abort('connectionfailed');
+    } else await route.continue();
+  });
   await openMarketplace(page);
   await page.getByRole('button', {name: 'Disattiva Molla ideale', exact: true}).click();
-  await expect(page.getByRole('alert')).toContainText('STORAGE_FAILURE');
+  await expect(page.getByRole('dialog').getByRole('alert')).toContainText('NETWORK_ERROR');
+  await expect(page.locator('.remote-status')).toContainText('Salvataggio da verificare');
+  await expect(page.getByRole('heading', {name: 'Modifiche in attesa di conferma', exact: true})).toBeVisible();
+  expect(refused).toBe(1);
   expect(await storedBytes(page)).toBe(before);
   expect((await storedWorkspace(page)).installations[0]!.status).toBe('active');
   expect(await storedSpring(page)).toEqual(saved);
+  await page.unroute('**/api/m3');
   await page.reload();
   await page.getByRole('button', {name: 'Apri Molla ideale', exact: true}).click();
   await expect(page.getByLabel('Massa (kg)', {exact: true})).toHaveValue('4');
@@ -294,7 +303,8 @@ test('[M2] revoked module stays revoked after reload without deleting its state'
 test('[M2] stale tab stops runtime after another tab disables module', async ({page, context}) => {
   await addMarketplaceSpring(page);
   await saveFourKilograms(page);
-  const saved = await storedSpring(page);
+  const saved = await storedSpring(page), selected = selectedWorkspace(page);
+  const beforeRevision = (await storedWorkspace(page)).installations[0]!.revision;
   expect(page.workers().length).toBeGreaterThan(0);
 
   const second = await context.newPage();
@@ -304,63 +314,54 @@ test('[M2] stale tab stops runtime after another tab disables module', async ({p
   await second.getByRole('button', {name: 'Disattiva Molla ideale', exact: true}).click();
   await expect.poll(async () => (await storedWorkspace(second)).installations[0]!.status).toBe('disabled');
   const committed = await storedBytes(second);
-
-  // A stale Core in the first tab must not retain execution granted by its old snapshot.
   const inspector = page.getByRole('complementary', {name: 'Proprietà del laboratorio', exact: true});
-  await expect.poll(() => page.workers().length).toBe(0);
+  await expect.poll(() => page.workers().length, {timeout: 15_000}).toBe(0);
   await expect(inspector).toHaveAttribute('data-plugin-status', 'error');
-  await expect(inspector).toHaveAttribute('data-error-code', 'STALE_WORKSPACE');
+  await expect(inspector).toHaveAttribute('data-error-code', /PLUGIN_DISABLED|STALE_WORKSPACE/);
   await expect(inspector.getByRole('button', {name: 'Salva laboratorio', exact: true})).toBeDisabled();
   expect(await storedBytes(page)).toBe(committed);
   expect(await storedSpring(page)).toEqual(saved);
 
-  await page.getByRole('button', {name: 'Chiudi proprietà', exact: true}).click();
-  await page.getByRole('button', {name: 'Lavagna', exact: true}).click();
-  await page.getByRole('button', {name: 'Apri Molla ideale', exact: true}).click();
-  await expect(inspector).toHaveAttribute('data-error-code', 'STALE_WORKSPACE');
-  expect(page.workers()).toHaveLength(0);
-  await openMarketplace(page);
-  await page.getByRole('button', {name: 'Disattiva Molla ideale', exact: true}).click();
-  await expect(page.getByRole('dialog').getByRole('alert')).toContainText('STALE_WORKSPACE');
+  // A known old installation revision cannot reactivate the module through a direct authenticated request.
+  const stale = await rawApi(context.request, {action: 'plugin-command', workspaceId: selected.workspaceId,
+    command: {kind: 'activate-plugin', commandId: 'stale-' + crypto.randomUUID(), pluginId: springId, expectedRevision: beforeRevision}}, selected.account.id);
+  expect(stale.status).toBe(409);
+  expect(stale.payload).toMatchObject({ok: false, error: {code: 'REVISION_CONFLICT'}});
   expect(await storedBytes(page)).toBe(committed);
 
   await page.reload();
   await page.getByRole('button', {name: 'Apri Molla ideale', exact: true}).click();
   await expect(inspector).toHaveAttribute('data-error-code', 'PLUGIN_DISABLED');
   expect(page.workers()).toHaveLength(0);
-  expect(await storedBytes(page)).toBe(committed);
-  expect(await storedSpring(page)).toEqual(saved);
 
-  // Race: activation started from this current snapshot, but another tab commits
-  // activation and then deactivation while its verified artifact is still in flight.
-  let releaseManifest!: () => void;
-  let reportManifestRequest!: () => void;
-  const manifestHeld = new Promise<void>(resolve => {releaseManifest = resolve;});
-  const manifestRequested = new Promise<void>(resolve => {reportManifestRequest = resolve;});
-  let newWorkersInStaleTab = 0;
-  page.on('worker', () => {newWorkersInStaleTab += 1;});
-  await page.route('**/plugins/ideal-spring/1.0.0/manifest.json', async route => {
-    const response = await route.fetch();
-    reportManifestRequest();
-    await manifestHeld;
-    await route.fulfill({response});
+  // Hold an actual activation request, then let another session activate and disable.
+  // The old request must be rejected by the real transaction after it is released.
+  let releaseCommand!: () => void, reportRequest!: () => void;
+  const held = new Promise<void>(resolve => {releaseCommand = resolve;});
+  const requested = new Promise<void>(resolve => {reportRequest = resolve;});
+  let staleCommandId: string | null = null, newWorkers = 0;
+  page.on('worker', () => {newWorkers++;});
+  await page.route('**/api/m3', async route => {
+    const input = route.request().method() === 'POST' ? route.request().postDataJSON() : null;
+    if (input?.action === 'plugin-command' && input.command.kind === 'activate-plugin') {
+      staleCommandId = input.command.commandId; reportRequest(); await held;
+    }
+    await route.continue();
   });
   let latestCommit: string | null = null;
   try {
     await openMarketplace(page);
     await page.getByRole('button', {name: 'Attiva Molla ideale', exact: true}).click();
-    await manifestRequested;
+    await requested;
     await second.getByRole('button', {name: 'Attiva Molla ideale', exact: true}).click();
     await expect(second.getByRole('button', {name: 'Disattiva Molla ideale', exact: true})).toBeEnabled();
     await second.getByRole('button', {name: 'Disattiva Molla ideale', exact: true}).click();
     await expect.poll(async () => (await storedWorkspace(second)).installations[0]!.status).toBe('disabled');
     latestCommit = await storedBytes(second);
-    await expect(inspector).toHaveAttribute('data-error-code', 'STALE_WORKSPACE');
-  } finally {releaseManifest();}
-  // A policy failure inside an already queued command is deliberately wrapped by Core.
-  await expect(page.getByRole('dialog').getByRole('alert')).toContainText('PLUGIN_POLICY_REJECTED');
-  await expect(inspector).toHaveAttribute('data-error-code', 'STALE_WORKSPACE');
-  expect(newWorkersInStaleTab).toBe(0);
+  } finally {releaseCommand();}
+  await expect(page.getByRole('dialog').getByRole('alert')).toContainText('REVISION_CONFLICT');
+  expect(staleCommandId).not.toBeNull();
+  expect(newWorkers).toBe(0);
   expect(page.workers()).toHaveLength(0);
   expect(await storedBytes(page)).toBe(latestCommit);
   expect(await storedSpring(page)).toEqual(saved);

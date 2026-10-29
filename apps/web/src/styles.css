@@ -253,3 +253,23 @@ textarea {resize:vertical;min-height:58px;}
 .science-view.compact .science-metrics dd {font-size:15px;}
 @media(min-width:1101px) {.app-shell.with-inspector:has(.lab-inspector){grid-template-columns:88px minmax(0,1fr) 350px;}}
 @media(max-width:760px) {.board-surface:has(.type-lab){min-height:0;}.lab-parameters input{font-size:16px;}.reading-object .science-explanation p{font-size:15px;line-height:1.75;}.science-metrics{gap:14px;}}
+
+/* Account and continuity use the same workspace components and design tokens. */
+.account-page{min-height:100dvh;padding:clamp(24px,5vw,64px);background:var(--surface,#f7f6f2);display:grid;place-items:start center}
+.account-card{width:min(100%,600px);background:var(--paper,#fff);padding:clamp(24px,4vw,48px);border:1px solid var(--border,#d8d8d2);border-radius:20px;box-shadow:0 14px 45px #00000008}
+.account-card.wide{width:min(100%,860px)}
+.account-card h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:28px 0 14px}.account-card p{line-height:1.6}
+.account-heading,.learner-header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.account-heading h1{margin:0}.account-form,.remote-recovery{display:grid;gap:16px;margin:24px 0}
+.account-form label,.remote-recovery>label,.learner-notes>label{display:grid;gap:8px;font-weight:600}
+.account-form input,.remote-recovery input[type=file],.learner-notes textarea{font:inherit;padding:12px 14px;border:1px solid var(--border,#c9cdc7);border-radius:10px;background:var(--paper,#fff);width:100%;min-height:44px;box-sizing:border-box}
+.remote-recovery{border-top:1px solid var(--border,#d8d8d2);padding-top:24px;margin-top:32px}.remote-recovery h2{font-size:20px;margin:0}
+.service-unavailable,.remote-alert,.pending-panel{padding:16px 20px;background:#fff5df;border:1px solid #e9ca8f;border-radius:12px;color:#493819}
+.remote-alert{position:relative;z-index:20;margin:12px}.pending-panel{margin:12px;position:relative;z-index:20}.pending-panel h2{font-size:18px;margin:0 0 6px}.pending-panel>div{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:10px 0}.pending-panel code{overflow-wrap:anywhere}
+.remote-status{position:fixed;bottom:8px;right:18px;z-index:8;font-size:11px;background:var(--paper,#fff);border-radius:8px;padding:4px 8px;color:var(--muted,#4e5853)}
+.remote-status button{font:inherit;text-decoration:underline;border:0;background:none;min-height:28px;cursor:pointer}
+.assignment-list{display:grid;gap:14px;margin:20px 0}.assignment-list section{padding:16px;border:1px solid var(--border,#ddd);border-radius:12px}.assignment-list h3{margin:0 0 8px}.assignment-list code{overflow-wrap:anywhere}.assignment-list summary{cursor:pointer;min-height:44px;display:flex;align-items:center}.preserve-lines{white-space:pre-wrap;overflow-wrap:anywhere}
+.learner-shell{min-height:100dvh;background:var(--surface,#f7f6f2)}.learner-header{padding:20px clamp(20px,4vw,64px);border-bottom:1px solid var(--border,#ddd);background:var(--paper,#fff)}.learner-main{max-width:1450px;padding:28px clamp(18px,4vw,60px) 60px;margin:auto}.learner-main>nav{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}.learner-main>header{margin-bottom:24px}
+.learner-content{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,400px);gap:28px;align-items:start}.learner-content .document-view{padding:0}.learner-notes,.learner-consent{background:var(--paper,#fff);border:1px solid var(--border,#ddd);padding:24px;border-radius:16px;display:grid;gap:16px;margin-top:20px}.learner-notes h2,.learner-notes p{margin:0}.learner-lab{position:sticky;top:20px}.learner-lab .inspector{position:relative;inset:auto;z-index:auto;width:100%;height:auto;max-height:none;border:1px solid var(--border,#ddd);border-radius:16px;box-sizing:border-box}.learner-lab>.secondary-button{margin:12px 0;width:100%}
+.consent-option{display:flex!important;align-items:flex-start;gap:12px;line-height:1.5;font-weight:400!important}.consent-option input{width:22px!important;height:22px;min-height:22px!important;flex:none;margin-top:2px}
+@media(max-width:900px){.learner-content{grid-template-columns:1fr}.learner-lab{position:static}.app-header{gap:8px}.app-header>.secondary-button{font-size:12px;padding:8px}.space-name{display:none}.remote-status{display:none}.account-page{padding:16px}.account-card{padding:24px}}

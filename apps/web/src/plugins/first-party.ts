@@ -2,9 +2,8 @@ import {createPluginHost, type PluginSession, type TrustedPublisherKey, type Fir
 import {PluginCatalogSchema, PluginManifestSchema, type CatalogPlugin, type PluginManifest, type Capability} from '@ardesia/plugin-sdk';
 import {idealSpringId, idealSpringInitialState} from '@ardesia/ideal-spring';
 import {LabDataSchema, PluginReleaseSchema, type LabData, type Actor, type PluginRelease, type PluginCommand} from '@ardesia/contracts';
-import type {CoreService, PluginPolicy} from '@ardesia/core';
+import type {CoreService} from '@ardesia/core';
 import {firstPartyTrust as trustConfiguration} from '@ardesia/plugin-host';
-import {STORAGE_KEY} from '../adapters/browser-storage';
 
 type Transition = {pluginId: string; fromVersion: string; toVersion: string; direction: 'update'|'rollback'; stateSchemaVersion: string};
 const releaseTrust: {trustStore: TrustedPublisherKey[]; allowlist: FirstPartyRelease[]; transitions?: Transition[]} = trustConfiguration;
@@ -12,9 +11,11 @@ const releaseTrust: {trustStore: TrustedPublisherKey[]; allowlist: FirstPartyRel
 const host = createPluginHost({trustStore: releaseTrust.trustStore, policy: {
   allowlist: releaseTrust.allowlist, capabilities: ['state:read', 'state:write'], maxBundleBytes: 512_000, timeoutMs: 5_000,
 }});
-let context: {core: CoreService; actor: Actor} | null = null;
+type RemotePolicyContext = {documentId?: string; refresh: () => Promise<unknown>};
+let context: {core: CoreService; actor: Actor; remote: RemotePolicyContext} | null = null;
+let contextEpoch = 0;
+let policyFingerprint = '';
 let staleWorkspace = false;
-let storageListener: ((event: StorageEvent) => void) | null = null;
 const listeners = new Set<() => void>();
 let version = 0;
 const revokedPublishers = new Set<string>(), revokedReleases = new Set<string>();
@@ -24,25 +25,42 @@ function changed() {version += 1; for (const listener of listeners) listener();}
 const fail = (code: string): never => {throw Object.assign(new Error(code), {code});};
 function current() {if (!context) return fail('WORKSPACE_UNAVAILABLE'); return context;}
 export function getInstallation(pluginId: string = idealSpringId) {const {core, actor} = current(); return core.getInstallation(actor, pluginId);}
+function runtimeGrants(pluginId: string) {
+  const {core, actor, remote} = current();
+  if (actor.role === 'teacher') {const installation = core.getInstallation(actor, pluginId); return installation ? [installation] : [];}
+  if (!remote.documentId) return [];
+  try {return core.getAssignedDocument(actor, remote.documentId).objects.filter(object => object.type === 'lab' && object.data.pluginId === pluginId)
+    .map(object => core.getAssignedLabAccess(actor, remote.documentId!, object.id));} catch {return [];}
+}
 function syncRuntimePolicy() {
   for (const id of new Set(releaseTrust.allowlist.map(entry => entry.id))) {
-    const installation = getInstallation(id);
-    if (!staleWorkspace && installation?.status === 'active' && !revokedPublishers.has(installation.release.publisher.id)
-      && !revokedReleases.has(id + '@' + installation.release.version)) host.resumePlugin(id);
-    else host.suspendPlugin(id);
+    const allowed = context && !staleWorkspace && runtimeGrants(id).some(grant => grant.status === 'active'
+      && ('consented' in grant ? grant.consented : !!grant.consent) && grant.release
+      && !revokedPublishers.has(grant.release.publisher.id) && !revokedReleases.has(id + '@' + grant.release.version));
+    if (allowed) host.resumePlugin(id); else host.suspendPlugin(id);
   }
 }
-export function connectMarketplace(core: CoreService, actor: Actor) {
-  context = {core, actor: structuredClone(actor)}; staleWorkspace = false; syncRuntimePolicy();
-  if (storageListener) window.removeEventListener('storage', storageListener);
-  storageListener = event => {
-    if (event.key === null || (event.key === STORAGE_KEY && event.newValue !== event.oldValue)) {
-      staleWorkspace = true;
-      for (const id of new Set(releaseTrust.allowlist.map(release => release.id))) host.suspendPlugin(id);
-      changed();
-    }
-  };
-  window.addEventListener('storage', storageListener);
+export function syncMarketplace() {
+  if (!context) return;
+  const next = JSON.stringify(releaseTrust.allowlist.map(release => runtimeGrants(release.id).map(grant => ({
+    status: grant.status, revision: 'installationRevision' in grant ? grant.installationRevision : grant.revision,
+    consented: 'consented' in grant ? grant.consented : !!grant.consent, release: grant.release,
+  }))));
+  syncRuntimePolicy();
+  if (next !== policyFingerprint) {policyFingerprint = next; changed();}
+}
+export function disconnectMarketplace() {
+  contextEpoch++; context = null; staleWorkspace = true; policyFingerprint = '';
+  for (const release of releaseTrust.allowlist) host.suspendPlugin(release.id);
+  changed();
+}
+export function connectMarketplace(core: CoreService, actor: Actor, remote: RemotePolicyContext) {
+  disconnectMarketplace(); context = {core, actor: structuredClone(actor), remote}; staleWorkspace = false; syncMarketplace();
+}
+async function refreshAuthorization(epoch: number) {
+  const original = current(); await original.remote.refresh();
+  if (epoch !== contextEpoch || context !== original) return fail('SESSION_CHANGED');
+  syncMarketplace();
 }
 async function readArtifact(path: string, maximum: number): Promise<Uint8Array> {
   const controller = new AbortController(), timeout = window.setTimeout(() => controller.abort(), 10_000);
@@ -123,27 +141,6 @@ export async function verifyModule(entry: CatalogPlugin): Promise<PluginRelease>
   await sourceFor(release);
   return release;
 }
-export const pluginPolicy: PluginPolicy = async request => {
-  const {operation, release, states, consent, previousRelease} = request;
-  if (operation === 'update' || operation === 'rollback') {
-    if (!previousRelease || !(releaseTrust.transitions ?? []).some(transition => transition.pluginId === release.pluginId
-      && transition.fromVersion === previousRelease.version && transition.toVersion === release.version
-      && transition.direction === operation && transition.stateSchemaVersion === release.stateSchemaVersion)) return fail('UPDATE_NOT_AUTHORIZED');
-  }
-  const source = await sourceFor(release);
-  if (staleWorkspace) return fail('STALE_WORKSPACE');
-  requireAvailable(source.manifest);
-  if (operation === 'install' || operation === 'consent') return;
-  // User-requested activation can preflight old instances. It remains suspended until Core commits.
-  const preflightActivation = ['activate','update','rollback'].includes(operation) && context && getInstallation(release.pluginId)?.status !== 'active';
-  if (preflightActivation) host.resumePlugin(release.pluginId);
-  try {
-    for (const state of states) {
-      const session = await host.mount({...source, instanceId: state.instanceId, state: state.state, consent: consent as Capability[]});
-      session.dispose();
-    }
-  } finally {if (preflightActivation) host.suspendPlugin(release.pluginId);}
-};
 type PluginAction = PluginCommand extends infer C ? C extends PluginCommand ? Omit<C, 'commandId'|'expectedRevision'> : never : never;
 export async function changeInstallation(action: PluginAction) {
   if (staleWorkspace) return fail('STALE_WORKSPACE');
@@ -165,7 +162,16 @@ export async function checkUpdates(pluginId: string): Promise<string> {
 }
 function activeInstallation(data?: LabData) {
   if (staleWorkspace) return fail('STALE_WORKSPACE');
-  const installed = getInstallation(data?.pluginId);
+  const {core, actor, remote} = current();
+  let installed: {release: PluginRelease; consent: {capabilities: string[]} | null; status: string} | null;
+  if (actor.role === 'student') {
+    if (!data || !remote.documentId) return fail('CAPABILITY_DENIED');
+    const object = core.getAssignedDocument(actor, remote.documentId).objects.find(object => object.type === 'lab' && object.data.instanceId === data.instanceId);
+    if (!object) return fail('CAPABILITY_DENIED');
+    const access = core.getAssignedLabAccess(actor, remote.documentId, object.id);
+    if (!access.release || !access.consented) return fail('CAPABILITY_DENIED');
+    installed = {release: access.release, status: access.status, consent: {capabilities: access.release.capabilities}};
+  } else installed = getInstallation(data?.pluginId);
   if (!installed) return fail('PLUGIN_NOT_INSTALLED');
   if (installed.status === 'revoked') return fail('PLUGIN_REVOKED');
   if (installed.status !== 'active' || !installed.consent) return fail('PLUGIN_DISABLED');
@@ -175,11 +181,13 @@ function activeInstallation(data?: LabData) {
   return installed;
 }
 export async function createFirstPartyLab(): Promise<LabData> {
+  const epoch = contextEpoch; await refreshAuthorization(epoch);
   const installed = activeInstallation(), source = await sourceFor(installed.release);
-  activeInstallation();
-  requireAvailable(source.manifest);
+  if (epoch !== contextEpoch) return fail('SESSION_CHANGED');
+  activeInstallation(); requireAvailable(source.manifest);
   const session = await host.mount({...source, instanceId: crypto.randomUUID(), state: idealSpringInitialState, consent: installed.consent!.capabilities as Capability[]});
   try {
+    if (epoch !== contextEpoch) return fail('SESSION_CHANGED');
     activeInstallation();
     return LabDataSchema.parse({pluginId: session.manifest.id, pluginVersion: session.manifest.version, instanceId: session.instanceId,
       stateSchemaVersion: session.manifest.stateSchemaVersion, bundleDigest: session.manifest.integrity.digest,
@@ -187,12 +195,26 @@ export async function createFirstPartyLab(): Promise<LabData> {
   } finally {session.dispose();}
 }
 export async function mountLab(input: LabData): Promise<PluginSession> {
+  const epoch = contextEpoch; await refreshAuthorization(epoch);
   const data = LabDataSchema.parse(input), installed = activeInstallation(data), source = await sourceFor(installed.release);
-  activeInstallation(data);
-  requireAvailable(source.manifest);
+  if (epoch !== contextEpoch) return fail('SESSION_CHANGED');
+  activeInstallation(data); requireAvailable(source.manifest);
   const session = await host.mount({...source, instanceId: data.instanceId, state: data.state, consent: installed.consent!.capabilities as Capability[]});
-  try {activeInstallation(data); requireAvailable(session.manifest); return session;}
-  catch (error) {session.dispose(); throw error;}
+  try {
+    if (epoch !== contextEpoch) return fail('SESSION_CHANGED');
+    activeInstallation(data); requireAvailable(session.manifest);
+    return {
+      manifest: session.manifest, instanceId: session.instanceId, grants: session.grants,
+      get current() {return session.current;},
+      async evaluate(state) {
+        await refreshAuthorization(epoch); activeInstallation(data);
+        const next = await session.evaluate(state);
+        if (epoch !== contextEpoch) return fail('SESSION_CHANGED');
+        activeInstallation(data); return next;
+      },
+      dispose: () => session.dispose(),
+    };
+  } catch (error) {session.dispose(); throw error;}
 }
 export function pluginErrorCode(error: unknown): string {
   if (error && typeof error === 'object' && 'code' in error && typeof error.code === 'string') return error.code;
