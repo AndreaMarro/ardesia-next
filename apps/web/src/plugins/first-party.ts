@@ -1,68 +1,206 @@
 import {createPluginHost, type PluginSession, type TrustedPublisherKey, type FirstPartyRelease} from '@ardesia/plugin-host';
-import {PluginManifestSchema} from '@ardesia/plugin-sdk';
+import {PluginCatalogSchema, PluginManifestSchema, type CatalogPlugin, type PluginManifest, type Capability} from '@ardesia/plugin-sdk';
 import {idealSpring, idealSpringInitialState} from '@ardesia/ideal-spring';
-import {LabDataSchema, type LabData} from '@ardesia/contracts';
+import {LabDataSchema, PluginReleaseSchema, type LabData, type Actor, type PluginRelease, type PluginCommand} from '@ardesia/contracts';
+import type {CoreService, PluginPolicy} from '@ardesia/core';
 import trustConfiguration from './release-trust.json';
+import {STORAGE_KEY} from '../adapters/browser-storage';
 
-const releaseTrust: {trustStore: TrustedPublisherKey[]; allowlist: FirstPartyRelease[]} = trustConfiguration;
-
-// Reviewed application policy: these pins do not come from the fetched manifest.
+type Transition = {pluginId: string; fromVersion: string; toVersion: string; direction: 'update'|'rollback'; stateSchemaVersion: string};
+const releaseTrust: {trustStore: TrustedPublisherKey[]; allowlist: FirstPartyRelease[]; transitions?: Transition[]} = trustConfiguration;
+// One Host, with independently reviewed keys and release pins. The catalog grants nothing.
 const host = createPluginHost({trustStore: releaseTrust.trustStore, policy: {
-  allowlist: releaseTrust.allowlist,
-  capabilities: ['state:read', 'state:write'], maxBundleBytes: 512_000, timeoutMs: 5_000,
+  allowlist: releaseTrust.allowlist, capabilities: ['state:read', 'state:write'], maxBundleBytes: 512_000, timeoutMs: 5_000,
 }});
-const consent = ['state:read', 'state:write'] as const;
-
+let context: {core: CoreService; actor: Actor} | null = null;
+let staleWorkspace = false;
+let storageListener: ((event: StorageEvent) => void) | null = null;
+const listeners = new Set<() => void>();
+let version = 0;
+const revokedPublishers = new Set<string>(), revokedReleases = new Set<string>();
+export const subscribeMarketplace = (listener: () => void) => {listeners.add(listener); return () => {listeners.delete(listener);};};
+export const marketplaceVersion = () => version;
+function changed() {version += 1; for (const listener of listeners) listener();}
+const fail = (code: string): never => {throw Object.assign(new Error(code), {code});};
+function current() {if (!context) return fail('WORKSPACE_UNAVAILABLE'); return context;}
+export function getInstallation(pluginId: string = idealSpring.id) {const {core, actor} = current(); return core.getInstallation(actor, pluginId);}
+function syncRuntimePolicy() {
+  for (const id of new Set(releaseTrust.allowlist.map(entry => entry.id))) {
+    const installation = getInstallation(id);
+    if (!staleWorkspace && installation?.status === 'active' && !revokedPublishers.has(installation.release.publisher.id)
+      && !revokedReleases.has(id + '@' + installation.release.version)) host.resumePlugin(id);
+    else host.suspendPlugin(id);
+  }
+}
+export function connectMarketplace(core: CoreService, actor: Actor) {
+  context = {core, actor: structuredClone(actor)}; staleWorkspace = false; syncRuntimePolicy();
+  if (storageListener) window.removeEventListener('storage', storageListener);
+  storageListener = event => {
+    if (event.key === null || (event.key === STORAGE_KEY && event.newValue !== event.oldValue)) {
+      staleWorkspace = true;
+      for (const id of new Set(releaseTrust.allowlist.map(release => release.id))) host.suspendPlugin(id);
+      changed();
+    }
+  };
+  window.addEventListener('storage', storageListener);
+}
 async function readArtifact(path: string, maximum: number): Promise<Uint8Array> {
-  const controller = new AbortController();
-  const timeout = window.setTimeout(() => controller.abort(), 10_000);
+  const controller = new AbortController(), timeout = window.setTimeout(() => controller.abort(), 10_000);
   try {
     const response = await fetch(path, {signal: controller.signal, credentials: 'same-origin', redirect: 'error', cache: 'no-cache'});
-    if (!response.ok || !response.body) throw new Error('ARTIFACT_UNAVAILABLE');
+    if (!response.ok || !response.body) return fail('ARTIFACT_UNAVAILABLE');
     const reader = response.body.getReader(), chunks: Uint8Array[] = [];
     let size = 0;
     while (true) {
-      const {done, value} = await reader.read();
-      if (done) break;
-      size += value.length;
-      if (size > maximum) {await reader.cancel(); throw new Error('ARTIFACT_TOO_LARGE');}
+      const {done, value} = await reader.read(); if (done) break;
+      size += value.length; if (size > maximum) {await reader.cancel(); return fail('ARTIFACT_TOO_LARGE');}
       chunks.push(value);
     }
-    const bytes = new Uint8Array(size);
-    let offset = 0;
+    const bytes = new Uint8Array(size); let offset = 0;
     for (const chunk of chunks) {bytes.set(chunk, offset); offset += chunk.length;}
     return bytes;
   } finally {window.clearTimeout(timeout);}
 }
-
-async function artifacts(): Promise<{manifest: unknown; bundle: Uint8Array}> {
-  const [manifest, bundle] = await Promise.all([readArtifact(idealSpring.manifestPath, 16_384), readArtifact(idealSpring.bundlePath, 512_000)]);
-  return {manifest: JSON.parse(new TextDecoder('utf-8', {fatal: true}).decode(manifest)) as unknown, bundle};
+const decode = (bytes: Uint8Array): unknown => JSON.parse(new TextDecoder('utf-8', {fatal: true}).decode(bytes)) as unknown;
+/** Deny-only, same-origin release policy. It cannot add publishers, keys, releases or grants. */
+async function refreshRevocations() {
+  const raw = decode(await readArtifact('/plugins/revocations.json', 16_384));
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return fail('INVALID_REVOCATIONS');
+  const value = raw as Record<string, unknown>;
+  if (Object.keys(value).sort().join(',') !== 'revision,revokedPublishers,revokedReleases,schemaVersion'
+    || value.schemaVersion !== '1.0.0' || !Number.isSafeInteger(value.revision) || Number(value.revision) < 1
+    || !Array.isArray(value.revokedPublishers) || !Array.isArray(value.revokedReleases)
+    || value.revokedPublishers.length > 500 || value.revokedReleases.length > 500
+    || value.revokedPublishers.some(id => typeof id !== 'string' || !/^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,99}$/.test(id))
+    || value.revokedReleases.some(id => typeof id !== 'string' || !/^[a-z][a-z0-9.-]{2,80}@\d+\.\d+\.\d+$/.test(id))) return fail('INVALID_REVOCATIONS');
+  let updated = false;
+  for (const id of value.revokedPublishers as string[]) if (!revokedPublishers.has(id)) {
+    revokedPublishers.add(id); host.revokePublisher(id); updated = true;
+  }
+  for (const id of value.revokedReleases as string[]) if (!revokedReleases.has(id)) {
+    revokedReleases.add(id); host.suspendPlugin(id.split('@')[0]!); updated = true;
+  }
+  if (updated) changed();
 }
-
-export async function createFirstPartyLab(): Promise<LabData> {
-  const session = await host.mount({...await artifacts(), instanceId: crypto.randomUUID(), state: idealSpringInitialState, consent});
+function requireAvailable(manifest: PluginManifest) {
+  if (revokedPublishers.has(manifest.publisher.id)) return fail('REVOKED_PUBLISHER');
+  if (revokedReleases.has(manifest.id + '@' + manifest.version)) return fail('REVOKED_RELEASE');
+}
+export async function loadCatalog() {
+  await refreshRevocations();
+  const parsed = PluginCatalogSchema.safeParse(decode(await readArtifact('/plugins/catalog.json', 262_144)));
+  if (!parsed.success) return fail('INVALID_CATALOG');
+  return parsed.data;
+}
+export function releaseFromManifest(manifest: PluginManifest): PluginRelease {
+  return PluginReleaseSchema.parse({pluginId: manifest.id, version: manifest.version, bundleDigest: manifest.integrity.digest,
+    publisher: manifest.publisher, license: manifest.license, provenance: manifest.provenance, sdkVersion: manifest.sdkVersion,
+    stateSchemaVersion: manifest.stateSchemaVersion, capabilities: manifest.capabilities});
+}
+async function artifacts(entry: CatalogPlugin) {
+  if (entry.status !== 'available') {host.suspendPlugin(entry.manifest.id); return fail('REVOKED_RELEASE');}
+  requireAvailable(entry.manifest);
+  const [manifestBytes, bundle] = await Promise.all([readArtifact(entry.manifestPath, 16_384), readArtifact(entry.bundlePath, 512_000)]);
+  const manifest = await host.verify({manifest: decode(manifestBytes), bundle});
+  requireAvailable(manifest);
+  if (JSON.stringify(manifest) !== JSON.stringify(PluginManifestSchema.parse(entry.manifest))) return fail('CATALOG_MISMATCH');
+  return {manifest, bundle};
+}
+async function sourceFor(release: PluginRelease) {
+  if (staleWorkspace) return fail('STALE_WORKSPACE');
+  const catalog = await loadCatalog();
+  const entry = catalog.entries.find((item): item is CatalogPlugin => item.kind === 'plugin'
+    && item.manifest.id === release.pluginId && item.manifest.version === release.version);
+  if (!entry) return fail('RELEASE_NOT_ALLOWED');
+  const source = await artifacts(entry);
+  if (staleWorkspace) return fail('STALE_WORKSPACE');
+  if (JSON.stringify(releaseFromManifest(source.manifest)) !== JSON.stringify(PluginReleaseSchema.parse(release))) return fail('INSTANCE_IDENTITY_MISMATCH');
+  return source;
+}
+export async function verifyModule(entry: CatalogPlugin): Promise<PluginRelease> {
+  // Reload discovery too: a verification result is not a reusable authorization token.
+  const release = releaseFromManifest(entry.manifest);
+  await sourceFor(release);
+  return release;
+}
+export const pluginPolicy: PluginPolicy = async request => {
+  const {operation, release, states, consent, previousRelease} = request;
+  if (operation === 'update' || operation === 'rollback') {
+    if (!previousRelease || !(releaseTrust.transitions ?? []).some(transition => transition.pluginId === release.pluginId
+      && transition.fromVersion === previousRelease.version && transition.toVersion === release.version
+      && transition.direction === operation && transition.stateSchemaVersion === release.stateSchemaVersion)) return fail('UPDATE_NOT_AUTHORIZED');
+  }
+  const source = await sourceFor(release);
+  if (staleWorkspace) return fail('STALE_WORKSPACE');
+  requireAvailable(source.manifest);
+  if (operation === 'install' || operation === 'consent') return;
+  // User-requested activation can preflight old instances. It remains suspended until Core commits.
+  const preflightActivation = ['activate','update','rollback'].includes(operation) && context && getInstallation(release.pluginId)?.status !== 'active';
+  if (preflightActivation) host.resumePlugin(release.pluginId);
   try {
-    return LabDataSchema.parse({pluginId: session.manifest.id, pluginVersion: session.manifest.version,
-      instanceId: session.instanceId, stateSchemaVersion: session.manifest.stateSchemaVersion,
-      bundleDigest: session.manifest.integrity.digest, publisher: session.manifest.publisher, state: session.current.state});
+    for (const state of states) {
+      const session = await host.mount({...source, instanceId: state.instanceId, state: state.state, consent: consent as Capability[]});
+      session.dispose();
+    }
+  } finally {if (preflightActivation) host.suspendPlugin(release.pluginId);}
+};
+type PluginAction = PluginCommand extends infer C ? C extends PluginCommand ? Omit<C, 'commandId'|'expectedRevision'> : never : never;
+export async function changeInstallation(action: PluginAction) {
+  if (staleWorkspace) return fail('STALE_WORKSPACE');
+  const {core, actor} = current();
+  const installed = getInstallation(action.pluginId);
+  try {
+    await core.executePlugin(actor, {...action, commandId: crypto.randomUUID(), expectedRevision: installed?.revision ?? 0} as PluginCommand);
+    syncRuntimePolicy(); changed();
+  } catch (error) {syncRuntimePolicy(); throw error;}
+}
+export async function checkUpdates(pluginId: string): Promise<string> {
+  const installed = getInstallation(pluginId); if (!installed) return fail('PLUGIN_NOT_INSTALLED');
+  const catalog = await loadCatalog();
+  const candidates = catalog.entries.filter((item): item is CatalogPlugin => item.kind === 'plugin' && item.manifest.id === pluginId);
+  for (const candidate of candidates) await verifyModule(candidate);
+  if (candidates.some(item => item.manifest.version !== installed.release.version)) return fail('UPDATE_NOT_AUTHORIZED');
+  await sourceFor(installed.release);
+  return 'La versione installata è verificata. Nessun aggiornamento o rollback autorizzato è disponibile.';
+}
+function activeInstallation(data?: LabData) {
+  if (staleWorkspace) return fail('STALE_WORKSPACE');
+  const installed = getInstallation(data?.pluginId);
+  if (!installed) return fail('PLUGIN_NOT_INSTALLED');
+  if (installed.status === 'revoked') return fail('PLUGIN_REVOKED');
+  if (installed.status !== 'active' || !installed.consent) return fail('PLUGIN_DISABLED');
+  if (data && (installed.release.version !== data.pluginVersion || installed.release.bundleDigest !== data.bundleDigest
+    || installed.release.publisher.id !== data.publisher.id || installed.release.publisher.keyId !== data.publisher.keyId
+    || installed.release.stateSchemaVersion !== data.stateSchemaVersion)) return fail('INCOMPATIBLE_STATE');
+  return installed;
+}
+export async function createFirstPartyLab(): Promise<LabData> {
+  const installed = activeInstallation(), source = await sourceFor(installed.release);
+  activeInstallation();
+  requireAvailable(source.manifest);
+  const session = await host.mount({...source, instanceId: crypto.randomUUID(), state: idealSpringInitialState, consent: installed.consent!.capabilities as Capability[]});
+  try {
+    activeInstallation();
+    return LabDataSchema.parse({pluginId: session.manifest.id, pluginVersion: session.manifest.version, instanceId: session.instanceId,
+      stateSchemaVersion: session.manifest.stateSchemaVersion, bundleDigest: session.manifest.integrity.digest,
+      publisher: session.manifest.publisher, state: session.current.state});
   } finally {session.dispose();}
 }
-
 export async function mountLab(input: LabData): Promise<PluginSession> {
-  const data = LabDataSchema.parse(input);
-  const pin = releaseTrust.allowlist.find(entry => entry.id === data.pluginId && entry.version === data.pluginVersion
-    && entry.digest === data.bundleDigest && entry.publisherId === data.publisher.id && entry.keyId === data.publisher.keyId);
-  if (!pin || data.pluginId !== idealSpring.id || data.stateSchemaVersion !== idealSpring.stateSchemaVersion) throw new Error('INCOMPATIBLE_STATE');
-  const source = await artifacts();
-  const manifest = PluginManifestSchema.parse(source.manifest);
-  if (manifest.id !== data.pluginId || manifest.version !== data.pluginVersion
-    || manifest.integrity.digest !== data.bundleDigest || manifest.stateSchemaVersion !== data.stateSchemaVersion
-    || manifest.publisher.id !== data.publisher.id || manifest.publisher.keyId !== data.publisher.keyId) throw new Error('INSTANCE_IDENTITY_MISMATCH');
-  return host.mount({...source, instanceId: data.instanceId, state: data.state, consent});
+  const data = LabDataSchema.parse(input), installed = activeInstallation(data), source = await sourceFor(installed.release);
+  activeInstallation(data);
+  requireAvailable(source.manifest);
+  const session = await host.mount({...source, instanceId: data.instanceId, state: data.state, consent: installed.consent!.capabilities as Capability[]});
+  try {activeInstallation(data); requireAvailable(session.manifest); return session;}
+  catch (error) {session.dispose(); throw error;}
 }
-
 export function pluginErrorCode(error: unknown): string {
   if (error && typeof error === 'object' && 'code' in error && typeof error.code === 'string') return error.code;
   return error instanceof Error ? error.message : 'PLUGIN_UNAVAILABLE';
+}
+export function moduleStatus(pluginId: string = idealSpring.id): string {
+  if (staleWorkspace) return 'Spazio aggiornato · ricarica';
+  const installed = getInstallation(pluginId);
+  if (installed && (revokedPublishers.has(installed.release.publisher.id) || revokedReleases.has(pluginId + '@' + installed.release.version))) return 'Revocato';
+  return installed ? {installed:'Installato · da autorizzare',active:'Attivo',disabled:'Disattivato',revoked:'Revocato'}[installed.status] : 'Disponibile';
 }

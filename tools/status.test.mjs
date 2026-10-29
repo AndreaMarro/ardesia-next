@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {releaseEvidenceMatches, m1EvidenceMatches, M1_REQUIRED_FLOWS, unitReportDigest} from './status.mjs';
+import {releaseEvidenceMatches, m1EvidenceMatches, M1_REQUIRED_FLOWS, unitReportDigest, m2EvidenceMatches, M2_REQUIRED_FLOWS, M2_LIFECYCLE_STEPS} from './status.mjs';
 
 const current = {commit: 'a'.repeat(40), sourceDigest: 'b'.repeat(64)};
 const deployment = 'https://ardesia-next-test-andreas-projects-6d4e9791.vercel.app';
@@ -280,5 +280,76 @@ test('M1 requires an actual protected remote reopen on the exact current release
     const data = m1Evidence(); delete data.release.m1Browser[key];
     assert.equal(m1EvidenceMatches(data, current), false, key);
   }
+});
+
+
+const m2Evidence = () => {
+  const data = m1Evidence();
+  for (const name of ['packages/core/src/marketplace.test.ts','packages/plugin-host/src/marketplace.test.ts','packages/plugin-sdk/src/catalog.test.ts']) {
+    data.unit.testResults.push({name:'/ci/ardesia-next/' + name,status:'passed',assertionResults:[{title:'observed marketplace assertions',status:'passed',failureMessages:[]}]});
+  }
+  for (const count of ['numTotalTests','numPassedTests','numTotalTestSuites','numPassedTestSuites']) data.unit[count] = 7;
+  data.verification.unitReportDigest = unitReportDigest(data.unit);
+  data.browser.m2Passed = true;
+  data.browser.m2Flows = [...M2_REQUIRED_FLOWS];
+  data.browser.stats.expected += M2_REQUIRED_FLOWS.length;
+  data.release.m2Browser = {...current,url:deployment,passed:true,pluginId:'ardesia.ideal-spring',pluginVersion:'1.0.0',
+    objectId:data.release.m1Browser.objectId,instanceId:data.release.m1Browser.instanceId,
+    installedRevision:1,activeRevision:3,reopenedInstallationRevision:3,disabledRevision:4,
+    savedRevision:2,reopenedRevision:2,statePreserved:true,consentPreserved:true,capabilities:['state:read','state:write'],
+    disabled:true,steps:[...M2_LIFECYCLE_STEPS],observedAt:'2026-10-29T10:00:00.000Z'};
+  return data;
+};
+test('M2 requires M1 plus actual Core, Host, catalog, browser counterproofs and protected remote lifecycle', () => {
+  assert.equal(M2_REQUIRED_FLOWS.length,24);
+  assert.equal(m2EvidenceMatches(m2Evidence(),current),true);
+  assert.equal(m2EvidenceMatches(m1Evidence(),current),false);
+  assert.equal(m2EvidenceMatches(null,current),false);
+  for (const group of ['verification','unit','browser','release']) {
+    const data=m2Evidence();delete data[group];
+    assert.equal(m2EvidenceMatches(data,current),false,group);
+  }
+});
+test('M2 rejects a missing security counterproof, stale build, missing test suite or forged success flag', () => {
+  for (const flow of M2_REQUIRED_FLOWS) {
+    const data=m2Evidence();data.browser.m2Flows=data.browser.m2Flows.filter(item=>item!==flow);
+    assert.equal(m2EvidenceMatches(data,current),false,flow);
+  }
+  for (const mutate of [
+    data=>{data.browser.m2Passed=false;},data=>{data.browser.m2Passed='true';},
+    data=>{data.browser.m2Flows.push(data.browser.m2Flows[0]);},
+    data=>{data.browser.stats.expected=22;},data=>{data.browser.stats.flaky=1;},
+    data=>{data.browser.sourceDigest='c'.repeat(64);},
+    data=>{data.release.m1Browser.statePreserved=false;},
+    data=>{data.unit.testResults.pop();data.unit.numTotalTests=6;data.unit.numPassedTests=6;data.verification.unitReportDigest=unitReportDigest(data.unit);},
+    data=>{data.unit.testResults.at(-1).name='/ci/unrelated/catalog.test.ts';data.verification.unitReportDigest=unitReportDigest(data.unit);},
+  ]) {const data=m2Evidence();mutate(data);assert.equal(m2EvidenceMatches(data,current),false);}
+});
+test('M2 remote record must demonstrate current installation, consent, same state, reload and disable in order', () => {
+  for (const key of Object.keys(m2Evidence().release.m2Browser)) {
+    const data=m2Evidence();delete data.release.m2Browser[key];
+    assert.equal(m2EvidenceMatches(data,current),false,key);
+  }
+  for (const mutate of [
+    data=>{data.release.m2Browser.commit='c'.repeat(40);},
+    data=>{data.release.m2Browser.sourceDigest='c'.repeat(64);},
+    data=>{data.release.m2Browser.url=deployment+'/';},
+    data=>{data.release.m2Browser.objectId='another-object';},
+    data=>{data.release.m2Browser.instanceId='another-instance';},
+    data=>{data.release.m2Browser.pluginId='another-plugin';},
+    data=>{data.release.m2Browser.passed='true';},
+    data=>{data.release.m2Browser.capabilities=['state:read'];},
+    data=>{data.release.m2Browser.consentPreserved=false;},
+    data=>{data.release.m2Browser.statePreserved=false;},
+    data=>{data.release.m2Browser.installedRevision=0;},
+    data=>{data.release.m2Browser.activeRevision=1;},
+    data=>{data.release.m2Browser.reopenedInstallationRevision=4;},
+    data=>{data.release.m2Browser.reopenedRevision=3;},
+    data=>{data.release.m2Browser.disabledRevision=3;},
+    data=>{data.release.m2Browser.disabled=false;},
+    data=>{data.release.m2Browser.steps.reverse();},
+    data=>{data.release.m2Browser.observedAt='yesterday';},
+    data=>{data.release.m2Browser.extraUnverifiedClaim=true;},
+  ]) {const data=m2Evidence();mutate(data);assert.equal(m2EvidenceMatches(data,current),false);}
 });
 

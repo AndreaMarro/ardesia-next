@@ -30,3 +30,7 @@ Non dichiarare un rollback dei dati: M0 non esegue migrazioni. I contenuti resta
 ## Gate M1
 
 Prima della distribuzione eseguire anche il rebuild del bundle firmato e tutti i percorsi `e2e/plugin-lab.spec.ts`. La prova browser remota deve creare una molla, modificarne un parametro, salvare e riaprire l’oggetto conservando ID, istanza, stato e revisione. Registrare il blocco `m1Browser` nella release evidence secondo lo schema. Il solo READY o un vecchio screenshot M0 non accetta M1.
+
+## M2
+
+Usare `preview/m2` alla SHA esatta del candidato, con gli stessi controlli di target/protezione qui descritti. Il build-info dichiara M2. Dopo il ciclo marketplace autenticato, compilare anche `m2Browser` secondo lo schema, importare gli artefatti originali CI della stessa SHA, eseguire `npm run status` e leggere i gate effettivi. Non accettare M2 senza M1 valido, 24 flussi M2 e prove remote. Il precedente snapshot v3 richiede un reader v3 anche in un rilascio di ripristino; disattivare il modulo conserva i dati.

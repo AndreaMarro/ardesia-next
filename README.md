@@ -1,13 +1,13 @@
 # Ardesia Next
 
 Uno spazio educativo indipendente per lavagna, taccuino, lezioni e laboratori componibili.
-Repository privata. **M1: primo plugin scientifico attraverso il Plugin Host. Il prodotto resta non completo.**
+Repository privata. **M2: marketplace first-party con installazioni e consensi nel Core. Il prodotto resta non completo.**
 
-## Percorso M1
+## Percorso M2
 
-Apri **Moduli → Aggiungi molla alla lezione**, modifica i parametri con unità SI, aggiorna il grafico o salva direttamente. Riapri l’oggetto da Lavagna/Taccuino/Lezione mantenendo ID, stato e revisione. Firma Ed25519, hash e publisher vengono verificati prima di eseguire gli stessi byte in un Worker.
+Apri **Moduli**, cerca la molla, premi **Verifica** e **Installa**. Concedi esplicitamente lettura e modifica dei parametri, salva le autorizzazioni e attiva il modulo. Aggiungilo alla lezione, modifica la massa e salva. Dopo la ricarica ritrovi lo stesso oggetto, istanza, stato e revisione. Da Moduli puoi disattivarlo o revocarlo conservando gli esperimenti.
 
-[Contratti, firma, migrazione, verifiche e limiti M1](docs/m1-delivery.md). L’accettazione deriva da `npm run status` sulla SHA candidata, non da questo testo. M2 e M3 non sono avviati.
+[Contratti, migrazione, verifiche e limiti M2](docs/m2-delivery.md). L’accettazione deriva da `npm run status` sulla SHA candidata e dalle prove remote, non da questo testo. `productAcceptance: NOT_COMPLETE`; M3 non è avviato. La chiusura M1 sulla baseline è registrata nella [PR #5](https://github.com/AndreaMarro/ardesia-next/pull/5).
 
 ## Avvio e verifica
 

@@ -71,11 +71,13 @@ test('corrupt existing data fails closed without replacing the stored bytes', as
   expect(await page.evaluate(()=>localStorage.getItem('ardesia-next.core.v1'))).toBe('{"invalid":"original-do-not-overwrite"}');
 });
 
-test('draft stays personal, modules do not imply an installer, and export downloads a snapshot', async ({page}) => {
+test('draft stays personal, marketplace grants no automatic consent, and export downloads a snapshot', async ({page}) => {
   await page.goto('/');
   await page.getByRole('button',{name:'Apri moduli',exact:true}).click();
-  await expect(page.getByText('Nessun modulo installabile in questa versione.',{exact:true})).toBeVisible();
-  await expect(page.getByRole('button',{name:/Installa|Acquista|Pubblica/})).toHaveCount(0);
+  await expect(page.getByRole('textbox',{name:'Cerca moduli',exact:true})).toBeVisible();
+  await expect(page.getByRole('button',{name:'Verifica Molla ideale',exact:true})).toBeVisible();
+  await expect(page.getByRole('button',{name:/Acquista|Pubblica/})).toHaveCount(0);
+  expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('ardesia-next.core.v1')!).installations)).toEqual([]);
   await page.keyboard.press('Escape');
   await page.getByRole('button',{name:'Impostazioni',exact:true}).click();
   await expect(page.getByText('solo in questo browser',{exact:true})).toBeVisible();

@@ -138,6 +138,56 @@ export function m1EvidenceMatches(evidence, current) {
     && m1RemoteBrowserMatches(evidence.release, current);
 }
 
+const M2_SCENARIOS = [
+  '[M2] marketplace installs consents activates saves reopens and disables',
+  '[M2] verification and installation execute no plugin code',
+  '[M2] denied capabilities prevent activation and preserve data',
+  '[M2] tampered signature is refused without modifying saved data',
+  '[M2] altered bundle is refused without modifying saved data',
+  '[M2] revoked publisher stops reopening and preserves data',
+  '[M2] incompatible SDK is refused without modifying saved data',
+  '[M2] invalid state is refused without destroying the saved experiment',
+  '[M2] unauthorized update preserves the installed release and experiment',
+  '[M2] failed persistence preserves installation consent and experiment',
+  '[M2] revoked module stays revoked after reload without deleting its state',
+  '[M2] stale tab stops runtime after another tab disables module'
+];
+export const M2_REQUIRED_FLOWS = Object.freeze(['desktop-chromium','mobile-chromium'].flatMap(project => M2_SCENARIOS.map(title => project + '::' + title)));
+export const M2_LIFECYCLE_STEPS = Object.freeze(['find','verify','install','consent','activate','use','save','reload','disable']);
+const M2_UNIT_FILES = ['packages/core/src/marketplace.test.ts','packages/plugin-host/src/marketplace.test.ts','packages/plugin-sdk/src/catalog.test.ts'];
+function m2UnitMatches(unit, checks) {
+  return m1UnitMatches(unit) && unitReportMatches(unit, checks)
+    && M2_UNIT_FILES.every(required => unit.testResults.some(suite => suite.name.replaceAll('\\','/').endsWith('/' + required) || suite.name === required));
+}
+function m2BrowserMatches(browser, current) {
+  return m1BrowserMatches(browser, current) && browser.m2Passed === true
+    && Array.isArray(browser.m2Flows) && new Set(browser.m2Flows).size === browser.m2Flows.length
+    && browser.m2Flows.every(flow => typeof flow === 'string') && M2_REQUIRED_FLOWS.every(flow => browser.m2Flows.includes(flow))
+    && browser.stats.expected >= M1_REQUIRED_FLOWS.length + M2_REQUIRED_FLOWS.length;
+}
+function m2RemoteBrowserMatches(remote, current) {
+  if (!m1RemoteBrowserMatches(remote, current) || !isRecord(remote.m2Browser)) return false;
+  const browser = remote.m2Browser;
+  const keys = ['commit','sourceDigest','url','passed','pluginId','pluginVersion','objectId','instanceId','installedRevision','activeRevision',
+    'reopenedInstallationRevision','disabledRevision','savedRevision','reopenedRevision','statePreserved','consentPreserved','capabilities','disabled','steps','observedAt'];
+  return Object.keys(browser).length === keys.length && keys.every(key => Object.hasOwn(browser,key))
+    && matchesCurrent(browser,current) && browser.url === remote.url && browser.passed === true
+    && browser.pluginId === 'ardesia.ideal-spring' && browser.pluginVersion === '1.0.0'
+    && browser.objectId === remote.m1Browser.objectId && browser.instanceId === remote.m1Browser.instanceId
+    && browser.savedRevision === remote.m1Browser.savedRevision && browser.reopenedRevision === browser.savedRevision
+    && positiveInteger(browser.installedRevision) && Number.isSafeInteger(browser.activeRevision) && browser.activeRevision > browser.installedRevision
+    && browser.reopenedInstallationRevision === browser.activeRevision
+    && Number.isSafeInteger(browser.disabledRevision) && browser.disabledRevision > browser.activeRevision
+    && browser.statePreserved === true && browser.consentPreserved === true && browser.disabled === true
+    && JSON.stringify(browser.capabilities) === JSON.stringify(['state:read','state:write'])
+    && JSON.stringify(browser.steps) === JSON.stringify(M2_LIFECYCLE_STEPS) && timestamp(browser.observedAt);
+}
+/** M2 cannot pass through a catalog mock, unit tests alone, or a remote record for another build. */
+export function m2EvidenceMatches(evidence,current) {
+  return m1EvidenceMatches(evidence,current) && m2UnitMatches(evidence.unit,evidence.verification)
+    && m2BrowserMatches(evidence.browser,current) && m2RemoteBrowserMatches(evidence.release,current);
+}
+
 function runStatus() {
   const current = identity();
   const read = file => {try {return existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : null;} catch {return null;}};
@@ -149,8 +199,9 @@ function runStatus() {
   const browserPassed = verified && e2e?.passed === true && e2e.sourceDigest === current.sourceDigest && e2e.commit === current.commit;
   const remoteMatches = releaseEvidenceMatches(remote, current);
   const m1Accepted = m1EvidenceMatches({verification: checks, unit, browser: e2e, release: remote}, current);
+  const m2Accepted = m2EvidenceMatches({verification: checks, unit, browser: e2e, release: remote}, current);
   const state = {
-    ...current, milestone: 'M1', foundationMilestone: 'M0',
+    ...current, milestone: 'M2', foundationMilestone: 'M0',
     verification: verified ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',
     browser: browserPassed ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',
     deployment: remoteMatches ? remote : {status: 'NOT_VERIFIED_FOR_CURRENT_COMMIT'},
@@ -163,8 +214,14 @@ function runStatus() {
       localBrowserFlows: m1BrowserMatches(e2e, current) ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',
       protectedRemoteReopen: m1RemoteBrowserMatches(remote, current) ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_COMMIT'
     },
-    M2: 'NOT_STARTED', M3: 'NOT_STARTED', M4: 'NOT_STARTED', M5: 'NOT_STARTED',
-    limits: ['Device-only persistence', 'No application authentication or remote student authorization', 'Only pinned first-party plugin execution; no third-party sandbox or M2 catalog acceptance', 'Physical pen/touch and human UX acceptance NOT_RUN', 'No public release'],
+    M2: m2Accepted ? 'ACCEPTED' : 'AWAITING_COMPLETE_EVIDENCE',
+    m2Evidence: {
+      coreCatalogAndHostTests: verified && m2UnitMatches(unit, checks) ? 'PASS' : 'MISSING_OR_FAILED_TEST_EVIDENCE',
+      browserLifecycleAndCounterproofs: m2BrowserMatches(e2e, current) ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',
+      protectedRemoteLifecycle: m2RemoteBrowserMatches(remote, current) ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_COMMIT'
+    },
+    M3: 'NOT_STARTED', M4: 'NOT_STARTED', M5: 'NOT_STARTED',
+    limits: ['Device-only persistence', 'No application authentication or remote student authorization', 'Only pinned first-party plugin execution; no third-party sandbox', 'No update or rollback release currently authorized in the shipped catalog', 'Physical pen/touch and human UX acceptance NOT_RUN', 'No public release'],
     acceptedProductCriteria: 0, preservedProductCriteria: 68
   };
   mkdirSync('artifacts', {recursive: true});

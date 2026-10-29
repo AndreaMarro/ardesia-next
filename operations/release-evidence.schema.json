@@ -1,51 +1,337 @@
 {
-  "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "title":"Ardesia Next observed release evidence",
-  "type":"object",
-  "$comment":"tools/status.mjs also verifies exact current SHA/digest and compares the decoded SSO redirect target origin with url; these cross-field checks cannot be expressed by standard JSON Schema alone.",
-  "required":["repository","visibility","commit","sourceDigest","projectId","status","target","providerTarget","url","deploymentId","ci","buildInfo","protection","observedAt"],
-  "properties":{
-    "repository":{"const":"AndreaMarro/ardesia-next"},
-    "visibility":{"const":"private"},
-    "commit":{"type":"string","pattern":"^[a-f0-9]{40}$"},
-    "sourceDigest":{"type":"string","pattern":"^[a-f0-9]{64}$"},
-    "projectId":{"const":"prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd"},
-    "status":{"const":"READY"},
-    "target":{"const":"preview"},
-    "providerTarget":{"enum":["staging",null],"description":"Observed raw Vercel API target. staging and explicit null mean preview; production is never accepted."},
-    "url":{"type":"string","format":"uri","pattern":"^https://","minLength":9},
-    "deploymentId":{"type":"string","pattern":"^dpl_[A-Za-z0-9]{1,128}$"},
-    "ci":{"type":"object","required":["headSha","conclusion","url"],"properties":{"headSha":{"type":"string","pattern":"^[a-f0-9]{40}$"},"conclusion":{"const":"success"},"url":{"type":"string","format":"uri","pattern":"^https://","minLength":9}}},
-    "buildInfo":{"type":"object","required":["commit","sourceDigest"],"properties":{"commit":{"type":"string","pattern":"^[a-f0-9]{40}$"},"sourceDigest":{"type":"string","pattern":"^[a-f0-9]{64}$"}}},
-    "protection":{
-      "type":"object",
-      "required":["deploymentType","anonymousStatus"],
-      "properties":{
-        "deploymentType":{"const":"all"},
-        "anonymousStatus":{"enum":[401,403,302,303,307]},
-        "anonymousLocation":{"type":"string","format":"uri","pattern":"^https://vercel\\.com(?::443)?/sso-api\\?","description":"For a redirect, exactly one decoded url parameter must be HTTPS and have the same origin as the deployment url. tools/status.mjs enforces this."}
-      },
-      "allOf":[{"if":{"properties":{"anonymousStatus":{"enum":[302,303,307]}},"required":["anonymousStatus"]},"then":{"required":["anonymousLocation"]}}]
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ardesia Next observed release evidence",
+  "type": "object",
+  "$comment": "tools/status.mjs also verifies exact current SHA/digest and compares the decoded SSO redirect target origin with url; these cross-field checks cannot be expressed by standard JSON Schema alone.",
+  "required": [
+    "repository",
+    "visibility",
+    "commit",
+    "sourceDigest",
+    "projectId",
+    "status",
+    "target",
+    "providerTarget",
+    "url",
+    "deploymentId",
+    "ci",
+    "buildInfo",
+    "protection",
+    "observedAt"
+  ],
+  "properties": {
+    "repository": {
+      "const": "AndreaMarro/ardesia-next"
     },
-    "observedAt":{"type":"string","format":"date-time"},
-    "m1Browser":{
-      "type":"object",
-      "additionalProperties":false,
-      "$comment":"Optional for M0, mandatory for M1. tools/status.mjs requires exact current SHA/source digest, exact release URL, savedRevision equal to reopenedRevision, and complete local M1 test evidence. This record is written only after the protected browser flow is observed; it is not a cryptographic attestation.",
-      "required":["commit","sourceDigest","url","passed","objectId","instanceId","savedRevision","reopenedRevision","statePreserved","observedAt"],
-      "properties":{
-        "commit":{"type":"string","pattern":"^[a-f0-9]{40}$"},
-        "sourceDigest":{"type":"string","pattern":"^[a-f0-9]{64}$"},
-        "url":{"type":"string","format":"uri","pattern":"^https://","minLength":9},
-        "passed":{"const":true},
-        "objectId":{"type":"string","pattern":"^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,99}$"},
-        "instanceId":{"type":"string","pattern":"^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,99}$"},
-        "savedRevision":{"type":"integer","minimum":2,"maximum":9007199254740991},
-        "reopenedRevision":{"type":"integer","minimum":2,"maximum":9007199254740991},
-        "statePreserved":{"const":true},
-        "observedAt":{"type":"string","format":"date-time"}
+    "visibility": {
+      "const": "private"
+    },
+    "commit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "sourceDigest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "projectId": {
+      "const": "prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd"
+    },
+    "status": {
+      "const": "READY"
+    },
+    "target": {
+      "const": "preview"
+    },
+    "providerTarget": {
+      "enum": [
+        "staging",
+        null
+      ],
+      "description": "Observed raw Vercel API target. staging and explicit null mean preview; production is never accepted."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://",
+      "minLength": 9
+    },
+    "deploymentId": {
+      "type": "string",
+      "pattern": "^dpl_[A-Za-z0-9]{1,128}$"
+    },
+    "ci": {
+      "type": "object",
+      "required": [
+        "headSha",
+        "conclusion",
+        "url"
+      ],
+      "properties": {
+        "headSha": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "conclusion": {
+          "const": "success"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://",
+          "minLength": 9
+        }
+      }
+    },
+    "buildInfo": {
+      "type": "object",
+      "required": [
+        "commit",
+        "sourceDigest"
+      ],
+      "properties": {
+        "commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "sourceDigest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "protection": {
+      "type": "object",
+      "required": [
+        "deploymentType",
+        "anonymousStatus"
+      ],
+      "properties": {
+        "deploymentType": {
+          "const": "all"
+        },
+        "anonymousStatus": {
+          "enum": [
+            401,
+            403,
+            302,
+            303,
+            307
+          ]
+        },
+        "anonymousLocation": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://vercel\\.com(?::443)?/sso-api\\?",
+          "description": "For a redirect, exactly one decoded url parameter must be HTTPS and have the same origin as the deployment url. tools/status.mjs enforces this."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "anonymousStatus": {
+                "enum": [
+                  302,
+                  303,
+                  307
+                ]
+              }
+            },
+            "required": [
+              "anonymousStatus"
+            ]
+          },
+          "then": {
+            "required": [
+              "anonymousLocation"
+            ]
+          }
+        }
+      ]
+    },
+    "observedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "m1Browser": {
+      "type": "object",
+      "additionalProperties": false,
+      "$comment": "Optional for M0, mandatory for M1. tools/status.mjs requires exact current SHA/source digest, exact release URL, savedRevision equal to reopenedRevision, and complete local M1 test evidence. This record is written only after the protected browser flow is observed; it is not a cryptographic attestation.",
+      "required": [
+        "commit",
+        "sourceDigest",
+        "url",
+        "passed",
+        "objectId",
+        "instanceId",
+        "savedRevision",
+        "reopenedRevision",
+        "statePreserved",
+        "observedAt"
+      ],
+      "properties": {
+        "commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "sourceDigest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://",
+          "minLength": 9
+        },
+        "passed": {
+          "const": true
+        },
+        "objectId": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,99}$"
+        },
+        "instanceId": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,99}$"
+        },
+        "savedRevision": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 9007199254740991
+        },
+        "reopenedRevision": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 9007199254740991
+        },
+        "statePreserved": {
+          "const": true
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "m2Browser": {
+      "type": "object",
+      "additionalProperties": false,
+      "$comment": "Required for M2. Exact current source, same object and instance as m1Browser, persisted installation and consent, and final disabled revision are compared by tools/status.mjs. Written only after an authenticated remote flow.",
+      "required": [
+        "commit",
+        "sourceDigest",
+        "url",
+        "passed",
+        "objectId",
+        "instanceId",
+        "savedRevision",
+        "reopenedRevision",
+        "statePreserved",
+        "observedAt",
+        "pluginId",
+        "pluginVersion",
+        "installedRevision",
+        "activeRevision",
+        "reopenedInstallationRevision",
+        "disabledRevision",
+        "consentPreserved",
+        "capabilities",
+        "disabled",
+        "steps"
+      ],
+      "properties": {
+        "commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "sourceDigest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://",
+          "minLength": 9
+        },
+        "passed": {
+          "const": true
+        },
+        "objectId": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,99}$"
+        },
+        "instanceId": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,99}$"
+        },
+        "savedRevision": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 9007199254740991
+        },
+        "reopenedRevision": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 9007199254740991
+        },
+        "statePreserved": {
+          "const": true
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "pluginId": {
+          "const": "ardesia.ideal-spring"
+        },
+        "pluginVersion": {
+          "const": "1.0.0"
+        },
+        "installedRevision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "activeRevision": {
+          "type": "integer",
+          "minimum": 2
+        },
+        "reopenedInstallationRevision": {
+          "type": "integer",
+          "minimum": 2
+        },
+        "disabledRevision": {
+          "type": "integer",
+          "minimum": 3
+        },
+        "consentPreserved": {
+          "const": true
+        },
+        "capabilities": {
+          "const": [
+            "state:read",
+            "state:write"
+          ]
+        },
+        "disabled": {
+          "const": true
+        },
+        "steps": {
+          "const": [
+            "find",
+            "verify",
+            "install",
+            "consent",
+            "activate",
+            "use",
+            "save",
+            "reload",
+            "disable"
+          ]
+        }
       }
     }
   }
 }
-

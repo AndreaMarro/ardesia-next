@@ -1,6 +1,7 @@
 import {createCore, type CoreService} from '@ardesia/core';
 import type {Actor, CoreCommand, NewEducationalObject} from '@ardesia/contracts';
 import {BrowserStorage} from './adapters/browser-storage';
+import {connectMarketplace, pluginPolicy} from './plugins/first-party';
 
 // Device-owner context only. This is deliberately not an authentication provider.
 export const localActor: Actor = {actorId: 'device-owner', role: 'teacher'};
@@ -15,7 +16,8 @@ export async function newLesson(core: CoreService, title: string): Promise<strin
   return documentId;
 }
 export async function openWorkspace(): Promise<CoreService> {
-  const core = await createCore({storage: new BrowserStorage()});
+  const core = await createCore({storage: new BrowserStorage(), pluginPolicy});
+  connectMarketplace(core, localActor);
   if(core.listDocuments(localActor).length) return core;
   const doc = await newLesson(core, 'Oscillazioni: osserva, misura, spiega');
   const sourceId = crypto.randomUUID(), noteId = crypto.randomUUID(), formulaId = crypto.randomUUID();
