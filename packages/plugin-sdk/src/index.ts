@@ -26,14 +26,58 @@ export type PluginManifest = z.infer<typeof PluginManifestSchema>;
 export interface PluginState {readonly schemaVersion: string; readonly value: unknown;}
 export interface PluginInstance {readonly instanceId: string; readonly pluginId: string; readonly version: string; readonly state: PluginState;}
 export type LifecycleState = 'available' | 'installed' | 'active' | 'disabled' | 'revoked';
-export interface CatalogContent {
-  readonly kind: 'content'; readonly id: string; readonly version: string;
-  readonly contentKind: 'discipline-pack' | 'lesson' | 'manual' | 'resource' | 'workflow' | 'template';
-  readonly publisherId: string; readonly license: string;
-  readonly status: 'draft' | 'approved' | 'revoked';
-  readonly sourceRevision: string; readonly integrity: string;
+
+/** Pure factory keeps optional catalog contracts out of already signed scientific bundles. */
+function createCatalogSchemas() {
+  /** Discovery is not authorization: keys and approved releases belong to Host policy. */
+  const ArtifactPath = z.string().max(500).regex(/^\/plugins\/(?:[a-zA-Z0-9_-][a-zA-Z0-9._-]*\/)*[a-zA-Z0-9_-][a-zA-Z0-9._-]*$/)
+    .refine(path => !path.split('/').some(segment => segment === '.' || segment === '..'), 'Artifact paths must stay inside /plugins/');
+  const CatalogPluginSchema = z.strictObject({
+    kind: z.literal('plugin'),
+    status: z.enum(['available', 'revoked']),
+    summary: z.string().min(1).max(1_000),
+    manifest: PluginManifestSchema,
+    manifestPath: ArtifactPath,
+    bundlePath: ArtifactPath,
+  }).refine(item => item.manifestPath !== item.bundlePath, 'Manifest and bundle must be separate artifacts');
+  const CatalogContentSchema = z.strictObject({
+    kind: z.literal('content'),
+    id: z.string().regex(/^[a-z][a-z0-9.-]{2,80}$/),
+    version: Semver,
+    name: z.string().min(1).max(100),
+    contentKind: z.enum(['discipline-pack', 'lesson', 'manual', 'resource', 'workflow', 'template']),
+    publisherId: z.string().min(1).max(100),
+    license: z.string().min(1).max(200),
+    provenance: PluginManifestSchema.shape.provenance,
+    integrity: PluginManifestSchema.shape.integrity,
+    status: z.enum(['draft', 'approved', 'revoked']),
+  });
+  /** Declarative content has no entrypoint, capabilities, execution mode or plugin manifest. */
+  const CatalogItemSchema = z.discriminatedUnion('kind', [CatalogPluginSchema, CatalogContentSchema]);
+  const PluginCatalogSchema = z.strictObject({
+    schemaVersion: z.literal('1.0.0'),
+    revision: z.number().int().positive().max(Number.MAX_SAFE_INTEGER),
+    publishedAt: z.iso.datetime(),
+    entries: z.array(CatalogItemSchema).max(500),
+  }).superRefine((catalog, context) => {
+    const identities = new Set<string>();
+    for (const [index, item] of catalog.entries.entries()) {
+      const identity = item.kind === 'plugin' ? `${item.kind}:${item.manifest.id}:${item.manifest.version}` : `${item.kind}:${item.id}:${item.version}`;
+      if (identities.has(identity)) context.addIssue({code: 'custom', message: 'Duplicate catalog release', path: ['entries', index]});
+      identities.add(identity);
+    }
+  });
+  return {CatalogPluginSchema, CatalogContentSchema, CatalogItemSchema, PluginCatalogSchema};
 }
-export type CatalogItem = {readonly kind: 'plugin'; readonly manifest: PluginManifest} | CatalogContent;
+const catalogSchemas = /* @__PURE__ */ createCatalogSchemas();
+export const CatalogPluginSchema = /* @__PURE__ */ (() => catalogSchemas.CatalogPluginSchema)();
+export const CatalogContentSchema = /* @__PURE__ */ (() => catalogSchemas.CatalogContentSchema)();
+export const CatalogItemSchema = /* @__PURE__ */ (() => catalogSchemas.CatalogItemSchema)();
+export const PluginCatalogSchema = /* @__PURE__ */ (() => catalogSchemas.PluginCatalogSchema)();
+export type CatalogPlugin = z.infer<typeof CatalogPluginSchema>;
+export type CatalogContent = z.infer<typeof CatalogContentSchema>;
+export type CatalogItem = z.infer<typeof CatalogItemSchema>;
+export type PluginCatalog = z.infer<typeof PluginCatalogSchema>;
 
 /** Grants must be a subset of explicitly requested capabilities; no ambient grants. */
 export function resolveCapabilities(requested: readonly Capability[], consent: readonly Capability[]): readonly Capability[] {
