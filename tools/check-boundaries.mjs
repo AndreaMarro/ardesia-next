@@ -5,6 +5,7 @@ import {files, root} from './evidence.mjs';
 
 const dependencies = {
   server: ['contracts','core','plugin-host','plugin-sdk','ideal-spring'],
+  'remote-client': ['contracts','core'],
   contracts: [], core: ['contracts'], 'lesson-os': ['contracts'],
   'ideal-spring': ['plugin-sdk'], 'plugin-sdk': [], 'plugin-host': ['plugin-sdk', 'contracts'], ui: [],
   web: ['contracts', 'core', 'lesson-os', 'plugin-sdk', 'plugin-host', 'ui', 'ideal-spring']
