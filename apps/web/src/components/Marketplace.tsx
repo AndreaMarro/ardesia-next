@@ -24,7 +24,7 @@ export function Marketplace(props: Props) {
     {!catalog && !error && <p role="status">Caricamento del catalogo…</p>}
     {filtered.map(entry => <ModuleCard key={entry.manifest.id + '@' + entry.manifest.version} entry={entry} {...props}/>)}
     {catalog && !filtered.length && <p className="marketplace-empty">Nessun laboratorio corrisponde alla ricerca.</p>}
-    <details className="content-catalog"><summary>Pack, lezioni, manuali e template</summary><p>I contenuti dichiarativi sono distinti dai plugin: raccolgono materiale e percorsi senza eseguire codice.</p>{content.length ? <ul>{content.map(entry => <li key={entry.id + '@' + entry.version}>{entry.name} · {entry.version} · {entry.status}</li>)}</ul> : <p>Questo catalogo non contiene ancora pack, lezioni, manuali, workflow o template installabili.</p>}</details>
+    <details className="content-catalog"><summary>Pack, lezioni, manuali e template</summary><p>I contenuti raccolgono materiale senza eseguire codice.</p>{content.length ? <ul>{content.map(entry => <li key={entry.id + '@' + entry.version}>{entry.name} · {entry.version} · {entry.status}</li>)}</ul> : <p>Nessun contenuto installabile nel catalogo.</p>}</details>
     {catalog && <p className="catalog-footer">Catalogo v{catalog.schemaVersion} · revisione {catalog.revision} · {modules.length} {modules.length === 1 ? 'plugin scientifico' : 'plugin scientifici'} · salvataggio su questo dispositivo</p>}
   </section>;
 }

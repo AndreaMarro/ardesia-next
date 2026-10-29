@@ -1,22 +1,21 @@
-import {test, expect, type Page} from '@playwright/test';
-import {addMarketplaceSpring, openMarketplace} from './marketplace-helpers';
+import type {Page} from '@playwright/test';
+import {test, expect, mutateReadProjection} from './fixtures';
+import {addMarketplaceSpring, openMarketplace, storedWorkspace} from './marketplace-helpers';
 
-const storageKey = 'ardesia-next.core.v1';
 async function addSpring(page: Page) {
   await addMarketplaceSpring(page);
 }
 async function storedLab(page: Page) {
-  return page.evaluate(key => {
-    const snapshot = JSON.parse(localStorage.getItem(key)!);
-    for (const document of snapshot.documents) {
-      const lab = document.objects.find((object: {type:string}) => object.type === 'lab');
-      if (lab) return {lab, documentRevision: document.revision, events: snapshot.events.length};
-    }
-    throw Error('No stored laboratory');
-  }, storageKey);
+  const projection = await storedWorkspace(page);
+  for (const document of projection.documents) {
+    const lab = document.objects.find(object => object.type === 'lab');
+    if (lab) return {lab, documentRevision: document.revision, events: projection.events.length};
+  }
+  throw new Error('No laboratory persisted through the remote Core.');
 }
 async function expectNoLaboratory(page: Page) {
-  expect(await page.evaluate(key => JSON.parse(localStorage.getItem(key)!).documents.flatMap((document: {objects:Array<{type:string}>}) => document.objects).some((object: {type:string}) => object.type === 'lab'), storageKey)).toBe(false);
+  const projection = await storedWorkspace(page);
+  expect(projection.documents.flatMap(document => document.objects).some(object => object.type === 'lab')).toBe(false);
 }
 
 test('[M1] verified spring edits and reopens through Core', async ({page}, testInfo) => {
@@ -31,7 +30,7 @@ test('[M1] verified spring edits and reopens through Core', async ({page}, testI
   await inspector.getByLabel('Massa (kg)', {exact:true}).fill('4');
   // One click must evaluate and save even when the number field still has focus.
   await inspector.getByRole('button', {name:'Salva laboratorio', exact:true}).click();
-  await expect(page.getByRole('status')).toContainText('Salvato');
+  await expect(page.locator('.app-footer [role="status"]')).toContainText('Confermato dal server');
   await expect(inspector.getByLabel('Massa (kg)', {exact:true})).toHaveValue('4');
   await expect(inspector.locator('.science-metrics div').filter({hasText:'Periodo'})).toContainText('2,8099');
   const saved = await storedLab(page);
@@ -39,7 +38,7 @@ test('[M1] verified spring edits and reopens through Core', async ({page}, testI
   expect(saved.lab.data.instanceId).toBe(initial.lab.data.instanceId);
   expect(saved.lab.data.bundleDigest).toBe(initial.lab.data.bundleDigest);
   expect(saved.lab.revision).toBe(2);
-  expect(saved.lab.data.state.value.massKg).toBe(4);
+  expect(saved.lab.data.state.value).toMatchObject({massKg: 4});
   expect(saved.lab.status).toBe('draft');
   await page.getByRole('button', {name:'Chiudi proprietà', exact:true}).click();
   await page.getByRole('button', {name:'Lezione', exact:true}).click();
@@ -81,7 +80,7 @@ for (const mutation of ['bundle','signature','capability'] as const) {
     await page.goto('/');
     await openMarketplace(page);
     await page.getByRole('button', {name:'Verifica Molla ideale', exact:true}).click();
-    await expect(page.getByRole('alert')).toContainText('non ha superato la verifica');
+    await expect(page.getByRole('dialog').getByRole('alert')).toContainText('non ha superato la verifica');
     await expectNoLaboratory(page);
     expect(workers).toBe(0);
   });
@@ -91,20 +90,21 @@ for (const incompatible of [true, false]) {
   test(incompatible ? '[M1] incompatible saved state is preserved and refused' : '[M1] invalid scientific state is preserved and refused', async ({page}) => {
     await addSpring(page);
     await page.getByRole('button', {name:'Chiudi proprietà', exact:true}).click();
-    const corrupted = await page.evaluate(({key, incompatible}) => {
-      const snapshot = JSON.parse(localStorage.getItem(key)!);
-      const lab = snapshot.documents.flatMap((document: {objects: Array<{type:string}>}) => document.objects).find((object: {type:string}) => object.type === 'lab');
-      if (incompatible) {lab.data.stateSchemaVersion='2.0.0';lab.data.state.schemaVersion='2.0.0';}
-      else lab.data.state.value.massKg = -1;
-      const bytes = JSON.stringify(snapshot);localStorage.setItem(key,bytes);return bytes;
-    }, {key:storageKey, incompatible});
+    const confirmed = await storedWorkspace(page);
+    const intercepted = await mutateReadProjection(page, projection => {
+      const object = projection.documents.flatMap(document => document.objects).find(object => object.type === 'lab');
+      if (object?.type !== 'lab') throw new Error('Missing persisted laboratory in the actual server response.');
+      if (incompatible) {object.data.stateSchemaVersion = '2.0.0'; object.data.state.schemaVersion = '2.0.0';}
+      else object.data.state.value = {...object.data.state.value as {massKg: number}, massKg: -1};
+    });
     await page.reload();
     await page.getByRole('button', {name:'Apri Molla ideale', exact:true}).click();
     const inspector = page.getByRole('complementary', {name:'Proprietà del laboratorio'});
     await expect(inspector).toHaveAttribute('data-plugin-status','error');
     await expect(inspector).toHaveAttribute('data-error-code', incompatible ? 'INCOMPATIBLE_STATE' : 'INVALID_STATE');
     await expect(inspector.getByRole('button', {name:'Salva laboratorio', exact:true})).toBeDisabled();
-    expect(await page.evaluate(key => localStorage.getItem(key), storageKey)).toBe(corrupted);
+    expect(intercepted()).toBeGreaterThan(0);
+    expect(await storedWorkspace(page)).toEqual(confirmed);
   });
 }
 
@@ -122,7 +122,7 @@ test('[M1] rejected parameters preserve the saved experiment', async ({page}) =>
   await expect(inspector.locator('.science-metrics div').filter({hasText:'Periodo'})).toContainText('1,9869');
   expect(await storedLab(page)).toEqual(before);
   await inspector.getByRole('button', {name:'Salva laboratorio', exact:true}).click();
-  await expect(page.getByRole('status')).toContainText('Salvato');
-  expect((await storedLab(page)).lab.data.state.value.massKg).toBe(2);
+  await expect(page.locator('.app-footer [role="status"]')).toContainText('Confermato dal server');
+  expect((await storedLab(page)).lab.data.state.value).toMatchObject({massKg: 2});
   expect((await storedLab(page)).lab.revision).toBe(2);
 });

@@ -10,7 +10,7 @@ const checks = [
   ['release-evidence', 'node', ['tools/status.test.mjs']],
   ['unit', 'node_modules/.bin/vitest', ['run', '--reporter=default', '--reporter=json', '--outputFile=artifacts/unit.json']],
   ['signed-plugin', 'node', ['tools/build-plugin.mjs']],
-  ['build', 'node', ['tools/build.mjs']],
+  ['build', 'node', ['tools/build.mjs', '--verify-runtime']],
   ['bundle-budget', 'node', ['tools/check-budget.mjs']]
 ];
 const report = {...identity(), checks: [], passed: false};

@@ -1,111 +1,52 @@
 # Ardesia Next
 
-Uno spazio educativo indipendente per lavagna, taccuino, lezioni e laboratori componibili.
-Repository privata. **M2: marketplace first-party con installazioni e consensi nel Core. Il prodotto resta non completo.**
+Una sola applicazione, un solo Core e un solo Plugin Host. Questo candidato integra il client remoto di PR2 con la UI e con l'API Node compilata. Il server autentica gli account, applica i comandi del Core in transazioni PostgreSQL e restituisce soltanto proiezioni autorizzate.
 
-## Percorso M2
+## Avvio e configurazione
 
-Apri **Moduli**, cerca la molla, premi **Verifica** e **Installa**. Concedi esplicitamente lettura e modifica dei parametri, salva le autorizzazioni e attiva il modulo. Aggiungilo alla lezione, modifica la massa e salva. Dopo la ricarica ritrovi lo stesso oggetto, istanza, stato e revisione. Da Moduli puoi disattivarlo o revocarlo conservando gli esperimenti.
-
-[Contratti, migrazione, verifiche e limiti M2](docs/m2-delivery.md). L’accettazione deriva da `npm run status` sulla SHA candidata e dalle prove remote, non da questo testo. `productAcceptance: NOT_COMPLETE`; M3 non è avviato. La chiusura M1 sulla baseline è registrata nella [PR #5](https://github.com/AndreaMarro/ardesia-next/pull/5).
-
-## Avvio e verifica
-
-Node 24, npm e il lockfile incluso. Dalla root:
+Usare Node 24 e il lockfile incluso:
 
 ```sh
 npm ci
 npm run dev
+```
+
+La UI e `/api/m3` sono disponibili allo stesso origin, `http://127.0.0.1:4173`. Configurare `ARDESIA_DATABASE_URL` con una credenziale del ruolo PostgreSQL runtime limitato. Il database deve essere migrato e gli account predisposti dall'operatore prima dell'avvio. Senza configurazione il servizio dichiara l'indisponibilità; la UI permette comunque di esportare gli originali locali precedenti. [API, provisioning, migrazioni, backup e ripristino](packages/server/README.md).
+
+`npm run build` produce gli statici e una Function Node 24 con package workspace, driver PostgreSQL e asset del Worker firmato già inclusi. Il risultato usa Build Output API v3; il runtime non richiede un loader TypeScript o Vite. `npm run preview` avvia il server locale della build. In una preview configurata, `ARDESIA_APP_ORIGIN` oppure l'URL Vercel determina l'origin autorizzato.
+
+## Comportamento della UI
+
+Il docente accede con un account predisposto, crea uno spazio e una lezione, modifica gli stessi oggetti in lavagna, taccuino e lettura, e assegna la lezione a identificativi studente esistenti. Il laboratorio richiede verifica del rilascio, installazione, consenso e attivazione. Il contenuto resta una bozza.
+
+Lo studente apre le lezioni assegnate e concede il proprio consenso alla release del laboratorio. Note, tentativi e parametri appartengono al suo lavoro personale. Il docente può leggerli soltanto dopo una condivisione esplicita e revocabile. L'accesso assegnato può essere revocato dal docente.
+
+La UI distingue salvataggio confermato, attesa, esito incerto e conflitto. Una bozza mantiene la sua base quando arriva un aggiornamento; un contenuto concorrente non viene sovrascritto usando automaticamente la revisione più recente. Le bozze di oggetti rimossi restano disponibili fino allo scarto esplicito. La revoca del consenso arresta il Worker e conserva i parametri locali ancora da salvare. I comandi pendenti sono separati per account e possono essere ritentati con ID e payload originali. [Contratto del client e recupero](packages/remote-client/README.md).
+
+Gli snapshot locali v1/v2/v3 non vengono importati o cancellati automaticamente. L'importazione richiede una conferma di proprietà e dell'account destinatario, crea uno spazio separato e conserva l'originale e lo storico. I consensi precedenti devono essere rinnovati. L'export personale contiene soltanto dati autorizzati; il backup amministrativo è un'operazione distinta.
+
+## Verifiche locali
+
+I test usano PostgreSQL reale su database loopback dedicati. Servono un operatore di test con `CREATEDB` e `CREATEROLE`, un database con suffisso `_test` e uno con suffisso `_browser`:
+
+```sh
+export M3_TEST_ADMIN_DATABASE_URL=postgresql://test_operator@127.0.0.1:5432/postgres
+export M3_TEST_DATABASE_URL=postgresql://test_operator@127.0.0.1:5432/ardesia_m3_test
+export M3_BROWSER_DATABASE_URL=postgresql://test_operator@127.0.0.1:5432/ardesia_m3_browser
+node tools/setup-test-databases.mjs
 npm run verify
 npx playwright install chromium
 npm run test:e2e
-npm run status
 ```
 
-`verify` controlla tipi, confini fra moduli, test di comportamento, build e budget JavaScript.
-La CI esegue lo stesso percorso sul commit esatto della PR, aggiunge Chromium desktop e mobile
-emulato, e conserva le prove con la SHA nel nome dell'artefatto. I dispositivi fisici non sono
-certificati da questi test.
+`verify` mantiene otto controlli, include una prova della Function compilata con Node nativo e PostgreSQL isolato, verifica la ricostruzione del Worker firmato e applica il limite di **245.760 byte gzip a tutto il JavaScript distribuito**. Il grafo iniziale e il codice differito sono misurati separatamente ma contano entrambi nel limite.
 
-## Percorso realmente disponibile in M0
+La suite browser comprende le **51 prove M0–M2 adattate al server** e **sei prove degli editor concorrenti**, sui progetti Chromium desktop e mobile. Il runner genera credenziali sintetiche; le richieste attraversano l'API reale. Le controprove e le sostituzioni dei precedenti controlli locali sono documentate in [e2e/README.md](e2e/README.md). Le tracce browser sono disattivate per evitare di registrare credenziali. Le viewport emulate non costituiscono una verifica su dispositivi fisici.
 
-Apri la bozza personale, modifica nota o formula, salva, passa fra Lavagna/Taccuino/Lezione,
-ricarica e ritrova gli stessi ID, contenuti e revisioni. Puoi creare una lezione, aggiungere fonti,
-annotare a penna nella lavagna ampia, spostare oggetti (anche `Alt` + frecce), annullare le modifiche supportate,
-leggere la storia ed esportare uno snapshot completo. I dati non validi non vengono sostituiti.
+## Stato dell'integrazione e limiti
 
-Il salvataggio è **solo su questo browser**: un unico snapshot Core, scrittura atomica e
-coordinamento Web Locks fra schede. Non c'è sincronizzazione fra dispositivi, collaborazione
-live, autenticazione applicativa o pubblicazione agli studenti. La protezione Vercel controlla
-l'accesso alla preview e non sostituisce le autorizzazioni applicative future.
+**L'accettazione remota M3 resta incompleta.** Le prove locali non attestano una preview collegata a un servizio remoto. Il tentativo di creare un database Supabase dedicato gratuito è stato bloccato dal limite dei due progetti già attivi; la connessione Vercel non dispone del permesso necessario per accedere alle variabili del progetto. Nessuna risorsa esistente viene riutilizzata o modificata per aggirare questi blocchi.
 
-L'esempio sul pendolo è una bozza di contenuto con formula e collegamento alla fonte.
-**Non è un laboratorio funzionante, un corso completo o un contenuto approvato.**
+PR4 raccoglierà il percorso completo con docente e due studenti in sessioni indipendenti, le controprove browser di continuità e recupero e i gate di accettazione M3. Questo candidato include la UI e il consumer API, senza dichiarare quei gate superati. Gli strumenti di stato M0–M2 rimangono quelli della baseline fino a quell'integrazione.
 
-## Struttura e responsabilità
-
-| Area | Responsabilità |
-| --- | --- |
-| `apps/web` | Unica applicazione e adapter di composizione |
-| `packages/contracts` | DTO e schemi runtime pubblici |
-| `packages/core` | Oggetti, revisioni, policy, ricevute ed eventi |
-| `packages/lesson-os` | Proiezioni ricostruibili sugli eventi Core |
-| `packages/plugin-sdk` | Manifest e contratti versionati, indipendenti dal renderer |
-| `packages/plugin-host` | Firma, integrità, policy e runtime dei plugin first-party M1 |
-| `plugins/ideal-spring` | Primo modello scientifico; nessun accesso diretto al Core o alla UI |
-| `packages/ui` | Token condivisi |
-| `tools`, `.github`, `operations` | Verifica, CI e stato generato |
-
-Nessuna importazione fra internals di applicazioni differenti. Nessun orchestratore, database
-aggiuntivo, provider di autenticazione parallelo o seconda autorità sui progressi.
-
-## Plugin, marketplace e Creator
-
-M0 preserva contratti e confini; **nessuna installazione o esecuzione plugin è abilitata**.
-Il manifest richiede SDK, provenienza, licenza, publisher/key ID, hash e firma. Questi campi
-non costituiscono da soli una verifica crittografica. M1/M2 devono aggiungere fiducia esterna,
-verifica effettiva, ciclo di vita e prove browser prima di consentire il consumer first-party.
-La UI dei moduli dichiara l'indisponibilità e non offre acquisti o installazioni fittizi.
-
-Plugin e contenuti versionati condividono un catalogo contrattuale; i contenuti rimangono dati,
-non eseguibili. Creator userà lo stesso contratto di pubblicazione e provenienza.
-
-## Prove, stato e rilascio
-
-`npm run status` genera `artifacts/status.json` dai report del sorgente corrente. Non eredita
-un PASS da un commit, digest o deployment precedente. `build-info.json` espone SHA e impronta
-dei sorgenti; non contiene segreti. La preview deve essere privata, READY e confrontata con
-quel file, insieme a CI e richiesta anonima respinta, prima di accettare M0.
-
-Le prove di rilascio ottenute da GitHub/Vercel vanno in `artifacts/release-evidence.json`,
-non in una cronologia di stato scritta a mano. Il modello è in
-[`operations/release-evidence.schema.json`](operations/release-evidence.schema.json).
-Se mancano, lo stato resta `AWAITING_COMPLETE_EVIDENCE`.
-
-Il progetto Vercel è `ardesia-next`, separato dal vecchio progetto. I deployment automatici
-Git sono disattivati in configurazione. Il coordinatore rilascia solo preview protette sulla
-SHA verificata. La promozione pubblica richiede autorizzazione separata.
-
-Rollback M0: tornare alla precedente preview verificata e revert della PR. Nessuna migrazione
-automatica o cancellazione dei dati del browser. Un formato futuro deve offrire export e
-migrazione versionata prima di abbandonare snapshot esistenti.
-
-## Fonti e recupero selettivo
-
-Le fonti obbligatorie sono state lette e sono tracciate in
-[`docs/sources`](docs/sources). I 36 modelli visivi sono riferimenti, non funzioni già operative.
-[`D01–D68`](docs/acceptance/D01-D68.json) conserva i criteri testualmente: tutti sono `NOT_RUN`
-come accettazione del prodotto. Poiseuille resta un modulo con criteri propri, non il centro
-dell'architettura.
-
-Il legacy `AndreaMarro/ardesia` è stato esaminato alla SHA
-`5cfbdcb055ba3ba136f97fb56e997f06e6cf3605`, in sola lettura. M0 recupera comportamenti e
-invarianti; non copia l'intero progetto. La sandbox web legacy e gli import fra app sono esclusi.
-Nessun eLab ripristinato.
-
-Approfondimenti: [architettura](docs/architecture.md), [ADR](docs/adr),
-[handoff e ownership](docs/handoff.md), [dipendenze](docs/dependencies.md),
-[traguardi](operations/milestones.json).
-
-Codice originale riservato; dipendenze e fonti mantengono i rispettivi diritti.
-Non è attribuita una licenza open source al codice legacy privo di licenza generale.
+Rilascio limitato a preview protette, con CI sulla SHA effettiva. Nessuna produzione, spesa, bypass di protezione o modifica del repository legacy è inclusa. Per il rollback conservare backup e originali importati, ripristinare il candidato precedente verificato e non migrare automaticamente gli snapshot v4 all'indietro.

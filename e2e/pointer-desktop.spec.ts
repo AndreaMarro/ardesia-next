@@ -1,10 +1,10 @@
-import {test, expect} from '@playwright/test';
+import {test, expect} from './fixtures';
 
 test('keyboard selection and drawing are serialized as real objects', async ({page}) => {
   await page.goto('/');
   await page.getByRole('button',{name:'Apri Il pendolo semplice',exact:true}).focus();
   await page.keyboard.press('Alt+ArrowRight');
-  await expect(page.getByRole('status')).toContainText('Salvato');
+  await expect(page.locator('.app-footer [role="status"]')).toContainText('Confermato dal server');
   await page.getByRole('button',{name:'Penna',exact:true}).click();
   const surface=await page.locator('.board-surface').boundingBox();
   if(!surface) throw new Error('Missing drawing surface');

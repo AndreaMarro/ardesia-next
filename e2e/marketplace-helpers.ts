@@ -1,7 +1,8 @@
 import {expect, type Page} from '@playwright/test';
-import type {CoreSnapshot, LabObject} from '@ardesia/contracts';
+import type {LabObject} from '@ardesia/contracts';
+import type {WorkspaceProjection} from '@ardesia/remote-client';
+import {personalProjection} from './fixtures';
 
-export const storageKey = 'ardesia-next.core.v1';
 export const springId = 'ardesia.ideal-spring';
 export const readConsentLabel = 'Consenti lettura dei parametri (state:read)';
 export const writeConsentLabel = 'Consenti modifica dei parametri (state:write)';
@@ -42,12 +43,12 @@ export async function addMarketplaceSpring(page: Page): Promise<void> {
   await expect(page.getByRole('complementary', {name: 'Proprietà del laboratorio', exact: true})).toHaveAttribute('data-plugin-status', 'ready');
 }
 
-export async function storedWorkspace(page: Page): Promise<CoreSnapshot> {
-  return page.evaluate(key => JSON.parse(localStorage.getItem(key)!) as CoreSnapshot, storageKey);
+export async function storedWorkspace(page: Page): Promise<WorkspaceProjection> {
+  return personalProjection(page);
 }
 
 export async function storedBytes(page: Page): Promise<string | null> {
-  return page.evaluate(key => localStorage.getItem(key), storageKey);
+  return JSON.stringify(await personalProjection(page));
 }
 
 export async function storedSpring(page: Page): Promise<LabObject> {

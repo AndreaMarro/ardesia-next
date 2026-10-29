@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState, type PointerEvent, type KeyboardEvent} from 'react';
-import {MousePointer2, Pencil, Type, SquareFunction, Link2, Undo2} from 'lucide-react';
+import {MousePointer2, SquarePen, Type, SquareFunction, Link2, Undo2} from 'lucide-react';
 import type {EducationalObject, LessonDocument, NewEducationalObject} from '@ardesia/contracts';
 import {ObjectContent} from './ObjectContent';
 
@@ -86,7 +86,7 @@ export function Board(props: Props) {
     </div></div>
     <div className="board-toolbar" role="toolbar" aria-label="Strumenti lavagna">
       <button aria-label="Seleziona oggetti" title="Seleziona · Alt + frecce per spostare" aria-pressed={tool === 'select'} onClick={() => setTool('select')}><MousePointer2 size={21}/></button>
-      {!compact && <button aria-label="Penna" title="Penna · lavagna ampia" aria-pressed={tool === 'pen'} onClick={() => setTool('pen')}><Pencil size={21}/></button>}
+      {!compact && <button aria-label="Penna" title="Penna · lavagna ampia" aria-pressed={tool === 'pen'} onClick={() => setTool('pen')}><SquarePen size={21}/></button>}
       <span className="toolbar-divider"/>
       <button aria-label="Aggiungi nota" title="Aggiungi nota" onClick={() => {setTool('select'); onAdd('note');}}><Type size={22}/></button>
       <button aria-label="Aggiungi formula" title="Aggiungi formula" onClick={() => {setTool('select'); onAdd('formula');}}><SquareFunction size={22}/></button>
