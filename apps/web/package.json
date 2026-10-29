@@ -1,8 +1,19 @@
 {
-  "name": "@ardesia/web", "version": "0.1.0", "private": true, "type": "module",
+  "name": "@ardesia/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
   "dependencies": {
-    "@ardesia/contracts": "0.1.0", "@ardesia/core": "0.1.0", "@ardesia/lesson-os": "0.1.0",
-    "@ardesia/ui": "0.1.0", "@ardesia/plugin-sdk": "0.1.0", "@ardesia/plugin-host": "0.1.0",
-    "react": "19.3.1", "react-dom": "19.3.1", "lucide-react": "1.63.0", "katex": "0.19.1"
+    "@ardesia/contracts": "0.1.0",
+    "@ardesia/core": "0.1.0",
+    "@ardesia/lesson-os": "0.1.0",
+    "@ardesia/ui": "0.1.0",
+    "@ardesia/plugin-sdk": "0.1.0",
+    "@ardesia/plugin-host": "0.1.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "lucide-react": "1.63.0",
+    "katex": "0.19.1",
+    "@ardesia/ideal-spring": "1.0.0"
   }
 }
