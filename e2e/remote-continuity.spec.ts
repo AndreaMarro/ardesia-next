@@ -120,7 +120,7 @@ test('[M3] teacher and two students preserve private laboratory work across inde
     await page.getByRole('button', {name: 'Chiudi finestra', exact: true}).click();
     const saved = personalWork(await personalProjection(studentPage), lesson.id);
     expect(saved.labs[0]).toMatchObject({objectId: lab.id, revision: 1, data: {instanceId: lab.data.instanceId}});
-    await studentPage.screenshot({path: `artifacts/${testInfo.project.name}-m3-student-first-session.png`, fullPage: true});
+    await studentPage.screenshot({path: testInfo.outputPath('student-first-session.png'), fullPage: true});
 
     const oldSession = await firstContext.storageState();
     await logoutUi(studentPage);
@@ -144,7 +144,7 @@ test('[M3] teacher and two students preserve private laboratory work across inde
     expect(personalWork(await personalProjection(resumed), lesson.id)).toEqual(saved);
     expect(await resumed.evaluate(() => localStorage.getItem('ardesia-next.core.v1'))).toBeNull();
     expect(await resumed.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-    await resumed.screenshot({path: `artifacts/${testInfo.project.name}-m3-student-independent-session.png`, fullPage: true});
+    await resumed.screenshot({path: testInfo.outputPath('student-independent-session.png'), fullPage: true});
 
     await assignUi(page, second.id);
     await selectWorkspace(secondContext, studentWorkspace(teacherWorkspace, second, lesson.id));

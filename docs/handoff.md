@@ -1,5 +1,7 @@
 # Handoff operativo — Ardesia Next
 
+**Indice corrente:** [osservazioni infrastrutturali datate](../operations/m3-environment.json), [esecuzione locale/remota dei test](../e2e/README.md) e `npm run status` per i gate generati sulla revisione verificata. Le osservazioni di accesso/provisioning del 29 ottobre sono storiche; non ripetere risorse già presenti. Una regressione remota parziale non accetta M3.
+
 **Aggiornamento M1:** [plugin verificato, oggetto laboratorio e migrazione v2](m1-delivery.md). Le sezioni M0 seguenti conservano la decisione di fondazione; il nuovo comportamento M1 è descritto nell’aggiornamento e nell’ADR 0004.
 
 29 ottobre 2026. Questo documento definisce il metodo di integrazione e i gate. Gli esiti effettivi devono provenire dalle prove del candidato e dallo stato generato.
