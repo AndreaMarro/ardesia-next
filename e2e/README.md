@@ -27,4 +27,24 @@ All three scenarios in `remote-continuity.spec.ts` run on both `desktop-chromium
 - `[M3] a lost response is recovered by the same command without duplicate revisions or events`: a confirmed database mutation loses its first response. The UI retains an unconfirmed command; retry sends the identical command ID and receives the original receipt without another revision or event.
 - `[M3] concurrent authenticated writes reject an old revision and preserve the winner`: two writes with the same expected revision race through real transactions; exactly one commits, one receives `REVISION_CONFLICT`, and retrying the winner returns its original receipt.
 
-These tests establish local PostgreSQL and browser evidence. They do not constitute observation of a protected remote deployment, which remains a separate M3 acceptance requirement.
+## Local and remote targets
+
+`e2e/target.ts` owns the origin used by the Playwright configuration and the API fixtures. The default is `local`, using `http://127.0.0.1:4173` (or an explicit local `PORT`). The local runner still requires a fresh verified build and seeds only its dedicated loopback browser database. CI explicitly selects this mode.
+
+A remote regression is an explicit operation against the existing stable staging:
+
+```sh
+ARDESIA_E2E_MODE=remote \
+ARDESIA_E2E_BASE_URL=https://ardesia-next-staging.vercel.app \
+npm run test:e2e
+```
+
+Before running it, verify the deployment SHA/digest and authorize the synthetic data writes. Supply the existing `ARDESIA_E2E_TEACHER_USERNAME`, `ARDESIA_E2E_TEACHER_PASSWORD`, `ARDESIA_E2E_STUDENT_A_USERNAME`, `ARDESIA_E2E_STUDENT_A_PASSWORD`, `ARDESIA_E2E_STUDENT_B_USERNAME` and `ARDESIA_E2E_STUDENT_B_PASSWORD` through the approved secret environment. All three accounts must be distinct. Passwords are never generated in remote mode, no local server starts, and database/operator credentials are removed from the browser child environment. Each scenario creates its own synthetic workspace through the real API; it does not migrate, provision accounts, reset, restore or delete the remote database.
+
+The runner rejects production/other origins, URL credentials, paths, query parameters (including bypass links), local seeding in remote mode, and CLI overrides of configuration/report/output. Remote trace/UI/debug options are refused and debug environment overrides are removed so synthetic login credentials cannot enter a trace or API debug log. It runs only the three M3 continuity scenarios, on both existing browser projects. Remote JSON and screenshots are confined to `artifacts/remote-continuity/`; the four acceptance input files are never overwritten by this mode.
+
+Platform access remains a separate prerequisite. A Vercel dashboard session in another browser is not inherited by fresh Playwright contexts. This change does not export cookies, generate a bypass, disable protection or add a platform-authentication integration. If an approved execution context cannot access the protected staging, the run must fail; do not make the staging public to pass it. Preserve independent application sessions for the teacher and students.
+
+The remote summary is explicitly `kind: ardesia-remote-continuity-regression`, distinguishes `testSource` from deployment identity, and reports `m3Acceptance: NOT_EVALUATED`. A partial selection, failed process, absent report, skipped/flaky test, or missing required desktop/mobile scenario cannot pass the remote suite. It does not produce `m3-remote-evidence.json` or assert that deployment identity was verified.
+
+The full remote M3 acceptance gate is unchanged. These three regression scenarios do not supply all twelve counterproofs required by `tools/m3-evidence.mjs`, including operator-controlled expiry, outage, backup/restore and import. Only a complete set of observed evidence on the deployed revision can close M3.

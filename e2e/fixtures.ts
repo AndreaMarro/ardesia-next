@@ -2,11 +2,12 @@ import {randomUUID} from 'node:crypto';
 import {test as base, expect, type APIRequestContext, type BrowserContext, type Page} from '@playwright/test';
 import type {Actor, CoreCommand, NewEducationalObject} from '@ardesia/contracts';
 import type {WorkspaceProjection} from '@ardesia/remote-client';
+import {resolveE2ETarget} from './target.ts';
 
 export {expect};
 export const legacyStorageKey = 'ardesia-next.core.v1';
 export const workspaceSelectionKey = (accountId: string) => `ardesia-next-remote-workspace:${accountId}`;
-export const apiOrigin = process.env.ARDESIA_E2E_BASE_URL ?? 'http://127.0.0.1:4173';
+export const apiOrigin = resolveE2ETarget().origin;
 
 export interface TestAccount {id: string; role: Actor['role']; displayName: string}
 export interface TestWorkspace {account: TestAccount; actor: Actor; workspaceId: string; documentId: string}

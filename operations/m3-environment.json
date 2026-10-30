@@ -1,160 +1,295 @@
 {
-  "observedAt": "2026-10-29T14:47:33Z",
-  "scope": "AndreaMarro/ardesia-next; protected preview only",
-  "status": "BLOCKED_ACCOUNT_AUTHORIZATION",
-  "providerSelected": {
-    "name": "Neon",
-    "plan": "Free",
-    "regionRequested": "aws-eu-central-1",
-    "publishedMonthlyUSD": 0,
-    "accountPlanVerified": false,
-    "resourceCreated": false,
-    "pricingSource": "https://neon.com/pricing",
-    "limitsSource": "https://neon.com/docs/introduction/plans",
-    "publishedLimits": {
-      "storageGBPerProject": 1,
-      "computeCUHoursPerProjectPerMonth": 100,
-      "publicEgressGBPerProjectPerMonth": 5,
-      "branchesPerProject": 10
-    },
-    "runtimeConnection": "pooled PostgreSQL with existing verify-full TLS validation",
-    "operatorConnection": "separate direct PostgreSQL login outside Vercel runtime"
+  "observedAt": "2026-10-30T23:46:21Z",
+  "scope": "AndreaMarro/ardesia-next; existing protected staging only",
+  "status": "REMOTE_INFRASTRUCTURE_VERIFIED_ACCEPTANCE_PENDING",
+  "acceptanceEvidence": false,
+  "repositoryVisibilityObserved": "public",
+  "baselineObserved": {
+    "commit": "af5c5873152600bafe74cb4bea3de9310c51bab7",
+    "sourceDigest": "46b8c669251203d41156ac68d1dfe8c4d17be7b2c0851cd70b77968643f93250",
+    "ciRunId": 40896605513,
+    "ciConclusion": "success",
+    "generatedM3Status": "AWAITING_COMPLETE_EVIDENCE"
   },
-  "checks": [
-    {
-      "service": "Supabase",
-      "operation": "get_cost(project)",
-      "organizationId": "twwqhsykkicciejficme",
-      "quotedMonthlyUSD": 0
+  "neonObserved": {
+    "projectName": "ardesia-next-m3",
+    "projectId": "royal-bar-31252959",
+    "plan": "Free",
+    "region": "aws-eu-central-1",
+    "postgresVersion": 18,
+    "projectCount": 1,
+    "branchCount": 1,
+    "databaseNames": [
+      "ardesia_next_m3",
+      "ardesia_next_m3_restore_20261030",
+      "ardesia_next_m3_restore_live_20261030"
+    ],
+    "activeApplicationDatabase": "ardesia_next_m3",
+    "activeApplicationRole": "ardesia_next_m3_app",
+    "syntheticAccountCount": 3,
+    "accountRoles": {
+      "teacher": 1,
+      "student": 2
     },
-    {
-      "service": "Supabase",
-      "operation": "create_project(ardesia-next-m3)",
-      "result": "REJECTED",
-      "reason": "Owner has reached the 2 active Free projects limit. No project was created."
+    "migrationVersion": 1,
+    "migrationDigest": "5d5b50de6debe5d08658f110030672bb4cbe7666e5be559d63aa003f6862b25c",
+    "runtimePrivileges": {
+      "superuser": false,
+      "createDatabase": false,
+      "createRole": false,
+      "bypassRls": false,
+      "createSchema": false,
+      "createInSchema": false,
+      "changeAccountRole": false,
+      "updateWorkspace": true
     },
-    {
-      "service": "Vercel",
-      "operation": "GET project environment metadata",
-      "projectId": "prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd",
-      "result": "403 forbidden",
-      "reason": "Connection lacks projectEnvVars list permission."
-    },
-    {
-      "service": "Vercel",
-      "operation": "GET integration configurations",
-      "result": "403 forbidden",
-      "reason": "Connection lacks integrationConfiguration list permission."
-    },
-    {
-      "service": "Render",
-      "operation": "list_postgres_instances",
-      "workspaceId": "tea-d4gouafdiees73b2m8f0",
-      "result": "EMPTY",
-      "reason": "No existing PostgreSQL instance is available in the accessible workspace."
-    },
-    {
-      "service": "Render",
-      "operation": "Review Free PostgreSQL eligibility",
-      "result": "NOT_SELECTED",
-      "reason": "The Free plan expires after 30 days and requires a paid upgrade to remain accessible; it was not selected as the continuing authoritative store. No database was created.",
-      "source": "https://render.com/docs/free"
-    },
-    {
-      "service": "GitHub",
-      "operation": "Verify main and original CI artifact",
-      "result": "VERIFIED",
-      "commit": "540fa2d886257ec664329d50444d2cfac75fffc6",
-      "sourceDigest": "1c2d683212f47603ec5ff06ebd8c24dbef519c0715092b7c8ab5a9fd21f8a420",
-      "ciRunId": 40886746644,
-      "artifactId": 12903985346,
-      "artifactSha256": "ddc3c4fbce3a1bcaa8cf7f41c66ad300540222560f406a329aeb6e908949cf46"
-    },
-    {
-      "service": "Supabase",
-      "operation": "List project metadata only",
-      "result": "NO_DEDICATED_NEXT_PROJECT",
-      "reason": "Existing legacy and other project data were not queried or changed."
-    },
-    {
-      "service": "Vercel",
-      "operation": "Inspect Storage dashboard",
-      "result": "NO_DEDICATED_NEXT_POSTGRES",
-      "reason": "Only an existing Turso store connected to another project was shown; it was not used."
-    },
-    {
-      "service": "Vercel",
-      "operation": "Inspect Next Environment Variables dashboard",
-      "projectId": "prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd",
-      "result": "ACCESSIBLE_EMPTY",
-      "reason": "Authenticated dashboard shows No Environment Variables Added and the Add Environment Variable control. No values were written."
-    },
-    {
-      "service": "Neon",
-      "operation": "Open console",
-      "result": "LOGIN_REQUIRED",
-      "reason": "No authenticated Neon account was available in the selected browser."
-    },
-    {
-      "service": "Vercel/Neon",
-      "operation": "Prepare Marketplace integration",
-      "result": "OWNER_TERMS_ACCEPTANCE_REQUIRED",
-      "reason": "Install Integration shows Accept and Create for Vercel Marketplace Addendum and Neon Terms. No acceptance, resource provisioning or billing change was performed."
-    },
-    {
-      "service": "Aiven",
-      "operation": "Review PostgreSQL Free alternative",
-      "result": "NOT_SELECTED",
-      "reason": "Official getting-started documentation does not allow selection of a specific cloud region on Free; pooling is unavailable. Neon remains preferred.",
-      "source": "https://aiven.io/docs/products/postgresql/get-started"
-    },
-    {
-      "service": "GitHub",
-      "operation": "Requested private-to-public visibility change",
-      "result": "OWNER_REAUTHENTICATION_REQUIRED",
-      "reason": "GitHub requires Confirm access with passkey or another owner authentication method before completing the change. Visibility remains private.",
-      "ruleset": {
-        "id": 26087821,
-        "name": "main-reviewed-verified",
-        "target": "branch",
-        "enforcement": "active"
-      }
-    },
-    {
-      "service": "Vercel",
-      "operation": "Authenticated baseline build-info and API inspection",
-      "result": "SOURCE_MATCH_DATABASE_UNCONFIGURED",
-      "deploymentId": "dpl_CG8FYtrivnCBgrh8izBxqx7q9Zq1",
-      "target": "staging",
-      "ssoDeploymentType": "all",
-      "buildInfoMatchesBaseline": true,
-      "api": {
-        "configured": false,
-        "authority": "unavailable"
-      }
+    "runtimeGroupLogin": false,
+    "workspaceCount": 2,
+    "snapshotTextBytes": 66562,
+    "maxConnectionsObserved": 901,
+    "computeRangeCU": [
+      0.25,
+      2
+    ],
+    "historyRetentionHours": 6,
+    "tlsObservation": {
+      "postgresBackendSsl": false,
+      "postgresBackendProtocol": null,
+      "applicationSourceEnforcesCertificateAndHostnameVerification": true,
+      "runtimeClientSocketMetadata": "NOT_OBSERVED",
+      "interpretation": "The backend flag does not establish transport security of the separate client-to-Neon-proxy connection."
     }
-  ],
+  },
+  "vercelObserved": {
+    "projectId": "prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd",
+    "existingTeamPlan": "Pro",
+    "deploymentId": "dpl_EeAhW3UxVkWwnGYEDduXSEMLahB1",
+    "state": "READY",
+    "providerTarget": null,
+    "gitRef": "preview/m3",
+    "stableOrigin": "https://ardesia-next-staging.vercel.app",
+    "ssoDeploymentType": "all",
+    "buildInfoMatchesBaseline": true,
+    "apiHealth": {
+      "ok": true,
+      "configured": true,
+      "authority": "postgres"
+    },
+    "anonymousStatusAfterRevocation": 302,
+    "anonymousRedirectOrigin": "https://vercel.com",
+    "anonymousRedirectPath": "/sso-api",
+    "shareableLinkExceptionsAfterRevocation": 0,
+    "temporaryShareableLinkRevoked": true,
+    "replacementBypassCreated": false,
+    "variablesMetadata": [
+      {
+        "key": "ARDESIA_DATABASE_URL",
+        "type": "Secret",
+        "target": "preview",
+        "gitBranch": "preview/m3"
+      },
+      {
+        "key": "ARDESIA_APP_ORIGIN",
+        "type": "Config",
+        "target": "preview",
+        "gitBranch": "preview/m3"
+      }
+    ],
+    "variableValuesRead": false,
+    "variableConnectorResult": "403: projectEnvVars list not permitted; metadata observed in authenticated dashboard",
+    "originBehavior": "Stable-origin UI requests succeed; deployment-host UI refuses the different origin.",
+    "existingProjectInfrastructureUsageUSD": 0.15,
+    "usagePeriod": "2026-10-25/2026-11-25",
+    "usageMayLagHours": 1,
+    "teamIncludedCreditUsedUSD": 1.02,
+    "teamIncludedCreditTotalUSD": 20,
+    "existingSubscriptionUSD": 20,
+    "teamInfrastructureCreditsAppliedUSD": 1.02
+  },
+  "browserObserved": {
+    "accountRole": "student",
+    "syntheticAccount": "A",
+    "serverConfirmedReopen": true,
+    "existingWorkspacesVisible": 2,
+    "independentTeacherAndTwoStudentSessions": "NOT_RUN_THIS_SESSION",
+    "completeRemoteCounterproofs": "NOT_RUN"
+  },
+  "codeGapVerified": {
+    "mixedLocalRemoteTargetReproducedBeforeCorrection": true,
+    "targetResolutionCorrection": "One explicit target now shared by Playwright configuration and API fixtures; separated local and remote reports.",
+    "completeRemoteAcceptanceRunnerPresent": false,
+    "partialRegressionIsAcceptance": false
+  },
   "constraintsPreserved": {
     "legacyUnchanged": true,
     "productionUnchanged": true,
+    "newDatabaseResources": false,
+    "newProjects": false,
     "newPaidServices": false,
-    "ssoBypassUsed": false
+    "databaseWritesThisObservation": false,
+    "credentialsRotated": false
   },
-  "remaining": [
-    "Owner authentication to complete the explicitly requested GitHub visibility change",
-    "Owner Neon account/integration authorization; verify Free plan and EU region before creating any resource",
-    "Dedicated Next database; explicit migrations; SQL-created restricted runtime login and three synthetic accounts",
-    "Preview-only runtime credential; exact allowed origin; no production variables",
-    "New exact-SHA CI and protected preview after the source-publication gate correction",
-    "Actual remote continuity, all 12 counterproofs, isolated synthetic backup/restore and status gate"
-  ],
-  "sourcePublication": {
-    "kind": "explicit-owner-instruction",
-    "owner": "AndreaMarro",
-    "repository": "AndreaMarro/ardesia-next",
-    "visibility": "public",
-    "scope": "source-only",
-    "recordedAt": "2026-10-29T14:47:33Z"
-  },
-  "repositoryVisibilityObserved": "private"
+  "nextGate": "Complete real remote M3 acceptance on one deployed revision, using existing synthetic accounts, independent platform-authorized browser contexts and all twelve counterproofs. Do not start M4 or production promotion.",
+  "historicalObservations": [
+    {
+      "observedAt": "2026-10-29T14:47:33Z",
+      "scope": "AndreaMarro/ardesia-next; protected preview only",
+      "status": "BLOCKED_ACCOUNT_AUTHORIZATION",
+      "providerSelected": {
+        "name": "Neon",
+        "plan": "Free",
+        "regionRequested": "aws-eu-central-1",
+        "publishedMonthlyUSD": 0,
+        "accountPlanVerified": false,
+        "resourceCreated": false,
+        "pricingSource": "https://neon.com/pricing",
+        "limitsSource": "https://neon.com/docs/introduction/plans",
+        "publishedLimits": {
+          "storageGBPerProject": 1,
+          "computeCUHoursPerProjectPerMonth": 100,
+          "publicEgressGBPerProjectPerMonth": 5,
+          "branchesPerProject": 10
+        },
+        "runtimeConnection": "pooled PostgreSQL with existing verify-full TLS validation",
+        "operatorConnection": "separate direct PostgreSQL login outside Vercel runtime"
+      },
+      "checks": [
+        {
+          "service": "Supabase",
+          "operation": "get_cost(project)",
+          "organizationId": "twwqhsykkicciejficme",
+          "quotedMonthlyUSD": 0
+        },
+        {
+          "service": "Supabase",
+          "operation": "create_project(ardesia-next-m3)",
+          "result": "REJECTED",
+          "reason": "Owner has reached the 2 active Free projects limit. No project was created."
+        },
+        {
+          "service": "Vercel",
+          "operation": "GET project environment metadata",
+          "projectId": "prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd",
+          "result": "403 forbidden",
+          "reason": "Connection lacks projectEnvVars list permission."
+        },
+        {
+          "service": "Vercel",
+          "operation": "GET integration configurations",
+          "result": "403 forbidden",
+          "reason": "Connection lacks integrationConfiguration list permission."
+        },
+        {
+          "service": "Render",
+          "operation": "list_postgres_instances",
+          "workspaceId": "tea-d4gouafdiees73b2m8f0",
+          "result": "EMPTY",
+          "reason": "No existing PostgreSQL instance is available in the accessible workspace."
+        },
+        {
+          "service": "Render",
+          "operation": "Review Free PostgreSQL eligibility",
+          "result": "NOT_SELECTED",
+          "reason": "The Free plan expires after 30 days and requires a paid upgrade to remain accessible; it was not selected as the continuing authoritative store. No database was created.",
+          "source": "https://render.com/docs/free"
+        },
+        {
+          "service": "GitHub",
+          "operation": "Verify main and original CI artifact",
+          "result": "VERIFIED",
+          "commit": "540fa2d886257ec664329d50444d2cfac75fffc6",
+          "sourceDigest": "1c2d683212f47603ec5ff06ebd8c24dbef519c0715092b7c8ab5a9fd21f8a420",
+          "ciRunId": 40886746644,
+          "artifactId": 12903985346,
+          "artifactSha256": "ddc3c4fbce3a1bcaa8cf7f41c66ad300540222560f406a329aeb6e908949cf46"
+        },
+        {
+          "service": "Supabase",
+          "operation": "List project metadata only",
+          "result": "NO_DEDICATED_NEXT_PROJECT",
+          "reason": "Existing legacy and other project data were not queried or changed."
+        },
+        {
+          "service": "Vercel",
+          "operation": "Inspect Storage dashboard",
+          "result": "NO_DEDICATED_NEXT_POSTGRES",
+          "reason": "Only an existing Turso store connected to another project was shown; it was not used."
+        },
+        {
+          "service": "Vercel",
+          "operation": "Inspect Next Environment Variables dashboard",
+          "projectId": "prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd",
+          "result": "ACCESSIBLE_EMPTY",
+          "reason": "Authenticated dashboard shows No Environment Variables Added and the Add Environment Variable control. No values were written."
+        },
+        {
+          "service": "Neon",
+          "operation": "Open console",
+          "result": "LOGIN_REQUIRED",
+          "reason": "No authenticated Neon account was available in the selected browser."
+        },
+        {
+          "service": "Vercel/Neon",
+          "operation": "Prepare Marketplace integration",
+          "result": "OWNER_TERMS_ACCEPTANCE_REQUIRED",
+          "reason": "Install Integration shows Accept and Create for Vercel Marketplace Addendum and Neon Terms. No acceptance, resource provisioning or billing change was performed."
+        },
+        {
+          "service": "Aiven",
+          "operation": "Review PostgreSQL Free alternative",
+          "result": "NOT_SELECTED",
+          "reason": "Official getting-started documentation does not allow selection of a specific cloud region on Free; pooling is unavailable. Neon remains preferred.",
+          "source": "https://aiven.io/docs/products/postgresql/get-started"
+        },
+        {
+          "service": "GitHub",
+          "operation": "Requested private-to-public visibility change",
+          "result": "OWNER_REAUTHENTICATION_REQUIRED",
+          "reason": "GitHub requires Confirm access with passkey or another owner authentication method before completing the change. Visibility remains private.",
+          "ruleset": {
+            "id": 26087821,
+            "name": "main-reviewed-verified",
+            "target": "branch",
+            "enforcement": "active"
+          }
+        },
+        {
+          "service": "Vercel",
+          "operation": "Authenticated baseline build-info and API inspection",
+          "result": "SOURCE_MATCH_DATABASE_UNCONFIGURED",
+          "deploymentId": "dpl_CG8FYtrivnCBgrh8izBxqx7q9Zq1",
+          "target": "staging",
+          "ssoDeploymentType": "all",
+          "buildInfoMatchesBaseline": true,
+          "api": {
+            "configured": false,
+            "authority": "unavailable"
+          }
+        }
+      ],
+      "constraintsPreserved": {
+        "legacyUnchanged": true,
+        "productionUnchanged": true,
+        "newPaidServices": false,
+        "ssoBypassUsed": false
+      },
+      "remaining": [
+        "Owner authentication to complete the explicitly requested GitHub visibility change",
+        "Owner Neon account/integration authorization; verify Free plan and EU region before creating any resource",
+        "Dedicated Next database; explicit migrations; SQL-created restricted runtime login and three synthetic accounts",
+        "Preview-only runtime credential; exact allowed origin; no production variables",
+        "New exact-SHA CI and protected preview after the source-publication gate correction",
+        "Actual remote continuity, all 12 counterproofs, isolated synthetic backup/restore and status gate"
+      ],
+      "sourcePublication": {
+        "kind": "explicit-owner-instruction",
+        "owner": "AndreaMarro",
+        "repository": "AndreaMarro/ardesia-next",
+        "visibility": "public",
+        "scope": "source-only",
+        "recordedAt": "2026-10-29T14:47:33Z"
+      },
+      "repositoryVisibilityObserved": "private"
+    }
+  ]
 }
