@@ -2,11 +2,13 @@
 
 Una sola applicazione, un solo Core e un solo Plugin Host. Rilascio applicativo limitato a preview Vercel protette. Il mandato del 29 ottobre autorizza la pubblicazione dei sorgenti su GitHub; la visibilità effettiva e gli eventuali passaggi di accesso ancora richiesti sono registrati in `operations/m3-environment.json`.
 
+**Riprendere il lavoro:** [ingresso operativo](docs/START_HERE.md), [coda e blocchi](operations/coordination.json), [manuale agenti e procedure](docs/operations.md), [mappa del prodotto](docs/product-map.md), [storico](docs/history.md). Repository osservata pubblica il 31 ottobre; i record infrastrutturali datati conservano la storia. `node tools/check-operations.mjs --brief` genera un handoff breve senza accettare milestone.
+
 ## Stato M3
 
 Il codice introduce autenticazione applicativa, autorizzazioni server, persistenza PostgreSQL, assegnazioni e lavoro personale degli studenti. Il browser riceve proiezioni autorizzate e conserva soltanto navigazione e comandi ancora da confermare. Il plugin Molla ideale conserva il bundle firmato e il modello scientifico M1/M2.
 
-**M3 rimane incompleto finché il percorso remoto non supera il gate.** Le prove con PostgreSQL locale non dimostrano continuità attraverso un servizio remoto. Neon Free è il candidato selezionato, con piano gratuito da confermare nell'account prima del provisioning. Il dashboard Vercel permette di gestire le variabili di Next, mentre il connettore continua a restituire 403. L'autorizzazione iniziale Neon e la conferma di accesso GitHub sono ancora richieste al titolare. Le osservazioni precise e i passi residui sono in [operations/m3-environment.json](operations/m3-environment.json).
+**M3 rimane incompleto finché il percorso remoto non supera il gate.** Le prove con PostgreSQL locale non dimostrano continuità attraverso un servizio remoto. [L'osservazione del 30 ottobre](operations/m3-environment.json) registra Neon già configurato e tre account sintetici; non ripetere il provisioning da un vecchio handoff. Il runner completo esiste in `tools/m3-acceptance.mjs`. Nell'ultimo handoff del 31 ottobre restano non disponibili/verificati il canale OIDC del runner, le credenziali QA e il restore remoto sicuro. [Issue M3](https://github.com/AndreaMarro/ardesia-next/issues/19) e [ingresso corrente](docs/START_HERE.md) distinguono questa disponibilità dall'esistenza del servizio. Main e staging rimangono congelati, su revisioni differenti finché il percorso protetto del runbook consente il riallineamento.
 
 La baseline M0–M2 accettata è conservata in [operations/baselines/m2](operations/baselines/m2), con commit `3c2738eef34b65cfbb7ee5451f8fc5e8e6bb610d` e [CI verificata](https://github.com/AndreaMarro/ardesia-next/actions/runs/40855723200). `npm run status` verifica quei report e li indica come baseline storica; non trasferisce il loro PASS al nuovo sorgente.
 
@@ -72,6 +74,6 @@ La prova M3 richiede inoltre un report browser remoto, il database realmente rem
 
 La [decisione M3](docs/adr/0005-m3-remote-authority.md) descrive transazioni, isolamento e limiti. La [procedura di rilascio](docs/release-runbook.md) impone preview protetta, branch di preview e verifica della SHA effettiva. Nessuna produzione, dominio pubblico, bypass SSO, spesa o modifica del legacy è autorizzata da questa consegna.
 
-Rollback: usare la precedente preview M2 verificata e revert delle PR interessate. Non eliminare dati remoti né migrare v4 all'indietro automaticamente; conservare backup e archivio degli import. M4/M5 e l'apertura del marketplace restano fuori perimetro.
+Rollback: verificare prima compatibilità dello schema PostgreSQL e dei record di recupero client v2; un vecchio client non legge automaticamente le nuove chiavi. Seguire il [runbook](docs/release-runbook.md), conservare intenti/export, backup e archivio degli import. Un revert del codice non ripristina dati o intenti e non autorizza il downgrade automatico a M2. M4/M5 e l'apertura del marketplace restano fuori perimetro.
 
 La pubblicazione autorizzata del sorgente non introduce una licenza di riuso né autorizza un deployment applicativo pubblico. [Dipendenze e licenze](docs/dependencies.md); [criteri D01–D68](docs/acceptance/D01-D68.json) conservati senza attribuire un'accettazione prodotto non osservata.

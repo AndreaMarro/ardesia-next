@@ -1,0 +1,402 @@
+{
+  "schemaVersion": "1.0.0",
+  "acceptanceEvidence": false,
+  "repository": "AndreaMarro/ardesia-next",
+  "updatedAt": "2026-10-31T16:55:04Z",
+  "policy": {
+    "maxActiveIncrements": 1,
+    "maxRemoteWriters": 1,
+    "productionAuthorized": false,
+    "newSpendAuthorized": false,
+    "codexJobsAuthorized": false,
+    "mainFrozen": true,
+    "stagingFrozen": true
+  },
+  "canonical": {
+    "entrypoint": "docs/START_HERE.md",
+    "handbook": "docs/operations.md",
+    "history": "docs/history.md",
+    "lessons": "docs/lessons.md",
+    "product": "docs/product-map.md",
+    "acceptance": "tools/status.mjs"
+  },
+  "observations": [
+    {
+      "id": "main-20261031",
+      "observedAt": "2026-10-31T16:45:05Z",
+      "kind": "live",
+      "source": "GitHub branch metadata",
+      "url": "https://api.github.com/repos/AndreaMarro/ardesia-next/branches/main",
+      "value": {
+        "sha": "03622b56c9756225019b7c6219d226beef8e0a6d",
+        "repositoryVisibility": "public",
+        "pr16": "merged"
+      }
+    },
+    {
+      "id": "benchmark-pr18-20261031",
+      "observedAt": "2026-10-31T16:45:05Z",
+      "kind": "live",
+      "source": "GitHub PR and workflow run metadata; measurements are reported by the PR, not rerun here",
+      "url": "https://github.com/AndreaMarro/ardesia-next/pull/18",
+      "value": {
+        "head": "174d15bbad2b5d962011dabfed467c330ddc12da",
+        "state": "open",
+        "verifyRun": 41216361836,
+        "extendedRun": 41216361872,
+        "conclusions": "success",
+        "artifactBytesReverifiedThisSession": false
+      }
+    },
+    {
+      "id": "staging-20261031",
+      "observedAt": "2026-10-31T16:45:05Z",
+      "kind": "live",
+      "source": "Vercel project, alias and deployment metadata",
+      "url": "https://ardesia-next-staging.vercel.app",
+      "value": {
+        "projectId": "prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd",
+        "deploymentId": "dpl_5NP212LfLh1vCBYwD68KEkxqBwe3",
+        "sha": "f2b8dd864bc476efafca435c994cfa44af768a8c",
+        "target": "staging",
+        "ssoDeploymentType": "all",
+        "aliasBypassCount": 0,
+        "liveBuildDigest": "NOT_VERIFIED"
+      }
+    },
+    {
+      "id": "neon-20261030",
+      "observedAt": "2026-10-30T23:46:21Z",
+      "kind": "historical",
+      "source": "operations/m3-environment.json",
+      "value": {
+        "configured": true,
+        "syntheticAccounts": 3,
+        "liveDatabaseReadThisSession": false,
+        "credentialsAvailableToRunner": "NOT_VERIFIED"
+      }
+    },
+    {
+      "id": "m3-handoff-20261031",
+      "observedAt": "2026-10-31T16:45:05Z",
+      "kind": "handoff",
+      "source": "User-provided PR18 handoff and saved automation prompt; not a fresh remote acceptance run",
+      "url": "https://github.com/AndreaMarro/ardesia-next/issues/19",
+      "value": {
+        "reportedM3": "AWAITING_COMPLETE_EVIDENCE",
+        "reportedProduct": "NOT_COMPLETE",
+        "reportedBundleGzipBytes": 245744,
+        "bundleLimitGzipBytes": 245760
+      }
+    },
+    {
+      "id": "ruleset-20261031",
+      "observedAt": "2026-10-31T16:45:05Z",
+      "kind": "live",
+      "source": "GitHub ruleset 26087821",
+      "url": "https://api.github.com/repos/AndreaMarro/ardesia-next/rulesets/26087821",
+      "value": {
+        "enforcement": "active",
+        "bypassActors": 0,
+        "requiredCheck": "verify",
+        "strict": true,
+        "requiredApprovingReviews": 0,
+        "requiredThreadResolution": true
+      }
+    },
+    {
+      "id": "schedule-20261031",
+      "observedAt": "2026-10-31T16:45:05Z",
+      "kind": "live",
+      "source": "Existing ChatGPT automation configuration read before replacement",
+      "value": {
+        "automationId": "6adbfad145dc81919b36fc0cdf0eed0c",
+        "enabled": true,
+        "timezone": "Europe/Rome",
+        "dailyLocalTime": "06:00",
+        "newAutomationCreated": false
+      }
+    }
+  ],
+  "blockers": [
+    {
+      "id": "B-OIDC",
+      "status": "blocked",
+      "reason": "No verified short-lived project OIDC channel for the acceptance runner in the last handoff; platform dashboard login is not runner authorization.",
+      "lastCheckedAt": "2026-10-31T16:45:05Z",
+      "recheckWhen": "An already authorized short-lived OIDC channel is actually available; inspect availability once per run without repeated login.",
+      "sources": [
+        "https://github.com/AndreaMarro/ardesia-next/issues/19",
+        "e2e/README.md"
+      ]
+    },
+    {
+      "id": "B-QA",
+      "status": "blocked",
+      "reason": "Three synthetic accounts exist historically; QA secrets are not available/verified for this runner. Do not recover them from chat, logs or browser storage.",
+      "lastCheckedAt": "2026-10-31T16:45:05Z",
+      "recheckWhen": "The existing protected QA execution environment supplies the existing identities; no new account or privilege.",
+      "sources": [
+        "operations/m3-environment.json",
+        "https://github.com/AndreaMarro/ardesia-next/issues/19"
+      ]
+    },
+    {
+      "id": "B-RESTORE",
+      "status": "blocked",
+      "reason": "A distinct preexisting migrated empty restore target and separate read-only source operator access have not been verified remotely.",
+      "lastCheckedAt": "2026-10-31T16:45:05Z",
+      "recheckWhen": "Approved operator connections can establish source/target identity, emptiness and isolation without reset or disruption.",
+      "sources": [
+        "docs/release-runbook.md",
+        "https://github.com/AndreaMarro/ardesia-next/issues/19"
+      ]
+    },
+    {
+      "id": "B-FREEZE",
+      "status": "blocked",
+      "reason": "Main, preview/m3 and staging are frozen for M3; ordinary engineering PRs may be prepared and verified on isolated branches.",
+      "lastCheckedAt": "2026-10-31T16:45:05Z",
+      "recheckWhen": "Original M3 gate is accepted or an indispensable critical correction is authorized and tracked by the existing runbook.",
+      "sources": [
+        "docs/release-runbook.md",
+        "docs/START_HERE.md"
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "M3-REMOTE",
+      "title": "Accettazione remota completa M3",
+      "status": "blocked",
+      "priority": 0,
+      "owner": "coordinator",
+      "scope": [
+        "e2e",
+        "tools",
+        "operations"
+      ],
+      "dependsOn": [],
+      "blockers": [
+        "B-OIDC",
+        "B-QA",
+        "B-RESTORE"
+      ],
+      "exitCriteria": [
+        "All twelve original remote counterproofs bound to one authorized deployed candidate; original status gate accepts M3.",
+        "Preserve protected staging and production exclusion."
+      ],
+      "evidence": [
+        "https://github.com/AndreaMarro/ardesia-next/issues/19"
+      ],
+      "nextAction": "Recheck only changed prerequisites once; if available follow the original protected release and acceptance runbook."
+    },
+    {
+      "id": "OPS-001",
+      "title": "Sistema operativo, memoria, ruoli, procedure e guardie",
+      "status": "ready_for_review",
+      "priority": 1,
+      "owner": "coordinator",
+      "scope": [
+        "AGENTS.md",
+        "README.md",
+        "docs",
+        "operations",
+        "tools",
+        "packages/core/AGENTS.md",
+        "packages/server/AGENTS.md",
+        ".github"
+      ],
+      "dependsOn": [],
+      "blockers": [
+        "B-FREEZE"
+      ],
+      "exitCriteria": [
+        "Compact bootstrap, canonical product/history, validated queue, reusable procedures and independent review.",
+        "Final exact-head CI; update the existing automation without changing cadence; preserve freeze."
+      ],
+      "evidence": [
+        "docs/history.md",
+        "https://github.com/AndreaMarro/ardesia-next/tree/pro/20261031-operating-system"
+      ],
+      "nextAction": "Use the governance PR checkpoint for the final head, CI, installed skills and scheduler readback; integrate only when the existing freeze policy permits it. Do not repeat the completed local review or scenario exercises without a relevant change."
+    },
+    {
+      "id": "PERF-001",
+      "title": "Benchmark rappresentativo penna e campioni estesi",
+      "status": "ready_for_review",
+      "priority": 2,
+      "owner": "coordinator",
+      "scope": [
+        "tools/benchmark.mjs",
+        "tools/benchmark.test.mjs",
+        ".github/workflows",
+        "e2e/README.md"
+      ],
+      "dependsOn": [],
+      "blockers": [
+        "B-FREEZE"
+      ],
+      "exitCriteria": [
+        "Review PR18 on its exact head; preserve samples, measurement scope and immutable evidence.",
+        "Integrate only when the existing release policy permits it."
+      ],
+      "evidence": [
+        "https://github.com/AndreaMarro/ardesia-next/pull/18",
+        "https://github.com/AndreaMarro/ardesia-next/actions/runs/41216361836",
+        "https://github.com/AndreaMarro/ardesia-next/actions/runs/41216361872"
+      ],
+      "nextAction": "Read existing results and review delta; do not repeat the completed benchmark or rerun unchanged CI."
+    },
+    {
+      "id": "PERF-002",
+      "title": "Margine strutturale del bundle",
+      "status": "queued",
+      "priority": 3,
+      "owner": "coordinator",
+      "scope": [
+        "apps/web",
+        "packages",
+        "tools"
+      ],
+      "dependsOn": [
+        "OPS-001",
+        "PERF-001"
+      ],
+      "blockers": [
+        "B-FREEZE"
+      ],
+      "exitCriteria": [
+        "Measure all initial/deferred/plugin assets and find a real structural reduction without raising the 245760-byte limit.",
+        "Preserve accessibility, readability, scientific model, signature and recovery compatibility."
+      ],
+      "evidence": [],
+      "nextAction": "Eligible after existing ready work is reconciled; do not create a third implementation stream during the freeze."
+    },
+    {
+      "id": "PERF-003",
+      "title": "Localizzare costo snapshot senza cambiare prematuramente il modello dati",
+      "status": "queued",
+      "priority": 4,
+      "owner": "coordinator",
+      "scope": [
+        "packages/server",
+        "packages/core",
+        "tools"
+      ],
+      "dependsOn": [
+        "PERF-001",
+        "PERF-002"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "Comparable workloads separate justified phases with raw samples and environment identity.",
+        "Only an observed bottleneck permits a scoped optimization with correctness and recovery regressions."
+      ],
+      "evidence": [],
+      "nextAction": "Use PR18 artifacts first; propose one discriminating experiment only when it resolves remaining uncertainty."
+    },
+    {
+      "id": "M4-REUSE",
+      "title": "Secondo dominio scientifico sul medesimo Core e Host",
+      "status": "deferred",
+      "priority": 5,
+      "owner": "coordinator",
+      "scope": [
+        "plugins",
+        "packages/plugin-sdk",
+        "packages/plugin-host",
+        "docs"
+      ],
+      "dependsOn": [
+        "M3-REMOTE"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "M3 accepted on original gate; select donor with rights/scientific contract and real consumer.",
+        "Same Host/Core/identity/persistence; measured replication cost and UX/science counterproofs."
+      ],
+      "evidence": [
+        "docs/product-map.md"
+      ],
+      "nextAction": "Prepare the bounded successor mandate after M3; no implementation or new simulator while M3 is pending."
+    },
+    {
+      "id": "M5-PRODUCT",
+      "title": "Accettazione prodotto e percorso di rilascio stabile",
+      "status": "deferred",
+      "priority": 6,
+      "owner": "coordinator",
+      "scope": [
+        "apps/web",
+        "packages",
+        "e2e",
+        "docs",
+        "operations"
+      ],
+      "dependsOn": [
+        "M4-REUSE"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "Required UX/science/security/performance/recovery and human/device evidence on one candidate.",
+        "Public promotion requires its own authorization; no automatic production."
+      ],
+      "evidence": [
+        "docs/acceptance/D01-D68.json"
+      ],
+      "nextAction": "Keep product criteria intact; do not infer human or physical-device acceptance from CI."
+    },
+    {
+      "id": "COURSES-MARKETPLACE",
+      "title": "Microcorsi, Creator, Knowledge e marketplace esteso",
+      "status": "deferred",
+      "priority": 7,
+      "owner": "coordinator",
+      "scope": [
+        "docs",
+        "packages",
+        "apps/web",
+        "plugins"
+      ],
+      "dependsOn": [
+        "M4-REUSE"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "Recover one educational unit with source/revision/rights, complete learning cycle and required review.",
+        "Use shared Plugin/Pack/Workflow contracts; no second app, fake approvals or commercial terms inferred."
+      ],
+      "evidence": [
+        "docs/product-map.md"
+      ],
+      "nextAction": "Use the 18-domain product map to select the next authorized unit after foundational gates."
+    },
+    {
+      "id": "MCP-CORE",
+      "title": "Adapter MCP del Core prodotto",
+      "status": "deferred",
+      "priority": 8,
+      "owner": "coordinator",
+      "scope": [
+        "packages",
+        "server",
+        "docs"
+      ],
+      "dependsOn": [
+        "M3-REMOTE"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "A concrete authorized consumer, versioned protocol and same Core authorization/receipts.",
+        "Test supported host/transport, scope and revocation; no direct DB writes or token passthrough."
+      ],
+      "evidence": [
+        "docs/integrations.md",
+        "docs/product-map.md"
+      ],
+      "nextAction": "Design only when a consumer is selected after M3; operational connectors do not prove product MCP."
+    }
+  ],
+  "claims": []
+}
