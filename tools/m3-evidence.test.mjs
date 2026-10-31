@@ -1,5 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {spawnSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {assembleM3Acceptance, acceptanceConfiguration, publicBrowserObservation} from './m3-acceptance.mjs';
 import {m3LocalEvidenceMatches, m3RemoteEvidenceMatches, m3ReportDigest, M3_REQUIRED_FLOWS, M3_REQUIRED_UNIT_FILES, M3_REMOTE_CHECKS} from './m3-evidence.mjs';
 
 // Contract fixtures only. These are never written to operations/ or accepted release artifacts.
@@ -70,6 +77,104 @@ function remoteReleaseFixture(visibility = 'private') {
 }
 const remoteFixture = () => remoteReleaseFixture();
 const bindRemote = evidence => {evidence.release.m3ReportDigest = m3ReportDigest(evidence.remote); return evidence;};
+
+// Contract fixtures only; no report from these tests is saved as remote evidence.
+function producerFixture() {
+  const evidence = remoteReleaseFixture('public');
+  const remote = evidence.remote;
+  const platform = {commit: current.commit, sourceDigest: current.sourceDigest, deploymentId: remote.deploymentId,
+    projectId: evidence.release.projectId, url: remote.url, status: 'READY', observedAt: at(30), databaseResourceIdHash: remote.database.resourceIdHash};
+  const preflight = {passed: true, origin: remote.url, expected: current, observedBuild: current,
+    startedAt: at(0), completedAt: at(0), buildIdentityMatched: true};
+  const postflight = {...preflight, startedAt: at(29), completedAt: at(30)};
+  const browser = {commit: current.commit, sourceDigest: current.sourceDigest, url: remote.url,
+    deploymentId: remote.deploymentId, startedAt: at(1), completedAt: at(25),
+    accounts: remote.accounts, sessions: remote.sessions, continuity: remote.continuity, checks: {...remote.checks}};
+  const operatorChecks = {};
+  for (const name of ['expired', 'outage', 'backupRestore', 'import']) {
+    operatorChecks[name] = {...browser.checks[name], observedAt: at(27)}; delete browser.checks[name];
+  }
+  const operator = {...platform, database: remote.database, startedAt: at(25), completedAt: at(28),
+    isolation: {sourceReadOnly: true, restoreTargetInitiallyEmpty: true, sharedServiceInterrupted: false}, checks: operatorChecks};
+  return structuredClone({current, evidence, platformBefore: {...platform, observedAt: at(0)}, platformAfter: platform, preflight, postflight, browser, operator});
+}
+
+test('acceptance producer binds twelve observed counterproofs to local evidence and unchanged deployment', () => {
+  const result = assembleM3Acceptance(producerFixture());
+  assert.equal(result.accepted, true);
+  assert.equal(m3RemoteEvidenceMatches({...producerFixture().evidence, remote: result.remote, release: result.release}, current), true);
+});
+
+test('acceptance producer refuses partial, stale, secret-bearing or unsafe operator evidence', () => {
+  for (const mutate of [
+    p => {delete p.operator;}, p => {delete p.operator.checks.expired;},
+    p => {p.platformAfter.deploymentId = 'dpl_Different';},
+    p => {p.platformAfter.sourceDigest = hash('c');},
+    p => {p.platformAfter.databaseResourceIdHash = hash('c');},
+    p => {p.postflight.observedBuild.commit = 'c'.repeat(40);},
+    p => {p.postflight.passed = false;}, p => {p.browser.startedAt = at(31);},
+    p => {p.operator.isolation.restoreTargetInitiallyEmpty = false;},
+    p => {p.operator.isolation.sourceReadOnly = false;},
+    p => {p.operator.checks.backupRestore.restoreDatabaseHash = p.operator.database.resourceIdHash;},
+    p => {p.browser.checks.idor.token = 'sensitive';},
+    p => {p.browser.accounts.studentB.idHash = p.browser.accounts.studentA.idHash;},
+    p => {p.evidence.verification.passed = false;},
+  ]) {const input = producerFixture(); mutate(input); assert.equal(assembleM3Acceptance(input).accepted, false);}
+});
+
+test('acceptance credentials and diagnostic guards run before browser or database access', () => {
+  const env = {ARDESIA_E2E_MODE: 'remote', ARDESIA_E2E_BASE_URL: 'https://ardesia-next-staging.vercel.app',
+    VERCEL_OIDC_TOKEN: 'contract-only-oidc-placeholder'};
+  for (const name of ['TEACHER', 'STUDENT_A', 'STUDENT_B']) {
+    env[`ARDESIA_E2E_${name}_USERNAME`] = 'qa-' + name.toLowerCase();
+    env[`ARDESIA_E2E_${name}_PASSWORD`] = 'contract-only-password-placeholder';
+  }
+  assert.equal(acceptanceConfiguration(env, current).mode, 'remote');
+  for (const mutate of [
+    e => {delete e.VERCEL_OIDC_TOKEN;}, e => {delete e.ARDESIA_E2E_STUDENT_A_PASSWORD;},
+    e => {e.ARDESIA_E2E_STUDENT_B_USERNAME = e.ARDESIA_E2E_STUDENT_A_USERNAME;},
+    e => {e.ARDESIA_E2E_BASE_URL = 'https://unrelated.example';},
+    e => {e.NODE_OPTIONS = '--inspect';}, e => {e.DEBUG = 'pw:api';}, e => {e.PWDEBUG = '1';},
+  ]) {
+    const candidate = {...env}; mutate(candidate);
+    assert.throws(() => acceptanceConfiguration(candidate, current), error => !error.message.includes('contract-only-password-placeholder'));
+  }
+});
+
+test('persisted browser evidence contains pseudonyms and excludes operator account selectors and salt', () => {
+  const input = {...producerFixture().browser, operatorScope: {accountIds: ['raw-synthetic-id'], nonce: 'private-run-salt'}};
+  const report = publicBrowserObservation(input);
+  assert.equal(JSON.stringify(report).includes('raw-synthetic-id'), false);
+  assert.equal(JSON.stringify(report).includes('private-run-salt'), false);
+  assert.equal(report.accounts.studentA.idHash, hash('2'));
+  assert.equal(input.operatorScope.accountIds[0], 'raw-synthetic-id');
+});
+
+test('offline assembly consumes collected evidence without browser credentials or new remote writes', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'ardesia-acceptance-contract-'));
+  try {
+    const fixture = producerFixture(), digest = createHash('sha256').digest('hex');
+    const replace = value => {
+      if (Array.isArray(value)) return value.map(replace);
+      if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).map(([key, value]) =>
+        [key, key === 'sourceDigest' ? digest : replace(value)]));
+      return value === url ? 'https://ardesia-next-staging.vercel.app' : value;
+    };
+    const input = replace(fixture), artifacts = join(dir, 'artifacts'), collection = join(artifacts, 'm3-acceptance');
+    mkdirSync(collection, {recursive: true});
+    const write = (path, value) => writeFileSync(path, JSON.stringify(value));
+    for (const [name, value] of Object.entries({verification: input.evidence.verification, unit: input.evidence.unit,
+      'browser-evidence': input.evidence.browser, e2e: input.evidence.playwright, 'release-evidence': input.evidence.release})) write(join(artifacts, name + '.json'), value);
+    for (const [name, value] of Object.entries({'platform-before': input.platformBefore, 'platform-after': input.platformAfter,
+      preflight: input.preflight, postflight: input.postflight, browser: input.browser, operator: input.operator})) write(join(collection, name + '.json'), value);
+    const result = spawnSync(process.execPath, [fileURLToPath(new URL('./m3-acceptance.mjs', import.meta.url)), '--assemble'],
+      {cwd: dir, encoding: 'utf8', env: {PATH: process.env.PATH, ARDESIA_COMMIT_SHA: current.commit}});
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(JSON.parse(readFileSync(join(collection, 'result.json'), 'utf8')).accepted, true);
+    assert.equal(JSON.parse(readFileSync(join(collection, 'candidate.json'), 'utf8')).remote.commit, current.commit);
+    // All files here are ephemeral contract fixtures, never operations/ or release inputs of this checkout.
+  } finally {rmSync(dir, {recursive: true, force: true});}
+});
 
 test('M3 public source needs an observed owner instruction and cannot substitute it for remote evidence', () => {
   const absent = remoteReleaseFixture('public'); delete absent.release.sourcePublication;

@@ -9,7 +9,7 @@ Le versioni esatte e gli hash di risoluzione sono in `package-lock.json`; `npm c
 | TypeScript 5.9.3 | Tipi strict e API AST stabile per il controllo dei confini. La versione 7 non offriva l'API richiesta dal controllo; non è stata mantenuta solo perché più recente. |
 | Zod | Validazione runtime dei contratti, snapshot, comandi e manifest. Un tipo TypeScript non valida dati persistiti o in ingresso. |
 | KaTeX | Formule accessibili con HTML+MathML, `trust:false`, espansione limitata, nessun HTML arbitrario. Formula del pendolo in UI come consumer reale. |
-| Lucide React | Icone coerenti, tree-shaking, nomi accessibili espliciti sui controlli. |
+| Lucide React | Geometrie delle 22 icone usate, fissate alla versione installata 1.63.0. Il renderer condiviso `apps/web/src/components/Icons.tsx` evita il runtime generico inutilizzato; i nodi SVG restano nel JavaScript conteggiato. I test confrontano geometrie, attributi e accessibilità con il pacchetto originale. |
 | Vitest | Test deterministici di autorizzazione, idempotenza, revisioni, scrittura atomica e proiezioni. |
 | Playwright 1.56.1 | Suite browser riproducibile con Chromium 141 e viewport mobile emulata. Il download della release 1.64.1 restituiva un archivio vuoto; la release stabile fissata ha browser ufficiali scaricabili. Nessuna prova fisica dichiarata. |
 
@@ -20,6 +20,8 @@ solo dati della preview personale. Un service backend e il suo adapter dati unic
 ## Aggiornamento M3
 
 `pg` 8.23.1 è il driver del solo database autorevole; resta nel server e negli strumenti, fuori dal bundle browser. `@types/pg` 8.23.1 aggiunge tipi per lo stesso driver. Terser 5.51.2 ottimizza la build senza modificare il plugin firmato. La CI usa PostgreSQL effimero per verificare transazioni e ripristino. Nessun SDK di autenticazione parallelo è introdotto. Le descrizioni M0 sopra restano storiche.
+
+La correzione P0 della coda richiede margine nel budget: la build usa `reduce_funcs:false`, `sequences:false` e `join_vars:false`, misurati insieme al renderer delle icone, senza opzioni `unsafe`, variazioni della soglia o esclusioni di asset. Le icone mantengono classi, alias, colori e nodi della versione fissata; provider Lucide e opzioni avanzate non usate dall'app non fanno parte dell'interfaccia locale. Quando si aggiorna Lucide, il confronto di markup deve passare oppure la nuova geometria va riesaminata esplicitamente. Le licenze complete delle geometrie sono conservate nel sorgente e nel file distribuito `THIRD_PARTY_NOTICES.txt`.
 
 ## Licenze
 

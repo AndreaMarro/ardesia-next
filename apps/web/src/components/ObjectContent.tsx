@@ -1,4 +1,4 @@
-import {Link2} from 'lucide-react';
+import {Link2} from './Icons';
 import type {EducationalObject} from '@ardesia/contracts';
 import {MathFormula} from './MathFormula';
 import {LabContent} from './LabContent';

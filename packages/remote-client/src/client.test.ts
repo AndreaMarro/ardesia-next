@@ -272,10 +272,12 @@ describe('remote Core facade and account-scoped recovery', () => {
 
   it('namespaces recovery keys by account without storing application credentials', () => {
     const values = new Map<string, string>();
-    const storage = browserPendingStorage({getItem: key => values.get(key) ?? null, setItem: (key, value) => {values.set(key, value);}, removeItem: key => {values.delete(key);}});
-    storage.write('student-a', 'pending-a'); storage.write('student-b', 'pending-b'); storage.remove('student-a');
-    expect(storage.read('student-a')).toBeNull(); expect(storage.read('student-b')).toBe('pending-b');
-    expect([...values.keys()]).toEqual(['ardesia-next.pending.v1.student-b']);
+    const storage = browserPendingStorage({getItem: key => values.get(key) ?? null, setItem: (key, value) => {values.set(key, value);}, removeItem: key => {values.delete(key);},
+      key: index => [...values.keys()][index] ?? null, get length() {return values.size;}});
+    const a = JSON.stringify([{commandId: 'pending-a', accountId: 'student-a'}]), b = JSON.stringify([{commandId: 'pending-b', accountId: 'student-b'}]);
+    storage.write('student-a', a); storage.write('student-b', b); storage.remove('student-a');
+    expect(storage.read('student-a')).toBeNull(); expect(storage.read('student-b')).toBe(b);
+    expect([...values.keys()]).toEqual(['ardesia-next.pending.v1.student-b/pending-b']);
   });
 
   it('preserves the server-bound historical teacher actor of an imported workspace', async () => {

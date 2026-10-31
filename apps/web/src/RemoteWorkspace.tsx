@@ -87,10 +87,13 @@ export function RemoteWorkspace() {
     {state.recovery === 'invalid' && <section className="pending-panel"><h2>Copia di recupero da controllare</h2><p>Esporta l’originale prima di scartarlo.</p><button className="secondary-button" onClick={() => download('ardesia-next-recupero-originale.json', client.exportPendingRecovery() ?? '')}>Esporta recupero originale</button><button className="text-button" onClick={() => client.discardInvalidRecovery()}>Scarta copia di recupero non valida</button></section>}
     {state.pending.length > 0 && <section className="pending-panel" aria-label="Modifiche da recuperare">
       <h2>{state.status === 'conflict' ? 'Conflitto di revisione' : 'Modifiche in attesa di conferma'}</h2>
-      <p>Ritenta per verificare il salvataggio senza duplicarlo.</p>
-      {state.pending.map(pending => <div key={pending.commandId}><code>{pending.commandId}</code><span>{pending.status}</span>
-        <button className="secondary-button" disabled={busy || pending.status === 'pending'} onClick={() => void perform(() => client.retryPending(pending.commandId))}>Verifica e ritenta</button>
-        <button className="text-button" disabled={busy || pending.status === 'pending'} onClick={() => client.discardPending(pending.commandId)}>Scarta comando in attesa</button></div>)}
+      <p>Verifica la richiesta inviata senza duplicarla. Riprendi poi esplicitamente le modifiche non inviate; le revisioni originali restano vincolanti.</p>
+      {state.pending.map(pending => <div key={pending.commandId}><code>{pending.commandId}</code><span>{pending.status === 'blocked' ? 'Non inviata' : pending.status === 'queued' ? 'In coda, non inviata' : pending.status}</span>
+        {pending.edit?.predecessorId && !state.pending.some(entry => entry.commandId === pending.edit!.predecessorId) && <span>Conferma precedente non disponibile. Esporta la bozza prima di ricomporla.</span>}
+        {pending.status === 'blocked' || pending.status === 'queued'
+          ? <button className="secondary-button" disabled={busy || pending.status === 'queued' || !!pending.edit?.predecessorId} onClick={() => void perform(() => client.resumePending(pending.commandId))}>Riprendi modifica non inviata</button>
+          : <button className="secondary-button" disabled={busy || pending.status === 'pending'} onClick={() => void perform(() => client.retryPending(pending.commandId))}>Verifica e ritenta</button>}
+        <button className="text-button" disabled={busy || pending.status === 'pending' || pending.status === 'queued'} onClick={() => void perform(async () => client.discardPending(pending.commandId))}>Scarta comando in attesa</button></div>)}
       <button className="secondary-button" onClick={() => download('ardesia-next-comandi-da-recuperare.json', JSON.stringify(state.pending, null, 2))}>Esporta modifiche da recuperare</button>
       {projection && <button className="secondary-button" onClick={() => void perform(() => client.refresh())}>Rileggi dal server</button>}
       {state.recovery === 'memory' && <p>Esporta i comandi prima di chiudere: il browser non può conservarli.</p>}
@@ -121,9 +124,10 @@ export function RemoteWorkspace() {
     {account.role === 'student' && !workspaces.length && <p>Attendi un’assegnazione dal docente, poi aggiorna gli spazi.</p>}
     {projection && <button className="secondary-button" onClick={() => void exportPersonal()}>Esporta i miei dati autorizzati</button>}{recovery()}
   </div></main>;
+  const saveStatus = state.status === 'confirmed' && state.pending.length === 0 ? 'Confermato dal server' : state.status === 'loading' ? 'Aggiornamento dal server…' : 'Salvataggio da verificare';
   return <>{banner}{account.role === 'teacher'
-    ? <App key={projection.workspaceId} workspaceId={projection.workspaceId} core={client.core} actor={projection.actor} onAccount={() => {setManage(true); void client.listWorkspaces().then(setWorkspaces).catch(() => undefined);}} onExport={exportPersonal}/>
+    ? <App key={projection.workspaceId} workspaceId={projection.workspaceId} core={client.core} actor={projection.actor} onEdit={client.edit} saveStatus={saveStatus} onAccount={() => {setManage(true); void client.listWorkspaces().then(setWorkspaces).catch(() => undefined);}} onExport={exportPersonal}/>
     : <LearnerSpace key={projection.workspaceId} client={client} onAccount={() => {setManage(true); void client.listWorkspaces().then(setWorkspaces).catch(() => undefined);}}/>}
-    <div className="remote-status" aria-live="polite">{state.status === 'confirmed' ? 'Confermato dal server' : state.status === 'loading' ? 'Aggiornamento dal server…' : 'Salvataggio da verificare'} · <button onClick={() => void perform(() => client.refresh())}>Aggiorna</button></div>
+    <div className="remote-status" aria-live="polite">{saveStatus} · <button onClick={() => void perform(() => client.refresh())}>Aggiorna</button></div>
   </>;
 }

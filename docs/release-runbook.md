@@ -24,7 +24,9 @@ Gli artefatti CI e lo stato generato nella descrizione della PR conservano le pr
 
 Un errore di build, un target inatteso, una discrepanza SHA/digest o un accesso anonimo alla pagina impediscono l'accettazione. Annullare un deployment ancora in costruzione; per un candidato nuovo errato già terminato, rimuovere esclusivamente quel deployment dopo averne registrato l'identità. Non modificare il vecchio progetto Ardesia.
 
-Non dichiarare un rollback dei dati: M0 non esegue migrazioni. I contenuti restano nello specifico browser e nella specifica origin della preview; esportare lo snapshot prima di cambiare origin.
+La nota storica M0 sul salvataggio per browser non descrive M3. In M3 PostgreSQL è autorevole: il rollback del codice richiede compatibilità con lo schema e i dati correnti. Un backup verificato e un restore provato in un database distinto e vuoto sono requisiti separati; un alias precedente non ripristina i dati. Conservare deployment, report, archivio e URL del candidato precedente finché serve al ripristino.
+
+La coda editor introdotta nella correzione P0 della PR #16 conserva anche intenti non inviati, con record di recupero versione 2 e chiavi per comando nello stesso namespace per account. Il reader legge anche il vecchio array e lo conserva; le chiavi distinte impediscono a due schede aggiornate di cancellare gli intenti l'una dell'altra. Un client precedente non legge le nuove chiavi: un rollback richiede un reader compatibile oppure recupero/esportazione completati prima del cambio client. Non interpretare la sua lista vuota come conferma del server e non cancellare dati di recupero per abilitare il rollback. Se il browser segnala recupero solo in memoria, l'esportazione è necessaria prima di chiudere o ricaricare la pagina. Questo formato non cambia snapshot o schema PostgreSQL.
 
 
 ## Gate M1
@@ -44,3 +46,20 @@ Prima della prova configurare un database dedicato e credenziale runtime limitat
 `npm run status` confronta report unitari/browser, SHA, digest sorgente, CI, build-info e protezione. La baseline M0–M2 è conservata separatamente e non sostituisce prove della build corrente. In assenza di infrastruttura o osservazioni remote il risultato M3 resta `AWAITING_COMPLETE_EVIDENCE`.
 
 La build M3 produce Build Output API v3 in `.vercel/output`: statici, routing e Function Node con tutti i workspace compilati. `framework:null` e nessun `outputDirectory` lasciano al provider il riconoscimento esplicito di quell’output. Le protezioni HTTP sono riportate nelle route generate; la protezione SSO resta una proprietà del progetto. Il bundle server e gli asset del worker non sono pubblicati nella directory statica.
+
+## Congelamento del candidato e procedura permanente
+
+Durante la raccolta M3 mantenere fermi `main`, `preview/m3` e l’alias `https://ardesia-next-staging.vercel.app`. Una correzione indispensabile richiede una nuova SHA e nuove evidenze; le prove precedenti restano storiche. Le PR non critiche possono completare la CI sul proprio branch senza avanzare staging. Il produttore completo e i suoi prerequisiti sono descritti in `e2e/README.md`; la regressione remota resta separata e non accetta M3.
+
+| Passaggio | Controllo necessario prima del successivo |
+| --- | --- |
+| PR → main protetta | `verify` sulla head esatta, revisione dei cambiamenti, poi CI sulla SHA del merge; nessun segreto remoto nel codice delle PR |
+| main verificata → candidato | SHA, sourceDigest, artifact e release identity coerenti; progetto Vercel esistente, ref preview autorizzato e target staging effettivo |
+| candidato → alias staging | SSO su tutti i deployment, nessun nuovo bypass; conservare deployment precedente e associazione alias per rollback |
+| staging → smoke e accettazione | Preflight, contesti indipendenti e controprove; piattaforma/build identici prima e dopo; segreti soltanto nell’ambiente autorizzato |
+| accettazione → eventuale produzione | Gate scientifici, autenticazione/autorizzazioni, dati, costi, restore e accettazione di prodotto; URL canonico stabile deliberato nel progetto esistente |
+| promozione → verifica | Verifica dell’URL canonico, identità della build, protezione prevista, continuità e osservazione degli errori; rollback del codice distinto dal restore dei dati |
+
+`git.deploymentEnabled=false` resta intenzionalmente attivo durante il congelamento. L’automazione futura dello staging dovrà consumare soltanto un evento CI `success` per un **push su main protetta della repository canonica**, ricontrollare che la SHA verificata sia ancora il candidato autorizzato e usare un environment limitato al branch fidato. Un evento `pull_request` o un artifact caricato da un fork non può ottenere credenziali né attivare il rilascio. Install/build di codice PR non devono essere spostati in un job privilegiato tramite `pull_request_target`.
+
+Finché mancano l’ambiente segreto autorizzato e la verifica completa, non abilitare questa automazione né l’autodeploy Git. La preparazione della procedura non crea un trigger funzionante e non promuove produzione. L’accettazione M3 e quella del prodotto rimangono decisioni derivate dai report del candidato, non dal successo di una distribuzione.

@@ -74,7 +74,11 @@ test('[M2] marketplace installs consents activates saves reopens and disables', 
   await page.getByRole('button', {name: 'Disattiva Molla ideale', exact: true}).click();
   await expect.poll(async () => (await storedWorkspace(page)).installations[0]!.status).toBe('disabled');
   expect(await page.evaluate(() => localStorage.getItem('ardesia-next.core.v1'))).toBeNull();
-  expect(await page.evaluate(() => Object.keys(localStorage).filter(key => key.startsWith('ardesia-next.pending.v1.')))).toEqual([]);
+  // The server projection may be disabled before the receipt has cleared local recovery.
+  // Keep the no-pending invariant, but wait for the asynchronous transport to settle.
+  await expect.poll(() => page.evaluate(() =>
+    Object.keys(localStorage).filter(key => key.startsWith('ardesia-next.pending.v1.')),
+  )).toEqual([]);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   expect(errors).toEqual([]);
 });

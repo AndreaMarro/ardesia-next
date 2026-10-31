@@ -1,4 +1,5 @@
 import './m3-evidence.test.mjs';
+import './qa-database.test.mjs';
 import './e2e-target.test.mjs';
 import './e2e-runner.test.mjs';
 import './remote-preflight.test.mjs';
