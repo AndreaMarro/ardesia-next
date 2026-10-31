@@ -7,16 +7,27 @@ import {
   personalProjection, type TestAccount, type TestWorkspace,
 } from './fixtures';
 import {authorizeSpring, openMarketplace, storedWorkspace, verifyAndInstallSpring} from './marketplace-helpers';
+import {closeContextWithAccess, continueRouteWithAccess, fetchRouteWithAccess, installContextAccess,
+  isRemoteExecution, readApiJson, RemoteAccessError} from './remote-access.ts';
 
 async function loginUi(page: Page, kind: 'STUDENT_A' | 'STUDENT_B'): Promise<TestAccount> {
   await page.goto('/');
   await expect(page.getByRole('heading', {name: 'Il tuo spazio', exact: true})).toBeVisible();
   const account = credentials(kind);
-  await page.getByLabel('Nome utente', {exact: true}).fill(account.username);
-  await page.getByLabel('Password', {exact: true}).fill(account.password);
-  await page.getByRole('button', {name: 'Accedi', exact: true}).click();
-  await expect(page.getByLabel('Nome utente', {exact: true})).toHaveCount(0);
-  return (await api<{account: TestAccount}>(page.context().request, {action: 'session'})).account;
+  const password = page.getByLabel('Password', {exact: true});
+  try {
+    if (isRemoteExecution()) await expect(password).toHaveAttribute('type', 'password');
+    await page.getByLabel('Nome utente', {exact: true}).fill(account.username);
+    await password.fill(account.password);
+    await page.getByRole('button', {name: 'Accedi', exact: true}).click();
+    await expect(page.getByLabel('Nome utente', {exact: true})).toHaveCount(0);
+    return (await api<{account: TestAccount}>(page.context().request, {action: 'session'})).account;
+  } catch (error) {
+    if (!isRemoteExecution()) throw error;
+    // locator.fill errors include the supplied value in their call log. Never publish it.
+    await password.fill('', {timeout: 500}).catch(() => undefined);
+    throw new RemoteAccessError('REMOTE_APPLICATION_LOGIN_FAILED');
+  }
 }
 
 async function logoutUi(page: Page): Promise<void> {
@@ -58,8 +69,9 @@ test('[M3] teacher and two students preserve private laboratory work across inde
   const freshContext = async () => {
     const context = await browser.newContext({baseURL: apiOrigin, viewport: page.viewportSize() ?? {width: 1440, height: 960},
       isMobile: testInfo.project.name === 'mobile-chromium', hasTouch: testInfo.project.name === 'mobile-chromium',
+      ...(isRemoteExecution() ? {serviceWorkers: 'block' as const} : {}),
       storageState: {cookies: [], origins: []}});
-    contexts.push(context); expect(await context.cookies()).toEqual([]); return context;
+    contexts.push(context); await installContextAccess(context); expect(await context.cookies()).toEqual([]); return context;
   };
   try {
     await page.goto('/');
@@ -130,7 +142,7 @@ test('[M3] teacher and two students preserve private laboratory work across inde
       expect(await rawApi(oldRequest, {action: 'open-workspace', workspaceId: teacherWorkspace.workspaceId}, first.id))
         .toMatchObject({status: 401, payload: {ok: false, error: {code: 'UNAUTHENTICATED'}}});
     } finally {await oldRequest.dispose();}
-    await firstContext.close();
+    await closeContextWithAccess(firstContext);
 
     const resumedContext = await freshContext(), resumed = await resumedContext.newPage();
     const resumedAccount = await loginUi(resumed, 'STUDENT_A');
@@ -203,7 +215,13 @@ test('[M3] teacher and two students preserve private laboratory work across inde
     await expect(resumed.getByLabel('Note personali', {exact: true})).toHaveValue('');
     expect(await resumed.locator('body').textContent()).not.toContain(saved.notes);
     expect((await personalProjection(resumed)).learnerWork).toEqual([]);
-  } finally {for (const context of contexts) await context.close().catch(() => undefined);}
+  } finally {
+    let failure: unknown;
+    for (const context of contexts) {
+      try {await closeContextWithAccess(context);} catch (error) {if (isRemoteExecution()) failure ??= error;}
+    }
+    if (failure) throw failure;
+  }
 });
 
 test('[M3] a lost response is recovered by the same command without duplicate revisions or events', async ({page}) => {
@@ -214,8 +232,8 @@ test('[M3] a lost response is recovered by the same command without duplicate re
   const receipts: unknown[] = [];
   await page.route('**/api/m3', async route => {
     const input = route.request().method() === 'POST' ? route.request().postDataJSON() : null;
-    if (input?.action !== 'command' || input.command.kind !== 'replace-object') {await route.continue(); return;}
-    const response = await route.fetch(), body = await response.json();
+    if (input?.action !== 'command' || input.command.kind !== 'replace-object') {await continueRouteWithAccess(route); return;}
+    const response = await fetchRouteWithAccess(route), body = await readApiJson(response);
     expect(body.ok).toBe(true);
     receipts.push(body.result.receipt);
     if (!lost) {lost = true; capturedCommandId = input.command.commandId; await route.abort('connectionfailed');}

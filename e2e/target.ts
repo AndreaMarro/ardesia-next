@@ -10,6 +10,18 @@ export interface E2ETarget {
 
 const stagingOrigin = 'https://ardesia-next-staging.vercel.app';
 
+/** Runs while loading configuration, before Playwright can remove output directories. */
+export function assertRemoteInvocation(target: E2ETarget, env: Environment = process.env, args: string[] = process.argv.slice(2)): void {
+  if (target.mode !== 'remote') return;
+  if (args.some(arg => /^--(?:config|reporter|output|trace|debug)(?:=|$)/.test(arg) || /^--ui(?:-|=|$)/.test(arg) || /^-c/.test(arg))) {
+    throw Error('Remote regression runs cannot override configuration, reporter or output paths, or enable tracing/UI/debug.');
+  }
+  if (['PWDEBUG', 'DEBUG', 'DEBUG_FILE', 'NODE_DEBUG', 'PLAYWRIGHT_JSON_OUTPUT_FILE',
+    'PLAYWRIGHT_JSON_OUTPUT_NAME', 'PLAYWRIGHT_JSON_OUTPUT_DIR'].some(key => Boolean(env[key]))) {
+    throw Error('Remote browser runs cannot enable diagnostic or reporter environment overrides.');
+  }
+}
+
 /** One target for API requests, page navigation and output paths. Remote runs are explicit. */
 export function resolveE2ETarget(env: Environment = process.env): E2ETarget {
   const mode = env.ARDESIA_E2E_MODE ?? 'local';

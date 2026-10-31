@@ -3,6 +3,7 @@ import {test as base, expect, type APIRequestContext, type BrowserContext, type 
 import type {Actor, CoreCommand, NewEducationalObject} from '@ardesia/contracts';
 import type {WorkspaceProjection} from '@ardesia/remote-client';
 import {resolveE2ETarget} from './target.ts';
+import {assertContextAccess, continueRouteWithAccess, fetchApiWithAccess, fetchRouteWithAccess, installContextAccess, readApiJson} from './remote-access.ts';
 
 export {expect};
 export const legacyStorageKey = 'ardesia-next.core.v1';
@@ -21,16 +22,17 @@ export function credentials(kind: 'TEACHER' | 'STUDENT_A' | 'STUDENT_B') {
 }
 
 export async function rawApi(request: APIRequestContext, body: Record<string, unknown>, accountId?: string) {
-  const response = await request.post(`${apiOrigin}/api/m3`, {data: body, headers: {
+  const response = await fetchApiWithAccess(request, `${apiOrigin}/api/m3`, {method: 'POST', data: body, headers: {
     Origin: apiOrigin, ...(accountId ? {'X-Ardesia-Account': accountId} : {}),
   }});
-  const payload = await response.json();
+  const payload = await readApiJson(response);
   return {status: response.status(), payload};
 }
 
 export async function api<T>(request: APIRequestContext, body: Record<string, unknown>, accountId?: string): Promise<T> {
   const {status, payload} = await rawApi(request, body, accountId);
-  if (status < 200 || status >= 300 || payload.ok !== true) throw new Error(`M3 API ${String(body.action)} rejected (${status} ${payload.error?.code ?? 'INVALID_RESPONSE'}).`);
+  const code = typeof payload?.error?.code === 'string' && /^[A-Z][A-Z0-9_]{0,80}$/.test(payload.error.code) ? payload.error.code : 'INVALID_RESPONSE';
+  if (status < 200 || status >= 300 || payload?.ok !== true) throw new Error(`M3 API ${String(body.action)} rejected (${status} ${code}).`);
   return payload.result as T;
 }
 
@@ -69,8 +71,8 @@ export async function mutateReadProjection(page: Page, mutate: (projection: Work
   let intercepted = 0;
   await page.route('**/api/m3', async route => {
     const request = route.request();
-    if (request.method() !== 'POST' || request.postDataJSON()?.action !== 'open-workspace') {await route.continue(); return;}
-    const response = await route.fetch(), body = await response.json();
+    if (request.method() !== 'POST' || request.postDataJSON()?.action !== 'open-workspace') {await continueRouteWithAccess(route); return;}
+    const response = await fetchRouteWithAccess(route), body = await readApiJson(response);
     if (body.ok !== true) {await route.fulfill({response}); return;}
     mutate(body.result as WorkspaceProjection); intercepted++;
     await route.fulfill({response, json: body});
@@ -105,11 +107,16 @@ async function seedWorkspace(context: BrowserContext, account: TestAccount, suff
 }
 
 export const test = base.extend<{remoteWorkspace: TestWorkspace}, {teacherSession: TeacherSession}>({
+  context: async ({context}, use) => {
+    await installContextAccess(context);
+    try {await use(context);} finally {assertContextAccess(context);}
+  },
   teacherSession: [async ({playwright}, use) => {
     const request = await playwright.request.newContext({baseURL: apiOrigin});
-    const session = await api<{account: TestAccount}>(request, {action: 'login', ...credentials('TEACHER')});
-    await use({account: session.account, storageState: await request.storageState()});
-    await request.dispose();
+    try {
+      const session = await api<{account: TestAccount}>(request, {action: 'login', ...credentials('TEACHER')});
+      await use({account: session.account, storageState: await request.storageState()});
+    } finally {await request.dispose();}
   }, {scope: 'worker'}],
   storageState: async ({teacherSession}, use) => {await use(teacherSession.storageState);},
   remoteWorkspace: [async ({context, teacherSession}, use, testInfo) => {
