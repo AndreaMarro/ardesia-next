@@ -1,0 +1,35 @@
+name: Incremento o difetto verificabile
+description: Collega un problema reale alla coda, alle prove e a un criterio di uscita.
+title: "[Engineering] "
+body:
+  - type: markdown
+    attributes:
+      value: "Prima cerca task/PR esistenti. La coda canonica è operations/coordination.json; questa issue ne è un punto di discussione, non un secondo stato di accettazione."
+  - type: input
+    id: task
+    attributes:
+      label: Task e fonte di prodotto
+      description: ID già esistente o nuovo candidato, requisito/criterio e fonte.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Problema e comportamento atteso
+      description: Consumer reale, riproduzione o limite misurato; separare fatti e ipotesi.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Prove già disponibili
+      description: SHA, ambiente, comandi/run, esito e limiti. Nessun segreto o dato studente.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope, dipendenze e uscita
+      description: File/owner proposti, PR pertinenti, blocker e segnale di sblocco, criterio discriminante e rollback compatibile.
+    validations:
+      required: true

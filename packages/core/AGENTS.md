@@ -8,5 +8,5 @@
 - Never reset or overwrite an invalid persisted snapshot.
 - Clock and ID generator are injected for deterministic tests.
 - All returned data is cloned; consumers cannot mutate authority by reference.
-- M0 adapter is device-local, single writer, and is not a server authorization boundary.
+- The M0 adapter was device-local and single writer. Current M3 composes this Core in the server/PostgreSQL transaction; authenticated identity and transport policy belong to the server, domain invariants to this Core. Do not treat a browser-provided actor as authentication or introduce a second authoritative client Core. See `docs/adr/0005-m3-remote-authority.md` and `docs/START_HERE.md` from repository root.
 - No third-party plugin execution or implicit content approval.

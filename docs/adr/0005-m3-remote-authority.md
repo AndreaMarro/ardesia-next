@@ -2,6 +2,8 @@
 
 Stato: implementato e verificabile con PostgreSQL locale; accettazione remota bloccata. La fonte degli esiti è `npm run status`, non questo documento.
 
+**Nota di continuità, 31 ottobre:** il paragrafo sul blocco provider nella decisione originale è storico. L'osservazione del 30 ottobre registra Neon configurato; il runner M3 completo è ora presente. Restano da verificare accessi del runner, controprove e restore remoto. Vedere [ingresso corrente](../START_HERE.md); la decisione architetturale rimane invariata.
+
 ## Decisione
 
 Un monolite modulare espone `POST /api/m3` come Function Node same-origin. PostgreSQL conserva account, sessioni, snapshot Core, archivi di import e ricevute di creazione. `@ardesia/server` compone il Core esistente attraverso export pubblici. `@ardesia/remote-client` offre alle viste una facciata di lettura delle proiezioni e invia i comandi al server; non esegue un secondo Core nel browser.
