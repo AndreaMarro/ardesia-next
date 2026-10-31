@@ -14,6 +14,7 @@ Use this repository only. `AndreaMarro/ardesia` is a read-only source, never a d
 - Run `npm run verify`, then the affected browser flow. CI must verify the precise PR head.
 - `npm run status` generates evidence-based state; do not hand-edit generated output.
 - Browser tests default to the isolated local database. Remote regression requires explicit staging mode, existing synthetic credentials and approved platform access; its separate report never accepts M3. See `e2e/README.md` and the dated observations in `operations/m3-environment.json`.
+- Remote preflight must pass before application login or writes. Use only short-lived project OIDC on the exact staging origin, reject redirects and preserve independent application cookies; never relax protection to make a test pass.
 - No external agent/Codex jobs. Roles describe ownership, not a mandate to spawn more workers.
 
 Ownership: `apps/web` UX; `packages/core|contracts` Core; `packages/lesson-os` continuity;

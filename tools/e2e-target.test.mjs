@@ -64,7 +64,7 @@ function actualConfiguration(overrides) {
   const result = spawnSync(process.execPath, ['--input-type=module', '-e', `
     const {default: config} = await import('./playwright.config.ts');
     const {resolveE2ETarget} = await import('./e2e/target.ts');
-    console.log(JSON.stringify({config, target: resolveE2ETarget()}));
+    console.log(JSON.stringify({config, target: resolveE2ETarget(), automaticErrorContextDisabled: process.env.PLAYWRIGHT_NO_COPY_PROMPT === '1'}));
   `], {cwd: root, env: {...env, ...overrides}, encoding: 'utf8'});
   assert.equal(result.error, undefined, result.error?.message);
   assert.equal(result.status, 0, result.stderr);
@@ -84,7 +84,7 @@ test('E2E real local configuration uses the same API/page/server origin and orig
 });
 
 test('E2E real remote configuration starts no local server and cannot overwrite local evidence', () => {
-  const {config, target} = actualConfiguration({...remote, ARDESIA_E2E_BASE_URL: `${staging}/`});
+  const {config, target, automaticErrorContextDisabled} = actualConfiguration({...remote, ARDESIA_E2E_BASE_URL: `${staging}/`});
   assert.equal(config.use.baseURL, staging);
   assert.equal(config.use.baseURL, target.origin);
   assert.equal(config.webServer, undefined);
@@ -94,4 +94,7 @@ test('E2E real remote configuration starts no local server and cannot overwrite 
   assert.deepEqual(config.projects.map(project => project.name), ['desktop-chromium', 'mobile-chromium']);
   assert.equal(config.retries, 0);
   assert.equal(config.workers, 1);
+  assert.equal(config.use.serviceWorkers, 'block');
+  assert.equal(config.globalSetup, './tools/remote-playwright-setup.mjs');
+  assert.equal(automaticErrorContextDisabled, true);
 });
