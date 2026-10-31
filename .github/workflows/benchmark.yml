@@ -1,0 +1,53 @@
+name: Extended benchmark
+on:
+  pull_request:
+    paths:
+      - 'tools/benchmark*.mjs'
+      - '.github/workflows/benchmark.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: benchmark-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  benchmark:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      M3_TEST_ADMIN_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/postgres
+      M3_BENCHMARK_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_benchmark
+      ARDESIA_COMMIT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: node --test tools/benchmark.test.mjs
+      - run: node tools/setup-test-databases.mjs
+      - run: node tools/build-plugin.mjs
+      - run: node tools/benchmark.mjs --extended
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: benchmark-extended-${{ github.event.pull_request.head.sha || github.sha }}
+          path: artifacts/benchmark-extended.json
+          if-no-files-found: warn
+          retention-days: 30

@@ -6,19 +6,43 @@ import {pathToFileURL} from 'node:url';
 import {identity} from './evidence.mjs';
 import {requireLoopbackBenchmark} from './qa-database.mjs';
 
-const summary = values => {
-  if (!values.length) throw Error('BENCHMARK_HAS_NO_SAMPLES');
+export function summarizeSamples(values) {
+  if (!Array.isArray(values) || !values.length || values.some(value => !Number.isFinite(value) || value < 0)) throw Error('BENCHMARK_INVALID_SAMPLES');
   const ordered = values.toSorted((a, b) => a - b), rank = p => ordered[Math.ceil(p * ordered.length) - 1];
-  return {samples: ordered.length, p50Ms: rank(0.5), p95Ms: rank(0.95), maxMs: ordered.at(-1)};
-};
+  return {samples: ordered.length, samplesMs: [...values], p50Ms: rank(0.5), p95Ms: rank(0.95), maxMs: ordered.at(-1),
+    tailEstimate: values.length < 20 ? 'small-sample-maximum' : values.length < 100 ? 'limited-small-sample' : 'observed-samples-only'};
+}
+
+export function benchmarkConfiguration(args = []) {
+  if (!Array.isArray(args) || args.length > 1 || args.length === 1 && args[0] !== '--extended') {
+    throw Object.assign(Error('BENCHMARK_ARGUMENTS_REFUSED'), {phase: 'configuration', code: 'BENCHMARK_ARGUMENTS_REFUSED'});
+  }
+  const extended = args.length === 1;
+  return {mode: extended ? 'extended' : 'smoke', samples: extended ? 100 : 12, warmup: extended ? 10 : 3,
+    pointsPerStroke: 32, maxDurationMs: extended ? 600_000 : 120_000,
+    profiles: extended ? [[512, 24]] : [[8, 1], [32, 1], [128, 1], [128, 8], [128, 24]]};
+}
+
+export function makeInkCommand(documentId, expectedRevision, pointsPerStroke) {
+  if (!Number.isInteger(pointsPerStroke) || pointsPerStroke < 2 || pointsPerStroke > 256) throw Error('BENCHMARK_INVALID_POINTS');
+  return {kind: 'add-object', commandId: randomUUID(), documentId, expectedRevision,
+    object: {id: randomUUID(), type: 'ink', title: 'Synthetic measured stroke', x: 0, y: 0, width: 100, height: 100,
+      data: {points: Array.from({length: pointsPerStroke}, (_, i) => ({x: i, y: i % 7, pressure: 0.5})), width: 2, color: '#151515'}}};
+}
 
 /** Bounded, real PostgreSQL/Core workload; cannot select staging or another database. */
-export async function runBenchmark(env = process.env) {
+export async function runBenchmark(env = process.env, args = []) {
+  const config = benchmarkConfiguration(args), started = performance.now();
+  const checkDeadline = () => {if (performance.now() - started > config.maxDurationMs) throw Error('BENCHMARK_TIME_LIMIT');};
   const connectionString = env.M3_BENCHMARK_DATABASE_URL;
   const report = {...identity(), kind: 'ardesia-postgres-benchmark', environment: 'isolated-loopback-ci',
-    measuredBoundary: 'authenticated PostgresStore command/read including Core validation and authorized projections; HTTP, TLS and browser rendering excluded',
-    percentileMethod: 'nearest-rank; bounded smoke workload, not a capacity or production latency estimate',
-    profiles: {strokeScale: {assignedStudents: 1, strokes: [8, 32, 128]}, studentScale: {inkStrokes: 128, assignedStudents: [1, 8, 24]}},
+    schemaVersion: 2, mode: config.mode, m3Acceptance: 'NOT_EVALUATED',
+    measuredBoundary: 'authenticated PostgresStore with Core/projections; separate in-process HTTP handler with JSON encode/decode; no network, TLS or browser rendering',
+    percentileMethod: 'nearest-rank; raw ordered samples retained; observed workload is not a production SLA or a capacity estimate',
+    workload: {...config, model: 'growing-session', repetitions: 1, mutationOrder: ['rename-document', 'store-add-ink', 'handler-add-ink']},
+    boundaries: {store: 'authenticated PostgresStore, Core and authorized projection',
+      handler: 'Web Request/Response handler in-process, including JSON serialization; no TCP',
+      browser: {status: 'NOT_RUN', reason: 'This runner does not measure pointer events, rendering or frame latency.'}},
     sizes: [], concurrency: null, passed: false};
   let vite, admin, runtime, runtimeRole, sampler, phase = 'configuration';
   try {
@@ -30,7 +54,7 @@ export async function runBenchmark(env = process.env) {
     phase = 'load-lesson-os';
     const lesson = await vite.ssrLoadModule('/@fs/' + resolve('packages/lesson-os/src/index.ts'));
     phase = 'prepare-database';
-    admin = api.createDatabasePool(connectionString, {max: 1});
+    admin = api.createDatabasePool(connectionString, {max: 1, query_timeout: 30_000});
     // A second invocation refuses a populated database rather than resetting anything.
     const prior = await admin.query("SELECT to_regclass('ardesia_next.workspaces') AS present");
     if (prior.rows[0].present) throw Error('BENCHMARK_DATABASE_NOT_FRESH');
@@ -50,14 +74,34 @@ export async function runBenchmark(env = process.env) {
     await admin.query(`GRANT ardesia_next_runtime TO ${runtimeRole}`);
     const runtimeUrl = new URL(connectionString); runtimeUrl.username = runtimeRole; runtimeUrl.password = '';
     const applicationName = `ardesia-benchmark-${randomUUID()}`;
-    runtime = api.createDatabasePool(runtimeUrl.href, {max: 5, application_name: applicationName});
+    runtime = api.createDatabasePool(runtimeUrl.href, {max: 5, query_timeout: 30_000, application_name: applicationName});
     const store = api.createPostgresStore({pool: runtime, pluginPolicy: api.createFirstPartyPolicy({artifactRoot: resolve('apps/web/public')})});
     phase = 'authenticate';
     const signedIn = await store.login({action: 'login', username: teacher.username, password: teacher.password});
     const studentSessions = new Map();
     for (const student of students) studentSessions.set(student.id,
       await store.login({action: 'login', username: student.username, password: student.password}));
-    const execute = input => store.execute(signedIn.token, teacher.id, input);
+    const execute = async input => {
+      checkDeadline(); const result = await store.execute(signedIn.token, teacher.id, input); checkDeadline(); return result;
+    };
+    const origin = 'https://benchmark.invalid', handler = api.createApiHandler({store, allowedOrigins: [origin]});
+    const throughHandler = async input => {
+      checkDeadline();
+      const response = await handler(new Request(origin + '/api/m3', {method: 'POST', headers: {
+        Origin: origin, 'Content-Type': 'application/json', Cookie: '__Host-ardesia_session=' + signedIn.token, 'X-Ardesia-Account': teacher.id,
+      }, body: JSON.stringify(input)}));
+      const body = await response.json(); checkDeadline();
+      if (response.status !== 200 || body.ok !== true) throw Error('BENCHMARK_HANDLER_REFUSED');
+      return body.result;
+    };
+    function confirmedWrite(result, command) {
+      const document = result?.projection?.documents?.find(row => row.id === command.documentId);
+      if (result?.receipt?.commandId !== command.commandId || document?.revision !== command.expectedRevision + 1
+        || command.kind === 'add-object' && !document.objects.some(object => object.id === command.object.id && object.type === 'ink')) {
+        throw Error('BENCHMARK_WRITE_NOT_CONFIRMED');
+      }
+      return document;
+    }
     const monitoring = {sampleIntervalMs: 5, samples: 0, maxDatabaseConnections: 0, maxLockWaiters: 0, maxPoolConnections: 0, maxPoolWaiters: 0, missedSamples: 0};
     let sampling = false, activeSample = Promise.resolve();
     sampler = setInterval(() => {
@@ -76,10 +120,9 @@ export async function runBenchmark(env = process.env) {
       const workspace = await execute({action: 'create-workspace', commandId: randomUUID(), title: 'Bounded benchmark'}), documentId = randomUUID();
       await execute({action: 'command', workspaceId: workspace.workspaceId,
         command: {kind: 'create-document', commandId: randomUUID(), documentId, expectedRevision: 0, title: 'Benchmark'}});
-      for (let index = 0; index < strokes; index++) await execute({action: 'command', workspaceId: workspace.workspaceId,
-        command: {kind: 'add-object', commandId: randomUUID(), documentId, expectedRevision: index + 1,
-          object: {id: randomUUID(), type: 'ink', title: 'Synthetic stroke', x: 0, y: 0, width: 100, height: 100,
-            data: {points: Array.from({length: 32}, (_, i) => ({x: i, y: index % 100, pressure: 0.5})), width: 2, color: '#151515'}}}});
+      for (let index = 0; index < strokes; index++) {
+        await execute({action: 'command', workspaceId: workspace.workspaceId, command: makeInkCommand(documentId, index + 1, config.pointsPerStroke)});
+      }
       for (const student of students.slice(0, studentCount)) {
         await execute({action: 'learning-command', workspaceId: workspace.workspaceId,
           command: {kind: 'assign-lesson', commandId: randomUUID(), documentId, studentId: student.id, expectedRevision: 0}});
@@ -89,25 +132,44 @@ export async function runBenchmark(env = process.env) {
       return {workspaceId: workspace.workspaceId, documentId};
     }
     const read = row => execute({action: 'open-workspace', workspaceId: row.workspaceId});
-    for (const [strokes, studentCount] of [[8, 1], [32, 1], [128, 1], [128, 8], [128, 24]]) {
-      phase = `snapshot-${strokes}`;
-      const row = await seed(strokes, studentCount);
-      for (let i = 0; i < 3; i++) await read(row);
-      const reopen = [], projection = [], commands = [];
-      for (let sample = 0; sample < 12; sample++) {
-        const opened = await timed(() => read(row)); reopen.push(opened.ms);
-        const start = performance.now(), continuity = lesson.projectContinuity(opened.result.events, row.documentId);
-        projection.push(performance.now() - start);
-        if (continuity.latestRevision !== opened.result.documents[0].revision) throw Error('BENCHMARK_PROJECTION_MISMATCH');
-        const changed = await timed(() => execute({action: 'command', workspaceId: row.workspaceId,
-          command: {kind: 'rename-document', commandId: randomUUID(), documentId: row.documentId,
-            expectedRevision: opened.result.documents[0].revision, title: `Measured ${sample}`}})); commands.push(changed.ms);
-      }
+    const snapshotSize = async row => {
       const stored = (await admin.query(`SELECT octet_length(snapshot::text) AS bytes,jsonb_array_length(snapshot->'events') AS events
         FROM ardesia_next.workspaces WHERE id=$1`, [row.workspaceId])).rows[0];
-      const opened = await read(row);
-      report.sizes.push({inkStrokes: strokes, pointsPerStroke: 32, assignedStudents: studentCount, documentEvents: opened.events.length, snapshotEvents: stored.events,
-        snapshotJsonBytes: stored.bytes, reopen: summary(reopen), lessonOsProjection: summary(projection), command: summary(commands)});
+      return {snapshotJsonBytes: stored.bytes, snapshotEvents: stored.events};
+    };
+    for (const [strokes, studentCount] of config.profiles) {
+      phase = `snapshot-${strokes}`;
+      const row = await seed(strokes, studentCount), timings = {reopen: [], lessonOsProjection: [], command: [], inkCommand: [], handlerRead: [], handlerInk: []};
+      const sampleInkStrokes = [];
+      let roundNumber = 0;
+      async function round(record) {
+        const capture = async (key, operation) => {const measured = await timed(operation); if (record) timings[key].push(measured.ms); return measured.result;};
+        const opened = await capture('reopen', () => read(row));
+        const continuity = await capture('lessonOsProjection', () => lesson.projectContinuity(opened.events, row.documentId));
+        if (continuity.latestRevision !== opened.documents[0].revision) throw Error('BENCHMARK_PROJECTION_MISMATCH');
+        const rename = {kind: 'rename-document', commandId: randomUUID(), documentId: row.documentId,
+          expectedRevision: opened.documents[0].revision, title: `Measured ${roundNumber++}`};
+        let document = confirmedWrite(await capture('command', () => execute({action: 'command', workspaceId: row.workspaceId, command: rename})), rename);
+        const ink = makeInkCommand(row.documentId, document.revision, config.pointsPerStroke);
+        document = confirmedWrite(await capture('inkCommand', () => execute({action: 'command', workspaceId: row.workspaceId, command: ink})), ink);
+        const reopened = await capture('handlerRead', () => throughHandler({action: 'open-workspace', workspaceId: row.workspaceId}));
+        if (reopened.documents[0].revision !== document.revision) throw Error('BENCHMARK_HANDLER_REVISION_MISMATCH');
+        const apiInk = makeInkCommand(row.documentId, document.revision, config.pointsPerStroke);
+        document = confirmedWrite(await capture('handlerInk', () => throughHandler({action: 'command', workspaceId: row.workspaceId, command: apiInk})), apiInk);
+        if (record) sampleInkStrokes.push(document.objects.filter(object => object.type === 'ink').length);
+      }
+      // Warm every measured operation; seeding and warm-up never enter the sample arrays.
+      for (let i = 0; i < config.warmup; i++) await round(false);
+      const before = await snapshotSize(row);
+      for (let sample = 0; sample < config.samples; sample++) await round(true);
+      const after = await snapshotSize(row), opened = await read(row);
+      const finalInkStrokes = opened.documents[0].objects.filter(object => object.type === 'ink').length;
+      if (finalInkStrokes !== strokes + 2 * (config.warmup + config.samples)
+        || opened.documents[0].revision !== strokes + 1 + 3 * (config.warmup + config.samples)) throw Error('BENCHMARK_INK_GROWTH_MISMATCH');
+      report.sizes.push({inkStrokes: strokes, initialMeasuredInkStrokes: strokes + 2 * config.warmup, finalInkStrokes,
+        sampleInkStrokes, pointsPerStroke: config.pointsPerStroke, assignedStudents: studentCount,
+        warmupRounds: config.warmup, measuredRounds: config.samples, before, ...after, documentEvents: opened.events.length,
+        commandKind: 'rename-document', ...Object.fromEntries(Object.entries(timings).map(([name, values]) => [name, summarizeSamples(values)]))});
     }
     // Equal, small snapshots for both contention cases; only workspace sharing changes.
     phase = 'concurrency';
@@ -129,10 +191,11 @@ export async function runBenchmark(env = process.env) {
       }
       if (successful !== (shared ? 4 : 32) || conflicts !== (shared ? 28 : 0)) throw Error('BENCHMARK_CONCURRENCY_INVARIANT_FAILED');
       contention[shared ? 'sameWorkspace' : 'independentWorkspaces'] = {parallelCommands: 8, rounds: 4, successful, conflicts,
-        commits: summary(successTimes), refusals: conflictTimes.length ? summary(conflictTimes) : null};
+        meaning: shared ? 'expected CAS refusals from eight writers using the same revision' : 'valid writes in independent workspaces',
+        commits: summarizeSamples(successTimes), refusals: conflictTimes.length ? summarizeSamples(conflictTimes) : null};
     }
     clearInterval(sampler); sampler = null; await activeSample;
-    report.concurrency = contention; report.monitoring = monitoring; report.passed = true;
+    report.concurrency = contention; report.monitoring = monitoring; report.elapsedMs = performance.now() - started; report.passed = true;
     return report;
   } catch (error) {
     const code = /^[A-Z_0-9]{1,80}$/.test(error?.code ?? '') ? error.code
@@ -147,9 +210,15 @@ export async function runBenchmark(env = process.env) {
 }
 if (process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url) {
   try {
-    const report = await runBenchmark(); mkdirSync('artifacts', {recursive: true});
-    writeFileSync('artifacts/benchmark.json', JSON.stringify(report, null, 2) + '\n');
-    console.log(JSON.stringify(report));
+    const report = await runBenchmark(process.env, process.argv.slice(2)); mkdirSync('artifacts', {recursive: true});
+    const path = report.mode === 'extended' ? 'artifacts/benchmark-extended.json' : 'artifacts/benchmark.json';
+    writeFileSync(path, JSON.stringify(report, null, 2) + '\n');
+    console.log(JSON.stringify({kind: report.kind, mode: report.mode, passed: report.passed, commit: report.commit,
+      sourceDigest: report.sourceDigest, elapsedMs: report.elapsedMs, report: path,
+      sizes: report.sizes.map(row => ({initialInkStrokes: row.initialMeasuredInkStrokes, finalInkStrokes: row.finalInkStrokes,
+        snapshotJsonBytes: row.snapshotJsonBytes, samples: row.measuredRounds,
+        inkP50Ms: row.inkCommand.p50Ms, inkP95Ms: row.inkCommand.p95Ms,
+        handlerInkP50Ms: row.handlerInk.p50Ms, handlerInkP95Ms: row.handlerInk.p95Ms}))}));
   } catch (error) {console.error(JSON.stringify({kind: 'ardesia-postgres-benchmark', passed: false,
     phase: error.phase ?? 'cleanup', code: error.code ?? 'BENCHMARK_FAILED'})); process.exitCode = 1;}
 }

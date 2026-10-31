@@ -43,6 +43,7 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      - run: node --test tools/benchmark.test.mjs
       - run: node tools/setup-test-databases.mjs
       - run: npm run verify
       - run: node tools/qa-integration.mjs
