@@ -1,5 +1,5 @@
 import {useEffect, useState, useSyncExternalStore} from 'react';
-import {Check, FlaskConical, Search, ShieldCheck, Power, ArrowUpRight} from 'lucide-react';
+import {Check, FlaskConical, Search, ShieldCheck, Power, ArrowUpRight} from './Icons';
 import type {CatalogPlugin, PluginCatalog, Capability} from '@ardesia/plugin-sdk';
 import {loadCatalog, verifyModule, getInstallation, changeInstallation, checkUpdates, moduleStatus, marketplaceVersion, subscribeMarketplace, pluginErrorCode} from '../plugins/first-party';
 

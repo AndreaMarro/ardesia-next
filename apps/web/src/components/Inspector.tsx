@@ -1,5 +1,5 @@
 import {useEffect, useLayoutEffect, useState} from 'react';
-import {X, Link2, Trash2, SquareFunction, Type, SquarePen, FlaskConical} from 'lucide-react';
+import {X, Link2, Trash2, SquareFunction, Type, SquarePen, FlaskConical} from './Icons';
 import {canonicalJson, toObjectInput, type EducationalObject, type NewEducationalObject} from '@ardesia/contracts';
 import {draftConflictMessage, removedDraftMessage, type SaveObject} from '../workspace';
 import {MathFormula} from './MathFormula';

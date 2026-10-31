@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState, type PointerEvent, type KeyboardEvent} from 'react';
-import {MousePointer2, SquarePen, Type, SquareFunction, Link2, Undo2} from 'lucide-react';
+import {MousePointer2, SquarePen, Type, SquareFunction, Link2, Undo2} from './Icons';
 import type {EducationalObject, LessonDocument, NewEducationalObject} from '@ardesia/contracts';
 import {ObjectContent} from './ObjectContent';
 

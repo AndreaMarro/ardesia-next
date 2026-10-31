@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {ArrowUpRight, Download, NotebookPen} from 'lucide-react';
+import {ArrowUpRight, Download, NotebookPen} from './Icons';
 import type {CoreService} from '@ardesia/core';
 import {projectContinuity} from '@ardesia/lesson-os';
 import type {Actor, LessonDocument} from '@ardesia/contracts';

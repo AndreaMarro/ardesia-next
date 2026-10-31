@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     manifest: true, target: 'es2022', minify: 'terser', modulePreload: {polyfill: false},
-    terserOptions: {ecma: 2022, safari10: false, compress: {passes: 3}, format: {comments: false, ascii_only: true}},
+    terserOptions: {ecma: 2022, safari10: false, compress: {passes: 3, reduce_funcs: false, sequences: false, join_vars: false}, format: {comments: false, ascii_only: true}},
     rolldownOptions: {output: {
       charset: 'ascii', minify: {compress: {target: 'es2022'}, mangle: true},
       codeSplitting: {groups: [{name: 'math', test: /node_modules[\\/]katex[\\/]/}]},

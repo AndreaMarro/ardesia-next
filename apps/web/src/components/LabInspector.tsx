@@ -1,5 +1,5 @@
 import {useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore} from 'react';
-import {FlaskConical, X, Trash2, Undo2} from 'lucide-react';
+import {FlaskConical, X, Trash2, Undo2} from './Icons';
 import {canonicalJson, LabDataSchema, toObjectInput, type LabObject} from '@ardesia/contracts';
 import type {PluginEvaluation} from '@ardesia/plugin-sdk';
 import type {PluginSession} from '@ardesia/plugin-host';

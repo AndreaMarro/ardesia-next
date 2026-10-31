@@ -1,8 +1,9 @@
 import {useLayoutEffect, useRef, useState} from 'react';
-import {NotebookPen, Settings2, SquarePen, Plus, LibraryBig, Save, History, Layers3, Type, SquareFunction, Link2, X, FlaskConical} from 'lucide-react';
+import {NotebookPen, Settings2, SquarePen, Plus, LibraryBig, Save, History, Layers3, Type, SquareFunction, Link2, X, FlaskConical} from './components/Icons';
 import type {CoreService} from '@ardesia/core';
 import {CoreError, toObjectInput, type EducationalObject, type NewEducationalObject} from '@ardesia/contracts';
-import {edit, newLesson, type EditCommand} from './workspace';
+import {newLesson, type EditCommand} from './workspace';
+import type {RemoteClient} from '@ardesia/remote-client';
 import type {Actor} from '@ardesia/contracts';
 import {SharingDialog} from './components/SharingDialog';
 import {Board} from './components/Board';
@@ -13,7 +14,7 @@ import {Dialog} from './components/Dialog';
 import {createFirstPartyLab} from './plugins/first-party';
 
 type Mode = 'board' | 'notebook' | 'reader';
-export function App({core, actor, onAccount, onExport, workspaceId}: {workspaceId: string; core: CoreService; actor: Actor; onAccount: () => void; onExport: () => Promise<void>}) {
+export function App({core, actor, onEdit, saveStatus, onAccount, onExport, workspaceId}: {workspaceId: string; core: CoreService; actor: Actor; onEdit: RemoteClient['edit']; saveStatus: string; onAccount: () => void; onExport: () => Promise<void>}) {
   const [sharing, setSharing] = useState(false);
   const documents = core.listDocuments(actor).sort((a,b) => b.updatedAt.localeCompare(a.updatedAt));
   const navigationKey = `ardesia-next-document:${actor.actorId}:${workspaceId}`;
@@ -25,7 +26,6 @@ export function App({core, actor, onAccount, onExport, workspaceId}: {workspaceI
   const [selectedId, setSelectedId] = useState<string|null>(initial.objects.find(o => o.type === 'formula')?.id ?? null);
   const [inspectorOpen, setInspectorOpen] = useState(!window.matchMedia('(max-width: 1100px)').matches);
   const [dialog, setDialog] = useState<DialogName | null>(null);
-  const [message, setMessage] = useState('Confermato dal server');
   const [error, setError] = useState<string|null>(null);
   const [undo, setUndo] = useState<EditCommand[]>([]);
   const [editorDirty, setEditorDirty] = useState(false);
@@ -37,9 +37,9 @@ export function App({core, actor, onAccount, onExport, workspaceId}: {workspaceI
   useLayoutEffect(() => {if (selected) previousSelected.current = selected;}, [selected]);
   const edited = selected ?? (editorDirty && previousSelected.current?.id === selectedId ? previousSelected.current : undefined);
   async function run(command: EditCommand, inverse?: EditCommand, base?: EducationalObject): Promise<boolean> {
-    setMessage('Salvataggio…'); setError(null);
-    try {await edit(core, actor, documentId, command, base); setVersion(value => value + 1); if(inverse) setUndo(history => [...history, inverse]); setMessage('Confermato dal server'); return true;}
-    catch (reason) {setError(reason instanceof CoreError ? reason.message : 'Modifica non confermata. Verifica il pannello di recupero.'); setMessage('Salvataggio non riuscito'); return false;}
+    setError(null);
+    try {await onEdit(actor, documentId, command, base); setVersion(value => value + 1); if(inverse) setUndo(history => [...history, inverse]); return true;}
+    catch (reason) {setError(reason instanceof CoreError ? reason.message : 'Modifica non confermata. Verifica il pannello di recupero.'); return false;}
   }
   function navigate(action: () => void) {
     if(editorDirty) setPendingNavigation(() => action);
@@ -93,7 +93,7 @@ export function App({core, actor, onAccount, onExport, workspaceId}: {workspaceI
       onSave={async (object, base) => await run({kind:'replace-object',object},{kind:'replace-object',object:toObjectInput(base)},base)
         ? core.getDocument(actor, documentId).objects.find(saved => saved.id === object.id) ?? null : null}
       onRemove={async id => {const ok=await run({kind:'remove-object',objectId:id}); if(ok){setSelectedId(null);setUndo([]);}return ok;}}/>}
-    <footer className="app-footer"><div role="status" aria-live="polite"><span>{editorDirty ? 'Modifiche da salvare' : message}</span></div><button className="footer-history" aria-label="Apri storia lezione" onClick={() => setDialog('history')}><History size={15}/><span>Revisione {document.revision}</span></button><span className="footer-brand">Ardesia Next</span></footer>
+    <footer className="app-footer"><div role="status" aria-live="polite"><span>{editorDirty ? 'Modifiche da salvare' : saveStatus}</span></div><button className="footer-history" aria-label="Apri storia lezione" onClick={() => setDialog('history')}><History size={15}/><span>Revisione {document.revision}</span></button><span className="footer-brand">Ardesia Next</span></footer>
     {dialog && <WorkspaceDialogs name={dialog} core={core} actor={actor} onExport={onExport} document={document} onClose={() => {if (!addingLab) setDialog(null);}} onOpen={openDocument} onAddLab={addLab} addingLab={addingLab} onModulesChanged={() => setVersion(value => value + 1)}
       onCreate={async title => {try {const id=await newLesson(core,actor,title);openDocument(id);setDialog(null);setMode('board');}catch {setError('Impossibile creare la lezione. I dati esistenti sono conservati.');}}}/>}
     {sharing && <SharingDialog core={core} actor={actor} document={document} onClose={() => setSharing(false)}/> }

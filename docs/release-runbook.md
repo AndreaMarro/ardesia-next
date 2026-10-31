@@ -26,6 +26,8 @@ Un errore di build, un target inatteso, una discrepanza SHA/digest o un accesso 
 
 La nota storica M0 sul salvataggio per browser non descrive M3. In M3 PostgreSQL è autorevole: il rollback del codice richiede compatibilità con lo schema e i dati correnti. Un backup verificato e un restore provato in un database distinto e vuoto sono requisiti separati; un alias precedente non ripristina i dati. Conservare deployment, report, archivio e URL del candidato precedente finché serve al ripristino.
 
+La coda editor introdotta nella correzione P0 della PR #16 conserva anche intenti non inviati, con record di recupero versione 2 e chiavi per comando nello stesso namespace per account. Il reader legge anche il vecchio array e lo conserva; le chiavi distinte impediscono a due schede aggiornate di cancellare gli intenti l'una dell'altra. Un client precedente non legge le nuove chiavi: un rollback richiede un reader compatibile oppure recupero/esportazione completati prima del cambio client. Non interpretare la sua lista vuota come conferma del server e non cancellare dati di recupero per abilitare il rollback. Se il browser segnala recupero solo in memoria, l'esportazione è necessaria prima di chiudere o ricaricare la pagina. Questo formato non cambia snapshot o schema PostgreSQL.
+
 
 ## Gate M1
 
