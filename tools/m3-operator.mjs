@@ -14,6 +14,7 @@ const proof = observation => {const value = {...observation, observedAt: now(), 
 export async function collectOperatorAcceptance({current, deployment, browser, env = process.env}) {
   const {source, target} = requireIsolatedRestore(env.ARDESIA_QA_OPERATOR_DATABASE_URL,
     env.ARDESIA_QA_RESTORE_DATABASE_URL, env.ARDESIA_QA_RESTORE_RESOURCE_HASH);
+  need(deployment.databaseResourceIdHash === source.resourceIdHash);
   const startedAt = now(), checks = {};
   const {createServer} = await import('vite');
   const vite = await createServer({configFile: false, server: {middlewareMode: true}, appType: 'custom', logLevel: 'silent'});
@@ -37,7 +38,7 @@ export async function collectOperatorAcceptance({current, deployment, browser, e
     const backup = await api.exportBackup(sourcePool), scope = browser.operatorScope;
     need(Array.isArray(scope?.accountIds) && scope.accountIds.length === 3 && new Set(scope.accountIds).size === 3
       && backup.data.accounts.length === 3 && backup.data.accounts.every(a => scope.accountIds.includes(a.id) && a.disabled_at === null)
-      && backup.data.workspaces.length > 0 && backup.data.workspaces.every(w => w.owner_account_id === scope.teacherId
+      && backup.data.workspaces.some(w => w.id === scope.workspaceId) && backup.data.workspaces.every(w => w.owner_account_id === scope.teacherId
         && w.snapshot.assignments.every(a => scope.accountIds.includes(a.studentId))
         && w.snapshot.learnerWork.every(w => scope.accountIds.includes(w.studentId))));
     const qaCredentials = backup.data.accounts.map(a => ({...a, username: `qa-${randomUUID()}`, displayName: 'Isolated QA', password: randomBytes(24).toString('base64url')}));

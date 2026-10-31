@@ -28,7 +28,7 @@ try {
   const workspace = await store.execute(session.token, teacher.id, {action: 'create-workspace', commandId: randomUUID(), title: 'Synthetic operator contract'});
   const current = identity(), startedAt = new Date().toISOString();
   const report = await collectOperatorAcceptance({current, deployment: {...current, projectId: 'local-test', deploymentId: 'dpl_LocalContract',
-    url: 'https://ardesia-next-local-contract.vercel.app', status: 'READY'}, browser: {operatorScope: {accountIds: accounts.map(a => a.id), teacherId: teacher.id,
+    url: 'https://ardesia-next-local-contract.vercel.app', status: 'READY', databaseResourceIdHash: databaseIdentity(sourceUrl.href).resourceIdHash}, browser: {operatorScope: {accountIds: accounts.map(a => a.id), teacherId: teacher.id,
       workspaceId: workspace.workspaceId, nonce: randomUUID()}}, env: {ARDESIA_QA_OPERATOR_DATABASE_URL: sourceUrl.href,
       ARDESIA_QA_RESTORE_DATABASE_URL: restoreUrl.href, ARDESIA_QA_RESTORE_RESOURCE_HASH: databaseIdentity(restoreUrl.href).resourceIdHash}});
   if (Object.keys(report.checks).length !== 4 || report.checks.expired.responseStatus !== 401 || report.checks.outage.failedStatus !== 503

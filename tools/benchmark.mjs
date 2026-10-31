@@ -41,6 +41,9 @@ export async function runBenchmark(env = process.env) {
     runtime = api.createDatabasePool(runtimeUrl.href, {max: 5, application_name: applicationName});
     const store = api.createPostgresStore({pool: runtime, pluginPolicy: api.createFirstPartyPolicy({artifactRoot: resolve('apps/web/public')})});
     const signedIn = await store.login({action: 'login', username: teacher.username, password: teacher.password});
+    const studentSessions = new Map();
+    for (const student of students) studentSessions.set(student.id,
+      await store.login({action: 'login', username: student.username, password: student.password}));
     const execute = input => store.execute(signedIn.token, teacher.id, input);
     const monitoring = {sampleIntervalMs: 5, samples: 0, maxDatabaseConnections: 0, maxLockWaiters: 0, maxPoolConnections: 0, maxPoolWaiters: 0, missedSamples: 0};
     let sampling = false, activeSample = Promise.resolve();
@@ -64,8 +67,12 @@ export async function runBenchmark(env = process.env) {
         command: {kind: 'add-object', commandId: randomUUID(), documentId, expectedRevision: index + 1,
           object: {id: randomUUID(), type: 'ink', title: 'Synthetic stroke', x: 0, y: 0, width: 100, height: 100,
             data: {points: Array.from({length: 32}, (_, i) => ({x: i, y: index % 100, pressure: 0.5})), width: 2, color: '#151515'}}}});
-      for (const student of students.slice(0, studentCount)) await execute({action: 'learning-command', workspaceId: workspace.workspaceId,
-        command: {kind: 'assign-lesson', commandId: randomUUID(), documentId, studentId: student.id, expectedRevision: 0}});
+      for (const student of students.slice(0, studentCount)) {
+        await execute({action: 'learning-command', workspaceId: workspace.workspaceId,
+          command: {kind: 'assign-lesson', commandId: randomUUID(), documentId, studentId: student.id, expectedRevision: 0}});
+        await store.execute(studentSessions.get(student.id).token, student.id, {action: 'learning-command', workspaceId: workspace.workspaceId,
+          command: {kind: 'save-learner-note', commandId: randomUUID(), documentId, expectedRevision: 0, text: 'Synthetic private learner work'}});
+      }
       return {workspaceId: workspace.workspaceId, documentId};
     }
     const read = row => execute({action: 'open-workspace', workspaceId: row.workspaceId});

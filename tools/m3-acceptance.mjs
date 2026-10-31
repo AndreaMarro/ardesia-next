@@ -95,7 +95,8 @@ async function main() {
   let operator = null;
   if (process.env.ARDESIA_QA_OPERATOR_DATABASE_URL && process.env.ARDESIA_QA_RESTORE_DATABASE_URL) {
     const {collectOperatorAcceptance} = await import('./m3-operator.mjs');
-    operator = await collectOperatorAcceptance({current, deployment: before, browser}); write('operator', operator);
+    try {operator = await collectOperatorAcceptance({current, deployment: before, browser}); write('operator', operator);}
+    catch {write('operator-blocked', {completed: false, reason: 'ISOLATED_OPERATOR_PROBES_NOT_COMPLETED'});}
   }
   const postflight = await runRemotePreflight({expected: current}); write('postflight', postflight);
   let after = null;
@@ -109,5 +110,6 @@ async function main() {
   process.exitCode = result.accepted ? 0 : 1;
 }
 if (process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url) {
-  main().catch(() => {console.error('M3 acceptance incomplete; no release evidence was promoted.'); process.exitCode = 1;});
+  if (process.argv.length !== 2) {console.error('M3 acceptance does not accept diagnostic or CLI overrides.'); process.exitCode = 1;}
+  else main().catch(() => {console.error('M3 acceptance incomplete; no release evidence was promoted.'); process.exitCode = 1;});
 }

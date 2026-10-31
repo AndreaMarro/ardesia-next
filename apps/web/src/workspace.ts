@@ -16,12 +16,13 @@ export function learnerObject(object: EducationalObject, work: LearnerWork | nul
 // arrives. Serialize UI intents per Core instance; the Core still independently
 // authorizes the actor and rejects stale external writers and object drafts.
 const editQueues = new WeakMap<CoreService, Promise<void>>();
-export function edit(core: CoreService, actor: Actor, documentId: string, command: EditCommand, base?: EducationalObject): Promise<void> {
+export async function edit(core: CoreService, actor: Actor, documentId: string, command: EditCommand, base?: EducationalObject): Promise<void> {
+  const intent = structuredClone({actor, command, base});
   const previous = editQueues.get(core) ?? Promise.resolve();
   const pending = previous.catch(() => undefined).then(async () => {
-    const current = core.getDocument(actor, documentId);
-    if (base) assertDraftUnchanged(base, current.objects.find(object => object.id === base.id));
-    await core.execute(actor, {...command, commandId: crypto.randomUUID(), documentId, expectedRevision: current.revision} as CoreCommand);
+    const current = core.getDocument(intent.actor, documentId);
+    if (intent.base) assertDraftUnchanged(intent.base, current.objects.find(object => object.id === intent.base!.id));
+    await core.execute(intent.actor, {...intent.command, commandId: crypto.randomUUID(), documentId, expectedRevision: current.revision} as CoreCommand);
   });
   editQueues.set(core, pending);
   return pending;
