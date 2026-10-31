@@ -12,10 +12,19 @@ export function learnerObject(object: EducationalObject, work: LearnerWork | nul
   const saved = work?.labs.find(lab => lab.objectId === object.id);
   return object.type === 'lab' && saved ? {...object, data: saved.data, revision: saved.revision} : object;
 }
-export async function edit(core: CoreService, actor: Actor, documentId: string, command: EditCommand, base?: EducationalObject): Promise<void> {
-  const current = core.getDocument(actor, documentId);
-  if (base) assertDraftUnchanged(base, current.objects.find(object => object.id === base.id));
-  await core.execute(actor, {...command, commandId: crypto.randomUUID(), documentId, expectedRevision: current.revision} as CoreCommand);
+// The canvas can submit a second pointer-up before the first remote Core receipt
+// arrives. Serialize UI intents per Core instance; the Core still independently
+// authorizes the actor and rejects stale external writers and object drafts.
+const editQueues = new WeakMap<CoreService, Promise<void>>();
+export function edit(core: CoreService, actor: Actor, documentId: string, command: EditCommand, base?: EducationalObject): Promise<void> {
+  const previous = editQueues.get(core) ?? Promise.resolve();
+  const pending = previous.catch(() => undefined).then(async () => {
+    const current = core.getDocument(actor, documentId);
+    if (base) assertDraftUnchanged(base, current.objects.find(object => object.id === base.id));
+    await core.execute(actor, {...command, commandId: crypto.randomUUID(), documentId, expectedRevision: current.revision} as CoreCommand);
+  });
+  editQueues.set(core, pending);
+  return pending;
 }
 export async function newLesson(core: CoreService, actor: Actor, title: string): Promise<string> {
   const documentId = crypto.randomUUID();
