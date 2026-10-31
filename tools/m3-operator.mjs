@@ -34,7 +34,7 @@ export async function collectOperatorAcceptance({current, deployment, browser, e
     need(empty.rows[0].workspaces === '0' && empty.rows[0].accounts === '0');
     const sourceMigration = (await sourcePool.query('SELECT digest FROM ardesia_next.schema_migrations WHERE version=1')).rows[0];
     const targetMigration = (await restorePool.query('SELECT digest FROM ardesia_next.schema_migrations WHERE version=1')).rows[0];
-    need(sourceMigration?.digest === targetMigration?.digest);
+    need(/^[a-f0-9]{64}$/.test(sourceMigration?.digest ?? '') && sourceMigration.digest === targetMigration?.digest);
     const backup = await api.exportBackup(sourcePool), scope = browser.operatorScope;
     need(Array.isArray(scope?.accountIds) && scope.accountIds.length === 3 && new Set(scope.accountIds).size === 3
       && backup.data.accounts.length === 3 && backup.data.accounts.every(a => scope.accountIds.includes(a.id) && a.disabled_at === null)

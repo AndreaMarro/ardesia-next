@@ -6,7 +6,7 @@ import {join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
-import {assembleM3Acceptance, acceptanceConfiguration} from './m3-acceptance.mjs';
+import {assembleM3Acceptance, acceptanceConfiguration, publicBrowserObservation} from './m3-acceptance.mjs';
 import {m3LocalEvidenceMatches, m3RemoteEvidenceMatches, m3ReportDigest, M3_REQUIRED_FLOWS, M3_REQUIRED_UNIT_FILES, M3_REMOTE_CHECKS} from './m3-evidence.mjs';
 
 // Contract fixtures only. These are never written to operations/ or accepted release artifacts.
@@ -139,6 +139,15 @@ test('acceptance credentials and diagnostic guards run before browser or databas
     const candidate = {...env}; mutate(candidate);
     assert.throws(() => acceptanceConfiguration(candidate, current), error => !error.message.includes('contract-only-password-placeholder'));
   }
+});
+
+test('persisted browser evidence contains pseudonyms and excludes operator account selectors and salt', () => {
+  const input = {...producerFixture().browser, operatorScope: {accountIds: ['raw-synthetic-id'], nonce: 'private-run-salt'}};
+  const report = publicBrowserObservation(input);
+  assert.equal(JSON.stringify(report).includes('raw-synthetic-id'), false);
+  assert.equal(JSON.stringify(report).includes('private-run-salt'), false);
+  assert.equal(report.accounts.studentA.idHash, hash('2'));
+  assert.equal(input.operatorScope.accountIds[0], 'raw-synthetic-id');
 });
 
 test('offline assembly consumes collected evidence without browser credentials or new remote writes', () => {

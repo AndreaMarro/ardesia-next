@@ -70,6 +70,12 @@ export function acceptanceConfiguration(env, current) {
   return target;
 }
 
+/** Raw synthetic account selectors and the per-run pseudonym salt stay in memory for the operator. */
+export function publicBrowserObservation(observation) {
+  const {operatorScope, ...report} = observation;
+  return report;
+}
+
 async function main(assembleOnly = false) {
   const current = identity(), target = assembleOnly
     ? resolveE2ETarget({ARDESIA_E2E_MODE: 'remote', ARDESIA_E2E_BASE_URL: 'https://ardesia-next-staging.vercel.app'})
@@ -101,10 +107,11 @@ async function main(assembleOnly = false) {
       .filter(key => typeof process.env[key] === 'string').map(key => [key, process.env[key]]))});
     try {browser = await collectBrowserAcceptance({browser: browserProcess, current, deployment: before, origin: target.origin});}
     finally {await browserProcess.close();}
-    write('browser', browser);
+    const operatorInput = browser;
+    browser = publicBrowserObservation(browser); write('browser', browser);
     if (process.env.ARDESIA_QA_OPERATOR_DATABASE_URL && process.env.ARDESIA_QA_RESTORE_DATABASE_URL) {
       const {collectOperatorAcceptance} = await import('./m3-operator.mjs');
-      try {operator = await collectOperatorAcceptance({current, deployment: before, browser}); write('operator', operator);}
+      try {operator = await collectOperatorAcceptance({current, deployment: before, browser: operatorInput}); write('operator', operator);}
       catch {write('operator-blocked', {completed: false, reason: 'ISOLATED_OPERATOR_PROBES_NOT_COMPLETED'});}
     }
     postflight = await runRemotePreflight({expected: current}); write('postflight', postflight);

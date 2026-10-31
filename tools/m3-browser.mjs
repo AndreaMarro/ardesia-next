@@ -102,7 +102,7 @@ export async function collectBrowserAcceptance({browser, current, deployment, or
     await expect.poll(async () => work(await projection(a1))?.notes).toBe('QA privata: T = 2π√(m/k).');
     const privateCount = (await projection(teacher)).learnerWork.length;
     const denied = await raw(b.context, {action: 'open-workspace', workspaceId: workspace.workspaceId}, b.account.id);
-    need([403, 404].includes(denied.status));
+    need([403, 404].includes(denied.status) && ['FORBIDDEN', 'NOT_FOUND'].includes(denied.body.error?.code));
     checks.idor = proof({session: 'studentB', resourceOwnerHash: accounts.studentA.idHash, responseStatus: denied.status, code: denied.body.error.code});
     const sharing = a1.page.getByLabel('Condividi con il docente note, tentativi e stati salvati', {exact: true});
     // This controlled checkbox changes only after the real server receipt arrives.
@@ -112,18 +112,24 @@ export async function collectBrowserAcceptance({browser, current, deployment, or
     await sharing.click(); await expect(sharing).not.toBeChecked();
     await expect.poll(async () => (await projection(teacher)).learnerWork.length).toBe(0);
     const afterRevokeCount = (await projection(teacher)).learnerWork.length;
+    need(privateCount === 0 && sharedCount > 0 && afterRevokeCount === 0);
     checks.teacherEvidence = proof({accountIdHash: accounts.teacher.idHash, privateCount, sharedCount, afterRevokeCount});
-    const savedWork = work(await projection(a1)), assignedObject = (await projection(a1)).assignedDocuments[0].objects.find(o => o.id === objectId);
+    const savedProjection = await projection(a1), savedWork = work(savedProjection);
     need(savedWork.labs[0].data.state.value.stiffnessNPerM === 32);
-    const snapshot = (saved, session) => ({workspaceId: workspace.workspaceId, documentId, objectId, instanceId,
-      objectRevision: assignedObject.revision, workRevision: saved.revision, labRevision: saved.labs[0].revision,
-      stateDigest: m3ReportDigest(saved), session, observedAt: now()});
-    const saved = snapshot(savedWork, 'studentA1'), oldState = await a1.context.storageState();
+    const snapshot = (saved, observed, session) => {
+      const source = observed.assignedDocuments.find(d => d.id === documentId)?.objects.find(o => o.id === objectId);
+      need(source?.type === 'lab' && saved.labs[0]?.objectId === source.id && saved.labs[0].data.instanceId === source.data.instanceId);
+      return {workspaceId: observed.workspaceId, documentId, objectId: source.id, instanceId: source.data.instanceId,
+        objectRevision: source.revision, workRevision: saved.revision, labRevision: saved.labs[0].revision,
+        stateDigest: m3ReportDigest(saved), session, observedAt: now()};
+    };
+    const saved = snapshot(savedWork, savedProjection, 'studentA1'), oldState = await a1.context.storageState();
     const loggedOut = await raw(a1.context, {action: 'logout'}, a1.account.id);
     sessions.studentA1.endedAt = now();
     const oldRequest = await playwrightRequest.newContext({baseURL: origin, storageState: oldState});
     try {
       const old = await raw(oldRequest, {action: 'open-workspace', workspaceId: workspace.workspaceId}, a1.account.id);
+      need(loggedOut.status === 200 && old.status === 401 && old.body.error?.code === 'UNAUTHENTICATED');
       checks.logout = proof({session: 'studentA1', responseStatus: loggedOut.status, afterStatus: old.status, code: old.body.error?.code});
     } finally {await oldRequest.dispose();}
     await closeContextWithAccess(a1.context); contexts.splice(contexts.indexOf(a1.context), 1);
@@ -132,8 +138,9 @@ export async function collectBrowserAcceptance({browser, current, deployment, or
     await a2.page.getByRole('button', {name: 'Modifica Molla ideale', exact: true}).click();
     await expect(a2.page.getByLabel('Massa (kg)', {exact: true})).toHaveValue('4');
     await expect(a2.page.getByLabel('Rigidità (N/m)', {exact: true})).toHaveValue('32');
-    const reopenedWork = work(await projection(a2)); need(m3ReportDigest(reopenedWork) === m3ReportDigest(savedWork));
-    const reopened = snapshot(reopenedWork, 'studentA2');
+    const reopenedProjection = await projection(a2), reopenedWork = work(reopenedProjection);
+    need(m3ReportDigest(reopenedWork) === m3ReportDigest(savedWork));
+    const reopened = snapshot(reopenedWork, reopenedProjection, 'studentA2');
 
     // Commit the actual UI request, then discard its response. Retry must preserve payload and receipt.
     await open(teacher);
@@ -158,7 +165,8 @@ export async function collectBrowserAcceptance({browser, current, deployment, or
     await teacher.page.getByRole('button', {name: 'Verifica e ritenta', exact: true}).click();
     await expect(teacher.page.getByRole('region', {name: 'Modifiche da recuperare', exact: true})).toHaveCount(0);
     const afterRetry = await projection(teacher);
-    need(!routeFailure && receipts.length === 2 && payloads[0] === payloads[1]
+    need(!routeFailure && receipts.length === 2 && receipts[0] === receipts[1] && payloads[0] === payloads[1]
+      && afterFirst.workspaceRevision === beforeLost.workspaceRevision + 1 && afterRetry.workspaceRevision === afterFirst.workspaceRevision
       && afterFirst.events.length === beforeLost.events.length + 1 && m3ReportDigest(afterRetry) === m3ReportDigest(afterFirst));
     checks.lostResponse = proof({firstResponseDelivered: false, receiptDigest: receipts[0], retriedReceiptDigest: receipts[1],
       payloadDigest: payloads[0], retriedPayloadDigest: payloads[1], beforeRevision: beforeLost.workspaceRevision,
@@ -169,6 +177,8 @@ export async function collectBrowserAcceptance({browser, current, deployment, or
     const raced = await Promise.all(racers.map(value => raw(teacher.context, value, teacher.account.id)));
     need(raced.filter(r => r.status === 200).length === 1 && raced.filter(r => r.status === 409).length === 1);
     const conflict = raced.find(r => r.status === 409), winner = await projection(teacher);
+    need(conflict.body.error?.code === 'REVISION_CONFLICT' && winner.documents[0].revision === document.revision + 1
+      && winner.documents[0].title === racers[raced.findIndex(r => r.status === 200)].command.title);
     checks.conflict = proof({responseStatus: conflict.status, code: conflict.body.error.code, attemptedRevision: document.revision,
       winnerRevision: winner.documents[0].revision, persistedRevision: (await projection(teacher)).documents[0].revision});
     const priorWork = work(await projection(a2));
@@ -177,12 +187,16 @@ export async function collectBrowserAcceptance({browser, current, deployment, or
     const refused = await raw(a2.context, {action: 'learning-command', workspaceId: workspace.workspaceId,
       command: {kind: 'save-learner-lab', commandId: randomUUID(), documentId, objectId, instanceId, expectedRevision: revokedWork.revision,
         expectedDocumentRevision: winner.documents[0].revision, state: savedWork.labs[0].data.state}}, a2.account.id);
-    checks.consentRevocation = proof({responseStatus: refused.status, code: refused.body.error?.code});
+    need(refused.status === 422 && refused.body.error?.code === 'PLUGIN_CONSENT_REQUIRED');
+    checks.consentRevocation = proof({responseStatus: refused.status, code: refused.body.error.code});
+    need(m3ReportDigest(work(await projection(a2))) === m3ReportDigest(revokedWork));
     const assignment = (await projection(teacher)).assignments.find(a => a.studentId === a2.account.id && a.documentId === documentId);
     const revoke = await command(teacher, {kind: 'revoke-assignment', studentId: a2.account.id, expectedRevision: assignment.revision}, 'learning-command');
     const readDenied = await raw(a2.context, {action: 'open-workspace', workspaceId: workspace.workspaceId}, a2.account.id);
     const retryDenied = await raw(a2.context, {action: 'learning-command', workspaceId: workspace.workspaceId,
       command: {kind: 'save-learner-note', commandId: randomUUID(), documentId, expectedRevision: revokedWork.revision, text: 'Refused QA'}}, a2.account.id);
+    need([403, 404].includes(readDenied.status) && ['FORBIDDEN', 'NOT_FOUND'].includes(readDenied.body.error?.code)
+      && [403, 404].includes(retryDenied.status) && revoke.projection.assignments.find(a => a.studentId === a2.account.id).revision === assignment.revision + 1);
     checks.revocation = proof({session: 'studentA2', responseStatus: readDenied.status, code: readDenied.body.error?.code, retryStatus: retryDenied.status,
       beforeRevision: assignment.revision, afterRevision: revoke.projection.assignments.find(a => a.studentId === a2.account.id).revision});
     await command(teacher, {kind: 'assign-lesson', studentId: b.account.id, expectedRevision: 0}, 'learning-command');
@@ -193,6 +207,10 @@ export async function collectBrowserAcceptance({browser, current, deployment, or
     const switched = await raw(a2.context, {action: 'learning-command', workspaceId: workspace.workspaceId,
       command: {kind: 'save-learner-note', commandId: randomUUID(), documentId, expectedRevision: 0, text: 'Old account command'}}, a1.account.id);
     const afterSwitch = await projection(b); need(afterSwitch.learnerWork.length === 0);
+    need(switched.status === 409 && switched.body.error?.code === 'SESSION_CHANGED' && beforeSwitch.workspaceRevision === afterSwitch.workspaceRevision);
+    await open({...a2, account: b.account});
+    await expect(a2.page.getByLabel('Note personali', {exact: true})).toHaveValue('');
+    need(!(await a2.page.locator('body').textContent()).includes(savedWork.notes));
     checks.accountSwitch = proof({responseStatus: switched.status, code: switched.body.error?.code, fromAccountHash: accounts.studentA.idHash,
       currentAccountHash: accounts.studentB.idHash, beforeRevision: beforeSwitch.workspaceRevision, afterRevision: afterSwitch.workspaceRevision});
     result = {...current, url: origin, deploymentId: deployment.deploymentId, startedAt, completedAt: now(), accounts, sessions,

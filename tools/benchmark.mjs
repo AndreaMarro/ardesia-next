@@ -15,31 +15,38 @@ const summary = values => {
 /** Bounded, real PostgreSQL/Core workload; cannot select staging or another database. */
 export async function runBenchmark(env = process.env) {
   const connectionString = env.M3_BENCHMARK_DATABASE_URL;
-  requireLoopbackBenchmark(connectionString);
-  const {createServer} = await import('vite');
-  const vite = await createServer({configFile: false, server: {middlewareMode: true}, appType: 'custom', logLevel: 'silent'});
   const report = {...identity(), kind: 'ardesia-postgres-benchmark', environment: 'isolated-loopback-ci',
     measuredBoundary: 'authenticated PostgresStore command/read including Core validation and authorized projections; HTTP, TLS and browser rendering excluded',
     percentileMethod: 'nearest-rank; bounded smoke workload, not a capacity or production latency estimate', sizes: [], concurrency: null, passed: false};
-  let admin, runtime, runtimeRole, sampler;
+  let vite, admin, runtime, runtimeRole, sampler, phase = 'configuration';
   try {
+    requireLoopbackBenchmark(connectionString);
+    const {createServer} = await import('vite');
+    vite = await createServer({configFile: false, server: {middlewareMode: true}, appType: 'custom', logLevel: 'silent'});
+    phase = 'load-server';
     const api = await vite.ssrLoadModule('/@fs/' + resolve('packages/server/src/index.ts'));
+    phase = 'load-lesson-os';
     const lesson = await vite.ssrLoadModule('/@fs/' + resolve('packages/lesson-os/src/index.ts'));
+    phase = 'prepare-database';
     admin = api.createDatabasePool(connectionString, {max: 1});
     // A second invocation refuses a populated database rather than resetting anything.
     const prior = await admin.query("SELECT to_regclass('ardesia_next.workspaces') AS present");
     if (prior.rows[0].present) throw Error('BENCHMARK_DATABASE_NOT_FRESH');
     await api.migrate(admin);
+    phase = 'provision-synthetic-accounts';
     const teacher = {id: randomUUID(), username: `bench-${randomUUID()}`, role: 'teacher', displayName: 'Synthetic benchmark', password: randomBytes(24).toString('base64url')};
     const students = Array.from({length: 24}, () => ({id: randomUUID(), username: `bench-${randomUUID()}`, role: 'student', displayName: 'Synthetic student', password: randomBytes(24).toString('base64url')}));
     await api.provisionTestAccounts(admin, [teacher, ...students]);
-    runtimeRole = 'bench_' + randomUUID().replaceAll('-', '');
-    await admin.query(`CREATE ROLE ${runtimeRole} LOGIN INHERIT NOSUPERUSER NOCREATEDB NOCREATEROLE NOBYPASSRLS`);
+    phase = 'restricted-runtime';
+    const role = 'bench_' + randomUUID().replaceAll('-', '');
+    await admin.query(`CREATE ROLE ${role} LOGIN INHERIT NOSUPERUSER NOCREATEDB NOCREATEROLE NOBYPASSRLS`);
+    runtimeRole = role;
     await admin.query(`GRANT ardesia_next_runtime TO ${runtimeRole}`);
     const runtimeUrl = new URL(connectionString); runtimeUrl.username = runtimeRole; runtimeUrl.password = '';
     const applicationName = `ardesia-benchmark-${randomUUID()}`;
     runtime = api.createDatabasePool(runtimeUrl.href, {max: 5, application_name: applicationName});
     const store = api.createPostgresStore({pool: runtime, pluginPolicy: api.createFirstPartyPolicy({artifactRoot: resolve('apps/web/public')})});
+    phase = 'authenticate';
     const signedIn = await store.login({action: 'login', username: teacher.username, password: teacher.password});
     const studentSessions = new Map();
     for (const student of students) studentSessions.set(student.id,
@@ -77,6 +84,7 @@ export async function runBenchmark(env = process.env) {
     }
     const read = row => execute({action: 'open-workspace', workspaceId: row.workspaceId});
     for (const [strokes, studentCount] of [[8, 1], [32, 8], [128, 24]]) {
+      phase = `snapshot-${strokes}`;
       const row = await seed(strokes, studentCount);
       for (let i = 0; i < 3; i++) await read(row);
       const reopen = [], projection = [], commands = [];
@@ -96,6 +104,7 @@ export async function runBenchmark(env = process.env) {
     }
     // Equal, small snapshots for both contention cases; only workspace sharing changes.
     const rows = []; for (let i = 0; i < 8; i++) rows.push(await seed(8, 0));
+    phase = 'concurrency';
     const contention = {};
     for (const shared of [true, false]) {
       const successTimes = [], conflictTimes = []; let successful = 0, conflicts = 0;
@@ -118,11 +127,15 @@ export async function runBenchmark(env = process.env) {
     clearInterval(sampler); sampler = null; await activeSample;
     report.concurrency = contention; report.monitoring = monitoring; report.passed = true;
     return report;
+  } catch (error) {
+    const code = /^(?:[0-9A-Z]{5}|ERR_[A-Z_]{1,60})$/.test(error?.code ?? '') ? error.code
+      : /^[A-Z_]{1,80}$/.test(error?.message ?? '') ? error.message : 'BENCHMARK_FAILED';
+    throw Object.assign(Error('BENCHMARK_FAILED'), {phase, code});
   } finally {
     if (sampler) clearInterval(sampler);
     await runtime?.end();
     if (admin && runtimeRole) await admin.query(`DROP ROLE ${runtimeRole}`);
-    await admin?.end(); await vite.close();
+    await admin?.end(); await vite?.close();
   }
 }
 if (process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url) {
@@ -130,5 +143,6 @@ if (process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url) 
     const report = await runBenchmark(); mkdirSync('artifacts', {recursive: true});
     writeFileSync('artifacts/benchmark.json', JSON.stringify(report, null, 2) + '\n');
     console.log(JSON.stringify(report));
-  } catch {console.error('Bounded loopback PostgreSQL benchmark failed; no remote database was selected.'); process.exitCode = 1;}
+  } catch (error) {console.error(JSON.stringify({kind: 'ardesia-postgres-benchmark', passed: false,
+    phase: error.phase ?? 'cleanup', code: error.code ?? 'BENCHMARK_FAILED'})); process.exitCode = 1;}
 }
