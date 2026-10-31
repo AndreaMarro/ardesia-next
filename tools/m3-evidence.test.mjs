@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {assembleM3Acceptance} from './m3-acceptance.mjs';
 import {m3LocalEvidenceMatches, m3RemoteEvidenceMatches, m3ReportDigest, M3_REQUIRED_FLOWS, M3_REQUIRED_UNIT_FILES, M3_REMOTE_CHECKS} from './m3-evidence.mjs';
 
 // Contract fixtures only. These are never written to operations/ or accepted release artifacts.
@@ -70,6 +71,49 @@ function remoteReleaseFixture(visibility = 'private') {
 }
 const remoteFixture = () => remoteReleaseFixture();
 const bindRemote = evidence => {evidence.release.m3ReportDigest = m3ReportDigest(evidence.remote); return evidence;};
+
+// Contract fixtures only; no report from these tests is saved as remote evidence.
+function producerFixture() {
+  const evidence = remoteReleaseFixture('public');
+  const remote = evidence.remote;
+  const platform = {commit: current.commit, sourceDigest: current.sourceDigest, deploymentId: remote.deploymentId,
+    projectId: evidence.release.projectId, url: remote.url, status: 'READY', observedAt: at(30)};
+  const preflight = {passed: true, origin: remote.url, expected: current, observedBuild: current,
+    startedAt: at(0), completedAt: at(0), buildIdentityMatched: true};
+  const postflight = {...preflight, startedAt: at(29), completedAt: at(30)};
+  const browser = {commit: current.commit, sourceDigest: current.sourceDigest, url: remote.url,
+    deploymentId: remote.deploymentId, startedAt: at(1), completedAt: at(25),
+    accounts: remote.accounts, sessions: remote.sessions, continuity: remote.continuity, checks: {...remote.checks}};
+  const operatorChecks = {};
+  for (const name of ['expired', 'outage', 'backupRestore', 'import']) {
+    operatorChecks[name] = {...browser.checks[name], observedAt: at(27)}; delete browser.checks[name];
+  }
+  const operator = {...platform, database: remote.database, startedAt: at(25), completedAt: at(28),
+    isolation: {sourceReadOnly: true, restoreTargetInitiallyEmpty: true, sharedServiceInterrupted: false}, checks: operatorChecks};
+  return structuredClone({current, evidence, platformBefore: {...platform, observedAt: at(0)}, platformAfter: platform, preflight, postflight, browser, operator});
+}
+
+test('acceptance producer binds twelve observed counterproofs to local evidence and unchanged deployment', () => {
+  const result = assembleM3Acceptance(producerFixture());
+  assert.equal(result.accepted, true);
+  assert.equal(m3RemoteEvidenceMatches({...producerFixture().evidence, remote: result.remote, release: result.release}, current), true);
+});
+
+test('acceptance producer refuses partial, stale, secret-bearing or unsafe operator evidence', () => {
+  for (const mutate of [
+    p => {delete p.operator;}, p => {delete p.operator.checks.expired;},
+    p => {p.platformAfter.deploymentId = 'dpl_Different';},
+    p => {p.platformAfter.sourceDigest = hash('c');},
+    p => {p.postflight.observedBuild.commit = 'c'.repeat(40);},
+    p => {p.postflight.passed = false;}, p => {p.browser.startedAt = at(31);},
+    p => {p.operator.isolation.restoreTargetInitiallyEmpty = false;},
+    p => {p.operator.isolation.sourceReadOnly = false;},
+    p => {p.operator.checks.backupRestore.restoreDatabaseHash = p.operator.database.resourceIdHash;},
+    p => {p.browser.checks.idor.token = 'sensitive';},
+    p => {p.browser.accounts.studentB.idHash = p.browser.accounts.studentA.idHash;},
+    p => {p.evidence.verification.passed = false;},
+  ]) {const input = producerFixture(); mutate(input); assert.equal(assembleM3Acceptance(input).accepted, false);}
+});
 
 test('M3 public source needs an observed owner instruction and cannot substitute it for remote evidence', () => {
   const absent = remoteReleaseFixture('public'); delete absent.release.sourcePublication;

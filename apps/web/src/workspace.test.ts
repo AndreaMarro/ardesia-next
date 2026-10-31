@@ -24,6 +24,19 @@ function ink(id: string): EditCommand {
 }
 
 describe('M3 authenticated workspace edits', () => {
+  it('captures each queued intent before caller-owned objects can change', async () => {
+    const core = await fixture();
+    const first = edit(core, teacher, 'lesson-1', ink('first'));
+    const command = ink('second');
+    const second = edit(core, teacher, 'lesson-1', command);
+    if (command.kind !== 'add-object' || command.object.type !== 'ink') throw Error('Invalid test intent');
+    command.object.title = 'Changed after enqueue';
+    command.object.data.points[0]!.x = 999;
+    await Promise.all([first, second]);
+    expect(core.getDocument(teacher, 'lesson-1').objects[1]).toMatchObject({
+      id: 'second', title: 'Tratto', data: {points: [{x: 12, y: 22, pressure: 0.5}]},
+    });
+  });
   it('preserves two unawaited pen strokes and their distinct Core revisions', async () => {
     const core = await fixture();
     const first = edit(core, teacher, 'lesson-1', ink('stroke-a'));

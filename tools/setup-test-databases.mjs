@@ -5,7 +5,7 @@ const url = new URL(connectionString);
 if (!['localhost','127.0.0.1','[::1]'].includes(url.hostname)) throw Error('Test setup refuses remote databases.');
 const pool = new pg.Pool({connectionString});
 try {
-  for (const name of ['ardesia_m3_test','ardesia_m3_browser']) {
+  for (const name of ['ardesia_m3_test','ardesia_m3_browser','ardesia_m3_benchmark','ardesia_m3_qa_test','ardesia_m3_qa_restore']) {
     if (!(await pool.query('SELECT 1 FROM pg_database WHERE datname=$1', [name])).rowCount) {
       await pool.query(`CREATE DATABASE ${name} ENCODING 'UTF8' TEMPLATE template0`);
     }
