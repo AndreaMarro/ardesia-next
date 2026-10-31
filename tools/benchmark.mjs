@@ -17,7 +17,9 @@ export async function runBenchmark(env = process.env) {
   const connectionString = env.M3_BENCHMARK_DATABASE_URL;
   const report = {...identity(), kind: 'ardesia-postgres-benchmark', environment: 'isolated-loopback-ci',
     measuredBoundary: 'authenticated PostgresStore command/read including Core validation and authorized projections; HTTP, TLS and browser rendering excluded',
-    percentileMethod: 'nearest-rank; bounded smoke workload, not a capacity or production latency estimate', sizes: [], concurrency: null, passed: false};
+    percentileMethod: 'nearest-rank; bounded smoke workload, not a capacity or production latency estimate',
+    profiles: {strokeScale: {assignedStudents: 1, strokes: [8, 32, 128]}, studentScale: {inkStrokes: 128, assignedStudents: [1, 8, 24]}},
+    sizes: [], concurrency: null, passed: false};
   let vite, admin, runtime, runtimeRole, sampler, phase = 'configuration';
   try {
     requireLoopbackBenchmark(connectionString);
@@ -87,7 +89,7 @@ export async function runBenchmark(env = process.env) {
       return {workspaceId: workspace.workspaceId, documentId};
     }
     const read = row => execute({action: 'open-workspace', workspaceId: row.workspaceId});
-    for (const [strokes, studentCount] of [[8, 1], [32, 8], [128, 24]]) {
+    for (const [strokes, studentCount] of [[8, 1], [32, 1], [128, 1], [128, 8], [128, 24]]) {
       phase = `snapshot-${strokes}`;
       const row = await seed(strokes, studentCount);
       for (let i = 0; i < 3; i++) await read(row);
@@ -101,19 +103,20 @@ export async function runBenchmark(env = process.env) {
           command: {kind: 'rename-document', commandId: randomUUID(), documentId: row.documentId,
             expectedRevision: opened.result.documents[0].revision, title: `Measured ${sample}`}})); commands.push(changed.ms);
       }
-      const stored = (await admin.query('SELECT octet_length(snapshot::text) AS bytes FROM ardesia_next.workspaces WHERE id=$1', [row.workspaceId])).rows[0];
+      const stored = (await admin.query(`SELECT octet_length(snapshot::text) AS bytes,jsonb_array_length(snapshot->'events') AS events
+        FROM ardesia_next.workspaces WHERE id=$1`, [row.workspaceId])).rows[0];
       const opened = await read(row);
-      report.sizes.push({inkStrokes: strokes, pointsPerStroke: 32, assignedStudents: studentCount, events: opened.events.length,
+      report.sizes.push({inkStrokes: strokes, pointsPerStroke: 32, assignedStudents: studentCount, documentEvents: opened.events.length, snapshotEvents: stored.events,
         snapshotJsonBytes: stored.bytes, reopen: summary(reopen), lessonOsProjection: summary(projection), command: summary(commands)});
     }
     // Equal, small snapshots for both contention cases; only workspace sharing changes.
-    const rows = []; for (let i = 0; i < 8; i++) rows.push(await seed(8, 0));
     phase = 'concurrency';
     const contention = {};
     for (const shared of [true, false]) {
+      const rows = []; for (let i = 0; i < (shared ? 1 : 8); i++) rows.push(await seed(8, 0));
       const successTimes = [], conflictTimes = []; let successful = 0, conflicts = 0;
       for (let round = 0; round < 4; round++) {
-        const selected = shared ? rows.map(() => rows[0]) : rows;
+        const selected = shared ? Array.from({length: 8}, () => rows[0]) : rows;
         const reads = await Promise.all(selected.map(read));
         await Promise.all(selected.map(async (row, index) => {
           const start = performance.now();
