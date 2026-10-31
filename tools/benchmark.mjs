@@ -36,7 +36,11 @@ export async function runBenchmark(env = process.env) {
     phase = 'provision-synthetic-accounts';
     const teacher = {id: randomUUID(), username: `bench-${randomUUID()}`, role: 'teacher', displayName: 'Synthetic benchmark', password: randomBytes(24).toString('base64url')};
     const students = Array.from({length: 24}, () => ({id: randomUUID(), username: `bench-${randomUUID()}`, role: 'student', displayName: 'Synthetic student', password: randomBytes(24).toString('base64url')}));
-    await api.provisionTestAccounts(admin, [teacher, ...students]);
+    // Provisioning hashes in parallel internally; respect its bounded derivation queue.
+    const syntheticAccounts = [teacher, ...students];
+    for (let offset = 0; offset < syntheticAccounts.length; offset += 8) {
+      await api.provisionTestAccounts(admin, syntheticAccounts.slice(offset, offset + 8));
+    }
     phase = 'restricted-runtime';
     const role = 'bench_' + randomUUID().replaceAll('-', '');
     await admin.query(`CREATE ROLE ${role} LOGIN INHERIT NOSUPERUSER NOCREATEDB NOCREATEROLE NOBYPASSRLS`);
@@ -128,7 +132,7 @@ export async function runBenchmark(env = process.env) {
     report.concurrency = contention; report.monitoring = monitoring; report.passed = true;
     return report;
   } catch (error) {
-    const code = /^(?:[0-9A-Z]{5}|ERR_[A-Z_]{1,60})$/.test(error?.code ?? '') ? error.code
+    const code = /^[A-Z_0-9]{1,80}$/.test(error?.code ?? '') ? error.code
       : /^[A-Z_]{1,80}$/.test(error?.message ?? '') ? error.message : 'BENCHMARK_FAILED';
     throw Object.assign(Error('BENCHMARK_FAILED'), {phase, code});
   } finally {

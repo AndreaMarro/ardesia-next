@@ -17,12 +17,12 @@ export function learnerObject(object: EducationalObject, work: LearnerWork | nul
 // authorizes the actor and rejects stale external writers and object drafts.
 const editQueues = new WeakMap<CoreService, Promise<void>>();
 export async function edit(core: CoreService, actor: Actor, documentId: string, command: EditCommand, base?: EducationalObject): Promise<void> {
-  const intent = structuredClone({actor, command, base});
+  const [owner, input, draft] = structuredClone([actor, command, base] as const);
   const previous = editQueues.get(core) ?? Promise.resolve();
   const pending = previous.catch(() => undefined).then(async () => {
-    const current = core.getDocument(intent.actor, documentId);
-    if (intent.base) assertDraftUnchanged(intent.base, current.objects.find(object => object.id === intent.base!.id));
-    await core.execute(intent.actor, {...intent.command, commandId: crypto.randomUUID(), documentId, expectedRevision: current.revision} as CoreCommand);
+    const current = core.getDocument(owner, documentId);
+    if (draft) assertDraftUnchanged(draft, current.objects.find(object => object.id === draft.id));
+    await core.execute(owner, {...input, commandId: crypto.randomUUID(), documentId, expectedRevision: current.revision} as CoreCommand);
   });
   editQueues.set(core, pending);
   return pending;
