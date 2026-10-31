@@ -13,7 +13,7 @@ const sameDeployment = (a, b) => ['commit', 'sourceDigest', 'deploymentId', 'pro
 const safe = value => {
   if (typeof value === 'string') return !/(?:Bearer\s|(?:__Host-ardesia_session|ardesia_dev_session)=|postgres(?:ql)?:\/\/|eyJ[A-Za-z0-9_-]+\.)/i.test(value);
   if (!value || typeof value !== 'object') return true;
-  return Object.entries(value).every(([key, child]) => !/password|cookie|authorization|secret|^token$|credential/i.test(key) && safe(child));
+  return Object.entries(value).every(([key, child]) => !/password|cookie|authorization|secret|token|credential|api[-_]?key/i.test(key) && safe(child));
 };
 
 /** Produces a candidate report; the unchanged existing gate makes the final decision. */
@@ -24,6 +24,8 @@ export function assembleM3Acceptance(input) {
     const {current, evidence, platformBefore: before, platformAfter: after, preflight: pre, postflight: post, browser, operator} = input;
     if (!sameSource(before, current) || !sameDeployment(before, after) || !sameDeployment(before, evidence.release)
       || before.status !== 'READY') return rejected('DEPLOYMENT_CHANGED_OR_UNVERIFIED');
+    if (!/^[a-f0-9]{64}$/.test(before.databaseResourceIdHash ?? '') || before.databaseResourceIdHash !== after.databaseResourceIdHash
+      || before.databaseResourceIdHash !== operator?.database?.resourceIdHash) return rejected('DATABASE_RESOURCE_CHANGED_OR_UNVERIFIED');
     if (![pre, post].every(p => p?.passed === true && p.buildIdentityMatched === true && p.origin === before.url
       && sameSource(p.expected, current) && sameSource(p.observedBuild, current))) return rejected('PREFLIGHT_OR_POSTFLIGHT_FAILED');
     if (!sameSource(browser, current) || browser.url !== before.url || browser.deploymentId !== before.deploymentId
@@ -68,8 +70,10 @@ export function acceptanceConfiguration(env, current) {
   return target;
 }
 
-async function main() {
-  const current = identity(), target = acceptanceConfiguration(process.env, current);
+async function main(assembleOnly = false) {
+  const current = identity(), target = assembleOnly
+    ? resolveE2ETarget({ARDESIA_E2E_MODE: 'remote', ARDESIA_E2E_BASE_URL: 'https://ardesia-next-staging.vercel.app'})
+    : acceptanceConfiguration(process.env, current);
   const read = path => JSON.parse(readFileSync(path, 'utf8'));
   const dir = 'artifacts/m3-acceptance';
   mkdirSync(dir, {recursive: true});
@@ -81,24 +85,30 @@ async function main() {
     browser: read('artifacts/browser-evidence.json'), playwright: read('artifacts/e2e.json'), release: read('artifacts/release-evidence.json')};
   if (!sameSource(before, current) || !sameDeployment(before, evidence.release) || before.url !== target.origin
     || !m3LocalEvidenceMatches(evidence, current) || !releaseEvidenceMatches(evidence.release, current)) throw Error('VERIFIED_RELEASE_REQUIRED');
-  const preflight = await runRemotePreflight({expected: current}); write('preflight', preflight);
-  if (!preflight.passed) throw Error('PREFLIGHT_FAILED');
-  // Imports are delayed until all authorization/configuration checks have passed.
-  const {chromium} = await import('@playwright/test');
-  const {collectBrowserAcceptance} = await import('./m3-browser.mjs');
-  const browserProcess = await chromium.launch({env: Object.fromEntries(['PATH', 'HOME', 'TMPDIR', 'TMP', 'TEMP', 'SystemRoot', 'LANG', 'LD_LIBRARY_PATH']
-    .filter(key => typeof process.env[key] === 'string').map(key => [key, process.env[key]]))});
-  let browser;
-  try {browser = await collectBrowserAcceptance({browser: browserProcess, current, deployment: before, origin: target.origin});}
-  finally {await browserProcess.close();}
-  write('browser', browser);
-  let operator = null;
-  if (process.env.ARDESIA_QA_OPERATOR_DATABASE_URL && process.env.ARDESIA_QA_RESTORE_DATABASE_URL) {
-    const {collectOperatorAcceptance} = await import('./m3-operator.mjs');
-    try {operator = await collectOperatorAcceptance({current, deployment: before, browser}); write('operator', operator);}
-    catch {write('operator-blocked', {completed: false, reason: 'ISOLATED_OPERATOR_PROBES_NOT_COMPLETED'});}
+  let preflight, postflight, browser, operator = null;
+  if (assembleOnly) {
+    preflight = read(`${dir}/preflight.json`); postflight = read(`${dir}/postflight.json`); browser = read(`${dir}/browser.json`);
+    try {operator = read(`${dir}/operator.json`);} catch { /* Missing proof remains missing. */ }
+  } else {
+    // A prior run's operator result cannot satisfy a newly collected browser run.
+    rmSync(`${dir}/operator.json`, {force: true});
+    preflight = await runRemotePreflight({expected: current}); write('preflight', preflight);
+    if (!preflight.passed) throw Error('PREFLIGHT_FAILED');
+    // Imports are delayed until all authorization/configuration checks have passed.
+    const {chromium} = await import('@playwright/test');
+    const {collectBrowserAcceptance} = await import('./m3-browser.mjs');
+    const browserProcess = await chromium.launch({env: Object.fromEntries(['PATH', 'HOME', 'TMPDIR', 'TMP', 'TEMP', 'SystemRoot', 'LANG', 'LD_LIBRARY_PATH']
+      .filter(key => typeof process.env[key] === 'string').map(key => [key, process.env[key]]))});
+    try {browser = await collectBrowserAcceptance({browser: browserProcess, current, deployment: before, origin: target.origin});}
+    finally {await browserProcess.close();}
+    write('browser', browser);
+    if (process.env.ARDESIA_QA_OPERATOR_DATABASE_URL && process.env.ARDESIA_QA_RESTORE_DATABASE_URL) {
+      const {collectOperatorAcceptance} = await import('./m3-operator.mjs');
+      try {operator = await collectOperatorAcceptance({current, deployment: before, browser}); write('operator', operator);}
+      catch {write('operator-blocked', {completed: false, reason: 'ISOLATED_OPERATOR_PROBES_NOT_COMPLETED'});}
+    }
+    postflight = await runRemotePreflight({expected: current}); write('postflight', postflight);
   }
-  const postflight = await runRemotePreflight({expected: current}); write('postflight', postflight);
   let after = null;
   try {after = read(process.env.ARDESIA_QA_PLATFORM_AFTER_FILE ?? `${dir}/platform-after.json`);} catch { /* Platform metadata is an independent authorized observation. */ }
   const result = assembleM3Acceptance({current, evidence, platformBefore: before, platformAfter: after, preflight, postflight, browser, operator});
@@ -110,6 +120,7 @@ async function main() {
   process.exitCode = result.accepted ? 0 : 1;
 }
 if (process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url) {
-  if (process.argv.length !== 2) {console.error('M3 acceptance does not accept diagnostic or CLI overrides.'); process.exitCode = 1;}
-  else main().catch(() => {console.error('M3 acceptance incomplete; no release evidence was promoted.'); process.exitCode = 1;});
+  const args = process.argv.slice(2), assembleOnly = args.length === 1 && args[0] === '--assemble';
+  if (args.length && !assembleOnly) {console.error('M3 acceptance accepts only the offline --assemble mode; diagnostic overrides are refused.'); process.exitCode = 1;}
+  else main(assembleOnly).catch(() => {console.error('M3 acceptance incomplete; no release evidence was promoted.'); process.exitCode = 1;});
 }

@@ -105,9 +105,12 @@ export async function collectBrowserAcceptance({browser, current, deployment, or
     need([403, 404].includes(denied.status));
     checks.idor = proof({session: 'studentB', resourceOwnerHash: accounts.studentA.idHash, responseStatus: denied.status, code: denied.body.error.code});
     const sharing = a1.page.getByLabel('Condividi con il docente note, tentativi e stati salvati', {exact: true});
-    await sharing.check(); await expect.poll(async () => (await projection(teacher)).learnerWork.length).toBe(1);
+    // This controlled checkbox changes only after the real server receipt arrives.
+    await sharing.click(); await expect(sharing).toBeChecked();
+    await expect.poll(async () => (await projection(teacher)).learnerWork.length).toBe(1);
     const sharedCount = (await projection(teacher)).learnerWork.length;
-    await sharing.uncheck(); await expect.poll(async () => (await projection(teacher)).learnerWork.length).toBe(0);
+    await sharing.click(); await expect(sharing).not.toBeChecked();
+    await expect.poll(async () => (await projection(teacher)).learnerWork.length).toBe(0);
     const afterRevokeCount = (await projection(teacher)).learnerWork.length;
     checks.teacherEvidence = proof({accountIdHash: accounts.teacher.idHash, privateCount, sharedCount, afterRevokeCount});
     const savedWork = work(await projection(a1)), assignedObject = (await projection(a1)).assignedDocuments[0].objects.find(o => o.id === objectId);
