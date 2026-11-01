@@ -3,34 +3,30 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 17,
-  "updatedAt": "2026-11-01T17:31:06.384Z",
+  "revision": 18,
+  "updatedAt": "2026-11-01T17:32:22.149Z",
   "procedureRef": "a91baf513571f12f1735300ff304f01b9729cf58",
-  "activeRun": {
-    "runId": "ardesia-reconcile-20261101T171503Z-a2186d33",
-    "actor": "codex",
-    "startedAt": "2026-11-01T17:15:03.834Z",
-    "claimedAt": "2026-11-01T17:19:34.316Z",
-    "writeUntil": "2026-11-01T18:00:03.834Z",
-    "closeBy": "2026-11-01T18:10:03.834Z"
-  },
+  "activeRun": null,
   "packet": {
-    "id": "ops003-canonical-reconciliation-20261101T170827Z",
+    "id": "ops003-eligible-native-closure-a91baf5",
     "taskId": "OPS-003",
     "nextActor": "codex",
     "disposition": "READY",
-    "kind": "coordination",
-    "notBefore": "2026-11-01T17:08:27.000Z",
-    "expiresAt": null,
+    "kind": "implementation",
+    "notBefore": "2026-11-01T17:15:03.834Z",
+    "expiresAt": "2026-11-02T17:32:21.744Z",
     "source": {
-      "baseSha": "03622b56c9756225019b7c6219d226beef8e0a6d",
+      "baseSha": "a91baf513571f12f1735300ff304f01b9729cf58",
       "headSha": "a91baf513571f12f1735300ff304f01b9729cf58",
       "branch": "pro/20261031-operating-system",
       "pr": "https://github.com/AndreaMarro/ardesia-next/pull/20",
       "sourceDigest": "272ba227f0ee57c24d33dd2f4aef9add8fd22a3a148e049ab45e22a00080faf2"
     },
-    "goal": "Verificare la riconciliazione canonica OPS-003 e conservare il seguito R2 esistente senza oltrepassare lo scope di coordinamento.",
-    "allowedPaths": [],
+    "goal": "Complete the canonical OPS-003 reconciliation only from genuinely demonstrated native criteria and preserve the already completed PERF-001 review.",
+    "allowedPaths": [
+      "operations/coordination.json",
+      "docs/history.md"
+    ],
     "exitCriteria": [
       "Review non autrice della revisione esatta del metodo; Verify originale della stessa SHA.",
       "Bootstrap v2, claim/assign/finish e pubblicazione CAS in una vera esecuzione nativa, nessuna modifica main/staging; nessuna ricorrenza dichiarata prima della ricevuta del client.",
@@ -182,20 +178,20 @@
       }
     ],
     "blockers": [],
-    "nextAction": "R2 is now adopted after exact-head independent review and original Verify. Select only a real eligible bounded OPS-003 assignment from this published canonical queue; keep native timing/toolchain limits and PERF-001 completion receipt.",
+    "nextAction": "Resume OPS-003 using this eligible implementation scope and adopted source a91baf5. Derive the real run start from native task_started/turn metadata before bootstrap; do not restart55minutes at a late first clock. If the real budget is exhausted, close without source work. Use a supported Node24 toolchain for credited checks, not the observed PATH Node26. Preserve first native overlong event span and unknown cause. Record only actually met OPS-003 criteria, then update canonical queue/history with same-head review/Verify before completing. PERF-001 already COMPLETE_INCREMENT at immutable cursor c5bc72ecba7c34aca5e1958195b4829849a56099/revision12; reuse its exact PR18 receipts, do not rerun review/benchmark. The source queue still names that task ready_for_review until legitimately reconciled. Keep scheduler, model, access, all M3 blockers and main/staging freeze unchanged. PERF-002 remains dependent on genuinely completed OPS-003.",
     "review": null
   },
   "lastRun": {
-    "runId": "codex-20261101T170827Z",
+    "runId": "ardesia-reconcile-20261101T171503Z-a2186d33",
     "actor": "codex",
-    "startedAt": "2026-11-01T17:08:27.000Z",
-    "claimedAt": "2026-11-01T17:10:22.944Z",
-    "writeUntil": "2026-11-01T17:21:25.000Z",
-    "closeBy": "2026-11-01T17:31:25.000Z",
+    "startedAt": "2026-11-01T17:15:03.834Z",
+    "claimedAt": "2026-11-01T17:19:34.316Z",
+    "writeUntil": "2026-11-01T18:00:03.834Z",
+    "closeBy": "2026-11-01T18:10:03.834Z",
     "packetId": "ops003-canonical-reconciliation-20261101T170827Z",
-    "finishedAt": "2026-11-01T17:12:17.144Z",
-    "outcome": "BLOCKED",
+    "finishedAt": "2026-11-01T17:32:22.149Z",
+    "outcome": "HANDOFF",
     "late": false,
-    "summary": "OPS-003 canonical eligibility remains blocked; prior PERF-001 review and exact-source Verify reused. R2 proposal still unapplied; no source, service, integration or scheduler writes. No independent implementation is eligible. Close promptly, preserve the single canonical reconciliation trigger."
+    "summary": "Direct owner initialization repair: exact R2 published and adopted after independent review and original Verify41331123301 with artifact read. Canonical OPS-003 is now queued with its resolved blocker link preserved. The next implementation packet was validated by assign against the actual adopted published queue and published by HANDOFF, releasing this claim without renewing budget. Scope only queue/history; OPS-003 not self-accepted, native timing/Node limits and PERF-001 completion preserved."
   }
 }
