@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 13,
-  "updatedAt": "2026-11-01T17:10:22.944Z",
+  "revision": 14,
+  "updatedAt": "2026-11-01T17:11:23.591Z",
   "procedureRef": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
   "activeRun": {
     "runId": "codex-20261101T170827Z",
@@ -15,25 +15,26 @@
     "closeBy": "2026-11-01T17:31:25.000Z"
   },
   "packet": {
-    "id": "perf001-independent-review-20261101T163625Z",
-    "taskId": "PERF-001",
+    "id": "ops003-canonical-reconciliation-20261101T170827Z",
+    "taskId": "OPS-003",
     "nextActor": "codex",
-    "disposition": "COMPLETE_INCREMENT",
-    "kind": "review",
-    "notBefore": "2026-11-01T16:36:25.000Z",
-    "expiresAt": "2026-11-01T17:31:25Z",
+    "disposition": "READY",
+    "kind": "coordination",
+    "notBefore": "2026-11-01T17:08:27.000Z",
+    "expiresAt": null,
     "source": {
       "baseSha": "03622b56c9756225019b7c6219d226beef8e0a6d",
-      "headSha": "174d15bbad2b5d962011dabfed467c330ddc12da",
-      "branch": "pro/20261031-ink-benchmark",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/18",
-      "sourceDigest": "de1f7e93d2f7e718807ae1996a00b55cad76ce610f2df439007d1e5c8fab3a5e"
+      "headSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
+      "branch": "pro/20261031-operating-system",
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/20",
+      "sourceDigest": "dd878ad99e20b2191726e5bd3a056b1985f174fc5c6c6e79b3eea25682044b35"
     },
-    "goal": "Review indipendente del benchmark penna gia pubblicato: carico reale, campioni, identita e limiti delle misure per il consumer lavagna/taccuino.",
+    "goal": "Verificare la riconciliazione canonica OPS-003 e conservare il seguito R2 esistente senza oltrepassare lo scope di coordinamento.",
     "allowedPaths": [],
     "exitCriteria": [
-      "Conservare head 174d15bbad2b5d962011dabfed467c330ddc12da e prove originali PR18; review del carico, campioni e limiti.",
-      "Il merge resta subordinato al freeze; non rifare l’esperimento esteso già concluso."
+      "Review non autrice della revisione esatta del metodo; Verify originale della stessa SHA.",
+      "Bootstrap v2, claim/assign/finish e pubblicazione CAS in una vera esecuzione nativa, nessuna modifica main/staging; nessuna ricorrenza dichiarata prima della ricevuta del client.",
+      "Un solo task nativo ogni 90 minuti con modello/effort/ambiente osservati; 55 minuti di budget, nessuna autosospensione; se il client non espone una capacità, registrare il limite senza falsi successi."
     ],
     "evidence": [
       {
@@ -104,13 +105,8 @@
       }
     ],
     "blockers": [],
-    "nextAction": "Unico seguito: rendere legittimamente eleggibile la riconciliazione canonica OPS-003 usando la proposta R2 pubblicata in PR20#issuecomment-6561015725, poi review/Verify della nuova sorgente e procedureRef esplicita. Lo scope review attuale[] non ne permette applicazione; non sostituire copie ipotetiche alla coda canonica. PERF001 ha review completata, non ripeterla o rilanciare il benchmark; la coda sorgente resta storica finche aggiornata con scope valido. Conservare P3 README:80 per il prossimo intervento autorizzato. M3/freeze e blocchi remoti restano invariati; nessun Pro da attendere e nessuna modifica scheduler.",
-    "review": {
-      "authorContextId": "github-AndreaMarro-pr18",
-      "reviewerContextId": "root-review_native_run",
-      "sourceSha": "174d15bbad2b5d962011dabfed467c330ddc12da",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/18#issuecomment-6560986797"
-    }
+    "nextAction": "La proposta R2 resta non applicata: occorre un incarico implementativo canonicamente eleggibile per i soli due file proposti, poi review/Verify della nuova sorgente e adozione esplicita della procedureRef. Nessuna ripetizione di PERF-001 o modifica scheduler.",
+    "review": null
   },
   "lastRun": {
     "runId": "codex-20261101T163625Z",
