@@ -3,9 +3,9 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 16,
-  "updatedAt": "2026-11-01T17:19:34.316Z",
-  "procedureRef": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
+  "revision": 17,
+  "updatedAt": "2026-11-01T17:31:06.384Z",
+  "procedureRef": "a91baf513571f12f1735300ff304f01b9729cf58",
   "activeRun": {
     "runId": "ardesia-reconcile-20261101T171503Z-a2186d33",
     "actor": "codex",
@@ -18,16 +18,16 @@
     "id": "ops003-canonical-reconciliation-20261101T170827Z",
     "taskId": "OPS-003",
     "nextActor": "codex",
-    "disposition": "BLOCKED",
+    "disposition": "READY",
     "kind": "coordination",
     "notBefore": "2026-11-01T17:08:27.000Z",
     "expiresAt": null,
     "source": {
       "baseSha": "03622b56c9756225019b7c6219d226beef8e0a6d",
-      "headSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
+      "headSha": "a91baf513571f12f1735300ff304f01b9729cf58",
       "branch": "pro/20261031-operating-system",
       "pr": "https://github.com/AndreaMarro/ardesia-next/pull/20",
-      "sourceDigest": "dd878ad99e20b2191726e5bd3a056b1985f174fc5c6c6e79b3eea25682044b35"
+      "sourceDigest": "272ba227f0ee57c24d33dd2f4aef9add8fd22a3a148e049ab45e22a00080faf2"
     },
     "goal": "Verificare la riconciliazione canonica OPS-003 e conservare il seguito R2 esistente senza oltrepassare lo scope di coordinamento.",
     "allowedPaths": [],
@@ -135,12 +135,54 @@
         "scope": "Rilette coda canonica e guardie assign: OPS-003 status blocked/B-NATIVE-CLIENT, dipendenza PERF-002 non conclusa, M3 remoto bloccato; PERF-001 gia COMPLETE_INCREMENT nel cursore12. Proposta R2 ancora non applicata e nessuna sorgente/servizio cambiato. Nessuna nuova suite eseguita.",
         "access": "metadata",
         "artifactDigest": null
+      },
+      {
+        "headSha": "a91baf513571f12f1735300ff304f01b9729cf58",
+        "sourceDigest": "272ba227f0ee57c24d33dd2f4aef9add8fd22a3a148e049ab45e22a00080faf2",
+        "artifactDigest": "24d53347034b17d45ac75aa39d3ae700449027aaea26531f6ccf7ef1474c7864",
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41331123301",
+        "result": "PASS",
+        "scope": "Original required Verify of actual published R2 head. 80 operative,70 guards,291 unit/integration,73 browser; ZIP13093821280 bytes/hash and report identities read. No unchanged-suite rerun or remote acceptance.",
+        "access": "artifact"
+      },
+      {
+        "headSha": "a91baf513571f12f1735300ff304f01b9729cf58",
+        "sourceDigest": "272ba227f0ee57c24d33dd2f4aef9add8fd22a3a148e049ab45e22a00080faf2",
+        "artifactDigest": null,
+        "kind": "review",
+        "name": "non-author-r2-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6561351328",
+        "result": "PASS",
+        "scope": "Actual distinct non-author /root/reconcile_review, raw R2 bytes reconstructed against082c3e5 and exact-head digest checked. Node24 RED original / GREEN real R2 queue / regressed blocker rejection; ownership/budget/criteria/policy preserved. No human approval or ACL claim.",
+        "access": "metadata"
+      },
+      {
+        "headSha": "a91baf513571f12f1735300ff304f01b9729cf58",
+        "sourceDigest": "272ba227f0ee57c24d33dd2f4aef9add8fd22a3a148e049ab45e22a00080faf2",
+        "artifactDigest": null,
+        "kind": "check",
+        "name": "real-r2-canonical-eligibility",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6561351328",
+        "result": "PASS",
+        "scope": "Pure case/countercase on real published R2 queue with Node24: OPS-003 implementation scope limited to operations/coordination.json and docs/history.md becomes eligible; blocker regression still rejects. No source selection made from a hypothetical queue.",
+        "access": "metadata"
+      },
+      {
+        "kind": "check",
+        "name": "first-native-runtime-55-minute-limit",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6561351328",
+        "headSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
+        "sourceDigest": "dd878ad99e20b2191726e5bd3a056b1985f174fc5c6c6e79b3eea25682044b35",
+        "result": "FAIL",
+        "scope": "First native log records task_started15:37:53.119Z, turn_context15:37:56.326Z, first assistant16:36:22.189Z and task_complete17:02:51.554Z. No55-minute closure attested from first runtime event; cause not inferred. Do not relabel first late clock as true start or promote OPS-003 done from R2.",
+        "access": "metadata",
+        "artifactDigest": null
       }
     ],
-    "blockers": [
-      "OPS003-CANONICAL-ELIGIBILITY"
-    ],
-    "nextAction": "Trigger unico: incarico implementativo canonicamente eleggibile per applicare la proposta R2 gia pubblicata (PR20#issuecomment-6561015725), poi review/Verify della nuova sorgente e procedureRef esplicita. OPS-003 resta blocked nel file canonico; scope coordination[] non consente di modificarlo. Finche coda/head/capacita non cambiano, chiudere NO_ACTION senza duplicare review, benchmark, proposta o commenti. Non modificare scheduler e non attendere Pro.",
+    "blockers": [],
+    "nextAction": "R2 is now adopted after exact-head independent review and original Verify. Select only a real eligible bounded OPS-003 assignment from this published canonical queue; keep native timing/toolchain limits and PERF-001 completion receipt.",
     "review": null
   },
   "lastRun": {
