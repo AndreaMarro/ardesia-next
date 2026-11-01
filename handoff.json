@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 39,
-  "updatedAt": "2026-11-01T23:32:18.398Z",
+  "revision": 40,
+  "updatedAt": "2026-11-01T23:32:38.544Z",
   "procedureRef": "837710f55aa56dcf6575c2fc73beebf8b342cf44",
   "activeRun": {
     "runId": "codex-20261101T231306Z",
@@ -18,10 +18,10 @@
     "id": "ops005-cycle-guards-20261101",
     "taskId": "OPS-005",
     "nextActor": "codex",
-    "disposition": "READY",
-    "kind": "implementation",
+    "disposition": "COMPLETE_INCREMENT",
+    "kind": "coordination",
     "notBefore": "2026-11-01T23:13:54.476Z",
-    "expiresAt": "2026-11-02T00:08:06.000Z",
+    "expiresAt": null,
     "source": {
       "baseSha": "3514d155ebb13e41cc9372b07001670cdd3815a5",
       "headSha": "837710f55aa56dcf6575c2fc73beebf8b342cf44",
@@ -30,16 +30,7 @@
       "sourceDigest": "269372145e37957b391cc7aa19ed479de55842fe885a30f4ce27f40779b8f456"
     },
     "goal": "Guardie HANDOFF e chiusura canonica senza deadlock",
-    "allowedPaths": [
-      "tools/cycle.mjs",
-      "tools/cycle.test.mjs",
-      "tools/cycle-sequential.test.mjs",
-      "tools/check-operations.mjs",
-      "tools/check-operations.test.mjs",
-      "operations/coordination.json",
-      "docs/recurring-work.md",
-      "docs/history.md"
-    ],
+    "allowedPaths": [],
     "exitCriteria": [
       "Riprodurre prima il P2: HANDOFF verso task assente, fuori scope, con dipendenza incompleta o blocker irrisolto; il percorso corretto valida contro la coda canonica reale.",
       "Un task completato con prove valide puo riconciliare la propria riga e selezionare il successore nello stesso budget attraverso un percorso esplicitamente autorizzato e testato; nessun rinnovo budget o secondo writer.",
