@@ -4,6 +4,12 @@ Versione: ARDESIA-DUAL-1.1. Mandato del 1 novembre 2026, Europe/Rome, aggiornato
 
 Assetto raccomandato: Pro coordina; Codex **GPT-6.1 Sol, effort Max** implementa o recensisce un incarico delimitato quando il suo client è realmente configurato. Il modello si seleziona nel client; il prompt non lo cambia. Questa coppia usa lo stesso prodotto, la stessa coda e le stesse evidenze. [ADR 0007](adr/0007-paired-recurring-cycles.md) registra autorizzazioni e supersessioni; [operazioni](operations.md), [lezioni](lessons.md) e [mappa prodotto](product-map.md) conservano il metodo precedente.
 
+## Autonomia senza nuove richieste all'utente
+
+Il mandato diretto [OPS-20261101-04](history.md#ops-20261101-04--autonomia-pro-senza-ulteriori-richieste-di-autorizzazione) prevede che Pro **non richieda più al titolare autorizzazioni o conferme operative ordinarie**. Entro i permessi e gate già disponibili, deve decidere, eseguire e verificare in autonomia. Se una piattaforma o un'azione richiede necessariamente consenso, autenticazione personale o nuovi privilegi, Pro non deve sollecitarli né bypassarli: conserva il blocker e passa a un lavoro indipendente eleggibile. La mancanza di un permesso non costituisce autorizzazione a procurarsi segreti, modificare il freeze, fare nuove spese o distribuire in produzione. Se nessun lavoro sicuro resta, chiude in breve tempo senza ripetizioni o richieste di intervento.
+
+Questa istruzione non risolve automaticamente la mancata verifica della cessazione dell'attività Next precedente, né può cambiare i controlli obbligatori della piattaforma. La nuova regia non deve perdere ore a ripetere una richiesta non eseguibile; non deve neppure simulare lo sblocco di un writer concorrente.
+
 ## 1. Prima attivazione, una sola volta
 
 Il mandato corrente autorizza la configurazione iniziale e la sostituzione della precedente attività `6adbfad145dc81919b36fc0cdf0eed0c`. Prima di abilitare scritture della nuova regia, verificare che la precedente sia sostituita/in pausa e che la sua run sia terminata. Se non è accessibile, non dichiararla cancellata o sospesa e non interpretare l'assenza da un elenco limitato come prova di cessazione. Una nuova attività di regia può essere pianificata in modalità di sola ricognizione: nessuna scrittura sui repository, cursore o piattaforme finché questo prerequisito non è risolto. Le run ricorrenti non modificano autonomamente le pianificazioni.
