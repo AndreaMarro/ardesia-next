@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 33,
-  "updatedAt": "2026-11-01T21:59:08.632Z",
+  "revision": 34,
+  "updatedAt": "2026-11-01T22:00:23.532Z",
   "procedureRef": "3514d155ebb13e41cc9372b07001670cdd3815a5",
   "activeRun": {
     "runId": "codex-20261101T213722Z",
@@ -15,11 +15,11 @@
     "closeBy": "2026-11-01T22:32:22.257Z"
   },
   "packet": {
-    "id": "ops004-reconcile-perf002-68701af",
-    "taskId": "OPS-004",
+    "id": "m3-access-readonly-native-intake-3514d15",
+    "taskId": "M3-ACCESS",
     "nextActor": "codex",
-    "disposition": "COMPLETE_INCREMENT",
-    "kind": "implementation",
+    "disposition": "READY",
+    "kind": "review",
     "notBefore": "2026-11-01T21:39:56.346Z",
     "expiresAt": "2026-11-01T22:32:22.257Z",
     "source": {
@@ -29,59 +29,17 @@
       "pr": "https://github.com/AndreaMarro/ardesia-next/pull/23",
       "sourceDigest": "9161b7c0446f4bb9baa120613b35cf93ca9fc374f1620494c69bcf5c7445a9ca"
     },
-    "goal": "Reconcile the verified isolated PERF-002 delivery in the canonical queue using original PR21 source/digest/Verify/review; preserve all task contracts, release gates and old history.",
-    "allowedPaths": [
-      "operations/coordination.json",
-      "docs/history.md"
-    ],
+    "goal": "Read-only intake of already-authorized native runner capabilities for M3-ACCESS on adopted source3514d155; distinguish OIDC, QA credentials and operator/restore connections without login, secret extraction, linking, deployment or resource writes.",
+    "allowedPaths": [],
     "exitCriteria": [
-      "Un disallineamento concreto tra consegna verificata e coda viene riconciliato usando SHA/digest, Verify e review non autrice originali; nessun PASS trasferito a nuove sorgenti.",
-      "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
-      "La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."
+      "Inspect only existing CLI/connector capabilities and presence of required named environment channels; never print their values or search chats/secret stores.",
+      "Confirm target metadata only through already-authorized read-only commands; stop a missing credential/authentication flow without login, bypass, new accounts or changes.",
+      "Consume existing restore receipt6564228513, preserve all M3 gates, exact candidate identities and original OPS-004 completion; missing prerequisites are BLOCKED, not accepted."
     ],
-    "evidence": [
-      {
-        "kind": "ci",
-        "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41353912937",
-        "headSha": "3514d155ebb13e41cc9372b07001670cdd3815a5",
-        "sourceDigest": "9161b7c0446f4bb9baa120613b35cf93ca9fc374f1620494c69bcf5c7445a9ca",
-        "result": "PASS",
-        "scope": "Original Verify41353912937 attempt1 SUCCESS, artifact13101944608 read independently by root and actual non-author reviewer: nine JSON, seven exact source bindings, 291 unit and73 browser, zero skips/flaky, eight checks PASS. Local CI only, M3/device/human not accepted.",
-        "access": "artifact",
-        "artifactDigest": "3f3e8e6ac8b1c3acaab4f3210a6d63f7a8b1f4cb40da931d263cc78114402410"
-      },
-      {
-        "kind": "check",
-        "name": "canonical-preservation",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/23",
-        "headSha": "3514d155ebb13e41cc9372b07001670cdd3815a5",
-        "sourceDigest": "9161b7c0446f4bb9baa120613b35cf93ca9fc374f1620494c69bcf5c7445a9ca",
-        "result": "PASS",
-        "scope": "Node24.22.1 check-operations and git diff --check; independent structural compare confirms only PERF-002 status/evidence/nextAction plus updatedAt change, all other tasks/policy/blockers/claims preserved, history append-only. Self-check, not independent review.",
-        "access": "metadata",
-        "artifactDigest": null
-      },
-      {
-        "kind": "review",
-        "name": "ops004-non-author-review",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/23#issuecomment-6564481711",
-        "headSha": "3514d155ebb13e41cc9372b07001670cdd3815a5",
-        "sourceDigest": "9161b7c0446f4bb9baa120613b35cf93ca9fc374f1620494c69bcf5c7445a9ca",
-        "result": "PASS",
-        "scope": "Actual distinct context /root/ops004_review, no author history, raw source/diff/criteria; independently recalculated221blob digest, preserved task/policy/claim/history checks and original CI archive bindings. Wrong digest and PR21 evidence against new source rejected. No findings introduced; no ACL/GitHub identity/human approval invented.",
-        "access": "artifact",
-        "artifactDigest": null
-      }
-    ],
+    "evidence": [],
     "blockers": [],
-    "nextAction": "OPS-004 canonical reconciliation is complete and source3514d155 explicitly adopted after exact-head Verify and real non-author review. Same run may assign canonical M3-ACCESS to inspect already-authorized runner capabilities without renewing budget; consume existing empty restore6564228513, never duplicate it. Protected deployment/M3 acceptance remain separate and require all real prerequisites.",
-    "review": {
-      "authorContextId": "01a1990b-a885-7b12-8dec-fbc7976cfeef",
-      "reviewerContextId": "ops004_review",
-      "sourceSha": "3514d155ebb13e41cc9372b07001670cdd3815a5",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/23#issuecomment-6564481711"
-    }
+    "nextAction": "Inspect installed Vercel CLI and non-interactive existing project context plus named runner channels. No source/service writes in this read-only intake. If required capability is absent, preserve exact limits and close BLOCKED promptly; next eligible independent task OPS-005 can be selected in a later cycle without rerunning ready PR21/PR23.",
+    "review": null
   },
   "lastRun": {
     "runId": "codex-20261101T201327Z",
