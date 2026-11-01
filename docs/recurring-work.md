@@ -1,6 +1,6 @@
 # Codex sequenziale — protocollo operativo
 
-Versione ARDESIA-SEQ-2, 1 novembre 2026. [ADR 0008](adr/0008-codex-sequential.md), mandato OPS-20261101-07. Sostituisce l'alternanza Pro/Codex: **un coordinatore Codex sceglie, implementa, raccoglie review e integra entro i gate**. Non occorre un altro task per assegnargli lavoro. I ruoli specialistici sono incarichi temporanei, non scheduler autonomi.
+Versione ARDESIA-SEQ-3, 2 novembre 2026. [ADR 0008](adr/0008-codex-sequential.md), mandato OPS-20261101-07. Sostituisce l'alternanza Pro/Codex: **un coordinatore Codex sceglie, implementa, raccoglie review e integra entro i gate**. Non occorre un altro task per assegnargli lavoro. I ruoli specialistici sono incarichi temporanei, non scheduler autonomi.
 
 ## 1. Configurazione una tantum, distinta dalle run
 La precedente regia ChatGPT visibile rimane disabilitata e conservata, non duplicata come finto Codex. Il titolare riferisce di non avere avviato il worker: non dedurre dal nome di un task che Codex/Sol Max sia configurato. Nel client nativo scegliere repository, modello/effort disponibili, ambiente e accessi effettivi. La configurazione locale non trasferisce cookie, credenziali o conversazioni da ChatGPT.
@@ -44,6 +44,12 @@ L'autore non si autoapprova cambiando cappello. Il reviewer riceve sorgente/diff
 
 Una run successiva acquisisce la CI originale, non la rilancia. Finire un task non implica merge o accettazione M3. HANDOFF consente Codex→Codex per un incarico successivo, mai Pro obbligatorio. Non scartare un'implementazione aperta o una CI pendente per aprire un nuovo lavoro: lascia il risultato nella PR e nel parent Git, completa o dichiara il blocco.
 
+HANDOFF v2 e assign applicano la stessa guardia sulla coda canonica: il JSON fornito deve coincidere con `operations/coordination.json` alla `procedureRef` adottata, letto da Git alla SHA immutabile. Un file locale plausibile non crea task o permessi. Per l'implementazione restano obbligatori scope, dipendenze concluse, blocker risolti e assenza di claim concorrenti; una review in lettura puo esaminare una consegna trattenuta dal freeze. La validazione storica dei cursori v1/v2 rimane separata dalla selezione corrente.
+
+Per chiudere la riga canonica senza perdere il budget, `finish --outcome COMPLETE_INCREMENT --retain-claim true` conserva claim e lastRun precedenti solo dopo Verify e review della stessa identita, prima di writeUntil. Pubblicare e rileggere quel cursore; selezionare poi **OPS-004** con assign, sul suo scope amministrativo gia autorizzato. `reconcile --completion-ref SHA` legge il cursore di completamento immediatamente precedente e restituisce soltanto la coda con stato done, riferimenti originali e prossimo passo della riga conclusa, piu updatedAt. Richiede lo stesso claim/budget e la stessa coda sulla sorgente completata; una modifica della coda richiede prima review e adozione esplicite. Non elimina claim, non modifica policy/criteri/dipendenze e non attribuisce scritture amministrative a un task applicativo. Il root pubblica il risultato e un'appendice nello storico sotto OPS-004; acquisisce Verify e review anche di questa nuova sorgente, poi adotta esplicitamente la nuova procedureRef. Puo conservare il claim di OPS-004 e selezionare il successore nella stessa run se resta tempo. Il finish finale senza retain rilascia il claim e registra il risultato complessivo; in caso di CI pendente chiude WAITING_CI senza rilanciarla. Nessuna di queste operazioni rinnova startedAt o le scadenze.
+
+OPS-004 resta queued su richiesta: la prova sintetica di due incrementi consecutivi non equivale a due consegne reali. Ritirarlo richiede due chiusure reali consecutive verificate e un successivo cambiamento esplicito e riesaminato, non una deduzione del helper. I reader Git locali e le ricevute restano controlli di identita/struttura: non autenticano una review o un artefatto e non sostituiscono rilettura dei ref e pubblicazione CAS/no force.
+
 ## 6. Prove da riusare e prove da ripetere
 Riuso solo con sorgente/commit/digest, comando, versione, lockfile, ambiente e fixture applicabili e accessibili. Dichiarare chi ha letto i byte e chi riusa la verifica. Metadato success non significa artefatto letto. Una nuova head sorgente (anche documentale) mantiene Verify obbligatorio; il solo cursore/commento non cambia il digest. Conservare FAIL/PENDING/NOT_RUN, skip, flaky e limiti. Non alterare digest, soglie o gate per risparmiare test.
 
@@ -69,7 +75,7 @@ Riordinare lavoro eleggibile in base a dipendenze e valore osservabile, non a qu
 Miglioramento del metodo: incidente reale → causa/ipotesi → piccola patch → caso e controesempio → review separata → verifiche della stessa revisione → adozione e rollback. Non riscrivere schedule, modello, permessi, missione, soglie o gate dalle run. Non più di dieci minuti per una proposta non bloccante; prima il prodotto. Dopo ogni dieci incrementi utili, compattare soltanto indici e istruzioni operative ridondanti, conservando fonti e decisioni originali. Il numero dieci è una scelta operativa, non una metrica di efficacia già provata.
 
 ## 9. Strumenti e chiusura
-La CLI legge JSON locale ed emette JSON; non scrive file, non autentica prove e non contatta GitHub. Tenerla nel checkout della revisione adottata, separata dal candidato applicativo se necessario.
+La CLI legge JSON locale e, per selezione/riconciliazione, i blob Git alle SHA immutabili; emette JSON. Non scrive file, non autentica prove e non contatta GitHub. Tenerla nel checkout della revisione adottata, separata dal candidato applicativo se necessario.
 
 ```sh
 node tools/cycle.mjs validate /tmp/ardesia-state.json
@@ -78,6 +84,9 @@ node tools/cycle.mjs claim /tmp/ardesia-state.json --revision REV --actor codex 
 node tools/cycle.mjs assign /tmp/claimed.json --revision REV --actor codex --run RUN_ID --packet /tmp/task.json --queue operations/coordination.json
 node tools/cycle.mjs budget /tmp/assigned.json --actor codex --run RUN_ID --seconds 300
 node tools/cycle.mjs finish /tmp/assigned.json --revision REV --actor codex --run RUN_ID --outcome WAITING_CI --packet /tmp/result.json --summary 'Risultato e limite osservati'
+node tools/cycle.mjs finish /tmp/assigned.json --revision REV --actor codex --run RUN_ID --outcome COMPLETE_INCREMENT --packet /tmp/completed.json --summary 'Prove lette sulla stessa sorgente' --retain-claim true
+# Dopo pubblicazione/rilettura del completamento e assign di OPS-004:
+node tools/cycle.mjs reconcile /tmp/admin-assigned.json --revision REV --actor codex --run RUN_ID --queue operations/coordination.json --completion-ref COMPLETION_CURSOR_SHA --next-action 'Preparazione conclusa; integrazione subordinata al gate'
 ```
 
 REV e RUN_ID sono quelli realmente letti, non costanti. Prima migrazione v1→v2: `migrate STATE --revision REV --procedure-ref SHA --packet PACKET`; ammessa solo senza activeRun, con nuova decisione adottata, writer riconciliati e storia conservata. Il packet iniziale è READY/coordination/codex, non una falsa accettazione prodotto. Non rilanciare la migrazione a ogni slot.

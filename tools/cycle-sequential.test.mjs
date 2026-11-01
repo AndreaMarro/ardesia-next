@@ -1,5 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {execFileSync} from 'node:child_process';
 import * as cycle from './cycle.mjs';
 const T = '2026-11-01T10:00:00.000Z';
 const at = minutes => new Date(Date.parse(T) + minutes * 60000);
@@ -16,9 +18,13 @@ const fixture = (serial = true) => ({
 const claim = data => cycle.claimCycle(data, {expectedRevision: data.revision, actor: 'codex', runId: 'run-1', startedAt: T}, {now: at(8)});
 const evidence = (kind, result = 'PASS') => ({kind, name: kind === 'ci' ? 'verify' : 'review', reference: 'https://github.com/AndreaMarro/ardesia-next/pull/20', headSha: ref, sourceDigest: hash, result, scope: 'Synthetic scope', access: 'metadata', artifactDigest: null});
 const implementation = () => ({...fixture().packet, id: 'impl-1', taskId: 'TASK-1', kind: 'implementation', expiresAt: at(180).toISOString(), allowedPaths: ['tools'], review: null});
-const queue = () => ({tasks: [{id: 'TASK-1', status: 'queued', scope: ['tools'], dependsOn: [], blockers: []}], blockers: [], claims: []});
-const select = (data, packet, q = queue()) => cycle.assignCycle(data, {expectedRevision: data.revision, actor: 'codex', runId: 'run-1', packet, queue: q}, {now: at(9)});
-const finish = (data, packet, outcome) => cycle.finishCycle(data, {expectedRevision: data.revision, actor: 'codex', runId: 'run-1', packet, outcome, summary: 'Synthetic test result'}, {now: at(50)});
+const task = (id = 'TASK-1', scope = ['tools']) => ({id, title:'Bounded synthetic consumer', status:'queued', priority:1, owner:'coordinator',
+ scope, dependsOn:[], blockers:[], exitCriteria:['Consumer and evidence'], evidence:[], nextAction:'Implement the bounded task'});
+const blocker = (id='B') => ({id,status:'blocked',reason:'Missing prerequisite',lastCheckedAt:T,recheckWhen:'Prerequisite changes',sources:['docs/history.md']});
+const queue = () => ({...JSON.parse(readFileSync(new URL('../operations/coordination.json', import.meta.url), 'utf8')),
+ tasks:[task()], blockers:[], claims:[]});
+const select = (data, packet, q = queue()) => cycle.assignCycle(data, {expectedRevision: data.revision, actor: 'codex', runId: 'run-1', packet, queue: q}, {now: at(9),readQueue:()=>q});
+const finish = (data, packet, outcome, q = queue()) => cycle.finishCycle(data, {expectedRevision: data.revision, actor: 'codex', runId: 'run-1', packet, outcome, queue:q, summary: 'Synthetic test result'}, {now: at(50),readQueue:()=>q});
 
 test('v1 historical coordination remains valid', () => assert.deepEqual(cycle.validateCycle(fixture(false)), []));
 test('v2 accepts Codex coordinator without a Pro worker', () => assert.deepEqual(cycle.validateCycle(fixture()), []));
@@ -54,7 +60,7 @@ test('selection rejects missing task, unmet dependency, blockers, overlapping cl
  }
 });
 test('review can examine ready work despite a merge-only freeze, without granting writes', () => {
- const q=queue(); q.tasks[0].status='ready_for_review'; q.tasks[0].blockers=['B-FREEZE'];q.blockers=[{id:'B-FREEZE',status:'blocked'}];
+ const q=queue(); q.tasks[0].status='ready_for_review';q.tasks[0].evidence=['https://example.test/original']; q.tasks[0].blockers=['B-FREEZE'];q.blockers=[blocker('B-FREEZE')];
  const p={...implementation(),kind:'review',allowedPaths:[]};
  assert.deepEqual(select(claim(fixture()),p,q).packet.allowedPaths,[]);
 });
@@ -93,7 +99,8 @@ test('source scope and gates are not granted by a valid cursor', () => {
 });
 
 test('one active increment forbids starting an unrelated implementation even with disjoint paths', () => {
- const q=queue(); q.tasks.push({id:'OTHER',status:'in_progress',scope:['docs'],dependsOn:[],blockers:[]});
+ const q=queue(); q.tasks.push({...task('OTHER',['docs']),status:'in_progress'});
+ q.claims=[{taskId:'OTHER',owner:'coordinator',baseSha:ref,branch:'ops/other',paths:['docs'],claimedAt:T,expiresAt:at(180).toISOString()}];
  assert.throws(()=>select(claim(fixture()),implementation(),q), /active increment/);
 });
 test('malformed queue ownership cannot be silently ignored', () => {
@@ -122,7 +129,7 @@ test('CLI v2 migration and assignment use existing files and never perform write
  input.state=JSON.stringify(state); const claimed=cycle.runCycleCli(args,{readText:path=>input[path]});
  assert.equal(claimed.exitCode,0,claimed.stderr);
  input.claimed=claimed.stdout;input.queue=JSON.stringify(queue());input.work=JSON.stringify({...implementation(),notBefore:now,expiresAt:new Date(Date.now()+3_600_000).toISOString()});
- const assigned=cycle.runCycleCli(['assign','claimed','--revision','5','--actor','codex','--run','cli-1','--packet','work','--queue','queue'],{readText:path=>input[path]});
+ const assigned=cycle.runCycleCli(['assign','claimed','--revision','5','--actor','codex','--run','cli-1','--packet','work','--queue','queue'],{readText:path=>input[path],readQueue:()=>queue()});
  assert.equal(assigned.exitCode,0,assigned.stderr);assert.equal(JSON.parse(assigned.stdout).packet.taskId,'TASK-1');
  assert.equal(JSON.parse(input.old).schemaVersion,'1.0.0');
 });
@@ -168,4 +175,178 @@ test('v2 late closure records the overrun without extending an expired assignmen
   outcome:'INTERRUPTED',summary:'Observed late closure'}, {now:at(56)});
  assert.equal(done.activeRun,null);assert.equal(done.lastRun.late,true);
  assert.equal(done.packet.expiresAt,active.packet.expiresAt);
+});
+
+// OPS-005: these must fail through HANDOFF too, rather than only through assign.
+for (const [name,mutate] of [
+ ['missing task',q=>q.tasks=[]], ['scope escape',q=>q.tasks[0].scope=['docs']],
+ ['incomplete dependency',q=>{q.tasks.push(task('PREREQUISITE'));q.tasks[0].dependsOn=['PREREQUISITE'];}],
+ ['unresolved blocker',q=>{q.tasks[0].blockers=['B'];q.blockers=[blocker()];}],
+ ['competing claim',q=>{q.tasks[0].status='in_progress';q.claims=[{taskId:'TASK-1',owner:'coordinator',baseSha:ref,
+  branch:'ops/other',paths:['tools/a'],claimedAt:T,expiresAt:at(180).toISOString()}];}]
+]) {
+ test(`HANDOFF refuses ${name} in an otherwise valid canonical queue`, () => {
+  const q=queue();mutate(q);const a=claim(fixture());
+  assert.throws(()=>cycle.finishCycle(a,{expectedRevision:a.revision,actor:'codex',runId:'run-1',
+   packet:implementation(),outcome:'HANDOFF',summary:'Adversarial successor',queue:q},{now:at(10),readQueue:()=>q}));
+ });
+}
+
+test('COMPLETE_INCREMENT may retain the exact existing claim for canonical closure', () => {
+ const a=select(claim(fixture()),implementation());
+ const p={...a.packet,disposition:'COMPLETE_INCREMENT',evidence:[evidence('ci'),evidence('review')],
+  review:{authorContextId:'author',reviewerContextId:'reviewer',sourceSha:ref,reference:evidence('review').reference}};
+ const b=cycle.finishCycle(a,{expectedRevision:a.revision,actor:'codex',runId:'run-1',packet:p,
+  outcome:'COMPLETE_INCREMENT',summary:'Verified source, retain closure budget',retainClaim:true},{now:at(20)});
+ assert.deepEqual(b.activeRun,a.activeRun);assert.deepEqual(b.lastRun,a.lastRun);
+ assert.equal(b.packet.disposition,'COMPLETE_INCREMENT');assert.equal(b.revision,a.revision+1);
+});
+
+test('selection and HANDOFF reject hypothetical queues and changed mandate policy', () => {
+ const canonical=queue(), hypothetical=queue();hypothetical.tasks.push(task('INVENTED'));
+ const active=claim(fixture()), input={expectedRevision:active.revision,actor:'codex',runId:'run-1',queue:hypothetical,
+  packet:implementation(),outcome:'HANDOFF',summary:'Untrusted local queue'};
+ assert.throws(()=>cycle.assignCycle(active,input,{now:at(10),readQueue:()=>canonical}),/hypothetical/);
+ assert.throws(()=>cycle.finishCycle(active,input,{now:at(10),readQueue:()=>canonical}),/hypothetical/);
+ for(const key of ['mainFrozen','stagingFrozen','productionAuthorized','newSpendAuthorized']) {
+  const q=queue();q.policy[key]=!q.policy[key];
+  assert.throws(()=>cycle.assignCycle(active,{...input,queue:q},{now:at(10),readQueue:()=>q}),/policy/);
+ }
+});
+
+test('retained completion still rejects author review, mismatched SHA, expiry and unsupported outcomes', () => {
+ const active=select(claim(fixture()),implementation());
+ const packet={...active.packet,disposition:'COMPLETE_INCREMENT',evidence:[evidence('ci'),evidence('review')],
+  review:{authorContextId:'author',reviewerContextId:'reviewer',sourceSha:ref,reference:evidence('review').reference}};
+ const input={expectedRevision:active.revision,actor:'codex',runId:'run-1',packet,outcome:'COMPLETE_INCREMENT',summary:'Retained completion',retainClaim:true};
+ for(const p of [{...packet,review:{...packet.review,reviewerContextId:'author'}},
+  {...packet,evidence:[{...evidence('ci'),headSha:'c'.repeat(40)},evidence('review')]}]) {
+  assert.throws(()=>cycle.finishCycle(active,{...input,packet:p},{now:at(20)}));
+ }
+ assert.throws(()=>cycle.finishCycle(active,input,{now:at(45)}),/writeUntil/);
+ assert.throws(()=>cycle.finishCycle(active,{...input,outcome:'INTERRUPTED',packet:{...active.packet,disposition:'INTERRUPTED'}},{now:at(20)}),/Retaining/);
+ assert.throws(()=>cycle.finishCycle(active,{...input,retainClaim:'true'},{now:at(20)}),/Retaining/);
+});
+
+const complete = (active, head, minute, adapters={}) => {
+ const proof = kind => ({...evidence(kind),headSha:head,reference:`https://example.test/${head}/${kind}`});
+ const packet={...active.packet,kind:'coordination',allowedPaths:[],disposition:'COMPLETE_INCREMENT',source:{...active.packet.source,headSha:head},
+  evidence:[proof('ci'),proof('review')],review:{authorContextId:'author',reviewerContextId:'reviewer',sourceSha:head,reference:proof('review').reference}};
+ return cycle.finishCycle(active,{expectedRevision:active.revision,actor:'codex',runId:'run-1',packet,outcome:'COMPLETE_INCREMENT',
+  summary:'Synthetic exact-source completion',retainClaim:true},{now:at(minute),...adapters});
+};
+const closureFixture = () => {
+ const q=queue();q.tasks.push(task('OPS-004',['operations/coordination.json','docs/history.md']),{...task('TASK-2'),dependsOn:['TASK-1']});
+ const work=select(claim(fixture()),implementation(),q), done=complete(work,ref,11);
+ const admin={...implementation(),id:'close-1',taskId:'OPS-004',allowedPaths:['operations/coordination.json','docs/history.md'],
+  source:{...implementation().source,branch:'ops/reconcile'}};
+ const active=cycle.assignCycle(done,{expectedRevision:done.revision,actor:'codex',runId:'run-1',packet:admin,queue:q},{now:at(12),readQueue:()=>q});
+ return {q,done,admin,active};
+};
+const reconcileInput = s => ({expectedRevision:s.active.revision,actor:'codex',runId:'run-1',queue:s.q,completionRef:'1'.repeat(40),nextAction:'Prepared source complete; integration still frozen'});
+
+test('canonical reconciliation emits only the completed row, evidence, next action and timestamp', () => {
+ const s=closureFixture(),before=structuredClone(s);
+ const q=cycle.reconcileCycle(s.active,reconcileInput(s),{now:at(13),readQueue:()=>s.q,readCompletion:()=>s.done});
+ const expected=structuredClone(s.q);expected.updatedAt=at(13).toISOString();
+ Object.assign(expected.tasks[0],{status:'done',evidence:s.done.packet.evidence.map(item=>item.reference),nextAction:reconcileInput(s).nextAction});
+ assert.deepEqual(q,expected);assert.deepEqual(s,before);assert.equal(q.tasks.find(t=>t.id==='OPS-004').status,'queued');
+});
+
+test('reconciliation rejects wrong owner, scope, completion lineage, reviewer, source queue, policy and task claims', () => {
+ const s=closureFixture(), input=reconcileInput(s), adapters={now:at(13),readQueue:()=>s.q,readCompletion:()=>s.done};
+ assert.throws(()=>cycle.reconcileCycle(s.active,{...input,actor:'pro'},adapters),/owner/);
+ assert.throws(()=>cycle.reconcileCycle({...s.active,packet:{...s.active.packet,taskId:'TASK-2'}},input,adapters),/OPS-004/);
+ assert.throws(()=>cycle.reconcileCycle({...s.active,packet:{...s.active.packet,allowedPaths:['operations/coordination.json']}},input,adapters),/scope/);
+ assert.throws(()=>cycle.reconcileCycle(s.active,input,{...adapters,now:at(45)}),/budget/);
+ for(const mutate of [s=>s.revision--,s=>s.activeRun.runId='other',s=>s.packet.review.reviewerContextId='author',
+  s=>s.packet.evidence[0].headSha='c'.repeat(40),s=>s.packet.taskId='MISSING']) {
+  const bad=structuredClone(s.done);mutate(bad);
+  assert.throws(()=>cycle.reconcileCycle(s.active,input,{...adapters,readCompletion:()=>bad}));
+ }
+ const foreign=queue();foreign.policy.mainFrozen=false;
+ assert.throws(()=>cycle.reconcileCycle(s.active,{...input,queue:foreign},{...adapters,readQueue:()=>foreign}),/policy/);
+ const changed=structuredClone(s.q);changed.tasks[0].nextAction='Unreviewed queue change';
+ const done={...s.done,packet:{...s.done.packet,source:{...s.done.packet.source,headSha:'c'.repeat(40)},
+  evidence:s.done.packet.evidence.map(e=>({...e,headSha:'c'.repeat(40)})),review:{...s.done.packet.review,sourceSha:'c'.repeat(40)}}};
+ assert.throws(()=>cycle.reconcileCycle(s.active,input,{...adapters,readCompletion:()=>done,
+  readQueue:head=>head===ref?s.q:changed}),/changed the canonical queue/);
+ const claimed=structuredClone(s.q);claimed.tasks[0].status='in_progress';claimed.claims=[{taskId:'TASK-1',owner:'coordinator',baseSha:ref,
+  branch:'ops/claimed',paths:['tools'],claimedAt:T,expiresAt:at(180).toISOString()}];
+ assert.throws(()=>cycle.reconcileCycle(s.active,{...input,queue:claimed},{...adapters,readQueue:()=>claimed}),/active increment|task claim/);
+});
+
+test('two consecutive increments reconcile and select successors inside one unchanged budget', () => {
+ let s=closureFixture(), state=s.active, q=s.q, completed=s.done;
+ const original=structuredClone(state.activeRun), refs=new Map([[ref,q]]);
+ for(let index=1;index<=2;index++) {
+  const minute=10+index*6;
+  q=cycle.reconcileCycle(state,{...reconcileInput(s),expectedRevision:state.revision,queue:q},
+   {now:at(minute),readQueue:head=>refs.get(head),readCompletion:()=>completed});
+  const head=String(index+2).repeat(40);refs.set(head,structuredClone(q));
+  // Simulate publishing/reviewing the administrative source and explicit procedure adoption.
+  state=complete(state,head,minute+1);
+  state={...state,procedureRef:head,revision:state.revision+1};
+  assert.deepEqual(state.activeRun,original);
+  if(index===1) {
+   const packet={...implementation(),id:'impl-2',taskId:'TASK-2',source:{...implementation().source,baseSha:head,headSha:head}};
+   state=cycle.assignCycle(state,{expectedRevision:state.revision,actor:'codex',runId:'run-1',packet,queue:q},
+    {now:at(minute+2),readQueue:ref=>refs.get(ref)});
+   completed=complete(state,head,minute+3);
+   const packet2={...s.admin,id:'close-2',source:{...s.admin.source,baseSha:head,headSha:head}};
+   state=cycle.assignCycle(completed,{expectedRevision:completed.revision,actor:'codex',runId:'run-1',packet:packet2,queue:q},
+    {now:at(minute+4),readQueue:ref=>refs.get(ref)});
+  }
+ }
+ assert.deepEqual(q.tasks.filter(t=>t.id.startsWith('TASK-')).map(t=>t.status),['done','done']);
+ assert.equal(q.tasks.find(t=>t.id==='OPS-004').status,'queued');assert.deepEqual(state.activeRun,original);
+ assert.deepEqual(q.policy,s.q.policy);
+});
+
+test('CLI binds the queue to real immutable Git bytes and refuses a plausible invented task', () => {
+ const now=new Date(Date.now()-1000).toISOString(), state=fixture();state.updatedAt=now;state.packet.notBefore=now;
+ state.procedureRef=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+ const active=cycle.claimCycle(state,{expectedRevision:state.revision,actor:'codex',runId:'run-1',startedAt:now});
+ const packet={...implementation(),notBefore:now,expiresAt:new Date(Date.now()+3_600_000).toISOString()};
+ const files={state:JSON.stringify(active),queue:JSON.stringify(queue()),packet:JSON.stringify(packet)};
+ for(const command of ['assign','finish']) {
+  const args=[command,'state','--revision',String(active.revision),'--actor','codex','--run','run-1','--packet','packet','--queue','queue'];
+  if(command==='finish')args.push('--outcome','HANDOFF','--summary','Plausible invented queue');
+  const result=cycle.runCycleCli(args,{readText:path=>files[path]});
+  assert.equal(result.exitCode,1);assert.match(result.stderr,/hypothetical/);
+ }
+});
+
+test('coordination cannot discard an original pending CI through assign or HANDOFF', () => {
+ const state=fixture();state.packet={...state.packet,disposition:'WAITING_CI',evidence:[evidence('ci','PENDING')]};
+ const active=claim(state),original=structuredClone(active);
+ assert.throws(()=>select(active,implementation()),/pending CI/);
+ assert.throws(()=>finish(active,implementation(),'HANDOFF'),/Resolve or preserve/);
+ assert.deepEqual(active,original);
+});
+
+test('CLI retain, assign and reconcile emit recoverable JSON without writing their inputs', () => {
+ const q=queue();q.tasks.push(task('OPS-004',['operations/coordination.json','docs/history.md']));
+ const now=new Date(Date.now()-10_000).toISOString(), initial=fixture();initial.updatedAt=now;initial.packet.notBefore=now;
+ let state=cycle.claimCycle(initial,{expectedRevision:initial.revision,actor:'codex',runId:'run-1',startedAt:now});
+ const packet={...implementation(),notBefore:now,expiresAt:new Date(Date.now()+3_600_000).toISOString()};
+ state=cycle.assignCycle(state,{expectedRevision:state.revision,actor:'codex',runId:'run-1',packet,queue:q},{readQueue:()=>q});
+ const completed={...state.packet,kind:'coordination',allowedPaths:[],disposition:'COMPLETE_INCREMENT',evidence:[evidence('ci'),evidence('review')],
+  review:{authorContextId:'author',reviewerContextId:'reviewer',sourceSha:ref,reference:evidence('review').reference}};
+ const files={state:JSON.stringify(state),packet:JSON.stringify(completed),queue:JSON.stringify(q)}, original=structuredClone(files);
+ const adapters={readText:path=>files[path],readQueue:()=>q};
+ const args=['finish','state','--revision',String(state.revision),'--actor','codex','--run','run-1','--packet','packet',
+  '--outcome','COMPLETE_INCREMENT','--summary','Exact source completion','--retain-claim','true'];
+ const retained=cycle.runCycleCli(args,adapters);assert.equal(retained.exitCode,0,retained.stderr);
+ const done=JSON.parse(retained.stdout);assert.deepEqual(done.activeRun,state.activeRun);assert.deepEqual(files,original);
+ assert.equal(cycle.runCycleCli([...args.slice(0,-1),'yes'],adapters).exitCode,1);
+ files.state=retained.stdout;files.packet=JSON.stringify({...packet,id:'admin',taskId:'OPS-004',allowedPaths:['operations/coordination.json','docs/history.md']});
+ const assigned=cycle.runCycleCli(['assign','state','--revision',String(done.revision),'--actor','codex','--run','run-1',
+  '--packet','packet','--queue','queue'],adapters);assert.equal(assigned.exitCode,0,assigned.stderr);
+ files.state=assigned.stdout;const before=structuredClone(files);
+ const reconciled=cycle.runCycleCli(['reconcile','state','--revision',String(JSON.parse(assigned.stdout).revision),'--actor','codex','--run','run-1',
+  '--queue','queue','--completion-ref','1'.repeat(40),'--next-action','Prepared source complete; freeze remains'],
+  {...adapters,readCompletion:()=>done});
+ assert.equal(reconciled.exitCode,0,reconciled.stderr);assert.equal(JSON.parse(reconciled.stdout).tasks[0].status,'done');
+ assert.deepEqual(files,before);
 });
