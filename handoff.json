@@ -3,17 +3,10 @@
   "kind": "ardesia-dual-run-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 2,
-  "updatedAt": "2026-11-01T01:42:08.200Z",
+  "revision": 3,
+  "updatedAt": "2026-11-01T01:43:14.575Z",
   "procedureRef": "09d1ccca9c75543283f1c308e344329cc0dac81e",
-  "activeRun": {
-    "runId": "owner-setup-20261101",
-    "actor": "pro",
-    "startedAt": "2026-11-01T01:20:01.000Z",
-    "claimedAt": "2026-11-01T01:32:50.620Z",
-    "writeUntil": "2026-11-01T02:05:01.000Z",
-    "closeBy": "2026-11-01T02:15:01.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "bootstrap-20261101",
     "taskId": "OPS-002",
@@ -24,10 +17,10 @@
     "expiresAt": null,
     "source": {
       "baseSha": "03622b56c9756225019b7c6219d226beef8e0a6d",
-      "headSha": "a8914c305b582e9ec46d5b6bf0b54eefe3ff2321",
+      "headSha": "09d1ccca9c75543283f1c308e344329cc0dac81e",
       "branch": "pro/20261031-operating-system",
       "pr": "https://github.com/AndreaMarro/ardesia-next/pull/20",
-      "sourceDigest": "27de0b8a6d9b282314943a687d3ade4197a7db42b6d161dc53ec34c4dda0fe8d"
+      "sourceDigest": "5bc5849c6f8e823012133f908b7bb46ac55df296c09e8f7d95b2356985a4458a"
     },
     "goal": "Riconciliare l’attivazione della coppia e il prossimo incarico autorizzato, preservando il gate remoto M3.",
     "allowedPaths": [],
@@ -40,34 +33,42 @@
       {
         "kind": "ci",
         "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41257518913",
-        "headSha": "a8914c305b582e9ec46d5b6bf0b54eefe3ff2321",
-        "sourceDigest": "27de0b8a6d9b282314943a687d3ade4197a7db42b6d161dc53ec34c4dda0fe8d",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41261638308",
+        "headSha": "09d1ccca9c75543283f1c308e344329cc0dac81e",
+        "sourceDigest": "5bc5849c6f8e823012133f908b7bb46ac55df296c09e8f7d95b2356985a4458a",
         "result": "PASS",
-        "scope": "Original Verify run 41257518913; pinned Ubuntu 24.04/Node project toolchain, lockfile at this source, isolated PostgreSQL 18 loopback fixtures. 50 coordination/handoff tests, 70 guards, 291 unit/integration, 73 browser passed. Artifact bytes/hash read; seven report source identities and unit/browser report bindings checked. No remote or physical-device acceptance.",
+        "scope": "Original Verify run 41261638308, attempt 1, on this source. 52 coordination/handoff tests, 70 guards, 291 unit/integration and 73 browser passed. Isolated PostgreSQL/CI fixtures; no remote or physical-device acceptance. Artifact 13065123418 bytes/hash and seven report identities read; unit/browser JSON bindings matched. Prior PR18 extended benchmark reused, not rerun.",
         "access": "artifact",
-        "artifactDigest": "3cdc1d69b7774e714afb6007a8d5da54ff056e35c0145c95c30d0ab1481ee2cd"
+        "artifactDigest": "d881186edbfb511ec0645d2bedac60204eead938d20dac09df3da408af0ea112"
       },
       {
         "kind": "review",
-        "name": "sol-max-protocol-review",
+        "name": "sol-max-activation-review",
         "reference": "https://github.com/AndreaMarro/ardesia-next/pull/20",
-        "headSha": "a8914c305b582e9ec46d5b6bf0b54eefe3ff2321",
-        "sourceDigest": "27de0b8a6d9b282314943a687d3ade4197a7db42b6d161dc53ec34c4dda0fe8d",
+        "headSha": "09d1ccca9c75543283f1c308e344329cc0dac81e",
+        "sourceDigest": "5bc5849c6f8e823012133f908b7bb46ac55df296c09e8f7d95b2356985a4458a",
         "result": "PASS",
-        "scope": "Separate GPT-6.1 Sol Max source review of protocol/helper/prompts, plus targeted correction recheck of the Pro coordination successor. Final bytes identified by SHA-256 in PR checkpoint. Initial review was fresh; fifth case suggested by coordinator. No finding in rechecked scope; not a scheduled Codex run, separate GitHub identity or human approval.",
+        "scope": "Separate GPT-6.1 Sol Max local review of 11 changed files, with final SHA-256 identities in PR20. One P2 mandatory-Codex wording issue corrected and rechecked; no residual finding in that scope. Coordinator supplied requirements and platform observations; reviewer did not authenticate external scheduling. Not a scheduled Codex run, separate GitHub identity or human approval.",
         "access": "metadata",
         "artifactDigest": null
       }
     ],
     "blockers": [
-      "B-OLD-AUTOMATION",
-      "B-OIDC",
-      "B-QA",
-      "B-RESTORE",
-      "B-FREEZE"
+      "B-OLD-AUTOMATION"
     ],
-    "nextAction": "Il primo Pro verifica la transizione senza cambiare scheduler; controlla una sola volta i prerequisiti cambiati e conserva o riassegna un solo task canonico. Codex attende un ticket valido."
+    "nextAction": "Read OPS-20261101-03 at source head and the PR20 activation checkpoint. New ChatGPT regia 6ae69740ed008191a1574657c2f242cf is enabled on the saved Europe/Rome three-hour schedule; Codex/Sol Max is not configured. Before any repository, cursor or platform write, verify that old task 6adbfad145dc81919b36fc0cdf0eed0c is replaced/paused and its runner ended. Current lookup cannot attest this; absence/access error is not cessation. Until resolved, read-only and quick NO_ACTION without duplicate tests/comments. M3 prerequisites remain separately blocked in the canonical queue; after real acceptance use M3-TRANSITION rather than repeating M3."
   },
-  "lastRun": null
+  "lastRun": {
+    "runId": "owner-setup-20261101",
+    "actor": "pro",
+    "startedAt": "2026-11-01T01:20:01.000Z",
+    "claimedAt": "2026-11-01T01:32:50.620Z",
+    "writeUntil": "2026-11-01T02:05:01.000Z",
+    "closeBy": "2026-11-01T02:15:01.000Z",
+    "packetId": "bootstrap-20261101",
+    "finishedAt": "2026-11-01T01:43:14.575Z",
+    "outcome": "BLOCKED",
+    "late": false,
+    "summary": "Owner-authorized setup: source 09d1ccc reviewed and original Verify SUCCESS with artifact identity read; procedureRef adopted after those proofs. ChatGPT regia created and read back, enabled every three hours from 06:00 Europe/Rome in the current conversation; full prompt identical to reviewed source. Previous task inaccessible and UI host policy denied; no claim of its suspension. Codex model/effort routing is not exposed and no Codex task was created. Future writes remain blocked on old-run reconciliation. New material mandate captured in OPS-20261101-03; explicit M3 transition and bounded deferred horizon prepared. Current product remains M3 awaiting complete evidence."
+  }
 }
