@@ -7,7 +7,7 @@ const text = value => typeof value === 'string' && value.trim() === value && val
 const identifier = value => text(value) && /^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(value);
 const fields = {
   root: ['schemaVersion', 'acceptanceEvidence', 'repository', 'updatedAt', 'policy', 'canonical', 'observations', 'blockers', 'tasks', 'claims'],
-  policy: ['maxActiveIncrements', 'maxRemoteWriters', 'productionAuthorized', 'newSpendAuthorized', 'codexJobsAuthorized', 'mainFrozen', 'stagingFrozen'],
+  policy: ['maxActiveIncrements', 'maxRemoteWriters', 'productionAuthorized', 'newSpendAuthorized', 'agentLaunchedCodexJobsAuthorized', 'ownerScheduledCodexAllowed', 'mainFrozen', 'stagingFrozen'],
   canonical: ['entrypoint', 'handbook', 'history', 'lessons', 'product', 'acceptance'],
   observation: ['id', 'observedAt', 'kind', 'source', 'url', 'value'],
   blocker: ['id', 'status', 'reason', 'lastCheckedAt', 'recheckWhen', 'sources'],
@@ -78,13 +78,13 @@ export function validateCoordination(data, {root} = {}) {
     }
   };
   if (!shape(data, 'root', 'coordination')) return errors;
-  if (data.schemaVersion !== '1.0.0') fail('schemaVersion', 'unsupported version');
+  if (data.schemaVersion !== '1.1.0') fail('schemaVersion', 'unsupported version');
   if (data.acceptanceEvidence !== false) fail('acceptanceEvidence', 'must remain false');
   if (data.repository !== 'AndreaMarro/ardesia-next') fail('repository', 'must identify the canonical repository');
   time(data.updatedAt, 'updatedAt');
   if (shape(data.policy, 'policy', 'policy')) {
     const required = {maxActiveIncrements: 1, maxRemoteWriters: 1, productionAuthorized: false, newSpendAuthorized: false,
-      codexJobsAuthorized: false, mainFrozen: true, stagingFrozen: true};
+      agentLaunchedCodexJobsAuthorized: false, ownerScheduledCodexAllowed: true, mainFrozen: true, stagingFrozen: true};
     for (const [key, value] of Object.entries(required)) if (data.policy[key] !== value) fail(`policy.${key}`, 'violates the current mandate');
   }
   if (shape(data.canonical, 'canonical', 'canonical')) {

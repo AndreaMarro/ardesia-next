@@ -1,16 +1,17 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "acceptanceEvidence": false,
   "repository": "AndreaMarro/ardesia-next",
-  "updatedAt": "2026-10-31T16:55:04Z",
+  "updatedAt": "2026-10-31T23:29:39Z",
   "policy": {
     "maxActiveIncrements": 1,
     "maxRemoteWriters": 1,
     "productionAuthorized": false,
     "newSpendAuthorized": false,
-    "codexJobsAuthorized": false,
     "mainFrozen": true,
-    "stagingFrozen": true
+    "stagingFrozen": true,
+    "agentLaunchedCodexJobsAuthorized": false,
+    "ownerScheduledCodexAllowed": true
   },
   "canonical": {
     "entrypoint": "docs/START_HERE.md",
@@ -116,6 +117,21 @@
         "dailyLocalTime": "06:00",
         "newAutomationCreated": false
       }
+    },
+    {
+      "id": "paired-procedures-20261101",
+      "observedAt": "2026-10-31T23:29:39Z",
+      "kind": "handoff",
+      "source": "Explicit user mandate to prepare two recurring procedures and prompts, without configuring activities; published source and verification are referenced by PR20.",
+      "url": "https://github.com/AndreaMarro/ardesia-next/pull/20",
+      "value": {
+        "status": "PREPARED_NOT_SCHEDULED",
+        "targetModel": "gpt-6.1-sol",
+        "reasoningEffort": "max",
+        "existingAutomationId": "6adbfad145dc81919b36fc0cdf0eed0c",
+        "schedulerMutationThisDelivery": false,
+        "productAcceptanceInferred": false
+      }
     }
   ],
   "blockers": [
@@ -192,10 +208,38 @@
       "nextAction": "Recheck only changed prerequisites once; if available follow the original protected release and acceptance runbook."
     },
     {
+      "id": "OPS-002",
+      "title": "Procedure Pro/Codex ricorrenti, handoff separato e budget di un'ora",
+      "status": "ready_for_review",
+      "priority": 1,
+      "owner": "coordinator",
+      "scope": [
+        "AGENTS.md",
+        "README.md",
+        "docs",
+        "operations",
+        "tools"
+      ],
+      "dependsOn": [],
+      "blockers": [
+        "B-FREEZE"
+      ],
+      "exitCriteria": [
+        "Two complete prompts with roles, bounded increments, evidence reuse, recovery and controlled self-improvement; no scheduler mutation.",
+        "Validated handoff protocol on separate Git ref; separate review and CI on the final source head; no product acceptance inferred."
+      ],
+      "evidence": [
+        "https://github.com/AndreaMarro/ardesia-next/pull/20",
+        "docs/history.md",
+        "docs/recurring-work.md"
+      ],
+      "nextAction": "Read the final source SHA, CI and prepared control-ref checkpoint in PR20; the owner configures the pair after replacing the previous automation. No scheduler change or merge during the freeze."
+    },
+    {
       "id": "OPS-001",
       "title": "Sistema operativo, memoria, ruoli, procedure e guardie",
       "status": "ready_for_review",
-      "priority": 1,
+      "priority": 2,
       "owner": "coordinator",
       "scope": [
         "AGENTS.md",
@@ -216,16 +260,17 @@
         "Final exact-head CI; update the existing automation without changing cadence; preserve freeze."
       ],
       "evidence": [
-        "docs/history.md",
-        "https://github.com/AndreaMarro/ardesia-next/tree/pro/20261031-operating-system"
+        "https://github.com/AndreaMarro/ardesia-next/pull/20",
+        "https://github.com/AndreaMarro/ardesia-next/actions/runs/41222070675",
+        "docs/history.md"
       ],
-      "nextAction": "Use the governance PR checkpoint for the final head, CI, installed skills and scheduler readback; integrate only when the existing freeze policy permits it. Do not repeat the completed local review or scenario exercises without a relevant change."
+      "nextAction": "Preserve delivery at 712acb7134c6361c84fab4e17d11817a59ef09e0; the explicit successor OPS-002 prepares paired procedures in this same PR without scheduling them."
     },
     {
       "id": "PERF-001",
       "title": "Benchmark rappresentativo penna e campioni estesi",
       "status": "ready_for_review",
-      "priority": 2,
+      "priority": 3,
       "owner": "coordinator",
       "scope": [
         "tools/benchmark.mjs",
@@ -252,7 +297,7 @@
       "id": "PERF-002",
       "title": "Margine strutturale del bundle",
       "status": "queued",
-      "priority": 3,
+      "priority": 4,
       "owner": "coordinator",
       "scope": [
         "apps/web",
@@ -277,7 +322,7 @@
       "id": "PERF-003",
       "title": "Localizzare costo snapshot senza cambiare prematuramente il modello dati",
       "status": "queued",
-      "priority": 4,
+      "priority": 5,
       "owner": "coordinator",
       "scope": [
         "packages/server",
@@ -300,7 +345,7 @@
       "id": "M4-REUSE",
       "title": "Secondo dominio scientifico sul medesimo Core e Host",
       "status": "deferred",
-      "priority": 5,
+      "priority": 6,
       "owner": "coordinator",
       "scope": [
         "plugins",
@@ -325,7 +370,7 @@
       "id": "M5-PRODUCT",
       "title": "Accettazione prodotto e percorso di rilascio stabile",
       "status": "deferred",
-      "priority": 6,
+      "priority": 7,
       "owner": "coordinator",
       "scope": [
         "apps/web",
@@ -351,7 +396,7 @@
       "id": "COURSES-MARKETPLACE",
       "title": "Microcorsi, Creator, Knowledge e marketplace esteso",
       "status": "deferred",
-      "priority": 7,
+      "priority": 8,
       "owner": "coordinator",
       "scope": [
         "docs",
@@ -376,7 +421,7 @@
       "id": "MCP-CORE",
       "title": "Adapter MCP del Core prodotto",
       "status": "deferred",
-      "priority": 8,
+      "priority": 9,
       "owner": "coordinator",
       "scope": [
         "packages",

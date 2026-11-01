@@ -77,3 +77,7 @@ La [decisione M3](docs/adr/0005-m3-remote-authority.md) descrive transazioni, is
 Rollback: verificare prima compatibilità dello schema PostgreSQL e dei record di recupero client v2; un vecchio client non legge automaticamente le nuove chiavi. Seguire il [runbook](docs/release-runbook.md), conservare intenti/export, backup e archivio degli import. Un revert del codice non ripristina dati o intenti e non autorizza il downgrade automatico a M2. M4/M5 e l'apertura del marketplace restano fuori perimetro.
 
 La pubblicazione autorizzata del sorgente non introduce una licenza di riuso né autorizza un deployment applicativo pubblico. [Dipendenze e licenze](docs/dependencies.md); [criteri D01–D68](docs/acceptance/D01-D68.json) conservati senza attribuire un'accettazione prodotto non osservata.
+
+## Procedure ricorrenti Pro e Codex
+
+Il [protocollo a due ruoli](docs/recurring-work.md) include i [prompt Pro](docs/prompts/pro-cycle.md) e [Codex GPT-6.1 Sol Max](docs/prompts/codex-cycle.md), il passaggio di consegne verificato e il budget operativo. Preparazione non equivale ad attivazione: nessuna attività viene creata o modificata da questi file.

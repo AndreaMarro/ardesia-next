@@ -1,5 +1,7 @@
 # Manuale operativo — Ardesia Next
 
+Il [protocollo ricorrente Pro/Codex](recurring-work.md) specializza questi ruoli per il mandato del 1 novembre: un solo task, due fasi, un cursore Git separato e un limite di 55 minuti. Il metodo precedente resta valido per le run non ancora convertite; nessuna pianificazione viene cambiata implicitamente.
+
 Versione 1, 31 ottobre 2026. Decisione: [ADR 0006](adr/0006-operating-model.md). Ingresso: [START_HERE](START_HERE.md). Questo manuale governa la costruzione; non introduce un secondo Core o un nuovo motore di accettazione.
 
 ## Fonti e memoria

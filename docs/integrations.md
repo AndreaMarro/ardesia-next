@@ -4,7 +4,7 @@ Inventario operativo del 31 ottobre 2026. Il dettaglio delle osservazioni con da
 
 | Superficie | Capacità verificata o fonte | Uso autorizzato / limite |
 | --- | --- | --- |
-| GitHub `AndreaMarro/ardesia-next` | Repository pubblica, letture main/PR/CI e ruleset live; scritture coordinate su branch/PR e issue | Sorgente, lavoro, prove e storia. Main freeze; niente bypass/ruleset indebolito, force push, reviewer fittizi o job Codex |
+| GitHub `AndreaMarro/ardesia-next` | Repository pubblica, letture main/PR/CI e ruleset live; scritture coordinate su branch/PR e issue | Sorgente, lavoro, prove e storia. Main freeze; niente bypass/ruleset indebolito, force push o reviewer fittizi; Codex soltanto nelle run configurate dal titolare secondo ADR 0007, senza job annidati |
 | GitHub legacy `ardesia` | Letture a `5cfbdcb055ba3ba136f97fb56e997f06e6cf3605` | Recupero selettivo con fonte/diritti; nessuna modifica, clone runtime integrale o deployment |
 | `ardesia-knowledge` | Citato nel mandato precedente come legacy; non ispezionato in questa ricognizione | Solo fonte eventuale in lettura, non nuova autorità o dipendenza della ripresa |
 | ChatGPT attività esistente | `6adbfad145dc81919b36fc0cdf0eed0c`, abilitata, 06:00 `Europe/Rome` | Un solo coordinatore pianificato; aggiornamento del prompt autorizzato dall'utente, non auto-riscrittura nelle run. Nessuna garanzia di attività continua fra esecuzioni |
@@ -34,3 +34,7 @@ Riferimenti: [MCP Authorization](https://modelcontextprotocol.io/specification/2
 L'assenza di OIDC/QA/restore blocca il percorso M3, non autorizza altri provider, account, acquisti o login ripetuti. Registrare la capacità mancante e il segnale necessario per ricontrollarla nell'[issue M3](https://github.com/AndreaMarro/ardesia-next/issues/19). Le operazioni reversibili già delegate proseguono sul branch isolato solo se eleggibili; quando non lo sono, una run senza modifica è corretta.
 
 Un futuro nuovo connettore o servizio richiede un consumer, alternative considerate, costo reale, owner, stato di autorizzazione, fallback e criterio di rimozione. Il sistema attuale funziona senza nuovo orchestratore, memoria esterna o MCP server aggiuntivo.
+
+## Due procedure preparate il 1 novembre 2026
+
+[Protocollo](recurring-work.md): Pro e Codex GPT-6.1 Sol Max condividono un cursore `handoff.json` su `ops/dual-run-state`, senza cambiare il tree candidato per ogni passaggio. Nessuna nuova piattaforma, scheduler o integrazione. La configurazione della precedente attività rimane invariata; prima dell’attivazione della coppia il titolare deve sostituirla o metterla in pausa e far terminare la run precedente. Il modello/effort si selezionano nelle impostazioni del task, non si garantiscono con una frase nel prompt.

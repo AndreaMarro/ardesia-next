@@ -6,9 +6,9 @@ import {dirname, join} from 'node:path';
 import {validateCoordination, coordinationBrief, runCoordinationCli} from './check-operations.mjs';
 
 const fixture = () => ({
-  schemaVersion: '1.0.0', acceptanceEvidence: false, repository: 'AndreaMarro/ardesia-next', updatedAt: '2026-10-31T12:00:00Z',
+  schemaVersion: '1.1.0', acceptanceEvidence: false, repository: 'AndreaMarro/ardesia-next', updatedAt: '2026-10-31T12:00:00Z',
   policy: {maxActiveIncrements: 1, maxRemoteWriters: 1, productionAuthorized: false, newSpendAuthorized: false,
-    codexJobsAuthorized: false, mainFrozen: true, stagingFrozen: true},
+    agentLaunchedCodexJobsAuthorized: false, ownerScheduledCodexAllowed: true, mainFrozen: true, stagingFrozen: true},
   canonical: {entrypoint: 'docs/START_HERE.md', handbook: 'docs/operations.md', history: 'docs/history.md',
     lessons: 'docs/lessons.md', product: 'docs/product-map.md', acceptance: 'tools/status.mjs'},
   observations: [{id: 'observation-1', observedAt: '2026-10-31T11:00:00Z', kind: 'handoff', source: 'synthetic fixture', value: {description: 'Synthetic, not live evidence'}}],

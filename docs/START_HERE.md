@@ -1,5 +1,7 @@
 # Ardesia Next — ingresso operativo
 
+Per le due procedure Pro/Codex richieste il 1 novembre: [protocollo e attivazione](recurring-work.md). Sono preparate, non pianificate da questa consegna. La precedente attività delle 06:00 resta separata finché il titolare non la sostituisce.
+
 Questa pagina instrada il lavoro. **Non è un report di accettazione.** Le osservazioni seguenti sono datate 31 ottobre 2026 e devono essere confrontate con GitHub prima di scrivere; il dettaglio strutturato è in [coordination.json](../operations/coordination.json).
 
 ## Ripresa in pochi passi

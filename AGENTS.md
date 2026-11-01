@@ -2,7 +2,7 @@
 
 ## Start every execution here
 
-Read `docs/START_HERE.md`, `operations/coordination.json`, then only the applicable scoped AGENTS and procedure in `docs/operations.md`. `node tools/check-operations.mjs --brief` prints the bounded handoff; it does not verify a deployment or accept a milestone. Read the relevant lesson in `docs/lessons.md` before repeating an incident-prone operation. Follow source links instead of reloading the entire legacy history.
+For the owner-activated Pro/Codex pair, resolve the adopted procedure revision and shared cursor as specified in `docs/recurring-work.md` first. Read `docs/START_HERE.md`, `operations/coordination.json`, then only the applicable scoped AGENTS and procedure in `docs/operations.md`. `node tools/check-operations.mjs --brief` prints the bounded handoff; it does not verify a deployment or accept a milestone. Read the relevant lesson in `docs/lessons.md` before repeating an incident-prone operation. Follow source links instead of reloading the entire legacy history.
 
 Latest explicit user instructions and existing authorization govern actions. Live repository/deployment observations govern current facts; generated acceptance reports govern milestone acceptance. Dated handoffs and legacy documents are historical evidence, not permission or proof for a newer SHA. `docs/history.md` is the single Next execution/decision index; ADRs retain architectural rationale. Do not create a second status engine, RUNLOG, scheduler or knowledge database.
 
@@ -10,7 +10,7 @@ Latest explicit user instructions and existing authorization govern actions. Liv
 
 Use this repository only. `AndreaMarro/ardesia` is a read-only source, never a deployment target.
 
-- Coordinator owns integration, dependency lock, CI, remote writes and release evidence.
+- Pro owns integration, release decisions, platforms and task selection. In an owner-activated paired cycle, Codex may publish only the assigned isolated source branch and the shared handoff while it holds the current claim; Pro cannot concurrently mutate those surfaces. Outside that opt-in mode the coordinator owns remote writes.
 - Claim one file area before editing; never run concurrent writers in the same area.
 - One web app; Core owns identity contracts, objects, revisions, authorization, receipts and events.
 - LessonOS derives projections from Core events; it has no independent authoritative store.
@@ -23,7 +23,7 @@ Use this repository only. `AndreaMarro/ardesia` is a read-only source, never a d
 - `npm run status` generates evidence-based state; do not hand-edit generated output.
 - Browser tests default to the isolated local database. Remote regression requires explicit staging mode, existing synthetic credentials and approved platform access; its separate report never accepts M3. See `e2e/README.md` and the dated observations in `operations/m3-environment.json`.
 - Remote preflight must pass before application login or writes. Use only short-lived project OIDC on the exact staging origin, reject redirects and preserve independent application cookies; never relax protection to make a test pass.
-- No external agent/Codex jobs. Roles describe ownership, not a mandate to spawn more workers.
+- User-scheduled Codex GPT-6.1 Sol Max cycles are permitted by the explicit 1 November mandate under docs/recurring-work.md and ADR 0007. Agents still must not launch nested Codex CLI/API/cloud jobs, buy credits or create/change schedules. A prepared profile is not an activated automation. The earlier single-Pro task retains its own no-Codex instruction until the owner replaces it.
 
 - One active implementation increment, one coordinator for remote writes, and bounded independent analysis/review. An existing ready PR is not a reason to reimplement its result. User-requested governance work may coexist with the already-ready benchmark PR; do not start a third delivery stream.
 - Claim task, base SHA, branch and path prefixes before editing. Read current PR head before a remote mutation; update with expected SHA and without force. A claim is coordination metadata, not an access control. A stale claim never authorizes takeover: inspect the remote head and reconcile first.
