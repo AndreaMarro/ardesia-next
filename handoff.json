@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 21,
-  "updatedAt": "2026-11-01T18:44:56.188Z",
+  "revision": 22,
+  "updatedAt": "2026-11-01T18:45:54.698Z",
   "procedureRef": "129c078b2e5989db566de71250d1c267e0aa0fca",
   "activeRun": {
     "runId": "codex-20261101T184328Z",
@@ -15,22 +15,26 @@
     "closeBy": "2026-11-01T19:37:51.585Z"
   },
   "packet": {
-    "id": "perf002-bundle-margin-selection-129c078",
+    "id": "perf002-structural-bundle-margin-129c078",
     "taskId": "PERF-002",
     "nextActor": "codex",
     "disposition": "READY",
-    "kind": "coordination",
+    "kind": "implementation",
     "notBefore": "2026-11-01T17:38:04.049Z",
-    "expiresAt": null,
+    "expiresAt": "2026-11-01T20:42:51.585Z",
     "source": {
       "baseSha": "129c078b2e5989db566de71250d1c267e0aa0fca",
       "headSha": "129c078b2e5989db566de71250d1c267e0aa0fca",
-      "branch": "pro/20261031-operating-system",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/20",
+      "branch": "perf/20261101-bundle-margin",
+      "pr": null,
       "sourceDigest": "52089704ab6034a864882a850339f8c8f0e663662869e66725893a8c510314ab"
     },
-    "goal": "Select one bounded isolated structural bundle reduction for the existing Study/Teach/Create web app from canonical PERF-002; preserve the fixed bundle threshold and actual release gates.",
-    "allowedPaths": [],
+    "goal": "Reduce the total distributed JavaScript for the existing Study/Teach/Create app through a bounded structural dependency change, with comparable baseline/candidate builds and preserved formula, validation, plugin and recovery behavior.",
+    "allowedPaths": [
+      "apps/web",
+      "packages/contracts",
+      "docs/perf002-bundle-margin.md"
+    ],
     "exitCriteria": [
       "Un consumer/risultato osservabile: margine superiore alla baseline misurata, contando tutti gli asset iniziali/differiti/plugin e mantenendo la soglia 245760.",
       "Preservare UX/accessibilità, firma/modello scientifico e recovery; review e Verify della head.",
@@ -215,7 +219,7 @@
       }
     ],
     "blockers": [],
-    "nextAction": "Use cycle.mjs claim then assign PERF-002 implementation from this adopted real queue in the same new run budget. Inspect the real bundle graph/budget, choose one concrete consumer and narrow source scope on an isolated branch. No new setup, PR18 review or Extended benchmark rerun. Original Verify41333251768 and OPS003/PERF001 receipts are complete. Main/preview/m3/staging freeze, M3 remote prerequisites and physical-device limits remain; this coordination packet itself permits no source writes.",
+    "nextAction": "Build the unchanged129c078 baseline with Node24 and lockfile; inspect the real dependency graph, make one bounded structural reduction on the isolated branch, compare all JS assets, obtain independent raw-source review and final-head Verify. Rollback by reverting the isolated increment; no main/preview/staging deployment.",
     "review": null
   },
   "lastRun": {
