@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 5,
-  "updatedAt": "2026-11-01T12:59:49.618Z",
+  "revision": 6,
+  "updatedAt": "2026-11-01T13:00:10.539Z",
   "procedureRef": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
   "activeRun": {
     "runId": "ardesia-init-20261101T123442Z-1d3bca4e",
@@ -15,13 +15,13 @@
     "closeBy": "2026-11-01T13:29:42.933Z"
   },
   "packet": {
-    "id": "bootstrap-sequential-20261101",
+    "id": "ops003-native-trial-20261101",
     "taskId": "OPS-003",
     "nextActor": "codex",
     "disposition": "READY",
-    "kind": "coordination",
+    "kind": "review",
     "notBefore": "2026-11-01T12:59:35.789Z",
-    "expiresAt": null,
+    "expiresAt": "2026-11-01T13:29:42.933Z",
     "source": {
       "baseSha": "03622b56c9756225019b7c6219d226beef8e0a6d",
       "headSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
@@ -94,7 +94,7 @@
       }
     ],
     "blockers": [],
-    "nextAction": "Claim e selezione di OPS-003 nella stessa run, poi chiusura conservando il limite nativo.",
+    "nextAction": "Chiudere la prova del registro e verificare il solo task nativo pertinente; nessuna accettazione del sistema dedotta.",
     "review": null
   },
   "lastRun": {
