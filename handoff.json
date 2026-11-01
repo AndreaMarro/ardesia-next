@@ -3,22 +3,15 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 11,
-  "updatedAt": "2026-11-01T16:46:36.691Z",
+  "revision": 12,
+  "updatedAt": "2026-11-01T16:59:06.471Z",
   "procedureRef": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
-  "activeRun": {
-    "runId": "codex-20261101T163625Z",
-    "actor": "codex",
-    "startedAt": "2026-11-01T16:36:25.000Z",
-    "claimedAt": "2026-11-01T16:37:53.431Z",
-    "writeUntil": "2026-11-01T17:21:25.000Z",
-    "closeBy": "2026-11-01T17:31:25.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "perf001-independent-review-20261101T163625Z",
     "taskId": "PERF-001",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "COMPLETE_INCREMENT",
     "kind": "review",
     "notBefore": "2026-11-01T16:36:25.000Z",
     "expiresAt": "2026-11-01T17:31:25Z",
@@ -43,8 +36,8 @@
         "headSha": "174d15bbad2b5d962011dabfed467c330ddc12da",
         "sourceDigest": "de1f7e93d2f7e718807ae1996a00b55cad76ce610f2df439007d1e5c8fab3a5e",
         "result": "PASS",
-        "scope": "Original Verify completed success on the exact head; artifact metadata read, ZIP bytes not yet read in this run. Ubuntu24.04 Node24 PostgreSQL18 isolated CI; no remote or device acceptance.",
-        "access": "metadata",
+        "scope": "Original Verify41216361836 attempt1 success on exact head/digest. Root and distinct reviewer read ZIP bytes/hash and report bindings. Ubuntu24.04 Node24 PostgreSQL18 isolated CI;291/291 unit and73/73 browser, zero browser skip/flaky. No suite rerun; no remote/device acceptance.",
+        "access": "artifact",
         "artifactDigest": "c720d61f6220741cc739559d808faad3247151430c6c6b66e45163d051c4f2d8"
       },
       {
@@ -54,26 +47,75 @@
         "headSha": "174d15bbad2b5d962011dabfed467c330ddc12da",
         "sourceDigest": "de1f7e93d2f7e718807ae1996a00b55cad76ce610f2df439007d1e5c8fab3a5e",
         "result": "PASS",
-        "scope": "Original extended benchmark completed success on the exact head; metadata read. Original samples to inspect; no rerun.",
-        "access": "metadata",
+        "scope": "Original Extended41216361872 attempt1 success. Root and reviewer read ZIP bytes/hash; reviewer independently recalculated sample counts, nearest-rank percentiles, maxima, growth/events and concurrency.100 measured rounds after10 warmup; no benchmark rerun. Growing workload, no network/TLS/rendering or physical-pen acceptance.",
+        "access": "artifact",
         "artifactDigest": "951b47d3701388bae809a9609831ac9599014090330c202d25e2d466b5d55f18"
+      },
+      {
+        "kind": "review",
+        "name": "non-author-perf001-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/18#issuecomment-6560986797",
+        "headSha": "174d15bbad2b5d962011dabfed467c330ddc12da",
+        "sourceDigest": "de1f7e93d2f7e718807ae1996a00b55cad76ce610f2df439007d1e5c8fab3a5e",
+        "result": "PASS",
+        "scope": "Real distinct non-author context /root/review_native_run read raw five-file diff, candidate AGENTS, canonical criteria and original artifacts; no P0-P2. Nonblocking P3: e2e/README.md:80 retains old HTTP/pipeline exclusions, conflicting with86/92 and benchmark workflow. authorContextId github-AndreaMarro-pr18 conventionally identifies observed GitHub author/provenance, NOT an authenticated original thread/model, which is unexposed. Independence rests on the actual separate non-author reviewer and raw work. No human approval, separate GitHub identity or ACL isolation claimed. Pure countercases on Node26 outside engines are not supported application verification.",
+        "access": "metadata",
+        "artifactDigest": null
+      },
+      {
+        "kind": "observation",
+        "name": "native-runtime-observed",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6560907584",
+        "headSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
+        "sourceDigest": "dd878ad99e20b2191726e5bd3a056b1985f174fc5c6c6e79b3eea25682044b35",
+        "result": "PASS",
+        "scope": "Read-only task/run/turn metadata binds actual native automation, project/cwd and gpt-6.1-sol/max runtime; one Ardesia task ACTIVE every90min, scheduler unchanged. Session creation15:37:52Z differs from first assistant16:36:22Z and first clock16:36:25Z; cause not verified, no55min guarantee from session creation. Node26.5.1/npm11.17.0 local outside engine>=24<25; no local application PASS claimed. Original Verify41308566406 and same-source review/ZIP reused. Native work claim/assign/finish on separate cursor; OPS003 canonical completion not inferred.",
+        "access": "metadata",
+        "artifactDigest": null
+      },
+      {
+        "kind": "check",
+        "name": "ops003-canonical-eligibility",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6560907584",
+        "headSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
+        "sourceDigest": "dd878ad99e20b2191726e5bd3a056b1985f174fc5c6c6e79b3eea25682044b35",
+        "result": "FAIL",
+        "scope": "P2 reproduced by distinct reviewer: canonical OPS003 remains blocked; implementation assign rejects it, review/coordination allowedPaths[] do not authorize canonical queue writes. No hypothetical queue used to select real work. This is separate from the completed PERF001 review.",
+        "access": "metadata",
+        "artifactDigest": null
+      },
+      {
+        "kind": "observation",
+        "name": "unapplied-queue-reconciliation-r2",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6561015725",
+        "headSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
+        "sourceDigest": "dd878ad99e20b2191726e5bd3a056b1985f174fc5c6c6e79b3eea25682044b35",
+        "result": "NOT_RUN",
+        "scope": "UNAPPLIED R2 proposal against this baseline, patchSHA2564f3a5cc2b92226d60ebf91a1f4d1a3e9aaa9b5c407d51d8d49a1a86f55753302. Non-author reviewer re-read corrected raw bytes; resolved blocker permits same-budget assign, regressed blocker rejects; original link, criteria, M3/policy preserved. R1 failure and bytes retained. Favorable patch review is not adoption or final-source Verify; future-source CI NOT_RUN. Current review scope[] forbids application.",
+        "access": "artifact",
+        "artifactDigest": "4f3a5cc2b92226d60ebf91a1f4d1a3e9aaa9b5c407d51d8d49a1a86f55753302"
       }
     ],
     "blockers": [],
-    "nextAction": "Read raw PR18 source/diff, original Verify and extended artifacts; obtain a distinct non-author review of workload, measurements and limits. No source, merge, deploy or scheduler writes. Preserve native OPS-003 observation and unresolved canonical eligibility separately.",
-    "review": null
+    "nextAction": "Unico seguito: rendere legittimamente eleggibile la riconciliazione canonica OPS-003 usando la proposta R2 pubblicata in PR20#issuecomment-6561015725, poi review/Verify della nuova sorgente e procedureRef esplicita. Lo scope review attuale[] non ne permette applicazione; non sostituire copie ipotetiche alla coda canonica. PERF001 ha review completata, non ripeterla o rilanciare il benchmark; la coda sorgente resta storica finche aggiornata con scope valido. Conservare P3 README:80 per il prossimo intervento autorizzato. M3/freeze e blocchi remoti restano invariati; nessun Pro da attendere e nessuna modifica scheduler.",
+    "review": {
+      "authorContextId": "github-AndreaMarro-pr18",
+      "reviewerContextId": "root-review_native_run",
+      "sourceSha": "174d15bbad2b5d962011dabfed467c330ddc12da",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/18#issuecomment-6560986797"
+    }
   },
   "lastRun": {
-    "runId": "ardesia-activate-20261101T140845Z-acfa407f",
+    "runId": "codex-20261101T163625Z",
     "actor": "codex",
-    "startedAt": "2026-11-01T14:08:45.889Z",
-    "claimedAt": "2026-11-01T14:11:24.213Z",
-    "writeUntil": "2026-11-01T14:53:45.889Z",
-    "closeBy": "2026-11-01T15:03:45.889Z",
-    "packetId": "ops003-native-trial-20261101",
-    "finishedAt": "2026-11-01T14:12:25.938Z",
-    "outcome": "HANDOFF",
+    "startedAt": "2026-11-01T16:36:25.000Z",
+    "claimedAt": "2026-11-01T16:37:53.431Z",
+    "writeUntil": "2026-11-01T17:21:25.000Z",
+    "closeBy": "2026-11-01T17:31:25.000Z",
+    "packetId": "perf001-independent-review-20261101T163625Z",
+    "finishedAt": "2026-11-01T16:59:06.471Z",
+    "outcome": "COMPLETE_INCREMENT",
     "late": false,
-    "summary": "Owner-authorized one-time setup: native Git project became available, existing automation associated and read back with Sol/Max, exact 90 minutes and adopted prompt. Released claim before activating scheduler; next actual scheduled run must verify runtime and finish OPS-003. No source, CI, main or staging changes."
+    "summary": "PERF001 independent raw-source review completed on174d15bb/de1f7e93; original Verify and Extended bytes reused, no P0-P2, one README P3. Native Sol/max/project run observed; OPS003 canonical eligibility P2 remains. One R2 queue proposal reviewed but unapplied; no source, integration, service or scheduler changes."
   }
 }
