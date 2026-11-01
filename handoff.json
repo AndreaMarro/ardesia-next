@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 35,
-  "updatedAt": "2026-11-01T22:10:09.515Z",
+  "revision": 36,
+  "updatedAt": "2026-11-01T22:13:13.931Z",
   "procedureRef": "3514d155ebb13e41cc9372b07001670cdd3815a5",
   "activeRun": null,
   "packet": {
@@ -12,9 +12,9 @@
     "taskId": "M3-ACCESS",
     "nextActor": "codex",
     "disposition": "BLOCKED",
-    "kind": "review",
+    "kind": "coordination",
     "notBefore": "2026-11-01T21:39:56.346Z",
-    "expiresAt": "2026-11-01T22:32:22.257Z",
+    "expiresAt": null,
     "source": {
       "baseSha": "68701af501fce42bd40719e692fac0e282540fbf",
       "headSha": "3514d155ebb13e41cc9372b07001670cdd3815a5",
@@ -102,7 +102,7 @@
       "B-QA",
       "B-RESTORE"
     ],
-    "nextAction": "Close this native run BLOCKED for M3 access prerequisites, preserving OPS-004 COMPLETE at revision33/54b18a83 and ready PR23. Next independent eligible canonical task is OPS-005 (minimal HANDOFF/canonical-closure guard repair with RED/GREEN and distinct review); do not redo PR21/PR23 or retry HTTP403 unchanged. Recheck M3-ACCESS only after an already-authorized channel/access state materially changes; reuse restore270479, freshly verify emptiness before any future restore. Freeze, M3-TRANSITION/M4 dependencies and recurrence remain unchanged.",
+    "nextAction": "M3-ACCESS read-only intake is BLOCKED; OPS-004 remains COMPLETE at revision33/54b18a83, ready PR23 and adopted source3514d155. Coordination-only closing packet has allowedPaths[] and no expiry, so the next real native run can claim and use assign against the adopted canonical queue. Select existing eligible OPS-005 (minimal HANDOFF/canonical-closure guard repair with RED/GREEN and distinct review); never use unvalidated HANDOFF as authority, redo PR21/PR23 or retry HTTP403 unchanged. Recheck M3 only after an already-authorized channel/access state materially changes; preserve restore270479 and fresh-empty precondition. Freeze, all gate dependencies and recurrence unchanged.",
     "review": null
   },
   "lastRun": {
