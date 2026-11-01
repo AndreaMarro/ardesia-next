@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0.0",
+  "kind": "ardesia-native-task-template",
+  "acceptanceEvidence": false,
+  "status": "PREPARED_NOT_SCHEDULED",
+  "title": "Ardesia Next — Codex sequenziale",
+  "repository": "AndreaMarro/ardesia-next",
+  "intervalMinutes": 90,
+  "timezone": "Europe/Rome",
+  "rrule": "FREQ=MINUTELY;INTERVAL=90",
+  "requestedRuntime": "codex",
+  "requestedModel": "gpt-6.1-sol",
+  "requestedReasoningEffort": "max",
+  "observedNativeTaskId": null,
+  "nativeModelVerified": false,
+  "workBudgetMinutes": 45,
+  "closeBudgetMinutes": 55,
+  "maxActiveRuns": 1,
+  "maxConcurrentSpecialists": 2,
+  "promptPath": "docs/prompts/codex-cycle.md",
+  "cursorRef": "ops/dual-run-state",
+  "notes": "Template only. Configure and read back in the native client after a controlled first run. Do not create a generic ChatGPT task or approximate 90 minutes."
+}

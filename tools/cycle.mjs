@@ -14,6 +14,8 @@ const id = value => text(value) && /^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(value);
 const sha = value => typeof value === 'string' && /^[a-f0-9]{40}$/.test(value);
 const digest = value => typeof value === 'string' && /^[a-f0-9]{64}$/.test(value);
 const integer = value => Number.isSafeInteger(value) && value >= 0;
+const sequential = data => data?.schemaVersion === '2.0.0';
+const coordinator = data => sequential(data) ? 'codex' : 'pro';
 const fields = {
   root: ['schemaVersion', 'kind', 'repository', 'acceptanceEvidence', 'revision', 'updatedAt', 'procedureRef', 'activeRun', 'packet', 'lastRun'],
   packet: ['id', 'taskId', 'nextActor', 'disposition', 'kind', 'notBefore', 'expiresAt', 'source', 'goal', 'allowedPaths', 'exitCriteria', 'evidence', 'blockers', 'nextAction'],
@@ -61,8 +63,9 @@ export function validateCycle(data) {
   const fail = (path, reason) => errors.push(`${path}: ${reason}`);
   const shape = (value, kind, path) => {
     if (!record(value)) { fail(path, 'must be an object'); return false; }
-    for (const key of fields[kind]) if (!Object.hasOwn(value, key)) fail(`${path}.${key}`, 'is required');
-    for (const key of Object.keys(value)) if (!fields[kind].includes(key)) fail(`${path}.${key}`, 'is not supported');
+    const supported = kind === 'packet' && sequential(data) ? [...fields.packet, 'review'] : fields[kind];
+    for (const key of supported) if (!Object.hasOwn(value, key)) fail(`${path}.${key}`, 'is required');
+    for (const key of Object.keys(value)) if (!supported.includes(key)) fail(`${path}.${key}`, 'is not supported');
     return true;
   };
   const check = (value, predicate, path, reason) => { if (!predicate(value)) fail(path, reason); };
@@ -87,8 +90,8 @@ export function validateCycle(data) {
     return true;
   };
   if (!shape(data, 'root', 'state')) return errors;
-  if (data.schemaVersion !== '1.0.0') fail('schemaVersion', 'unsupported version');
-  if (data.kind !== 'ardesia-dual-run-state') fail('kind', 'unsupported kind');
+  if (!['1.0.0', '2.0.0'].includes(data.schemaVersion)) fail('schemaVersion', 'unsupported version');
+  if (data.kind !== (sequential(data) ? 'ardesia-sequential-state' : 'ardesia-dual-run-state')) fail('kind', 'unsupported kind');
   if (data.repository !== REPOSITORY) fail('repository', 'must identify the canonical repository');
   if (data.acceptanceEvidence !== false) fail('acceptanceEvidence', 'must remain false');
   check(data.revision, integer, 'revision', 'must be a nonnegative safe integer');
@@ -97,12 +100,12 @@ export function validateCycle(data) {
   const packet = data.packet;
   if (shape(packet, 'packet', 'packet')) {
     for (const key of ['id', 'taskId']) check(packet[key], id, `packet.${key}`, 'must be an identifier');
-    check(packet.nextActor, value => actors.has(value), 'packet.nextActor', 'must be pro or codex');
+    check(packet.nextActor, value => sequential(data) ? value === 'codex' : actors.has(value), 'packet.nextActor', 'must match the adopted execution mode');
     check(packet.disposition, value => dispositions.has(value), 'packet.disposition', 'unsupported disposition');
     check(packet.kind, value => ['implementation', 'review', 'coordination'].includes(value), 'packet.kind', 'unsupported kind');
     time(packet.notBefore, 'packet.notBefore');
     if (packet.expiresAt === null) {
-      if (packet.kind !== 'coordination' || packet.nextActor !== 'pro') fail('packet.expiresAt', 'null is reserved for Pro coordination');
+      if (packet.kind !== 'coordination' || packet.nextActor !== coordinator(data)) fail('packet.expiresAt', 'null is reserved for coordination');
     } else {
       time(packet.expiresAt, 'packet.expiresAt');
       if (timestamp(packet.notBefore) && timestamp(packet.expiresAt) && Date.parse(packet.expiresAt) <= Date.parse(packet.notBefore)) fail('packet.expiresAt', 'must follow notBefore');
@@ -115,14 +118,14 @@ export function validateCycle(data) {
     const blockers = list(packet.blockers, 'packet.blockers', id);
     if (packet.disposition === 'BLOCKED' && !blockers.length) fail('packet.blockers', 'BLOCKED requires a blocker');
     if (['READY', 'READY_FOR_REVIEW', 'COMPLETE_INCREMENT'].includes(packet.disposition) && blockers.length) fail('packet.blockers', `${packet.disposition} requires no blockers`);
-    if (packet.nextActor === 'codex' && (packet.kind === 'coordination' || !['READY', 'READY_FOR_REVIEW'].includes(packet.disposition))) fail('packet.nextActor', 'Codex requires assigned READY implementation/review or READY_FOR_REVIEW');
+    if (!sequential(data) && packet.nextActor === 'codex' && (packet.kind === 'coordination' || !['READY', 'READY_FOR_REVIEW'].includes(packet.disposition))) fail('packet.nextActor', 'Codex requires assigned READY implementation/review or READY_FOR_REVIEW');
     if (packet.disposition === 'READY_FOR_REVIEW' && packet.kind !== 'review') fail('packet.kind', 'READY_FOR_REVIEW requires review');
     if (packet.disposition === 'IDLE' && packet.kind !== 'coordination') fail('packet.kind', 'IDLE permits coordination only');
     const sourceValid = shape(packet.source, 'source', 'packet.source');
     if (sourceValid) {
       for (const key of ['baseSha', 'headSha']) check(packet.source[key], sha, `packet.source.${key}`, 'must be a full commit SHA');
       check(packet.source.branch, branch, 'packet.source.branch', 'must be a valid branch name');
-      if ((packet.kind === 'implementation' || packet.nextActor === 'codex') && protectedBranches.has(packet.source.branch)) fail('packet.source.branch', 'must be an isolated branch for implementation or Codex');
+      if ((packet.kind === 'implementation' || !sequential(data) && packet.nextActor === 'codex') && protectedBranches.has(packet.source.branch)) fail('packet.source.branch', 'must be an isolated branch for implementation or Codex');
       if (packet.source.pr !== null) check(packet.source.pr, https, 'packet.source.pr', 'must be an HTTPS reference without credentials, or null');
       if (packet.source.sourceDigest !== null) check(packet.source.sourceDigest, digest, 'packet.source.sourceDigest', 'must be a SHA-256 digest, or null');
     }
@@ -146,10 +149,25 @@ export function validateCycle(data) {
       if (['READY_FOR_REVIEW', 'COMPLETE_INCREMENT'].includes(packet.disposition) && evidence.some(item => record(item) && sameEvidenceSource(item, packet) && ['FAIL', 'PENDING'].includes(item.result))) fail('packet.evidence', 'unresolved failing or pending evidence cannot be ready or complete');
     }
   }
+  if (sequential(data) && record(packet)) {
+    const review = packet.review;
+    if (review !== null) {
+      const keys = ['authorContextId', 'reviewerContextId', 'sourceSha', 'reference'];
+      if (!record(review) || keys.some(key => !Object.hasOwn(review, key)) || Object.keys(review).some(key => !keys.includes(key))) fail('packet.review', 'must be a complete review receipt or null');
+      else {
+        if (!id(review.authorContextId) || !id(review.reviewerContextId) || review.authorContextId === review.reviewerContextId) fail('packet.review', 'requires distinct author and reviewer contexts');
+        if (review.sourceSha !== packet.source?.headSha || !https(review.reference)) fail('packet.review', 'must identify the exact reviewed source and reference');
+      }
+    }
+    if (packet.disposition === 'COMPLETE_INCREMENT' && (!record(review) || !Array.isArray(packet.evidence)
+      || !packet.evidence.some(item => record(item) && item.kind === 'review' && item.result === 'PASS'
+        && item.reference === review.reference && sameEvidenceSource(item, packet)))) fail('packet.review', 'completion requires a matching review receipt; independence must still be observed');
+    if (record(data.activeRun) && data.activeRun.actor !== 'codex') fail('activeRun.actor', 'sequential mode has one Codex coordinator');
+  }
   if (data.activeRun !== null && run(data.activeRun, 'activeRun', 'activeRun')) {
     const active = data.activeRun;
     if (record(packet)) {
-      const reconciliationOnly = active.actor === 'pro' && timestamp(packet.expiresAt) && Date.parse(active.claimedAt) >= expires(packet);
+      const reconciliationOnly = active.actor === coordinator(data) && timestamp(packet.expiresAt) && Date.parse(active.claimedAt) >= expires(packet);
       if (active.actor !== packet.nextActor && !reconciliationOnly) fail('activeRun.actor', 'must match the ticket actor except Pro reconciliation of an expired ticket');
       if (timestamp(packet.notBefore) && Date.parse(active.claimedAt) < Date.parse(packet.notBefore)) fail('activeRun.claimedAt', 'precedes the ticket window');
       if (!reconciliationOnly && timestamp(packet.expiresAt) && Date.parse(active.closeBy) > expires(packet)) fail('activeRun.closeBy', 'exceeds the ticket window');
@@ -187,9 +205,9 @@ function owner(data, {runId, actor}) {
 
 export function cycleBrief(data, {now = new Date()} = {}) {
   valid(data); const moment = clock(data, now), active = data.activeRun;
-  return {kind: 'ardesia-dual-run-brief', acceptanceEvidence: false, revision: data.revision, procedureRef: data.procedureRef,
+  return {kind: sequential(data) ? 'ardesia-sequential-brief' : 'ardesia-dual-run-brief', acceptanceEvidence: false, revision: data.revision, procedureRef: data.procedureRef,
     packet: structuredClone(data.packet), activeRun: active === null ? null : {...active,
-      reconciliationOnly: active.actor === 'pro' && Date.parse(active.claimedAt) >= expires(data.packet),
+      reconciliationOnly: active.actor === coordinator(data) && Date.parse(active.claimedAt) >= expires(data.packet),
       workExpired: moment >= Date.parse(active.writeUntil), closeExpired: moment > Date.parse(active.closeBy), takeoverAuthorized: false},
     ticketExpired: moment >= expires(data.packet), lastRun: structuredClone(data.lastRun)};
 }
@@ -203,11 +221,11 @@ export function claimCycle(data, {expectedRevision, runId, actor, startedAt}, {n
   const start = Date.parse(startedAt);
   if (start > moment) throw new Error('startedAt cannot be in the future.');
   if (data.lastRun && start < Date.parse(data.lastRun.finishedAt)) throw new Error('startedAt precedes lastRun completion.');
-  const expired = moment >= expires(data.packet), reconciliationOnly = actor === 'pro' && expired;
+  const expired = moment >= expires(data.packet), reconciliationOnly = actor === coordinator(data) && expired;
   if (data.packet.nextActor !== actor && !reconciliationOnly) throw new Error('Ticket is assigned to a different actor.');
   if (moment < Date.parse(data.packet.notBefore)) throw new Error('Ticket is not active yet.');
   if (expired && !reconciliationOnly) throw new Error('Ticket has expired; Pro must reconcile it before new work.');
-  if (actor === 'codex' && (data.packet.kind === 'coordination' || !['READY', 'READY_FOR_REVIEW'].includes(data.packet.disposition)
+  if (!sequential(data) && actor === 'codex' && (data.packet.kind === 'coordination' || !['READY', 'READY_FOR_REVIEW'].includes(data.packet.disposition)
     || protectedBranches.has(data.packet.source.branch))) throw new Error('Codex requires an active isolated implementation/review ticket.');
   const deadline = reconciliationOnly ? Infinity : expires(data.packet);
   const close = Math.min(start + 55 * MINUTE, deadline);
@@ -232,12 +250,14 @@ export function cycleBudget(data, {runId, actor, seconds}, {now = new Date()} = 
 export function finishCycle(data, {expectedRevision, runId, actor, outcome, packet, summary}, {now = new Date()} = {}) {
   valid(data); revision(data, expectedRevision); owner(data, {runId, actor}); const moment = clock(data, now);
   if (!outcomes.has(outcome) || !text(summary) || !record(packet)) throw new Error('A supported outcome, complete next packet and summary are required.');
-  if (['HANDOFF', 'COMPLETE_INCREMENT'].includes(outcome) && actor !== 'pro') throw new Error('Only Pro can hand off new work or complete an increment.');
-  const nextActor = outcome === 'HANDOFF'
+  if (['HANDOFF', 'COMPLETE_INCREMENT'].includes(outcome) && actor !== coordinator(data)) throw new Error('Only Pro can hand off new work or complete an increment.');
+  if (sequential(data) && outcome === 'HANDOFF' && data.packet.kind !== 'coordination'
+    && !['COMPLETE_INCREMENT', 'BLOCKED', 'INTERRUPTED'].includes(data.packet.disposition)) throw new Error('Resolve or preserve the current assignment before selecting its successor.');
+  const nextActor = sequential(data) ? 'codex' : outcome === 'HANDOFF'
     ? packet.kind === 'coordination' && packet.nextActor === 'pro' ? 'pro' : 'codex'
     : outcome === 'READY_FOR_REVIEW' ? actor === 'pro' ? 'codex' : 'pro' : 'pro';
   if (packet.nextActor !== nextActor || packet.disposition !== (outcome === 'HANDOFF' ? 'READY' : outcome)) throw new Error('Next packet actor/disposition must match the outcome.');
-  if (nextActor === 'codex' && (!timestamp(packet.notBefore) || !timestamp(packet.expiresAt)
+  if (nextActor === 'codex' && !(sequential(data) && packet.kind === 'coordination' && packet.expiresAt === null) && (!timestamp(packet.notBefore) || !timestamp(packet.expiresAt)
     || expires(packet) - Math.max(moment, Date.parse(packet.notBefore)) <= 10 * MINUTE)) throw new Error('Codex successor window must retain more than ten useful minutes after now or its future start.');
   if (outcome !== 'HANDOFF') {
     if (packet.id !== data.packet.id || packet.taskId !== data.packet.taskId || packet.goal !== data.packet.goal
@@ -253,13 +273,58 @@ export function finishCycle(data, {expectedRevision, runId, actor, outcome, pack
   next.revision += 1; next.updatedAt = new Date(moment).toISOString(); valid(next); return next;
 }
 
-const usage = 'Usage: node tools/cycle.mjs validate|brief STATE; claim STATE --revision N --actor pro|codex --run ID --started-at ISO; budget STATE --actor ROLE --run ID --seconds N; finish STATE --revision N --actor ROLE --run ID --outcome OUTCOME --packet PACKET --summary TEXT';
+
+/** Explicit format migration only. Caller must reconcile live writers and publish with expected SHA. */
+export function migrateCycle(data, {expectedRevision, procedureRef, packet}, {now = new Date()} = {}) {
+  valid(data); revision(data, expectedRevision); const moment = clock(data, now);
+  if (sequential(data)) throw new Error('Sequential migration has already been applied.');
+  if (data.activeRun !== null) throw new Error('Migration refuses an active run, even if expired.');
+  if (!sha(procedureRef) || !record(packet) || packet.nextActor !== 'codex' || packet.kind !== 'coordination'
+    || packet.disposition !== 'READY' || packet.review !== null) throw new Error('Migration requires an explicit procedure revision and a READY Codex coordination packet.');
+  const next = structuredClone(data);
+  next.schemaVersion = '2.0.0'; next.kind = 'ardesia-sequential-state'; next.procedureRef = procedureRef;
+  next.packet = structuredClone(packet); next.revision += 1; next.updatedAt = new Date(moment).toISOString();
+  valid(next); return next;
+}
+
+/** Select within the existing claim. Does not change the queue, clock, ownership or authorization. */
+export function assignCycle(data, {expectedRevision, runId, actor, packet, queue}, {now = new Date()} = {}) {
+  valid(data); revision(data, expectedRevision); owner(data, {runId, actor}); const moment = clock(data, now);
+  if (!sequential(data) || actor !== 'codex' || data.packet.kind !== 'coordination' && data.packet.disposition !== 'COMPLETE_INCREMENT') throw new Error('Only sequential coordination or a completed assignment may select work.');
+  if (moment >= Date.parse(data.activeRun.writeUntil)) throw new Error('Selection cannot renew an expired work budget.');
+  if (!record(packet) || packet.nextActor !== 'codex' || packet.disposition !== 'READY') throw new Error('Selection requires a READY Codex packet.');
+  if (!record(queue) || !Array.isArray(queue.tasks) || !Array.isArray(queue.blockers) || !Array.isArray(queue.claims)) throw new Error('Canonical queue, blockers and claims are required.');
+  if (queue.tasks.some(task => !record(task) || !id(task.id)) || new Set(queue.tasks.map(task => task.id)).size !== queue.tasks.length) throw new Error('Canonical task identities must be unique.');
+  if (queue.blockers.some(blocker => !record(blocker) || !id(blocker.id) || !['blocked', 'resolved'].includes(blocker.status))
+    || new Set(queue.blockers.map(blocker => blocker.id)).size !== queue.blockers.length) throw new Error('Canonical blocker identities and states must be valid and unique.');
+  if (queue.claims.some(claim => !record(claim) || !id(claim.taskId) || !Array.isArray(claim.paths) || !claim.paths.length
+    || claim.paths.some(path => !repoPath(path)))) throw new Error('Canonical queue claim metadata is malformed.');
+  const candidates = queue.tasks.filter(task => task.id === packet.taskId);
+  if (candidates.length !== 1) throw new Error('Assignment must identify exactly one canonical task.');
+  const task = candidates[0];
+  if (!Array.isArray(task.scope) || !Array.isArray(task.dependsOn) || !Array.isArray(task.blockers)) throw new Error('Task contract is incomplete.');
+  if (!['queued', 'in_progress', 'ready_for_review', 'blocked'].includes(task.status)) throw new Error('Deferred or done work cannot be selected.');
+  if (packet.kind === 'implementation') {
+    if (!['queued', 'in_progress'].includes(task.status)) throw new Error('Implementation requires an eligible queued or active task.');
+    if (queue.tasks.some(other => other.id !== task.id && other.status === 'in_progress')) throw new Error('Only one active increment may be implemented.');
+    if (task.dependsOn.some(dependency => queue.tasks.find(item => item.id === dependency)?.status !== 'done')) throw new Error('Implementation has an incomplete dependency.');
+    if (task.blockers.some(blocker => queue.blockers.find(item => item.id === blocker)?.status !== 'resolved')) throw new Error('Implementation has an unresolved blocker.');
+    if (!Array.isArray(packet.allowedPaths) || packet.allowedPaths.some(path => !repoPath(path) || !task.scope.some(scope => repoPath(scope) && contains(scope, path)))) throw new Error('Assignment exceeds the canonical scope.');
+  }
+  if (queue.claims.some(claim => claim?.taskId === task.id || Array.isArray(claim?.paths) && Array.isArray(packet.allowedPaths)
+    && claim.paths.some(path => packet.allowedPaths.some(scope => repoPath(path) && repoPath(scope) && (contains(path, scope) || contains(scope, path)))))) throw new Error('Assignment conflicts with a queue claim.');
+  if (!timestamp(packet.notBefore) || Date.parse(packet.notBefore) > moment || expires(packet) < Date.parse(data.activeRun.closeBy)) throw new Error('Assignment window must preserve the existing run deadline.');
+  const next = structuredClone(data); next.packet = structuredClone(packet); next.revision += 1; next.updatedAt = new Date(moment).toISOString();
+  valid(next); return next;
+}
+
+const usage = 'Usage: node tools/cycle.mjs validate|brief STATE; claim STATE --revision N --actor pro|codex --run ID --started-at ISO; budget STATE --actor ROLE --run ID --seconds N; finish STATE --revision N --actor ROLE --run ID --outcome OUTCOME --packet PACKET --summary TEXT; migrate STATE --revision N --procedure-ref SHA --packet PACKET; assign STATE --revision N --actor codex --run ID --packet PACKET --queue QUEUE';
 /** Reads local JSON and emits JSON to stdout. It never writes files, contacts GitHub or selects a clock. */
 export function runCycleCli(args, {readText = path => readFileSync(path, 'utf8')} = {}) {
   try {
-    if (!Array.isArray(args) || args.length < 2 || !['validate', 'brief', 'claim', 'budget', 'finish'].includes(args[0]) || !text(args[1]) || args[1].startsWith('--')) throw new Error(usage);
+    if (!Array.isArray(args) || args.length < 2 || !['validate', 'brief', 'claim', 'budget', 'finish', 'migrate', 'assign'].includes(args[0]) || !text(args[1]) || args[1].startsWith('--')) throw new Error(usage);
     const [command, file, ...flags] = args;
-    const required = {validate: [], brief: [], claim: ['revision', 'actor', 'run', 'started-at'], budget: ['actor', 'run', 'seconds'], finish: ['revision', 'actor', 'run', 'outcome', 'packet', 'summary']}[command];
+    const required = {validate: [], brief: [], claim: ['revision', 'actor', 'run', 'started-at'], budget: ['actor', 'run', 'seconds'], finish: ['revision', 'actor', 'run', 'outcome', 'packet', 'summary'], migrate: ['revision', 'procedure-ref', 'packet'], assign: ['revision', 'actor', 'run', 'packet', 'queue']}[command];
     const options = {};
     if (flags.length % 2) throw new Error(usage);
     for (let index = 0; index < flags.length; index += 2) {
@@ -276,6 +341,8 @@ export function runCycleCli(args, {readText = path => readFileSync(path, 'utf8')
     else if (command === 'brief') result = cycleBrief(data);
     else if (command === 'claim') result = claimCycle(data, {...input, startedAt: options['started-at']});
     else if (command === 'budget') result = cycleBudget(data, {...input, seconds: Number(options.seconds)});
+    else if (command === 'migrate') result = migrateCycle(data, {...input, procedureRef: options['procedure-ref'], packet: JSON.parse(readText(options.packet))});
+    else if (command === 'assign') result = assignCycle(data, {...input, packet: JSON.parse(readText(options.packet)), queue: JSON.parse(readText(options.queue))});
     else result = finishCycle(data, {...input, outcome: options.outcome, packet: JSON.parse(readText(options.packet)), summary: options.summary});
     return {exitCode: 0, stdout: JSON.stringify(result, null, 2), stderr: ''};
   } catch (error) { return {exitCode: 1, stdout: '', stderr: error instanceof SyntaxError ? 'Input contains invalid JSON.' : error.message}; }

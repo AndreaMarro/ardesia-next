@@ -1,165 +1,91 @@
-# Due procedure ricorrenti: Pro e Codex
+# Codex sequenziale — protocollo operativo
 
-Versione: ARDESIA-DUAL-1.1. Mandato del 1 novembre 2026, Europe/Rome, aggiornato da OPS-20261101-03. **Configurazione ora richiesta al coordinatore; lo stato effettivo è nel checkpoint della PR #20.** Questo documento descrive il protocollo, non attesta l'attivazione di un client o la selezione di un modello.
+Versione ARDESIA-SEQ-2, 1 novembre 2026. [ADR 0008](adr/0008-codex-sequential.md), mandato OPS-20261101-07. Sostituisce l'alternanza Pro/Codex: **un coordinatore Codex sceglie, implementa, raccoglie review e integra entro i gate**. Non occorre un altro task per assegnargli lavoro. I ruoli specialistici sono incarichi temporanei, non scheduler autonomi.
 
-Assetto raccomandato: Pro coordina; Codex **GPT-6.1 Sol, effort Max** implementa o recensisce un incarico delimitato quando il suo client è realmente configurato. Il modello si seleziona nel client; il prompt non lo cambia. Questa coppia usa lo stesso prodotto, la stessa coda e le stesse evidenze. [ADR 0007](adr/0007-paired-recurring-cycles.md) registra autorizzazioni e supersessioni; [operazioni](operations.md), [lezioni](lessons.md) e [mappa prodotto](product-map.md) conservano il metodo precedente.
+## 1. Configurazione una tantum, distinta dalle run
+La precedente regia ChatGPT visibile rimane disabilitata e conservata, non duplicata come finto Codex. Il titolare riferisce di non avere avviato il worker: non dedurre dal nome di un task che Codex/Sol Max sia configurato. Nel client nativo scegliere repository, modello/effort disponibili, ambiente e accessi effettivi. La configurazione locale non trasferisce cookie, credenziali o conversazioni da ChatGPT.
 
-## Autonomia senza nuove richieste all'utente
+Il prompt di setup può creare **un solo task nativo Codex**, dopo una prova controllata, con intervallo esatto di 90 minuti. Richiedere rilettura del task, inclusi ambiente, ricorrenza e destinazione. Non sostituire con due scheduler orari né con ChatGPT generico. Se il client non espone intervalli di 90 minuti o il contesto desiderato, indicare il limite: niente cadenza inventata o arrotondata. L'API di questa chat non seleziona il runtime Codex.
 
-Il mandato diretto [OPS-20261101-04](history.md#ops-20261101-04--autonomia-pro-senza-ulteriori-richieste-di-autorizzazione) prevede che Pro **non richieda più al titolare autorizzazioni o conferme operative ordinarie**. Entro i permessi e gate già disponibili, deve decidere, eseguire e verificare in autonomia. Se una piattaforma o un'azione richiede necessariamente consenso, autenticazione personale o nuovi privilegi, Pro non deve sollecitarli né bypassarli: conserva il blocker e passa a un lavoro indipendente eleggibile. La mancanza di un permesso non costituisce autorizzazione a procurarsi segreti, modificare il freeze, fare nuove spese o distribuire in produzione. Se nessun lavoro sicuro resta, chiude in breve tempo senza ripetizioni o richieste di intervento.
+Preferire esecuzioni nuove con contesto versionato; il singolo thread infinito non è l'archivio. Un progetto/worktree locale deve essere effettivamente disponibile al runner; un task web non eredita il filesystem locale. Non modificare sandbox, credenziali, rete o approvazioni per fare funzionare la demo. Errori di accesso vanno distinti dai difetti del codice.
 
-Questa istruzione non risolve automaticamente la mancata verifica della cessazione dell'attività Next precedente, né può cambiare i controlli obbligatori della piattaforma. La nuova regia non deve perdere ore a ripetere una richiesta non eseguibile; non deve neppure simulare lo sblocco di un writer concorrente.
+55 minuti di budget per run lasciano 35 minuti fra slot di 90 minuti. Nessuna garanzia di watchdog globale viene dedotta dal testo. Slot saltati non si recuperano in raffica. Una run non crea, modifica, ferma o rilancia task, neppure quando è BLOCKED.
 
-## 1. Prima attivazione, una sola volta
+## 2. Un'unica memoria operativa
+- `operations/coordination.json`: backlog e dipendenze canonici. `deferred` non è un ordine di implementazione.
+- `handoff.json` sulla stessa ref `ops/dual-run-state`: un solo incarico attuale, claim, riferimenti alle prove, prossimo passo. v2 `ardesia-sequential-state`, actor `codex`, `acceptanceEvidence:false`. Nome storico conservato; mai merge o deploy della ref.
+- `docs/history.md`: indice unico delle decisioni/incidente/esiti materiali, con archivio storico immutato. `docs/lessons.md`: indice delle prevenzioni, non un altro registro.
+- `docs/product-map.md` e D01–D68: visione e criteri originali. I report e `tools/status.mjs` restano l'accettazione di prodotto.
 
-Il mandato corrente autorizza la configurazione iniziale e la sostituzione della precedente attività `6adbfad145dc81919b36fc0cdf0eed0c`. Prima di abilitare scritture della nuova regia, verificare che la precedente sia sostituita/in pausa e che la sua run sia terminata. Se non è accessibile, non dichiararla cancellata o sospesa e non interpretare l'assenza da un elenco limitato come prova di cessazione. Una nuova attività di regia può essere pianificata in modalità di sola ricognizione: nessuna scrittura sui repository, cursore o piattaforme finché questo prerequisito non è risolto. Le run ricorrenti non modificano autonomamente le pianificazioni.
+Le prove grandi rimangono negli artefatti/PR originali. Nel cursore solo riferimenti, identità, esito e limiti. La retention degli artefatti non è infinita: preservare le prove indispensabili nell'archivio già autorizzato prima che scadano, senza segreti né nuovi servizi. Se un artefatto è scaduto non dichiararlo letto o riutilizzabile.
 
-Il connettore di pianificazione osservato espone prompt, orario e fuso, ma non modello, effort o instradamento Codex. Non creare una seconda attività ChatGPT chiamandola «Codex Max» come sostituto della selezione reale. Se quest'ultima richiede un'interfaccia non accessibile, configurare soltanto quanto supportato, conservare il prompt Codex e riportare il limite.
+## 3. Bootstrap e selezione
+All'avvio registrare ora reale, runId e scadenza +55, prima delle letture. Entro otto minuti leggere ingresso, cursore, task completo, ultimo checkpoint e solo la lezione/ADR pertinente. Verificare checkout, dirty state, remote, toolchain, ref sorgente/procedura e capacità richieste dal task. Non fare login ripetuti e non cercare tutte le chat.
 
-**Codex rimane una capacità opzionale.** Dopo la riconciliazione del processo precedente, Pro può svolgere i propri incarichi già autorizzati, inclusi coordinamento e review, senza aspettare un worker assente. Per una modifica sostanziale di cui è autore, la review separata può provenire da Codex oppure da un revisore non autore già disponibile e autorizzato nella sessione, con contesto e perimetro dichiarati e senza nuovi job esterni. Quest'ultimo non è un task Codex pianificato, una nuova identità GitHub o un'approvazione umana. Pro conserva il solo claim e le scritture remote; il revisore di fallback lavora in sola lettura, con budget compreso nella stessa run. Se la review necessaria non è disponibile, l'adozione attende. Non introdurre nuovi actor nel cursore, prendere un ticket ancora posseduto da Codex, usare HANDOFF Pro per self-implementation o autoapprovarsi.
+Ordine di lavoro: regressione P0/P1 dimostrata; risultato/CI lasciati dalla run precedente; review o completamento della PR già pronta; gate reale della fase; primo incremento indipendente eleggibile. Conservare ciò che è già corretto. Il solo cambio di agente/sessione non invalida le prove.
 
-Il fallback di review non aggiunge un packet di implementazione Pro all'helper. Se occorre sviluppo con il solo coordinatore, usare il [protocollo ordinario](operations.md), dopo riconciliazione dei writer e registrazione esplicita del cambio di modalità: nessun activeRun residuo, nessun ticket Codex eseguibile nel cursore (BLOCKED verso Pro con il motivo), task e claim della coda ordinaria su branch/scope isolati. Finché quel claim esiste, la coppia non riparte; la sua scadenza non basta per prenderne il posto. Rientrare nel protocollo condiviso solo dopo cessazione, riconciliazione e rilascio del claim ordinario. Il cambio di modalità non modifica gli scheduler, non amplia lo scope e non riavvia il budget della run. Se uno di questi presupposti non è verificabile, l'implementazione attende.
+La coda può avere più consegne pronte in attesa di integrazione, ma un solo incremento in lavorazione. Un task di review non è un nuovo filone implementativo. Separare dipendenza tecnica, disponibilità di una prova e permesso di merge: non inventare una dipendenza dal merge di documenti per poter analizzare il bundle. Un blocker di release non autorizza merge, ma non blocca automaticamente la preparazione isolata già autorizzata.
 
-Entrambe le sessioni devono poter leggere la repository e il cursore, aggiornare la ref del cursore senza force e leggere il tempo reale. Codex deve avere checkout, Node/toolchain del progetto, branch isolato e possibilità di pubblicare soltanto i branch assegnati. Le credenziali e le connessioni si verificano nell'ambiente di ciascuna run: non vengono ereditate automaticamente dalla chat o dal computer dell'altro ruolo. Nessun acquisto, nuovo token o nuovo servizio è implicito. Il mancato accesso di un ruolo non autorizza a prestargli segreti dell'altro.
+Se il packet v2 è coordination oppure il predecessore è COMPLETE_INCREMENT con le prove richieste, Codex può selezionare e iniziare il lavoro **nella stessa run**, senza aspettare uno slot di Pro. `assign` non rinnova il tempo né modifica la coda. Il task deve esistere, lo scope deve essere contenuto, le dipendenze implementative completate e i blocker applicabili risolti. Un nuovo task motivato va registrato nella coda, non in un secondo file privato.
 
-Esempio di cadenza, da scegliere nell'interfaccia: Pro 00:00,03:00,06:00,…; Codex 01:30,04:30,07:30,…, **Europe/Rome**. Sono otto run per ruolo al giorno se estese alle 24 ore; nessun obbligo di consumare un'ora per run. Lo sfalsamento lascia 35 minuti tra chiusura ordinaria e slot successivo, ma ritardi e crash richiedono comunque il protocollo di ownership. Nessuna run cambia i propri orari o recupera in raffica gli slot saltati.
+## 4. Claim e concorrenza
+Leggere ref+JSON alla medesima SHA; validare; emettere claim con revision attesa, actor codex, runId e startedAt reale. Pubblicare come figlio della head letta con expected SHA/no force, poi rileggere. Prima di source/service writes ricontrollare claim, budget, task, scope e head. Un conflict ferma quella mutazione, non autorizza overwrite o retry cieco.
 
-Il primo Pro riconcilia la transizione, gli accessi e il lavoro già pronto. Il primo Codex non inventa un nuovo incremento: senza ticket valido restituisce NO_ACTION in pochi minuti. OIDC/QA/restore mancanti non diventano disponibili grazie alla pianificazione.
+Un activeRun esistente, anche scaduto, non può essere rubato. Per recupero servono prove accessibili di cessazione, riconciliazione dei branch/processi/job e conservazione del lavoro. Una CI pendente può essere conservata come WAITING_CI se non scrive sui sorgenti. La scadenza temporale o l'assenza da un elenco limitato non dimostrano cessazione.
 
-## 2. Le tre fonti, senza duplicazioni
+Il vecchio ID di automazione non osservabile resta un fatto storico NON VERIFICATO, **non un interruttore globale del progetto**. Proteggere le risorse concretamente contese tramite claim/ref; in caso di dubbio su un perimetro, review in lettura o patch locale non pubblicata per quel perimetro. Non usare una dichiarazione nel prompt come prova di assenza di altri writer.
 
-| Fonte | Autorità |
-| --- | --- |
-| `operations/coordination.json`, ADR e mappa prodotto | Roadmap, dipendenze, vincoli e criteri; aggiornamenti sostanziali versionati nel normale incremento. |
-| `handoff.json` su `ops/dual-run-state` | Solo il cursore del lavoro corrente, proprietario temporaneo, ticket, riferimenti alle prove e prossimo passo. `acceptanceEvidence:false`. |
-| Commit/PR/run/artefatti e gate originale | Evidenza tecnica e accettazione, nel loro ambito. Un campo PASS del cursore non autentica un artefatto. |
+## 5. Esecuzione, review e consegna
+Un incremento ha consumer, requisito, comportamento osservabile, allowedPaths, caso avverso, verifica finale e rollback. Per bug RED discriminante prima e GREEN dopo; per refactoring equivalenza; per prestazioni workload comparabile. No nuova astrazione senza necessità, nessun secondo Core o store, nessuna implementazione scollegata dalla UI/consumer.
 
-Lo storico materiale resta `docs/history.md`; i commit della ref del cursore conservano i passaggi tecnici. Nessun secondo backlog, RUNLOG o motore di accettazione. Le issue rimangono viste leggibili del blocco; nessun commento identico a ogni tick.
+Il root è l'unico writer remoto. Usa al massimo due specialisti pertinenti già disponibili nella sessione; in generale uno alla volta. `ardesia_architect`, `ardesia_reviewer`, `ardesia_science`, `ardesia_ux`, `ardesia_memory` hanno istruzioni repo-locali. I limiti di lettura nelle istruzioni non sono ACL: le capacità effettive dipendono dal parent. Non dichiarare separazione tecnica non osservata.
 
-La ref di coordinamento contiene soltanto handoff, README e disabilitazione dei deploy Git. **Mai unirla a main, aprire una PR applicativa da essa o distribuirla.** Non contiene workflow e i suoi push non richiedono la CI del candidato. Non escludere nuovi file dal sourceDigest: sono due tree diversi, con scopi diversi.
+L'autore non si autoapprova cambiando cappello. Il reviewer riceve sorgente/diff/test e criteri grezzi, non il ragionamento dell'autore né la risposta attesa. Registra contesti distinti, SHA esatta, riferimento e limiti. v2 richiede una ricevuta coerente per COMPLETE_INCREMENT, ma il validatore non autentica l'indipendenza. Se lo strumento subagent non è disponibile, lascia review pending oppure usa una run realmente nuova e non autrice; il tempo trascorso da solo non crea indipendenza. Le approvazioni scientifiche/editoriali umane restano umane.
 
-## 3. Bootstrap e lettura minima
+Una run successiva acquisisce la CI originale, non la rilancia. Finire un task non implica merge o accettazione M3. HANDOFF consente Codex→Codex per un incarico successivo, mai Pro obbligatorio. Non scartare un'implementazione aperta o una CI pendente per aprire un nuovo lavoro: lascia il risultato nella PR e nel parent Git, completa o dichiara il blocco.
 
-1. Leggere l'ora reale e fissare la chiusura entro 55 minuti dall'avvio effettivo. Se è disponibile l'ora programmata, usare anche il limite `scheduledFor + 60 minuti`; un avvio tardivo non estende quella finestra. Se manca il tempo reale, sola ricognizione circoscritta e chiusura.
-2. Leggere la head di `ops/dual-run-state` e il suo `handoff.json`. Verificare repository, kind, schema, `acceptanceEvidence:false` e campi con `tools/cycle.mjs` dalla revisione di metodo già adottata. La CLI è locale e non esegue rete o scritture. Se il contesto Pro non ha Node, può ricostruire la forma con il suo runtime JSON disponibile e la specifica; deve dichiarare CLI_NOT_RUN e non inventare un'esecuzione del validatore. Se non riesce a verificare in modo affidabile forma, revisione o tempo, resta in lettura.
-3. Risolvere `procedureRef`: leggere istruzioni/AGENTS e questo documento a quella SHA. La revisione del metodo e quella del prodotto sono distinte. Un semplice nuovo commit sul branch della PR non viene adottato automaticamente. Per la prima adozione il checkpoint della PR #20 conserva il riferimento verificato; per le successive serve la ricevuta di review descritta sotto.
-4. Leggere la voce completa del task, le decisioni di mandato che richiama, l'ultimo checkpoint materiale e solo la lezione/ADR pertinente dalla `packet.source.headSha`. Se quel candidato precedente non contiene ancora la governance, come la PR #18, usare esplicitamente i file a `procedureRef` e dichiarare questa provenienza transitoria. Un nuovo task introdotto dopo quella revisione deve essere nella coda versionata della sorgente prima dell'HANDOFF. Non copiare il metodo nel candidato per il solo bootstrap e non inventare una seconda coda. Verificare live main, source head/PR, CI e capacità coinvolte. Il brief è un indice, non sostituisce il ticket e i criteri di uscita; il suo orizzonte differito evita di perdere le fasi successive.
-5. I file delle prove e gli AGENTS dell'area provengono dalla revisione sorgente realmente lavorata. Il vecchio divieto Codex è superato solo per la run configurata dal titolare; il vecchio ZERO-LLM runtime non autorizza provider nell'app.
+## 6. Prove da riusare e prove da ripetere
+Riuso solo con sorgente/commit/digest, comando, versione, lockfile, ambiente e fixture applicabili e accessibili. Dichiarare chi ha letto i byte e chi riusa la verifica. Metadato success non significa artefatto letto. Una nuova head sorgente (anche documentale) mantiene Verify obbligatorio; il solo cursore/commento non cambia il digest. Conservare FAIL/PENDING/NOT_RUN, skip, flaky e limiti. Non alterare digest, soglie o gate per risparmiare test.
 
-Il fallback alla revisione del metodo recupera istruzioni e task già definiti, non attesta lo stato live del prodotto. La ripresa normale deve stare nei primi otto minuti. Se manca una decisione, fare una ricerca delimitata dal suo nome e dalla fonte indicizzata; non rileggere tutte le chat, tutti i donor REA o tutte le specifiche. Una fonte storica non ripristina eLab o un'architettura superata.
+Nuove prove remote solo per target, identità, configurazione o comportamento interessati. Benchmark isolati escludono ciò che non misurano: rete/TLS/penna fisica/rendering non si inferiscono. Non attribuire miglioramenti a differenze di macchine o sottrazioni di mediane.
 
-## 4. Ownership: confronto della ref e nessun takeover automatico
+## 7. Avanzamento oltre M3 e M4
+Il mandato comprende tutta la mappa, non solo la fondazione. Rimane una sequenza di dipendenze reali:
+1. M3: dodici controprove originali sul candidato remoto protetto e restore sicuro; output del gate originale ACCEPTED.
+2. M3-TRANSITION: conservare baseline/prove e separare accettazione storica da verifiche del nuovo candidato; aggiornare coerentemente motore e guardie, senza rietichettare vecchi report.
+3. M4: secondo dominio sullo stesso Core/Host, modello scientifico verificato, costo del riuso misurato e contratto di evidenza nel motore esistente.
+4. Unità verticali nei 18 ambiti: lezione→tentativo→feedback→ripresa; microcorso completo; Knowledge/Diario; audio/replay; Creator; marketplace; gestione docente; portabilità; MCP Core e REA selettivo.
+5. M5 e successive release: UX/scienza/sicurezza/performance/device/umanità richieste sul candidato; nessuna produzione implicita. M5 non cancella gli ambiti della visione ancora aperti.
 
-Per iniziare una mutazione utile, acquisire `activeRun` con id univoco e actor. Il claim richiede la `revision` appena letta e `startedAt` osservato al vero avvio, prima del bootstrap; `claimedAt` registra invece l'acquisizione. Il tempo già speso nella ricognizione non viene restituito al budget; validare il nuovo JSON, creare un commit il cui padre sia esattamente la head della ref letta e pubblicare **senza force**. Con GitHub usare anche expected SHA; con Git usare push normale, senza rebase o retry cieco. Due commit concorrenti dallo stesso padre divergono: soltanto uno può avanzare la ref.
+I quattro corsi restano Strumenti/meccanica, Fluidi/termodinamica, Elettricità/magnetismo, Onde/ottica/radiazioni; 52/57/33/58 sotto-obiettivi editoriali storici, non accettazioni Next. Un'unità include fonte/revisione/diritti, prerequisiti, spiegazione, previsione, attività, feedback, recupero e transfer. I contenuti rimangono DRAFT finché la review richiesta non esiste. Creator, commercializzazione e pagamenti non derivano automaticamente dal catalogo first-party M2.
 
-Dopo la pubblicazione rileggere la ref e verificare il proprio runId. Prima di ogni scrittura al branch sorgente o piattaforma rileggere proprietario, runId, scadenza, incarico e head del branch. Se qualcosa diverge, sospendere quella scrittura e riconciliare. Un reject non autorizza a copiare il proprio JSON sopra quello più recente.
+Quando una fase è realmente accettata, Codex aggiorna la coda e seleziona il successore senza chiedere una nuova autorizzazione operativa ordinaria. Non rimane fermo su un gate già dimostrato. Nuove spese, privilegi, pubblicazione commerciale/produzione e prove umane non vengono auto-autorizzati. Se una capacità manca, il blocco è circoscritto: proseguire solo su lavoro indipendente eleggibile; non dichiarare completato ciò che manca.
 
-Il claim sulla ref non recinta atomicamente altri servizi. La sicurezza dipende anche dal rispetto del protocollo da entrambi i runner. Se `activeRun` esiste, anche scaduto, l'altro ruolo non lo cancella e non prende il posto del precedente. Pro può recuperarlo soltanto dopo prova accessibile che il runner è terminato, riconciliazione di branch/PR/processi/job e conservazione dell'eventuale lavoro. Una CI ancora in esecuzione può essere mantenuta come WAITING_CI se non scrive sulla repository; un agente o processo di pubblicazione ancora attivo impedisce il recupero. Registrare quella prova nel checkpoint e usare un nuovo commit senza force. Senza prova, restare bloccati.
+## 8. Contesto aggiornato e apprendimento
+Nuova istruzione materiale direttamente vista → voce nello storico con ID, data, fonte, ambito, task interessati, supersessione esatta. Aggiornare solo le righe coinvolte di coda/mappa e citarne la revisione nel packet. Una chat non accessibile non è una fonte letta. Non importare conversazioni private o dati personali nel repo pubblico. Le ricerche Personal Context sono riepiloghi parziali, non una lettura integrale delle chat.
 
-Un ticket scaduto **senza activeRun** può essere riconciliato da Pro: non autorizza a eseguirne il lavoro prodotto. Codex non lo inizia. Questo impedisce che un incarico vecchio venga applicato a una nuova scena.
+Riordinare lavoro eleggibile in base a dipendenze e valore osservabile, non a quantità di file. Dopo due cicli senza avanzamento per causa sconosciuta fare una sola diagnosi circoscritta; se il blocker è già spiegato, attendere il suo trigger senza ripetizioni. Non creare nuovi registri o agenti per nascondere un blocco di credenziali.
 
-## 5. Budget di ogni run
+Miglioramento del metodo: incidente reale → causa/ipotesi → piccola patch → caso e controesempio → review separata → verifiche della stessa revisione → adozione e rollback. Non riscrivere schedule, modello, permessi, missione, soglie o gate dalle run. Non più di dieci minuti per una proposta non bloccante; prima il prodotto. Dopo ogni dieci incrementi utili, compattare soltanto indici e istruzioni operative ridondanti, conservando fonti e decisioni originali. Il numero dieci è una scelta operativa, non una metrica di efficacia già provata.
 
-| Minuti dall'avvio | Pro | Codex |
-| --- | --- | --- |
-| 0–8 | Stato live, handoff, gate, differenze materiali. | Ticket, branch/head, scope, prove riusabili e capacità locali. |
-| 8–35 | Review o sblocco concreto; decisione/integrazione permessa; ticket seguente circoscritto. | Un consumer e un cambiamento verificabile; RED/GREEN quando corregge un bug. |
-| 35–45 | Prove pertinenti e review del risultato. | Test mirati, pubblicazione della head e CI prescritta. |
-| 45–50 | Nessuna espansione; risultato, limiti e prossimo passo. | Nessuna nuova modifica; verifica disponibile e risultato recuperabile. |
-| 50–55 | Pubblicare handoff, rilasciare claim e concludere. | Pubblicare handoff, rilasciare claim e concludere. |
-
-Controllare tempo e `cycle budget` prima di operazioni lunghe e almeno dopo ogni blocco di lavoro. Usare timeout dei comandi/strumenti quando disponibili; nessun processo o subagente con scritture previsto oltre la run. Non aprire un task la cui verifica nota non può entrare nel tempo residuo. Se una prova necessaria richiede più tempo, scegliere una fetta più piccola o lasciare la prova esterna tracciata.
-
-La CI esistente ha un proprio timeout di 20 minuti; il suo risultato può arrivare dopo la chiusura dell'agente. In quel caso lasciare **WAITING_CI**, head e run URL; la prossima run legge lo stesso run, senza riavviarlo. Uno slot chiuso non significa incremento o prodotto accettato. Un lavoro incompleto si conserva come INTERRUPTED/BLOCKED, con checkpoint e motivo; non si finge un completamento entro un'ora.
-
-**Limite tecnico:** le fonti ufficiali consultate non attestano un timeout globale di 60 minuti per ogni task nel client dell'utente. Il metodo mira a 55 minuti e controlla il budget delle operazioni; un arresto forzato dell'intero servizio richiede una capacità del runner realmente disponibile. Non prometterla sulla base del prompt.
-
-## 6. Contratto del ticket e della consegna
-
-I `blockers` del packet sono impedimenti all'attività assegnata: READY, READY_FOR_REVIEW e COMPLETE_INCREMENT li richiedono vuoti. Un freeze che impedisce soltanto il merge resta visibile nella coda/policy e non impedisce un ticket di review in sola lettura.
-
-Il `packet` ha un id e un taskId della coda, prossimo actor, disposition, kind, validità, sorgente esatta, obiettivo, allowedPaths, criteri di uscita, evidenze, blocker e nextAction. Non contiene una nuova roadmap o autorizzazioni ai servizi.
-
-- Pro assegna un solo incremento con consumer, base/head, branch isolato, scope, comportamento atteso, controprova, verifiche da fare/riusare, condizioni di stop e rollback. Le condizioni importanti sono nei criteri e nel checkpoint della stessa PR, non in una chat invisibile all'altro ruolo.
-- Un successore riservato a Pro, come il coordinamento dell'accettazione M3, usa `HANDOFF` con `nextActor:pro`, `kind:coordination`, `disposition:READY` e `allowedPaths:[]`. Solo Pro può pubblicarlo. È un incarico per la successiva run Pro: non avvia una seconda run né rinnova il budget corrente. Il task deve essere nella coda; la sostituzione conserva l'identità precedente in `lastRun.packetId`, la sintesi e il packet completo nel parent Git. Registrare prima l'esito e le prove del predecessore nella PR/coda; HANDOFF non lo dichiara completato o accettato.
-- Codex implementa o recensisce quel ticket; non riassegna task, non modifica il metodo per semplificarsi il test, non integra main e non accede a Neon/Vercel/operator secrets. Può pubblicare il branch assegnato e il cursore solo con claim valido. Miglioramenti ulteriori diventano proposte motivate a Pro.
-- Pro riesamina la revisione esatta, confronta le prove e decide il successore entro il mandato. Se è autore di una modifica sostanziale al metodo o al prodotto, ottiene la review separata di Codex o del revisore già autorizzato descritto nella prima attivazione. Non dichiara indipendente un autore che si approva da solo.
-- Per cambiare fase dopo un gate accettato, Pro riconcilia le policy e la coda con l'evidenza originale prima di assegnare la nuova implementazione. Nessun merge durante l'attuale freeze; produzione e attività commerciali mantengono i propri mandati.
-
-| Esito | Significato e seguito |
-| --- | --- |
-| READY / HANDOFF | Incarico valido per Codex oppure successiva coordinazione Pro, senza dichiarare già prodotto il risultato. |
-| READY_FOR_REVIEW | Head/digest, verify PASS e risultato pronti per l'altro ruolo. |
-| WAITING_CI | Head pubblicata, run originale pendente; Pro ne acquisisce l'esito. |
-| BLOCKED | Prerequisito concreto; prossimo controllo legato a un cambiamento. |
-| COMPLETE_INCREMENT | Microincremento con verifiche e review riferite alla stessa identità; non M3/prodotto ACCEPTED. |
-| INTERRUPTED | Lavoro conservato ma criterio non raggiunto; ripresa esplicita. |
-| NO_ACTION | Solo esito della run, senza commit/commenti identici se lo stato non è cambiato. |
-
-## 7. Riuso delle prove e memoria
-
-Confrontare repository, commit/tree/sourceDigest, comando/versione, test/configurazione, lockfile/toolchain, ambiente/target e fixture. Una prova completa e accessibile con stessa identità e ambito si riusa. Il passaggio Pro↔Codex e l'aggiornamento del solo cursore non invalidano il candidato. File runtime, test, lockfile o documenti nel tree sorgente cambiati richiedono la CI prescritta sulla head finale. Nessun rerun solo perché è cambiato il modello o perché un report è vecchio di poche ore.
-
-Il campo `access:artifact` descrive una lettura effettivamente compiuta e registrata dal precedente verificatore; chi riusa dichiara quel riuso, non di aver riscaricato i byte. Metadato success e artefatto letto restano distinti. Conservare FAIL, PENDING, NOT_RUN e i limiti; niente falsi PASS da schema valido. La CLI verifica la forma/identità dichiarata, non l'autenticità dei riferimenti.
-
-La PR contiene risultato, delta, review, CI e limiti. Lo storico registra soltanto decisioni, incidenti e passaggi materiali. Lezioni aggiornate solo quando cambia ciò che un agente deve fare. Per incidenti, preservare la sequenza: sintomo, causa confermata/ipotesi, correzione e verifica. Il tentativo fallito non viene cancellato da un successivo verde.
-
-Prima di HANDOFF applicare [l'acquisizione dei mandati](operations.md#acquisizione-dei-nuovi-mandati): una nuova istruzione materiale non può restare soltanto nella chat dell'autore. Registrarla una volta, indicare fonte realmente vista e supersessione circoscritta, poi richiamare ID e revisione che la contiene nei riferimenti del task e nei criteri del packet. La chat corrente può aiutare Pro, ma non è un archivio completo condiviso con Codex. Una ricerca Personal Context non garantisce copertura di tutte le chat; risolvere soltanto la lacuna necessaria e indicizzarla. Non esportare conversazioni private o segreti nella repository pubblica.
-
-## 8. Avanzamento verso la visione
-
-Pro sceglie il primo task eleggibile della coda dopo regressioni P0/P1 dimostrate. PR18 e PR20 già pronte non diventano nuovi filoni. Se M3 è bloccato e non esiste un incremento indipendente autorizzato, entrambe le run possono terminare presto.
-
-### Transizione esplicita oltre M3
-
-Il successore canonico è `M3-TRANSITION`, subordinato all'accettazione originale di `M3-REMOTE`. Prima di assegnare M4, Pro conserva la ricevuta M3 e le sue prove originali nella struttura di baseline esistente, con commit, digest e ambiente attestato; riconcilia freeze, PR e coda; assegna una sola unità successiva. L'accettazione storica della milestone e la verifica del nuovo candidato sono due fatti distinti. Non rietichettare vecchie prove remote con il digest nuovo e non perdere una milestone accettata a ogni nuova head.
-
-La versione attuale di `tools/status.mjs` valuta M3 e riporta onestamente M4/M5 non avviati; la guardia conserva il freeze della fase attuale. Il task di transizione deve estendere in modo coerente questi punti, con review e controprove, quando esiste la baseline M3 reale. Non basta cambiare due booleani o sostituire NOT_STARTED con PASS. M4 comprende il proprio contratto di evidenza nel motore esistente; nessun secondo sistema di accettazione. Il coordinatore non deve continuare a riassegnare M3 dopo che questa transizione è stata verificata.
-
-| Passaggio | Prima unità e criterio osservabile |
-| --- | --- |
-| M4 | Secondo dominio sul medesimo Host/Core, con contratto scientifico e costo di riuso misurato. Il modello specifico si sceglie dal consumer e dalle fonti, non dal nome di un donor. |
-| Microcorsi | Un obiettivo con spiegazione, attività, feedback, recupero e transfer; fonti/revisioni e review richieste. DRAFT finché non approvato. |
-| Creator | Un pack DRAFT composto, salvato e riaperto attraverso gli stessi contratti di package/publishing. |
-| Marketplace | Un item attraverso consenso, uso, riapertura e disattivazione; pagamenti/payout/pubblicazione richiedono i rispettivi gate. |
-| MCP Core | Una lettura utile del Core Next da un host verificato, con scope, revoca e revisioni; adapter sottile senza seconda autorità. |
-| M5 | Accettazione del candidato su UX, scienza, sicurezza, prestazioni, recupero e prove umane/dispositivi richieste; produzione con mandato separato. |
-
-Le epiche non sono ticket da un'ora. Quando diventano eleggibili, Pro le suddivide nella coda esistente in un consumer, un comportamento, una verifica conclusiva e un rollback per run e ne aggiorna esplicitamente lo stato da deferred a queued. Una prova umana o un accesso ancora mancanti bloccano il relativo gate, non un altro incremento realmente indipendente ed eleggibile della stessa fase. I quattro microcorsi legacy e i 18 domini della mappa restano patrimonio indicizzato; non si riaprono tutte le fonti a ogni unità.
-
-Quando i gate permettono il passaggio, i risultati richiesti sono unità verticali: un secondo modello sullo stesso Host/Core; un obiettivo di microcorso con spiegazione, attività, feedback, recupero e transfer; un pack DRAFT componibile/salvabile/riapribile; un item marketplace attraverso consenso/uso/riapertura/disattivazione; una lettura MCP utile a un host verificato; un donor REA motivato da un consumer. Ogni unità conserva diritti, revisioni, privacy e review. Non confondere numero di quiz, file, agenti o test con l'apprendimento o la chiusura del prodotto.
-
-## 9. Miglioramento e riorganizzazione controllati
-
-Un incidente verificato o lavoro ridondante misurato attiva il curatore. Una normale run non ricomincia l'audit del sistema. Correzioni minime con caso, controesempio e rollback; regole di sicurezza e accettazione invariate. Per migliorie non bloccanti riservare al massimo dieci minuti di analisi/proposta e completare prima l'incremento; un difetto del protocollo che impedisce lavoro sicuro diventa esso stesso il task prioritario.
-
-Codex può proporre e implementare una correzione assegnata; Pro la riesamina. Se Pro è autore, ottiene una review separata secondo la prima attivazione. Test mirati e CI sulla nuova revisione precedono l'adozione. Solo Pro cambia `procedureRef`, con claim attivo, dopo avere letto review del revisore non autore e CI coerenti con la nuova SHA; registra precedente/nuova SHA e prove nella PR e nello storico, poi pubblica il cursore con confronto della ref. `finish` preserva quel puntatore: non lo cambia implicitamente. Questo aggiornamento esplicito è distinto dal completamento di un ticket e richiede una revisione del cursore nuova, validata.
-
-Sono riordinabili i task ancora eleggibili della stessa fase in base a dipendenze, regressioni e valore utente. Non sono auto-modificabili missione, gate, soglie, modello scelto, budget, credenziali, costi, pubblicazione, schedule o prompt salvati. Nessuna nuova flotta di agenti. Se una riorganizzazione richiede quei cambiamenti, consegnare una proposta concreta senza applicarla.
-
-Misurare dati reali dai checkpoint: minuti alla ripresa, durata lavoro/verifica, motivi di rerun, regressioni, blocchi e risultati utente. Non inventare percentuali di efficienza. Due cicli senza progresso per una causa non ancora spiegata richiedono una sola diagnosi delimitata. Un blocker già spiegato e invariato attende il proprio trigger: non genera nuovi audit, test o documenti a ogni coppia di run.
-
-## 10. Strumenti pronti e pubblicazione del cursore
-
-Eseguire la CLI dalla revisione delle procedure verificata, anche quando il checkout runtime è ancora sulla main precedente:
+## 9. Strumenti e chiusura
+La CLI legge JSON locale ed emette JSON; non scrive file, non autentica prove e non contatta GitHub. Tenerla nel checkout della revisione adottata, separata dal candidato applicativo se necessario.
 
 ```sh
-# Da acquisire al vero inizio della run, prima delle letture.
-ARDESIA_RUN_STARTED_AT="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-node tools/cycle.mjs validate /tmp/ardesia-cycle.json
-node tools/cycle.mjs brief /tmp/ardesia-cycle.json
-node tools/cycle.mjs claim /tmp/ardesia-cycle.json --revision 0 --actor pro --run pro-UNIQUE --started-at "$ARDESIA_RUN_STARTED_AT"
-node tools/cycle.mjs budget /tmp/ardesia-claimed.json --actor pro --run pro-UNIQUE --seconds 300
-node tools/cycle.mjs finish /tmp/ardesia-claimed.json --revision 1 --actor pro --run pro-UNIQUE --outcome HANDOFF --packet /tmp/next-packet.json --summary 'Risultato verificato e prossimo incarico'
+node tools/cycle.mjs validate /tmp/ardesia-state.json
+node tools/cycle.mjs brief /tmp/ardesia-state.json
+node tools/cycle.mjs claim /tmp/ardesia-state.json --revision REV --actor codex --run RUN_ID --started-at ACTUAL_START_ISO
+node tools/cycle.mjs assign /tmp/claimed.json --revision REV --actor codex --run RUN_ID --packet /tmp/task.json --queue operations/coordination.json
+node tools/cycle.mjs budget /tmp/assigned.json --actor codex --run RUN_ID --seconds 300
+node tools/cycle.mjs finish /tmp/assigned.json --revision REV --actor codex --run RUN_ID --outcome WAITING_CI --packet /tmp/result.json --summary 'Risultato e limite osservati'
 ```
 
-I numeri 0/1 e l'id sono esempi da sostituire con quelli letti, non valori fissi. Claim/finish emettono JSON su stdout: salvarlo in un file temporaneo fuori dal tree candidato. Nessuna scrittura remota è effettuata dalla CLI. Pubblicare solo `handoff.json` su un checkout separato della ref di coordinamento, dopo confronto del padre remoto; fare commit e push normale della ref, senza force. In alternativa usare gli strumenti GitHub create-tree/create-commit/update-ref con parent ed expected SHA esatti. Verificare il risultato remoto prima di agire sul prodotto.
+REV e RUN_ID sono quelli realmente letti, non costanti. Prima migrazione v1→v2: `migrate STATE --revision REV --procedure-ref SHA --packet PACKET`; ammessa solo senza activeRun, con nuova decisione adottata, writer riconciliati e storia conservata. Il packet iniziale è READY/coordination/codex, non una falsa accettazione prodotto. Non rilanciare la migrazione a ogni slot.
 
-Il source checkout non contiene lo stato vivo del cursore. Non copiare automaticamente l'intera ref del metodo nel candidato per poter eseguire lo script. Usare una copia separata della revisione delle procedure; niente segreti nei file temporanei o nel cursore pubblico.
+Entro 45 minuti terminare nuove modifiche; entro 55 rilasciare claim e consegnare task/consumer, base/head/PR, prove eseguite/riusate, review, stato di pubblicazione, limiti, rollback e unico passo seguente. Se nulla cambia, NO_ACTION breve senza nuovi commit/commenti. Nessuna disattivazione autonoma dello scheduler.
 
-## Fonti ufficiali e limiti
-
-- [Attività pianificate](https://learn.chatgpt.com/docs/automations): modello/effort del task, contesti e permessi; web senza cartella persistente tra run.
-- [Modelli](https://learn.chatgpt.com/docs/models) e [GPT-6.1 Sol](https://developers.openai.com/api/docs/models/gpt-6.1-sol): Max e disponibilità del client; nessun modello imposto dal solo testo.
-- [Configurazione](https://learn.chatgpt.com/docs/config-file/config-reference): timeout specifici degli strumenti non attestano un timeout globale del task.
-- [Preparare prima una run](https://developers.openai.com/training/walkthroughs/scheduled-tasks): prova del prompt e verifica delle prime esecuzioni.
+## Fonti primarie per il setup
+- https://learn.chatgpt.com/docs/automations — task nativi, contesti, intervalli e verifica del primo run.
+- https://learn.chatgpt.com/docs/build-skills — `.agents/skills`, frontmatter e caricamento progressivo.
+- https://learn.chatgpt.com/docs/agent-configuration/subagents — `.codex/agents`, impostazioni ereditate e specializzazione.
+Documentazione consultata il 1 novembre 2026; le capacità effettive del client devono comunque essere osservate.
