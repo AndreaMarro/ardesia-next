@@ -257,7 +257,7 @@ export function finishCycle(data, {expectedRevision, runId, actor, outcome, pack
     ? packet.kind === 'coordination' && packet.nextActor === 'pro' ? 'pro' : 'codex'
     : outcome === 'READY_FOR_REVIEW' ? actor === 'pro' ? 'codex' : 'pro' : 'pro';
   if (packet.nextActor !== nextActor || packet.disposition !== (outcome === 'HANDOFF' ? 'READY' : outcome)) throw new Error('Next packet actor/disposition must match the outcome.');
-  if (nextActor === 'codex' && !(sequential(data) && packet.kind === 'coordination' && packet.expiresAt === null) && (!timestamp(packet.notBefore) || !timestamp(packet.expiresAt)
+  if (nextActor === 'codex' && (!sequential(data) || outcome === 'HANDOFF') && !(sequential(data) && packet.kind === 'coordination' && packet.expiresAt === null) && (!timestamp(packet.notBefore) || !timestamp(packet.expiresAt)
     || expires(packet) - Math.max(moment, Date.parse(packet.notBefore)) <= 10 * MINUTE)) throw new Error('Codex successor window must retain more than ten useful minutes after now or its future start.');
   if (outcome !== 'HANDOFF') {
     if (packet.id !== data.packet.id || packet.taskId !== data.packet.taskId || packet.goal !== data.packet.goal

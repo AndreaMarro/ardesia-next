@@ -143,3 +143,29 @@ test('partial v1-to-v2 relabelling is rejected and unknown future versions stay 
  assert.ok(cycle.validateCycle(future).some(error=>error.startsWith('schemaVersion:')));
  assert.deepEqual(cycle.validateCycle(fixture()),[]);
 });
+
+for (const outcome of ['WAITING_CI', 'BLOCKED', 'INTERRUPTED']) {
+ test(`v2 ${outcome} closes the current assignment near its deadline without extending it`, () => {
+  const packet={...implementation(),expiresAt:at(55).toISOString()};
+  const active=select(claim(fixture()),packet);
+  const next={...active.packet,disposition:outcome,
+   evidence:outcome==='WAITING_CI' ? [evidence('ci','PENDING')] : [],
+   blockers:outcome==='BLOCKED' ? ['B-OBSERVED'] : []};
+  const done=finish(active,next,outcome);
+  assert.equal(done.activeRun,null);assert.equal(done.packet.expiresAt,packet.expiresAt);
+  assert.equal(done.lastRun.late,false);assert.deepEqual(done.packet.evidence,next.evidence);
+ });
+}
+test('v2 new HANDOFF still requires a useful successor window', () => {
+ const active=claim(fixture()),packet={...implementation(),expiresAt:at(55).toISOString()};
+ assert.throws(()=>finish(active,packet,'HANDOFF'),/window/);
+});
+
+test('v2 late closure records the overrun without extending an expired assignment', () => {
+ const active=select(claim(fixture()),{...implementation(),expiresAt:at(55).toISOString()});
+ const packet={...active.packet,disposition:'INTERRUPTED'};
+ const done=cycle.finishCycle(active,{expectedRevision:active.revision,actor:'codex',runId:'run-1',packet,
+  outcome:'INTERRUPTED',summary:'Observed late closure'}, {now:at(56)});
+ assert.equal(done.activeRun,null);assert.equal(done.lastRun.late,true);
+ assert.equal(done.packet.expiresAt,active.packet.expiresAt);
+});

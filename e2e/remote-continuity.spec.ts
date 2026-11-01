@@ -1,5 +1,5 @@
 import {randomUUID} from 'node:crypto';
-import type {BrowserContext, Page} from '@playwright/test';
+import type {BrowserContext, Page, Route} from '@playwright/test';
 import type {LabObject, LearnerWork} from '@ardesia/contracts';
 import type {WorkspaceProjection} from '@ardesia/remote-client';
 import {
@@ -81,8 +81,28 @@ test('[M3] teacher and two students preserve private laboratory work across inde
     await page.getByRole('button', {name: 'Scrivi la prima nota', exact: true}).click();
     await page.getByLabel('Titolo oggetto', {exact: true}).fill('Obiettivo della lezione');
     await page.getByLabel('Testo nota', {exact: true}).fill('Varia massa e rigidità e spiega come cambia il periodo.');
-    await page.getByRole('button', {name: 'Salva modifiche', exact: true}).click();
+    // Hold the real committed response until the editor's pending state is observed.
+    let releaseAck!: () => void, receivedAck!: () => void;
+    const ackGate = new Promise<void>(resolve => {releaseAck = resolve;});
+    const committed = new Promise<void>(resolve => {receivedAck = resolve;});
+    const holdNoteAck = async (route: Route) => {
+      const input = route.request().method() === 'POST' ? route.request().postDataJSON() : null;
+      if (input?.action !== 'command' || input.command.kind !== 'replace-object') {await continueRouteWithAccess(route); return;}
+      const response = await fetchRouteWithAccess(route);
+      expect((await readApiJson(response)).ok).toBe(true);
+      receivedAck(); await ackGate; await route.fulfill({response});
+    };
+    await page.route('**/api/m3', holdNoteAck);
+    try {
+      await page.getByRole('button', {name: 'Salva modifiche', exact: true}).click();
+      await committed;
+      await expect(page.getByRole('button', {name: 'Salvataggio…', exact: true})).toBeDisabled();
+    } finally {releaseAck();}
+    // The click submits the save; only this settled editor state permits clean navigation.
+    await expect(page.getByRole('button', {name: 'Salva modifiche', exact: true})).toBeDisabled();
+    await page.unroute('**/api/m3', holdNoteAck);
     await page.getByRole('button', {name: 'Chiudi proprietà', exact: true}).click();
+    await expect(page.getByRole('dialog', {name: 'Hai modifiche da salvare', exact: true})).toHaveCount(0);
     await openMarketplace(page); await verifyAndInstallSpring(page); await authorizeSpring(page);
     await page.getByRole('button', {name: 'Attiva Molla ideale', exact: true}).click();
     await page.getByRole('button', {name: 'Aggiungi molla alla lezione', exact: true}).click();
