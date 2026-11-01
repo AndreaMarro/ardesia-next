@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 10,
-  "updatedAt": "2026-11-01T16:37:53.431Z",
+  "revision": 11,
+  "updatedAt": "2026-11-01T16:46:36.691Z",
   "procedureRef": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
   "activeRun": {
     "runId": "codex-20261101T163625Z",
@@ -15,97 +15,52 @@
     "closeBy": "2026-11-01T17:31:25.000Z"
   },
   "packet": {
-    "id": "ops003-native-first-scheduled-run",
-    "taskId": "OPS-003",
+    "id": "perf001-independent-review-20261101T163625Z",
+    "taskId": "PERF-001",
     "nextActor": "codex",
     "disposition": "READY",
-    "kind": "coordination",
-    "notBefore": "2026-11-01T14:12:25.699Z",
-    "expiresAt": null,
+    "kind": "review",
+    "notBefore": "2026-11-01T16:36:25.000Z",
+    "expiresAt": "2026-11-01T17:31:25Z",
     "source": {
       "baseSha": "03622b56c9756225019b7c6219d226beef8e0a6d",
-      "headSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
-      "branch": "pro/20261031-operating-system",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/20",
-      "sourceDigest": "dd878ad99e20b2191726e5bd3a056b1985f174fc5c6c6e79b3eea25682044b35"
+      "headSha": "174d15bbad2b5d962011dabfed467c330ddc12da",
+      "branch": "pro/20261031-ink-benchmark",
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/18",
+      "sourceDigest": "de1f7e93d2f7e718807ae1996a00b55cad76ce610f2df439007d1e5c8fab3a5e"
     },
-    "goal": "Provare il coordinatore sequenziale nel client nativo e conservare i limiti reali del setup.",
+    "goal": "Review indipendente del benchmark penna gia pubblicato: carico reale, campioni, identita e limiti delle misure per il consumer lavagna/taccuino.",
     "allowedPaths": [],
     "exitCriteria": [
-      "Review non autrice e Verify della stessa revisione corretta.",
-      "Migrazione, claim, selezione e chiusura pubblicati con parent atteso e riletti.",
-      "Ricorrenza esatta e progetto nativo osservati; OPS-003 non completo se manca un criterio."
+      "Conservare head 174d15bbad2b5d962011dabfed467c330ddc12da e prove originali PR18; review del carico, campioni e limiti.",
+      "Il merge resta subordinato al freeze; non rifare l’esperimento esteso già concluso."
     ],
     "evidence": [
       {
         "kind": "ci",
         "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41261638308",
-        "headSha": "09d1ccca9c75543283f1c308e344329cc0dac81e",
-        "sourceDigest": "5bc5849c6f8e823012133f908b7bb46ac55df296c09e8f7d95b2356985a4458a",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41216361836",
+        "headSha": "174d15bbad2b5d962011dabfed467c330ddc12da",
+        "sourceDigest": "de1f7e93d2f7e718807ae1996a00b55cad76ce610f2df439007d1e5c8fab3a5e",
         "result": "PASS",
-        "scope": "Original Verify run 41261638308, attempt 1, on this source. 52 coordination/handoff tests, 70 guards, 291 unit/integration and 73 browser passed. Isolated PostgreSQL/CI fixtures; no remote or physical-device acceptance. Artifact 13065123418 bytes/hash and seven report identities read; unit/browser JSON bindings matched. Prior PR18 extended benchmark reused, not rerun.",
-        "access": "artifact",
-        "artifactDigest": "d881186edbfb511ec0645d2bedac60204eead938d20dac09df3da408af0ea112"
-      },
-      {
-        "kind": "review",
-        "name": "sol-max-activation-review",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/20",
-        "headSha": "09d1ccca9c75543283f1c308e344329cc0dac81e",
-        "sourceDigest": "5bc5849c6f8e823012133f908b7bb46ac55df296c09e8f7d95b2356985a4458a",
-        "result": "PASS",
-        "scope": "Separate GPT-6.1 Sol Max local review of 11 changed files, with final SHA-256 identities in PR20. One P2 mandatory-Codex wording issue corrected and rechecked; no residual finding in that scope. Coordinator supplied requirements and platform observations; reviewer did not authenticate external scheduling. Not a scheduled Codex run, separate GitHub identity or human approval.",
+        "scope": "Original Verify completed success on the exact head; artifact metadata read, ZIP bytes not yet read in this run. Ubuntu24.04 Node24 PostgreSQL18 isolated CI; no remote or device acceptance.",
         "access": "metadata",
-        "artifactDigest": null
+        "artifactDigest": "c720d61f6220741cc739559d808faad3247151430c6c6b66e45163d051c4f2d8"
       },
       {
-        "kind": "ci",
-        "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41300176264",
-        "headSha": "c6accb7dd07d3e1f81c27eee276f8805b635df93",
-        "sourceDigest": "4ec5874d6a50005a8f84db2062174456e2f0b9282ea97c7fe75104d45ece983c",
-        "result": "FAIL",
-        "scope": "Original failure preserved; original ZIP, reports, screenshot and snapshot read. 72 PASS and 1 FAIL browser; not transferred to corrected source.",
-        "access": "artifact",
-        "artifactDigest": "35e7129f52ff30ae16cf6ef0737383261af87eb83edf33c5d3e673e79a17d785"
-      },
-      {
-        "kind": "ci",
-        "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41308566406",
-        "headSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
-        "sourceDigest": "dd878ad99e20b2191726e5bd3a056b1985f174fc5c6c6e79b3eea25682044b35",
+        "kind": "check",
+        "name": "extended-benchmark",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41216361872",
+        "headSha": "174d15bbad2b5d962011dabfed467c330ddc12da",
+        "sourceDigest": "de1f7e93d2f7e718807ae1996a00b55cad76ce610f2df439007d1e5c8fab3a5e",
         "result": "PASS",
-        "scope": "Original Verify of corrected head. Final artifact bytes and identity validated; local CI fixtures, no staging or physical-device acceptance.",
-        "access": "artifact",
-        "artifactDigest": "4fb35526a6058df535a74f6c289157328cbe7f4a5ddf6645b77047106287116c"
-      },
-      {
-        "kind": "review",
-        "name": "sequential-non-author-review",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6558234574",
-        "headSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
-        "sourceDigest": "dd878ad99e20b2191726e5bd3a056b1985f174fc5c6c6e79b3eea25682044b35",
-        "result": "PASS",
-        "scope": "Distinct real non-author context /root/reviewer; raw method and correction diff, original failure and RED/GREEN evidence read; 80 operative tests independently rerun. No native scheduling or human approval attested.",
+        "scope": "Original extended benchmark completed success on the exact head; metadata read. Original samples to inspect; no rerun.",
         "access": "metadata",
-        "artifactDigest": null
-      },
-      {
-        "kind": "observation",
-        "name": "native-project-associated",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/20",
-        "headSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
-        "sourceDigest": "dd878ad99e20b2191726e5bd3a056b1985f174fc5c6c6e79b3eea25682044b35",
-        "result": "PASS",
-        "scope": "Native tool update and persisted readback: existing automation linked to verified local Git project 7e78caa2-1269-4275-ae36-b048ae867286, canonical isolated checkout, exact 90-minute interval, gpt-6.1-sol/max selected and adopted full prompt. Task remains PAUSED at handoff; activation occurs only after releasing this claim. Actual scheduled execution and effective model are not yet attested.",
-        "access": "metadata",
-        "artifactDigest": null
+        "artifactDigest": "951b47d3701388bae809a9609831ac9599014090330c202d25e2d466b5d55f18"
       }
     ],
     "blockers": [],
-    "nextAction": "OPS-003: observe the first actual scheduled execution of native automation ardesia-next-worker-codex-sol-max on project 7e78caa2-1269-4275-ae36-b048ae867286. Project/root and Sol/Max saved selection are now verified by the owner-authorized setup. Reconcile live scheduling metadata and actual tools/model/environment; do not alter scheduler or rerun unchanged Verify. Keep OPS-003 incomplete until a real scheduled useful run is evidenced; then reconcile its canonical queue status under authorized scope. No Pro or re-migration.",
+    "nextAction": "Read raw PR18 source/diff, original Verify and extended artifacts; obtain a distinct non-author review of workload, measurements and limits. No source, merge, deploy or scheduler writes. Preserve native OPS-003 observation and unresolved canonical eligibility separately.",
     "review": null
   },
   "lastRun": {
