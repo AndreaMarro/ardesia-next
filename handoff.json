@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 27,
-  "updatedAt": "2026-11-01T21:39:56.346Z",
+  "revision": 28,
+  "updatedAt": "2026-11-01T21:40:46.247Z",
   "procedureRef": "129c078b2e5989db566de71250d1c267e0aa0fca",
   "activeRun": {
     "runId": "codex-20261101T213722Z",
@@ -15,13 +15,13 @@
     "closeBy": "2026-11-01T22:32:22.257Z"
   },
   "packet": {
-    "id": "owner-intake-ops004-68701af",
+    "id": "ops004-bootstrap-review-68701af",
     "taskId": "OPS-004",
     "nextActor": "codex",
     "disposition": "READY",
-    "kind": "coordination",
-    "notBefore": "2026-11-01T21:14:04.777Z",
-    "expiresAt": null,
+    "kind": "review",
+    "notBefore": "2026-11-01T21:39:56.346Z",
+    "expiresAt": "2026-11-01T22:32:22.257Z",
     "source": {
       "baseSha": "129c078b2e5989db566de71250d1c267e0aa0fca",
       "headSha": "68701af501fce42bd40719e692fac0e282540fbf",
@@ -29,48 +29,14 @@
       "pr": "https://github.com/AndreaMarro/ardesia-next/pull/22",
       "sourceDigest": null
     },
-    "goal": "Owner-directed intake of the published two-file canonical unblock, then legitimate reconciliation of the already verified PERF-002; do not repeat its product work or use unvalidated HANDOFF as authority.",
+    "goal": "Read-only non-author review and exact-head Verify evidence of the owner-authorized two-file OPS-004 bootstrap at 68701af before explicit procedure adoption.",
     "allowedPaths": [],
     "exitCriteria": [
-      "Read raw two-file diff and source queue at 68701af, original Verify on that same head, and perform a real non-author review before explicit procedure adoption.",
-      "After adoption assign canonical OPS-004 with only operations/coordination.json and docs/history.md; reconcile PERF-002 from its original PR21 SHA/digest/CI/review, preserving all release gates.",
-      "Select M3-ACCESS/M3-REMOTE only according to observed capabilities; preserve M3-TRANSITION and M4 dependencies and the existing native recurrence."
+      "Exactly two changed files; preserve all 18 original tasks, policy, blockers, claims and prior history bytes.",
+      "Validate canonical OPS-004, M3-ACCESS and OPS-005 tasks; no gate, security, scheduler or runtime weakening.",
+      "Original required Verify and artifact identity match reviewed source; record actual author/reviewer contexts and any actionable findings."
     ],
-    "evidence": [
-      {
-        "kind": "observation",
-        "name": "owner-directed-bootstrap-authority",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/22",
-        "headSha": "68701af501fce42bd40719e692fac0e282540fbf",
-        "sourceDigest": null,
-        "result": "PASS",
-        "scope": "Direct owner instruction in the support chat; exact bounded supersession recorded in OPS-20261101-12. This intake publishes no native execution, source acceptance or independent review. All 18 old tasks, policy, blockers and original history bytes preserved. Author context: ChatGPT support, not Codex native. Original source blobs and newly published two-file blobs checked locally.",
-        "access": "metadata",
-        "artifactDigest": null
-      },
-      {
-        "kind": "observation",
-        "name": "prior-checkpoint-preserved",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/blob/f1822bcbbee93201c0a99c804c16b0d293443942/handoff.json",
-        "headSha": "d74b8dfa3ada65594a96604146c60df73118ccbd",
-        "sourceDigest": "408e7326e455d4b3dc57bbf600eccd82a135a5b6169c89f65289f101a7fc64f2",
-        "result": "PASS",
-        "scope": "All previous evidence and failures remain at this immutable parent checkpoint; lastRun is preserved verbatim. PERF-002 product preparation remains verified, canonical status not yet reconciled. P2 scope and P2 HANDOFF remain recorded; no review of PR21 repeated.",
-        "access": "metadata",
-        "artifactDigest": null
-      },
-      {
-        "kind": "ci",
-        "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41350694731",
-        "headSha": "68701af501fce42bd40719e692fac0e282540fbf",
-        "sourceDigest": null,
-        "result": "PENDING",
-        "scope": "Original required Verify on published PR22 head observed in_progress; re-read this run, do not dispatch a duplicate. Final sourceDigest and original artifacts must be read before adoption. No application verification claimed from local Node22 metadata checks.",
-        "access": "metadata",
-        "artifactDigest": null
-      }
-    ],
+    "evidence": [],
     "blockers": [],
     "nextAction": "This is a direct owner bootstrap intake, not an implementation grant from allowedPaths[]. Read OPS-20261101-12 and PR22 raw diff; the task queue for this explicitly authorized review is source68701af, while the helper remains at adopted procedure129c078. The task OPS-004 now really exists in the published queue; do not wait for another Pro ticket or recreate missing-scope BLOCKED. Acquire a normal claim, assign a read-only OPS-004 review against that actual published queue, obtain exact-head Verify and a non-author review, then explicitly adopt the new procedureRef. A genuinely non-author native context can review this ChatGPT-authored patch; do not invent a reviewer. After completion, select OPS-004 implementation in the same budget if time permits, reconcile PERF-002 from PR21 original evidence and use a distinct reviewer for new edits. Then M3-ACCESS and the real M3 gate have priority; OPS-005/PERF-003 are independent alternatives when a real remote prerequisite is absent. Preserve single writer, CAS/no force, all old evidence at parentf1822bc and existing scheduler. No M3/M4 completion inferred from the owner's time targets.",
     "review": null
