@@ -3,9 +3,9 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 41,
-  "updatedAt": "2026-11-01T23:33:15.354Z",
-  "procedureRef": "837710f55aa56dcf6575c2fc73beebf8b342cf44",
+  "revision": 42,
+  "updatedAt": "2026-11-01T23:42:00.870Z",
+  "procedureRef": "2909aa7d90a8f87b011e80722d079fb4bbd61070",
   "activeRun": {
     "runId": "codex-20261101T231306Z",
     "actor": "codex",
@@ -24,10 +24,10 @@
     "expiresAt": "2026-11-02T00:08:06.000Z",
     "source": {
       "baseSha": "837710f55aa56dcf6575c2fc73beebf8b342cf44",
-      "headSha": "837710f55aa56dcf6575c2fc73beebf8b342cf44",
+      "headSha": "2909aa7d90a8f87b011e80722d079fb4bbd61070",
       "branch": "ops/20261101-cycle-guards",
       "pr": "https://github.com/AndreaMarro/ardesia-next/pull/24",
-      "sourceDigest": "269372145e37957b391cc7aa19ed479de55842fe885a30f4ce27f40779b8f456"
+      "sourceDigest": "ca7e8ca1c5b1947c70a649ec7db0e20a2feae42d5d748c7332397b80652b9a25"
     },
     "goal": "Riconciliazione canonica delle consegne verificate, su richiesta",
     "allowedPaths": [
@@ -39,10 +39,38 @@
       "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
       "La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."
     ],
-    "evidence": [],
+    "evidence": [
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41362781588",
+        "headSha": "2909aa7d90a8f87b011e80722d079fb4bbd61070",
+        "sourceDigest": "ca7e8ca1c5b1947c70a649ec7db0e20a2feae42d5d748c7332397b80652b9a25",
+        "result": "PASS",
+        "scope": "Exact B source291unit/73browser, eight checks, zero skip/flaky; original Verify41362781588 and distinct raw delta/Git-parent/ZIP review. Server-runtime B Node24.22.0, A24.22.1; no performance comparison or remote acceptance.",
+        "access": "artifact",
+        "artifactDigest": "e182e6e94e8d503cf3f17a96cf9e7a83abc1a3957e35bae587da5743128385c7"
+      },
+      {
+        "kind": "review",
+        "name": "independent-canonical-closure-and-artifact-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/24#issuecomment-6565638416",
+        "headSha": "2909aa7d90a8f87b011e80722d079fb4bbd61070",
+        "sourceDigest": "ca7e8ca1c5b1947c70a649ec7db0e20a2feae42d5d748c7332397b80652b9a25",
+        "result": "PASS",
+        "scope": "Exact B source291unit/73browser, eight checks, zero skip/flaky; original Verify41362781588 and distinct raw delta/Git-parent/ZIP review. Server-runtime B Node24.22.0, A24.22.1; no performance comparison or remote acceptance.",
+        "access": "metadata",
+        "artifactDigest": null
+      }
+    ],
     "blockers": [],
-    "nextAction": "Reconcile only OPS-005 via the published immediate retained completion fc86be87, preserving policy, other tasks, OPS-004 queued and original run deadlines. Verify/review the administrative source before adoption; final finish releases claim.",
-    "review": null
+    "nextAction": "Select existing eligible PERF-003 from adopted queue2909aa7d; preserve separate runtime/procedure identities and consider original PERF-002 sourcePR21/d74b8dfa for its completed implementation, not admin source as proof of that code. Reuse original PR18 evidence first and select one bounded workload experiment, without Extended rerun or unrelated product changes. OPS-005 is done; OPS-004 remains queued only for a proven administrative delta and cannot be retired after one real closure. M3 only after authorized channel state changes; no unchanged403 retry, merge/deploy, gate or scheduler changes.",
+    "review": {
+      "authorContextId": "codex-20261101T231306Z-root",
+      "reviewerContextId": "root-ops005-review",
+      "sourceSha": "2909aa7d90a8f87b011e80722d079fb4bbd61070",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/24#issuecomment-6565638416"
+    }
   },
   "lastRun": {
     "runId": "codex-20261101T213722Z",
