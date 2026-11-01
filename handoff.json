@@ -3,25 +3,18 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 8,
-  "updatedAt": "2026-11-01T14:11:24.213Z",
+  "revision": 9,
+  "updatedAt": "2026-11-01T14:12:25.938Z",
   "procedureRef": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
-  "activeRun": {
-    "runId": "ardesia-activate-20261101T140845Z-acfa407f",
-    "actor": "codex",
-    "startedAt": "2026-11-01T14:08:45.889Z",
-    "claimedAt": "2026-11-01T14:11:24.213Z",
-    "writeUntil": "2026-11-01T14:53:45.889Z",
-    "closeBy": "2026-11-01T15:03:45.889Z"
-  },
+  "activeRun": null,
   "packet": {
-    "id": "ops003-native-trial-20261101",
+    "id": "ops003-native-first-scheduled-run",
     "taskId": "OPS-003",
     "nextActor": "codex",
-    "disposition": "BLOCKED",
-    "kind": "review",
-    "notBefore": "2026-11-01T12:59:35.789Z",
-    "expiresAt": "2026-11-01T13:29:42.933Z",
+    "disposition": "READY",
+    "kind": "coordination",
+    "notBefore": "2026-11-01T14:12:25.699Z",
+    "expiresAt": null,
     "source": {
       "baseSha": "03622b56c9756225019b7c6219d226beef8e0a6d",
       "headSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
@@ -91,30 +84,34 @@
         "scope": "Distinct real non-author context /root/reviewer; raw method and correction diff, original failure and RED/GREEN evidence read; 80 operative tests independently rerun. No native scheduling or human approval attested.",
         "access": "metadata",
         "artifactDigest": null
+      },
+      {
+        "kind": "observation",
+        "name": "native-project-associated",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/20",
+        "headSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
+        "sourceDigest": "dd878ad99e20b2191726e5bd3a056b1985f174fc5c6c6e79b3eea25682044b35",
+        "result": "PASS",
+        "scope": "Native tool update and persisted readback: existing automation linked to verified local Git project 7e78caa2-1269-4275-ae36-b048ae867286, canonical isolated checkout, exact 90-minute interval, gpt-6.1-sol/max selected and adopted full prompt. Task remains PAUSED at handoff; activation occurs only after releasing this claim. Actual scheduled execution and effective model are not yet attested.",
+        "access": "metadata",
+        "artifactDigest": null
       }
     ],
-    "blockers": [
-      "B-NATIVE-CLIENT"
-    ],
-    "nextAction": "Completare soltanto OPS-003 quando il client espone progetto Git Ardesia, intervallo esatto di 90 minuti e primo avvio rileggibile; poi osservare un run pianificato utile. Nessun altro scheduler o takeover.",
-    "review": {
-      "authorContextId": "codex-01a19717-879c-7d00-b99a-5657ccfbbb90-root",
-      "reviewerContextId": "codex-01a19717-879c-7d00-b99a-5657ccfbbb90-reviewer",
-      "sourceSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6558234574"
-    }
+    "blockers": [],
+    "nextAction": "OPS-003: observe the first actual scheduled execution of native automation ardesia-next-worker-codex-sol-max on project 7e78caa2-1269-4275-ae36-b048ae867286. Project/root and Sol/Max saved selection are now verified by the owner-authorized setup. Reconcile live scheduling metadata and actual tools/model/environment; do not alter scheduler or rerun unchanged Verify. Keep OPS-003 incomplete until a real scheduled useful run is evidenced; then reconcile its canonical queue status under authorized scope. No Pro or re-migration.",
+    "review": null
   },
   "lastRun": {
-    "runId": "ardesia-init-20261101T123442Z-1d3bca4e",
+    "runId": "ardesia-activate-20261101T140845Z-acfa407f",
     "actor": "codex",
-    "startedAt": "2026-11-01T12:34:42.933Z",
-    "claimedAt": "2026-11-01T12:59:49.618Z",
-    "writeUntil": "2026-11-01T13:19:42.933Z",
-    "closeBy": "2026-11-01T13:29:42.933Z",
+    "startedAt": "2026-11-01T14:08:45.889Z",
+    "claimedAt": "2026-11-01T14:11:24.213Z",
+    "writeUntil": "2026-11-01T14:53:45.889Z",
+    "closeBy": "2026-11-01T15:03:45.889Z",
     "packetId": "ops003-native-trial-20261101",
-    "finishedAt": "2026-11-01T13:00:40.692Z",
-    "outcome": "BLOCKED",
+    "finishedAt": "2026-11-01T14:12:25.938Z",
+    "outcome": "HANDOFF",
     "late": false,
-    "summary": "Controlled native setup: corrected source published, same-head original Verify and non-author review PASS; migrated the same ref, claimed, selected and closed via expected-parent normal pushes with readback. Main/preview/staging unchanged. Native project/90-minute scheduler capability and actual scheduled execution remain unverified; OPS-003 stays open. No scheduler altered by this trial."
+    "summary": "Owner-authorized one-time setup: native Git project became available, existing automation associated and read back with Sol/Max, exact 90 minutes and adopted prompt. Released claim before activating scheduler; next actual scheduled run must verify runtime and finish OPS-003. No source, CI, main or staging changes."
   }
 }
