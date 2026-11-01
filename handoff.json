@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 40,
-  "updatedAt": "2026-11-01T23:32:38.544Z",
+  "revision": 41,
+  "updatedAt": "2026-11-01T23:33:15.354Z",
   "procedureRef": "837710f55aa56dcf6575c2fc73beebf8b342cf44",
   "activeRun": {
     "runId": "codex-20261101T231306Z",
@@ -15,59 +15,34 @@
     "closeBy": "2026-11-02T00:08:06.000Z"
   },
   "packet": {
-    "id": "ops005-cycle-guards-20261101",
-    "taskId": "OPS-005",
+    "id": "ops005-canonical-closure-20261101",
+    "taskId": "OPS-004",
     "nextActor": "codex",
-    "disposition": "COMPLETE_INCREMENT",
-    "kind": "coordination",
+    "disposition": "READY",
+    "kind": "implementation",
     "notBefore": "2026-11-01T23:13:54.476Z",
-    "expiresAt": null,
+    "expiresAt": "2026-11-02T00:08:06.000Z",
     "source": {
-      "baseSha": "3514d155ebb13e41cc9372b07001670cdd3815a5",
+      "baseSha": "837710f55aa56dcf6575c2fc73beebf8b342cf44",
       "headSha": "837710f55aa56dcf6575c2fc73beebf8b342cf44",
       "branch": "ops/20261101-cycle-guards",
       "pr": "https://github.com/AndreaMarro/ardesia-next/pull/24",
       "sourceDigest": "269372145e37957b391cc7aa19ed479de55842fe885a30f4ce27f40779b8f456"
     },
-    "goal": "Guardie HANDOFF e chiusura canonica senza deadlock",
-    "allowedPaths": [],
+    "goal": "Riconciliazione canonica delle consegne verificate, su richiesta",
+    "allowedPaths": [
+      "operations/coordination.json",
+      "docs/history.md"
+    ],
     "exitCriteria": [
-      "Riprodurre prima il P2: HANDOFF verso task assente, fuori scope, con dipendenza incompleta o blocker irrisolto; il percorso corretto valida contro la coda canonica reale.",
-      "Un task completato con prove valide puo riconciliare la propria riga e selezionare il successore nello stesso budget attraverso un percorso esplicitamente autorizzato e testato; nessun rinnovo budget o secondo writer.",
-      "Controprove per claim concorrente, review autrice, prova su SHA diversa, policy alterata e coda ipotetica; mantenere lettura storica v1/v2, CAS/no force, review indipendente e Verify della head."
+      "Un disallineamento concreto tra consegna verificata e coda viene riconciliato usando SHA/digest, Verify e review non autrice originali; nessun PASS trasferito a nuove sorgenti.",
+      "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
+      "La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."
     ],
-    "evidence": [
-      {
-        "kind": "ci",
-        "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41361908264",
-        "headSha": "837710f55aa56dcf6575c2fc73beebf8b342cf44",
-        "sourceDigest": "269372145e37957b391cc7aa19ed479de55842fe885a30f4ce27f40779b8f456",
-        "result": "PASS",
-        "scope": "Exact-source Verify41361908264 and independent raw-source/artifact review on837710f5;291unit/73browser/zero skip or flaky. No remote acceptance.",
-        "access": "artifact",
-        "artifactDigest": "55064c319dbd10b57018b704c3b6c0363e5efb271bbddabb93eb6eccdf92d081"
-      },
-      {
-        "kind": "review",
-        "name": "independent-source-and-artifact-review",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/24#issuecomment-6565534445",
-        "headSha": "837710f55aa56dcf6575c2fc73beebf8b342cf44",
-        "sourceDigest": "269372145e37957b391cc7aa19ed479de55842fe885a30f4ce27f40779b8f456",
-        "result": "PASS",
-        "scope": "Exact-source Verify41361908264 and independent raw-source/artifact review on837710f5;291unit/73browser/zero skip or flaky. No remote acceptance.",
-        "access": "metadata",
-        "artifactDigest": null
-      }
-    ],
+    "evidence": [],
     "blockers": [],
-    "nextAction": "Explicit adoption3514d155 ->837710f5 after exact Verify and real non-author review; retain completion, assign existing OPS-004, reconcile only OPS-005 in the same original claim/budget, then verify/review the administrative source. OPS-004 remains queued; no M3 acceptance or integration.",
-    "review": {
-      "authorContextId": "codex-20261101T231306Z-root",
-      "reviewerContextId": "root-ops005-review",
-      "sourceSha": "837710f55aa56dcf6575c2fc73beebf8b342cf44",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/24#issuecomment-6565534445"
-    }
+    "nextAction": "Reconcile only OPS-005 via the published immediate retained completion fc86be87, preserving policy, other tasks, OPS-004 queued and original run deadlines. Verify/review the administrative source before adoption; final finish releases claim.",
+    "review": null
   },
   "lastRun": {
     "runId": "codex-20261101T213722Z",
