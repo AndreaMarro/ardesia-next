@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 37,
-  "updatedAt": "2026-11-01T23:13:54.476Z",
+  "revision": 38,
+  "updatedAt": "2026-11-01T23:14:32.114Z",
   "procedureRef": "3514d155ebb13e41cc9372b07001670cdd3815a5",
   "activeRun": {
     "runId": "codex-20261101T231306Z",
@@ -15,101 +15,39 @@
     "closeBy": "2026-11-02T00:08:06.000Z"
   },
   "packet": {
-    "id": "m3-access-readonly-native-intake-3514d15",
-    "taskId": "M3-ACCESS",
+    "id": "ops005-cycle-guards-20261101",
+    "taskId": "OPS-005",
     "nextActor": "codex",
-    "disposition": "BLOCKED",
-    "kind": "coordination",
-    "notBefore": "2026-11-01T21:39:56.346Z",
-    "expiresAt": null,
+    "disposition": "READY",
+    "kind": "implementation",
+    "notBefore": "2026-11-01T23:13:54.476Z",
+    "expiresAt": "2026-11-02T00:08:06.000Z",
     "source": {
-      "baseSha": "68701af501fce42bd40719e692fac0e282540fbf",
+      "baseSha": "3514d155ebb13e41cc9372b07001670cdd3815a5",
       "headSha": "3514d155ebb13e41cc9372b07001670cdd3815a5",
-      "branch": "ops/20261101-perf002-reconciliation",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/23",
+      "branch": "ops/20261101-cycle-guards",
+      "pr": null,
       "sourceDigest": "9161b7c0446f4bb9baa120613b35cf93ca9fc374f1620494c69bcf5c7445a9ca"
     },
-    "goal": "Read-only intake of already-authorized native runner capabilities for M3-ACCESS on adopted source3514d155; distinguish OIDC, QA credentials and operator/restore connections without login, secret extraction, linking, deployment or resource writes.",
-    "allowedPaths": [],
+    "goal": "Guardie HANDOFF e chiusura canonica senza deadlock",
+    "allowedPaths": [
+      "tools/cycle.mjs",
+      "tools/cycle.test.mjs",
+      "tools/cycle-sequential.test.mjs",
+      "tools/check-operations.mjs",
+      "tools/check-operations.test.mjs",
+      "operations/coordination.json",
+      "docs/recurring-work.md",
+      "docs/history.md"
+    ],
     "exitCriteria": [
-      "Inspect only existing CLI/connector capabilities and presence of required named environment channels; never print their values or search chats/secret stores.",
-      "Confirm target metadata only through already-authorized read-only commands; stop a missing credential/authentication flow without login, bypass, new accounts or changes.",
-      "Consume existing restore receipt6564228513, preserve all M3 gates, exact candidate identities and original OPS-004 completion; missing prerequisites are BLOCKED, not accepted."
+      "Riprodurre prima il P2: HANDOFF verso task assente, fuori scope, con dipendenza incompleta o blocker irrisolto; il percorso corretto valida contro la coda canonica reale.",
+      "Un task completato con prove valide puo riconciliare la propria riga e selezionare il successore nello stesso budget attraverso un percorso esplicitamente autorizzato e testato; nessun rinnovo budget o secondo writer.",
+      "Controprove per claim concorrente, review autrice, prova su SHA diversa, policy alterata e coda ipotetica; mantenere lettura storica v1/v2, CAS/no force, review indipendente e Verify della head."
     ],
-    "evidence": [
-      {
-        "kind": "observation",
-        "name": "predecessor-ops004-complete",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/blob/54b18a836520950197808ae9e744494ca2120f99/handoff.json",
-        "headSha": "3514d155ebb13e41cc9372b07001670cdd3815a5",
-        "sourceDigest": "9161b7c0446f4bb9baa120613b35cf93ca9fc374f1620494c69bcf5c7445a9ca",
-        "result": "PASS",
-        "scope": "OPS-004 completed in the same original claim: canonical PERF-002 done, exact-head Verify and real non-author review, explicit procedure adoption3514d155. This is preserved predecessor source completion, not M3 access or remote acceptance.",
-        "access": "metadata",
-        "artifactDigest": null
-      },
-      {
-        "kind": "ci",
-        "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41353912937",
-        "headSha": "3514d155ebb13e41cc9372b07001670cdd3815a5",
-        "sourceDigest": "9161b7c0446f4bb9baa120613b35cf93ca9fc374f1620494c69bcf5c7445a9ca",
-        "result": "PASS",
-        "scope": "Reused unchanged source Verify from OPS-004: original artifact13101944608 read by root and reviewer,291unit/73browser, zero skip/flaky, all checks PASS. No source tree change in this read-only successor; no new CI or remote acceptance inferred.",
-        "access": "artifact",
-        "artifactDigest": "3f3e8e6ac8b1c3acaab4f3210a6d63f7a8b1f4cb40da931d263cc78114402410"
-      },
-      {
-        "kind": "observation",
-        "name": "native-runner-context-observed",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/issues/19#issuecomment-6564591014",
-        "headSha": "3514d155ebb13e41cc9372b07001670cdd3815a5",
-        "sourceDigest": "9161b7c0446f4bb9baa120613b35cf93ca9fc374f1620494c69bcf5c7445a9ca",
-        "result": "PASS",
-        "scope": "Root observed installed VercelCLI53.4.0, authenticated expected team and explicit project inspect success; connectors confirm protected project metadata and existing restore270479. Reviewer saw sanitized records, not raw CLI identity output; no issuer/audience/token-project or restore-empty/operator proof is inferred.",
-        "access": "artifact",
-        "artifactDigest": "a275f307f7fbdf3c1c8e567f267189e28ecdc5585b4d5913311f7fb1a7a21266"
-      },
-      {
-        "kind": "check",
-        "name": "staging-oidc-access",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/issues/19#issuecomment-6564591014",
-        "headSha": "3514d155ebb13e41cc9372b07001670cdd3815a5",
-        "sourceDigest": "9161b7c0446f4bb9baa120613b35cf93ca9fc374f1620494c69bcf5c7445a9ca",
-        "result": "FAIL",
-        "scope": "A token is present in one expected-project preview/m3 CLI child; one exact-origin GET build-info with trusted OIDC header returned HTTP403/text/plain. No cookie, redirect, retry or bypass; cause and JWT claims unverified. Deployed sourceDigest/build-info NOT_VERIFIED; this is an access prerequisite failure, not a source regression.",
-        "access": "artifact",
-        "artifactDigest": "96c2e279001abdd9a61fc40f891dd52fe0e5f5a3c2e3fb3caf936b1e57e36cde"
-      },
-      {
-        "kind": "check",
-        "name": "qa-and-operator-channels",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/issues/19#issuecomment-6564591014",
-        "headSha": "3514d155ebb13e41cc9372b07001670cdd3815a5",
-        "sourceDigest": "9161b7c0446f4bb9baa120613b35cf93ca9fc374f1620494c69bcf5c7445a9ca",
-        "result": "FAIL",
-        "scope": "All six named QA channels and both operator/restore URLs plus restore hash absent in initial process and approved project preview child. Bounded to these channels; no global credential absence inferred. No login/reset/secret scraping, no SQL, no restore or resource creation.",
-        "access": "artifact",
-        "artifactDigest": "96c2e279001abdd9a61fc40f891dd52fe0e5f5a3c2e3fb3caf936b1e57e36cde"
-      },
-      {
-        "kind": "observation",
-        "name": "diagnostic-independent-limits",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/issues/19#issuecomment-6564591014",
-        "headSha": "3514d155ebb13e41cc9372b07001670cdd3815a5",
-        "sourceDigest": "9161b7c0446f4bb9baa120613b35cf93ca9fc374f1620494c69bcf5c7445a9ca",
-        "result": "PASS",
-        "scope": "Actual non-author /root/ops004_review inspected raw local probe/records: no defect or secret exposed, partial BLOCKED only. Reviewer did not repeat remote calls or independently verify the raw CLI identity/alias response; metadata is not build identity, token presence is not authorization, restore metadata is not fresh emptiness. This is not completion or human approval.",
-        "access": "metadata",
-        "artifactDigest": null
-      }
-    ],
-    "blockers": [
-      "B-OIDC",
-      "B-QA",
-      "B-RESTORE"
-    ],
-    "nextAction": "M3-ACCESS read-only intake is BLOCKED; OPS-004 remains COMPLETE at revision33/54b18a83, ready PR23 and adopted source3514d155. Coordination-only closing packet has allowedPaths[] and no expiry, so the next real native run can claim and use assign against the adopted canonical queue. Select existing eligible OPS-005 (minimal HANDOFF/canonical-closure guard repair with RED/GREEN and distinct review); never use unvalidated HANDOFF as authority, redo PR21/PR23 or retry HTTP403 unchanged. Recheck M3 only after an already-authorized channel/access state materially changes; preserve restore270479 and fresh-empty precondition. Freeze, all gate dependencies and recurrence unchanged.",
+    "evidence": [],
+    "blockers": [],
+    "nextAction": "Riprodurre HANDOFF non autorizzato, correggere il helper esistente e la chiusura canonica entro lo stesso budget; review non autrice e Verify della head prima di adozione. OPS-004 resta queued fino a due consegne consecutive verificate.",
     "review": null
   },
   "lastRun": {
