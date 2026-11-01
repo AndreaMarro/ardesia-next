@@ -10,10 +10,10 @@ const dimension = z.number().finite().positive().max(10_000);
 const revision = z.number().int().positive();
 const timestamp = z.iso.datetime();
 
-export const ActorSchema = z.object({
+export const ActorSchema = z.strictObject({
   actorId: identifier,
   role: z.enum(['teacher', 'student']),
-}).strict();
+});
 export type Actor = z.infer<typeof ActorSchema>;
 
 /** Canonical structural JSON used for persisted invariants; JSONB object key ordering is not data. */
@@ -28,45 +28,45 @@ export function canonicalJson(value: unknown): string {
 }
 
 
-export const SourceReferenceSchema = z.object({
+export const SourceReferenceSchema = z.strictObject({
   sourceId: identifier,
   revision,
   locator: z.string().trim().min(1).max(1_000),
-}).strict();
+});
 export type SourceReference = z.infer<typeof SourceReferenceSchema>;
 
-export const ProvenanceInputSchema = z.object({
+export const ProvenanceInputSchema = z.strictObject({
   origin: z.enum(['authored', 'imported']),
   sources: z.array(SourceReferenceSchema).max(100),
-}).strict();
+});
 export const ProvenanceSchema = ProvenanceInputSchema.extend({
   createdBy: identifier,
   createdAt: timestamp,
 }).strict();
 export type Provenance = z.infer<typeof ProvenanceSchema>;
 
-export const NoteDataSchema = z.object({ text: z.string().max(100_000) }).strict();
-export const FormulaDataSchema = z.object({
+export const NoteDataSchema = z.strictObject({ text: z.string().max(100_000) });
+export const FormulaDataSchema = z.strictObject({
   latex: z.string().min(1).max(10_000),
   description: z.string().max(10_000),
-}).strict();
-export const SourceDataSchema = z.object({
+});
+export const SourceDataSchema = z.strictObject({
   url: z.url().refine((value) => ['https:', 'http:'].includes(new URL(value).protocol), 'Only HTTP(S) source URLs are supported'),
   publisher: z.string().trim().min(1).max(300),
   locator: z.string().trim().min(1).max(1_000),
   sourceRevision: z.string().trim().min(1).max(300),
   license: z.string().trim().min(1).max(300),
-}).strict();
-export const InkPointSchema = z.object({
+});
+export const InkPointSchema = z.strictObject({
   x: coordinate,
   y: coordinate,
   pressure: z.number().finite().min(0).max(1),
-}).strict();
-export const InkDataSchema = z.object({
+});
+export const InkDataSchema = z.strictObject({
   points: z.array(InkPointSchema).min(1).max(20_000),
   color: z.string().regex(/^#[0-9a-fA-F]{6}$/),
   width: z.number().finite().min(0.5).max(40),
-}).strict();
+});
 
 /** Generic persisted state, not an authority to execute plugin code. */
 export type JsonValue = null | boolean | number | string | JsonValue[] | {[key: string]: JsonValue};
@@ -131,16 +131,16 @@ function boundedJson(value: unknown): value is JsonValue {
   try {return new TextEncoder().encode(JSON.stringify(value)).length <= 32768;} catch {return false;}
 }
 const semver = z.string().regex(/^\d+\.\d+\.\d+$/);
-export const LabStateSchema = z.object({schemaVersion: semver, value: z.custom<JsonValue>(boundedJson, 'State must be bounded finite JSON')}).strict().refine(boundedJson, 'State envelope exceeds the bounded JSON contract');
-export const LabDataSchema = z.object({
+export const LabStateSchema = z.strictObject({schemaVersion: semver, value: z.custom<JsonValue>(boundedJson, 'State must be bounded finite JSON')}).refine(boundedJson, 'State envelope exceeds the bounded JSON contract');
+export const LabDataSchema = z.strictObject({
   pluginId: z.string().regex(/^[a-z][a-z0-9.-]{2,80}$/),
   pluginVersion: semver,
   instanceId: identifier,
   stateSchemaVersion: semver,
   bundleDigest: z.string().regex(/^[a-f0-9]{64}$/),
-  publisher: z.object({id: identifier, keyId: identifier}).strict(),
+  publisher: z.strictObject({id: identifier, keyId: identifier}),
   state: LabStateSchema,
-}).strict().refine(value => value.state.schemaVersion === value.stateSchemaVersion, 'State version must match the instance');
+}).refine(value => value.state.schemaVersion === value.stateSchemaVersion, 'State version must match the instance');
 export type LabData = z.infer<typeof LabDataSchema>;
 
 /** Persisted release identity; only the injected verifier can authorize this DTO. */
@@ -148,46 +148,46 @@ const pluginId = z.string().regex(/^[a-z][a-z0-9.-]{2,80}$/);
 const digest = z.string().regex(/^[a-f0-9]{64}$/);
 const capabilityList = z.array(z.string().min(3).max(100).regex(/^[a-z][a-z0-9-]*:[a-z][a-z0-9-]*$/)).max(32)
   .refine(value => new Set(value).size === value.length, 'Capabilities must be unique');
-export const PluginReleaseSchema = z.object({
+export const PluginReleaseSchema = z.strictObject({
   pluginId,
   version: semver,
   bundleDigest: digest,
-  publisher: z.object({id: identifier, keyId: identifier}).strict(),
+  publisher: z.strictObject({id: identifier, keyId: identifier}),
   license: z.string().trim().min(1).max(300),
-  provenance: z.object({
+  provenance: z.strictObject({
     repository: z.url().refine(value => new URL(value).protocol === 'https:', 'Provenance requires HTTPS'),
     commit: z.string().regex(/^[a-f0-9]{40}$/),
     path: z.string().min(1).max(1_000),
-  }).strict(),
+  }),
   sdkVersion: semver,
   stateSchemaVersion: semver,
   capabilities: capabilityList,
-}).strict();
+});
 export type PluginRelease = z.infer<typeof PluginReleaseSchema>;
 
-export const PluginConsentSchema = z.object({
+export const PluginConsentSchema = z.strictObject({
   actorId: identifier,
   release: PluginReleaseSchema,
   capabilities: capabilityList,
   grantedAt: timestamp,
-}).strict();
+});
 export type PluginConsent = z.infer<typeof PluginConsentSchema>;
-export const PluginInstallationSchema = z.object({
+export const PluginInstallationSchema = z.strictObject({
   ownerId: identifier,
   pluginId,
   revision,
   status: z.enum(['installed', 'active', 'disabled', 'revoked']),
   release: PluginReleaseSchema,
   consent: PluginConsentSchema.nullable(),
-  history: z.array(z.object({
+  history: z.array(z.strictObject({
     release: PluginReleaseSchema,
     consent: PluginConsentSchema.nullable(),
     changedAt: timestamp,
     direction: z.enum(['update', 'rollback']),
-  }).strict()).max(100),
+  })).max(100),
   createdAt: timestamp,
   updatedAt: timestamp,
-}).strict().superRefine((installation, context) => {
+}).superRefine((installation, context) => {
   const add = (message: string) => context.addIssue({code: 'custom', message});
   if (installation.pluginId !== installation.release.pluginId) add('Installation and release identity differ');
   const consent = installation.consent;
@@ -204,13 +204,13 @@ const PluginCommandKindsV3 = ['install-plugin', 'consent-plugin', 'activate-plug
 export const PluginCommandKinds = [...PluginCommandKindsV3, 'withdraw-plugin-consent'] as const;
 const pluginCommandFields = {commandId: identifier, pluginId, expectedRevision: z.number().int().nonnegative()};
 export const PluginCommandSchema = z.discriminatedUnion('kind', [
-  z.object({...pluginCommandFields, kind: z.literal('install-plugin'), expectedRevision: z.literal(0), release: PluginReleaseSchema}).strict(),
-  z.object({...pluginCommandFields, kind: z.literal('consent-plugin'), releaseDigest: digest, capabilities: capabilityList}).strict(),
-  z.object({...pluginCommandFields, kind: z.literal('activate-plugin')}).strict(),
-  z.object({...pluginCommandFields, kind: z.literal('disable-plugin')}).strict(),
-  z.object({...pluginCommandFields, kind: z.literal('withdraw-plugin-consent')}).strict(),
-  z.object({...pluginCommandFields, kind: z.literal('revoke-plugin')}).strict(),
-  z.object({...pluginCommandFields, kind: z.literal('change-plugin-release'), release: PluginReleaseSchema, direction: z.enum(['update', 'rollback'])}).strict(),
+  z.strictObject({...pluginCommandFields, kind: z.literal('install-plugin'), expectedRevision: z.literal(0), release: PluginReleaseSchema}),
+  z.strictObject({...pluginCommandFields, kind: z.literal('consent-plugin'), releaseDigest: digest, capabilities: capabilityList}),
+  z.strictObject({...pluginCommandFields, kind: z.literal('activate-plugin')}),
+  z.strictObject({...pluginCommandFields, kind: z.literal('disable-plugin')}),
+  z.strictObject({...pluginCommandFields, kind: z.literal('withdraw-plugin-consent')}),
+  z.strictObject({...pluginCommandFields, kind: z.literal('revoke-plugin')}),
+  z.strictObject({...pluginCommandFields, kind: z.literal('change-plugin-release'), release: PluginReleaseSchema, direction: z.enum(['update', 'rollback'])}),
 ]);
 export type PluginCommand = z.infer<typeof PluginCommandSchema>;
 
@@ -225,11 +225,11 @@ const inputFields = {
 };
 
 export const NewObjectSchema = z.discriminatedUnion('type', [
-  z.object({ ...inputFields, type: z.literal('note'), data: NoteDataSchema }).strict(),
-  z.object({ ...inputFields, type: z.literal('formula'), data: FormulaDataSchema }).strict(),
-  z.object({ ...inputFields, type: z.literal('source'), data: SourceDataSchema }).strict(),
-  z.object({ ...inputFields, type: z.literal('ink'), data: InkDataSchema }).strict(),
-  z.object({ ...inputFields, type: z.literal('lab'), data: LabDataSchema }).strict(),
+  z.strictObject({ ...inputFields, type: z.literal('note'), data: NoteDataSchema }),
+  z.strictObject({ ...inputFields, type: z.literal('formula'), data: FormulaDataSchema }),
+  z.strictObject({ ...inputFields, type: z.literal('source'), data: SourceDataSchema }),
+  z.strictObject({ ...inputFields, type: z.literal('ink'), data: InkDataSchema }),
+  z.strictObject({ ...inputFields, type: z.literal('lab'), data: LabDataSchema }),
 ]);
 export type NewEducationalObject = z.infer<typeof NewObjectSchema>;
 
@@ -240,11 +240,11 @@ const objectFields = {
   revision,
 };
 export const EducationalObjectSchema = z.discriminatedUnion('type', [
-  z.object({ ...objectFields, type: z.literal('note'), data: NoteDataSchema }).strict(),
-  z.object({ ...objectFields, type: z.literal('formula'), data: FormulaDataSchema }).strict(),
-  z.object({ ...objectFields, type: z.literal('source'), data: SourceDataSchema }).strict(),
-  z.object({ ...objectFields, type: z.literal('ink'), data: InkDataSchema }).strict(),
-  z.object({ ...objectFields, type: z.literal('lab'), data: LabDataSchema }).strict(),
+  z.strictObject({ ...objectFields, type: z.literal('note'), data: NoteDataSchema }),
+  z.strictObject({ ...objectFields, type: z.literal('formula'), data: FormulaDataSchema }),
+  z.strictObject({ ...objectFields, type: z.literal('source'), data: SourceDataSchema }),
+  z.strictObject({ ...objectFields, type: z.literal('ink'), data: InkDataSchema }),
+  z.strictObject({ ...objectFields, type: z.literal('lab'), data: LabDataSchema }),
 ]);
 export type EducationalObject = z.infer<typeof EducationalObjectSchema>;
 export type NoteObject = Extract<EducationalObject, { type: 'note' }>;
@@ -262,15 +262,15 @@ export function toObjectInput(object: EducationalObject): NewEducationalObject {
 /** Identity is immutable across state edits. Updates need a future explicit migration. */
 export type LabInstanceReference = Readonly<Omit<LabData, 'state'>>;
 
-export const ConnectionSchema = z.object({
+export const ConnectionSchema = z.strictObject({
   id: identifier,
   from: identifier,
   to: identifier,
   label: z.string().max(240),
-}).strict().refine((value) => value.from !== value.to, 'An object cannot connect to itself');
+}).refine((value) => value.from !== value.to, 'An object cannot connect to itself');
 export type Connection = z.infer<typeof ConnectionSchema>;
 
-export const LessonDocumentSchema = z.object({
+export const LessonDocumentSchema = z.strictObject({
   id: identifier,
   ownerId: identifier,
   title,
@@ -280,7 +280,7 @@ export const LessonDocumentSchema = z.object({
   updatedAt: timestamp,
   objects: z.array(EducationalObjectSchema).max(2_000),
   connections: z.array(ConnectionSchema).max(5_000),
-}).strict().superRefine((document, context) => {
+}).superRefine((document, context) => {
   const ids = new Set<string>();
   const instances = new Set<string>();
   for (const [index, object] of document.objects.entries()) {
@@ -310,18 +310,18 @@ const commandFields = {
   expectedRevision: z.number().int().nonnegative(),
 };
 export const CoreCommandSchema = z.discriminatedUnion('kind', [
-  z.object({ ...commandFields, kind: z.literal('create-document'), expectedRevision: z.literal(0), title }).strict(),
-  z.object({ ...commandFields, kind: z.literal('rename-document'), title }).strict(),
-  z.object({ ...commandFields, kind: z.literal('add-object'), object: NewObjectSchema }).strict(),
-  z.object({ ...commandFields, kind: z.literal('replace-object'), object: NewObjectSchema }).strict(),
-  z.object({ ...commandFields, kind: z.literal('move-object'), objectId: identifier, x: coordinate, y: coordinate }).strict(),
-  z.object({ ...commandFields, kind: z.literal('remove-object'), objectId: identifier }).strict(),
-  z.object({ ...commandFields, kind: z.literal('connect-objects'), connection: ConnectionSchema }).strict(),
-  z.object({ ...commandFields, kind: z.literal('disconnect-objects'), connectionId: identifier }).strict(),
+  z.strictObject({ ...commandFields, kind: z.literal('create-document'), expectedRevision: z.literal(0), title }),
+  z.strictObject({ ...commandFields, kind: z.literal('rename-document'), title }),
+  z.strictObject({ ...commandFields, kind: z.literal('add-object'), object: NewObjectSchema }),
+  z.strictObject({ ...commandFields, kind: z.literal('replace-object'), object: NewObjectSchema }),
+  z.strictObject({ ...commandFields, kind: z.literal('move-object'), objectId: identifier, x: coordinate, y: coordinate }),
+  z.strictObject({ ...commandFields, kind: z.literal('remove-object'), objectId: identifier }),
+  z.strictObject({ ...commandFields, kind: z.literal('connect-objects'), connection: ConnectionSchema }),
+  z.strictObject({ ...commandFields, kind: z.literal('disconnect-objects'), connectionId: identifier }),
 ]);
 export type CoreCommand = z.infer<typeof CoreCommandSchema>;
 
-export const CoreEventSchema = z.object({
+export const CoreEventSchema = z.strictObject({
   id: identifier,
   sequence: revision,
   documentId: identifier,
@@ -330,20 +330,20 @@ export const CoreEventSchema = z.object({
   actorId: identifier,
   occurredAt: timestamp,
   payload: EventJsonSchema,
-}).strict();
+});
 export type CoreEvent = z.infer<typeof CoreEventSchema>;
 
-export const CommandReceiptSchema = z.object({
+export const CommandReceiptSchema = z.strictObject({
   commandId: identifier,
   actorId: identifier,
   fingerprint: z.string().regex(/^[0-9a-f]{64}$/),
   documentId: identifier,
   documentRevision: revision,
   eventId: identifier,
-}).strict();
+});
 export type CommandReceipt = z.infer<typeof CommandReceiptSchema>;
 
-export const PluginEventSchema = /* @__PURE__ */ (() => z.object({
+export const PluginEventSchema = /* @__PURE__ */ (() => z.strictObject({
   id: identifier,
   sequence: revision,
   pluginId,
@@ -352,9 +352,9 @@ export const PluginEventSchema = /* @__PURE__ */ (() => z.object({
   actorId: identifier,
   occurredAt: timestamp,
   payload: EventJsonSchema,
-}).strict())();
+}))();
 export type PluginEvent = z.infer<typeof PluginEventSchema>;
-export const PluginReceiptSchema = z.object({
+export const PluginReceiptSchema = z.strictObject({
   commandId: identifier,
   actorId: identifier,
   fingerprint: digest,
@@ -363,41 +363,41 @@ export const PluginReceiptSchema = z.object({
   eventId: identifier,
   /** A release transition can change several documents in the same atomic write. */
   relatedEventIds: z.array(identifier).max(500),
-}).strict();
+});
 export type PluginReceipt = z.infer<typeof PluginReceiptSchema>;
 /** Explicit lesson access; a grant never makes draft content approved. */
-export const LessonAssignmentSchema = z.object({
+export const LessonAssignmentSchema = z.strictObject({
   documentId: identifier, studentId: identifier, assignedBy: identifier, revision,
   status: z.enum(['active', 'revoked']), createdAt: timestamp, updatedAt: timestamp,
-}).strict();
+});
 export type LessonAssignment = z.infer<typeof LessonAssignmentSchema>;
 
-export const LearnerLabSchema = z.object({
+export const LearnerLabSchema = z.strictObject({
   objectId: identifier, sourceObjectRevision: revision, revision, data: LabDataSchema,
-}).strict();
+});
 export type LearnerLab = z.infer<typeof LearnerLabSchema>;
-export const LearnerConsentSchema = z.object({
+export const LearnerConsentSchema = z.strictObject({
   objectId: identifier, instanceId: identifier, actorId: identifier,
   release: PluginReleaseSchema, capabilities: capabilityList, grantedAt: timestamp,
-}).strict().superRefine((consent, context) => {
+}).superRefine((consent, context) => {
   if (consent.capabilities.length !== consent.release.capabilities.length
     || !consent.release.capabilities.every(capability => consent.capabilities.includes(capability))) {
     context.addIssue({code: 'custom', message: 'Learner consent must authorize the exact release capabilities'});
   }
 });
 export type LearnerConsent = z.infer<typeof LearnerConsentSchema>;
-export const LearnerAttemptSchema = z.object({
+export const LearnerAttemptSchema = z.strictObject({
   id: identifier, objectId: identifier, sourceObjectRevision: revision,
   answer: z.string().trim().min(1).max(10_000), createdAt: timestamp,
-}).strict();
-export const LearnerWorkSchema = z.object({
+});
+export const LearnerWorkSchema = z.strictObject({
   documentId: identifier, studentId: identifier, revision,
   notes: z.string().max(100_000),
   labs: z.array(LearnerLabSchema).max(2_000),
   attempts: z.array(LearnerAttemptSchema).max(2_000),
   consents: z.array(LearnerConsentSchema).max(2_000),
   evidenceShared: z.boolean(), createdAt: timestamp, updatedAt: timestamp,
-}).strict().superRefine((work, context) => {
+}).superRefine((work, context) => {
   for (const [name, values] of [['labs', work.labs], ['consents', work.consents]] as const) {
     if (new Set(values.map(value => value.objectId)).size !== values.length) {
       context.addIssue({code: 'custom', message: 'A learner object may occur only once', path: [name]});
@@ -416,13 +416,13 @@ export const LearnerWorkSchema = z.object({
 export type LearnerWork = z.infer<typeof LearnerWorkSchema>;
 
 /** Current grant projection for the Host. It contains no teacher consent record or account installation history. */
-export const AssignedLabAccessSchema = z.object({
+export const AssignedLabAccessSchema = z.strictObject({
   documentId: identifier, objectId: identifier, instanceId: identifier, pluginId,
   release: PluginReleaseSchema.nullable(),
   status: z.enum(['installed', 'active', 'disabled', 'revoked', 'unavailable']),
   installationRevision: z.number().int().nonnegative(), consented: z.boolean(),
   workRevision: z.number().int().nonnegative(),
-}).strict();
+});
 export type AssignedLabAccess = z.infer<typeof AssignedLabAccessSchema>;
 
 
@@ -431,29 +431,29 @@ export const LearningCommandKinds = [
   'save-learner-note', 'save-learner-lab', 'record-learner-attempt', 'share-learner-evidence',
 ] as const;
 export const LearningCommandSchema = z.discriminatedUnion('kind', [
-  z.object({...commandFields, kind: z.literal('assign-lesson'), studentId: identifier}).strict(),
-  z.object({...commandFields, kind: z.literal('revoke-assignment'), studentId: identifier}).strict(),
-  z.object({...commandFields, kind: z.literal('consent-lab'), objectId: identifier, releaseDigest: digest, capabilities: capabilityList}).strict(),
-  z.object({...commandFields, kind: z.literal('revoke-lab-consent'), objectId: identifier}).strict(),
-  z.object({...commandFields, kind: z.literal('save-learner-note'), text: z.string().max(100_000)}).strict(),
-  z.object({...commandFields, kind: z.literal('save-learner-lab'), expectedDocumentRevision: revision,
-    objectId: identifier, instanceId: identifier, state: LabStateSchema}).strict(),
-  z.object({...commandFields, kind: z.literal('record-learner-attempt'), expectedDocumentRevision: revision,
-    objectId: identifier, attemptId: identifier, answer: z.string().trim().min(1).max(10_000)}).strict(),
-  z.object({...commandFields, kind: z.literal('share-learner-evidence'), shared: z.boolean()}).strict(),
+  z.strictObject({...commandFields, kind: z.literal('assign-lesson'), studentId: identifier}),
+  z.strictObject({...commandFields, kind: z.literal('revoke-assignment'), studentId: identifier}),
+  z.strictObject({...commandFields, kind: z.literal('consent-lab'), objectId: identifier, releaseDigest: digest, capabilities: capabilityList}),
+  z.strictObject({...commandFields, kind: z.literal('revoke-lab-consent'), objectId: identifier}),
+  z.strictObject({...commandFields, kind: z.literal('save-learner-note'), text: z.string().max(100_000)}),
+  z.strictObject({...commandFields, kind: z.literal('save-learner-lab'), expectedDocumentRevision: revision,
+    objectId: identifier, instanceId: identifier, state: LabStateSchema}),
+  z.strictObject({...commandFields, kind: z.literal('record-learner-attempt'), expectedDocumentRevision: revision,
+    objectId: identifier, attemptId: identifier, answer: z.string().trim().min(1).max(10_000)}),
+  z.strictObject({...commandFields, kind: z.literal('share-learner-evidence'), shared: z.boolean()}),
 ]);
 export type LearningCommand = z.infer<typeof LearningCommandSchema>;
-export const LearningEventSchema = z.object({
+export const LearningEventSchema = z.strictObject({
   id: identifier, sequence: revision, lessonId: identifier, studentId: identifier,
   stream: z.enum(['assignment', 'learner-work']), learningRevision: revision,
   type: z.enum(LearningCommandKinds), actorId: identifier, occurredAt: timestamp, payload: EventJsonSchema,
-}).strict();
+});
 export type LearningEvent = z.infer<typeof LearningEventSchema>;
-export const LearningReceiptSchema = z.object({
+export const LearningReceiptSchema = z.strictObject({
   commandId: identifier, actorId: identifier, fingerprint: digest,
   lessonId: identifier, studentId: identifier, stream: z.enum(['assignment', 'learner-work']),
   learningRevision: revision, eventId: identifier,
-}).strict();
+});
 export type LearningReceipt = z.infer<typeof LearningReceiptSchema>;
 
 export const WorkspaceEventSchema = /* @__PURE__ */ (() => z.union([CoreEventSchema, PluginEventSchema, LearningEventSchema]))();
@@ -464,7 +464,7 @@ export type WorkspaceReceipt = z.infer<typeof WorkspaceReceiptSchema>;
 // Construction only allocates these schemas and registers validators. Marking the
 // factory pure lets browser-only consumers omit the unused server ledger contract;
 // every invariant still executes whenever CoreSnapshotSchema.parse/safeParse runs.
-export const CoreSnapshotSchema = /* @__PURE__ */ (() => z.object({
+export const CoreSnapshotSchema = /* @__PURE__ */ (() => z.strictObject({
   schemaVersion: z.literal(SNAPSHOT_VERSION),
   workspaceId: identifier,
   documents: z.array(LessonDocumentSchema).max(500),
@@ -473,7 +473,7 @@ export const CoreSnapshotSchema = /* @__PURE__ */ (() => z.object({
   learnerWork: z.array(LearnerWorkSchema).max(10_000),
   events: z.array(WorkspaceEventSchema).max(50_000),
   receipts: z.array(WorkspaceReceiptSchema).max(50_000),
-}).strict().superRefine((snapshot, context) => {
+}).superRefine((snapshot, context) => {
   const documentIds = new Set<string>();
   for (const [index, document] of snapshot.documents.entries()) {
     if (documentIds.has(document.id)) context.addIssue({ code: 'custom', message: 'Duplicate document ID', path: ['documents', index, 'id'] });
@@ -585,20 +585,20 @@ export const CoreSnapshotSchema = /* @__PURE__ */ (() => z.object({
 }))();
 export type CoreSnapshot = z.infer<typeof CoreSnapshotSchema>;
 
-const LegacySnapshotSchema = /* @__PURE__ */ (() => z.object({
+const LegacySnapshotSchema = /* @__PURE__ */ (() => z.strictObject({
   schemaVersion: z.union([z.literal(1), z.literal(2)]),
   workspaceId: identifier,
   documents: z.array(LessonDocumentSchema).max(500),
   events: z.array(CoreEventSchema.extend({type: z.enum(CommandKinds)})).max(50_000),
   receipts: z.array(CommandReceiptSchema).max(50_000),
-}).strict())();
+}))();
 
-const MarketplaceSnapshotV3Schema = /* @__PURE__ */ (() => z.object({
+const MarketplaceSnapshotV3Schema = /* @__PURE__ */ (() => z.strictObject({
   schemaVersion: z.literal(3), workspaceId: identifier,
   documents: z.array(LessonDocumentSchema).max(500), installations: z.array(PluginInstallationSchema).max(1_000),
   events: z.array(z.union([CoreEventSchema, PluginEventSchema.extend({type: z.enum(PluginCommandKindsV3)})])).max(50_000),
   receipts: z.array(z.union([CommandReceiptSchema, PluginReceiptSchema])).max(50_000),
-}).strict())();
+}))();
 
 /** Versioned read-only migration. Historical bytes, consent and receipts are never rewritten on open. */
 export function migrateSnapshotForOpen(input: unknown): unknown {
