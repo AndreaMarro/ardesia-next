@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 28,
-  "updatedAt": "2026-11-01T21:40:46.247Z",
+  "revision": 29,
+  "updatedAt": "2026-11-01T21:42:30.000Z",
   "procedureRef": "129c078b2e5989db566de71250d1c267e0aa0fca",
   "activeRun": {
     "runId": "codex-20261101T213722Z",
@@ -27,7 +27,7 @@
       "headSha": "68701af501fce42bd40719e692fac0e282540fbf",
       "branch": "ops/20261101-canonical-unblock",
       "pr": "https://github.com/AndreaMarro/ardesia-next/pull/22",
-      "sourceDigest": null
+      "sourceDigest": "4af89b42e866a14e08e0f9d2f5b82d5be9e2aaeff24269597f8268b20d1ff1c6"
     },
     "goal": "Read-only non-author review and exact-head Verify evidence of the owner-authorized two-file OPS-004 bootstrap at 68701af before explicit procedure adoption.",
     "allowedPaths": [],
@@ -36,7 +36,19 @@
       "Validate canonical OPS-004, M3-ACCESS and OPS-005 tasks; no gate, security, scheduler or runtime weakening.",
       "Original required Verify and artifact identity match reviewed source; record actual author/reviewer contexts and any actionable findings."
     ],
-    "evidence": [],
+    "evidence": [
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41350694731",
+        "headSha": "68701af501fce42bd40719e692fac0e282540fbf",
+        "sourceDigest": "4af89b42e866a14e08e0f9d2f5b82d5be9e2aaeff24269597f8268b20d1ff1c6",
+        "result": "PASS",
+        "scope": "Original Verify on same immutable source; artifact13101317933 ZIP SHA256 a757f16d checked and verification/unit/browser/status bytes read. 291 unit and 73 browser pass, zero skips/flaky; local CI only, M3 remote/device/human not accepted.",
+        "access": "artifact",
+        "artifactDigest": "a757f16d13a4e576d2abbc7c5e104ba124cb93678327e56d913aeb5e7a0df920"
+      }
+    ],
     "blockers": [],
     "nextAction": "This is a direct owner bootstrap intake, not an implementation grant from allowedPaths[]. Read OPS-20261101-12 and PR22 raw diff; the task queue for this explicitly authorized review is source68701af, while the helper remains at adopted procedure129c078. The task OPS-004 now really exists in the published queue; do not wait for another Pro ticket or recreate missing-scope BLOCKED. Acquire a normal claim, assign a read-only OPS-004 review against that actual published queue, obtain exact-head Verify and a non-author review, then explicitly adopt the new procedureRef. A genuinely non-author native context can review this ChatGPT-authored patch; do not invent a reviewer. After completion, select OPS-004 implementation in the same budget if time permits, reconcile PERF-002 from PR21 original evidence and use a distinct reviewer for new edits. Then M3-ACCESS and the real M3 gate have priority; OPS-005/PERF-003 are independent alternatives when a real remote prerequisite is absent. Preserve single writer, CAS/no force, all old evidence at parentf1822bc and existing scheduler. No M3/M4 completion inferred from the owner's time targets.",
     "review": null
