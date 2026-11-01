@@ -193,11 +193,18 @@ export function validateCoordination(data, {root} = {}) {
 export function coordinationBrief(data, {now = new Date()} = {}) {
   const moment = new Date(now).getTime();
   if (!Number.isFinite(moment)) throw new Error('Brief clock must be a valid date.');
+  const byPriority = (a, b) => a.priority - b.priority || a.id.localeCompare(b.id);
+  const deferred = data.tasks.filter(task => task.status === 'deferred').sort(byPriority);
+  const horizonLimit = 8;
   return {
     kind: 'ardesia-coordination-brief', acceptanceEvidence: false, repository: data.repository, updatedAt: data.updatedAt,
     policy: data.policy, canonical: data.canonical,
-    tasks: [...data.tasks].filter(task => !['done', 'deferred'].includes(task.status)).sort((a, b) => a.priority - b.priority || a.id.localeCompare(b.id))
+    tasks: [...data.tasks].filter(task => !['done', 'deferred'].includes(task.status)).sort(byPriority)
       .map(({id, status, owner, dependsOn, blockers, nextAction}) => ({id, status, owner, dependsOn, blockers, nextAction})),
+    horizon: {
+      tasks: deferred.slice(0, horizonLimit).map(({id, dependsOn, nextAction}) => ({id, dependsOn, nextAction})),
+      omittedTasks: Math.max(0, deferred.length - horizonLimit)
+    },
     blockers: data.blockers.filter(blocker => blocker.status === 'blocked').map(({id, reason, lastCheckedAt, recheckWhen}) => ({id, reason, lastCheckedAt, recheckWhen})),
     claims: data.claims.map(({taskId, owner, baseSha, branch, paths, expiresAt}) => ({taskId, owner, baseSha, branch, paths, expiresAt,
       expired: Date.parse(expiresAt) <= moment, takeoverAuthorized: false}))

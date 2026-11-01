@@ -2,7 +2,7 @@
   "schemaVersion": "1.1.0",
   "acceptanceEvidence": false,
   "repository": "AndreaMarro/ardesia-next",
-  "updatedAt": "2026-10-31T23:29:39Z",
+  "updatedAt": "2026-11-01T01:25:49Z",
   "policy": {
     "maxActiveIncrements": 1,
     "maxRemoteWriters": 1,
@@ -132,6 +132,21 @@
         "schedulerMutationThisDelivery": false,
         "productAcceptanceInferred": false
       }
+    },
+    {
+      "id": "owner-activation-mandate-20261101",
+      "observedAt": "2026-11-01T01:25:49Z",
+      "kind": "handoff",
+      "source": "Direct owner message in the current conversation, 1 November 2026; decision OPS-20261101-03 in docs/history.md. Activation is now requested; no scheduler outcome is attested by this observation.",
+      "value": {
+        "historyEntry": "OPS-20261101-03",
+        "supersedesObservationId": "paired-procedures-20261101",
+        "supersessionScope": "The earlier prepare-only/no-scheduler-mutation restriction for this owner-requested setup; recurring agents do not acquire permission to rewrite their own schedules.",
+        "status": "ACTIVATION_AUTHORIZED_PENDING_VERIFICATION",
+        "schedulerOutcome": "NOT_VERIFIED",
+        "previousTaskNextAction": "Read the final source SHA, CI and prepared control-ref checkpoint in PR20; the owner configures the pair after replacing the previous automation. No scheduler change or merge during the freeze.",
+        "productAcceptanceInferred": false
+      }
     }
   ],
   "blockers": [
@@ -226,14 +241,15 @@
       ],
       "exitCriteria": [
         "Two complete prompts with roles, bounded increments, evidence reuse, recovery and controlled self-improvement; no scheduler mutation.",
-        "Validated handoff protocol on separate Git ref; separate review and CI on the final source head; no product acceptance inferred."
+        "Validated handoff protocol on separate Git ref; separate review and CI on the final source head; no product acceptance inferred.",
+        "OPS-20261101-03 supersedes the earlier prepare-only/no-scheduler-mutation clause for this owner-requested setup: reconcile existing activities, verify supported model, schedule, overlap prevention and bounded run behavior, and record the actual outcome and capability limits without inferring activation."
       ],
       "evidence": [
         "https://github.com/AndreaMarro/ardesia-next/pull/20",
         "docs/history.md",
         "docs/recurring-work.md"
       ],
-      "nextAction": "Read the final source SHA, CI and prepared control-ref checkpoint in PR20; the owner configures the pair after replacing the previous automation. No scheduler change or merge during the freeze."
+      "nextAction": "Apply the explicit activation mandate OPS-20261101-03 from docs/history.md after reconciling PR20, the shared cursor and existing activities. Scheduler outcome remains NOT_VERIFIED until observed; retain model/capability limits and the current merge/deployment freeze."
     },
     {
       "id": "OPS-001",
@@ -342,15 +358,14 @@
       "nextAction": "Use PR18 artifacts first; propose one discriminating experiment only when it resolves remaining uncertainty."
     },
     {
-      "id": "M4-REUSE",
-      "title": "Secondo dominio scientifico sul medesimo Core e Host",
+      "id": "M3-TRANSITION",
+      "title": "Chiusura M3 e passaggio verificato alla fase successiva",
       "status": "deferred",
       "priority": 6,
       "owner": "coordinator",
       "scope": [
-        "plugins",
-        "packages/plugin-sdk",
-        "packages/plugin-host",
+        "operations",
+        "tools",
         "docs"
       ],
       "dependsOn": [
@@ -358,19 +373,50 @@
       ],
       "blockers": [],
       "exitCriteria": [
+        "Start only after tools/status.mjs accepts the original M3 evidence for one identified candidate; a queue status alone cannot accept M3.",
+        "Archive the original M3 reports with commit, sourceDigest and environment identity, retaining the accepted baseline without relabelling old evidence for a changed candidate.",
+        "Reconcile the existing status engine, guards, policy and queue before assigning post-M3 implementation; distinguish historical acceptance from current-candidate checks and introduce no second acceptance engine.",
+        "Keep the current freeze until its original exit gate is satisfied; production, commercial publication and new spend retain their separate authorization requirements."
+      ],
+      "evidence": [
+        "docs/product-map.md",
+        "docs/recurring-work.md",
+        "docs/history.md"
+      ],
+      "nextAction": "After original M3 acceptance, preserve its original evidence and accepted baseline, then reconcile the existing status engine, guards and freeze policy in one reviewed transition before assigning M4 or product MCP."
+    },
+    {
+      "id": "M4-REUSE",
+      "title": "Secondo dominio scientifico sul medesimo Core e Host",
+      "status": "deferred",
+      "priority": 7,
+      "owner": "coordinator",
+      "scope": [
+        "plugins",
+        "packages/plugin-sdk",
+        "packages/plugin-host",
+        "tools",
+        "docs"
+      ],
+      "dependsOn": [
+        "M3-TRANSITION"
+      ],
+      "blockers": [],
+      "exitCriteria": [
         "M3 accepted on original gate; select donor with rights/scientific contract and real consumer.",
-        "Same Host/Core/identity/persistence; measured replication cost and UX/science counterproofs."
+        "Same Host/Core/identity/persistence; measured replication cost and UX/science counterproofs.",
+        "Define and verify the M4 evidence contract, producer and evaluation in the existing tools/status.mjs engine; measured reuse and queue completion alone do not accept M4."
       ],
       "evidence": [
         "docs/product-map.md"
       ],
-      "nextAction": "Prepare the bounded successor mandate after M3; no implementation or new simulator while M3 is pending."
+      "nextAction": "After M3-TRANSITION, select one bounded second-domain increment with an evidence contract in the existing acceptance engine and measured reuse cost; no implementation or new simulator while M3 is pending."
     },
     {
       "id": "M5-PRODUCT",
       "title": "Accettazione prodotto e percorso di rilascio stabile",
       "status": "deferred",
-      "priority": 7,
+      "priority": 8,
       "owner": "coordinator",
       "scope": [
         "apps/web",
@@ -396,7 +442,7 @@
       "id": "COURSES-MARKETPLACE",
       "title": "Microcorsi, Creator, Knowledge e marketplace esteso",
       "status": "deferred",
-      "priority": 8,
+      "priority": 9,
       "owner": "coordinator",
       "scope": [
         "docs",
@@ -421,7 +467,7 @@
       "id": "MCP-CORE",
       "title": "Adapter MCP del Core prodotto",
       "status": "deferred",
-      "priority": 9,
+      "priority": 10,
       "owner": "coordinator",
       "scope": [
         "packages",
@@ -429,7 +475,7 @@
         "docs"
       ],
       "dependsOn": [
-        "M3-REMOTE"
+        "M3-TRANSITION"
       ],
       "blockers": [],
       "exitCriteria": [
@@ -440,7 +486,7 @@
         "docs/integrations.md",
         "docs/product-map.md"
       ],
-      "nextAction": "Design only when a consumer is selected after M3; operational connectors do not prove product MCP."
+      "nextAction": "After M3-TRANSITION, select a concrete authorized consumer and one bounded Core adapter increment; operational connectors do not prove product MCP."
     }
   ],
   "claims": []

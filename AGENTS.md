@@ -6,6 +6,8 @@ For the owner-activated Pro/Codex pair, resolve the adopted procedure revision a
 
 Latest explicit user instructions and existing authorization govern actions. Live repository/deployment observations govern current facts; generated acceptance reports govern milestone acceptance. Dated handoffs and legacy documents are historical evidence, not permission or proof for a newer SHA. `docs/history.md` is the single Next execution/decision index; ADRs retain architectural rationale. Do not create a second status engine, RUNLOG, scheduler or knowledge database.
 
+Before handing off work affected by a new material user instruction, capture it once in `docs/history.md` with its actual source, scope and superseded decision; reference that ID and a source revision containing it. A future chat or Codex run does not automatically share this conversation. Read only the decisions needed by the current task.
+
 ## Execution and authority
 
 Use this repository only. `AndreaMarro/ardesia` is a read-only source, never a deployment target.
@@ -23,7 +25,7 @@ Use this repository only. `AndreaMarro/ardesia` is a read-only source, never a d
 - `npm run status` generates evidence-based state; do not hand-edit generated output.
 - Browser tests default to the isolated local database. Remote regression requires explicit staging mode, existing synthetic credentials and approved platform access; its separate report never accepts M3. See `e2e/README.md` and the dated observations in `operations/m3-environment.json`.
 - Remote preflight must pass before application login or writes. Use only short-lived project OIDC on the exact staging origin, reject redirects and preserve independent application cookies; never relax protection to make a test pass.
-- User-scheduled Codex GPT-6.1 Sol Max cycles are permitted by the explicit 1 November mandate under docs/recurring-work.md and ADR 0007. Agents still must not launch nested Codex CLI/API/cloud jobs, buy credits or create/change schedules. A prepared profile is not an activated automation. The earlier single-Pro task retains its own no-Codex instruction until the owner replaces it.
+- Owner-authorized Codex GPT-6.1 Sol Max cycles are permitted by the explicit 1 November mandate under docs/recurring-work.md and ADR 0007. OPS-20261101-03 additionally authorizes the coordinator's requested initial configuration; it does not authorize future recurring runs to change their schedules. Agents still must not launch nested Codex CLI/API/cloud jobs or buy credits. A prepared profile is not an activated automation; model/effort require an observed setting. The earlier single-Pro task retains its own mandate until its replacement and cessation are verified.
 
 - One active implementation increment, one coordinator for remote writes, and bounded independent analysis/review. An existing ready PR is not a reason to reimplement its result. User-requested governance work may coexist with the already-ready benchmark PR; do not start a third delivery stream.
 - Claim task, base SHA, branch and path prefixes before editing. Read current PR head before a remote mutation; update with expected SHA and without force. A claim is coordination metadata, not an access control. A stale claim never authorizes takeover: inspect the remote head and reconcile first.

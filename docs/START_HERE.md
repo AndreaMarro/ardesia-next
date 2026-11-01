@@ -1,6 +1,6 @@
 # Ardesia Next — ingresso operativo
 
-Per le due procedure Pro/Codex richieste il 1 novembre: [protocollo e attivazione](recurring-work.md). Sono preparate, non pianificate da questa consegna. La precedente attività delle 06:00 resta separata finché il titolare non la sostituisce.
+Per le procedure Pro/Codex richieste il 1 novembre: [protocollo e attivazione](recurring-work.md). Il mandato [OPS-20261101-03](history.md#ops-20261101-03--mandato-aggiornato-per-attivazione-e-continuità-del-contesto) autorizza ora la configurazione. Stato effettivo, ID e limiti dell'attivazione sono nel checkpoint della [PR #20](https://github.com/AndreaMarro/ardesia-next/pull/20); non dedurli dalla presenza dei prompt. La nuova regia conserva il blocco sulle scritture finché la sostituzione e la cessazione della precedente attività non sono verificabili.
 
 Questa pagina instrada il lavoro. **Non è un report di accettazione.** Le osservazioni seguenti sono datate 31 ottobre 2026 e devono essere confrontate con GitHub prima di scrivere; il dettaglio strutturato è in [coordination.json](../operations/coordination.json).
 
@@ -10,7 +10,7 @@ Questa pagina instrada il lavoro. **Non è un report di accettazione.** Le osser
 2. Confrontare main, PR aperte, head, review e CI con gli identificativi registrati. Per un'operazione remota, verificare anche target/capacità/protezione correnti. Non ripetere login o richieste già negate senza un segnale nuovo.
 3. Leggere il solo playbook pertinente del [manuale operativo](operations.md) e le istruzioni dell'area. Consultare [lezioni](lessons.md) e [mappa prodotto](product-map.md) quando il rischio o il requisito le rende pertinenti.
 4. Riprendere il task/PR esistente; registrare il claim prima di scrivere. Terminare un incremento e il suo riesame prima di aprirne un altro.
-5. Aggiornare lo [storico unico](history.md) soltanto per cambiamenti materiali. Aggiornare lo stato prodotto con `npm run status`, mai a mano.
+5. Acquisire nello [storico unico](history.md) le nuove decisioni materiali ricevute in chat prima di trasferire il task; nel passaggio indicare ID e revisione che le contiene. Aggiornare lo stato prodotto con `npm run status`, mai a mano.
 
 ## Fotografia riconciliata, 31 ottobre
 
@@ -41,3 +41,5 @@ Il dossier del 29 ottobre, le sezioni M0 di architecture/handoff e `operations/m
 ## Prossima azione
 
 Il gate di prodotto prioritario resta **M3 remoto**. Se i suoi prerequisiti non cambiano, riusare il checkpoint, completare la review delle PR esistenti e scegliere soltanto un miglioramento indipendente già eleggibile dalla coda. Se le sole azioni residue richiedono accessi assenti o violano il freeze, terminare la run con il blocco preciso. M4, nuovi corsi runtime e commercializzazione rimangono subordinati ai loro gate.
+
+**M3 non è la destinazione finale.** Il successore `M3-TRANSITION` conserva la baseline accettata con le sue prove originali e riconcilia motore di stato, policy e coda prima di M4. Il brief espone anche l'orizzonte dei task differiti: secondo dominio, microcorsi, Creator, marketplace, MCP Core e accettazione M5. Il fatto storico «M3 accettata» deve rimanere distinto dalle verifiche del candidato successivo; non si ricomincia M3 per il solo cambio di agente e non si trasferiscono prove remote a una nuova SHA.

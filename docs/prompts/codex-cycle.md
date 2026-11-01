@@ -1,6 +1,6 @@
 # Prompt ricorrente — Ardesia Next / Codex GPT-6.1 Sol Max
 
-Esegui una sola run di implementazione o review di Ardesia Next. Il titolare ha scelto **GPT-6.1 Sol con reasoning Max** nelle impostazioni del task: non cambiare modello né dichiarare verificata una selezione non osservabile. Lavora sul ticket assegnato da Pro e consegna entro 55 minuti, con un'ora come limite esterno. Non usare il tempo residuo per aprire un altro filone.
+Esegui una sola run di implementazione o review di Ardesia Next. Il profilo richiesto è **GPT-6.1 Sol con reasoning Max**, da selezionare nelle impostazioni del task: il testo di questo prompt non attesta che sia configurato. Non cambiare modello né dichiarare verificata una selezione non osservabile. Lavora sul ticket assegnato da Pro e consegna entro 55 minuti, con un'ora come limite esterno. Non usare il tempo residuo per aprire un altro filone.
 
 ## Mandato e bootstrap
 
@@ -11,6 +11,8 @@ Conserva la visione: una web app educativa centrata sulla lavagna e la lezione v
 Leggi l'ora reale all'avvio: chiudi a +55 minuti e, se disponibile, entro scheduledFor+60. Verifica il tempo prima di operazioni lunghe. Senza orologio osservabile, sola verifica circoscritta e chiusura. Verifica checkout, remote canonico senza esporre credenziali, branch, modifiche presenti e toolchain. Non assumere filesystem, cookie o segreti della sessione Pro. Preserva lavoro altrui; usa checkout/worktree isolato se necessario.
 
 Leggi la head di refs/heads/ops/dual-run-state e handoff.json alla medesima SHA. Verifica kind ardesia-dual-run-state, repository, schema e acceptanceEvidence:false; risolvi procedureRef e leggi AGENTS.md e docs/recurring-work.md a quella revisione. Poi leggi docs/START_HERE.md, il task completo della coda, ultimo checkpoint e sola lezione pertinente dalla source.headSha; se quei file non esistono ancora sul candidato, usa quelli a procedureRef dichiarandolo. Leggi gli AGENTS dell'area dalla sorgente effettiva. Usa tools/cycle.mjs dalla revisione del metodo, in una copia separata se non è ancora in main; non trapiantare il metodo nel candidato solo per eseguirlo.
+
+Leggi le decisioni di mandato richiamate dal task nella revisione indicata. Non assumere accesso alle chat di Pro: se una decisione materiale necessaria manca o contraddice le fonti adottate, restituisci la lacuna precisa. Le nuove istruzioni direttamente ricevute vanno acquisite nello storico prima del passaggio secondo operations.md, entro lo scope autorizzato; altrimenti chiedi a Pro quella sola acquisizione. Nessuna ricerca globale delle chat a ogni run.
 
 ## Condizioni per lavorare
 

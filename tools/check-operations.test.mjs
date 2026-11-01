@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {mkdtempSync, mkdirSync, rmSync, symlinkSync, writeFileSync} from 'node:fs';
+import {mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {dirname, join} from 'node:path';
 import {validateCoordination, coordinationBrief, runCoordinationCli} from './check-operations.mjs';
@@ -160,6 +160,41 @@ test('brief CLI prints operational context without manufacturing acceptance', ()
   assert.equal(Object.hasOwn(brief, 'M3'), false); assert.equal(Object.hasOwn(brief, 'status'), false);
   assert.equal(result.stdout.includes('PASS'), false); assert.equal(result.stdout.includes('ACCEPTED'), false);
 }));
+
+test('brief retains a bounded deferred horizon without making future work active', () => {
+  const data = fixture();
+  for (let index = 0; index < 10; index++) data.tasks.push({...structuredClone(data.tasks[0]),
+    id: `future-${index}`, status: 'deferred', priority: 20 - index, dependsOn: ['increment'], nextAction: `Future objective ${index}`});
+  data.tasks.push({...structuredClone(data.tasks[0]), id: 'completed', status: 'done', evidence: ['docs/history.md']});
+  const before = structuredClone(data), brief = coordinationBrief(data);
+  assert.deepEqual(brief.tasks.map(task => task.id), ['increment']);
+  assert.deepEqual(brief.horizon.tasks.map(task => task.id), ['future-9', 'future-8', 'future-7', 'future-6', 'future-5', 'future-4', 'future-3', 'future-2']);
+  assert.equal(brief.horizon.omittedTasks, 2);
+  for (const task of brief.horizon.tasks) {
+    assert.deepEqual(Object.keys(task), ['id', 'dependsOn', 'nextAction']);
+    assert.deepEqual(task.dependsOn, ['increment']);
+    assert.equal(task.nextAction, `Future objective ${task.id.slice('future-'.length)}`);
+  }
+  assert.equal(brief.acceptanceEvidence, false);
+  assert.deepEqual(data, before);
+});
+
+test('canonical post-M3 work waits for transition without weakening the original gate', () => {
+  const data = JSON.parse(readFileSync(new URL('../operations/coordination.json', import.meta.url), 'utf8'));
+  assert.deepEqual(validateCoordination(data), []);
+  const task = id => data.tasks.find(candidate => candidate.id === id);
+  assert.deepEqual(task('M3-TRANSITION').dependsOn, ['M3-REMOTE']);
+  for (const id of ['M4-REUSE', 'MCP-CORE']) assert.deepEqual(task(id).dependsOn, ['M3-TRANSITION']);
+  assert.equal(data.acceptanceEvidence, false);
+  assert.equal(data.canonical.acceptance, 'tools/status.mjs');
+  assert.equal(data.policy.mainFrozen, true);
+  assert.equal(data.policy.stagingFrozen, true);
+  const transition = task('M3-TRANSITION');
+  task('M3-REMOTE').status = 'blocked';
+  transition.status = 'in_progress';
+  data.claims = [{...fixture().claims[0], taskId: transition.id, owner: transition.owner}];
+  invalid(data, /requires completed direct dependencies/);
+});
 
 test('CLI rejects invalid coordination and unsupported flags before emitting a brief', () => withRoot((root, data) => {
   data.acceptanceEvidence = true; writeFileSync(join(root, 'operations/coordination.json'), JSON.stringify(data));
