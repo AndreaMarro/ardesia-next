@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 30,
-  "updatedAt": "2026-11-01T21:44:40.101Z",
+  "revision": 31,
+  "updatedAt": "2026-11-01T21:45:18.455Z",
   "procedureRef": "68701af501fce42bd40719e692fac0e282540fbf",
   "activeRun": {
     "runId": "codex-20261101T213722Z",
@@ -15,59 +15,34 @@
     "closeBy": "2026-11-01T22:32:22.257Z"
   },
   "packet": {
-    "id": "ops004-bootstrap-review-68701af",
+    "id": "ops004-reconcile-perf002-68701af",
     "taskId": "OPS-004",
     "nextActor": "codex",
-    "disposition": "COMPLETE_INCREMENT",
-    "kind": "review",
+    "disposition": "READY",
+    "kind": "implementation",
     "notBefore": "2026-11-01T21:39:56.346Z",
     "expiresAt": "2026-11-01T22:32:22.257Z",
     "source": {
-      "baseSha": "129c078b2e5989db566de71250d1c267e0aa0fca",
+      "baseSha": "68701af501fce42bd40719e692fac0e282540fbf",
       "headSha": "68701af501fce42bd40719e692fac0e282540fbf",
-      "branch": "ops/20261101-canonical-unblock",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/22",
+      "branch": "ops/20261101-perf002-reconciliation",
+      "pr": null,
       "sourceDigest": "4af89b42e866a14e08e0f9d2f5b82d5be9e2aaeff24269597f8268b20d1ff1c6"
     },
-    "goal": "Read-only non-author review and exact-head Verify evidence of the owner-authorized two-file OPS-004 bootstrap at 68701af before explicit procedure adoption.",
-    "allowedPaths": [],
+    "goal": "Reconcile the verified isolated PERF-002 delivery in the canonical queue using original PR21 source/digest/Verify/review; preserve all task contracts, release gates and old history.",
+    "allowedPaths": [
+      "operations/coordination.json",
+      "docs/history.md"
+    ],
     "exitCriteria": [
-      "Exactly two changed files; preserve all 18 original tasks, policy, blockers, claims and prior history bytes.",
-      "Validate canonical OPS-004, M3-ACCESS and OPS-005 tasks; no gate, security, scheduler or runtime weakening.",
-      "Original required Verify and artifact identity match reviewed source; record actual author/reviewer contexts and any actionable findings."
+      "Un disallineamento concreto tra consegna verificata e coda viene riconciliato usando SHA/digest, Verify e review non autrice originali; nessun PASS trasferito a nuove sorgenti.",
+      "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
+      "La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."
     ],
-    "evidence": [
-      {
-        "kind": "ci",
-        "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41350694731",
-        "headSha": "68701af501fce42bd40719e692fac0e282540fbf",
-        "sourceDigest": "4af89b42e866a14e08e0f9d2f5b82d5be9e2aaeff24269597f8268b20d1ff1c6",
-        "result": "PASS",
-        "scope": "Original Verify on same immutable source; artifact13101317933 ZIP SHA256 a757f16d checked and verification/unit/browser/status bytes read. 291 unit and 73 browser pass, zero skips/flaky; local CI only, M3 remote/device/human not accepted.",
-        "access": "artifact",
-        "artifactDigest": "a757f16d13a4e576d2abbc7c5e104ba124cb93678327e56d913aeb5e7a0df920"
-      },
-      {
-        "kind": "review",
-        "name": "bootstrap-non-author-review",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/22#issuecomment-6564313367",
-        "headSha": "68701af501fce42bd40719e692fac0e282540fbf",
-        "sourceDigest": "4af89b42e866a14e08e0f9d2f5b82d5be9e2aaeff24269597f8268b20d1ff1c6",
-        "result": "PASS",
-        "scope": "Raw two-file source/diff, original queue preservation and seven discriminating Node24 checks reviewed by real non-author native context01a1990b; sourceDigest and nine original CI JSON read. Author was distinct ChatGPT support context; no separate GitHub identity, sandbox ACL or human approval claimed.",
-        "access": "artifact",
-        "artifactDigest": null
-      }
-    ],
+    "evidence": [],
     "blockers": [],
-    "nextAction": "Bootstrap review and original exact-head Verify are complete; explicitly adopted procedure68701af in this owned cursor. Assign canonical OPS-004 implementation for only operations/coordination.json and docs/history.md from this actual queue, preserving the same activeRun/start/deadline. Reconcile PERF-002 from original PR21 evidence; do not redo product or benchmarks. M3-ACCESS successor must consume existing empty restore receipt6564228513 rather than duplicate it.",
-    "review": {
-      "authorContextId": "chatgpt-support-pr22-68701af",
-      "reviewerContextId": "01a1990b-a885-7b12-8dec-fbc7976cfeef",
-      "sourceSha": "68701af501fce42bd40719e692fac0e282540fbf",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/22#issuecomment-6564313367"
-    }
+    "nextAction": "Modify only PERF-002 status/evidence/nextAction and append the exact reconciliation receipt to history. OPS-004 stays queued reusable; obtain Verify and a distinct non-author review of the new administrative head before adoption. Next M3-ACCESS consumes existing restore6564228513; no recreation, merge/deploy or credential work in this task.",
+    "review": null
   },
   "lastRun": {
     "runId": "codex-20261101T201327Z",
