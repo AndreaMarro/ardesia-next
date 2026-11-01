@@ -3,22 +3,15 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 14,
-  "updatedAt": "2026-11-01T17:11:23.591Z",
+  "revision": 15,
+  "updatedAt": "2026-11-01T17:12:17.144Z",
   "procedureRef": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
-  "activeRun": {
-    "runId": "codex-20261101T170827Z",
-    "actor": "codex",
-    "startedAt": "2026-11-01T17:08:27.000Z",
-    "claimedAt": "2026-11-01T17:10:22.944Z",
-    "writeUntil": "2026-11-01T17:21:25.000Z",
-    "closeBy": "2026-11-01T17:31:25.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "ops003-canonical-reconciliation-20261101T170827Z",
     "taskId": "OPS-003",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "BLOCKED",
     "kind": "coordination",
     "notBefore": "2026-11-01T17:08:27.000Z",
     "expiresAt": null,
@@ -102,23 +95,58 @@
         "scope": "UNAPPLIED R2 proposal against this baseline, patchSHA2564f3a5cc2b92226d60ebf91a1f4d1a3e9aaa9b5c407d51d8d49a1a86f55753302. Non-author reviewer re-read corrected raw bytes; resolved blocker permits same-budget assign, regressed blocker rejects; original link, criteria, M3/policy preserved. R1 failure and bytes retained. Favorable patch review is not adoption or final-source Verify; future-source CI NOT_RUN. Current review scope[] forbids application.",
         "access": "artifact",
         "artifactDigest": "4f3a5cc2b92226d60ebf91a1f4d1a3e9aaa9b5c407d51d8d49a1a86f55753302"
+      },
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41308566406",
+        "headSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
+        "sourceDigest": "dd878ad99e20b2191726e5bd3a056b1985f174fc5c6c6e79b3eea25682044b35",
+        "result": "PASS",
+        "scope": "Esito originale completed/success letto dal connettore in questa run; artefatti e review esatti gia letti dalla run precedente, qui riusati tramite ricevute PR20#6558234574 e #6560907584. Nessun nuovo download o rerun. CI Node24/PostgreSQL18 distinta dal PATH locale Node26.5.1 fuori engine.",
+        "access": "metadata",
+        "artifactDigest": null
+      },
+      {
+        "kind": "review",
+        "name": "original-method-review-reused",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6558234574",
+        "headSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
+        "sourceDigest": "dd878ad99e20b2191726e5bd3a056b1985f174fc5c6c6e79b3eea25682044b35",
+        "result": "PASS",
+        "scope": "Ricevuta originale non autrice /root/reviewer letta e riusata sulla stessa sorgente. Nessuna nuova review o approvazione umana svolta in questa run; non si completa OPS-003.",
+        "access": "metadata",
+        "artifactDigest": null
+      },
+      {
+        "kind": "check",
+        "name": "canonical-assignment-still-blocked",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/blob/082c3e594034c5e1416f0736a44e0e1a9d49733f/operations/coordination.json",
+        "headSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
+        "sourceDigest": "dd878ad99e20b2191726e5bd3a056b1985f174fc5c6c6e79b3eea25682044b35",
+        "result": "FAIL",
+        "scope": "Rilette coda canonica e guardie assign: OPS-003 status blocked/B-NATIVE-CLIENT, dipendenza PERF-002 non conclusa, M3 remoto bloccato; PERF-001 gia COMPLETE_INCREMENT nel cursore12. Proposta R2 ancora non applicata e nessuna sorgente/servizio cambiato. Nessuna nuova suite eseguita.",
+        "access": "metadata",
+        "artifactDigest": null
       }
     ],
-    "blockers": [],
-    "nextAction": "La proposta R2 resta non applicata: occorre un incarico implementativo canonicamente eleggibile per i soli due file proposti, poi review/Verify della nuova sorgente e adozione esplicita della procedureRef. Nessuna ripetizione di PERF-001 o modifica scheduler.",
+    "blockers": [
+      "OPS003-CANONICAL-ELIGIBILITY"
+    ],
+    "nextAction": "Trigger unico: incarico implementativo canonicamente eleggibile per applicare la proposta R2 gia pubblicata (PR20#issuecomment-6561015725), poi review/Verify della nuova sorgente e procedureRef esplicita. OPS-003 resta blocked nel file canonico; scope coordination[] non consente di modificarlo. Finche coda/head/capacita non cambiano, chiudere NO_ACTION senza duplicare review, benchmark, proposta o commenti. Non modificare scheduler e non attendere Pro.",
     "review": null
   },
   "lastRun": {
-    "runId": "codex-20261101T163625Z",
+    "runId": "codex-20261101T170827Z",
     "actor": "codex",
-    "startedAt": "2026-11-01T16:36:25.000Z",
-    "claimedAt": "2026-11-01T16:37:53.431Z",
+    "startedAt": "2026-11-01T17:08:27.000Z",
+    "claimedAt": "2026-11-01T17:10:22.944Z",
     "writeUntil": "2026-11-01T17:21:25.000Z",
     "closeBy": "2026-11-01T17:31:25.000Z",
-    "packetId": "perf001-independent-review-20261101T163625Z",
-    "finishedAt": "2026-11-01T16:59:06.471Z",
-    "outcome": "COMPLETE_INCREMENT",
+    "packetId": "ops003-canonical-reconciliation-20261101T170827Z",
+    "finishedAt": "2026-11-01T17:12:17.144Z",
+    "outcome": "BLOCKED",
     "late": false,
-    "summary": "PERF001 independent raw-source review completed on174d15bb/de1f7e93; original Verify and Extended bytes reused, no P0-P2, one README P3. Native Sol/max/project run observed; OPS003 canonical eligibility P2 remains. One R2 queue proposal reviewed but unapplied; no source, integration, service or scheduler changes."
+    "summary": "OPS-003 canonical eligibility remains blocked; prior PERF-001 review and exact-source Verify reused. R2 proposal still unapplied; no source, service, integration or scheduler writes. No independent implementation is eligible. Close promptly, preserve the single canonical reconciliation trigger."
   }
 }
