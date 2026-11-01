@@ -3,25 +3,18 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 24,
-  "updatedAt": "2026-11-01T20:15:14.692Z",
+  "revision": 25,
+  "updatedAt": "2026-11-01T20:18:46.401Z",
   "procedureRef": "129c078b2e5989db566de71250d1c267e0aa0fca",
-  "activeRun": {
-    "runId": "codex-20261101T201327Z",
-    "actor": "codex",
-    "startedAt": "2026-11-01T20:12:54.787Z",
-    "claimedAt": "2026-11-01T20:15:14.692Z",
-    "writeUntil": "2026-11-01T20:32:51.585Z",
-    "closeBy": "2026-11-01T20:42:51.585Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "perf002-structural-bundle-margin-129c078",
     "taskId": "PERF-002",
     "nextActor": "codex",
-    "disposition": "COMPLETE_INCREMENT",
-    "kind": "implementation",
+    "disposition": "BLOCKED",
+    "kind": "coordination",
     "notBefore": "2026-11-01T17:38:04.049Z",
-    "expiresAt": "2026-11-01T20:42:51.585Z",
+    "expiresAt": null,
     "source": {
       "baseSha": "129c078b2e5989db566de71250d1c267e0aa0fca",
       "headSha": "d74b8dfa3ada65594a96604146c60df73118ccbd",
@@ -30,9 +23,7 @@
       "sourceDigest": "408e7326e455d4b3dc57bbf600eccd82a135a5b6169c89f65289f101a7fc64f2"
     },
     "goal": "Reduce the total distributed JavaScript for the existing Study/Teach/Create app through a bounded structural dependency change, with comparable baseline/candidate builds and preserved formula, validation, plugin and recovery behavior.",
-    "allowedPaths": [
-      "packages/contracts/src/index.ts"
-    ],
+    "allowedPaths": [],
     "exitCriteria": [
       "Un consumer/risultato osservabile: margine superiore alla baseline misurata, contando tutti gli asset iniziali/differiti/plugin e mantenendo la soglia 245760.",
       "Preservare UX/accessibilità, firma/modello scientifico e recovery; review e Verify della head.",
@@ -280,10 +271,45 @@
         "scope": "Canonical queue at adopted procedure129c078 retains PERF002queued; operations/coordination.json is outside this assignment/canonical PERF002source scope and was not written. COMPLETE_INCREMENT is isolated preparation completion only. PERF003still has incomplete canonical dependency; no downstream implementation authorization inferred. Next coordinator must reconcile scope/status through a legitimate scoped task. Main/preview/m3/staging freeze and source/procedure/deployed/acceptance separation remain.",
         "access": "metadata",
         "artifactDigest": null
+      },
+      {
+        "headSha": "d74b8dfa3ada65594a96604146c60df73118ccbd",
+        "sourceDigest": "408e7326e455d4b3dc57bbf600eccd82a135a5b6169c89f65289f101a7fc64f2",
+        "access": "metadata",
+        "artifactDigest": null,
+        "kind": "check",
+        "name": "canonical-closure-scope-block",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/blob/d74b8dfa3ada65594a96604146c60df73118ccbd/operations/coordination.json",
+        "result": "FAIL",
+        "scope": "P2 independently reproduced from immutable raw queue and adopted cycle129c078 by root on Node24.22.1 and actual distinct non-author /root/queue_scope_review on Node26.5.1 (pure structural probes only). PERF002 operations path rejects scope; PERF003 implementation rejects incomplete dependency; OPS003 rejects done state; review[] is read-only. No real assignment from hypothetical queue, source write or new product test. Separate actual non-author context, unrestricted tools/read-only instruction, no ACL/human approval. Local raw probes/review retained under this runId."
+      },
+      {
+        "headSha": "d74b8dfa3ada65594a96604146c60df73118ccbd",
+        "sourceDigest": "408e7326e455d4b3dc57bbf600eccd82a135a5b6169c89f65289f101a7fc64f2",
+        "access": "metadata",
+        "artifactDigest": null,
+        "kind": "check",
+        "name": "handoff-queue-authentication-gap",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/blob/129c078b2e5989db566de71250d1c267e0aa0fca/tools/cycle.mjs#L250",
+        "result": "FAIL",
+        "scope": "Separate P2 structural countercase: finish HANDOFF accepts an absent canonical task with operations scope in memory because finish does not read queue. RootNode24 and non-author context independently reproduced; no real successor, source write or bypass published. Validator acceptance is not task/scope authorization. No patch or method adoption in this cycle."
+      },
+      {
+        "headSha": "d74b8dfa3ada65594a96604146c60df73118ccbd",
+        "sourceDigest": "408e7326e455d4b3dc57bbf600eccd82a135a5b6169c89f65289f101a7fc64f2",
+        "access": "metadata",
+        "artifactDigest": null,
+        "kind": "observation",
+        "name": "original-perf002-evidence-reused-this-cycle",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/21#issuecomment-6562546557",
+        "result": "PASS",
+        "scope": "PR21 live ready/open/unmerged, same head d74b8dfa and digest408e7326; connector reports original Verify41339360492 completed/success and original review receipt read. Prior exact-source byte/artifact review reused through that receipt, no new ZIP download or suite/CI rerun. No new review of product code, no acceptance transfer. Source/procedure/main/preview separate; M3 and physical/operator limits unchanged."
       }
     ],
-    "blockers": [],
-    "nextAction": "Reconcile the canonical scope and PERF-002 queue status using exact PR21/Verify41339360492/non-author receipt6562546557 through a legitimate scoped task; current assignment does not authorize operations/coordination.json. Do not redo this ready isolated PR or promote PERF-003 before canonical dependency is done. Keep procedureRef129c078, source d74b8dfa/digest408e7326 distinct from deployed revision and M3 acceptance; integration freeze remains.",
+    "blockers": [
+      "B-CANONICAL-SCOPE"
+    ],
+    "nextAction": "A legitimate canonical task scoped only to operations/coordination.json and docs/history.md must reconcile PERF-002 using original PR21/head d74b8dfa/digest408e7326/Verify41339360492/review6562546557; that eligible scoped task is absent. Do not redo ready PERF-002, select PERF-003 implementation before canonical dependency is done, reopen done OPS-003, select from a modified hypothetical queue, or use HANDOFF structural acceptance as authorization. Real distinct /root/queue_scope_review confirms P2 scope deadlock and separate P2 unvalidated HANDOFF path. Preserve coordination read-only, adopted procedure129c078 and freeze; resume only after legitimate scope/task reconciliation or a changed real prerequisite.",
     "review": {
       "authorContextId": "01a1986b-dcd8-78c1-88af-5c28b3440d8f",
       "reviewerContextId": "perf002_review",
@@ -292,16 +318,16 @@
     }
   },
   "lastRun": {
-    "runId": "codex-20261101T184328Z",
+    "runId": "codex-20261101T201327Z",
     "actor": "codex",
-    "startedAt": "2026-11-01T18:42:51.585Z",
-    "claimedAt": "2026-11-01T18:44:56.188Z",
-    "writeUntil": "2026-11-01T19:27:51.585Z",
-    "closeBy": "2026-11-01T19:37:51.585Z",
+    "startedAt": "2026-11-01T20:12:54.787Z",
+    "claimedAt": "2026-11-01T20:15:14.692Z",
+    "writeUntil": "2026-11-01T20:32:51.585Z",
+    "closeBy": "2026-11-01T20:42:51.585Z",
     "packetId": "perf002-structural-bundle-margin-129c078",
-    "finishedAt": "2026-11-01T19:11:36.684Z",
-    "outcome": "COMPLETE_INCREMENT",
+    "finishedAt": "2026-11-01T20:18:46.401Z",
+    "outcome": "BLOCKED",
     "late": false,
-    "summary": "PERF-002 isolated preparation complete on d74b8dfa/digest408e7326, PR21.67direct strict schema constructors; actual all-JS245744->245701, margin16->59 with fixed245760 limit, signed plugin unchanged. Original Verify41339360492 attempt1 and actual independent /root/perf002_review PASS with raw ZIP/source/type/compatibility audits. Published source/PRready, no merge/deploy or scheduler changes. Canonical queue remains queued outside scope; only next action is legitimate scope/status reconciliation, no PERF003eligibility inferred. Actual18:42:51.585Z start/budget preserved; M3/freeze/device limits remain."
+    "summary": "BLOCKED canonical closure scope: PERF002 remains technically COMPLETE on ready PR21 d74b8dfa/digest408e7326, original Verify and review reused. Real independent queue_scope_review reproduced missing eligible queue writer; rootNode24 confirms scope/dependency/done rejections. HANDOFF accepts absent task structurally but is not authority, never used. No source/service/CI/scheduler changes or new PR. Coordination-only next step is legitimate narrow canonical reconciliation; freeze/M3 preserved. Native start20:12:54.787Z distinct from first clock; inherited closeBy20:42:51.585Z respected."
   }
 }
