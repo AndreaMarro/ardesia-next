@@ -3,9 +3,9 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 38,
-  "updatedAt": "2026-11-01T23:14:32.114Z",
-  "procedureRef": "3514d155ebb13e41cc9372b07001670cdd3815a5",
+  "revision": 39,
+  "updatedAt": "2026-11-01T23:32:18.398Z",
+  "procedureRef": "837710f55aa56dcf6575c2fc73beebf8b342cf44",
   "activeRun": {
     "runId": "codex-20261101T231306Z",
     "actor": "codex",
@@ -24,10 +24,10 @@
     "expiresAt": "2026-11-02T00:08:06.000Z",
     "source": {
       "baseSha": "3514d155ebb13e41cc9372b07001670cdd3815a5",
-      "headSha": "3514d155ebb13e41cc9372b07001670cdd3815a5",
+      "headSha": "837710f55aa56dcf6575c2fc73beebf8b342cf44",
       "branch": "ops/20261101-cycle-guards",
-      "pr": null,
-      "sourceDigest": "9161b7c0446f4bb9baa120613b35cf93ca9fc374f1620494c69bcf5c7445a9ca"
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/24",
+      "sourceDigest": "269372145e37957b391cc7aa19ed479de55842fe885a30f4ce27f40779b8f456"
     },
     "goal": "Guardie HANDOFF e chiusura canonica senza deadlock",
     "allowedPaths": [
@@ -45,10 +45,38 @@
       "Un task completato con prove valide puo riconciliare la propria riga e selezionare il successore nello stesso budget attraverso un percorso esplicitamente autorizzato e testato; nessun rinnovo budget o secondo writer.",
       "Controprove per claim concorrente, review autrice, prova su SHA diversa, policy alterata e coda ipotetica; mantenere lettura storica v1/v2, CAS/no force, review indipendente e Verify della head."
     ],
-    "evidence": [],
+    "evidence": [
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41361908264",
+        "headSha": "837710f55aa56dcf6575c2fc73beebf8b342cf44",
+        "sourceDigest": "269372145e37957b391cc7aa19ed479de55842fe885a30f4ce27f40779b8f456",
+        "result": "PASS",
+        "scope": "Exact-source Verify41361908264 and independent raw-source/artifact review on837710f5;291unit/73browser/zero skip or flaky. No remote acceptance.",
+        "access": "artifact",
+        "artifactDigest": "55064c319dbd10b57018b704c3b6c0363e5efb271bbddabb93eb6eccdf92d081"
+      },
+      {
+        "kind": "review",
+        "name": "independent-source-and-artifact-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/24#issuecomment-6565534445",
+        "headSha": "837710f55aa56dcf6575c2fc73beebf8b342cf44",
+        "sourceDigest": "269372145e37957b391cc7aa19ed479de55842fe885a30f4ce27f40779b8f456",
+        "result": "PASS",
+        "scope": "Exact-source Verify41361908264 and independent raw-source/artifact review on837710f5;291unit/73browser/zero skip or flaky. No remote acceptance.",
+        "access": "metadata",
+        "artifactDigest": null
+      }
+    ],
     "blockers": [],
-    "nextAction": "Riprodurre HANDOFF non autorizzato, correggere il helper esistente e la chiusura canonica entro lo stesso budget; review non autrice e Verify della head prima di adozione. OPS-004 resta queued fino a due consegne consecutive verificate.",
-    "review": null
+    "nextAction": "Explicit adoption3514d155 ->837710f5 after exact Verify and real non-author review; retain completion, assign existing OPS-004, reconcile only OPS-005 in the same original claim/budget, then verify/review the administrative source. OPS-004 remains queued; no M3 acceptance or integration.",
+    "review": {
+      "authorContextId": "codex-20261101T231306Z-root",
+      "reviewerContextId": "root-ops005-review",
+      "sourceSha": "837710f55aa56dcf6575c2fc73beebf8b342cf44",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/24#issuecomment-6565534445"
+    }
   },
   "lastRun": {
     "runId": "codex-20261101T213722Z",
