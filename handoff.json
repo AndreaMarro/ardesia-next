@@ -3,10 +3,17 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 15,
-  "updatedAt": "2026-11-01T17:12:17.144Z",
+  "revision": 16,
+  "updatedAt": "2026-11-01T17:19:34.316Z",
   "procedureRef": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
-  "activeRun": null,
+  "activeRun": {
+    "runId": "ardesia-reconcile-20261101T171503Z-a2186d33",
+    "actor": "codex",
+    "startedAt": "2026-11-01T17:15:03.834Z",
+    "claimedAt": "2026-11-01T17:19:34.316Z",
+    "writeUntil": "2026-11-01T18:00:03.834Z",
+    "closeBy": "2026-11-01T18:10:03.834Z"
+  },
   "packet": {
     "id": "ops003-canonical-reconciliation-20261101T170827Z",
     "taskId": "OPS-003",
