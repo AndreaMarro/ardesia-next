@@ -3,10 +3,17 @@
   "kind": "ardesia-dual-run-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 0,
-  "updatedAt": "2026-11-01T00:44:52Z",
+  "revision": 1,
+  "updatedAt": "2026-11-01T01:32:50.620Z",
   "procedureRef": "a8914c305b582e9ec46d5b6bf0b54eefe3ff2321",
-  "activeRun": null,
+  "activeRun": {
+    "runId": "owner-setup-20261101",
+    "actor": "pro",
+    "startedAt": "2026-11-01T01:20:01.000Z",
+    "claimedAt": "2026-11-01T01:32:50.620Z",
+    "writeUntil": "2026-11-01T02:05:01.000Z",
+    "closeBy": "2026-11-01T02:15:01.000Z"
+  },
   "packet": {
     "id": "bootstrap-20261101",
     "taskId": "OPS-002",
