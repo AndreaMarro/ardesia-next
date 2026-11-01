@@ -3,22 +3,15 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 6,
-  "updatedAt": "2026-11-01T13:00:10.539Z",
+  "revision": 7,
+  "updatedAt": "2026-11-01T13:00:40.692Z",
   "procedureRef": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
-  "activeRun": {
-    "runId": "ardesia-init-20261101T123442Z-1d3bca4e",
-    "actor": "codex",
-    "startedAt": "2026-11-01T12:34:42.933Z",
-    "claimedAt": "2026-11-01T12:59:49.618Z",
-    "writeUntil": "2026-11-01T13:19:42.933Z",
-    "closeBy": "2026-11-01T13:29:42.933Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "ops003-native-trial-20261101",
     "taskId": "OPS-003",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "BLOCKED",
     "kind": "review",
     "notBefore": "2026-11-01T12:59:35.789Z",
     "expiresAt": "2026-11-01T13:29:42.933Z",
@@ -93,21 +86,28 @@
         "artifactDigest": null
       }
     ],
-    "blockers": [],
-    "nextAction": "Chiudere la prova del registro e verificare il solo task nativo pertinente; nessuna accettazione del sistema dedotta.",
-    "review": null
+    "blockers": [
+      "B-NATIVE-CLIENT"
+    ],
+    "nextAction": "Completare soltanto OPS-003 quando il client espone progetto Git Ardesia, intervallo esatto di 90 minuti e primo avvio rileggibile; poi osservare un run pianificato utile. Nessun altro scheduler o takeover.",
+    "review": {
+      "authorContextId": "codex-01a19717-879c-7d00-b99a-5657ccfbbb90-root",
+      "reviewerContextId": "codex-01a19717-879c-7d00-b99a-5657ccfbbb90-reviewer",
+      "sourceSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6558234574"
+    }
   },
   "lastRun": {
-    "runId": "owner-setup-20261101",
-    "actor": "pro",
-    "startedAt": "2026-11-01T01:20:01.000Z",
-    "claimedAt": "2026-11-01T01:32:50.620Z",
-    "writeUntil": "2026-11-01T02:05:01.000Z",
-    "closeBy": "2026-11-01T02:15:01.000Z",
-    "packetId": "bootstrap-20261101",
-    "finishedAt": "2026-11-01T01:43:14.575Z",
+    "runId": "ardesia-init-20261101T123442Z-1d3bca4e",
+    "actor": "codex",
+    "startedAt": "2026-11-01T12:34:42.933Z",
+    "claimedAt": "2026-11-01T12:59:49.618Z",
+    "writeUntil": "2026-11-01T13:19:42.933Z",
+    "closeBy": "2026-11-01T13:29:42.933Z",
+    "packetId": "ops003-native-trial-20261101",
+    "finishedAt": "2026-11-01T13:00:40.692Z",
     "outcome": "BLOCKED",
     "late": false,
-    "summary": "Owner-authorized setup: source 09d1ccc reviewed and original Verify SUCCESS with artifact identity read; procedureRef adopted after those proofs. ChatGPT regia created and read back, enabled every three hours from 06:00 Europe/Rome in the current conversation; full prompt identical to reviewed source. Previous task inaccessible and UI host policy denied; no claim of its suspension. Codex model/effort routing is not exposed and no Codex task was created. Future writes remain blocked on old-run reconciliation. New material mandate captured in OPS-20261101-03; explicit M3 transition and bounded deferred horizon prepared. Current product remains M3 awaiting complete evidence."
+    "summary": "Controlled native setup: corrected source published, same-head original Verify and non-author review PASS; migrated the same ref, claimed, selected and closed via expected-parent normal pushes with readback. Main/preview/staging unchanged. Native project/90-minute scheduler capability and actual scheduled execution remain unverified; OPS-003 stays open. No scheduler altered by this trial."
   }
 }
