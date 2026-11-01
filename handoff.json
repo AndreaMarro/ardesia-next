@@ -3,25 +3,18 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 42,
-  "updatedAt": "2026-11-01T23:42:00.870Z",
+  "revision": 43,
+  "updatedAt": "2026-11-01T23:42:23.608Z",
   "procedureRef": "2909aa7d90a8f87b011e80722d079fb4bbd61070",
-  "activeRun": {
-    "runId": "codex-20261101T231306Z",
-    "actor": "codex",
-    "startedAt": "2026-11-01T23:13:06.000Z",
-    "claimedAt": "2026-11-01T23:13:54.476Z",
-    "writeUntil": "2026-11-01T23:58:06.000Z",
-    "closeBy": "2026-11-02T00:08:06.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "ops005-canonical-closure-20261101",
     "taskId": "OPS-004",
     "nextActor": "codex",
-    "disposition": "READY",
-    "kind": "implementation",
+    "disposition": "COMPLETE_INCREMENT",
+    "kind": "coordination",
     "notBefore": "2026-11-01T23:13:54.476Z",
-    "expiresAt": "2026-11-02T00:08:06.000Z",
+    "expiresAt": null,
     "source": {
       "baseSha": "837710f55aa56dcf6575c2fc73beebf8b342cf44",
       "headSha": "2909aa7d90a8f87b011e80722d079fb4bbd61070",
@@ -30,10 +23,7 @@
       "sourceDigest": "ca7e8ca1c5b1947c70a649ec7db0e20a2feae42d5d748c7332397b80652b9a25"
     },
     "goal": "Riconciliazione canonica delle consegne verificate, su richiesta",
-    "allowedPaths": [
-      "operations/coordination.json",
-      "docs/history.md"
-    ],
+    "allowedPaths": [],
     "exitCriteria": [
       "Un disallineamento concreto tra consegna verificata e coda viene riconciliato usando SHA/digest, Verify e review non autrice originali; nessun PASS trasferito a nuove sorgenti.",
       "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
@@ -73,16 +63,16 @@
     }
   },
   "lastRun": {
-    "runId": "codex-20261101T213722Z",
+    "runId": "codex-20261101T231306Z",
     "actor": "codex",
-    "startedAt": "2026-11-01T21:37:22.257Z",
-    "claimedAt": "2026-11-01T21:39:56.346Z",
-    "writeUntil": "2026-11-01T22:22:22.257Z",
-    "closeBy": "2026-11-01T22:32:22.257Z",
-    "packetId": "m3-access-readonly-native-intake-3514d15",
-    "finishedAt": "2026-11-01T22:10:09.515Z",
-    "outcome": "BLOCKED",
+    "startedAt": "2026-11-01T23:13:06.000Z",
+    "claimedAt": "2026-11-01T23:13:54.476Z",
+    "writeUntil": "2026-11-01T23:58:06.000Z",
+    "closeBy": "2026-11-02T00:08:06.000Z",
+    "packetId": "ops005-canonical-closure-20261101",
+    "finishedAt": "2026-11-01T23:42:23.608Z",
+    "outcome": "COMPLETE_INCREMENT",
     "late": false,
-    "summary": "OPS-004 COMPLETE in-run rev33/54b18a83: PR23 3514d155/digest9161b7c0 Verify and real non-author review PASS, canonical PERF-002 done and procedure adopted. Same-budget M3-ACCESS read-only intake BLOCKED: native CLI authenticated expected team and token present, one exact-origin build-info GET HTTP403; QA/operator channels absent in initial and preview child environments. Existing restore270479 confirmed by native metadata, no SQL or resource changes. No source/deploy/scheduler/access-policy changes in intake, no retry/bypass or secret export. Next independent eligible task OPS-005; freeze/M3 limits preserved."
+    "summary": "OPS-005 COMPLETE and canonically reconciled through explicit OPS-004 in the same original claim/budget. PR24 final2909aa7d/digestca7e8ca1: Verify41362781588 and real non-author source/Git-parent/artifact review6565638416 PASS,291unit/73browser/zero skip or flaky; procedure adopted42/719b0902. Original sourceA837710f5/Verify41361908264/review6565534445 preserved. OPS-004 remains queued after one real closure. No merge/deploy or M3 retry; freeze and all gates unchanged. Next select PERF-003 with separate runtime/procedure identities."
   }
 }
