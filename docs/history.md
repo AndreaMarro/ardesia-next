@@ -64,3 +64,11 @@ OPS-20261101-03: [voce integrale nell’archivio](history-through-20261101.md#op
 
 <a id="ops-20261101-04--autonomia-pro-senza-ulteriori-richieste-di-autorizzazione"></a>
 OPS-20261101-04: [voce integrale nell’archivio](history-through-20261101.md#ops-20261101-04--autonomia-pro-senza-ulteriori-richieste-di-autorizzazione).
+
+## OPS-20261101-10 — prima esecuzione nativa e riconciliazione proposta
+
+Fonte: run nativa `codex-20261101T163625Z`, metadati del solo task pertinente letti in sola lettura e [checkpoint originale](https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6560907584). Nessuna nuova autorizzazione del titolare o modifica a scheduler, modello, accessi, freeze o gate. Osservati progetto/cwd corretti, `gpt-6.1-sol`/`max` effettivi e intervallo configurato di 90 minuti. Node26.5.1 locale e diverso dalla CI Node24/PostgreSQL18: nessuna suite locale accreditata a quell'ambiente. Sessione creata15:37:52Z, prima attivita assistant16:36:22Z e primo clock16:36:25Z sono fatti distinti; causa non verificata, nessuna garanzia di55minuti dalla creazione.
+
+Il contesto non autore `/root/review_native_run` ha confermato le prove originali della sorgente082c3e5 e riprodotto un P2: OPS-003 blocked impedisce assign implementativo, mentre review/coordination senza allowedPaths non autorizzano a riconciliare la coda. La run ha conservato tale limite e selezionato PERF-001 in lettura, senza alterare una copia della coda per superare i controlli. Questa riconciliazione risolve soltanto l'osservazione B-NATIVE-CLIENT e rende OPS-003 queued; non lo dichiara done e non completa PERF-002.
+
+Ambito della supersessione: precedente fotografia projectless/sospesa di B-NATIVE-CLIENT. Criteri OPS-003, prove e FAIL storici restano invariati. Il candidato remoto e M3 restano separati. Adozione richiede scope legittimo, review e Verify della nuova sorgente, con procedureRef esplicita; la proposta locale non conta come adozione. Rollback con nuovo commit dei soli due file, preservando questa evidenza e la storia Git.
