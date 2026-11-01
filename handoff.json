@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1.0.0",
+  "kind": "ardesia-dual-run-state",
+  "repository": "AndreaMarro/ardesia-next",
+  "acceptanceEvidence": false,
+  "revision": 0,
+  "updatedAt": "2026-11-01T00:44:52Z",
+  "procedureRef": "a8914c305b582e9ec46d5b6bf0b54eefe3ff2321",
+  "activeRun": null,
+  "packet": {
+    "id": "bootstrap-20261101",
+    "taskId": "OPS-002",
+    "nextActor": "pro",
+    "disposition": "BLOCKED",
+    "kind": "coordination",
+    "notBefore": "2026-11-01T00:44:52Z",
+    "expiresAt": null,
+    "source": {
+      "baseSha": "03622b56c9756225019b7c6219d226beef8e0a6d",
+      "headSha": "a8914c305b582e9ec46d5b6bf0b54eefe3ff2321",
+      "branch": "pro/20261031-operating-system",
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/20",
+      "sourceDigest": "27de0b8a6d9b282314943a687d3ade4197a7db42b6d161dc53ec34c4dda0fe8d"
+    },
+    "goal": "Riconciliare l’attivazione della coppia e il prossimo incarico autorizzato, preservando il gate remoto M3.",
+    "allowedPaths": [],
+    "exitCriteria": [
+      "Verificare che la precedente attività 6adbfad145dc81919b36fc0cdf0eed0c sia sostituita o in pausa e che la sua run sia terminata.",
+      "Riconciliare ref, PR, prove esistenti e prerequisiti cambiati senza ripetere benchmark o suite invariati.",
+      "Conservare il blocco concreto oppure consegnare un solo incarico eleggibile; nessuna accettazione M3 implicita."
+    ],
+    "evidence": [
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41257518913",
+        "headSha": "a8914c305b582e9ec46d5b6bf0b54eefe3ff2321",
+        "sourceDigest": "27de0b8a6d9b282314943a687d3ade4197a7db42b6d161dc53ec34c4dda0fe8d",
+        "result": "PASS",
+        "scope": "Original Verify run 41257518913; pinned Ubuntu 24.04/Node project toolchain, lockfile at this source, isolated PostgreSQL 18 loopback fixtures. 50 coordination/handoff tests, 70 guards, 291 unit/integration, 73 browser passed. Artifact bytes/hash read; seven report source identities and unit/browser report bindings checked. No remote or physical-device acceptance.",
+        "access": "artifact",
+        "artifactDigest": "3cdc1d69b7774e714afb6007a8d5da54ff056e35c0145c95c30d0ab1481ee2cd"
+      },
+      {
+        "kind": "review",
+        "name": "sol-max-protocol-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/20",
+        "headSha": "a8914c305b582e9ec46d5b6bf0b54eefe3ff2321",
+        "sourceDigest": "27de0b8a6d9b282314943a687d3ade4197a7db42b6d161dc53ec34c4dda0fe8d",
+        "result": "PASS",
+        "scope": "Separate GPT-6.1 Sol Max source review of protocol/helper/prompts, plus targeted correction recheck of the Pro coordination successor. Final bytes identified by SHA-256 in PR checkpoint. Initial review was fresh; fifth case suggested by coordinator. No finding in rechecked scope; not a scheduled Codex run, separate GitHub identity or human approval.",
+        "access": "metadata",
+        "artifactDigest": null
+      }
+    ],
+    "blockers": [
+      "B-OLD-AUTOMATION",
+      "B-OIDC",
+      "B-QA",
+      "B-RESTORE",
+      "B-FREEZE"
+    ],
+    "nextAction": "Il primo Pro verifica la transizione senza cambiare scheduler; controlla una sola volta i prerequisiti cambiati e conserva o riassegna un solo task canonico. Codex attende un ticket valido."
+  },
+  "lastRun": null
+}
