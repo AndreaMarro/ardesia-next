@@ -233,7 +233,9 @@ export function finishCycle(data, {expectedRevision, runId, actor, outcome, pack
   valid(data); revision(data, expectedRevision); owner(data, {runId, actor}); const moment = clock(data, now);
   if (!outcomes.has(outcome) || !text(summary) || !record(packet)) throw new Error('A supported outcome, complete next packet and summary are required.');
   if (['HANDOFF', 'COMPLETE_INCREMENT'].includes(outcome) && actor !== 'pro') throw new Error('Only Pro can hand off new work or complete an increment.');
-  const nextActor = outcome === 'HANDOFF' ? 'codex' : outcome === 'READY_FOR_REVIEW' ? actor === 'pro' ? 'codex' : 'pro' : 'pro';
+  const nextActor = outcome === 'HANDOFF'
+    ? packet.kind === 'coordination' && packet.nextActor === 'pro' ? 'pro' : 'codex'
+    : outcome === 'READY_FOR_REVIEW' ? actor === 'pro' ? 'codex' : 'pro' : 'pro';
   if (packet.nextActor !== nextActor || packet.disposition !== (outcome === 'HANDOFF' ? 'READY' : outcome)) throw new Error('Next packet actor/disposition must match the outcome.');
   if (nextActor === 'codex' && (!timestamp(packet.notBefore) || !timestamp(packet.expiresAt)
     || expires(packet) - Math.max(moment, Date.parse(packet.notBefore)) <= 10 * MINUTE)) throw new Error('Codex successor window must retain more than ten useful minutes after now or its future start.');

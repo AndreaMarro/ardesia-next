@@ -232,6 +232,23 @@ test('only Pro can complete an increment, requiring same-source CI and review wi
   assert.throws(() => finish(active, wrongReview, 'COMPLETE_INCREMENT'), /review reference/);
 });
 
+test('Pro can hand off a new coordination task after completing the previous increment', () => {
+  const data = fixture(); data.packet.nextActor = 'pro';
+  const active = claimed(data, 'pro');
+  const completion = nextPacket(active, {kind: 'coordination', disposition: 'COMPLETE_INCREMENT', expiresAt: null,
+    evidence: [evidence(), evidence({kind: 'review', name: 'separate model review'})]});
+  const done = finish(active, completion, 'COMPLETE_INCREMENT');
+  const coordinator = claimCycle(done, {expectedRevision: 2, runId: 'pro-2', actor: 'pro', startedAt: '2026-10-31T13:30:00Z'}, {now: '2026-10-31T13:30:00Z'});
+  const packet = {...structuredClone(completion), id: 'ticket-m3', taskId: 'M3-REMOTE', disposition: 'READY',
+    notBefore: '2026-10-31T13:30:00Z', source: {...completion.source, branch: 'main'},
+    goal: 'Reconcile the existing remote prerequisites.', exitCriteria: ['Read the material capability delta.'], evidence: [], nextAction: 'Inspect the existing prerequisite evidence.'};
+  const next = finish(coordinator, packet, 'HANDOFF', '2026-10-31T13:40:00Z');
+  assert.equal(next.packet.taskId, 'M3-REMOTE'); assert.equal(next.packet.nextActor, 'pro');
+  assert.deepEqual(next.packet.allowedPaths, []); assert.equal(next.activeRun, null);
+  assert.equal(next.lastRun.packetId, done.packet.id); assert.equal(next.lastRun.outcome, 'HANDOFF');
+  assert.equal(next.procedureRef, done.procedureRef); assert.deepEqual(validateCycle(next), []);
+});
+
 test('finishing preserves control identity and rejects ownership, revision, scope and assignment drift', () => {
   const data = claimed(), packet = nextPacket(data), before = structuredClone(data);
   for (const change of [{taskId: 'OTHER'}, {id: 'other-ticket'}, {goal: 'A new goal'}, {exitCriteria: ['Weaker criteria']}, {source: {...packet.source, branch: 'codex/other'}}]) {
@@ -248,7 +265,8 @@ test('Pro hands off explicit new work to Codex but Codex cannot create its own s
   const active = claimed(data, 'pro'), packet = fixture().packet; packet.id = 'ticket-new';
   assert.equal(finish(active, packet, 'HANDOFF').packet.id, 'ticket-new');
   assert.throws(() => finish(claimed(), packet, 'HANDOFF'), /Only Pro/);
-  assert.throws(() => finish(active, {...packet, nextActor: 'pro'}, 'HANDOFF'), /actor\/disposition/);
+  for (const kind of ['implementation', 'review']) assert.throws(() => finish(active,
+    {...packet, nextActor: 'pro', kind, allowedPaths: kind === 'review' ? [] : packet.allowedPaths}, 'HANDOFF'), /actor\/disposition|coordination/);
 });
 
 test('a late owner can record completion with an explicit overrun but its run ID cannot be replayed', () => {

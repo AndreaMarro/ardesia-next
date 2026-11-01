@@ -69,13 +69,14 @@ I `blockers` del packet sono impedimenti all'attività assegnata: READY, READY_F
 Il `packet` ha un id e un taskId della coda, prossimo actor, disposition, kind, validità, sorgente esatta, obiettivo, allowedPaths, criteri di uscita, evidenze, blocker e nextAction. Non contiene una nuova roadmap o autorizzazioni ai servizi.
 
 - Pro assegna un solo incremento con consumer, base/head, branch isolato, scope, comportamento atteso, controprova, verifiche da fare/riusare, condizioni di stop e rollback. Le condizioni importanti sono nei criteri e nel checkpoint della stessa PR, non in una chat invisibile all'altro ruolo.
+- Un successore riservato a Pro, come il coordinamento dell'accettazione M3, usa `HANDOFF` con `nextActor:pro`, `kind:coordination`, `disposition:READY` e `allowedPaths:[]`. Solo Pro può pubblicarlo. È un incarico per la successiva run Pro: non avvia una seconda run né rinnova il budget corrente. Il task deve essere nella coda; la sostituzione conserva l'identità precedente in `lastRun.packetId`, la sintesi e il packet completo nel parent Git. Registrare prima l'esito e le prove del predecessore nella PR/coda; HANDOFF non lo dichiara completato o accettato.
 - Codex implementa o recensisce quel ticket; non riassegna task, non modifica il metodo per semplificarsi il test, non integra main e non accede a Neon/Vercel/operator secrets. Può pubblicare il branch assegnato e il cursore solo con claim valido. Miglioramenti ulteriori diventano proposte motivate a Pro.
 - Pro riesamina la revisione esatta, confronta le prove e decide il successore entro il mandato. Se è autore di una modifica sostanziale al metodo o al prodotto, la passa a Codex per review separata. Non dichiara indipendente un autore che si approva da solo.
 - Per cambiare fase dopo un gate accettato, Pro riconcilia le policy e la coda con l'evidenza originale prima di assegnare la nuova implementazione. Nessun merge durante l'attuale freeze; produzione e attività commerciali mantengono i propri mandati.
 
 | Esito | Significato e seguito |
 | --- | --- |
-| READY / HANDOFF | Incarico Pro valido per il prossimo ruolo, senza dichiarare già prodotto il risultato. |
+| READY / HANDOFF | Incarico valido per Codex oppure successiva coordinazione Pro, senza dichiarare già prodotto il risultato. |
 | READY_FOR_REVIEW | Head/digest, verify PASS e risultato pronti per l'altro ruolo. |
 | WAITING_CI | Head pubblicata, run originale pendente; Pro ne acquisisce l'esito. |
 | BLOCKED | Prerequisito concreto; prossimo controllo legato a un cambiamento. |
@@ -105,7 +106,7 @@ Codex può proporre e implementare una correzione assegnata; Pro la riesamina. S
 
 Sono riordinabili i task ancora eleggibili della stessa fase in base a dipendenze, regressioni e valore utente. Non sono auto-modificabili missione, gate, soglie, modello scelto, budget, credenziali, costi, pubblicazione, schedule o prompt salvati. Nessuna nuova flotta di agenti. Se una riorganizzazione richiede quei cambiamenti, consegnare una proposta concreta senza applicarla.
 
-Misurare dati reali dai checkpoint: minuti alla ripresa, durata lavoro/verifica, motivi di rerun, regressioni, blocchi e risultati utente. Non inventare percentuali di efficienza. Due cicli senza progresso con la stessa causa richiedono una diagnosi delimitata alla causa, non più test o nuova documentazione.
+Misurare dati reali dai checkpoint: minuti alla ripresa, durata lavoro/verifica, motivi di rerun, regressioni, blocchi e risultati utente. Non inventare percentuali di efficienza. Due cicli senza progresso per una causa non ancora spiegata richiedono una sola diagnosi delimitata. Un blocker già spiegato e invariato attende il proprio trigger: non genera nuovi audit, test o documenti a ogni coppia di run.
 
 ## 10. Strumenti pronti e pubblicazione del cursore
 

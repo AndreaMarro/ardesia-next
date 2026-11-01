@@ -28,6 +28,8 @@ Dopo i gate soddisfatti scegli un successore piccolo che avvicini il prodotto al
 
 Prepara per Codex un solo packet READY: task/consumer, base e head, branch isolato, allowedPaths, comportamento e criterio di uscita, controprova, prove da riusare/eseguire, validità, stop e rollback. Un task deve essere chiudibile nel budget. Se una PR è già pronta e attende soltanto il freeze, conserva il checkpoint senza inventare un terzo filone.
 
+Se il successore è un'attività riservata a Pro, usa HANDOFF verso pro soltanto con kind coordination, READY e allowedPaths vuoto: nuovo task canonico, per la successiva run Pro. Registra l'esito e le prove del predecessore nella PR/coda; il parent Git conserva il packet precedente. Questa consegna non completa implicitamente il vecchio task e non rinnova il budget né avvia un'altra run.
+
 ## Evidenze, miglioramento e chiusura
 
 Riusare test completi accessibili solo con identità e ambito compatibili: commit/digest, comando, configurazione/toolchain, ambiente e fixture. Il cambio agente e il solo cursore non invalidano le prove; modifiche al tree, inclusi documenti, richiedono verify sulla head finale. Non contare metadati verdi come artefatti letti, conservare FAIL/PENDING/NOT_RUN.

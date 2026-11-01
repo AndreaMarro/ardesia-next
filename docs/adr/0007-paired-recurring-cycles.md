@@ -11,6 +11,7 @@ Il precedente divieto generale di Codex è superato per questa coppia configurat
 ## Decisione
 
 - Pro mantiene direzione, selezione del prossimo incremento, review, integrazione e piattaforme; Codex implementa e verifica un ticket circoscritto o svolge una review indipendente del lavoro Pro.
+- Una consegna Pro può assegnare il successivo ticket a Codex oppure mantenere a Pro un nuovo incarico di sola coordinazione. L'helper conserva l'identità del predecessore; la storia Git e la PR conservano le prove. Non affidare a Codex un'operazione riservata a Pro per aggirare un limite del flusso.
 - Un solo task prodotto attivo; non due roadmap. La coda rimane `operations/coordination.json`; storia e lezioni rimangono quelle esistenti; il gate rimane `tools/status.mjs`.
 - Un piccolo `handoff.json` su `ops/dual-run-state` conserva solo l'incarico corrente, il proprietario della run e riferimenti alle prove. La ref non è un branch applicativo, non viene mai unita a main e non contiene workflow. Mantiene `git.deploymentEnabled:false` per evitare deploy da push.
 - Il passaggio usa un commit figlio della ref letta e push normale senza force. Un conflitto ferma lo scrittore. Questa proprietà protegge l'aggiornamento del cursore, non costituisce un lock atomico su GitHub, Vercel e database.
