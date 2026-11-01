@@ -31,3 +31,21 @@ Fonte: ultimo messaggio diretto dell'utente del 1 novembre 2026: riferisce di no
 ## Acquisizione successiva
 `ID/data | fonte letta | decisione e limiti | supersedes | requisito/task | sorgente/prove | risultato/limiti | unico successore`.
 Aggiornare solo per cambiamenti materiali. Il cursore contiene la ripresa corrente e link a questa storia; non duplicare l'intero archivio nei prompt o nelle skill.
+
+## OPS-20261101-08 — verifica integrata e compatibilità del formato
+
+La prima Verify della preparazione, run 41299467188 su c90779efc67af3c8df83a39be0544d863373c46c, ha prodotto 73 PASS/1 FAIL su 74 test operativi e ha saltato le suite applicative successive. Il FAIL non viene rinominato come PASS: la controprova v1 usava 2.0.0 come versione sconosciuta, ora esplicitamente supportata. Ricostruito e confrontato il file test originale con il suo Git blob; riprodotto localmente 27 PASS/1 FAIL. La fixture sconosciuta diventa 999.0.0, senza eliminare assert o test. Aggiunta una prova che rifiuta il semplice rietichettamento v1→v2 e mantiene il caso v2 valido. Le skill repo-locali sono rinominate ardesia-sequential-* per evitare ambiguità con quelle personali storiche; nessuna skill globale modificata. La CI della nuova head è riportata nella PR; nessuna review indipendente/nativa inventata.
+
+## Riferimenti storici conservati
+
+<a id="ops-20261031-01--assetto-operativo-e-riconciliazione"></a>
+OPS-20261031-01: [voce integrale nell’archivio](history-through-20261101.md#ops-20261031-01--assetto-operativo-e-riconciliazione).
+
+<a id="ops-20261101-02--coppia-procodex-preparata-senza-pianificazione"></a>
+OPS-20261101-02: [voce integrale nell’archivio](history-through-20261101.md#ops-20261101-02--coppia-procodex-preparata-senza-pianificazione).
+
+<a id="ops-20261101-03--mandato-aggiornato-per-attivazione-e-continuità-del-contesto"></a>
+OPS-20261101-03: [voce integrale nell’archivio](history-through-20261101.md#ops-20261101-03--mandato-aggiornato-per-attivazione-e-continuità-del-contesto).
+
+<a id="ops-20261101-04--autonomia-pro-senza-ulteriori-richieste-di-autorizzazione"></a>
+OPS-20261101-04: [voce integrale nell’archivio](history-through-20261101.md#ops-20261101-04--autonomia-pro-senza-ulteriori-richieste-di-autorizzazione).

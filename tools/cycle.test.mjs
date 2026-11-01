@@ -93,7 +93,7 @@ test('malformed roots, missing fields and invented acceptance are refused withou
   for (const data of [null, [], 'PASS', 1, {}, {...fixture(), packet: null}, {...fixture(), activeRun: {}}, {...fixture(), lastRun: {}}]) {
     assert.doesNotThrow(() => validateCycle(data)); assert.ok(validateCycle(data).length);
   }
-  for (const [key, value] of [['acceptanceEvidence', true], ['repository', 'AndreaMarro/ardesia'], ['schemaVersion', '2.0.0'], ['M3', 'ACCEPTED'], ['revision', -1]]) {
+  for (const [key, value] of [['acceptanceEvidence', true], ['repository', 'AndreaMarro/ardesia'], ['schemaVersion', '999.0.0'], ['M3', 'ACCEPTED'], ['revision', -1]]) {
     const data = fixture(); data[key] = value; invalid(data, new RegExp(key));
   }
   for (const key of Object.keys(fixture().packet)) { const data = fixture(); delete data.packet[key]; assert.ok(validateCycle(data).length, key); }

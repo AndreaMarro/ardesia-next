@@ -132,3 +132,14 @@ test('a later cycle can select work from a completed packet without spending a s
  const a=claim(s), b=select(a,implementation());
  assert.equal(b.packet.kind,'implementation');assert.deepEqual(a.activeRun,b.activeRun);
 });
+
+// Version migration must update the whole schema, not only its version string.
+test('partial v1-to-v2 relabelling is rejected and unknown future versions stay unsupported', () => {
+ const hybrid=fixture(false);hybrid.schemaVersion='2.0.0';
+ const errors=cycle.validateCycle(hybrid);
+ assert.ok(errors.some(error=>error.startsWith('kind:')));
+ assert.ok(errors.some(error=>error.includes('packet.review')));
+ const future=fixture();future.schemaVersion='999.0.0';
+ assert.ok(cycle.validateCycle(future).some(error=>error.startsWith('schemaVersion:')));
+ assert.deepEqual(cycle.validateCycle(fixture()),[]);
+});
