@@ -3,41 +3,31 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 19,
-  "updatedAt": "2026-11-01T17:41:57.529Z",
-  "procedureRef": "a91baf513571f12f1735300ff304f01b9729cf58",
-  "activeRun": {
-    "runId": "codex-20261101T173847Z",
-    "actor": "codex",
-    "startedAt": "2026-11-01T17:38:04.049Z",
-    "claimedAt": "2026-11-01T17:41:57.529Z",
-    "writeUntil": "2026-11-01T18:23:04.049Z",
-    "closeBy": "2026-11-01T18:33:04.049Z"
-  },
+  "revision": 20,
+  "updatedAt": "2026-11-01T18:00:06.009Z",
+  "procedureRef": "129c078b2e5989db566de71250d1c267e0aa0fca",
+  "activeRun": null,
   "packet": {
-    "id": "ops003-eligible-native-closure-a91baf5",
-    "taskId": "OPS-003",
+    "id": "perf002-bundle-margin-selection-129c078",
+    "taskId": "PERF-002",
     "nextActor": "codex",
     "disposition": "READY",
-    "kind": "implementation",
-    "notBefore": "2026-11-01T17:15:03.834Z",
-    "expiresAt": "2026-11-02T17:32:21.744Z",
+    "kind": "coordination",
+    "notBefore": "2026-11-01T17:38:04.049Z",
+    "expiresAt": null,
     "source": {
-      "baseSha": "a91baf513571f12f1735300ff304f01b9729cf58",
-      "headSha": "a91baf513571f12f1735300ff304f01b9729cf58",
+      "baseSha": "129c078b2e5989db566de71250d1c267e0aa0fca",
+      "headSha": "129c078b2e5989db566de71250d1c267e0aa0fca",
       "branch": "pro/20261031-operating-system",
       "pr": "https://github.com/AndreaMarro/ardesia-next/pull/20",
-      "sourceDigest": "272ba227f0ee57c24d33dd2f4aef9add8fd22a3a148e049ab45e22a00080faf2"
+      "sourceDigest": "52089704ab6034a864882a850339f8c8f0e663662869e66725893a8c510314ab"
     },
-    "goal": "Complete the canonical OPS-003 reconciliation only from genuinely demonstrated native criteria and preserve the already completed PERF-001 review.",
-    "allowedPaths": [
-      "operations/coordination.json",
-      "docs/history.md"
-    ],
+    "goal": "Select one bounded isolated structural bundle reduction for the existing Study/Teach/Create web app from canonical PERF-002; preserve the fixed bundle threshold and actual release gates.",
+    "allowedPaths": [],
     "exitCriteria": [
-      "Review non autrice della revisione esatta del metodo; Verify originale della stessa SHA.",
-      "Bootstrap v2, claim/assign/finish e pubblicazione CAS in una vera esecuzione nativa, nessuna modifica main/staging; nessuna ricorrenza dichiarata prima della ricevuta del client.",
-      "Un solo task nativo ogni 90 minuti con modello/effort/ambiente osservati; 55 minuti di budget, nessuna autosospensione; se il client non espone una capacità, registrare il limite senza falsi successi."
+      "Un consumer/risultato osservabile: margine superiore alla baseline misurata, contando tutti gli asset iniziali/differiti/plugin e mantenendo la soglia 245760.",
+      "Preservare UX/accessibilità, firma/modello scientifico e recovery; review e Verify della head.",
+      "Solo branch isolato e nessun merge/deploy durante il freeze."
     ],
     "evidence": [
       {
@@ -182,23 +172,56 @@
         "scope": "First native log records task_started15:37:53.119Z, turn_context15:37:56.326Z, first assistant16:36:22.189Z and task_complete17:02:51.554Z. No55-minute closure attested from first runtime event; cause not inferred. Do not relabel first late clock as true start or promote OPS-003 done from R2.",
         "access": "metadata",
         "artifactDigest": null
+      },
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41333251768",
+        "headSha": "129c078b2e5989db566de71250d1c267e0aa0fca",
+        "sourceDigest": "52089704ab6034a864882a850339f8c8f0e663662869e66725893a8c510314ab",
+        "result": "PASS",
+        "scope": "Original required Verify attempt1 on this exact published head/digest; root and actual independent reviewer read ZIP bytes/hash and nine raw JSON entries, seven source bindings, canonical unit/browser report digests.291 unit,73 browser, zero skip/flaky. Node24.22.1/Ubuntu24.04/PostgreSQL18 CI; standard short benchmark included. Extended PR18 not rerun. M3 AWAITING_COMPLETE_EVIDENCE/product NOT_COMPLETE, physical devices NOT_RUN.",
+        "access": "artifact",
+        "artifactDigest": "d14be5bdc490a885eb8d0fe2635664518121f6acc364269e4a5b425ff004f25c"
+      },
+      {
+        "kind": "review",
+        "name": "non-author-ops003-closure-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6561658368",
+        "headSha": "129c078b2e5989db566de71250d1c267e0aa0fca",
+        "sourceDigest": "52089704ab6034a864882a850339f8c8f0e663662869e66725893a8c510314ab",
+        "result": "PASS",
+        "scope": "Actual distinct non-author /root/ops003_review, fork without author history, read raw two-file diff/source and 221 Git blobs; digest recalculated, native/config metadata selectively read and canonical eligibility countercases independently reproduced. Same reviewer read final original CI ZIP/bindings. No reproducible finding. Root actual author context01a19830-85fd-72c2-8ba8-de410087402a. Full inherited tool access; read-only respected operationally, no isolating ACL/human approval. Historical CAS call parameters not retrospectively authenticated beyond accessible receipts. Receipt identifier ops003_review denotes the actual canonical context /root/ops003_review (slash-free identifier required by existing schema).",
+        "access": "metadata",
+        "artifactDigest": null
+      },
+      {
+        "kind": "check",
+        "name": "native-55-minute-cycle-and-canonical-closure",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6561658368",
+        "headSha": "129c078b2e5989db566de71250d1c267e0aa0fca",
+        "sourceDigest": "52089704ab6034a864882a850339f8c8f0e663662869e66725893a8c510314ab",
+        "result": "PASS",
+        "scope": "Second native task_started17:07:51.491Z/task_complete17:14:02.477Z=370986ms. Original cursor15 released claim; old clock startedAt correction explicitly preserved. Current native start17:38:04.049Z used in actual claim19, no budget renewal. Prior first overlong span/unknown cause retained. Root/reviewer tested actual published queue: PERF002 dependency now eligible, regressed dependency, blocked M3, completed work and exhausted budgets rejected. Original criteria/policy/blockers/history retained; no scheduler/model/access or main/preview/staging writes.",
+        "access": "metadata",
+        "artifactDigest": null
       }
     ],
     "blockers": [],
-    "nextAction": "Resume OPS-003 using this eligible implementation scope and adopted source a91baf5. Derive the real run start from native task_started/turn metadata before bootstrap; do not restart55minutes at a late first clock. If the real budget is exhausted, close without source work. Use a supported Node24 toolchain for credited checks, not the observed PATH Node26. Preserve first native overlong event span and unknown cause. Record only actually met OPS-003 criteria, then update canonical queue/history with same-head review/Verify before completing. PERF-001 already COMPLETE_INCREMENT at immutable cursor c5bc72ecba7c34aca5e1958195b4829849a56099/revision12; reuse its exact PR18 receipts, do not rerun review/benchmark. The source queue still names that task ready_for_review until legitimately reconciled. Keep scheduler, model, access, all M3 blockers and main/staging freeze unchanged. PERF-002 remains dependent on genuinely completed OPS-003.",
+    "nextAction": "Use cycle.mjs claim then assign PERF-002 implementation from this adopted real queue in the same new run budget. Inspect the real bundle graph/budget, choose one concrete consumer and narrow source scope on an isolated branch. No new setup, PR18 review or Extended benchmark rerun. Original Verify41333251768 and OPS003/PERF001 receipts are complete. Main/preview/m3/staging freeze, M3 remote prerequisites and physical-device limits remain; this coordination packet itself permits no source writes.",
     "review": null
   },
   "lastRun": {
-    "runId": "ardesia-reconcile-20261101T171503Z-a2186d33",
+    "runId": "codex-20261101T173847Z",
     "actor": "codex",
-    "startedAt": "2026-11-01T17:15:03.834Z",
-    "claimedAt": "2026-11-01T17:19:34.316Z",
-    "writeUntil": "2026-11-01T18:00:03.834Z",
-    "closeBy": "2026-11-01T18:10:03.834Z",
-    "packetId": "ops003-canonical-reconciliation-20261101T170827Z",
-    "finishedAt": "2026-11-01T17:32:22.149Z",
+    "startedAt": "2026-11-01T17:38:04.049Z",
+    "claimedAt": "2026-11-01T17:41:57.529Z",
+    "writeUntil": "2026-11-01T18:23:04.049Z",
+    "closeBy": "2026-11-01T18:33:04.049Z",
+    "packetId": "ops003-eligible-native-closure-a91baf5",
+    "finishedAt": "2026-11-01T18:00:06.009Z",
     "outcome": "HANDOFF",
     "late": false,
-    "summary": "Direct owner initialization repair: exact R2 published and adopted after independent review and original Verify41331123301 with artifact read. Canonical OPS-003 is now queued with its resolved blocker link preserved. The next implementation packet was validated by assign against the actual adopted published queue and published by HANDOFF, releasing this claim without renewing budget. Scope only queue/history; OPS-003 not self-accepted, native timing/Node limits and PERF-001 completion preserved."
+    "summary": "OPS-003 completed and PERF-001 review canonically reconciled on129c078/digest52089704, with original Verify41333251768 and actual distinct review6561658368 including independent ZIP audit. Explicit procedure adoption on this exact published source. COMPLETE_INCREMENT and assign outputs validate completion and canonical PERF-002 successor within the original budget; these intermediate validations are not separately published transitions. This HANDOFF publishes that same READY coordination successor and releases the sole claim. Native start17:38:04.049Z preserved; no new source task begun, scheduler/model/access unchanged, first native overrun and M3/freeze limits preserved."
   }
 }
