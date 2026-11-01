@@ -3,37 +3,28 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 22,
-  "updatedAt": "2026-11-01T18:45:54.698Z",
+  "revision": 23,
+  "updatedAt": "2026-11-01T19:11:36.684Z",
   "procedureRef": "129c078b2e5989db566de71250d1c267e0aa0fca",
-  "activeRun": {
-    "runId": "codex-20261101T184328Z",
-    "actor": "codex",
-    "startedAt": "2026-11-01T18:42:51.585Z",
-    "claimedAt": "2026-11-01T18:44:56.188Z",
-    "writeUntil": "2026-11-01T19:27:51.585Z",
-    "closeBy": "2026-11-01T19:37:51.585Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "perf002-structural-bundle-margin-129c078",
     "taskId": "PERF-002",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "COMPLETE_INCREMENT",
     "kind": "implementation",
     "notBefore": "2026-11-01T17:38:04.049Z",
     "expiresAt": "2026-11-01T20:42:51.585Z",
     "source": {
       "baseSha": "129c078b2e5989db566de71250d1c267e0aa0fca",
-      "headSha": "129c078b2e5989db566de71250d1c267e0aa0fca",
+      "headSha": "d74b8dfa3ada65594a96604146c60df73118ccbd",
       "branch": "perf/20261101-bundle-margin",
-      "pr": null,
-      "sourceDigest": "52089704ab6034a864882a850339f8c8f0e663662869e66725893a8c510314ab"
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/21",
+      "sourceDigest": "408e7326e455d4b3dc57bbf600eccd82a135a5b6169c89f65289f101a7fc64f2"
     },
     "goal": "Reduce the total distributed JavaScript for the existing Study/Teach/Create app through a bounded structural dependency change, with comparable baseline/candidate builds and preserved formula, validation, plugin and recovery behavior.",
     "allowedPaths": [
-      "apps/web",
-      "packages/contracts",
-      "docs/perf002-bundle-margin.md"
+      "packages/contracts/src/index.ts"
     ],
     "exitCriteria": [
       "Un consumer/risultato osservabile: margine superiore alla baseline misurata, contando tutti gli asset iniziali/differiti/plugin e mantenendo la soglia 245760.",
@@ -216,23 +207,94 @@
         "scope": "Second native task_started17:07:51.491Z/task_complete17:14:02.477Z=370986ms. Original cursor15 released claim; old clock startedAt correction explicitly preserved. Current native start17:38:04.049Z used in actual claim19, no budget renewal. Prior first overlong span/unknown cause retained. Root/reviewer tested actual published queue: PERF002 dependency now eligible, regressed dependency, blocked M3, completed work and exhausted budgets rejected. Original criteria/policy/blockers/history retained; no scheduler/model/access or main/preview/staging writes.",
         "access": "metadata",
         "artifactDigest": null
+      },
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41339360492",
+        "headSha": "d74b8dfa3ada65594a96604146c60df73118ccbd",
+        "sourceDigest": "408e7326e455d4b3dc57bbf600eccd82a135a5b6169c89f65289f101a7fc64f2",
+        "result": "PASS",
+        "scope": "Original Verify41339360492 attempt1 SUCCESS on exact final published head/digest; root and actual distinct reviewer independently read ZIP13097031707 bytes/hash,9JSON,7source bindings and canonical unit/browser digests.291unit/73browser, zero skip/unexpected/flaky, all8checksPASS. Ubuntu24.04 Node24.22.1 PostgreSQL18 isolated CI; npmCI uninspected. No rerun/ExtendedPR18. M3 AWAITING_COMPLETE_EVIDENCE/product NOT_COMPLETE/operatorM3 NOT_EVALUATED/physical NOT_RUN.",
+        "access": "artifact",
+        "artifactDigest": "6d8b76e75afea4686cc6885d6e4e1b3ff4c13ec6b57920d2455f6e7ce2a8e258"
+      },
+      {
+        "kind": "review",
+        "name": "non-author-perf002-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/21#issuecomment-6562546557",
+        "headSha": "d74b8dfa3ada65594a96604146c60df73118ccbd",
+        "sourceDigest": "408e7326e455d4b3dc57bbf600eccd82a135a5b6169c89f65289f101a7fc64f2",
+        "result": "PASS",
+        "scope": "Actual distinct non-author context /root/perf002_review, initialized without author history, raw source/diff/criteria. Reconstructed all67 edits exactly from immutable base; sourceDigest from221Git blobs; public declarations byte-identical,280independent sync/async/JIT/jitless compatibility comparisons on Node24.22.1. Static binding calculation used PATHNode22, not credited as runtime verification. Final original CI ZIP and canonical report digests independently read. No actionable finding. Root author01a1986b-dcd8-78c1-88af-5c28b3440d8f; receipt IDperf002_review maps to /root/perf002_review. Full tool access/read-only instruction, no isolatingACL/humanapproval/separateGitHub identity. Reviewer observed draft/unmerged before root marked ready; provider inventory not audited.",
+        "access": "metadata",
+        "artifactDigest": null
+      },
+      {
+        "kind": "check",
+        "name": "all-javascript-margin",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41339360492",
+        "headSha": "d74b8dfa3ada65594a96604146c60df73118ccbd",
+        "sourceDigest": "408e7326e455d4b3dc57bbf600eccd82a135a5b6169c89f65289f101a7fc64f2",
+        "result": "PASS",
+        "scope": "Comparable fresh baseline245744 on129c078 versus candidate245701, fixed limit245760; initial203281->203238, deferred signed plugin42463 unchanged,43byte saving/margin16->59. Root local Node24.22.1/npm10.9.2 same machine/lock/config; final CI exact-head artifact confirms all3distributedJS. Reviewer recalculated candidate bytes and read baseline report, did not rebuild baseline. Local precommit report retains129c078 metadata with408e7326 tree digest. No latency/CPU/network/rendering claim;59byte margin remains fragile.",
+        "access": "artifact",
+        "artifactDigest": "6d8b76e75afea4686cc6885d6e4e1b3ff4c13ec6b57920d2455f6e7ce2a8e258"
+      },
+      {
+        "kind": "check",
+        "name": "public-contract-equivalence",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/21#issuecomment-6562546557",
+        "headSha": "d74b8dfa3ada65594a96604146c60df73118ccbd",
+        "sourceDigest": "408e7326e455d4b3dc57bbf600eccd82a135a5b6169c89f65289f101a7fc64f2",
+        "result": "PASS",
+        "scope": "Root differential actual baseline/candidate source:36publicSchemas,5666cases plus9migration cases, every command/object branch and nested unknown/missing/null/type errors, normalized outputs and issue arrays identical. Local typecheck/boundaries/62targeted tests PASS before final CI; no additional mirror tests added to source. Signed plugin bytes184120/SHA256713b10ce53337e5bb03f0da86afec8a1266a8229115e9d1f571cf49766814148 unchanged. Initial external-probe failures corrected and retained in receipt, no candidate source/CI rerun.",
+        "access": "artifact",
+        "artifactDigest": "36e40a03b9d4e0f48c62dd2db8f8ce26aa06500417c3ddb1da1385190ad1810f"
+      },
+      {
+        "kind": "check",
+        "name": "discarded-merged-static-experiment",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/21#issuecomment-6562546557",
+        "headSha": "129c078b2e5989db566de71250d1c267e0aa0fca",
+        "sourceDigest": "52089704ab6034a864882a850339f8c8f0e663662869e66725893a8c510314ab",
+        "result": "FAIL",
+        "scope": "Different local build configuration on unchanged baseline: removed forced math chunk group produced246287all-JS bytes(+543), beyond245760. Experiment outside source, not applied; original Vite config preserved. This failure does not describe the final candidate configuration.",
+        "access": "artifact",
+        "artifactDigest": "1d0c50afbd22465da53a4c6ac0f24e30360f8fd44e8f334bac55dfafbcc67e27"
+      },
+      {
+        "kind": "observation",
+        "name": "canonical-perf002-row-unreconciled",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/21#issuecomment-6562546557",
+        "headSha": "129c078b2e5989db566de71250d1c267e0aa0fca",
+        "sourceDigest": "52089704ab6034a864882a850339f8c8f0e663662869e66725893a8c510314ab",
+        "result": "NOT_RUN",
+        "scope": "Canonical queue at adopted procedure129c078 retains PERF002queued; operations/coordination.json is outside this assignment/canonical PERF002source scope and was not written. COMPLETE_INCREMENT is isolated preparation completion only. PERF003still has incomplete canonical dependency; no downstream implementation authorization inferred. Next coordinator must reconcile scope/status through a legitimate scoped task. Main/preview/m3/staging freeze and source/procedure/deployed/acceptance separation remain.",
+        "access": "metadata",
+        "artifactDigest": null
       }
     ],
     "blockers": [],
-    "nextAction": "Build the unchanged129c078 baseline with Node24 and lockfile; inspect the real dependency graph, make one bounded structural reduction on the isolated branch, compare all JS assets, obtain independent raw-source review and final-head Verify. Rollback by reverting the isolated increment; no main/preview/staging deployment.",
-    "review": null
+    "nextAction": "Reconcile the canonical scope and PERF-002 queue status using exact PR21/Verify41339360492/non-author receipt6562546557 through a legitimate scoped task; current assignment does not authorize operations/coordination.json. Do not redo this ready isolated PR or promote PERF-003 before canonical dependency is done. Keep procedureRef129c078, source d74b8dfa/digest408e7326 distinct from deployed revision and M3 acceptance; integration freeze remains.",
+    "review": {
+      "authorContextId": "01a1986b-dcd8-78c1-88af-5c28b3440d8f",
+      "reviewerContextId": "perf002_review",
+      "sourceSha": "d74b8dfa3ada65594a96604146c60df73118ccbd",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/21#issuecomment-6562546557"
+    }
   },
   "lastRun": {
-    "runId": "codex-20261101T173847Z",
+    "runId": "codex-20261101T184328Z",
     "actor": "codex",
-    "startedAt": "2026-11-01T17:38:04.049Z",
-    "claimedAt": "2026-11-01T17:41:57.529Z",
-    "writeUntil": "2026-11-01T18:23:04.049Z",
-    "closeBy": "2026-11-01T18:33:04.049Z",
-    "packetId": "ops003-eligible-native-closure-a91baf5",
-    "finishedAt": "2026-11-01T18:00:06.009Z",
-    "outcome": "HANDOFF",
+    "startedAt": "2026-11-01T18:42:51.585Z",
+    "claimedAt": "2026-11-01T18:44:56.188Z",
+    "writeUntil": "2026-11-01T19:27:51.585Z",
+    "closeBy": "2026-11-01T19:37:51.585Z",
+    "packetId": "perf002-structural-bundle-margin-129c078",
+    "finishedAt": "2026-11-01T19:11:36.684Z",
+    "outcome": "COMPLETE_INCREMENT",
     "late": false,
-    "summary": "OPS-003 completed and PERF-001 review canonically reconciled on129c078/digest52089704, with original Verify41333251768 and actual distinct review6561658368 including independent ZIP audit. Explicit procedure adoption on this exact published source. COMPLETE_INCREMENT and assign outputs validate completion and canonical PERF-002 successor within the original budget; these intermediate validations are not separately published transitions. This HANDOFF publishes that same READY coordination successor and releases the sole claim. Native start17:38:04.049Z preserved; no new source task begun, scheduler/model/access unchanged, first native overrun and M3/freeze limits preserved."
+    "summary": "PERF-002 isolated preparation complete on d74b8dfa/digest408e7326, PR21.67direct strict schema constructors; actual all-JS245744->245701, margin16->59 with fixed245760 limit, signed plugin unchanged. Original Verify41339360492 attempt1 and actual independent /root/perf002_review PASS with raw ZIP/source/type/compatibility audits. Published source/PRready, no merge/deploy or scheduler changes. Canonical queue remains queued outside scope; only next action is legitimate scope/status reconciliation, no PERF003eligibility inferred. Actual18:42:51.585Z start/budget preserved; M3/freeze/device limits remain."
   }
 }
