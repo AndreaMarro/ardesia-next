@@ -1,33 +1,33 @@
 {
-  "schemaVersion": "1.0.0",
-  "kind": "ardesia-dual-run-state",
+  "schemaVersion": "2.0.0",
+  "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 3,
-  "updatedAt": "2026-11-01T01:43:14.575Z",
-  "procedureRef": "09d1ccca9c75543283f1c308e344329cc0dac81e",
+  "revision": 4,
+  "updatedAt": "2026-11-01T12:59:36.381Z",
+  "procedureRef": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
   "activeRun": null,
   "packet": {
-    "id": "bootstrap-20261101",
-    "taskId": "OPS-002",
-    "nextActor": "pro",
-    "disposition": "BLOCKED",
+    "id": "bootstrap-sequential-20261101",
+    "taskId": "OPS-003",
+    "nextActor": "codex",
+    "disposition": "READY",
     "kind": "coordination",
-    "notBefore": "2026-11-01T00:44:52Z",
+    "notBefore": "2026-11-01T12:59:35.789Z",
     "expiresAt": null,
     "source": {
       "baseSha": "03622b56c9756225019b7c6219d226beef8e0a6d",
-      "headSha": "09d1ccca9c75543283f1c308e344329cc0dac81e",
+      "headSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
       "branch": "pro/20261031-operating-system",
       "pr": "https://github.com/AndreaMarro/ardesia-next/pull/20",
-      "sourceDigest": "5bc5849c6f8e823012133f908b7bb46ac55df296c09e8f7d95b2356985a4458a"
+      "sourceDigest": "dd878ad99e20b2191726e5bd3a056b1985f174fc5c6c6e79b3eea25682044b35"
     },
-    "goal": "Riconciliare l’attivazione della coppia e il prossimo incarico autorizzato, preservando il gate remoto M3.",
+    "goal": "Provare il coordinatore sequenziale nel client nativo e conservare i limiti reali del setup.",
     "allowedPaths": [],
     "exitCriteria": [
-      "Verificare che la precedente attività 6adbfad145dc81919b36fc0cdf0eed0c sia sostituita o in pausa e che la sua run sia terminata.",
-      "Riconciliare ref, PR, prove esistenti e prerequisiti cambiati senza ripetere benchmark o suite invariati.",
-      "Conservare il blocco concreto oppure consegnare un solo incarico eleggibile; nessuna accettazione M3 implicita."
+      "Review non autrice e Verify della stessa revisione corretta.",
+      "Migrazione, claim, selezione e chiusura pubblicati con parent atteso e riletti.",
+      "Ricorrenza esatta e progetto nativo osservati; OPS-003 non completo se manca un criterio."
     ],
     "evidence": [
       {
@@ -51,12 +51,44 @@
         "scope": "Separate GPT-6.1 Sol Max local review of 11 changed files, with final SHA-256 identities in PR20. One P2 mandatory-Codex wording issue corrected and rechecked; no residual finding in that scope. Coordinator supplied requirements and platform observations; reviewer did not authenticate external scheduling. Not a scheduled Codex run, separate GitHub identity or human approval.",
         "access": "metadata",
         "artifactDigest": null
+      },
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41300176264",
+        "headSha": "c6accb7dd07d3e1f81c27eee276f8805b635df93",
+        "sourceDigest": "4ec5874d6a50005a8f84db2062174456e2f0b9282ea97c7fe75104d45ece983c",
+        "result": "FAIL",
+        "scope": "Original failure preserved; original ZIP, reports, screenshot and snapshot read. 72 PASS and 1 FAIL browser; not transferred to corrected source.",
+        "access": "artifact",
+        "artifactDigest": "35e7129f52ff30ae16cf6ef0737383261af87eb83edf33c5d3e673e79a17d785"
+      },
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41308566406",
+        "headSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
+        "sourceDigest": "dd878ad99e20b2191726e5bd3a056b1985f174fc5c6c6e79b3eea25682044b35",
+        "result": "PASS",
+        "scope": "Original Verify of corrected head. Final artifact bytes and identity validated; local CI fixtures, no staging or physical-device acceptance.",
+        "access": "artifact",
+        "artifactDigest": "4fb35526a6058df535a74f6c289157328cbe7f4a5ddf6645b77047106287116c"
+      },
+      {
+        "kind": "review",
+        "name": "sequential-non-author-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6558234574",
+        "headSha": "082c3e594034c5e1416f0736a44e0e1a9d49733f",
+        "sourceDigest": "dd878ad99e20b2191726e5bd3a056b1985f174fc5c6c6e79b3eea25682044b35",
+        "result": "PASS",
+        "scope": "Distinct real non-author context /root/reviewer; raw method and correction diff, original failure and RED/GREEN evidence read; 80 operative tests independently rerun. No native scheduling or human approval attested.",
+        "access": "metadata",
+        "artifactDigest": null
       }
     ],
-    "blockers": [
-      "B-OLD-AUTOMATION"
-    ],
-    "nextAction": "Read OPS-20261101-03 at source head and the PR20 activation checkpoint. New ChatGPT regia 6ae69740ed008191a1574657c2f242cf is enabled on the saved Europe/Rome three-hour schedule; Codex/Sol Max is not configured. Before any repository, cursor or platform write, verify that old task 6adbfad145dc81919b36fc0cdf0eed0c is replaced/paused and its runner ended. Current lookup cannot attest this; absence/access error is not cessation. Until resolved, read-only and quick NO_ACTION without duplicate tests/comments. M3 prerequisites remain separately blocked in the canonical queue; after real acceptance use M3-TRANSITION rather than repeating M3."
+    "blockers": [],
+    "nextAction": "Claim e selezione di OPS-003 nella stessa run, poi chiusura conservando il limite nativo.",
+    "review": null
   },
   "lastRun": {
     "runId": "owner-setup-20261101",
