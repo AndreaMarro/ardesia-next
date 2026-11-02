@@ -3,58 +3,76 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 56,
-  "updatedAt": "2026-11-02T04:37:43.859Z",
+  "revision": 57,
+  "updatedAt": "2026-11-02T04:37:47.870Z",
   "procedureRef": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
-  "activeRun": {
-    "runId": "codex-20261102T034513Z",
-    "actor": "codex",
-    "startedAt": "2026-11-02T03:45:13.000Z",
-    "claimedAt": "2026-11-02T03:46:20.634Z",
-    "writeUntil": "2026-11-02T04:30:13.000Z",
-    "closeBy": "2026-11-02T04:40:13.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "ops004-verified-closures-20261102",
     "taskId": "OPS-004",
     "nextActor": "codex",
-    "disposition": "READY",
-    "kind": "implementation",
+    "disposition": "COMPLETE_INCREMENT",
+    "kind": "coordination",
     "notBefore": "2026-11-02T03:46:20.634Z",
-    "expiresAt": "2026-11-02T04:40:13.000Z",
+    "expiresAt": null,
     "source": {
       "baseSha": "dce527f32685c4a691cd00ce54a99606136a8042",
-      "headSha": "dce527f32685c4a691cd00ce54a99606136a8042",
+      "headSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
       "branch": "ops/20261102-verified-closures",
-      "pr": null,
-      "sourceDigest": "e18861b0263a275a50c7261bb69f9149411d59fe399c9fb2d2ebdc9e430a080b"
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/28",
+      "sourceDigest": "d27a5aa14dd00a6114cabf10497c2289858d09da6d76621ea847a330b805ae31"
     },
     "goal": "Riconciliazione canonica delle consegne verificate, su richiesta",
-    "allowedPaths": [
-      "operations/coordination.json",
-      "docs/history.md"
-    ],
+    "allowedPaths": [],
     "exitCriteria": [
       "Un disallineamento concreto tra consegna verificata e coda viene riconciliato usando SHA/digest, Verify e review non autrice originali; nessun PASS trasferito a nuove sorgenti.",
       "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
       "La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."
     ],
-    "evidence": [],
+    "evidence": [
+      {
+        "headSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
+        "sourceDigest": "d27a5aa14dd00a6114cabf10497c2289858d09da6d76621ea847a330b805ae31",
+        "result": "PASS",
+        "access": "artifact",
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41388837775",
+        "artifactDigest": "4b67be702163e7fb66475be06ed7ff3f332cc677678b6cddaccc9ba91e00ff45",
+        "scope": "Original final published admin Verify attempt1;9rawJSON/7bindings/canonicaldigests independently read,291unit/73browser0pending/skip/flaky/retry;8Verify/4operator/5runtimePASS. Only isolated Ubuntu24.04/PostgreSQL18/Node24.22.1, no remote acceptance."
+      },
+      {
+        "headSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
+        "sourceDigest": "d27a5aa14dd00a6114cabf10497c2289858d09da6d76621ea847a330b805ae31",
+        "result": "PASS",
+        "access": "artifact",
+        "kind": "review",
+        "name": "independent-admin-composition-and-artifact-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/28#issuecomment-6569185184",
+        "artifactDigest": null,
+        "scope": "Distinct actual /root/closure_intake_review independently recomputed both reconcile outputs from immutable55/54/49 and canonicalDCE queue, exact2row union/maxupdatedAt;20otherrows/contracts/policy/blockers/claims and historyprefix preserved. Read final adminZIP plus originalPERF003 ZIP and bound reports; no reimplementation/performance rerun or human approval. Author alias codex-20261102T034513Z-root maps actual /root, reviewer root-closure-intake-review maps actual /root/closure_intake_review; sharedfilesystem and instruction-only read-only limits."
+      }
+    ],
     "blockers": [],
-    "nextAction": "Riconciliare le due consegne indipendenti OPS-006 e PERF-003 da ricevute originali, componendo solo i due output helper verificati sulla stessa coda canonica. Verificare/riesaminare sorgente amministrativa prima di adozione; nessun nuovo task o cambiamento dei contratti.",
-    "review": null
+    "nextAction": "M3-ACCESS only when an already-authorized QA/OIDC/operator/restore channel observably changes. OPS-006 and PERF-003 are canonically done for verified preparation; reuse exact PR27/PR25 receipts, do not redo product, ExtendedPR18, unchanged403/login or duplicate restore270479. No independent queued product task has its M3 prerequisites satisfied in this adopted queue; skip OPS004 without new delta. M3/production/hardware/human acceptance and main/preview/staging freeze unchanged. Rollback admin: new commit reverting only2row metadata plus append-only history and explicit priorprocedure adoption after claim reconciliation; no reset/force/data repair.",
+    "review": {
+      "authorContextId": "codex-20261102T034513Z-root",
+      "reviewerContextId": "root-closure-intake-review",
+      "sourceSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/28#issuecomment-6569185184"
+    }
   },
   "lastRun": {
-    "runId": "codex-20261102T021215Z",
+    "runId": "codex-20261102T034513Z",
     "actor": "codex",
-    "startedAt": "2026-11-02T02:12:15.000Z",
-    "claimedAt": "2026-11-02T02:13:35.536Z",
-    "writeUntil": "2026-11-02T02:57:15.000Z",
-    "closeBy": "2026-11-02T03:07:15.000Z",
-    "packetId": "perf003-snapshot-cost-20261102",
-    "finishedAt": "2026-11-02T02:38:36.532Z",
+    "startedAt": "2026-11-02T03:45:13.000Z",
+    "claimedAt": "2026-11-02T03:46:20.634Z",
+    "writeUntil": "2026-11-02T04:30:13.000Z",
+    "closeBy": "2026-11-02T04:40:13.000Z",
+    "packetId": "ops004-verified-closures-20261102",
+    "finishedAt": "2026-11-02T04:37:47.870Z",
     "outcome": "COMPLETE_INCREMENT",
     "late": false,
-    "summary": "PERF-003 isolated preparation verified on09c9da8/digest2c34a7cc, PR25 ready; same-head original Verify and distinct source/artifact review pass. CPU reopening improves on paired fixed fixtures; no end-to-end latency claim. Canonical row reconciliation remains pending due legitimate runtime/procedure queue separation under adopted helper; proposal41124470 preserved without adoption or scope expansion. No merge/deploy/scheduler/access changes."
+    "summary": "OPS-006 durable closure method and canonical OPS-006/PERF-003 rows published, independently reviewed and final-source Verify passed; adopted PR26/27/28 without merge/deploy. Original claim released within55m; M3 remains pending authorized access channels."
   }
 }
