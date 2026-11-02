@@ -3,9 +3,9 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 107,
-  "updatedAt": "2026-11-02T18:56:21.308Z",
-  "procedureRef": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
+  "revision": 108,
+  "updatedAt": "2026-11-02T19:14:47.455Z",
+  "procedureRef": "413de5bba02537cc090c91db58887b49de08eae4",
   "activeRun": {
     "runId": "ardesia-codex-20261102T185253Z-684b5c92",
     "actor": "codex",
@@ -96,12 +96,34 @@
         "scope": "Package workspace registration, existing web/PostgreSQL consumer, UX browser and human scientific/editorial approvals remain outside this isolated preparation. M4 AWAITING_WEB_CONSUMER, not accepted.",
         "access": "artifact",
         "artifactDigest": null
+      },
+      {
+        "kind": "ci",
+        "name": "m4-scope-intake-verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41506499566",
+        "headSha": "413de5bba02537cc090c91db58887b49de08eae4",
+        "sourceDigest": "179c184ff943c908962a957bc0d1aee7ce16a45997856d670523fc3326915c4a",
+        "result": "PASS",
+        "scope": "Administrative intake only, original Verify attempt1;8checks,291unit/50suites,73browser/73attempts,0skip/flaky/retry;9JSON/7bindings and ZIP/hash/digests independently read.",
+        "access": "artifact",
+        "artifactDigest": "749dd023ab24106e786cbd542d843d6e13fde9322324d2dd838f8adfba6a0bba"
+      },
+      {
+        "kind": "review",
+        "name": "m4-scope-intake-independent-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/38#issuecomment-6586098914",
+        "headSha": "413de5bba02537cc090c91db58887b49de08eae4",
+        "sourceDigest": "179c184ff943c908962a957bc0d1aee7ce16a45997856d670523fc3326915c4a",
+        "result": "PASS",
+        "scope": "Fresh non-author root.m4_scope_review: raw source/diff/criteria, canonical guards and original artifact bytes, noP1/P2 in intake. Instructional read-only, no separate ACL or human approval.",
+        "access": "artifact",
+        "artifactDigest": "749dd023ab24106e786cbd542d843d6e13fde9322324d2dd838f8adfba6a0bba"
       }
     ],
     "blockers": [
       "M4-CONSUMER-SCOPE"
     ],
-    "nextAction": "Riconciliare nella coda canonica il perimetro M4 necessario al consumer della stessa web app/PostgreSQL, prima di modificarne i file. Preservare PR37/head062e3d5/digest8fd881 e Verify41498677367/review6584746516; non rifare preparazione o CI verdi e non usare OPS-004 per espandere scope. M4 resta aperta e DRAFT; nessuna approvazione umana implicita.",
+    "nextAction": "Procedura amministrativa413de5b adottata esplicitamente dopo Verify41506499566 e review6586098914 esatte. Emettere HANDOFF canonico di M4-REUSE con lo scope ora registrato, stesso consumer/runtime062e/8fd881 e criteri originali; nessun COMPLETE_INCREMENT di M4. Proseguire sul consumer web/PostgreSQL conservando PR37/prove, DRAFT e fix runtime main, senza promuovere candidate-trust implicitamente.",
     "review": {
       "authorContextId": "root",
       "reviewerContextId": "root.m4_preparation_review",
