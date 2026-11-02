@@ -1,4 +1,5 @@
-import {randomBytes, randomUUID} from 'node:crypto';
+import {createHash, randomBytes, randomUUID} from 'node:crypto';
+import {canonicalJson} from '@ardesia/contracts';
 import {resolve} from 'node:path';
 import {mkdirSync, writeFileSync} from 'node:fs';
 import {identity} from './evidence.mjs';
@@ -34,9 +35,23 @@ try {
   if (Object.keys(report.checks).length !== 4 || report.checks.expired.responseStatus !== 401 || report.checks.outage.failedStatus !== 503
     || report.checks.outage.recoveredStatus !== 200 || report.checks.backupRestore.beforeDigest !== report.checks.backupRestore.restoredDigest
     || report.checks.import.versions.length !== 3 || report.database.remote !== false) throw Error('QA_COLLECTOR_CONTRACT_FAILED');
+  // A null/null comparison is not evidence that the original receipt history survived import.
+  if (report.checks.import.versions.some(version => !/^[a-f0-9]{64}$/.test(version.beforeReceiptsDigest ?? '')
+    || version.beforeReceiptsDigest !== version.afterReceiptsDigest)) throw Error('QA_IMPORT_RECEIPT_HISTORY_REQUIRED');
+  const archives = (await restorePool.query('SELECT original_text FROM ardesia_next.import_archives')).rows.map(row => JSON.parse(row.original_text));
+  for (const version of report.checks.import.versions) {
+    const original = archives.find(archive => archive.schemaVersion === version.version);
+    if (!Array.isArray(original?.receipts) || !original.receipts.length
+      || createHash('sha256').update(canonicalJson(original.receipts)).digest('hex') !== version.beforeReceiptsDigest) throw Error('QA_IMPORT_RECEIPT_HISTORY_REQUIRED');
+  }
   const result = {...current, kind: 'ardesia-local-operator-producer-test', startedAt, completedAt: new Date().toISOString(), passed: true,
     checks: report.checks, m3Acceptance: 'NOT_EVALUATED', executionScope: 'two-disposable-loopback-ci-databases'};
   mkdirSync('artifacts', {recursive: true}); writeFileSync('artifacts/m3-operator-contract.json', JSON.stringify(result, null, 2) + '\n');
   console.log(JSON.stringify({kind: result.kind, passed: true, counterproofs: 4, importVersions: [1, 2, 3], m3Acceptance: result.m3Acceptance}));
-} catch {console.error('Isolated operator producer contract failed. No remote acceptance was produced.'); process.exitCode = 1;}
+} catch (error) {
+  console.error(error?.message === 'QA_IMPORT_RECEIPT_HISTORY_REQUIRED'
+    ? 'Isolated operator import lacks verified receipt history. No remote acceptance was produced.'
+    : 'Isolated operator producer contract failed. No remote acceptance was produced.');
+  process.exitCode = 1;
+}
 finally {await sourcePool?.end(); await restorePool?.end(); await vite?.close();}
