@@ -3,22 +3,15 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 45,
-  "updatedAt": "2026-11-02T00:48:59.870Z",
+  "revision": 46,
+  "updatedAt": "2026-11-02T01:04:50.059Z",
   "procedureRef": "2909aa7d90a8f87b011e80722d079fb4bbd61070",
-  "activeRun": {
-    "runId": "codex-20261102T004201Z",
-    "actor": "codex",
-    "startedAt": "2026-11-02T00:42:01.000Z",
-    "claimedAt": "2026-11-02T00:43:16.063Z",
-    "writeUntil": "2026-11-02T01:27:01.000Z",
-    "closeBy": "2026-11-02T01:37:01.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "perf003-snapshot-cost-20261102",
     "taskId": "PERF-003",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "INTERRUPTED",
     "kind": "implementation",
     "notBefore": "2026-11-02T00:43:16.063Z",
     "expiresAt": "2026-11-03T00:42:01Z",
@@ -42,20 +35,20 @@
     ],
     "evidence": [],
     "blockers": [],
-    "nextAction": "Read original PR18 samples; test one bounded same-environment snapshot-cost hypothesis, preserving transactions, idempotency, recovery and freeze. No unchanged Extended rerun.",
+    "nextAction": "Resume existing PERF-003 from runtime d74b8dfa and adopted procedure2909aa7d, preserving the original PR18 artifact already read in native run codex-20261102T004201Z. The native platform records that run interrupted at2026-11-02T00:52:04Z; clean source worktree and completed commands were reconciled by separate setup root, without reset or product edits. Before closure, inspect the isolated owner-requested proposal at work/astra-20261102-proposal/candidate (local cfe14299f8ca5b7ae86850a78f84854040ee9be7; no published PR or Verify/adoption): it reproduces criteria, dual-source and interrupted-reconciliation defects on adopted2909aa7d. Review/raw proofs and recoverable bundle are siblings of candidate. This is a proposal, not a new canonical task or permission to change procedure/scope; any adoption needs legitimate canonical intake, independent review and final published-source Verify. No repeat of unchanged PR18 Extended or M3 HTTP403; preserve all freeze/gates/credentials and the existing scheduler.",
     "review": null
   },
   "lastRun": {
-    "runId": "codex-20261101T231306Z",
+    "runId": "codex-20261102T004201Z",
     "actor": "codex",
-    "startedAt": "2026-11-01T23:13:06.000Z",
-    "claimedAt": "2026-11-01T23:13:54.476Z",
-    "writeUntil": "2026-11-01T23:58:06.000Z",
-    "closeBy": "2026-11-02T00:08:06.000Z",
-    "packetId": "ops005-canonical-closure-20261101",
-    "finishedAt": "2026-11-01T23:42:23.608Z",
-    "outcome": "COMPLETE_INCREMENT",
+    "startedAt": "2026-11-02T00:42:01.000Z",
+    "claimedAt": "2026-11-02T00:43:16.063Z",
+    "writeUntil": "2026-11-02T01:27:01.000Z",
+    "closeBy": "2026-11-02T01:37:01.000Z",
+    "packetId": "perf003-snapshot-cost-20261102",
+    "finishedAt": "2026-11-02T01:04:50.059Z",
+    "outcome": "INTERRUPTED",
     "late": false,
-    "summary": "OPS-005 COMPLETE and canonically reconciled through explicit OPS-004 in the same original claim/budget. PR24 final2909aa7d/digestca7e8ca1: Verify41362781588 and real non-author source/Git-parent/artifact review6565638416 PASS,291unit/73browser/zero skip or flaky; procedure adopted42/719b0902. Original sourceA837710f5/Verify41361908264/review6565534445 preserved. OPS-004 remains queued after one real closure. No merge/deploy or M3 retry; freeze and all gates unchanged. Next select PERF-003 with separate runtime/procedure identities."
+    "summary": "Recovery checkpoint by separate owner-requested setup context01a199b4-10e1 after native thread01a199b4-2718 was explicitly observed interrupted/idle at00:52:04Z. All native command markers terminal, recorded child PIDs absent, no process cwd in its clean d74b8dfa worktree, runtime branch unpublished. Original claim/budget/task/source retained in lastRun; no product or service edits, no inferred milestone acceptance, no claim expiry takeover. Original PR18 artifact preserved. Existing PERF-003 remains unfinished and resumable; local independently reviewed closure proposal requires published-source Verify and legitimate adoption before use."
   }
 }
