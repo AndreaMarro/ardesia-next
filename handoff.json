@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 101,
-  "updatedAt": "2026-11-02T16:53:42.257Z",
+  "revision": 102,
+  "updatedAt": "2026-11-02T17:02:02.078Z",
   "procedureRef": "5acd99eb7f38e77430ff5e8762d9f95ffcbbba4e",
   "activeRun": {
     "runId": "ardesia-codex-20261102T161917Z-51e4805b",
@@ -18,16 +18,16 @@
     "id": "m3-transition-closure-20261102T161917Z",
     "taskId": "OPS-004",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "COMPLETE_INCREMENT",
     "kind": "implementation",
     "notBefore": "2026-11-02T16:19:17Z",
     "expiresAt": "2026-11-02T17:14:17Z",
     "source": {
       "baseSha": "5acd99eb7f38e77430ff5e8762d9f95ffcbbba4e",
-      "headSha": "5acd99eb7f38e77430ff5e8762d9f95ffcbbba4e",
+      "headSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
       "branch": "codex/m3-transition-closure-20261102",
-      "pr": null,
-      "sourceDigest": "b03d8bb4197affbcfb9322f987904289bac71140466cf419fd0e2259af491a91"
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/36",
+      "sourceDigest": "9837a6188c6c20d5de47176276a2de03bf09babe87b7e4927ed5bf9dedac33cd"
     },
     "goal": "Riconciliazione canonica delle consegne verificate, su richiesta",
     "allowedPaths": [
@@ -39,10 +39,38 @@
       "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
       "La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."
     ],
-    "evidence": [],
+    "evidence": [
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41486210344",
+        "headSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
+        "sourceDigest": "9837a6188c6c20d5de47176276a2de03bf09babe87b7e4927ed5bf9dedac33cd",
+        "result": "PASS",
+        "scope": "Original PR36 Verify attempt1, exact final administrative source, ZIP CRC/JSON/7bindings and local gate read; baseline M3 kept separate.",
+        "access": "artifact",
+        "artifactDigest": "84c21f859e3f55561028ec8605ecb7f42f517788699964c506181dae00c1beff"
+      },
+      {
+        "kind": "review",
+        "name": "independent-transition-reconciliation",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/36#issuecomment-6583084429",
+        "headSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
+        "sourceDigest": "9837a6188c6c20d5de47176276a2de03bf09babe87b7e4927ed5bf9dedac33cd",
+        "result": "PASS",
+        "scope": "Distinct /root/transition_review raw two-file diff, original completion and immutable reconcile replay; prefix and untouched rows/policy/contracts/baseline compared. No human approval or technical read-only ACL.",
+        "access": "artifact",
+        "artifactDigest": "07cb87992d50f538f37ca10b5992c5df85fd572a905f577c2c70b6a7e063e51c"
+      }
+    ],
     "blockers": [],
-    "nextAction": "Consumare completion-ref durevole della transizione, riconciliare soltanto M3TRANSITION done/prove/nextAction e storico append-only; Verify/review proprie prima di adozione.",
-    "review": null
+    "nextAction": "Riconciliazione M3TRANSITION verificata su c4d/9837. Adottare questa procedura e predisporre HANDOFF M4-REUSE; preservare baseline/prove e correzioni runtime main, senza merge/deploy.",
+    "review": {
+      "authorContextId": "ardesia-codex-20261102T161917Z-51e4805b-root",
+      "reviewerContextId": "ardesia-codex-20261102T161917Z-51e4805b-transition-review",
+      "sourceSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/36#issuecomment-6583084429"
+    }
   },
   "lastRun": {
     "runId": "ardesia-codex-20261102T142556Z-bf1ed195",
