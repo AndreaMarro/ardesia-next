@@ -3,31 +3,24 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 78,
-  "updatedAt": "2026-11-02T10:35:32.105Z",
+  "revision": 79,
+  "updatedAt": "2026-11-02T10:35:58.879Z",
   "procedureRef": "656d1967ed75b56520d2e320c538950b3160c076",
-  "activeRun": {
-    "runId": "ardesia-m3-unblock-20261102T095108Z",
-    "actor": "codex",
-    "startedAt": "2026-11-02T09:51:08.000Z",
-    "claimedAt": "2026-11-02T09:56:08.562Z",
-    "writeUntil": "2026-11-02T10:36:08.000Z",
-    "closeBy": "2026-11-02T10:46:08.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m3-access-closure-20261102T095108Z",
     "taskId": "OPS-004",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "COMPLETE_INCREMENT",
     "kind": "implementation",
     "notBefore": "2026-11-02T09:56:08.562Z",
     "expiresAt": "2026-11-02T10:46:08.000Z",
     "source": {
       "baseSha": "0816ab3abafcbfee0a098fa9a454546bef5aff2c",
-      "headSha": "0816ab3abafcbfee0a098fa9a454546bef5aff2c",
+      "headSha": "656d1967ed75b56520d2e320c538950b3160c076",
       "branch": "codex/m3-access-closure-20261102",
-      "pr": null,
-      "sourceDigest": "11f35031854ab25bfa080e882d0af59476f8bb67619379ed9212619284aead63"
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/31",
+      "sourceDigest": "c5558dbba5d4967da28ced9372e44b38aca1dcf53d0a2d226726bd3f74ddf027"
     },
     "goal": "Riconciliazione canonica delle consegne verificate, su richiesta",
     "allowedPaths": [
@@ -39,22 +32,50 @@
       "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
       "La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."
     ],
-    "evidence": [],
+    "evidence": [
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41429004119",
+        "headSha": "656d1967ed75b56520d2e320c538950b3160c076",
+        "sourceDigest": "c5558dbba5d4967da28ced9372e44b38aca1dcf53d0a2d226726bd3f74ddf027",
+        "result": "PASS",
+        "scope": "Original attempt1 SUCCESS; ZIP13134101671 read CRC/JSON/7sourcebindings/8checks/73browser0skipflakyunexpected. No M3 remote acceptance.",
+        "access": "artifact",
+        "artifactDigest": "1bc8d5e158870ad78d86ac0afd3646cc7a209f7cc08a65e09563027187cbe5d2"
+      },
+      {
+        "kind": "review",
+        "name": "independent-closure-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/31#issuecomment-6574945615",
+        "headSha": "656d1967ed75b56520d2e320c538950b3160c076",
+        "sourceDigest": "c5558dbba5d4967da28ced9372e44b38aca1dcf53d0a2d226726bd3f74ddf027",
+        "result": "PASS",
+        "scope": "Distinct reviewer raw2file diff/helperoutput/contracts/receipts checked; no blockers. No provider writes or secrets read.",
+        "access": "artifact",
+        "artifactDigest": null
+      }
+    ],
     "blockers": [],
-    "nextAction": "Riconciliare completion75 M3-ACCESS senza mutare policy/gate; review/Verify e adozione, quindi M3-REMOTE nello stesso budget.",
-    "review": null
+    "nextAction": "Eseguire M3-REMOTE, ora eleggibile nella procedura656d196: candidato03622/digest2f63 e dplFTsy protetto, canali QA/operator pronti. Usare checkpoint locale run095108Z/run-report.md e candidato work/m3-candidate-03622. Non rifareM3ACCESS,reset,CI o403storico. Aggiornareplatform-before,12controprove,postflight/platform-after,assemble,statusoriginale; restore270479fresco primauso. DopoACCEPTED,M3-TRANSITION. Nessuna nuova confermaordinaria.",
+    "review": {
+      "authorContextId": "root-m3-unblock-20261102",
+      "reviewerContextId": "root-m3-access-review-20261102",
+      "sourceSha": "656d1967ed75b56520d2e320c538950b3160c076",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/31#issuecomment-6574945615"
+    }
   },
   "lastRun": {
-    "runId": "ardesia-codex-20261102T095050Z-dd442aa9",
+    "runId": "ardesia-m3-unblock-20261102T095108Z",
     "actor": "codex",
-    "startedAt": "2026-11-02T09:50:50.000Z",
-    "claimedAt": "2026-11-02T09:53:58.581Z",
-    "writeUntil": "2026-11-02T10:35:50.000Z",
-    "closeBy": "2026-11-02T10:45:50.000Z",
-    "packetId": "m3-access-diagnosis-20261102T091655Z",
-    "finishedAt": "2026-11-02T09:54:47.229Z",
-    "outcome": "BLOCKED",
+    "startedAt": "2026-11-02T09:51:08.000Z",
+    "claimedAt": "2026-11-02T09:56:08.562Z",
+    "writeUntil": "2026-11-02T10:36:08.000Z",
+    "closeBy": "2026-11-02T10:46:08.000Z",
+    "packetId": "m3-access-closure-20261102T095108Z",
+    "finishedAt": "2026-11-02T10:35:58.879Z",
+    "outcome": "COMPLETE_INCREMENT",
     "late": false,
-    "summary": "NO_ACTION sorgente: acquisita diagnosi PR29 e Verify originale attempt1 SUCCESS/review non autrice. Nessun trigger nuovo per M3-ACCESS; nessun altro task eleggibile. Nessun retry403/login, controllo presenza invariato o scrittura servizio/sorgente; chiusura breve BLOCKED e claim rilasciato."
+    "summary": "M3-ACCESS realmente sbloccato, verificato e riconciliato done; PR30/31 Verify/review esatti, procedura656d196 adottata. M3-REMOTE ora eleggibile, canale privato e candidato03622 pronti;12controprove non ancora eseguite. Budget invariato e claim rilasciato."
   }
 }
