@@ -3,17 +3,10 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 71,
-  "updatedAt": "2026-11-02T09:53:58.581Z",
+  "revision": 72,
+  "updatedAt": "2026-11-02T09:54:47.229Z",
   "procedureRef": "e51346f6368e4e55954ca071c007caa57c483516",
-  "activeRun": {
-    "runId": "ardesia-codex-20261102T095050Z-dd442aa9",
-    "actor": "codex",
-    "startedAt": "2026-11-02T09:50:50.000Z",
-    "claimedAt": "2026-11-02T09:53:58.581Z",
-    "writeUntil": "2026-11-02T10:35:50.000Z",
-    "closeBy": "2026-11-02T10:45:50.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m3-access-diagnosis-20261102T091655Z",
     "taskId": "M3-ACCESS",
@@ -96,16 +89,16 @@
     }
   },
   "lastRun": {
-    "runId": "ardesia-m3-repair-20261102T091655Z",
+    "runId": "ardesia-codex-20261102T095050Z-dd442aa9",
     "actor": "codex",
-    "startedAt": "2026-11-02T09:16:31.000Z",
-    "claimedAt": "2026-11-02T09:21:58.306Z",
-    "writeUntil": "2026-11-02T10:01:31.000Z",
-    "closeBy": "2026-11-02T10:11:31.000Z",
+    "startedAt": "2026-11-02T09:50:50.000Z",
+    "claimedAt": "2026-11-02T09:53:58.581Z",
+    "writeUntil": "2026-11-02T10:35:50.000Z",
+    "closeBy": "2026-11-02T10:45:50.000Z",
     "packetId": "m3-access-diagnosis-20261102T091655Z",
-    "finishedAt": "2026-11-02T09:47:02.663Z",
+    "finishedAt": "2026-11-02T09:54:47.229Z",
     "outcome": "BLOCKED",
     "late": false,
-    "summary": "Diagnosi M3 e patch PR29 verificate/adottate; causa403 identificata, restore esistente vuoto. Credenziali QA e autorizzazione specifica alla prova accessi pendenti; nessun retry invariato. Claim rilasciato senza merge/deploy o cambio scheduler."
+    "summary": "NO_ACTION sorgente: acquisita diagnosi PR29 e Verify originale attempt1 SUCCESS/review non autrice. Nessun trigger nuovo per M3-ACCESS; nessun altro task eleggibile. Nessun retry403/login, controllo presenza invariato o scrittura servizio/sorgente; chiusura breve BLOCKED e claim rilasciato."
   }
 }
