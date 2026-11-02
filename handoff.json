@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 80,
-  "updatedAt": "2026-11-02T11:30:08.066Z",
+  "revision": 81,
+  "updatedAt": "2026-11-02T11:31:52.806Z",
   "procedureRef": "656d1967ed75b56520d2e320c538950b3160c076",
   "activeRun": {
     "runId": "ardesia-codex-20261102T112522Z-bafc2930",
@@ -15,62 +15,34 @@
     "closeBy": "2026-11-02T12:20:22.000Z"
   },
   "packet": {
-    "id": "m3-access-closure-20261102T095108Z",
-    "taskId": "OPS-004",
+    "id": "m3-remote-20261102T112522Z",
+    "taskId": "M3-REMOTE",
     "nextActor": "codex",
-    "disposition": "COMPLETE_INCREMENT",
+    "disposition": "READY",
     "kind": "implementation",
-    "notBefore": "2026-11-02T09:56:08.562Z",
-    "expiresAt": "2026-11-02T10:46:08.000Z",
+    "notBefore": "2026-11-02T11:25:22Z",
+    "expiresAt": "2026-11-02T12:20:22Z",
     "source": {
-      "baseSha": "0816ab3abafcbfee0a098fa9a454546bef5aff2c",
-      "headSha": "656d1967ed75b56520d2e320c538950b3160c076",
-      "branch": "codex/m3-access-closure-20261102",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/31",
-      "sourceDigest": "c5558dbba5d4967da28ced9372e44b38aca1dcf53d0a2d226726bd3f74ddf027"
+      "baseSha": "03622b56c9756225019b7c6219d226beef8e0a6d",
+      "headSha": "03622b56c9756225019b7c6219d226beef8e0a6d",
+      "branch": "codex/m3-remote-20261102T112522Z",
+      "pr": null,
+      "sourceDigest": "2f63fb3b134a981526a23fcc550dcb4a134463bb61ee42a9846f0135718cb7d3"
     },
-    "goal": "Riconciliazione canonica delle consegne verificate, su richiesta",
+    "goal": "Accettazione remota completa M3",
     "allowedPaths": [
-      "operations/coordination.json",
-      "docs/history.md"
+      "e2e",
+      "tools",
+      "operations"
     ],
     "exitCriteria": [
-      "Un disallineamento concreto tra consegna verificata e coda viene riconciliato usando SHA/digest, Verify e review non autrice originali; nessun PASS trasferito a nuove sorgenti.",
-      "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
-      "La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."
+      "Tutte le dodici controprove originali sul medesimo candidato protetto; tools/status.mjs produce ACCEPTED con prove autentiche.",
+      "Sorgente operatore read-only e target restore distinto, preesistente, migrato e vuoto; nessun reset, bypass o produzione."
     ],
-    "evidence": [
-      {
-        "kind": "ci",
-        "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41429004119",
-        "headSha": "656d1967ed75b56520d2e320c538950b3160c076",
-        "sourceDigest": "c5558dbba5d4967da28ced9372e44b38aca1dcf53d0a2d226726bd3f74ddf027",
-        "result": "PASS",
-        "scope": "Original attempt1 SUCCESS; ZIP13134101671 read CRC/JSON/7sourcebindings/8checks/73browser0skipflakyunexpected. No M3 remote acceptance.",
-        "access": "artifact",
-        "artifactDigest": "1bc8d5e158870ad78d86ac0afd3646cc7a209f7cc08a65e09563027187cbe5d2"
-      },
-      {
-        "kind": "review",
-        "name": "independent-closure-review",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/31#issuecomment-6574945615",
-        "headSha": "656d1967ed75b56520d2e320c538950b3160c076",
-        "sourceDigest": "c5558dbba5d4967da28ced9372e44b38aca1dcf53d0a2d226726bd3f74ddf027",
-        "result": "PASS",
-        "scope": "Distinct reviewer raw2file diff/helperoutput/contracts/receipts checked; no blockers. No provider writes or secrets read.",
-        "access": "artifact",
-        "artifactDigest": null
-      }
-    ],
+    "evidence": [],
     "blockers": [],
-    "nextAction": "Eseguire M3-REMOTE, ora eleggibile nella procedura656d196: candidato03622/digest2f63 e dplFTsy protetto, canali QA/operator pronti. Usare checkpoint locale run095108Z/run-report.md e candidato work/m3-candidate-03622. Non rifareM3ACCESS,reset,CI o403storico. Aggiornareplatform-before,12controprove,postflight/platform-after,assemble,statusoriginale; restore270479fresco primauso. DopoACCEPTED,M3-TRANSITION. Nessuna nuova confermaordinaria.",
-    "review": {
-      "authorContextId": "root-m3-unblock-20261102",
-      "reviewerContextId": "root-m3-access-review-20261102",
-      "sourceSha": "656d1967ed75b56520d2e320c538950b3160c076",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/31#issuecomment-6574945615"
-    }
+    "nextAction": "Eseguire produttore originale sulla SHA03622b56/digest2f63fb3 e deployment dpl_FTsyQYZuYbAPTzAeopne5tGTLtjy, staging canonica gia preflight PASS. Canale QA/operator locale pronto (e2e/README), restore270479 da ricontrollare prima uso. Conservare sorgente read-only e tutte12controprove; gate originale unico decisore.",
+    "review": null
   },
   "lastRun": {
     "runId": "ardesia-m3-unblock-20261102T095108Z",
