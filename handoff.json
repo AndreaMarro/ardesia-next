@@ -3,22 +3,15 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 118,
-  "updatedAt": "2026-11-02T23:13:01.638Z",
+  "revision": 119,
+  "updatedAt": "2026-11-02T23:15:14.857Z",
   "procedureRef": "e947ac98e828e9e2ff6c1bb484c35fb45a93ba4b",
-  "activeRun": {
-    "runId": "ardesia-dev-20261102T230806Z-01a19e84",
-    "actor": "codex",
-    "startedAt": "2026-11-02T23:08:06.000Z",
-    "claimedAt": "2026-11-02T23:13:01.638Z",
-    "writeUntil": "2026-11-02T23:53:06.000Z",
-    "closeBy": "2026-11-03T00:03:06.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m4-consumer-20261102T185253Z",
     "taskId": "M4-REUSE",
     "nextActor": "codex",
-    "disposition": "INTERRUPTED",
+    "disposition": "READY",
     "kind": "implementation",
     "notBefore": "2026-11-02T19:16:07.799Z",
     "expiresAt": "2026-11-04T19:16:07.799Z",
@@ -192,7 +185,7 @@
       }
     ],
     "blockers": [],
-    "nextAction": "RECOVERY della run ardesia-dev-20261102T221102Z-01a19e50 terminata systemError Selected model is at capacity; anche il suo specialista01a19e59-9598-7793-8e24-400aa032ce7e e terminato failed, ultimo tool completato. PostgreSQL sintetico locale PID75165 arrestato senza cancellare dati; nessun processo con cwd del candidato o della run rimasto. Nessuna scadenza usata come prova di cessazione. Preservati17file sorgente sporchi (12tracked/5untracked), commit locali01336f5 (include main d0aa e procedura e947), remote PR37 ancora062e. Snapshot locale chiuso /Users/andreamarro/.codex/automations/ardesia-next-worker-codex-sol-max/runs/ardesia-dev-20261102T230806Z-01a19e84/run.json con hash dei17file; patch e9904ab55f34046a5d6eca805760647d03600692203e9635ba3d770b573cf067, untracked tar0b94dd18156de4bf80e80fad76b8979ba7519c94688854e4ae4b651e36e99400 e bundle d3235bccdeeac54ec7cf41339c524646c314d4c1948f4d1cd3d2526e6c20e4aa verificati. Non consumare alla cieca come completamento o review. Riprendere lo stesso M4 mediante claim legittimo/HANDOFF canonico, preservando le prove PR37/38/40/41. Le prove locali precedenti sono parziali: policyRED/GREEN, PostgreSQL2PASS/19skip; browser2FAIL timeoutApriFlussoDiPoiseuille; build riuscita ma budget/Verify/review del consumerPENDING. Nessun nuovo runtime pubblicato o deployato; DRAFT e accettazioni umane pendenti. Non ripetere CIverde della preparazione o setup. DopoREADY riprendere la stessa copia sporca, leggere diff e criteri, correggere consumer/test e misurare bundle senza indebolire gate, poi propria Verify/review/deploy protetto. DopoM4 continuareE1 e tutti18ambiti.",
+    "nextAction": "HANDOFF READY dopo recupero documentato OPS-20261103-01, non M4 completata. Run precedente e specialista failed/systemError capacità modello, tool completati; PostgreSQL sintetico orfano arrestato senza cancellare dati, nessun processo cwd run/candidato rimasto. Rilascio117/077ac358 e claim118/479c336e pubblicati/riletti senza force, tempi di entrambe le run preservati; questa HANDOFF rilascia il claim e termina il recupero. Riprendere DIRETTAMENTE la stessa implementazione locale in /Users/andreamarro/Documents/Codex/2026-11-01/files-pasted-by-the-user-ardesia/work/m4-reuse-20261102T175141Z, HEAD01336f5c20365851e75741945d8e9cee3e4e3240 discendente062e/main d0aa/procedura e947;13tracked+5untracked inclusa sola nuova annotazione history. Snapshot atomico chiuso /Users/andreamarro/.codex/automations/ardesia-next-worker-codex-sol-max/runs/ardesia-dev-20261102T230806Z-01a19e84/resume-manifest.json:18hashfile, resume-tracked.patch SHA2566b835750694a7c1135aacdce353e6ada7a907379a1bfe00a200e37b3a790b822, untracked tar0b94dd18156de4bf80e80fad76b8979ba7519c94688854e4ae4b651e36e99400 e bundle d3235bccdeeac54ec7cf41339c524646c314d4c1948f4d1cd3d2526e6c20e4aa; originali prima del recupero conservati. Nuovo claim/rilettura/budget prima di ogni write; verificare manifest, scope e tutto il diff prima del consumo, niente reset o attestazioni di completamento. Prima diagnosi concreta: due browserFAIL timeout sul pulsante Apri Flusso di Poiseuille dopo salvataggio/riapertura; originali log/screenshot conservati, no rerun cieco. PostgreSQL locale precedente2PASS/19skip e policyRED/GREEN sono parziali; build riuscita non prova budget/Verify/review del consumer, tutte PENDING. Non rifare preparazione PR37/head062e/digest8fd881 o CIverde PR37/38/40/41; non riaprire M3/setup. Collegare e verificare Poiseuille nello stesso Host/Core/PostgreSQL con catalogo/trust/firma autorizzati, consenso/save/reopen/revisioni esatte/studente/isolamento/rifiuto senza write/revoca e regressione molla, misurare riuso/bundle senza ridurre gate. History locale appartiene alla futura sourceDigest. Verify e review non autrice esatte del nuovo candidato precedono integrazione e preview protetta Vercel secondo release-runbook; consumer PREPARED_NOT_DEPLOYED, ultima preview nota d0aa non ricertificata da questa run. ContenutiDRAFT, humanreview pendente. Nessuna delega a preparatore emessa; non ereditare owner o claim. Dopo reale M4 chiusa continuareE1 con P3/in_progress e tutti18ambiti, oltreM5; nessun nuovo scheduler/modello/job esterno/spesa/provider/produzione/privilegio.",
     "review": {
       "authorContextId": "root",
       "reviewerContextId": "root.m4_preparation_review",
@@ -201,16 +194,16 @@
     }
   },
   "lastRun": {
-    "runId": "ardesia-dev-20261102T221102Z-01a19e50",
+    "runId": "ardesia-dev-20261102T230806Z-01a19e84",
     "actor": "codex",
-    "startedAt": "2026-11-02T22:11:02.000Z",
-    "claimedAt": "2026-11-02T22:12:03.971Z",
-    "writeUntil": "2026-11-02T22:56:02.000Z",
-    "closeBy": "2026-11-02T23:06:02.000Z",
+    "startedAt": "2026-11-02T23:08:06.000Z",
+    "claimedAt": "2026-11-02T23:13:01.638Z",
+    "writeUntil": "2026-11-02T23:53:06.000Z",
+    "closeBy": "2026-11-03T00:03:06.000Z",
     "packetId": "m4-consumer-20261102T185253Z",
-    "finishedAt": "2026-11-02T23:12:09.201Z",
-    "outcome": "INTERRUPTED",
-    "late": true,
-    "summary": "Recovery by ardesia-dev-20261102T230806Z-01a19e84 after native parent and specialist systemError capacity and completed tools; source and commits snapshotted, orphan local PostgreSQL stopped, no remaining candidate/run cwd processes. Original owner times retained, late true; no M4 completion or source publication."
+    "finishedAt": "2026-11-02T23:15:14.857Z",
+    "outcome": "HANDOFF",
+    "late": false,
+    "summary": "Recupero originale M4: cessazione nativa parent/specialista provata, sorgenti17file+history preservate con hash e bundle, PostgreSQL orfano arrestato senza perdita dati, rilascio precedente late distinto dal nuovo budget. HANDOFF stesso task READY, nessuna nuova Verify/review o capacità deployata; riprendere consumer/browser e budget nella prossima run. Quote/costo UNKNOWN."
   }
 }
