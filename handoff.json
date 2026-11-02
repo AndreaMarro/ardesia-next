@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 53,
-  "updatedAt": "2026-11-02T04:28:47.593Z",
+  "revision": 54,
+  "updatedAt": "2026-11-02T04:28:51.432Z",
   "procedureRef": "dce527f32685c4a691cd00ce54a99606136a8042",
   "activeRun": {
     "runId": "codex-20261102T034513Z",
@@ -18,38 +18,56 @@
     "id": "ops006-durable-closure-20261102",
     "taskId": "OPS-006",
     "nextActor": "codex",
-    "disposition": "READY",
-    "kind": "implementation",
+    "disposition": "COMPLETE_INCREMENT",
+    "kind": "coordination",
     "notBefore": "2026-11-02T03:46:20.634Z",
-    "expiresAt": "2026-11-02T04:40:13.000Z",
+    "expiresAt": null,
     "source": {
       "baseSha": "568cbc0abbc1a6cce30c21c1487f914a26cd6fae",
-      "headSha": "568cbc0abbc1a6cce30c21c1487f914a26cd6fae",
+      "headSha": "dce527f32685c4a691cd00ce54a99606136a8042",
       "branch": "ops/20261102-durable-closure",
-      "pr": null,
-      "sourceDigest": "d46ec405c64099902605dbfd7d31663367e477724889b3025a1db5d33118cd45"
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/27",
+      "sourceDigest": "e18861b0263a275a50c7261bb69f9149411d59fe399c9fb2d2ebdc9e430a080b"
     },
     "goal": "Chiusura riprendibile con procedura e runtime distinti",
-    "allowedPaths": [
-      "tools/cycle.mjs",
-      "tools/cycle-sequential.test.mjs",
-      "docs/recurring-work.md",
-      "docs/history.md",
-      "operations/agent-evals.json",
-      ".agents/skills/ardesia-product-slice/SKILL.md",
-      ".agents/skills/ardesia-sequential-execution/SKILL.md",
-      ".agents/skills/ardesia-sequential-learning/SKILL.md",
-      ".agents/skills/ardesia-sequential-review/SKILL.md"
-    ],
+    "allowedPaths": [],
     "exitCriteria": [
       "Riprodurre e correggere criteri canonici indebolibili, chiusura con code runtime/procedura distinte e ripresa da una completion-ref durevole dopo rilascio legittimo; conservare caso valido, replay idempotente e controprove discriminanti.",
       "Conservare task, scope, dipendenze, blocker, ownership, avvio reale/budget, CAS/no force e identita CI/review; rifiutare claim concorrente o non rilasciato, prova su altra SHA, review autrice e contratto alterato. Nessun P2 usato per autorizzare il proprio incarico.",
       "Riusare la proposta41124470 solo dopo lettura di sorgenti/diff e prove applicabili; acquisire Verify e review non autrice della sorgente finale pubblicata prima di adozione esplicita. Skill/eval esistenti coerenti col coordinatore unico; prove sintetiche distinte da recupero reale e due incrementi reali."
     ],
-    "evidence": [],
+    "evidence": [
+      {
+        "headSha": "dce527f32685c4a691cd00ce54a99606136a8042",
+        "sourceDigest": "e18861b0263a275a50c7261bb69f9149411d59fe399c9fb2d2ebdc9e430a080b",
+        "result": "PASS",
+        "access": "artifact",
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41387928237",
+        "artifactDigest": "f4b56696cc73846f7ceb151845f61c4f706ad8cc1d5a76350fb5dbb054372fdc",
+        "scope": "Original final published Verify attempt1,9rawJSON/7bindings/canonicaldigests read independently;291unit/73browser,0pending/skip/flaky/retry;105operational guard tests included in config-source. Ubuntu24.04/PostgreSQL18/Node24.22.1 isolated, no remote acceptance."
+      },
+      {
+        "headSha": "dce527f32685c4a691cd00ce54a99606136a8042",
+        "sourceDigest": "e18861b0263a275a50c7261bb69f9149411d59fe399c9fb2d2ebdc9e430a080b",
+        "result": "PASS",
+        "access": "artifact",
+        "kind": "review",
+        "name": "independent-source-and-artifact-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/27#issuecomment-6569072262",
+        "artifactDigest": null,
+        "scope": "Distinct actual /root/closure_intake_review non-author context: rawdiff/source/canonicalcriteria, actual49/50 and40/41 inputs plus explicitly synthetic transitions; replay/reopening alias,metadata,subset/union negatives and freshproof positive. Shared filesystem/tools; instruction-only read-only, no human/remote approval. Schema-safe aliases map author codex-20261102T034513Z-root to actual /root, reviewer root-closure-intake-review to actual /root/closure_intake_review."
+      }
+    ],
     "blockers": [],
-    "nextAction": "Esaminare e preparare la correzione41124470 entro scope; Verify/review finali e adozione esplicita prima di usare il nuovo helper. Conservare completion49 PERF-003 e tutti i limiti M3.",
-    "review": null
+    "nextAction": "OPS-004: consume this exact OPS-006 completion and original PERF-003 completion49/c932e75 with two independently validated reconcile outputs against the same adopted queue; only distinct row-only union, then own final Verify/review and explicit adoption. Keep same budget, no reimplementation PR25/Extended403 retries. Root rollback: new commit restoring only9assigned method files plus append-only correction, explicit procedureRef rollback after claims reconciled.",
+    "review": {
+      "authorContextId": "codex-20261102T034513Z-root",
+      "reviewerContextId": "root-closure-intake-review",
+      "sourceSha": "dce527f32685c4a691cd00ce54a99606136a8042",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/27#issuecomment-6569072262"
+    }
   },
   "lastRun": {
     "runId": "codex-20261102T021215Z",
