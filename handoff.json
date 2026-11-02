@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 54,
-  "updatedAt": "2026-11-02T04:28:51.432Z",
+  "revision": 55,
+  "updatedAt": "2026-11-02T04:28:55.043Z",
   "procedureRef": "dce527f32685c4a691cd00ce54a99606136a8042",
   "activeRun": {
     "runId": "codex-20261102T034513Z",
@@ -15,59 +15,34 @@
     "closeBy": "2026-11-02T04:40:13.000Z"
   },
   "packet": {
-    "id": "ops006-durable-closure-20261102",
-    "taskId": "OPS-006",
+    "id": "ops004-verified-closures-20261102",
+    "taskId": "OPS-004",
     "nextActor": "codex",
-    "disposition": "COMPLETE_INCREMENT",
-    "kind": "coordination",
+    "disposition": "READY",
+    "kind": "implementation",
     "notBefore": "2026-11-02T03:46:20.634Z",
-    "expiresAt": null,
+    "expiresAt": "2026-11-02T04:40:13.000Z",
     "source": {
-      "baseSha": "568cbc0abbc1a6cce30c21c1487f914a26cd6fae",
+      "baseSha": "dce527f32685c4a691cd00ce54a99606136a8042",
       "headSha": "dce527f32685c4a691cd00ce54a99606136a8042",
-      "branch": "ops/20261102-durable-closure",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/27",
+      "branch": "ops/20261102-verified-closures",
+      "pr": null,
       "sourceDigest": "e18861b0263a275a50c7261bb69f9149411d59fe399c9fb2d2ebdc9e430a080b"
     },
-    "goal": "Chiusura riprendibile con procedura e runtime distinti",
-    "allowedPaths": [],
+    "goal": "Riconciliazione canonica delle consegne verificate, su richiesta",
+    "allowedPaths": [
+      "operations/coordination.json",
+      "docs/history.md"
+    ],
     "exitCriteria": [
-      "Riprodurre e correggere criteri canonici indebolibili, chiusura con code runtime/procedura distinte e ripresa da una completion-ref durevole dopo rilascio legittimo; conservare caso valido, replay idempotente e controprove discriminanti.",
-      "Conservare task, scope, dipendenze, blocker, ownership, avvio reale/budget, CAS/no force e identita CI/review; rifiutare claim concorrente o non rilasciato, prova su altra SHA, review autrice e contratto alterato. Nessun P2 usato per autorizzare il proprio incarico.",
-      "Riusare la proposta41124470 solo dopo lettura di sorgenti/diff e prove applicabili; acquisire Verify e review non autrice della sorgente finale pubblicata prima di adozione esplicita. Skill/eval esistenti coerenti col coordinatore unico; prove sintetiche distinte da recupero reale e due incrementi reali."
+      "Un disallineamento concreto tra consegna verificata e coda viene riconciliato usando SHA/digest, Verify e review non autrice originali; nessun PASS trasferito a nuove sorgenti.",
+      "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
+      "La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."
     ],
-    "evidence": [
-      {
-        "headSha": "dce527f32685c4a691cd00ce54a99606136a8042",
-        "sourceDigest": "e18861b0263a275a50c7261bb69f9149411d59fe399c9fb2d2ebdc9e430a080b",
-        "result": "PASS",
-        "access": "artifact",
-        "kind": "ci",
-        "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41387928237",
-        "artifactDigest": "f4b56696cc73846f7ceb151845f61c4f706ad8cc1d5a76350fb5dbb054372fdc",
-        "scope": "Original final published Verify attempt1,9rawJSON/7bindings/canonicaldigests read independently;291unit/73browser,0pending/skip/flaky/retry;105operational guard tests included in config-source. Ubuntu24.04/PostgreSQL18/Node24.22.1 isolated, no remote acceptance."
-      },
-      {
-        "headSha": "dce527f32685c4a691cd00ce54a99606136a8042",
-        "sourceDigest": "e18861b0263a275a50c7261bb69f9149411d59fe399c9fb2d2ebdc9e430a080b",
-        "result": "PASS",
-        "access": "artifact",
-        "kind": "review",
-        "name": "independent-source-and-artifact-review",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/27#issuecomment-6569072262",
-        "artifactDigest": null,
-        "scope": "Distinct actual /root/closure_intake_review non-author context: rawdiff/source/canonicalcriteria, actual49/50 and40/41 inputs plus explicitly synthetic transitions; replay/reopening alias,metadata,subset/union negatives and freshproof positive. Shared filesystem/tools; instruction-only read-only, no human/remote approval. Schema-safe aliases map author codex-20261102T034513Z-root to actual /root, reviewer root-closure-intake-review to actual /root/closure_intake_review."
-      }
-    ],
+    "evidence": [],
     "blockers": [],
-    "nextAction": "OPS-004: consume this exact OPS-006 completion and original PERF-003 completion49/c932e75 with two independently validated reconcile outputs against the same adopted queue; only distinct row-only union, then own final Verify/review and explicit adoption. Keep same budget, no reimplementation PR25/Extended403 retries. Root rollback: new commit restoring only9assigned method files plus append-only correction, explicit procedureRef rollback after claims reconciled.",
-    "review": {
-      "authorContextId": "codex-20261102T034513Z-root",
-      "reviewerContextId": "root-closure-intake-review",
-      "sourceSha": "dce527f32685c4a691cd00ce54a99606136a8042",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/27#issuecomment-6569072262"
-    }
+    "nextAction": "Riconciliare le due consegne indipendenti OPS-006 e PERF-003 da ricevute originali, componendo solo i due output helper verificati sulla stessa coda canonica. Verificare/riesaminare sorgente amministrativa prima di adozione; nessun nuovo task o cambiamento dei contratti.",
+    "review": null
   },
   "lastRun": {
     "runId": "codex-20261102T021215Z",
