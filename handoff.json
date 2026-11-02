@@ -3,86 +3,53 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 103,
-  "updatedAt": "2026-11-02T17:02:09.342Z",
+  "revision": 104,
+  "updatedAt": "2026-11-02T17:02:20.201Z",
   "procedureRef": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
-  "activeRun": {
+  "activeRun": null,
+  "packet": {
+    "id": "m4-reuse-next-20261102T161917Z",
+    "taskId": "M4-REUSE",
+    "nextActor": "codex",
+    "disposition": "READY",
+    "kind": "implementation",
+    "notBefore": "2026-11-02T17:02:17.081Z",
+    "expiresAt": "2026-11-04T17:02:17.081Z",
+    "source": {
+      "baseSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
+      "headSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
+      "branch": "codex/m4-reuse-next-20261102",
+      "pr": null,
+      "sourceDigest": "9837a6188c6c20d5de47176276a2de03bf09babe87b7e4927ed5bf9dedac33cd"
+    },
+    "goal": "Secondo dominio scientifico sullo stesso Core/Host",
+    "allowedPaths": [
+      "plugins",
+      "packages/plugin-sdk",
+      "packages/plugin-host",
+      "tools",
+      "docs"
+    ],
+    "exitCriteria": [
+      "Un secondo modello da consumer/fonti reali, con unità/ipotesi/casi limite e firma; stesso Host/Core/persistenza.",
+      "Misurare il costo del riuso e produrre controprove scientifiche/UX; aggiungere il contratto M4 al motore di accettazione esistente."
+    ],
+    "evidence": [],
+    "blockers": [],
+    "nextAction": "Scegliere una prima unita M4 testabile nello scope canonico, sullo stesso Host/Core: consumer/fonti reali, scienza/revisione e misura riuso richiesti; Poiseuille resta candidato. Baseline M3 originale d0aa/9cbd distinta dal candidato amministrativo. Conservare le correzioni runtime d0aa gia su main nella futura integrazione, senza allargare questo ticket. Non ripetere M3 o CI gia verdi; nessuna produzione/spesa/approvazione umana implicita.",
+    "review": null
+  },
+  "lastRun": {
     "runId": "ardesia-codex-20261102T161917Z-51e4805b",
     "actor": "codex",
     "startedAt": "2026-11-02T16:19:17.000Z",
     "claimedAt": "2026-11-02T16:21:40.895Z",
     "writeUntil": "2026-11-02T17:04:17.000Z",
-    "closeBy": "2026-11-02T17:14:17.000Z"
-  },
-  "packet": {
-    "id": "m3-transition-closure-20261102T161917Z",
-    "taskId": "OPS-004",
-    "nextActor": "codex",
-    "disposition": "COMPLETE_INCREMENT",
-    "kind": "implementation",
-    "notBefore": "2026-11-02T16:19:17Z",
-    "expiresAt": "2026-11-02T17:14:17Z",
-    "source": {
-      "baseSha": "5acd99eb7f38e77430ff5e8762d9f95ffcbbba4e",
-      "headSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
-      "branch": "codex/m3-transition-closure-20261102",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/36",
-      "sourceDigest": "9837a6188c6c20d5de47176276a2de03bf09babe87b7e4927ed5bf9dedac33cd"
-    },
-    "goal": "Riconciliazione canonica delle consegne verificate, su richiesta",
-    "allowedPaths": [
-      "operations/coordination.json",
-      "docs/history.md"
-    ],
-    "exitCriteria": [
-      "Un disallineamento concreto tra consegna verificata e coda viene riconciliato usando SHA/digest, Verify e review non autrice originali; nessun PASS trasferito a nuove sorgenti.",
-      "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
-      "La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."
-    ],
-    "evidence": [
-      {
-        "kind": "ci",
-        "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41486210344",
-        "headSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
-        "sourceDigest": "9837a6188c6c20d5de47176276a2de03bf09babe87b7e4927ed5bf9dedac33cd",
-        "result": "PASS",
-        "scope": "Original PR36 Verify attempt1, exact final administrative source, ZIP CRC/JSON/7bindings and local gate read; baseline M3 kept separate.",
-        "access": "artifact",
-        "artifactDigest": "84c21f859e3f55561028ec8605ecb7f42f517788699964c506181dae00c1beff"
-      },
-      {
-        "kind": "review",
-        "name": "independent-transition-reconciliation",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/36#issuecomment-6583084429",
-        "headSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
-        "sourceDigest": "9837a6188c6c20d5de47176276a2de03bf09babe87b7e4927ed5bf9dedac33cd",
-        "result": "PASS",
-        "scope": "Distinct /root/transition_review raw two-file diff, original completion and immutable reconcile replay; prefix and untouched rows/policy/contracts/baseline compared. No human approval or technical read-only ACL.",
-        "access": "artifact",
-        "artifactDigest": "07cb87992d50f538f37ca10b5992c5df85fd572a905f577c2c70b6a7e063e51c"
-      }
-    ],
-    "blockers": [],
-    "nextAction": "Procedura amministrativa c4d/9837 adottata dopo Verify/review proprie; M3TRANSITION done, M4REUSE queued/eleggibile. Selezionare il successore senza ripetere M3 o le CI verdi.",
-    "review": {
-      "authorContextId": "ardesia-codex-20261102T161917Z-51e4805b-root",
-      "reviewerContextId": "ardesia-codex-20261102T161917Z-51e4805b-transition-review",
-      "sourceSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/36#issuecomment-6583084429"
-    }
-  },
-  "lastRun": {
-    "runId": "ardesia-codex-20261102T142556Z-bf1ed195",
-    "actor": "codex",
-    "startedAt": "2026-11-02T14:25:56.000Z",
-    "claimedAt": "2026-11-02T14:29:19.631Z",
-    "writeUntil": "2026-11-02T15:10:56.000Z",
-    "closeBy": "2026-11-02T15:20:56.000Z",
-    "packetId": "m3-remote-reconcile-20261102T142556Z",
-    "finishedAt": "2026-11-02T15:09:32.780Z",
-    "outcome": "COMPLETE_INCREMENT",
+    "closeBy": "2026-11-02T17:14:17.000Z",
+    "packetId": "m3-transition-closure-20261102T161917Z",
+    "finishedAt": "2026-11-02T17:02:20.201Z",
+    "outcome": "HANDOFF",
     "late": false,
-    "summary": "M3REMOTE originale ACCEPTED d0aa/9cbd, completion336ed e12prove archiviate. OPS004 chiuso con PR33head0f/ccaf, Verify41467426036 e review distinta; procedura0f adottata, claim rilasciato nello stesso budget. Prossimo M3TRANSITION, nessun nuovo collaudo o CI rerun."
+    "summary": "M3TRANSITION completa e canonica: PR35 final5acd/b03d, PR36 c4d/9837, Verify originali e review distinte. Procedura c4d adottata; M4REUSE READY per il prossimo ciclo, claim rilasciato, nessun merge/deploy."
   }
 }
