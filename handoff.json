@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 61,
-  "updatedAt": "2026-11-02T06:45:30.709Z",
+  "revision": 62,
+  "updatedAt": "2026-11-02T06:47:28.846Z",
   "procedureRef": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
   "activeRun": {
     "runId": "ardesia-codex-20261102T064252Z-3835a449",
@@ -15,12 +15,12 @@
     "closeBy": "2026-11-02T07:37:52.744Z"
   },
   "packet": {
-    "id": "m3-access-availability-20261102T051345Z",
+    "id": "m3-access-availability-20261102T064252Z",
     "taskId": "M3-ACCESS",
     "nextActor": "codex",
-    "disposition": "BLOCKED",
+    "disposition": "READY",
     "kind": "coordination",
-    "notBefore": "2026-11-02T05:16:27.490Z",
+    "notBefore": "2026-11-02T06:45:30.709Z",
     "expiresAt": null,
     "source": {
       "baseSha": "dce527f32685c4a691cd00ce54a99606136a8042",
@@ -71,12 +71,8 @@
         "artifactDigest": null
       }
     ],
-    "blockers": [
-      "B-OIDC",
-      "B-QA",
-      "B-RESTORE"
-    ],
-    "nextAction": "Riprendere M3-ACCESS soltanto al cambiamento osservabile di un canale gia autorizzato QA/OIDC/operatore/restore; poi verificare tutti i prerequisiti sul candidato remoto prima di M3-REMOTE. Nessun task prodotto indipendente eleggibile nella coda1f2d0a6: OPS004 da saltare senza delta, OPS006/PERF003 done. Conservare le prove originali e restore270479; non ripetere403/login,benchmark o provisioning. La source identifica il contratto della procedura, non lo staging accettato; M3/prodotto restano pendenti. Rollback di questo solo cursore con nuovo figlio/CAS dopo ownership, senza force o modifiche sorgenti/dati.",
+    "blockers": [],
+    "nextAction": "Controllo di disponibilita in sola lettura dei canali gia autorizzati; nessun retry di403/login o provisioning senza cambiamento osservabile. Se invariati, chiudere BLOCKED senza modifiche sorgenti o commenti ripetitivi.",
     "review": null
   },
   "lastRun": {
