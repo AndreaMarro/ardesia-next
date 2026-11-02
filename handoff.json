@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 44,
-  "updatedAt": "2026-11-02T00:43:16.063Z",
+  "revision": 45,
+  "updatedAt": "2026-11-02T00:48:59.870Z",
   "procedureRef": "2909aa7d90a8f87b011e80722d079fb4bbd61070",
   "activeRun": {
     "runId": "codex-20261102T004201Z",
@@ -15,59 +15,35 @@
     "closeBy": "2026-11-02T01:37:01.000Z"
   },
   "packet": {
-    "id": "ops005-canonical-closure-20261101",
-    "taskId": "OPS-004",
+    "id": "perf003-snapshot-cost-20261102",
+    "taskId": "PERF-003",
     "nextActor": "codex",
-    "disposition": "COMPLETE_INCREMENT",
-    "kind": "coordination",
-    "notBefore": "2026-11-01T23:13:54.476Z",
-    "expiresAt": null,
+    "disposition": "READY",
+    "kind": "implementation",
+    "notBefore": "2026-11-02T00:43:16.063Z",
+    "expiresAt": "2026-11-03T00:42:01Z",
     "source": {
-      "baseSha": "837710f55aa56dcf6575c2fc73beebf8b342cf44",
-      "headSha": "2909aa7d90a8f87b011e80722d079fb4bbd61070",
-      "branch": "ops/20261101-cycle-guards",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/24",
-      "sourceDigest": "ca7e8ca1c5b1947c70a649ec7db0e20a2feae42d5d748c7332397b80652b9a25"
+      "baseSha": "d74b8dfa3ada65594a96604146c60df73118ccbd",
+      "headSha": "d74b8dfa3ada65594a96604146c60df73118ccbd",
+      "branch": "perf/20261102-snapshot-profile",
+      "pr": null,
+      "sourceDigest": "408e7326e455d4b3dc57bbf600eccd82a135a5b6169c89f65289f101a7fc64f2"
     },
-    "goal": "Riconciliazione canonica delle consegne verificate, su richiesta",
-    "allowedPaths": [],
+    "goal": "Localizzare costo snapshot e ottimizzare solo il collo di bottiglia osservato",
+    "allowedPaths": [
+      "packages/server",
+      "packages/core",
+      "tools",
+      "docs"
+    ],
     "exitCriteria": [
-      "Un disallineamento concreto tra consegna verificata e coda viene riconciliato usando SHA/digest, Verify e review non autrice originali; nessun PASS trasferito a nuove sorgenti.",
-      "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
-      "La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."
+      "Confrontare workload e crescita reali usando prima gli artefatti PR18, senza attribuire causalità a differenze tra macchine.",
+      "Una sola ipotesi discriminante; campioni grezzi, identità ambiente, correttezza/transazioni/idempotenza/recovery invariati."
     ],
-    "evidence": [
-      {
-        "kind": "ci",
-        "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41362781588",
-        "headSha": "2909aa7d90a8f87b011e80722d079fb4bbd61070",
-        "sourceDigest": "ca7e8ca1c5b1947c70a649ec7db0e20a2feae42d5d748c7332397b80652b9a25",
-        "result": "PASS",
-        "scope": "Exact B source291unit/73browser, eight checks, zero skip/flaky; original Verify41362781588 and distinct raw delta/Git-parent/ZIP review. Server-runtime B Node24.22.0, A24.22.1; no performance comparison or remote acceptance.",
-        "access": "artifact",
-        "artifactDigest": "e182e6e94e8d503cf3f17a96cf9e7a83abc1a3957e35bae587da5743128385c7"
-      },
-      {
-        "kind": "review",
-        "name": "independent-canonical-closure-and-artifact-review",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/24#issuecomment-6565638416",
-        "headSha": "2909aa7d90a8f87b011e80722d079fb4bbd61070",
-        "sourceDigest": "ca7e8ca1c5b1947c70a649ec7db0e20a2feae42d5d748c7332397b80652b9a25",
-        "result": "PASS",
-        "scope": "Exact B source291unit/73browser, eight checks, zero skip/flaky; original Verify41362781588 and distinct raw delta/Git-parent/ZIP review. Server-runtime B Node24.22.0, A24.22.1; no performance comparison or remote acceptance.",
-        "access": "metadata",
-        "artifactDigest": null
-      }
-    ],
+    "evidence": [],
     "blockers": [],
-    "nextAction": "Select existing eligible PERF-003 from adopted queue2909aa7d; preserve separate runtime/procedure identities and consider original PERF-002 sourcePR21/d74b8dfa for its completed implementation, not admin source as proof of that code. Reuse original PR18 evidence first and select one bounded workload experiment, without Extended rerun or unrelated product changes. OPS-005 is done; OPS-004 remains queued only for a proven administrative delta and cannot be retired after one real closure. M3 only after authorized channel state changes; no unchanged403 retry, merge/deploy, gate or scheduler changes.",
-    "review": {
-      "authorContextId": "codex-20261101T231306Z-root",
-      "reviewerContextId": "root-ops005-review",
-      "sourceSha": "2909aa7d90a8f87b011e80722d079fb4bbd61070",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/24#issuecomment-6565638416"
-    }
+    "nextAction": "Read original PR18 samples; test one bounded same-environment snapshot-cost hypothesis, preserving transactions, idempotency, recovery and freeze. No unchanged Extended rerun.",
+    "review": null
   },
   "lastRun": {
     "runId": "codex-20261101T231306Z",
