@@ -3,9 +3,9 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 102,
-  "updatedAt": "2026-11-02T17:02:02.078Z",
-  "procedureRef": "5acd99eb7f38e77430ff5e8762d9f95ffcbbba4e",
+  "revision": 103,
+  "updatedAt": "2026-11-02T17:02:09.342Z",
+  "procedureRef": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
   "activeRun": {
     "runId": "ardesia-codex-20261102T161917Z-51e4805b",
     "actor": "codex",
@@ -64,7 +64,7 @@
       }
     ],
     "blockers": [],
-    "nextAction": "Riconciliazione M3TRANSITION verificata su c4d/9837. Adottare questa procedura e predisporre HANDOFF M4-REUSE; preservare baseline/prove e correzioni runtime main, senza merge/deploy.",
+    "nextAction": "Procedura amministrativa c4d/9837 adottata dopo Verify/review proprie; M3TRANSITION done, M4REUSE queued/eleggibile. Selezionare il successore senza ripetere M3 o le CI verdi.",
     "review": {
       "authorContextId": "ardesia-codex-20261102T161917Z-51e4805b-root",
       "reviewerContextId": "ardesia-codex-20261102T161917Z-51e4805b-transition-review",
