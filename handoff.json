@@ -3,25 +3,18 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 108,
-  "updatedAt": "2026-11-02T19:14:47.455Z",
+  "revision": 109,
+  "updatedAt": "2026-11-02T19:16:07.941Z",
   "procedureRef": "413de5bba02537cc090c91db58887b49de08eae4",
-  "activeRun": {
-    "runId": "ardesia-codex-20261102T185253Z-684b5c92",
-    "actor": "codex",
-    "startedAt": "2026-11-02T18:52:53.000Z",
-    "claimedAt": "2026-11-02T18:56:21.308Z",
-    "writeUntil": "2026-11-02T19:37:53.000Z",
-    "closeBy": "2026-11-02T19:47:53.000Z"
-  },
+  "activeRun": null,
   "packet": {
-    "id": "m4-reuse-next-20261102T161917Z",
+    "id": "m4-consumer-20261102T185253Z",
     "taskId": "M4-REUSE",
     "nextActor": "codex",
-    "disposition": "BLOCKED",
+    "disposition": "READY",
     "kind": "implementation",
-    "notBefore": "2026-11-02T17:02:17.081Z",
-    "expiresAt": "2026-11-04T17:02:17.081Z",
+    "notBefore": "2026-11-02T19:16:07.799Z",
+    "expiresAt": "2026-11-04T19:16:07.799Z",
     "source": {
       "baseSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
       "headSha": "062e3d58ed9fa9e5444e402e26a9760f797d3c96",
@@ -35,7 +28,12 @@
       "packages/plugin-sdk",
       "packages/plugin-host",
       "tools",
-      "docs"
+      "docs",
+      "package-lock.json",
+      "apps/web",
+      "packages/server/package.json",
+      "packages/server/src/server.integration.test.ts",
+      "e2e"
     ],
     "exitCriteria": [
       "Un secondo modello da consumer/fonti reali, con unità/ipotesi/casi limite e firma; stesso Host/Core/persistenza.",
@@ -120,10 +118,8 @@
         "artifactDigest": "749dd023ab24106e786cbd542d843d6e13fde9322324d2dd838f8adfba6a0bba"
       }
     ],
-    "blockers": [
-      "M4-CONSUMER-SCOPE"
-    ],
-    "nextAction": "Procedura amministrativa413de5b adottata esplicitamente dopo Verify41506499566 e review6586098914 esatte. Emettere HANDOFF canonico di M4-REUSE con lo scope ora registrato, stesso consumer/runtime062e/8fd881 e criteri originali; nessun COMPLETE_INCREMENT di M4. Proseguire sul consumer web/PostgreSQL conservando PR37/prove, DRAFT e fix runtime main, senza promuovere candidate-trust implicitamente.",
+    "blockers": [],
+    "nextAction": "Collegare Poiseuille PR37/head062e3d58/digest8fd881 alla stessa web app/Core/PostgreSQL usando il perimetro canonico adottato413de5b (PR38,Verify41506499566,review6586098914). Registrare package/lockfile e consumer esistenti, provare consenso/save/reopen/revisioni esatte/isolamento/rifiuti senza write/revoca e browser, misurare il riuso. Preservare preparazione e prove originali, fix runtime d0aa, DRAFT e approvazioni umane pendenti. Candidate-trust non autorizza publisher: prima di promozione verificare firma/pin/canale gia autorizzato; nessun bypass o nuovo privilegio. Ogni nuova sorgente richiede proprie Verify/review; non rieseguire le CI verdi invariate. Nessun COMPLETE_INCREMENT o M4 ACCEPTED da questo HANDOFF.",
     "review": {
       "authorContextId": "root",
       "reviewerContextId": "root.m4_preparation_review",
@@ -132,16 +128,16 @@
     }
   },
   "lastRun": {
-    "runId": "ardesia-codex-20261102T175141Z-cc7b03d9",
+    "runId": "ardesia-codex-20261102T185253Z-684b5c92",
     "actor": "codex",
-    "startedAt": "2026-11-02T17:51:41.000Z",
-    "claimedAt": "2026-11-02T17:53:45.216Z",
-    "writeUntil": "2026-11-02T18:36:41.000Z",
-    "closeBy": "2026-11-02T18:46:41.000Z",
+    "startedAt": "2026-11-02T18:52:53.000Z",
+    "claimedAt": "2026-11-02T18:56:21.308Z",
+    "writeUntil": "2026-11-02T19:37:53.000Z",
+    "closeBy": "2026-11-02T19:47:53.000Z",
     "packetId": "m4-reuse-next-20261102T161917Z",
-    "finishedAt": "2026-11-02T18:25:27.663Z",
-    "outcome": "BLOCKED",
+    "finishedAt": "2026-11-02T19:16:07.941Z",
+    "outcome": "HANDOFF",
     "late": false,
-    "summary": "Poiseuille preparato in PR37/head062e3d5/8fd881, Verify41498677367 e review distinta PASS; M4 aperta. BLOCKED soltanto il consumer web/PostgreSQL: scope canonico insufficiente, nessun COMPLETE_INCREMENT o merge/deploy. Claim rilasciato, ricorrenza invariata."
+    "summary": "Perimetro consumer M4 esplicito pubblicato in PR38/head413de5b/digest179c184f e adottato108 dopo Verify41506499566/review non autrice6586098914 esatte. HANDOFF M4 READY sul runtime Poiseuille062e/8fd881 invariato, consumer web/PostgreSQL da implementare. M4 aperta/DRAFT, nessun COMPLETE_INCREMENT, merge/deploy o scheduler; claim rilasciato."
   }
 }
