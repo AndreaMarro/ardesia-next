@@ -3,9 +3,9 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 99,
-  "updatedAt": "2026-11-02T16:53:25.875Z",
-  "procedureRef": "ccdab91a10537c1dab5210d78e41857322e22829",
+  "revision": 100,
+  "updatedAt": "2026-11-02T16:53:33.086Z",
+  "procedureRef": "5acd99eb7f38e77430ff5e8762d9f95ffcbbba4e",
   "activeRun": {
     "runId": "ardesia-codex-20261102T161917Z-51e4805b",
     "actor": "codex",
@@ -65,7 +65,7 @@
       }
     ],
     "blockers": [],
-    "nextAction": "M3TRANSITION verificata su5acd/b03d. Conservare completion-ref e adottare esplicitamente questa procedura, poi OPS004 riconcilia soltanto la riga canonica prima di M4. Main/preview/runtime e restore conservati; nessun merge/deploy.",
+    "nextAction": "Procedura5acd/b03d adottata esplicitamente dopo Verify/review proprie. Freeze M3 sciolto in policy sulla baseline originale valida; nessun merge o deploy. OPS004 deve chiudere M3TRANSITION nella stessa coda prima di M4.",
     "review": {
       "authorContextId": "ardesia-codex-20261102T161917Z-51e4805b-root",
       "reviewerContextId": "ardesia-codex-20261102T161917Z-51e4805b-transition-review",
