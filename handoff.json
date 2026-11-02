@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 58,
-  "updatedAt": "2026-11-02T05:16:27.490Z",
+  "revision": 59,
+  "updatedAt": "2026-11-02T05:17:36.646Z",
   "procedureRef": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
   "activeRun": {
     "runId": "codex-20261102T051345Z",
@@ -15,12 +15,12 @@
     "closeBy": "2026-11-02T06:08:45.000Z"
   },
   "packet": {
-    "id": "ops004-verified-closures-20261102",
-    "taskId": "OPS-004",
+    "id": "m3-access-availability-20261102T051345Z",
+    "taskId": "M3-ACCESS",
     "nextActor": "codex",
-    "disposition": "COMPLETE_INCREMENT",
+    "disposition": "READY",
     "kind": "coordination",
-    "notBefore": "2026-11-02T03:46:20.634Z",
+    "notBefore": "2026-11-02T05:16:27.490Z",
     "expiresAt": null,
     "source": {
       "baseSha": "dce527f32685c4a691cd00ce54a99606136a8042",
@@ -29,45 +29,17 @@
       "pr": "https://github.com/AndreaMarro/ardesia-next/pull/28",
       "sourceDigest": "d27a5aa14dd00a6114cabf10497c2289858d09da6d76621ea847a330b805ae31"
     },
-    "goal": "Riconciliazione canonica delle consegne verificate, su richiesta",
+    "goal": "Preparare i prerequisiti remoti prima del gate M3",
     "allowedPaths": [],
     "exitCriteria": [
-      "Un disallineamento concreto tra consegna verificata e coda viene riconciliato usando SHA/digest, Verify e review non autrice originali; nessun PASS trasferito a nuove sorgenti.",
-      "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
-      "La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."
+      "Distinguere le capacita del runner nativo da quelle della chat: provare OIDC nel progetto/origin corretti, tre identita QA esistenti e connessioni operatore senza esportare segreti.",
+      "Target restore distinto, vuoto e migrato verificato sul progetto Neon Free esistente; conservare i due restore popolati, senza reset o scritture alla sorgente. Nessun nuovo progetto, compute, servizio o piano a pagamento.",
+      "Aggiornare soltanto i blocker realmente risolti e le osservazioni datate; la preparazione non accetta M3 e non cambia schema del database attivo o protezioni."
     ],
-    "evidence": [
-      {
-        "headSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
-        "sourceDigest": "d27a5aa14dd00a6114cabf10497c2289858d09da6d76621ea847a330b805ae31",
-        "result": "PASS",
-        "access": "artifact",
-        "kind": "ci",
-        "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41388837775",
-        "artifactDigest": "4b67be702163e7fb66475be06ed7ff3f332cc677678b6cddaccc9ba91e00ff45",
-        "scope": "Original final published admin Verify attempt1;9rawJSON/7bindings/canonicaldigests independently read,291unit/73browser0pending/skip/flaky/retry;8Verify/4operator/5runtimePASS. Only isolated Ubuntu24.04/PostgreSQL18/Node24.22.1, no remote acceptance."
-      },
-      {
-        "headSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
-        "sourceDigest": "d27a5aa14dd00a6114cabf10497c2289858d09da6d76621ea847a330b805ae31",
-        "result": "PASS",
-        "access": "artifact",
-        "kind": "review",
-        "name": "independent-admin-composition-and-artifact-review",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/28#issuecomment-6569185184",
-        "artifactDigest": null,
-        "scope": "Distinct actual /root/closure_intake_review independently recomputed both reconcile outputs from immutable55/54/49 and canonicalDCE queue, exact2row union/maxupdatedAt;20otherrows/contracts/policy/blockers/claims and historyprefix preserved. Read final adminZIP plus originalPERF003 ZIP and bound reports; no reimplementation/performance rerun or human approval. Author alias codex-20261102T034513Z-root maps actual /root, reviewer root-closure-intake-review maps actual /root/closure_intake_review; sharedfilesystem and instruction-only read-only limits."
-      }
-    ],
+    "evidence": [],
     "blockers": [],
-    "nextAction": "M3-ACCESS only when an already-authorized QA/OIDC/operator/restore channel observably changes. OPS-006 and PERF-003 are canonically done for verified preparation; reuse exact PR27/PR25 receipts, do not redo product, ExtendedPR18, unchanged403/login or duplicate restore270479. No independent queued product task has its M3 prerequisites satisfied in this adopted queue; skip OPS004 without new delta. M3/production/hardware/human acceptance and main/preview/staging freeze unchanged. Rollback admin: new commit reverting only2row metadata plus append-only history and explicit priorprocedure adoption after claim reconciliation; no reset/force/data repair.",
-    "review": {
-      "authorContextId": "codex-20261102T034513Z-root",
-      "reviewerContextId": "root-closure-intake-review",
-      "sourceSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/28#issuecomment-6569185184"
-    }
+    "nextAction": "Intake in sola lettura dei soli canali gia autorizzati; nessun retry del precedente403 senza trigger cambiato, nessuna sorgente o servizio da modificare. La source identifica il contratto/procedura adottati, non il runtime staging accettato.",
+    "review": null
   },
   "lastRun": {
     "runId": "codex-20261102T034513Z",
@@ -83,4 +55,3 @@
     "summary": "OPS-006 durable closure method and canonical OPS-006/PERF-003 rows published, independently reviewed and final-source Verify passed; adopted PR26/27/28 without merge/deploy. Original claim released within55m; M3 remains pending authorized access channels."
   }
 }
-
