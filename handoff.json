@@ -3,22 +3,15 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 94,
-  "updatedAt": "2026-11-02T15:08:42.653Z",
+  "revision": 95,
+  "updatedAt": "2026-11-02T15:09:32.780Z",
   "procedureRef": "0f361f288e2e8033b93b7a3fd6f807909c7d29f7",
-  "activeRun": {
-    "runId": "ardesia-codex-20261102T142556Z-bf1ed195",
-    "actor": "codex",
-    "startedAt": "2026-11-02T14:25:56.000Z",
-    "claimedAt": "2026-11-02T14:29:19.631Z",
-    "writeUntil": "2026-11-02T15:10:56.000Z",
-    "closeBy": "2026-11-02T15:20:56.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m3-remote-reconcile-20261102T142556Z",
     "taskId": "OPS-004",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "COMPLETE_INCREMENT",
     "kind": "implementation",
     "notBefore": "2026-11-02T14:25:56Z",
     "expiresAt": "2026-11-02T15:20:56Z",
@@ -73,16 +66,16 @@
     }
   },
   "lastRun": {
-    "runId": "chatgpt-m3-scoped-preparation-20261102T140000Z",
+    "runId": "ardesia-codex-20261102T142556Z-bf1ed195",
     "actor": "codex",
-    "startedAt": "2026-11-02T14:00:00.000Z",
-    "claimedAt": "2026-11-02T14:05:46.000Z",
-    "writeUntil": "2026-11-02T14:45:00.000Z",
-    "closeBy": "2026-11-02T14:55:00.000Z",
-    "packetId": "m3-remote-owner-recovered-20261102",
-    "finishedAt": "2026-11-02T14:15:31.000Z",
-    "outcome": "HANDOFF",
+    "startedAt": "2026-11-02T14:25:56.000Z",
+    "claimedAt": "2026-11-02T14:29:19.631Z",
+    "writeUntil": "2026-11-02T15:10:56.000Z",
+    "closeBy": "2026-11-02T15:20:56.000Z",
+    "packetId": "m3-remote-reconcile-20261102T142556Z",
+    "finishedAt": "2026-11-02T15:09:32.780Z",
+    "outcome": "COMPLETE_INCREMENT",
     "late": false,
-    "summary": "Bounded existing-target preparation completed; remote acceptance was not run. This support lease is explicitly released. Detailed observation publication was refused, local receipt retained. Inspect the actual target before further initialization. No source, deployment, scheduler, model, QA password or populated restore was changed. Conservative budget boundary retained."
+    "summary": "M3REMOTE originale ACCEPTED d0aa/9cbd, completion336ed e12prove archiviate. OPS004 chiuso con PR33head0f/ccaf, Verify41467426036 e review distinta; procedura0f adottata, claim rilasciato nello stesso budget. Prossimo M3TRANSITION, nessun nuovo collaudo o CI rerun."
   }
 }
