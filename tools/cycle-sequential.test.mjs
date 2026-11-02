@@ -471,6 +471,12 @@ test('reopened tasks reject aliases of recorded candidates and accept genuinely 
  const readQueue=ref=>ref===adopted?reopened:s.q;
  const args={...input,expectedRevision:active.revision,queue:reopened,completionRef:aliasRef};
  assert.throws(()=>cycle.reconcileCycle(active,args,{now:at(15),readQueue,readCompletion:ref=>ref===oldRef?s.done:alias}),/reopened/);
+ for (const mutate of [packet=>packet.evidence.push({...packet.evidence[0],artifactDigest:null,access:'metadata'}),
+  packet=>{packet.evidence[0].artifactDigest=null;},packet=>{packet.evidence[0].artifactDigest='e'.repeat(64);},
+  packet=>{packet.evidence.reverse();packet.evidence.push({...packet.evidence[0]});}]) {
+  const metadataOnly=structuredClone(alias);metadataOnly.packet.evidence[0].artifactDigest='f'.repeat(64);mutate(metadataOnly.packet);
+  assert.throws(()=>cycle.reconcileCycle(active,args,{now:at(15),readQueue,readCompletion:ref=>ref===oldRef?s.done:metadataOnly}),/reopened/);
+ }
  const fresh=structuredClone(alias);fresh.packet.source.headSha='c'.repeat(40);fresh.packet.source.sourceDigest='d'.repeat(64);
  fresh.packet.evidence=fresh.packet.evidence.map(item=>({...item,headSha:fresh.packet.source.headSha,sourceDigest:fresh.packet.source.sourceDigest,reference:item.reference+'/fresh'}));
  fresh.packet.review.sourceSha=fresh.packet.source.headSha;fresh.packet.review.reference=fresh.packet.evidence.find(item=>item.kind==='review').reference;

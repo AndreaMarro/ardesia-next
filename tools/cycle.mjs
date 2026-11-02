@@ -388,7 +388,7 @@ export function reconcileCycle(data, {expectedRevision, runId, actor, queue, com
   const proofIdentity = packet => [...new Set(packet.evidence.filter(item => sameEvidenceSource(item, packet)
     && item.result === 'PASS' && (item.kind === 'ci' && item.name === 'verify'
       || item.kind === 'review' && item.reference === packet.review?.reference))
-    .map(item => JSON.stringify([item.kind, item.reference, item.artifactDigest])))].sort();
+    .map(item => JSON.stringify([item.kind, item.reference])))].sort();
   for (const reference of task.evidence) {
     const priorRef = /^https:\/\/github\.com\/AndreaMarro\/ardesia-next\/blob\/([a-f0-9]{40})\/handoff\.json$/.exec(reference)?.[1];
     if (!priorRef) continue;
