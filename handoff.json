@@ -3,31 +3,24 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 81,
-  "updatedAt": "2026-11-02T11:31:52.806Z",
+  "revision": 82,
+  "updatedAt": "2026-11-02T12:09:14.653Z",
   "procedureRef": "656d1967ed75b56520d2e320c538950b3160c076",
-  "activeRun": {
-    "runId": "ardesia-codex-20261102T112522Z-bafc2930",
-    "actor": "codex",
-    "startedAt": "2026-11-02T11:25:22.000Z",
-    "claimedAt": "2026-11-02T11:30:08.066Z",
-    "writeUntil": "2026-11-02T12:10:22.000Z",
-    "closeBy": "2026-11-02T12:20:22.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m3-remote-20261102T112522Z",
     "taskId": "M3-REMOTE",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "BLOCKED",
     "kind": "implementation",
     "notBefore": "2026-11-02T11:25:22Z",
     "expiresAt": "2026-11-02T12:20:22Z",
     "source": {
       "baseSha": "03622b56c9756225019b7c6219d226beef8e0a6d",
-      "headSha": "03622b56c9756225019b7c6219d226beef8e0a6d",
+      "headSha": "ba3b27ecd77dcdcd0f49502fb7e7d2dc8edc4800",
       "branch": "codex/m3-remote-20261102T112522Z",
-      "pr": null,
-      "sourceDigest": "2f63fb3b134a981526a23fcc550dcb4a134463bb61ee42a9846f0135718cb7d3"
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/32",
+      "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4"
     },
     "goal": "Accettazione remota completa M3",
     "allowedPaths": [
@@ -39,22 +32,63 @@
       "Tutte le dodici controprove originali sul medesimo candidato protetto; tools/status.mjs produce ACCEPTED con prove autentiche.",
       "Sorgente operatore read-only e target restore distinto, preesistente, migrato e vuoto; nessun reset, bypass o produzione."
     ],
-    "evidence": [],
-    "blockers": [],
-    "nextAction": "Eseguire produttore originale sulla SHA03622b56/digest2f63fb3 e deployment dpl_FTsyQYZuYbAPTzAeopne5tGTLtjy, staging canonica gia preflight PASS. Canale QA/operator locale pronto (e2e/README), restore270479 da ricontrollare prima uso. Conservare sorgente read-only e tutte12controprove; gate originale unico decisore.",
-    "review": null
+    "evidence": [
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41440790248",
+        "headSha": "ba3b27ecd77dcdcd0f49502fb7e7d2dc8edc4800",
+        "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
+        "result": "PASS",
+        "scope": "Original attempt1 SUCCESS; ZIP13140990912 read SHA256/CRC/9JSON/7sourcebindings/8checks/291unit/73browser0skipflakyunexpected/4operatorproofs/3realimports. Local full Verify FAIL timeouts preserved in PR32; no rerun. This is not M3 remote acceptance.",
+        "access": "artifact",
+        "artifactDigest": "f5ae70d9c54f9b8063f03421204063ef8157a0dfdd488452ba973d1c2cbc2dbb"
+      },
+      {
+        "kind": "review",
+        "name": "independent-producer-fix-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/32#issuecomment-6576586317",
+        "headSha": "ba3b27ecd77dcdcd0f49502fb7e7d2dc8edc4800",
+        "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
+        "result": "PASS",
+        "scope": "Distinct /root/m3_remote_review read immutable2file bytes,RED/failedwrapper/canonicalGREEN/70gatecontracts and localVerifyFAIL; no further findings in patch scope. CI was pending at review, root later read originalCI. No remote mutations or M3 acceptance.",
+        "access": "artifact",
+        "artifactDigest": "122675eb102207423de8281ec4b67238e6512becb53ae18c432242aff57391c3"
+      },
+      {
+        "kind": "check",
+        "name": "original-m3-remote-acceptance",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/issues/19#issuecomment-6576575280",
+        "headSha": "03622b56c9756225019b7c6219d226beef8e0a6d",
+        "sourceDigest": "2f63fb3b134a981526a23fcc550dcb4a134463bb61ee42a9846f0135718cb7d3",
+        "result": "FAIL",
+        "scope": "Original12observations on protecteddplFTsy; importreceipt hashesnull/null; unchanged gate EXISTING_M3_GATE_REJECTED. npmstatus M3AWAITING_COMPLETE_EVIDENCE. Restore270479 originallyempty nowpopulated; preserve,noreset/reuse. All7rawJSON/hashespublished, not transferred toba3b.",
+        "access": "artifact",
+        "artifactDigest": "5fec47ab35c47f9d080bdc5e0571b613923695e5fdb5b027fa3338b0929a8172"
+      }
+    ],
+    "blockers": [
+      "M3-RESTORE-POPULATED"
+    ],
+    "nextAction": "Riprendere M3-REMOTE da PR32 ba3b27e/digest9cbd6617, Verify41440790248 e review6576586317 gia acquisite. Prima del nuovo gate servono candidato esatto verificato e target restore preesistente davvero vuoto tramite canale autorizzato;270479 e ora popolato e si conserva. Non rifare M3ACCESS,CIoriginale,vecchia raccolta o reset/provisioning. M3 non accettata,freeze e M3TRANSITION/M4 invariati.",
+    "review": {
+      "authorContextId": "root-ardesia-codex-20261102T112522Z-bafc2930",
+      "reviewerContextId": "root-m3_remote_review",
+      "sourceSha": "ba3b27ecd77dcdcd0f49502fb7e7d2dc8edc4800",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/32#issuecomment-6576586317"
+    }
   },
   "lastRun": {
-    "runId": "ardesia-m3-unblock-20261102T095108Z",
+    "runId": "ardesia-codex-20261102T112522Z-bafc2930",
     "actor": "codex",
-    "startedAt": "2026-11-02T09:51:08.000Z",
-    "claimedAt": "2026-11-02T09:56:08.562Z",
-    "writeUntil": "2026-11-02T10:36:08.000Z",
-    "closeBy": "2026-11-02T10:46:08.000Z",
-    "packetId": "m3-access-closure-20261102T095108Z",
-    "finishedAt": "2026-11-02T10:35:58.879Z",
-    "outcome": "COMPLETE_INCREMENT",
+    "startedAt": "2026-11-02T11:25:22.000Z",
+    "claimedAt": "2026-11-02T11:30:08.066Z",
+    "writeUntil": "2026-11-02T12:10:22.000Z",
+    "closeBy": "2026-11-02T12:20:22.000Z",
+    "packetId": "m3-remote-20261102T112522Z",
+    "finishedAt": "2026-11-02T12:09:14.653Z",
+    "outcome": "BLOCKED",
     "late": false,
-    "summary": "M3-ACCESS realmente sbloccato, verificato e riconciliato done; PR30/31 Verify/review esatti, procedura656d196 adottata. M3-REMOTE ora eleggibile, canale privato e candidato03622 pronti;12controprove non ancora eseguite. Budget invariato e claim rilasciato."
+    "summary": "M3 remoto rifiutato dal gate originale per digest importnull/null; difettoP1 corretto in PR32 ba3b/9cbd con RED/GREEN,review distinta e VerifyCIoriginale PASS letto. LocalVerifyFAIL conservato. Restore270479 ora popolato: M3 resta BLOCKED, nessun merge/deploy,recurrence invariata."
   }
 }
