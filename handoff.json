@@ -3,10 +3,17 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 95,
-  "updatedAt": "2026-11-02T15:09:32.780Z",
+  "revision": 96,
+  "updatedAt": "2026-11-02T16:21:40.895Z",
   "procedureRef": "0f361f288e2e8033b93b7a3fd6f807909c7d29f7",
-  "activeRun": null,
+  "activeRun": {
+    "runId": "ardesia-codex-20261102T161917Z-51e4805b",
+    "actor": "codex",
+    "startedAt": "2026-11-02T16:19:17.000Z",
+    "claimedAt": "2026-11-02T16:21:40.895Z",
+    "writeUntil": "2026-11-02T17:04:17.000Z",
+    "closeBy": "2026-11-02T17:14:17.000Z"
+  },
   "packet": {
     "id": "m3-remote-reconcile-20261102T142556Z",
     "taskId": "OPS-004",
