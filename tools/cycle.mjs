@@ -389,16 +389,19 @@ export function reconcileCycle(data, {expectedRevision, runId, actor, queue, com
     && item.result === 'PASS' && (item.kind === 'ci' && item.name === 'verify'
       || item.kind === 'review' && item.reference === packet.review?.reference))
     .map(item => JSON.stringify([item.kind, item.reference])))].sort();
+  const recordedProofs = new Set();
   for (const reference of task.evidence) {
     const priorRef = /^https:\/\/github\.com\/AndreaMarro\/ardesia-next\/blob\/([a-f0-9]{40})\/handoff\.json$/.exec(reference)?.[1];
     if (!priorRef) continue;
     const prior = readCompletion(priorRef); valid(prior);
     if (sequential(prior) && prior.packet.disposition === 'COMPLETE_INCREMENT' && prior.packet.taskId === task.id
       && prior.packet.source.headSha === completed.packet.source.headSha
-      && prior.packet.source.sourceDigest === completed.packet.source.sourceDigest
-      && isDeepStrictEqual(proofIdentity(prior.packet), proofIdentity(completed.packet))) {
-      throw new Error('An already recorded candidate and proof cannot close a reopened task through another receipt.');
+      && prior.packet.source.sourceDigest === completed.packet.source.sourceDigest) {
+      for (const proof of proofIdentity(prior.packet)) recordedProofs.add(proof);
     }
+  }
+  if (recordedProofs.size && proofIdentity(completed.packet).every(proof => recordedProofs.has(proof))) {
+    throw new Error('Already recorded candidate proofs cannot close a reopened task through another receipt.');
   }
   const next = structuredClone(queue), row = next.tasks.find(row => row.id === task.id);
   row.status = 'done'; row.nextAction = nextAction;

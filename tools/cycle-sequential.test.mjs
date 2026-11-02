@@ -489,3 +489,20 @@ test('reopened tasks reject aliases of recorded candidates and accept genuinely 
   {now:at(15),readQueue,readCompletion:ref=>ref===oldRef?s.done:renewed});
  assert.equal(renewedResult.tasks[0].status,'done');
 });
+
+
+test('removing or combining recorded proof references does not make a reopened completion fresh', () => {
+ const s=closureFixture(), input=reconcileInput(s), oldRef=input.completionRef, otherRef='2'.repeat(40), aliasRef='7'.repeat(40);
+ const first=structuredClone(s.done);first.packet.evidence.push({...first.packet.evidence[0],reference:first.packet.evidence[0].reference+'/attempts/1'});
+ const second=structuredClone(s.done);second.packet.evidence.push({...second.packet.evidence[0],reference:second.packet.evidence[0].reference+'/attempts/2'});
+ const output=cycle.reconcileCycle(s.active,input,{now:at(13),readQueue:()=>s.q,readCompletion:()=>first});
+ const reopened=structuredClone(output);reopened.tasks[0].status='queued';
+ reopened.tasks[0].evidence.push(`https://github.com/AndreaMarro/ardesia-next/blob/${otherRef}/handoff.json`);
+ const adopted='6'.repeat(40), active={...s.active,procedureRef:adopted,revision:s.active.revision+3,updatedAt:at(14).toISOString()};
+ for(const joined of [false,true]) {
+  const alias={...structuredClone(s.done),revision:s.done.revision+1,updatedAt:at(12).toISOString()};
+  if(joined)alias.packet.evidence.push(first.packet.evidence.at(-1),second.packet.evidence.at(-1));
+  assert.throws(()=>cycle.reconcileCycle(active,{...input,expectedRevision:active.revision,queue:reopened,completionRef:aliasRef},
+   {now:at(15),readQueue:ref=>ref===adopted?reopened:s.q,readCompletion:ref=>ref===oldRef?first:ref===otherRef?second:alias}),/reopened/);
+ }
+});
