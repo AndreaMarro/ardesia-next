@@ -1,6 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {m4PreparationMatches, m4PreparationDigest, unitReportDigest, M4_PREPARATION_CHECKS} from './status.mjs';
+import {ensureM4Commit} from './m4-source.mjs';
+import {execFileSync, spawnSync} from 'node:child_process';
+import {mkdtempSync, mkdirSync, writeFileSync, rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {pathToFileURL} from 'node:url';
 const current = {commit: 'a'.repeat(40), sourceDigest: 'b'.repeat(64)};
 function fixture() {
   const paths = ['packages/plugin-host/src/runtime.test.ts', 'plugins/ideal-spring/src/model.test.ts', 'plugins/ideal-spring/src/handler.test.ts', 'packages/core/src/lab.test.ts', 'plugins/poiseuille/src/model.test.ts'];
@@ -35,4 +41,22 @@ test('M4 rejects missing checks, second domains/stores, skipped tests and assert
     assert.equal(m4PreparationMatches(e, current), false);
   }
   for (const value of [null, {}, {preparation: null}]) assert.equal(m4PreparationMatches(value ?? {}, current), false);
+});
+
+test('M4 shallow head plus scientific parent still needs the exact assigned base for a reuse diff', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'ardesia-m4-shallow-'));
+  const origin = join(dir, 'origin'), checkout = join(dir, 'checkout');
+  const git = (cwd, ...args) => execFileSync('git', args, {cwd, encoding: 'utf8', stdio: 'pipe'}).trim();
+  try {
+    mkdirSync(origin); git(origin, 'init', '-b', 'main');
+    const commit = value => {writeFileSync(join(origin, 'fixture.txt'), value); git(origin, 'add', 'fixture.txt'); git(origin, '-c', 'user.name=M4 Fixture', '-c', 'user.email=fixture@example.invalid', 'commit', '-m', value); return git(origin, 'rev-parse', 'HEAD');};
+    const base = commit('assigned base'), science = commit('scientific source'), head = commit('candidate head');
+    git(dir, 'clone', '--depth=1', pathToFileURL(origin).href, checkout);
+    ensureM4Commit(science, checkout);
+    assert.equal(git(checkout, 'rev-parse', 'HEAD'), head);
+    assert.notEqual(spawnSync('git', ['diff', '--name-only', base, head], {cwd: checkout, stdio: 'pipe'}).status, 0);
+    ensureM4Commit(base, checkout);
+    assert.equal(git(checkout, 'diff', '--name-only', base, head), 'fixture.txt');
+    assert.throws(() => ensureM4Commit('main', checkout), /immutable/);
+  } finally {rmSync(dir, {recursive: true, force: true});}
 });

@@ -7,6 +7,7 @@ import {execFileSync} from 'node:child_process';
 import {checkPluginBuild} from './build-plugin.mjs';
 import {checkPoiseuilleBuild} from './build-poiseuille.mjs';
 import {identity} from './evidence.mjs';
+import {ensureM4Commit} from './m4-source.mjs';
 
 await checkPluginBuild();
 const candidate = await checkPoiseuilleBuild();
@@ -19,6 +20,7 @@ try {
   const {runPoiseuilleConsumer} = await import(pathToFileURL(join(outDir, 'consumer.mjs')).href);
   const consumer = await runPoiseuilleConsumer(candidate);
   const baseSha = 'c4d38a612a73bc28df434c2d36d36025cf1b1adc';
+  ensureM4Commit(baseSha);
   const changedPaths = execFileSync('git', ['diff', '--name-only', baseSha, 'HEAD'], {encoding: 'utf8'}).trim().split('\n').filter(Boolean);
   const unchanged = paths => execFileSync('git', ['diff', '--name-only', baseSha, '--', ...paths], {encoding: 'utf8'}).trim() === '';
   const measuredDelta = execFileSync('git', ['diff', '--numstat', baseSha, 'HEAD'], {encoding: 'utf8'}).trim().split('\n').filter(Boolean).map(line => {

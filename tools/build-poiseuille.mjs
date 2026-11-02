@@ -4,6 +4,7 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {createHash, createPublicKey, verify} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
+import {ensureM4Commit} from './m4-source.mjs';
 
 export const poiseuilleReleaseDirectory = 'plugins/poiseuille/release/1.0.0';
 export async function buildPoiseuilleBytes() {
@@ -36,11 +37,7 @@ export async function checkPoiseuilleBuild() {
     || !/^[a-f0-9]{40}$/.test(manifest.provenance.commit)
     || trust.trustStore.length !== 1 || trust.allowlist.length !== 1) throw Error('Invalid Poiseuille candidate identity');
   // The source revision is historical and immutable; a newer release commit must not silently substitute it.
-  try {execFileSync('git', ['cat-file', '-e', `${manifest.provenance.commit}^{commit}`], {stdio: 'ignore'});}
-  catch {
-    // Actions checks out one shallow head. Fetch this exact already-published parent, never a moving branch.
-    execFileSync('git', ['fetch', '--no-tags', '--depth=1', 'origin', manifest.provenance.commit], {stdio: 'pipe', timeout: 30000});
-  }
+  ensureM4Commit(manifest.provenance.commit);
   for (const path of ['model.ts', 'handler.ts', 'worker.ts', 'index.ts']) {
     const sourcePath = `plugins/poiseuille/src/${path}`;
     const original = execFileSync('git', ['show', `${manifest.provenance.commit}:${sourcePath}`]);

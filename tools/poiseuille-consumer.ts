@@ -9,6 +9,7 @@ import {poiseuillePressureState} from '../plugins/poiseuille/src/index';
 /** Integration fixture only. Uses real public Host/Core APIs, never the scientific solver. */
 export async function runPoiseuilleConsumer({manifest, trust, bundle}: {manifest: PluginManifest; trust: {trustStore: TrustedPublisherKey[]; allowlist: FirstPartyRelease[]}; bundle: Uint8Array}) {
   let starts = 0, live = 0;
+  const terminations: Promise<number>[] = [];
   const factory: PluginRuntimeFactory = bytes => {
     starts++; live++;
     const script = `import {parentPort} from 'node:worker_threads';
@@ -18,7 +19,7 @@ export async function runPoiseuilleConsumer({manifest, trust, bundle}: {manifest
     const worker = new Worker(new URL('data:text/javascript;base64,' + Buffer.from(script).toString('base64')));
     let disposed = false;
     return {postMessage: value => worker.postMessage(value), subscribe: listener => {worker.on('message', listener); return () => worker.off('message', listener);},
-      terminate: () => {if (!disposed) {disposed = true; live--; void worker.terminate();}}};
+      terminate: () => {if (!disposed) {disposed = true; terminations.push(worker.terminate().then(code => {live--; return code;}));}}};
   };
   const hostOptions = {trustStore: trust.trustStore, policy: {allowlist: trust.allowlist, capabilities: ['state:read', 'state:write'] as const, timeoutMs: 5000}, runtimeFactory: factory};
   const host = createPluginHost(hostOptions);
@@ -79,7 +80,9 @@ export async function runPoiseuilleConsumer({manifest, trust, bundle}: {manifest
   await assert.rejects(verifier.mount({manifest, bundle: badBytes, instanceId: 'tampered', state: poiseuillePressureState, consent: manifest.capabilities}), {code: 'INTEGRITY_MISMATCH'});
   await assert.rejects(verifier.mount({manifest: {...manifest, signature: {algorithm: 'Ed25519', value: Buffer.alloc(64).toString('base64')}}, bundle,
     instanceId: 'forged', state: poiseuillePressureState, consent: manifest.capabilities}), {code: 'INVALID_SIGNATURE'});
-  assert.equal(starts, beforeStarts); assert.equal(live, 0);
+  assert.equal(starts, beforeStarts);
+  await Promise.all(terminations);
+  assert.equal(live, 0);
   return {consumer: 'public-Host-Core-integration-fixture', storage: 'existing-Core-MemoryStorage-test-adapter',
     checks: ['signature-before-execution', 'explicit-consent', 'save-edit-reopen', 'exact-old-revision', 'invalid-state-no-write', 'owner-isolation', 'withdraw-consent', 'tampered-bundle-no-worker', 'forged-signature-no-worker'],
     workersStarted: starts, liveWorkers: live, browser: 'NOT_RUN', postgres: 'NOT_RUN', humanReview: 'PENDING'};
