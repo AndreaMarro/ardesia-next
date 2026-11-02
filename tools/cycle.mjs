@@ -385,6 +385,21 @@ export function reconcileCycle(data, {expectedRevision, runId, actor, queue, com
     return structuredClone(queue);
   }
   if (task.evidence.includes(receiptUrl)) throw new Error('An already recorded completion cannot close a reopened task.');
+  const proofIdentity = packet => [...new Set(packet.evidence.filter(item => sameEvidenceSource(item, packet)
+    && item.result === 'PASS' && (item.kind === 'ci' && item.name === 'verify'
+      || item.kind === 'review' && item.reference === packet.review?.reference))
+    .map(item => JSON.stringify([item.kind, item.reference, item.artifactDigest])))].sort();
+  for (const reference of task.evidence) {
+    const priorRef = /^https:\/\/github\.com\/AndreaMarro\/ardesia-next\/blob\/([a-f0-9]{40})\/handoff\.json$/.exec(reference)?.[1];
+    if (!priorRef) continue;
+    const prior = readCompletion(priorRef); valid(prior);
+    if (sequential(prior) && prior.packet.disposition === 'COMPLETE_INCREMENT' && prior.packet.taskId === task.id
+      && prior.packet.source.headSha === completed.packet.source.headSha
+      && prior.packet.source.sourceDigest === completed.packet.source.sourceDigest
+      && isDeepStrictEqual(proofIdentity(prior.packet), proofIdentity(completed.packet))) {
+      throw new Error('An already recorded candidate and proof cannot close a reopened task through another receipt.');
+    }
+  }
   const next = structuredClone(queue), row = next.tasks.find(row => row.id === task.id);
   row.status = 'done'; row.nextAction = nextAction;
   row.evidence = [...new Set([...row.evidence, ...references])];

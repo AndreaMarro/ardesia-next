@@ -460,3 +460,26 @@ test('a reopened canonical task cannot reuse its already recorded completion', (
   {now:at(15),readQueue:ref=>ref===adopted?reopened:s.q,readCompletion:()=>s.done}),/reopened|already recorded/);
  assert.deepEqual(reopened,before);
 });
+
+
+test('reopened tasks reject aliases of recorded candidates and accept genuinely new candidates', () => {
+ const s=closureFixture(), input=reconcileInput(s), oldRef=input.completionRef, aliasRef='7'.repeat(40);
+ const output=cycle.reconcileCycle(s.active,input,{now:at(13),readQueue:()=>s.q,readCompletion:()=>s.done});
+ const reopened=structuredClone(output);reopened.tasks[0].status='queued';reopened.tasks[0].nextAction='Fix the reopened regression';
+ const adopted='6'.repeat(40), active={...s.active,procedureRef:adopted,revision:s.active.revision+3,updatedAt:at(14).toISOString()};
+ const alias={...s.done,revision:s.done.revision+1,updatedAt:at(12).toISOString()};
+ const readQueue=ref=>ref===adopted?reopened:s.q;
+ const args={...input,expectedRevision:active.revision,queue:reopened,completionRef:aliasRef};
+ assert.throws(()=>cycle.reconcileCycle(active,args,{now:at(15),readQueue,readCompletion:ref=>ref===oldRef?s.done:alias}),/reopened/);
+ const fresh=structuredClone(alias);fresh.packet.source.headSha='c'.repeat(40);fresh.packet.source.sourceDigest='d'.repeat(64);
+ fresh.packet.evidence=fresh.packet.evidence.map(item=>({...item,headSha:fresh.packet.source.headSha,sourceDigest:fresh.packet.source.sourceDigest,reference:item.reference+'/fresh'}));
+ fresh.packet.review.sourceSha=fresh.packet.source.headSha;fresh.packet.review.reference=fresh.packet.evidence.find(item=>item.kind==='review').reference;
+ const result=cycle.reconcileCycle(active,{...args,completionRef:'8'.repeat(40),nextAction:'New candidate verified after reopening'},
+  {now:at(15),readQueue,readCompletion:ref=>ref===oldRef?s.done:fresh});
+ assert.equal(result.tasks[0].status,'done');assert.equal(result.tasks[0].nextAction,'New candidate verified after reopening');
+ const renewed=structuredClone(alias);renewed.packet.evidence=renewed.packet.evidence.map(item=>({...item,reference:item.reference+'/new-evidence'}));
+ renewed.packet.review.reference=renewed.packet.evidence.find(item=>item.kind==='review').reference;
+ const renewedResult=cycle.reconcileCycle(active,{...args,completionRef:'9'.repeat(40),nextAction:'Same candidate with genuinely new evidence'},
+  {now:at(15),readQueue,readCompletion:ref=>ref===oldRef?s.done:renewed});
+ assert.equal(renewedResult.tasks[0].status,'done');
+});
