@@ -2,46 +2,768 @@
   "schemaVersion": "1.1.0",
   "acceptanceEvidence": false,
   "repository": "AndreaMarro/ardesia-next",
-  "updatedAt": "2026-11-02T10:20:47.781Z",
-  "policy": {"maxActiveIncrements":1,"maxRemoteWriters":1,"productionAuthorized":false,"newSpendAuthorized":false,"mainFrozen":true,"stagingFrozen":true,"agentLaunchedCodexJobsAuthorized":false,"ownerScheduledCodexAllowed":true},
-  "canonical": {"entrypoint":"docs/START_HERE.md","handbook":"docs/operations.md","history":"docs/history.md","lessons":"docs/lessons.md","product":"docs/product-map.md","acceptance":"tools/status.mjs"},
+  "updatedAt": "2026-11-02T14:56:12.350Z",
+  "policy": {
+    "maxActiveIncrements": 1,
+    "maxRemoteWriters": 1,
+    "productionAuthorized": false,
+    "newSpendAuthorized": false,
+    "mainFrozen": true,
+    "stagingFrozen": true,
+    "agentLaunchedCodexJobsAuthorized": false,
+    "ownerScheduledCodexAllowed": true
+  },
+  "canonical": {
+    "entrypoint": "docs/START_HERE.md",
+    "handbook": "docs/operations.md",
+    "history": "docs/history.md",
+    "lessons": "docs/lessons.md",
+    "product": "docs/product-map.md",
+    "acceptance": "tools/status.mjs"
+  },
   "observations": [
-    {"id":"codex-sequential-owner-mandate","observedAt":"2026-11-01T10:34:08Z","kind":"handoff","source":"Messaggio diretto del titolare nella conversazione corrente; OPS-20261101-07.","value":{"mode":"single-codex","requestedIntervalMinutes":90,"nativeScheduler":"NOT_CONFIGURED","nativeModel":"NOT_VERIFIED","productAcceptanceInferred":false}},
-    {"id":"retired-chatgpt-regia","observedAt":"2026-11-01T10:42:23Z","kind":"live","source":"Automations.peek e update con ricevuta: is_enabled false; ultimo run recorded completed. Non attesta worker Codex.","value":{"automationId":"6ae69740ed008191a1574657c2f242cf","enabled":false,"title":"Ardesia — regia ritirata","modelVerified":false}},
-    {"id":"main-source-checkpoint","observedAt":"2026-11-01T10:34:08Z","kind":"live","source":"GitHub ref metadata; osservazioni precedenti nell’archivio.","url":"https://api.github.com/repos/AndreaMarro/ardesia-next/git/ref/heads/main","value":{"sha":"03622b56c9756225019b7c6219d226beef8e0a6d","remoteAcceptance":"NOT_RETESTED"}},
-    {"id":"codex-native-cycle-validated","observedAt":"2026-11-01T17:44:12.990Z","kind":"live","source":"OPS-20261101-11; metadati selettivi task_started/task_complete e turn_context, configurazione del solo task nativo letta in sola lettura; ricevute Git originali.","value":{"automationId":"ardesia-next-worker-codex-sol-max","status":"ACTIVE","intervalMinutes":90,"executionEnvironment":"local","model":"gpt-6.1-sol","reasoningEffort":"max","previousNativeStartedAt":"2026-11-01T17:07:51.491Z","previousNativeCompletedAt":"2026-11-01T17:14:02.477Z","previousCursorFinishedAt":"2026-11-01T17:12:17.144Z","firstNativeOverrunPreserved":true,"globalWatchdogVerified":false,"productAcceptanceInferred":false}},
-    {"id":"owner-unblock-m3-m4-20261101","observedAt":"2026-11-01T21:08:27.538Z","kind":"handoff","source":"Mandato diretto del titolare nella chat di supporto: sbloccare M3, non interferire con Codex attivo, correggere il blocco canonico riportato dalla run codex-20261101T201327Z. OPS-20261101-12.","value":{"m3Target":"2026-11-01 Europe/Rome","m4Target":"notte 2026-11-01/2026-11-02 Europe/Rome","deadlinesAreAcceptanceEvidence":false,"bootstrapScope":["operations/coordination.json","docs/history.md"],"nativeSchedulerChangeAuthorized":false}}
+    {
+      "id": "codex-sequential-owner-mandate",
+      "observedAt": "2026-11-01T10:34:08Z",
+      "kind": "handoff",
+      "source": "Messaggio diretto del titolare nella conversazione corrente; OPS-20261101-07.",
+      "value": {
+        "mode": "single-codex",
+        "requestedIntervalMinutes": 90,
+        "nativeScheduler": "NOT_CONFIGURED",
+        "nativeModel": "NOT_VERIFIED",
+        "productAcceptanceInferred": false
+      }
+    },
+    {
+      "id": "retired-chatgpt-regia",
+      "observedAt": "2026-11-01T10:42:23Z",
+      "kind": "live",
+      "source": "Automations.peek e update con ricevuta: is_enabled false; ultimo run recorded completed. Non attesta worker Codex.",
+      "value": {
+        "automationId": "6ae69740ed008191a1574657c2f242cf",
+        "enabled": false,
+        "title": "Ardesia — regia ritirata",
+        "modelVerified": false
+      }
+    },
+    {
+      "id": "main-source-checkpoint",
+      "observedAt": "2026-11-01T10:34:08Z",
+      "kind": "live",
+      "source": "GitHub ref metadata; osservazioni precedenti nell’archivio.",
+      "url": "https://api.github.com/repos/AndreaMarro/ardesia-next/git/ref/heads/main",
+      "value": {
+        "sha": "03622b56c9756225019b7c6219d226beef8e0a6d",
+        "remoteAcceptance": "NOT_RETESTED"
+      }
+    },
+    {
+      "id": "codex-native-cycle-validated",
+      "observedAt": "2026-11-01T17:44:12.990Z",
+      "kind": "live",
+      "source": "OPS-20261101-11; metadati selettivi task_started/task_complete e turn_context, configurazione del solo task nativo letta in sola lettura; ricevute Git originali.",
+      "value": {
+        "automationId": "ardesia-next-worker-codex-sol-max",
+        "status": "ACTIVE",
+        "intervalMinutes": 90,
+        "executionEnvironment": "local",
+        "model": "gpt-6.1-sol",
+        "reasoningEffort": "max",
+        "previousNativeStartedAt": "2026-11-01T17:07:51.491Z",
+        "previousNativeCompletedAt": "2026-11-01T17:14:02.477Z",
+        "previousCursorFinishedAt": "2026-11-01T17:12:17.144Z",
+        "firstNativeOverrunPreserved": true,
+        "globalWatchdogVerified": false,
+        "productAcceptanceInferred": false
+      }
+    },
+    {
+      "id": "owner-unblock-m3-m4-20261101",
+      "observedAt": "2026-11-01T21:08:27.538Z",
+      "kind": "handoff",
+      "source": "Mandato diretto del titolare nella chat di supporto: sbloccare M3, non interferire con Codex attivo, correggere il blocco canonico riportato dalla run codex-20261101T201327Z. OPS-20261101-12.",
+      "value": {
+        "m3Target": "2026-11-01 Europe/Rome",
+        "m4Target": "notte 2026-11-01/2026-11-02 Europe/Rome",
+        "deadlinesAreAcceptanceEvidence": false,
+        "bootstrapScope": [
+          "operations/coordination.json",
+          "docs/history.md"
+        ],
+        "nativeSchedulerChangeAuthorized": false
+      }
+    }
   ],
   "blockers": [
-    {"id":"B-NATIVE-CLIENT","status":"resolved","reason":"Progetto Git/cwd, unico task Ardesia ACTIVE ogni 90 minuti e runtime gpt-6.1-sol/max osservati nella prima run nativa. La chiusura OPS-003 resta distinta; Node26.5.1 locale fuori engine e tempi di creazione/prima attivita conservati come limiti.","lastCheckedAt":"2026-11-01T16:52:14Z","recheckWhen":"Ricontrollare solo se cambiano destinazione, configurazione o capacita effettive; nessuna modifica scheduler da una run.","sources":["docs/history.md#ops-20261101-09--inizializzazione-nativa-controllata-e-correzioni-discriminate","https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6558055735","https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6560907584"]},
-    {"id":"B-OIDC","status":"resolved","reason":"Risolto sul candidato03622b5/digest2f63fb3, deployment dpl_FTsyQYZuYbAPTzAeopne5tGTLtjy Preview standard/providerTarget null. OIDC200 e anonimo302 prima alias; preflight canonico10:06:34-37 PASS, postgres/session/origin/build. Regola development->staging rifiutata404, trustedSources null/SSOall invariati. Nessun bypass.","lastCheckedAt":"2026-11-02T10:08:56.270Z","recheckWhen":"Verificare di nuovo soltanto se cambia candidato/configurazione/canale; il produttore controlla sempre preflight e target restore fresco. Non ruotare di nuovo credenziali gia disponibili.","sources":["docs/release-runbook.md","https://github.com/AndreaMarro/ardesia-next/issues/19","docs/history.md#ops-20261102-07--diagnosi-m3-degli-ambienti-oidc-e-dei-canali-esistenti","docs/history.md#ops-20261102-08--autorizzazione-circoscritta-allo-sblocco-m3"]},
-    {"id":"B-QA","status":"resolved","reason":"Autorizzazione diretta OPS-20261102-08: reset transazionale delle sole password dei tre account sintetici esistenti, identita/ruoli/dati preservati. Canale locale privato0700/0600; apply e inspect confermati. Tre login applicativi riusciti e sessioni confrontate con hash nel database via connessione READ ONLY alle10:08:56Z. Nessuna password/cookie/hash nei report.","lastCheckedAt":"2026-11-02T10:08:56.270Z","recheckWhen":"Verificare di nuovo soltanto se cambia candidato/configurazione/canale; il produttore controlla sempre preflight e target restore fresco. Non ruotare di nuovo credenziali gia disponibili.","sources":["docs/release-runbook.md","https://github.com/AndreaMarro/ardesia-next/issues/19","docs/history.md#ops-20261102-07--diagnosi-m3-degli-ambienti-oidc-e-dei-canali-esistenti","docs/history.md#ops-20261102-08--autorizzazione-circoscritta-allo-sblocco-m3"]},
-    {"id":"B-RESTORE","status":"resolved","reason":"Connessioni del ruoloowner esistente disponibili nel runner tramite canale locale protetto. Restore270479 ardesia_next_m3_restore_20261101 raggiunto READ ONLY10:02:27Z, accounts/workspaces0, migrazione1/digest canonico. Binding della sorgente provato con sessioni applicative effettive nel DB ardesia_next_m3. Resta obbligatorio ricontrollare vuoto immediatamente prima del restore; nessuna prova restore ancora dichiarata.","lastCheckedAt":"2026-11-02T10:08:56.270Z","recheckWhen":"Verificare di nuovo soltanto se cambia candidato/configurazione/canale; il produttore controlla sempre preflight e target restore fresco. Non ruotare di nuovo credenziali gia disponibili.","sources":["docs/release-runbook.md","https://github.com/AndreaMarro/ardesia-next/issues/19","docs/history.md#ops-20261102-07--diagnosi-m3-degli-ambienti-oidc-e-dei-canali-esistenti","docs/history.md#ops-20261102-08--autorizzazione-circoscritta-allo-sblocco-m3"]},
-    {"id":"B-FREEZE","status":"blocked","reason":"Freeze M3 su main, preview/m3 e staging: non implica divieto di review/preparazione isolata.","lastCheckedAt":"2026-10-31T16:45:05Z","recheckWhen":"Gate M3 originale ACCEPTED o eccezione critica già prevista dal runbook.","sources":["docs/release-runbook.md","https://github.com/AndreaMarro/ardesia-next/issues/19"]}
+    {
+      "id": "B-NATIVE-CLIENT",
+      "status": "resolved",
+      "reason": "Progetto Git/cwd, unico task Ardesia ACTIVE ogni 90 minuti e runtime gpt-6.1-sol/max osservati nella prima run nativa. La chiusura OPS-003 resta distinta; Node26.5.1 locale fuori engine e tempi di creazione/prima attivita conservati come limiti.",
+      "lastCheckedAt": "2026-11-01T16:52:14Z",
+      "recheckWhen": "Ricontrollare solo se cambiano destinazione, configurazione o capacita effettive; nessuna modifica scheduler da una run.",
+      "sources": [
+        "docs/history.md#ops-20261101-09--inizializzazione-nativa-controllata-e-correzioni-discriminate",
+        "https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6558055735",
+        "https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6560907584"
+      ]
+    },
+    {
+      "id": "B-OIDC",
+      "status": "resolved",
+      "reason": "Risolto sul candidato03622b5/digest2f63fb3, deployment dpl_FTsyQYZuYbAPTzAeopne5tGTLtjy Preview standard/providerTarget null. OIDC200 e anonimo302 prima alias; preflight canonico10:06:34-37 PASS, postgres/session/origin/build. Regola development->staging rifiutata404, trustedSources null/SSOall invariati. Nessun bypass.",
+      "lastCheckedAt": "2026-11-02T10:08:56.270Z",
+      "recheckWhen": "Verificare di nuovo soltanto se cambia candidato/configurazione/canale; il produttore controlla sempre preflight e target restore fresco. Non ruotare di nuovo credenziali gia disponibili.",
+      "sources": [
+        "docs/release-runbook.md",
+        "https://github.com/AndreaMarro/ardesia-next/issues/19",
+        "docs/history.md#ops-20261102-07--diagnosi-m3-degli-ambienti-oidc-e-dei-canali-esistenti",
+        "docs/history.md#ops-20261102-08--autorizzazione-circoscritta-allo-sblocco-m3"
+      ]
+    },
+    {
+      "id": "B-QA",
+      "status": "resolved",
+      "reason": "Autorizzazione diretta OPS-20261102-08: reset transazionale delle sole password dei tre account sintetici esistenti, identita/ruoli/dati preservati. Canale locale privato0700/0600; apply e inspect confermati. Tre login applicativi riusciti e sessioni confrontate con hash nel database via connessione READ ONLY alle10:08:56Z. Nessuna password/cookie/hash nei report.",
+      "lastCheckedAt": "2026-11-02T10:08:56.270Z",
+      "recheckWhen": "Verificare di nuovo soltanto se cambia candidato/configurazione/canale; il produttore controlla sempre preflight e target restore fresco. Non ruotare di nuovo credenziali gia disponibili.",
+      "sources": [
+        "docs/release-runbook.md",
+        "https://github.com/AndreaMarro/ardesia-next/issues/19",
+        "docs/history.md#ops-20261102-07--diagnosi-m3-degli-ambienti-oidc-e-dei-canali-esistenti",
+        "docs/history.md#ops-20261102-08--autorizzazione-circoscritta-allo-sblocco-m3"
+      ]
+    },
+    {
+      "id": "B-RESTORE",
+      "status": "resolved",
+      "reason": "Connessioni del ruoloowner esistente disponibili nel runner tramite canale locale protetto. Restore270479 ardesia_next_m3_restore_20261101 raggiunto READ ONLY10:02:27Z, accounts/workspaces0, migrazione1/digest canonico. Binding della sorgente provato con sessioni applicative effettive nel DB ardesia_next_m3. Resta obbligatorio ricontrollare vuoto immediatamente prima del restore; nessuna prova restore ancora dichiarata.",
+      "lastCheckedAt": "2026-11-02T10:08:56.270Z",
+      "recheckWhen": "Verificare di nuovo soltanto se cambia candidato/configurazione/canale; il produttore controlla sempre preflight e target restore fresco. Non ruotare di nuovo credenziali gia disponibili.",
+      "sources": [
+        "docs/release-runbook.md",
+        "https://github.com/AndreaMarro/ardesia-next/issues/19",
+        "docs/history.md#ops-20261102-07--diagnosi-m3-degli-ambienti-oidc-e-dei-canali-esistenti",
+        "docs/history.md#ops-20261102-08--autorizzazione-circoscritta-allo-sblocco-m3"
+      ]
+    },
+    {
+      "id": "B-FREEZE",
+      "status": "blocked",
+      "reason": "Freeze M3 su main, preview/m3 e staging: non implica divieto di review/preparazione isolata.",
+      "lastCheckedAt": "2026-10-31T16:45:05Z",
+      "recheckWhen": "Gate M3 originale ACCEPTED o eccezione critica già prevista dal runbook.",
+      "sources": [
+        "docs/release-runbook.md",
+        "https://github.com/AndreaMarro/ardesia-next/issues/19"
+      ]
+    }
   ],
   "tasks": [
-    {"id":"M3-REMOTE","title":"Accettazione remota completa M3","status":"queued","priority":0,"owner":"coordinator","scope":["e2e","tools","operations"],"dependsOn":[],"blockers":["B-OIDC","B-QA","B-RESTORE"],"exitCriteria":["Tutte le dodici controprove originali sul medesimo candidato protetto; tools/status.mjs produce ACCEPTED con prove autentiche.","Sorgente operatore read-only e target restore distinto, preesistente, migrato e vuoto; nessun reset, bypass o produzione."],"evidence":["https://github.com/AndreaMarro/ardesia-next/issues/19"],"nextAction":"Eseguire produttore originale sulla SHA03622b56/digest2f63fb3 e deployment dpl_FTsyQYZuYbAPTzAeopne5tGTLtjy, staging canonica gia preflight PASS. Canale QA/operator locale pronto (e2e/README), restore270479 da ricontrollare prima uso. Conservare sorgente read-only e tutte12controprove; gate originale unico decisore."},
-    {"id":"OPS-003","title":"Coordinatore Codex sequenziale: prima verifica nativa","status":"done","priority":1,"owner":"coordinator","scope":["AGENTS.md","docs","operations","tools",".agents",".codex","e2e/remote-continuity.spec.ts"],"dependsOn":[],"blockers":["B-NATIVE-CLIENT"],"exitCriteria":["Review non autrice della revisione esatta del metodo; Verify originale della stessa SHA.","Bootstrap v2, claim/assign/finish e pubblicazione CAS in una vera esecuzione nativa, nessuna modifica main/staging; nessuna ricorrenza dichiarata prima della ricevuta del client.","Un solo task nativo ogni 90 minuti con modello/effort/ambiente osservati; 55 minuti di budget, nessuna autosospensione; se il client non espone una capacità, registrare il limite senza falsi successi."],"evidence":["docs/adr/0008-codex-sequential.md","https://github.com/AndreaMarro/ardesia-next/pull/20","https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6560907584","docs/history.md","https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6561351328","https://github.com/AndreaMarro/ardesia-next/actions/runs/41331123301","https://github.com/AndreaMarro/ardesia-next/blob/34b0ae45e5cbb549ff2087a9799f32d054ff6ce8/handoff.json"],"nextAction":"Verifica nativa documentata; usare questa coda solo dopo review/Verify della nuova head e adozione esplicita registrate nel cursore. Selezionare PERF-002 sul suo branch isolato senza ripetere setup o benchmark; conservare prima run oltre55minuti e assenza di watchdog globale. Scheduler, modello, accessi e freeze restano invariati."},
-    {"id":"PERF-001","title":"Review del benchmark penna già completato","status":"done","priority":2,"owner":"coordinator","scope":["tools/benchmark.mjs","tools/benchmark.test.mjs",".github/workflows","e2e/README.md"],"dependsOn":[],"blockers":["B-FREEZE"],"exitCriteria":["Conservare head 174d15bbad2b5d962011dabfed467c330ddc12da e prove originali PR18; review del carico, campioni e limiti.","Il merge resta subordinato al freeze; non rifare l’esperimento esteso già concluso."],"evidence":["https://github.com/AndreaMarro/ardesia-next/pull/18","https://github.com/AndreaMarro/ardesia-next/actions/runs/41216361836","https://github.com/AndreaMarro/ardesia-next/actions/runs/41216361872","https://github.com/AndreaMarro/ardesia-next/pull/18#issuecomment-6560986797","https://github.com/AndreaMarro/ardesia-next/blob/c5bc72ecba7c34aca5e1958195b4829849a56099/handoff.json"],"nextAction":"Review conclusa sulla head174d15bb/digestde1f7e93 e ricevuta COMPLETE_INCREMENT revision12; nessun rerun. Merge PR18 ancora subordinato a B-FREEZE; rilievo P3 su e2e/README.md:80 conservato. Proseguire con PERF-002 quando OPS-003 e la nuova procedura sono adottati."},
-    {"id":"PERF-002","title":"Preparazione isolata del margine strutturale bundle","status":"done","priority":3,"owner":"coordinator","scope":["apps/web","packages","tools","docs"],"dependsOn":["OPS-003"],"blockers":[],"exitCriteria":["Un consumer/risultato osservabile: margine superiore alla baseline misurata, contando tutti gli asset iniziali/differiti/plugin e mantenendo la soglia 245760.","Preservare UX/accessibilità, firma/modello scientifico e recovery; review e Verify della head.","Solo branch isolato e nessun merge/deploy durante il freeze."],"evidence":["https://github.com/AndreaMarro/ardesia-next/pull/21","https://github.com/AndreaMarro/ardesia-next/actions/runs/41339360492","https://github.com/AndreaMarro/ardesia-next/pull/21#issuecomment-6562546557"],"nextAction":"Preparazione isolata conclusa su PR21 head d74b8dfa3ada65594a96604146c60df73118ccbd/digest 408e7326e455d4b3dc57bbf600eccd82a135a5b6169c89f65289f101a7fc64f2: Verify41339360492 e review non autrice6562546557 originali, senza rerun. Bundle245701/245760, margine59 ancora fragile. Merge/deploy restano subordinati a B-FREEZE e al gate M3; done non e accettazione remota. Dopo adozione della coda riconciliata, priorita M3-ACCESS con restore gia predisposto nella ricevuta6564228513, poi M3-REMOTE se i prerequisiti sono provati; PERF-003 diventa alternativa implementativamente eleggibile."},
-    {"id":"PERF-003","title":"Localizzare costo snapshot e ottimizzare solo il collo di bottiglia osservato","status":"done","priority":4,"owner":"coordinator","scope":["packages/server","packages/core","tools","docs"],"dependsOn":["PERF-002"],"blockers":[],"exitCriteria":["Confrontare workload e crescita reali usando prima gli artefatti PR18, senza attribuire causalità a differenze tra macchine.","Una sola ipotesi discriminante; campioni grezzi, identità ambiente, correttezza/transazioni/idempotenza/recovery invariati."],"evidence":["https://github.com/AndreaMarro/ardesia-next/blob/c932e75fdbf6b25a3b664e4a5389e8bac095f301/handoff.json","https://github.com/AndreaMarro/ardesia-next/actions/runs/41377509242","https://github.com/AndreaMarro/ardesia-next/pull/25#issuecomment-6567701649"],"nextAction":"PERF-003 preparazione verificata in PR25 head09c9da8/digest2c34a7cc, Verify41377509242 e review6567701649 originali; non rifare prodotto o misure. Integrazione congelata fino al gate M3, nessuna nuova accettazione remota o prestazionale dedotta."},
-    {"id":"M3-TRANSITION","title":"Conservare M3 accettata e abilitare la fase successiva","status":"deferred","priority":5,"owner":"coordinator","scope":["operations","tools","docs"],"dependsOn":["M3-REMOTE"],"blockers":[],"exitCriteria":["Conservare le prove originali M3 e baseline con SHA/digest/ambiente, senza trasferirle a un nuovo candidato.","Aggiornare coerentemente motore tools/status.mjs, guardie di fase e coda con review/controprove; nessun secondo motore di stato.","Sciogliere il freeze soltanto dopo il gate originale; le autorizzazioni di produzione e spesa restano separate."],"evidence":["docs/product-map.md","docs/recurring-work.md"],"nextAction":"Quando M3 è realmente accettata, promuovere questo task e preparare un successore. Non continuare a riassegnare M3 perché cambia il candidato."},
-    {"id":"M4-REUSE","title":"Secondo dominio scientifico sullo stesso Core/Host","status":"deferred","priority":6,"owner":"coordinator","scope":["plugins","packages/plugin-sdk","packages/plugin-host","tools","docs"],"dependsOn":["M3-TRANSITION"],"blockers":[],"exitCriteria":["Un secondo modello da consumer/fonti reali, con unità/ipotesi/casi limite e firma; stesso Host/Core/persistenza.","Misurare il costo del riuso e produrre controprove scientifiche/UX; aggiungere il contratto M4 al motore di accettazione esistente."],"evidence":["docs/product-map.md"],"nextAction":"Scegliere una prima unità testabile, non un catalogo di simulatori. Poiseuille rimane candidato da verificare, non una decisione inventata."},
-    {"id":"COURSES-MARKETPLACE","title":"Prima unità completa di microcorso recuperata dal patrimonio","status":"deferred","priority":7,"owner":"coordinator","scope":["docs","packages","apps/web","plugins"],"dependsOn":["M4-REUSE"],"blockers":[],"exitCriteria":["Un obiettivo con fonte/revisione/diritti, prerequisiti, spiegazione, previsione, attività, feedback, recupero e transfer.","DRAFT finché non esistono le review scientifiche/editoriali richieste; nessuna approvazione umana simulata.","Corso, edizione, lezione e consegna versionati e distinti nello stesso Core."],"evidence":["docs/product-map.md"],"nextAction":"Usare la matrice 4 corsi della mappa prodotto e recuperare un solo obiettivo. Poi ripetere lo stesso contratto sui successivi; non scambiare 200 sotto-obiettivi editoriali per corsi accettati."},
-    {"id":"LESSON-CONTINUITY","title":"Lezione viva: percorso completo fonte-tentativo-feedback-ripresa","status":"deferred","priority":8,"owner":"coordinator","scope":["apps/web","packages","e2e","docs"],"dependsOn":["M4-REUSE"],"blockers":[],"exitCriteria":["Stessa identità/revisione fra lavagna, taccuino, reader e laboratorio; fonti accessibili, undo/redo semantico quando pertinente.","Un learner riprende il lavoro corretto dopo una sessione indipendente, mantenendo proprietà e consenso."],"evidence":["docs/product-map.md"],"nextAction":"Scegliere un flusso che usa gli oggetti esistenti e provarne la continuità, senza nuova superficie indipendente."},
-    {"id":"LEARNER-PERSONAL","title":"Studio autonomo e proprietà privata degli artefatti","status":"deferred","priority":9,"owner":"coordinator","scope":["packages/core","packages/server","packages/remote-client","apps/web","e2e","docs"],"dependsOn":["M3-TRANSITION"],"blockers":[],"exitCriteria":["Un percorso learner-only autorizzato con export e consenso revocabile; note/Knowledge privati per default.","Controprove per accesso docente non condiviso, cambio account e revoca; nessun entitlement commerciale confuso con ruolo."],"evidence":["docs/product-map.md"],"nextAction":"Progettare una singola capacità personale con consumer; non assumere già accettato il percorso universale dell’ambizione legacy."},
-    {"id":"KNOWLEDGE-DIARY","title":"Diario errori e Knowledge/Library come proiezioni verificabili","status":"deferred","priority":10,"owner":"coordinator","scope":["packages","apps/web","e2e","docs"],"dependsOn":["LESSON-CONTINUITY"],"blockers":[],"exitCriteria":["Errore legato a passaggio e revisione esatti, contestazione/rettifica, recupero e retest diverso.","Proiezioni ricostruibili dagli eventi Core, privacy/revoca applicate; nessuna mastery inventata dai click."],"evidence":["docs/product-map.md"],"nextAction":"Implementare un errore→recupero→nuova prova, poi estendere ricerca/backlink/fonti; niente secondo archivio autorevole."},
-    {"id":"AUDIO-REPLAY","title":"Audio contestuale, marker e ritorno alla fonte","status":"deferred","priority":11,"owner":"coordinator","scope":["packages","apps/web","e2e","docs"],"dependsOn":["LESSON-CONTINUITY"],"blockers":[],"exitCriteria":["Capture esplicita, fonte/versione/timecode coerenti, marker→oggetto e riapertura remota autorizzata.","Buffering/retry/erasure/consenso e indisponibilità provati; provider runtime non auto-autorizzati."],"evidence":["docs/product-map.md"],"nextAction":"Una registrazione sintetica e un marker verificabile prima di un sistema completo; nessuna registrazione personale senza consenso."},
-    {"id":"CREATOR-PACK","title":"Creator: comporre, salvare e riaprire un pack DRAFT","status":"deferred","priority":12,"owner":"coordinator","scope":["packages","apps/web","plugins","e2e","docs"],"dependsOn":["COURSES-MARKETPLACE"],"blockers":[],"exitCriteria":["Un pack/workflow composto e riaperto tramite gli stessi contratti Host/SDK/Core; revisioni, diritti e compatibilità.","Creatività distinta da pubblicazione, nessun autopublish dei DRAFT."],"evidence":["docs/product-map.md"],"nextAction":"Prima Configure/Compose riusabile; no-code/code sono evoluzioni dello stesso contratto, non un’altra app."},
-    {"id":"MARKETPLACE-EXTENDED","title":"Marketplace/Discover unificato per plugin, pack e workflow","status":"deferred","priority":13,"owner":"coordinator","scope":["packages","apps/web","plugins","e2e","docs"],"dependsOn":["CREATOR-PACK"],"blockers":[],"exitCriteria":["Un item reale attraversa catalogo, consenso, uso, riapertura, revoca e aggiornamento compatibile con fonte/licenza/review.","Privacy Knowledge separata da discovery; esecuzione terzi, acquisti/payout/pubblicazione richiedono gate/mandati propri."],"evidence":["docs/product-map.md"],"nextAction":"Estendere il ciclo first-party M2 con un pack verificato, non un checkout fittizio o commissioni inventate."},
-    {"id":"TEACHER-EDITIONS","title":"Regia docente: edizioni, capienza, calendario e follow-up","status":"deferred","priority":14,"owner":"coordinator","scope":["packages","apps/web","e2e","docs"],"dependsOn":["COURSES-MARKETPLACE"],"blockers":[],"exitCriteria":["Una edizione con programma/versione, iscrizione e capienza transazionale; identità e ruoli scoped.","Prova del flusso tutor/learner senza comunicazioni a studenti reali; un ICS/mock non certifica un’integrazione Calendar live."],"evidence":["docs/product-map.md"],"nextAction":"Scegliere una unità edizione→assegnazione→evidenza condivisa; calendario con adapter autorizzato solo quando necessario."},
-    {"id":"MCP-CORE","title":"Adapter MCP sottile sul Core Next per un consumer reale","status":"deferred","priority":15,"owner":"coordinator","scope":["packages","server","tools","docs"],"dependsOn":["M3-TRANSITION"],"blockers":[],"exitCriteria":["Una lettura utile da host/trasporto realmente verificati, con scope, revoca, revisioni e limiti.","Stesso Core/permessi/ricevute; niente token passthrough o scritture DB dirette."],"evidence":["docs/integrations.md","docs/product-map.md"],"nextAction":"Usare il MCP legacy solo come fonte read-only; i connettori della fabbrica non dimostrano il MCP del prodotto."},
-    {"id":"PORTABILITY-RECOVERY","title":"Portabilità e recupero oltre il caso iniziale","status":"deferred","priority":16,"owner":"coordinator","scope":["packages","apps/web","e2e","tools","docs"],"dependsOn":["M3-TRANSITION"],"blockers":[],"exitCriteria":["Un roundtrip documentato con versioni/perdite esplicite e compatibilità; recovery dei comandi/account preservata.","Offline/cloud, conflitti multi-device e asset/media richiedono prove distinte; backup logico non è restore totale."],"evidence":["docs/product-map.md"],"nextAction":"Scegliere un formato/consumer reale e conservarne provenienza e revoca; non introdurre un secondo sync engine."},
-    {"id":"M5-PRODUCT","title":"Accettazione prodotto e percorso di rilascio stabile","status":"deferred","priority":17,"owner":"coordinator","scope":["apps/web","packages","e2e","tools","docs","operations"],"dependsOn":["M4-REUSE"],"blockers":[],"exitCriteria":["Criteri D01–D68 pertinenti, scienza/UX/accessibilità/sicurezza/performance/recovery verificati sul candidato.","Prove umane e device fisici richieste restano separate dalla CI; produzione richiede proprio mandato.","Gli ambiti non ancora accettati della mappa rimangono nel backlog: M5 non equivale alla visione interamente realizzata."],"evidence":["docs/acceptance/D01-D68.json","docs/product-map.md"],"nextAction":"Preparare evidenze per singolo criterio; ripetere il gate sulle release interessate senza cancellare baseline accettate."},
-    {"id":"OPS-004","title":"Riconciliazione canonica delle consegne verificate, su richiesta","status":"queued","priority":0,"owner":"coordinator","scope":["operations/coordination.json","docs/history.md"],"dependsOn":[],"blockers":[],"exitCriteria":["Un disallineamento concreto tra consegna verificata e coda viene riconciliato usando SHA/digest, Verify e review non autrice originali; nessun PASS trasferito a nuove sorgenti.","Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.","La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."],"evidence":["https://github.com/AndreaMarro/ardesia-next/blob/f1822bcbbee93201c0a99c804c16b0d293443942/handoff.json","https://github.com/AndreaMarro/ardesia-next/pull/21#issuecomment-6562546557","docs/history.md"],"nextAction":"Prima riconciliare PERF-002 da PR21 d74b8dfa/408e7326, Verify41339360492 e review6562546557, senza rifare prodotto/benchmark. Questo e un incarico operativo riutilizzabile, senza dipendenze prodotto: selezionarlo solo quando esiste un delta amministrativo provato; in assenza di delta saltarlo, senza commenti o commit. Dopo ogni consegna resta queued finche OPS-005 non fornisce una chiusura verificata equivalente. Non modificare i propri criteri o autorizzare task nuovi tramite questo scope."},
-    {"id":"M3-ACCESS","title":"Preparare i prerequisiti remoti prima del gate M3","status":"done","priority":0,"owner":"coordinator","scope":["tools","e2e","operations","docs"],"dependsOn":[],"blockers":[],"exitCriteria":["Distinguere le capacita del runner nativo da quelle della chat: provare OIDC nel progetto/origin corretti, tre identita QA esistenti e connessioni operatore senza esportare segreti.","Target restore distinto, vuoto e migrato verificato sul progetto Neon Free esistente; conservare i due restore popolati, senza reset o scritture alla sorgente. Nessun nuovo progetto, compute, servizio o piano a pagamento.","Aggiornare soltanto i blocker realmente risolti e le osservazioni datate; la preparazione non accetta M3 e non cambia schema del database attivo o protezioni."],"evidence":["https://github.com/AndreaMarro/ardesia-next/issues/19#issuecomment-6563706873","docs/release-runbook.md","e2e/README.md","docs/history.md","https://github.com/AndreaMarro/ardesia-next/blob/8405fa9646f4a03aba634efefc87ae529ab50b31/handoff.json","https://github.com/AndreaMarro/ardesia-next/pull/30#issuecomment-6574646362","https://github.com/AndreaMarro/ardesia-next/actions/runs/41426940372"],"nextAction":"M3-ACCESS done con prove reali PR30; non ripetere reset o diagnosi. Selezionare M3-REMOTE sul candidato03622 e dplFTsy, canali pronti; conservare tutte12controprove e restore vuoto prima uso."},
-    {"id":"OPS-005","title":"Guardie HANDOFF e chiusura canonica senza deadlock","status":"done","priority":1,"owner":"coordinator","scope":["tools/cycle.mjs","tools/cycle.test.mjs","tools/cycle-sequential.test.mjs","tools/check-operations.mjs","tools/check-operations.test.mjs","operations/coordination.json","docs/recurring-work.md","docs/history.md"],"dependsOn":[],"blockers":[],"exitCriteria":["Riprodurre prima il P2: HANDOFF verso task assente, fuori scope, con dipendenza incompleta o blocker irrisolto; il percorso corretto valida contro la coda canonica reale.","Un task completato con prove valide puo riconciliare la propria riga e selezionare il successore nello stesso budget attraverso un percorso esplicitamente autorizzato e testato; nessun rinnovo budget o secondo writer.","Controprove per claim concorrente, review autrice, prova su SHA diversa, policy alterata e coda ipotetica; mantenere lettura storica v1/v2, CAS/no force, review indipendente e Verify della head."],"evidence":["https://github.com/AndreaMarro/ardesia-next/blob/f1822bcbbee93201c0a99c804c16b0d293443942/handoff.json","docs/history.md","https://github.com/AndreaMarro/ardesia-next/actions/runs/41361908264","https://github.com/AndreaMarro/ardesia-next/pull/24#issuecomment-6565534445"],"nextAction":"OPS-005 preparazione verificata su PR24/head837710f55aa56dcf6575c2fc73beebf8b342cf44/digest269372145e37957b391cc7aa19ed479de55842fe885a30f4ce27f40779b8f456, Verify41361908264 e review6565534445; procedura adottata alla revision39/fbadea10. Chiusura canonica tramite retain40/fc86be87 e assign OPS-004 revision41/742d3452 nello stesso claim e budget, nessun PASS trasferito alla nuova sorgente amministrativa che richiede Verify/review proprie prima di adozione. OPS-004 resta queued: questa e una sola chiusura reale, non due consegne consecutive. Prossimo lavoro indipendente PERF-003; M3 soltanto quando cambia un canale autorizzato, senza retry403 immutato. Freeze, policy e dipendenze preservati."},
-    {"id":"OPS-006","title":"Chiusura riprendibile con procedura e runtime distinti","status":"done","priority":0,"owner":"coordinator","scope":["tools/cycle.mjs","tools/cycle-sequential.test.mjs","docs/recurring-work.md","docs/history.md","operations/agent-evals.json",".agents/skills/ardesia-product-slice/SKILL.md",".agents/skills/ardesia-sequential-execution/SKILL.md",".agents/skills/ardesia-sequential-learning/SKILL.md",".agents/skills/ardesia-sequential-review/SKILL.md"],"dependsOn":[],"blockers":[],"exitCriteria":["Riprodurre e correggere criteri canonici indebolibili, chiusura con code runtime/procedura distinte e ripresa da una completion-ref durevole dopo rilascio legittimo; conservare caso valido, replay idempotente e controprove discriminanti.","Conservare task, scope, dipendenze, blocker, ownership, avvio reale/budget, CAS/no force e identita CI/review; rifiutare claim concorrente o non rilasciato, prova su altra SHA, review autrice e contratto alterato. Nessun P2 usato per autorizzare il proprio incarico.","Riusare la proposta41124470 solo dopo lettura di sorgenti/diff e prove applicabili; acquisire Verify e review non autrice della sorgente finale pubblicata prima di adozione esplicita. Skill/eval esistenti coerenti col coordinatore unico; prove sintetiche distinte da recupero reale e due incrementi reali."],"evidence":["docs/history.md","https://github.com/AndreaMarro/ardesia-next/blob/c932e75fdbf6b25a3b664e4a5389e8bac095f301/handoff.json","https://github.com/AndreaMarro/ardesia-next/blob/cfd728a1669c2b62fa78e0910fd1dde30dde2329/handoff.json","https://github.com/AndreaMarro/ardesia-next/actions/runs/41387928237","https://github.com/AndreaMarro/ardesia-next/pull/27#issuecomment-6569072262"],"nextAction":"OPS-006 preparazione verificata in PR27 head dce527f/digest e18861, Verify41387928237 e review6569072262; metodo adottato53/7317edee. Non rifare la correzione. Chiusura amministrativa richiede proprie Verify/review; M3 e prodotto restano pendenti, freeze e accessi invariati."}
+    {
+      "id": "M3-REMOTE",
+      "title": "Accettazione remota completa M3",
+      "status": "done",
+      "priority": 0,
+      "owner": "coordinator",
+      "scope": [
+        "e2e",
+        "tools",
+        "operations"
+      ],
+      "dependsOn": [],
+      "blockers": [
+        "B-OIDC",
+        "B-QA",
+        "B-RESTORE"
+      ],
+      "exitCriteria": [
+        "Tutte le dodici controprove originali sul medesimo candidato protetto; tools/status.mjs produce ACCEPTED con prove autentiche.",
+        "Sorgente operatore read-only e target restore distinto, preesistente, migrato e vuoto; nessun reset, bypass o produzione."
+      ],
+      "evidence": [
+        "https://github.com/AndreaMarro/ardesia-next/issues/19",
+        "https://github.com/AndreaMarro/ardesia-next/blob/336edfb520c45adeec5a316e33c7db597ecd6c06/handoff.json",
+        "https://github.com/AndreaMarro/ardesia-next/actions/runs/41447497762",
+        "https://github.com/AndreaMarro/ardesia-next/pull/32#issuecomment-6580268422"
+      ],
+      "nextAction": "M3 accettata storicamente su d0aa2014/9cbd con12controprove e gate originale; promuovere M3-TRANSITION per conservare baseline/prove e aggiornare motore,guardie,coda prima di M4. Target restore280053 consumato da conservare; nessun rerun CI o nuova accettazione implicita."
+    },
+    {
+      "id": "OPS-003",
+      "title": "Coordinatore Codex sequenziale: prima verifica nativa",
+      "status": "done",
+      "priority": 1,
+      "owner": "coordinator",
+      "scope": [
+        "AGENTS.md",
+        "docs",
+        "operations",
+        "tools",
+        ".agents",
+        ".codex",
+        "e2e/remote-continuity.spec.ts"
+      ],
+      "dependsOn": [],
+      "blockers": [
+        "B-NATIVE-CLIENT"
+      ],
+      "exitCriteria": [
+        "Review non autrice della revisione esatta del metodo; Verify originale della stessa SHA.",
+        "Bootstrap v2, claim/assign/finish e pubblicazione CAS in una vera esecuzione nativa, nessuna modifica main/staging; nessuna ricorrenza dichiarata prima della ricevuta del client.",
+        "Un solo task nativo ogni 90 minuti con modello/effort/ambiente osservati; 55 minuti di budget, nessuna autosospensione; se il client non espone una capacità, registrare il limite senza falsi successi."
+      ],
+      "evidence": [
+        "docs/adr/0008-codex-sequential.md",
+        "https://github.com/AndreaMarro/ardesia-next/pull/20",
+        "https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6560907584",
+        "docs/history.md",
+        "https://github.com/AndreaMarro/ardesia-next/pull/20#issuecomment-6561351328",
+        "https://github.com/AndreaMarro/ardesia-next/actions/runs/41331123301",
+        "https://github.com/AndreaMarro/ardesia-next/blob/34b0ae45e5cbb549ff2087a9799f32d054ff6ce8/handoff.json"
+      ],
+      "nextAction": "Verifica nativa documentata; usare questa coda solo dopo review/Verify della nuova head e adozione esplicita registrate nel cursore. Selezionare PERF-002 sul suo branch isolato senza ripetere setup o benchmark; conservare prima run oltre55minuti e assenza di watchdog globale. Scheduler, modello, accessi e freeze restano invariati."
+    },
+    {
+      "id": "PERF-001",
+      "title": "Review del benchmark penna già completato",
+      "status": "done",
+      "priority": 2,
+      "owner": "coordinator",
+      "scope": [
+        "tools/benchmark.mjs",
+        "tools/benchmark.test.mjs",
+        ".github/workflows",
+        "e2e/README.md"
+      ],
+      "dependsOn": [],
+      "blockers": [
+        "B-FREEZE"
+      ],
+      "exitCriteria": [
+        "Conservare head 174d15bbad2b5d962011dabfed467c330ddc12da e prove originali PR18; review del carico, campioni e limiti.",
+        "Il merge resta subordinato al freeze; non rifare l’esperimento esteso già concluso."
+      ],
+      "evidence": [
+        "https://github.com/AndreaMarro/ardesia-next/pull/18",
+        "https://github.com/AndreaMarro/ardesia-next/actions/runs/41216361836",
+        "https://github.com/AndreaMarro/ardesia-next/actions/runs/41216361872",
+        "https://github.com/AndreaMarro/ardesia-next/pull/18#issuecomment-6560986797",
+        "https://github.com/AndreaMarro/ardesia-next/blob/c5bc72ecba7c34aca5e1958195b4829849a56099/handoff.json"
+      ],
+      "nextAction": "Review conclusa sulla head174d15bb/digestde1f7e93 e ricevuta COMPLETE_INCREMENT revision12; nessun rerun. Merge PR18 ancora subordinato a B-FREEZE; rilievo P3 su e2e/README.md:80 conservato. Proseguire con PERF-002 quando OPS-003 e la nuova procedura sono adottati."
+    },
+    {
+      "id": "PERF-002",
+      "title": "Preparazione isolata del margine strutturale bundle",
+      "status": "done",
+      "priority": 3,
+      "owner": "coordinator",
+      "scope": [
+        "apps/web",
+        "packages",
+        "tools",
+        "docs"
+      ],
+      "dependsOn": [
+        "OPS-003"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "Un consumer/risultato osservabile: margine superiore alla baseline misurata, contando tutti gli asset iniziali/differiti/plugin e mantenendo la soglia 245760.",
+        "Preservare UX/accessibilità, firma/modello scientifico e recovery; review e Verify della head.",
+        "Solo branch isolato e nessun merge/deploy durante il freeze."
+      ],
+      "evidence": [
+        "https://github.com/AndreaMarro/ardesia-next/pull/21",
+        "https://github.com/AndreaMarro/ardesia-next/actions/runs/41339360492",
+        "https://github.com/AndreaMarro/ardesia-next/pull/21#issuecomment-6562546557"
+      ],
+      "nextAction": "Preparazione isolata conclusa su PR21 head d74b8dfa3ada65594a96604146c60df73118ccbd/digest 408e7326e455d4b3dc57bbf600eccd82a135a5b6169c89f65289f101a7fc64f2: Verify41339360492 e review non autrice6562546557 originali, senza rerun. Bundle245701/245760, margine59 ancora fragile. Merge/deploy restano subordinati a B-FREEZE e al gate M3; done non e accettazione remota. Dopo adozione della coda riconciliata, priorita M3-ACCESS con restore gia predisposto nella ricevuta6564228513, poi M3-REMOTE se i prerequisiti sono provati; PERF-003 diventa alternativa implementativamente eleggibile."
+    },
+    {
+      "id": "PERF-003",
+      "title": "Localizzare costo snapshot e ottimizzare solo il collo di bottiglia osservato",
+      "status": "done",
+      "priority": 4,
+      "owner": "coordinator",
+      "scope": [
+        "packages/server",
+        "packages/core",
+        "tools",
+        "docs"
+      ],
+      "dependsOn": [
+        "PERF-002"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "Confrontare workload e crescita reali usando prima gli artefatti PR18, senza attribuire causalità a differenze tra macchine.",
+        "Una sola ipotesi discriminante; campioni grezzi, identità ambiente, correttezza/transazioni/idempotenza/recovery invariati."
+      ],
+      "evidence": [
+        "https://github.com/AndreaMarro/ardesia-next/blob/c932e75fdbf6b25a3b664e4a5389e8bac095f301/handoff.json",
+        "https://github.com/AndreaMarro/ardesia-next/actions/runs/41377509242",
+        "https://github.com/AndreaMarro/ardesia-next/pull/25#issuecomment-6567701649"
+      ],
+      "nextAction": "PERF-003 preparazione verificata in PR25 head09c9da8/digest2c34a7cc, Verify41377509242 e review6567701649 originali; non rifare prodotto o misure. Integrazione congelata fino al gate M3, nessuna nuova accettazione remota o prestazionale dedotta."
+    },
+    {
+      "id": "M3-TRANSITION",
+      "title": "Conservare M3 accettata e abilitare la fase successiva",
+      "status": "deferred",
+      "priority": 5,
+      "owner": "coordinator",
+      "scope": [
+        "operations",
+        "tools",
+        "docs"
+      ],
+      "dependsOn": [
+        "M3-REMOTE"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "Conservare le prove originali M3 e baseline con SHA/digest/ambiente, senza trasferirle a un nuovo candidato.",
+        "Aggiornare coerentemente motore tools/status.mjs, guardie di fase e coda con review/controprove; nessun secondo motore di stato.",
+        "Sciogliere il freeze soltanto dopo il gate originale; le autorizzazioni di produzione e spesa restano separate."
+      ],
+      "evidence": [
+        "docs/product-map.md",
+        "docs/recurring-work.md"
+      ],
+      "nextAction": "Quando M3 è realmente accettata, promuovere questo task e preparare un successore. Non continuare a riassegnare M3 perché cambia il candidato."
+    },
+    {
+      "id": "M4-REUSE",
+      "title": "Secondo dominio scientifico sullo stesso Core/Host",
+      "status": "deferred",
+      "priority": 6,
+      "owner": "coordinator",
+      "scope": [
+        "plugins",
+        "packages/plugin-sdk",
+        "packages/plugin-host",
+        "tools",
+        "docs"
+      ],
+      "dependsOn": [
+        "M3-TRANSITION"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "Un secondo modello da consumer/fonti reali, con unità/ipotesi/casi limite e firma; stesso Host/Core/persistenza.",
+        "Misurare il costo del riuso e produrre controprove scientifiche/UX; aggiungere il contratto M4 al motore di accettazione esistente."
+      ],
+      "evidence": [
+        "docs/product-map.md"
+      ],
+      "nextAction": "Scegliere una prima unità testabile, non un catalogo di simulatori. Poiseuille rimane candidato da verificare, non una decisione inventata."
+    },
+    {
+      "id": "COURSES-MARKETPLACE",
+      "title": "Prima unità completa di microcorso recuperata dal patrimonio",
+      "status": "deferred",
+      "priority": 7,
+      "owner": "coordinator",
+      "scope": [
+        "docs",
+        "packages",
+        "apps/web",
+        "plugins"
+      ],
+      "dependsOn": [
+        "M4-REUSE"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "Un obiettivo con fonte/revisione/diritti, prerequisiti, spiegazione, previsione, attività, feedback, recupero e transfer.",
+        "DRAFT finché non esistono le review scientifiche/editoriali richieste; nessuna approvazione umana simulata.",
+        "Corso, edizione, lezione e consegna versionati e distinti nello stesso Core."
+      ],
+      "evidence": [
+        "docs/product-map.md"
+      ],
+      "nextAction": "Usare la matrice 4 corsi della mappa prodotto e recuperare un solo obiettivo. Poi ripetere lo stesso contratto sui successivi; non scambiare 200 sotto-obiettivi editoriali per corsi accettati."
+    },
+    {
+      "id": "LESSON-CONTINUITY",
+      "title": "Lezione viva: percorso completo fonte-tentativo-feedback-ripresa",
+      "status": "deferred",
+      "priority": 8,
+      "owner": "coordinator",
+      "scope": [
+        "apps/web",
+        "packages",
+        "e2e",
+        "docs"
+      ],
+      "dependsOn": [
+        "M4-REUSE"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "Stessa identità/revisione fra lavagna, taccuino, reader e laboratorio; fonti accessibili, undo/redo semantico quando pertinente.",
+        "Un learner riprende il lavoro corretto dopo una sessione indipendente, mantenendo proprietà e consenso."
+      ],
+      "evidence": [
+        "docs/product-map.md"
+      ],
+      "nextAction": "Scegliere un flusso che usa gli oggetti esistenti e provarne la continuità, senza nuova superficie indipendente."
+    },
+    {
+      "id": "LEARNER-PERSONAL",
+      "title": "Studio autonomo e proprietà privata degli artefatti",
+      "status": "deferred",
+      "priority": 9,
+      "owner": "coordinator",
+      "scope": [
+        "packages/core",
+        "packages/server",
+        "packages/remote-client",
+        "apps/web",
+        "e2e",
+        "docs"
+      ],
+      "dependsOn": [
+        "M3-TRANSITION"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "Un percorso learner-only autorizzato con export e consenso revocabile; note/Knowledge privati per default.",
+        "Controprove per accesso docente non condiviso, cambio account e revoca; nessun entitlement commerciale confuso con ruolo."
+      ],
+      "evidence": [
+        "docs/product-map.md"
+      ],
+      "nextAction": "Progettare una singola capacità personale con consumer; non assumere già accettato il percorso universale dell’ambizione legacy."
+    },
+    {
+      "id": "KNOWLEDGE-DIARY",
+      "title": "Diario errori e Knowledge/Library come proiezioni verificabili",
+      "status": "deferred",
+      "priority": 10,
+      "owner": "coordinator",
+      "scope": [
+        "packages",
+        "apps/web",
+        "e2e",
+        "docs"
+      ],
+      "dependsOn": [
+        "LESSON-CONTINUITY"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "Errore legato a passaggio e revisione esatti, contestazione/rettifica, recupero e retest diverso.",
+        "Proiezioni ricostruibili dagli eventi Core, privacy/revoca applicate; nessuna mastery inventata dai click."
+      ],
+      "evidence": [
+        "docs/product-map.md"
+      ],
+      "nextAction": "Implementare un errore→recupero→nuova prova, poi estendere ricerca/backlink/fonti; niente secondo archivio autorevole."
+    },
+    {
+      "id": "AUDIO-REPLAY",
+      "title": "Audio contestuale, marker e ritorno alla fonte",
+      "status": "deferred",
+      "priority": 11,
+      "owner": "coordinator",
+      "scope": [
+        "packages",
+        "apps/web",
+        "e2e",
+        "docs"
+      ],
+      "dependsOn": [
+        "LESSON-CONTINUITY"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "Capture esplicita, fonte/versione/timecode coerenti, marker→oggetto e riapertura remota autorizzata.",
+        "Buffering/retry/erasure/consenso e indisponibilità provati; provider runtime non auto-autorizzati."
+      ],
+      "evidence": [
+        "docs/product-map.md"
+      ],
+      "nextAction": "Una registrazione sintetica e un marker verificabile prima di un sistema completo; nessuna registrazione personale senza consenso."
+    },
+    {
+      "id": "CREATOR-PACK",
+      "title": "Creator: comporre, salvare e riaprire un pack DRAFT",
+      "status": "deferred",
+      "priority": 12,
+      "owner": "coordinator",
+      "scope": [
+        "packages",
+        "apps/web",
+        "plugins",
+        "e2e",
+        "docs"
+      ],
+      "dependsOn": [
+        "COURSES-MARKETPLACE"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "Un pack/workflow composto e riaperto tramite gli stessi contratti Host/SDK/Core; revisioni, diritti e compatibilità.",
+        "Creatività distinta da pubblicazione, nessun autopublish dei DRAFT."
+      ],
+      "evidence": [
+        "docs/product-map.md"
+      ],
+      "nextAction": "Prima Configure/Compose riusabile; no-code/code sono evoluzioni dello stesso contratto, non un’altra app."
+    },
+    {
+      "id": "MARKETPLACE-EXTENDED",
+      "title": "Marketplace/Discover unificato per plugin, pack e workflow",
+      "status": "deferred",
+      "priority": 13,
+      "owner": "coordinator",
+      "scope": [
+        "packages",
+        "apps/web",
+        "plugins",
+        "e2e",
+        "docs"
+      ],
+      "dependsOn": [
+        "CREATOR-PACK"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "Un item reale attraversa catalogo, consenso, uso, riapertura, revoca e aggiornamento compatibile con fonte/licenza/review.",
+        "Privacy Knowledge separata da discovery; esecuzione terzi, acquisti/payout/pubblicazione richiedono gate/mandati propri."
+      ],
+      "evidence": [
+        "docs/product-map.md"
+      ],
+      "nextAction": "Estendere il ciclo first-party M2 con un pack verificato, non un checkout fittizio o commissioni inventate."
+    },
+    {
+      "id": "TEACHER-EDITIONS",
+      "title": "Regia docente: edizioni, capienza, calendario e follow-up",
+      "status": "deferred",
+      "priority": 14,
+      "owner": "coordinator",
+      "scope": [
+        "packages",
+        "apps/web",
+        "e2e",
+        "docs"
+      ],
+      "dependsOn": [
+        "COURSES-MARKETPLACE"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "Una edizione con programma/versione, iscrizione e capienza transazionale; identità e ruoli scoped.",
+        "Prova del flusso tutor/learner senza comunicazioni a studenti reali; un ICS/mock non certifica un’integrazione Calendar live."
+      ],
+      "evidence": [
+        "docs/product-map.md"
+      ],
+      "nextAction": "Scegliere una unità edizione→assegnazione→evidenza condivisa; calendario con adapter autorizzato solo quando necessario."
+    },
+    {
+      "id": "MCP-CORE",
+      "title": "Adapter MCP sottile sul Core Next per un consumer reale",
+      "status": "deferred",
+      "priority": 15,
+      "owner": "coordinator",
+      "scope": [
+        "packages",
+        "server",
+        "tools",
+        "docs"
+      ],
+      "dependsOn": [
+        "M3-TRANSITION"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "Una lettura utile da host/trasporto realmente verificati, con scope, revoca, revisioni e limiti.",
+        "Stesso Core/permessi/ricevute; niente token passthrough o scritture DB dirette."
+      ],
+      "evidence": [
+        "docs/integrations.md",
+        "docs/product-map.md"
+      ],
+      "nextAction": "Usare il MCP legacy solo come fonte read-only; i connettori della fabbrica non dimostrano il MCP del prodotto."
+    },
+    {
+      "id": "PORTABILITY-RECOVERY",
+      "title": "Portabilità e recupero oltre il caso iniziale",
+      "status": "deferred",
+      "priority": 16,
+      "owner": "coordinator",
+      "scope": [
+        "packages",
+        "apps/web",
+        "e2e",
+        "tools",
+        "docs"
+      ],
+      "dependsOn": [
+        "M3-TRANSITION"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "Un roundtrip documentato con versioni/perdite esplicite e compatibilità; recovery dei comandi/account preservata.",
+        "Offline/cloud, conflitti multi-device e asset/media richiedono prove distinte; backup logico non è restore totale."
+      ],
+      "evidence": [
+        "docs/product-map.md"
+      ],
+      "nextAction": "Scegliere un formato/consumer reale e conservarne provenienza e revoca; non introdurre un secondo sync engine."
+    },
+    {
+      "id": "M5-PRODUCT",
+      "title": "Accettazione prodotto e percorso di rilascio stabile",
+      "status": "deferred",
+      "priority": 17,
+      "owner": "coordinator",
+      "scope": [
+        "apps/web",
+        "packages",
+        "e2e",
+        "tools",
+        "docs",
+        "operations"
+      ],
+      "dependsOn": [
+        "M4-REUSE"
+      ],
+      "blockers": [],
+      "exitCriteria": [
+        "Criteri D01–D68 pertinenti, scienza/UX/accessibilità/sicurezza/performance/recovery verificati sul candidato.",
+        "Prove umane e device fisici richieste restano separate dalla CI; produzione richiede proprio mandato.",
+        "Gli ambiti non ancora accettati della mappa rimangono nel backlog: M5 non equivale alla visione interamente realizzata."
+      ],
+      "evidence": [
+        "docs/acceptance/D01-D68.json",
+        "docs/product-map.md"
+      ],
+      "nextAction": "Preparare evidenze per singolo criterio; ripetere il gate sulle release interessate senza cancellare baseline accettate."
+    },
+    {
+      "id": "OPS-004",
+      "title": "Riconciliazione canonica delle consegne verificate, su richiesta",
+      "status": "queued",
+      "priority": 0,
+      "owner": "coordinator",
+      "scope": [
+        "operations/coordination.json",
+        "docs/history.md"
+      ],
+      "dependsOn": [],
+      "blockers": [],
+      "exitCriteria": [
+        "Un disallineamento concreto tra consegna verificata e coda viene riconciliato usando SHA/digest, Verify e review non autrice originali; nessun PASS trasferito a nuove sorgenti.",
+        "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
+        "La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."
+      ],
+      "evidence": [
+        "https://github.com/AndreaMarro/ardesia-next/blob/f1822bcbbee93201c0a99c804c16b0d293443942/handoff.json",
+        "https://github.com/AndreaMarro/ardesia-next/pull/21#issuecomment-6562546557",
+        "docs/history.md"
+      ],
+      "nextAction": "Prima riconciliare PERF-002 da PR21 d74b8dfa/408e7326, Verify41339360492 e review6562546557, senza rifare prodotto/benchmark. Questo e un incarico operativo riutilizzabile, senza dipendenze prodotto: selezionarlo solo quando esiste un delta amministrativo provato; in assenza di delta saltarlo, senza commenti o commit. Dopo ogni consegna resta queued finche OPS-005 non fornisce una chiusura verificata equivalente. Non modificare i propri criteri o autorizzare task nuovi tramite questo scope."
+    },
+    {
+      "id": "M3-ACCESS",
+      "title": "Preparare i prerequisiti remoti prima del gate M3",
+      "status": "done",
+      "priority": 0,
+      "owner": "coordinator",
+      "scope": [
+        "tools",
+        "e2e",
+        "operations",
+        "docs"
+      ],
+      "dependsOn": [],
+      "blockers": [],
+      "exitCriteria": [
+        "Distinguere le capacita del runner nativo da quelle della chat: provare OIDC nel progetto/origin corretti, tre identita QA esistenti e connessioni operatore senza esportare segreti.",
+        "Target restore distinto, vuoto e migrato verificato sul progetto Neon Free esistente; conservare i due restore popolati, senza reset o scritture alla sorgente. Nessun nuovo progetto, compute, servizio o piano a pagamento.",
+        "Aggiornare soltanto i blocker realmente risolti e le osservazioni datate; la preparazione non accetta M3 e non cambia schema del database attivo o protezioni."
+      ],
+      "evidence": [
+        "https://github.com/AndreaMarro/ardesia-next/issues/19#issuecomment-6563706873",
+        "docs/release-runbook.md",
+        "e2e/README.md",
+        "docs/history.md",
+        "https://github.com/AndreaMarro/ardesia-next/blob/8405fa9646f4a03aba634efefc87ae529ab50b31/handoff.json",
+        "https://github.com/AndreaMarro/ardesia-next/pull/30#issuecomment-6574646362",
+        "https://github.com/AndreaMarro/ardesia-next/actions/runs/41426940372"
+      ],
+      "nextAction": "M3-ACCESS done con prove reali PR30; non ripetere reset o diagnosi. Selezionare M3-REMOTE sul candidato03622 e dplFTsy, canali pronti; conservare tutte12controprove e restore vuoto prima uso."
+    },
+    {
+      "id": "OPS-005",
+      "title": "Guardie HANDOFF e chiusura canonica senza deadlock",
+      "status": "done",
+      "priority": 1,
+      "owner": "coordinator",
+      "scope": [
+        "tools/cycle.mjs",
+        "tools/cycle.test.mjs",
+        "tools/cycle-sequential.test.mjs",
+        "tools/check-operations.mjs",
+        "tools/check-operations.test.mjs",
+        "operations/coordination.json",
+        "docs/recurring-work.md",
+        "docs/history.md"
+      ],
+      "dependsOn": [],
+      "blockers": [],
+      "exitCriteria": [
+        "Riprodurre prima il P2: HANDOFF verso task assente, fuori scope, con dipendenza incompleta o blocker irrisolto; il percorso corretto valida contro la coda canonica reale.",
+        "Un task completato con prove valide puo riconciliare la propria riga e selezionare il successore nello stesso budget attraverso un percorso esplicitamente autorizzato e testato; nessun rinnovo budget o secondo writer.",
+        "Controprove per claim concorrente, review autrice, prova su SHA diversa, policy alterata e coda ipotetica; mantenere lettura storica v1/v2, CAS/no force, review indipendente e Verify della head."
+      ],
+      "evidence": [
+        "https://github.com/AndreaMarro/ardesia-next/blob/f1822bcbbee93201c0a99c804c16b0d293443942/handoff.json",
+        "docs/history.md",
+        "https://github.com/AndreaMarro/ardesia-next/actions/runs/41361908264",
+        "https://github.com/AndreaMarro/ardesia-next/pull/24#issuecomment-6565534445"
+      ],
+      "nextAction": "OPS-005 preparazione verificata su PR24/head837710f55aa56dcf6575c2fc73beebf8b342cf44/digest269372145e37957b391cc7aa19ed479de55842fe885a30f4ce27f40779b8f456, Verify41361908264 e review6565534445; procedura adottata alla revision39/fbadea10. Chiusura canonica tramite retain40/fc86be87 e assign OPS-004 revision41/742d3452 nello stesso claim e budget, nessun PASS trasferito alla nuova sorgente amministrativa che richiede Verify/review proprie prima di adozione. OPS-004 resta queued: questa e una sola chiusura reale, non due consegne consecutive. Prossimo lavoro indipendente PERF-003; M3 soltanto quando cambia un canale autorizzato, senza retry403 immutato. Freeze, policy e dipendenze preservati."
+    },
+    {
+      "id": "OPS-006",
+      "title": "Chiusura riprendibile con procedura e runtime distinti",
+      "status": "done",
+      "priority": 0,
+      "owner": "coordinator",
+      "scope": [
+        "tools/cycle.mjs",
+        "tools/cycle-sequential.test.mjs",
+        "docs/recurring-work.md",
+        "docs/history.md",
+        "operations/agent-evals.json",
+        ".agents/skills/ardesia-product-slice/SKILL.md",
+        ".agents/skills/ardesia-sequential-execution/SKILL.md",
+        ".agents/skills/ardesia-sequential-learning/SKILL.md",
+        ".agents/skills/ardesia-sequential-review/SKILL.md"
+      ],
+      "dependsOn": [],
+      "blockers": [],
+      "exitCriteria": [
+        "Riprodurre e correggere criteri canonici indebolibili, chiusura con code runtime/procedura distinte e ripresa da una completion-ref durevole dopo rilascio legittimo; conservare caso valido, replay idempotente e controprove discriminanti.",
+        "Conservare task, scope, dipendenze, blocker, ownership, avvio reale/budget, CAS/no force e identita CI/review; rifiutare claim concorrente o non rilasciato, prova su altra SHA, review autrice e contratto alterato. Nessun P2 usato per autorizzare il proprio incarico.",
+        "Riusare la proposta41124470 solo dopo lettura di sorgenti/diff e prove applicabili; acquisire Verify e review non autrice della sorgente finale pubblicata prima di adozione esplicita. Skill/eval esistenti coerenti col coordinatore unico; prove sintetiche distinte da recupero reale e due incrementi reali."
+      ],
+      "evidence": [
+        "docs/history.md",
+        "https://github.com/AndreaMarro/ardesia-next/blob/c932e75fdbf6b25a3b664e4a5389e8bac095f301/handoff.json",
+        "https://github.com/AndreaMarro/ardesia-next/blob/cfd728a1669c2b62fa78e0910fd1dde30dde2329/handoff.json",
+        "https://github.com/AndreaMarro/ardesia-next/actions/runs/41387928237",
+        "https://github.com/AndreaMarro/ardesia-next/pull/27#issuecomment-6569072262"
+      ],
+      "nextAction": "OPS-006 preparazione verificata in PR27 head dce527f/digest e18861, Verify41387928237 e review6569072262; metodo adottato53/7317edee. Non rifare la correzione. Chiusura amministrativa richiede proprie Verify/review; M3 e prodotto restano pendenti, freeze e accessi invariati."
+    }
   ],
   "claims": []
 }
