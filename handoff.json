@@ -3,10 +3,17 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 87,
-  "updatedAt": "2026-11-02T13:51:08.912Z",
+  "revision": 88,
+  "updatedAt": "2026-11-02T14:05:46.000Z",
   "procedureRef": "656d1967ed75b56520d2e320c538950b3160c076",
-  "activeRun": null,
+  "activeRun": {
+    "runId": "chatgpt-m3-scoped-preparation-20261102T140000Z",
+    "actor": "codex",
+    "startedAt": "2026-11-02T14:00:00.000Z",
+    "claimedAt": "2026-11-02T14:05:46.000Z",
+    "writeUntil": "2026-11-02T14:45:00.000Z",
+    "closeBy": "2026-11-02T14:55:00.000Z"
+  },
   "packet": {
     "id": "m3-remote-owner-recovered-20261102",
     "taskId": "M3-REMOTE",
@@ -31,51 +38,29 @@
     "evidence": [
       {
         "kind": "observation",
-        "name": "owner-revocation-and-bounded-recovery",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/issues/19#issuecomment-6578656295",
+        "name": "previous-released-checkpoint-and-full-evidence",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/blob/544c7f458e725b27c93c3188718bded7eae00846/handoff.json",
         "headSha": "d0aa2014b131335d5c278543cea35098dcefdfd3",
         "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
         "result": "PASS",
-        "scope": "Direct owner mandate administratively revokes claim85. This is not proof of process cessation, not a native Codex execution and not a simulated finish. Old activeRun and all evidence remain at immutable parent245b1d93; lastRun preserved. New executor ChatGPT support, logical actor codex per v2. Only fresh isolated restore preparation and metadata recovery; no shared staging/source DB mutation without authorized preflight.",
-        "access": "metadata",
-        "artifactDigest": null
-      },
-      {
-        "kind": "ci",
-        "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41447497762",
-        "headSha": "d0aa2014b131335d5c278543cea35098dcefdfd3",
-        "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
-        "result": "PASS",
-        "scope": "Original merge Verify already read and hash/CRC/bindings checked by preceding support session, receipt PR32/6578107406. Reused, not rerun or reread here. Merge source tree matches reviewed PR32; no remote acceptance transferred.",
-        "access": "metadata",
-        "artifactDigest": "3291d51f87993ea641e3a6386a604b1c78fac6f6fef958f8cac44f088c0f65eb"
-      },
-      {
-        "kind": "observation",
-        "name": "preserved-revoked-checkpoint",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/blob/245b1d93aebc66f4e982324d0338a80a4c42b7d0/handoff.json",
-        "headSha": "ba3b27ecd77dcdcd0f49502fb7e7d2dc8edc4800",
-        "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
-        "result": "PASS",
-        "scope": "Revoked claim and prior head review, local FAIL and remote rejection remain pinned at immutable parent. No prior finish overwritten or fabricated.",
+        "scope": "Immutable parent87 preserves every prior evidence, owner revocation, original merge CI and the migration refusal. Read before this reservation: no activeRun. A new non-native ChatGPT support session holds this bounded operator lease under the renewed direct owner request. Timestamp14:00 is a conservative budget boundary, not an observed native task_started event; first local clock14:03:26Z. No model/effort assertion, scheduler or procedure adoption.",
         "access": "metadata",
         "artifactDigest": null
       },
       {
         "kind": "observation",
-        "name": "fresh-restore-created-migration-refused",
+        "name": "restore-still-uninitialized-readonly",
         "reference": "https://github.com/AndreaMarro/ardesia-next/issues/19#issuecomment-6578841653",
         "headSha": "d0aa2014b131335d5c278543cea35098dcefdfd3",
         "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
         "result": "NOT_RUN",
-        "scope": "Database280053 created13:44:35Z, isolated in existing project/branch/owner. Canonical4480byte SQL source verified locally; migration tool call rejected by safety. READ ONLY13:46:51.248Z confirms application schema absent and zero tables. No applied digest or M3 acceptance claimed. No alternate retry of denied action. Existing270479 still populated and preserved.",
+        "scope": "New READ ONLY observation2026-11-02T14:01:32.770Z confirms database280053 still has no application schema and zero user tables. Existing owner connection works. Prior safety refusal remains; no old migration or new acceptance is asserted.",
         "access": "metadata",
         "artifactDigest": null
       }
     ],
     "blockers": [],
-    "nextAction": "Claim85 is administratively revoked under direct owner mandate issue19/6578656295, NOT awaiting its ordinary finish; preserve its immutable history and do not impersonate it. Current support run is finished/released. Use original merge d0aa2014/digest9cbd6617 and existing candidate dpl_HhzGdaLXgddb8HGDwUadEEcoabL8; reuse CI41447497762/artifact13143386143/receipt6578107406, no merge/CI/build duplication. New target database280053 ardesia_next_m3_restore_20261102_d0aa2014 exists on royal-bar-31252959/br-broad-mud-bajjd3j7 with owner ardesia_next_m3_owner. It is empty BUT UNMIGRATED: the migration was refused by this chat tool safety, and post-refusal READ ONLY confirmed zero tables/schema absent. Preserve refusal receipt6578841653; do not retry the same denied action here or route it to another tool solely to evade the refusal. Resolve initialization only through a permitted authorized process, then independently verify migration/empty state before running M3. Do not create a duplicate target or reset populated270479. Resource hash for direct host ep-odd-cloud-ba3huvyi.c-8.eu-central-1.aws.neon.tech:5432 is c515ffc98b220ec0919877b83bf69d8dbdaddeb14ec60c8c64388093870af605. Existing private QA/OIDC channels are native-runner capabilities, not present in this support runtime; do not rotate credentials. Stage alias remains old dplFTsy; authenticated preflight and controlled alias switch remain prerequisites before all12counterproofs. READY is coordination intake, not permission to test an uninitialized target or M3 acceptance. Do not re-open an unchanged missing-claim blocker; no new recurring scheduler. Preserve vercel.json on the metadata-only state branch so cursor updates do not become application deployments.",
+    "nextAction": "Bounded support reservation for resolving the existing empty restore, not a native scheduled Codex run. Do not touch source database, populated restores, existing QA passwords, staging alias, scheduler or model. Do not recreate resources or rerun verified CI. The previous broad migration request included dynamic execution and conditional global role creation; any safer proposal must exclude global role/privilege changes and preserve the refusal, without treating unknown refusal cause as diagnosed. No application source writes are authorized by this coordination packet. Preserve vercel.json on this metadata branch. Release this lease explicitly before concluding, even if the remaining operation cannot be performed. Product gate and all12counterproofs remain unchanged.",
     "review": null
   },
   "lastRun": {
