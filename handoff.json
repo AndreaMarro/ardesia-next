@@ -3,16 +3,16 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 67,
-  "updatedAt": "2026-11-02T09:23:34.745Z",
+  "revision": 68,
+  "updatedAt": "2026-11-02T09:33:11Z",
   "procedureRef": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
   "activeRun": {
     "runId": "ardesia-m3-repair-20261102T091655Z",
     "actor": "codex",
-    "startedAt": "2026-11-02T09:16:55.000Z",
+    "startedAt": "2026-11-02T09:16:31.000Z",
     "claimedAt": "2026-11-02T09:21:58.306Z",
-    "writeUntil": "2026-11-02T10:01:55.000Z",
-    "closeBy": "2026-11-02T10:11:55.000Z"
+    "writeUntil": "2026-11-02T10:01:31.000Z",
+    "closeBy": "2026-11-02T10:11:31.000Z"
   },
   "packet": {
     "id": "m3-access-diagnosis-20261102T091655Z",
@@ -21,7 +21,7 @@
     "disposition": "READY",
     "kind": "implementation",
     "notBefore": "2026-11-02T09:21:58.306Z",
-    "expiresAt": "2026-11-02T10:11:55.000Z",
+    "expiresAt": "2026-11-02T10:11:31.000Z",
     "source": {
       "baseSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
       "headSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
