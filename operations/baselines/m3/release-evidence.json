@@ -1,0 +1,37 @@
+{
+  "commit": "d0aa2014b131335d5c278543cea35098dcefdfd3",
+  "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
+  "deploymentId": "dpl_HhzGdaLXgddb8HGDwUadEEcoabL8",
+  "projectId": "prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd",
+  "url": "https://ardesia-next-staging.vercel.app",
+  "status": "READY",
+  "observedAt": "2026-11-02T14:45:02Z",
+  "repository": "AndreaMarro/ardesia-next",
+  "visibility": "public",
+  "sourcePublication": {
+    "kind": "explicit-owner-instruction",
+    "owner": "AndreaMarro",
+    "repository": "AndreaMarro/ardesia-next",
+    "visibility": "public",
+    "scope": "source-only",
+    "recordedAt": "2026-10-29T14:47:33Z"
+  },
+  "target": "preview",
+  "providerTarget": null,
+  "ci": {
+    "headSha": "d0aa2014b131335d5c278543cea35098dcefdfd3",
+    "conclusion": "success",
+    "url": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41447497762"
+  },
+  "buildInfo": {
+    "commit": "d0aa2014b131335d5c278543cea35098dcefdfd3",
+    "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
+    "application": "ardesia-next",
+    "milestone": "M3"
+  },
+  "protection": {
+    "deploymentType": "all",
+    "anonymousStatus": 401
+  },
+  "m3ReportDigest": "7e3efaeed39f2ecb0417cd984d9a3e4647b9d87055abc8e7a5cd6161127a74b2"
+}

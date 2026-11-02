@@ -1,0 +1,57 @@
+{
+  "kind": "ardesia-remote-preflight",
+  "origin": "https://ardesia-next-staging.vercel.app",
+  "expected": {
+    "commit": "d0aa2014b131335d5c278543cea35098dcefdfd3",
+    "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4"
+  },
+  "startedAt": "2026-11-02T14:45:25.462Z",
+  "completedAt": "2026-11-02T14:45:27.701Z",
+  "passed": true,
+  "buildIdentityMatched": true,
+  "deploymentIdentityVerified": false,
+  "observedBuild": {
+    "commit": "d0aa2014b131335d5c278543cea35098dcefdfd3",
+    "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
+    "application": "ardesia-next",
+    "milestone": "M3"
+  },
+  "checks": [
+    {
+      "name": "anonymousProtection",
+      "passed": true,
+      "status": 401
+    },
+    {
+      "name": "buildIdentity",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "postgresHealth",
+      "passed": true,
+      "status": 200,
+      "configured": true,
+      "authority": "postgres"
+    },
+    {
+      "name": "applicationSessionRequired",
+      "passed": true,
+      "status": 401,
+      "code": "UNAUTHENTICATED"
+    },
+    {
+      "name": "foreignOriginRejected",
+      "passed": true,
+      "status": 403,
+      "code": "ORIGIN_REJECTED"
+    },
+    {
+      "name": "buildIdentityRecheck",
+      "passed": true,
+      "status": 200
+    }
+  ],
+  "failureCode": null,
+  "m3Acceptance": "NOT_EVALUATED"
+}

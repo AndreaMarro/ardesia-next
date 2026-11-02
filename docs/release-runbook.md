@@ -37,6 +37,16 @@ Prima della distribuzione eseguire anche il rebuild del bundle firmato e tutti i
 
 Usare `preview/m2` alla SHA esatta del candidato, con gli stessi controlli di target/protezione qui descritti. Il build-info dichiara M2. Dopo il ciclo marketplace autenticato, compilare anche `m2Browser` secondo lo schema, importare gli artefatti originali CI della stessa SHA, eseguire `npm run status` e leggere i gate effettivi. Non accettare M2 senza M1 valido, 24 flussi M2 e prove remote. Il precedente snapshot v3 richiede un reader v3 anche in un rilascio di ripristino; disattivare il modulo conserva i dati.
 
+## Baseline storica e fase successiva
+
+M3 e stata accettata sul runtime `d0aa2014b131335d5c278543cea35098dcefdfd3`, digest `9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4`. `operations/baselines/m3` conserva 15 report originali, manifest dei byte, ambiente/deployment, Verify originale e completion-ref. `npm run status` riusa i gate esistenti e riassembla offline i produttori originali: un flag ACCEPTED o una sola URL non bastano. Non esegue rete, login o restore per leggere la baseline.
+
+La fase puo proseguire a M4 soltanto con baseline completa e valida. `acceptedBaselines` conserva identita storiche; `M3`, verification, browser e deployment continuano a descrivere esclusivamente la sorgente corrente. Le vecchie prove non certificano una nuova build. Le guardie di coda leggono i report alla procedureRef immutabile quando selezionano un task, non da un archivio locale sostitutivo.
+
+La policy puo sciogliere insieme i freeze main/staging solo dopo il gate originale, M3-REMOTE done e B-FREEZE risolto; entra in vigore dopo Verify/review e adozione della transizione. Il successore M4 rimane dipendente da M3-TRANSITION done. Restano obbligatorie Verify della head finale, review indipendente e controprove pertinenti ai cambiamenti prima di integrare/distribuire. Protezioni, autorizzazioni di produzione/spesa/privilegi e approvazioni umane non derivano dalla baseline. I restore gia consumati 270479/280053 si conservano: nessun reset o collaudo identico.
+
+Rollback: nuovo commit dei soli cambiamenti della transizione, ripristino congiunto dei due flag di freeze e task M4 deferred, con rettifica append-only e adozione verificata. Conservare baseline/prove originali, nessuna modifica al database o allo scheduler. I paragrafi M3 seguenti restano la procedura per nuove prove remote quando realmente necessarie.
+
 ## Gate remoto M3
 
 Prima della prova configurare un database dedicato e credenziale runtime limitata soltanto nella preview; mantenere separata la credenziale dell’operatore. Eseguire migrazione e provisioning sintetico esplicitamente. Un deployment READY senza database non chiude M3.

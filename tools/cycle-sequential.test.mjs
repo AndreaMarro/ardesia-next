@@ -22,9 +22,22 @@ const task = (id = 'TASK-1', scope = ['tools']) => ({id, title:'Bounded syntheti
  scope, dependsOn:[], blockers:[], exitCriteria:['Consumer and evidence'], evidence:[], nextAction:'Implement the bounded task'});
 const blocker = (id='B') => ({id,status:'blocked',reason:'Missing prerequisite',lastCheckedAt:T,recheckWhen:'Prerequisite changes',sources:['docs/history.md']});
 const queue = () => ({...JSON.parse(readFileSync(new URL('../operations/coordination.json', import.meta.url), 'utf8')),
+ policy:{maxActiveIncrements:1,maxRemoteWriters:1,productionAuthorized:false,newSpendAuthorized:false,
+  agentLaunchedCodexJobsAuthorized:false,ownerScheduledCodexAllowed:true,mainFrozen:true,stagingFrozen:true},
  updatedAt:T, tasks:[task()], blockers:[], claims:[]});
 const select = (data, packet, q = queue()) => cycle.assignCycle(data, {expectedRevision: data.revision, actor: 'codex', runId: 'run-1', packet, queue: q}, {now: at(9),readQueue:()=>q});
 const finish = (data, packet, outcome, q = queue()) => cycle.finishCycle(data, {expectedRevision: data.revision, actor: 'codex', runId: 'run-1', packet, outcome, queue:q, summary: 'Synthetic test result'}, {now: at(50),readQueue:()=>q});
+
+test('post-M3 selection reads baseline at the immutable procedure ref, never a local substitute', () => {
+ const q=JSON.parse(readFileSync(new URL('../operations/coordination.json',import.meta.url),'utf8'));
+ const canonical=q.tasks.find(t=>t.id==='OPS-004');
+ const p={...implementation(),taskId:canonical.id,allowedPaths:canonical.scope,exitCriteria:canonical.exitCriteria};
+ const s=fixture();s.procedureRef=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+ const a=claim(s), input={expectedRevision:a.revision,actor:'codex',runId:'run-1',packet:p,queue:q};
+ assert.equal(cycle.assignCycle(a,input,{now:at(9),readQueue:()=>q}).packet.taskId,'OPS-004');
+ const missing=structuredClone(a);missing.procedureRef='f'.repeat(40);
+ assert.throws(()=>cycle.assignCycle(missing,input,{now:at(9),readQueue:()=>q}),/policy/);
+});
 
 test('v1 historical coordination remains valid', () => assert.deepEqual(cycle.validateCycle(fixture(false)), []));
 test('v2 accepts Codex coordinator without a Pro worker', () => assert.deepEqual(cycle.validateCycle(fixture()), []));

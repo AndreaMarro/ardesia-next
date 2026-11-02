@@ -1,6 +1,7 @@
 import {readFileSync, realpathSync, statSync} from 'node:fs';
 import {isAbsolute, relative, resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
+import {readM3Baseline, m3BaselineMatches} from './status.mjs';
 
 const record = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 const text = value => typeof value === 'string' && value.trim() === value && value.length > 0;
@@ -53,7 +54,7 @@ function isolatedBranch(value) {
 }
 
 /** Validate coordination metadata only. This neither verifies evidence nor accepts a product milestone. */
-export function validateCoordination(data, {root} = {}) {
+export function validateCoordination(data, {root, readBaseline = file => readFileSync(resolve(root ?? process.cwd(), file), 'utf8')} = {}) {
   const errors = [];
   const fail = (path, reason) => errors.push(`${path}: ${reason}`);
   const shape = (value, name, path, optional = []) => {
@@ -84,8 +85,18 @@ export function validateCoordination(data, {root} = {}) {
   time(data.updatedAt, 'updatedAt');
   if (shape(data.policy, 'policy', 'policy')) {
     const required = {maxActiveIncrements: 1, maxRemoteWriters: 1, productionAuthorized: false, newSpendAuthorized: false,
-      agentLaunchedCodexJobsAuthorized: false, ownerScheduledCodexAllowed: true, mainFrozen: true, stagingFrozen: true};
+      agentLaunchedCodexJobsAuthorized: false, ownerScheduledCodexAllowed: true};
     for (const [key, value] of Object.entries(required)) if (data.policy[key] !== value) fail(`policy.${key}`, 'violates the current mandate');
+    for (const key of ['mainFrozen', 'stagingFrozen']) if (typeof data.policy[key] !== 'boolean') fail(`policy.${key}`, 'must be a boolean');
+    if (data.policy.mainFrozen !== data.policy.stagingFrozen) fail('policy.mainFrozen', 'main and staging freeze must move together');
+    if (data.policy.mainFrozen === false || data.policy.stagingFrozen === false) {
+      if (!m3BaselineMatches(readM3Baseline(readBaseline)) || !Array.isArray(data.tasks)
+        || data.tasks.find(task => task?.id === 'M3-REMOTE')?.status !== 'done'
+        || !Array.isArray(data.blockers) || data.blockers.find(blocker => blocker?.id === 'B-FREEZE')?.status !== 'resolved') {
+        fail('policy.mainFrozen', 'lifting freeze requires the complete original M3 baseline, completed remote task and resolved freeze blocker');
+        fail('policy.stagingFrozen', 'lifting freeze requires the same original gate');
+      }
+    }
   }
   if (shape(data.canonical, 'canonical', 'canonical')) {
     let realRoot;

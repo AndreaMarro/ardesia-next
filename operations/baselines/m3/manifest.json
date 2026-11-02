@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "kind": "ardesia-m3-accepted-baseline",
+  "repository": "AndreaMarro/ardesia-next",
+  "source": {
+    "commit": "d0aa2014b131335d5c278543cea35098dcefdfd3",
+    "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
+    "tree": "b1feaaba18d2283a98898b84ceefc135f9f2ae2c"
+  },
+  "acceptedAt": "2026-11-02T14:48:29.334Z",
+  "completionRef": "336edfb520c45adeec5a316e33c7db597ecd6c06",
+  "publication": "https://github.com/AndreaMarro/ardesia-next/issues/19#issuecomment-6580164051",
+  "verify": {
+    "url": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41447497762",
+    "attempt": 1,
+    "artifactSha256": "3291d51f87993ea641e3a6386a604b1c78fac6f6fef958f8cac44f088c0f65eb"
+  },
+  "reports": {
+    "browser-evidence.json": "12b781e460392b58ac29ff4d87035c34c619d73b33fca5ef6151eeab0d19d24b",
+    "browser.json": "cfeb22dcfa436f19e4a3e298353340b4a266a20a1a97eaead9fc5faf07b95dc7",
+    "candidate.json": "9a9fbf1344e39fcb6fa16201d0ee05f7eb759aaefcf950590ab3e2ae9b054235",
+    "e2e.json": "78ca9b78668a1c81c74b39ad83a0e45ed46e719c7baaf554c86bd59bffab9f28",
+    "m3-remote-evidence.json": "587a4e366357bf1bbdeb47ac6bf3dd534b5f5328bf1ecbd4bffd82631fd56c4a",
+    "operator.json": "3f47aa1aefaad5536762cd22c9e26b0279bf9e92a808c4afc1253be9ddefff65",
+    "platform-after.json": "98d3f1aa6bbedfbefb8d579ed9db4354cd65eb952fac6c869df5261e1f4212e1",
+    "platform-before.json": "c77bd37825d6f4fc7c4802f6697535435012e97c08356e5f0ff393ec6e097b64",
+    "postflight.json": "d6c6822d5dddf88fe8305de94b9621ecb36309d22b49e4101874169600ab618b",
+    "preflight.json": "709d39c46583b2c705432bb848db7cb3701346f0a3fbf6a8fc25a2cc9c8c730b",
+    "release-evidence.json": "9bdfdf82e8442c25215fb6d7b1326295f1779aed8dcaa2ae66b510b08dc83e38",
+    "result.json": "c670433682d99a331219ae508036e54ff273abd3bfda9df67d7a295e6598a6dd",
+    "status.json": "c9c9b49b2487588de87102329e8f239ca17d73535a4b6c7aea26564e929b22bf",
+    "unit.json": "9e22dd378368f89419c78e150ee6a1162725bccbd77f7c7b81968b2380a7c1d0",
+    "verification.json": "ebfe3ec2ce3d139a8bb29393eefc01ef046d822f32d8a0f8e81effd6a6424dc7"
+  }
+}

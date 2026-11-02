@@ -301,7 +301,8 @@ const gitJson = (ref, path) => JSON.parse(execFileSync('git', ['show', `${ref}:$
 const gitQueue = ref => gitJson(ref, 'operations/coordination.json');
 const gitCompletion = ref => gitJson(ref, 'handoff.json');
 function canonicalQueue(data, queue, readQueue) {
-  const errors = validateCoordination(queue);
+  const errors = validateCoordination(queue, {readBaseline: path => execFileSync('git', ['show', `${data.procedureRef}:${path}`],
+    {encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe']})});
   if (errors.length) throw new Error(`Canonical queue is invalid:\n${errors.join('\n')}`);
   if (!isDeepStrictEqual(queue, readQueue(data.procedureRef))) throw new Error('Queue must match operations/coordination.json at the adopted immutable procedureRef; hypothetical queues are not authority.');
 }
