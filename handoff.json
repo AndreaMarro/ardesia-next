@@ -3,9 +3,9 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 68,
-  "updatedAt": "2026-11-02T09:33:11Z",
-  "procedureRef": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
+  "revision": 69,
+  "updatedAt": "2026-11-02T09:45:46Z",
+  "procedureRef": "e51346f6368e4e55954ca071c007caa57c483516",
   "activeRun": {
     "runId": "ardesia-m3-repair-20261102T091655Z",
     "actor": "codex",
@@ -24,10 +24,10 @@
     "expiresAt": "2026-11-02T10:11:31.000Z",
     "source": {
       "baseSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
-      "headSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
+      "headSha": "e51346f6368e4e55954ca071c007caa57c483516",
       "branch": "codex/m3-access-20261102",
-      "pr": null,
-      "sourceDigest": "d27a5aa14dd00a6114cabf10497c2289858d09da6d76621ea847a330b805ae31"
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/29",
+      "sourceDigest": "e7cbe1bcd5cfadac111dc8535a0244f2af8942ba8af3de73321809903fe99642"
     },
     "goal": "Preparare i prerequisiti remoti prima del gate M3",
     "allowedPaths": [
@@ -41,10 +41,60 @@
       "Target restore distinto, vuoto e migrato verificato sul progetto Neon Free esistente; conservare i due restore popolati, senza reset o scritture alla sorgente. Nessun nuovo progetto, compute, servizio o piano a pagamento.",
       "Aggiornare soltanto i blocker realmente risolti e le osservazioni datate; la preparazione non accetta M3 e non cambia schema del database attivo o protezioni."
     ],
-    "evidence": [],
+    "evidence": [
+      {
+        "headSha": "e51346f6368e4e55954ca071c007caa57c483516",
+        "sourceDigest": "e7cbe1bcd5cfadac111dc8535a0244f2af8942ba8af3de73321809903fe99642",
+        "kind": "check",
+        "name": "remote-preflight-regression",
+        "reference": "tools/remote-preflight.test.mjs",
+        "result": "PASS",
+        "scope": "Node24.22.1: RED on base, GREEN13/13 on final source; reviewer independently exercises cancellation, duplicate/unknown headers and non403 statuses. No remote product acceptance.",
+        "access": "artifact",
+        "artifactDigest": null
+      },
+      {
+        "headSha": "e51346f6368e4e55954ca071c007caa57c483516",
+        "sourceDigest": "e7cbe1bcd5cfadac111dc8535a0244f2af8942ba8af3de73321809903fe99642",
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41422295780",
+        "result": "PASS",
+        "scope": "Original attempt1/head e51346f; ZIP13130851527 read, SHA256/CRC/nineJSON/seven source bindings and original local M3 gate validated;291unit/73browser, zero skipped/flaky/retry. M3 AWAITING_COMPLETE_EVIDENCE; product NOT_COMPLETE.",
+        "access": "artifact",
+        "artifactDigest": "5dcb1371f8284e397c6cc2ad4adb02def999ac4cdc44e33d43ab13f1c3058539"
+      },
+      {
+        "headSha": "e51346f6368e4e55954ca071c007caa57c483516",
+        "sourceDigest": "e7cbe1bcd5cfadac111dc8535a0244f2af8942ba8af3de73321809903fe99642",
+        "kind": "review",
+        "name": "independent-source-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/29#issuecomment-6573926150",
+        "result": "PASS",
+        "scope": "Non-author /root/m3_access_review reads exact source/diff and sanitized original receipts; independent local probes. No provider requests or human/product approval. Separate local access-rule experiment has unverified target semantics and remains unapplied.",
+        "access": "artifact",
+        "artifactDigest": null
+      },
+      {
+        "headSha": "e51346f6368e4e55954ca071c007caa57c483516",
+        "sourceDigest": "e7cbe1bcd5cfadac111dc8535a0244f2af8942ba8af3de73321809903fe99642",
+        "kind": "observation",
+        "name": "m3-remote-access",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/blob/e51346f6368e4e55954ca071c007caa57c483516/docs/history.md#ops-20261102-07--diagnosi-m3-degli-ambienti-oidc-e-dei-canali-esistenti",
+        "result": "FAIL",
+        "scope": "Observed canonical origin HTTP403 x-vercel-error TRUSTED_SOURCES_ENVIRONMENT_MISMATCH with valid signed development token. QA credential channel unavailable in observed scopes. Existing restore remains empty/migrated, connector access is not installed runner access. No remote acceptance.",
+        "access": "metadata",
+        "artifactDigest": null
+      }
+    ],
     "blockers": [],
-    "nextAction": "Diagnosi circoscritta dei canali autorizzati CLI/provider; verifica connessioni esistenti, metadati OIDC e contratto Trusted Sources; correggere soltanto difetti dimostrati. Nessun reset QA, nuova regola accesso o indebolimento gate.",
-    "review": null
+    "nextAction": "Diagnosi e patch PR29 verificate/adottate; M3 resta pendente. Attendere indicazione del canale protetto delle tre credenziali QA e autorizzazione esplicita alla sola prova reversibile development->staging nello stesso progetto. Proposta locale non applicata, binding dello slug non dimostrato; mai all-custom o accesso produzione. Nessun retry403/check presenza invariato, reset QA, duplicazione restore o modifica scheduler. Riprendere M3-ACCESS solo su risposta/canale nuovo autorizzato.",
+    "review": {
+      "authorContextId": "root-m3-repair-20261102",
+      "reviewerContextId": "root-m3-access-review-20261102",
+      "sourceSha": "e51346f6368e4e55954ca071c007caa57c483516",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/29#issuecomment-6573926150"
+    }
   },
   "lastRun": {
     "runId": "ardesia-codex-20261102T081720Z-4b9b117e",
