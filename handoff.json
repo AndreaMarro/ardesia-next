@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 98,
-  "updatedAt": "2026-11-02T16:32:07.975Z",
+  "revision": 99,
+  "updatedAt": "2026-11-02T16:53:25.875Z",
   "procedureRef": "ccdab91a10537c1dab5210d78e41857322e22829",
   "activeRun": {
     "runId": "ardesia-codex-20261102T161917Z-51e4805b",
@@ -18,16 +18,16 @@
     "id": "m3-transition-20261102T161917Z",
     "taskId": "M3-TRANSITION",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "COMPLETE_INCREMENT",
     "kind": "implementation",
     "notBefore": "2026-11-02T16:19:17Z",
     "expiresAt": "2026-11-02T17:14:17Z",
     "source": {
       "baseSha": "ccdab91a10537c1dab5210d78e41857322e22829",
-      "headSha": "ccdab91a10537c1dab5210d78e41857322e22829",
+      "headSha": "5acd99eb7f38e77430ff5e8762d9f95ffcbbba4e",
       "branch": "codex/m3-transition-20261102",
-      "pr": null,
-      "sourceDigest": "12fe43cdf3bf5e56aed27c3f8fe13852390b730f85dc76954c9d32f1670b9b15"
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/35",
+      "sourceDigest": "b03d8bb4197affbcfb9322f987904289bac71140466cf419fd0e2259af491a91"
     },
     "goal": "Conservare M3 accettata e abilitare la fase successiva",
     "allowedPaths": [
@@ -40,10 +40,38 @@
       "Aggiornare coerentemente motore tools/status.mjs, guardie di fase e coda con review/controprove; nessun secondo motore di stato.",
       "Sciogliere il freeze soltanto dopo il gate originale; le autorizzazioni di produzione e spesa restano separate."
     ],
-    "evidence": [],
+    "evidence": [
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41484557622",
+        "headSha": "5acd99eb7f38e77430ff5e8762d9f95ffcbbba4e",
+        "sourceDigest": "b03d8bb4197affbcfb9322f987904289bac71140466cf419fd0e2259af491a91",
+        "result": "PASS",
+        "scope": "Original Verify attempt1 final5acd, ZIP CRC/9JSON/7bindings read; local gate true; no acceptance transfer to administrative source.",
+        "access": "artifact",
+        "artifactDigest": "e096384c82bf86002886462e3adace320b6237fa4ae36f1ccfbe2db0fa401e57"
+      },
+      {
+        "kind": "review",
+        "name": "independent-m3-transition",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/35#issuecomment-6582836347",
+        "headSha": "5acd99eb7f38e77430ff5e8762d9f95ffcbbba4e",
+        "sourceDigest": "b03d8bb4197affbcfb9322f987904289bac71140466cf419fd0e2259af491a91",
+        "result": "PASS",
+        "scope": "Distinct /root/transition_review raw cumulative diff,15 original reports, consumer and adverse checks; P2 immutable final validation corrected/reproduced. No human approval or technical ACL claimed.",
+        "access": "artifact",
+        "artifactDigest": "8ee2257d1e5db9862c969f8ce0382473bca669b46cdb59be9f84f1e18f8e1dee"
+      }
+    ],
     "blockers": [],
-    "nextAction": "Conservare baseline originale d0aa/9cbd e guardie di fase nello status esistente; RED/GREEN per progressione valida e rifiuto prove alterate, Verify e review esatte. Preparazione isolata dalla procedura amministrativa; nessun deploy o trasferimento accettazione al candidato.",
-    "review": null
+    "nextAction": "M3TRANSITION verificata su5acd/b03d. Conservare completion-ref e adottare esplicitamente questa procedura, poi OPS004 riconcilia soltanto la riga canonica prima di M4. Main/preview/runtime e restore conservati; nessun merge/deploy.",
+    "review": {
+      "authorContextId": "ardesia-codex-20261102T161917Z-51e4805b-root",
+      "reviewerContextId": "ardesia-codex-20261102T161917Z-51e4805b-transition-review",
+      "sourceSha": "5acd99eb7f38e77430ff5e8762d9f95ffcbbba4e",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/35#issuecomment-6582836347"
+    }
   },
   "lastRun": {
     "runId": "ardesia-codex-20261102T142556Z-bf1ed195",
