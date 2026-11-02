@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 46,
-  "updatedAt": "2026-11-02T01:04:50.059Z",
+  "revision": 47,
+  "updatedAt": "2026-11-02T01:11:34.000Z",
   "procedureRef": "2909aa7d90a8f87b011e80722d079fb4bbd61070",
   "activeRun": null,
   "packet": {
@@ -35,7 +35,7 @@
     ],
     "evidence": [],
     "blockers": [],
-    "nextAction": "Resume existing PERF-003 from runtime d74b8dfa and adopted procedure2909aa7d, preserving the original PR18 artifact already read in native run codex-20261102T004201Z. The native platform records that run interrupted at2026-11-02T00:52:04Z; clean source worktree and completed commands were reconciled by separate setup root, without reset or product edits. Before closure, inspect the isolated owner-requested proposal at work/astra-20261102-proposal/candidate (local cfe14299f8ca5b7ae86850a78f84854040ee9be7; no published PR or Verify/adoption): it reproduces criteria, dual-source and interrupted-reconciliation defects on adopted2909aa7d. Review/raw proofs and recoverable bundle are siblings of candidate. This is a proposal, not a new canonical task or permission to change procedure/scope; any adoption needs legitimate canonical intake, independent review and final published-source Verify. No repeat of unchanged PR18 Extended or M3 HTTP403; preserve all freeze/gates/credentials and the existing scheduler.",
+    "nextAction": "Resume the preserved PERF-003 only after reconciling this interruption; native source worktree remains clean at d74b8dfa and original PR18 artifact is preserved. The owner-requested isolated proposal is ../astra-20261102-proposal/candidate relative to the canonical checkout: exact local head41124470d48e9782e15e5a8110fbfdac433b6f0f, sourceDigestff4e6d63c79bbb21cecb66074165043bdd24a13c52cebe1299ed62850bf1c12e. Local102 operational tests PASS and distinct /root/closure_review final raw-source/counterprobe review PASS; required published Verify NOT_RUN, no PR or procedure adoption. Read ../astra-20261102-proposal/RESULT.md and the exact bundle/patch; the new owner mandate is recorded only in that proposed docs/history.md, pending legitimate canonical intake. The proposal fixes weakened task criteria, dual runtime/procedure closure, durable interrupted/idempotent reconciliation and read-only bootstrap timing. This setup root could not obtain a claim with its actual00:41:23Z start under adopted2909aa7d after native closure, and did not use the proposed helper to self-authorize publication. Next native run must preserve its real budget, current ownership and unchanged PERF-003 work; proposal does not grant new scope or acceptance. No unchanged PR18 Extended/M3 HTTP403 retry, source/service changes, new scheduler, bypass or weakened gates.",
     "review": null
   },
   "lastRun": {
