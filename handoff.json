@@ -3,18 +3,25 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 82,
-  "updatedAt": "2026-11-02T12:09:14.653Z",
+  "revision": 85,
+  "updatedAt": "2026-11-02T12:45:00.509Z",
   "procedureRef": "656d1967ed75b56520d2e320c538950b3160c076",
-  "activeRun": null,
+  "activeRun": {
+    "runId": "chatgpt-m3-release-20261102T122301Z",
+    "actor": "codex",
+    "startedAt": "2026-11-02T12:23:01.000Z",
+    "claimedAt": "2026-11-02T12:45:00.509Z",
+    "writeUntil": "2026-11-02T13:08:01.000Z",
+    "closeBy": "2026-11-02T13:18:01.000Z"
+  },
   "packet": {
-    "id": "m3-remote-20261102T112522Z",
+    "id": "m3-remote-pr32-release-20261102T122301Z",
     "taskId": "M3-REMOTE",
     "nextActor": "codex",
-    "disposition": "BLOCKED",
+    "disposition": "READY",
     "kind": "implementation",
-    "notBefore": "2026-11-02T11:25:22Z",
-    "expiresAt": "2026-11-02T12:20:22Z",
+    "notBefore": "2026-11-02T12:45:00.509Z",
+    "expiresAt": "2026-11-02T13:18:01.000Z",
     "source": {
       "baseSha": "03622b56c9756225019b7c6219d226beef8e0a6d",
       "headSha": "ba3b27ecd77dcdcd0f49502fb7e7d2dc8edc4800",
@@ -67,10 +74,8 @@
         "artifactDigest": "5fec47ab35c47f9d080bdc5e0571b613923695e5fdb5b027fa3338b0929a8172"
       }
     ],
-    "blockers": [
-      "M3-RESTORE-POPULATED"
-    ],
-    "nextAction": "Riprendere M3-REMOTE da PR32 ba3b27e/digest9cbd6617, Verify41440790248 e review6576586317 gia acquisite. Prima del nuovo gate servono candidato esatto verificato e target restore preesistente davvero vuoto tramite canale autorizzato;270479 e ora popolato e si conserva. Non rifare M3ACCESS,CIoriginale,vecchia raccolta o reset/provisioning. M3 non accettata,freeze e M3TRANSITION/M4 invariati.",
+    "blockers": [],
+    "nextAction": "Support ChatGPT session, not a native scheduled Codex run. User explicitly requests continuation. Consume the original PR32 evidence and normal-merge the indispensable P1 under the existing critical-correction runbook exception; require Verify on actual merge SHA before preparing standard Preview target:null. No alias change without authorized live preflight. M3 itself remains unaccepted; restore270479 is populated and preserved. No new database, reset, secrets export, scheduler or policy changes. The native runner retains its private QA/OIDC channels; this chat does not have them. READY authorizes the bounded candidate-release preparation, not a remote acceptance claim. Prior failures and review remain pinned to their original sources.",
     "review": {
       "authorContextId": "root-ardesia-codex-20261102T112522Z-bafc2930",
       "reviewerContextId": "root-m3_remote_review",
@@ -79,16 +84,16 @@
     }
   },
   "lastRun": {
-    "runId": "ardesia-codex-20261102T112522Z-bafc2930",
+    "runId": "chatgpt-m3-reconcile-20261102T122301Z",
     "actor": "codex",
-    "startedAt": "2026-11-02T11:25:22.000Z",
-    "claimedAt": "2026-11-02T11:30:08.066Z",
-    "writeUntil": "2026-11-02T12:10:22.000Z",
-    "closeBy": "2026-11-02T12:20:22.000Z",
+    "startedAt": "2026-11-02T12:23:01.000Z",
+    "claimedAt": "2026-11-02T12:45:00.509Z",
+    "writeUntil": "2026-11-02T13:08:01.000Z",
+    "closeBy": "2026-11-02T13:18:01.000Z",
     "packetId": "m3-remote-20261102T112522Z",
-    "finishedAt": "2026-11-02T12:09:14.653Z",
-    "outcome": "BLOCKED",
+    "finishedAt": "2026-11-02T12:45:00.509Z",
+    "outcome": "HANDOFF",
     "late": false,
-    "summary": "M3 remoto rifiutato dal gate originale per digest importnull/null; difettoP1 corretto in PR32 ba3b/9cbd con RED/GREEN,review distinta e VerifyCIoriginale PASS letto. LocalVerifyFAIL conservato. Restore270479 ora popolato: M3 resta BLOCKED, nessun merge/deploy,recurrence invariata."
+    "summary": "Metadata-only reconciliation of expired released M3 packet using adopted immutable helper and exact canonical queue. Same real start/budget retained; actual executor ChatGPT support, not native Codex. Prior native record and all evidence preserved at parent655b957."
   }
 }
