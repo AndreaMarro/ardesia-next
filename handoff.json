@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 73,
-  "updatedAt": "2026-11-02T09:56:08.562Z",
+  "revision": 74,
+  "updatedAt": "2026-11-02T09:56:36.850Z",
   "procedureRef": "e51346f6368e4e55954ca071c007caa57c483516",
   "activeRun": {
     "runId": "ardesia-m3-unblock-20261102T095108Z",
@@ -15,85 +15,36 @@
     "closeBy": "2026-11-02T10:46:08.000Z"
   },
   "packet": {
-    "id": "m3-access-diagnosis-20261102T091655Z",
+    "id": "m3-authorized-access-20261102T095108Z",
     "taskId": "M3-ACCESS",
     "nextActor": "codex",
-    "disposition": "BLOCKED",
-    "kind": "coordination",
-    "notBefore": "2026-11-02T09:21:58.306Z",
-    "expiresAt": null,
+    "disposition": "READY",
+    "kind": "implementation",
+    "notBefore": "2026-11-02T09:56:08.562Z",
+    "expiresAt": "2026-11-02T10:46:08.000Z",
     "source": {
-      "baseSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
+      "baseSha": "e51346f6368e4e55954ca071c007caa57c483516",
       "headSha": "e51346f6368e4e55954ca071c007caa57c483516",
-      "branch": "codex/m3-access-20261102",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/29",
+      "branch": "codex/m3-authorized-access-20261102",
+      "pr": null,
       "sourceDigest": "e7cbe1bcd5cfadac111dc8535a0244f2af8942ba8af3de73321809903fe99642"
     },
     "goal": "Preparare i prerequisiti remoti prima del gate M3",
-    "allowedPaths": [],
+    "allowedPaths": [
+      "tools",
+      "e2e",
+      "operations",
+      "docs"
+    ],
     "exitCriteria": [
       "Distinguere le capacita del runner nativo da quelle della chat: provare OIDC nel progetto/origin corretti, tre identita QA esistenti e connessioni operatore senza esportare segreti.",
       "Target restore distinto, vuoto e migrato verificato sul progetto Neon Free esistente; conservare i due restore popolati, senza reset o scritture alla sorgente. Nessun nuovo progetto, compute, servizio o piano a pagamento.",
       "Aggiornare soltanto i blocker realmente risolti e le osservazioni datate; la preparazione non accetta M3 e non cambia schema del database attivo o protezioni."
     ],
-    "evidence": [
-      {
-        "headSha": "e51346f6368e4e55954ca071c007caa57c483516",
-        "sourceDigest": "e7cbe1bcd5cfadac111dc8535a0244f2af8942ba8af3de73321809903fe99642",
-        "kind": "check",
-        "name": "remote-preflight-regression",
-        "reference": "tools/remote-preflight.test.mjs",
-        "result": "PASS",
-        "scope": "Node24.22.1: RED on base, GREEN13/13 on final source; reviewer independently exercises cancellation, duplicate/unknown headers and non403 statuses. No remote product acceptance.",
-        "access": "artifact",
-        "artifactDigest": null
-      },
-      {
-        "headSha": "e51346f6368e4e55954ca071c007caa57c483516",
-        "sourceDigest": "e7cbe1bcd5cfadac111dc8535a0244f2af8942ba8af3de73321809903fe99642",
-        "kind": "ci",
-        "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41422295780",
-        "result": "PASS",
-        "scope": "Original attempt1/head e51346f; ZIP13130851527 read, SHA256/CRC/nineJSON/seven source bindings and original local M3 gate validated;291unit/73browser, zero skipped/flaky/retry. M3 AWAITING_COMPLETE_EVIDENCE; product NOT_COMPLETE.",
-        "access": "artifact",
-        "artifactDigest": "5dcb1371f8284e397c6cc2ad4adb02def999ac4cdc44e33d43ab13f1c3058539"
-      },
-      {
-        "headSha": "e51346f6368e4e55954ca071c007caa57c483516",
-        "sourceDigest": "e7cbe1bcd5cfadac111dc8535a0244f2af8942ba8af3de73321809903fe99642",
-        "kind": "review",
-        "name": "independent-source-review",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/29#issuecomment-6573926150",
-        "result": "PASS",
-        "scope": "Non-author /root/m3_access_review reads exact source/diff and sanitized original receipts; independent local probes. No provider requests or human/product approval. Separate local access-rule experiment has unverified target semantics and remains unapplied.",
-        "access": "artifact",
-        "artifactDigest": null
-      },
-      {
-        "headSha": "e51346f6368e4e55954ca071c007caa57c483516",
-        "sourceDigest": "e7cbe1bcd5cfadac111dc8535a0244f2af8942ba8af3de73321809903fe99642",
-        "kind": "observation",
-        "name": "m3-remote-access",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/blob/e51346f6368e4e55954ca071c007caa57c483516/docs/history.md#ops-20261102-07--diagnosi-m3-degli-ambienti-oidc-e-dei-canali-esistenti",
-        "result": "FAIL",
-        "scope": "Observed canonical origin HTTP403 x-vercel-error TRUSTED_SOURCES_ENVIRONMENT_MISMATCH with valid signed development token. QA credential channel unavailable in observed scopes. Existing restore remains empty/migrated, connector access is not installed runner access. No remote acceptance.",
-        "access": "metadata",
-        "artifactDigest": null
-      }
-    ],
-    "blockers": [
-      "B-OIDC",
-      "B-QA",
-      "B-RESTORE"
-    ],
-    "nextAction": "Diagnosi e patch PR29 verificate/adottate; M3 resta pendente. Attendere indicazione del canale protetto delle tre credenziali QA e autorizzazione esplicita alla sola prova reversibile development->staging nello stesso progetto. Proposta locale non applicata, binding dello slug non dimostrato; mai all-custom o accesso produzione. Nessun retry403/check presenza invariato, reset QA, duplicazione restore o modifica scheduler. Riprendere M3-ACCESS solo su risposta/canale nuovo autorizzato.",
-    "review": {
-      "authorContextId": "root-m3-repair-20261102",
-      "reviewerContextId": "root-m3-access-review-20261102",
-      "sourceSha": "e51346f6368e4e55954ca071c007caa57c483516",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/29#issuecomment-6573926150"
-    }
+    "evidence": [],
+    "blockers": [],
+    "nextAction": "Applicare la prova limitata Vercel development->staging e preparare le tre credenziali QA esistenti nel canale locale protetto secondo le risposte esplicite del titolare del 2 novembre. Eccezioni limitate: niente nuove identita, SSO/produzione invariati; rollback se inefficace. Preservare i criteri M3 e verificare restore esistente.",
+    "review": null
   },
   "lastRun": {
     "runId": "ardesia-codex-20261102T095050Z-dd442aa9",
