@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 97,
-  "updatedAt": "2026-11-02T16:31:59.423Z",
+  "revision": 98,
+  "updatedAt": "2026-11-02T16:32:07.975Z",
   "procedureRef": "ccdab91a10537c1dab5210d78e41857322e22829",
   "activeRun": {
     "runId": "ardesia-codex-20261102T161917Z-51e4805b",
@@ -15,62 +15,35 @@
     "closeBy": "2026-11-02T17:14:17.000Z"
   },
   "packet": {
-    "id": "m3-remote-reconcile-20261102T142556Z",
-    "taskId": "OPS-004",
+    "id": "m3-transition-20261102T161917Z",
+    "taskId": "M3-TRANSITION",
     "nextActor": "codex",
-    "disposition": "COMPLETE_INCREMENT",
+    "disposition": "READY",
     "kind": "implementation",
-    "notBefore": "2026-11-02T14:25:56Z",
-    "expiresAt": "2026-11-02T15:20:56Z",
+    "notBefore": "2026-11-02T16:19:17Z",
+    "expiresAt": "2026-11-02T17:14:17Z",
     "source": {
-      "baseSha": "656d1967ed75b56520d2e320c538950b3160c076",
-      "headSha": "0f361f288e2e8033b93b7a3fd6f807909c7d29f7",
-      "branch": "codex/m3-accepted-queue-20261102",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/33",
-      "sourceDigest": "ccaf6f47227877dfcd33b6429e58b7d6bc1fcf20b3dc379ca683d4c5cc734512"
+      "baseSha": "ccdab91a10537c1dab5210d78e41857322e22829",
+      "headSha": "ccdab91a10537c1dab5210d78e41857322e22829",
+      "branch": "codex/m3-transition-20261102",
+      "pr": null,
+      "sourceDigest": "12fe43cdf3bf5e56aed27c3f8fe13852390b730f85dc76954c9d32f1670b9b15"
     },
-    "goal": "Riconciliazione canonica delle consegne verificate, su richiesta",
+    "goal": "Conservare M3 accettata e abilitare la fase successiva",
     "allowedPaths": [
-      "operations/coordination.json",
-      "docs/history.md"
+      "operations",
+      "tools",
+      "docs"
     ],
     "exitCriteria": [
-      "Un disallineamento concreto tra consegna verificata e coda viene riconciliato usando SHA/digest, Verify e review non autrice originali; nessun PASS trasferito a nuove sorgenti.",
-      "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
-      "La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."
+      "Conservare le prove originali M3 e baseline con SHA/digest/ambiente, senza trasferirle a un nuovo candidato.",
+      "Aggiornare coerentemente motore tools/status.mjs, guardie di fase e coda con review/controprove; nessun secondo motore di stato.",
+      "Sciogliere il freeze soltanto dopo il gate originale; le autorizzazioni di produzione e spesa restano separate."
     ],
-    "evidence": [
-      {
-        "kind": "ci",
-        "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41467426036",
-        "headSha": "0f361f288e2e8033b93b7a3fd6f807909c7d29f7",
-        "sourceDigest": "ccaf6f47227877dfcd33b6429e58b7d6bc1fcf20b3dc379ca683d4c5cc734512",
-        "result": "PASS",
-        "scope": "Original attempt1 PR Verify exact0f; ZIP4151284byte SHA256/CRC/9JSON/7binding read,8checks/291unit/73browser0skipflaky; local gate true. Administrative source M3 remains AWAITING, no acceptance transfer.",
-        "access": "artifact",
-        "artifactDigest": "75ddc440bf1803e833e0476804e5f734031ee224c9cd8ea26238f6d64564dad4"
-      },
-      {
-        "kind": "review",
-        "name": "independent-canonical-reconciliation",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/33#issuecomment-6580494173",
-        "headSha": "0f361f288e2e8033b93b7a3fd6f807909c7d29f7",
-        "sourceDigest": "ccaf6f47227877dfcd33b6429e58b7d6bc1fcf20b3dc379ca683d4c5cc734512",
-        "result": "PASS",
-        "scope": "Distinct /root/m3_release_review, rawdiff and prefixbytecheck, only M3REMOTE row plus topupdatedAt; contracts/policy/freeze unchanged. Original completion336ed read and reconcile replay equal. Reviewer did not read CI; root consumed exact original after review.",
-        "access": "artifact",
-        "artifactDigest": "dc4eeed06894ec12573bfd0ccc9bcc2441f793498b310580c14002e42fee35fb"
-      }
-    ],
+    "evidence": [],
     "blockers": [],
-    "nextAction": "Promozione M3TRANSITION adottata esplicitamente da PR34/headccdab91/digest12fe43, Verify41481102281 artifact13160810476 letto CRC/9JSON/7binding e review distinta6582370839. Freeze invariato; assign seleziona ora il task esistente nella stessa run e budget.",
-    "review": {
-      "authorContextId": "ardesia-codex-20261102T142556Z-bf1ed195-root",
-      "reviewerContextId": "ardesia-codex-20261102T142556Z-bf1ed195-m3-release-review",
-      "sourceSha": "0f361f288e2e8033b93b7a3fd6f807909c7d29f7",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/33#issuecomment-6580494173"
-    }
+    "nextAction": "Conservare baseline originale d0aa/9cbd e guardie di fase nello status esistente; RED/GREEN per progressione valida e rifiuto prove alterate, Verify e review esatte. Preparazione isolata dalla procedura amministrativa; nessun deploy o trasferimento accettazione al candidato.",
+    "review": null
   },
   "lastRun": {
     "runId": "ardesia-codex-20261102T142556Z-bf1ed195",
