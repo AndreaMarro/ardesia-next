@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 91,
-  "updatedAt": "2026-11-02T14:31:28.343Z",
+  "revision": 92,
+  "updatedAt": "2026-11-02T14:56:12.350Z",
   "procedureRef": "656d1967ed75b56520d2e320c538950b3160c076",
   "activeRun": {
     "runId": "ardesia-codex-20261102T142556Z-bf1ed195",
@@ -18,7 +18,7 @@
     "id": "m3-remote-native-20261102T142556Z",
     "taskId": "M3-REMOTE",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "COMPLETE_INCREMENT",
     "kind": "implementation",
     "notBefore": "2026-11-02T14:25:56Z",
     "expiresAt": "2026-11-02T15:20:56Z",
@@ -41,31 +41,47 @@
     ],
     "evidence": [
       {
-        "kind": "observation",
-        "name": "previous-released-checkpoint-and-full-evidence",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/blob/544c7f458e725b27c93c3188718bded7eae00846/handoff.json",
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41447497762",
         "headSha": "d0aa2014b131335d5c278543cea35098dcefdfd3",
         "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
         "result": "PASS",
-        "scope": "Immutable parent87 preserves every prior evidence, owner revocation, original merge CI and the migration refusal. Read before this reservation: no activeRun. A new non-native ChatGPT support session holds this bounded operator lease under the renewed direct owner request. Timestamp14:00 is a conservative budget boundary, not an observed native task_started event; first local clock14:03:26Z. No model/effort assertion, scheduler or procedure adoption.",
-        "access": "metadata",
-        "artifactDigest": null
+        "scope": "Original merge Verify attempt1 push/main, ZIP read+CRC+9JSON/7binding;8checks/291unit/73browser0skipflaky. No rerun. Prior local FAIL ba3b preserved, cause not resolved.",
+        "access": "artifact",
+        "artifactDigest": "3291d51f87993ea641e3a6386a604b1c78fac6f6fef958f8cac44f088c0f65eb"
       },
       {
-        "kind": "observation",
-        "name": "restore-still-uninitialized-readonly",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/issues/19#issuecomment-6578841653",
+        "kind": "check",
+        "name": "m3-original-gate",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/issues/19#issuecomment-6580164051",
         "headSha": "d0aa2014b131335d5c278543cea35098dcefdfd3",
         "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
-        "result": "NOT_RUN",
-        "scope": "New READ ONLY observation2026-11-02T14:01:32.770Z confirms database280053 still has no application schema and zero user tables. Existing owner connection works. Prior safety refusal remains; no old migration or new acceptance is asserted.",
-        "access": "metadata",
-        "artifactDigest": null
+        "result": "PASS",
+        "scope": "Nine raw JSON incl all12counterproofs, coupled candidate and original npm run status M3ACCEPTED/productNOTCOMPLETE. Correct protected deployment, sourceReadOnly, initial empty restore. Target280053 now populated; preserve. Pre-platform-after rejection retained.",
+        "access": "artifact",
+        "artifactDigest": "3c549edd65b6d931a1ca833e2852e55ed53c1e530e386baf0c666f0034112a7f"
+      },
+      {
+        "kind": "review",
+        "name": "independent-m3-source-and-evidence",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/32#issuecomment-6580268422",
+        "headSha": "d0aa2014b131335d5c278543cea35098dcefdfd3",
+        "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
+        "result": "PASS",
+        "scope": "Distinct context /root/m3_release_review; raw2file diff, ZIP9JSON,10manifest hashes,12proof digests,6provenance,assembly replay/countercases and status. Local byte review; provider/GitHub authenticity observed by root. Node22 pure diagnostics, application Node24.",
+        "access": "artifact",
+        "artifactDigest": "6c60836f829e902076b50c037c415427ef6316a6f1445685ecf6724a53a6f320"
       }
     ],
     "blockers": [],
-    "nextAction": "Verificare candidato merged d0aa2014, Verify originale, deployment protetto e target restore280053 esistente preparato. Solo dopo preflight autorizzato riallineare alias e raccogliere le dodici controprove originali. Preservare sorgente read-only, rifiuti e dati dei target precedenti.",
-    "review": null
+    "nextAction": "Riconciliare M3-REMOTE done tramite OPS-004 consumando questa completion-ref immutabile; poi promuovere M3-TRANSITION per conservare baseline/prove originali d0aa e aggiornare coerentemente motore/guardie/coda prima di M4. Nessun nuovo collaudo su restore280053 consumato o CI rerun.",
+    "review": {
+      "authorContextId": "ardesia-codex-20261102T142556Z-bf1ed195-root",
+      "reviewerContextId": "ardesia-codex-20261102T142556Z-bf1ed195-m3-release-review",
+      "sourceSha": "d0aa2014b131335d5c278543cea35098dcefdfd3",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/32#issuecomment-6580268422"
+    }
   },
   "lastRun": {
     "runId": "chatgpt-m3-scoped-preparation-20261102T140000Z",
