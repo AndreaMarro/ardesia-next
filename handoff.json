@@ -3,25 +3,18 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 69,
-  "updatedAt": "2026-11-02T09:45:46Z",
+  "revision": 70,
+  "updatedAt": "2026-11-02T09:47:02.663Z",
   "procedureRef": "e51346f6368e4e55954ca071c007caa57c483516",
-  "activeRun": {
-    "runId": "ardesia-m3-repair-20261102T091655Z",
-    "actor": "codex",
-    "startedAt": "2026-11-02T09:16:31.000Z",
-    "claimedAt": "2026-11-02T09:21:58.306Z",
-    "writeUntil": "2026-11-02T10:01:31.000Z",
-    "closeBy": "2026-11-02T10:11:31.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m3-access-diagnosis-20261102T091655Z",
     "taskId": "M3-ACCESS",
     "nextActor": "codex",
-    "disposition": "READY",
-    "kind": "implementation",
+    "disposition": "BLOCKED",
+    "kind": "coordination",
     "notBefore": "2026-11-02T09:21:58.306Z",
-    "expiresAt": "2026-11-02T10:11:31.000Z",
+    "expiresAt": null,
     "source": {
       "baseSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
       "headSha": "e51346f6368e4e55954ca071c007caa57c483516",
@@ -30,12 +23,7 @@
       "sourceDigest": "e7cbe1bcd5cfadac111dc8535a0244f2af8942ba8af3de73321809903fe99642"
     },
     "goal": "Preparare i prerequisiti remoti prima del gate M3",
-    "allowedPaths": [
-      "tools",
-      "e2e",
-      "operations",
-      "docs"
-    ],
+    "allowedPaths": [],
     "exitCriteria": [
       "Distinguere le capacita del runner nativo da quelle della chat: provare OIDC nel progetto/origin corretti, tre identita QA esistenti e connessioni operatore senza esportare segreti.",
       "Target restore distinto, vuoto e migrato verificato sul progetto Neon Free esistente; conservare i due restore popolati, senza reset o scritture alla sorgente. Nessun nuovo progetto, compute, servizio o piano a pagamento.",
@@ -87,7 +75,11 @@
         "artifactDigest": null
       }
     ],
-    "blockers": [],
+    "blockers": [
+      "B-OIDC",
+      "B-QA",
+      "B-RESTORE"
+    ],
     "nextAction": "Diagnosi e patch PR29 verificate/adottate; M3 resta pendente. Attendere indicazione del canale protetto delle tre credenziali QA e autorizzazione esplicita alla sola prova reversibile development->staging nello stesso progetto. Proposta locale non applicata, binding dello slug non dimostrato; mai all-custom o accesso produzione. Nessun retry403/check presenza invariato, reset QA, duplicazione restore o modifica scheduler. Riprendere M3-ACCESS solo su risposta/canale nuovo autorizzato.",
     "review": {
       "authorContextId": "root-m3-repair-20261102",
@@ -97,16 +89,16 @@
     }
   },
   "lastRun": {
-    "runId": "ardesia-codex-20261102T081720Z-4b9b117e",
+    "runId": "ardesia-m3-repair-20261102T091655Z",
     "actor": "codex",
-    "startedAt": "2026-11-02T08:17:20.000Z",
-    "claimedAt": "2026-11-02T08:27:28.028Z",
-    "writeUntil": "2026-11-02T09:02:20.000Z",
-    "closeBy": "2026-11-02T09:12:20.000Z",
-    "packetId": "m3-access-availability-20261102T064252Z",
-    "finishedAt": "2026-11-02T09:08:25.413Z",
+    "startedAt": "2026-11-02T09:16:31.000Z",
+    "claimedAt": "2026-11-02T09:21:58.306Z",
+    "writeUntil": "2026-11-02T10:01:31.000Z",
+    "closeBy": "2026-11-02T10:11:31.000Z",
+    "packetId": "m3-access-diagnosis-20261102T091655Z",
+    "finishedAt": "2026-11-02T09:47:02.663Z",
     "outcome": "BLOCKED",
     "late": false,
-    "summary": "M3-ACCESS:canali invariati;nessun incremento indipendente eleggibile. Assign rifiutato oltre writeUntil,nessun rinnovo. Solo intake read-only,nessuna source/servicewrite;rilascio claim."
+    "summary": "Diagnosi M3 e patch PR29 verificate/adottate; causa403 identificata, restore esistente vuoto. Credenziali QA e autorizzazione specifica alla prova accessi pendenti; nessun retry invariato. Claim rilasciato senza merge/deploy o cambio scheduler."
   }
 }
