@@ -2,22 +2,61 @@
   "schemaVersion": "1.0.0",
   "kind": "ardesia-native-task-template",
   "acceptanceEvidence": false,
-  "status": "PREPARED_NOT_SCHEDULED",
-  "title": "Ardesia Next — Codex sequenziale",
+  "status": "PREPARED_PENDING_VERIFICATION_AND_ACTIVATION",
   "repository": "AndreaMarro/ardesia-next",
-  "intervalMinutes": 90,
+  "projectId": "7e78caa2-1269-4275-ae36-b048ae867286",
   "timezone": "Europe/Rome",
-  "rrule": "FREQ=MINUTELY;INTERVAL=90",
-  "requestedRuntime": "codex",
   "requestedModel": "gpt-6.1-sol",
-  "requestedReasoningEffort": "max",
-  "observedNativeTaskId": null,
-  "nativeModelVerified": false,
-  "workBudgetMinutes": 45,
-  "closeBudgetMinutes": 55,
-  "maxActiveRuns": 1,
-  "maxConcurrentSpecialists": 2,
-  "promptPath": "docs/prompts/codex-cycle.md",
+  "requestedReasoningEffort": "xhigh",
+  "executionEnvironment": "local",
+  "intervalMinutes": 60,
+  "maxActiveCanonicalIncrements": 1,
+  "maxIntegrators": 1,
+  "maxConcurrentTransientSpecialists": 2,
   "cursorRef": "ops/dual-run-state",
-  "notes": "Template only. Configure and read back in the native client after a controlled first run. Do not create a generic ChatGPT task or approximate 90 minutes."
+  "liveRunQualification": "NOT_RUN",
+  "tasks": [
+    {
+      "id": "ardesia-next-ingegnerizzazione",
+      "name": "Ardesia Next — Ingegnerizzazione",
+      "minute": 0,
+      "rrule": "FREQ=HOURLY;INTERVAL=1;BYMINUTE=0;BYSECOND=0",
+      "budgetMinutes": 12,
+      "promptPath": "docs/prompts/engineering-cycle.md"
+    },
+    {
+      "id": "ardesia-next-worker-codex-sol-max",
+      "name": "Ardesia Next — Sviluppo e integrazione",
+      "minute": 10,
+      "rrule": "FREQ=HOURLY;INTERVAL=1;BYMINUTE=10;BYSECOND=0",
+      "budgetMinutes": 55,
+      "promptPath": "docs/prompts/codex-cycle.md"
+    },
+    {
+      "id": "ardesia-next-sviluppo-isolato",
+      "name": "Ardesia Next — Sviluppo isolato",
+      "minute": 25,
+      "rrule": "FREQ=HOURLY;INTERVAL=1;BYMINUTE=25;BYSECOND=0",
+      "budgetMinutes": 15,
+      "promptPath": "docs/prompts/isolated-development-cycle.md"
+    },
+    {
+      "id": "ardesia-next-review-e-qualit",
+      "name": "Ardesia Next — Review e qualità",
+      "minute": 45,
+      "rrule": "FREQ=HOURLY;INTERVAL=1;BYMINUTE=45;BYSECOND=0",
+      "budgetMinutes": 12,
+      "promptPath": "docs/prompts/review-cycle.md"
+    }
+  ],
+  "previousObservedConfiguration": {
+    "id": "ardesia-next-worker-codex-sol-max",
+    "status": "PAUSED",
+    "intervalMinutes": 60,
+    "model": "gpt-6.1-sol",
+    "reasoningEffort": "max",
+    "promptRecoveryRef": "c4178388105a6f817c79bee2de18aee85b788d5d:docs/prompts/codex-cycle.md",
+    "promptRecoveryLimit": "Git source, not asserted byte-identical to the former native prompt"
+  },
+  "notes": "Setup proposal. Activation/readback receipts belong to PR/cursor outside this sourceDigest. Never treat this file as scheduler or acceptance state. No recurring run changes schedules/models. Other legacy automations preserved."
 }
