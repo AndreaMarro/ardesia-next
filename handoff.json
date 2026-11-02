@@ -3,85 +3,76 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 85,
-  "updatedAt": "2026-11-02T12:45:00.509Z",
+  "revision": 86,
+  "updatedAt": "2026-11-02T13:42:09.197Z",
   "procedureRef": "656d1967ed75b56520d2e320c538950b3160c076",
   "activeRun": {
-    "runId": "chatgpt-m3-release-20261102T122301Z",
+    "runId": "chatgpt-owner-recovery-20261102T133745Z",
     "actor": "codex",
-    "startedAt": "2026-11-02T12:23:01.000Z",
-    "claimedAt": "2026-11-02T12:45:00.509Z",
-    "writeUntil": "2026-11-02T13:08:01.000Z",
-    "closeBy": "2026-11-02T13:18:01.000Z"
+    "startedAt": "2026-11-02T13:37:45.000Z",
+    "claimedAt": "2026-11-02T13:42:09.197Z",
+    "writeUntil": "2026-11-02T14:22:45.000Z",
+    "closeBy": "2026-11-02T14:32:45.000Z"
   },
   "packet": {
-    "id": "m3-remote-pr32-release-20261102T122301Z",
+    "id": "owner-recovery-m3-20261102T133745Z",
     "taskId": "M3-REMOTE",
     "nextActor": "codex",
     "disposition": "READY",
-    "kind": "implementation",
-    "notBefore": "2026-11-02T12:45:00.509Z",
-    "expiresAt": "2026-11-02T13:18:01.000Z",
+    "kind": "coordination",
+    "notBefore": "2026-11-02T13:42:09.197Z",
+    "expiresAt": null,
     "source": {
       "baseSha": "03622b56c9756225019b7c6219d226beef8e0a6d",
-      "headSha": "ba3b27ecd77dcdcd0f49502fb7e7d2dc8edc4800",
-      "branch": "codex/m3-remote-20261102T112522Z",
+      "headSha": "d0aa2014b131335d5c278543cea35098dcefdfd3",
+      "branch": "preview/m3",
       "pr": "https://github.com/AndreaMarro/ardesia-next/pull/32",
       "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4"
     },
     "goal": "Accettazione remota completa M3",
-    "allowedPaths": [
-      "e2e",
-      "tools",
-      "operations"
-    ],
+    "allowedPaths": [],
     "exitCriteria": [
       "Tutte le dodici controprove originali sul medesimo candidato protetto; tools/status.mjs produce ACCEPTED con prove autentiche.",
       "Sorgente operatore read-only e target restore distinto, preesistente, migrato e vuoto; nessun reset, bypass o produzione."
     ],
     "evidence": [
       {
+        "kind": "observation",
+        "name": "owner-revocation-and-bounded-recovery",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/issues/19#issuecomment-6578656295",
+        "headSha": "d0aa2014b131335d5c278543cea35098dcefdfd3",
+        "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
+        "result": "PASS",
+        "scope": "Direct owner mandate administratively revokes claim85. This is not proof of process cessation, not a native Codex execution and not a simulated finish. Old activeRun and all evidence remain at immutable parent245b1d93; lastRun preserved. New executor ChatGPT support, logical actor codex per v2. Only fresh isolated restore preparation and metadata recovery; no shared staging/source DB mutation without authorized preflight.",
+        "access": "metadata",
+        "artifactDigest": null
+      },
+      {
         "kind": "ci",
         "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41440790248",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41447497762",
+        "headSha": "d0aa2014b131335d5c278543cea35098dcefdfd3",
+        "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
+        "result": "PASS",
+        "scope": "Original merge Verify already read and hash/CRC/bindings checked by preceding support session, receipt PR32/6578107406. Reused, not rerun or reread here. Merge source tree matches reviewed PR32; no remote acceptance transferred.",
+        "access": "metadata",
+        "artifactDigest": "3291d51f87993ea641e3a6386a604b1c78fac6f6fef958f8cac44f088c0f65eb"
+      },
+      {
+        "kind": "observation",
+        "name": "preserved-revoked-checkpoint",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/blob/245b1d93aebc66f4e982324d0338a80a4c42b7d0/handoff.json",
         "headSha": "ba3b27ecd77dcdcd0f49502fb7e7d2dc8edc4800",
         "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
         "result": "PASS",
-        "scope": "Original attempt1 SUCCESS; ZIP13140990912 read SHA256/CRC/9JSON/7sourcebindings/8checks/291unit/73browser0skipflakyunexpected/4operatorproofs/3realimports. Local full Verify FAIL timeouts preserved in PR32; no rerun. This is not M3 remote acceptance.",
-        "access": "artifact",
-        "artifactDigest": "f5ae70d9c54f9b8063f03421204063ef8157a0dfdd488452ba973d1c2cbc2dbb"
-      },
-      {
-        "kind": "review",
-        "name": "independent-producer-fix-review",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/32#issuecomment-6576586317",
-        "headSha": "ba3b27ecd77dcdcd0f49502fb7e7d2dc8edc4800",
-        "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
-        "result": "PASS",
-        "scope": "Distinct /root/m3_remote_review read immutable2file bytes,RED/failedwrapper/canonicalGREEN/70gatecontracts and localVerifyFAIL; no further findings in patch scope. CI was pending at review, root later read originalCI. No remote mutations or M3 acceptance.",
-        "access": "artifact",
-        "artifactDigest": "122675eb102207423de8281ec4b67238e6512becb53ae18c432242aff57391c3"
-      },
-      {
-        "kind": "check",
-        "name": "original-m3-remote-acceptance",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/issues/19#issuecomment-6576575280",
-        "headSha": "03622b56c9756225019b7c6219d226beef8e0a6d",
-        "sourceDigest": "2f63fb3b134a981526a23fcc550dcb4a134463bb61ee42a9846f0135718cb7d3",
-        "result": "FAIL",
-        "scope": "Original12observations on protecteddplFTsy; importreceipt hashesnull/null; unchanged gate EXISTING_M3_GATE_REJECTED. npmstatus M3AWAITING_COMPLETE_EVIDENCE. Restore270479 originallyempty nowpopulated; preserve,noreset/reuse. All7rawJSON/hashespublished, not transferred toba3b.",
-        "access": "artifact",
-        "artifactDigest": "5fec47ab35c47f9d080bdc5e0571b613923695e5fdb5b027fa3338b0929a8172"
+        "scope": "Revoked claim and prior head review, local FAIL and remote rejection remain pinned at immutable parent. No prior finish overwritten or fabricated.",
+        "access": "metadata",
+        "artifactDigest": null
       }
     ],
     "blockers": [],
-    "nextAction": "Support ChatGPT session, not a native scheduled Codex run. User explicitly requests continuation. Consume the original PR32 evidence and normal-merge the indispensable P1 under the existing critical-correction runbook exception; require Verify on actual merge SHA before preparing standard Preview target:null. No alias change without authorized live preflight. M3 itself remains unaccepted; restore270479 is populated and preserved. No new database, reset, secrets export, scheduler or policy changes. The native runner retains its private QA/OIDC channels; this chat does not have them. READY authorizes the bounded candidate-release preparation, not a remote acceptance claim. Prior failures and review remain pinned to their original sources.",
-    "review": {
-      "authorContextId": "root-ardesia-codex-20261102T112522Z-bafc2930",
-      "reviewerContextId": "root-m3_remote_review",
-      "sourceSha": "ba3b27ecd77dcdcd0f49502fb7e7d2dc8edc4800",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/32#issuecomment-6576586317"
-    }
+    "nextAction": "Owner-directed administrative recovery, not automatic takeover on TTL. Revoked chatgpt-m3-release-20261102T122301Z must stop writing and cannot reuse its old expected SHA. Current support prepares at most one distinct empty migrated restore in the existing Free project, preserving source and populated restores. No source writes authorized by allowedPaths[]. Existing candidate dpl_HhzGdaLXgddb8HGDwUadEEcoabL8 is reused; no CI/build duplication, no alias promotion without authenticated preflight. Release current claim explicitly before handing ready M3 back to the native runner; do not leave another orphan lock. Process termination of the revoked session is NOT_VERIFIED. CAS fences Git only; no external-service atomic lock claimed.",
+    "review": null
   },
   "lastRun": {
     "runId": "chatgpt-m3-reconcile-20261102T122301Z",
