@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 51,
-  "updatedAt": "2026-11-02T04:02:00.383Z",
+  "revision": 52,
+  "updatedAt": "2026-11-02T04:02:50.873Z",
   "procedureRef": "568cbc0abbc1a6cce30c21c1487f914a26cd6fae",
   "activeRun": {
     "runId": "codex-20261102T034513Z",
@@ -15,58 +15,41 @@
     "closeBy": "2026-11-02T04:40:13.000Z"
   },
   "packet": {
-    "id": "perf003-snapshot-cost-20261102",
-    "taskId": "PERF-003",
+    "id": "ops006-durable-closure-20261102",
+    "taskId": "OPS-006",
     "nextActor": "codex",
-    "disposition": "COMPLETE_INCREMENT",
-    "kind": "coordination",
-    "notBefore": "2026-11-02T00:43:16.063Z",
-    "expiresAt": null,
+    "disposition": "READY",
+    "kind": "implementation",
+    "notBefore": "2026-11-02T03:46:20.634Z",
+    "expiresAt": "2026-11-02T04:40:13.000Z",
     "source": {
-      "baseSha": "d74b8dfa3ada65594a96604146c60df73118ccbd",
-      "headSha": "09c9da899e569d523d11e15153d390eb37746115",
-      "branch": "perf/20261102-snapshot-profile",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/25",
-      "sourceDigest": "2c34a7ccbbebf5c478137e05aa4440388138fe335a636d2a6da2db990f6dcac2"
+      "baseSha": "568cbc0abbc1a6cce30c21c1487f914a26cd6fae",
+      "headSha": "568cbc0abbc1a6cce30c21c1487f914a26cd6fae",
+      "branch": "ops/20261102-durable-closure",
+      "pr": null,
+      "sourceDigest": "d46ec405c64099902605dbfd7d31663367e477724889b3025a1db5d33118cd45"
     },
-    "goal": "Localizzare costo snapshot e ottimizzare solo il collo di bottiglia osservato",
-    "allowedPaths": [],
+    "goal": "Chiusura riprendibile con procedura e runtime distinti",
+    "allowedPaths": [
+      "tools/cycle.mjs",
+      "tools/cycle-sequential.test.mjs",
+      "docs/recurring-work.md",
+      "docs/history.md",
+      "operations/agent-evals.json",
+      ".agents/skills/ardesia-product-slice/SKILL.md",
+      ".agents/skills/ardesia-sequential-execution/SKILL.md",
+      ".agents/skills/ardesia-sequential-learning/SKILL.md",
+      ".agents/skills/ardesia-sequential-review/SKILL.md"
+    ],
     "exitCriteria": [
-      "Confrontare workload e crescita reali usando prima gli artefatti PR18, senza attribuire causalità a differenze tra macchine.",
-      "Una sola ipotesi discriminante; campioni grezzi, identità ambiente, correttezza/transazioni/idempotenza/recovery invariati."
+      "Riprodurre e correggere criteri canonici indebolibili, chiusura con code runtime/procedura distinte e ripresa da una completion-ref durevole dopo rilascio legittimo; conservare caso valido, replay idempotente e controprove discriminanti.",
+      "Conservare task, scope, dipendenze, blocker, ownership, avvio reale/budget, CAS/no force e identita CI/review; rifiutare claim concorrente o non rilasciato, prova su altra SHA, review autrice e contratto alterato. Nessun P2 usato per autorizzare il proprio incarico.",
+      "Riusare la proposta41124470 solo dopo lettura di sorgenti/diff e prove applicabili; acquisire Verify e review non autrice della sorgente finale pubblicata prima di adozione esplicita. Skill/eval esistenti coerenti col coordinatore unico; prove sintetiche distinte da recupero reale e due incrementi reali."
     ],
-    "evidence": [
-      {
-        "headSha": "09c9da899e569d523d11e15153d390eb37746115",
-        "sourceDigest": "2c34a7ccbbebf5c478137e05aa4440388138fe335a636d2a6da2db990f6dcac2",
-        "result": "PASS",
-        "access": "artifact",
-        "kind": "ci",
-        "name": "verify",
-        "scope": "Original final published Verify attempt1; root and independent reviewer read nine JSON reports, seven identity bindings and canonical report digests; 296 unit and73 browser pass, zero skips/flaky/retries. Loopback CI, not remote M3.",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41377509242",
-        "artifactDigest": "8b74e8168edcc7a475ea1d4906bcb312e4bfb0ccdfd734565945ea8fd5ec3bbd"
-      },
-      {
-        "headSha": "09c9da899e569d523d11e15153d390eb37746115",
-        "sourceDigest": "2c34a7ccbbebf5c478137e05aa4440388138fe335a636d2a6da2db990f6dcac2",
-        "result": "PASS",
-        "access": "artifact",
-        "kind": "review",
-        "name": "independent-source-and-artifact-review",
-        "scope": "Distinct non-author /root/perf003_review, raw diff and canonical criteria;23 differential counterprobes; fixtures, raw statistics and measured tree hashes reconstructed; original final Verify ZIP checked independently. Instruction-only read-only limits, shared filesystem; no human or remote acceptance. JSON context ids are schema-safe aliases: codex-20261102T021215Z-root means actual /root in this run; root-perf003-review means actual /root/perf003_review.",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/25#issuecomment-6567701649",
-        "artifactDigest": null
-      }
-    ],
+    "evidence": [],
     "blockers": [],
-    "nextAction": "OPS-004: preserve this exact verified PERF-003 completion and reconcile its canonical row only after legitimate intake of the closure correction. Adopted2909aa7d reconcile requires full equality between runtime and procedure queues, which legitimately differ here; queue remains queued. Proposal41124470d48e9782e15e5a8110fbfdac433b6f0f at ../astra-20261102-proposal/candidate is still local, unpublished, unadopted and exceeds PERF-003/OPS-004 scope; its exact report and owner-decision source remain preserved. Do not reimplement PR25 or rerun PR18 Extended, unchanged403 or original Verify. Main/preview/staging freeze and M3/M4 dependencies persist. Runtime rollback is a new commit restoring only the createCore dispatch from d74b8dfa, retaining tests/raw samples/history, with no data repair.",
-    "review": {
-      "authorContextId": "codex-20261102T021215Z-root",
-      "reviewerContextId": "root-perf003-review",
-      "sourceSha": "09c9da899e569d523d11e15153d390eb37746115",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/25#issuecomment-6567701649"
-    }
+    "nextAction": "Esaminare e preparare la correzione41124470 entro scope; Verify/review finali e adozione esplicita prima di usare il nuovo helper. Conservare completion49 PERF-003 e tutti i limiti M3.",
+    "review": null
   },
   "lastRun": {
     "runId": "codex-20261102T021215Z",
