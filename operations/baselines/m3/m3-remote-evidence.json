@@ -1,0 +1,261 @@
+{
+  "commit": "d0aa2014b131335d5c278543cea35098dcefdfd3",
+  "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
+  "generatedAt": "2026-11-02T14:47:54.277Z",
+  "schemaVersion": 1,
+  "kind": "ardesia-m3-remote-browser",
+  "runner": "playwright",
+  "passed": true,
+  "url": "https://ardesia-next-staging.vercel.app",
+  "deploymentId": "dpl_HhzGdaLXgddb8HGDwUadEEcoabL8",
+  "observedAt": "2026-11-02T14:47:52Z",
+  "database": {
+    "authority": "postgres",
+    "configured": true,
+    "remote": true,
+    "hostname": "ep-odd-cloud-ba3huvyi.c-8.eu-central-1.aws.neon.tech",
+    "resourceIdHash": "a7aeaf1d64287708277ed860ccfcd74103ed2ef3544b491818b1fe68dae76d68"
+  },
+  "accounts": {
+    "teacher": {
+      "idHash": "c70f806fb117672ff40734c4be754f134fee3d50db5c0b5f06074f92d4f87847",
+      "role": "teacher"
+    },
+    "studentA": {
+      "idHash": "9b8643e7206377242cdf76cade248f2a588a8b03a7c58d5c345a63e80f764e66",
+      "role": "student"
+    },
+    "studentB": {
+      "idHash": "25ca3dc03fe274f8c280aad1cb8fb36d5dcb42c6054857905bd6ee8858cf46d5",
+      "role": "student"
+    }
+  },
+  "sessions": {
+    "teacher": {
+      "accountIdHash": "c70f806fb117672ff40734c4be754f134fee3d50db5c0b5f06074f92d4f87847",
+      "sessionIdHash": "45dcc4cb94b35f9d0a196c5f699b7c8c73713d60d4c0f2d82622413fab73de0d",
+      "contextId": "bfa2c872-36d5-46d7-beaf-1d5b4e0af085",
+      "authenticatedAt": "2026-11-02T14:45:37.306Z"
+    },
+    "studentA1": {
+      "accountIdHash": "9b8643e7206377242cdf76cade248f2a588a8b03a7c58d5c345a63e80f764e66",
+      "sessionIdHash": "e0cdbaa4a92233da3826c8375dd6903df6f932278a04bbf9d5e03a3391863c62",
+      "contextId": "5888a7f5-2663-44b3-8503-914b0535b55b",
+      "authenticatedAt": "2026-11-02T14:45:44.921Z",
+      "endedAt": "2026-11-02T14:46:21.444Z"
+    },
+    "studentB": {
+      "accountIdHash": "25ca3dc03fe274f8c280aad1cb8fb36d5dcb42c6054857905bd6ee8858cf46d5",
+      "sessionIdHash": "fa441f348b078e9dbd664ecf9fc6c1b29816a4a08905e57a4201f473e314728f",
+      "contextId": "3e836092-d6dc-4287-a3c3-565f0aa80797",
+      "authenticatedAt": "2026-11-02T14:45:51.145Z"
+    },
+    "studentA2": {
+      "accountIdHash": "9b8643e7206377242cdf76cade248f2a588a8b03a7c58d5c345a63e80f764e66",
+      "sessionIdHash": "432c343a770de83b493eb945537353b7dcfd5da704e24007614780a99ca8fb0d",
+      "contextId": "86542064-5d1f-490a-b6fb-65a3342c456a",
+      "authenticatedAt": "2026-11-02T14:46:31.923Z"
+    }
+  },
+  "continuity": {
+    "createdByAccountHash": "c70f806fb117672ff40734c4be754f134fee3d50db5c0b5f06074f92d4f87847",
+    "assignedToAccountHash": "9b8643e7206377242cdf76cade248f2a588a8b03a7c58d5c345a63e80f764e66",
+    "saved": {
+      "workspaceId": "2614189b-073a-4c1f-af4e-c623d302af18",
+      "documentId": "6a1b30b8-0f9d-44bd-8f8a-718b87e692e3",
+      "objectId": "7e6c7142-5e51-4a40-8860-78270441a58c",
+      "instanceId": "205551d0-c56c-4763-9c48-90f3cdfa6559",
+      "objectRevision": 1,
+      "workRevision": 5,
+      "labRevision": 1,
+      "stateDigest": "6800ba08c7c8766110d6070c97f3378a3dd5aaac5e5fe0ee3f4fe2f28f0cf24e",
+      "session": "studentA1",
+      "observedAt": "2026-11-02T14:46:20.525Z"
+    },
+    "reopened": {
+      "workspaceId": "2614189b-073a-4c1f-af4e-c623d302af18",
+      "documentId": "6a1b30b8-0f9d-44bd-8f8a-718b87e692e3",
+      "objectId": "7e6c7142-5e51-4a40-8860-78270441a58c",
+      "instanceId": "205551d0-c56c-4763-9c48-90f3cdfa6559",
+      "objectRevision": 1,
+      "workRevision": 5,
+      "labRevision": 1,
+      "stateDigest": "6800ba08c7c8766110d6070c97f3378a3dd5aaac5e5fe0ee3f4fe2f28f0cf24e",
+      "session": "studentA2",
+      "observedAt": "2026-11-02T14:46:38.289Z"
+    }
+  },
+  "checks": {
+    "idor": {
+      "session": "studentB",
+      "resourceOwnerHash": "9b8643e7206377242cdf76cade248f2a588a8b03a7c58d5c345a63e80f764e66",
+      "responseStatus": 404,
+      "code": "NOT_FOUND",
+      "observedAt": "2026-11-02T14:46:12.452Z",
+      "passed": true,
+      "artifactDigest": "6ef9b7402c8a2f18ddc3e3b1667185b88449066c144f4df3b059bc9bbe50e4e6"
+    },
+    "revocation": {
+      "session": "studentA2",
+      "responseStatus": 404,
+      "code": "NOT_FOUND",
+      "retryStatus": 404,
+      "beforeRevision": 1,
+      "afterRevision": 2,
+      "observedAt": "2026-11-02T14:46:56.954Z",
+      "passed": true,
+      "artifactDigest": "4b42d8514109314cabfeb4819984c6dcd2b7e4b3a9443c61a01268233ae338f5"
+    },
+    "consentRevocation": {
+      "responseStatus": 422,
+      "code": "PLUGIN_CONSENT_REQUIRED",
+      "observedAt": "2026-11-02T14:46:52.815Z",
+      "passed": true,
+      "artifactDigest": "be63505728ad631ba533ba71c3cadaf0e97dafedc54a94e9b9fe38529254496b"
+    },
+    "conflict": {
+      "responseStatus": 409,
+      "code": "REVISION_CONFLICT",
+      "attemptedRevision": 4,
+      "winnerRevision": 5,
+      "persistedRevision": 5,
+      "observedAt": "2026-11-02T14:46:49.035Z",
+      "passed": true,
+      "artifactDigest": "a609264bd34f0c41456b40e641d967d0577dff3c050042eb1a94160ee308f9b3"
+    },
+    "lostResponse": {
+      "firstResponseDelivered": false,
+      "receiptDigest": "5d6c5185628f748b2a80cd1152d492d45213d5cca1a588f079df9538d0d9e213",
+      "retriedReceiptDigest": "5d6c5185628f748b2a80cd1152d492d45213d5cca1a588f079df9538d0d9e213",
+      "payloadDigest": "308bf496054fd34004aacd3986a7391578cb88c45a6862d11d11b4da28015c0f",
+      "retriedPayloadDigest": "308bf496054fd34004aacd3986a7391578cb88c45a6862d11d11b4da28015c0f",
+      "beforeRevision": 13,
+      "afterFirstRevision": 14,
+      "afterRetryRevision": 14,
+      "observedAt": "2026-11-02T14:46:45.231Z",
+      "passed": true,
+      "artifactDigest": "dd4cdb5d20648814973f6fe4831eb9509e387eb33b90668ca87e7001ed064cda"
+    },
+    "logout": {
+      "session": "studentA1",
+      "responseStatus": 200,
+      "afterStatus": 401,
+      "code": "UNAUTHENTICATED",
+      "observedAt": "2026-11-02T14:46:24.027Z",
+      "passed": true,
+      "artifactDigest": "e004651581fe28a00b74bb7d067eece2abc359d3981f65df348f4a931d30e1a0"
+    },
+    "expired": {
+      "responseStatus": 401,
+      "code": "UNAUTHENTICATED",
+      "executionScope": "isolated-session-in-restore",
+      "observedAt": "2026-11-02T14:47:14.449Z",
+      "passed": true,
+      "artifactDigest": "3bfdfccd5833d85c9ebefd39fbc293375641e98282202e2f4f9a293a480d4443"
+    },
+    "outage": {
+      "failedStatus": 503,
+      "recoveredStatus": 200,
+      "localFallbackUsed": false,
+      "beforeStateDigest": "90c9843c75f8409f78c7a4c95ce14158e36d614c10b8c3f21b22e0d9b98fb116",
+      "afterStateDigest": "90c9843c75f8409f78c7a4c95ce14158e36d614c10b8c3f21b22e0d9b98fb116",
+      "executionScope": "isolated-handler-connection-failure",
+      "observedAt": "2026-11-02T14:47:15.216Z",
+      "passed": true,
+      "artifactDigest": "08aa9ac73aa892b3b932568d9d492d51f6498340e30996362486b57c49397fad"
+    },
+    "backupRestore": {
+      "sourceDatabaseHash": "a7aeaf1d64287708277ed860ccfcd74103ed2ef3544b491818b1fe68dae76d68",
+      "restoreDatabaseHash": "c515ffc98b220ec0919877b83bf69d8dbdaddeb14ec60c8c64388093870af605",
+      "syntheticOnly": true,
+      "recordCount": 4,
+      "beforeDigest": "90c9843c75f8409f78c7a4c95ce14158e36d614c10b8c3f21b22e0d9b98fb116",
+      "restoredDigest": "90c9843c75f8409f78c7a4c95ce14158e36d614c10b8c3f21b22e0d9b98fb116",
+      "executionScope": "existing-isolated-restore",
+      "sourceWrites": false,
+      "observedAt": "2026-11-02T14:47:12.639Z",
+      "passed": true,
+      "artifactDigest": "901c59429d99dcd1fb3b00a47ad085a870271c9cd00cb41a172b4aaeeda9544c"
+    },
+    "import": {
+      "versions": [
+        {
+          "version": 1,
+          "sourceBytesDigest": "286dedd493023ccc44f95412ca6f099f294e86dd5641a2e4e4fa0a8f19324747",
+          "archivedBytesDigest": "286dedd493023ccc44f95412ca6f099f294e86dd5641a2e4e4fa0a8f19324747",
+          "beforeReceiptsDigest": "e92c717d82369dab3b0be345adf6a92444597bb4840c751f787ed8c26145a53f",
+          "afterReceiptsDigest": "e92c717d82369dab3b0be345adf6a92444597bb4840c751f787ed8c26145a53f",
+          "beforeRevision": 1,
+          "afterRevision": 1,
+          "consentReset": true,
+          "duplicateStatus": 409,
+          "ownershipMismatchStatus": 409
+        },
+        {
+          "version": 2,
+          "sourceBytesDigest": "d92543a70ef7f18e0be84d666324765d82a4e97b4cce342145b3e3a70856aaba",
+          "archivedBytesDigest": "d92543a70ef7f18e0be84d666324765d82a4e97b4cce342145b3e3a70856aaba",
+          "beforeReceiptsDigest": "63ed633a2610049c28df2df15889709c458ab51894852a03ee7903e5e41ed442",
+          "afterReceiptsDigest": "63ed633a2610049c28df2df15889709c458ab51894852a03ee7903e5e41ed442",
+          "beforeRevision": 1,
+          "afterRevision": 1,
+          "consentReset": true,
+          "duplicateStatus": 409,
+          "ownershipMismatchStatus": 409
+        },
+        {
+          "version": 3,
+          "sourceBytesDigest": "12068ef5bd0943cc9c8566fcd988be83ca3ee8b290258afaabeecd7b4384d4ce",
+          "archivedBytesDigest": "12068ef5bd0943cc9c8566fcd988be83ca3ee8b290258afaabeecd7b4384d4ce",
+          "beforeReceiptsDigest": "a57ed953fa05f1a10bc0506376edeaec436c74ed1ff80ba302aeff9ea32bdd2f",
+          "afterReceiptsDigest": "a57ed953fa05f1a10bc0506376edeaec436c74ed1ff80ba302aeff9ea32bdd2f",
+          "beforeRevision": 1,
+          "afterRevision": 1,
+          "consentReset": true,
+          "duplicateStatus": 409,
+          "ownershipMismatchStatus": 409
+        }
+      ],
+      "executionScope": "isolated-restore-real-import-handler",
+      "sourceData": "authored-synthetic-legacy-bytes",
+      "receiptScope": "original-history-prefix",
+      "observedAt": "2026-11-02T14:47:18.739Z",
+      "passed": true,
+      "artifactDigest": "d31fa1be30d4fae98c07ea2cd251bd42e944f5ba0e62bb014e1be0e491e3946c"
+    },
+    "accountSwitch": {
+      "responseStatus": 409,
+      "code": "SESSION_CHANGED",
+      "fromAccountHash": "9b8643e7206377242cdf76cade248f2a588a8b03a7c58d5c345a63e80f764e66",
+      "currentAccountHash": "25ca3dc03fe274f8c280aad1cb8fb36d5dcb42c6054857905bd6ee8858cf46d5",
+      "beforeRevision": 18,
+      "afterRevision": 18,
+      "observedAt": "2026-11-02T14:47:06.291Z",
+      "passed": true,
+      "artifactDigest": "56998faf71fb20ca734cdf12b0411d603fd03aadb0d2ba42cc0a0fcf9acd54d9"
+    },
+    "teacherEvidence": {
+      "accountIdHash": "c70f806fb117672ff40734c4be754f134fee3d50db5c0b5f06074f92d4f87847",
+      "privateCount": 0,
+      "sharedCount": 1,
+      "afterRevokeCount": 0,
+      "observedAt": "2026-11-02T14:46:19.783Z",
+      "passed": true,
+      "artifactDigest": "236a2e27cb1a51a02ab47c09a62377c2176b2dbeb271c965dd1dd93f849d234a"
+    }
+  },
+  "stats": {
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "provenance": {
+    "platformBeforeDigest": "0b0883ec21e6e2970268b7965608c6a5301cefecfa2ac70b7b08a273915e4e9d",
+    "platformAfterDigest": "a27839c7fbe73db09648b75117681acedc3397c79b17c163c10711b721a125c1",
+    "preflightDigest": "b84482499e4dbeb64d2a7443f0e1cd101f261f16ddd91c335b61d2d45d522733",
+    "postflightDigest": "36c7b8aaeb9e563798c8999afd4b472c1207cb62b0c666d4f5665c933f633b8b",
+    "browserDigest": "54c2ed0105dd23e52dae4d8f610630bee48aa6d70edde6047156e14bd325e9a8",
+    "operatorDigest": "45eb58a135e9129ad775362f2eb4e01e542f0aa4bb6350aab5dc6ed7fe117c2e"
+  }
+}

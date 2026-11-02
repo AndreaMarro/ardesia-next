@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
+import {readFileSync, mkdtempSync, rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
 import {execFileSync} from 'node:child_process';
 import * as cycle from './cycle.mjs';
 const T = '2026-11-01T10:00:00.000Z';
@@ -22,9 +24,22 @@ const task = (id = 'TASK-1', scope = ['tools']) => ({id, title:'Bounded syntheti
  scope, dependsOn:[], blockers:[], exitCriteria:['Consumer and evidence'], evidence:[], nextAction:'Implement the bounded task'});
 const blocker = (id='B') => ({id,status:'blocked',reason:'Missing prerequisite',lastCheckedAt:T,recheckWhen:'Prerequisite changes',sources:['docs/history.md']});
 const queue = () => ({...JSON.parse(readFileSync(new URL('../operations/coordination.json', import.meta.url), 'utf8')),
+ policy:{maxActiveIncrements:1,maxRemoteWriters:1,productionAuthorized:false,newSpendAuthorized:false,
+  agentLaunchedCodexJobsAuthorized:false,ownerScheduledCodexAllowed:true,mainFrozen:true,stagingFrozen:true},
  updatedAt:T, tasks:[task()], blockers:[], claims:[]});
 const select = (data, packet, q = queue()) => cycle.assignCycle(data, {expectedRevision: data.revision, actor: 'codex', runId: 'run-1', packet, queue: q}, {now: at(9),readQueue:()=>q});
 const finish = (data, packet, outcome, q = queue()) => cycle.finishCycle(data, {expectedRevision: data.revision, actor: 'codex', runId: 'run-1', packet, outcome, queue:q, summary: 'Synthetic test result'}, {now: at(50),readQueue:()=>q});
+
+test('post-M3 selection reads baseline at the immutable procedure ref, never a local substitute', () => {
+ const q=JSON.parse(readFileSync(new URL('../operations/coordination.json',import.meta.url),'utf8'));
+ const canonical=q.tasks.find(t=>t.id==='OPS-004');
+ const p={...implementation(),taskId:canonical.id,allowedPaths:canonical.scope,exitCriteria:canonical.exitCriteria};
+ const s=fixture();s.procedureRef=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+ const a=claim(s), input={expectedRevision:a.revision,actor:'codex',runId:'run-1',packet:p,queue:q};
+ assert.equal(cycle.assignCycle(a,input,{now:at(9),readQueue:()=>q}).packet.taskId,'OPS-004');
+ const missing=structuredClone(a);missing.procedureRef='f'.repeat(40);
+ assert.throws(()=>cycle.assignCycle(missing,input,{now:at(9),readQueue:()=>q}),/policy/);
+});
 
 test('v1 historical coordination remains valid', () => assert.deepEqual(cycle.validateCycle(fixture(false)), []));
 test('v2 accepts Codex coordinator without a Pro worker', () => assert.deepEqual(cycle.validateCycle(fixture()), []));
@@ -505,4 +520,24 @@ test('removing or combining recorded proof references does not make a reopened c
   assert.throws(()=>cycle.reconcileCycle(active,{...input,expectedRevision:active.revision,queue:reopened,completionRef:aliasRef},
    {now:at(15),readQueue:ref=>ref===adopted?reopened:s.q,readCompletion:ref=>ref===oldRef?first:ref===otherRef?second:alias}),/reopened/);
  }
+});
+
+test('post-M3 reconciliation is independent of the local checkout baseline', () => {
+ const s=closureFixture(), q=JSON.parse(readFileSync(new URL('../operations/coordination.json',import.meta.url),'utf8'));
+ s.q.policy=q.policy;
+ s.q.tasks.push(q.tasks.find(t=>t.id==='M3-REMOTE'));
+ s.q.blockers=q.blockers;
+ const head=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+ s.active.procedureRef=head;s.done.procedureRef=head;
+ const root=mkdtempSync(join(tmpdir(),'ardesia-immutable-reconcile-'));
+ try {
+  const code=`import {readFileSync} from 'node:fs';import {reconcileCycle} from ${JSON.stringify(new URL('./cycle.mjs',import.meta.url).href)};
+   const s=JSON.parse(readFileSync(0,'utf8'));
+   const result=reconcileCycle(s.active,s.input,{now:new Date(s.now),readQueue:()=>s.q,readCompletion:()=>s.done});
+   console.log(result.tasks.find(t=>t.id==='TASK-1').status);`;
+  const gitDir=execFileSync('git',['rev-parse','--absolute-git-dir'],{encoding:'utf8'}).trim();
+  const output=execFileSync(process.execPath,['--input-type=module','-e',code],{cwd:root,encoding:'utf8',
+   env:{...process.env,GIT_DIR:gitDir},input:JSON.stringify({...s,input:reconcileInput(s),now:at(13).toISOString()}),stdio:['pipe','pipe','pipe']});
+  assert.equal(output.trim(),'done');
+ } finally {rmSync(root,{recursive:true,force:true});}
 });

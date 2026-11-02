@@ -187,8 +187,8 @@ test('canonical post-M3 work waits for transition without weakening the original
   for (const id of ['M4-REUSE', 'MCP-CORE']) assert.deepEqual(task(id).dependsOn, ['M3-TRANSITION']);
   assert.equal(data.acceptanceEvidence, false);
   assert.equal(data.canonical.acceptance, 'tools/status.mjs');
-  assert.equal(data.policy.mainFrozen, true);
-  assert.equal(data.policy.stagingFrozen, true);
+  assert.equal(data.policy.mainFrozen, false);
+  assert.equal(data.policy.stagingFrozen, false);
   const transition = task('M3-TRANSITION');
   task('M3-REMOTE').status = 'blocked';
   transition.status = 'in_progress';
