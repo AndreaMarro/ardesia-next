@@ -3,9 +3,9 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 93,
-  "updatedAt": "2026-11-02T14:56:50.229Z",
-  "procedureRef": "656d1967ed75b56520d2e320c538950b3160c076",
+  "revision": 94,
+  "updatedAt": "2026-11-02T15:08:42.653Z",
+  "procedureRef": "0f361f288e2e8033b93b7a3fd6f807909c7d29f7",
   "activeRun": {
     "runId": "ardesia-codex-20261102T142556Z-bf1ed195",
     "actor": "codex",
@@ -24,10 +24,10 @@
     "expiresAt": "2026-11-02T15:20:56Z",
     "source": {
       "baseSha": "656d1967ed75b56520d2e320c538950b3160c076",
-      "headSha": "656d1967ed75b56520d2e320c538950b3160c076",
+      "headSha": "0f361f288e2e8033b93b7a3fd6f807909c7d29f7",
       "branch": "codex/m3-accepted-queue-20261102",
-      "pr": null,
-      "sourceDigest": null
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/33",
+      "sourceDigest": "ccaf6f47227877dfcd33b6429e58b7d6bc1fcf20b3dc379ca683d4c5cc734512"
     },
     "goal": "Riconciliazione canonica delle consegne verificate, su richiesta",
     "allowedPaths": [
@@ -39,10 +39,38 @@
       "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
       "La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."
     ],
-    "evidence": [],
+    "evidence": [
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41467426036",
+        "headSha": "0f361f288e2e8033b93b7a3fd6f807909c7d29f7",
+        "sourceDigest": "ccaf6f47227877dfcd33b6429e58b7d6bc1fcf20b3dc379ca683d4c5cc734512",
+        "result": "PASS",
+        "scope": "Original attempt1 PR Verify exact0f; ZIP4151284byte SHA256/CRC/9JSON/7binding read,8checks/291unit/73browser0skipflaky; local gate true. Administrative source M3 remains AWAITING, no acceptance transfer.",
+        "access": "artifact",
+        "artifactDigest": "75ddc440bf1803e833e0476804e5f734031ee224c9cd8ea26238f6d64564dad4"
+      },
+      {
+        "kind": "review",
+        "name": "independent-canonical-reconciliation",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/33#issuecomment-6580494173",
+        "headSha": "0f361f288e2e8033b93b7a3fd6f807909c7d29f7",
+        "sourceDigest": "ccaf6f47227877dfcd33b6429e58b7d6bc1fcf20b3dc379ca683d4c5cc734512",
+        "result": "PASS",
+        "scope": "Distinct /root/m3_release_review, rawdiff and prefixbytecheck, only M3REMOTE row plus topupdatedAt; contracts/policy/freeze unchanged. Original completion336ed read and reconcile replay equal. Reviewer did not read CI; root consumed exact original after review.",
+        "access": "artifact",
+        "artifactDigest": "dc4eeed06894ec12573bfd0ccc9bcc2441f793498b310580c14002e42fee35fb"
+      }
+    ],
     "blockers": [],
-    "nextAction": "Riconciliare soltanto M3-REMOTE dalla completion-ref durevole su d0aa2014/9cbd, Verify41447497762, review non autrice e gate originale ACCEPTED; conservare freeze e M3-TRANSITION distinta. Review/Verify della sorgente amministrativa prima adozione.",
-    "review": null
+    "nextAction": "Procedura0f adottata esplicitamente dopo Verify e review propria: M3REMOTE done con completion-ref336ed. Prossimo incremento M3-TRANSITION: promuoverlo nella coda canonica, conservare baseline e prove originali runtime d0aa/9cbd e aggiornare motore/guardie/policy prima di M4. Non rifare M3 sul restore280053 consumato, non trasferire ACCEPTED alla sorgente amministrativa, non rilanciare CI.",
+    "review": {
+      "authorContextId": "ardesia-codex-20261102T142556Z-bf1ed195-root",
+      "reviewerContextId": "ardesia-codex-20261102T142556Z-bf1ed195-m3-release-review",
+      "sourceSha": "0f361f288e2e8033b93b7a3fd6f807909c7d29f7",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/33#issuecomment-6580494173"
+    }
   },
   "lastRun": {
     "runId": "chatgpt-m3-scoped-preparation-20261102T140000Z",
