@@ -3,22 +3,15 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 116,
-  "updatedAt": "2026-11-02T22:12:03.971Z",
+  "revision": 117,
+  "updatedAt": "2026-11-02T23:12:09.201Z",
   "procedureRef": "e947ac98e828e9e2ff6c1bb484c35fb45a93ba4b",
-  "activeRun": {
-    "runId": "ardesia-dev-20261102T221102Z-01a19e50",
-    "actor": "codex",
-    "startedAt": "2026-11-02T22:11:02.000Z",
-    "claimedAt": "2026-11-02T22:12:03.971Z",
-    "writeUntil": "2026-11-02T22:56:02.000Z",
-    "closeBy": "2026-11-02T23:06:02.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m4-consumer-20261102T185253Z",
     "taskId": "M4-REUSE",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "INTERRUPTED",
     "kind": "implementation",
     "notBefore": "2026-11-02T19:16:07.799Z",
     "expiresAt": "2026-11-04T19:16:07.799Z",
@@ -192,7 +185,7 @@
       }
     ],
     "blockers": [],
-    "nextAction": "M4-REUSE READY per il prossimo sviluppo: setup quattro ruoli orari adottato nella procedura e947ac98e828e9e2ff6c1bb484c35fb45a93ba4b (PR41,Verify41526168163,review6588598167 e ricevute finali). Integrazione e cursor writer unici; contributor con scope/delega/claimRef/ownerRunId/scadenza, nessun secondo task. Riprendere direttamente il consumer M4 senza rifare HANDOFF, setup o preparazione PR37/38. Dopo M4 continuare E1 e l intera mappa18ambiti, mai riaprire M4 dal richiamo storico dei prompt. Ogni incremento applicativo pronto va consegnato alla preview Vercel protetta esistente tramite release-runbook, con CI/review/merge/build-info/protezione, switch controllato aliasstaging e smoke sulla origin stabile; rollback compatibile seFAIL. Link stabile per utente, URLimmutabile di riferimento, cosa cambia e passi da provare. La preview corrente resta d0aa; nessuna nuova feature deployata dal setup. ENG-E1 queued dopo M4; codice E1 solo archiviato,32test sintetici Node24 e review del puro helper, con P3 prototipo-array/compatibilita in_progress da correggere o controprovare; schema/wiring/Verify integrazione/adozione codice/incarico reale PENDING. Non aprire una nuova preparazione Poiseuille o ripetere Verify PR37/38. Collegare Poiseuille PR37/head062e3d58/digest8fd881 alla stessa web app/Core/PostgreSQL usando il perimetro canonico adottato413de5b (PR38,Verify41506499566,review6586098914). Registrare package/lockfile e consumer esistenti, provare consenso/save/reopen/revisioni esatte/isolamento/rifiuti senza write/revoca e browser, misurare il riuso. Preservare preparazione e prove originali, fix runtime d0aa, DRAFT e approvazioni umane pendenti. Candidate-trust non autorizza publisher: prima di promozione verificare firma/pin/canale gia autorizzato; nessun bypass o nuovo privilegio. Ogni nuova sorgente richiede proprie Verify/review; non rieseguire le CI verdi invariate. Nessun COMPLETE_INCREMENT o M4 ACCEPTED da questo HANDOFF.",
+    "nextAction": "RECOVERY della run ardesia-dev-20261102T221102Z-01a19e50 terminata systemError Selected model is at capacity; anche il suo specialista01a19e59-9598-7793-8e24-400aa032ce7e e terminato failed, ultimo tool completato. PostgreSQL sintetico locale PID75165 arrestato senza cancellare dati; nessun processo con cwd del candidato o della run rimasto. Nessuna scadenza usata come prova di cessazione. Preservati17file sorgente sporchi (12tracked/5untracked), commit locali01336f5 (include main d0aa e procedura e947), remote PR37 ancora062e. Snapshot locale chiuso /Users/andreamarro/.codex/automations/ardesia-next-worker-codex-sol-max/runs/ardesia-dev-20261102T230806Z-01a19e84/run.json con hash dei17file; patch e9904ab55f34046a5d6eca805760647d03600692203e9635ba3d770b573cf067, untracked tar0b94dd18156de4bf80e80fad76b8979ba7519c94688854e4ae4b651e36e99400 e bundle d3235bccdeeac54ec7cf41339c524646c314d4c1948f4d1cd3d2526e6c20e4aa verificati. Non consumare alla cieca come completamento o review. Riprendere lo stesso M4 mediante claim legittimo/HANDOFF canonico, preservando le prove PR37/38/40/41. Le prove locali precedenti sono parziali: policyRED/GREEN, PostgreSQL2PASS/19skip; browser2FAIL timeoutApriFlussoDiPoiseuille; build riuscita ma budget/Verify/review del consumerPENDING. Nessun nuovo runtime pubblicato o deployato; DRAFT e accettazioni umane pendenti. Non ripetere CIverde della preparazione o setup. DopoREADY riprendere la stessa copia sporca, leggere diff e criteri, correggere consumer/test e misurare bundle senza indebolire gate, poi propria Verify/review/deploy protetto. DopoM4 continuareE1 e tutti18ambiti.",
     "review": {
       "authorContextId": "root",
       "reviewerContextId": "root.m4_preparation_review",
@@ -201,16 +194,16 @@
     }
   },
   "lastRun": {
-    "runId": "ardesia-three-jobs-20261102T203832Z",
+    "runId": "ardesia-dev-20261102T221102Z-01a19e50",
     "actor": "codex",
-    "startedAt": "2026-11-02T20:38:32.000Z",
-    "claimedAt": "2026-11-02T20:41:56.259Z",
-    "writeUntil": "2026-11-02T21:23:32.000Z",
-    "closeBy": "2026-11-02T21:33:32.000Z",
+    "startedAt": "2026-11-02T22:11:02.000Z",
+    "claimedAt": "2026-11-02T22:12:03.971Z",
+    "writeUntil": "2026-11-02T22:56:02.000Z",
+    "closeBy": "2026-11-02T23:06:02.000Z",
     "packetId": "m4-consumer-20261102T185253Z",
-    "finishedAt": "2026-11-02T21:21:57.541Z",
-    "outcome": "HANDOFF",
-    "late": false,
-    "summary": "Setup esplicito del titolare completato: quattro attività native orarie ACTIVE gpt-6.1-sol/xhigh, unico integratore, piena visione oltreM4 e consegna previewVercel per incrementi applicativi. Procedura e947ac9 adottata dopo Verify41526168163 originale e review nonautrice esatta; configurazioni rilette. M4 preservata e HANDOFF READY, non completata; E1 in coda dopoM4, E2-E7 progressivi. Nessun nuovo runtime deployato, produzione/spesa/privilegi o autodeploy. Review3P2 corretti; metriche native futureNOT_RUN. Claim rilasciato entrobudget; nessun processo delegato attivo."
+    "finishedAt": "2026-11-02T23:12:09.201Z",
+    "outcome": "INTERRUPTED",
+    "late": true,
+    "summary": "Recovery by ardesia-dev-20261102T230806Z-01a19e84 after native parent and specialist systemError capacity and completed tools; source and commits snapshotted, orphan local PostgreSQL stopped, no remaining candidate/run cwd processes. Original owner times retained, late true; no M4 completion or source publication."
   }
 }
