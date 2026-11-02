@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 100,
-  "updatedAt": "2026-11-02T16:53:33.086Z",
+  "revision": 101,
+  "updatedAt": "2026-11-02T16:53:42.257Z",
   "procedureRef": "5acd99eb7f38e77430ff5e8762d9f95ffcbbba4e",
   "activeRun": {
     "runId": "ardesia-codex-20261102T161917Z-51e4805b",
@@ -15,63 +15,34 @@
     "closeBy": "2026-11-02T17:14:17.000Z"
   },
   "packet": {
-    "id": "m3-transition-20261102T161917Z",
-    "taskId": "M3-TRANSITION",
+    "id": "m3-transition-closure-20261102T161917Z",
+    "taskId": "OPS-004",
     "nextActor": "codex",
-    "disposition": "COMPLETE_INCREMENT",
+    "disposition": "READY",
     "kind": "implementation",
     "notBefore": "2026-11-02T16:19:17Z",
     "expiresAt": "2026-11-02T17:14:17Z",
     "source": {
-      "baseSha": "ccdab91a10537c1dab5210d78e41857322e22829",
+      "baseSha": "5acd99eb7f38e77430ff5e8762d9f95ffcbbba4e",
       "headSha": "5acd99eb7f38e77430ff5e8762d9f95ffcbbba4e",
-      "branch": "codex/m3-transition-20261102",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/35",
+      "branch": "codex/m3-transition-closure-20261102",
+      "pr": null,
       "sourceDigest": "b03d8bb4197affbcfb9322f987904289bac71140466cf419fd0e2259af491a91"
     },
-    "goal": "Conservare M3 accettata e abilitare la fase successiva",
+    "goal": "Riconciliazione canonica delle consegne verificate, su richiesta",
     "allowedPaths": [
-      "operations",
-      "tools",
-      "docs"
+      "operations/coordination.json",
+      "docs/history.md"
     ],
     "exitCriteria": [
-      "Conservare le prove originali M3 e baseline con SHA/digest/ambiente, senza trasferirle a un nuovo candidato.",
-      "Aggiornare coerentemente motore tools/status.mjs, guardie di fase e coda con review/controprove; nessun secondo motore di stato.",
-      "Sciogliere il freeze soltanto dopo il gate originale; le autorizzazioni di produzione e spesa restano separate."
+      "Un disallineamento concreto tra consegna verificata e coda viene riconciliato usando SHA/digest, Verify e review non autrice originali; nessun PASS trasferito a nuove sorgenti.",
+      "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
+      "La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."
     ],
-    "evidence": [
-      {
-        "kind": "ci",
-        "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41484557622",
-        "headSha": "5acd99eb7f38e77430ff5e8762d9f95ffcbbba4e",
-        "sourceDigest": "b03d8bb4197affbcfb9322f987904289bac71140466cf419fd0e2259af491a91",
-        "result": "PASS",
-        "scope": "Original Verify attempt1 final5acd, ZIP CRC/9JSON/7bindings read; local gate true; no acceptance transfer to administrative source.",
-        "access": "artifact",
-        "artifactDigest": "e096384c82bf86002886462e3adace320b6237fa4ae36f1ccfbe2db0fa401e57"
-      },
-      {
-        "kind": "review",
-        "name": "independent-m3-transition",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/35#issuecomment-6582836347",
-        "headSha": "5acd99eb7f38e77430ff5e8762d9f95ffcbbba4e",
-        "sourceDigest": "b03d8bb4197affbcfb9322f987904289bac71140466cf419fd0e2259af491a91",
-        "result": "PASS",
-        "scope": "Distinct /root/transition_review raw cumulative diff,15 original reports, consumer and adverse checks; P2 immutable final validation corrected/reproduced. No human approval or technical ACL claimed.",
-        "access": "artifact",
-        "artifactDigest": "8ee2257d1e5db9862c969f8ce0382473bca669b46cdb59be9f84f1e18f8e1dee"
-      }
-    ],
+    "evidence": [],
     "blockers": [],
-    "nextAction": "Procedura5acd/b03d adottata esplicitamente dopo Verify/review proprie. Freeze M3 sciolto in policy sulla baseline originale valida; nessun merge o deploy. OPS004 deve chiudere M3TRANSITION nella stessa coda prima di M4.",
-    "review": {
-      "authorContextId": "ardesia-codex-20261102T161917Z-51e4805b-root",
-      "reviewerContextId": "ardesia-codex-20261102T161917Z-51e4805b-transition-review",
-      "sourceSha": "5acd99eb7f38e77430ff5e8762d9f95ffcbbba4e",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/35#issuecomment-6582836347"
-    }
+    "nextAction": "Consumare completion-ref durevole della transizione, riconciliare soltanto M3TRANSITION done/prove/nextAction e storico append-only; Verify/review proprie prima di adozione.",
+    "review": null
   },
   "lastRun": {
     "runId": "ardesia-codex-20261102T142556Z-bf1ed195",
