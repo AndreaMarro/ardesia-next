@@ -3,9 +3,9 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 113,
-  "updatedAt": "2026-11-02T20:41:56.259Z",
-  "procedureRef": "c4178388105a6f817c79bee2de18aee85b788d5d",
+  "revision": 114,
+  "updatedAt": "2026-11-02T21:19:58.992Z",
+  "procedureRef": "e947ac98e828e9e2ff6c1bb484c35fb45a93ba4b",
   "activeRun": {
     "runId": "ardesia-three-jobs-20261102T203832Z",
     "actor": "codex",
@@ -156,6 +156,28 @@
         "scope": "Root and non-author reviewer separately read original artifact13176645105/4216428bytes/SHA256 and CRC19/19; authoritative unit/browser and operator digests. Product NOT_COMPLETE,M4NOT_STARTED,deviceNOT_RUN. Metrics in receipt; no demonstrated speedup or learner functionality.",
         "access": "artifact",
         "artifactDigest": "b63ecc204cd0f7db4c72797453c92efa3af09f8724e4d9974dfa1ad786eed708"
+      },
+      {
+        "headSha": "e947ac98e828e9e2ff6c1bb484c35fb45a93ba4b",
+        "sourceDigest": "0dc4f32c0ffa55cff9670a6173c1095287a2a46d9f67a8db1cb065a852d52f56",
+        "result": "PASS",
+        "access": "artifact",
+        "artifactDigest": "07c46239981fc2d5f0c3615e774eb126bcf584c231a6fa0f58542c341b82f50b",
+        "kind": "ci",
+        "name": "four-hourly-roles-final-verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41526168163",
+        "scope": "Only administrative setup PR41, final source includes protected Vercel delivery. Original attempt1;8checks,291unit/50suites,73browser/73attempts,0skip/flaky/retry. Not M4 runtime or E1 implementation."
+      },
+      {
+        "headSha": "e947ac98e828e9e2ff6c1bb484c35fb45a93ba4b",
+        "sourceDigest": "0dc4f32c0ffa55cff9670a6173c1095287a2a46d9f67a8db1cb065a852d52f56",
+        "result": "PASS",
+        "access": "artifact",
+        "artifactDigest": "07c46239981fc2d5f0c3615e774eb126bcf584c231a6fa0f58542c341b82f50b",
+        "kind": "review",
+        "name": "four-hourly-roles-independent-source-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/41#issuecomment-6588598167",
+        "scope": "Fresh non-author /root/hourly_design_review vs /root. Raw source/delta/criteria; delegation lifetime, HANDOFF release and stable-origin smoke P2 corrected; no remaining P1/P2. Node24 synthetic counterexamples. Instructional read-only, no ACL/human approval/native-run qualification."
       }
     ],
     "blockers": [],
