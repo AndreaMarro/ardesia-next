@@ -2,6 +2,8 @@
 
 **Modalità corrente: un solo coordinatore Codex, una run ogni 90 minuti.** Non aspettare un Pro pianificato. Il nuovo mandato è `OPS-20261101-07`; il metodo è in [recurring-work](recurring-work.md), la motivazione in [ADR 0008](adr/0008-codex-sequential.md). I vecchi prompt Pro e worker sono superati solo per ruoli e pianificazione.
 
+Il mandato [E0–E7 del 2 novembre](history.md#ops-20261102-16--mandato-di-ingegnerizzazione-e0e7) acquisisce il [piano originale](superpowers/plans/2026-11-02-engineering-delivery.md). M4/Poiseuille resta il lavoro applicativo assegnato; ENG-E1 segue nella coda canonica. Pro complementare e OpenCode sono evoluzioni condizionate: il protocollo attivo resta sequenziale finché le rispettive modifiche non sono verificate e adottate. [Originali E1 e confini](sources/engineering-e0e7/README.md).
+
 ## Ripresa breve
 1. Leggi AGENTS e il cursore Git `ops/dual-run-state/handoff.json`, fissando la SHA della ref. v2 usa sempre actor `codex`; il nome storico della ref resta per evitare copie e link rotti.
 2. Carica il metodo alla `procedureRef`; il task completo e gli AGENTS dell'area alla sorgente assegnata. Per un candidato precedente alla governance usa il fallback esplicito alla procedura, mai fingere che i file fossero sul candidato.
