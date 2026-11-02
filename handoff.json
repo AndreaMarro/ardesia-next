@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 66,
-  "updatedAt": "2026-11-02T09:21:58.306Z",
+  "revision": 67,
+  "updatedAt": "2026-11-02T09:23:34.745Z",
   "procedureRef": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
   "activeRun": {
     "runId": "ardesia-m3-repair-20261102T091655Z",
@@ -15,46 +15,35 @@
     "closeBy": "2026-11-02T10:11:55.000Z"
   },
   "packet": {
-    "id": "m3-access-availability-20261102T064252Z",
+    "id": "m3-access-diagnosis-20261102T091655Z",
     "taskId": "M3-ACCESS",
     "nextActor": "codex",
-    "disposition": "BLOCKED",
-    "kind": "coordination",
-    "notBefore": "2026-11-02T06:45:30.709Z",
-    "expiresAt": null,
+    "disposition": "READY",
+    "kind": "implementation",
+    "notBefore": "2026-11-02T09:21:58.306Z",
+    "expiresAt": "2026-11-02T10:11:55.000Z",
     "source": {
-      "baseSha": "dce527f32685c4a691cd00ce54a99606136a8042",
+      "baseSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
       "headSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
-      "branch": "ops/20261102-verified-closures",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/28",
+      "branch": "codex/m3-access-20261102",
+      "pr": null,
       "sourceDigest": "d27a5aa14dd00a6114cabf10497c2289858d09da6d76621ea847a330b805ae31"
     },
     "goal": "Preparare i prerequisiti remoti prima del gate M3",
-    "allowedPaths": [],
+    "allowedPaths": [
+      "tools",
+      "e2e",
+      "operations",
+      "docs"
+    ],
     "exitCriteria": [
       "Distinguere le capacita del runner nativo da quelle della chat: provare OIDC nel progetto/origin corretti, tre identita QA esistenti e connessioni operatore senza esportare segreti.",
       "Target restore distinto, vuoto e migrato verificato sul progetto Neon Free esistente; conservare i due restore popolati, senza reset o scritture alla sorgente. Nessun nuovo progetto, compute, servizio o piano a pagamento.",
       "Aggiornare soltanto i blocker realmente risolti e le osservazioni datate; la preparazione non accetta M3 e non cambia schema del database attivo o protezioni."
     ],
-    "evidence": [
-      {
-        "headSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
-        "sourceDigest": "d27a5aa14dd00a6114cabf10497c2289858d09da6d76621ea847a330b805ae31",
-        "kind": "check",
-        "name": "current-process-channel-presence",
-        "reference": "e2e/README.md",
-        "result": "FAIL",
-        "scope": "At2026-11-02T08:27:28.044Z boolean presence of10canonical channels:all absent in this process only. No values,credential stores or child environments read. No changed authorized trigger:issue19 unchanged4comments/updated2026-11-01T22:10:08Z. No403/login/preflight/SQL/restore retry. Local receipt environment-presence-canonical.json outside publicsource.",
-        "access": "metadata",
-        "artifactDigest": null
-      }
-    ],
-    "blockers": [
-      "B-OIDC",
-      "B-QA",
-      "B-RESTORE"
-    ],
-    "nextAction": "Riprendere M3-ACCESS solo al cambiamento osservabile di un canale gia autorizzato QA/OIDC/operatore/restore. Nessun incremento indipendente eleggibile nella coda1f2d0a6:OPS004 da saltare senza delta,OPS006/PERF003 done. Nessun retry403/login o provisioningrestore270479. Verify41388837775 e review6569185184 riletti soltanto metadata/ricevuta,nessuna nuova prova prodotto. Assign rifiutato oltre writeUntil,tempo invariato;nessun incarico nuovo pubblicato. M3/prodotto pendenti. Rollback solo nuovo figlio correttivo del cursore dopo ownership/CAS,senza force o scritture dati.",
+    "evidence": [],
+    "blockers": [],
+    "nextAction": "Diagnosi circoscritta dei canali autorizzati CLI/provider; verifica connessioni esistenti, metadati OIDC e contratto Trusted Sources; correggere soltanto difetti dimostrati. Nessun reset QA, nuova regola accesso o indebolimento gate.",
     "review": null
   },
   "lastRun": {
