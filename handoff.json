@@ -3,59 +3,75 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 48,
-  "updatedAt": "2026-11-02T02:13:35.536Z",
+  "revision": 49,
+  "updatedAt": "2026-11-02T02:38:36.532Z",
   "procedureRef": "2909aa7d90a8f87b011e80722d079fb4bbd61070",
-  "activeRun": {
+  "activeRun": null,
+  "packet": {
+    "id": "perf003-snapshot-cost-20261102",
+    "taskId": "PERF-003",
+    "nextActor": "codex",
+    "disposition": "COMPLETE_INCREMENT",
+    "kind": "coordination",
+    "notBefore": "2026-11-02T00:43:16.063Z",
+    "expiresAt": null,
+    "source": {
+      "baseSha": "d74b8dfa3ada65594a96604146c60df73118ccbd",
+      "headSha": "09c9da899e569d523d11e15153d390eb37746115",
+      "branch": "perf/20261102-snapshot-profile",
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/25",
+      "sourceDigest": "2c34a7ccbbebf5c478137e05aa4440388138fe335a636d2a6da2db990f6dcac2"
+    },
+    "goal": "Localizzare costo snapshot e ottimizzare solo il collo di bottiglia osservato",
+    "allowedPaths": [],
+    "exitCriteria": [
+      "Confrontare workload e crescita reali usando prima gli artefatti PR18, senza attribuire causalità a differenze tra macchine.",
+      "Una sola ipotesi discriminante; campioni grezzi, identità ambiente, correttezza/transazioni/idempotenza/recovery invariati."
+    ],
+    "evidence": [
+      {
+        "headSha": "09c9da899e569d523d11e15153d390eb37746115",
+        "sourceDigest": "2c34a7ccbbebf5c478137e05aa4440388138fe335a636d2a6da2db990f6dcac2",
+        "result": "PASS",
+        "access": "artifact",
+        "kind": "ci",
+        "name": "verify",
+        "scope": "Original final published Verify attempt1; root and independent reviewer read nine JSON reports, seven identity bindings and canonical report digests; 296 unit and73 browser pass, zero skips/flaky/retries. Loopback CI, not remote M3.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41377509242",
+        "artifactDigest": "8b74e8168edcc7a475ea1d4906bcb312e4bfb0ccdfd734565945ea8fd5ec3bbd"
+      },
+      {
+        "headSha": "09c9da899e569d523d11e15153d390eb37746115",
+        "sourceDigest": "2c34a7ccbbebf5c478137e05aa4440388138fe335a636d2a6da2db990f6dcac2",
+        "result": "PASS",
+        "access": "artifact",
+        "kind": "review",
+        "name": "independent-source-and-artifact-review",
+        "scope": "Distinct non-author /root/perf003_review, raw diff and canonical criteria;23 differential counterprobes; fixtures, raw statistics and measured tree hashes reconstructed; original final Verify ZIP checked independently. Instruction-only read-only limits, shared filesystem; no human or remote acceptance. JSON context ids are schema-safe aliases: codex-20261102T021215Z-root means actual /root in this run; root-perf003-review means actual /root/perf003_review.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/25#issuecomment-6567701649",
+        "artifactDigest": null
+      }
+    ],
+    "blockers": [],
+    "nextAction": "OPS-004: preserve this exact verified PERF-003 completion and reconcile its canonical row only after legitimate intake of the closure correction. Adopted2909aa7d reconcile requires full equality between runtime and procedure queues, which legitimately differ here; queue remains queued. Proposal41124470d48e9782e15e5a8110fbfdac433b6f0f at ../astra-20261102-proposal/candidate is still local, unpublished, unadopted and exceeds PERF-003/OPS-004 scope; its exact report and owner-decision source remain preserved. Do not reimplement PR25 or rerun PR18 Extended, unchanged403 or original Verify. Main/preview/staging freeze and M3/M4 dependencies persist. Runtime rollback is a new commit restoring only the createCore dispatch from d74b8dfa, retaining tests/raw samples/history, with no data repair.",
+    "review": {
+      "authorContextId": "codex-20261102T021215Z-root",
+      "reviewerContextId": "root-perf003-review",
+      "sourceSha": "09c9da899e569d523d11e15153d390eb37746115",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/25#issuecomment-6567701649"
+    }
+  },
+  "lastRun": {
     "runId": "codex-20261102T021215Z",
     "actor": "codex",
     "startedAt": "2026-11-02T02:12:15.000Z",
     "claimedAt": "2026-11-02T02:13:35.536Z",
     "writeUntil": "2026-11-02T02:57:15.000Z",
-    "closeBy": "2026-11-02T03:07:15.000Z"
-  },
-  "packet": {
-    "id": "perf003-snapshot-cost-20261102",
-    "taskId": "PERF-003",
-    "nextActor": "codex",
-    "disposition": "INTERRUPTED",
-    "kind": "implementation",
-    "notBefore": "2026-11-02T00:43:16.063Z",
-    "expiresAt": "2026-11-03T00:42:01Z",
-    "source": {
-      "baseSha": "d74b8dfa3ada65594a96604146c60df73118ccbd",
-      "headSha": "d74b8dfa3ada65594a96604146c60df73118ccbd",
-      "branch": "perf/20261102-snapshot-profile",
-      "pr": null,
-      "sourceDigest": "408e7326e455d4b3dc57bbf600eccd82a135a5b6169c89f65289f101a7fc64f2"
-    },
-    "goal": "Localizzare costo snapshot e ottimizzare solo il collo di bottiglia osservato",
-    "allowedPaths": [
-      "packages/server",
-      "packages/core",
-      "tools",
-      "docs"
-    ],
-    "exitCriteria": [
-      "Confrontare workload e crescita reali usando prima gli artefatti PR18, senza attribuire causalità a differenze tra macchine.",
-      "Una sola ipotesi discriminante; campioni grezzi, identità ambiente, correttezza/transazioni/idempotenza/recovery invariati."
-    ],
-    "evidence": [],
-    "blockers": [],
-    "nextAction": "Resume the preserved PERF-003 only after reconciling this interruption; native source worktree remains clean at d74b8dfa and original PR18 artifact is preserved. The owner-requested isolated proposal is ../astra-20261102-proposal/candidate relative to the canonical checkout: exact local head41124470d48e9782e15e5a8110fbfdac433b6f0f, sourceDigestff4e6d63c79bbb21cecb66074165043bdd24a13c52cebe1299ed62850bf1c12e. Local102 operational tests PASS and distinct /root/closure_review final raw-source/counterprobe review PASS; required published Verify NOT_RUN, no PR or procedure adoption. Read ../astra-20261102-proposal/RESULT.md and the exact bundle/patch; the new owner mandate is recorded only in that proposed docs/history.md, pending legitimate canonical intake. The proposal fixes weakened task criteria, dual runtime/procedure closure, durable interrupted/idempotent reconciliation and read-only bootstrap timing. This setup root could not obtain a claim with its actual00:41:23Z start under adopted2909aa7d after native closure, and did not use the proposed helper to self-authorize publication. Next native run must preserve its real budget, current ownership and unchanged PERF-003 work; proposal does not grant new scope or acceptance. No unchanged PR18 Extended/M3 HTTP403 retry, source/service changes, new scheduler, bypass or weakened gates.",
-    "review": null
-  },
-  "lastRun": {
-    "runId": "codex-20261102T004201Z",
-    "actor": "codex",
-    "startedAt": "2026-11-02T00:42:01.000Z",
-    "claimedAt": "2026-11-02T00:43:16.063Z",
-    "writeUntil": "2026-11-02T01:27:01.000Z",
-    "closeBy": "2026-11-02T01:37:01.000Z",
+    "closeBy": "2026-11-02T03:07:15.000Z",
     "packetId": "perf003-snapshot-cost-20261102",
-    "finishedAt": "2026-11-02T01:04:50.059Z",
-    "outcome": "INTERRUPTED",
+    "finishedAt": "2026-11-02T02:38:36.532Z",
+    "outcome": "COMPLETE_INCREMENT",
     "late": false,
-    "summary": "Recovery checkpoint by separate owner-requested setup context01a199b4-10e1 after native thread01a199b4-2718 was explicitly observed interrupted/idle at00:52:04Z. All native command markers terminal, recorded child PIDs absent, no process cwd in its clean d74b8dfa worktree, runtime branch unpublished. Original claim/budget/task/source retained in lastRun; no product or service edits, no inferred milestone acceptance, no claim expiry takeover. Original PR18 artifact preserved. Existing PERF-003 remains unfinished and resumable; local independently reviewed closure proposal requires published-source Verify and legitimate adoption before use."
+    "summary": "PERF-003 isolated preparation verified on09c9da8/digest2c34a7cc, PR25 ready; same-head original Verify and distinct source/artifact review pass. CPU reopening improves on paired fixed fixtures; no end-to-end latency claim. Canonical row reconciliation remains pending due legitimate runtime/procedure queue separation under adopted helper; proposal41124470 preserved without adoption or scope expansion. No merge/deploy/scheduler/access changes."
   }
 }
