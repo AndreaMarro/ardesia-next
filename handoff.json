@@ -3,17 +3,10 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 88,
-  "updatedAt": "2026-11-02T14:05:46.000Z",
+  "revision": 89,
+  "updatedAt": "2026-11-02T14:15:31.000Z",
   "procedureRef": "656d1967ed75b56520d2e320c538950b3160c076",
-  "activeRun": {
-    "runId": "chatgpt-m3-scoped-preparation-20261102T140000Z",
-    "actor": "codex",
-    "startedAt": "2026-11-02T14:00:00.000Z",
-    "claimedAt": "2026-11-02T14:05:46.000Z",
-    "writeUntil": "2026-11-02T14:45:00.000Z",
-    "closeBy": "2026-11-02T14:55:00.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m3-remote-owner-recovered-20261102",
     "taskId": "M3-REMOTE",
@@ -60,20 +53,20 @@
       }
     ],
     "blockers": [],
-    "nextAction": "Bounded support reservation for resolving the existing empty restore, not a native scheduled Codex run. Do not touch source database, populated restores, existing QA passwords, staging alias, scheduler or model. Do not recreate resources or rerun verified CI. The previous broad migration request included dynamic execution and conditional global role creation; any safer proposal must exclude global role/privilege changes and preserve the refusal, without treating unknown refusal cause as diagnosed. No application source writes are authorized by this coordination packet. Preserve vercel.json on this metadata branch. Release this lease explicitly before concluding, even if the remaining operation cannot be performed. Product gate and all12counterproofs remain unchanged.",
+    "nextAction": "This support run is finished and its lease is released. Preparation was performed on the existing isolated target; inspect its current schema and emptiness before any further preparation, rather than relying on the historical14:01 observation above. Publication of the separate detailed observation was refused and is not being retried here. Do not recreate resources, reset credentials, rerun prior CI or alter the acceptance gate. Resume from the verified existing candidate and authorized native-runner channels. No application source or deployment was changed by this support run. Preserve the metadata-branch no-deploy configuration.",
     "review": null
   },
   "lastRun": {
-    "runId": "chatgpt-owner-recovery-20261102T133745Z",
+    "runId": "chatgpt-m3-scoped-preparation-20261102T140000Z",
     "actor": "codex",
-    "startedAt": "2026-11-02T13:37:45.000Z",
-    "claimedAt": "2026-11-02T13:42:09.197Z",
-    "writeUntil": "2026-11-02T14:22:45.000Z",
-    "closeBy": "2026-11-02T14:32:45.000Z",
-    "packetId": "owner-recovery-m3-20261102T133745Z",
-    "finishedAt": "2026-11-02T13:51:08.912Z",
+    "startedAt": "2026-11-02T14:00:00.000Z",
+    "claimedAt": "2026-11-02T14:05:46.000Z",
+    "writeUntil": "2026-11-02T14:45:00.000Z",
+    "closeBy": "2026-11-02T14:55:00.000Z",
+    "packetId": "m3-remote-owner-recovered-20261102",
+    "finishedAt": "2026-11-02T14:15:31.000Z",
     "outcome": "HANDOFF",
     "late": false,
-    "summary": "Direct-owner recovery executed: ownership85 administratively revoked without claiming process termination; current support claim explicitly released. Fresh isolated restore database280053 created; canonical migration attempt blocked by tool safety and NOT applied, verified zero tables/schema absent after refusal. Existing data/QA/SSO/alias/scheduler preserved. Merge CI reused. State-branch no-deploy configuration added to stop irrelevant Git deployments. M3 not accepted; next coordinator must resolve the recorded migration denial through an authorized permitted process before remote acceptance, not repeat unchanged checks or duplicate resources."
+    "summary": "Bounded existing-target preparation completed; remote acceptance was not run. This support lease is explicitly released. Detailed observation publication was refused, local receipt retained. Inspect the actual target before further initialization. No source, deployment, scheduler, model, QA password or populated restore was changed. Conservative budget boundary retained."
   }
 }
