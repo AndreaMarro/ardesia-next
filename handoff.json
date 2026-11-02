@@ -3,9 +3,9 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 110,
-  "updatedAt": "2026-11-02T20:01:32.372Z",
-  "procedureRef": "413de5bba02537cc090c91db58887b49de08eae4",
+  "revision": 111,
+  "updatedAt": "2026-11-02T20:16:50.733Z",
+  "procedureRef": "c4178388105a6f817c79bee2de18aee85b788d5d",
   "activeRun": {
     "runId": "ardesia-e0e7-20261102T195800Z",
     "actor": "codex",
@@ -123,6 +123,39 @@
         "scope": "Fresh non-author root.m4_scope_review: raw source/diff/criteria, canonical guards and original artifact bytes, noP1/P2 in intake. Instructional read-only, no separate ACL or human approval.",
         "access": "artifact",
         "artifactDigest": "749dd023ab24106e786cbd542d843d6e13fde9322324d2dd838f8adfba6a0bba"
+      },
+      {
+        "kind": "ci",
+        "name": "engineering-mandate-intake-verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41516444223",
+        "headSha": "c4178388105a6f817c79bee2de18aee85b788d5d",
+        "sourceDigest": "4fef8f96e65fde61849f15e766b36f2fba0c1b6c173cb74b04185ff4129e9e79",
+        "result": "PASS",
+        "scope": "Only E0-E7 mandate/queue intake PR40. Original attempt1; root and non-author reviewer independently read ZIP/9JSON/7bindings,291unit/50suites,73browser/73attempts,0skip/retry/flaky/errors,Node24.22.1. Not the M4 runtime or adopted E1 code.",
+        "access": "artifact",
+        "artifactDigest": "b63ecc204cd0f7db4c72797453c92efa3af09f8724e4d9974dfa1ad786eed708"
+      },
+      {
+        "kind": "review",
+        "name": "engineering-mandate-intake-independent-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/40#issuecomment-6587349595",
+        "headSha": "c4178388105a6f817c79bee2de18aee85b788d5d",
+        "sourceDigest": "4fef8f96e65fde61849f15e766b36f2fba0c1b6c173cb74b04185ff4129e9e79",
+        "result": "PASS",
+        "scope": "Fresh non-author /root/e1_raw_review vs /root; raw6file diff and criteria, noP1/P2 in intake. Original E1 P3 custom-array prototype and in_progress compatibility noted; schema/wiring/adoption/real task remain pending. Instructional read-only; no independent ACL/human approval.",
+        "access": "artifact",
+        "artifactDigest": "b63ecc204cd0f7db4c72797453c92efa3af09f8724e4d9974dfa1ad786eed708"
+      },
+      {
+        "kind": "check",
+        "name": "engineering-mandate-original-artifact-audit",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/40#issuecomment-6587446098",
+        "headSha": "c4178388105a6f817c79bee2de18aee85b788d5d",
+        "sourceDigest": "4fef8f96e65fde61849f15e766b36f2fba0c1b6c173cb74b04185ff4129e9e79",
+        "result": "PASS",
+        "scope": "Root and non-author reviewer separately read original artifact13176645105/4216428bytes/SHA256 and CRC19/19; authoritative unit/browser and operator digests. Product NOT_COMPLETE,M4NOT_STARTED,deviceNOT_RUN. Metrics in receipt; no demonstrated speedup or learner functionality.",
+        "access": "artifact",
+        "artifactDigest": "b63ecc204cd0f7db4c72797453c92efa3af09f8724e4d9974dfa1ad786eed708"
       }
     ],
     "blockers": [],
