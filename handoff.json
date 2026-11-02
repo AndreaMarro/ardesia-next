@@ -3,31 +3,24 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 105,
-  "updatedAt": "2026-11-02T17:53:45.216Z",
+  "revision": 106,
+  "updatedAt": "2026-11-02T18:25:27.663Z",
   "procedureRef": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
-  "activeRun": {
-    "runId": "ardesia-codex-20261102T175141Z-cc7b03d9",
-    "actor": "codex",
-    "startedAt": "2026-11-02T17:51:41.000Z",
-    "claimedAt": "2026-11-02T17:53:45.216Z",
-    "writeUntil": "2026-11-02T18:36:41.000Z",
-    "closeBy": "2026-11-02T18:46:41.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m4-reuse-next-20261102T161917Z",
     "taskId": "M4-REUSE",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "BLOCKED",
     "kind": "implementation",
     "notBefore": "2026-11-02T17:02:17.081Z",
     "expiresAt": "2026-11-04T17:02:17.081Z",
     "source": {
       "baseSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
-      "headSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
+      "headSha": "062e3d58ed9fa9e5444e402e26a9760f797d3c96",
       "branch": "codex/m4-reuse-next-20261102",
-      "pr": null,
-      "sourceDigest": "9837a6188c6c20d5de47176276a2de03bf09babe87b7e4927ed5bf9dedac33cd"
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/37",
+      "sourceDigest": "8fd881e74f75e49c62e45930be2609026781a4e24f745993b5e782bd6259cbf2"
     },
     "goal": "Secondo dominio scientifico sullo stesso Core/Host",
     "allowedPaths": [
@@ -41,22 +34,85 @@
       "Un secondo modello da consumer/fonti reali, con unità/ipotesi/casi limite e firma; stesso Host/Core/persistenza.",
       "Misurare il costo del riuso e produrre controprove scientifiche/UX; aggiungere il contratto M4 al motore di accettazione esistente."
     ],
-    "evidence": [],
-    "blockers": [],
-    "nextAction": "Scegliere una prima unita M4 testabile nello scope canonico, sullo stesso Host/Core: consumer/fonti reali, scienza/revisione e misura riuso richiesti; Poiseuille resta candidato. Baseline M3 originale d0aa/9cbd distinta dal candidato amministrativo. Conservare le correzioni runtime d0aa gia su main nella futura integrazione, senza allargare questo ticket. Non ripetere M3 o CI gia verdi; nessuna produzione/spesa/approvazione umana implicita.",
-    "review": null
+    "evidence": [
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41498677367",
+        "headSha": "062e3d58ed9fa9e5444e402e26a9760f797d3c96",
+        "sourceDigest": "8fd881e74f75e49c62e45930be2609026781a4e24f745993b5e782bd6259cbf2",
+        "result": "PASS",
+        "scope": "Original Verify complete: 8 checks, 312 unit/52 suites, 73 existing browser flows with zero skipped/unexpected/flaky; ZIP CRC and 10 JSON/8 bindings read. Poiseuille web consumer remains NOT_RUN.",
+        "access": "artifact",
+        "artifactDigest": "948a2f22acffadfe31652d7d448b3d932624c9568007fc7e24da9d6befa5056c"
+      },
+      {
+        "kind": "review",
+        "name": "independent-preparation-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6584746516",
+        "headSha": "062e3d58ed9fa9e5444e402e26a9760f797d3c96",
+        "sourceDigest": "8fd881e74f75e49c62e45930be2609026781a4e24f745993b5e782bd6259cbf2",
+        "result": "PASS",
+        "scope": "Fresh non-author context /root/m4_preparation_review; raw diff/source and adverse shallow/trust/Worker cases; no residual P1/P2 in preparation only. Instructional read-only, no independent ACL or human approval.",
+        "access": "artifact",
+        "artifactDigest": null
+      },
+      {
+        "kind": "check",
+        "name": "m4-preparation-original-artifact",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6584913488",
+        "headSha": "062e3d58ed9fa9e5444e402e26a9760f797d3c96",
+        "sourceDigest": "8fd881e74f75e49c62e45930be2609026781a4e24f745993b5e782bd6259cbf2",
+        "result": "PASS",
+        "scope": "Signed Poiseuille worker through existing public Host/Core fixture, 5 Worker exits/0 live; 23 paths measured, Core/Host/SDK/persistence unchanged. Preparation digest bound to exact verification.",
+        "access": "artifact",
+        "artifactDigest": "35179ff367294d8b86b770e0eb4e55e4685793c6f2bd798f925941455934c413"
+      },
+      {
+        "kind": "ci",
+        "name": "verify-first-source-preserved-failure",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41498077020",
+        "headSha": "3508c808a26b6140b0251ea7146a9edcf54704f4",
+        "sourceDigest": "f80b82e370ab9bce0b88fa392062cf038df24d94391461943c2ad806da32d6b3",
+        "result": "FAIL",
+        "scope": "Original shallow-checkout failure: assigned base absent, git diff exit128; original ZIP read and retained. Fixed on final source, no rerun of this identity.",
+        "access": "artifact",
+        "artifactDigest": "735ef35beba44d1798005647837b7b08b2561786d62050cdfe53429186e270ab"
+      },
+      {
+        "kind": "observation",
+        "name": "poiseuille-web-postgres-human-acceptance",
+        "reference": "docs/sources/m4-poiseuille.md",
+        "headSha": "062e3d58ed9fa9e5444e402e26a9760f797d3c96",
+        "sourceDigest": "8fd881e74f75e49c62e45930be2609026781a4e24f745993b5e782bd6259cbf2",
+        "result": "NOT_RUN",
+        "scope": "Package workspace registration, existing web/PostgreSQL consumer, UX browser and human scientific/editorial approvals remain outside this isolated preparation. M4 AWAITING_WEB_CONSUMER, not accepted.",
+        "access": "artifact",
+        "artifactDigest": null
+      }
+    ],
+    "blockers": [
+      "M4-CONSUMER-SCOPE"
+    ],
+    "nextAction": "Riconciliare nella coda canonica il perimetro M4 necessario al consumer della stessa web app/PostgreSQL, prima di modificarne i file. Preservare PR37/head062e3d5/digest8fd881 e Verify41498677367/review6584746516; non rifare preparazione o CI verdi e non usare OPS-004 per espandere scope. M4 resta aperta e DRAFT; nessuna approvazione umana implicita.",
+    "review": {
+      "authorContextId": "root",
+      "reviewerContextId": "root.m4_preparation_review",
+      "sourceSha": "062e3d58ed9fa9e5444e402e26a9760f797d3c96",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6584746516"
+    }
   },
   "lastRun": {
-    "runId": "ardesia-codex-20261102T161917Z-51e4805b",
+    "runId": "ardesia-codex-20261102T175141Z-cc7b03d9",
     "actor": "codex",
-    "startedAt": "2026-11-02T16:19:17.000Z",
-    "claimedAt": "2026-11-02T16:21:40.895Z",
-    "writeUntil": "2026-11-02T17:04:17.000Z",
-    "closeBy": "2026-11-02T17:14:17.000Z",
-    "packetId": "m3-transition-closure-20261102T161917Z",
-    "finishedAt": "2026-11-02T17:02:20.201Z",
-    "outcome": "HANDOFF",
+    "startedAt": "2026-11-02T17:51:41.000Z",
+    "claimedAt": "2026-11-02T17:53:45.216Z",
+    "writeUntil": "2026-11-02T18:36:41.000Z",
+    "closeBy": "2026-11-02T18:46:41.000Z",
+    "packetId": "m4-reuse-next-20261102T161917Z",
+    "finishedAt": "2026-11-02T18:25:27.663Z",
+    "outcome": "BLOCKED",
     "late": false,
-    "summary": "M3TRANSITION completa e canonica: PR35 final5acd/b03d, PR36 c4d/9837, Verify originali e review distinte. Procedura c4d adottata; M4REUSE READY per il prossimo ciclo, claim rilasciato, nessun merge/deploy."
+    "summary": "Poiseuille preparato in PR37/head062e3d5/8fd881, Verify41498677367 e review distinta PASS; M4 aperta. BLOCKED soltanto il consumer web/PostgreSQL: scope canonico insufficiente, nessun COMPLETE_INCREMENT o merge/deploy. Claim rilasciato, ricorrenza invariata."
   }
 }
