@@ -103,6 +103,10 @@ export async function runRemotePreflight({env = process.env, expected, fetchImpl
         finally {await response.body?.cancel();}
       }
       if (redirectStatuses.has(response.status)) {await response.body?.cancel(); reject('AUTHENTICATED_REDIRECT_REJECTED');}
+      // Keep this closed vocabulary: provider bodies and arbitrary header values may contain secrets.
+      if (response.status === 403 && response.headers.get('x-vercel-error') === 'TRUSTED_SOURCES_ENVIRONMENT_MISMATCH') {
+        await response.body?.cancel(); reject('PLATFORM_ENVIRONMENT_MISMATCH');
+      }
       return {status: response.status, body: await jsonBody(response)};
     } catch (error) {
       if (error instanceof PreflightFailure) throw error;
