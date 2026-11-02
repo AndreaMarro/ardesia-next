@@ -3,22 +3,15 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 59,
-  "updatedAt": "2026-11-02T05:17:36.646Z",
+  "revision": 60,
+  "updatedAt": "2026-11-02T05:18:32.909Z",
   "procedureRef": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
-  "activeRun": {
-    "runId": "codex-20261102T051345Z",
-    "actor": "codex",
-    "startedAt": "2026-11-02T05:13:45.000Z",
-    "claimedAt": "2026-11-02T05:16:27.490Z",
-    "writeUntil": "2026-11-02T05:58:45.000Z",
-    "closeBy": "2026-11-02T06:08:45.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m3-access-availability-20261102T051345Z",
     "taskId": "M3-ACCESS",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "BLOCKED",
     "kind": "coordination",
     "notBefore": "2026-11-02T05:16:27.490Z",
     "expiresAt": null,
@@ -36,22 +29,60 @@
       "Target restore distinto, vuoto e migrato verificato sul progetto Neon Free esistente; conservare i due restore popolati, senza reset o scritture alla sorgente. Nessun nuovo progetto, compute, servizio o piano a pagamento.",
       "Aggiornare soltanto i blocker realmente risolti e le osservazioni datate; la preparazione non accetta M3 e non cambia schema del database attivo o protezioni."
     ],
-    "evidence": [],
-    "blockers": [],
-    "nextAction": "Intake in sola lettura dei soli canali gia autorizzati; nessun retry del precedente403 senza trigger cambiato, nessuna sorgente o servizio da modificare. La source identifica il contratto/procedura adottati, non il runtime staging accettato.",
+    "evidence": [
+      {
+        "headSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
+        "sourceDigest": "d27a5aa14dd00a6114cabf10497c2289858d09da6d76621ea847a330b805ae31",
+        "kind": "observation",
+        "name": "unchanged-authorized-channel-trigger",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/issues/19#issuecomment-6564591014",
+        "result": "NOT_RUN",
+        "scope": "Issue19 live still has4comments/updated2026-11-01T22:10:08Z; original native OIDC403 and approved-child QA/operator absence are historical observations reread, not retried. No observable changed trigger in the issue or currentprocess channels. Remote preflight/build-info/QA/restore NOT_RUN; no global absence of credentials inferred.",
+        "access": "metadata",
+        "artifactDigest": null
+      },
+      {
+        "headSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
+        "sourceDigest": "d27a5aa14dd00a6114cabf10497c2289858d09da6d76621ea847a330b805ae31",
+        "kind": "check",
+        "name": "current-process-channel-presence",
+        "reference": "e2e/README.md",
+        "result": "FAIL",
+        "scope": "Only non-value presence booleans for VERCEL_OIDC_TOKEN,6canonical ARDESIA_E2E identity channels,ARDESIA_QA_OPERATOR_DATABASE_URL,ARDESIA_QA_RESTORE_DATABASE_URL and ARDESIA_QA_RESTORE_RESOURCE_HASH:all10absent in this native process. No credential/authstore/chat/value read and no child env or403/login reprobe. This checks prerequisites only, not application failure or all authorized environments. Local receipt environment-presence-canonical.json retained outside publicsource.",
+        "access": "metadata",
+        "artifactDigest": null
+      },
+      {
+        "headSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
+        "sourceDigest": "d27a5aa14dd00a6114cabf10497c2289858d09da6d76621ea847a330b805ae31",
+        "kind": "observation",
+        "name": "original-restore-target-receipt",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/issues/19#issuecomment-6564228513",
+        "result": "NOT_RUN",
+        "scope": "Original support-session receipt for existing restore270479 read; no currentSQL,emptiness/catalogue equivalence,connection export or restore claimed. Preserve target and both populated older restores; no duplicate,reset or provisioning.",
+        "access": "metadata",
+        "artifactDigest": null
+      }
+    ],
+    "blockers": [
+      "B-OIDC",
+      "B-QA",
+      "B-RESTORE"
+    ],
+    "nextAction": "Riprendere M3-ACCESS soltanto al cambiamento osservabile di un canale gia autorizzato QA/OIDC/operatore/restore; poi verificare tutti i prerequisiti sul candidato remoto prima di M3-REMOTE. Nessun task prodotto indipendente eleggibile nella coda1f2d0a6: OPS004 da saltare senza delta, OPS006/PERF003 done. Conservare le prove originali e restore270479; non ripetere403/login,benchmark o provisioning. La source identifica il contratto della procedura, non lo staging accettato; M3/prodotto restano pendenti. Rollback di questo solo cursore con nuovo figlio/CAS dopo ownership, senza force o modifiche sorgenti/dati.",
     "review": null
   },
   "lastRun": {
-    "runId": "codex-20261102T034513Z",
+    "runId": "codex-20261102T051345Z",
     "actor": "codex",
-    "startedAt": "2026-11-02T03:45:13.000Z",
-    "claimedAt": "2026-11-02T03:46:20.634Z",
-    "writeUntil": "2026-11-02T04:30:13.000Z",
-    "closeBy": "2026-11-02T04:40:13.000Z",
-    "packetId": "ops004-verified-closures-20261102",
-    "finishedAt": "2026-11-02T04:37:47.870Z",
-    "outcome": "COMPLETE_INCREMENT",
+    "startedAt": "2026-11-02T05:13:45.000Z",
+    "claimedAt": "2026-11-02T05:16:27.490Z",
+    "writeUntil": "2026-11-02T05:58:45.000Z",
+    "closeBy": "2026-11-02T06:08:45.000Z",
+    "packetId": "m3-access-availability-20261102T051345Z",
+    "finishedAt": "2026-11-02T05:18:32.909Z",
+    "outcome": "BLOCKED",
     "late": false,
-    "summary": "OPS-006 durable closure method and canonical OPS-006/PERF-003 rows published, independently reviewed and final-source Verify passed; adopted PR26/27/28 without merge/deploy. Original claim released within55m; M3 remains pending authorized access channels."
+    "summary": "M3-ACCESS availability-only intake: issue and currentprocess channels show no changed authorized trigger; no independent eligible product work. Sources, originalVerify/review,freeze and scheduler preserved; no403/login retry or service write. Claim released early."
   }
 }
