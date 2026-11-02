@@ -3,9 +3,9 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 96,
-  "updatedAt": "2026-11-02T16:21:40.895Z",
-  "procedureRef": "0f361f288e2e8033b93b7a3fd6f807909c7d29f7",
+  "revision": 97,
+  "updatedAt": "2026-11-02T16:31:59.423Z",
+  "procedureRef": "ccdab91a10537c1dab5210d78e41857322e22829",
   "activeRun": {
     "runId": "ardesia-codex-20261102T161917Z-51e4805b",
     "actor": "codex",
@@ -64,7 +64,7 @@
       }
     ],
     "blockers": [],
-    "nextAction": "Procedura0f adottata esplicitamente dopo Verify e review propria: M3REMOTE done con completion-ref336ed. Prossimo incremento M3-TRANSITION: promuoverlo nella coda canonica, conservare baseline e prove originali runtime d0aa/9cbd e aggiornare motore/guardie/policy prima di M4. Non rifare M3 sul restore280053 consumato, non trasferire ACCEPTED alla sorgente amministrativa, non rilanciare CI.",
+    "nextAction": "Promozione M3TRANSITION adottata esplicitamente da PR34/headccdab91/digest12fe43, Verify41481102281 artifact13160810476 letto CRC/9JSON/7binding e review distinta6582370839. Freeze invariato; assign seleziona ora il task esistente nella stessa run e budget.",
     "review": {
       "authorContextId": "ardesia-codex-20261102T142556Z-bf1ed195-root",
       "reviewerContextId": "ardesia-codex-20261102T142556Z-bf1ed195-m3-release-review",
