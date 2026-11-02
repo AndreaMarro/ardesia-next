@@ -6,6 +6,7 @@ import {
   EducationalObjectSchema,
   PluginCommandSchema,
   LearningCommandSchema,
+  SNAPSHOT_VERSION,
   emptySnapshot,
   migrateSnapshotForOpen,
   type Actor,
@@ -247,7 +248,9 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
   let raw: unknown;
   try { raw = await options.storage.read(); }
   catch { throw new CoreError('STORAGE_FAILURE', 'The workspace could not be read. Existing data was not replaced.'); }
-  const parsed = CoreSnapshotSchema.safeParse(raw === null ? emptySnapshot(options.workspaceId) : migrateSnapshotForOpen(raw));
+  // Current snapshots still receive the complete integrity check; only historical versions need migration probes.
+  const current = raw !== null && typeof raw === 'object' && 'schemaVersion' in raw && raw.schemaVersion === SNAPSHOT_VERSION;
+  const parsed = CoreSnapshotSchema.safeParse(raw === null ? emptySnapshot(options.workspaceId) : current ? raw : migrateSnapshotForOpen(raw));
   if (!parsed.success) throw new CoreError('INVALID_SNAPSHOT', 'The saved workspace is invalid or incompatible. Existing data was not replaced.');
   let state = structuredClone(parsed.data);
   const clock = options.clock ?? (() => new Date().toISOString());
