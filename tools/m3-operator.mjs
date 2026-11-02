@@ -1,6 +1,7 @@
 import {randomBytes, randomUUID, createHash} from 'node:crypto';
 import {resolve} from 'node:path';
 import {readFile} from 'node:fs/promises';
+import {canonicalJson} from '@ardesia/contracts';
 import {m3ReportDigest} from './m3-evidence.mjs';
 import {requireIsolatedRestore} from './qa-database.mjs';
 
@@ -100,13 +101,14 @@ export async function collectOperatorAcceptance({current, deployment, browser, e
       need(stored?.original_text === snapshotText);
       const doc = stored.snapshot.documents.find(d => d.id === documentId);
       const beforeReceipts = sourceSnapshot.receipts, originalReceipts = stored.snapshot.receipts.slice(0, beforeReceipts.length);
-      need(m3ReportDigest(beforeReceipts) === m3ReportDigest(originalReceipts) && doc.revision === 1
+      const beforeReceiptsDigest = hash(canonicalJson(beforeReceipts)), afterReceiptsDigest = hash(canonicalJson(originalReceipts));
+      need(beforeReceiptsDigest === afterReceiptsDigest && doc.revision === 1
         && stored.snapshot.installations.every(i => i.consent === null && i.status === 'disabled'));
       const duplicate = await request({...value, commandId: randomUUID()}, teacher);
       const mismatch = await request({...value, commandId: randomUUID(), expectedAccountId: qaCredentials.find(a => a.role === 'student').id}, teacher);
       need(duplicate.status === 409 && mismatch.status === 409);
-      versions.push({version, sourceBytesDigest: hash(snapshotText), archivedBytesDigest: hash(stored.original_text), beforeReceiptsDigest: m3ReportDigest(beforeReceipts),
-        afterReceiptsDigest: m3ReportDigest(originalReceipts), beforeRevision: 1, afterRevision: doc.revision, consentReset: true,
+      versions.push({version, sourceBytesDigest: hash(snapshotText), archivedBytesDigest: hash(stored.original_text), beforeReceiptsDigest,
+        afterReceiptsDigest, beforeRevision: 1, afterRevision: doc.revision, consentReset: true,
         duplicateStatus: duplicate.status, ownershipMismatchStatus: mismatch.status});
     }
     checks.import = proof({versions, executionScope: 'isolated-restore-real-import-handler', sourceData: 'authored-synthetic-legacy-bytes', receiptScope: 'original-history-prefix'});
