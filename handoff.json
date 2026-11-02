@@ -3,10 +3,17 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 70,
-  "updatedAt": "2026-11-02T09:47:02.663Z",
+  "revision": 71,
+  "updatedAt": "2026-11-02T09:53:58.581Z",
   "procedureRef": "e51346f6368e4e55954ca071c007caa57c483516",
-  "activeRun": null,
+  "activeRun": {
+    "runId": "ardesia-codex-20261102T095050Z-dd442aa9",
+    "actor": "codex",
+    "startedAt": "2026-11-02T09:50:50.000Z",
+    "claimedAt": "2026-11-02T09:53:58.581Z",
+    "writeUntil": "2026-11-02T10:35:50.000Z",
+    "closeBy": "2026-11-02T10:45:50.000Z"
+  },
   "packet": {
     "id": "m3-access-diagnosis-20261102T091655Z",
     "taskId": "M3-ACCESS",
