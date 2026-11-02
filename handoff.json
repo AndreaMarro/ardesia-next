@@ -3,10 +3,17 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 57,
-  "updatedAt": "2026-11-02T04:37:47.870Z",
+  "revision": 58,
+  "updatedAt": "2026-11-02T05:16:27.490Z",
   "procedureRef": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
-  "activeRun": null,
+  "activeRun": {
+    "runId": "codex-20261102T051345Z",
+    "actor": "codex",
+    "startedAt": "2026-11-02T05:13:45.000Z",
+    "claimedAt": "2026-11-02T05:16:27.490Z",
+    "writeUntil": "2026-11-02T05:58:45.000Z",
+    "closeBy": "2026-11-02T06:08:45.000Z"
+  },
   "packet": {
     "id": "ops004-verified-closures-20261102",
     "taskId": "OPS-004",
@@ -76,3 +83,4 @@
     "summary": "OPS-006 durable closure method and canonical OPS-006/PERF-003 rows published, independently reviewed and final-source Verify passed; adopted PR26/27/28 without merge/deploy. Original claim released within55m; M3 remains pending authorized access channels."
   }
 }
+
