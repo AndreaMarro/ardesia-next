@@ -83,6 +83,33 @@ export function unitReportDigest(unit) {
 const unitReportMatches = (unit, verification) => isRecord(verification) && digest(verification.unitReportDigest)
   && verification.unitReportDigest === unitReportDigest(unit);
 
+export const M4_PREPARATION_CHECKS = Object.freeze(['signature-before-execution', 'explicit-consent', 'save-edit-reopen', 'exact-old-revision',
+  'invalid-state-no-write', 'owner-isolation', 'withdraw-consent', 'tampered-bundle-no-worker', 'forged-signature-no-worker']);
+export const m4PreparationDigest = unitReportDigest;
+
+/** Only scoped preparation. No fixture result can accept M4 or substitute for the web/PostgreSQL consumer. */
+export function m4PreparationMatches({verification, unit, preparation} = {}, current) {
+  if (!m1VerificationMatches(verification, current) || !m1UnitMatches(unit) || !unitReportMatches(unit, verification)
+    || !matchesCurrent(preparation, current) || preparation.schemaVersion !== '1.0.0' || preparation.kind !== 'ardesia-m4-preparation'
+    || preparation.acceptanceEvidence !== false || preparation.passed !== true
+    || !digest(verification.m4PreparationDigest) || verification.m4PreparationDigest !== m4PreparationDigest(preparation)) return false;
+  if (!unit.testResults.some(suite => suite.name.replaceAll('\\', '/').endsWith('/plugins/poiseuille/src/model.test.ts') || suite.name === 'plugins/poiseuille/src/model.test.ts')) return false;
+  const {plugin, consumer, reuse} = preparation;
+  if (!isRecord(plugin) || plugin.id !== 'ardesia.poiseuille' || plugin.version !== '1.0.0' || !digest(plugin.bundleDigest) || !sha(plugin.sourceRevision)
+    || !isRecord(consumer) || consumer.consumer !== 'public-Host-Core-integration-fixture'
+    || consumer.storage !== 'existing-Core-MemoryStorage-test-adapter' || !positiveInteger(consumer.workersStarted) || consumer.liveWorkers !== 0
+    || consumer.browser !== 'NOT_RUN' || consumer.postgres !== 'NOT_RUN' || consumer.humanReview !== 'PENDING'
+    || !Array.isArray(consumer.checks) || consumer.checks.length !== M4_PREPARATION_CHECKS.length || new Set(consumer.checks).size !== consumer.checks.length
+    || !M4_PREPARATION_CHECKS.every(name => consumer.checks.includes(name))) return false;
+  return isRecord(reuse) && reuse.baseSha === 'c4d38a612a73bc28df434c2d36d36025cf1b1adc' && reuse.sdkVersion === '1.0.0'
+    && ['coreUnchanged','hostUnchanged','sdkUnchanged','persistenceUnchanged'].every(key => reuse[key] === true)
+    && positiveInteger(reuse.generatedWorkerBytes) && Array.isArray(reuse.changedPaths) && reuse.changedPaths.length > 0
+    && new Set(reuse.changedPaths).size === reuse.changedPaths.length && reuse.changedPaths.every(path => typeof path === 'string' && /^(plugins\/poiseuille\/|tools\/|docs\/)/.test(path))
+    && Array.isArray(reuse.measuredDelta) && reuse.measuredDelta.length === reuse.changedPaths.length
+    && reuse.measuredDelta.every((entry, index) => isRecord(entry) && entry.path === reuse.changedPaths[index]
+      && Number.isSafeInteger(entry.addedLines) && entry.addedLines >= 0 && Number.isSafeInteger(entry.removedLines) && entry.removedLines >= 0);
+}
+
 function m1VerificationMatches(verification, current) {
   if(!matchesCurrent(verification, current) || verification.passed !== true || !Array.isArray(verification.checks)) return false;
   if(verification.checks.length !== M1_REQUIRED_CHECKS.length) return false;
@@ -261,6 +288,8 @@ function runStatus() {
   const remoteMatches = releaseEvidenceMatches(remote, current);
   const m1Accepted = m1EvidenceMatches({verification: checks, unit, browser: e2e, release: remote}, current);
   const m2Accepted = m2EvidenceMatches({verification: checks, unit, browser: e2e, release: remote}, current);
+  const m4Preparation = read('artifacts/m4-preparation.json');
+  const m4Prepared = historicalM3 && m4PreparationMatches({verification: checks, unit, preparation: m4Preparation}, current);
   const state = {
     ...current, milestone: historicalM3 ? 'M4' : 'M3', foundationMilestone: 'M0',
     acceptedBaselines: [
@@ -287,7 +316,10 @@ function runStatus() {
       browserLifecycleAndCounterproofs: m2BrowserMatches(e2e, current) ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',
       protectedRemoteLifecycle: m2RemoteBrowserMatches(remote, current) ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_COMMIT'
     },
-    M3: acceptedM3 ? 'ACCEPTED' : 'AWAITING_COMPLETE_EVIDENCE', M4: 'NOT_STARTED', M5: 'NOT_STARTED',
+    M3: acceptedM3 ? 'ACCEPTED' : 'AWAITING_COMPLETE_EVIDENCE', M4: m4Prepared ? 'AWAITING_WEB_CONSUMER' : m4Preparation ? 'PREPARATION_UNVERIFIED' : 'NOT_STARTED', M5: 'NOT_STARTED',
+    m4Evidence: {signedHostCorePreparation: m4Prepared ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',
+      webAndPostgresConsumer: 'NOT_RUN', humanScientificEditorialReview: 'PENDING',
+      acceptanceRequires: 'Both boundary conditions in the existing web app through the same authorized Core/PostgreSQL, browser UX/science counterproofs and exact-source evidence. Preparation never accepts M4.'},
     m3Evidence: {
       historicalBaseline: historicalM3 ? 'ACCEPTED' : 'MISSING_OR_INVALID',
       localPostgresAndBrowser: localM3 ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',
