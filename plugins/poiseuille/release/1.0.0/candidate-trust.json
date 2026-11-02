@@ -1,0 +1,18 @@
+{
+  "trustStore": [
+    {
+      "publisherId": "ardesia",
+      "keyId": "m4-candidate-87a7b090902c",
+      "publicKeyBase64": "LpfCmMmNMmFmGCCvBkTffksM91Eh2iqVkMrwGzfHbR4="
+    }
+  ],
+  "allowlist": [
+    {
+      "id": "ardesia.poiseuille",
+      "version": "1.0.0",
+      "digest": "bd7eced69753424c7da3076783917d4fb235bd90d975dbbce2fe71371b06e00b",
+      "publisherId": "ardesia",
+      "keyId": "m4-candidate-87a7b090902c"
+    }
+  ]
+}
