@@ -3,24 +3,17 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 86,
-  "updatedAt": "2026-11-02T13:42:09.197Z",
+  "revision": 87,
+  "updatedAt": "2026-11-02T13:51:08.912Z",
   "procedureRef": "656d1967ed75b56520d2e320c538950b3160c076",
-  "activeRun": {
-    "runId": "chatgpt-owner-recovery-20261102T133745Z",
-    "actor": "codex",
-    "startedAt": "2026-11-02T13:37:45.000Z",
-    "claimedAt": "2026-11-02T13:42:09.197Z",
-    "writeUntil": "2026-11-02T14:22:45.000Z",
-    "closeBy": "2026-11-02T14:32:45.000Z"
-  },
+  "activeRun": null,
   "packet": {
-    "id": "owner-recovery-m3-20261102T133745Z",
+    "id": "m3-remote-owner-recovered-20261102",
     "taskId": "M3-REMOTE",
     "nextActor": "codex",
     "disposition": "READY",
     "kind": "coordination",
-    "notBefore": "2026-11-02T13:42:09.197Z",
+    "notBefore": "2026-11-02T13:51:08.912Z",
     "expiresAt": null,
     "source": {
       "baseSha": "03622b56c9756225019b7c6219d226beef8e0a6d",
@@ -68,23 +61,34 @@
         "scope": "Revoked claim and prior head review, local FAIL and remote rejection remain pinned at immutable parent. No prior finish overwritten or fabricated.",
         "access": "metadata",
         "artifactDigest": null
+      },
+      {
+        "kind": "observation",
+        "name": "fresh-restore-created-migration-refused",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/issues/19#issuecomment-6578841653",
+        "headSha": "d0aa2014b131335d5c278543cea35098dcefdfd3",
+        "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
+        "result": "NOT_RUN",
+        "scope": "Database280053 created13:44:35Z, isolated in existing project/branch/owner. Canonical4480byte SQL source verified locally; migration tool call rejected by safety. READ ONLY13:46:51.248Z confirms application schema absent and zero tables. No applied digest or M3 acceptance claimed. No alternate retry of denied action. Existing270479 still populated and preserved.",
+        "access": "metadata",
+        "artifactDigest": null
       }
     ],
     "blockers": [],
-    "nextAction": "Owner-directed administrative recovery, not automatic takeover on TTL. Revoked chatgpt-m3-release-20261102T122301Z must stop writing and cannot reuse its old expected SHA. Current support prepares at most one distinct empty migrated restore in the existing Free project, preserving source and populated restores. No source writes authorized by allowedPaths[]. Existing candidate dpl_HhzGdaLXgddb8HGDwUadEEcoabL8 is reused; no CI/build duplication, no alias promotion without authenticated preflight. Release current claim explicitly before handing ready M3 back to the native runner; do not leave another orphan lock. Process termination of the revoked session is NOT_VERIFIED. CAS fences Git only; no external-service atomic lock claimed.",
+    "nextAction": "Claim85 is administratively revoked under direct owner mandate issue19/6578656295, NOT awaiting its ordinary finish; preserve its immutable history and do not impersonate it. Current support run is finished/released. Use original merge d0aa2014/digest9cbd6617 and existing candidate dpl_HhzGdaLXgddb8HGDwUadEEcoabL8; reuse CI41447497762/artifact13143386143/receipt6578107406, no merge/CI/build duplication. New target database280053 ardesia_next_m3_restore_20261102_d0aa2014 exists on royal-bar-31252959/br-broad-mud-bajjd3j7 with owner ardesia_next_m3_owner. It is empty BUT UNMIGRATED: the migration was refused by this chat tool safety, and post-refusal READ ONLY confirmed zero tables/schema absent. Preserve refusal receipt6578841653; do not retry the same denied action here or route it to another tool solely to evade the refusal. Resolve initialization only through a permitted authorized process, then independently verify migration/empty state before running M3. Do not create a duplicate target or reset populated270479. Resource hash for direct host ep-odd-cloud-ba3huvyi.c-8.eu-central-1.aws.neon.tech:5432 is c515ffc98b220ec0919877b83bf69d8dbdaddeb14ec60c8c64388093870af605. Existing private QA/OIDC channels are native-runner capabilities, not present in this support runtime; do not rotate credentials. Stage alias remains old dplFTsy; authenticated preflight and controlled alias switch remain prerequisites before all12counterproofs. READY is coordination intake, not permission to test an uninitialized target or M3 acceptance. Do not re-open an unchanged missing-claim blocker; no new recurring scheduler. Preserve vercel.json on the metadata-only state branch so cursor updates do not become application deployments.",
     "review": null
   },
   "lastRun": {
-    "runId": "chatgpt-m3-reconcile-20261102T122301Z",
+    "runId": "chatgpt-owner-recovery-20261102T133745Z",
     "actor": "codex",
-    "startedAt": "2026-11-02T12:23:01.000Z",
-    "claimedAt": "2026-11-02T12:45:00.509Z",
-    "writeUntil": "2026-11-02T13:08:01.000Z",
-    "closeBy": "2026-11-02T13:18:01.000Z",
-    "packetId": "m3-remote-20261102T112522Z",
-    "finishedAt": "2026-11-02T12:45:00.509Z",
+    "startedAt": "2026-11-02T13:37:45.000Z",
+    "claimedAt": "2026-11-02T13:42:09.197Z",
+    "writeUntil": "2026-11-02T14:22:45.000Z",
+    "closeBy": "2026-11-02T14:32:45.000Z",
+    "packetId": "owner-recovery-m3-20261102T133745Z",
+    "finishedAt": "2026-11-02T13:51:08.912Z",
     "outcome": "HANDOFF",
     "late": false,
-    "summary": "Metadata-only reconciliation of expired released M3 packet using adopted immutable helper and exact canonical queue. Same real start/budget retained; actual executor ChatGPT support, not native Codex. Prior native record and all evidence preserved at parent655b957."
+    "summary": "Direct-owner recovery executed: ownership85 administratively revoked without claiming process termination; current support claim explicitly released. Fresh isolated restore database280053 created; canonical migration attempt blocked by tool safety and NOT applied, verified zero tables/schema absent after refusal. Existing data/QA/SSO/alias/scheduler preserved. Merge CI reused. State-branch no-deploy configuration added to stop irrelevant Git deployments. M3 not accepted; next coordinator must resolve the recorded migration denial through an authorized permitted process before remote acceptance, not repeat unchanged checks or duplicate resources."
   }
 }
