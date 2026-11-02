@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
+import {readFileSync, mkdtempSync, rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
 import {execFileSync} from 'node:child_process';
 import * as cycle from './cycle.mjs';
 const T = '2026-11-01T10:00:00.000Z';
@@ -518,4 +520,24 @@ test('removing or combining recorded proof references does not make a reopened c
   assert.throws(()=>cycle.reconcileCycle(active,{...input,expectedRevision:active.revision,queue:reopened,completionRef:aliasRef},
    {now:at(15),readQueue:ref=>ref===adopted?reopened:s.q,readCompletion:ref=>ref===oldRef?first:ref===otherRef?second:alias}),/reopened/);
  }
+});
+
+test('post-M3 reconciliation is independent of the local checkout baseline', () => {
+ const s=closureFixture(), q=JSON.parse(readFileSync(new URL('../operations/coordination.json',import.meta.url),'utf8'));
+ s.q.policy=q.policy;
+ s.q.tasks.push(q.tasks.find(t=>t.id==='M3-REMOTE'));
+ s.q.blockers=q.blockers;
+ const head=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+ s.active.procedureRef=head;s.done.procedureRef=head;
+ const root=mkdtempSync(join(tmpdir(),'ardesia-immutable-reconcile-'));
+ try {
+  const code=`import {readFileSync} from 'node:fs';import {reconcileCycle} from ${JSON.stringify(new URL('./cycle.mjs',import.meta.url).href)};
+   const s=JSON.parse(readFileSync(0,'utf8'));
+   const result=reconcileCycle(s.active,s.input,{now:new Date(s.now),readQueue:()=>s.q,readCompletion:()=>s.done});
+   console.log(result.tasks.find(t=>t.id==='TASK-1').status);`;
+  const gitDir=execFileSync('git',['rev-parse','--absolute-git-dir'],{encoding:'utf8'}).trim();
+  const output=execFileSync(process.execPath,['--input-type=module','-e',code],{cwd:root,encoding:'utf8',
+   env:{...process.env,GIT_DIR:gitDir},input:JSON.stringify({...s,input:reconcileInput(s),now:at(13).toISOString()}),stdio:['pipe','pipe','pipe']});
+  assert.equal(output.trim(),'done');
+ } finally {rmSync(root,{recursive:true,force:true});}
 });

@@ -300,9 +300,10 @@ export function migrateCycle(data, {expectedRevision, procedureRef, packet}, {no
 const gitJson = (ref, path) => JSON.parse(execFileSync('git', ['show', `${ref}:${path}`], {encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe']}));
 const gitQueue = ref => gitJson(ref, 'operations/coordination.json');
 const gitCompletion = ref => gitJson(ref, 'handoff.json');
+const procedureBaseline = ref => path => execFileSync('git', ['show', `${ref}:${path}`],
+  {encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe']});
 function canonicalQueue(data, queue, readQueue) {
-  const errors = validateCoordination(queue, {readBaseline: path => execFileSync('git', ['show', `${data.procedureRef}:${path}`],
-    {encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe']})});
+  const errors = validateCoordination(queue, {readBaseline: procedureBaseline(data.procedureRef)});
   if (errors.length) throw new Error(`Canonical queue is invalid:\n${errors.join('\n')}`);
   if (!isDeepStrictEqual(queue, readQueue(data.procedureRef))) throw new Error('Queue must match operations/coordination.json at the adopted immutable procedureRef; hypothetical queues are not authority.');
 }
@@ -409,7 +410,8 @@ export function reconcileCycle(data, {expectedRevision, runId, actor, queue, com
   row.evidence = [...new Set([...row.evidence, ...references])];
   // Replaying identical durable inputs emits identical source bytes, even after interruption.
   next.updatedAt = new Date(Math.max(Date.parse(queue.updatedAt), Date.parse(completed.updatedAt))).toISOString();
-  const errors = validateCoordination(next); if (errors.length) throw new Error(errors.join('\n'));
+  const errors = validateCoordination(next, {readBaseline: procedureBaseline(data.procedureRef)});
+  if (errors.length) throw new Error(errors.join('\n'));
   return next;
 }
 
