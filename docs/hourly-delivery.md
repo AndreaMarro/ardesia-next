@@ -33,6 +33,12 @@ Convergenza: prima completare una consegna già pronta, poi aprire altro. Un sol
 
 Manutenibilità: confini e API pubbliche con consumer reali, test di contratto ai punti variabili, adapter soltanto per effetti necessari, compatibilità/migrazioni/rollback espliciti. Nuove astrazioni richiedono riuso dimostrabile; nessun microservizio o auto-upgrade. Una sola proposta settimanale di evoluzione tecnologica quando serve un requisito, con fonte primaria e confronto reversibile. La scalabilità si misura su workload/ambiente comparabili; non si deduce dal numero di agenti.
 
+## Prodotto visibile su Vercel
+
+Il titolare richiede di vedere e provare continuamente gli sviluppi. Ogni incremento applicativo verificato comprende quindi la consegna alla preview protetta esistente, secondo [release-runbook](release-runbook.md), senza attendere un nuovo permesso ordinario. Unico deployer è l’integratore. CI/review e merge verificato precedono build; SHA/digest, target Preview standard/null, protezione e smoke del percorso cambiato precedono aggiornamento dell’alias di sviluppo. L’ultima versione funzionante resta disponibile durante build/errori. Nessun nuovo ambiente, autodeploy Git, produzione, bypass o cambio accessi.
+
+Ricevuta in PR/cursore: [link stabile](https://ardesia-next-staging.vercel.app), URL immutabile, SHA distribuita, cosa cambia e2–3passi da provare; per UI prova visiva della preview. Modifiche amministrative non richiedono deploy vuoti. PREPARED_NOT_DEPLOYED è distinto da risultato fruibile: conservare ultimo link sano, motivo del blocco e trigger, continuando lavoro indipendente. Misurare anche latenza sorgente verificata→preview e continuità dell’ultima versione funzionante. Non dichiarare accesso dell’utente o smoke dal solo READY provider.
+
 ## Prove e misure
 
 Prompt manualmente riesaminati su quattro scenari: incarico M4 interrotto con prove; claim concorrente; nessuna delega/CI pendente; nuovo candidato con vecchia review. Verificare che solo Sviluppo scriva autorità, preparatore esca senza delega, revisore non trasferisca PASS e ingegneria non duplici backlog. Test del protocollo esistente su Node24, Verify della head finale e review non autrice precedono adozione/configurazione attiva. Rileggere tutti e quattro i task nativi, progetto, modello, effort, ricorrenza e stato. Configurazione ACTIVE non prova una run: tre cicli reali, assenza di collisioni, consegna utile e quote osservabili restano NOT_RUN fino a ricevute autentiche.

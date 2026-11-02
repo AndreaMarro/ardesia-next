@@ -9,6 +9,8 @@ Il setup richiesto il 2 novembre configura quattro task orari GPT-6.1 Sol/xhigh 
 
 Preferire run nuove con contesto versionato; il singolo thread infinito non è l’archivio. Verificare progetto, modello/effort, ricorrenza, ambiente e stato nativo. Non modificare sandbox, credenziali, rete o approvazioni. Le finestre dei contributori usano il minuto UTC del vero avvio, con uscita fuori finestra e deduplicazione; non presuppongono scheduledAt esposto. Il contratto non è un mutex o watchdog. Con Mac/app spenti il lavoro locale non è garantito; nessun recupero in raffica. Il budget integratore resta55min, normalmente5min prima del suo prossimo slot. Una run non crea/modifica/ferma/rilancia task, nemmeno se BLOCKED.
 
+La consegna applicativa comprende la preview Vercel protetta e una ricevuta navigabile, secondo docs/hourly-delivery.md e il release-runbook esistente. Solo l’integratore distribuisce; CI/review/merge verificato, protezioni e prove remote precedono aggiornamento alias. Nessun deploy amministrativo vuoto; un blocco resta PREPARED_NOT_DEPLOYED con ultimo link sano.
+
 ## 2. Un'unica memoria operativa
 - `operations/coordination.json`: backlog e dipendenze canonici. `deferred` non è un ordine di implementazione.
 - `handoff.json` sulla stessa ref `ops/dual-run-state`: un solo incarico attuale, claim, riferimenti alle prove, prossimo passo. v2 `ardesia-sequential-state`, actor `codex`, `acceptanceEvidence:false`. Nome storico conservato; mai merge o deploy della ref.

@@ -4,6 +4,8 @@
 
 Il mandato [E0–E7 del 2 novembre](history.md#ops-20261102-16--mandato-di-ingegnerizzazione-e0e7) acquisisce il [piano originale](superpowers/plans/2026-11-02-engineering-delivery.md). M4/Poiseuille resta il lavoro applicativo assegnato; ENG-E1 segue nella coda canonica. Pro complementare e OpenCode sono evoluzioni condizionate: l’integrazione resta sequenziale e i loro piloti restano da qualificare. Il setup orario autorizzato successivamente non li dichiara conclusi. La missione copre tutti i18 ambiti oltre M4/M5. [Originali E1 e confini](sources/engineering-e0e7/README.md).
 
+Il titolare deve poter vedere e provare gli incrementi applicativi nella [preview Vercel protetta](https://ardesia-next-staging.vercel.app). Deploy e link verificabile fanno parte della consegna; si conserva l’ultima versione funzionante. [Regole](hourly-delivery.md#prodotto-visibile-su-vercel).
+
 ## Ripresa breve
 1. Leggi AGENTS e il cursore Git `ops/dual-run-state/handoff.json`, fissando la SHA della ref. v2 usa sempre actor `codex`; il nome storico della ref resta per evitare copie e link rotti.
 2. Carica il metodo alla `procedureRef`; il task completo e gli AGENTS dell'area alla sorgente assegnata. Per un candidato precedente alla governance usa il fallback esplicito alla procedura, mai fingere che i file fossero sul candidato.
