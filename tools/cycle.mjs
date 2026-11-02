@@ -171,7 +171,7 @@ export function validateCycle(data) {
     const active = data.activeRun;
     if (record(packet)) {
       const reconciliationOnly = active.actor === coordinator(data) && timestamp(packet.expiresAt) && Date.parse(active.claimedAt) >= expires(packet);
-      if (active.actor !== packet.nextActor && !reconciliationOnly) fail('activeRun.actor', 'must match the ticket actor except Pro reconciliation of an expired ticket');
+      if (active.actor !== packet.nextActor && !reconciliationOnly) fail('activeRun.actor', 'must match the ticket actor except coordinator reconciliation of an expired ticket');
       if (timestamp(packet.notBefore) && Date.parse(active.claimedAt) < Date.parse(packet.notBefore)) fail('activeRun.claimedAt', 'precedes the ticket window');
       if (!reconciliationOnly && timestamp(packet.expiresAt) && Date.parse(active.closeBy) > expires(packet)) fail('activeRun.closeBy', 'exceeds the ticket window');
     }
@@ -186,7 +186,7 @@ export function validateCycle(data) {
     if (timestamp(last.finishedAt) && timestamp(last.claimedAt) && Date.parse(last.finishedAt) < Date.parse(last.claimedAt)) fail('lastRun.finishedAt', 'precedes the claim');
     if (typeof last.late !== 'boolean' || last.late !== (Date.parse(last.finishedAt) > Date.parse(last.closeBy))) fail('lastRun.late', 'must describe the actual deadline overrun');
     if (timestamp(data.updatedAt) && Date.parse(last.finishedAt) > Date.parse(data.updatedAt)) fail('updatedAt', 'precedes lastRun completion');
-    if (record(data.activeRun) && Date.parse(data.activeRun.startedAt) < Date.parse(last.finishedAt)) fail('activeRun.startedAt', 'precedes lastRun completion');
+    if (record(data.activeRun) && Date.parse(sequential(data) ? data.activeRun.claimedAt : data.activeRun.startedAt) < Date.parse(last.finishedAt)) fail('activeRun', 'claim precedes lastRun completion');
   }
   return errors;
 }
@@ -223,11 +223,11 @@ export function claimCycle(data, {expectedRevision, runId, actor, startedAt}, {n
   if (!timestamp(startedAt)) throw new Error('startedAt must identify the actual run start with a valid ISO timestamp.');
   const start = Date.parse(startedAt);
   if (start > moment) throw new Error('startedAt cannot be in the future.');
-  if (data.lastRun && start < Date.parse(data.lastRun.finishedAt)) throw new Error('startedAt precedes lastRun completion.');
+  if (data.lastRun && (sequential(data) ? moment : start) < Date.parse(data.lastRun.finishedAt)) throw new Error('Claim precedes lastRun completion.');
   const expired = moment >= expires(data.packet), reconciliationOnly = actor === coordinator(data) && expired;
   if (data.packet.nextActor !== actor && !reconciliationOnly) throw new Error('Ticket is assigned to a different actor.');
   if (moment < Date.parse(data.packet.notBefore)) throw new Error('Ticket is not active yet.');
-  if (expired && !reconciliationOnly) throw new Error('Ticket has expired; Pro must reconcile it before new work.');
+  if (expired && !reconciliationOnly) throw new Error('Ticket has expired; The coordinator must reconcile it before new work.');
   if (!sequential(data) && actor === 'codex' && (data.packet.kind === 'coordination' || !['READY', 'READY_FOR_REVIEW'].includes(data.packet.disposition)
     || protectedBranches.has(data.packet.source.branch))) throw new Error('Codex requires an active isolated implementation/review ticket.');
   const deadline = reconciliationOnly ? Infinity : expires(data.packet);
@@ -243,7 +243,7 @@ export function claimCycle(data, {expectedRevision, runId, actor, startedAt}, {n
 export function cycleBudget(data, {runId, actor, seconds}, {now = new Date()} = {}) {
   valid(data); owner(data, {runId, actor}); const moment = clock(data, now);
   if (!Number.isSafeInteger(seconds) || seconds <= 0) throw new Error('Requested seconds must be a positive safe integer.');
-  if (moment >= expires(data.packet)) throw new Error('Expired ticket permits Pro reconciliation only, never product work.');
+  if (moment >= expires(data.packet)) throw new Error('Expired ticket permits coordinator reconciliation only, never product work.');
   const remaining = Math.floor((Date.parse(data.activeRun.writeUntil) - moment) / 1000);
   if (seconds > remaining) throw new Error('Requested work does not fit before writeUntil.');
   return {kind: 'ardesia-cycle-budget', acceptanceEvidence: false, runId, actor, requestedSeconds: seconds,
@@ -255,7 +255,7 @@ export function finishCycle(data, {expectedRevision, runId, actor, outcome, pack
   if (!outcomes.has(outcome) || !text(summary) || !record(packet)) throw new Error('A supported outcome, complete next packet and summary are required.');
   if (typeof retainClaim !== 'boolean' || retainClaim && (!sequential(data) || outcome !== 'COMPLETE_INCREMENT'
     || moment >= Date.parse(data.activeRun.writeUntil))) throw new Error('Retaining a claim requires sequential exact-source completion before writeUntil.');
-  if (['HANDOFF', 'COMPLETE_INCREMENT'].includes(outcome) && actor !== coordinator(data)) throw new Error('Only Pro can hand off new work or complete an increment.');
+  if (['HANDOFF', 'COMPLETE_INCREMENT'].includes(outcome) && actor !== coordinator(data)) throw new Error(`Only ${sequential(data) ? 'the coordinator' : 'Pro'} can hand off new work or complete an increment.`);
   if (sequential(data) && outcome === 'HANDOFF' && (data.packet.disposition === 'WAITING_CI' || data.packet.kind !== 'coordination'
     && !['COMPLETE_INCREMENT', 'BLOCKED', 'INTERRUPTED'].includes(data.packet.disposition))) throw new Error('Resolve or preserve the current assignment before selecting its successor.');
   const nextActor = sequential(data) ? 'codex' : outcome === 'HANDOFF'
@@ -311,6 +311,7 @@ function eligiblePacket(data, packet, queue, readQueue) {
   if (candidates.length !== 1) throw new Error('Assignment must identify exactly one canonical task.');
   const task = candidates[0];
   if (!Array.isArray(task.scope) || !Array.isArray(task.dependsOn) || !Array.isArray(task.blockers)) throw new Error('Task contract is incomplete.');
+  if (!Array.isArray(packet.exitCriteria) || task.exitCriteria.some(criterion => !packet.exitCriteria.includes(criterion))) throw new Error('Assignment must preserve every canonical exit criterion.');
   if (!['queued', 'in_progress', 'ready_for_review', 'blocked'].includes(task.status)) throw new Error('Deferred or done work cannot be selected.');
   if (packet.kind === 'implementation') {
     if (!['queued', 'in_progress'].includes(task.status)) throw new Error('Implementation requires an eligible queued or active task.');
@@ -337,7 +338,7 @@ export function assignCycle(data, {expectedRevision, runId, actor, packet, queue
 }
 
 /** Emit the one completed row under the existing OPS-004 authority; never write files or expand a task scope. */
-export function reconcileCycle(data, {expectedRevision, runId, actor, queue, completionRef, nextAction}, {now = new Date(), readQueue = gitQueue, readCompletion = gitCompletion} = {}) {
+export function reconcileCycle(data, {expectedRevision, runId, actor, queue, completionRef, releaseRef, nextAction}, {now = new Date(), readQueue = gitQueue, readCompletion = gitCompletion} = {}) {
   valid(data); revision(data, expectedRevision); owner(data, {runId, actor}); const moment = clock(data, now);
   if (!sequential(data) || actor !== 'codex' || data.packet.taskId !== 'OPS-004' || data.packet.kind !== 'implementation'
     || !['operations/coordination.json', 'docs/history.md'].every(path => data.packet.allowedPaths.some(scope => contains(scope, path)))) throw new Error('Canonical reconciliation requires an explicitly assigned OPS-004 metadata scope.');
@@ -345,30 +346,80 @@ export function reconcileCycle(data, {expectedRevision, runId, actor, queue, com
   if (!sha(completionRef) || !text(nextAction)) throw new Error('An immutable completion cursor ref and next action are required.');
   eligiblePacket(data, data.packet, queue, readQueue);
   const completed = readCompletion(completionRef); valid(completed);
-  if (!sequential(completed) || completed.packet.disposition !== 'COMPLETE_INCREMENT' || completed.revision + 1 !== data.revision
-    || !isDeepStrictEqual(completed.activeRun, data.activeRun) || !isDeepStrictEqual(completed.lastRun, data.lastRun)
-    || completed.procedureRef !== data.procedureRef || Date.parse(completed.updatedAt) > Date.parse(data.updatedAt)) throw new Error('Reconciliation requires the immediately preceding retained completion in the same claim and budget.');
-  if (!isDeepStrictEqual(queue, readQueue(completed.packet.source.headSha))) throw new Error('Completed source changed the canonical queue; review and adopt that queue explicitly before reconciliation.');
+  if (!sequential(completed) || completed.packet.disposition !== 'COMPLETE_INCREMENT' || completed.revision >= data.revision
+    || Date.parse(completed.updatedAt) > Date.parse(data.updatedAt)) throw new Error('Reconciliation requires an earlier immutable completion receipt.');
+  const receiptRun = completed.activeRun ?? completed.lastRun;
+  if (!receiptRun || !completed.activeRun && (receiptRun.outcome !== 'COMPLETE_INCREMENT' || receiptRun.packetId !== completed.packet.id)) throw new Error('Completion must retain its original run identity.');
+  if (receiptRun.runId === data.activeRun.runId) {
+    if (!completed.activeRun || !isDeepStrictEqual(completed.activeRun, data.activeRun)
+      || !isDeepStrictEqual(completed.lastRun, data.lastRun)) throw new Error('Retained completion must preserve the same claim and budget.');
+  } else {
+    // A prior claim must have a durable release. Time passing alone never authorizes takeover.
+    let released = completed.activeRun === null ? completed : data;
+    if (releaseRef !== undefined) {
+      if (!sha(releaseRef)) throw new Error('Release ref must be an immutable cursor SHA.');
+      released = readCompletion(releaseRef); valid(released);
+      if (!sequential(released) || released.activeRun !== null || released.revision >= data.revision) throw new Error('Release receipt must precede the current claim.');
+    }
+    const last = released.lastRun, keys = ['runId', 'actor', 'startedAt', 'claimedAt', 'writeUntil', 'closeBy'];
+    if (!last || keys.some(key => last[key] !== receiptRun[key]) || released.revision < completed.revision
+      || Date.parse(last.finishedAt) < Date.parse(completed.updatedAt)
+      || Date.parse(last.finishedAt) > Date.parse(data.activeRun.claimedAt)) throw new Error('Prior completion requires a matching released run before the current claim; expiry is not release.');
+  }
+  // Task authority comes from the adopted procedure, never a historical queue embedded in runtime source.
+  const receiptQueue = readQueue(completed.procedureRef); canonicalQueue(completed, receiptQueue, readQueue);
+  const original = receiptQueue.tasks.find(task => task.id === completed.packet.taskId);
   const task = queue.tasks.find(task => task.id === completed.packet.taskId);
-  if (!task || task.id === 'OPS-004' || !['queued', 'in_progress', 'ready_for_review'].includes(task.status)) throw new Error('Reconciliation requires one unfinished canonical task, never the recurring OPS-004 row.');
+  const contract = value => Object.fromEntries(['id', 'owner', 'scope', 'dependsOn', 'blockers', 'exitCriteria'].map(key => [key, value?.[key]]));
+  if (!task || !original || task.id === 'OPS-004' || !['queued', 'in_progress', 'ready_for_review', 'done'].includes(task.status)
+    || !isDeepStrictEqual(contract(task), contract(original))
+    || task.exitCriteria.some(criterion => !completed.packet.exitCriteria.includes(criterion))) throw new Error('Completion must match the unchanged canonical task contract, never the recurring OPS-004 row.');
   if (queue.claims.some(claim => claim.taskId === task.id)) throw new Error('A canonical task claim must be reconciled explicitly, never removed by completion.');
+  if (task.dependsOn.some(id => queue.tasks.find(item => item.id === id)?.status !== 'done')
+    || task.blockers.some(id => queue.blockers.find(item => item.id === id)?.status !== 'resolved')) throw new Error('Reconciliation cannot bypass current dependencies or blockers.');
+  const receiptUrl = `https://github.com/AndreaMarro/ardesia-next/blob/${completionRef}/handoff.json`;
+  const references = [receiptUrl, ...completed.packet.evidence.filter(item => sameEvidenceSource(item, completed.packet)
+    && item.result === 'PASS' && (item.kind === 'review' || item.kind === 'ci' && item.name === 'verify')).map(item => item.reference)];
+  if (task.status === 'done') {
+    if (!references.every(reference => task.evidence.includes(reference)) || task.nextAction !== nextAction) throw new Error('Done task belongs to another completion or next action; preserve it.');
+    return structuredClone(queue);
+  }
+  if (task.evidence.includes(receiptUrl)) throw new Error('An already recorded completion cannot close a reopened task.');
+  const proofIdentity = packet => [...new Set(packet.evidence.filter(item => sameEvidenceSource(item, packet)
+    && item.result === 'PASS' && (item.kind === 'ci' && item.name === 'verify'
+      || item.kind === 'review' && item.reference === packet.review?.reference))
+    .map(item => JSON.stringify([item.kind, item.reference])))].sort();
+  const recordedProofs = new Set();
+  for (const reference of task.evidence) {
+    const priorRef = /^https:\/\/github\.com\/AndreaMarro\/ardesia-next\/blob\/([a-f0-9]{40})\/handoff\.json$/.exec(reference)?.[1];
+    if (!priorRef) continue;
+    const prior = readCompletion(priorRef); valid(prior);
+    if (sequential(prior) && prior.packet.disposition === 'COMPLETE_INCREMENT' && prior.packet.taskId === task.id
+      && prior.packet.source.headSha === completed.packet.source.headSha
+      && prior.packet.source.sourceDigest === completed.packet.source.sourceDigest) {
+      for (const proof of proofIdentity(prior.packet)) recordedProofs.add(proof);
+    }
+  }
+  if (recordedProofs.size && proofIdentity(completed.packet).every(proof => recordedProofs.has(proof))) {
+    throw new Error('Already recorded candidate proofs cannot close a reopened task through another receipt.');
+  }
   const next = structuredClone(queue), row = next.tasks.find(row => row.id === task.id);
   row.status = 'done'; row.nextAction = nextAction;
-  row.evidence = [...new Set([...row.evidence, ...completed.packet.evidence.filter(item => sameEvidenceSource(item, completed.packet)
-    && item.result === 'PASS' && (item.kind === 'review' || item.kind === 'ci' && item.name === 'verify')).map(item => item.reference)])];
-  next.updatedAt = new Date(moment).toISOString();
+  row.evidence = [...new Set([...row.evidence, ...references])];
+  // Replaying identical durable inputs emits identical source bytes, even after interruption.
+  next.updatedAt = new Date(Math.max(Date.parse(queue.updatedAt), Date.parse(completed.updatedAt))).toISOString();
   const errors = validateCoordination(next); if (errors.length) throw new Error(errors.join('\n'));
   return next;
 }
 
-const usage = 'Usage: node tools/cycle.mjs validate|brief STATE; claim STATE --revision N --actor pro|codex --run ID --started-at ISO; budget STATE --actor ROLE --run ID --seconds N; finish STATE --revision N --actor ROLE --run ID --outcome OUTCOME --packet PACKET --summary TEXT [--queue QUEUE] [--retain-claim true|false]; migrate STATE --revision N --procedure-ref SHA --packet PACKET; assign STATE --revision N --actor codex --run ID --packet PACKET --queue QUEUE; reconcile STATE --revision N --actor codex --run ID --queue QUEUE --completion-ref SHA --next-action TEXT';
+const usage = 'Usage: node tools/cycle.mjs validate|brief STATE; claim STATE --revision N --actor pro|codex --run ID --started-at ISO; budget STATE --actor ROLE --run ID --seconds N; finish STATE --revision N --actor ROLE --run ID --outcome OUTCOME --packet PACKET --summary TEXT [--queue QUEUE] [--retain-claim true|false]; migrate STATE --revision N --procedure-ref SHA --packet PACKET; assign STATE --revision N --actor codex --run ID --packet PACKET --queue QUEUE; reconcile STATE --revision N --actor codex --run ID --queue QUEUE --completion-ref SHA --next-action TEXT [--release-ref SHA]';
 /** Reads local JSON and emits JSON to stdout. It never writes files, contacts GitHub or selects a clock. */
 export function runCycleCli(args, {readText = path => readFileSync(path, 'utf8'), readQueue = gitQueue, readCompletion = gitCompletion} = {}) {
   try {
     if (!Array.isArray(args) || args.length < 2 || !['validate', 'brief', 'claim', 'budget', 'finish', 'migrate', 'assign', 'reconcile'].includes(args[0]) || !text(args[1]) || args[1].startsWith('--')) throw new Error(usage);
     const [command, file, ...flags] = args;
     const required = {validate: [], brief: [], claim: ['revision', 'actor', 'run', 'started-at'], budget: ['actor', 'run', 'seconds'], finish: ['revision', 'actor', 'run', 'outcome', 'packet', 'summary'], migrate: ['revision', 'procedure-ref', 'packet'], assign: ['revision', 'actor', 'run', 'packet', 'queue'], reconcile: ['revision', 'actor', 'run', 'queue', 'completion-ref', 'next-action']}[command];
-    const accepted = command === 'finish' ? [...required, 'queue', 'retain-claim'] : required;
+    const accepted = command === 'finish' ? [...required, 'queue', 'retain-claim'] : command === 'reconcile' ? [...required, 'release-ref'] : required;
     const options = {};
     if (flags.length % 2) throw new Error(usage);
     for (let index = 0; index < flags.length; index += 2) {
@@ -388,7 +439,7 @@ export function runCycleCli(args, {readText = path => readFileSync(path, 'utf8')
     else if (command === 'budget') result = cycleBudget(data, {...input, seconds: Number(options.seconds)});
     else if (command === 'migrate') result = migrateCycle(data, {...input, procedureRef: options['procedure-ref'], packet: JSON.parse(readText(options.packet))});
     else if (command === 'assign') result = assignCycle(data, {...input, packet: JSON.parse(readText(options.packet)), queue: JSON.parse(readText(options.queue))}, {readQueue});
-    else if (command === 'reconcile') result = reconcileCycle(data, {...input, queue: JSON.parse(readText(options.queue)), completionRef: options['completion-ref'], nextAction: options['next-action']}, {readQueue, readCompletion});
+    else if (command === 'reconcile') result = reconcileCycle(data, {...input, queue: JSON.parse(readText(options.queue)), completionRef: options['completion-ref'], releaseRef: options['release-ref'], nextAction: options['next-action']}, {readQueue, readCompletion});
     else result = finishCycle(data, {...input, outcome: options.outcome, packet: JSON.parse(readText(options.packet)), summary: options.summary,
       queue: options.queue === undefined ? undefined : JSON.parse(readText(options.queue)), retainClaim: options['retain-claim'] === 'true'}, {readQueue});
     return {exitCode: 0, stdout: JSON.stringify(result, null, 2), stderr: ''};

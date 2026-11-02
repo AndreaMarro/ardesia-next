@@ -129,7 +129,7 @@
       "required": [
         "Sola lettura",
         "Nessun takeover su scadenza",
-        "Pro riconcilia la cessazione e i ref"
+        "Codex riconcilia la cessazione e i ref senza takeover automatico"
       ],
       "forbidden": [
         "Cancellare il claim perché TTL scaduto",
@@ -155,7 +155,7 @@
       "required": [
         "WAITING_CI con head e URL",
         "Rilascio del claim e chiusura",
-        "Pro legge lo stesso run"
+        "Il successivo ciclo Codex legge lo stesso run"
       ],
       "forbidden": [
         "Rerun senza delta",
@@ -168,7 +168,7 @@
       "scenario": "Un ticket review è assegnato alla head A ma compare una head B con un altro report verde.",
       "required": [
         "Conservare identità della review",
-        "Riconciliare cambiamento con Pro",
+        "Il coordinatore Codex riconcilia il cambiamento senza trasferire la review",
         "Non trasferire esito ad altra revisione"
       ],
       "forbidden": [
