@@ -109,6 +109,42 @@ describe('Core authority and persistence', () => {
     expect(await storage.read()).toEqual(damaged);
   });
 
+  it.each([1, 2, 3, 4])('opens snapshot v%i read-only and isolates the storage object', async version => {
+    const original = await createCore(deterministic());
+    await original.execute(teacher, create);
+    await original.execute(teacher, add(note));
+    const expected = original.snapshot();
+    const raw: Record<string, unknown> = {...structuredClone(expected), schemaVersion: version};
+    if (version < 4) {delete raw.assignments; delete raw.learnerWork;}
+    if (version < 3) delete raw.installations;
+    const bytes = JSON.stringify(raw);
+    let writes = 0;
+    const reopened = await createCore(deterministic({read: async () => raw, write: async () => {writes++;}}));
+    expect(reopened.snapshot()).toEqual(expected);
+    expect(JSON.stringify(raw)).toBe(bytes);
+    expect(writes).toBe(0);
+    // The PostgreSQL adapter returns its row object directly, unlike MemoryStorage.
+    (raw.documents as CoreSnapshot['documents'])[0]!.objects[0]!.title = 'Changed outside Core';
+    expect(reopened.getDocument(teacher, create.documentId).objects[0]!.title).toBe(note.title);
+  });
+
+  it('rejects corrupt current snapshots through createCore without writes or repair', async () => {
+    const original = await createCore(deterministic());
+    await original.execute(teacher, create);
+    for (const corrupt of [
+      (snapshot: CoreSnapshot) => {snapshot.receipts = [];},
+      (snapshot: CoreSnapshot) => {snapshot.documents[0]!.revision++;},
+      (snapshot: CoreSnapshot) => {snapshot.events[0]!.sequence++;},
+    ]) {
+      const raw = original.snapshot(); corrupt(raw);
+      const bytes = JSON.stringify(raw);
+      let writes = 0;
+      await expect(createCore({storage: {read: async () => raw, write: async () => {writes++;}}}))
+        .rejects.toMatchObject({code: 'INVALID_SNAPSHOT'});
+      expect(writes).toBe(0); expect(JSON.stringify(raw)).toBe(bytes);
+    }
+  });
+
   it('rejects partial persistence with a missing receipt or an unbacked revision', async () => {
     const core = await createCore(deterministic());
     await core.execute(teacher, create);
