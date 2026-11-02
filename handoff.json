@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 90,
-  "updatedAt": "2026-11-02T14:29:19.631Z",
+  "revision": 91,
+  "updatedAt": "2026-11-02T14:31:28.343Z",
   "procedureRef": "656d1967ed75b56520d2e320c538950b3160c076",
   "activeRun": {
     "runId": "ardesia-codex-20261102T142556Z-bf1ed195",
@@ -15,22 +15,26 @@
     "closeBy": "2026-11-02T15:20:56.000Z"
   },
   "packet": {
-    "id": "m3-remote-owner-recovered-20261102",
+    "id": "m3-remote-native-20261102T142556Z",
     "taskId": "M3-REMOTE",
     "nextActor": "codex",
     "disposition": "READY",
-    "kind": "coordination",
-    "notBefore": "2026-11-02T13:51:08.912Z",
-    "expiresAt": null,
+    "kind": "implementation",
+    "notBefore": "2026-11-02T14:25:56Z",
+    "expiresAt": "2026-11-02T15:20:56Z",
     "source": {
       "baseSha": "03622b56c9756225019b7c6219d226beef8e0a6d",
       "headSha": "d0aa2014b131335d5c278543cea35098dcefdfd3",
-      "branch": "preview/m3",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/32",
+      "branch": "codex/m3-remote-native-20261102T142556Z",
+      "pr": null,
       "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4"
     },
     "goal": "Accettazione remota completa M3",
-    "allowedPaths": [],
+    "allowedPaths": [
+      "e2e",
+      "tools",
+      "operations"
+    ],
     "exitCriteria": [
       "Tutte le dodici controprove originali sul medesimo candidato protetto; tools/status.mjs produce ACCEPTED con prove autentiche.",
       "Sorgente operatore read-only e target restore distinto, preesistente, migrato e vuoto; nessun reset, bypass o produzione."
@@ -60,7 +64,7 @@
       }
     ],
     "blockers": [],
-    "nextAction": "This support run is finished and its lease is released. Preparation was performed on the existing isolated target; inspect its current schema and emptiness before any further preparation, rather than relying on the historical14:01 observation above. Publication of the separate detailed observation was refused and is not being retried here. Do not recreate resources, reset credentials, rerun prior CI or alter the acceptance gate. Resume from the verified existing candidate and authorized native-runner channels. No application source or deployment was changed by this support run. Preserve the metadata-branch no-deploy configuration.",
+    "nextAction": "Verificare candidato merged d0aa2014, Verify originale, deployment protetto e target restore280053 esistente preparato. Solo dopo preflight autorizzato riallineare alias e raccogliere le dodici controprove originali. Preservare sorgente read-only, rifiuti e dati dei target precedenti.",
     "review": null
   },
   "lastRun": {
