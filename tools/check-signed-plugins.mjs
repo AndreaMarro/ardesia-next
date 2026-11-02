@@ -12,8 +12,8 @@ await checkPluginBuild();
 const candidate = await checkPoiseuilleBuild();
 const outDir = mkdtempSync(join(tmpdir(), 'ardesia-m4-consumer-'));
 try {
-  await build({configFile: false, publicDir: false, logLevel: 'warn', ssr: {noExternal: [/^@ardesia\//]}, build: {
-    ssr: 'tools/poiseuille-consumer.ts', outDir, target: 'node24', minify: false,
+  await build({configFile: false, publicDir: false, logLevel: 'warn', ssr: {noExternal: true}, build: {
+    ssr: 'tools/poiseuille-consumer.ts', outDir, emptyOutDir: true, target: 'node24', minify: false,
     rolldownOptions: {external: [/^node:/], output: {entryFileNames: 'consumer.mjs'}},
   }});
   const {runPoiseuilleConsumer} = await import(pathToFileURL(join(outDir, 'consumer.mjs')).href);

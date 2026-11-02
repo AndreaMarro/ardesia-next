@@ -55,6 +55,9 @@ describe('Poiseuille SI model, independent boundary conditions and limits', () =
     const getter = pressure(); Object.defineProperty(getter.value, 'radiusM', {get: () => 0.001});
     for (const state of [missing, getter, pressure({extra: 1}), pressure({flowRateM3PerS: 0}), {schemaVersion: '2.0.0', value: pressure().value}, {schemaVersion: '1.0.0', value: geometry}]) expect(() => parsePoiseuilleState(state)).toThrow();
   });
+  it.each(['lengthM', 'viscosityPaS', 'densityKgPerM3'])('refuses zero and non-finite %s before calculation', key => {
+    for (const value of [0, -1, Infinity, NaN]) expect(() => evaluatePoiseuille(pressure({[key]: value}))).toThrow();
+  });
   it('roundtrips the exact driving condition through generic SDK parameters, with finite SI output', () => {
     for (const state of [pressure(), flow()]) {
       const before = structuredClone(state), view = poiseuilleView(evaluatePoiseuille(state));

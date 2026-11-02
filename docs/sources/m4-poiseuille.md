@@ -10,6 +10,8 @@ Consultazione del 2 novembre 2026, a partire dal task M4-REUSE della procedura `
 
 Equazioni e spiegazioni sono nuove implementazioni del bilancio viscoso e dell'integrazione degli anelli di area: `u(r) = Δp(R²-r²)/(4μL)`, `Q = πR⁴Δp/(8μL)`, `ū = Q/(πR²)`, `u(0) = 2ū`. L'inversione `Δp = 8μLQ/(πR⁴)` è una condizione al contorno distinta, non una seconda persistenza o un altro solver.
 
+Il grafico campiona il diametro con coordinata s da −R a R; la distanza radiale fisica è r = |s| ≥ 0. Didascalia e spiegazione distinguono queste coordinate.
+
 ## Stato e attività DRAFT
 
 Schema `1.0.0`: raggio R e lunghezza L in m, viscosità **dinamica** μ in Pa·s, densità ρ in kg/m³; esattamente una forzante fra Δp in Pa e Q in m³/s. Le due forme hanno parametri numerici compatibili con la vista SDK `1.0.0`; nessun campo nascosto di modalità viene perso nella ricostruzione dei parametri. Riferimento di stato, ID, versione, digest del bundle, edit e revisione restano nel medesimo oggetto Core.
@@ -27,6 +29,8 @@ Forzanti negative invertono flusso/profilo; a zero il fluido è fermo. R, μ, L 
 Codice originale privato/UNLICENSED secondo la repository; il worker incorpora Zod con notice MIT conservata. La firma della release candidata è Ed25519, con chiave effimera solo in memoria del processo di preparazione; la sola chiave pubblica/pin è confinata alla fixture candidata. Nessuna chiave o release è aggiunta al trust store o catalogo distribuito. Non è una nuova identità/accesso a un servizio né approvazione del publisher per l'app.
 
 `tools/check-signed-plugins.mjs`, eseguito nel check Verify esistente `signed-plugin`, ricostruisce il worker, confronta i byte, verifica firma/pin e revisione scientifica Git, poi usa Worker reale e API pubbliche Host/Core. Il rapporto `artifacts/m4-preparation.json` lega SHA/digest, fixture, esiti e misura `git diff` dalla base assegnata; la verification ne conserva il digest. Core, contratti, SDK, Host e persistenza vengono confrontati con la base, senza numeri di tempo/costo inventati. Numero di righe e byte generati non misurano efficacia didattica o costo totale di M4.
+
+Su checkout CI shallow il controllo recupera con fetch Git in sola lettura remota esclusivamente la SHA sorgente firmata (timeout30s), mai una branch mobile, prima di confrontare i quattro file. Con l'oggetto già presente la verifica non richiede rete.
 
 M4 resta `AWAITING_WEB_CONSUMER` soltanto quando la preparazione ha Verify esatta; mai ACCEPTED per questa fixture. Il packet autorizza plugins/SDK/Host/tools/docs: workspace package/lockfile, UI, server e prove browser richiedono un successivo perimetro canonico coerente. Nessun package workspace è registrato in questo incremento. Prima di integrare, preservare le correzioni runtime `d0aa2014` già su main, assenti dalla base amministrativa. Nessun merge, deploy, nuova produzione o modifica degli account.
 

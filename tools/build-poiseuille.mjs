@@ -36,6 +36,11 @@ export async function checkPoiseuilleBuild() {
     || !/^[a-f0-9]{40}$/.test(manifest.provenance.commit)
     || trust.trustStore.length !== 1 || trust.allowlist.length !== 1) throw Error('Invalid Poiseuille candidate identity');
   // The source revision is historical and immutable; a newer release commit must not silently substitute it.
+  try {execFileSync('git', ['cat-file', '-e', `${manifest.provenance.commit}^{commit}`], {stdio: 'ignore'});}
+  catch {
+    // Actions checks out one shallow head. Fetch this exact already-published parent, never a moving branch.
+    execFileSync('git', ['fetch', '--no-tags', '--depth=1', 'origin', manifest.provenance.commit], {stdio: 'pipe', timeout: 30000});
+  }
   for (const path of ['model.ts', 'handler.ts', 'worker.ts', 'index.ts']) {
     const sourcePath = `plugins/poiseuille/src/${path}`;
     const original = execFileSync('git', ['show', `${manifest.provenance.commit}:${sourcePath}`]);

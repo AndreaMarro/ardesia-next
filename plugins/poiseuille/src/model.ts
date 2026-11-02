@@ -62,11 +62,11 @@ export function poiseuilleView(result: PoiseuilleEvaluation): PluginView {
       {label: 'Velocità sull’asse (con segno)', value: result.maximumVelocityMPerS, unit: 'm/s'},
       {label: 'Reynolds indicativo, ipotesi da verificare', value: result.reynolds, unit: ''},
     ],
-    plot: {xLabel: 'Coordinata radiale', xUnit: 'm', yLabel: 'Velocità assiale', yUnit: 'm/s', series: [{id: 'axial-velocity', label: 'u(r) = 2ū[1 − (r/R)²]',
+    plot: {xLabel: 'Posizione lungo un diametro', xUnit: 'm', yLabel: 'Velocità assiale', yUnit: 'm/s', series: [{id: 'axial-velocity', label: 'u(s) = 2ū[1 − (s/R)²], r = |s|',
       points: Array.from({length: 129}, (_, i) => {const fraction = i / 64 - 1; return {x: fraction * p.radiusM, y: result.maximumVelocityMPerS * (1 - fraction ** 2)};})}]},
     explanation: [
       'Obiettivo: distinguere la grandezza imposta da quella che risponde. Prerequisiti: pressione, portata Q = volume/tempo, area del cerchio e proporzioni. Prima di cambiare R, prevedi come cambieranno Q, Δp e la velocità media.',
-      'Il bilancio viscoso con parete senza slittamento dà u(r) = Δp(R² − r²)/(4μL). Sommando gli anelli di area 2πr dr si ottiene Q = πR⁴Δp/(8μL). Quindi ū = Q/(πR²) e la velocità sull’asse è 2ū. Il grafico e tutti i numeri derivano da questo stesso stato SI.',
+      'Il bilancio viscoso con parete senza slittamento dà u(r) = Δp(R² − r²)/(4μL), dove r ≥ 0 è la distanza dall’asse. Sommando gli anelli di area 2πr dr si ottiene Q = πR⁴Δp/(8μL). Quindi ū = Q/(πR²) e la velocità sull’asse è 2ū. Il grafico percorre un diametro con coordinata s da −R a R e r = |s|; tutti i numeri derivano dallo stesso stato SI.',
       pressureControl ? 'Attività e feedback: mantieni Δp, μ e L fissi, raddoppia R. Previsione corretta: area ×4, Q ×16, ū ×4. Se hai previsto Q ×4, hai considerato solo l’area: recupera anche l’aumento ×4 della velocità media.' : 'Attività e feedback: mantieni Q, μ e L fissi, raddoppia R. Previsione corretta: area ×4, ū ÷4, Δp ÷16. Se hai previsto Q ×16, stai usando la condizione di pressione fissata al posto di quella di portata fissata.',
       'Transfer: a Q e R fissi, raddoppiare insieme μ e L richiede Δp ×4. Un confronto a pressione fissata risponde a una domanda diversa. Ogni confronto è condizionato al permanere delle ipotesi; a Δp fissa, R ×2 porta Re ×8 e può uscire dal dominio.',
       'Re = ρ|ū|2R/μ è indicativo: Re < 2000 non dimostra da solo né flusso laminare né sviluppo completo. L è la distanza fra due sezioni nel tratto già sviluppato, oltre l’ingresso; non è una verifica della lunghezza di sviluppo. I valori iniziali sono sintetici, non un fluido reale approvato.',
