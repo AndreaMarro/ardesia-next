@@ -3,17 +3,10 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 64,
-  "updatedAt": "2026-11-02T08:27:28.028Z",
+  "revision": 65,
+  "updatedAt": "2026-11-02T09:08:25.413Z",
   "procedureRef": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
-  "activeRun": {
-    "runId": "ardesia-codex-20261102T081720Z-4b9b117e",
-    "actor": "codex",
-    "startedAt": "2026-11-02T08:17:20.000Z",
-    "claimedAt": "2026-11-02T08:27:28.028Z",
-    "writeUntil": "2026-11-02T09:02:20.000Z",
-    "closeBy": "2026-11-02T09:12:20.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m3-access-availability-20261102T064252Z",
     "taskId": "M3-ACCESS",
@@ -40,33 +33,11 @@
       {
         "headSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
         "sourceDigest": "d27a5aa14dd00a6114cabf10497c2289858d09da6d76621ea847a330b805ae31",
-        "kind": "observation",
-        "name": "unchanged-authorized-channel-trigger",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/issues/19#issuecomment-6564591014",
-        "result": "NOT_RUN",
-        "scope": "Issue19 unchanged:4comments,updated2026-11-01T22:10:08Z. Original6564591014 receipt reread; historical native403 and approved-child channel absence not retried. No changed authorized trigger observed. Currentprocess absence is scoped below; no global lack of credentials inferred. Remote preflight/build-info/QA/restore NOT_RUN.",
-        "access": "metadata",
-        "artifactDigest": null
-      },
-      {
-        "headSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
-        "sourceDigest": "d27a5aa14dd00a6114cabf10497c2289858d09da6d76621ea847a330b805ae31",
         "kind": "check",
         "name": "current-process-channel-presence",
         "reference": "e2e/README.md",
         "result": "FAIL",
-        "scope": "At2026-11-02T06:44:31.840Z only boolean presence checked for VERCEL_OIDC_TOKEN,6canonical ARDESIA_E2E identity channels,ARDESIA_QA_OPERATOR_DATABASE_URL,ARDESIA_QA_RESTORE_DATABASE_URL and ARDESIA_QA_RESTORE_RESOURCE_HASH:all10absent in this process. No values,authstore,credential files or child environment read; no403/login retry. Prerequisite observation only, not product defect or global absence. Local receipt environment-presence-canonical.json outside publicsource.",
-        "access": "metadata",
-        "artifactDigest": null
-      },
-      {
-        "headSha": "1f2d0a668a4d2aee8a01ce596b0bc2402d308764",
-        "sourceDigest": "d27a5aa14dd00a6114cabf10497c2289858d09da6d76621ea847a330b805ae31",
-        "kind": "observation",
-        "name": "original-restore-target-receipt",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/issues/19#issuecomment-6564228513",
-        "result": "NOT_RUN",
-        "scope": "Original support-session receipt6564228513 for existing restore270479 reread. No currentSQL,emptiness/catalogue equivalence,connection export or restore claimed. Preserve target and both populated older restores; no duplicate,reset or provisioning.",
+        "scope": "At2026-11-02T08:27:28.044Z boolean presence of10canonical channels:all absent in this process only. No values,credential stores or child environments read. No changed authorized trigger:issue19 unchanged4comments/updated2026-11-01T22:10:08Z. No403/login/preflight/SQL/restore retry. Local receipt environment-presence-canonical.json outside publicsource.",
         "access": "metadata",
         "artifactDigest": null
       }
@@ -76,20 +47,20 @@
       "B-QA",
       "B-RESTORE"
     ],
-    "nextAction": "Riprendere M3-ACCESS solo al cambiamento osservabile di un canale gia autorizzato QA/OIDC/operatore/restore; poi verificare tutti i prerequisiti prima di M3-REMOTE. Nessun incremento prodotto indipendente eleggibile nella coda1f2d0a6:OPS004 da saltare senza delta,OPS006/PERF003 done. Conservare prove originali e restore270479; non ripetere403/login,benchmark o provisioning. Source identifica il contratto procedurale,non uno staging accettato. M3/prodotto pendenti. Rollback di questo solo cursore con nuovo figlio/CAS dopo ownership,senza force o modifiche sorgenti/dati.",
+    "nextAction": "Riprendere M3-ACCESS solo al cambiamento osservabile di un canale gia autorizzato QA/OIDC/operatore/restore. Nessun incremento indipendente eleggibile nella coda1f2d0a6:OPS004 da saltare senza delta,OPS006/PERF003 done. Nessun retry403/login o provisioningrestore270479. Verify41388837775 e review6569185184 riletti soltanto metadata/ricevuta,nessuna nuova prova prodotto. Assign rifiutato oltre writeUntil,tempo invariato;nessun incarico nuovo pubblicato. M3/prodotto pendenti. Rollback solo nuovo figlio correttivo del cursore dopo ownership/CAS,senza force o scritture dati.",
     "review": null
   },
   "lastRun": {
-    "runId": "ardesia-codex-20261102T064252Z-3835a449",
+    "runId": "ardesia-codex-20261102T081720Z-4b9b117e",
     "actor": "codex",
-    "startedAt": "2026-11-02T06:42:52.744Z",
-    "claimedAt": "2026-11-02T06:45:30.709Z",
-    "writeUntil": "2026-11-02T07:27:52.744Z",
-    "closeBy": "2026-11-02T07:37:52.744Z",
+    "startedAt": "2026-11-02T08:17:20.000Z",
+    "claimedAt": "2026-11-02T08:27:28.028Z",
+    "writeUntil": "2026-11-02T09:02:20.000Z",
+    "closeBy": "2026-11-02T09:12:20.000Z",
     "packetId": "m3-access-availability-20261102T064252Z",
-    "finishedAt": "2026-11-02T06:49:41.218Z",
+    "finishedAt": "2026-11-02T09:08:25.413Z",
     "outcome": "BLOCKED",
     "late": false,
-    "summary": "M3-ACCESS availability-only:no changed authorized trigger in issue19 or currentprocess channels;no independent eligible increment. OriginalVerify/review and freeze preserved;no403/login retry,source/service write or repeatedcomment. Claim released early."
+    "summary": "M3-ACCESS:canali invariati;nessun incremento indipendente eleggibile. Assign rifiutato oltre writeUntil,nessun rinnovo. Solo intake read-only,nessuna source/servicewrite;rilascio claim."
   }
 }
