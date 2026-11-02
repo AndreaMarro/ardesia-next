@@ -22,7 +22,7 @@ const task = (id = 'TASK-1', scope = ['tools']) => ({id, title:'Bounded syntheti
  scope, dependsOn:[], blockers:[], exitCriteria:['Consumer and evidence'], evidence:[], nextAction:'Implement the bounded task'});
 const blocker = (id='B') => ({id,status:'blocked',reason:'Missing prerequisite',lastCheckedAt:T,recheckWhen:'Prerequisite changes',sources:['docs/history.md']});
 const queue = () => ({...JSON.parse(readFileSync(new URL('../operations/coordination.json', import.meta.url), 'utf8')),
- tasks:[task()], blockers:[], claims:[]});
+ updatedAt:T, tasks:[task()], blockers:[], claims:[]});
 const select = (data, packet, q = queue()) => cycle.assignCycle(data, {expectedRevision: data.revision, actor: 'codex', runId: 'run-1', packet, queue: q}, {now: at(9),readQueue:()=>q});
 const finish = (data, packet, outcome, q = queue()) => cycle.finishCycle(data, {expectedRevision: data.revision, actor: 'codex', runId: 'run-1', packet, outcome, queue:q, summary: 'Synthetic test result'}, {now: at(50),readQueue:()=>q});
 
@@ -35,6 +35,19 @@ test('v2 rejects a Pro successor and active owner', () => {
 test('Codex claim charges bootstrap time and does not mutate input', () => {
  const s = fixture(), before = structuredClone(s), a = claim(s);
  assert.equal(a.activeRun.writeUntil, at(45).toISOString()); assert.equal(a.activeRun.closeBy, at(55).toISOString()); assert.deepEqual(s,before);
+});
+
+test('read-only bootstrap may overlap a prior run, but the next claim cannot overlap its release or reset the budget', () => {
+ const prior=claim(fixture());
+ const closed=cycle.finishCycle(prior,{expectedRevision:prior.revision,actor:'codex',runId:'run-1',outcome:'INTERRUPTED',
+  packet:{...prior.packet,disposition:'INTERRUPTED'},summary:'Previous writer has stopped'},{now:at(20)});
+ const next=cycle.claimCycle(closed,{expectedRevision:closed.revision,actor:'codex',runId:'run-2',startedAt:at(10).toISOString()},{now:at(25)});
+ assert.equal(next.activeRun.startedAt,at(10).toISOString());assert.equal(next.activeRun.claimedAt,at(25).toISOString());
+ assert.equal(next.activeRun.writeUntil,at(55).toISOString());assert.equal(next.activeRun.closeBy,at(65).toISOString());
+ assert.deepEqual(cycle.validateCycle(next),[]);
+ const overlap=structuredClone(next);overlap.activeRun.claimedAt=at(19).toISOString();
+ assert.ok(cycle.validateCycle(overlap).some(error=>error.includes('lastRun completion')));
+ assert.throws(()=>cycle.claimCycle(prior,{expectedRevision:prior.revision,actor:'codex',runId:'run-2',startedAt:at(10).toISOString()},{now:at(25)}),/active claim/);
 });
 test('stale expected revision and expired active claim cannot be taken over', () => {
  const a = claim(fixture());
@@ -248,18 +261,18 @@ const reconcileInput = s => ({expectedRevision:s.active.revision,actor:'codex',r
 test('canonical reconciliation emits only the completed row, evidence, next action and timestamp', () => {
  const s=closureFixture(),before=structuredClone(s);
  const q=cycle.reconcileCycle(s.active,reconcileInput(s),{now:at(13),readQueue:()=>s.q,readCompletion:()=>s.done});
- const expected=structuredClone(s.q);expected.updatedAt=at(13).toISOString();
- Object.assign(expected.tasks[0],{status:'done',evidence:s.done.packet.evidence.map(item=>item.reference),nextAction:reconcileInput(s).nextAction});
+ const expected=structuredClone(s.q);expected.updatedAt=s.done.updatedAt;
+ Object.assign(expected.tasks[0],{status:'done',evidence:[`https://github.com/AndreaMarro/ardesia-next/blob/${reconcileInput(s).completionRef}/handoff.json`,...s.done.packet.evidence.map(item=>item.reference)],nextAction:reconcileInput(s).nextAction});
  assert.deepEqual(q,expected);assert.deepEqual(s,before);assert.equal(q.tasks.find(t=>t.id==='OPS-004').status,'queued');
 });
 
-test('reconciliation rejects wrong owner, scope, completion lineage, reviewer, source queue, policy and task claims', () => {
+test('reconciliation rejects wrong owner, scope, completion lineage, reviewer, policy and task claims', () => {
  const s=closureFixture(), input=reconcileInput(s), adapters={now:at(13),readQueue:()=>s.q,readCompletion:()=>s.done};
  assert.throws(()=>cycle.reconcileCycle(s.active,{...input,actor:'pro'},adapters),/owner/);
  assert.throws(()=>cycle.reconcileCycle({...s.active,packet:{...s.active.packet,taskId:'TASK-2'}},input,adapters),/OPS-004/);
  assert.throws(()=>cycle.reconcileCycle({...s.active,packet:{...s.active.packet,allowedPaths:['operations/coordination.json']}},input,adapters),/scope/);
  assert.throws(()=>cycle.reconcileCycle(s.active,input,{...adapters,now:at(45)}),/budget/);
- for(const mutate of [s=>s.revision--,s=>s.activeRun.runId='other',s=>s.packet.review.reviewerContextId='author',
+ for(const mutate of [s=>s.revision=100,s=>s.activeRun.runId='other',s=>s.packet.review.reviewerContextId='author',
   s=>s.packet.evidence[0].headSha='c'.repeat(40),s=>s.packet.taskId='MISSING']) {
   const bad=structuredClone(s.done);mutate(bad);
   assert.throws(()=>cycle.reconcileCycle(s.active,input,{...adapters,readCompletion:()=>bad}));
@@ -269,8 +282,9 @@ test('reconciliation rejects wrong owner, scope, completion lineage, reviewer, s
  const changed=structuredClone(s.q);changed.tasks[0].nextAction='Unreviewed queue change';
  const done={...s.done,packet:{...s.done.packet,source:{...s.done.packet.source,headSha:'c'.repeat(40)},
   evidence:s.done.packet.evidence.map(e=>({...e,headSha:'c'.repeat(40)})),review:{...s.done.packet.review,sourceSha:'c'.repeat(40)}}};
- assert.throws(()=>cycle.reconcileCycle(s.active,input,{...adapters,readCompletion:()=>done,
-  readQueue:head=>head===ref?s.q:changed}),/changed the canonical queue/);
+ const separate=cycle.reconcileCycle(s.active,input,{...adapters,readCompletion:()=>done,
+  readQueue:head=>{assert.equal(head,ref,'runtime queue must not grant task authority');return s.q;}});
+ assert.equal(separate.tasks[0].status,'done');
  const claimed=structuredClone(s.q);claimed.tasks[0].status='in_progress';claimed.claims=[{taskId:'TASK-1',owner:'coordinator',baseSha:ref,
   branch:'ops/claimed',paths:['tools'],claimedAt:T,expiresAt:at(180).toISOString()}];
  assert.throws(()=>cycle.reconcileCycle(s.active,{...input,queue:claimed},{...adapters,readQueue:()=>claimed}),/active increment|task claim/);
@@ -349,4 +363,100 @@ test('CLI retain, assign and reconcile emit recoverable JSON without writing the
   {...adapters,readCompletion:()=>done});
  assert.equal(reconciled.exitCode,0,reconciled.stderr);assert.equal(JSON.parse(reconciled.stdout).tasks[0].status,'done');
  assert.deepEqual(files,before);
+});
+
+test('assign and HANDOFF preserve canonical criteria and permit additional bounded checks', () => {
+ const active=claim(fixture()), q=queue(), weak={...implementation(),exitCriteria:['Check a file exists']};
+ assert.throws(()=>select(active,weak,q),/canonical exit criterion/);
+ assert.throws(()=>finish(active,weak,'HANDOFF',q),/canonical exit criterion/);
+ const extra={...implementation(),exitCriteria:[...q.tasks[0].exitCriteria,'Also exercise retry']};
+ assert.deepEqual(select(active,extra,q).packet.exitCriteria,extra.exitCriteria);
+});
+
+test('reconciliation refuses a historical completion with weaker canonical criteria', () => {
+ const s=closureFixture(), done=structuredClone(s.done);done.packet.exitCriteria=['Check a file exists'];
+ assert.throws(()=>cycle.reconcileCycle(s.active,reconcileInput(s),
+  {now:at(13),readQueue:()=>s.q,readCompletion:()=>done}),/canonical task contract/);
+});
+
+test('same durable completion emits identical bytes at different times', () => {
+ const s=closureFixture(), input=reconcileInput(s), adapters={readQueue:()=>s.q,readCompletion:()=>s.done};
+ const first=cycle.reconcileCycle(s.active,input,{...adapters,now:at(13)});
+ const replay=cycle.reconcileCycle(s.active,input,{...adapters,now:at(20)});
+ assert.equal(JSON.stringify(first),JSON.stringify(replay));
+});
+
+test('published completion survives INTERRUPTED and a new legitimate claim without renewing that claim', () => {
+ const s=closureFixture(), input=reconcileInput(s), adapters={readQueue:()=>s.q,readCompletion:()=>s.done};
+ const expected=cycle.reconcileCycle(s.active,input,{...adapters,now:at(13)});
+ const interrupted=cycle.finishCycle(s.active,{expectedRevision:s.active.revision,actor:'codex',runId:'run-1',outcome:'INTERRUPTED',
+  packet:{...s.active.packet,disposition:'INTERRUPTED'},summary:'Durable completion published; admin checkpoint interrupted'},{now:at(14)});
+ const resumed=cycle.claimCycle(interrupted,{expectedRevision:interrupted.revision,actor:'codex',runId:'run-2',startedAt:at(15).toISOString()},{now:at(16)});
+ const before=structuredClone(resumed);
+ const actual=cycle.reconcileCycle(resumed,{...input,expectedRevision:resumed.revision,runId:'run-2'},{...adapters,now:at(17)});
+ assert.deepEqual(actual,expected);assert.deepEqual(resumed,before);
+ const bootstrap=cycle.claimCycle(interrupted,{expectedRevision:interrupted.revision,actor:'codex',runId:'run-2',startedAt:at(12).toISOString()},{now:at(16)});
+ assert.deepEqual(cycle.reconcileCycle(bootstrap,{...input,expectedRevision:bootstrap.revision,runId:'run-2'},{...adapters,now:at(17)}),expected);
+ assert.equal(bootstrap.activeRun.writeUntil,at(57).toISOString());
+ const bad=structuredClone(resumed);bad.lastRun.runId='unrelated';
+ assert.throws(()=>cycle.reconcileCycle(bad,{...input,expectedRevision:bad.revision,runId:'run-2'},{...adapters,now:at(17)}),/matching released run/);
+ const restored=cycle.reconcileCycle(bad,{...input,expectedRevision:bad.revision,runId:'run-2',releaseRef:'2'.repeat(40)},
+  {...adapters,now:at(17),readCompletion:ref=>ref==='2'.repeat(40)?interrupted:s.done});
+ assert.deepEqual(restored,expected);
+ assert.throws(()=>cycle.reconcileCycle(bad,{...input,expectedRevision:bad.revision,runId:'run-2',releaseRef:'2'.repeat(40)},
+  {...adapters,now:at(17),readCompletion:ref=>ref==='2'.repeat(40)?s.active:s.done}),/Release receipt/);
+});
+
+test('replay after queue publication and explicit adoption is a no-op, conflicting receipt is rejected', () => {
+ const s=closureFixture(), input=reconcileInput(s);
+ const output=cycle.reconcileCycle(s.active,input,{now:at(13),readQueue:()=>s.q,readCompletion:()=>s.done});
+ const adopted='4'.repeat(40), active={...s.active,procedureRef:adopted,revision:s.active.revision+1,updatedAt:at(14).toISOString()};
+ const readQueue=head=>head===adopted?output:s.q;
+ const replay=cycle.reconcileCycle(active,{...input,expectedRevision:active.revision,queue:output},
+  {now:at(15),readQueue,readCompletion:()=>s.done});
+ assert.deepEqual(replay,output);
+ assert.throws(()=>cycle.reconcileCycle(active,{...input,expectedRevision:active.revision,queue:output,completionRef:'5'.repeat(40)},
+  {now:at(15),readQueue,readCompletion:()=>s.done}),/another completion/);
+ assert.throws(()=>cycle.reconcileCycle(active,{...input,expectedRevision:active.revision,queue:output,nextAction:'A different next step'},
+  {now:at(15),readQueue,readCompletion:()=>s.done}),/another completion/);
+});
+
+test('a completion that released its own claim remains a durable release after intervening runs', () => {
+ const s=closureFixture();
+ const closed=cycle.finishCycle(s.done,{expectedRevision:s.done.revision,actor:'codex',runId:'run-1',
+  outcome:'COMPLETE_INCREMENT',packet:s.done.packet,summary:'Synthetic final completion with release'},{now:at(13)});
+ const claimed=cycle.claimCycle(closed,{expectedRevision:closed.revision,actor:'codex',runId:'run-2',startedAt:at(14).toISOString()},{now:at(15)});
+ const active=cycle.assignCycle(claimed,{expectedRevision:claimed.revision,actor:'codex',runId:'run-2',packet:s.admin,queue:s.q},
+  {now:at(16),readQueue:()=>s.q});
+ const later={...active,lastRun:{...active.lastRun,runId:'intervening-run'}};
+ const input={...reconcileInput(s),expectedRevision:later.revision,runId:'run-2'};
+ const adapters={now:at(17),readQueue:()=>s.q,readCompletion:()=>closed};
+ const implicit=cycle.reconcileCycle(later,input,adapters);
+ const explicit=cycle.reconcileCycle(later,{...input,releaseRef:input.completionRef},adapters);
+ assert.deepEqual(explicit,implicit);assert.equal(implicit.tasks[0].status,'done');
+});
+
+test('changed canonical contracts, dependencies and blockers cannot inherit completion', () => {
+ const s=closureFixture(), adopted='4'.repeat(40), active={...s.active,procedureRef:adopted,revision:s.active.revision+1};
+ for(const key of ['scope','dependsOn','blockers','exitCriteria']) {
+  const q=structuredClone(s.q);
+  if(key==='dependsOn')q.tasks[0][key]=['OPS-004'];
+  else if(key==='blockers'){q.blockers=[blocker()];q.tasks[0][key]=['B'];}
+  else q.tasks[0][key]=[...q.tasks[0][key],key==='scope'?'docs':'Extra criterion'];
+  assert.throws(()=>cycle.reconcileCycle(active,{...reconcileInput(s),expectedRevision:active.revision,queue:q},
+   {now:at(13),readQueue:head=>head===adopted?q:s.q,readCompletion:()=>s.done}),/canonical task contract/);
+ }
+});
+
+
+test('a reopened canonical task cannot reuse its already recorded completion', () => {
+ const s=closureFixture(), input=reconcileInput(s);
+ const output=cycle.reconcileCycle(s.active,input,{now:at(13),readQueue:()=>s.q,readCompletion:()=>s.done});
+ const reopened=structuredClone(output), row=reopened.tasks.find(task=>task.id==='TASK-1');
+ row.status='queued';row.nextAction='Previous completion invalidated: reproduce the regression before closure';
+ const adopted='6'.repeat(40), active={...s.active,procedureRef:adopted,revision:s.active.revision+1,updatedAt:at(14).toISOString()};
+ const before=structuredClone(reopened);
+ assert.throws(()=>cycle.reconcileCycle(active,{...input,expectedRevision:active.revision,queue:reopened},
+  {now:at(15),readQueue:ref=>ref===adopted?reopened:s.q,readCompletion:()=>s.done}),/reopened|already recorded/);
+ assert.deepEqual(reopened,before);
 });
