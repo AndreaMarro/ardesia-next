@@ -3,22 +3,15 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 111,
-  "updatedAt": "2026-11-02T20:16:50.733Z",
+  "revision": 112,
+  "updatedAt": "2026-11-02T20:17:10.071Z",
   "procedureRef": "c4178388105a6f817c79bee2de18aee85b788d5d",
-  "activeRun": {
-    "runId": "ardesia-e0e7-20261102T195800Z",
-    "actor": "codex",
-    "startedAt": "2026-11-02T19:58:00.000Z",
-    "claimedAt": "2026-11-02T20:01:32.372Z",
-    "writeUntil": "2026-11-02T20:43:00.000Z",
-    "closeBy": "2026-11-02T20:53:00.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m4-consumer-20261102T185253Z",
     "taskId": "M4-REUSE",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "INTERRUPTED",
     "kind": "implementation",
     "notBefore": "2026-11-02T19:16:07.799Z",
     "expiresAt": "2026-11-04T19:16:07.799Z",
@@ -159,7 +152,7 @@
       }
     ],
     "blockers": [],
-    "nextAction": "Collegare Poiseuille PR37/head062e3d58/digest8fd881 alla stessa web app/Core/PostgreSQL usando il perimetro canonico adottato413de5b (PR38,Verify41506499566,review6586098914). Registrare package/lockfile e consumer esistenti, provare consenso/save/reopen/revisioni esatte/isolamento/rifiuti senza write/revoca e browser, misurare il riuso. Preservare preparazione e prove originali, fix runtime d0aa, DRAFT e approvazioni umane pendenti. Candidate-trust non autorizza publisher: prima di promozione verificare firma/pin/canale gia autorizzato; nessun bypass o nuovo privilegio. Ogni nuova sorgente richiede proprie Verify/review; non rieseguire le CI verdi invariate. Nessun COMPLETE_INCREMENT o M4 ACCEPTED da questo HANDOFF.",
+    "nextAction": "Riprendere tramite HANDOFF canonico lo stesso M4-REUSE: questa run ha acquisito il nuovo mandato senza avviare ne interrompere processi o sorgenti M4. Procedura E0-E7/coda adottata c417838 (PR40,Verify41516444223,review6587349595,audit6587446098;cursor111/570ece3). ENG-E1 queued dopo M4; codice E1 solo archiviato,32test sintetici Node24 e review del puro helper, con P3 prototipo-array/compatibilita in_progress da correggere o controprovare; schema/wiring/Verify integrazione/adozione codice/incarico reale PENDING. Non aprire una nuova preparazione Poiseuille o ripetere Verify PR37/38. Collegare Poiseuille PR37/head062e3d58/digest8fd881 alla stessa web app/Core/PostgreSQL usando il perimetro canonico adottato413de5b (PR38,Verify41506499566,review6586098914). Registrare package/lockfile e consumer esistenti, provare consenso/save/reopen/revisioni esatte/isolamento/rifiuti senza write/revoca e browser, misurare il riuso. Preservare preparazione e prove originali, fix runtime d0aa, DRAFT e approvazioni umane pendenti. Candidate-trust non autorizza publisher: prima di promozione verificare firma/pin/canale gia autorizzato; nessun bypass o nuovo privilegio. Ogni nuova sorgente richiede proprie Verify/review; non rieseguire le CI verdi invariate. Nessun COMPLETE_INCREMENT o M4 ACCEPTED da questo HANDOFF.",
     "review": {
       "authorContextId": "root",
       "reviewerContextId": "root.m4_preparation_review",
@@ -168,16 +161,16 @@
     }
   },
   "lastRun": {
-    "runId": "ardesia-codex-20261102T185253Z-684b5c92",
+    "runId": "ardesia-e0e7-20261102T195800Z",
     "actor": "codex",
-    "startedAt": "2026-11-02T18:52:53.000Z",
-    "claimedAt": "2026-11-02T18:56:21.308Z",
-    "writeUntil": "2026-11-02T19:37:53.000Z",
-    "closeBy": "2026-11-02T19:47:53.000Z",
-    "packetId": "m4-reuse-next-20261102T161917Z",
-    "finishedAt": "2026-11-02T19:16:07.941Z",
-    "outcome": "HANDOFF",
+    "startedAt": "2026-11-02T19:58:00.000Z",
+    "claimedAt": "2026-11-02T20:01:32.372Z",
+    "writeUntil": "2026-11-02T20:43:00.000Z",
+    "closeBy": "2026-11-02T20:53:00.000Z",
+    "packetId": "m4-consumer-20261102T185253Z",
+    "finishedAt": "2026-11-02T20:17:10.071Z",
+    "outcome": "INTERRUPTED",
     "late": false,
-    "summary": "Perimetro consumer M4 esplicito pubblicato in PR38/head413de5b/digest179c184f e adottato108 dopo Verify41506499566/review non autrice6586098914 esatte. HANDOFF M4 READY sul runtime Poiseuille062e/8fd881 invariato, consumer web/PostgreSQL da implementare. M4 aperta/DRAFT, nessun COMPLETE_INCREMENT, merge/deploy o scheduler; claim rilasciato."
+    "summary": "Mandato E0-E7 acquisito in history16/PR40 e procedura c417838 adottata111 dopo Verify41516444223 originale e review/audit indipendenti esatti. E1 queued dopo M4, E2-E6 deferred, E7 riusa task didattici. INTERRUPTED conserva assegnazione/sorgente/scope/criteri/prove M4: lavoro M4 non avviato in questa run di intake, nessun writer interrotto e nessun COMPLETE dichiarato. Prossimo passo HANDOFF canonico dello stesso consumer PR37/062e; E1 wiring e P3 restano successivi. Claim rilasciato entro budget, nessun merge/deploy/scheduler/modello/spesa/privilegio."
   }
 }
