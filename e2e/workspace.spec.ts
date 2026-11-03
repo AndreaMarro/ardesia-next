@@ -36,15 +36,33 @@ test('a new lesson can create and update a note and reopen it from the library',
   await page.getByRole('button',{name:'Scrivi la prima nota',exact:true}).click();
   await page.getByLabel('Titolo oggetto').fill('La mia ipotesi');
   await page.getByLabel('Testo nota').fill('La corrente dipende dalla resistenza a tensione fissata.');
-  await page.getByRole('button',{name:'Salva modifiche',exact:true}).click();
-  await page.getByRole('button',{name:'Chiudi proprietà'}).click();
-  await page.getByRole('button',{name:'Apri libreria',exact:true}).click();
-  await page.getByRole('button',{name:/Oscillazioni: osserva/}).click();
-  await page.getByRole('button',{name:'Apri libreria',exact:true}).click();
-  await page.getByRole('button',{name:/Una lezione di elettrotecnica/}).click();
-  await expect(page.getByRole('button',{name:'Apri La mia ipotesi',exact:true})).toContainText('tensione fissata');
-  await page.reload();
-  await expect(page.getByRole('heading',{name:'Una lezione di elettrotecnica',exact:true})).toBeVisible();
+  let releaseAck!: () => void, receivedAck!: () => void;
+  const ackGate = new Promise<void>(resolve => {releaseAck = resolve;});
+  const committed = new Promise<void>(resolve => {receivedAck = resolve;});
+  await page.route('**/api/m3', async route => {
+    const input = route.request().method() === 'POST' ? route.request().postDataJSON() : null;
+    if (input?.action !== 'command' || input.command?.kind !== 'replace-object') {await route.continue(); return;}
+    // Hold only the response of the real committed write; never invent a successful mutation.
+    const response = await route.fetch();
+    expect(response.ok()).toBe(true); receivedAck(); await ackGate;
+    await route.fulfill({response});
+  });
+  try {
+    await page.getByRole('button',{name:'Salva modifiche',exact:true}).click();
+    await committed; releaseAck();
+    await expect(page.locator('.app-footer [role="status"]')).toContainText('Confermato dal server');
+    await expect(page.getByRole('button',{name:'Salva modifiche',exact:true})).toBeDisabled();
+    await page.getByRole('button',{name:'Chiudi proprietà'}).click();
+    await expect(page.getByRole('dialog', {name:'Hai modifiche da salvare',exact:true})).toHaveCount(0);
+    await expect(page.getByRole('complementary', {name:'Proprietà dell’oggetto',exact:true})).toHaveCount(0);
+    await page.getByRole('button',{name:'Apri libreria',exact:true}).click();
+    await page.getByRole('button',{name:/Oscillazioni: osserva/}).click();
+    await page.getByRole('button',{name:'Apri libreria',exact:true}).click();
+    await page.getByRole('button',{name:/Una lezione di elettrotecnica/}).click();
+    await expect(page.getByRole('button',{name:'Apri La mia ipotesi',exact:true})).toContainText('tensione fissata');
+    await page.reload();
+    await expect(page.getByRole('heading',{name:'Una lezione di elettrotecnica',exact:true})).toBeVisible();
+  } finally {releaseAck();}
 });
 
 test('a stale second tab cannot overwrite committed work', async ({page, context}) => {
