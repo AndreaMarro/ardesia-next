@@ -3,17 +3,10 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 139,
-  "updatedAt": "2026-11-03T18:48:12.398Z",
+  "revision": 140,
+  "updatedAt": "2026-11-03T19:36:31.831Z",
   "procedureRef": "d8179e0336738edf00a2793c8aab875a38bb8289",
-  "activeRun": {
-    "runId": "ardesia-m4-ship-20261103T184703Z-01a1a092",
-    "actor": "codex",
-    "startedAt": "2026-11-03T18:47:03.000Z",
-    "claimedAt": "2026-11-03T18:48:12.398Z",
-    "writeUntil": "2026-11-03T19:32:03.000Z",
-    "closeBy": "2026-11-03T19:42:03.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m4-consumer-20261102T185253Z",
     "taskId": "M4-REUSE",
@@ -706,10 +699,78 @@
         "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6611661029",
         "access": "artifact",
         "artifactDigest": null
+      },
+      {
+        "kind": "check",
+        "name": "m4-exact-preview-candidate-created",
+        "result": "PASS",
+        "headSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
+        "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e",
+        "scope": "New immutable dpl_5SB4NqKwJXfznmAyUgzPgXU6jjas READY/providerTarget null/exactM4e+digest4b;SSOall,anonymous302same-originSSO,PostgrespreflightPASS. Stable alias now oldF verifiedAPI; no release acceptance.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6613585063",
+        "access": "artifact",
+        "artifactDigest": "2a3fa5bff5f2e74d0dd5d2ca3ba11514e867c5014de42c33236dc6957a51847b"
+      },
+      {
+        "kind": "check",
+        "name": "m4-remote-smoke-preserved-failure",
+        "result": "FAIL",
+        "headSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
+        "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e",
+        "scope": "ExactM4e first remote:3canonicalchecksPASS plus scientificUiPASS; FAILREADY afterstudentconsent. ThreeDRAFTobjectsrev2sameids/instances/states/digests savedandreopened. OriginalACK/panelatfailuremissing,causeunknown.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6613585063",
+        "access": "artifact",
+        "artifactDigest": "46d4f7a6902e0eea2ebd445b254bb60c93caf7965cc4c708da22d7c1edb09be1"
+      },
+      {
+        "kind": "check",
+        "name": "m4-remote-reynolds-low-velocity",
+        "result": "PASS",
+        "headSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
+        "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e",
+        "scope": "Partial scientificUIonly onactualnewM4e:positive2e-6m/s,profileheight117.741935 within100to146;Re2129.6domainfeedbackvisible/statepreserved/restorePASS. Doesnotacceptfullsmokeorrewriteoldfailures.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6613585063",
+        "access": "artifact",
+        "artifactDigest": "46d4f7a6902e0eea2ebd445b254bb60c93caf7965cc4c708da22d7c1edb09be1"
+      },
+      {
+        "kind": "check",
+        "name": "m4-remote-ack-smoke-preserved-failure",
+        "result": "FAIL",
+        "headSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
+        "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e",
+        "scope": "ExactM4e ACKqualifiedfullsmoke:FAILREADYatadd-object-Molla ideale,beforestudent. OnlyidentitybeforePASS,pageErrors0. Nofullremoteconsumeracceptance.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6613585063",
+        "access": "artifact",
+        "artifactDigest": "9f4f893daf0f1e261d5b69f5631cbdaf15f0e4e73c33823b1d44347b603e31e8"
+      },
+      {
+        "kind": "check",
+        "name": "m4-consent-discriminator-limited",
+        "result": "PASS",
+        "headSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
+        "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e",
+        "scope": "Existingfixture:AreopensREADY,Back200/ok1783msREADY. Controlledheldrequest:oldREADYpredicatefails,trueACK200/okthenREADY. Provesprotocolcanfailunderdelay,notcauseoforiginalfailures.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6613585063",
+        "access": "artifact",
+        "artifactDigest": "dfe70e114fb1968a2a49b9f0472d9d5f8eaa6476cb00b80604336f58f5e13d76"
+      },
+      {
+        "kind": "review",
+        "name": "m4-remote-evidence-independent-countercheck",
+        "result": "PASS",
+        "headSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
+        "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e",
+        "scope": "Existingnon-authorcontext/root/native_recovery_review readrawreports/scripts/hashconfirmsbothFAILsandpartialscientificPASS;noM4closure/E1. ResumeNOT_RUN,undefinedspring.idatpostflight;mustnotreuseunreviewedscript. Readonly,noindependentACL/humanapproval.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6613585063",
+        "access": "artifact",
+        "artifactDigest": null
       }
     ],
-    "blockers": [],
-    "nextAction": "FIRST consume preserved SUCCESS mergeCI41689476018/originalZIP13255788085 (already readCRC/bindings), exact main4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b/digest4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e, reviewreceipt6611661029. PR43MERGED; workingbranchcodex/m4-reuse-next-20261102 headff45 isitsparent,packetheadM isintegratedcandidate; neverresolveamovingbranchasexpectedSHA. No repeatVerify/oldrecovery/PR42adoption/general audit. Nextboundedoperation: protectedPreviewstandardtargetnull frompreview/m3 atverifiedmainM, immutablebuild-infoSHA/digest+SSOall/anonymousprotection, thenstablealiasandfreshQA/OIDCsmoke7checks+tinyvelocity/Refeedback/recovery; prepareone-offscriptsalreadyinm4-acceptance-20261103T171728Z,bindcandidate-identitytoactualM/providerURL,reviewbeforeuse. Keepcurrentf886/dpl_3eKGb...forcompatiblealiasrollback,nodatareset;currentpreviewunchanged,UIfixesNOTYETDEPLOYED. Generateexistingstatuswithrealnewreports,thencloseM4technicaltask/reconcilequeueviaexistingflowbeforeENG-E1. DRAFT,D17/human scientific/editorial acceptance remainpending, nofraudulentapproval. Budget245750/245760 margin10;noothersimulatorsuntilheadroomaddressed. No newagent/scheduler/model/provider/spend. Logs/originals/FAILs preserved; no live rootchildwriter.",
+    "blockers": [
+      "M4-REMOTE-MOUNT-DIAGNOSIS"
+    ],
+    "nextAction": "Do not recover oldrun/re-adoptPR42/rebuild/redeploy/repeatCI. Candidate main4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b,digest4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e,Verify41689476018 alreadyPASS. Newprotectedimmutabledeploymentdpl_5SB4NqKwJXfznmAyUgzPgXU6jjas existsREADY/targetnull;stablealiaskeptoldF/dpl_3eKGbEshiySicmjthvKjrwyLYaYP. Oneboundeddiscriminatorfirst: existingpreservedfixture(safeidsinprivatereports), hookactualadd-objectACKBEFOREclick, recordHTTPstatus/ok,duration,correlateworkspace/object andpanelpresence/status/error-codeatfirstREADYfailure,originaltimeoutsunchanged. IfACK200thenmountfails,investigateHost/clientfromactualerror; ifACKpending,investigatetransport/server. Theninstrumentexactconsent-labaccordingly. OriginalreportsbothFAIL,causeunknown; scientificUI2e-6/Re2129.6alreadyPASSsameM. PrivateprefixresumescriptNOT_RUNandinvalidspring.id;correct/reviewbeforeuse,nevercountasproof. FullsmokemustPASSandplatformpostflightmatchbeforeacceptance; preserveFAILhistory/noCOMPLETEguardbypass. Freshcurrentidentity+SSOreadrequiredifrealiasing;olddeploymentrollbackretained. M4notcomplete,E1dependencyclosedonlyaftergenuinetechnicalacceptance/reconcileadoptedqueue. KeepD17/humanspending,DRAFT;bundle245750/245760margin10. Receipt6613585063;allfilesinm4-ship-20261103T184703Z;nochildwriterorheavyprocessleft,noextraagent/scheduler/model/provider/spend.",
     "review": {
       "authorContextId": "root.01a1a092",
       "reviewerContextId": "root.bundle_countercheck",
@@ -718,16 +779,16 @@
     }
   },
   "lastRun": {
-    "runId": "ardesia-m4-acceptance-20261103T171728Z-01a1a092",
+    "runId": "ardesia-m4-ship-20261103T184703Z-01a1a092",
     "actor": "codex",
-    "startedAt": "2026-11-03T17:17:28.000Z",
-    "claimedAt": "2026-11-03T17:19:14.493Z",
-    "writeUntil": "2026-11-03T18:02:28.000Z",
-    "closeBy": "2026-11-03T18:12:28.000Z",
+    "startedAt": "2026-11-03T18:47:03.000Z",
+    "claimedAt": "2026-11-03T18:48:12.398Z",
+    "writeUntil": "2026-11-03T19:32:03.000Z",
+    "closeBy": "2026-11-03T19:42:03.000Z",
     "packetId": "m4-consumer-20261102T185253Z",
-    "finishedAt": "2026-11-03T18:09:28.884Z",
+    "finishedAt": "2026-11-03T19:36:31.831Z",
     "outcome": "INTERRUPTED",
     "late": false,
-    "summary": "PR43/main4e7b80e1 integrated; exact head and own mergeCI8Verify324unit83browserPASS,budget245750. M4consumer gate and2scientificUI fixes reviewed, DRAFT preserved. Mergegreen afterwriteUntil; protecteddeploy/smoke NOT_RUN,stablef886 retained. Receipt6611661029; E1 depends onremainingM4technicalclosure. No livechildwriter."
+    "summary": "ExactM4e protected candidate deployed READY; partial remote science Reynolds/lowvelocity PASS. Full remote smoke FAIL after student consent and fresh spring add; causeunknown, both original reports preserved. Stable alias oldF. M4open/E1notassigned, DRAFT/humanpending. Receipt6613585063; no live childwriter."
   }
 }
