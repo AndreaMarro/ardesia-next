@@ -3,17 +3,10 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 135,
-  "updatedAt": "2026-11-03T16:15:01.978Z",
+  "revision": 136,
+  "updatedAt": "2026-11-03T16:58:08.769Z",
   "procedureRef": "d8179e0336738edf00a2793c8aab875a38bb8289",
-  "activeRun": {
-    "runId": "ardesia-m4-release-20261103T161138Z-01a1a092",
-    "actor": "codex",
-    "startedAt": "2026-11-03T16:11:38.000Z",
-    "claimedAt": "2026-11-03T16:15:01.978Z",
-    "writeUntil": "2026-11-03T16:56:38.000Z",
-    "closeBy": "2026-11-03T17:06:38.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m4-consumer-20261102T185253Z",
     "taskId": "M4-REUSE",
@@ -24,10 +17,10 @@
     "expiresAt": "2026-11-04T19:16:07.799Z",
     "source": {
       "baseSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
-      "headSha": "a595d3601de7f4fc611c7f64d46d0079a7a18f55",
+      "headSha": "770860d68e4edc3f5d9a759ae10a27a9738843b0",
       "branch": "codex/m4-reuse-next-20261102",
       "pr": "https://github.com/AndreaMarro/ardesia-next/pull/37",
-      "sourceDigest": "d97f1ced7ef742de62d23d8cad79e118132924003a6f9f17df7fc5052c54f401"
+      "sourceDigest": "c1121c1a92fc09da17686827e7ea938c70c9c70371bcbb0b72396a034126980f"
     },
     "goal": "Secondo dominio scientifico sullo stesso Core/Host",
     "allowedPaths": [
@@ -530,28 +523,116 @@
         "headSha": "a595d3601de7f4fc611c7f64d46d0079a7a18f55",
         "sourceDigest": "d97f1ced7ef742de62d23d8cad79e118132924003a6f9f17df7fc5052c54f401",
         "access": "artifact"
+      },
+      {
+        "kind": "observation",
+        "name": "exact-poiseuille-preview-authority-adopted",
+        "result": "PASS",
+        "headSha": "770860d68e4edc3f5d9a759ae10a27a9738843b0",
+        "sourceDigest": "c1121c1a92fc09da17686827e7ea938c70c9c70371bcbb0b72396a034126980f",
+        "scope": "Direct owner authorization of exact existing release for protected Preview only recorded OPS-20261103-06. Supersedes prior pending distribution-authority observation only. Same manifest/key/digest/version; DRAFT and human gates unchanged.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6609062578",
+        "access": "artifact",
+        "artifactDigest": null
+      },
+      {
+        "kind": "ci",
+        "name": "verify-final-pr-head",
+        "result": "PASS",
+        "headSha": "770860d68e4edc3f5d9a759ae10a27a9738843b0",
+        "sourceDigest": "c1121c1a92fc09da17686827e7ea938c70c9c70371bcbb0b72396a034126980f",
+        "scope": "Original candidate CI8Verify,321unit,83browser/83attempts0skip/retry/flaky. ZIP9023478bytes,CRC29/29,11JSON/8identities and report hashes read.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41672476422",
+        "access": "artifact",
+        "artifactDigest": "2e3afb6976a0983cc81647f03227145d8ebcd7c2966f29ac3411869ea739e815"
+      },
+      {
+        "kind": "review",
+        "name": "independent-main-integration-review",
+        "result": "PASS",
+        "headSha": "770860d68e4edc3f5d9a759ae10a27a9738843b0",
+        "sourceDigest": "c1121c1a92fc09da17686827e7ea938c70c9c70371bcbb0b72396a034126980f",
+        "scope": "Non-author raw diff d0aa->770/source/criteria reviewed in existing root.native_recovery_review context; no P1/P2 after closing own CLI gitignore artifact. No human scientific/GitHub approval or separate ACL.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6609504480",
+        "access": "artifact",
+        "artifactDigest": null
+      },
+      {
+        "kind": "ci",
+        "name": "verify-main-merge-source",
+        "result": "PASS",
+        "headSha": "f886b9a4e47a044fa6f5a80c1619129192a66dd0",
+        "sourceDigest": "c1121c1a92fc09da17686827e7ea938c70c9c70371bcbb0b72396a034126980f",
+        "scope": "Merge tree112370b equals candidate tree. Own push-main CI SUCCESS:8Verify,321unit,83browser/83attempts0skip/retry/flaky,QA/benchmark/runtime PASS,budget245716/245760. Original ZIP8970465bytes,CRC29/29,11JSON/8identities and unit/preparation/browser bindings checked.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41674345502",
+        "access": "artifact",
+        "artifactDigest": "be412c5d8fede5b3d7bb2ba65ec0a0f7c7044eef19f30d374982b5e9a9a96aaf"
+      },
+      {
+        "kind": "observation",
+        "name": "protected-preview-m4-technical-delivery",
+        "result": "PASS",
+        "headSha": "f886b9a4e47a044fa6f5a80c1619129192a66dd0",
+        "sourceDigest": "c1121c1a92fc09da17686827e7ea938c70c9c70371bcbb0b72396a034126980f",
+        "scope": "Actual dpl_3eKGbEshiySicmjthvKjrwyLYaYP READY providerTargetnull,stablealias+immutableURL,SSOenabled/all,anon302sameoriginSSO. Build-infoSHA/digest before/after exact.7remote checks/3accounts/4freshsessions: same lesson spring+pressure/flowPoiseuille,DRAFTrev2save/reopen,privatelearnerwork,logout200/session401,newsessionexactstate,consent revocation refuses write/worker0 onrevokedstudentpage. Native QA/OIDC only,no exportedsecrets. Previous deployment retained.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6610192808",
+        "access": "artifact",
+        "artifactDigest": "44da55d8915f84f0d70515c62b2540478cff0e74d8ec1dc3ee6c62a05430aa34"
+      },
+      {
+        "kind": "observation",
+        "name": "preliminary-remote-smoke-failures-preserved",
+        "result": "FAIL",
+        "headSha": "f886b9a4e47a044fa6f5a80c1619129192a66dd0",
+        "sourceDigest": "c1121c1a92fc09da17686827e7ea938c70c9c70371bcbb0b72396a034126980f",
+        "scope": "v1 independent-reopen AssertionError notlocalized;v2 verified-install Error notlocalized. Both retained,notturnedPASS. Actual controlled logout transport discriminator on d0aa shows optimisticheading with session200 and401afterrealACK;proves weakUIpredicate,notretrocausation. Corrected guards reviewed. Final smoke resumes samev2workspace after actualMollareopen/close inspection; no fullsuite rerun/threshold change or product patch.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6610192808",
+        "access": "artifact",
+        "artifactDigest": null
+      },
+      {
+        "kind": "review",
+        "name": "independent-final-operational-evidence-review",
+        "result": "PASS",
+        "headSha": "f886b9a4e47a044fa6f5a80c1619129192a66dd0",
+        "sourceDigest": "c1121c1a92fc09da17686827e7ea938c70c9c70371bcbb0b72396a034126980f",
+        "scope": "Existing non-author context read final script6717270a/report44da55d8 and discriminator, no P1/P2/inconsistency. All7checks/actuallimits and preliminaryFAIL kept. Read-only, no tests/services/writes; not scientific or milestone approval.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6610192808",
+        "access": "artifact",
+        "artifactDigest": null
+      },
+      {
+        "kind": "observation",
+        "name": "m4-acceptance-remains-open-after-delivery",
+        "result": "PENDING",
+        "headSha": "f886b9a4e47a044fa6f5a80c1619129192a66dd0",
+        "sourceDigest": "c1121c1a92fc09da17686827e7ea938c70c9c70371bcbb0b72396a034126980f",
+        "scope": "Generated status currentverification/browserPASS andvalidreleaseEvidence;M4PREPARATION_UNVERIFIED/productAcceptanceNOT_COMPLETE. Historical M3baseline retained,nottransferred. Existing M4consumer acceptance contract and human scientific/editorial review remain. No new engine/backlog/scheduler/provider/spend.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6610192808",
+        "access": "artifact",
+        "artifactDigest": "f28e6ce432af2d4613fe9a686415afff4751460e30f207228507a6a51ef1aafd"
       }
     ],
     "blockers": [],
-    "nextAction": "Continue same M4 from published PR37/a595d3601de7f4fc611c7f64d46d0079a7a18f55/d97f1ced7ef742de62d23d8cad79e118132924003a6f9f17df7fc5052c54f401 in complete local repo. Three prior auth browser failures fixed with6localprojectidentities; actualA9/B6/teacher2perproject,successful13thstill429,no remotecredential/provision change. Final local andCI41659257963:8Verify,321unit,83/83browser0skip/retry/flaky; originalZIP13241168042/hash10828bcc/11JSONread. Finalscope review inPR37comment6607465059. Parent d780 CI83/local82 and controlled true-write acknowledgement RED preserved; note test now awaits positive receipt then closes before library,all83finalPASS. No more fixture/minifier/recovery/PR42adoption/general-audit work needed. FIRST release gate: acquire explicit preview-only distribution mandate for exact existing Poiseuille@1.0.0/keym4-candidate-87a7b090902c/digestbd7eced...e00b,recordonce per procedure; no implicit trust/key regeneration. Then reconcile PR37 basec4d vs main d0aa preserved ancestor,review actual integration scope,merge viaPR expectedSHA and requireCI onmergeSHA,Previewstandard targetnull atsameSHA,actualbuild-infoSHA/digest,SSO/all andauthenticatedstable-origin smoke withcompatiblepreviousalias retained. Nevertransfer proofs to changedsource,claim M4accepted frompreparation or skip remaining existing M4 consumer/remote/human gate. Current stable stilld0aa/dpl_HhzGdaLXgddb8HGDwUadEEcoabL8,READYtargetnull,anon302SSO;no newdeployment orauthenticateda595smoke. Alllogs/fails/work preserved underauth-fixtures-20261103T142801Z; oneheavy localrun,no newagent/scheduler/provider/spend, no childwriter. E1 remains afterM4.",
+    "nextAction": "Continue canonical M4-REUSE from verified main/preview f886b9a4e47a044fa6f5a80c1619129192a66dd0 / c1121c1a92fc09da17686827e7ea938c70c9c70371bcbb0b72396a034126980f in complete local repo. PR37 MERGED; protected preview technical delivery finished, report6610192808 and local release-20261103T161138Z. Do not repeat recovery/PR42adoption/fixturefix/integration/deployment or validCI. Next bounded increment: extend existing M4 acceptance contract to real web/PostgreSQL consumer using current exact evidence and both pressure/flow controls; keep DRAFT/human scientific/editorial pending, do not invent approval/new engine. Preserve oldfailures and originalM3baseline; currentgeneratedM4PREPARATION_UNVERIFIED honestly remains. Budget245716/245760 margin44, signed original workers/transport/pins unchanged. Retain dpl_Hhz... oldcompatibledeployment for rollback; no DBrestore. Currentstable dpl_3eKGbEshiySicmjthvKjrwyLYaYP targetnull/SSOall; no newagent/automation/model/provider/spend. E1 remains afterM4.",
     "review": {
       "authorContextId": "root.01a1a092",
       "reviewerContextId": "root.native_recovery_review",
-      "sourceSha": "a595d3601de7f4fc611c7f64d46d0079a7a18f55",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6607465059"
+      "sourceSha": "770860d68e4edc3f5d9a759ae10a27a9738843b0",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6609504480"
     }
   },
   "lastRun": {
-    "runId": "ardesia-m4-auth-20261103T142801Z-01a1a092",
+    "runId": "ardesia-m4-release-20261103T161138Z-01a1a092",
     "actor": "codex",
-    "startedAt": "2026-11-03T14:28:01.000Z",
-    "claimedAt": "2026-11-03T14:29:09.727Z",
-    "writeUntil": "2026-11-03T15:13:01.000Z",
-    "closeBy": "2026-11-03T15:23:01.000Z",
+    "startedAt": "2026-11-03T16:11:38.000Z",
+    "claimedAt": "2026-11-03T16:15:01.978Z",
+    "writeUntil": "2026-11-03T16:56:38.000Z",
+    "closeBy": "2026-11-03T17:06:38.000Z",
     "packetId": "m4-consumer-20261102T185253Z",
-    "finishedAt": "2026-11-03T15:13:18.474Z",
+    "finishedAt": "2026-11-03T16:58:08.769Z",
     "outcome": "INTERRUPTED",
     "late": false,
-    "summary": "Final a595/d97 published: local+CI8Verify/321unit/83browserPASS;245716budget,realfixtureA9/B6/teacher2perproject,13thcorrectloginstill429. Parent localnoteackrace preserved and controlledRED/GREEN fixedtestonly. Independent review acquired. No merge/deploy: exactcandidatepin distribution mandate remains missing; M4notaccepted. Allwork/logspreserved, childrenstopped."
+    "summary": "Poiseuille exact release technically delivered DRAFT to protected stable Preview; PR37 merged, own merge CI321unit/83browser/budget PASS, remote7checks PASS and independent reviews; M4canonical acceptance contract/human gates remain. No live writer; preserved original work/fails/rollback. Receipt6610192808."
   }
 }
