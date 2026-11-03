@@ -3,17 +3,10 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 141,
-  "updatedAt": "2026-11-03T19:46:46.925Z",
+  "revision": 142,
+  "updatedAt": "2026-11-03T20:15:03.434Z",
   "procedureRef": "d8179e0336738edf00a2793c8aab875a38bb8289",
-  "activeRun": {
-    "runId": "ardesia-m4-ack-20261103T194527Z-01a1a092",
-    "actor": "codex",
-    "startedAt": "2026-11-03T19:45:27.000Z",
-    "claimedAt": "2026-11-03T19:46:46.925Z",
-    "writeUntil": "2026-11-03T20:30:27.000Z",
-    "closeBy": "2026-11-03T20:40:27.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m4-consumer-20261102T185253Z",
     "taskId": "M4-REUSE",
@@ -772,30 +765,96 @@
         "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6613585063",
         "access": "artifact",
         "artifactDigest": null
+      },
+      {
+        "kind": "check",
+        "name": "m4-immutable-origin-preflight-preserved-failure",
+        "result": "FAIL",
+        "headSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
+        "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6614155466",
+        "scope": "New immutable-origin diagnostic: build identity and PostgreSQL PASS, session check FAIL before QA/login/browser; zero operations/sessions. Counterprobe same endpoint: immutable Origin403 ORIGIN_REJECTED, stable Origin401 UNAUTHENTICATED, foreign403. This is the new diagnostic target restriction, not cause of older stable failures.",
+        "access": "artifact",
+        "artifactDigest": "4d50d2326d3642d7cf20c6e4a36a144f576cd2d2caa51aebf0ee0a0c8025ae16"
+      },
+      {
+        "kind": "check",
+        "name": "m4-ack-correlated-post-commit-mount-failure",
+        "result": "FAIL",
+        "headSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
+        "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6614155466",
+        "scope": "Exact4e/source4b, canonical stable temporarily bound to dpl5SB under explicit owner exception. New pressure Poiseuille add: real Request/command/document/object/instance/receipt correlated; HTTP200/ok body1397ms from request. At original deadline5s and assertion failure5007ms from wait-after-click, inspector and matching objectView loading/no errorCode. ACK body was already available1865ms before deadline; no 5s-after-ACK claim. This reproduces post-ACK client/Host boundary, not a specific await/Worker/original-failure cause.",
+        "access": "artifact",
+        "artifactDigest": "e2acc855c05ee5b02dff8057defa0314c7ebd5dc6b8cec6ef0096ce2045085f3"
+      },
+      {
+        "kind": "check",
+        "name": "m4-ack-correlated-spring-consent-targeted-observations",
+        "result": "PASS",
+        "headSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
+        "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6614155466",
+        "scope": "Same diagnostic only: spring bodyACK200/ok1182ms from request, READY4878ms from wait; student consent bodyACK200/ok1578ms, READY2872ms. Original 5s unchanged, two empty contexts with real login. Does not resolve old FAILs or substitute full smoke. Other unauthorized views CAPABILITY_DENIED distinct from measured new instance.",
+        "access": "artifact",
+        "artifactDigest": "e2acc855c05ee5b02dff8057defa0314c7ebd5dc6b8cec6ef0096ce2045085f3"
+      },
+      {
+        "kind": "review",
+        "name": "m4-ack-discriminator-independent-review",
+        "result": "PASS",
+        "headSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
+        "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6614155466",
+        "scope": "Existing distinct context root.native_recovery_review read raw source16ddf514 and report e2acc855, original helpers/delta,7 timing false-causality countercases, receipt/source bindings and timing limitations. Confirms bounded observations, no full-smoke/M4/original-cause/Worker/human approval. Instructional read-only, not independent ACL.",
+        "access": "artifact",
+        "artifactDigest": "e2acc855c05ee5b02dff8057defa0314c7ebd5dc6b8cec6ef0096ce2045085f3"
+      },
+      {
+        "kind": "check",
+        "name": "m4-temporary-alias-rollback-and-effective-builds",
+        "result": "PASS",
+        "headSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
+        "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6614155466",
+        "scope": "Owner explicitly authorized only diagnosis with rollback. Candidate association observed20:03:10Z, rollback to old dpl3eKG/F verified API20:03:59Z. Fresh API20:09 SSOall and old alias retained. Authenticated effective build20:10:43 stableF/digestc112 and immutableM/digest4b exact, both anonymous302same-originSSO. No app credentials/mutations in rollback probe.",
+        "access": "artifact",
+        "artifactDigest": "1ac2ddf8d31904c82e6bc80e1407f281040253d7f63631758724140e28857317"
+      },
+      {
+        "kind": "check",
+        "name": "m4-generated-product-state-after-diagnostic",
+        "result": "PASS",
+        "headSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
+        "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6614155466",
+        "scope": "Existing status generator on exact4e/source4b: M4 AWAITING_PROTECTED_CONSUMER, product NOT_COMPLETE. No done reconciliation, no ENG-E1, D17/human review pending/DRAFT. Diagnostic process0 means collection completed, not product PASS. Existing CI41689476018 reused; no build, signed bytes/trust/budget changes.",
+        "access": "artifact",
+        "artifactDigest": "53eceed90e2b36285fc2d517dbe9b6b5c90575e8949cbe6053c8827f5dcfe372"
       }
     ],
     "blockers": [
       "M4-REMOTE-MOUNT-DIAGNOSIS"
     ],
-    "nextAction": "Do not recover oldrun/re-adoptPR42/rebuild/redeploy/repeatCI. Candidate main4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b,digest4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e,Verify41689476018 alreadyPASS. Newprotectedimmutabledeploymentdpl_5SB4NqKwJXfznmAyUgzPgXU6jjas existsREADY/targetnull;stablealiaskeptoldF/dpl_3eKGbEshiySicmjthvKjrwyLYaYP. Oneboundeddiscriminatorfirst: existingpreservedfixture(safeidsinprivatereports), hookactualadd-objectACKBEFOREclick, recordHTTPstatus/ok,duration,correlateworkspace/object andpanelpresence/status/error-codeatfirstREADYfailure,originaltimeoutsunchanged. IfACK200thenmountfails,investigateHost/clientfromactualerror; ifACKpending,investigatetransport/server. Theninstrumentexactconsent-labaccordingly. OriginalreportsbothFAIL,causeunknown; scientificUI2e-6/Re2129.6alreadyPASSsameM. PrivateprefixresumescriptNOT_RUNandinvalidspring.id;correct/reviewbeforeuse,nevercountasproof. FullsmokemustPASSandplatformpostflightmatchbeforeacceptance; preserveFAILhistory/noCOMPLETEguardbypass. Freshcurrentidentity+SSOreadrequiredifrealiasing;olddeploymentrollbackretained. M4notcomplete,E1dependencyclosedonlyaftergenuinetechnicalacceptance/reconcileadoptedqueue. KeepD17/humanspending,DRAFT;bundle245750/245760margin10. Receipt6613585063;allfilesinm4-ship-20261103T184703Z;nochildwriterorheavyprocessleft,noextraagent/scheduler/model/provider/spend.",
+    "nextAction": "The requested ACK/mount diagnostic is complete; receipt6614155466 and raw report e2acc855 identify a new Poiseuille add with ACK200/ok/receipt committed, then matching inspector/objectView loading at original5s. ACK body1397ms from request; only1865ms remained before original deadline. Spring and student-consent targeted PASS do not establish original timeout cause. Next bounded diagnosis: instrument entry, progress after refreshAuthorization/sourceFor/Host.mount, completion/cancellation of mountLab per instance and generation; locate the first unfinished boundary before application changes. Reuse exact deployed4e/source4b, current CI41689476018, signed release/pin and existing tools. No rebuild/new deployment/new agent/general audit. Stable alias is restoredF/dpl3eKG; new immutable deployment dpl5SB retained but direct-origin API rejects403, not an original-failure cause. Existing owner authorization covers bounded ACK/mount diagnosis with always rollback, not stable promotion or origin/security changes; fresh ownership/SHA/protection/budget checks still apply. Do not bypass origins, skip authorization refresh, signatures or lossless reconstruction, or increase timeouts. Preserve both original FAIL reports and this new FAIL; no current-source FAIL laundering to COMPLETE. Full remote smoke and required same-source checks/review remain necessary before genuine M4 closure, canonical reconciliation and ENG-E1. History decision is preserved in separate local codex/m4-ack-receipt-20261103 worktree/commits, own Verify NOT_RUN, unpublished/unadopted; do not transfer4e evidence to history heads. DRAFT/D17/human scientific-editorial approvals pending; budget245750/245760 unchanged. All originals/logs/test source/metadata retained privately in m4-ack-20261103T194527Z; native diagnostic and browser completed with rollback verified, no child writer left.",
     "review": {
       "authorContextId": "root.01a1a092",
-      "reviewerContextId": "root.bundle_countercheck",
+      "reviewerContextId": "root.native_recovery_review",
       "sourceSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6611661029"
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6614155466"
     }
   },
   "lastRun": {
-    "runId": "ardesia-m4-ship-20261103T184703Z-01a1a092",
+    "runId": "ardesia-m4-ack-20261103T194527Z-01a1a092",
     "actor": "codex",
-    "startedAt": "2026-11-03T18:47:03.000Z",
-    "claimedAt": "2026-11-03T18:48:12.398Z",
-    "writeUntil": "2026-11-03T19:32:03.000Z",
-    "closeBy": "2026-11-03T19:42:03.000Z",
+    "startedAt": "2026-11-03T19:45:27.000Z",
+    "claimedAt": "2026-11-03T19:46:46.925Z",
+    "writeUntil": "2026-11-03T20:30:27.000Z",
+    "closeBy": "2026-11-03T20:40:27.000Z",
     "packetId": "m4-consumer-20261102T185253Z",
-    "finishedAt": "2026-11-03T19:36:31.831Z",
+    "finishedAt": "2026-11-03T20:15:03.434Z",
     "outcome": "INTERRUPTED",
     "late": false,
-    "summary": "ExactM4e protected candidate deployed READY; partial remote science Reynolds/lowvelocity PASS. Full remote smoke FAIL after student consent and fresh spring add; causeunknown, both original reports preserved. Stable alias oldF. M4open/E1notassigned, DRAFT/humanpending. Receipt6613585063; no live childwriter."
+    "summary": "ACK/mount diagnosis complete on exact4e: new Poiseuille add ACK200/ok committed, inspector/objectView loading at original5s; root cause pending. Spring/consent targeted PASS only. Temporary alias rolled back toF with effective build/SSO verified. Full smoke/M4 open, E1 not started, DRAFT/human pending. Receipt6614155466; no child writer."
   }
 }
