@@ -3,17 +3,10 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 143,
-  "updatedAt": "2026-11-03T21:58:28.984Z",
+  "revision": 144,
+  "updatedAt": "2026-11-03T22:44:41.905Z",
   "procedureRef": "d8179e0336738edf00a2793c8aab875a38bb8289",
-  "activeRun": {
-    "runId": "ardesia-m4-stages-20261103T215545Z-01a1a092",
-    "actor": "codex",
-    "startedAt": "2026-11-03T21:55:45.000Z",
-    "claimedAt": "2026-11-03T21:58:28.984Z",
-    "writeUntil": "2026-11-03T22:40:45.000Z",
-    "closeBy": "2026-11-03T22:50:45.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m4-consumer-20261102T185253Z",
     "taskId": "M4-REUSE",
@@ -24,10 +17,10 @@
     "expiresAt": "2026-11-04T19:16:07.799Z",
     "source": {
       "baseSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
-      "headSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
+      "headSha": "1c79fd3c31c1f945732a75b7e332436bd032bfa0",
       "branch": "codex/m4-reuse-next-20261102",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/43",
-      "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e"
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/44",
+      "sourceDigest": "98acca8e9f408efc9ed0426d5f85d192494cd7dd5ff19e69e7509214a5e27173"
     },
     "goal": "Secondo dominio scientifico sullo stesso Core/Host",
     "allowedPaths": [
@@ -838,30 +831,85 @@
         "scope": "Existing status generator on exact4e/source4b: M4 AWAITING_PROTECTED_CONSUMER, product NOT_COMPLETE. No done reconciliation, no ENG-E1, D17/human review pending/DRAFT. Diagnostic process0 means collection completed, not product PASS. Existing CI41689476018 reused; no build, signed bytes/trust/budget changes.",
         "access": "artifact",
         "artifactDigest": "53eceed90e2b36285fc2d517dbe9b6b5c90575e8949cbe6053c8827f5dcfe372"
+      },
+      {
+        "kind": "check",
+        "name": "m4-temporary-stage-observer-cold-reproduced-failure",
+        "result": "FAIL",
+        "headSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
+        "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6617157538",
+        "scope": "Diagnostic-only instrumented browser on original4e, candidateassets bound, nofault/drop. Exact instance18ea/Inspector13gen1: ACK200/ok; at original5s inside refreshAuthorization, no inspectorcleanup. Later sourceFor193ms,Host22ms,DOMready; Contentdiscard distinct. Original failures not retroactively explained; not release acceptance.",
+        "access": "artifact",
+        "artifactDigest": "df342adc4ab1f8ae5d325505c89ec4fe281d1e9be1dadce997391144315b16ae"
+      },
+      {
+        "kind": "check",
+        "name": "m4-authorization-proposal-targeted-experiment",
+        "result": "PASS",
+        "headSha": "1c79fd3c31c1f945732a75b7e332436bd032bfa0",
+        "sourceDigest": "98acca8e9f408efc9ed0426d5f85d192494cd7dd5ff19e69e7509214a5e27173",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6617157538",
+        "scope": "Mixed diagnostic only: corrected browser assets1c79, original API/deployment4e; source scope explicit, acceptancefalse. RealACK1493ms,READY4874ms within original5s, existing objects preserved. Instrumentation differs frombaseline; no exclusivecausality/stability/fullsmoke/whole-release claim.",
+        "access": "artifact",
+        "artifactDigest": "a6a05569996475a8364aad1c6ccbe698403c6fb09e8a8c5b6b2c07acd245cb8d"
+      },
+      {
+        "kind": "ci",
+        "name": "verify",
+        "result": "FAIL",
+        "headSha": "1c79fd3c31c1f945732a75b7e332436bd032bfa0",
+        "sourceDigest": "98acca8e9f408efc9ed0426d5f85d192494cd7dd5ff19e69e7509214a5e27173",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6617157538",
+        "scope": "Own final CI41732070721/artifact13277940890 read originalZIP26783bytes/CRC7/7/7JSON;5identitybindings and unit/prepdigests verified.7/8checksPASS,329unit0fail/skip;solebundle-budget245787/245760FAIL27. QA/benchmark/browser SKIPPED. No fullsmoke or finalsource acceptance.",
+        "access": "artifact",
+        "artifactDigest": "57e996a66eb77a3193bddc4e553a8837304c8aed058b8dbee1749aafc849618f"
+      },
+      {
+        "kind": "review",
+        "name": "m4-authorization-proposal-source-review",
+        "result": "PASS",
+        "headSha": "1c79fd3c31c1f945732a75b7e332436bd032bfa0",
+        "sourceDigest": "98acca8e9f408efc9ed0426d5f85d192494cd7dd5ff19e69e7509214a5e27173",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6617157538",
+        "scope": "Existing distinct context root.native_recovery_review read all6file finaldelta on1c79/tree42085a70, guarded pre-dispatch-only cohort, stale epoch before reservation, guards beforeI/O/afterawait, direct closure callback and mockHost test scope. No further concrete source findings; budget and same-head complete checks remain blocked. Readonly instructional context, no separate ACL/humanapproval.",
+        "access": "artifact",
+        "artifactDigest": null
+      },
+      {
+        "kind": "check",
+        "name": "m4-local-final-verify-preserved-limit",
+        "result": "FAIL",
+        "headSha": "1c79fd3c31c1f945732a75b7e332436bd032bfa0",
+        "sourceDigest": "98acca8e9f408efc9ed0426d5f85d192494cd7dd5ff19e69e7509214a5e27173",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6617157538",
+        "scope": "Local final1c79 Verify types/boundaries/source/releasePASS;311unitPASS/18PGskipped without localDSN, unitcheckfail; kept separately from full CI329PASS. No broad localretest after completeCI available.",
+        "access": "artifact",
+        "artifactDigest": "af72991bd1ed4e064be5cc8da2dd19eb60e60bb00eee373cdbe5c326b3ecc8d7"
       }
     ],
     "blockers": [
-      "M4-REMOTE-MOUNT-DIAGNOSIS"
+      "M4-BUNDLE-BUDGET"
     ],
-    "nextAction": "The requested ACK/mount diagnostic is complete; receipt6614155466 and raw report e2acc855 identify a new Poiseuille add with ACK200/ok/receipt committed, then matching inspector/objectView loading at original5s. ACK body1397ms from request; only1865ms remained before original deadline. Spring and student-consent targeted PASS do not establish original timeout cause. Next bounded diagnosis: instrument entry, progress after refreshAuthorization/sourceFor/Host.mount, completion/cancellation of mountLab per instance and generation; locate the first unfinished boundary before application changes. Reuse exact deployed4e/source4b, current CI41689476018, signed release/pin and existing tools. No rebuild/new deployment/new agent/general audit. Stable alias is restoredF/dpl3eKG; new immutable deployment dpl5SB retained but direct-origin API rejects403, not an original-failure cause. Existing owner authorization covers bounded ACK/mount diagnosis with always rollback, not stable promotion or origin/security changes; fresh ownership/SHA/protection/budget checks still apply. Do not bypass origins, skip authorization refresh, signatures or lossless reconstruction, or increase timeouts. Preserve both original FAIL reports and this new FAIL; no current-source FAIL laundering to COMPLETE. Full remote smoke and required same-source checks/review remain necessary before genuine M4 closure, canonical reconciliation and ENG-E1. History decision is preserved in separate local codex/m4-ack-receipt-20261103 worktree/commits, own Verify NOT_RUN, unpublished/unadopted; do not transfer4e evidence to history heads. DRAFT/D17/human scientific-editorial approvals pending; budget245750/245760 unchanged. All originals/logs/test source/metadata retained privately in m4-ack-20261103T194527Z; native diagnostic and browser completed with rollback verified, no child writer left.",
+    "nextAction": "PR44 is DRAFT on exact1c79fd3c31c1f945732a75b7e332436bd032bfa0/sourceDigest98acca8e9f408efc9ed0426d5f85d192494cd7dd5ff19e69e7509214a5e27173. Own original CI41732070721 completed FAIL:329unit0skip,7/8VerifyPASS,sole all-assets bundle245787/245760 (+27); downstreambrowser/QA/benchmarkSKIPPED. Consume preserved originalZIP13277940890/hash57e996a6/CRC7 and source review, never rerun same failed identity to claim green. Main remains4e, newdeployment stilloldcandidate4e/dpl5SB; stable restoredF/dpl3eKG,SSOall. Requested stage trace obtained: naturalcold failure at5s in refreshAuthorization ofInspector13/18ea with no cleanup; Host later22ms, no Worker-cause proof or original-failure rewrite. Proposal collects only callers before dispatch per context/epoch, preserves allguards;5targeted tests including mocked-Host stale-session wrapper, fullCI329PASS. Mixed browser1c79/API4e experiment READY4874ms is diagnostic only, not fullsmoke or exclusivecausalproof. First required increment: eliminate27gzip bytes with one demonstrated equivalent redundancy, full accounting and signed originals/lossless/Host.verify/pins intact; no timeout/threshold increase or new compression architecture. Then own Verify/review on finalpublishedhead, mergeCI, protected candidate and full remote smoke before stablepromotion/M4technicalcompletion/canonicalqueue reconciliation/ENG-E1. Respect original-source failures, skips and limits. No telemetry inproduct; all diagnostic builders/output/logs private in m4-stages-20261103T215545Z. Preserve local b46/40c source commits and history787; final published tree42085a70 and primary4e checkout untouched. No newagents/scheduler/model/provider/spend, no oldclaim recovery/audit. DRAFT/D17/humanreviews pending. Receipt6617157538; all temporary alias tests alreadyrolledback, no browser/childwriter left.",
     "review": {
       "authorContextId": "root.01a1a092",
       "reviewerContextId": "root.native_recovery_review",
-      "sourceSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6614155466"
+      "sourceSha": "1c79fd3c31c1f945732a75b7e332436bd032bfa0",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6617157538"
     }
   },
   "lastRun": {
-    "runId": "ardesia-m4-ack-20261103T194527Z-01a1a092",
+    "runId": "ardesia-m4-stages-20261103T215545Z-01a1a092",
     "actor": "codex",
-    "startedAt": "2026-11-03T19:45:27.000Z",
-    "claimedAt": "2026-11-03T19:46:46.925Z",
-    "writeUntil": "2026-11-03T20:30:27.000Z",
-    "closeBy": "2026-11-03T20:40:27.000Z",
+    "startedAt": "2026-11-03T21:55:45.000Z",
+    "claimedAt": "2026-11-03T21:58:28.984Z",
+    "writeUntil": "2026-11-03T22:40:45.000Z",
+    "closeBy": "2026-11-03T22:50:45.000Z",
     "packetId": "m4-consumer-20261102T185253Z",
-    "finishedAt": "2026-11-03T20:15:03.434Z",
+    "finishedAt": "2026-11-03T22:44:41.905Z",
     "outcome": "INTERRUPTED",
     "late": false,
-    "summary": "ACK/mount diagnosis complete on exact4e: new Poiseuille add ACK200/ok committed, inspector/objectView loading at original5s; root cause pending. Spring/consent targeted PASS only. Temporary alias rolled back toF with effective build/SSO verified. Full smoke/M4 open, E1 not started, DRAFT/human pending. Receipt6614155466; no child writer."
+    "summary": "Loading localized to refreshAuthorization, no Inspector cancellation; guarded correction preserved in DRAFT PR44/head1c79. OwnCI329unitPASS7of8Verify; solebudgetFAIL27bytes, browser skipped. Mixed targeted experiment passes only diagnostic scope. StableF rollback verified; M4open/E1notstarted/DRAFT/humanpending. Receipt6617157538; no childwriter."
   }
 }
