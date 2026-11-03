@@ -114,7 +114,10 @@ test('[M1] rejected parameters preserve the saved experiment', async ({page}) =>
   const inspector = page.getByRole('complementary', {name:'Proprietà del laboratorio'});
   await inspector.getByLabel('Massa (kg)', {exact:true}).fill('0');
   await inspector.getByRole('button', {name:'Aggiorna grafico', exact:true}).click();
-  await expect(inspector.getByRole('alert')).toContainText('non ha accettato');
+  await expect(inspector).toHaveAttribute('data-plugin-status', 'error');
+  await expect(inspector).toHaveAttribute('data-error-code', 'INVALID_STATE');
+  await expect(inspector.getByRole('alert')).toContainText('massKg');
+  await expect(inspector.getByRole('alert')).toContainText('[0.1, 10]');
   expect(await storedLab(page)).toEqual(before);
   await inspector.getByLabel('Massa (kg)', {exact:true}).fill('2');
   await inspector.getByRole('button', {name:'Aggiorna grafico', exact:true}).click();

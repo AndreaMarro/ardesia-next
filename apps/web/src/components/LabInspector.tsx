@@ -19,13 +19,19 @@ export function LabInspector({object, missing = false, onClose, onDirtyChange, o
   const [dirty, setDirty] = useState(false);
   const [busy, setBusy] = useState(true);
   const [error, setError] = useState<string|null>(null);
+  const detail = useRef('');
+  function reject(reason: unknown) {
+    const code = pluginErrorCode(reason);
+    detail.current = code === 'INVALID_STATE' && reason instanceof Error ? reason.message : '';
+    setError(code);
+  }
   const [inputs, setInputs] = useState<Record<string,string>>({});
   const objectKey = canonicalJson(object), baseKey = canonicalJson(base), conflict = missing || (dirty && objectKey !== baseKey);
   useLayoutEffect(() => {if (!dirty) setBase(object);}, [objectKey]);
   useLayoutEffect(() => {
     let cancelled = false;
     generation.current += 1;
-    setBusy(true); setError(null);
+    setBusy(true); setError(null); detail.current = '';
     if (missing) {setError('NOT_FOUND'); setBusy(false); return;}
     if (!dirty) {setEvaluation(null); setTitle(base.title);}
     void mountLab(base.data).then(result => {
@@ -33,7 +39,7 @@ export function LabInspector({object, missing = false, onClose, onDirtyChange, o
       session.current = result;
       if (!dirty) {setEvaluation(result.current); setInputs(Object.fromEntries(result.current.view.parameters.map(p => [p.key, String(p.value)])));}
       setBusy(false);
-    }).catch(reason => {if (!cancelled) {setError(pluginErrorCode(reason)); setBusy(false);}});
+    }).catch(reason => {if (!cancelled) {reject(reason); setBusy(false);}});
     return () => {cancelled = true; generation.current += 1; session.current?.dispose(); session.current = null;};
   }, [baseKey, reopen, installationVersion, missing]);
   // Keep the navigation guard aligned before the newly confirmed editor is painted.
@@ -60,7 +66,7 @@ export function LabInspector({object, missing = false, onClose, onDirtyChange, o
         const saved = await onSave({...toObjectInput(base), type: 'lab', title, data}, base);
         if (saved?.type === 'lab' && active()) restore(saved);
       }
-    } catch (reason) {if (active()) setError(pluginErrorCode(reason));}
+    } catch (reason) {if (active()) reject(reason);}
     finally {if (active()) setBusy(false);}
   }
   function restore(confirmed = object) {
@@ -72,7 +78,7 @@ export function LabInspector({object, missing = false, onClose, onDirtyChange, o
     <div className="inspector-heading"><h2>Esplora il modello</h2><button className="icon-button" aria-label="Chiudi proprietà" onClick={onClose}><X size={19}/></button></div>
     <div className="object-type"><span><FlaskConical size={24}/></span><div><strong>{firstPartyLabName(object.data.pluginId)}</strong><small>Revisione {object.revision} · Bozza</small></div></div>
     {conflict && <p role="alert" className="error-banner">{missing ? removedDraftMessage : draftConflictMessage}</p>}
-    {error && <p role="alert" className="lab-error">Il laboratorio non ha accettato la modifica o non è verificabile. I dati salvati sono conservati.</p>}
+    {error && <p role="alert" className="lab-error">{detail.current || 'Laboratorio non verificabile.'} I dati salvati sono conservati.</p>}
     {!evaluation && !error && <p aria-live="polite">Verifica e apertura del laboratorio…</p>}
     <form id="object-editor" className="inspector-form" onSubmit={event => {event.preventDefault(); void calculate(true);}}>
       <label>Titolo<input aria-label="Titolo laboratorio" value={title} disabled={!titleEditable || busy || !session.current} maxLength={240} required onChange={event => {setTitle(event.target.value); setDirty(true);}}/></label>

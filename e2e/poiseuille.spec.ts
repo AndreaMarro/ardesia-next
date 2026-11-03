@@ -49,7 +49,11 @@ for (const flow of [false, true]) {
     await inspector.getByLabel(flow ? 'Portata imposta (m³/s)' : 'Differenza di pressione (Pa)', {exact: true}).fill(flow ? '0.001' : '10000');
     await inspector.getByRole('button', {name: 'Aggiorna grafico', exact: true}).click();
     await expect(inspector).toHaveAttribute('data-plugin-status', 'error');
+    await expect(inspector.locator('.lab-error')).toContainText('Re ≥ 2000');
+    await expect(inspector.locator('.lab-error')).toContainText('Riduci la forzante');
     expect(await storedWorkspace(page)).toEqual(beforeRefusal);
+    await inspector.getByRole('button', {name: 'Ripristina stato salvato', exact: true}).click();
+    await expect(inspector).toHaveAttribute('data-plugin-status', 'ready');
     await page.reload();
     await page.getByRole('button', {name: 'Taccuino', exact: true}).click();
     await page.getByRole('button', {name: 'Modifica Flusso di Poiseuille', exact: true}).click();
