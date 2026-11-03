@@ -1,6 +1,7 @@
 import {afterEach, expect, it, vi} from 'vitest';
 import {readFileSync} from 'node:fs';
 import type {CoreService} from '@ardesia/core';
+import {LabDataSchema} from '@ardesia/contracts';
 import {poiseuillePressureState} from '@ardesia/poiseuille';
 const runtime = vi.hoisted(() => ({mount: vi.fn(), evaluate: vi.fn()}));
 // Isolate wrapper/epoch behavior; cryptographic execution remains covered by the real Host tests/browser.
@@ -17,8 +18,8 @@ it('rejects a retained old session before it can poison the new context read', a
   const release = releaseFromManifest(manifest);
   const core = {getInstallation: () => ({status: 'active', release, consent: {capabilities: ['state:read', 'state:write']}})} as unknown as CoreService;
   const actor = {actorId: 'epoch-teacher', role: 'teacher' as const};
-  const data = {pluginId: manifest.id, pluginVersion: manifest.version, instanceId: 'old-instance',
-    stateSchemaVersion: manifest.stateSchemaVersion, bundleDigest: manifest.integrity.digest, publisher: manifest.publisher, state: poiseuillePressureState};
+  const data = LabDataSchema.parse({pluginId: manifest.id, pluginVersion: manifest.version, instanceId: 'old-instance',
+    stateSchemaVersion: manifest.stateSchemaVersion, bundleDigest: manifest.integrity.digest, publisher: manifest.publisher, state: poiseuillePressureState});
   runtime.mount.mockImplementation(async request => ({manifest: request.manifest, instanceId: request.instanceId,
     grants: request.consent, current: {state: request.state, view: {}}, evaluate: runtime.evaluate, dispose: vi.fn()}));
   connectMarketplace(core, actor, {refresh: async () => {}});
