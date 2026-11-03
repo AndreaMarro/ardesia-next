@@ -3,17 +3,10 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 124,
-  "updatedAt": "2026-11-03T02:13:48.290Z",
+  "revision": 125,
+  "updatedAt": "2026-11-03T08:47:30.863Z",
   "procedureRef": "e947ac98e828e9e2ff6c1bb484c35fb45a93ba4b",
-  "activeRun": {
-    "runId": "ardesia-dev-20261103T021000Z-01a19f2a",
-    "actor": "codex",
-    "startedAt": "2026-11-03T02:10:00.000Z",
-    "claimedAt": "2026-11-03T02:13:48.290Z",
-    "writeUntil": "2026-11-03T02:55:00.000Z",
-    "closeBy": "2026-11-03T03:05:00.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m4-consumer-20261102T185253Z",
     "taskId": "M4-REUSE",
@@ -236,7 +229,7 @@
       }
     ],
     "blockers": [],
-    "nextAction": "READY: stesso incarico M4-REUSE ricostruito da INTERRUPTED mediante HANDOFF canonico su coda Git immutabile e947ac98; claim rilasciato e questa run conclusa. Il prossimo ciclo con runId distinto acquisisce/pubblica/rilegge claim e riprende DIRETTAMENTE la diagnosi browser/molla della sorgente pubblicata, senza ripetere HANDOFF, setup, preparazione o audit identico. Nessuna delega ereditata. Stesso M4-REUSE, non COMPLETE e non accettazione: riprendere direttamente PR37/head5460e636c2f3a48b1c2713993ca96cde9689858a/digest72b6be805877c6a5899220a99de102bcebf22ed05f68eb6829e5d011ed0e037d, worktree /Users/andreamarro/Documents/Codex/2026-11-01/files-pasted-by-the-user-ardesia/work/m4-reuse-20261102T175141Z pulito e pubblicato; basec4d, fix main d0aa e procedura e947 preservati. Nuovo claim/rilettura/budget prima di write; nessuna delega ereditata. PR37 aggiornata, review6592319712 fresca non autrice conclusa con P2budgetFAIL e limiti reali; non rifare una review onerosa identica. OriginaleCI41553047014/artifact13192138785 letto/CRC e digestunit-prep verificati:314/314test53suite zero skip,7/8checksPASS, solo budget289068/245760FAIL; nessun rerun stessa sorgente. CI QA/benchmark/browser saltati, non PASS. Nuova prova M4 locale sulla head finale4PASS/4FAIL,0skip/flaky/retry:flowdocente desktop/mobile e due learner mobile completi PASS; pressuredocente timeout e learnerdesktop mount nonready FAIL. Suite completa locale interrotta1PASS2FAIL1INTERRUPTED77NOT_RUN include molla concorrente attesa8kg/osservata6kg e setup studente timeout. PR ricevuta e run locale conservano raw JSON/log/screenshot privati; nessuna causa runner o regressione nuova dimostrata dal solo FAIL. PRIMO PASSO: discriminare gli stessi casi browser/molla e mount dalla sorgente pubblicata senza aumentare timeout come cura, prima della riduzione bundle. Budget totale invariato; diagnosi read-only workercompatto3357 darebbe ancora249654byte, non soluzione equivalente/firmata/adottata. Preservare byte/firme/provenienza934392, no nuove chiavi/pin o permessi impliciti; trustpromotion resta da verificare nel canale autorizzato. Nessun runtime Core/server/schema duplicato. Difetti step SI e consenso corretto hanno RED/GREEN ma non accettano consumer completo. LocaleVerify prima releaseevidenceFAIL per fixture shebang Node24 path con spazi (controcaso direttoENOENT/NodeesplicitoPASS); CI Linux passa quel controllo, limite conservato distinto. Nessun merge/deploy/alias o restore, PREPARED_NOT_DEPLOYED; preview stabile precedente preservata, non ricertificata qui. Nuova head richiede Verify/review proprie prima integrazione e preview protetta+smoke stabile, contenutiDRAFT/humanreview pendenti. M4 aperta; E1 segue con P3/in_progress, poi tutti18ambiti oltreM5. Scheduler/modello/accessi/provider/spesa invariati; quota/costo/modello runtimeUNKNOWN.",
+    "nextAction": "RECOVERY 2026-11-03: native turn failed at 02:40:15Z (workspace routing discovery timed out); current native inactive/failed and previous CLI32728/server8126/browser8220 absent. Original source5460e636 and 24 private log/report files preserved in place with SHA256 manifest; only local untracked e2e/local-diagnostic.spec.ts preserved separately. Dataless cloud checkout not overwritten; recovery uses fresh fully local clone of same head. Resume M4 directly: original spring reproduction FAIL, isolated diagnostic PASS with declared90s test budget vs setup30s; setup failures remain FAIL and causal product defect unproven. Reproduce original browser/spring with unchanged limits, then equivalent bundle reduction with original245760-byte total gate and signatures unchanged. All previous evidence retained; no acceptance, merge, deploy, scheduler or privilege changes.",
     "review": {
       "authorContextId": "root.thread01a19eba",
       "reviewerContextId": "root.m4_consumer_review",
@@ -245,16 +238,16 @@
     }
   },
   "lastRun": {
-    "runId": "ardesia-dev-20261103T011615Z-01a19ef8",
+    "runId": "ardesia-dev-20261103T021000Z-01a19f2a",
     "actor": "codex",
-    "startedAt": "2026-11-03T01:16:15.000Z",
-    "claimedAt": "2026-11-03T01:20:38.916Z",
-    "writeUntil": "2026-11-03T02:01:15.000Z",
-    "closeBy": "2026-11-03T02:11:15.000Z",
+    "startedAt": "2026-11-03T02:10:00.000Z",
+    "claimedAt": "2026-11-03T02:13:48.290Z",
+    "writeUntil": "2026-11-03T02:55:00.000Z",
+    "closeBy": "2026-11-03T03:05:00.000Z",
     "packetId": "m4-consumer-20261102T185253Z",
-    "finishedAt": "2026-11-03T01:21:14.981Z",
+    "finishedAt": "2026-11-03T08:47:30.863Z",
     "outcome": "HANDOFF",
-    "late": false,
-    "summary": "HANDOFF stesso M4-REUSE INTERRUPTED→READY contro coda/procedura e947; source5460e63/digest72b6be80 e tutte le prove FAIL preservati. Nessuna sorgente/CI/review/integrazione/deploy nuova; PREPARED_NOT_DEPLOYED. Implementazione/test/review/integrazione e attesa intenzionale0; quota/costo/runtime modelUNKNOWN. Prossimo run discrimina browser/molla prima del bundle, senza nuovo HANDOFF."
+    "late": true,
+    "summary": "Recovery coordinator 01a1a092 reconstructed missing interrupted checkpoint after verified native failed/inactive turn (02:40:15Z workspace routing discovery timed out) and absent old CLI/server/browser PIDs; not a self-finish or expiry takeover. Existing logs/untracked diagnostic preserved, no unpublished commits (local/remote5460e636); original deadlines preserved. HANDOFF only same canonical M4 task under adopted e947ac98; vercel.json retained from7bad. Native error proves interruption point; root cause inside platform UNKNOWN. Current filesystem dataless reads also observed separately."
   }
 }
