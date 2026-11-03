@@ -3,22 +3,15 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 126,
-  "updatedAt": "2026-11-03T08:48:16.958Z",
+  "revision": 127,
+  "updatedAt": "2026-11-03T09:26:09.633Z",
   "procedureRef": "e947ac98e828e9e2ff6c1bb484c35fb45a93ba4b",
-  "activeRun": {
-    "runId": "ardesia-recovery-20261103T084230Z-01a1a092",
-    "actor": "codex",
-    "startedAt": "2026-11-03T08:42:30.245Z",
-    "claimedAt": "2026-11-03T08:48:16.958Z",
-    "writeUntil": "2026-11-03T09:27:30.245Z",
-    "closeBy": "2026-11-03T09:37:30.245Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m4-consumer-20261102T185253Z",
     "taskId": "M4-REUSE",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "INTERRUPTED",
     "kind": "implementation",
     "notBefore": "2026-11-02T19:16:07.799Z",
     "expiresAt": "2026-11-04T19:16:07.799Z",
@@ -233,10 +226,76 @@
         "scope": "Exact final source full local suite stopped for bounded run:1PASS,2FAIL,1INTERRUPTED,77NOT_RUN. Spring competing save expected8kg observed6kg unresolved; student setup timeout. No cause attributed or gate weakened.",
         "access": "artifact",
         "artifactDigest": "e096c45b7108c052a591538e0fd7adc711f7ac4d5968a2ac8966de63ad284aa0"
+      },
+      {
+        "headSha": "5460e636c2f3a48b1c2713993ca96cde9689858a",
+        "sourceDigest": "72b6be805877c6a5899220a99de102bcebf22ed05f68eb6829e5d011ed0e037d",
+        "access": "artifact",
+        "kind": "check",
+        "name": "native-failed-run-recovery",
+        "result": "PASS",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/issues/39#issuecomment-6599923656",
+        "scope": "Root read native failed/inactive turn02:40:15Z and verified old CLI/server/browser absent;24private files/untracked diagnostic preserved, no native kill. Recovery125 and new claim126 CAS/no force; vercel.json retained. This proves bounded recovery, not system health.",
+        "artifactDigest": "2079cc4a978aa1ec06b6ea4972c64efe3a48544a22aa103b9969dd781a5a1416"
+      },
+      {
+        "headSha": "5460e636c2f3a48b1c2713993ca96cde9689858a",
+        "sourceDigest": "72b6be805877c6a5899220a99de102bcebf22ed05f68eb6829e5d011ed0e037d",
+        "access": "artifact",
+        "kind": "check",
+        "name": "m4-isolated-original-browser-recovery",
+        "result": "PASS",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/issues/39#issuecomment-6599923656",
+        "scope": "Same5460e636/digest72b6;Node24.22.1/Playwright1.56.1/Chromium1194/Postgres16 fresh loopback.10original spring/Poiseuille desktop/mobile scenarios PASS,0skip/retry/flaky, all thresholds unchanged; not the full consumer.",
+        "artifactDigest": "ec250c3e299af2a134d52b25418d1e49a5fd95470584d04dff9a33896c4e5990"
+      },
+      {
+        "headSha": "5460e636c2f3a48b1c2713993ca96cde9689858a",
+        "sourceDigest": "72b6be805877c6a5899220a99de102bcebf22ed05f68eb6829e5d011ed0e037d",
+        "access": "artifact",
+        "kind": "check",
+        "name": "m4-full-browser-recovery-preserved-failure",
+        "result": "FAIL",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/issues/39#issuecomment-6599923656",
+        "scope": "Same exact source. Full local1PASS/3FAIL/77NOT_RUN; cold mount missing panel, learner save unobserved, marketplace setup timeout. SIGINT only current Playwright78752, CLI/server/browser cessation checked. Load127 observed, causality unproved; original8kg/6kg not erased.",
+        "artifactDigest": "221b13254294d377615fcae5d43c2286fa3c69f175283a4e449ba8bce237a48e"
+      },
+      {
+        "headSha": "5460e636c2f3a48b1c2713993ca96cde9689858a",
+        "sourceDigest": "72b6be805877c6a5899220a99de102bcebf22ed05f68eb6829e5d011ed0e037d",
+        "access": "artifact",
+        "kind": "check",
+        "name": "m4-bundle-recovery-preserved-failure",
+        "result": "FAIL",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/issues/39#issuecomment-6599923656",
+        "scope": "Exact original build289068/245760gzip FAIL including both signed workers. Normal Terser experiment289632 worse, not adopted. No threshold/timeout/trust/signature changes or hidden assets; compact release/pins not implicitly authorized.",
+        "artifactDigest": "90b2da5b85407eeb0ee0f6652ee21ebfedf65612c873ad4eb96340e457dc5b9e"
+      },
+      {
+        "kind": "ci",
+        "name": "native-recovery-proposal-verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41609445844",
+        "headSha": "d8179e0336738edf00a2793c8aab875a38bb8289",
+        "sourceDigest": "182067d68d3dcf67e4099bf3fb4f15fce8e368d50e0ce1b1464b1102973cc375",
+        "result": "PASS",
+        "scope": "Distinct method PR42 only, not M4. Original attempt1 ZIP13218521879/4156796bytes/CRC19/19 read;9JSON/7bindings,8checks,291unit/50suites,73browser/73attempts,0skip/retry/flaky. Local Verify separately FAIL at known shebang/Node path-space fixture. Proposal NOT_ADOPTED; e947 procedure unchanged.",
+        "access": "artifact",
+        "artifactDigest": "7a413a053b313051c96b6d2375991176ee20aee449bddbdf4007babb9bdbbbad"
+      },
+      {
+        "kind": "review",
+        "name": "native-recovery-proposal-independent-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/42#issuecomment-6599819747",
+        "headSha": "d8179e0336738edf00a2793c8aab875a38bb8289",
+        "sourceDigest": "182067d68d3dcf67e4099bf3fb4f15fce8e368d50e0ce1b1464b1102973cc375",
+        "result": "PASS",
+        "scope": "Non-author/root/native_recovery_review raw4file source/diff and criteria; two P2 reproduced/fixed (expired-ticket release, durable receipt binding); final-head review no remaining P1/P2 within scope. Root88/88 tests; reviewer58/58 then5/5 plus adverse cases. Instructional read-only, no separate ACL/human approval; native cessation/private receipt authenticity externally verified only.",
+        "access": "artifact",
+        "artifactDigest": null
       }
     ],
     "blockers": [],
-    "nextAction": "RECOVERY 2026-11-03: native turn failed at 02:40:15Z (workspace routing discovery timed out); current native inactive/failed and previous CLI32728/server8126/browser8220 absent. Original source5460e636 and 24 private log/report files preserved in place with SHA256 manifest; only local untracked e2e/local-diagnostic.spec.ts preserved separately. Dataless cloud checkout not overwritten; recovery uses fresh fully local clone of same head. Resume M4 directly: original spring reproduction FAIL, isolated diagnostic PASS with declared90s test budget vs setup30s; setup failures remain FAIL and causal product defect unproven. Reproduce original browser/spring with unchanged limits, then equivalent bundle reduction with original245760-byte total gate and signatures unchanged. All previous evidence retained; no acceptance, merge, deploy, scheduler or privilege changes.",
+    "nextAction": "M4 remains INCOMPLETE/PREPARED_NOT_DEPLOYED at unchanged PR37/head5460e636/digest72b6. Recovery of native failed021000 is complete and durable79d23e93; do not repeat general audit/setup or infer health from released claim. Preserve original worktree/untracked diagnostic and private recovery archive /Users/andreamarro/.codex/ardesia-recovery-20261103. New isolated10original browser flows PASS but full1PASS/3FAIL/77NOT_RUN and original8kg/6kg/setup failures retained; first next bounded diagnosis is cold-mount request/response and learner ACK under observed environment, unchanged deadlines. Bundle289068/245760FAIL; no unchanged CI rerun, exclusion/rename or implicit new release keys/pins. Seek an equivalent reduction within actual authority; any new signed compact release must have explicit trust authorization and wire/science/historical reproducibility before promotion. Distinct repair proposal PR42/d8179e0/digest182067 has exact CI41609445844+non-author review PASS and two P2 fixes, but is NOT_ADOPTED and not M4 runtime. Original CI ZIP read/CRC/bindings; local method Verify FAIL shebang path fixture preserved. Adopted procedure remains e947; no queue/task/acceptance edits, merge, deploy, alias, scheduler, model, provider, privilege or spend changes. Closing receipt issue39/6599923656. Root run closes with no children writing; actual start08:42:30.245Z budget never renewed.",
     "review": {
       "authorContextId": "root.thread01a19eba",
       "reviewerContextId": "root.m4_consumer_review",
@@ -245,16 +304,16 @@
     }
   },
   "lastRun": {
-    "runId": "ardesia-dev-20261103T021000Z-01a19f2a",
+    "runId": "ardesia-recovery-20261103T084230Z-01a1a092",
     "actor": "codex",
-    "startedAt": "2026-11-03T02:10:00.000Z",
-    "claimedAt": "2026-11-03T02:13:48.290Z",
-    "writeUntil": "2026-11-03T02:55:00.000Z",
-    "closeBy": "2026-11-03T03:05:00.000Z",
+    "startedAt": "2026-11-03T08:42:30.245Z",
+    "claimedAt": "2026-11-03T08:48:16.958Z",
+    "writeUntil": "2026-11-03T09:27:30.245Z",
+    "closeBy": "2026-11-03T09:37:30.245Z",
     "packetId": "m4-consumer-20261102T185253Z",
-    "finishedAt": "2026-11-03T08:47:30.863Z",
-    "outcome": "HANDOFF",
-    "late": true,
-    "summary": "Recovery coordinator 01a1a092 reconstructed missing interrupted checkpoint after verified native failed/inactive turn (02:40:15Z workspace routing discovery timed out) and absent old CLI/server/browser PIDs; not a self-finish or expiry takeover. Existing logs/untracked diagnostic preserved, no unpublished commits (local/remote5460e636); original deadlines preserved. HANDOFF only same canonical M4 task under adopted e947ac98; vercel.json retained from7bad. Native error proves interruption point; root cause inside platform UNKNOWN. Current filesystem dataless reads also observed separately."
+    "finishedAt": "2026-11-03T09:26:09.633Z",
+    "outcome": "INTERRUPTED",
+    "late": false,
+    "summary": "RECOVERY closed: native021000 failed02:40:15Z routing timeout, old processes absent/work preserved. Cursor125 recovered from7bad with vercel intact; current126 claim/budget preserved. M4 unchanged5460e636; isolated10PASS vs full1PASS3FAIL77NOT_RUN, bundle289068/245760FAIL; consumer not accepted/deployed. Separate minimal recovery helper PR42/d8179e0:88tests, non-author review and original CI41609445844 artifact PASS, local fixture FAIL retained; NOT_ADOPTED. No scheduler/trust/spend/merge/deploy changes. Receipt issue39/6599923656. Times: bootstrap~6min, bounded method proposal+review, original browser and CI evidence; no intentional scheduler wait; quota/cost/runtime model UNKNOWN."
   }
 }
