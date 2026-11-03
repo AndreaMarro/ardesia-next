@@ -3,17 +3,10 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 129,
-  "updatedAt": "2026-11-03T10:09:11.889Z",
+  "revision": 130,
+  "updatedAt": "2026-11-03T10:55:28.321Z",
   "procedureRef": "d8179e0336738edf00a2793c8aab875a38bb8289",
-  "activeRun": {
-    "runId": "ardesia-product-20261103T100330Z-01a1a092",
-    "actor": "codex",
-    "startedAt": "2026-11-03T10:03:30.000Z",
-    "claimedAt": "2026-11-03T10:06:30.284Z",
-    "writeUntil": "2026-11-03T10:48:30.000Z",
-    "closeBy": "2026-11-03T10:58:30.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m4-consumer-20261102T185253Z",
     "taskId": "M4-REUSE",
@@ -24,10 +17,10 @@
     "expiresAt": "2026-11-04T19:16:07.799Z",
     "source": {
       "baseSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
-      "headSha": "5460e636c2f3a48b1c2713993ca96cde9689858a",
+      "headSha": "29f12f821895f2c31cba871c94021e16dcb4ab4a",
       "branch": "codex/m4-reuse-next-20261102",
       "pr": "https://github.com/AndreaMarro/ardesia-next/pull/37",
-      "sourceDigest": "72b6be805877c6a5899220a99de102bcebf22ed05f68eb6829e5d011ed0e037d"
+      "sourceDigest": "75be78c4d80b5c9a40dcfa1c6e655977325a23574d9e99e0b29d35d88d406706"
     },
     "goal": "Secondo dominio scientifico sullo stesso Core/Host",
     "allowedPaths": [
@@ -299,28 +292,105 @@
         "scope": "Non-author/root/native_recovery_review raw4file source/diff and criteria; two P2 reproduced/fixed (expired-ticket release, durable receipt binding); final-head review no remaining P1/P2 within scope. Root88/88 tests; reviewer58/58 then5/5 plus adverse cases. Instructional read-only, no separate ACL/human approval; native cessation/private receipt authenticity externally verified only.",
         "access": "artifact",
         "artifactDigest": null
+      },
+      {
+        "headSha": "29f12f821895f2c31cba871c94021e16dcb4ab4a",
+        "sourceDigest": "75be78c4d80b5c9a40dcfa1c6e655977325a23574d9e99e0b29d35d88d406706",
+        "kind": "observation",
+        "name": "procedure42-adopted-current-path",
+        "result": "PASS",
+        "scope": "Explicit owner continuation authority OPS-20261103-03. Procedure e947→d8179e0 adopted129/78d23d12 with existing exact Verify/review; actual budget/validate and closed-state recover refusal executed from adopted checkout. Same M4 claim/task/scope/deadlines, no old recovery repeated. New history source records decision, no scheduler/watchdog introduced.",
+        "artifactDigest": null,
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6601778379",
+        "access": "artifact"
+      },
+      {
+        "headSha": "70a1ed5b504808a321ba6ada8c437f1abbafa966",
+        "sourceDigest": "7f80873d5283f47af270ce5de9c9a74a1f3423f5485f1f2c08afb039bb4f9f53",
+        "kind": "check",
+        "name": "spring-order-discriminating-comparison",
+        "result": "PASS",
+        "scope": "Same diagnostic runtime70a1ed5/digest7f80873d5283f47af270ce5de9c9a74a1f3423f5485f1f2c08afb039bb4f9f53;1/1alone and2/2with original note predecessor PASS, original source/config/fixture/timeouts, serial fresh synthetic namespaces with same credential/template pair. Load9–10, maxHTTP298/281ms. Order defect not reproduced under these conditions; historical causes unproven. Raw JSON preserved.",
+        "artifactDigest": "4481bc2decef363856cf4625eac352129a1f1c1dddb4ab8f70f04a36679c3720",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6601778379",
+        "access": "artifact"
+      },
+      {
+        "headSha": "29f12f821895f2c31cba871c94021e16dcb4ab4a",
+        "sourceDigest": "75be78c4d80b5c9a40dcfa1c6e655977325a23574d9e99e0b29d35d88d406706",
+        "kind": "check",
+        "name": "lossless-transport-real-signed-host-counterproofs",
+        "result": "PASS",
+        "scope": "4unit tests on final29 pass including both REAL original signed release bytes packer→decoder→public Host.verify, altered shared byte rejection, strict descriptor/path/range/input/container caps. Original signatures/pins/manifests/scientific model bytes unchanged. All transport .js payloads/descriptors counted by unchanged gzip gate. This verifies bounded transport, not complete M4.",
+        "artifactDigest": null,
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6601778379",
+        "access": "artifact"
+      },
+      {
+        "headSha": "899a05b82daca1be7af8f69618e64c5f3b97cd02",
+        "sourceDigest": "24f92b01b4332dab8088bbc6f9029b1156e038a576a4cf238da45a78ce4b0f2e",
+        "kind": "check",
+        "name": "transport-targeted-browser-runtime",
+        "result": "PASS",
+        "scope": "28targeted desktop/mobile spring/M4/tamper/save/reopen/revocation flows PASS,0skip/retry/flaky on899a05b/digest24f92b01. Runtime/build/browser-scenario bytes unchanged899→final29; delta only literal unit import/type declaration. Scope reuse justified by exact production-input equality, not full final-source suite or acceptance.",
+        "artifactDigest": "82163624ea4126f2e3b6c3ac8166a88ae9b82bcad42551077f4bceafa95a04f0",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6601778379",
+        "access": "artifact"
+      },
+      {
+        "headSha": "29f12f821895f2c31cba871c94021e16dcb4ab4a",
+        "sourceDigest": "75be78c4d80b5c9a40dcfa1c6e655977325a23574d9e99e0b29d35d88d406706",
+        "kind": "ci",
+        "name": "verify",
+        "result": "FAIL",
+        "scope": "Original attempt1 CI41621789639 artifact13223504197 read/CRC7/7;7JSON and source/unit/preparation bindings verified.318/318unit55suites0skip;7/8checks PASS, only budget249463/245760FAIL.39605bytes saved from289068;3703remaining. QA/benchmark/CIbrowser skipped, not PASS. No rerun of same source.",
+        "artifactDigest": "e6a02bd6c324231f4342b8cfec8143833f08c4e7b5603cdc9f0d64b85d4ab722",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41621789639",
+        "access": "artifact"
+      },
+      {
+        "headSha": "899a05b82daca1be7af8f69618e64c5f3b97cd02",
+        "sourceDigest": "24f92b01b4332dab8088bbc6f9029b1156e038a576a4cf238da45a78ce4b0f2e",
+        "kind": "ci",
+        "name": "first-transport-source-preserved-boundary-failure",
+        "result": "FAIL",
+        "scope": "Original899a05b CI41621343659 failed nonliteral import guard in new unit counterproof. Fixed by literal import and .d.mts in final29, guard unchanged; original ZIP preserved, no unchanged-source rerun.",
+        "artifactDigest": "ccf7f21911775f030c6417f22b93f241ec06f0a4d57a192ab7c8e3990fb6e114",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41621343659",
+        "access": "artifact"
+      },
+      {
+        "headSha": "29f12f821895f2c31cba871c94021e16dcb4ab4a",
+        "sourceDigest": "75be78c4d80b5c9a40dcfa1c6e655977325a23574d9e99e0b29d35d88d406706",
+        "kind": "review",
+        "name": "independent-lossless-transport-source-review",
+        "result": "PASS",
+        "scope": "Reused existing non-author/root/native_recovery_review read raw final8files/criteria; P2 refusal semantics/shared-container counterproof and P3 emitted limits corrected. Final29/sourceDigest75be78c4 bound; no remaining actionable implementation concern within transport scope, budget FAIL remains. No heavy tests or new agents; instructional read-only, no separate ACL, human/remote acceptance or independent execution.",
+        "artifactDigest": null,
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6601778379",
+        "access": "artifact"
       }
     ],
     "blockers": [],
-    "nextAction": "Mandato OPS-20261103-02: ripresa diretta stesso M4 corrente sotto questo claim, senza ripetere recupero021000, nuovo piano o catena HANDOFF. ProcedureRef e947→d8179e0 adottata esplicitamente con Verify41609445844 originale/artifact7a413a e review6599819747 già lette; nessun cambio di task/scope/claim/budget. Helper della nuova procedura usato per budget e guardia di ripresa. Una sola prova pesante alla volta, nessun nuovo agente. Confronto primo caso browser isolato vs predecessore+caso, poi bundle per dipendenze reali; firme/soglie invarianti. Fonte/decisione in docs/history.md OPS-20261103-02 del candidato, senza nuova preparazione documentale.",
+    "nextAction": "Direct continuation of same M4-REUSE at PR37/head29f12f8/digest75be78c4 on fully local /Users/andreamarro/.codex/ardesia-recovery-20261103/repo, clean and published. Do NOT repeat recovered021000 audit, setup or claim recovery. OPS-20261103-03 direct owner mandate; procedure42/d817 is ADOPTED via129/78d23d12 and used. Single heavy local execution, no new agents. Browser alone/predecessor comparison1/1+2/2PASS at same diagnostic source and unchanged timeouts; does not prove historical cause. Demonstrated asset cause: duplicate170534raw Zod bytes/worker, identical176331-byte prefix. New lossless transport preserves original signed executable bytes and all authority checks; every .js container/descriptor counted. Net289068→249463gzip, saved39605, remaining3703 over245760. NEXT bounded work is equivalent reduction of those3703 production bytes without new minifier trials, hidden assets, changed thresholds or implicit keys/pins; keep load and per-opening transport costs observable. New transport4real-Host counterproofs and28targeted browserPASS scoped as recorded; final original CI41621789639 FAIL only bundle-budget,318unit55suites0skip, original ZIP read/CRC/bindings. First899 CI import-guard FAIL preserved/fixed literal import. No same-source CI rerun. Full final-source QA/benchmark/browser and protected preview remain pending until gate passes; no merge/deploy/alias. Independent source review exact29 exists; full M4/human/DRAFT acceptance remains pending. Existing local Node-path fixture FAIL stays distinct. Preserve49private evidence files under followup-20261103T100330Z, root children stopped; source/procedure/deployment/acceptance remain separate.",
     "review": {
-      "authorContextId": "root.thread01a19eba",
-      "reviewerContextId": "root.m4_consumer_review",
-      "sourceSha": "5460e636c2f3a48b1c2713993ca96cde9689858a",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6592319712"
+      "authorContextId": "root.01a1a092",
+      "reviewerContextId": "root.native_recovery_review",
+      "sourceSha": "29f12f821895f2c31cba871c94021e16dcb4ab4a",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6601778379"
     }
   },
   "lastRun": {
-    "runId": "ardesia-recovery-20261103T084230Z-01a1a092",
+    "runId": "ardesia-product-20261103T100330Z-01a1a092",
     "actor": "codex",
-    "startedAt": "2026-11-03T08:42:30.245Z",
-    "claimedAt": "2026-11-03T08:48:16.958Z",
-    "writeUntil": "2026-11-03T09:27:30.245Z",
-    "closeBy": "2026-11-03T09:37:30.245Z",
+    "startedAt": "2026-11-03T10:03:30.000Z",
+    "claimedAt": "2026-11-03T10:06:30.284Z",
+    "writeUntil": "2026-11-03T10:48:30.000Z",
+    "closeBy": "2026-11-03T10:58:30.000Z",
     "packetId": "m4-consumer-20261102T185253Z",
-    "finishedAt": "2026-11-03T09:26:09.633Z",
+    "finishedAt": "2026-11-03T10:55:28.321Z",
     "outcome": "INTERRUPTED",
     "late": false,
-    "summary": "RECOVERY closed: native021000 failed02:40:15Z routing timeout, old processes absent/work preserved. Cursor125 recovered from7bad with vercel intact; current126 claim/budget preserved. M4 unchanged5460e636; isolated10PASS vs full1PASS3FAIL77NOT_RUN, bundle289068/245760FAIL; consumer not accepted/deployed. Separate minimal recovery helper PR42/d8179e0:88tests, non-author review and original CI41609445844 artifact PASS, local fixture FAIL retained; NOT_ADOPTED. No scheduler/trust/spend/merge/deploy changes. Receipt issue39/6599923656. Times: bootstrap~6min, bounded method proposal+review, original browser and CI evidence; no intentional scheduler wait; quota/cost/runtime model UNKNOWN."
+    "summary": "PRODUCT continuation: PR42 adopted129/78d23d12 and used, no repeated old recovery. Browser A/B1/1+2/2PASS serial/load9–10, old cause unproven. Byte-duplicate Zod cause proved; signed-byte lossless delivery reduces bundle39605bytes to249463/245760FAIL (3703remaining), all assets charged/no trust changes. Published PR37/head29f12f8/digest75be78c4;4Host counterproofs and28scoped browserPASS, existing non-author review. Final CI41621789639 original read:318tests55suites7/8PASS, only budgetFAIL; first899 boundaryFAIL preserved/fixed. M4 incomplete/PREPARED_NOT_DEPLOYED; no scheduler/provider/key/privilege/spend/merge/alias changes. One heavy execution at a time; no new agents. Source writes/publication finished before10:48:30, budget not renewed. Quota/cost/runtime model UNKNOWN."
   }
 }
