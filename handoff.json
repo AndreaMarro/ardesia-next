@@ -3,17 +3,10 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 137,
-  "updatedAt": "2026-11-03T17:19:14.493Z",
+  "revision": 138,
+  "updatedAt": "2026-11-03T18:09:28.884Z",
   "procedureRef": "d8179e0336738edf00a2793c8aab875a38bb8289",
-  "activeRun": {
-    "runId": "ardesia-m4-acceptance-20261103T171728Z-01a1a092",
-    "actor": "codex",
-    "startedAt": "2026-11-03T17:17:28.000Z",
-    "claimedAt": "2026-11-03T17:19:14.493Z",
-    "writeUntil": "2026-11-03T18:02:28.000Z",
-    "closeBy": "2026-11-03T18:12:28.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m4-consumer-20261102T185253Z",
     "taskId": "M4-REUSE",
@@ -24,10 +17,10 @@
     "expiresAt": "2026-11-04T19:16:07.799Z",
     "source": {
       "baseSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
-      "headSha": "770860d68e4edc3f5d9a759ae10a27a9738843b0",
+      "headSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
       "branch": "codex/m4-reuse-next-20261102",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/37",
-      "sourceDigest": "c1121c1a92fc09da17686827e7ea938c70c9c70371bcbb0b72396a034126980f"
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/43",
+      "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e"
     },
     "goal": "Secondo dominio scientifico sullo stesso Core/Host",
     "allowedPaths": [
@@ -618,28 +611,116 @@
         "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6610192808",
         "access": "artifact",
         "artifactDigest": "f28e6ce432af2d4613fe9a686415afff4751460e30f207228507a6a51ef1aafd"
+      },
+      {
+        "kind": "check",
+        "name": "original-consumer-gate-red",
+        "result": "FAIL",
+        "headSha": "f886b9a4e47a044fa6f5a80c1619129192a66dd0",
+        "sourceDigest": "c1121c1a92fc09da17686827e7ea938c70c9c70371bcbb0b72396a034126980f",
+        "scope": "Old status reports web/PostgreSQL NOT_RUN despite its exact original CI/smoke; bounded RED retained, not a rerun of old full suites.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6611661029",
+        "access": "artifact",
+        "artifactDigest": null
+      },
+      {
+        "kind": "observation",
+        "name": "scientific-ui-original-runtime-red",
+        "result": "FAIL",
+        "headSha": "f886b9a4e47a044fa6f5a80c1619129192a66dd0",
+        "sourceDigest": "c1121c1a92fc09da17686827e7ea938c70c9c70371bcbb0b72396a034126980f",
+        "scope": "Independent equations/units/inversion/10000annuli coherent; original actual protected UI profile height0.145854viewBox,Refeedbackabsent,savedstateunchanged. Two consumerP2,not mathematical model failure; no oldtimeout causation. SSRsamecomponentRED2/3thennewcomponentGREEN3/3. D17/humanreview notclaimed.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6611661029",
+        "access": "artifact",
+        "artifactDigest": "e6b3b2bb26d3f75e4eef5f06abd0b71134592780c958aaa7ae52a9f57f07f72f"
+      },
+      {
+        "kind": "ci",
+        "name": "intermediate-c0-preserved-failure",
+        "result": "FAIL",
+        "headSha": "c0f2a294b38783a2ae37922e13bc7f7405ddf05a",
+        "sourceDigest": "b98655488633dacbe265be62e8ea9067cc2b094bbbb62eaedf7203a34ca3f592",
+        "scope": "8Verify/324unit/budgetPASS,but81/83browser:2M1assertoldgenericphrase,actualalertmassKg[0.1,10] shown inbothcontexts.8M4PASS doesnotacceptsuite. Strongerassertspecificcode/parameter/range,persist/recovery/save/revisionretained; no timeout/skip changed. ZIP9316168bytesCRC33/33read.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41686598623",
+        "access": "artifact",
+        "artifactDigest": "46680285aeac2cab1576220d2b186872879d69c1cf3e31339bc5671ff3ba3e60"
+      },
+      {
+        "kind": "review",
+        "name": "independent-final-head-gate-science-ui-review",
+        "result": "PASS",
+        "headSha": "ff45e5e397a8947dd721ce0a71afe0224c4eb495",
+        "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e",
+        "scope": "Existing nonauthor contexts root.bundle_countercheck and root.native_recovery_review read rawsource/diff/criteria. Falsepayloadomission/wrongspringpin/missingSIcountercases fixed. P3docsource/deployed split fixed. SSR/physics/UIlimits distinguished, no residualP1/P2 per declaredscope; nohuman/deviceapproval. FinalM1testdelta specificallyreviewed.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6611442897",
+        "access": "artifact",
+        "artifactDigest": null
+      },
+      {
+        "kind": "ci",
+        "name": "verify-final-pr43-head",
+        "result": "PASS",
+        "headSha": "ff45e5e397a8947dd721ce0a71afe0224c4eb495",
+        "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e",
+        "scope": "Original CI41688199764 SUCCESS8Verify,324unit,83/83browser83attempts0retry/skip/flaky,QA/benchmark/runtimePASS,budget245750/245760. ZIP8989918bytesCRC29/29,11JSON/8identities+unit/preparation/browserdigestbindingsread;newlocalM4gatePASS.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41688199764",
+        "access": "artifact",
+        "artifactDigest": "5e925d19bc6725768319c9fd6e63b4b542880287187d15fe9740f9959f089589"
+      },
+      {
+        "kind": "review",
+        "name": "independent-merge-tree-binding",
+        "result": "PASS",
+        "headSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
+        "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e",
+        "scope": "PR43 mergedexpectedheadff45,parents[f886,ff45],mainM/tree4f275e7f equals reviewedff45. Reviewer root.bundle_countercheck checked both immutableGitHubcommitmetadata viaGET; same reviewedbyte/digest scope reused, noCI/runtime transfer.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6611661029",
+        "access": "artifact",
+        "artifactDigest": null
+      },
+      {
+        "kind": "ci",
+        "name": "verify",
+        "result": "PASS",
+        "headSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
+        "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e",
+        "scope": "Own push-main CI41689476018 SUCCESSobserved18:05:52Z. Original ZIP8938359bytesCRC29/29,11JSON/8identities andunit/preparation/browserbindingsread;8Verify324unit83/83browser/83attempts0retry/skip/flaky,QA/benchmark/runtimePASS,budget245750/245760. m4LocalConsumerMatches true onactualmerge; no transferfromhead.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41689476018",
+        "access": "artifact",
+        "artifactDigest": "2dfe9ec975abb6918716ee0c4b7b2fc956955cec1b4ea3c3eeb6a0c72d2c9532"
+      },
+      {
+        "kind": "observation",
+        "name": "current-merge-protected-consumer-not-run",
+        "result": "NOT_RUN",
+        "headSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
+        "sourceDigest": "4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e",
+        "scope": "No newdeployment/alias:mergeCIresultarrivedafterwriteUntil18:02:28;10minclosure preserved. Actualstable alias stilldpl_3eKGbEshiySicmjthvKjrwyLYaYP/sourcef886,SSOall reread18:03. CurrentnewmergeCIandlocalconsumerPASSbutprotectedM4NOTVERIFIED;generatedM4AWAITING_PROTECTED_CONSUMER/humanPENDING/productNOTCOMPLETE. Currentbranchfieldretains originalworkingbranch;sourceheadM isintegratedmaincandidate.",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6611661029",
+        "access": "artifact",
+        "artifactDigest": null
       }
     ],
     "blockers": [],
-    "nextAction": "Continue canonical M4-REUSE from verified main/preview f886b9a4e47a044fa6f5a80c1619129192a66dd0 / c1121c1a92fc09da17686827e7ea938c70c9c70371bcbb0b72396a034126980f in complete local repo. PR37 MERGED; protected preview technical delivery finished, report6610192808 and local release-20261103T161138Z. Do not repeat recovery/PR42adoption/fixturefix/integration/deployment or validCI. Next bounded increment: extend existing M4 acceptance contract to real web/PostgreSQL consumer using current exact evidence and both pressure/flow controls; keep DRAFT/human scientific/editorial pending, do not invent approval/new engine. Preserve oldfailures and originalM3baseline; currentgeneratedM4PREPARATION_UNVERIFIED honestly remains. Budget245716/245760 margin44, signed original workers/transport/pins unchanged. Retain dpl_Hhz... oldcompatibledeployment for rollback; no DBrestore. Currentstable dpl_3eKGbEshiySicmjthvKjrwyLYaYP targetnull/SSOall; no newagent/automation/model/provider/spend. E1 remains afterM4.",
+    "nextAction": "FIRST consume preserved SUCCESS mergeCI41689476018/originalZIP13255788085 (already readCRC/bindings), exact main4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b/digest4b291fad7d680326160fd01e6c991cae670213689517633633a2790fea81725e, reviewreceipt6611661029. PR43MERGED; workingbranchcodex/m4-reuse-next-20261102 headff45 isitsparent,packetheadM isintegratedcandidate; neverresolveamovingbranchasexpectedSHA. No repeatVerify/oldrecovery/PR42adoption/general audit. Nextboundedoperation: protectedPreviewstandardtargetnull frompreview/m3 atverifiedmainM, immutablebuild-infoSHA/digest+SSOall/anonymousprotection, thenstablealiasandfreshQA/OIDCsmoke7checks+tinyvelocity/Refeedback/recovery; prepareone-offscriptsalreadyinm4-acceptance-20261103T171728Z,bindcandidate-identitytoactualM/providerURL,reviewbeforeuse. Keepcurrentf886/dpl_3eKGb...forcompatiblealiasrollback,nodatareset;currentpreviewunchanged,UIfixesNOTYETDEPLOYED. Generateexistingstatuswithrealnewreports,thencloseM4technicaltask/reconcilequeueviaexistingflowbeforeENG-E1. DRAFT,D17/human scientific/editorial acceptance remainpending, nofraudulentapproval. Budget245750/245760 margin10;noothersimulatorsuntilheadroomaddressed. No newagent/scheduler/model/provider/spend. Logs/originals/FAILs preserved; no live rootchildwriter.",
     "review": {
       "authorContextId": "root.01a1a092",
-      "reviewerContextId": "root.native_recovery_review",
-      "sourceSha": "770860d68e4edc3f5d9a759ae10a27a9738843b0",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6609504480"
+      "reviewerContextId": "root.bundle_countercheck",
+      "sourceSha": "4e7b80e1d2ecc785b6cdb5eec31123fd62f5098b",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6611661029"
     }
   },
   "lastRun": {
-    "runId": "ardesia-m4-release-20261103T161138Z-01a1a092",
+    "runId": "ardesia-m4-acceptance-20261103T171728Z-01a1a092",
     "actor": "codex",
-    "startedAt": "2026-11-03T16:11:38.000Z",
-    "claimedAt": "2026-11-03T16:15:01.978Z",
-    "writeUntil": "2026-11-03T16:56:38.000Z",
-    "closeBy": "2026-11-03T17:06:38.000Z",
+    "startedAt": "2026-11-03T17:17:28.000Z",
+    "claimedAt": "2026-11-03T17:19:14.493Z",
+    "writeUntil": "2026-11-03T18:02:28.000Z",
+    "closeBy": "2026-11-03T18:12:28.000Z",
     "packetId": "m4-consumer-20261102T185253Z",
-    "finishedAt": "2026-11-03T16:58:08.769Z",
+    "finishedAt": "2026-11-03T18:09:28.884Z",
     "outcome": "INTERRUPTED",
     "late": false,
-    "summary": "Poiseuille exact release technically delivered DRAFT to protected stable Preview; PR37 merged, own merge CI321unit/83browser/budget PASS, remote7checks PASS and independent reviews; M4canonical acceptance contract/human gates remain. No live writer; preserved original work/fails/rollback. Receipt6610192808."
+    "summary": "PR43/main4e7b80e1 integrated; exact head and own mergeCI8Verify324unit83browserPASS,budget245750. M4consumer gate and2scientificUI fixes reviewed, DRAFT preserved. Mergegreen afterwriteUntil; protecteddeploy/smoke NOT_RUN,stablef886 retained. Receipt6611661029; E1 depends onremainingM4technicalclosure. No livechildwriter."
   }
 }
