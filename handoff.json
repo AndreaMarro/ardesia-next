@@ -3,9 +3,9 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 128,
-  "updatedAt": "2026-11-03T10:06:30.284Z",
-  "procedureRef": "e947ac98e828e9e2ff6c1bb484c35fb45a93ba4b",
+  "revision": 129,
+  "updatedAt": "2026-11-03T10:09:11.889Z",
+  "procedureRef": "d8179e0336738edf00a2793c8aab875a38bb8289",
   "activeRun": {
     "runId": "ardesia-product-20261103T100330Z-01a1a092",
     "actor": "codex",
@@ -302,7 +302,7 @@
       }
     ],
     "blockers": [],
-    "nextAction": "M4 remains INCOMPLETE/PREPARED_NOT_DEPLOYED at unchanged PR37/head5460e636/digest72b6. Recovery of native failed021000 is complete and durable79d23e93; do not repeat general audit/setup or infer health from released claim. Preserve original worktree/untracked diagnostic and private recovery archive /Users/andreamarro/.codex/ardesia-recovery-20261103. New isolated10original browser flows PASS but full1PASS/3FAIL/77NOT_RUN and original8kg/6kg/setup failures retained; first next bounded diagnosis is cold-mount request/response and learner ACK under observed environment, unchanged deadlines. Bundle289068/245760FAIL; no unchanged CI rerun, exclusion/rename or implicit new release keys/pins. Seek an equivalent reduction within actual authority; any new signed compact release must have explicit trust authorization and wire/science/historical reproducibility before promotion. Distinct repair proposal PR42/d8179e0/digest182067 has exact CI41609445844+non-author review PASS and two P2 fixes, but is NOT_ADOPTED and not M4 runtime. Original CI ZIP read/CRC/bindings; local method Verify FAIL shebang path fixture preserved. Adopted procedure remains e947; no queue/task/acceptance edits, merge, deploy, alias, scheduler, model, provider, privilege or spend changes. Closing receipt issue39/6599923656. Root run closes with no children writing; actual start08:42:30.245Z budget never renewed.",
+    "nextAction": "Mandato OPS-20261103-02: ripresa diretta stesso M4 corrente sotto questo claim, senza ripetere recupero021000, nuovo piano o catena HANDOFF. ProcedureRef e947→d8179e0 adottata esplicitamente con Verify41609445844 originale/artifact7a413a e review6599819747 già lette; nessun cambio di task/scope/claim/budget. Helper della nuova procedura usato per budget e guardia di ripresa. Una sola prova pesante alla volta, nessun nuovo agente. Confronto primo caso browser isolato vs predecessore+caso, poi bundle per dipendenze reali; firme/soglie invarianti. Fonte/decisione in docs/history.md OPS-20261103-02 del candidato, senza nuova preparazione documentale.",
     "review": {
       "authorContextId": "root.thread01a19eba",
       "reviewerContextId": "root.m4_consumer_review",
