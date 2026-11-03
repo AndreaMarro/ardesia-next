@@ -16,7 +16,7 @@ const host = createPluginHost({trustStore: releaseTrust.trustStore, policy: {
   allowlist: releaseTrust.allowlist, capabilities: ['state:read', 'state:write'], maxBundleBytes: 512_000, timeoutMs: 5_000,
 }});
 type RemotePolicyContext = {documentId?: string; refresh: () => Promise<unknown>};
-let context: {core: CoreService; actor: Actor; remote: RemotePolicyContext} | null = null;
+let context: {core: CoreService; actor: Actor; remote: RemotePolicyContext; read?: Promise<unknown>} | null = null;
 let contextEpoch = 0;
 let policyFingerprint = '';
 let staleWorkspace = false;
@@ -62,7 +62,13 @@ export function connectMarketplace(core: CoreService, actor: Actor, remote: Remo
   disconnectMarketplace(); context = {core, actor: structuredClone(actor), remote}; staleWorkspace = false; syncMarketplace();
 }
 async function refreshAuthorization(epoch: number) {
-  const original = current(); await original.remote.refresh();
+  if (epoch !== contextEpoch) return fail('SESSION_CHANGED');
+  const original = current();
+  await (original.read ??= Promise.resolve().then(() => {
+    original.read = undefined;
+    if (epoch !== contextEpoch) return fail('SESSION_CHANGED');
+    return original.remote.refresh();
+  }));
   if (epoch !== contextEpoch || context !== original) return fail('SESSION_CHANGED');
   syncMarketplace();
 }

@@ -25,7 +25,7 @@ export function LearnerSpace({client, onAccount}: {client: RemoteClient; onAccou
   const access = projection.labAccess.find(item => item.documentId === documentId && item.objectId === selectedId);
   useEffect(() => {
     if (!document) return;
-    connectMarketplace(core, actor, {documentId, refresh: () => client.refresh()});
+    connectMarketplace(core, actor, {documentId, refresh: client.refresh});
     return disconnectMarketplace;
   }, [core, actor.actorId, documentId, client, !!document]);
   useEffect(() => {syncMarketplace();}, [projection.workspaceRevision]);

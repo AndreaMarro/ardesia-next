@@ -44,7 +44,7 @@ export function RemoteWorkspace() {
   }, []);
   useEffect(() => {
     if (!projection || !state.account || manage) {disconnectMarketplace(); return;}
-    if (projection.actor.role === 'teacher') connectMarketplace(client.core, projection.actor, {refresh: () => client.refresh()});
+    if (projection.actor.role === 'teacher') connectMarketplace(client.core, projection.actor, {refresh: client.refresh});
     return disconnectMarketplace;
   }, [projection?.workspaceId, projection?.actor.actorId, state.account?.id, manage]);
   useEffect(() => {if (projection) syncMarketplace();}, [projection?.workspaceRevision]);
