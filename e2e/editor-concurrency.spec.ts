@@ -163,7 +163,7 @@ test('[M3 editor] student notes and the first personal lab keep their own draft 
   const learner = await browser.newContext({baseURL: apiOrigin, viewport: page.viewportSize() ?? {width: 1440, height: 960},
     isMobile: testInfo.project.name === 'mobile-chromium', hasTouch: testInfo.project.name === 'mobile-chromium', storageState: {cookies: [], origins: []}});
   try {
-    const account = await loginContext(learner, 'STUDENT_A');
+    const account = await loginContext(learner, 'STUDENT_A', testInfo.project.name);
     await api(page.context().request, {action: 'learning-command', workspaceId: teacher.workspaceId, command: {
       kind: 'assign-lesson', commandId: randomUUID(), documentId: teacher.documentId, studentId: account.id, expectedRevision: 0,
     }}, teacher.account.id);

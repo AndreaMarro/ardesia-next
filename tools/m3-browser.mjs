@@ -12,7 +12,7 @@ export function proof(observation) {
 }
 
 /** Real browser/API observations. No fixtures, successful response mocks, traces or stored auth state. */
-export async function collectBrowserAcceptance({browser, current, deployment, origin}) {
+export async function collectBrowserAcceptance({browser, current, deployment, origin, credentials = process.env}) {
   const startedAt = now(), nonce = randomUUID(), contexts = [], checks = {}, accounts = {}, sessions = {};
   const pseudonym = value => createHash('sha256').update(nonce).update('\0').update(value).digest('hex');
   async function raw(context, body, accountId) {
@@ -34,8 +34,8 @@ export async function collectBrowserAcceptance({browser, current, deployment, or
     const password = page.getByLabel('Password', {exact: true});
     try {
       await expect(password).toHaveAttribute('type', 'password');
-      await page.getByLabel('Nome utente', {exact: true}).fill(process.env[`ARDESIA_E2E_${kind}_USERNAME`]);
-      await password.fill(process.env[`ARDESIA_E2E_${kind}_PASSWORD`]);
+      await page.getByLabel('Nome utente', {exact: true}).fill(credentials[`ARDESIA_E2E_${kind}_USERNAME`]);
+      await password.fill(credentials[`ARDESIA_E2E_${kind}_PASSWORD`]);
       await page.getByRole('button', {name: 'Accedi', exact: true}).click();
       await expect(page.getByLabel('Nome utente', {exact: true})).toHaveCount(0);
     } catch {
@@ -202,7 +202,7 @@ export async function collectBrowserAcceptance({browser, current, deployment, or
     await command(teacher, {kind: 'assign-lesson', studentId: b.account.id, expectedRevision: 0}, 'learning-command');
     // Real account change in A's browser, followed by an old-account command precondition.
     await api(a2.context, {action: 'logout'}, a2.account.id);
-    await api(a2.context, {action: 'login', username: process.env.ARDESIA_E2E_STUDENT_B_USERNAME, password: process.env.ARDESIA_E2E_STUDENT_B_PASSWORD});
+    await api(a2.context, {action: 'login', username: credentials.ARDESIA_E2E_STUDENT_B_USERNAME, password: credentials.ARDESIA_E2E_STUDENT_B_PASSWORD});
     const beforeSwitch = await projection(b);
     const switched = await raw(a2.context, {action: 'learning-command', workspaceId: workspace.workspaceId,
       command: {kind: 'save-learner-note', commandId: randomUUID(), documentId, expectedRevision: 0, text: 'Old account command'}}, a1.account.id);

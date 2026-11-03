@@ -4,6 +4,7 @@ import type {Actor, CoreCommand, NewEducationalObject} from '@ardesia/contracts'
 import type {WorkspaceProjection} from '@ardesia/remote-client';
 import {resolveE2ETarget} from './target.ts';
 import {assertContextAccess, continueRouteWithAccess, fetchApiWithAccess, fetchRouteWithAccess, installContextAccess, readApiJson} from './remote-access.ts';
+import {projectCredentials} from '../tools/e2e-accounts.mjs';
 
 export {expect};
 export const legacyStorageKey = 'ardesia-next.core.v1';
@@ -15,10 +16,8 @@ export interface TestWorkspace {account: TestAccount; actor: Actor; workspaceId:
 interface TeacherSession {account: TestAccount; storageState: Awaited<ReturnType<APIRequestContext['storageState']>>}
 const contexts = new WeakMap<BrowserContext, TestWorkspace>();
 
-export function credentials(kind: 'TEACHER' | 'STUDENT_A' | 'STUDENT_B') {
-  const username = process.env[`ARDESIA_E2E_${kind}_USERNAME`], password = process.env[`ARDESIA_E2E_${kind}_PASSWORD`];
-  if (!username || !password) throw new Error(`Missing synthetic ${kind} credentials: the real M3 test database must be seeded before browser tests.`);
-  return {username, password};
+export function credentials(kind: 'TEACHER' | 'STUDENT_A' | 'STUDENT_B', project: string) {
+  return projectCredentials(process.env, resolveE2ETarget().mode, project, kind);
 }
 
 export async function rawApi(request: APIRequestContext, body: Record<string, unknown>, accountId?: string) {
@@ -36,8 +35,8 @@ export async function api<T>(request: APIRequestContext, body: Record<string, un
   return payload.result as T;
 }
 
-export async function loginContext(context: BrowserContext, kind: 'TEACHER' | 'STUDENT_A' | 'STUDENT_B'): Promise<TestAccount> {
-  const result = await api<{account: TestAccount}>(context.request, {action: 'login', ...credentials(kind)});
+export async function loginContext(context: BrowserContext, kind: 'TEACHER' | 'STUDENT_A' | 'STUDENT_B', project: string): Promise<TestAccount> {
+  const result = await api<{account: TestAccount}>(context.request, {action: 'login', ...credentials(kind, project)});
   return result.account;
 }
 
@@ -111,10 +110,10 @@ export const test = base.extend<{remoteWorkspace: TestWorkspace}, {teacherSessio
     await installContextAccess(context);
     try {await use(context);} finally {assertContextAccess(context);}
   },
-  teacherSession: [async ({playwright}, use) => {
+  teacherSession: [async ({playwright}, use, workerInfo) => {
     const request = await playwright.request.newContext({baseURL: apiOrigin});
     try {
-      const session = await api<{account: TestAccount}>(request, {action: 'login', ...credentials('TEACHER')});
+      const session = await api<{account: TestAccount}>(request, {action: 'login', ...credentials('TEACHER', workerInfo.project.name)});
       await use({account: session.account, storageState: await request.storageState()});
     } finally {await request.dispose();}
   }, {scope: 'worker'}],

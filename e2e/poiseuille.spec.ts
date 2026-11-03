@@ -85,7 +85,7 @@ for (const flow of [false, true]) {
     const fresh = async (kind: 'STUDENT_A' | 'STUDENT_B') => {
       const context = await browser.newContext({baseURL: apiOrigin, viewport: page.viewportSize()!, storageState: {cookies: [], origins: []}});
       contexts.push(context);
-      const account = await loginContext(context, kind);
+      const account = await loginContext(context, kind, testInfo.project.name);
       await selectWorkspace(context, {...selectedWorkspace(page), account, actor: {actorId: account.id, role: 'student'}});
       return {context, account};
     };

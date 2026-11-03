@@ -7,6 +7,7 @@ import {identity} from './evidence.mjs';
 import {M1_REQUIRED_FLOWS, M2_REQUIRED_FLOWS} from './status.mjs';
 import {M3_REQUIRED_FLOWS, m3ReportDigest} from './m3-evidence.mjs';
 import {preflightConfiguration, preflightPath, runRemotePreflight} from './remote-preflight.mjs';
+import {localBrowserAccounts} from './e2e-accounts.mjs';
 // Validate the target before touching evidence or launching a process. In particular,
 // an external URL alone must never combine remote API writes with local navigation.
 const target = resolveE2ETarget(), args = process.argv.slice(2);
@@ -35,6 +36,7 @@ if (target.mode === 'remote') {
     browserEnvironment[`ARDESIA_E2E_${name}_USERNAME`] ||= username;
     browserEnvironment[`ARDESIA_E2E_${name}_PASSWORD`] ||= randomBytes(24).toString('base64url');
   }
+  localBrowserAccounts(browserEnvironment); // Validate all six local identities before seeding or launch.
 }
 const runIdentity = identity();
 if (target.mode === 'remote') preflightConfiguration(process.env, runIdentity);

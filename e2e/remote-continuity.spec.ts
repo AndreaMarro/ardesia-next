@@ -10,10 +10,10 @@ import {authorizeSpring, openMarketplace, storedWorkspace, verifyAndInstallSprin
 import {closeContextWithAccess, continueRouteWithAccess, fetchRouteWithAccess, installContextAccess,
   isRemoteExecution, readApiJson, RemoteAccessError} from './remote-access.ts';
 
-async function loginUi(page: Page, kind: 'STUDENT_A' | 'STUDENT_B'): Promise<TestAccount> {
+async function loginUi(page: Page, kind: 'STUDENT_A' | 'STUDENT_B', project: string): Promise<TestAccount> {
   await page.goto('/');
   await expect(page.getByRole('heading', {name: 'Il tuo spazio', exact: true})).toBeVisible();
-  const account = credentials(kind);
+  const account = credentials(kind, project);
   const password = page.getByLabel('Password', {exact: true});
   try {
     if (isRemoteExecution()) await expect(password).toHaveAttribute('type', 'password');
@@ -115,7 +115,7 @@ test('[M3] teacher and two students preserve private laboratory work across inde
 
     const firstContext = await freshContext(), secondContext = await freshContext();
     const studentPage = await firstContext.newPage(), secondPage = await secondContext.newPage();
-    const first = await loginUi(studentPage, 'STUDENT_A'), second = await loginUi(secondPage, 'STUDENT_B');
+    const first = await loginUi(studentPage, 'STUDENT_A', testInfo.project.name), second = await loginUi(secondPage, 'STUDENT_B', testInfo.project.name);
     expect(new Set([first.id, second.id, teacherWorkspace.account.id]).size).toBe(3);
     expect(first.role).toBe('student'); expect(second.role).toBe('student');
     await assignUi(page, first.id);
@@ -165,7 +165,7 @@ test('[M3] teacher and two students preserve private laboratory work across inde
     await closeContextWithAccess(firstContext);
 
     const resumedContext = await freshContext(), resumed = await resumedContext.newPage();
-    const resumedAccount = await loginUi(resumed, 'STUDENT_A');
+    const resumedAccount = await loginUi(resumed, 'STUDENT_A', testInfo.project.name);
     expect(resumedAccount.id).toBe(first.id);
     await selectWorkspace(resumedContext, studentWorkspace(teacherWorkspace, first, lesson.id));
     await resumed.goto('/');
@@ -228,7 +228,7 @@ test('[M3] teacher and two students preserve private laboratory work across inde
 
     // Change account in the same browser storage without exposing A's state or pending requests to B.
     await logoutUi(resumed);
-    const switched = await loginUi(resumed, 'STUDENT_B');
+    const switched = await loginUi(resumed, 'STUDENT_B', testInfo.project.name);
     expect(switched.id).toBe(second.id);
     await selectWorkspace(resumedContext, studentWorkspace(teacherWorkspace, second, lesson.id));
     await resumed.goto('/');

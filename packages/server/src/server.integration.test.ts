@@ -9,6 +9,7 @@ import {canonical} from './errors';
 import {CoreSnapshotSchema, type CoreSnapshot, type PluginRelease, type JsonValue} from '@ardesia/contracts';
 import {createCore, MemoryStorage} from '@ardesia/core';
 import {idealSpringInitialState} from '@ardesia/ideal-spring';
+import {localBrowserAccounts} from '../../../tools/e2e-accounts.mjs';
 import {
   Pool, createApiHandler, createPostgresStore, createFirstPartyPolicy, migrate, provisionTestAccounts,
   exportBackup, restoreBackup, revokeAccountSessions, type WorkspaceProjection,
@@ -504,6 +505,34 @@ describe('M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL)', () => {
     await admin.query("UPDATE ardesia_next.sessions SET created_at=now()-interval '2 hours',expires_at=now()-interval '1 hour' WHERE account_id=$1", [studentB.id]);
     expect((await request({action: 'list-workspaces'}, studentB)).status).toBe(401);
   });
+
+  it('isolates project login budgets while fresh sessions keep identity and the thirteenth valid login stays forbidden', async () => {
+    const suffix = randomUUID().slice(0, 8), password = randomUUID() + randomUUID();
+    const env = Object.fromEntries(['TEACHER', 'STUDENT_A', 'STUDENT_B'].flatMap(kind => [
+      [`ARDESIA_E2E_${kind}_USERNAME`, `${kind.toLowerCase().replaceAll('_', '-')}-${suffix}`],
+      [`ARDESIA_E2E_${kind}_PASSWORD`, password],
+    ]));
+    const accounts = localBrowserAccounts(env).filter(account => account.id.startsWith('student-a-m3-'))
+      .map(account => ({...account, id: `${account.id}-${suffix}`}));
+    await provisionTestAccounts(admin, accounts);
+    expect(new Set(accounts.map(account => account.id)).size).toBe(2);
+    for (const account of accounts) {
+      const cookies = new Set<string>();
+      for (let attempt = 1; attempt <= 12; attempt++) {
+        // Each login has no Cookie header. Identity survives logout/new session, not cookie reuse.
+        const login = await request({action: 'login', username: account.username, password});
+        expect(login.status).toBe(200); expect(login.body.result.account.id).toBe(account.id);
+        expect(cookies.has(login.cookie!)).toBe(false); cookies.add(login.cookie!);
+        const identity = {id: account.id, cookie: login.cookie!.split(';')[0]!};
+        expect((await request({action: 'session'}, identity)).body.result.account.id).toBe(account.id);
+        await request({action: 'logout'}, identity);
+        expect((await request({action: 'session'}, identity)).status).toBe(401);
+      }
+      const denied = await request({action: 'login', username: account.username, password});
+      expect(denied.status).toBe(429); expect(denied.body.error?.code).toBe('RATE_LIMITED');
+      expect((await admin.query('SELECT attempts FROM ardesia_next.login_limits WHERE bucket=$1', ['user:' + hash(account.username)])).rows[0].attempts).toBe(13);
+    }
+  }, 15_000);
 
   it('applies durable rate limits and fails closed when the service is not configured', async () => {
     const bucket = 'nonexistent-' + randomUUID().slice(0, 8);
