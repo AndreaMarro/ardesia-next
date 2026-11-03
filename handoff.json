@@ -3,17 +3,10 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 133,
-  "updatedAt": "2026-11-03T14:29:09.727Z",
+  "revision": 134,
+  "updatedAt": "2026-11-03T15:13:18.474Z",
   "procedureRef": "d8179e0336738edf00a2793c8aab875a38bb8289",
-  "activeRun": {
-    "runId": "ardesia-m4-auth-20261103T142801Z-01a1a092",
-    "actor": "codex",
-    "startedAt": "2026-11-03T14:28:01.000Z",
-    "claimedAt": "2026-11-03T14:29:09.727Z",
-    "writeUntil": "2026-11-03T15:13:01.000Z",
-    "closeBy": "2026-11-03T15:23:01.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m4-consumer-20261102T185253Z",
     "taskId": "M4-REUSE",
@@ -24,10 +17,10 @@
     "expiresAt": "2026-11-04T19:16:07.799Z",
     "source": {
       "baseSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
-      "headSha": "41ccec218e7ca139697e41f21085403655600f84",
+      "headSha": "a595d3601de7f4fc611c7f64d46d0079a7a18f55",
       "branch": "codex/m4-reuse-next-20261102",
       "pr": "https://github.com/AndreaMarro/ardesia-next/pull/37",
-      "sourceDigest": "3b701fab6069aac5fa2f6eb14566e114bb43c497f126b4da023154d19bd6b5cc"
+      "sourceDigest": "d97f1ced7ef742de62d23d8cad79e118132924003a6f9f17df7fc5052c54f401"
     },
     "goal": "Secondo dominio scientifico sullo stesso Core/Host",
     "allowedPaths": [
@@ -453,28 +446,105 @@
         "scope": "Read-only independent source check: docs/sources/m4-poiseuille.md42 and OPS-20261102-15 require authorized promotion of proposed ardesia.poiseuille@1.0.0, publisherardesia/keym4-candidate-87a7b090902c/digestbd7eced69753424c7da3076783917d4fb235bd90d975dbbce2fe71371b06e00b. No directly-read exact distribution mandate found. Subsequent prerequisite; first block remains CI browser. No key/pin change.",
         "access": "artifact",
         "artifactDigest": null
+      },
+      {
+        "kind": "ci",
+        "name": "verify",
+        "result": "PASS",
+        "scope": "Final original CI41659257963 attempt1 SUCCESS,8/8Verify,321/321unit56suites0skip,QA PostgreSQL/benchmark/runtime5/5PASS,83/83browser0skip/retry/flaky. ZIP13241168042/9013175bytes/CRC29/29,11JSON read,8SHA/digest bindings and unit/preparation/browser digests verified. Exact final source a595/d97, no transferred parent PASS.",
+        "artifactDigest": "10828bcc1ce5b99e1fa1c834f9fe2511f4da4c58cbfcb76230e296fa14e9024e",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41659257963",
+        "headSha": "a595d3601de7f4fc611c7f64d46d0079a7a18f55",
+        "sourceDigest": "d97f1ced7ef742de62d23d8cad79e118132924003a6f9f17df7fc5052c54f401",
+        "access": "artifact"
+      },
+      {
+        "kind": "check",
+        "name": "local-final-verify-and-83-browser",
+        "result": "PASS",
+        "scope": "Same final a595/d97,Node24.22.1/Postgres16.15:8/8Verify,321unit56suites,runtime5/5 and83/83browser with0skip/retry/flaky on fresh dedicated loopback schemas. Serial execution:RED/GREEN HTTP,runner6/auth22,continuity6,M4+spring14,parentVerify/full,new acknowledgement RED/GREEN,finalVerify/full. No heavy local overlap or threshold/timeout changes.",
+        "artifactDigest": null,
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6607465059",
+        "headSha": "a595d3601de7f4fc611c7f64d46d0079a7a18f55",
+        "sourceDigest": "d97f1ced7ef742de62d23d8cad79e118132924003a6f9f17df7fc5052c54f401",
+        "access": "artifact"
+      },
+      {
+        "kind": "check",
+        "name": "local-project-login-counterproof",
+        "result": "PASS",
+        "scope": "Only local identities scoped per project,6total. Final actual DB buckets: A9desktop+9mobile,B6+6,teacher2+2; no counter reset mid-suite. Auth unchanged12/900s. Final new real PostgreSQL unit case performs12successful fresh sessions/logout per project and13th429, reads committed counter13. Remote credentials/provisioning unchanged.",
+        "artifactDigest": null,
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6607465059",
+        "headSha": "a595d3601de7f4fc611c7f64d46d0079a7a18f55",
+        "sourceDigest": "d97f1ced7ef742de62d23d8cad79e118132924003a6f9f17df7fc5052c54f401",
+        "access": "artifact"
+      },
+      {
+        "kind": "check",
+        "name": "full-budget-and-lossless-bytes",
+        "result": "PASS",
+        "scope": "Final budget245716/245760,margin44. Existing lossless shared container/descriptors/original executable bytes before Host.verify,signatures/digests/pins,KaTeX andall-js budget unchanged. Mandatory signed rebuild and4real transport Host unit counterproofs pass on final source.",
+        "artifactDigest": "10828bcc1ce5b99e1fa1c834f9fe2511f4da4c58cbfcb76230e296fa14e9024e",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6607465059",
+        "headSha": "a595d3601de7f4fc611c7f64d46d0079a7a18f55",
+        "sourceDigest": "d97f1ced7ef742de62d23d8cad79e118132924003a6f9f17df7fc5052c54f401",
+        "access": "artifact"
+      },
+      {
+        "kind": "review",
+        "name": "independent-final-fixture-review",
+        "result": "PASS",
+        "scope": "Existing nonauthor root.native_recovery_review:raw13file d780 then2file a595 delta, exact bytes compared;12nondocfiles reused unchanged. No P1/P2 in bounded final delta. Read auth/protocol RED/GREEN and parent82/83failure; no suite/build executed, no ACL separation/human approval or whole-main-chain approval. Final CI original bytes read by root.",
+        "artifactDigest": null,
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6607465059",
+        "headSha": "a595d3601de7f4fc611c7f64d46d0079a7a18f55",
+        "sourceDigest": "d97f1ced7ef742de62d23d8cad79e118132924003a6f9f17df7fc5052c54f401",
+        "access": "artifact"
+      },
+      {
+        "kind": "observation",
+        "name": "parent-local-note-ack-race-preserved",
+        "result": "FAIL",
+        "scope": "Parent d780/e0ca CI41656927313 green83/83 but local82/83 fails mobile note/library:close before acknowledgement opens draft guard blocking pointer. Original local report/screenshot preserved. Controlled actual-write-response RED reproduces guard;finaltest waits receipt/confirmed status and asserts paneclosed/dialogabsent,never invents success or weakens guard. All83 on final a595 pass;parent green nottransferred.",
+        "artifactDigest": "ab3112e928ae50a1a1e909286b5ade7025cde905b755ef060c103065a89caa88",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6607465059",
+        "headSha": "d780eea2f7f3a537b2592156557c27ebeef00745",
+        "sourceDigest": "e0ca77469c77414a6b86f5035fde94eaabd95c7c991adb261c954575fb4201f5",
+        "access": "artifact"
+      },
+      {
+        "kind": "observation",
+        "name": "exact-poiseuille-distribution-authority",
+        "result": "PENDING",
+        "scope": "Technical source ready for subsequent gates, but no directly read explicit distribution promotion of ardesia.poiseuille@1.0.0,publisherardesia,keym4-candidate-87a7b090902c,digestbd7eced69753424c7da3076783917d4fb235bd90d975dbbce2fe71371b06e00b. Owner mandate§6 and docs/sources/m4-poiseuille.md42 require actual authorization. No new key/signature/pin,merge,deploy or alias change. M4 generated status PREPARATION_UNVERIFIED preserved; notaccepted.",
+        "artifactDigest": null,
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6607465059",
+        "headSha": "a595d3601de7f4fc611c7f64d46d0079a7a18f55",
+        "sourceDigest": "d97f1ced7ef742de62d23d8cad79e118132924003a6f9f17df7fc5052c54f401",
+        "access": "artifact"
       }
     ],
     "blockers": [],
-    "nextAction": "Continue same M4-REUSE at published PR37/head41ccec2/digest3b701fab on complete local /Users/andreamarro/.codex/ardesia-recovery-20261103/repo, clean. Do not repeat old recovery, PR42 adoption or general audit. Bundle fixed245716/245760, lossless/signatures/pins/all-assets gate unchanged; no more compression/minifier attempts. First delivery block is final full browser80PASS3FAIL/83: mobile flow STUDENT_A login13 returns429 under unchanged12/900s; exact source/report reconstruction in PR37comment6605051292, no DB counter exported; later UI/QA failures do not show another explicit429. Next bounded work: isolate synthetic fixture login budgets across projects/scenarios through existing seeder while preserving independent clean sessions and same identity within each continuity scenario. Do not raise auth thresholds/timeouts, reuse learner sessions across independence assertions or reset counters mid-suite. Preserve CI41642277637 ZIP13233931269/hashc4c418d6/11JSON and every older FAIL, including load/iCloud observations and8kg→6kg without retrospective attribution. New final source needs own complete Verify/QA/benchmark/browser and review; never transfer41 proofs to a new head. Before integration/preview also resolve documented distribution authorization for exact proposed Poiseuille pin; no new key/provider/spend. Main/preview/alias unchanged; procedure d8179e0 remains adopted. Raw evidence and receipt under residual-20261103T124815Z; independent reviewer stopped, no child writer.",
+    "nextAction": "Continue same M4 from published PR37/a595d3601de7f4fc611c7f64d46d0079a7a18f55/d97f1ced7ef742de62d23d8cad79e118132924003a6f9f17df7fc5052c54f401 in complete local repo. Three prior auth browser failures fixed with6localprojectidentities; actualA9/B6/teacher2perproject,successful13thstill429,no remotecredential/provision change. Final local andCI41659257963:8Verify,321unit,83/83browser0skip/retry/flaky; originalZIP13241168042/hash10828bcc/11JSONread. Finalscope review inPR37comment6607465059. Parent d780 CI83/local82 and controlled true-write acknowledgement RED preserved; note test now awaits positive receipt then closes before library,all83finalPASS. No more fixture/minifier/recovery/PR42adoption/general-audit work needed. FIRST release gate: acquire explicit preview-only distribution mandate for exact existing Poiseuille@1.0.0/keym4-candidate-87a7b090902c/digestbd7eced...e00b,recordonce per procedure; no implicit trust/key regeneration. Then reconcile PR37 basec4d vs main d0aa preserved ancestor,review actual integration scope,merge viaPR expectedSHA and requireCI onmergeSHA,Previewstandard targetnull atsameSHA,actualbuild-infoSHA/digest,SSO/all andauthenticatedstable-origin smoke withcompatiblepreviousalias retained. Nevertransfer proofs to changedsource,claim M4accepted frompreparation or skip remaining existing M4 consumer/remote/human gate. Current stable stilld0aa/dpl_HhzGdaLXgddb8HGDwUadEEcoabL8,READYtargetnull,anon302SSO;no newdeployment orauthenticateda595smoke. Alllogs/fails/work preserved underauth-fixtures-20261103T142801Z; oneheavy localrun,no newagent/scheduler/provider/spend, no childwriter. E1 remains afterM4.",
     "review": {
       "authorContextId": "root.01a1a092",
       "reviewerContextId": "root.native_recovery_review",
-      "sourceSha": "41ccec218e7ca139697e41f21085403655600f84",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6605051292"
+      "sourceSha": "a595d3601de7f4fc611c7f64d46d0079a7a18f55",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6607465059"
     }
   },
   "lastRun": {
-    "runId": "ardesia-residual-20261103T124815Z-01a1a092",
+    "runId": "ardesia-m4-auth-20261103T142801Z-01a1a092",
     "actor": "codex",
-    "startedAt": "2026-11-03T12:48:15.000Z",
-    "claimedAt": "2026-11-03T12:54:11.224Z",
-    "writeUntil": "2026-11-03T13:33:15.000Z",
-    "closeBy": "2026-11-03T13:43:15.000Z",
+    "startedAt": "2026-11-03T14:28:01.000Z",
+    "claimedAt": "2026-11-03T14:29:09.727Z",
+    "writeUntil": "2026-11-03T15:13:01.000Z",
+    "closeBy": "2026-11-03T15:23:01.000Z",
     "packetId": "m4-consumer-20261102T185253Z",
-    "finishedAt": "2026-11-03T13:29:43.936Z",
+    "finishedAt": "2026-11-03T15:13:18.474Z",
     "outcome": "INTERRUPTED",
     "late": false,
-    "summary": "Residual bundle fixed and published41ccec2/digest3b701fab:245716/245760; exact CI8Verify,320unit,QA,benchmark PASS but full browser80PASS3FAIL/83. First failure login13 STUDENT_A HTTP429; fixture sequence reconstructed, old timeouts preserved. Independent scoped review and original ZIP/11JSON acquired. No merge/preview; distribution pin authorization remains a later prerequisite. All work preserved, writers stopped; same M4 task INTERRUPTED, not complete."
+    "summary": "Final a595/d97 published: local+CI8Verify/321unit/83browserPASS;245716budget,realfixtureA9/B6/teacher2perproject,13thcorrectloginstill429. Parent localnoteackrace preserved and controlledRED/GREEN fixedtestonly. Independent review acquired. No merge/deploy: exactcandidatepin distribution mandate remains missing; M4notaccepted. Allwork/logspreserved, childrenstopped."
   }
 }
