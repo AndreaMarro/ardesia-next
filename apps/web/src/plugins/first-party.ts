@@ -7,6 +7,7 @@ export const firstPartyLabName = (id: string) => id === idealSpringId ? 'Molla i
 import {LabDataSchema, PluginReleaseSchema, type LabData, type Actor, type PluginRelease, type PluginCommand} from '@ardesia/contracts';
 import type {CoreService} from '@ardesia/core';
 import {firstPartyTrust as trustConfiguration} from '@ardesia/plugin-host';
+import {decodeBundleTransport} from './bundle-transport';
 
 type Transition = {pluginId: string; fromVersion: string; toVersion: string; direction: 'update'|'rollback'; stateSchemaVersion: string};
 const releaseTrust: {trustStore: TrustedPublisherKey[]; allowlist: FirstPartyRelease[]; transitions?: Transition[]} = trustConfiguration;
@@ -121,7 +122,10 @@ export function releaseFromManifest(manifest: PluginManifest): PluginRelease {
 async function artifacts(entry: CatalogPlugin) {
   if (entry.status !== 'available') {host.suspendPlugin(entry.manifest.id); return fail('REVOKED_RELEASE');}
   requireAvailable(entry.manifest);
-  const [manifestBytes, bundle] = await Promise.all([readArtifact(entry.manifestPath, 16_384), readArtifact(entry.bundlePath, 512_000)]);
+  const [manifestBytes, delivered] = await Promise.all([readArtifact(entry.manifestPath, 16_384), readArtifact(entry.bundlePath, 512_000)]);
+  let bundle: Uint8Array;
+  try {bundle = await decodeBundleTransport(delivered, readArtifact);}
+  catch (error) {if (pluginErrorCode(error) === 'INVALID_BUNDLE_TRANSPORT') return fail('INTEGRITY_MISMATCH'); throw error;}
   const manifest = await host.verify({manifest: decode(manifestBytes), bundle});
   requireAvailable(manifest);
   if (JSON.stringify(manifest) !== JSON.stringify(PluginManifestSchema.parse(entry.manifest))) return fail('CATALOG_MISMATCH');
