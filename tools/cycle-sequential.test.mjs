@@ -69,6 +69,48 @@ test('stale expected revision and expired active claim cannot be taken over', ()
  assert.throws(() => cycle.claimCycle(a,{expectedRevision:a.revision,actor:'codex',runId:'run-2',startedAt:at(100).toISOString()},{now:at(100)}), /active claim/);
  assert.throws(() => cycle.claimCycle(fixture(),{expectedRevision:0,actor:'codex',runId:'run-1',startedAt:T},{now:at(1)}), /revision/);
 });
+
+const recoveryFixture = () => {
+ const q=queue(), active=select(claim(fixture()),implementation(),q);
+ const terminal={kind:'ardesia-native-terminal-recovery',runId:'run-1',threadId:'native-thread-1',status:'failed',
+  completedAt:at(30).toISOString(),observedAt:at(70).toISOString(),writersStopped:true,
+  preservationDigest:'c'.repeat(64),reference:'private-preserved-work-manifest'};
+ const input={expectedRevision:active.revision,actor:'codex',runId:'run-1',terminal,packet:{...active.packet,nextAction:'Resume preserved browser diagnosis'},queue:q,summary:'Coordinator reconstructed the failed native turn checkpoint after observing stopped writers'};
+ return {q,active,input,adapters:{now:at(70),readQueue:()=>q}};
+};
+test('explicit terminal recovery preserves source/evidence/deadlines and does not renew the failed run', () => {
+ const {active,input,adapters}=recoveryFixture(),before=structuredClone(active);
+ active.packet.evidence=[evidence('check','FAIL')];input.packet.evidence=structuredClone(active.packet.evidence);
+ const snapshot=structuredClone(active),result=cycle.recoverCycle(active,input,adapters);
+ assert.equal(result.activeRun,null);assert.equal(result.lastRun.runId,'run-1');assert.equal(result.lastRun.late,true);
+ for(const key of ['startedAt','claimedAt','writeUntil','closeBy'])assert.equal(result.lastRun[key],active.activeRun[key]);
+ assert.deepEqual(result.packet.source,active.packet.source);assert.deepEqual(result.packet.evidence,active.packet.evidence);
+ assert.equal(result.packet.disposition,'READY');assert.deepEqual(active,snapshot);assert.equal(result.revision,before.revision+1);
+ const claimed=cycle.claimCycle(result,{expectedRevision:result.revision,actor:'codex',runId:'new-run',startedAt:at(65).toISOString()},{now:at(71)});
+ assert.equal(claimed.activeRun.closeBy,at(120).toISOString());
+});
+test('expiry, native status alone, live writers and incomplete preservation cannot recover a claim', () => {
+ const {active,input,adapters}=recoveryFixture();
+ for(const delta of [null, {status:'running'},{status:'completed'},{runId:'another-run'},{threadId:''},
+  {writersStopped:false},{writersStopped:undefined},{preservationDigest:null},{reference:''},
+  {completedAt:at(7).toISOString()},{observedAt:at(29).toISOString()},{observedAt:at(71).toISOString()}]) {
+  const terminal=delta===null?null:{...input.terminal,...delta};
+  assert.throws(()=>cycle.recoverCycle(active,{...input,terminal},adapters),/observed matching terminal/);
+ }
+ assert.throws(()=>cycle.recoverCycle(active,{...input,expectedRevision:0},adapters),/revision/);
+ assert.throws(()=>cycle.recoverCycle(active,{...input,runId:'another-run'},adapters),/active owner/);
+});
+test('recovery cannot change the preserved assignment or hide a failure or pending CI', () => {
+ const {active,input,adapters}=recoveryFixture();
+ for(const mutate of [p=>p.source.headSha='f'.repeat(40),p=>p.evidence=[evidence('ci')],p=>p.allowedPaths.push('apps'),p=>p.exitCriteria=['Weaker'],p=>p.taskId='OTHER']) {
+  const packet=structuredClone(input.packet);mutate(packet);
+  assert.throws(()=>cycle.recoverCycle(active,{...input,packet},adapters),/preserve the complete/);
+ }
+ const pending=structuredClone(active);pending.packet.disposition='WAITING_CI';pending.packet.evidence=[evidence('ci','PENDING')];
+ assert.throws(()=>cycle.recoverCycle(pending,input,adapters),/pending CI/);
+ const noncanonical=structuredClone(input.queue);noncanonical.tasks[0].scope.push('apps');
+ assert.throws(()=>cycle.recoverCycle(active,{...input,queue:noncanonical},adapters),/hypothetical/);
+});
 test('migrate is explicit, inactive-only and preserves old evidence', () => {
  assert.equal(typeof cycle.migrateCycle, 'function');
  const old = fixture(false); old.packet.disposition='BLOCKED'; old.packet.blockers=['B-OLD-AUTOMATION'];

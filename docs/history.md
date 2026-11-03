@@ -2,6 +2,14 @@
 
 Questo è l'unico indice attivo. Le prove originali sono in PR/run/artefatti, l'accettazione in `tools/status.mjs`. Non cancellare o riscrivere decisioni superate: aggiungere una supersessione circoscritta.
 
+## OPS-20261103-01 — recupero della run nativa fallita, senza rinnovo del budget
+
+Fonte direttamente letta: istruzione del titolare del 3 novembre in questa chat e [ricevuta di stabilizzazione](https://github.com/AndreaMarro/ardesia-next/issues/39#issuecomment-6599068590). Recuperare la sola run021000, preservare copie/commit/log e vercel.json operativo, riprendere M4 con diagnosi browser/molla prima del bundle; proporre una difesa minima verificabile nel percorso esistente. Nessuna autorizzazione a nuovi scheduler, modelli/provider, spese, privilegi, chiavi/pin, produzione o operazioni distruttive. Questo mandato non supersede i gate o adotta nuovi helper.
+
+Il turno nativo è failed/inattivo alle02:40:15Z con errore workspace routing discovery timed out; vecchi CLI/server/browser assenti. Nessun processo interrotto dal recupero. Il [reperto circoscritto](sources/native-run-recovery-20261103.md) distingue errore osservato, causa interna UNKNOWN e attuali file iCloud dataless. Lavoro privato conservato, HEAD M4 locale/remota5460e636 invariata. Recupero canonico mediante ricostruzione del checkpoint interrotto e finish HANDOFF adottato, [revision125](https://github.com/AndreaMarro/ardesia-next/blob/79d23e939c90a142b2ff5b2ce26f79ccbf4e8b6d/handoff.json), figlio di7bad0397 con vercel.json invariato; nuovo claim126/3264fa18, avvio reale08:42:30.245Z, writeUntil09:27:30.245Z e closeBy09:37:30.245Z. La chiusura tardiva registra il recupero, non finge un finish del turno fallito.
+
+Risultato verificabile: dieci scenari originali browser/molla/Poiseuille desktop/mobile PASS sulla sorgente invariata,0skip/flaky; precedenti FAIL preservati. Bundle289068/245760FAIL riprodotto, nessuna cura con soglie/timeout o pin nuovi. Causa precisa del vecchio FAIL8kg/6kg non dimostrata; M4 resta aperta, PREPARED_NOT_DEPLOYED, review umane DRAFT pendenti. La proposta separata recover elimina la ricostruzione manuale del checkpoint dopo prove terminali e conserva tutti i vincoli del helper; non garantisce la chiusura di un processo nativo fatalmente interrotto. Review/Verify e identità della proposta restano nelle ricevute della PR; procedureRef e947ac98 non cambia implicitamente.
+
 ## Archivio e fonti
 Il testo precedente, incluse OPS-20261031-01, OPS-20261101-02/03/04, è conservato **byte per byte** in [history-through-20261101.md](history-through-20261101.md). È un archivio storico, non un secondo registro corrente. La coda antecedente è [archiviata](../operations/archive/coordination-before-sequential.json). Le fonti legacy e i 116 requisiti/68 criteri rimangono indicizzati da [product-map](product-map.md); non sono stati riscritti né promossi a PASS.
 
