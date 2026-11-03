@@ -1,0 +1,105 @@
+{
+  "commit": "d0aa2014b131335d5c278543cea35098dcefdfd3",
+  "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
+  "deploymentId": "dpl_HhzGdaLXgddb8HGDwUadEEcoabL8",
+  "projectId": "prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd",
+  "url": "https://ardesia-next-staging.vercel.app",
+  "status": "READY",
+  "observedAt": "2026-11-02T14:45:02Z",
+  "databaseResourceIdHash": "a7aeaf1d64287708277ed860ccfcd74103ed2ef3544b491818b1fe68dae76d68",
+  "generatedAt": "2026-11-02T14:45:25.443Z",
+  "startedAt": "2026-11-02T14:47:07.130Z",
+  "completedAt": "2026-11-02T14:47:18.739Z",
+  "checks": {
+    "backupRestore": {
+      "sourceDatabaseHash": "a7aeaf1d64287708277ed860ccfcd74103ed2ef3544b491818b1fe68dae76d68",
+      "restoreDatabaseHash": "c515ffc98b220ec0919877b83bf69d8dbdaddeb14ec60c8c64388093870af605",
+      "syntheticOnly": true,
+      "recordCount": 4,
+      "beforeDigest": "90c9843c75f8409f78c7a4c95ce14158e36d614c10b8c3f21b22e0d9b98fb116",
+      "restoredDigest": "90c9843c75f8409f78c7a4c95ce14158e36d614c10b8c3f21b22e0d9b98fb116",
+      "executionScope": "existing-isolated-restore",
+      "sourceWrites": false,
+      "observedAt": "2026-11-02T14:47:12.639Z",
+      "passed": true,
+      "artifactDigest": "901c59429d99dcd1fb3b00a47ad085a870271c9cd00cb41a172b4aaeeda9544c"
+    },
+    "expired": {
+      "responseStatus": 401,
+      "code": "UNAUTHENTICATED",
+      "executionScope": "isolated-session-in-restore",
+      "observedAt": "2026-11-02T14:47:14.449Z",
+      "passed": true,
+      "artifactDigest": "3bfdfccd5833d85c9ebefd39fbc293375641e98282202e2f4f9a293a480d4443"
+    },
+    "outage": {
+      "failedStatus": 503,
+      "recoveredStatus": 200,
+      "localFallbackUsed": false,
+      "beforeStateDigest": "90c9843c75f8409f78c7a4c95ce14158e36d614c10b8c3f21b22e0d9b98fb116",
+      "afterStateDigest": "90c9843c75f8409f78c7a4c95ce14158e36d614c10b8c3f21b22e0d9b98fb116",
+      "executionScope": "isolated-handler-connection-failure",
+      "observedAt": "2026-11-02T14:47:15.216Z",
+      "passed": true,
+      "artifactDigest": "08aa9ac73aa892b3b932568d9d492d51f6498340e30996362486b57c49397fad"
+    },
+    "import": {
+      "versions": [
+        {
+          "version": 1,
+          "sourceBytesDigest": "286dedd493023ccc44f95412ca6f099f294e86dd5641a2e4e4fa0a8f19324747",
+          "archivedBytesDigest": "286dedd493023ccc44f95412ca6f099f294e86dd5641a2e4e4fa0a8f19324747",
+          "beforeReceiptsDigest": "e92c717d82369dab3b0be345adf6a92444597bb4840c751f787ed8c26145a53f",
+          "afterReceiptsDigest": "e92c717d82369dab3b0be345adf6a92444597bb4840c751f787ed8c26145a53f",
+          "beforeRevision": 1,
+          "afterRevision": 1,
+          "consentReset": true,
+          "duplicateStatus": 409,
+          "ownershipMismatchStatus": 409
+        },
+        {
+          "version": 2,
+          "sourceBytesDigest": "d92543a70ef7f18e0be84d666324765d82a4e97b4cce342145b3e3a70856aaba",
+          "archivedBytesDigest": "d92543a70ef7f18e0be84d666324765d82a4e97b4cce342145b3e3a70856aaba",
+          "beforeReceiptsDigest": "63ed633a2610049c28df2df15889709c458ab51894852a03ee7903e5e41ed442",
+          "afterReceiptsDigest": "63ed633a2610049c28df2df15889709c458ab51894852a03ee7903e5e41ed442",
+          "beforeRevision": 1,
+          "afterRevision": 1,
+          "consentReset": true,
+          "duplicateStatus": 409,
+          "ownershipMismatchStatus": 409
+        },
+        {
+          "version": 3,
+          "sourceBytesDigest": "12068ef5bd0943cc9c8566fcd988be83ca3ee8b290258afaabeecd7b4384d4ce",
+          "archivedBytesDigest": "12068ef5bd0943cc9c8566fcd988be83ca3ee8b290258afaabeecd7b4384d4ce",
+          "beforeReceiptsDigest": "a57ed953fa05f1a10bc0506376edeaec436c74ed1ff80ba302aeff9ea32bdd2f",
+          "afterReceiptsDigest": "a57ed953fa05f1a10bc0506376edeaec436c74ed1ff80ba302aeff9ea32bdd2f",
+          "beforeRevision": 1,
+          "afterRevision": 1,
+          "consentReset": true,
+          "duplicateStatus": 409,
+          "ownershipMismatchStatus": 409
+        }
+      ],
+      "executionScope": "isolated-restore-real-import-handler",
+      "sourceData": "authored-synthetic-legacy-bytes",
+      "receiptScope": "original-history-prefix",
+      "observedAt": "2026-11-02T14:47:18.739Z",
+      "passed": true,
+      "artifactDigest": "d31fa1be30d4fae98c07ea2cd251bd42e944f5ba0e62bb014e1be0e491e3946c"
+    }
+  },
+  "database": {
+    "authority": "postgres",
+    "configured": true,
+    "remote": true,
+    "hostname": "ep-odd-cloud-ba3huvyi.c-8.eu-central-1.aws.neon.tech",
+    "resourceIdHash": "a7aeaf1d64287708277ed860ccfcd74103ed2ef3544b491818b1fe68dae76d68"
+  },
+  "isolation": {
+    "sourceReadOnly": true,
+    "restoreTargetInitiallyEmpty": true,
+    "sharedServiceInterrupted": false
+  }
+}

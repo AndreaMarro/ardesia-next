@@ -1,11 +1,12 @@
 import {defineConfig} from 'vite';
 import react from '@vitejs/plugin-react';
 import {fileURLToPath} from 'node:url';
+import {staticReactExports} from '../../tools/static-react-exports.mjs';
 import deploymentConfig from '../../vercel.json' with {type: 'json'};
 const previewHeaders = Object.fromEntries(deploymentConfig.headers.flatMap(block => block.headers.map(header => [header.key, header.value])));
 export default defineConfig({
   root: fileURLToPath(new URL('.', import.meta.url)),
-  plugins: [react()],
+  plugins: [staticReactExports(), react()],
   build: {
     manifest: true, target: 'es2022', minify: 'terser', modulePreload: {polyfill: false},
     terserOptions: {ecma: 2022, safari10: false, compress: {passes: 3, reduce_funcs: false, sequences: false, join_vars: false}, format: {comments: false, ascii_only: true}},

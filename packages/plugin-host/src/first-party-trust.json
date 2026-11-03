@@ -4,6 +4,11 @@
       "publisherId": "ardesia",
       "keyId": "m1-17817d02ba877ec0",
       "publicKeyBase64": "+wbxQHzlAnd/QSv6C4+TOJz3RiZc3kmHo3j7xWoR6WA="
+    },
+    {
+      "publisherId": "ardesia",
+      "keyId": "m4-candidate-87a7b090902c",
+      "publicKeyBase64": "LpfCmMmNMmFmGCCvBkTffksM91Eh2iqVkMrwGzfHbR4="
     }
   ],
   "allowlist": [
@@ -13,6 +18,13 @@
       "digest": "713b10ce53337e5bb03f0da86afec8a1266a8229115e9d1f571cf49766814148",
       "publisherId": "ardesia",
       "keyId": "m1-17817d02ba877ec0"
+    },
+    {
+      "id": "ardesia.poiseuille",
+      "version": "1.0.0",
+      "digest": "bd7eced69753424c7da3076783917d4fb235bd90d975dbbce2fe71371b06e00b",
+      "publisherId": "ardesia",
+      "keyId": "m4-candidate-87a7b090902c"
     }
   ],
   "transitions": []

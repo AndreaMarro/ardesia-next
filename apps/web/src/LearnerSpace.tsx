@@ -3,7 +3,7 @@ import type {LearningCommand} from '@ardesia/contracts';
 import type {RemoteClient} from '@ardesia/remote-client';
 import {DocumentView} from './components/DocumentView';
 import {LabInspector} from './components/LabInspector';
-import {connectMarketplace, disconnectMarketplace, syncMarketplace} from './plugins/first-party';
+import {connectMarketplace, disconnectMarketplace, syncMarketplace, firstPartyLabName} from './plugins/first-party';
 import {assertDraftUnchanged, draftConflictMessage, learnerObject, type SaveObject} from './workspace';
 
 export function LearnerSpace({client, onAccount}: {client: RemoteClient; onAccount: () => void}) {
@@ -86,7 +86,7 @@ export function LearnerSpace({client, onAccount}: {client: RemoteClient; onAccou
             </section>
           </div>
           {selected?.type === 'lab' && <section className="learner-lab">
-            {access?.status === 'active' && !access.consented && !labDirty ? <div className="learner-consent"><h2>Autorizza questo laboratorio</h2><p>Molla ideale · versione {access.release?.version}. Consenso valido solo per questa release e istanza.</p>
+            {access?.status === 'active' && !access.consented && !labDirty ? <div className="learner-consent"><h2>Autorizza questo laboratorio</h2><p>{firstPartyLabName(selected.data.pluginId)} · versione {access.release?.version}. Consenso valido solo per questa release e istanza.</p>
               <label className="consent-option"><input type="checkbox" checked={readConsent} onChange={event => setReadConsent(event.target.checked)}/>Leggere il mio stato scientifico</label>
               <label className="consent-option"><input type="checkbox" checked={writeConsent} onChange={event => setWriteConsent(event.target.checked)}/>Modificare e salvare i parametri</label>
               <button className="primary-button" disabled={!readConsent || !writeConsent || busy} onClick={() => void run({kind: 'consent-lab', objectId: selected.id,

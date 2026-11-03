@@ -2,7 +2,8 @@ import {readFileSync, existsSync, mkdirSync, writeFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
 import {identity} from './evidence.mjs';
-import {m3LocalEvidenceMatches, m3RemoteEvidenceMatches} from './m3-evidence.mjs';
+import {m3LocalEvidenceMatches, m3RemoteEvidenceMatches, m3ReportDigest} from './m3-evidence.mjs';
+import {assembleM3Acceptance} from './m3-acceptance.mjs';
 import {sourceVisibilityMatches} from './source-visibility.mjs';
 
 const isRecord = value => value !== null && typeof value === 'object' && !Array.isArray(value);
@@ -81,6 +82,33 @@ export function unitReportDigest(unit) {
 }
 const unitReportMatches = (unit, verification) => isRecord(verification) && digest(verification.unitReportDigest)
   && verification.unitReportDigest === unitReportDigest(unit);
+
+export const M4_PREPARATION_CHECKS = Object.freeze(['signature-before-execution', 'explicit-consent', 'save-edit-reopen', 'exact-old-revision',
+  'invalid-state-no-write', 'owner-isolation', 'withdraw-consent', 'tampered-bundle-no-worker', 'forged-signature-no-worker']);
+export const m4PreparationDigest = unitReportDigest;
+
+/** Only scoped preparation. No fixture result can accept M4 or substitute for the web/PostgreSQL consumer. */
+export function m4PreparationMatches({verification, unit, preparation} = {}, current) {
+  if (!m1VerificationMatches(verification, current) || !m1UnitMatches(unit) || !unitReportMatches(unit, verification)
+    || !matchesCurrent(preparation, current) || preparation.schemaVersion !== '1.0.0' || preparation.kind !== 'ardesia-m4-preparation'
+    || preparation.acceptanceEvidence !== false || preparation.passed !== true
+    || !digest(verification.m4PreparationDigest) || verification.m4PreparationDigest !== m4PreparationDigest(preparation)) return false;
+  if (!unit.testResults.some(suite => suite.name.replaceAll('\\', '/').endsWith('/plugins/poiseuille/src/model.test.ts') || suite.name === 'plugins/poiseuille/src/model.test.ts')) return false;
+  const {plugin, consumer, reuse} = preparation;
+  if (!isRecord(plugin) || plugin.id !== 'ardesia.poiseuille' || plugin.version !== '1.0.0' || !digest(plugin.bundleDigest) || !sha(plugin.sourceRevision)
+    || !isRecord(consumer) || consumer.consumer !== 'public-Host-Core-integration-fixture'
+    || consumer.storage !== 'existing-Core-MemoryStorage-test-adapter' || !positiveInteger(consumer.workersStarted) || consumer.liveWorkers !== 0
+    || consumer.browser !== 'NOT_RUN' || consumer.postgres !== 'NOT_RUN' || consumer.humanReview !== 'PENDING'
+    || !Array.isArray(consumer.checks) || consumer.checks.length !== M4_PREPARATION_CHECKS.length || new Set(consumer.checks).size !== consumer.checks.length
+    || !M4_PREPARATION_CHECKS.every(name => consumer.checks.includes(name))) return false;
+  return isRecord(reuse) && reuse.baseSha === 'c4d38a612a73bc28df434c2d36d36025cf1b1adc' && reuse.sdkVersion === '1.0.0'
+    && ['coreUnchanged','hostUnchanged','sdkUnchanged','persistenceUnchanged'].every(key => reuse[key] === true)
+    && positiveInteger(reuse.generatedWorkerBytes) && Array.isArray(reuse.changedPaths) && reuse.changedPaths.length > 0
+    && new Set(reuse.changedPaths).size === reuse.changedPaths.length && reuse.changedPaths.every(path => typeof path === 'string' && /^(plugins\/poiseuille\/|tools\/|docs\/)/.test(path))
+    && Array.isArray(reuse.measuredDelta) && reuse.measuredDelta.length === reuse.changedPaths.length
+    && reuse.measuredDelta.every((entry, index) => isRecord(entry) && entry.path === reuse.changedPaths[index]
+      && Number.isSafeInteger(entry.addedLines) && entry.addedLines >= 0 && Number.isSafeInteger(entry.removedLines) && entry.removedLines >= 0);
+}
 
 function m1VerificationMatches(verification, current) {
   if(!matchesCurrent(verification, current) || verification.passed !== true || !Array.isArray(verification.checks)) return false;
@@ -190,6 +218,54 @@ export function m2EvidenceMatches(evidence,current) {
     && m2BrowserMatches(evidence.browser,current) && m2RemoteBrowserMatches(evidence.release,current);
 }
 
+export const M3_BASELINE_ROOT = 'operations/baselines/m3/';
+export const M3_BASELINE_REPORTS = Object.freeze(['verification.json', 'unit.json', 'browser-evidence.json', 'e2e.json',
+  'release-evidence.json', 'm3-remote-evidence.json', 'status.json', 'platform-before.json', 'preflight.json',
+  'browser.json', 'operator.json', 'postflight.json', 'platform-after.json', 'candidate.json', 'result.json']);
+
+/** Preserve original bytes; the caller may read a worktree or an immutable Git revision. */
+export function readM3Baseline(readText = file => readFileSync(file, 'utf8')) {
+  try {
+    return {manifest: JSON.parse(readText(M3_BASELINE_ROOT + 'manifest.json')),
+      reports: Object.fromEntries(M3_BASELINE_REPORTS.map(name => [name, readText(M3_BASELINE_ROOT + name)]))};
+  } catch {return null;}
+}
+
+/** Reuse the original gates and offline assembler, never the archived ACCEPTED flag alone. */
+export function m3BaselineMatches(baseline) {
+  try {
+    const {manifest: m, reports} = baseline;
+    if (!isRecord(m) || m.schemaVersion !== 1 || m.kind !== 'ardesia-m3-accepted-baseline'
+      || m.repository !== 'AndreaMarro/ardesia-next' || !sha(m.source?.commit) || !digest(m.source?.sourceDigest)
+      || !sha(m.source?.tree) || !sha(m.completionRef) || !timestamp(m.acceptedAt) || !httpsUrl(m.publication)
+      || !isRecord(m.reports) || !isRecord(reports) || Object.keys(m.reports).length !== M3_BASELINE_REPORTS.length
+      || Object.keys(reports).length !== M3_BASELINE_REPORTS.length || m.verify?.attempt !== 1 || !digest(m.verify?.artifactSha256)) return false;
+    const parsed = {};
+    for (const name of M3_BASELINE_REPORTS) {
+      if (typeof reports[name] !== 'string' || !digest(m.reports[name])
+        || createHash('sha256').update(reports[name]).digest('hex') !== m.reports[name]) return false;
+      parsed[name] = JSON.parse(reports[name]);
+    }
+    const status = parsed['status.json'], remote = parsed['m3-remote-evidence.json'], release = parsed['release-evidence.json'];
+    if (!matchesCurrent(status, m.source) || status.M3 !== 'ACCEPTED' || m.verify.url !== release.ci?.url
+      || Date.parse(m.acceptedAt) < Date.parse(remote.observedAt) || parsed['result.json'].accepted !== true) return false;
+    const current = {...m.source, generatedAt: remote.generatedAt};
+    // Tree is source provenance, not a field of the original runtime report.
+    delete current.tree;
+    const evidence = {verification: parsed['verification.json'], unit: parsed['unit.json'],
+      browser: parsed['browser-evidence.json'], playwright: parsed['e2e.json'], release, remote};
+    if (!m1BrowserMatches(evidence.browser, current) || !m2BrowserMatches(evidence.browser, current)
+      || !releaseEvidenceMatches(release, current) || !m3RemoteEvidenceMatches(evidence, current)) return false;
+    const replay = assembleM3Acceptance({current, evidence, platformBefore: parsed['platform-before.json'],
+      platformAfter: parsed['platform-after.json'], preflight: parsed['preflight.json'], postflight: parsed['postflight.json'],
+      browser: parsed['browser.json'], operator: parsed['operator.json']});
+    return replay.accepted === true && m3ReportDigest(replay.remote) === m3ReportDigest(remote)
+      && m3ReportDigest(replay.release) === m3ReportDigest(release)
+      && m3ReportDigest(parsed['candidate.json'].remote) === m3ReportDigest(remote)
+      && m3ReportDigest(parsed['candidate.json'].release) === m3ReportDigest(release);
+  } catch {return false;}
+}
+
 function runStatus() {
   const current = identity();
   const read = file => {try {return existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : null;} catch {return null;}};
@@ -202,6 +278,8 @@ function runStatus() {
   const m3Evidence = {verification: checks, unit, browser: e2e, playwright: read('artifacts/e2e.json'), release: remote, remote: remoteM3};
   const localM3 = m3LocalEvidenceMatches(m3Evidence, current) && m1BrowserMatches(e2e, current) && m2BrowserMatches(e2e, current);
   const acceptedM3 = localM3 && m3RemoteEvidenceMatches(m3Evidence, current);
+  const m3Baseline = readM3Baseline();
+  const historicalM3 = m3BaselineMatches(m3Baseline);
   const baselineRoot = 'operations/baselines/m2/';
   const baseline = read(baselineRoot + 'status.json');
   const baselineAccepted = m2EvidenceMatches({verification: read(baselineRoot + 'verification.json'), unit: read(baselineRoot + 'unit.json'), browser: read(baselineRoot + 'browser-evidence.json'), release: read(baselineRoot + 'release-evidence.json')}, baseline); 
@@ -210,9 +288,16 @@ function runStatus() {
   const remoteMatches = releaseEvidenceMatches(remote, current);
   const m1Accepted = m1EvidenceMatches({verification: checks, unit, browser: e2e, release: remote}, current);
   const m2Accepted = m2EvidenceMatches({verification: checks, unit, browser: e2e, release: remote}, current);
+  const m4Preparation = read('artifacts/m4-preparation.json');
+  const m4Prepared = historicalM3 && m4PreparationMatches({verification: checks, unit, preparation: m4Preparation}, current);
   const state = {
-    ...current, milestone: 'M3', foundationMilestone: 'M0',
-    acceptedBaselines: baselineAccepted ? [{commit: baseline.commit, sourceDigest: baseline.sourceDigest, milestones: ['M0','M1','M2'], status: 'ACCEPTED', evidence: 'operations/baselines/m2', url: baseline.deployment.url}] : [],
+    ...current, milestone: historicalM3 ? 'M4' : 'M3', foundationMilestone: 'M0',
+    acceptedBaselines: [
+      ...(baselineAccepted ? [{commit: baseline.commit, sourceDigest: baseline.sourceDigest, milestones: ['M0','M1','M2'], status: 'ACCEPTED', evidence: 'operations/baselines/m2', url: baseline.deployment.url}] : []),
+      ...(historicalM3 ? [{...m3Baseline.manifest.source, milestones: ['M3'], status: 'ACCEPTED',
+        evidence: 'operations/baselines/m3', url: JSON.parse(m3Baseline.reports['release-evidence.json']).url,
+        completionRef: m3Baseline.manifest.completionRef}] : [])
+    ],
     verification: verified ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',
     browser: browserPassed ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',
     deployment: remoteMatches ? remote : {status: 'NOT_VERIFIED_FOR_CURRENT_COMMIT'},
@@ -231,8 +316,12 @@ function runStatus() {
       browserLifecycleAndCounterproofs: m2BrowserMatches(e2e, current) ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',
       protectedRemoteLifecycle: m2RemoteBrowserMatches(remote, current) ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_COMMIT'
     },
-    M3: acceptedM3 ? 'ACCEPTED' : 'AWAITING_COMPLETE_EVIDENCE', M4: 'NOT_STARTED', M5: 'NOT_STARTED',
+    M3: acceptedM3 ? 'ACCEPTED' : 'AWAITING_COMPLETE_EVIDENCE', M4: m4Prepared ? 'AWAITING_WEB_CONSUMER' : m4Preparation ? 'PREPARATION_UNVERIFIED' : 'NOT_STARTED', M5: 'NOT_STARTED',
+    m4Evidence: {signedHostCorePreparation: m4Prepared ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',
+      webAndPostgresConsumer: 'NOT_RUN', humanScientificEditorialReview: 'PENDING',
+      acceptanceRequires: 'Both boundary conditions in the existing web app through the same authorized Core/PostgreSQL, browser UX/science counterproofs and exact-source evidence. Preparation never accepts M4.'},
     m3Evidence: {
+      historicalBaseline: historicalM3 ? 'ACCEPTED' : 'MISSING_OR_INVALID',
       localPostgresAndBrowser: localM3 ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',
       protectedRemoteContinuity: acceptedM3 ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_COMMIT',
       infrastructure: environment,

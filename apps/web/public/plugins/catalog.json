@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "revision": 1,
-  "publishedAt": "2026-10-29T09:49:56Z",
+  "revision": 2,
+  "publishedAt": "2026-11-02T22:15:23.501963Z",
   "entries": [
     {
       "kind": "plugin",
@@ -41,6 +41,45 @@
       },
       "manifestPath": "/plugins/ideal-spring/1.0.0/manifest.json",
       "bundlePath": "/plugins/ideal-spring/1.0.0/plugin.js"
+    },
+    {
+      "kind": "plugin",
+      "status": "available",
+      "summary": "Bozza didattica: confronta pressione e portata imposte nel flusso laminare sviluppato. Parametri SI, ipotesi e limiti espliciti; salva e riapri nella stessa lezione. Review scientifica ed editoriale umana in attesa.",
+      "manifest": {
+        "schemaVersion": "1.0.0",
+        "id": "ardesia.poiseuille",
+        "name": "Flusso di Poiseuille",
+        "version": "1.0.0",
+        "sdkVersion": "1.0.0",
+        "kind": "plugin",
+        "publisher": {
+          "id": "ardesia",
+          "keyId": "m4-candidate-87a7b090902c"
+        },
+        "license": "UNLICENSED; bundled Zod MIT notice included",
+        "provenance": {
+          "repository": "https://github.com/AndreaMarro/ardesia-next",
+          "commit": "9343921d716907918d94a6132fe89a1b881f0e06",
+          "path": "plugins/poiseuille/src/worker.ts"
+        },
+        "integrity": {
+          "algorithm": "SHA-256",
+          "digest": "bd7eced69753424c7da3076783917d4fb235bd90d975dbbce2fe71371b06e00b"
+        },
+        "capabilities": [
+          "state:read",
+          "state:write"
+        ],
+        "stateSchemaVersion": "1.0.0",
+        "execution": "first-party",
+        "signature": {
+          "algorithm": "Ed25519",
+          "value": "7MW2PMznDxuf1viikBBZVbTBIi9vIOn+g/0hEd1R+5OwNZlteTdlcRgqEKrURsxJmfZ47bH+/U9mCJXW1mfCAg=="
+        }
+      },
+      "manifestPath": "/plugins/poiseuille/1.0.0/manifest.json",
+      "bundlePath": "/plugins/poiseuille/1.0.0/plugin.js"
     }
   ]
 }

@@ -97,6 +97,32 @@ test('SHA or digest mismatch stops before session probes or browser fixture writ
   }
 });
 
+test('a platform environment mismatch is reported without retaining provider bodies or credentials', async () => {
+  const sequence = responses();
+  sequence[1] = new Response(`provider diagnostic ${token}`, {status: 403,
+    headers: {'Content-Type': 'text/plain', 'x-vercel-error': 'TRUSTED_SOURCES_ENVIRONMENT_MISMATCH'}});
+  const {report, requests} = await run(sequence);
+  assert.equal(report.failureCode, 'PLATFORM_ENVIRONMENT_MISMATCH');
+  assert.equal(report.passed, false);
+  assert.equal(report.m3Acceptance, 'NOT_EVALUATED');
+  assert.equal(requests.length, 2);
+  assert.equal(sequence[1].bodyUsed, true);
+  assert.doesNotMatch(JSON.stringify(report), /private-platform-token|provider diagnostic/);
+});
+
+test('unrecognized provider error values cannot enter the report or override a valid application response', async () => {
+  for (const value of [token, `TRUSTED_SOURCES_ENVIRONMENT_MISMATCH ${token}`]) {
+    const sequence = responses();
+    sequence[1] = new Response(token, {status: 403, headers: {'x-vercel-error': value}});
+    const {report} = await run(sequence);
+    assert.equal(report.failureCode, 'JSON_RESPONSE_REQUIRED');
+    assert.doesNotMatch(JSON.stringify(report), /private-platform-token/);
+  }
+  const sequence = responses();
+  sequence[1] = json(build, 200, {'x-vercel-error': 'TRUSTED_SOURCES_ENVIRONMENT_MISMATCH'});
+  assert.equal((await run(sequence)).report.passed, true);
+});
+
 test('HTML protection, malformed JSON, invalid UTF-8 and oversized bodies fail without retaining content', async () => {
   const invalid = [new Response('<html>private-platform-token</html>', {headers: {'Content-Type': 'text/html'}}),
     new Response('{"secret":"private-platform-token"', {headers: {'Content-Type': 'application/json'}}),

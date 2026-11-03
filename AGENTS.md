@@ -1,22 +1,28 @@
-# Ardesia Next
+# Ardesia Next — Codex sequential coordinator
 
-Use this repository only. `AndreaMarro/ardesia` is a read-only source, never a deployment target.
+## Current authority
+The owner's 2 November 2026 setup mandate OPS-20261102-17 authorizes **four hourly native tasks, one Codex integrator**: engineering, development/integration, isolated delegated development, and independent review. Read `docs/START_HERE.md`, `docs/recurring-work.md` and `docs/hourly-delivery.md`. This supersedes only the single-task/90-minute configuration of ADR 0008 and OPS-20261102-16; their claim, evidence, security and product gates remain. GPT-6.1 Sol/xhigh is explicitly requested for these native tasks. This does not accept M3 or authorize production, spending or weaker security. Model/effort are platform settings, not role names. Repository-local `.agents/skills` and `.codex/agents` are the portable definitions; old personal skills must not restore the retired pair.
 
-- Coordinator owns integration, dependency lock, CI, remote writes and release evidence.
-- Claim one file area before editing; never run concurrent writers in the same area.
-- One web app; Core owns identity contracts, objects, revisions, authorization, receipts and events.
-- LessonOS derives projections from Core events; it has no independent authoritative store.
-- Consume other packages through their public `@ardesia/*` exports. No cross-app or private imports.
-- No third-party plugin execution, public deployment, paid add-on or data migration without its gate.
-- M0's historical baseline was device-only. Current M3 uses remote PostgreSQL; read generated status for acceptance, never infer it from READY or an open browser session.
-- Preserve DRAFT, source revisions, licensing and provenance. No auto-approval of content.
-- Every PR includes a user-visible result, focused checks, source SHA/digest, limits and rollback.
-- Run `npm run verify`, then the affected browser flow. CI must verify the precise PR head.
-- `npm run status` generates evidence-based state; do not hand-edit generated output.
-- Browser tests default to the isolated local database. Remote regression requires explicit staging mode, existing synthetic credentials and approved platform access; its separate report never accepts M3. See `e2e/README.md` and the dated observations in `operations/m3-environment.json`.
-- Remote preflight must pass before application login or writes. Use only short-lived project OIDC on the exact staging origin, reject redirects and preserve independent application cookies; never relax protection to make a test pass.
-- No external agent/Codex jobs. Roles describe ownership, not a mandate to spawn more workers.
+## Minimum context
+Read the live `handoff.json` from `ops/dual-run-state` at one immutable ref, then its `procedureRef`, the complete current task in `operations/coordination.json`, only applicable scoped AGENTS, the referenced history/lesson and relevant product-map row. That branch name is retained for compatibility, not a second actor. In v2 `nextActor` is always `codex`. Source revision, procedure revision, deployed revision and milestone acceptance are separate facts. A newer PR head is not automatically an adopted procedure. Do not rebuild the history from all chats or legacy every run.
 
-Ownership: `apps/web` UX; `packages/core|contracts` Core; `packages/lesson-os` continuity;
-`packages/plugin-sdk|plugin-host` plugins; `packages/ui` design system; `e2e` QA;
-`tools|.github|operations|package*.json` coordinator. See `docs/handoff.md`.
+## Product invariants
+One modular monolith, one web app, one authoritative Core/PostgreSQL, one Remote Client, shared versioned SDK/Host. LessonOS, graphs and analytics are derived projections. Identity, role, entitlement, ownership and visibility remain distinct. Domain rules stay in Core; effects in adapters; recovery in the client; plugin execution in Host. Use public package exports and real consumers; no speculative abstractions, duplicate persistence, microservices or second Core. Preserve signatures, hashes, consent/revocation, provenance, licensing, DRAFT and exact scientific revisions. No eLab runtime or silent latest fallback.
+
+## Execution
+One active increment, one root writer, at most two transient specialists, sequential unless independent read-only checks justify overlap. Transient specialists do not publish, integrate, change cursors or schedule jobs. The three independent native contributors have only the narrow local-artifact/material-comment authority in docs/hourly-delivery.md; they never write shared source, authoritative state or services. Their instructions are not platform ACLs. An author cannot approve their own substantial change by changing role labels. The reviewer must receive raw source/diff and acceptance criteria, not a desired verdict. Record the actual independent context; lacking that capability means review remains pending, not invented.
+
+Acquire and publish a valid cursor claim with expected revision and parent SHA, no force, then re-read it before source or service writes. `cycle.mjs assign` selects canonical work inside the same budget. An expired claim never permits takeover. A historical automation ID that cannot be looked up is not a permanent project-wide blocker; use current claims, refs and observed writers. A concrete conflict blocks that scope, not all read-only work. Never reset a dirty worktree or delete unmerged work.
+
+Use the existing queue and product gate `tools/status.mjs`; no second backlog, acceptance engine or status database. M3 main/preview/staging freeze remains until its original exit conditions. Isolated preparation/review is distinct from integration. M3 remote credentials/operators must be available through already-authorized channels; no secret scraping, bypass, privilege expansion, destructive restore or new account. After genuine M3 acceptance execute M3-TRANSITION and continue M4, complete educational units and the remaining product-map domains. New product work remains dependent on its actual prerequisites.
+
+Reuse complete applicable evidence tied to exact source, configuration, toolchain, environment and fixtures. A new agent does not invalidate evidence. Required Verify must pass on the final published source; documentation still belongs to sourceDigest. Cursor-only updates do not change candidate source. Keep failures, missing runs and limits. `npm run status` generates product state; never edit acceptance reports by hand. CI pending at closing becomes WAITING_CI, not a rerun or false PASS.
+
+## Autonomy and stop conditions
+No routine permission questions. Act within existing authority; unavailable credentials or mandatory platform confirmation block that operation without bypass. No new spending/provider, public production, access changes or destructive operations. A normal recurring run MUST NOT create/update/pause/resume/delete any scheduler, change model/permissions or launch external Codex/API jobs. One-time native task setup is separately requested by the owner's setup prompt, not by recurring runs.
+
+Budget from actual start: bootstrap <=8 minutes, main change <=35, verification/publication <=45, checkpoint and close <=55. A scheduled interval is not a distributed lock or hard process timeout. Do not start work that cannot leave a recoverable result. No agents/processes writing beyond the root run. Close unchanged/no-work runs early; do not disable recurrence or create repetitive comments.
+
+Capture material user decisions once in `docs/history.md` before handing off affected work, with source actually read and bounded supersession. Do not export private chats/secrets. Improve a procedure only from a verified incident, minimal patch, case/counterexample, independent review, same-head checks and rollback. At most one method-improvement proposal per cycle unless the method itself is unsafe. Product value, not paperwork, is progress.
+
+Existing area ownership and scoped AGENTS remain: `apps/web` UX; `packages/core|contracts` domain; `packages/server` identity/data; `packages/remote-client` continuity; `packages/lesson-os` projections; SDK/Host/plugins; `packages/ui` design system; `e2e` QA. Root coordinator owns cross-area contracts, CI and releases within the existing runbook.

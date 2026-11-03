@@ -7,7 +7,7 @@ import {Dialog} from './Dialog';
 import {Marketplace} from './Marketplace';
 
 export type DialogName = 'library' | 'settings' | 'new' | 'history' | 'modules';
-type Props = {name: DialogName; core: CoreService; actor: Actor; onExport: () => Promise<void>; document: LessonDocument; onClose: () => void; onOpen: (id: string) => void; onCreate: (title: string) => Promise<void>; onAddLab: () => Promise<void>; addingLab: boolean; onModulesChanged: () => void};
+type Props = {name: DialogName; core: CoreService; actor: Actor; onExport: () => Promise<void>; document: LessonDocument; onClose: () => void; onOpen: (id: string) => void; onCreate: (title: string) => Promise<void>; onAddLab: (pluginId: string, condition?: 'pressure' | 'flow') => Promise<void>; addingLab: boolean; onModulesChanged: () => void};
 export function WorkspaceDialogs({name, core, actor, onExport, document, onClose, onOpen, onCreate, onAddLab, addingLab, onModulesChanged}: Props) {
   const [title, setTitle] = useState('');
   const [build, setBuild] = useState<{commit: string; sourceDigest: string} | null>(null);

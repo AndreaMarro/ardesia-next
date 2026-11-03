@@ -1,5 +1,7 @@
 # Architettura di Ardesia Next
 
+Per la mappa attuale di responsabilità/prodotto e lo stato dei percorsi usare [product-map](product-map.md) e [START_HERE](START_HERE.md). Il metodo di costruzione è in [ADR 0006](adr/0006-operating-model.md). Le tabelle M0 sottostanti sono deliberatamente storiche; `packages/server` e `packages/remote-client` sono descritti dall'ADR M3 e dai rispettivi README.
+
 **Aggiornamento M3:** [autorità remota, identità e continuità](adr/0005-m3-remote-authority.md). Le sezioni M0 seguenti conservano la decisione storica di fondazione.
 
 **Aggiornamento M1:** [plugin verificato, oggetto laboratorio e migrazione v2](m1-delivery.md). Le sezioni M0 seguenti conservano la decisione di fondazione; il nuovo comportamento M1 è descritto nell’aggiornamento e nell’ADR 0004.

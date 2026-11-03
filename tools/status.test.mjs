@@ -1,4 +1,6 @@
 import './m3-evidence.test.mjs';
+import './m3-transition.test.mjs';
+import './m4-preparation.test.mjs';
 import './qa-database.test.mjs';
 import './e2e-target.test.mjs';
 import './e2e-runner.test.mjs';

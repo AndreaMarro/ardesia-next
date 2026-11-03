@@ -1,11 +1,13 @@
 import {test, expect} from '@playwright/test';
 import {collectBrowserAcceptance} from '../tools/m3-browser.mjs';
 import {resolveE2ETarget} from './target.ts';
+import {projectCredentialEnvironment} from '../tools/e2e-accounts.mjs';
 
-test('[QA] acceptance collector observes independent sessions and eight browser counterproofs', async ({browser}) => {
+test('[QA] acceptance collector observes independent sessions and eight browser counterproofs', async ({browser}, testInfo) => {
   test.setTimeout(180_000);
   const report = await collectBrowserAcceptance({browser, current: {commit: 'a'.repeat(40), sourceDigest: 'b'.repeat(64)},
-    deployment: {deploymentId: 'dpl_LocalCollectorTest'}, origin: resolveE2ETarget().origin});
+    deployment: {deploymentId: 'dpl_LocalCollectorTest'}, origin: resolveE2ETarget().origin,
+    credentials: projectCredentialEnvironment(process.env, resolveE2ETarget().mode, testInfo.project.name)});
   // This is a loopback collector integration test. It never writes release acceptance artifacts.
   expect(Object.keys(report.sessions).sort()).toEqual(['studentA1', 'studentA2', 'studentB', 'teacher']);
   expect(new Set(Object.values(report.sessions).map(s => s.contextId)).size).toBe(4);

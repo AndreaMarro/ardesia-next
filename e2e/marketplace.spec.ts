@@ -159,6 +159,19 @@ for (const mutation of ['signature', 'bundle'] as const) {
   });
 }
 
+test('[M2] altered shared worker bytes are refused before execution or persistence', async ({page}) => {
+  let workers=0;page.on('worker',()=>workers++);
+  await page.goto('/');await expect(page.getByText('Bozza personale',{exact:true})).toBeVisible();
+  const before=await storedBytes(page);
+  await page.route('**/plugins/shared/*.js',async route=>{
+    const response=await route.fetch(),bytes=Buffer.from(await response.body());bytes[0]=bytes[0]!^1;
+    await route.fulfill({response,body:bytes});
+  });
+  await openMarketplace(page);await page.getByRole('button',{name:'Verifica Molla ideale',exact:true}).click();
+  await expect(page.getByRole('dialog').getByRole('alert')).toContainText('INTEGRITY_MISMATCH');
+  expect(await storedBytes(page)).toBe(before);expect(workers).toBe(0);
+});
+
 test('[M2] revoked publisher stops reopening and preserves data', async ({page}) => {
   await addMarketplaceSpring(page);
   await saveFourKilograms(page);

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "ardesia.poiseuille",
+  "name": "Flusso di Poiseuille",
+  "version": "1.0.0",
+  "sdkVersion": "1.0.0",
+  "kind": "plugin",
+  "publisher": {
+    "id": "ardesia",
+    "keyId": "m4-candidate-87a7b090902c"
+  },
+  "license": "UNLICENSED; bundled Zod MIT notice included",
+  "provenance": {
+    "repository": "https://github.com/AndreaMarro/ardesia-next",
+    "commit": "9343921d716907918d94a6132fe89a1b881f0e06",
+    "path": "plugins/poiseuille/src/worker.ts"
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "digest": "bd7eced69753424c7da3076783917d4fb235bd90d975dbbce2fe71371b06e00b"
+  },
+  "capabilities": [
+    "state:read",
+    "state:write"
+  ],
+  "stateSchemaVersion": "1.0.0",
+  "execution": "first-party",
+  "signature": {
+    "algorithm": "Ed25519",
+    "value": "7MW2PMznDxuf1viikBBZVbTBIi9vIOn+g/0hEd1R+5OwNZlteTdlcRgqEKrURsxJmfZ47bH+/U9mCJXW1mfCAg=="
+  }
+}

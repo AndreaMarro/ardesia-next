@@ -5,6 +5,7 @@ import {mkdtempSync, mkdirSync, writeFileSync, readFileSync, existsSync, rmSync}
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
+import {localBrowserAccounts, projectCredentials, projectCredentialEnvironment} from './e2e-accounts.mjs';
 
 const runner = fileURLToPath(new URL('./e2e.mjs', import.meta.url));
 const protectedPaths = ['e2e.json', 'browser-evidence.json', 'release-evidence.json', 'm3-remote-evidence.json'];
@@ -12,6 +13,36 @@ const credentials = Object.fromEntries(['TEACHER', 'STUDENT_A', 'STUDENT_B'].fla
   [`ARDESIA_E2E_${name}_USERNAME`, `runner-fixture-${index}`],
   [`ARDESIA_E2E_${name}_PASSWORD`, 'synthetic-runner-test-password'],
 ]));
+
+test('local projects have distinct budgets and stable identities inside each scenario', () => {
+  const seeded = localBrowserAccounts(credentials);
+  assert.equal(seeded.length, 6);
+  assert.equal(new Set(seeded.map(account => account.username)).size, 6);
+  assert.equal(new Set(seeded.map(account => account.id)).size, 6);
+  for (const project of ['desktop-chromium', 'mobile-chromium']) {
+    const first = projectCredentials(credentials, 'local', project, 'STUDENT_A');
+    assert.deepEqual(projectCredentials(credentials, 'local', project, 'STUDENT_A'), first);
+    assert.equal(seeded.find(account => account.username === first.username).role, 'student');
+    assert.notEqual(first.username, projectCredentials(credentials, 'local', project, 'STUDENT_B').username);
+  }
+  assert.notEqual(projectCredentials(credentials, 'local', 'desktop-chromium', 'STUDENT_A').username,
+    projectCredentials(credentials, 'local', 'mobile-chromium', 'STUDENT_A').username);
+});
+
+test('remote credentials remain exact and unknown local projects fail closed without leaking values', () => {
+  for (const project of ['desktop-chromium', 'mobile-chromium']) {
+    assert.deepEqual(projectCredentialEnvironment(credentials, 'remote', project), credentials);
+  }
+  assert.throws(() => projectCredentials(credentials, 'local', 'unknown', 'STUDENT_A'), /Unknown local browser project/);
+  assert.throws(() => projectCredentials({...credentials, ARDESIA_E2E_STUDENT_A_USERNAME:'x'.repeat(63)}, 'local', 'desktop-chromium', 'STUDENT_A'), /Invalid scoped/);
+});
+
+function fakePlaywright(bin, source) {
+  const script = join(bin, 'playwright-fixture.cjs');
+  writeFileSync(script, source);
+  const quote = value => "'" + value.replaceAll("'", "'\\''") + "'";
+  writeFileSync(join(bin, 'playwright'), `#!/bin/sh\nexec ${quote(process.execPath)} ${quote(script)} "$@"\n`, {mode:0o700});
+}
 
 function fixture(run) {
   const directory = mkdtempSync(join(tmpdir(), 'ardesia-e2e-runner-'));
@@ -75,7 +106,7 @@ test('missing platform access or a failed preflight cannot launch browser login 
     assert.match(missing.stderr, /AUTHORIZED_VERCEL_OIDC_REQUIRED/);
     assert.equal(existsSync(join(directory, 'artifacts/remote-continuity')), false);
     const bin = join(directory, 'node_modules/.bin'); mkdirSync(bin, {recursive:true});
-    writeFileSync(join(bin, 'playwright'), `#!${process.execPath}\nrequire('node:fs').writeFileSync('browser-launched','unsafe');`, {mode:0o700});
+    fakePlaywright(bin, "require('node:fs').writeFileSync('browser-launched','unsafe');");
     const preload = networkFixture(directory, true);
     const result = execute(directory, {...env, ...credentials, VERCEL_OIDC_TOKEN:'synthetic-platform-token-fixture'}, [], preload);
     assert.match(result.stderr, /BUILD_IDENTITY_MISMATCH/);
@@ -103,7 +134,7 @@ test('a failed remote child has no DB credentials or seeding flag and writes onl
   fixture((directory, env) => {
     const bin = join(directory, 'node_modules/.bin'); mkdirSync(bin, {recursive:true});
     // Only a process-boundary probe. It performs no HTTP/DB work and produces no browser evidence.
-    writeFileSync(join(bin, 'playwright'), `#!${process.execPath}\n` + `
+    fakePlaywright(bin, `
       const fs = require('node:fs');
       const names = ['ARDESIA_E2E','ARDESIA_DATABASE_URL','ARDESIA_OPERATOR_DATABASE_URL',
         'M3_BROWSER_DATABASE_URL','M3_TEST_DATABASE_URL','M3_TEST_ADMIN_DATABASE_URL',
@@ -114,7 +145,7 @@ test('a failed remote child has no DB credentials or seeding flag and writes onl
         retained:names.filter(name => process.env[name] !== undefined)
       }));
       process.exit(1);
-    `, {mode:0o700});
+    `);
     const preload = networkFixture(directory);
     const result = execute(directory, {...env, ...credentials, ARDESIA_E2E:'0', VERCEL_OIDC_TOKEN:'synthetic-platform-token-fixture',
       ARDESIA_DATABASE_URL:'synthetic-runtime-dsn', ARDESIA_OPERATOR_DATABASE_URL:'synthetic-operator-dsn',

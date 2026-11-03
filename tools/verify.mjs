@@ -1,7 +1,7 @@
 import {spawnSync} from 'node:child_process';
 import {mkdirSync, writeFileSync, readFileSync} from 'node:fs';
 import {identity} from './evidence.mjs';
-import {unitReportDigest} from './status.mjs';
+import {unitReportDigest, m4PreparationDigest} from './status.mjs';
 mkdirSync('artifacts', {recursive: true});
 const checks = [
   ['config-source', 'node', ['tools/check-config.mjs']],
@@ -9,7 +9,7 @@ const checks = [
   ['boundaries', 'node', ['tools/check-boundaries.mjs']],
   ['release-evidence', 'node', ['tools/status.test.mjs']],
   ['unit', 'node_modules/.bin/vitest', ['run', '--reporter=default', '--reporter=json', '--outputFile=artifacts/unit.json']],
-  ['signed-plugin', 'node', ['tools/build-plugin.mjs']],
+  ['signed-plugin', 'node', ['tools/check-signed-plugins.mjs']],
   ['build', 'node', ['tools/build.mjs', '--verify-runtime']],
   ['bundle-budget', 'node', ['tools/check-budget.mjs']]
 ];
@@ -18,6 +18,7 @@ for(const [name, cmd, args] of checks) {
   const result = spawnSync(cmd, args, {stdio: 'inherit'});
   report.checks.push({name, exitCode: result.status ?? 1, passed: result.status === 0});
   if (name === 'unit' && result.status === 0) report.unitReportDigest = unitReportDigest(JSON.parse(readFileSync('artifacts/unit.json', 'utf8')));
+  if (name === 'signed-plugin' && result.status === 0) report.m4PreparationDigest = m4PreparationDigest(JSON.parse(readFileSync('artifacts/m4-preparation.json', 'utf8')));
   if(result.status !== 0) break;
 }
 report.passed = report.checks.length === checks.length && report.checks.every(check => check.passed);

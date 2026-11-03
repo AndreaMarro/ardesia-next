@@ -1,9 +1,13 @@
 import {createPluginHost, type PluginSession, type TrustedPublisherKey, type FirstPartyRelease} from '@ardesia/plugin-host';
 import {PluginCatalogSchema, PluginManifestSchema, type CatalogPlugin, type PluginManifest, type Capability} from '@ardesia/plugin-sdk';
 import {idealSpringId, idealSpringInitialState} from '@ardesia/ideal-spring';
+import {poiseuille, poiseuillePressureState, poiseuilleFlowState} from '@ardesia/poiseuille';
+export type LabCondition = 'pressure' | 'flow';
+export const firstPartyLabName = (id: string) => id === idealSpringId ? 'Molla ideale' : id === poiseuille.id ? poiseuille.name : 'Laboratorio scientifico';
 import {LabDataSchema, PluginReleaseSchema, type LabData, type Actor, type PluginRelease, type PluginCommand} from '@ardesia/contracts';
 import type {CoreService} from '@ardesia/core';
 import {firstPartyTrust as trustConfiguration} from '@ardesia/plugin-host';
+import {decodeBundleTransport} from './bundle-transport';
 
 type Transition = {pluginId: string; fromVersion: string; toVersion: string; direction: 'update'|'rollback'; stateSchemaVersion: string};
 const releaseTrust: {trustStore: TrustedPublisherKey[]; allowlist: FirstPartyRelease[]; transitions?: Transition[]} = trustConfiguration;
@@ -118,7 +122,10 @@ export function releaseFromManifest(manifest: PluginManifest): PluginRelease {
 async function artifacts(entry: CatalogPlugin) {
   if (entry.status !== 'available') {host.suspendPlugin(entry.manifest.id); return fail('REVOKED_RELEASE');}
   requireAvailable(entry.manifest);
-  const [manifestBytes, bundle] = await Promise.all([readArtifact(entry.manifestPath, 16_384), readArtifact(entry.bundlePath, 512_000)]);
+  const [manifestBytes, delivered] = await Promise.all([readArtifact(entry.manifestPath, 16_384), readArtifact(entry.bundlePath, 512_000)]);
+  let bundle: Uint8Array;
+  try {bundle = await decodeBundleTransport(delivered, readArtifact);}
+  catch (error) {if (pluginErrorCode(error) === 'INVALID_BUNDLE_TRANSPORT') return fail('INTEGRITY_MISMATCH'); throw error;}
   const manifest = await host.verify({manifest: decode(manifestBytes), bundle});
   requireAvailable(manifest);
   if (JSON.stringify(manifest) !== JSON.stringify(PluginManifestSchema.parse(entry.manifest))) return fail('CATALOG_MISMATCH');
@@ -160,7 +167,7 @@ export async function checkUpdates(pluginId: string): Promise<string> {
   await sourceFor(installed.release);
   return 'La versione installata è verificata. Nessun aggiornamento o rollback autorizzato è disponibile.';
 }
-function activeInstallation(data?: LabData) {
+function activeInstallation(data?: LabData, pluginId?: string) {
   if (staleWorkspace) return fail('STALE_WORKSPACE');
   const {core, actor, remote} = current();
   let installed: {release: PluginRelease; consent: {capabilities: string[]} | null; status: string} | null;
@@ -171,7 +178,7 @@ function activeInstallation(data?: LabData) {
     const access = core.getAssignedLabAccess(actor, remote.documentId, object.id);
     if (!access.release || !access.consented) return fail('CAPABILITY_DENIED');
     installed = {release: access.release, status: access.status, consent: {capabilities: access.release.capabilities}};
-  } else installed = getInstallation(data?.pluginId);
+  } else installed = getInstallation(data?.pluginId ?? pluginId);
   if (!installed) return fail('PLUGIN_NOT_INSTALLED');
   if (installed.status === 'revoked') return fail('PLUGIN_REVOKED');
   if (installed.status !== 'active' || !installed.consent) return fail('PLUGIN_DISABLED');
@@ -180,15 +187,17 @@ function activeInstallation(data?: LabData) {
     || installed.release.stateSchemaVersion !== data.stateSchemaVersion)) return fail('INCOMPATIBLE_STATE');
   return installed;
 }
-export async function createFirstPartyLab(): Promise<LabData> {
+export async function createFirstPartyLab(pluginId: string, condition: LabCondition = 'pressure'): Promise<LabData> {
+  const state = pluginId === idealSpringId && condition === 'pressure' ? idealSpringInitialState
+    : pluginId === poiseuille.id ? condition === 'flow' ? poiseuilleFlowState : poiseuillePressureState : fail('RELEASE_NOT_ALLOWED');
   const epoch = contextEpoch; await refreshAuthorization(epoch);
-  const installed = activeInstallation(), source = await sourceFor(installed.release);
+  const installed = activeInstallation(undefined, pluginId), source = await sourceFor(installed.release);
   if (epoch !== contextEpoch) return fail('SESSION_CHANGED');
-  activeInstallation(); requireAvailable(source.manifest);
-  const session = await host.mount({...source, instanceId: crypto.randomUUID(), state: idealSpringInitialState, consent: installed.consent!.capabilities as Capability[]});
+  activeInstallation(undefined, pluginId); requireAvailable(source.manifest);
+  const session = await host.mount({...source, instanceId: crypto.randomUUID(), state, consent: installed.consent!.capabilities as Capability[]});
   try {
     if (epoch !== contextEpoch) return fail('SESSION_CHANGED');
-    activeInstallation();
+    activeInstallation(undefined, pluginId);
     return LabDataSchema.parse({pluginId: session.manifest.id, pluginVersion: session.manifest.version, instanceId: session.instanceId,
       stateSchemaVersion: session.manifest.stateSchemaVersion, bundleDigest: session.manifest.integrity.digest,
       publisher: session.manifest.publisher, state: session.current.state});
