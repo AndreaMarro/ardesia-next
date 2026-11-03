@@ -88,7 +88,7 @@ export const M4_PREPARATION_CHECKS = Object.freeze(['signature-before-execution'
 export const m4PreparationDigest = unitReportDigest;
 
 /** Only scoped preparation. No fixture result can accept M4 or substitute for the web/PostgreSQL consumer. */
-export function m4PreparationMatches({verification, unit, preparation} = {}, current) {
+function m4SignedBoundaryMatches({verification, unit, preparation} = {}, current) {
   if (!m1VerificationMatches(verification, current) || !m1UnitMatches(unit) || !unitReportMatches(unit, verification)
     || !matchesCurrent(preparation, current) || preparation.schemaVersion !== '1.0.0' || preparation.kind !== 'ardesia-m4-preparation'
     || preparation.acceptanceEvidence !== false || preparation.passed !== true
@@ -101,6 +101,12 @@ export function m4PreparationMatches({verification, unit, preparation} = {}, cur
     || consumer.browser !== 'NOT_RUN' || consumer.postgres !== 'NOT_RUN' || consumer.humanReview !== 'PENDING'
     || !Array.isArray(consumer.checks) || consumer.checks.length !== M4_PREPARATION_CHECKS.length || new Set(consumer.checks).size !== consumer.checks.length
     || !M4_PREPARATION_CHECKS.every(name => consumer.checks.includes(name))) return false;
+  return true;
+}
+
+export function m4PreparationMatches(evidence = {}, current) {
+  if (!m4SignedBoundaryMatches(evidence, current)) return false;
+  const reuse = evidence.preparation.reuse;
   return isRecord(reuse) && reuse.baseSha === 'c4d38a612a73bc28df434c2d36d36025cf1b1adc' && reuse.sdkVersion === '1.0.0'
     && ['coreUnchanged','hostUnchanged','sdkUnchanged','persistenceUnchanged'].every(key => reuse[key] === true)
     && positiveInteger(reuse.generatedWorkerBytes) && Array.isArray(reuse.changedPaths) && reuse.changedPaths.length > 0
@@ -108,6 +114,114 @@ export function m4PreparationMatches({verification, unit, preparation} = {}, cur
     && Array.isArray(reuse.measuredDelta) && reuse.measuredDelta.length === reuse.changedPaths.length
     && reuse.measuredDelta.every((entry, index) => isRecord(entry) && entry.path === reuse.changedPaths[index]
       && Number.isSafeInteger(entry.addedLines) && entry.addedLines >= 0 && Number.isSafeInteger(entry.removedLines) && entry.removedLines >= 0);
+}
+
+export const M4_REQUIRED_FLOWS = Object.freeze(['desktop-chromium', 'mobile-chromium'].flatMap(project => ['pressure', 'flow'].flatMap(control => [
+  `${project}::[M4] ${control} control saves reopens rejects and revokes without changing spring`,
+  `${project}::[M4] ${control} learner consent private save independent reopen and revocation`,
+])));
+export const M4_REMOTE_CHECKS = Object.freeze(['stable-build-identity-before', 'verified-spring-and-two-poiseuille-controls-same-lesson',
+  'teacher-core-save-reload-exact-ids-instances-revisions-draft', 'student-a-private-save-peer-and-teacher-isolated',
+  'same-student-logout-fresh-empty-context-new-session-exact-state-reopened',
+  'revoked-consent-refuses-write-stops-worker-preserves-saved-work', 'stable-build-identity-after-no-page-errors']);
+
+/** Real consumer evidence is distinct from the preserved MemoryStorage preparation and human acceptance. */
+export function m4LocalConsumerMatches(evidence, current) {
+  try {
+    if (!m4SignedBoundaryMatches(evidence, current) || !m3LocalEvidenceMatches(evidence, current)
+      || !m1BrowserMatches(evidence.browser, current) || !m2BrowserMatches(evidence.browser, current)) return false;
+    const b = evidence.budget;
+    if (!matchesCurrent(b, current) || b.metric !== 'all-javascript-gzip-bytes' || b.passed !== true || b.limit !== 245760
+      || !positiveInteger(b.bytes) || b.bytes > b.limit || !Array.isArray(b.files) || !b.files.length
+      || new Set(b.files.map(f => f.file)).size !== b.files.length
+      || b.files.some(f => typeof f.file !== 'string' || !f.file.endsWith('.js') || !positiveInteger(f.gzipBytes) || typeof f.initial !== 'boolean')
+      || b.files.reduce((sum, f) => sum + f.gzipBytes, 0) !== b.bytes
+      || !['ideal-spring', 'poiseuille'].every(id => b.files.some(f => f.file === `plugins/${id}/1.0.0/plugin.js`))) return false;
+    const t = evidence.transport;
+    if (!isRecord(t) || t.kind !== 'lossless-worker-byte-transport' || !digest(t.container?.sha256)
+      || t.container.path !== `/plugins/shared/${t.container.sha256}.js` || !positiveInteger(t.container.bytes)
+      || !positiveInteger(t.prefixBytes) || !Array.isArray(t.workers) || t.workers.length !== 2
+      || !['ideal-spring', 'poiseuille'].every((id, index) => t.workers[index]?.path === `/plugins/${id}/1.0.0/plugin.js`
+        && t.workers[index].originalSha256 === ['713b10ce53337e5bb03f0da86afec8a1266a8229115e9d1f571cf49766814148',
+          'bd7eced69753424c7da3076783917d4fb235bd90d975dbbce2fe71371b06e00b'][index]
+        && positiveInteger(t.workers[index].originalBytes) && t.prefixBytes < t.workers[index].originalBytes)
+      || !b.files.some(f => '/' + f.file === t.container.path)
+      || b.files.filter(f => [t.container.path, ...t.workers.map(w => w.path)].includes('/' + f.file))
+        .reduce((sum, f) => sum + f.gzipBytes, 0) !== t.afterGzipBytes) return false;
+    const {preparation, unit, playwright} = evidence, r = preparation.reuse;
+    if (preparation.plugin.bundleDigest !== 'bd7eced69753424c7da3076783917d4fb235bd90d975dbbce2fe71371b06e00b'
+      || !isRecord(r) || r.baseSha !== 'c4d38a612a73bc28df434c2d36d36025cf1b1adc' || r.sdkVersion !== '1.0.0'
+      || r.coreUnchanged !== true || r.sdkUnchanged !== true || !positiveInteger(r.generatedWorkerBytes)
+      || !Array.isArray(r.changedPaths) || !r.changedPaths.length || new Set(r.changedPaths).size !== r.changedPaths.length
+      || r.changedPaths.some(path => typeof path !== 'string' || !path || path.split('/').some(part => !part || part === '.' || part === '..')
+        || /^(packages\/(core|contracts|remote-client)\/)/.test(path)
+        || path.startsWith('packages/plugin-host/') && path !== 'packages/plugin-host/src/first-party-trust.json'
+        || path.startsWith('packages/plugin-sdk/')
+        || path.startsWith('packages/server/') && !['packages/server/package.json', 'packages/server/src/server.integration.test.ts'].includes(path))
+      || !Array.isArray(r.measuredDelta) || r.measuredDelta.length !== r.changedPaths.length
+      || !r.measuredDelta.every((entry, index) => isRecord(entry) && entry.path === r.changedPaths[index]
+        && (entry.addedLines === null && entry.removedLines === null || Number.isSafeInteger(entry.addedLines) && entry.addedLines >= 0
+          && Number.isSafeInteger(entry.removedLines) && entry.removedLines >= 0))) return false;
+    const pg = unit.testResults.find(s => s.name.replaceAll('\\', '/').endsWith('/packages/server/src/server.integration.test.ts')
+      || s.name === 'packages/server/src/server.integration.test.ts');
+    if (!pg?.assertionResults.some(a => a.title === 'M4 Poiseuille PostgreSQL preserves exact revisions and private student state; rejects invalid writes and revocation'
+      && a.fullName?.includes('M3 real PostgreSQL authority') && a.status === 'passed')) return false;
+    const flows = [];
+    const visit = suites => {for (const suite of suites) {
+      for (const spec of suite.specs ?? []) if (spec.title.startsWith('[M4] ')) {
+        if (!/(^|\/)poiseuille\.spec\.ts$/.test(spec.file.replaceAll('\\', '/'))) throw Error('M4 consumer source required');
+        for (const test of spec.tests) {
+          if (test.results[0].retry !== undefined && test.results[0].retry !== 0) throw Error('M4 retry refused');
+          flows.push(test.projectName + '::' + spec.title);
+        }
+      }
+      visit(suite.suites ?? []);
+    }};
+    visit(playwright.suites);
+    return new Set(flows).size === flows.length && M4_REQUIRED_FLOWS.every(flow => flows.includes(flow));
+  } catch {return false;}
+}
+
+/** These are observed operational reports, not an attestation of authorship or a new M3 restore gate. */
+export function m4ConsumerEvidenceMatches(evidence, current) {
+  try {
+    if (!m4LocalConsumerMatches(evidence, current) || !releaseEvidenceMatches(evidence.release, current)) return false;
+    const {remoteConsumer: r, platform, release} = evidence;
+    if (!matchesCurrent(r, current) || r.kind !== 'ardesia-m4-protected-preview-smoke' || r.passed !== true || r.failure !== undefined
+      || r.url !== release.url || r.url !== 'https://ardesia-next-staging.vercel.app' || r.pageErrors !== 0
+      || !timestamp(r.startedAt) || !timestamp(r.completedAt) || Date.parse(r.startedAt) > Date.parse(r.completedAt)
+      || !matchesCurrent(r.buildInfoBefore, current) || !matchesCurrent(r.buildInfoAfter, current)
+      || !Array.isArray(r.checks) || r.checks.length !== M4_REMOTE_CHECKS.length
+      || new Set(r.checks.map(c => c.name)).size !== r.checks.length
+      || !M4_REMOTE_CHECKS.every(name => r.checks.some(c => c.name === name && c.passed === true))
+      || !isRecord(r.accounts) || r.accounts.freshStudentSession !== true
+      || !['teacher', 'studentA', 'studentB'].every(k => digest(r.accounts[k]))
+      || new Set(['teacher', 'studentA', 'studentB'].map(k => r.accounts[k])).size !== 3
+      || r.logout?.ackStatus !== 200 || r.logout.sessionAfter !== 401 || r.logout.codeAfter !== 'UNAUTHENTICATED') return false;
+    if (!isRecord(platform) || !timestamp(platform.observedAt) || Date.parse(platform.observedAt) < Date.parse(r.completedAt)
+      || Date.parse(release.observedAt) < Date.parse(platform.observedAt)
+      || platform.alias?.alias !== new URL(release.url).hostname || platform.alias.projectId !== release.projectId
+      || platform.alias.deploymentId !== release.deploymentId || platform.project?.id !== release.projectId
+      || platform.project.ssoProtection?.enabled !== true || platform.project.ssoProtection.deploymentType !== 'all'
+      || platform.deployment?.id !== release.deploymentId || platform.deployment.project?.id !== release.projectId
+      || platform.deployment.readyState !== 'READY' || platform.deployment.target !== release.providerTarget
+      || platform.deployment.meta?.githubCommitSha !== current.commit || platform.deployment.meta.githubOrg !== 'AndreaMarro'
+      || platform.deployment.meta.githubRepo !== 'ardesia-next') return false;
+    const objects = r.savedObjects;
+    if (!Array.isArray(objects) || objects.length !== 3 || new Set(objects.map(o => o.objectId)).size !== 3
+      || new Set(objects.map(o => o.instanceId)).size !== 3 || objects.some(o => !instanceIdentity(o.objectId)
+        || !instanceIdentity(o.instanceId) || o.status !== 'draft' || o.revision !== 2 || !digest(o.bundleDigest)
+        || o.state?.schemaVersion !== '1.0.0' || !isRecord(o.state.value) || !Object.values(o.state.value).every(Number.isFinite))) return false;
+    const fluids = objects.filter(o => o.pluginId === 'ardesia.poiseuille'), spring = objects.filter(o => o.pluginId === 'ardesia.ideal-spring');
+    return spring.length === 1 && spring[0].bundleDigest === '713b10ce53337e5bb03f0da86afec8a1266a8229115e9d1f571cf49766814148'
+      && fluids.length === 2 && fluids.every(o => o.bundleDigest === evidence.preparation.plugin.bundleDigest
+        && ['radiusM', 'lengthM', 'viscosityPaS', 'densityKgPerM3'].every(key => o.state.value[key] > 0)
+        && Object.keys(o.state.value).length === 5)
+      && fluids.filter(o => Object.hasOwn(o.state.value, 'pressureDropPa') && !Object.hasOwn(o.state.value, 'flowRateM3PerS')).length === 1
+      && fluids.filter(o => Object.hasOwn(o.state.value, 'flowRateM3PerS') && !Object.hasOwn(o.state.value, 'pressureDropPa')).length === 1
+      && r.m1Browser?.objectId === spring[0].objectId && r.m1Browser.instanceId === spring[0].instanceId
+      && m1RemoteBrowserMatches({...release, m1Browser: r.m1Browser}, current);
+  } catch {return false;}
 }
 
 function m1VerificationMatches(verification, current) {
@@ -290,6 +404,12 @@ function runStatus() {
   const m2Accepted = m2EvidenceMatches({verification: checks, unit, browser: e2e, release: remote}, current);
   const m4Preparation = read('artifacts/m4-preparation.json');
   const m4Prepared = historicalM3 && m4PreparationMatches({verification: checks, unit, preparation: m4Preparation}, current);
+  const m4Consumer = {...m3Evidence, preparation: m4Preparation, budget: read('artifacts/budget.json'), transport: read('artifacts/bundle-transport.json'),
+    remoteConsumer: read('artifacts/m4-protected-preview-smoke.json'), platform: read('artifacts/platform-postflight.json')};
+  const m4Local = historicalM3 && m4LocalConsumerMatches(m4Consumer, current);
+  const m4Technical = historicalM3 && m4ConsumerEvidenceMatches(m4Consumer, current);
+  const observedSource = {commit: remote?.commit, sourceDigest: remote?.sourceDigest};
+  const observedM4 = historicalM3 && m4ConsumerEvidenceMatches(m4Consumer, observedSource);
   const state = {
     ...current, milestone: historicalM3 ? 'M4' : 'M3', foundationMilestone: 'M0',
     acceptedBaselines: [
@@ -316,10 +436,14 @@ function runStatus() {
       browserLifecycleAndCounterproofs: m2BrowserMatches(e2e, current) ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',
       protectedRemoteLifecycle: m2RemoteBrowserMatches(remote, current) ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_COMMIT'
     },
-    M3: acceptedM3 ? 'ACCEPTED' : 'AWAITING_COMPLETE_EVIDENCE', M4: m4Prepared ? 'AWAITING_WEB_CONSUMER' : m4Preparation ? 'PREPARATION_UNVERIFIED' : 'NOT_STARTED', M5: 'NOT_STARTED',
+    M3: acceptedM3 ? 'ACCEPTED' : 'AWAITING_COMPLETE_EVIDENCE',
+    M4: m4Technical ? 'TECHNICALLY_VERIFIED_DRAFT' : m4Local ? 'AWAITING_PROTECTED_CONSUMER' : m4Prepared ? 'AWAITING_WEB_CONSUMER' : m4Preparation ? 'PREPARATION_UNVERIFIED' : 'NOT_STARTED', M5: 'NOT_STARTED',
     m4Evidence: {signedHostCorePreparation: m4Prepared ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',
-      webAndPostgresConsumer: 'NOT_RUN', humanScientificEditorialReview: 'PENDING',
-      acceptanceRequires: 'Both boundary conditions in the existing web app through the same authorized Core/PostgreSQL, browser UX/science counterproofs and exact-source evidence. Preparation never accepts M4.'},
+      webAndPostgresConsumer: m4Local ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',
+      protectedRemoteConsumer: m4Technical ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_COMMIT', humanScientificEditorialReview: 'PENDING',
+      observedConsumer: observedM4 ? {...observedSource, deploymentId: remote.deploymentId, url: remote.url, technical: 'PASS',
+        matchesCurrentSource: matchesCurrent(remote, current), reportDigest: m3ReportDigest(m4Consumer.remoteConsumer)} : null,
+      acceptanceRequires: 'Technical consumer evidence, scientific/editorial human acceptance and DRAFT remain distinct. Original reports stay bound to their own SHA/digest; a historical consumer never verifies changed source.'},
     m3Evidence: {
       historicalBaseline: historicalM3 ? 'ACCEPTED' : 'MISSING_OR_INVALID',
       localPostgresAndBrowser: localM3 ? 'PASS' : 'NOT_VERIFIED_FOR_CURRENT_SOURCE',

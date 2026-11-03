@@ -9,7 +9,7 @@ export function ScienceView({view, compact = false}: {view: PluginView; compact?
   const all = view.plot.series.flatMap(series => series.points);
   const minX = Math.min(...all.map(point => point.x)), maxX = Math.max(...all.map(point => point.x));
   const rawMin = Math.min(0, ...all.map(point => point.y)), rawMax = Math.max(0, ...all.map(point => point.y));
-  const padding = Math.max((rawMax - rawMin) * 0.12, 0.001);
+  const padding = (rawMax - rawMin) * 0.12 || 1;
   const minY = rawMin - padding, maxY = rawMax + padding;
   const x = (n: number) => 54 + (n - minX) / (maxX - minX || 1) * 330;
   const y = (n: number) => 170 - (n - minY) / (maxY - minY) * 146;
@@ -28,7 +28,7 @@ export function ScienceView({view, compact = false}: {view: PluginView; compact?
     </svg>}
     <figure className="science-plot">
       <svg viewBox="0 0 420 205" role="img" aria-labelledby={plotId}>
-        <title id={plotId}>{view.plot.yLabel} ({view.plot.yUnit}) in funzione di {view.plot.xLabel} ({view.plot.xUnit})</title>
+        <title id={plotId}>{`${view.plot.yLabel} (${view.plot.yUnit}) in funzione di ${view.plot.xLabel} (${view.plot.xUnit})`}</title>
         {[0,1,2,3,4].map(index => {const tick = minX + (maxX-minX)*index/4; return <g key={`x${index}`}><line x1={x(tick)} x2={x(tick)} y1="24" y2="170" stroke="var(--line)"/><text x={x(tick)} y="187" textAnchor="middle" fontSize="10">{formatScientific(tick)}</text></g>;})}
         {[rawMin, 0, rawMax].filter((value,index,array) => array.indexOf(value) === index).map(tick => <g key={`y${tick}`}><line x1="54" x2="384" y1={y(tick)} y2={y(tick)} stroke="var(--line)"/><text x="47" y={y(tick)+4} textAnchor="end" fontSize="10">{formatScientific(tick)}</text></g>)}
         <path d="M54 24V170H384" fill="none" stroke="var(--muted)"/>
