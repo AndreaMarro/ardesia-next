@@ -28,7 +28,7 @@ try {
   });
   const report = {...identity(), schemaVersion: '1.0.0', kind: 'ardesia-m4-preparation', acceptanceEvidence: false,
     plugin: {id: candidate.manifest.id, version: candidate.manifest.version, bundleDigest: candidate.manifest.integrity.digest, sourceRevision: candidate.manifest.provenance.commit},
-    passed: true, consumer, limits: ['No web catalog or shipped trust change', 'No PostgreSQL/browser/human acceptance', 'No package workspace registration'],
+    passed: true, consumer, limits: ['This check uses the existing MemoryStorage fixture', 'Web/PostgreSQL/browser and human acceptance require their own exact-source evidence'],
     reuse: {baseSha, sdkVersion: '1.0.0', coreUnchanged: unchanged(['packages/core', 'packages/contracts']),
       hostUnchanged: unchanged(['packages/plugin-host']), sdkUnchanged: unchanged(['packages/plugin-sdk']),
       persistenceUnchanged: unchanged(['packages/server', 'packages/remote-client']), changedPaths, measuredDelta,

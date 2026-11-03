@@ -1,0 +1,14 @@
+{
+  "name": "@ardesia/poiseuille",
+  "version": "1.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@ardesia/plugin-sdk": "0.1.0",
+    "zod": "4.6.7"
+  }
+}

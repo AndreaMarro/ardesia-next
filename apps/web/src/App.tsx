@@ -11,7 +11,7 @@ import {DocumentView} from './components/DocumentView';
 import {Inspector} from './components/Inspector';
 import {WorkspaceDialogs, type DialogName} from './components/WorkspaceDialogs';
 import {Dialog} from './components/Dialog';
-import {createFirstPartyLab} from './plugins/first-party';
+import {createFirstPartyLab, firstPartyLabName, type LabCondition} from './plugins/first-party';
 
 type Mode = 'board' | 'notebook' | 'reader';
 export function App({core, actor, onEdit, saveStatus, onAccount, onExport, workspaceId}: {workspaceId: string; core: CoreService; actor: Actor; onEdit: RemoteClient['edit']; saveStatus: string; onAccount: () => void; onExport: () => Promise<void>}) {
@@ -53,13 +53,13 @@ export function App({core, actor, onEdit, saveStatus, onAccount, onExport, works
     if(await run({kind:'add-object',object},{kind:'remove-object',objectId:id})) select(id);
   }
   function openDocument(id:string) {navigate(() => {setDocumentId(id); try {sessionStorage.setItem(navigationKey, id);} catch { /* Optional navigation. */ } setSelectedId(null); setInspectorOpen(false); setUndo([]);});}
-  async function addLab() {
+  async function addLab(pluginId: string, condition?: LabCondition) {
     if (addingLab) return;
     setAddingLab(true); setError(null);
     try {
-      const data = await createFirstPartyLab();
+      const data = await createFirstPartyLab(pluginId, condition);
       const id = crypto.randomUUID();
-      if (await run({kind:'add-object', object:{id, type:'lab', title:'Molla ideale', x:55, y:100, width:430, height:320, data}}, {kind:'remove-object', objectId:id})) {
+      if (await run({kind:'add-object', object:{id, type:'lab', title:firstPartyLabName(pluginId), x:55, y:100, width:430, height:320, data}}, {kind:'remove-object', objectId:id})) {
         setDialog(null); select(id); setMode('notebook');
       }
     } catch {setError('Il laboratorio non ha superato la verifica. Nessun oggetto è stato aggiunto.');setDialog(null);}

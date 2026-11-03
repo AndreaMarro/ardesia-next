@@ -6,7 +6,7 @@ import {checkServerIdentity} from 'node:tls';
 import {Client, type PoolConfig} from 'pg';
 import {createDatabasePool, hash} from './database';
 import {canonical} from './errors';
-import {CoreSnapshotSchema, type CoreSnapshot, type PluginRelease} from '@ardesia/contracts';
+import {CoreSnapshotSchema, type CoreSnapshot, type PluginRelease, type JsonValue} from '@ardesia/contracts';
 import {createCore, MemoryStorage} from '@ardesia/core';
 import {idealSpringInitialState} from '@ardesia/ideal-spring';
 import {
@@ -58,7 +58,8 @@ async function assign(workspaceId: string, documentId: string, studentId: string
   const response = await command(teacher, workspaceId, {kind: 'assign-lesson', commandId: randomUUID(), documentId, studentId, expectedRevision: 0}, 'learning-command');
   expect(response.status).toBe(200);
 }
-async function install(workspaceId: string) {
+async function install(workspaceId: string, releaseToInstall = release) {
+  const release = releaseToInstall;
   for (const spec of [
     {kind: 'install-plugin', expectedRevision: 0, release},
     {kind: 'consent-plugin', expectedRevision: 1, releaseDigest: release.bundleDigest, capabilities: release.capabilities},
@@ -68,6 +69,21 @@ async function install(workspaceId: string) {
     expect(response.status).toBe(200);
   }
 }
+
+describe('M4 distributed release policy', () => {
+  it('accepts the exact signed Poiseuille pressure and flow states through the shipped Host', async () => {
+    const manifest = JSON.parse(await readFile('plugins/poiseuille/release/1.0.0/manifest.json', 'utf8'));
+    const candidateRelease: PluginRelease = {pluginId: manifest.id, version: manifest.version, bundleDigest: manifest.integrity.digest,
+      publisher: manifest.publisher, license: manifest.license, provenance: manifest.provenance, sdkVersion: manifest.sdkVersion,
+      stateSchemaVersion: manifest.stateSchemaVersion, capabilities: manifest.capabilities};
+    for (const forcing of [{pressureDropPa: 800}, {flowRateM3PerS: Math.PI * 1e-7}] as Record<string, JsonValue>[]) {
+      await expect(policy({actor: {actorId: 'm4-policy-teacher', role: 'teacher'}, operation: 'use', release: candidateRelease, consent: ['state:read', 'state:write'],
+        states: [{pluginId: candidateRelease.pluginId, pluginVersion: candidateRelease.version, stateSchemaVersion: candidateRelease.stateSchemaVersion, bundleDigest: candidateRelease.bundleDigest, publisher: candidateRelease.publisher, instanceId: randomUUID(), state: {schemaVersion: '1.0.0', value: {
+          radiusM: 0.001, lengthM: 1, viscosityPaS: 0.001, densityKgPerM3: 1000, ...forcing,
+        }}}]})).resolves.toBeUndefined();
+    }
+  });
+});
 
 describe('PostgreSQL transport policy', () => {
   it('enables verified TLS for a remote URL and retains an explicitly trusted CA after pg parses it', async () => {
@@ -260,6 +276,66 @@ describe('M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL)', () => {
     const stale = await command(teacher, w.workspaceId, {kind: 'activate-plugin', commandId: randomUUID(), pluginId: release.pluginId, expectedRevision: 3}, 'plugin-command');
     expect(stale.body.error?.code).toBe('REVISION_CONFLICT');
   });
+
+  it('M4 Poiseuille PostgreSQL preserves exact revisions and private student state; rejects invalid writes and revocation', async () => {
+    const manifest = JSON.parse(await readFile('apps/web/public/plugins/poiseuille/1.0.0/manifest.json', 'utf8'));
+    const fluidRelease: PluginRelease = {pluginId: manifest.id, version: manifest.version, bundleDigest: manifest.integrity.digest,
+      publisher: manifest.publisher, license: manifest.license, provenance: manifest.provenance, sdkVersion: manifest.sdkVersion,
+      stateSchemaVersion: manifest.stateSchemaVersion, capabilities: manifest.capabilities};
+    const fluidState = (forcing: Record<string, JsonValue>) => ({schemaVersion: '1.0.0', value: {
+      radiusM: 0.001, lengthM: 1, viscosityPaS: 0.001, densityKgPerM3: 1000, ...forcing,
+    }});
+    for (const forcing of [{pressureDropPa: 800}, {flowRateM3PerS: Math.PI * 1e-7}] as Record<string, JsonValue>[]) {
+      const w = await workspace('M4 two domains'), doc = await lesson(w.workspaceId);
+      await install(w.workspaceId); await install(w.workspaceId, fluidRelease);
+      const spring = {id: randomUUID(), type: 'lab', title: 'Molla', x: 0, y: 0, width: 300, height: 200, data: data(randomUUID())};
+      expect((await command(teacher, w.workspaceId, {kind: 'add-object', commandId: randomUUID(), documentId: doc, expectedRevision: 1, object: spring})).status).toBe(200);
+      const objectId = randomUUID(), instanceId = randomUUID();
+      const fluid = {id: objectId, type: 'lab', title: 'Poiseuille', x: 0, y: 0, width: 300, height: 200,
+        data: {pluginId: fluidRelease.pluginId, pluginVersion: fluidRelease.version, instanceId, stateSchemaVersion: '1.0.0',
+          bundleDigest: fluidRelease.bundleDigest, publisher: fluidRelease.publisher, state: fluidState(forcing)}};
+      expect((await command(teacher, w.workspaceId, {kind: 'add-object', commandId: randomUUID(), documentId: doc, expectedRevision: 2, object: fluid})).status).toBe(200);
+      const before = (await admin.query('SELECT snapshot,revision FROM ardesia_next.workspaces WHERE id=$1', [w.workspaceId])).rows[0];
+      for (const state of [fluidState({...forcing, radiusM: -1}), {...fluid.data.state, schemaVersion: '2.0.0'}]) {
+        const invalid = await command(teacher, w.workspaceId, {kind: 'replace-object', commandId: randomUUID(), documentId: doc, expectedRevision: 3,
+          object: {...fluid, data: {...fluid.data, state}}});
+        expect(invalid.status).toBeGreaterThanOrEqual(400);
+        expect((await admin.query('SELECT snapshot,revision FROM ardesia_next.workspaces WHERE id=$1', [w.workspaceId])).rows[0]).toEqual(before);
+      }
+      const changedState = fluidState('pressureDropPa' in forcing ? {pressureDropPa: 400} : {flowRateM3PerS: 2e-7});
+      expect((await command(teacher, w.workspaceId, {kind: 'replace-object', commandId: randomUUID(), documentId: doc, expectedRevision: 3,
+        object: {...fluid, data: {...fluid.data, state: changedState}}})).status).toBe(200);
+      const stored = (await admin.query('SELECT snapshot FROM ardesia_next.workspaces WHERE id=$1', [w.workspaceId])).rows[0].snapshot;
+      const recoveredCore = await createCore({storage: new MemoryStorage(CoreSnapshotSchema.parse(stored)), pluginPolicy: policy});
+      const actor = (await request({action: 'open-workspace', workspaceId: w.workspaceId}, teacher)).body.result.actor;
+      expect(recoveredCore.getObjectRevision(actor, doc, objectId, 1).data).toEqual(fluid.data);
+      expect(recoveredCore.getObjectRevision(actor, doc, objectId, 2).data).toEqual({...fluid.data, state: changedState});
+      const springBefore = recoveredCore.getObjectRevision(actor, doc, spring.id, 1);
+      await assign(w.workspaceId, doc, studentA.id); await assign(w.workspaceId, doc, studentB.id);
+      expect((await command(studentA, w.workspaceId, {kind: 'consent-lab', commandId: randomUUID(), documentId: doc, expectedRevision: 0,
+        objectId, releaseDigest: fluidRelease.bundleDigest, capabilities: fluidRelease.capabilities}, 'learning-command')).status).toBe(200);
+      const personalState = fluidState('pressureDropPa' in forcing ? {pressureDropPa: 200} : {flowRateM3PerS: 1e-7});
+      const save = {kind: 'save-learner-lab', commandId: randomUUID(), documentId: doc, expectedRevision: 1, expectedDocumentRevision: 4,
+        objectId, instanceId, state: personalState};
+      expect((await command(studentA, w.workspaceId, save, 'learning-command')).status).toBe(200);
+      const peerSession = await signIn('a');
+      const reopened = (await request({action: 'open-workspace', workspaceId: w.workspaceId}, peerSession)).body.result;
+      expect(reopened.learnerWork[0].labs[0]).toMatchObject({objectId, revision: 1, data: {...fluid.data, state: personalState}});
+      for (const reader of [teacher, studentB]) {
+        const view = (await request({action: 'open-workspace', workspaceId: w.workspaceId}, reader)).body.result;
+        expect(view.learnerWork.flatMap((work: any) => work.labs)).toHaveLength(0);
+      }
+      expect((await command(studentA, w.workspaceId, {kind: 'revoke-lab-consent', commandId: randomUUID(), documentId: doc, expectedRevision: 2, objectId}, 'learning-command')).status).toBe(200);
+      const revokedBefore = (await admin.query('SELECT snapshot,revision FROM ardesia_next.workspaces WHERE id=$1', [w.workspaceId])).rows[0];
+      expect((await command(peerSession, w.workspaceId, {...save, commandId: randomUUID(), expectedRevision: 3}, 'learning-command')).body.error?.code).toBe('PLUGIN_CONSENT_REQUIRED');
+      expect((await admin.query('SELECT snapshot,revision FROM ardesia_next.workspaces WHERE id=$1', [w.workspaceId])).rows[0]).toEqual(revokedBefore);
+      expect((await command(teacher, w.workspaceId, {kind: 'revoke-plugin', commandId: randomUUID(), pluginId: fluidRelease.pluginId, expectedRevision: 3}, 'plugin-command')).status).toBe(200);
+      const finalProjection = (await request({action: 'open-workspace', workspaceId: w.workspaceId}, teacher)).body.result;
+      expect(finalProjection.documents[0].objects.find((object: any) => object.id === spring.id)).toEqual(springBefore);
+      const unavailable = await command(teacher, w.workspaceId, {kind: 'replace-object', commandId: randomUUID(), documentId: doc, expectedRevision: 4, object: fluid});
+      expect(unavailable.status).toBeGreaterThanOrEqual(400);
+    }
+  }, 30_000);
 
   it('rejects tampered releases and scientific states using the signed Host runtime', async () => {
     const w = await workspace(), doc = await lesson(w.workspaceId);

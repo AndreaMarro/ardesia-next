@@ -3,7 +3,7 @@ import {FlaskConical, X, Trash2, Undo2} from './Icons';
 import {canonicalJson, LabDataSchema, toObjectInput, type LabObject} from '@ardesia/contracts';
 import type {PluginEvaluation} from '@ardesia/plugin-sdk';
 import type {PluginSession} from '@ardesia/plugin-host';
-import {mountLab, pluginErrorCode, subscribeMarketplace, marketplaceVersion} from '../plugins/first-party';
+import {mountLab, firstPartyLabName, pluginErrorCode, subscribeMarketplace, marketplaceVersion} from '../plugins/first-party';
 import {ScienceView} from './ScienceView';
 import {draftConflictMessage, removedDraftMessage, type SaveObject} from '../workspace';
 
@@ -70,14 +70,14 @@ export function LabInspector({object, missing = false, onClose, onDirtyChange, o
   }
   return <aside className="inspector lab-inspector" aria-label="Proprietà del laboratorio" data-plugin-status={evaluation && !error ? 'ready' : error ? 'error' : 'loading'} data-error-code={error ?? undefined}>
     <div className="inspector-heading"><h2>Esplora il modello</h2><button className="icon-button" aria-label="Chiudi proprietà" onClick={onClose}><X size={19}/></button></div>
-    <div className="object-type"><span><FlaskConical size={24}/></span><div><strong>Molla ideale</strong><small>Revisione {object.revision} · Bozza</small></div></div>
+    <div className="object-type"><span><FlaskConical size={24}/></span><div><strong>{firstPartyLabName(object.data.pluginId)}</strong><small>Revisione {object.revision} · Bozza</small></div></div>
     {conflict && <p role="alert" className="error-banner">{missing ? removedDraftMessage : draftConflictMessage}</p>}
     {error && <p role="alert" className="lab-error">Il laboratorio non ha accettato la modifica o non è verificabile. I dati salvati sono conservati.</p>}
     {!evaluation && !error && <p aria-live="polite">Verifica e apertura del laboratorio…</p>}
     <form id="object-editor" className="inspector-form" onSubmit={event => {event.preventDefault(); void calculate(true);}}>
       <label>Titolo<input aria-label="Titolo laboratorio" value={title} disabled={!titleEditable || busy || !session.current} maxLength={240} required onChange={event => {setTitle(event.target.value); setDirty(true);}}/></label>
       {evaluation && <><p className="hint">{evaluation.view.summary}</p><fieldset className="lab-parameters" disabled={busy || !session.current}><legend>Parametri del modello</legend>
-        {evaluation.view.parameters.map(parameter => <label key={parameter.key}><span>{parameter.label} <small>({parameter.unit})</small></span><input aria-label={`${parameter.label} (${parameter.unit})`} type="number" min={parameter.min} max={parameter.max} step={parameter.step} required value={inputs[parameter.key] ?? String(parameter.value)} onChange={event => {setInputs(current => ({...current, [parameter.key]: event.target.value}));setDirty(true);}}/></label>)}
+        {evaluation.view.parameters.map(parameter => <label key={parameter.key}><span>{parameter.label} <small>({parameter.unit})</small></span><input aria-label={`${parameter.label} (${parameter.unit})`} type="number" min={parameter.min} max={parameter.max} step="any" required value={inputs[parameter.key] ?? String(parameter.value)} onChange={event => {setInputs(current => ({...current, [parameter.key]: event.target.value}));setDirty(true);}}/></label>)}
       </fieldset><button className="secondary-button" type="button" disabled={busy || !dirty || !session.current} onClick={() => void calculate(false)}>Aggiorna grafico</button><ScienceView view={evaluation.view}/></>}
       <button className="primary-button" type="submit" disabled={!dirty || busy || !evaluation || !session.current || conflict}>{busy && evaluation ? 'Calcolo…' : 'Salva laboratorio'}</button>
       {dirty && !missing && <button className="text-button" type="button" disabled={busy} onClick={() => restore()}><Undo2 size={15}/> Ripristina stato salvato</button>}
