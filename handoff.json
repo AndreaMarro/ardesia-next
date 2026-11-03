@@ -3,22 +3,15 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 122,
-  "updatedAt": "2026-11-03T01:20:38.916Z",
+  "revision": 123,
+  "updatedAt": "2026-11-03T01:21:14.981Z",
   "procedureRef": "e947ac98e828e9e2ff6c1bb484c35fb45a93ba4b",
-  "activeRun": {
-    "runId": "ardesia-dev-20261103T011615Z-01a19ef8",
-    "actor": "codex",
-    "startedAt": "2026-11-03T01:16:15.000Z",
-    "claimedAt": "2026-11-03T01:20:38.916Z",
-    "writeUntil": "2026-11-03T02:01:15.000Z",
-    "closeBy": "2026-11-03T02:11:15.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m4-consumer-20261102T185253Z",
     "taskId": "M4-REUSE",
     "nextActor": "codex",
-    "disposition": "INTERRUPTED",
+    "disposition": "READY",
     "kind": "implementation",
     "notBefore": "2026-11-02T19:16:07.799Z",
     "expiresAt": "2026-11-04T19:16:07.799Z",
@@ -236,7 +229,7 @@
       }
     ],
     "blockers": [],
-    "nextAction": "INTERRUPTED non completato. La guardia finishCycle della procedura e947 rifiuta HANDOFF da READY incompleto: nel prossimo nuovo run acquisire claim valido e ricostruire QUESTO STESSO task/packet attraverso HANDOFF consentito contro la coda Git immutabile e947; HANDOFF rilascia e conclude quel run, non continuare a scrivere né riusare runId. Il ciclo READY successivo riprende sorgente/prove qui indicate, senza rifare setup, preparazione o audit identico. Stesso M4-REUSE, non COMPLETE e non accettazione: riprendere direttamente PR37/head5460e636c2f3a48b1c2713993ca96cde9689858a/digest72b6be805877c6a5899220a99de102bcebf22ed05f68eb6829e5d011ed0e037d, worktree /Users/andreamarro/Documents/Codex/2026-11-01/files-pasted-by-the-user-ardesia/work/m4-reuse-20261102T175141Z pulito e pubblicato; basec4d, fix main d0aa e procedura e947 preservati. Nuovo claim/rilettura/budget prima di write; nessuna delega ereditata. PR37 aggiornata, review6592319712 fresca non autrice conclusa con P2budgetFAIL e limiti reali; non rifare una review onerosa identica. OriginaleCI41553047014/artifact13192138785 letto/CRC e digestunit-prep verificati:314/314test53suite zero skip,7/8checksPASS, solo budget289068/245760FAIL; nessun rerun stessa sorgente. CI QA/benchmark/browser saltati, non PASS. Nuova prova M4 locale sulla head finale4PASS/4FAIL,0skip/flaky/retry:flowdocente desktop/mobile e due learner mobile completi PASS; pressuredocente timeout e learnerdesktop mount nonready FAIL. Suite completa locale interrotta1PASS2FAIL1INTERRUPTED77NOT_RUN include molla concorrente attesa8kg/osservata6kg e setup studente timeout. PR ricevuta e run locale conservano raw JSON/log/screenshot privati; nessuna causa runner o regressione nuova dimostrata dal solo FAIL. PRIMO PASSO: discriminare gli stessi casi browser/molla e mount dalla sorgente pubblicata senza aumentare timeout come cura, prima della riduzione bundle. Budget totale invariato; diagnosi read-only workercompatto3357 darebbe ancora249654byte, non soluzione equivalente/firmata/adottata. Preservare byte/firme/provenienza934392, no nuove chiavi/pin o permessi impliciti; trustpromotion resta da verificare nel canale autorizzato. Nessun runtime Core/server/schema duplicato. Difetti step SI e consenso corretto hanno RED/GREEN ma non accettano consumer completo. LocaleVerify prima releaseevidenceFAIL per fixture shebang Node24 path con spazi (controcaso direttoENOENT/NodeesplicitoPASS); CI Linux passa quel controllo, limite conservato distinto. Nessun merge/deploy/alias o restore, PREPARED_NOT_DEPLOYED; preview stabile precedente preservata, non ricertificata qui. Nuova head richiede Verify/review proprie prima integrazione e preview protetta+smoke stabile, contenutiDRAFT/humanreview pendenti. M4 aperta; E1 segue con P3/in_progress, poi tutti18ambiti oltreM5. Scheduler/modello/accessi/provider/spesa invariati; quota/costo/modello runtimeUNKNOWN.",
+    "nextAction": "READY: stesso incarico M4-REUSE ricostruito da INTERRUPTED mediante HANDOFF canonico su coda Git immutabile e947ac98; claim rilasciato e questa run conclusa. Il prossimo ciclo con runId distinto acquisisce/pubblica/rilegge claim e riprende DIRETTAMENTE la diagnosi browser/molla della sorgente pubblicata, senza ripetere HANDOFF, setup, preparazione o audit identico. Nessuna delega ereditata. Stesso M4-REUSE, non COMPLETE e non accettazione: riprendere direttamente PR37/head5460e636c2f3a48b1c2713993ca96cde9689858a/digest72b6be805877c6a5899220a99de102bcebf22ed05f68eb6829e5d011ed0e037d, worktree /Users/andreamarro/Documents/Codex/2026-11-01/files-pasted-by-the-user-ardesia/work/m4-reuse-20261102T175141Z pulito e pubblicato; basec4d, fix main d0aa e procedura e947 preservati. Nuovo claim/rilettura/budget prima di write; nessuna delega ereditata. PR37 aggiornata, review6592319712 fresca non autrice conclusa con P2budgetFAIL e limiti reali; non rifare una review onerosa identica. OriginaleCI41553047014/artifact13192138785 letto/CRC e digestunit-prep verificati:314/314test53suite zero skip,7/8checksPASS, solo budget289068/245760FAIL; nessun rerun stessa sorgente. CI QA/benchmark/browser saltati, non PASS. Nuova prova M4 locale sulla head finale4PASS/4FAIL,0skip/flaky/retry:flowdocente desktop/mobile e due learner mobile completi PASS; pressuredocente timeout e learnerdesktop mount nonready FAIL. Suite completa locale interrotta1PASS2FAIL1INTERRUPTED77NOT_RUN include molla concorrente attesa8kg/osservata6kg e setup studente timeout. PR ricevuta e run locale conservano raw JSON/log/screenshot privati; nessuna causa runner o regressione nuova dimostrata dal solo FAIL. PRIMO PASSO: discriminare gli stessi casi browser/molla e mount dalla sorgente pubblicata senza aumentare timeout come cura, prima della riduzione bundle. Budget totale invariato; diagnosi read-only workercompatto3357 darebbe ancora249654byte, non soluzione equivalente/firmata/adottata. Preservare byte/firme/provenienza934392, no nuove chiavi/pin o permessi impliciti; trustpromotion resta da verificare nel canale autorizzato. Nessun runtime Core/server/schema duplicato. Difetti step SI e consenso corretto hanno RED/GREEN ma non accettano consumer completo. LocaleVerify prima releaseevidenceFAIL per fixture shebang Node24 path con spazi (controcaso direttoENOENT/NodeesplicitoPASS); CI Linux passa quel controllo, limite conservato distinto. Nessun merge/deploy/alias o restore, PREPARED_NOT_DEPLOYED; preview stabile precedente preservata, non ricertificata qui. Nuova head richiede Verify/review proprie prima integrazione e preview protetta+smoke stabile, contenutiDRAFT/humanreview pendenti. M4 aperta; E1 segue con P3/in_progress, poi tutti18ambiti oltreM5. Scheduler/modello/accessi/provider/spesa invariati; quota/costo/modello runtimeUNKNOWN.",
     "review": {
       "authorContextId": "root.thread01a19eba",
       "reviewerContextId": "root.m4_consumer_review",
@@ -245,16 +238,16 @@
     }
   },
   "lastRun": {
-    "runId": "ardesia-dev-20261103T000944Z-01a19eba",
+    "runId": "ardesia-dev-20261103T011615Z-01a19ef8",
     "actor": "codex",
-    "startedAt": "2026-11-03T00:09:44.000Z",
-    "claimedAt": "2026-11-03T00:11:25.102Z",
-    "writeUntil": "2026-11-03T00:54:44.000Z",
-    "closeBy": "2026-11-03T01:04:44.000Z",
+    "startedAt": "2026-11-03T01:16:15.000Z",
+    "claimedAt": "2026-11-03T01:20:38.916Z",
+    "writeUntil": "2026-11-03T02:01:15.000Z",
+    "closeBy": "2026-11-03T02:11:15.000Z",
     "packetId": "m4-consumer-20261102T185253Z",
-    "finishedAt": "2026-11-03T00:53:42.576Z",
-    "outcome": "INTERRUPTED",
+    "finishedAt": "2026-11-03T01:21:14.981Z",
+    "outcome": "HANDOFF",
     "late": false,
-    "summary": "Consumer M4 pubblicato5460e63/72b6be80 in PR37:fix SI/consenso con controprove,314unit/53suiteCI e firma/PostgreSQL PASS;Verify/reviewFAIL P2budget289068/245760, browserfinale4PASS4FAIL, molla concorrenteFAILaperta. PREPARED_NOT_DEPLOYED,no merge/alias/restore. Specialisticonclusi,PostgreSQL locale arrestato,dati preservati. Procedura rifiutaHANDOFF da READY incompleto:finishINTERRUPTED,nuovo run ricostruisce stesso incarico viaHANDOFF consentito. Costi/quotaUNKNOWN."
+    "summary": "HANDOFF stesso M4-REUSE INTERRUPTED→READY contro coda/procedura e947; source5460e63/digest72b6be80 e tutte le prove FAIL preservati. Nessuna sorgente/CI/review/integrazione/deploy nuova; PREPARED_NOT_DEPLOYED. Implementazione/test/review/integrazione e attesa intenzionale0; quota/costo/runtime modelUNKNOWN. Prossimo run discrimina browser/molla prima del bundle, senza nuovo HANDOFF."
   }
 }
