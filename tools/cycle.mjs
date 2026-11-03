@@ -3,6 +3,7 @@ import {execFileSync} from 'node:child_process';
 import {isAbsolute} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {isDeepStrictEqual} from 'node:util';
+import {createHash} from 'node:crypto';
 import {validateCoordination} from './check-operations.mjs';
 
 const REPOSITORY = 'AndreaMarro/ardesia-next';
@@ -282,6 +283,31 @@ export function finishCycle(data, {expectedRevision, runId, actor, outcome, pack
   next.revision += 1; next.updatedAt = new Date(moment).toISOString(); valid(next); return next;
 }
 
+/** Explicit interrupted-checkpoint reconstruction. Receipt assertions are not authenticated here.
+ * The coordinator must observe the native terminal turn, stopped writers and preserved work,
+ * then publish against the observed parent SHA. Expiry is deliberately insufficient. */
+export function recoverCycle(data, {expectedRevision, runId, actor, terminal, packet, summary, queue}, {now = new Date(), readQueue = gitQueue} = {}) {
+  valid(data); revision(data, expectedRevision); owner(data, {runId, actor});
+  const moment = clock(data, now);
+  if (!sequential(data) || actor !== 'codex' || !['READY', 'INTERRUPTED'].includes(data.packet.disposition)) throw new Error('Recovery requires the same sequential interrupted assignment; preserve pending CI separately.');
+  if (!record(terminal) || terminal.kind !== 'ardesia-native-terminal-recovery' || terminal.runId !== runId
+    || !id(terminal.threadId) || !['failed', 'interrupted'].includes(terminal.status)
+    || !timestamp(terminal.completedAt) || !timestamp(terminal.observedAt)
+    || Date.parse(terminal.completedAt) < Date.parse(data.activeRun.claimedAt)
+    || Date.parse(terminal.observedAt) < Date.parse(terminal.completedAt) || Date.parse(terminal.observedAt) > moment
+    || terminal.writersStopped !== true || !digest(terminal.preservationDigest) || !text(terminal.reference)) {
+    throw new Error('Recovery requires an observed matching terminal failure, stopped writers and preserved-work receipt; expiry is not evidence.');
+  }
+  const comparable = value => Object.fromEntries(Object.entries(value ?? {}).filter(([key]) => !['disposition', 'nextAction'].includes(key)));
+  if (!isDeepStrictEqual(comparable(packet), comparable(data.packet)) || packet?.disposition !== 'READY') throw new Error('Recovery must preserve the complete assignment, source and evidence.');
+  eligiblePacket(data, packet, queue, readQueue);
+  const receiptDigest = createHash('sha256').update(JSON.stringify(terminal)).digest('hex');
+  const outcome = expires(packet) - moment > 10 * MINUTE ? 'HANDOFF' : 'INTERRUPTED';
+  const interrupted = structuredClone(data); interrupted.packet.disposition = 'INTERRUPTED';
+  return finishCycle(interrupted, {expectedRevision, runId, actor, outcome, packet: {...packet, disposition: outcome === 'HANDOFF' ? 'READY' : 'INTERRUPTED'},
+    summary: `${summary} Terminal receipt SHA-256 ${receiptDigest}; preserved-work SHA-256 ${terminal.preservationDigest}.`, queue}, {now, readQueue});
+}
+
 
 /** Explicit format migration only. Caller must reconcile live writers and publish with expected SHA. */
 export function migrateCycle(data, {expectedRevision, procedureRef, packet}, {now = new Date()} = {}) {
@@ -415,13 +441,13 @@ export function reconcileCycle(data, {expectedRevision, runId, actor, queue, com
   return next;
 }
 
-const usage = 'Usage: node tools/cycle.mjs validate|brief STATE; claim STATE --revision N --actor pro|codex --run ID --started-at ISO; budget STATE --actor ROLE --run ID --seconds N; finish STATE --revision N --actor ROLE --run ID --outcome OUTCOME --packet PACKET --summary TEXT [--queue QUEUE] [--retain-claim true|false]; migrate STATE --revision N --procedure-ref SHA --packet PACKET; assign STATE --revision N --actor codex --run ID --packet PACKET --queue QUEUE; reconcile STATE --revision N --actor codex --run ID --queue QUEUE --completion-ref SHA --next-action TEXT [--release-ref SHA]';
+const usage = 'Usage: node tools/cycle.mjs validate|brief STATE; claim STATE --revision N --actor pro|codex --run ID --started-at ISO; budget STATE --actor ROLE --run ID --seconds N; finish STATE --revision N --actor ROLE --run ID --outcome OUTCOME --packet PACKET --summary TEXT [--queue QUEUE] [--retain-claim true|false]; recover STATE --revision N --actor codex --run ID --terminal RECEIPT --packet PACKET --queue QUEUE --summary TEXT; migrate STATE --revision N --procedure-ref SHA --packet PACKET; assign STATE --revision N --actor codex --run ID --packet PACKET --queue QUEUE; reconcile STATE --revision N --actor codex --run ID --queue QUEUE --completion-ref SHA --next-action TEXT [--release-ref SHA]';
 /** Reads local JSON and emits JSON to stdout. It never writes files, contacts GitHub or selects a clock. */
 export function runCycleCli(args, {readText = path => readFileSync(path, 'utf8'), readQueue = gitQueue, readCompletion = gitCompletion} = {}) {
   try {
-    if (!Array.isArray(args) || args.length < 2 || !['validate', 'brief', 'claim', 'budget', 'finish', 'migrate', 'assign', 'reconcile'].includes(args[0]) || !text(args[1]) || args[1].startsWith('--')) throw new Error(usage);
+    if (!Array.isArray(args) || args.length < 2 || !['validate', 'brief', 'claim', 'budget', 'finish', 'recover', 'migrate', 'assign', 'reconcile'].includes(args[0]) || !text(args[1]) || args[1].startsWith('--')) throw new Error(usage);
     const [command, file, ...flags] = args;
-    const required = {validate: [], brief: [], claim: ['revision', 'actor', 'run', 'started-at'], budget: ['actor', 'run', 'seconds'], finish: ['revision', 'actor', 'run', 'outcome', 'packet', 'summary'], migrate: ['revision', 'procedure-ref', 'packet'], assign: ['revision', 'actor', 'run', 'packet', 'queue'], reconcile: ['revision', 'actor', 'run', 'queue', 'completion-ref', 'next-action']}[command];
+    const required = {validate: [], brief: [], claim: ['revision', 'actor', 'run', 'started-at'], budget: ['actor', 'run', 'seconds'], finish: ['revision', 'actor', 'run', 'outcome', 'packet', 'summary'], recover: ['revision', 'actor', 'run', 'terminal', 'packet', 'queue', 'summary'], migrate: ['revision', 'procedure-ref', 'packet'], assign: ['revision', 'actor', 'run', 'packet', 'queue'], reconcile: ['revision', 'actor', 'run', 'queue', 'completion-ref', 'next-action']}[command];
     const accepted = command === 'finish' ? [...required, 'queue', 'retain-claim'] : command === 'reconcile' ? [...required, 'release-ref'] : required;
     const options = {};
     if (flags.length % 2) throw new Error(usage);
@@ -440,6 +466,7 @@ export function runCycleCli(args, {readText = path => readFileSync(path, 'utf8')
     else if (command === 'brief') result = cycleBrief(data);
     else if (command === 'claim') result = claimCycle(data, {...input, startedAt: options['started-at']});
     else if (command === 'budget') result = cycleBudget(data, {...input, seconds: Number(options.seconds)});
+    else if (command === 'recover') result = recoverCycle(data, {...input, terminal: JSON.parse(readText(options.terminal)), packet: JSON.parse(readText(options.packet)), queue: JSON.parse(readText(options.queue)), summary: options.summary}, {readQueue});
     else if (command === 'migrate') result = migrateCycle(data, {...input, procedureRef: options['procedure-ref'], packet: JSON.parse(readText(options.packet))});
     else if (command === 'assign') result = assignCycle(data, {...input, packet: JSON.parse(readText(options.packet)), queue: JSON.parse(readText(options.queue))}, {readQueue});
     else if (command === 'reconcile') result = reconcileCycle(data, {...input, queue: JSON.parse(readText(options.queue)), completionRef: options['completion-ref'], releaseRef: options['release-ref'], nextAction: options['next-action']}, {readQueue, readCompletion});
