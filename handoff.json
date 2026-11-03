@@ -3,31 +3,24 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 120,
-  "updatedAt": "2026-11-03T00:11:25.102Z",
+  "revision": 121,
+  "updatedAt": "2026-11-03T00:53:42.576Z",
   "procedureRef": "e947ac98e828e9e2ff6c1bb484c35fb45a93ba4b",
-  "activeRun": {
-    "runId": "ardesia-dev-20261103T000944Z-01a19eba",
-    "actor": "codex",
-    "startedAt": "2026-11-03T00:09:44.000Z",
-    "claimedAt": "2026-11-03T00:11:25.102Z",
-    "writeUntil": "2026-11-03T00:54:44.000Z",
-    "closeBy": "2026-11-03T01:04:44.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m4-consumer-20261102T185253Z",
     "taskId": "M4-REUSE",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "INTERRUPTED",
     "kind": "implementation",
     "notBefore": "2026-11-02T19:16:07.799Z",
     "expiresAt": "2026-11-04T19:16:07.799Z",
     "source": {
       "baseSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
-      "headSha": "062e3d58ed9fa9e5444e402e26a9760f797d3c96",
+      "headSha": "5460e636c2f3a48b1c2713993ca96cde9689858a",
       "branch": "codex/m4-reuse-next-20261102",
       "pr": "https://github.com/AndreaMarro/ardesia-next/pull/37",
-      "sourceDigest": "8fd881e74f75e49c62e45930be2609026781a4e24f745993b5e782bd6259cbf2"
+      "sourceDigest": "72b6be805877c6a5899220a99de102bcebf22ed05f68eb6829e5d011ed0e037d"
     },
     "goal": "Secondo dominio scientifico sullo stesso Core/Host",
     "allowedPaths": [
@@ -189,28 +182,72 @@
         "scope": "Configuration only: four native project cron tasks ACTIVE,gpt-6.1-sol/xhigh,hourly00/10/25/45,prompts byte-matched to final source after header stripping. Existing Next ID reused, two legacy tasks still PAUSED. Runtime model,three useful cycles,collision rate and quota NOT_RUN/UNKNOWN. One integrator; no M4 completion or new application deployment.",
         "access": "artifact",
         "artifactDigest": "538b42311e81a32943b48bf212a9c7b676a154bec831dce802d6d6c984bb2e20"
+      },
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41553047014",
+        "headSha": "5460e636c2f3a48b1c2713993ca96cde9689858a",
+        "sourceDigest": "72b6be805877c6a5899220a99de102bcebf22ed05f68eb6829e5d011ed0e037d",
+        "result": "FAIL",
+        "scope": "Original final-source attempt1 artifact13192138785 read/CRC valid:7/8checks PASS;314tests/53suites,0skip;bundle289068/245760FAIL. QA/benchmark/browser skipped after Verify failure; not complete.",
+        "access": "artifact",
+        "artifactDigest": "388222be3ec33363d0583b20c06feadf3063f988e5b755888437eb123fa89574"
+      },
+      {
+        "kind": "review",
+        "name": "independent-consumer-source-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6592319712",
+        "headSha": "5460e636c2f3a48b1c2713993ca96cde9689858a",
+        "sourceDigest": "72b6be805877c6a5899220a99de102bcebf22ed05f68eb6829e5d011ed0e037d",
+        "result": "FAIL",
+        "scope": "Fresh non-author /root/m4_consumer_review read raw diff/source and CIbudget/verification;P2budget confirmed, no additional reproducibleP1/P2 found. Spring concurrencyFAIL unresolved/no causal link established; no full browser/PostgreSQL execution independently examined. Trust promotion/human reviews pending; instructional read-only, no separate ACL.",
+        "access": "artifact",
+        "artifactDigest": "d87e0bef54d48fcf97494a058195989609427b30c6270f318917e0cc92083f27"
+      },
+      {
+        "kind": "check",
+        "name": "m4-local-browser-final-source",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6592319712",
+        "headSha": "5460e636c2f3a48b1c2713993ca96cde9689858a",
+        "sourceDigest": "72b6be805877c6a5899220a99de102bcebf22ed05f68eb6829e5d011ed0e037d",
+        "result": "FAIL",
+        "scope": "Exact final source local M4:4PASS/4FAIL,0skip/flaky/retry; flow teacher desktop/mobile and both mobile learner cycles PASS; pressure teacher timeouts and desktop learner mount not-ready FAIL. Full consumer not verified; no preview.",
+        "access": "artifact",
+        "artifactDigest": "2e645bb2cc13e2f29e189855b5f5e0664cf31cc8f4c57c4329128fb9a3404582"
+      },
+      {
+        "kind": "check",
+        "name": "local-full-browser-interrupted",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6592319712",
+        "headSha": "5460e636c2f3a48b1c2713993ca96cde9689858a",
+        "sourceDigest": "72b6be805877c6a5899220a99de102bcebf22ed05f68eb6829e5d011ed0e037d",
+        "result": "FAIL",
+        "scope": "Exact final source full local suite stopped for bounded run:1PASS,2FAIL,1INTERRUPTED,77NOT_RUN. Spring competing save expected8kg observed6kg unresolved; student setup timeout. No cause attributed or gate weakened.",
+        "access": "artifact",
+        "artifactDigest": "e096c45b7108c052a591538e0fd7adc711f7ac4d5968a2ac8966de63ad284aa0"
       }
     ],
     "blockers": [],
-    "nextAction": "HANDOFF READY dopo recupero documentato OPS-20261103-01, non M4 completata. Run precedente e specialista failed/systemError capacità modello, tool completati; PostgreSQL sintetico orfano arrestato senza cancellare dati, nessun processo cwd run/candidato rimasto. Rilascio117/077ac358 e claim118/479c336e pubblicati/riletti senza force, tempi di entrambe le run preservati; questa HANDOFF rilascia il claim e termina il recupero. Riprendere DIRETTAMENTE la stessa implementazione locale in /Users/andreamarro/Documents/Codex/2026-11-01/files-pasted-by-the-user-ardesia/work/m4-reuse-20261102T175141Z, HEAD01336f5c20365851e75741945d8e9cee3e4e3240 discendente062e/main d0aa/procedura e947;13tracked+5untracked inclusa sola nuova annotazione history. Snapshot atomico chiuso /Users/andreamarro/.codex/automations/ardesia-next-worker-codex-sol-max/runs/ardesia-dev-20261102T230806Z-01a19e84/resume-manifest.json:18hashfile, resume-tracked.patch SHA2566b835750694a7c1135aacdce353e6ada7a907379a1bfe00a200e37b3a790b822, untracked tar0b94dd18156de4bf80e80fad76b8979ba7519c94688854e4ae4b651e36e99400 e bundle d3235bccdeeac54ec7cf41339c524646c314d4c1948f4d1cd3d2526e6c20e4aa; originali prima del recupero conservati. Nuovo claim/rilettura/budget prima di ogni write; verificare manifest, scope e tutto il diff prima del consumo, niente reset o attestazioni di completamento. Prima diagnosi concreta: due browserFAIL timeout sul pulsante Apri Flusso di Poiseuille dopo salvataggio/riapertura; originali log/screenshot conservati, no rerun cieco. PostgreSQL locale precedente2PASS/19skip e policyRED/GREEN sono parziali; build riuscita non prova budget/Verify/review del consumer, tutte PENDING. Non rifare preparazione PR37/head062e/digest8fd881 o CIverde PR37/38/40/41; non riaprire M3/setup. Collegare e verificare Poiseuille nello stesso Host/Core/PostgreSQL con catalogo/trust/firma autorizzati, consenso/save/reopen/revisioni esatte/studente/isolamento/rifiuto senza write/revoca e regressione molla, misurare riuso/bundle senza ridurre gate. History locale appartiene alla futura sourceDigest. Verify e review non autrice esatte del nuovo candidato precedono integrazione e preview protetta Vercel secondo release-runbook; consumer PREPARED_NOT_DEPLOYED, ultima preview nota d0aa non ricertificata da questa run. ContenutiDRAFT, humanreview pendente. Nessuna delega a preparatore emessa; non ereditare owner o claim. Dopo reale M4 chiusa continuareE1 con P3/in_progress e tutti18ambiti, oltreM5; nessun nuovo scheduler/modello/job esterno/spesa/provider/produzione/privilegio.",
+    "nextAction": "INTERRUPTED non completato. La guardia finishCycle della procedura e947 rifiuta HANDOFF da READY incompleto: nel prossimo nuovo run acquisire claim valido e ricostruire QUESTO STESSO task/packet attraverso HANDOFF consentito contro la coda Git immutabile e947; HANDOFF rilascia e conclude quel run, non continuare a scrivere né riusare runId. Il ciclo READY successivo riprende sorgente/prove qui indicate, senza rifare setup, preparazione o audit identico. Stesso M4-REUSE, non COMPLETE e non accettazione: riprendere direttamente PR37/head5460e636c2f3a48b1c2713993ca96cde9689858a/digest72b6be805877c6a5899220a99de102bcebf22ed05f68eb6829e5d011ed0e037d, worktree /Users/andreamarro/Documents/Codex/2026-11-01/files-pasted-by-the-user-ardesia/work/m4-reuse-20261102T175141Z pulito e pubblicato; basec4d, fix main d0aa e procedura e947 preservati. Nuovo claim/rilettura/budget prima di write; nessuna delega ereditata. PR37 aggiornata, review6592319712 fresca non autrice conclusa con P2budgetFAIL e limiti reali; non rifare una review onerosa identica. OriginaleCI41553047014/artifact13192138785 letto/CRC e digestunit-prep verificati:314/314test53suite zero skip,7/8checksPASS, solo budget289068/245760FAIL; nessun rerun stessa sorgente. CI QA/benchmark/browser saltati, non PASS. Nuova prova M4 locale sulla head finale4PASS/4FAIL,0skip/flaky/retry:flowdocente desktop/mobile e due learner mobile completi PASS; pressuredocente timeout e learnerdesktop mount nonready FAIL. Suite completa locale interrotta1PASS2FAIL1INTERRUPTED77NOT_RUN include molla concorrente attesa8kg/osservata6kg e setup studente timeout. PR ricevuta e run locale conservano raw JSON/log/screenshot privati; nessuna causa runner o regressione nuova dimostrata dal solo FAIL. PRIMO PASSO: discriminare gli stessi casi browser/molla e mount dalla sorgente pubblicata senza aumentare timeout come cura, prima della riduzione bundle. Budget totale invariato; diagnosi read-only workercompatto3357 darebbe ancora249654byte, non soluzione equivalente/firmata/adottata. Preservare byte/firme/provenienza934392, no nuove chiavi/pin o permessi impliciti; trustpromotion resta da verificare nel canale autorizzato. Nessun runtime Core/server/schema duplicato. Difetti step SI e consenso corretto hanno RED/GREEN ma non accettano consumer completo. LocaleVerify prima releaseevidenceFAIL per fixture shebang Node24 path con spazi (controcaso direttoENOENT/NodeesplicitoPASS); CI Linux passa quel controllo, limite conservato distinto. Nessun merge/deploy/alias o restore, PREPARED_NOT_DEPLOYED; preview stabile precedente preservata, non ricertificata qui. Nuova head richiede Verify/review proprie prima integrazione e preview protetta+smoke stabile, contenutiDRAFT/humanreview pendenti. M4 aperta; E1 segue con P3/in_progress, poi tutti18ambiti oltreM5. Scheduler/modello/accessi/provider/spesa invariati; quota/costo/modello runtimeUNKNOWN.",
     "review": {
-      "authorContextId": "root",
-      "reviewerContextId": "root.m4_preparation_review",
-      "sourceSha": "062e3d58ed9fa9e5444e402e26a9760f797d3c96",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6584746516"
+      "authorContextId": "root.thread01a19eba",
+      "reviewerContextId": "root.m4_consumer_review",
+      "sourceSha": "5460e636c2f3a48b1c2713993ca96cde9689858a",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/37#issuecomment-6592319712"
     }
   },
   "lastRun": {
-    "runId": "ardesia-dev-20261102T230806Z-01a19e84",
+    "runId": "ardesia-dev-20261103T000944Z-01a19eba",
     "actor": "codex",
-    "startedAt": "2026-11-02T23:08:06.000Z",
-    "claimedAt": "2026-11-02T23:13:01.638Z",
-    "writeUntil": "2026-11-02T23:53:06.000Z",
-    "closeBy": "2026-11-03T00:03:06.000Z",
+    "startedAt": "2026-11-03T00:09:44.000Z",
+    "claimedAt": "2026-11-03T00:11:25.102Z",
+    "writeUntil": "2026-11-03T00:54:44.000Z",
+    "closeBy": "2026-11-03T01:04:44.000Z",
     "packetId": "m4-consumer-20261102T185253Z",
-    "finishedAt": "2026-11-02T23:15:14.857Z",
-    "outcome": "HANDOFF",
+    "finishedAt": "2026-11-03T00:53:42.576Z",
+    "outcome": "INTERRUPTED",
     "late": false,
-    "summary": "Recupero originale M4: cessazione nativa parent/specialista provata, sorgenti17file+history preservate con hash e bundle, PostgreSQL orfano arrestato senza perdita dati, rilascio precedente late distinto dal nuovo budget. HANDOFF stesso task READY, nessuna nuova Verify/review o capacità deployata; riprendere consumer/browser e budget nella prossima run. Quote/costo UNKNOWN."
+    "summary": "Consumer M4 pubblicato5460e63/72b6be80 in PR37:fix SI/consenso con controprove,314unit/53suiteCI e firma/PostgreSQL PASS;Verify/reviewFAIL P2budget289068/245760, browserfinale4PASS4FAIL, molla concorrenteFAILaperta. PREPARED_NOT_DEPLOYED,no merge/alias/restore. Specialisticonclusi,PostgreSQL locale arrestato,dati preservati. Procedura rifiutaHANDOFF da READY incompleto:finishINTERRUPTED,nuovo run ricostruisce stesso incarico viaHANDOFF consentito. Costi/quotaUNKNOWN."
   }
 }
