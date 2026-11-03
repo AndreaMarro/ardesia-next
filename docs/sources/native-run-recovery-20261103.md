@@ -34,6 +34,14 @@ Report privato SHA256 `ec250c3e299af2a134d52b25418d1e49a5fd95470584d04dff9a33896
 Il vecchio FAIL8kg/6kg e i timeout di setup restano FAIL: il nuovo ambiente
 discrimina un fattore, senza provare la causa precisa del vecchio esito.
 
+La successiva suite completa sulla stessa sorgente termina1PASS/3FAIL e
+77NOT_RUN dopo SIGINT controllato al solo Playwright78752: mount molla
+senza pannello ready, salvataggio learner non osservato e setup marketplace
+oltre30s. Report SHA256 `221b13254294d377615fcae5d43c2286fa3c69f175283a4e449ba8bce237a48e`.
+Alle09:11Z load average127.13/113.85/68.49; gli stessi88test operativi
+impiegano80s contro3s prima. È una condizione osservata, non prova che
+la contesa spieghi ogni FAIL. Nessun timeout aumentato o FAIL cancellato.
+
 Bundle riprodotto:289068/245760byte gzip, FAIL. Main127777, KaTeX76060,
 worker molla42463, worker Poiseuille42768. L'esperimento con i normali
 compressori Terser abilitati produce289632byte, peggiora e non è adottato.

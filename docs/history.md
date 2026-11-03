@@ -10,6 +10,8 @@ Il turno nativo è failed/inattivo alle02:40:15Z con errore workspace routing di
 
 Risultato verificabile: dieci scenari originali browser/molla/Poiseuille desktop/mobile PASS sulla sorgente invariata,0skip/flaky; precedenti FAIL preservati. Bundle289068/245760FAIL riprodotto, nessuna cura con soglie/timeout o pin nuovi. Causa precisa del vecchio FAIL8kg/6kg non dimostrata; M4 resta aperta, PREPARED_NOT_DEPLOYED, review umane DRAFT pendenti. La proposta separata recover elimina la ricostruzione manuale del checkpoint dopo prove terminali e conserva tutti i vincoli del helper; non garantisce la chiusura di un processo nativo fatalmente interrotto. Review/Verify e identità della proposta restano nelle ricevute della PR; procedureRef e947ac98 non cambia implicitamente.
 
+La successiva suite completa locale sulla stessa sorgente registra1PASS/3FAIL/77NOT_RUN; fermata con SIGINT al solo Playwright78752 e teardown, senza reset dati o arresti globali. Falliscono mount molla, conferma learner e setup marketplace; non è una nuova riproduzione del medesimo8kg/6kg. Load average127 osservato, senza attribuirgli tutte le cause. Le prove negative restano conservate e impediscono di chiamare verificato il consumer completo.
+
 ## Archivio e fonti
 Il testo precedente, incluse OPS-20261031-01, OPS-20261101-02/03/04, è conservato **byte per byte** in [history-through-20261101.md](history-through-20261101.md). È un archivio storico, non un secondo registro corrente. La coda antecedente è [archiviata](../operations/archive/coordination-before-sequential.json). Le fonti legacy e i 116 requisiti/68 criteri rimangono indicizzati da [product-map](product-map.md); non sono stati riscritti né promossi a PASS.
 
