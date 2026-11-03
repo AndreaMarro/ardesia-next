@@ -4,6 +4,7 @@ import {readFileSync, writeFileSync, mkdirSync, mkdtempSync, rmSync} from 'node:
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {createPluginHost, firstPartyTrust} from '@ardesia/plugin-host';
+import {packWorkerTransport} from '../../../../tools/pack-worker-transport.mjs';
 const encode = (d: unknown) => new TextEncoder().encode(bundleTransportHeader + JSON.stringify(d));
 const path = '/plugins/shared/' + 'a'.repeat(64) + '.js';
 const valid = () => ({path, byteLength: 4, ranges: [[0, 2], [4, 2]]});
@@ -15,7 +16,6 @@ describe('first-party byte transport, before mandatory Host verification', () =>
       mkdirSync(join(directory,'plugins'),{recursive:true});writeFileSync(join(directory,'plugins/catalog.json'),JSON.stringify(catalog));
       const plugins = catalog.entries.filter((entry: {kind: string}) => entry.kind === 'plugin');
       for (const entry of plugins) {const target=join(directory,entry.bundlePath.slice(1));mkdirSync(join(target,'..'),{recursive:true});writeFileSync(target,readFileSync('apps/web/public'+entry.bundlePath));}
-      const {packWorkerTransport} = await import(/* @vite-ignore */ new URL('../../../../tools/pack-worker-transport.mjs',import.meta.url).href);
       packWorkerTransport(directory);
       const host = createPluginHost({trustStore:firstPartyTrust.trustStore,policy:{allowlist:firstPartyTrust.allowlist,capabilities:['state:read','state:write'],maxBundleBytes:512_000,timeoutMs:5_000}});
       for (const entry of plugins) {
