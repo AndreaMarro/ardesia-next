@@ -3,6 +3,7 @@ import {execFileSync} from 'node:child_process';
 import {isAbsolute} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {isDeepStrictEqual} from 'node:util';
+import {createHash} from 'node:crypto';
 import {validateCoordination} from './check-operations.mjs';
 
 const REPOSITORY = 'AndreaMarro/ardesia-next';
@@ -299,8 +300,12 @@ export function recoverCycle(data, {expectedRevision, runId, actor, terminal, pa
   }
   const comparable = value => Object.fromEntries(Object.entries(value ?? {}).filter(([key]) => !['disposition', 'nextAction'].includes(key)));
   if (!isDeepStrictEqual(comparable(packet), comparable(data.packet)) || packet?.disposition !== 'READY') throw new Error('Recovery must preserve the complete assignment, source and evidence.');
+  eligiblePacket(data, packet, queue, readQueue);
+  const receiptDigest = createHash('sha256').update(JSON.stringify(terminal)).digest('hex');
+  const outcome = expires(packet) - moment > 10 * MINUTE ? 'HANDOFF' : 'INTERRUPTED';
   const interrupted = structuredClone(data); interrupted.packet.disposition = 'INTERRUPTED';
-  return finishCycle(interrupted, {expectedRevision, runId, actor, outcome: 'HANDOFF', packet, summary, queue}, {now, readQueue});
+  return finishCycle(interrupted, {expectedRevision, runId, actor, outcome, packet: {...packet, disposition: outcome === 'HANDOFF' ? 'READY' : 'INTERRUPTED'},
+    summary: `${summary} Terminal receipt SHA-256 ${receiptDigest}; preserved-work SHA-256 ${terminal.preservationDigest}.`, queue}, {now, readQueue});
 }
 
 

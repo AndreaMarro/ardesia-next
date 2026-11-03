@@ -111,6 +111,24 @@ test('recovery cannot change the preserved assignment or hide a failure or pendi
  const noncanonical=structuredClone(input.queue);noncanonical.tasks[0].scope.push('apps');
  assert.throws(()=>cycle.recoverCycle(active,{...input,queue:noncanonical},adapters),/hypothetical/);
 });
+test('terminal recovery releases expired and short-window claims without creating a new ticket window', () => {
+ const {active,input,adapters}=recoveryFixture();
+ for(const minutes of [170,180,250]) {
+  const result=cycle.recoverCycle(active,{...input,terminal:{...input.terminal,observedAt:at(minutes).toISOString()}},{...adapters,now:at(minutes)});
+  assert.equal(result.activeRun,null);assert.equal(result.lastRun.outcome,'INTERRUPTED');
+  assert.equal(result.packet.disposition,'INTERRUPTED');assert.equal(result.packet.expiresAt,active.packet.expiresAt);
+  assert.deepEqual(result.packet.source,active.packet.source);assert.equal(result.lastRun.closeBy,active.activeRun.closeBy);
+ }
+});
+test('durable recovery summary binds the terminal receipt and preservation without exporting private reference text', () => {
+ const {active,input,adapters}=recoveryFixture();
+ const one=cycle.recoverCycle(active,input,adapters);
+ const two=cycle.recoverCycle(active,{...input,terminal:{...input.terminal,reference:'another-private-reference'}},adapters);
+ assert.notEqual(one.lastRun.summary,two.lastRun.summary);
+ assert.match(one.lastRun.summary,/Terminal receipt SHA-256 [a-f0-9]{64}; preserved-work SHA-256/);
+ assert.ok(one.lastRun.summary.includes(input.terminal.preservationDigest));
+ assert.ok(!one.lastRun.summary.includes(input.terminal.reference));
+});
 test('migrate is explicit, inactive-only and preserves old evidence', () => {
  assert.equal(typeof cycle.migrateCycle, 'function');
  const old = fixture(false); old.packet.disposition='BLOCKED'; old.packet.blockers=['B-OLD-AUTOMATION'];

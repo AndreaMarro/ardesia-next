@@ -66,8 +66,12 @@ Controprove nel test sequenziale esistente: scadenza senza prova; stato
 running/completed; altro run; writer non cessati; conservazione assente;
 tempi impossibili; revision errata; cambio sorgente/evidenza/criteri/scope;
 coda inventata; CI pendente. Il caso valido conserva FAIL, identità e tempi
-originali, registra late, rilascia il claim e non acquisisce automaticamente
-un writer. Il nuovo claim usa il suo avvio reale.
+originali, registra late e lega la summary ai digest della ricevuta terminale
+privata e del lavoro conservato. Se la finestra residua non supera dieci
+minuti, rilascia come INTERRUPTED senza rinnovare expiresAt; altrimenti
+HANDOFF dello stesso task. Non acquisisce automaticamente un writer.
+Il nuovo claim usa il suo avvio reale. Questi due casi e il legame durevole
+alla ricevuta sono controprove aggiunte dalla review non autrice.
 
 Proposta distinta dal consumer M4: review non autrice e Verify della propria
 sorgente precedono l'eventuale adozione. La procedureRef effettiva resta
