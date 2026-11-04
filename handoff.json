@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 148,
-  "updatedAt": "2026-11-04T14:18:31.015Z",
+  "revision": 149,
+  "updatedAt": "2026-11-04T14:37:55.699Z",
   "procedureRef": "d8179e0336738edf00a2793c8aab875a38bb8289",
   "activeRun": {
     "runId": "ardesia-post-m4-20261104T141417Z",
@@ -18,16 +18,16 @@
     "id": "ops004-m4-20261104T141417Z",
     "taskId": "OPS-004",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "COMPLETE_INCREMENT",
     "kind": "implementation",
     "notBefore": "2026-11-04T14:14:17.000Z",
     "expiresAt": "2026-11-06T14:14:17.000Z",
     "source": {
       "baseSha": "90adcf473a5145b8651c26fd5127d4b67c37cc4e",
-      "headSha": "90adcf473a5145b8651c26fd5127d4b67c37cc4e",
+      "headSha": "b0ee6e17aa87664e9b02254dd85f2cd6f46f751e",
       "branch": "codex/ops004-m4-completion-20261104",
-      "pr": null,
-      "sourceDigest": "95468f486efd9dd0c857adf56a5a952a5f4a011579ab5e5670b5fd640e7c85f0"
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/45",
+      "sourceDigest": "e5407654b8246db92feebf0027771d9b3e97b3cf95645b7a60080b7ec8aeb4f9"
     },
     "goal": "Riconciliazione canonica delle consegne verificate, su richiesta",
     "allowedPaths": [
@@ -39,10 +39,38 @@
       "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
       "La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."
     ],
-    "evidence": [],
+    "evidence": [
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41847000233",
+        "headSha": "b0ee6e17aa87664e9b02254dd85f2cd6f46f751e",
+        "sourceDigest": "e5407654b8246db92feebf0027771d9b3e97b3cf95645b7a60080b7ec8aeb4f9",
+        "result": "PASS",
+        "scope": "OPS-004 administrative source only; M4 runtime evidence is distinct",
+        "access": "artifact",
+        "artifactDigest": "c9a684ec0b1678496aa10ab35acfe6826a236cc3ee32dabf178fb602dc3f79d5"
+      },
+      {
+        "kind": "review",
+        "name": "independent source review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/45",
+        "headSha": "b0ee6e17aa87664e9b02254dd85f2cd6f46f751e",
+        "sourceDigest": "e5407654b8246db92feebf0027771d9b3e97b3cf95645b7a60080b7ec8aeb4f9",
+        "result": "PASS",
+        "scope": "OPS-004 administrative source only; M4 runtime evidence is distinct",
+        "access": "artifact",
+        "artifactDigest": "35d04e78d903e904e4942d8ccb8b3982d85702f14cdd09adfc0a52955c2fddee"
+      }
+    ],
     "blockers": [],
-    "nextAction": "Reconcile only M4-REUSE from immutable completion998eb551d404e7fb8fc0383cd8b92165396f8cd3 after reading original preserved reports. Preserve DRAFT/humanPENDING; inspect supplied PROPOSED patch without executing commands. Use adopted helper, own Verify/review/source and explicit adoption; then ENG-E1. No M4 rebuild/retest/deployment or scheduler change.",
-    "review": null
+    "nextAction": "Adopt exactly b0ee after its own Verify/review; merge7e62 CI is a separate pending identity. Then assign ENG-E1 within unchanged claim.",
+    "review": {
+      "authorContextId": "root",
+      "reviewerContextId": "root-m4-final-review",
+      "sourceSha": "b0ee6e17aa87664e9b02254dd85f2cd6f46f751e",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/45"
+    }
   },
   "lastRun": {
     "runId": "ardesia-mandate-20261104T115540Z",
