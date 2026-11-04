@@ -3,22 +3,15 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 155,
-  "updatedAt": "2026-11-04T15:50:10.059Z",
+  "revision": 156,
+  "updatedAt": "2026-11-04T15:51:30.840Z",
   "procedureRef": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
-  "activeRun": {
-    "runId": "ardesia-e1-qa-20261104T150727Z",
-    "actor": "codex",
-    "startedAt": "2026-11-04T15:07:27.000Z",
-    "claimedAt": "2026-11-04T15:09:43.694Z",
-    "writeUntil": "2026-11-04T15:52:27.000Z",
-    "closeBy": "2026-11-04T16:02:27.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "e1-readiness-20261104T141417Z",
     "taskId": "ENG-E1",
     "nextActor": "codex",
-    "disposition": "BLOCKED",
+    "disposition": "READY",
     "kind": "implementation",
     "notBefore": "2026-11-04T14:14:17.000Z",
     "expiresAt": "2026-11-06T14:14:17.000Z",
@@ -75,12 +68,21 @@
         "scope": "Actual non-author root-m4-final-review context; rawsource/tree, exact own merge CI and two ACKlogout timelines read; preserves localFAIL limits",
         "access": "artifact",
         "artifactDigest": "08275d52b83ddbc164a87e4071f4ef7fc163de4526228a99c3c91bd59b54d541"
+      },
+      {
+        "kind": "check",
+        "name": "actual bound pre-mutation readiness",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/46",
+        "headSha": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
+        "sourceDigest": "94d84171444656b888a040bf65fd2369b14e75e6670a8ae43d508b16206bf272",
+        "result": "PASS",
+        "scope": "CLI budget on live claimed155 adopted777, actual current platform metadata, Node24/fixture/PG/Chromium facts observed15:46:35, fresh exact binding; READY grants no authorization",
+        "access": "artifact",
+        "artifactDigest": null
       }
     ],
-    "blockers": [
-      "E1-REAL-FLOW-PENDING"
-    ],
-    "nextAction": "Explicitly adopt exact verified merge777 after its own canonical CI41860227840 and non-author merge addendum08275d52; candidatec174 CI41858069324 separately PASS. LocalMac Verify FAIL remains historical/UNKNOWN, no separateMac gate defined, no threshold changes. Perform fresh bound CLI budget then real HANDOFF of same canonical ENG-E1 to READY; actualflow not yet complete and E1 notdone. Preserve original run budget and all criteria; no deployment or scheduler change.",
+    "blockers": [],
+    "nextAction": "E1 procedure adopted at cursor155/fb8fe472 only after exact source777 own CI41860227840 green8/329/83 and non-author addendum08275d52. This HANDOFF reactivates the same real ENG-E1 using fresh observed contract, without changing criteria/scope/budget. On next legitimate claim, reuse exact source/CI/review/real preflight+HANDOFF proof to close E1 then canonical OPS-004 reconciliation; E1 queue status stillqueued pending that administrative completion, do not claim alreadydone or repeat CI/runtime. Preserve localMac FAIL/UNKNOWN and historical5586FAIL; no separateMac gate, thresholdsunchanged. No deployment/scheduler/provider/access changes.",
     "review": {
       "authorContextId": "root",
       "reviewerContextId": "root-m4-final-review",
@@ -89,16 +91,16 @@
     }
   },
   "lastRun": {
-    "runId": "ardesia-post-m4-20261104T141417Z",
+    "runId": "ardesia-e1-qa-20261104T150727Z",
     "actor": "codex",
-    "startedAt": "2026-11-04T14:14:17.000Z",
-    "claimedAt": "2026-11-04T14:16:40.489Z",
-    "writeUntil": "2026-11-04T14:59:17.000Z",
-    "closeBy": "2026-11-04T15:09:17.000Z",
+    "startedAt": "2026-11-04T15:07:27.000Z",
+    "claimedAt": "2026-11-04T15:09:43.694Z",
+    "writeUntil": "2026-11-04T15:52:27.000Z",
+    "closeBy": "2026-11-04T16:02:27.000Z",
     "packetId": "e1-readiness-20261104T141417Z",
-    "finishedAt": "2026-11-04T14:55:31.205Z",
-    "outcome": "BLOCKED",
+    "finishedAt": "2026-11-04T15:51:30.840Z",
+    "outcome": "HANDOFF",
     "late": false,
-    "summary": "OPS-004 adopted b0ee after own Verify/review; merged7e62 ownCI41848785287 PASS8/329/83. E1 PR46 source5586/digestae6c:150focused+14reviewPASS,CI Verify8/329PASS but82of83browser/fullworkflowFAIL; localtimeout preserved,isolated4PASS. E1 not merged/adopted/complete. Current procedure b0ee, runtime90adunchanged. Narrow logoutACK discriminator next; private outputs preserved; childwriters stopped, no scheduler changes."
+    "summary": "PR46 merged777/digest94d8; own canonical Verify8/329unit83browserPASS and independent exact merge review. E1 explicitly adopted155 after green gates; actual bound pre-write budget and this same-task HANDOFF real, original budget preserved. E1 row stillqueued until administrative completion next claim; localMac failures preserved, no deployment or scheduler changes; childwriters stopped."
   }
 }
