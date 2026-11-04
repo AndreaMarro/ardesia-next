@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 156,
-  "updatedAt": "2026-11-04T15:51:30.840Z",
+  "revision": 157,
+  "updatedAt": "2026-11-04T15:53:03.000Z",
   "procedureRef": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
   "activeRun": null,
   "packet": {
@@ -71,18 +71,29 @@
       },
       {
         "kind": "check",
-        "name": "actual bound pre-mutation readiness",
+        "name": "actual canonical HANDOFF readiness",
         "reference": "https://github.com/AndreaMarro/ardesia-next/pull/46",
         "headSha": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
         "sourceDigest": "94d84171444656b888a040bf65fd2369b14e75e6670a8ae43d508b16206bf272",
         "result": "PASS",
-        "scope": "CLI budget on live claimed155 adopted777, actual current platform metadata, Node24/fixture/PG/Chromium facts observed15:46:35, fresh exact binding; READY grants no authorization",
+        "scope": "Adopted CLI finish HANDOFF validated exact current task/procedure/source/requirements and fresh observations at15:51:30, then live156 publication observed. The separate budget request60seconds was rejected because less than60 remained; no positive budget receipt exists.",
         "access": "artifact",
+        "artifactDigest": null
+      },
+      {
+        "kind": "check",
+        "name": "requested60second budget",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/46",
+        "headSha": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
+        "sourceDigest": "94d84171444656b888a040bf65fd2369b14e75e6670a8ae43d508b16206bf272",
+        "result": "FAIL",
+        "scope": "Actual CLI stderr: Requested work does not fit before writeUntil. stdout empty. Wrapper continued to administrative HANDOFF; this failure is preserved, never counted as readinessChecked:true.",
+        "access": "metadata",
         "artifactDigest": null
       }
     ],
     "blockers": [],
-    "nextAction": "E1 procedure adopted at cursor155/fb8fe472 only after exact source777 own CI41860227840 green8/329/83 and non-author addendum08275d52. This HANDOFF reactivates the same real ENG-E1 using fresh observed contract, without changing criteria/scope/budget. On next legitimate claim, reuse exact source/CI/review/real preflight+HANDOFF proof to close E1 then canonical OPS-004 reconciliation; E1 queue status stillqueued pending that administrative completion, do not claim alreadydone or repeat CI/runtime. Preserve localMac FAIL/UNKNOWN and historical5586FAIL; no separateMac gate, thresholdsunchanged. No deployment/scheduler/provider/access changes.",
+    "nextAction": "E1 source777 adopted155 after own canonical CI8/329/83PASS and exact non-author review. Real same-task HANDOFF156 validated adopted readiness and was published/reread before writeUntil, with original budget unchanged. CORRECTION157: separate CLI budget60seconds was rejected because fewer remained; no positive budget receipt exists, and the prior budgetPASS statement was inaccurate. No product source/service work started after that rejection, only cursor/PR checkpoint publication. On next legitimate claim obtain a valid fresh CLI budget result before mutation, then finish E1 administrative completion/OPS-004 reconciliation using preserved exact source/CI/review/HANDOFF evidence. E1 queue stillqueued; no COMPLETE_INCREMENT claimed. Preserve localMac FAIL/UNKNOWN, original failures and zero deployment/scheduler changes.",
     "review": {
       "authorContextId": "root",
       "reviewerContextId": "root-m4-final-review",
@@ -101,6 +112,6 @@
     "finishedAt": "2026-11-04T15:51:30.840Z",
     "outcome": "HANDOFF",
     "late": false,
-    "summary": "PR46 merged777/digest94d8; own canonical Verify8/329unit83browserPASS and independent exact merge review. E1 explicitly adopted155 after green gates; actual bound pre-write budget and this same-task HANDOFF real, original budget preserved. E1 row stillqueued until administrative completion next claim; localMac failures preserved, no deployment or scheduler changes; childwriters stopped."
+    "summary": "PR46 merged777/digest94d8; exact own canonical Verify8/329unit83browserPASS and non-author review; E1 explicitly adopted155. Real same-task HANDOFF156 validated readiness and released claim before writeUntil. Correction157: separate60second budget requestFAILED for insufficient remaining time; no budgetPASS. E1 queued pending valid pre-write budget proof and administrative completion next claim. All failures preserved, no deployment or scheduler changes."
   }
 }
