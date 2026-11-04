@@ -3,9 +3,9 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 163,
-  "updatedAt": "2026-11-04T21:03:13.734Z",
-  "procedureRef": "c53f29c50c259814470284ed5c517003d7261fa8",
+  "revision": 164,
+  "updatedAt": "2026-11-04T21:21:05.867Z",
+  "procedureRef": "1b7ae6af8a7cda509d904ebad9c2143bc32d8466",
   "activeRun": {
     "runId": "ardesia-e2-20261104T210103Z",
     "actor": "codex",
@@ -61,10 +61,32 @@
         "reference": "https://github.com/AndreaMarro/ardesia-next/pull/47",
         "scope": "Candidate reference PR47; actual private non-author context root-m4-final-review, rawsource48/c53 tree and own originals read; review/ops004-e1-merge-addendum.md hash recorded. Instruction-level read-only, no separate ACL; not a GitHub approval or human acceptance.",
         "artifactDigest": "aa97d24ba4674717bbcf9fd593986cb15b00b9b8aba3eede3b89f24554de4608"
+      },
+      {
+        "headSha": "1b7ae6af8a7cda509d904ebad9c2143bc32d8466",
+        "sourceDigest": "f981de4bd1bc90a006983b2606cce51d100ac5ab4702706e55990ada6a941572",
+        "result": "PASS",
+        "access": "artifact",
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41913399363",
+        "scope": "Direct owner E2 intake only, own source1b7 canonical Verify8/329/83; not E2 completion or a PASS for any future merge.",
+        "artifactDigest": "7bfeac5ce20b7a1037190617eba9bf35535317ed4960da243a91f63a91c0e76f"
+      },
+      {
+        "headSha": "1b7ae6af8a7cda509d904ebad9c2143bc32d8466",
+        "sourceDigest": "f981de4bd1bc90a006983b2606cce51d100ac5ab4702706e55990ada6a941572",
+        "result": "PASS",
+        "access": "artifact",
+        "kind": "review",
+        "name": "independent E2 intake source and own CI review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/48",
+        "scope": "Actual non-author root-m4-final-review context read raw1b7, own originals and authority; source review449747cd and CI/adoption addendum a61209dd. Instruction-level read-only without separate ACL. Earlier missed refresh on P3 push is preserved, not relabelled; prospective fresh budget21:18:35 precedes this adoption.",
+        "artifactDigest": "a61209dd53a970f42d2db6055ee11b38db3cd3f5e0c32b97601bb1b70d93da2c"
       }
     ],
     "blockers": [],
-    "nextAction": "Administrative source c53 explicitly adopted after own exact Verify and non-author review. E1 row done once via completion159. Finish OPS-004 and release this claim; OPS remains queued on request. No eligible application successor: E2 and other tasks deferred, require bounded intake under actual prerequisites; no invented promotion. Private consumer/vector unit remain DRAFT, no deployment or scheduler action.",
+    "nextAction": "Direct-owner E2 intake source1b7 explicitly adopted after own Verify and non-author review. Completed predecessor OPS004/sourcec53 is preserved as historical packet, not reopened or credited for intake. E2 is only queued, not complete; select E2 via adopted assign and fresh actual observations next, same claim/start/deadlines. Eventual main merge has its own identity/gates; no PASS transfer or automatic procedure adoption.",
     "review": {
       "authorContextId": "root",
       "reviewerContextId": "root-m4-final-review",
