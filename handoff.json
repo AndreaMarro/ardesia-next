@@ -3,9 +3,9 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 154,
-  "updatedAt": "2026-11-04T15:11:41.516Z",
-  "procedureRef": "b0ee6e17aa87664e9b02254dd85f2cd6f46f751e",
+  "revision": 155,
+  "updatedAt": "2026-11-04T15:50:10.059Z",
+  "procedureRef": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
   "activeRun": {
     "runId": "ardesia-e1-qa-20261104T150727Z",
     "actor": "codex",
@@ -24,10 +24,10 @@
     "expiresAt": "2026-11-06T14:14:17.000Z",
     "source": {
       "baseSha": "7e62f518d8470c3da9a9cbe413afa1dc9dd06948",
-      "headSha": "5586fe67f341c7adc1b98d47d6799406df0762e9",
+      "headSha": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
       "branch": "codex/e1-task-readiness-20261104",
       "pr": "https://github.com/AndreaMarro/ardesia-next/pull/46",
-      "sourceDigest": "ae6cd9ad40a2ab279d2a69ac67d706ebfb24c4015f9bf2f095f0119c5f561616"
+      "sourceDigest": "94d84171444656b888a040bf65fd2369b14e75e6670a8ae43d508b16206bf272"
     },
     "goal": "E1: contratto READY nel vero flusso di assegnazione",
     "allowedPaths": [
@@ -57,56 +57,34 @@
       {
         "kind": "ci",
         "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41850689976",
-        "headSha": "5586fe67f341c7adc1b98d47d6799406df0762e9",
-        "sourceDigest": "ae6cd9ad40a2ab279d2a69ac67d706ebfb24c4015f9bf2f095f0119c5f561616",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41860227840",
+        "headSha": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
+        "sourceDigest": "94d84171444656b888a040bf65fd2369b14e75e6670a8ae43d508b16206bf272",
         "result": "PASS",
-        "scope": "Node24 CI Verify8/8,329unit PASS; this is not full workflow PASS",
+        "scope": "Own integration source777 Node24 canonical Verify8/8,329unit,83browserzero skip/flaky; original bytes and bindings read",
         "access": "artifact",
-        "artifactDigest": "dec034c5151a1dbe6a22c519eb59bdf5591ceea781ad0fee0b344dab3f959bc6"
-      },
-      {
-        "kind": "ci",
-        "name": "browser and workflow",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41850689976",
-        "headSha": "5586fe67f341c7adc1b98d47d6799406df0762e9",
-        "sourceDigest": "ae6cd9ad40a2ab279d2a69ac67d706ebfb24c4015f9bf2f095f0119c5f561616",
-        "result": "FAIL",
-        "scope": "82of83 browser PASS; remote-continuity old-cookie request after logout before observed ACK received200 expected401. No retry/merge/adoption.",
-        "access": "artifact",
-        "artifactDigest": "dec034c5151a1dbe6a22c519eb59bdf5591ceea781ad0fee0b344dab3f959bc6"
+        "artifactDigest": "a303a838193fd627530f0004b3a8181c8de9cc11d3092b102af4d9ae497e97b5"
       },
       {
         "kind": "review",
-        "name": "independent raw-source review",
+        "name": "independent source and merge gate review",
         "reference": "https://github.com/AndreaMarro/ardesia-next/pull/46",
-        "headSha": "5586fe67f341c7adc1b98d47d6799406df0762e9",
-        "sourceDigest": "ae6cd9ad40a2ab279d2a69ac67d706ebfb24c4015f9bf2f095f0119c5f561616",
+        "headSha": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
+        "sourceDigest": "94d84171444656b888a040bf65fd2369b14e75e6670a8ae43d508b16206bf272",
         "result": "PASS",
-        "scope": "Distinct non-author context root-m4-final-review; source delta plus14 synthetic counterchecks, no actual cursor adoption or platform attestation",
+        "scope": "Actual non-author root-m4-final-review context; rawsource/tree, exact own merge CI and two ACKlogout timelines read; preserves localFAIL limits",
         "access": "artifact",
-        "artifactDigest": "a9b5608bb604f1e65c00731b9d39d65f61f2ae045a5e0838c3cb229c469fd726"
-      },
-      {
-        "kind": "check",
-        "name": "local Verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/46",
-        "headSha": "5586fe67f341c7adc1b98d47d6799406df0762e9",
-        "sourceDigest": "ae6cd9ad40a2ab279d2a69ac67d706ebfb24c4015f9bf2f095f0119c5f561616",
-        "result": "FAIL",
-        "scope": "Node24 PG16 full local Verify stopped:328unitPASS1timeout5000ms bundle-transport; later unchanged isolated file4of4PASS, no threshold or source change",
-        "access": "artifact",
-        "artifactDigest": null
+        "artifactDigest": "08275d52b83ddbc164a87e4071f4ef7fc163de4526228a99c3c91bd59b54d541"
       }
     ],
     "blockers": [
-      "E1-CI-LOGOUT-ORDER"
+      "E1-REAL-FLOW-PENDING"
     ],
-    "nextAction": "Direct owner request4Nov authorizes the minimal QA scope intake for existing PR46/ENG-E1. Recorded in immutable intake24069145a5eec308a24f156ae55203079bcf8deb: only e2e/remote-continuity.spec.ts added, existing criteria/dependencies/policy preserved. This is a bounded owner scope grant for the current assignment, not E1/procedure adoption; b0ee remains adopted. Recheck current claim and budget before QA source/service writes; reproduce held real logout then successful ACK200/oktrue followed by exactly one old-cookie401, fix only confirmed cause, final-source Verify/fullCI and independent raw review all green before adoption and real assign/HANDOFF proof.",
+    "nextAction": "Explicitly adopt exact verified merge777 after its own canonical CI41860227840 and non-author merge addendum08275d52; candidatec174 CI41858069324 separately PASS. LocalMac Verify FAIL remains historical/UNKNOWN, no separateMac gate defined, no threshold changes. Perform fresh bound CLI budget then real HANDOFF of same canonical ENG-E1 to READY; actualflow not yet complete and E1 notdone. Preserve original run budget and all criteria; no deployment or scheduler change.",
     "review": {
       "authorContextId": "root",
       "reviewerContextId": "root-m4-final-review",
-      "sourceSha": "5586fe67f341c7adc1b98d47d6799406df0762e9",
+      "sourceSha": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
       "reference": "https://github.com/AndreaMarro/ardesia-next/pull/46"
     }
   },
