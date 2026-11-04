@@ -171,7 +171,7 @@ test('[M3] teacher and two students preserve private laboratory work across inde
     const oldRequest = await playwright.request.newContext({baseURL: apiOrigin, storageState: oldSession});
     // Hold the real logout BEFORE it reaches PostgreSQL: the signed-out UI is
     // intentionally immediate and cannot prove that this old session was revoked.
-    let releaseLogout!: () => void, receivedLogout!: () => void, serverAcknowledged = false;
+    let releaseLogout!: () => void, receivedLogout!: () => void, serverResponded = false, logoutRouteFailed = false;
     const logoutGate = new Promise<void>(resolve => {releaseLogout = resolve;});
     const logoutIntercepted = new Promise<void>(resolve => {receivedLogout = resolve;});
     const order: Array<{event: string; at: number; status?: number}> = [];
@@ -180,35 +180,52 @@ test('[M3] teacher and two students preserve private laboratory work across inde
       const input = route.request().method() === 'POST' ? route.request().postDataJSON() : null;
       if (input?.action !== 'logout') {await continueRouteWithAccess(route); return;}
       recordLogout('logout-held-before-server'); receivedLogout(); await logoutGate;
-      const response = await fetchRouteWithAccess(route);
-      expect(response.status()).toBe(200);
-      expect(await readApiJson(response)).toEqual({ok: true, result: {signedOut: true}});
-      serverAcknowledged = true; recordLogout('server-logout-ack', response.status());
-      await route.fulfill({response});
+      try {
+        const response = await fetchRouteWithAccess(route);
+        serverResponded = true; recordLogout('server-logout-response', response.status());
+        // Forward even a refused or malformed ACK: logoutUi must observe and reject it.
+        await route.fulfill({response});
+      } catch {
+        logoutRouteFailed = true;
+        // Driver errors may contain a Cookie call log. Surface only the fixed failure below.
+        await route.abort().catch(() => undefined);
+      }
     };
     await studentPage.route('**/api/m3', holdLogout);
     const pendingLogout = logoutUi(studentPage);
+    void pendingLogout.catch(() => undefined); // Preserve rejection for the awaited check without an unhandled promise.
+    let logoutCheckFailed = false;
     try {
       await logoutIntercepted;
       await expect(studentPage.getByRole('heading', {name: 'Il tuo spazio', exact: true})).toBeVisible();
       expect(await studentPage.evaluate(() => document.querySelector('.learner-content'))).toBeNull();
-      expect(serverAcknowledged).toBe(false); recordLogout('ui-closed-without-server-ack');
+      expect(serverResponded).toBe(false); recordLogout('ui-closed-without-server-ack');
       const beforeAck = await rawApi(oldRequest, {action: 'open-workspace', workspaceId: teacherWorkspace.workspaceId}, first.id);
       expect({status: beforeAck.status, ok: beforeAck.payload.ok}).toEqual({status: 200, ok: true});
       recordLogout('old-cookie-before-ack', beforeAck.status);
       releaseLogout();
       const acknowledged = await pendingLogout;
       expect(acknowledged).toEqual({status: 200, signedOut: true});
-      expect(serverAcknowledged).toBe(true); recordLogout('browser-logout-ack', acknowledged.status);
+      expect(serverResponded).toBe(true); recordLogout('browser-logout-ack', acknowledged.status);
       // Exactly one post-ACK request, with the unchanged captured cookie; no poll or retry.
       const afterAck = await rawApi(oldRequest, {action: 'open-workspace', workspaceId: teacherWorkspace.workspaceId}, first.id);
       recordLogout('old-cookie-after-ack', afterAck.status);
       expect({status: afterAck.status, ok: afterAck.payload.ok, code: afterAck.payload.error?.code})
         .toEqual({status: 401, ok: false, code: 'UNAUTHENTICATED'});
       await testInfo.attach('logout-revocation-order', {body: JSON.stringify(order, null, 2), contentType: 'application/json'});
+    } catch (error) {
+      logoutCheckFailed = true; throw error;
     } finally {
-      releaseLogout(); await pendingLogout;
-      await studentPage.unroute('**/api/m3', holdLogout); await oldRequest.dispose();
+      releaseLogout();
+      const cleanup = await Promise.allSettled([
+        pendingLogout, studentPage.unroute('**/api/m3', holdLogout), oldRequest.dispose(),
+      ]);
+      // Always dispose the old-cookie context and route, retaining the primary assertion error.
+      if (!logoutCheckFailed) {
+        if (logoutRouteFailed) throw new Error('The logout route did not return a server response.');
+        const failure = cleanup.find(result => result.status === 'rejected');
+        if (failure?.status === 'rejected') throw failure.reason;
+      }
     }
     await closeContextWithAccess(firstContext);
 
