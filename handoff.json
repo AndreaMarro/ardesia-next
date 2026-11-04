@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 159,
-  "updatedAt": "2026-11-04T19:31:19.125Z",
+  "revision": 160,
+  "updatedAt": "2026-11-04T19:32:51.144Z",
   "procedureRef": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
   "activeRun": {
     "runId": "ardesia-post-e1-20261104T192553Z",
@@ -15,98 +15,34 @@
     "closeBy": "2026-11-04T20:20:53.000Z"
   },
   "packet": {
-    "id": "e1-readiness-20261104T141417Z",
-    "taskId": "ENG-E1",
+    "id": "ops004-e1-20261104T192553Z",
+    "taskId": "OPS-004",
     "nextActor": "codex",
-    "disposition": "COMPLETE_INCREMENT",
+    "disposition": "READY",
     "kind": "implementation",
-    "notBefore": "2026-11-04T14:14:17.000Z",
-    "expiresAt": "2026-11-06T14:14:17.000Z",
+    "notBefore": "2026-11-04T19:25:53.000Z",
+    "expiresAt": "2026-11-06T19:25:53.000Z",
     "source": {
-      "baseSha": "7e62f518d8470c3da9a9cbe413afa1dc9dd06948",
+      "baseSha": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
       "headSha": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
-      "branch": "codex/e1-task-readiness-20261104",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/46",
-      "sourceDigest": "94d84171444656b888a040bf65fd2369b14e75e6670a8ae43d508b16206bf272"
+      "sourceDigest": "94d84171444656b888a040bf65fd2369b14e75e6670a8ae43d508b16206bf272",
+      "branch": "codex/ops004-e1-completion-20261104",
+      "pr": null
     },
-    "goal": "E1: contratto READY nel vero flusso di assegnazione",
+    "goal": "Riconciliazione canonica delle consegne verificate, su richiesta",
     "allowedPaths": [
-      "tools/check-operations.mjs",
-      "tools/check-operations.test.mjs",
-      "tools/cycle.mjs",
-      "tools/cycle.test.mjs",
-      "tools/cycle-sequential.test.mjs",
-      "tools/check-config.mjs",
-      "tools/task-preflight.mjs",
-      "tools/task-preflight.test.mjs",
       "operations/coordination.json",
-      "docs/templates/engineering-task.md",
-      ".github/pull_request_template.md",
-      "docs/e1-task-readiness.md",
-      "docs/recurring-work.md",
-      "docs/history.md",
-      "e2e/remote-continuity.spec.ts"
+      "docs/history.md"
     ],
     "exitCriteria": [
-      "Il consumer e cycle.mjs assign/HANDOFF: prima di avviare implementazione leggere contratto canonico immutabile, consumer, baseline, owner/rischio, percorsi dell intero flusso, dipendenze, capability/fixture/accessi osservati, verifiche, rollback e profilo; schema strict e coda unica. Nessun permesso deriva dal solo READY.",
-      "RED discriminante e GREEN su Node24: UI necessaria fuori scope, dipendenza incompleta, task sconosciuto, profilo/effort assente o UNKNOWN, fixture/accesso mancante, policy/sorgente/procedura o requisiti cambiati, osservazione scaduta; caso valido attraverso assign e HANDOFF reali, lettura preparatoria consentita.",
-      "I requisiti sono adottati e le osservazioni acquisite dal runner: JSON coerente non autentica modello o accessi. Collegare il controllo al vero assign/HANDOFF e al ricontrollo prima della mutazione, conservando claim, expected SHA/no force, budget, vecchi reader e rifiuto di override; nessun nuovo runner/store.",
-      "Esaminare e correggere la preparazione originale preservandone byte e FAIL; Verify obbligatoria della head finale con Node24, review non autrice della stessa sorgente, adozione esplicita e prova su un incarico reale prima di dichiarare E1 completo. Rollback con nuovo commit dei soli helper/schema/wiring, senza cancellare ricevute o dati."
+      "Un disallineamento concreto tra consegna verificata e coda viene riconciliato usando SHA/digest, Verify e review non autrice originali; nessun PASS trasferito a nuove sorgenti.",
+      "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
+      "La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."
     ],
-    "evidence": [
-      {
-        "kind": "ci",
-        "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41860227840",
-        "headSha": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
-        "sourceDigest": "94d84171444656b888a040bf65fd2369b14e75e6670a8ae43d508b16206bf272",
-        "result": "PASS",
-        "scope": "Own integration source777 Node24 canonical Verify8/8,329unit,83browserzero skip/flaky; original bytes and bindings read",
-        "access": "artifact",
-        "artifactDigest": "a303a838193fd627530f0004b3a8181c8de9cc11d3092b102af4d9ae497e97b5"
-      },
-      {
-        "kind": "review",
-        "name": "independent source and merge gate review",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/46",
-        "headSha": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
-        "sourceDigest": "94d84171444656b888a040bf65fd2369b14e75e6670a8ae43d508b16206bf272",
-        "result": "PASS",
-        "scope": "Actual non-author root-m4-final-review context; rawsource/tree, exact own merge CI and two ACKlogout timelines read; preserves localFAIL limits",
-        "access": "artifact",
-        "artifactDigest": "08275d52b83ddbc164a87e4071f4ef7fc163de4526228a99c3c91bd59b54d541"
-      },
-      {
-        "kind": "check",
-        "name": "actual canonical HANDOFF readiness",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/46",
-        "headSha": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
-        "sourceDigest": "94d84171444656b888a040bf65fd2369b14e75e6670a8ae43d508b16206bf272",
-        "result": "PASS",
-        "scope": "Adopted CLI finish HANDOFF validated exact current task/procedure/source/requirements and fresh observations at15:51:30, then live156 publication observed. The separate budget request60seconds was rejected because less than60 remained; no positive budget receipt exists.",
-        "access": "artifact",
-        "artifactDigest": null
-      },
-      {
-        "kind": "check",
-        "name": "native positive budget and fail-closed caller",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/46",
-        "headSha": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
-        "sourceDigest": "94d84171444656b888a040bf65fd2369b14e75e6670a8ae43d508b16206bf272",
-        "result": "PASS",
-        "scope": "New legitimate run ardesia-post-e1-20261104T192553Z; actual adopted CLI budget900 exit0, nonempty parsed JSON, exact run/actor/duration/deadlines and readinessChecked:true,2457secondsremaining with margin. Previous rejected60 FAIL stays immutable at cursor157/819b947b; it was not relabelled. Original source/CI/review unchanged and reused.",
-        "access": "artifact",
-        "artifactDigest": "2d2bf54fef9590b4fa60177faa4506c9eab6e6505710cb3ac70a86add8c1316c"
-      }
-    ],
+    "evidence": [],
     "blockers": [],
-    "nextAction": "E1 complete once on exact source777 after original canonical CI/review/adoption, real HANDOFF156 and this native budget900 positive. Keep previous157 rejected60 and MacFAIL/UNKNOWN intact. Use this durable completion-ref to assign OPS-004 in the same claim and reconcile only ENG-E1 row, with own administrative source Verify/review/adoption. Do not redo E1/M4 or immutable CI; no deployment/scheduler changes.",
-    "review": {
-      "authorContextId": "root",
-      "reviewerContextId": "root-m4-final-review",
-      "sourceSha": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/46"
-    }
+    "nextAction": "Reconcile only ENG-E1 from exact completion159/84b82ba5 using adopted helper and original source777 CI/review/nativebudget proof. Record owner post-E1 mandate once in history before delegation. Own administrative source requires Verify/review/adoption. No gate/helper changes, no E1/M4 redo, no scheduler/deployment. Then inspect actual eligible successor; deferred tasks require intake.",
+    "review": null
   },
   "lastRun": {
     "runId": "ardesia-e1-qa-20261104T150727Z",
