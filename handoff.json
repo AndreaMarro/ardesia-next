@@ -3,9 +3,9 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 165,
-  "updatedAt": "2026-11-04T21:21:12.311Z",
-  "procedureRef": "1b7ae6af8a7cda509d904ebad9c2143bc32d8466",
+  "revision": 166,
+  "updatedAt": "2026-11-04T21:35:38.477Z",
+  "procedureRef": "e83c98098bb4da0324a97460776b1898b5a05ee5",
   "activeRun": {
     "runId": "ardesia-e2-20261104T210103Z",
     "actor": "codex",
@@ -24,10 +24,10 @@
     "expiresAt": "2026-11-06T21:01:03.000Z",
     "source": {
       "baseSha": "1b7ae6af8a7cda509d904ebad9c2143bc32d8466",
-      "headSha": "1b7ae6af8a7cda509d904ebad9c2143bc32d8466",
-      "sourceDigest": "f981de4bd1bc90a006983b2606cce51d100ac5ab4702706e55990ada6a941572",
+      "headSha": "e83c98098bb4da0324a97460776b1898b5a05ee5",
+      "sourceDigest": "5d9820696c2582ddaab0c7e3a0d9fc52dc750f973acfb03f1e120c1f4e66fac2",
       "branch": "codex/e2-readiness-reconcile-20261104",
-      "pr": null
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/49"
     },
     "goal": "E2: chiusura e ripresa idempotenti nel cursore esistente",
     "allowedPaths": [
@@ -45,10 +45,38 @@
       "Controprove di duplicato, ACK vecchio, due claim, crash a ogni passo inclusa PR pubblicata prima della chiusura, task gia chiuso/riaperto; idempotenza, expected SHA e nessun takeover per scadenza.",
       "Due consegne reali consecutive senza duplicare implementazione o prove valide; OPS-004 resta fino a equivalenza dimostrata. Verify/review indipendente e adozione sul candidato esatto."
     ],
-    "evidence": [],
+    "evidence": [
+      {
+        "headSha": "e83c98098bb4da0324a97460776b1898b5a05ee5",
+        "sourceDigest": "5d9820696c2582ddaab0c7e3a0d9fc52dc750f973acfb03f1e120c1f4e66fac2",
+        "result": "PASS",
+        "access": "artifact",
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41915908101",
+        "scope": "Own exact published e83 source Verify8/329/83, no skip/flaky/retry; not a PASS for the subsequent f7ad merge.",
+        "artifactDigest": "0d99c9f87765810749737c05db013b10db3125d4ce30e864a5d3921bedde4144"
+      },
+      {
+        "headSha": "e83c98098bb4da0324a97460776b1898b5a05ee5",
+        "sourceDigest": "5d9820696c2582ddaab0c7e3a0d9fc52dc750f973acfb03f1e120c1f4e66fac2",
+        "result": "PASS",
+        "access": "artifact",
+        "kind": "review",
+        "name": "independent exact source and own CI review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/49",
+        "scope": "Actual non-author root-m4-final-review raw e83 source review4f0faaa0 and own CI addendum4d91c2d9; instruction-level read-only, no separate ACL. P2 readiness corrected; two real consecutive E2 deliveries remain pending.",
+        "artifactDigest": "4d91c2d9cb0cd4a7c277259621d94c363c8ceb9e07b6aba99f4c07aa1c97cde4"
+      }
+    ],
     "blockers": [],
-    "nextAction": "First reproduce independent P2 readiness descriptor drift at actual reconcile consumer, then minimally preserve readiness in completion contract with legacy unchanged/no-descriptor controls. Reuse OPS005/006/PR42/E1 and original receipts; no new runner/store, no E1/M4 redo. Own Verify/review/adoption required. Two real consecutive deliveries remain pending; do not mark E2 complete from intake or fixtures, retain OPS004.",
-    "review": null
+    "nextAction": "Verified published e83 guard explicitly adopted after own source Verify and independent review; readiness is preserved in historical completion contract. E2 remains incomplete: two real consecutive canonical deliveries/equivalence are pending, OPS004 stays queued. PR49 merged f7ad is a separate source identity with own main CI still to inspect; never transfer e83 PASS or automatically adopt f7ad. Preserve all original failures and missed1b7-push-refresh limit. No deployment/scheduler/provider changes.",
+    "review": {
+      "authorContextId": "root",
+      "reviewerContextId": "root-m4-final-review",
+      "sourceSha": "e83c98098bb4da0324a97460776b1898b5a05ee5",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/49"
+    }
   },
   "lastRun": {
     "runId": "ardesia-post-e1-20261104T192553Z",
