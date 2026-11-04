@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 158,
-  "updatedAt": "2026-11-04T19:28:02.967Z",
+  "revision": 159,
+  "updatedAt": "2026-11-04T19:31:19.125Z",
   "procedureRef": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
   "activeRun": {
     "runId": "ardesia-post-e1-20261104T192553Z",
@@ -18,7 +18,7 @@
     "id": "e1-readiness-20261104T141417Z",
     "taskId": "ENG-E1",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "COMPLETE_INCREMENT",
     "kind": "implementation",
     "notBefore": "2026-11-04T14:14:17.000Z",
     "expiresAt": "2026-11-06T14:14:17.000Z",
@@ -89,18 +89,18 @@
       },
       {
         "kind": "check",
-        "name": "requested60second budget",
+        "name": "native positive budget and fail-closed caller",
         "reference": "https://github.com/AndreaMarro/ardesia-next/pull/46",
         "headSha": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
         "sourceDigest": "94d84171444656b888a040bf65fd2369b14e75e6670a8ae43d508b16206bf272",
-        "result": "FAIL",
-        "scope": "Actual CLI stderr: Requested work does not fit before writeUntil. stdout empty. Wrapper continued to administrative HANDOFF; this failure is preserved, never counted as readinessChecked:true.",
-        "access": "metadata",
-        "artifactDigest": null
+        "result": "PASS",
+        "scope": "New legitimate run ardesia-post-e1-20261104T192553Z; actual adopted CLI budget900 exit0, nonempty parsed JSON, exact run/actor/duration/deadlines and readinessChecked:true,2457secondsremaining with margin. Previous rejected60 FAIL stays immutable at cursor157/819b947b; it was not relabelled. Original source/CI/review unchanged and reused.",
+        "access": "artifact",
+        "artifactDigest": "2d2bf54fef9590b4fa60177faa4506c9eab6e6505710cb3ac70a86add8c1316c"
       }
     ],
     "blockers": [],
-    "nextAction": "E1 source777 adopted155 after own canonical CI8/329/83PASS and exact non-author review. Real same-task HANDOFF156 validated adopted readiness and was published/reread before writeUntil, with original budget unchanged. CORRECTION157: separate CLI budget60seconds was rejected because fewer remained; no positive budget receipt exists, and the prior budgetPASS statement was inaccurate. No product source/service work started after that rejection, only cursor/PR checkpoint publication. On next legitimate claim obtain a valid fresh CLI budget result before mutation, then finish E1 administrative completion/OPS-004 reconciliation using preserved exact source/CI/review/HANDOFF evidence. E1 queue stillqueued; no COMPLETE_INCREMENT claimed. Preserve localMac FAIL/UNKNOWN, original failures and zero deployment/scheduler changes.",
+    "nextAction": "E1 complete once on exact source777 after original canonical CI/review/adoption, real HANDOFF156 and this native budget900 positive. Keep previous157 rejected60 and MacFAIL/UNKNOWN intact. Use this durable completion-ref to assign OPS-004 in the same claim and reconcile only ENG-E1 row, with own administrative source Verify/review/adoption. Do not redo E1/M4 or immutable CI; no deployment/scheduler changes.",
     "review": {
       "authorContextId": "root",
       "reviewerContextId": "root-m4-final-review",
