@@ -3,31 +3,24 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 145,
-  "updatedAt": "2026-11-04T11:59:13.020Z",
+  "revision": 146,
+  "updatedAt": "2026-11-04T12:41:18.465Z",
   "procedureRef": "d8179e0336738edf00a2793c8aab875a38bb8289",
-  "activeRun": {
-    "runId": "ardesia-mandate-20261104T115540Z",
-    "actor": "codex",
-    "startedAt": "2026-11-04T11:55:40.000Z",
-    "claimedAt": "2026-11-04T11:59:13.020Z",
-    "writeUntil": "2026-11-04T12:40:40.000Z",
-    "closeBy": "2026-11-04T12:50:40.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "m4-consumer-20261102T185253Z",
     "taskId": "M4-REUSE",
     "nextActor": "codex",
-    "disposition": "INTERRUPTED",
+    "disposition": "COMPLETE_INCREMENT",
     "kind": "implementation",
     "notBefore": "2026-11-02T19:16:07.799Z",
     "expiresAt": "2026-11-04T19:16:07.799Z",
     "source": {
       "baseSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
-      "headSha": "1c79fd3c31c1f945732a75b7e332436bd032bfa0",
+      "headSha": "90adcf473a5145b8651c26fd5127d4b67c37cc4e",
       "branch": "codex/m4-reuse-next-20261102",
       "pr": "https://github.com/AndreaMarro/ardesia-next/pull/44",
-      "sourceDigest": "98acca8e9f408efc9ed0426d5f85d192494cd7dd5ff19e69e7509214a5e27173"
+      "sourceDigest": "95468f486efd9dd0c857adf56a5a952a5f4a011579ab5e5670b5fd640e7c85f0"
     },
     "goal": "Secondo dominio scientifico sullo stesso Core/Host",
     "allowedPaths": [
@@ -893,30 +886,83 @@
         "scope": "Local final1c79 Verify types/boundaries/source/releasePASS;311unitPASS/18PGskipped without localDSN, unitcheckfail; kept separately from full CI329PASS. No broad localretest after completeCI available.",
         "access": "artifact",
         "artifactDigest": "af72991bd1ed4e064be5cc8da2dd19eb60e60bb00eee373cdbe5c326b3ecc8d7"
+      },
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41828450121",
+        "headSha": "90adcf473a5145b8651c26fd5127d4b67c37cc4e",
+        "sourceDigest": "95468f486efd9dd0c857adf56a5a952a5f4a011579ab5e5670b5fd640e7c85f0",
+        "result": "PASS",
+        "scope": "Own merge CI attempt1; original artifact13321427327 read,8937007bytes/CRC29/29/11JSON,8Verify329unit61suites0skip,83browser0unexpected/flaky;QA/benchmarkPASS; distinct from candidate CI41826599284.",
+        "access": "artifact",
+        "artifactDigest": "a64fbc4068ec780f47c6d1939fa56832fa6998465e3065a724372c3febf8cf3a"
+      },
+      {
+        "kind": "review",
+        "name": "independent-final-source-and-evidence-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/44",
+        "headSha": "90adcf473a5145b8651c26fd5127d4b67c37cc4e",
+        "sourceDigest": "95468f486efd9dd0c857adf56a5a952a5f4a011579ab5e5670b5fd640e7c85f0",
+        "result": "PASS",
+        "scope": "Actual distinct non-author /root/m4_final_review read raw6file diff,17counterproofs,source/mergeoriginalCI,treebinding and full remote reports; both existing M4 predicates true. Readonly instructional,no independentACL or human approval.",
+        "access": "artifact",
+        "artifactDigest": "b7083463f3b469ba8a8c843390d86a4fa652b03df3ab0012f2986e36a315e125"
+      },
+      {
+        "kind": "check",
+        "name": "m4-full-protected-preview-consumer",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/44",
+        "headSha": "90adcf473a5145b8651c26fd5127d4b67c37cc4e",
+        "sourceDigest": "95468f486efd9dd0c857adf56a5a952a5f4a011579ab5e5670b5fd640e7c85f0",
+        "result": "PASS",
+        "scope": "Exact90ad/digest9546,dpl_AzHJWRxYa6f5EcmsNcXrfLA5EYup,stable/immutablebuildbound,SSOall,anonymous protection verified (401canonical/302immutable identity probe). Fullsmoke7/7,pageErrors0,teacher spring+twoPoiseuille save/reload,studentA/Bisolation,logout200/session401,newemptysession,reopen,revocation/refusal/Worker0;canonicalpre/postPASS;providerpostflight12:32:54Z.",
+        "access": "artifact",
+        "artifactDigest": "9700d02610d7a102bc1a277779ac5f79256447b058f56d6c1455f72f1d4b2fee"
+      },
+      {
+        "kind": "check",
+        "name": "m4-existing-generated-technical-status",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/44",
+        "headSha": "90adcf473a5145b8651c26fd5127d4b67c37cc4e",
+        "sourceDigest": "95468f486efd9dd0c857adf56a5a952a5f4a011579ab5e5670b5fd640e7c85f0",
+        "result": "PASS",
+        "scope": "npm run status on exact90ad and original mergeCI+observedrelease reports: M4 TECHNICALLY_VERIFIED_DRAFT,webPostgresPASS,protectedRemotePASS,matchesCurrentSource true. preparationNOT_VERIFIED,humanPENDING,productNOT_COMPLETE retained.",
+        "access": "artifact",
+        "artifactDigest": "c6cab445f8cca64f7a0fb24797793ca71bde8e9251a01c6ebc21858ba16ae5bc"
+      },
+      {
+        "kind": "review",
+        "name": "independent-observation-metadata-correction",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/44",
+        "headSha": "90adcf473a5145b8651c26fd5127d4b67c37cc4e",
+        "sourceDigest": "95468f486efd9dd0c857adf56a5a952a5f4a011579ab5e5670b5fd640e7c85f0",
+        "result": "PASS",
+        "scope": "Raw delta removes only unobserved anonymousLocation from canonical401 release observation; real302 immutable identity probe remains distinct. Original predicate rerun true, no network/tests/source/service changes; old bytes and b708review retained.",
+        "access": "artifact",
+        "artifactDigest": "55b01f4ba7c7bcaba52227eb6e36a48c15b2ce1b59d15e6642f08c0a5861eb78"
       }
     ],
-    "blockers": [
-      "M4-BUNDLE-BUDGET"
-    ],
-    "nextAction": "PR44 is DRAFT on exact1c79fd3c31c1f945732a75b7e332436bd032bfa0/sourceDigest98acca8e9f408efc9ed0426d5f85d192494cd7dd5ff19e69e7509214a5e27173. Own original CI41732070721 completed FAIL:329unit0skip,7/8VerifyPASS,sole all-assets bundle245787/245760 (+27); downstreambrowser/QA/benchmarkSKIPPED. Consume preserved originalZIP13277940890/hash57e996a6/CRC7 and source review, never rerun same failed identity to claim green. Main remains4e, newdeployment stilloldcandidate4e/dpl5SB; stable restoredF/dpl3eKG,SSOall. Requested stage trace obtained: naturalcold failure at5s in refreshAuthorization ofInspector13/18ea with no cleanup; Host later22ms, no Worker-cause proof or original-failure rewrite. Proposal collects only callers before dispatch per context/epoch, preserves allguards;5targeted tests including mocked-Host stale-session wrapper, fullCI329PASS. Mixed browser1c79/API4e experiment READY4874ms is diagnostic only, not fullsmoke or exclusivecausalproof. First required increment: eliminate27gzip bytes with one demonstrated equivalent redundancy, full accounting and signed originals/lossless/Host.verify/pins intact; no timeout/threshold increase or new compression architecture. Then own Verify/review on finalpublishedhead, mergeCI, protected candidate and full remote smoke before stablepromotion/M4technicalcompletion/canonicalqueue reconciliation/ENG-E1. Respect original-source failures, skips and limits. No telemetry inproduct; all diagnostic builders/output/logs private in m4-stages-20261103T215545Z. Preserve local b46/40c source commits and history787; final published tree42085a70 and primary4e checkout untouched. No newagents/scheduler/model/provider/spend, no oldclaim recovery/audit. DRAFT/D17/humanreviews pending. Receipt6617157538; all temporary alias tests alreadyrolledback, no browser/childwriter left.",
+    "blockers": [],
+    "nextAction": "M4 technical consumer completed on90adcf473a5145b8651c26fd5127d4b67c37cc4e/digest95468f486efd9dd0c857adf56a5a952a5f4a011579ab5e5670b5fd640e7c85f0,PR44 merged,ownCI41828450121PASS and independent raw review; full protected smoke7/7 and canonical pre/post/provider PASS. Stable https://ardesia-next-staging.vercel.app now dpl_AzHJWRxYa6f5EcmsNcXrfLA5EYup; immutable https://ardesia-next-3lfwyz75a-andreas-projects-6d4e9791.vercel.app. Old dpl_3eKG/f886 retained rollback,no restore. Existing status M4 TECHNICALLY_VERIFIED_DRAFT,not human/product acceptance; D17/humanPENDING,allcontentDRAFT. Next single executable step: claim then cycle assign canonical OPS-004 using this durable completion-ref; reconcile only M4-REUSE status/evidence/nextAction from exact90ad receipts with adopted d817 procedure,verify/review administrative source before adoption,then ENG-E1 dependency. Do not rebuild/rerun90ad,redo M3,change aliases or adopt newer procedure implicitly. Material owner mandate captured once in main docs/history OPS-20261104-01. Archive acquired and audited privately: ZIPe9f666d8,5firstunits/42activities/31C5questions,200IDsnot200lessons;3C5referenceprefixes privately corrected/reviewed,no public import. Landing57+13browser checks,no external sends;18originalmanual cases retained for7-8Nov,pricing/calendar/marketing/humanapprovals remain pending. REA CLI6.7 actual static Evidence partial due512MiB heap exhaustion,DEFER notPASS. Durable private sources/reports/scripts/review/counterproofs/ZIPs and candidate.bundle at /Users/andreamarro/.codex/ardesia-recovery-20261104/mandate-20261104T115540Z;scripts also /private/tmp/ardesia-mandate-20261104T115540Z. Two actual transient specialists finished; root PG/browser closed, no new scheduler/provider/model/spend. Current run budget prevents a new administrative source+fullCI+merge before writeUntil; preserve completion, select OPS-004 next run without redoing delivered product.",
     "review": {
-      "authorContextId": "root.01a1a092",
-      "reviewerContextId": "root.native_recovery_review",
-      "sourceSha": "1c79fd3c31c1f945732a75b7e332436bd032bfa0",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/43#issuecomment-6617157538"
+      "authorContextId": "root",
+      "reviewerContextId": "root.m4_final_review",
+      "sourceSha": "90adcf473a5145b8651c26fd5127d4b67c37cc4e",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/44"
     }
   },
   "lastRun": {
-    "runId": "ardesia-m4-stages-20261103T215545Z-01a1a092",
+    "runId": "ardesia-mandate-20261104T115540Z",
     "actor": "codex",
-    "startedAt": "2026-11-03T21:55:45.000Z",
-    "claimedAt": "2026-11-03T21:58:28.984Z",
-    "writeUntil": "2026-11-03T22:40:45.000Z",
-    "closeBy": "2026-11-03T22:50:45.000Z",
+    "startedAt": "2026-11-04T11:55:40.000Z",
+    "claimedAt": "2026-11-04T11:59:13.020Z",
+    "writeUntil": "2026-11-04T12:40:40.000Z",
+    "closeBy": "2026-11-04T12:50:40.000Z",
     "packetId": "m4-consumer-20261102T185253Z",
-    "finishedAt": "2026-11-03T22:44:41.905Z",
-    "outcome": "INTERRUPTED",
+    "finishedAt": "2026-11-04T12:41:18.465Z",
+    "outcome": "COMPLETE_INCREMENT",
     "late": false,
-    "summary": "Loading localized to refreshAuthorization, no Inspector cancellation; guarded correction preserved in DRAFT PR44/head1c79. OwnCI329unitPASS7of8Verify; solebudgetFAIL27bytes, browser skipped. Mixed targeted experiment passes only diagnostic scope. StableF rollback verified; M4open/E1notstarted/DRAFT/humanpending. Receipt6617157538; no childwriter."
+    "summary": "M4 TECHNICALLY_VERIFIED_DRAFT on90ad; own mergeCI329unit83browserPASS,independentreview,fullprotectedsmoke7of7/canonicalprepost/providerPASS. Private archive audited,C5pathsreviewed,landingverified;nextOPS-004,humanspending,DRAFT. No childwriters."
   }
 }
