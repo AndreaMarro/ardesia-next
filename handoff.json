@@ -3,8 +3,8 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 153,
-  "updatedAt": "2026-11-04T15:09:43.694Z",
+  "revision": 154,
+  "updatedAt": "2026-11-04T15:11:41.516Z",
   "procedureRef": "b0ee6e17aa87664e9b02254dd85f2cd6f46f751e",
   "activeRun": {
     "runId": "ardesia-e1-qa-20261104T150727Z",
@@ -44,7 +44,8 @@
       ".github/pull_request_template.md",
       "docs/e1-task-readiness.md",
       "docs/recurring-work.md",
-      "docs/history.md"
+      "docs/history.md",
+      "e2e/remote-continuity.spec.ts"
     ],
     "exitCriteria": [
       "Il consumer e cycle.mjs assign/HANDOFF: prima di avviare implementazione leggere contratto canonico immutabile, consumer, baseline, owner/rischio, percorsi dell intero flusso, dipendenze, capability/fixture/accessi osservati, verifiche, rollback e profilo; schema strict e coda unica. Nessun permesso deriva dal solo READY.",
@@ -101,7 +102,7 @@
     "blockers": [
       "E1-CI-LOGOUT-ORDER"
     ],
-    "nextAction": "Keep PR46 DRAFT and procedure b0ee. First make a bounded canonical scope intake for the actual logout test/helper if a correction is needed; observe logout200/oktrue ACK before exactly one old-cookie request requiring401, with no polling, timeout increase or unchanged full CI retry. Distinguish fixture race from server revocation failure. Then relevant proof, final-source Verify/full CI, independent delta review, explicit adoption and real assign/HANDOFF plus pre-mutation observation before E1 completion. Reuse150 Node24 checks,14 independent counterchecks and exact original evidence where applicable. Private drafts and REA partial Evidence are preserved; no runtime integration.",
+    "nextAction": "Direct owner request4Nov authorizes the minimal QA scope intake for existing PR46/ENG-E1. Recorded in immutable intake24069145a5eec308a24f156ae55203079bcf8deb: only e2e/remote-continuity.spec.ts added, existing criteria/dependencies/policy preserved. This is a bounded owner scope grant for the current assignment, not E1/procedure adoption; b0ee remains adopted. Recheck current claim and budget before QA source/service writes; reproduce held real logout then successful ACK200/oktrue followed by exactly one old-cookie401, fix only confirmed cause, final-source Verify/fullCI and independent raw review all green before adoption and real assign/HANDOFF proof.",
     "review": {
       "authorContextId": "root",
       "reviewerContextId": "root-m4-final-review",
