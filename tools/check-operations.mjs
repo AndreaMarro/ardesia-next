@@ -1,6 +1,7 @@
 import {readFileSync, realpathSync, statSync} from 'node:fs';
 import {isAbsolute, relative, resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
+import {validateReadinessContract} from './task-preflight.mjs';
 import {readM3Baseline, m3BaselineMatches} from './status.mjs';
 
 const record = value => value !== null && typeof value === 'object' && !Array.isArray(value);
@@ -12,7 +13,7 @@ const fields = {
   canonical: ['entrypoint', 'handbook', 'history', 'lessons', 'product', 'acceptance'],
   observation: ['id', 'observedAt', 'kind', 'source', 'url', 'value'],
   blocker: ['id', 'status', 'reason', 'lastCheckedAt', 'recheckWhen', 'sources'],
-  task: ['id', 'title', 'status', 'priority', 'owner', 'scope', 'dependsOn', 'blockers', 'exitCriteria', 'evidence', 'nextAction'],
+  task: ['id', 'title', 'status', 'priority', 'owner', 'scope', 'dependsOn', 'blockers', 'exitCriteria', 'evidence', 'nextAction', 'readiness'],
   claim: ['taskId', 'owner', 'baseSha', 'branch', 'paths', 'claimedAt', 'expiresAt']
 };
 const taskStates = new Set(['in_progress', 'ready_for_review', 'blocked', 'queued', 'done', 'deferred']);
@@ -79,7 +80,7 @@ export function validateCoordination(data, {root, readBaseline = file => readFil
     }
   };
   if (!shape(data, 'root', 'coordination')) return errors;
-  if (data.schemaVersion !== '1.1.0') fail('schemaVersion', 'unsupported version');
+  if (!['1.1.0','1.2.0'].includes(data.schemaVersion)) fail('schemaVersion', 'unsupported version');
   if (data.acceptanceEvidence !== false) fail('acceptanceEvidence', 'must remain false');
   if (data.repository !== 'AndreaMarro/ardesia-next') fail('repository', 'must identify the canonical repository');
   time(data.updatedAt, 'updatedAt');
@@ -143,7 +144,8 @@ export function validateCoordination(data, {root, readBaseline = file => readFil
   const blockerById = new Map(blockers.filter(record).map(blocker => [blocker.id, blocker]));
   tasks.forEach((task, index) => {
     const path = `tasks[${index}]`;
-    if (!shape(task, 'task', path)) return;
+    if (!shape(task, 'task', path, ['readiness'])) return;
+    if (Object.hasOwn(task,'readiness') && (data.schemaVersion !== '1.2.0' || validateReadinessContract(task.readiness,task).length)) fail(`${path}.readiness`, 'READINESS_CONTRACT_INVALID');
     for (const key of ['title', 'owner', 'nextAction']) if (!text(task[key])) fail(`${path}.${key}`, 'must be nonempty text');
     if (!taskStates.has(task.status)) fail(`${path}.status`, 'is unsupported; coordination cannot declare acceptance');
     if (!Number.isSafeInteger(task.priority) || task.priority < 0) fail(`${path}.priority`, 'must be a nonnegative integer');

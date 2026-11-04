@@ -109,3 +109,7 @@ Entro 45 minuti terminare nuove modifiche; entro 55 rilasciare claim e consegnar
 - https://learn.chatgpt.com/docs/build-skills — `.agents/skills`, frontmatter e caricamento progressivo.
 - https://learn.chatgpt.com/docs/agent-configuration/subagents — `.codex/agents`, impostazioni ereditate e specializzazione.
 Documentazione consultata il 1 novembre 2026; le capacità effettive del client devono comunque essere osservate.
+
+### E1: osservazioni prima di selezione e mutazione
+
+Con una procedura adottata schema1.2, assign e HANDOFF di implementazione richiedono `--observations FILE` dal runner esistente, dopo osservazioni effettive di fixture, accessi e profilo della piattaforma. La configurazione desiderata e un JSON coerente non autenticano disponibilità o effort. Prima della mutazione rileggere il claim pubblicato/CAS e usare budget con `--observations FILE`; deve restituire `readinessChecked:true`. HEAD/procedura/policy/task/requisiti o tempo diversi invalidano il vecchio esito. Brief/validate e preservazione di un lavoro interrotto restano disponibili. Vedere `docs/e1-task-readiness.md`; nessun cambiamento al budget o allo scheduler.

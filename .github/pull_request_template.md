@@ -4,6 +4,8 @@ Task ID and product criterion/source. What changes for the real consumer? Keep p
 
 ## Scope and ownership
 
+- Canonical task readiness / consumer / risk / required paths and observations:
+- Effective platform profile/effort observed, freshness and binding (UNKNOWN blocks implementation):
 - Base / branch / path claim:
 - Contract and consumers affected:
 - Existing PRs/dependencies reconciled:

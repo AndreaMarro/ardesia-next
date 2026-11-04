@@ -1,3 +1,4 @@
+import {readinessDigest, validateTaskReadiness, taskReadinessRequirements} from './task-preflight.mjs';
 import {readFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import {isAbsolute} from 'node:path';
@@ -251,7 +252,7 @@ export function cycleBudget(data, {runId, actor, seconds}, {now = new Date()} = 
     remainingSeconds: remaining, writeUntil: data.activeRun.writeUntil, closeBy: data.activeRun.closeBy};
 }
 
-export function finishCycle(data, {expectedRevision, runId, actor, outcome, packet, summary, queue, retainClaim = false}, {now = new Date(), readQueue = gitQueue} = {}) {
+export function finishCycle(data, {expectedRevision, runId, actor, outcome, packet, summary, queue, observations, retainClaim = false}, {now = new Date(), readQueue = gitQueue, readSourceSha = gitSourceSha} = {}) {
   valid(data); revision(data, expectedRevision); owner(data, {runId, actor}); const moment = clock(data, now);
   if (!outcomes.has(outcome) || !text(summary) || !record(packet)) throw new Error('A supported outcome, complete next packet and summary are required.');
   if (typeof retainClaim !== 'boolean' || retainClaim && (!sequential(data) || outcome !== 'COMPLETE_INCREMENT'
@@ -263,7 +264,7 @@ export function finishCycle(data, {expectedRevision, runId, actor, outcome, pack
     ? packet.kind === 'coordination' && packet.nextActor === 'pro' ? 'pro' : 'codex'
     : outcome === 'READY_FOR_REVIEW' ? actor === 'pro' ? 'codex' : 'pro' : 'pro';
   if (packet.nextActor !== nextActor || packet.disposition !== (outcome === 'HANDOFF' ? 'READY' : outcome)) throw new Error('Next packet actor/disposition must match the outcome.');
-  if (sequential(data) && outcome === 'HANDOFF') eligiblePacket(data, packet, queue, readQueue);
+  if (sequential(data) && outcome === 'HANDOFF') eligiblePacket(data, packet, queue, readQueue, {now, observations, readSourceSha});
   if (nextActor === 'codex' && (!sequential(data) || outcome === 'HANDOFF') && !(sequential(data) && packet.kind === 'coordination' && packet.expiresAt === null) && (!timestamp(packet.notBefore) || !timestamp(packet.expiresAt)
     || expires(packet) - Math.max(moment, Date.parse(packet.notBefore)) <= 10 * MINUTE)) throw new Error('Codex successor window must retain more than ten useful minutes after now or its future start.');
   if (outcome !== 'HANDOFF') {
@@ -286,7 +287,7 @@ export function finishCycle(data, {expectedRevision, runId, actor, outcome, pack
 /** Explicit interrupted-checkpoint reconstruction. Receipt assertions are not authenticated here.
  * The coordinator must observe the native terminal turn, stopped writers and preserved work,
  * then publish against the observed parent SHA. Expiry is deliberately insufficient. */
-export function recoverCycle(data, {expectedRevision, runId, actor, terminal, packet, summary, queue}, {now = new Date(), readQueue = gitQueue} = {}) {
+export function recoverCycle(data, {expectedRevision, runId, actor, terminal, packet, summary, queue, observations}, {now = new Date(), readQueue = gitQueue, readSourceSha = gitSourceSha} = {}) {
   valid(data); revision(data, expectedRevision); owner(data, {runId, actor});
   const moment = clock(data, now);
   if (!sequential(data) || actor !== 'codex' || !['READY', 'INTERRUPTED'].includes(data.packet.disposition)) throw new Error('Recovery requires the same sequential interrupted assignment; preserve pending CI separately.');
@@ -300,12 +301,12 @@ export function recoverCycle(data, {expectedRevision, runId, actor, terminal, pa
   }
   const comparable = value => Object.fromEntries(Object.entries(value ?? {}).filter(([key]) => !['disposition', 'nextAction'].includes(key)));
   if (!isDeepStrictEqual(comparable(packet), comparable(data.packet)) || packet?.disposition !== 'READY') throw new Error('Recovery must preserve the complete assignment, source and evidence.');
-  eligiblePacket(data, packet, queue, readQueue);
+  eligiblePacket(data, packet, queue, readQueue, {now, observations, readSourceSha});
   const receiptDigest = createHash('sha256').update(JSON.stringify(terminal)).digest('hex');
   const outcome = expires(packet) - moment > 10 * MINUTE ? 'HANDOFF' : 'INTERRUPTED';
   const interrupted = structuredClone(data); interrupted.packet.disposition = 'INTERRUPTED';
   return finishCycle(interrupted, {expectedRevision, runId, actor, outcome, packet: {...packet, disposition: outcome === 'HANDOFF' ? 'READY' : 'INTERRUPTED'},
-    summary: `${summary} Terminal receipt SHA-256 ${receiptDigest}; preserved-work SHA-256 ${terminal.preservationDigest}.`, queue}, {now, readQueue});
+    summary: `${summary} Terminal receipt SHA-256 ${receiptDigest}; preserved-work SHA-256 ${terminal.preservationDigest}.`, queue,observations}, {now, readQueue,readSourceSha});
 }
 
 
@@ -325,6 +326,7 @@ export function migrateCycle(data, {expectedRevision, procedureRef, packet}, {no
 // Immutable, local Git reads only. The caller still observes live refs, evidence and CAS publication.
 const gitJson = (ref, path) => JSON.parse(execFileSync('git', ['show', `${ref}:${path}`], {encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe']}));
 const gitQueue = ref => gitJson(ref, 'operations/coordination.json');
+const gitSourceSha = () => execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
 const gitCompletion = ref => gitJson(ref, 'handoff.json');
 const procedureBaseline = ref => path => execFileSync('git', ['show', `${ref}:${path}`],
   {encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe']});
@@ -333,7 +335,7 @@ function canonicalQueue(data, queue, readQueue) {
   if (errors.length) throw new Error(`Canonical queue is invalid:\n${errors.join('\n')}`);
   if (!isDeepStrictEqual(queue, readQueue(data.procedureRef))) throw new Error('Queue must match operations/coordination.json at the adopted immutable procedureRef; hypothetical queues are not authority.');
 }
-function eligiblePacket(data, packet, queue, readQueue) {
+function eligiblePacket(data, packet, queue, readQueue, {now = new Date(), observations, readSourceSha = gitSourceSha} = {}) {
   canonicalQueue(data, queue, readQueue);
   const candidates = queue.tasks.filter(task => task.id === packet.taskId);
   if (candidates.length !== 1) throw new Error('Assignment must identify exactly one canonical task.');
@@ -347,32 +349,42 @@ function eligiblePacket(data, packet, queue, readQueue) {
     if (task.dependsOn.some(dependency => queue.tasks.find(item => item.id === dependency)?.status !== 'done')) throw new Error('Implementation has an incomplete dependency.');
     if (task.blockers.some(blocker => queue.blockers.find(item => item.id === blocker)?.status !== 'resolved')) throw new Error('Implementation has an unresolved blocker.');
     if (!Array.isArray(packet.allowedPaths) || packet.allowedPaths.some(path => !repoPath(path) || !task.scope.some(scope => repoPath(scope) && contains(scope, path)))) throw new Error('Assignment exceeds the canonical scope.');
+    if (queue.schemaVersion === '1.2.0') {
+      const requirements=taskReadinessRequirements(task,data.procedureRef,observations?.executionProfile);
+      if (requirements.requiredPaths.some(path=>!packet.allowedPaths.some(scope=>contains(scope,path)))) throw Error('READINESS_MISSING_CONSUMER_SCOPE');
+      const diagnostic=validateTaskReadiness(task,{canonicalTask:task,procedureRef:data.procedureRef,
+        sourceSha:readSourceSha(),policyDigest:readinessDigest(queue.policy),requirements,
+        dependencies:queue.tasks.map(({id,status})=>({id,status})),blockers:queue.blockers.map(({id,status})=>({id,status})),
+        now:new Date(now).toISOString(),observed:observations??null});
+      if (!diagnostic.ready) throw Error('READINESS_BLOCKED: '+diagnostic.blockers.map(b=>b.code).join(','));
+    }
+
   }
   if (queue.claims.some(claim => claim?.taskId === task.id || Array.isArray(claim?.paths) && Array.isArray(packet.allowedPaths)
     && claim.paths.some(path => packet.allowedPaths.some(scope => repoPath(path) && repoPath(scope) && (contains(path, scope) || contains(scope, path)))))) throw new Error('Assignment conflicts with a queue claim.');
 }
 
 /** Select within the existing claim. Does not change the queue, clock, ownership or authorization. */
-export function assignCycle(data, {expectedRevision, runId, actor, packet, queue}, {now = new Date(), readQueue = gitQueue} = {}) {
+export function assignCycle(data, {expectedRevision, runId, actor, packet, queue, observations}, {now = new Date(), readQueue = gitQueue, readSourceSha = gitSourceSha} = {}) {
   valid(data); revision(data, expectedRevision); owner(data, {runId, actor}); const moment = clock(data, now);
   if (!sequential(data) || actor !== 'codex' || data.packet.disposition === 'WAITING_CI'
     || data.packet.kind !== 'coordination' && data.packet.disposition !== 'COMPLETE_INCREMENT') throw new Error('Only sequential coordination or a completed assignment may select work; pending CI must be preserved.');
   if (moment >= Date.parse(data.activeRun.writeUntil)) throw new Error('Selection cannot renew an expired work budget.');
   if (!record(packet) || packet.nextActor !== 'codex' || packet.disposition !== 'READY') throw new Error('Selection requires a READY Codex packet.');
-  eligiblePacket(data, packet, queue, readQueue);
+  eligiblePacket(data, packet, queue, readQueue, {now, observations, readSourceSha});
   if (!timestamp(packet.notBefore) || Date.parse(packet.notBefore) > moment || expires(packet) < Date.parse(data.activeRun.closeBy)) throw new Error('Assignment window must preserve the existing run deadline.');
   const next = structuredClone(data); next.packet = structuredClone(packet); next.revision += 1; next.updatedAt = new Date(moment).toISOString();
   valid(next); return next;
 }
 
 /** Emit the one completed row under the existing OPS-004 authority; never write files or expand a task scope. */
-export function reconcileCycle(data, {expectedRevision, runId, actor, queue, completionRef, releaseRef, nextAction}, {now = new Date(), readQueue = gitQueue, readCompletion = gitCompletion} = {}) {
+export function reconcileCycle(data, {expectedRevision, runId, actor, queue, completionRef, releaseRef, nextAction, observations}, {now = new Date(), readQueue = gitQueue, readCompletion = gitCompletion, readSourceSha = gitSourceSha} = {}) {
   valid(data); revision(data, expectedRevision); owner(data, {runId, actor}); const moment = clock(data, now);
   if (!sequential(data) || actor !== 'codex' || data.packet.taskId !== 'OPS-004' || data.packet.kind !== 'implementation'
     || !['operations/coordination.json', 'docs/history.md'].every(path => data.packet.allowedPaths.some(scope => contains(scope, path)))) throw new Error('Canonical reconciliation requires an explicitly assigned OPS-004 metadata scope.');
   if (moment >= Date.parse(data.activeRun.writeUntil) || moment >= expires(data.packet)) throw new Error('Canonical reconciliation cannot renew an expired work budget.');
   if (!sha(completionRef) || !text(nextAction)) throw new Error('An immutable completion cursor ref and next action are required.');
-  eligiblePacket(data, data.packet, queue, readQueue);
+  eligiblePacket(data, data.packet, queue, readQueue, {now, observations, readSourceSha});
   const completed = readCompletion(completionRef); valid(completed);
   if (!sequential(completed) || completed.packet.disposition !== 'COMPLETE_INCREMENT' || completed.revision >= data.revision
     || Date.parse(completed.updatedAt) > Date.parse(data.updatedAt)) throw new Error('Reconciliation requires an earlier immutable completion receipt.');
@@ -441,14 +453,14 @@ export function reconcileCycle(data, {expectedRevision, runId, actor, queue, com
   return next;
 }
 
-const usage = 'Usage: node tools/cycle.mjs validate|brief STATE; claim STATE --revision N --actor pro|codex --run ID --started-at ISO; budget STATE --actor ROLE --run ID --seconds N; finish STATE --revision N --actor ROLE --run ID --outcome OUTCOME --packet PACKET --summary TEXT [--queue QUEUE] [--retain-claim true|false]; recover STATE --revision N --actor codex --run ID --terminal RECEIPT --packet PACKET --queue QUEUE --summary TEXT; migrate STATE --revision N --procedure-ref SHA --packet PACKET; assign STATE --revision N --actor codex --run ID --packet PACKET --queue QUEUE; reconcile STATE --revision N --actor codex --run ID --queue QUEUE --completion-ref SHA --next-action TEXT [--release-ref SHA]';
+const usage = 'Usage: node tools/cycle.mjs validate|brief STATE; claim STATE --revision N --actor pro|codex --run ID --started-at ISO; budget STATE --actor ROLE --run ID --seconds N [--observations FILE]; finish STATE --revision N --actor ROLE --run ID --outcome OUTCOME --packet PACKET --summary TEXT [--queue QUEUE] [--retain-claim true|false]; recover STATE --revision N --actor codex --run ID --terminal RECEIPT --packet PACKET --queue QUEUE --summary TEXT; migrate STATE --revision N --procedure-ref SHA --packet PACKET; assign STATE --revision N --actor codex --run ID --packet PACKET --queue QUEUE [--observations FILE]; reconcile STATE --revision N --actor codex --run ID --queue QUEUE --completion-ref SHA --next-action TEXT [--release-ref SHA]';
 /** Reads local JSON and emits JSON to stdout. It never writes files, contacts GitHub or selects a clock. */
-export function runCycleCli(args, {readText = path => readFileSync(path, 'utf8'), readQueue = gitQueue, readCompletion = gitCompletion} = {}) {
+export function runCycleCli(args, {readText = path => readFileSync(path, 'utf8'), readQueue = gitQueue, readCompletion = gitCompletion, readSourceSha = gitSourceSha, now = new Date()} = {}) {
   try {
     if (!Array.isArray(args) || args.length < 2 || !['validate', 'brief', 'claim', 'budget', 'finish', 'recover', 'migrate', 'assign', 'reconcile'].includes(args[0]) || !text(args[1]) || args[1].startsWith('--')) throw new Error(usage);
     const [command, file, ...flags] = args;
     const required = {validate: [], brief: [], claim: ['revision', 'actor', 'run', 'started-at'], budget: ['actor', 'run', 'seconds'], finish: ['revision', 'actor', 'run', 'outcome', 'packet', 'summary'], recover: ['revision', 'actor', 'run', 'terminal', 'packet', 'queue', 'summary'], migrate: ['revision', 'procedure-ref', 'packet'], assign: ['revision', 'actor', 'run', 'packet', 'queue'], reconcile: ['revision', 'actor', 'run', 'queue', 'completion-ref', 'next-action']}[command];
-    const accepted = command === 'finish' ? [...required, 'queue', 'retain-claim'] : command === 'reconcile' ? [...required, 'release-ref'] : required;
+    const accepted = command === 'finish' ? [...required, 'queue', 'retain-claim', 'observations'] : command === 'reconcile' ? [...required, 'release-ref', 'observations'] : ['assign','budget','recover'].includes(command) ? [...required,'observations'] : required;
     const options = {};
     if (flags.length % 2) throw new Error(usage);
     for (let index = 0; index < flags.length; index += 2) {
@@ -460,18 +472,24 @@ export function runCycleCli(args, {readText = path => readFileSync(path, 'utf8')
     if (Object.hasOwn(options, 'retain-claim') && !['true', 'false'].includes(options['retain-claim'])) throw new Error(usage);
     for (const key of ['revision', 'seconds']) if (Object.hasOwn(options, key) && (!/^(0|[1-9][0-9]*)$/.test(options[key]) || !Number.isSafeInteger(Number(options[key])))) throw new Error(`${key} must be a safe unsigned integer.`);
     const data = JSON.parse(readText(file));
-    const input = {expectedRevision: Number(options.revision), runId: options.run, actor: options.actor};
+    const input = {expectedRevision: Number(options.revision), runId: options.run, actor: options.actor, observations:options.observations===undefined?undefined:JSON.parse(readText(options.observations))};
     let result;
     if (command === 'validate') { valid(data); result = {kind: 'ardesia-cycle-validation', acceptanceEvidence: false, revision: data.revision, valid: true}; }
     else if (command === 'brief') result = cycleBrief(data);
     else if (command === 'claim') result = claimCycle(data, {...input, startedAt: options['started-at']});
-    else if (command === 'budget') result = cycleBudget(data, {...input, seconds: Number(options.seconds)});
-    else if (command === 'recover') result = recoverCycle(data, {...input, terminal: JSON.parse(readText(options.terminal)), packet: JSON.parse(readText(options.packet)), queue: JSON.parse(readText(options.queue)), summary: options.summary}, {readQueue});
+    else if (command === 'budget') {
+      result = cycleBudget(data, {...input, seconds: Number(options.seconds)}, {now});
+      if (sequential(data) && data.packet.kind==='implementation') {
+        const q=readQueue(data.procedureRef);
+        if(q.schemaVersion==='1.2.0') { eligiblePacket(data,data.packet,q,readQueue,{now,observations:input.observations,readSourceSha});result.readinessChecked=true; }
+      }
+    }
+    else if (command === 'recover') result = recoverCycle(data, {...input, terminal: JSON.parse(readText(options.terminal)), packet: JSON.parse(readText(options.packet)), queue: JSON.parse(readText(options.queue)), summary: options.summary}, {now,readQueue,readSourceSha});
     else if (command === 'migrate') result = migrateCycle(data, {...input, procedureRef: options['procedure-ref'], packet: JSON.parse(readText(options.packet))});
-    else if (command === 'assign') result = assignCycle(data, {...input, packet: JSON.parse(readText(options.packet)), queue: JSON.parse(readText(options.queue))}, {readQueue});
-    else if (command === 'reconcile') result = reconcileCycle(data, {...input, queue: JSON.parse(readText(options.queue)), completionRef: options['completion-ref'], releaseRef: options['release-ref'], nextAction: options['next-action']}, {readQueue, readCompletion});
+    else if (command === 'assign') result = assignCycle(data, {...input, packet: JSON.parse(readText(options.packet)), queue: JSON.parse(readText(options.queue))}, {now,readQueue,readSourceSha});
+    else if (command === 'reconcile') result = reconcileCycle(data, {...input, queue: JSON.parse(readText(options.queue)), completionRef: options['completion-ref'], releaseRef: options['release-ref'], nextAction: options['next-action']}, {now,readQueue, readCompletion,readSourceSha});
     else result = finishCycle(data, {...input, outcome: options.outcome, packet: JSON.parse(readText(options.packet)), summary: options.summary,
-      queue: options.queue === undefined ? undefined : JSON.parse(readText(options.queue)), retainClaim: options['retain-claim'] === 'true'}, {readQueue});
+      queue: options.queue === undefined ? undefined : JSON.parse(readText(options.queue)), retainClaim: options['retain-claim'] === 'true'}, {now,readQueue,readSourceSha});
     return {exitCode: 0, stdout: JSON.stringify(result, null, 2), stderr: ''};
   } catch (error) { return {exitCode: 1, stdout: '', stderr: error instanceof SyntaxError ? 'Input contains invalid JSON.' : error.message}; }
 }

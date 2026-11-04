@@ -5,6 +5,8 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {execFileSync} from 'node:child_process';
 import * as cycle from './cycle.mjs';
+import {readinessDigest,taskReadinessRequirements} from './task-preflight.mjs';
+const observedFor=(q,t,source=ref,procedure=ref)=>({taskId:t.id,procedureRef:procedure,sourceSha:source,policyDigest:readinessDigest(q.policy),taskDigest:readinessDigest(t),requirementsDigest:readinessDigest(taskReadinessRequirements(t,procedure,{id:'gpt-6.1-sol',effort:'max'})),observedAt:at(8).toISOString(),capabilities:t.readiness.requiredCapabilities.map(id=>({id,status:'available'})),executionProfile:{id:'gpt-6.1-sol',effort:'max',status:'verified'}});
 const T = '2026-11-01T10:00:00.000Z';
 const at = minutes => new Date(Date.parse(T) + minutes * 60000);
 const ref = 'a'.repeat(40), hash = 'b'.repeat(64);
@@ -26,7 +28,7 @@ const blocker = (id='B') => ({id,status:'blocked',reason:'Missing prerequisite',
 const queue = () => ({...JSON.parse(readFileSync(new URL('../operations/coordination.json', import.meta.url), 'utf8')),
  policy:{maxActiveIncrements:1,maxRemoteWriters:1,productionAuthorized:false,newSpendAuthorized:false,
   agentLaunchedCodexJobsAuthorized:false,ownerScheduledCodexAllowed:true,mainFrozen:true,stagingFrozen:true},
- updatedAt:T, tasks:[task()], blockers:[], claims:[]});
+ schemaVersion:'1.1.0', updatedAt:T, tasks:[task()], blockers:[], claims:[]});
 const select = (data, packet, q = queue()) => cycle.assignCycle(data, {expectedRevision: data.revision, actor: 'codex', runId: 'run-1', packet, queue: q}, {now: at(9),readQueue:()=>q});
 const finish = (data, packet, outcome, q = queue()) => cycle.finishCycle(data, {expectedRevision: data.revision, actor: 'codex', runId: 'run-1', packet, outcome, queue:q, summary: 'Synthetic test result'}, {now: at(50),readQueue:()=>q});
 
@@ -36,7 +38,8 @@ test('post-M3 selection reads baseline at the immutable procedure ref, never a l
  const p={...implementation(),taskId:canonical.id,allowedPaths:canonical.scope,exitCriteria:canonical.exitCriteria};
  const s=fixture();s.procedureRef=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
  const a=claim(s), input={expectedRevision:a.revision,actor:'codex',runId:'run-1',packet:p,queue:q};
- assert.equal(cycle.assignCycle(a,input,{now:at(9),readQueue:()=>q}).packet.taskId,'OPS-004');
+ input.observations=observedFor(q,canonical,ref,s.procedureRef);
+ assert.equal(cycle.assignCycle(a,input,{now:at(9),readQueue:()=>q,readSourceSha:()=>ref}).packet.taskId,'OPS-004');
  const missing=structuredClone(a);missing.procedureRef='f'.repeat(40);
  assert.throws(()=>cycle.assignCycle(missing,input,{now:at(9),readQueue:()=>q}),/policy/);
 });
@@ -600,4 +603,46 @@ test('post-M3 reconciliation is independent of the local checkout baseline', () 
    env:{...process.env,GIT_DIR:gitDir},input:JSON.stringify({...s,input:reconcileInput(s),now:at(13).toISOString()}),stdio:['pipe','pipe','pipe']});
   assert.equal(output.trim(),'done');
  } finally {rmSync(root,{recursive:true,force:true});}
+});
+
+// E1: a real selection consumer must reject missing runtime observations.
+test('E1 adopted 1.2 selection rejects absent observations before selecting work', () => {
+ const q=queue();q.schemaVersion='1.2.0';
+ q.tasks[0].readiness={consumer:'real cycle consumer',risk:'R1',requiredPaths:['tools/cycle.mjs'],requiredCapabilities:['node24','fixture','access'],requiredEvidence:['verify','independent-review'],executionProfiles:[{id:'gpt-6.1-sol',effort:'max'}],rollback:'Revert this source delta',maxObservationAgeMs:300000};
+ assert.throws(()=>select(claim(fixture()),implementation(),q),/READINESS|observations/);
+});
+
+const e1Flow=()=>{
+ const q=queue();q.schemaVersion='1.2.0';q.tasks[0].readiness={consumer:'real cycle consumer',risk:'R1',requiredPaths:['tools/cycle.mjs'],requiredCapabilities:['node24','fixture','access'],requiredEvidence:['verify','independent-review'],executionProfiles:[{id:'gpt-6.1-sol',effort:'max'}],rollback:'Revert only this increment',maxObservationAgeMs:300000};
+ const data=claim(fixture()),packet=implementation(),observations=observedFor(q,q.tasks[0]);
+ const input={expectedRevision:data.revision,actor:'codex',runId:'run-1',packet,queue:q,observations};
+ const adapters={now:at(9),readQueue:()=>q,readSourceSha:()=>ref};return {q,data,packet,observations,input,adapters};
+};
+test('E1 real assign and HANDOFF enforce the same observed contract without changing inputs or budget',()=>{
+ const f=e1Flow(),before=structuredClone(f.data);const a=cycle.assignCycle(f.data,f.input,f.adapters);
+ assert.equal(a.packet.taskId,'TASK-1');assert.deepEqual(a.activeRun,f.data.activeRun);assert.deepEqual(f.data,before);
+ const h=cycle.finishCycle(f.data,{...f.input,outcome:'HANDOFF',summary:'Real consumer fixture'},f.adapters);assert.equal(h.packet.disposition,'READY');
+ assert.throws(()=>cycle.finishCycle(f.data,{...f.input,observations:undefined,outcome:'HANDOFF',summary:'Missing observation'},f.adapters),/READINESS/);
+});
+test('E1 real selection rejects unverified profiles, effort UNKNOWN, missing fixture/access and stale exact bindings',()=>{
+ for (const change of [o=>o.executionProfile.status='unknown',o=>o.executionProfile.effort='UNKNOWN',o=>o.capabilities.pop(),o=>o.capabilities[1].status='unavailable',o=>o.sourceSha='c'.repeat(40),o=>o.procedureRef='c'.repeat(40),o=>o.policyDigest='c'.repeat(64),o=>o.requirementsDigest='c'.repeat(64),o=>o.taskDigest='c'.repeat(64),o=>o.observedAt=at(1).toISOString(),o=>o.observedAt=at(10).toISOString()]) {
+  const f=e1Flow();change(f.observations);assert.throws(()=>cycle.assignCycle(f.data,f.input,f.adapters),/READINESS/);
+ }
+});
+test('E1 consumer rejects unknown task, incomplete dependency, missing consumer path, unapproved requirements and hypothetical queue',()=>{
+ let f=e1Flow();f.packet.taskId='UNKNOWN';assert.throws(()=>cycle.assignCycle(f.data,f.input,f.adapters),/canonical task/);
+ f=e1Flow();f.packet.allowedPaths=['tools/cycle.test.mjs'];assert.throws(()=>cycle.assignCycle(f.data,f.input,f.adapters),/READINESS_MISSING_CONSUMER_SCOPE/);
+ f=e1Flow();f.q.tasks.push(task('DEPENDENCY'));f.q.tasks[0].dependsOn=['DEPENDENCY'];assert.throws(()=>cycle.assignCycle(f.data,f.input,f.adapters),/incomplete dependency/);
+ f=e1Flow();f.q.tasks[0].readiness.requiredPaths=['apps/web/src/App.tsx'];assert.throws(()=>cycle.assignCycle(f.data,f.input,f.adapters),/READINESS_CONTRACT_INVALID/);
+ f=e1Flow();assert.throws(()=>cycle.assignCycle(f.data,f.input,{...f.adapters,readQueue:()=>queue()}),/hypothetical/);
+});
+test('E1 CLI pre-mutation budget refreshes source and observations; reading remains available',()=>{
+ const f=e1Flow(),active=cycle.assignCycle(f.data,f.input,f.adapters);
+ const args=['budget','state','--actor','codex','--run','run-1','--seconds','60','--observations','observed'];
+ const adapter={...f.adapters,readText:p=>JSON.stringify(p==='state'?active:f.observations)};
+ let r=cycle.runCycleCli(args,adapter);assert.equal(r.exitCode,0,r.stderr);assert.equal(JSON.parse(r.stdout).readinessChecked,true);
+ f.observations.executionProfile.status='unknown';r=cycle.runCycleCli(args,adapter);assert.equal(r.exitCode,1);assert.match(r.stderr,/PROFILE_UNVERIFIED/);
+ assert.equal(cycle.runCycleCli(['brief','state'],adapter).exitCode,0);
+ f.observations.executionProfile.status='verified';r=cycle.runCycleCli(args,{...adapter,readSourceSha:()=>'d'.repeat(40)});assert.equal(r.exitCode,1);assert.match(r.stderr,/STALE_BINDING/);
+ r=cycle.runCycleCli(args.slice(0,-2),adapter);assert.equal(r.exitCode,1);assert.match(r.stderr,/READINESS/);
 });
