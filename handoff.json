@@ -3,22 +3,15 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 166,
-  "updatedAt": "2026-11-04T21:35:38.477Z",
+  "revision": 167,
+  "updatedAt": "2026-11-04T21:46:05.529Z",
   "procedureRef": "e83c98098bb4da0324a97460776b1898b5a05ee5",
-  "activeRun": {
-    "runId": "ardesia-e2-20261104T210103Z",
-    "actor": "codex",
-    "startedAt": "2026-11-04T21:01:03.000Z",
-    "claimedAt": "2026-11-04T21:03:13.734Z",
-    "writeUntil": "2026-11-04T21:46:03.000Z",
-    "closeBy": "2026-11-04T21:56:03.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "e2-readiness-contract-20261104T210103Z",
     "taskId": "ENG-E2",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "COMPLETE_INCREMENT",
     "kind": "implementation",
     "notBefore": "2026-11-04T21:01:03.000Z",
     "expiresAt": "2026-11-06T21:01:03.000Z",
@@ -67,10 +60,32 @@
         "reference": "https://github.com/AndreaMarro/ardesia-next/pull/49",
         "scope": "Actual non-author root-m4-final-review raw e83 source review4f0faaa0 and own CI addendum4d91c2d9; instruction-level read-only, no separate ACL. P2 readiness corrected; two real consecutive E2 deliveries remain pending.",
         "artifactDigest": "4d91c2d9cb0cd4a7c277259621d94c363c8ceb9e07b6aba99f4c07aa1c97cde4"
+      },
+      {
+        "kind": "check",
+        "name": "two real consecutive deliveries with applicable historical evidence",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/49",
+        "headSha": "e83c98098bb4da0324a97460776b1898b5a05ee5",
+        "sourceDigest": "5d9820696c2582ddaab0c7e3a0d9fc52dc750f973acfb03f1e120c1f4e66fac2",
+        "result": "PASS",
+        "scope": "Independent audit ceebc8bb read original M4 completion146/998eb551 and E1 completion159/84b82ba5, distinct exact CI/review, one completion-ref each, consecutive PR45→46→47 and identical task contracts including readiness. Existing branch equivalent under e83. Reused original deliveries, not new e83 operations or new remote crashes; literal criterion has no post-E2 requirement.",
+        "access": "artifact",
+        "artifactDigest": "ceebc8bbd2b29fc64f57228a09c9deb157e16b777b5aa022ce60b42c41b1e7d8"
+      },
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41917238007",
+        "headSha": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+        "sourceDigest": "5d9820696c2582ddaab0c7e3a0d9fc52dc750f973acfb03f1e120c1f4e66fac2",
+        "result": "PASS",
+        "scope": "Separate own mergef7 exact canonical Verify8/329/83, original ZIP d5d035eb and independent addendum cec7797f read. Tree equals e83; no PASS transfer and no automatic procedure adoption.",
+        "access": "artifact",
+        "artifactDigest": "d5d035eb93a9e7a5faaeed517aa46bc1ca40c553ead13221d102ff133c69b1c6"
       }
     ],
     "blockers": [],
-    "nextAction": "Verified published e83 guard explicitly adopted after own source Verify and independent review; readiness is preserved in historical completion contract. E2 remains incomplete: two real consecutive canonical deliveries/equivalence are pending, OPS004 stays queued. PR49 merged f7ad is a separate source identity with own main CI still to inspect; never transfer e83 PASS or automatically adopt f7ad. Preserve all original failures and missed1b7-push-refresh limit. No deployment/scheduler/provider changes.",
+    "nextAction": "Reconcile ONLY ENG-E2 through existing OPS004 using this immutable completion167 in the next legitimate bounded claim; no new task/backlog. E2 criteria complete on adopted e83 with own Verify/review, P2 RED/GREEN and independently audited historical M4/E1 real consecutive deliveries. Older pending statements resolved only by ceebc8bb. Canonical row remains queued until its own administrative source Verify/review/adoption. No admin source started near write cutoff; keep failed extra-reserve check distinct. Mainf7 own CI/review PASS separately, procedure stays e83. Preserve all original FAIL and missed intermediate push refresh. No E1/M4 redo, deployment or scheduler change.",
     "review": {
       "authorContextId": "root",
       "reviewerContextId": "root-m4-final-review",
@@ -79,16 +94,16 @@
     }
   },
   "lastRun": {
-    "runId": "ardesia-post-e1-20261104T192553Z",
+    "runId": "ardesia-e2-20261104T210103Z",
     "actor": "codex",
-    "startedAt": "2026-11-04T19:25:53.000Z",
-    "claimedAt": "2026-11-04T19:28:02.967Z",
-    "writeUntil": "2026-11-04T20:10:53.000Z",
-    "closeBy": "2026-11-04T20:20:53.000Z",
-    "packetId": "ops004-e1-20261104T192553Z",
-    "finishedAt": "2026-11-04T20:02:37.911Z",
+    "startedAt": "2026-11-04T21:01:03.000Z",
+    "claimedAt": "2026-11-04T21:03:13.734Z",
+    "writeUntil": "2026-11-04T21:46:03.000Z",
+    "closeBy": "2026-11-04T21:56:03.000Z",
+    "packetId": "e2-readiness-contract-20261104T210103Z",
+    "finishedAt": "2026-11-04T21:46:05.529Z",
     "outcome": "COMPLETE_INCREMENT",
     "late": false,
-    "summary": "E1 native budget900 positive and completion159 reconciled once through OPS-004. PR47 merged c53/digesta479, own exact canonical Verify8/329unit83browser PASS and non-author raw/CI review aa97d24b; administrative procedure explicitly adopted161. All other tasks remain deferred; OPS-004 stays queued on request. Next bounded intake ENG-E2, no successor silently assigned. Private Core consumer and vectors unit remain DRAFT under their independent reviews; no deployment/scheduler/access changes. Own isolated PG stopped; original FAIL157/MacFAIL/UNKNOWN preserved."
+    "summary": "E2 completed on exact adopted e83; own head/merge Verify8/329/83 and independent review, readiness P2 RED9/GREEN10/config160, historical two real M4/E1 deliveries audited applicable without reruns. Canonical E2 row awaits existing OPS004 own metadata Verify/review/adoption. Closing-only checkpoint releases original claim; no new admin source near write cutoff, no budget/deadline renewal. Private resume13tests reviewed DRAFT. All historical failures and intermediate refresh omission preserved."
   }
 }
