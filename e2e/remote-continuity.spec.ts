@@ -30,11 +30,24 @@ async function loginUi(page: Page, kind: 'STUDENT_A' | 'STUDENT_B', project: str
   }
 }
 
-async function logoutUi(page: Page): Promise<void> {
+async function logoutUi(page: Page): Promise<{status: number; signedOut: true}> {
+  // The UI clears private work immediately; only this exact server reply confirms revocation.
+  const acknowledged = page.waitForResponse(response => {
+    const request = response.request();
+    return response.url() === `${apiOrigin}/api/m3` && request.method() === 'POST'
+      && request.postDataJSON()?.action === 'logout';
+  });
   const accountMenu = page.getByRole('button', {name: 'Account e spazi', exact: true});
   if (await accountMenu.count()) await accountMenu.click();
   await page.getByRole('button', {name: 'Esci', exact: true}).click();
+  const response = await acknowledged;
+  expect(response.status()).toBe(200);
+  let payload: unknown;
+  try {payload = await response.json();}
+  catch (error) {if (isRemoteExecution()) throw new RemoteAccessError('REMOTE_INVALID_JSON'); throw error;}
+  expect(payload).toEqual({ok: true, result: {signedOut: true}});
   await expect(page.getByRole('heading', {name: 'Il tuo spazio', exact: true})).toBeVisible();
+  return {status: response.status(), signedOut: true};
 }
 
 async function assignUi(page: Page, studentId: string): Promise<void> {
@@ -155,13 +168,48 @@ test('[M3] teacher and two students preserve private laboratory work across inde
     await studentPage.screenshot({path: testInfo.outputPath('student-first-session.png'), fullPage: true});
 
     const oldSession = await firstContext.storageState();
-    await logoutUi(studentPage);
-    expect(await studentPage.evaluate(() => document.querySelector('.learner-content'))).toBeNull();
     const oldRequest = await playwright.request.newContext({baseURL: apiOrigin, storageState: oldSession});
+    // Hold the real logout BEFORE it reaches PostgreSQL: the signed-out UI is
+    // intentionally immediate and cannot prove that this old session was revoked.
+    let releaseLogout!: () => void, receivedLogout!: () => void, serverAcknowledged = false;
+    const logoutGate = new Promise<void>(resolve => {releaseLogout = resolve;});
+    const logoutIntercepted = new Promise<void>(resolve => {receivedLogout = resolve;});
+    const order: Array<{event: string; at: number; status?: number}> = [];
+    const recordLogout = (event: string, status?: number) => order.push({event, at: performance.now(), ...(status === undefined ? {} : {status})});
+    const holdLogout = async (route: Route) => {
+      const input = route.request().method() === 'POST' ? route.request().postDataJSON() : null;
+      if (input?.action !== 'logout') {await continueRouteWithAccess(route); return;}
+      recordLogout('logout-held-before-server'); receivedLogout(); await logoutGate;
+      const response = await fetchRouteWithAccess(route);
+      expect(response.status()).toBe(200);
+      expect(await readApiJson(response)).toEqual({ok: true, result: {signedOut: true}});
+      serverAcknowledged = true; recordLogout('server-logout-ack', response.status());
+      await route.fulfill({response});
+    };
+    await studentPage.route('**/api/m3', holdLogout);
+    const pendingLogout = logoutUi(studentPage);
     try {
-      expect(await rawApi(oldRequest, {action: 'open-workspace', workspaceId: teacherWorkspace.workspaceId}, first.id))
-        .toMatchObject({status: 401, payload: {ok: false, error: {code: 'UNAUTHENTICATED'}}});
-    } finally {await oldRequest.dispose();}
+      await logoutIntercepted;
+      await expect(studentPage.getByRole('heading', {name: 'Il tuo spazio', exact: true})).toBeVisible();
+      expect(await studentPage.evaluate(() => document.querySelector('.learner-content'))).toBeNull();
+      expect(serverAcknowledged).toBe(false); recordLogout('ui-closed-without-server-ack');
+      const beforeAck = await rawApi(oldRequest, {action: 'open-workspace', workspaceId: teacherWorkspace.workspaceId}, first.id);
+      expect({status: beforeAck.status, ok: beforeAck.payload.ok}).toEqual({status: 200, ok: true});
+      recordLogout('old-cookie-before-ack', beforeAck.status);
+      releaseLogout();
+      const acknowledged = await pendingLogout;
+      expect(acknowledged).toEqual({status: 200, signedOut: true});
+      expect(serverAcknowledged).toBe(true); recordLogout('browser-logout-ack', acknowledged.status);
+      // Exactly one post-ACK request, with the unchanged captured cookie; no poll or retry.
+      const afterAck = await rawApi(oldRequest, {action: 'open-workspace', workspaceId: teacherWorkspace.workspaceId}, first.id);
+      recordLogout('old-cookie-after-ack', afterAck.status);
+      expect({status: afterAck.status, ok: afterAck.payload.ok, code: afterAck.payload.error?.code})
+        .toEqual({status: 401, ok: false, code: 'UNAUTHENTICATED'});
+      await testInfo.attach('logout-revocation-order', {body: JSON.stringify(order, null, 2), contentType: 'application/json'});
+    } finally {
+      releaseLogout(); await pendingLogout;
+      await studentPage.unroute('**/api/m3', holdLogout); await oldRequest.dispose();
+    }
     await closeContextWithAccess(firstContext);
 
     const resumedContext = await freshContext(), resumed = await resumedContext.newPage();
