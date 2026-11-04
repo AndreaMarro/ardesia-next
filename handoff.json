@@ -3,9 +3,9 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 160,
-  "updatedAt": "2026-11-04T19:32:51.144Z",
-  "procedureRef": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
+  "revision": 161,
+  "updatedAt": "2026-11-04T20:01:55.229Z",
+  "procedureRef": "c53f29c50c259814470284ed5c517003d7261fa8",
   "activeRun": {
     "runId": "ardesia-post-e1-20261104T192553Z",
     "actor": "codex",
@@ -24,10 +24,10 @@
     "expiresAt": "2026-11-06T19:25:53.000Z",
     "source": {
       "baseSha": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
-      "headSha": "77720ad93b6da9ec2da3a10a303344cc6fbc2e3a",
-      "sourceDigest": "94d84171444656b888a040bf65fd2369b14e75e6670a8ae43d508b16206bf272",
+      "headSha": "c53f29c50c259814470284ed5c517003d7261fa8",
+      "sourceDigest": "a4796d906bd487a8b171392c8537dd13eff71f235504908fe190686324b05dc0",
       "branch": "codex/ops004-e1-completion-20261104",
-      "pr": null
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/47"
     },
     "goal": "Riconciliazione canonica delle consegne verificate, su richiesta",
     "allowedPaths": [
@@ -39,10 +39,38 @@
       "Solo stato, riferimenti alle prove e prossimo passo del task interessato, piu storico append-only; policy, criteri, dipendenze, scope applicativi, freeze, scheduler e gate invariati.",
       "La nuova sorgente amministrativa riceve Verify e review non autrice, quindi adozione esplicita; nessun obbligo di merge durante il freeze."
     ],
-    "evidence": [],
+    "evidence": [
+      {
+        "headSha": "c53f29c50c259814470284ed5c517003d7261fa8",
+        "sourceDigest": "a4796d906bd487a8b171392c8537dd13eff71f235504908fe190686324b05dc0",
+        "result": "PASS",
+        "access": "artifact",
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/41900711187",
+        "scope": "Own exact merged-source canonical CI attempt1; original ZIP CRC29/29; Verify8/8,329unit,83browser zero skip/flaky/retry; no earlier PASS transferred.",
+        "artifactDigest": "e6913d0aadc6e72289dc3972bb695a9d0106f1a460ccd69746690fa2ee1e6642"
+      },
+      {
+        "headSha": "c53f29c50c259814470284ed5c517003d7261fa8",
+        "sourceDigest": "a4796d906bd487a8b171392c8537dd13eff71f235504908fe190686324b05dc0",
+        "result": "PASS",
+        "access": "artifact",
+        "kind": "review",
+        "name": "independent raw source and exact merge CI review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/47",
+        "scope": "Candidate reference PR47; actual private non-author context root-m4-final-review, rawsource48/c53 tree and own originals read; review/ops004-e1-merge-addendum.md hash recorded. Instruction-level read-only, no separate ACL; not a GitHub approval or human acceptance.",
+        "artifactDigest": "aa97d24ba4674717bbcf9fd593986cb15b00b9b8aba3eede3b89f24554de4608"
+      }
+    ],
     "blockers": [],
-    "nextAction": "Reconcile only ENG-E1 from exact completion159/84b82ba5 using adopted helper and original source777 CI/review/nativebudget proof. Record owner post-E1 mandate once in history before delegation. Own administrative source requires Verify/review/adoption. No gate/helper changes, no E1/M4 redo, no scheduler/deployment. Then inspect actual eligible successor; deferred tasks require intake.",
-    "review": null
+    "nextAction": "Administrative source c53 explicitly adopted after own exact Verify and non-author review. E1 row done once via completion159. Finish OPS-004 and release this claim; OPS remains queued on request. No eligible application successor: E2 and other tasks deferred, require bounded intake under actual prerequisites; no invented promotion. Private consumer/vector unit remain DRAFT, no deployment or scheduler action.",
+    "review": {
+      "authorContextId": "root",
+      "reviewerContextId": "root-m4-final-review",
+      "sourceSha": "c53f29c50c259814470284ed5c517003d7261fa8",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/47"
+    }
   },
   "lastRun": {
     "runId": "ardesia-e1-qa-20261104T150727Z",
