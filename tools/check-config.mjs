@@ -3,6 +3,7 @@ import {validateCoordination} from './check-operations.mjs';
 import './check-operations.test.mjs';
 import './cycle.test.mjs';
 import './cycle-sequential.test.mjs';
+import './task-preflight.test.mjs';
 
 // Vercel serializes this config before invoking the build command. Keep the
 // repository bytes identical, so the full-source digest requires no exception.
