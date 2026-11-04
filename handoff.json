@@ -3,22 +3,15 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 161,
-  "updatedAt": "2026-11-04T20:01:55.229Z",
+  "revision": 162,
+  "updatedAt": "2026-11-04T20:02:37.911Z",
   "procedureRef": "c53f29c50c259814470284ed5c517003d7261fa8",
-  "activeRun": {
-    "runId": "ardesia-post-e1-20261104T192553Z",
-    "actor": "codex",
-    "startedAt": "2026-11-04T19:25:53.000Z",
-    "claimedAt": "2026-11-04T19:28:02.967Z",
-    "writeUntil": "2026-11-04T20:10:53.000Z",
-    "closeBy": "2026-11-04T20:20:53.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "ops004-e1-20261104T192553Z",
     "taskId": "OPS-004",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "COMPLETE_INCREMENT",
     "kind": "implementation",
     "notBefore": "2026-11-04T19:25:53.000Z",
     "expiresAt": "2026-11-06T19:25:53.000Z",
@@ -73,16 +66,16 @@
     }
   },
   "lastRun": {
-    "runId": "ardesia-e1-qa-20261104T150727Z",
+    "runId": "ardesia-post-e1-20261104T192553Z",
     "actor": "codex",
-    "startedAt": "2026-11-04T15:07:27.000Z",
-    "claimedAt": "2026-11-04T15:09:43.694Z",
-    "writeUntil": "2026-11-04T15:52:27.000Z",
-    "closeBy": "2026-11-04T16:02:27.000Z",
-    "packetId": "e1-readiness-20261104T141417Z",
-    "finishedAt": "2026-11-04T15:51:30.840Z",
-    "outcome": "HANDOFF",
+    "startedAt": "2026-11-04T19:25:53.000Z",
+    "claimedAt": "2026-11-04T19:28:02.967Z",
+    "writeUntil": "2026-11-04T20:10:53.000Z",
+    "closeBy": "2026-11-04T20:20:53.000Z",
+    "packetId": "ops004-e1-20261104T192553Z",
+    "finishedAt": "2026-11-04T20:02:37.911Z",
+    "outcome": "COMPLETE_INCREMENT",
     "late": false,
-    "summary": "PR46 merged777/digest94d8; exact own canonical Verify8/329unit83browserPASS and non-author review; E1 explicitly adopted155. Real same-task HANDOFF156 validated readiness and released claim before writeUntil. Correction157: separate60second budget requestFAILED for insufficient remaining time; no budgetPASS. E1 queued pending valid pre-write budget proof and administrative completion next claim. All failures preserved, no deployment or scheduler changes."
+    "summary": "E1 native budget900 positive and completion159 reconciled once through OPS-004. PR47 merged c53/digesta479, own exact canonical Verify8/329unit83browser PASS and non-author raw/CI review aa97d24b; administrative procedure explicitly adopted161. All other tasks remain deferred; OPS-004 stays queued on request. Next bounded intake ENG-E2, no successor silently assigned. Private Core consumer and vectors unit remain DRAFT under their independent reviews; no deployment/scheduler/access changes. Own isolated PG stopped; original FAIL157/MacFAIL/UNKNOWN preserved."
   }
 }
