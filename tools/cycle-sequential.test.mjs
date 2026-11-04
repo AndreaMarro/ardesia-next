@@ -646,3 +646,64 @@ test('E1 CLI pre-mutation budget refreshes source and observations; reading rema
  f.observations.executionProfile.status='verified';r=cycle.runCycleCli(args,{...adapter,readSourceSha:()=>'d'.repeat(40)});assert.equal(r.exitCode,1);assert.match(r.stderr,/STALE_BINDING/);
  r=cycle.runCycleCli(args.slice(0,-2),adapter);assert.equal(r.exitCode,1);assert.match(r.stderr,/READINESS/);
 });
+
+// E2: a durable completion cannot satisfy a different adopted readiness contract.
+const e2Readiness = (paths=['tools/cycle.mjs']) => ({
+ consumer:'Pinned completion consumer',risk:'R1',requiredPaths:paths,
+ requiredCapabilities:['node24'],requiredEvidence:['verify','independent-review'],
+ executionProfiles:[{id:'gpt-6.1-sol',effort:'max'},{id:'gpt-6.1-sol',effort:'xhigh'}],
+ rollback:'Revert only this source',maxObservationAgeMs:300000
+});
+const e2Closure = () => {
+ const q=queue();q.schemaVersion='1.2.0';
+ q.tasks.push(task('OPS-004',['operations/coordination.json','docs/history.md']));
+ for(const t of q.tasks)t.readiness=e2Readiness(t.id==='OPS-004'?t.scope:['tools/cycle.mjs']);
+ const data=claim(fixture()), packet=implementation(),adapters={now:at(9),readQueue:()=>q,readSourceSha:()=>ref};
+ const work=cycle.assignCycle(data,{expectedRevision:data.revision,actor:'codex',runId:'run-1',packet,queue:q,
+  observations:observedFor(q,q.tasks[0])},adapters);
+ const done=complete(work,ref,11),admin={...packet,id:'e2-close',taskId:'OPS-004',
+  allowedPaths:['operations/coordination.json','docs/history.md']};
+ const observations=observedFor(q,q.tasks[1]);observations.observedAt=at(12).toISOString();
+ const active=cycle.assignCycle(done,{expectedRevision:done.revision,actor:'codex',runId:'run-1',packet:admin,queue:q,observations},
+  {...adapters,now:at(12)});
+ return {q,done,admin,active};
+};
+const e2Reconcile = (s,q) => {
+ const procedure='4'.repeat(40),active={...s.active,procedureRef:procedure,revision:s.active.revision+1};
+ let observations;
+ if(q.schemaVersion==='1.2.0') {
+  observations=observedFor(q,q.tasks.find(t=>t.id==='OPS-004'),ref,procedure);
+  observations.observedAt=at(12).toISOString();
+ }
+ return cycle.reconcileCycle(active,{...reconcileInput(s),expectedRevision:active.revision,queue:q,observations},
+  {now:at(13),readQueue:r=>r===procedure?q:s.q,readCompletion:()=>s.done,readSourceSha:()=>ref});
+};
+for(const [name,mutate] of [
+ ['consumer',r=>r.consumer='A different consumer'],
+ ['risk',r=>r.risk='R2'],
+ ['paths',r=>r.requiredPaths.push('tools/cycle.test.mjs')],
+ ['capability',r=>r.requiredCapabilities.push('fresh-remote-evidence')],
+ ['evidence',r=>r.requiredEvidence.push('new-consumer-proof')],
+ ['profile',r=>r.executionProfiles=r.executionProfiles.filter(p=>p.effort==='xhigh')],
+ ['rollback',r=>r.rollback='A different rollback boundary'],
+ ['observation-window',r=>r.maxObservationAgeMs=180000]
+]) test('E2 reconciliation refuses changed readiness '+name,()=>{
+ const s=e2Closure(),q=structuredClone(s.q);mutate(q.tasks[0].readiness);
+ const before=structuredClone(q);
+ assert.throws(()=>e2Reconcile(s,q),/unchanged canonical task contract/);
+ assert.deepEqual(q,before);
+});
+test('E2 readiness addition and removal cannot inherit an earlier completion',()=>{
+ const legacy=closureFixture(),added=structuredClone(legacy.q);added.schemaVersion='1.2.0';
+ for(const t of added.tasks)t.readiness=e2Readiness(t.id==='OPS-004'?t.scope:['tools/cycle.mjs']);
+ assert.throws(()=>e2Reconcile(legacy,added),/unchanged canonical task contract/);
+ const current=e2Closure(),removed=structuredClone(current.q);delete removed.tasks[0].readiness;
+ assert.throws(()=>e2Reconcile(current,removed),/unchanged canonical task contract/);
+});
+test('E2 unchanged and legacy readiness preserve cross-procedure completion and deterministic replay',()=>{
+ for(const s of [e2Closure(),closureFixture()]) {
+  const q=structuredClone(s.q),before=structuredClone(s);
+  const first=e2Reconcile(s,q),again=e2Reconcile(s,q);
+  assert.equal(first.tasks[0].status,'done');assert.deepEqual(first,again);assert.deepEqual(s,before);
+ }
+});

@@ -410,7 +410,7 @@ export function reconcileCycle(data, {expectedRevision, runId, actor, queue, com
   const receiptQueue = readQueue(completed.procedureRef); canonicalQueue(completed, receiptQueue, readQueue);
   const original = receiptQueue.tasks.find(task => task.id === completed.packet.taskId);
   const task = queue.tasks.find(task => task.id === completed.packet.taskId);
-  const contract = value => Object.fromEntries(['id', 'owner', 'scope', 'dependsOn', 'blockers', 'exitCriteria'].map(key => [key, value?.[key]]));
+  const contract = value => Object.fromEntries(['id', 'owner', 'scope', 'dependsOn', 'blockers', 'exitCriteria', 'readiness'].map(key => [key, value?.[key]]));
   if (!task || !original || task.id === 'OPS-004' || !['queued', 'in_progress', 'ready_for_review', 'done'].includes(task.status)
     || !isDeepStrictEqual(contract(task), contract(original))
     || task.exitCriteria.some(criterion => !completed.packet.exitCriteria.includes(criterion))) throw new Error('Completion must match the unchanged canonical task contract, never the recurring OPS-004 row.');
