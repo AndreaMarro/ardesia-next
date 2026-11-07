@@ -40,6 +40,7 @@ test('hostile programs stop without freezing chrome, leaking authority or replac
   for(const source of [
     'function update(){while(true){}}',
     'function update(){function recurse(){recurse()}recurse()}',
+    'function update(){const huge=[];while(true)huge.push(new Array(100000).fill(123));}',
     'function update(){return {state:{},view:{tag:["div"]}}}',
     'function update(){return {state:{},view:{tag:"div",events:{input:"edit"},children:[{tag:"input",attrs:{type:"text"}}]}}}',
     'function update(){return {state:{},view:{tag:"div",style:{fontSize:"9999em"}}}}',

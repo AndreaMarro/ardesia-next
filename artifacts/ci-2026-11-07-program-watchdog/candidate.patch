@@ -1,0 +1,278 @@
+diff --git a/docs/adr/0017-programmable-creator.md b/docs/adr/0017-programmable-creator.md
+index b7a1236..5dac39d 100644
+--- a/docs/adr/0017-programmable-creator.md
++++ b/docs/adr/0017-programmable-creator.md
+@@ -14,6 +14,8 @@ Importare, salvare, leggere, assegnare o usare MCP **non avvia codice**. Avvia q
+ 
+ QuickJS/Emscripten0.32.0, MIT, in un Worker dedicato, senza loader, bridge nativi, rete, DOM o API Core disponibili al codice guest. Contesto nuovo per interazione, heap16MiB, stack128KiB, interruzione cooperativa100ms, watchdog esterno2s (inizializzazione15s), coda16, messaggi262144byte e risultati131072byte. Stack più ampi hanno prodotto abort del motore nei probe di ricorsione: conservati i fallimenti, scelta128KiB verificata con errore guest e nuovo avvio pulito. Queste quote non certificano tempo reale o una prova formale di isolamento.
+ 
++La CI del 7 novembre ha mostrato che un intrinsic nativo (`Array.fill`) può ritardare la callback cooperativa: la durata del solo interprete non dimostra il watchdog del Worker. La sessione ora invia un messaggio di inizializzazione senza codice/stato utente e attende `ready` sul proprio nonce; solo il bootstrap WASM dispone di 15 s. Anche il primo `update` ha il watchdog esterno di 2 s. Nessun tick parte prima della readiness; eventi utente restano nella coda limitata. Ack duplicati, di altre sessioni o successivi allo stop non riavviano l’esecuzione. Il test di allocazione oltre 16 MiB isola la quota memoria dall’interruzione cooperativa; timer e terminazione sono verificati al confine della sessione e lo stress originale resta nel browser reale. [Evidenze della correzione](../../artifacts/ci-2026-11-07-program-watchdog/README.md).
++
+ Il parent valida ogni vista prima di renderizzarla: tag, attributi, eventi, stili, geometrie, profondità e numero di nodi. Niente HTML grezzo, URL, CSS libero, form, script o iframe. Input/change solo su controlli, valori tipizzati, niente SVG/tabelle annidati, niente font relativi moltiplicativi. Contenimento CSS e tipografia delle intestazioni esplicita riducono anche il lavoro fuori dalla VM. Audit del motore/browser a scala di produzione ancora da fare.
+ 
+ Alternative: iframe con JavaScript della pagina avrebbe lasciato CPU/memoria senza le quote richieste; Sandpack usa un bundler esterno e privilegi di preview più larghi. WebAssembly guest generico, moduli npm, rete autorizzata, pacchetti binari e altri linguaggi sono evoluzioni del Host, non possibilità già presenti. REA ha studiato concretamente lifecycle, errori e protocollo Sandpack, con risultati e limiti in [fonti](../sources/programmable-creator-2026-11-07.md). Nessun codice Sandpack copiato.
+diff --git a/docs/handoffs/2026-11-07.md b/docs/handoffs/2026-11-07.md
+index 498f047..7e7609a 100644
+--- a/docs/handoffs/2026-11-07.md
++++ b/docs/handoffs/2026-11-07.md
+@@ -2,6 +2,8 @@
+ 
+ Questa consegna rende riprendibile il lavoro applicativo della conversazione. Il prodotto completo resta **NOT_COMPLETE**. Esperienze e prove locali non equivalgono ad app native consegnate, efficacia didattica, integrazione su main o distribuzione della stessa versione nella preview remota.
+ 
++**Chiusura CI successiva alla prima pubblicazione.** La [PR #50](https://github.com/AndreaMarro/ardesia-next/pull/50) conserva la consegna cumulativa. La prima CI, sul commit `045fa205`, ha rilevato 551/552 test passati e un superamento del tempo nel probe di allocazione QuickJS: 2,48 s contro 2 s. La diagnosi ha distinto il limite cooperativo dell’interprete dal watchdog esterno e corretto una lacuna reale: i 15 s di bootstrap non comprendono più il primo codice utente. Un handshake associato alla sessione precede l’invio del programma; ogni esecuzione ha il watchdog di 2 s. Quote memoria/stack invariate. [Diagnosi, review e prove della correzione](../../artifacts/ci-2026-11-07-program-watchdog/README.md). Il pacchetto materiali e i 42 passi REA restano prove della sorgente `290f597d…`, non vengono attribuiti al successivo commit. Per il nuovo candidato fa fede l’esito della sua CI, collegato dalla PR.
++
+ ## Punto di ripresa
+ 
+ Branch `codex/lavagna-continuity-20261107`, base `f7adf5db02913e25fbab0b1da071f650b4f78676`. Il candidato è cumulativo: non applicare di nuovo le vecchie patch. Commit pubblicati, review, CI e identità dei byte sono collegati dalla PR e dal pacchetto [evidenze](../../artifacts/handoff-2026-11-07/README.md). Sorgenti e artefatti hanno identità distinte, esplicitate nel manifest.
+diff --git a/e2e/programs.spec.ts b/e2e/programs.spec.ts
+index e06fb76..7f72387 100644
+--- a/e2e/programs.spec.ts
++++ b/e2e/programs.spec.ts
+@@ -40,6 +40,7 @@ test('hostile programs stop without freezing chrome, leaking authority or replac
+   for(const source of [
+     'function update(){while(true){}}',
+     'function update(){function recurse(){recurse()}recurse()}',
++    'function update(){const huge=[];while(true)huge.push(new Array(100000).fill(123));}',
+     'function update(){return {state:{},view:{tag:["div"]}}}',
+     'function update(){return {state:{},view:{tag:"div",events:{input:"edit"},children:[{tag:"input",attrs:{type:"text"}}]}}}',
+     'function update(){return {state:{},view:{tag:"div",style:{fontSize:"9999em"}}}}',
+diff --git a/packages/plugin-host/src/program-engine.ts b/packages/plugin-host/src/program-engine.ts
+index 0bae3e1..3365269 100644
+--- a/packages/plugin-host/src/program-engine.ts
++++ b/packages/plugin-host/src/program-engine.ts
+@@ -1,8 +1,9 @@
+ import type {QuickJSWASMModule} from 'quickjs-emscripten-core';
+ import {ProgramEventSchema, ProgramBodySchema, ProgramStateSchema, type ProgramBody, type ProgramEvent, type ProgramResult} from '@ardesia/contracts';
+ import {validateProgramResult} from './program-view';
++import {PROGRAM_LIMITS} from './program-limits';
++export {PROGRAM_LIMITS} from './program-limits';
+ 
+-export const PROGRAM_LIMITS = Object.freeze({memoryBytes:16*1024*1024,stackBytes:128*1024,executionMs:100,outputBytes:131072,watchdogMs:2000,initializationMs:15000,queue:16});
+ /** Untrusted code stays inside QuickJS. There are deliberately no native functions, loaders or IO bridges. */
+ export function executeProgram(engine:QuickJSWASMModule, body:ProgramBody, state:ProgramResult['state'], event:ProgramEvent):ProgramResult {
+   ProgramBodySchema.parse(body); ProgramStateSchema.parse(state); ProgramEventSchema.parse(event);
+@@ -10,6 +11,8 @@ export function executeProgram(engine:QuickJSWASMModule, body:ProgramBody, state
+   runtime.setMemoryLimit(PROGRAM_LIMITS.memoryBytes);
+   runtime.setMaxStackSize(PROGRAM_LIMITS.stackBytes);
+   const deadline=performance.now()+PROGRAM_LIMITS.executionMs;
++  // Native VM intrinsics can return late: only the owning Worker watchdog can
++  // enforce an external deadline, including for the first guest interaction.
+   runtime.setInterruptHandler(()=>performance.now()>deadline);
+   const vm=runtime.newContext();
+   try {
+diff --git a/packages/plugin-host/src/program-limits.ts b/packages/plugin-host/src/program-limits.ts
+new file mode 100644
+index 0000000..249ebe3
+--- /dev/null
++++ b/packages/plugin-host/src/program-limits.ts
+@@ -0,0 +1,2 @@
++/** Guest resources and the outer Worker lifecycle have separate limits. */
++export const PROGRAM_LIMITS = Object.freeze({memoryBytes:16*1024*1024,stackBytes:128*1024,executionMs:100,outputBytes:131072,messageBytes:262144,watchdogMs:2000,initializationMs:15000,queue:16});
+diff --git a/packages/plugin-host/src/program-session.ts b/packages/plugin-host/src/program-session.ts
+index 0217400..d5d886d 100644
+--- a/packages/plugin-host/src/program-session.ts
++++ b/packages/plugin-host/src/program-session.ts
+@@ -1,5 +1,6 @@
+ import {ProgramEventSchema, ProgramBodySchema, ProgramStateSchema, type ProgramBody, type ProgramEvent, type ProgramResult} from '@ardesia/contracts';
+ import {validateProgramResult} from './program-view';
++import {PROGRAM_LIMITS} from './program-limits';
+ 
+ export interface ProgramWorker {
+   postMessage(message:unknown):void;
+@@ -15,6 +16,7 @@ export class ProgramSession {
+   private pending=0;
+   private queue:ProgramEvent[]=[];
+   private stopped=false;
++  private ready=false;
+   private timeout:ReturnType<typeof setTimeout>|undefined;
+   private timer:ReturnType<typeof setInterval>|undefined;
+   private state:ProgramResult['state'];
+@@ -24,27 +26,38 @@ export class ProgramSession {
+     this.worker=createWorker();
+     this.worker.onmessage=event=>this.receive(event.data);
+     this.worker.onerror=()=>this.fail('Il motore non è disponibile. La bozza è conservata.');
+-    this.send({type:'start',action:'start'},true);
+-    if(this.body.intervalMs)this.timer=setInterval(()=>{if(!this.pending)this.dispatch({type:'tick',action:'tick'});},this.body.intervalMs);
++    this.timeout=setTimeout(()=>this.fail('Il motore non è disponibile. La bozza è conservata.'),PROGRAM_LIMITS.initializationMs);
++    // Bootstrap receives no guest code or state. The ready reply is bound to
++    // this session, so its longer allowance cannot become execution time.
++    this.worker.postMessage({kind:'initialize',nonce:this.nonce});
+   }
+-  private send(event:ProgramEvent,initial=false){
++  private send(event:ProgramEvent){
+     if(this.stopped)return;
+     const id=++this.sequence;this.pending=id;
+-    this.timeout=setTimeout(()=>this.fail('Il programma non risponde ed è stato interrotto. La bozza è conservata.'),initial?15000:2000);
++    this.timeout=setTimeout(()=>this.fail('Il programma non risponde ed è stato interrotto. La bozza è conservata.'),PROGRAM_LIMITS.watchdogMs);
+     const message={nonce:this.nonce,id,body:this.body,state:this.state,event};
+-    if(new TextEncoder().encode(JSON.stringify(message)).byteLength>262144){this.fail('Il messaggio del programma è troppo grande.');return;}
++    if(new TextEncoder().encode(JSON.stringify(message)).byteLength>PROGRAM_LIMITS.messageBytes){this.fail('Il messaggio del programma è troppo grande.');return;}
+     this.worker.postMessage(message);
+   }
+   dispatch(event:ProgramEvent){
+     if(this.stopped)return;
+     const checked=ProgramEventSchema.safeParse(event);if(!checked.success){this.fail('Interazione del programma non valida o troppo grande.');return;}event=checked.data;
+-    if(this.pending){if(this.queue.length>=16){this.fail('Troppe interazioni in attesa. Il programma è stato interrotto.');return;}this.queue.push(structuredClone(event));return;}
++    if(!this.ready||this.pending){if(this.queue.length>=PROGRAM_LIMITS.queue){this.fail('Troppe interazioni in attesa. Il programma è stato interrotto.');return;}this.queue.push(structuredClone(event));return;}
+     this.send(event);
+   }
+   private receive(message:unknown){
+     if(this.stopped||!message||typeof message!=='object')return;
+-    const data=message as {nonce:unknown;id:unknown;result?:unknown;error?:unknown};
+-    if(data.nonce!==this.nonce||data.id!==this.pending||!this.pending)return;
++    const data=message as {kind?:unknown;nonce:unknown;id:unknown;result?:unknown;error?:unknown};
++    if(data.nonce!==this.nonce)return;
++    if(!this.ready){
++      if(data.kind==='initialization-error'){this.fail('Il motore non è disponibile. La bozza è conservata.');return;}
++      if(data.kind!=='ready')return;
++      clearTimeout(this.timeout);this.ready=true;
++      this.send({type:'start',action:'start'});
++      if(!this.stopped&&this.body.intervalMs)this.timer=setInterval(()=>{if(!this.pending)this.dispatch({type:'tick',action:'tick'});},this.body.intervalMs);
++      return;
++    }
++    if(data.id!==this.pending||!this.pending)return;
+     clearTimeout(this.timeout);this.pending=0;
+     if(typeof data.error==='string'){this.fail(data.error.slice(0,1000));return;}
+     try {const result=validateProgramResult(data.result);this.state=structuredClone(result.state);this.onResult(structuredClone(result));}
+diff --git a/packages/plugin-host/src/program-worker.ts b/packages/plugin-host/src/program-worker.ts
+index aa45e7f..97e4ffd 100644
+--- a/packages/plugin-host/src/program-worker.ts
++++ b/packages/plugin-host/src/program-worker.ts
+@@ -4,10 +4,19 @@ import wasmUrl from '@jitl/quickjs-wasmfile-release-sync/wasm?url';
+ import {executeProgram} from './program-engine';
+ import type {ProgramBody,ProgramEvent,ProgramResult} from '@ardesia/contracts';
+ 
+-const engine=newQuickJSWASMModuleFromVariant(newVariant(variant,{wasmLocation:wasmUrl}));
++let engine:ReturnType<typeof newQuickJSWASMModuleFromVariant>|undefined;
+ const endpoint=globalThis as unknown as {onmessage:((event:MessageEvent)=>void)|null;postMessage:(message:unknown)=>void};
++let sessionNonce:string|undefined,ready=false;
+ endpoint.onmessage=async message=>{
+-  const {nonce,id,body,state,event}=message.data as {nonce:string;id:number;body:ProgramBody;state:ProgramResult['state'];event:ProgramEvent};
++  const {kind,nonce,id,body,state,event}=message.data as {kind?:string;nonce:string;id:number;body:ProgramBody;state:ProgramResult['state'];event:ProgramEvent};
++  if(kind==='initialize'){
++    if(sessionNonce!==undefined||typeof nonce!=='string')return;
++    sessionNonce=nonce;
++    try {engine=newQuickJSWASMModuleFromVariant(newVariant(variant,{wasmLocation:wasmUrl}));await engine;ready=true;endpoint.postMessage({kind:'ready',nonce});}
++    catch {endpoint.postMessage({kind:'initialization-error',nonce});}
++    return;
++  }
++  if(!ready||nonce!==sessionNonce||!engine)return;
+   try {endpoint.postMessage({nonce,id,result:executeProgram(await engine,body,state,event)});}
+   catch(error){endpoint.postMessage({nonce,id,error:error instanceof Error?error.message:'Esecuzione non riuscita.'});}
+ };
+diff --git a/packages/plugin-host/src/program.test.ts b/packages/plugin-host/src/program.test.ts
+index 57c8a16..2dc6247 100644
+--- a/packages/plugin-host/src/program.test.ts
++++ b/packages/plugin-host/src/program.test.ts
+@@ -23,10 +23,24 @@ describe('programmable engine boundary',()=>{
+     expect(()=>run('import * as io from "std"; function update(){return io}')).toThrow();
+     expect(()=>run('function update(){return Function("return fetch")()}')).toThrow();
+   });
+-  it.each(['while(true){}','function recurse(){recurse()} recurse();','const huge=[];while(true)huge.push(new Array(100000).fill(123));','const bomb={};Object.defineProperty(bomb,"state",{enumerable:true,get(){while(true){}}});return bomb;'])('interrupts hostile computation: %s',snippet=>{
++  it.each(['while(true){}','function recurse(){recurse()} recurse();','const bomb={};Object.defineProperty(bomb,"state",{enumerable:true,get(){while(true){}}});return bomb;'])('interrupts hostile computation: %s',snippet=>{
+     const start=performance.now();expect(()=>run('function update(){'+snippet+'}')).toThrow(/Il programma/);expect(performance.now()-start).toBeLessThan(2000);
+     expect(run('function update({state}){return {state,view:{tag:"p"}}}').state.count).toBe(0);
+   });
++  it('refuses native allocation pressure and can create a clean runtime afterward',()=>{
++    // Array.fill runs inside the VM intrinsic: the real outer Worker, tested
++    // below and in the browser, owns the wall-clock deadline for this case.
++    expect(()=>run('function update(){const huge=[];while(true)huge.push(new Array(100000).fill(123));}')).toThrow(/Il programma/);
++    expect(run('function update({state}){return {state,view:{tag:"p"}}}').state.count).toBe(0);
++  });
++  it('refuses a single allocation beyond the heap limit independently of cooperative interruption',()=>{
++    const runtime=engine.newRuntime();
++    vi.spyOn(runtime,'setInterruptHandler').mockImplementation(()=>{});
++    const factory=vi.spyOn(engine,'newRuntime').mockReturnValueOnce(runtime);
++    try {expect(()=>run('function update(){const bytes=new ArrayBuffer(32*1024*1024);return {state:{bytes:bytes.byteLength},view:{tag:"p"}}}')).toThrow(/Il programma/);}
++    finally {factory.mockRestore();}
++    expect(run('function update({state}){return {state,view:{tag:"p"}}}').state.count).toBe(0);
++  });
+   it('does not execute Promise jobs or keep globals between interactions',()=>{
+     expect(()=>run('async function update({state}){return {state,view:{tag:"p"}}}')).toThrow();
+     const code='globalThis.hidden = (globalThis.hidden || 0) + 1; function update(){return {state:{count:hidden},view:{tag:"p"}}}';expect(run(code).state.count).toBe(1);expect(run(code).state.count).toBe(1);
+@@ -72,35 +86,79 @@ describe('passive DOM/SVG contract',()=>{
+ class FakeWorker implements ProgramWorker{
+   onmessage:((event:MessageEvent)=>void)|null=null;onerror:((event:ErrorEvent)=>void)|null=null;sent:unknown[]=[];terminate=vi.fn();
+   postMessage(value:unknown){this.sent.push(value);}
+-  reply(index=0,data:unknown=result()){const sent=this.sent[index] as {nonce:string;id:number};this.onmessage?.({data:{nonce:sent.nonce,id:sent.id,result:data}} as MessageEvent);}
++  ready(nonce=(this.sent[0] as {nonce:string}).nonce){this.onmessage?.({data:{kind:'ready',nonce}} as MessageEvent);}
++  reply(index=0,data:unknown=result()){const sent=this.sent[index+1] as {nonce:string;id:number};this.onmessage?.({data:{nonce:sent.nonce,id:sent.id,result:data}} as MessageEvent);}
+ }
+ afterEach(()=>vi.useRealTimers());
+ describe('owned session lifecycle',()=>{
++  it('keeps guest code out of bootstrap and gives the first execution exactly the 2s watchdog',()=>{
++    vi.useFakeTimers();const worker=new FakeWorker(),fail=vi.fn(),session=new ProgramSession(body('private source'),{count:7},vi.fn(),fail,()=>worker);
++    expect(worker.sent).toEqual([{kind:'initialize',nonce:expect.any(String)}]);
++    worker.ready('wrong-session');expect(worker.sent).toHaveLength(1);
++    worker.onmessage?.({data:{nonce:(worker.sent[0] as {nonce:string}).nonce,id:1,result:result()}} as MessageEvent);expect(worker.sent).toHaveLength(1);
++    session.dispatch({type:'click',action:'queued'});vi.advanceTimersByTime(14999);expect(fail).not.toHaveBeenCalled();expect(worker.sent).toHaveLength(1);
++    worker.ready();expect(worker.sent).toHaveLength(2);expect(worker.sent[1]).toMatchObject({body:body('private source'),state:{count:7},event:{type:'start',action:'start'}});
++    vi.advanceTimersByTime(1999);worker.ready();expect(worker.sent).toHaveLength(2);expect(fail).not.toHaveBeenCalled();
++    vi.advanceTimersByTime(1);expect(fail).toHaveBeenCalledOnce();expect(worker.terminate).toHaveBeenCalledOnce();
++    expect(vi.getTimerCount()).toBe(0);session.stop();
++  });
++  it('expires bootstrap at 15s and ignores readiness after termination',()=>{
++    vi.useFakeTimers();const worker=new FakeWorker(),fail=vi.fn(),session=new ProgramSession({...body('x'),intervalMs:50},{count:0},vi.fn(),fail,()=>worker);
++    const receive=worker.onmessage,nonce=(worker.sent[0] as {nonce:string}).nonce;
++    vi.advanceTimersByTime(14999);expect(fail).not.toHaveBeenCalled();expect(worker.sent).toHaveLength(1);
++    vi.advanceTimersByTime(1);expect(fail).toHaveBeenCalledOnce();expect(worker.terminate).toHaveBeenCalledOnce();
++    receive?.({data:{kind:'ready',nonce}} as MessageEvent);expect(worker.sent).toHaveLength(1);expect(vi.getTimerCount()).toBe(0);session.stop();
++  });
++  it('reports a matching bootstrap error without sending guest code',()=>{
++    vi.useFakeTimers();const worker=new FakeWorker(),fail=vi.fn(),session=new ProgramSession(body('x'),{count:0},vi.fn(),fail,()=>worker);
++    const nonce=(worker.sent[0] as {nonce:string}).nonce;
++    worker.onmessage?.({data:{kind:'initialization-error',nonce:'wrong-session'}} as MessageEvent);expect(fail).not.toHaveBeenCalled();
++    worker.onmessage?.({data:{kind:'initialization-error',nonce}} as MessageEvent);expect(fail).toHaveBeenCalledOnce();expect(worker.terminate).toHaveBeenCalledOnce();
++    expect(worker.sent).toHaveLength(1);expect(vi.getTimerCount()).toBe(0);session.stop();
++  });
++  it('bounds the queue before readiness and never starts a terminated session',()=>{
++    vi.useFakeTimers();const worker=new FakeWorker(),fail=vi.fn(),session=new ProgramSession(body('x'),{count:0},vi.fn(),fail,()=>worker);
++    for(let i=0;i<16;i++)session.dispatch({type:'click',action:'queued'});
++    expect(fail).not.toHaveBeenCalled();expect(worker.sent).toHaveLength(1);
++    const receive=worker.onmessage,nonce=(worker.sent[0] as {nonce:string}).nonce;
++    session.dispatch({type:'click',action:'overflow'});expect(fail).toHaveBeenCalledOnce();expect(worker.terminate).toHaveBeenCalledOnce();
++    receive?.({data:{kind:'ready',nonce}} as MessageEvent);expect(worker.sent).toHaveLength(1);expect(vi.getTimerCount()).toBe(0);session.stop();
++  });
++  it('starts before queued input and gives later executions the same 2s watchdog',()=>{
++    vi.useFakeTimers();const worker=new FakeWorker(),fail=vi.fn(),session=new ProgramSession(body('x'),{count:0},vi.fn(),fail,()=>worker);
++    session.dispatch({type:'click',action:'queued'});worker.ready();worker.reply(0,result({count:7}));
++    expect(worker.sent[2]).toMatchObject({state:{count:7},event:{type:'click',action:'queued'}});
++    vi.advanceTimersByTime(1999);expect(fail).not.toHaveBeenCalled();vi.advanceTimersByTime(1);
++    expect(fail).toHaveBeenCalledOnce();expect(worker.terminate).toHaveBeenCalledOnce();expect(vi.getTimerCount()).toBe(0);session.stop();
++  });
+   it('freezes the consented body and rejects oversized events before enqueue or send',()=>{
+     const worker=new FakeWorker(),fail=vi.fn(),source=body('original'),session=new ProgramSession(source,{count:0},vi.fn(),fail,()=>worker);
+     source.code='changed';source.initialState.count=999;
++    worker.ready();
+     worker.reply();session.dispatch({type:'click',action:'add'});
+-    expect((worker.sent[1] as {body:ProgramBody}).body).toEqual(body('original'));
++    expect((worker.sent[2] as {body:ProgramBody}).body).toEqual(body('original'));
+     session.dispatch({type:'input',action:'edit',value:'x'.repeat(8193)});
+-    expect(worker.sent).toHaveLength(2);expect(fail).toHaveBeenCalledOnce();expect(worker.terminate).toHaveBeenCalledOnce();
++    expect(worker.sent).toHaveLength(3);expect(fail).toHaveBeenCalledOnce();expect(worker.terminate).toHaveBeenCalledOnce();
+   });
+   it('rejects other generations/duplicates and makes messages inert after stop',()=>{
+     const worker=new FakeWorker(),onResult=vi.fn(),failed=vi.fn();const session=new ProgramSession(body('x'),{count:0},onResult,failed,()=>worker);
++    worker.ready();
+     worker.onmessage?.({data:{nonce:'forged',id:1,result:result()}} as MessageEvent);expect(onResult).not.toHaveBeenCalled();
+     worker.reply();worker.reply();expect(onResult).toHaveBeenCalledTimes(1);
+-    session.dispatch({type:'click',action:'increment'});const late=worker.onmessage;session.stop();late?.({data:{...(worker.sent[1] as object),result:result({count:99})}} as MessageEvent);
++    session.dispatch({type:'click',action:'increment'});const late=worker.onmessage;session.stop();late?.({data:{...(worker.sent[2] as object),result:result({count:99})}} as MessageEvent);
+     expect(onResult).toHaveBeenCalledTimes(1);expect(worker.terminate).toHaveBeenCalledOnce();
+   });
+   it('terminates after invalid output, timeout or bounded queue exhaustion',()=>{
+     vi.useFakeTimers();for(const kind of ['invalid','timeout','queue']){const worker=new FakeWorker(),fail=vi.fn();const session=new ProgramSession(body('x'),{count:0},vi.fn(),fail,()=>worker);
++      worker.ready();
+       if(kind==='invalid')worker.reply(0,{state:{count:999},view:{tag:'script'}});
+-      if(kind==='timeout')vi.advanceTimersByTime(15001);
++      if(kind==='timeout')vi.advanceTimersByTime(2000);
+       if(kind==='queue')for(let i=0;i<17;i++)session.dispatch({type:'click',action:'add'});
+       expect(fail).toHaveBeenCalledOnce();expect(worker.terminate).toHaveBeenCalledOnce();session.stop();
+     }
+   });
+   it('serializes events from the last accepted state and stops periodic ticks',()=>{
+     vi.useFakeTimers();const worker=new FakeWorker(),session=new ProgramSession({...body('x'),intervalMs:50},{count:0},vi.fn(),vi.fn(),()=>worker);
+-    session.dispatch({type:'click',action:'add'});worker.reply(0,result({count:7}));expect((worker.sent[1] as {state:unknown}).state).toEqual({count:7});worker.reply(1);session.stop();vi.advanceTimersByTime(1000);expect(worker.sent).toHaveLength(2);
++    worker.ready();session.dispatch({type:'click',action:'add'});worker.reply(0,result({count:7}));expect((worker.sent[2] as {state:unknown}).state).toEqual({count:7});worker.reply(1);session.stop();vi.advanceTimersByTime(1000);expect(worker.sent).toHaveLength(3);
+   });
+ });

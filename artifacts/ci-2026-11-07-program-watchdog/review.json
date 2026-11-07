@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-ci113-watchdog-fix-review",
+  "generatedAt": "2026-11-07T19:02:55.864856+00:00",
+  "reviewer": "/root/board_review",
+  "author": "/root",
+  "verdict": "PASS_BOUNDED_LOCAL_WATCHDOG_FIX",
+  "localPatchPass": true,
+  "publishedCiPass": false,
+  "context": {
+    "independentNonAuthorContext": true,
+    "readOnlyLimits": "Instructional, not technical ACLs. Root alone writes source. Reviewer wrote only this Markdown/JSON report.",
+    "actionsNotPerformed": [
+      "tests",
+      "services",
+      "installs",
+      "source or index writes",
+      "Git",
+      "remote operations",
+      "agents"
+    ],
+    "approvalLimit": "Not human scientific/editorial/device acceptance."
+  },
+  "reviewedSource": {
+    "sourceDigest": "0c4c2493f19cd14835d38c7d900725fae1ed4af0b2d03c3ae3b4f361f7e9fdee",
+    "files": 430,
+    "independentlyRecomputed": true,
+    "baseHeadFromParentAndReports": "045fa205c5a0fad97fefa774fc6f0de8a87c1aed",
+    "baseSourceDigest": "290f597d24ea4ef92769faab9b309069ed9e50dd2fd9f8b778c460e186b12c82",
+    "baseFiles": 429,
+    "newPublicationCommit": "NOT_OBSERVED",
+    "qualification": "The base HEAD field is not a commit containing the patch. Local results bind the frozen working-tree bytes via sourceDigest."
+  },
+  "rawDiff": {
+    "path": "work/ci-program-candidate.patch",
+    "sha256": "e0acaebaf79ac675ae408c24dac9eabe21312cdf6e413a760d95be2f9ec05a63",
+    "origin": "Root supplied cached binary Git diff against HEAD045fa205; reviewer did not execute Git.",
+    "independentValidation": "Every added/context hunk matches current bytes; reversing all eight files in memory reproduces base sourceDigest290f597d… and 429 files. Five preexisting program files also match retained diagnostic hashes."
+  },
+  "changedSourceFiles": [
+    {
+      "path": "packages/plugin-host/src/program-limits.ts",
+      "bytes": 272,
+      "sha256": "df484ff7933fe600538c72e48bbdfcad5b1942b48bfd0b33090a1620336e21aa"
+    },
+    {
+      "path": "packages/plugin-host/src/program-engine.ts",
+      "bytes": 2306,
+      "sha256": "17e5a67a553ef2db9bbc1e70fed5f87501d72c0496cd9e2a9108eda2b7f79e1e"
+    },
+    {
+      "path": "packages/plugin-host/src/program-session.ts",
+      "bytes": 4418,
+      "sha256": "51bb81768cdc7b07126e6e3133c42c9e3839b0439d2297ea42789727a16c421e"
+    },
+    {
+      "path": "packages/plugin-host/src/program-worker.ts",
+      "bytes": 1414,
+      "sha256": "0edc7995937861c209af8be124d370e6f5ee224558868ce89beb4c9a5d894f02"
+    },
+    {
+      "path": "packages/plugin-host/src/program.test.ts",
+      "bytes": 13661,
+      "sha256": "1c243599f28204ea02d9e59cb55448d82d71848767f36c81810f92fd2347b6d7"
+    },
+    {
+      "path": "e2e/programs.spec.ts",
+      "bytes": 15566,
+      "sha256": "821db46b002a240564557d6340aa2a827c12d504593e37a069e9fb00a8334b82"
+    },
+    {
+      "path": "docs/adr/0017-programmable-creator.md",
+      "bytes": 5767,
+      "sha256": "2e34b8b31419e26a7009d593a4945832a48531e5e10e7df96c679606f98ba8f4"
+    },
+    {
+      "path": "docs/handoffs/2026-11-07.md",
+      "bytes": 10848,
+      "sha256": "0d832923d30c87a34e6f0cd97a8626c842dfeb44f557d592f625ad3e6b0b9041"
+    }
+  ],
+  "openFindings": [],
+  "criteria": [
+    {
+      "criterion": "No guest code or state before matching ready nonce",
+      "status": "PASS_LOCAL",
+      "evidence": "Session constructor posts initialize+nonce only; real Worker creates/awaits engine then posts ready with same nonce; both reject mismatched nonce/premature execution. Deterministic session test includes false nonce and premature result."
+    },
+    {
+      "criterion": "15s only bootstrap; every guest execution including first uses2s",
+      "status": "PASS_LOCAL",
+      "evidence": "Separate init timeout cleared only by accepted ready; all send calls use watchdogMs2000. Fake timers assert14999/15000 and1999/2000 including duplicate ready without deadline extension."
+    },
+    {
+      "criterion": "No pre-ready ticks and queue at most16",
+      "status": "PASS_LOCAL",
+      "evidence": "Interval starts only after accepted ready/start. intervalMs50 bootstrap survives14999ms with only initialize message;16 queued inputs accepted,17th terminates. Start precedes input and accepted state feeds next execution."
+    },
+    {
+      "criterion": "Stop and late/duplicate/foreign replies inert",
+      "status": "PASS_LOCAL",
+      "evidence": "Stop clears timer/interval/nonce/pending/queue, removes handlers and terminates once; retained handlers tested after stop; duplicate ack cannot resend start."
+    },
+    {
+      "criterion": "No quota increases",
+      "status": "PASS_LOCAL",
+      "evidence": "Shared constant retains16MiB heap,128KiB stack,100ms cooperative interruption,131072 output bytes,262144 message bytes,2000ms watchdog,15000ms initialization,queue16. No production enforcement removed."
+    },
+    {
+      "criterion": "Real memory cap checked independently of cooperative timeout",
+      "status": "PASS_LOCAL",
+      "evidence": "Only test runtime interrupt setter is stubbed; actual engine still calls setMemoryLimit16MiB. Single32MiB ArrayBuffer allocation rejects; fresh normal execution succeeds."
+    },
+    {
+      "criterion": "Original allocation stress remains at engine and actual browser boundaries",
+      "status": "PASS_LOCAL",
+      "evidence": "Exact huge.push(new Array(100000).fill(123)) retained in engine failure/recovery test and added to hostile browser scenario. Browser asserts usable editor,restart,contained viewport,no external requests/page errors and later normal recovery. Browser does not assert a hard realtime2s wall measurement."
+    }
+  ],
+  "localVerification": {
+    "verifyChecksPassed": 8,
+    "unitTests": 558,
+    "unitPassed": 558,
+    "unitFailed": 0,
+    "unitPending": 0,
+    "targetedProgramTests": 40,
+    "browserPassed": 12,
+    "browserProfiles": [
+      "desktop-chromium",
+      "mobile-chromium"
+    ],
+    "browserFailed": 0,
+    "browserSkipped": 0,
+    "browserFlaky": 0,
+    "browserRetries": 0,
+    "serverChecks": 5,
+    "mcpChecks": 15,
+    "unitParsedDigest": "8cada331e075ef8a99f9de82bcd5172b7a4cb3d1c6ebc0fb030f7823d1923bf3",
+    "browserParsedDigest": "41538652b77e458591029e9391077f148d2c7e0883267d0983d6d69eda403371",
+    "parsedDigestsIndependentlyRecomputed": true,
+    "buildIdentityMatches": true,
+    "runtimeAssetsIndependentlyChecked": 5,
+    "workerSha256": "629cf14bd0625c9e3cbace1534264941ff246ae0fe656c43937ca0d27d8cfe4e",
+    "physicalDevices": "NOT_RUN",
+    "fullBrowserSuiteOnThisSource": "PENDING_CI",
+    "evidenceReused": "Root executed tests/build. Reviewer read raw results, source assertions and evidence bindings; did not rerun tests."
+  },
+  "toolchainObserved": {
+    "vitest": "5.0.5",
+    "vite": "8.3.5",
+    "playwright": "1.56.1",
+    "serverAndMcpNodeRuntime": "v24.22.1",
+    "quickjs": "0.32.0",
+    "evidenceValidation": "Read-only Node/Python hashing, JSON parsing and in-memory reverse-patch verification; no application commands executed."
+  },
+  "originalFailure": {
+    "ciRun": "42403006290",
+    "commit": "045fa205c5a0fad97fefa774fc6f0de8a87c1aed",
+    "unitPassed": 551,
+    "unitTotal": 552,
+    "allocationWallMs": 2482.208066,
+    "assertedMs": 2000,
+    "guestThrowAssertionPassed": true,
+    "diagnosis": "Synchronous interpreter wall time does not measure owning Worker watchdog. Existing first-event15s allowance was a separate real lifecycle gap. Probe is consistent with long native work before cooperative callback, not a trace of precise C internals."
+  },
+  "pendingRemoteGates": [
+    "Publish final source and associate immutable commit with sourceDigest.",
+    "Run required Verify and complete browser suite in CI on the actual published commit; no CI PASS inferred from local evidence."
+  ],
+  "limits": [
+    "No material191-browser or42-REA proof transferred from source290f597d… to this patch.",
+    "No hardware realtime,arbitrary program,formal sandbox or physical Safari/iPad/Pencil certification.",
+    "Product NOT_COMPLETE; deployment NOT_VERIFIED_FOR_CURRENT_COMMIT; no merge or deployment assessed.",
+    "Empty standalone typecheck log alone is not exit evidence; exact-source Verify types exit0 supplies the typecheck proof.",
+    "Observed Vite websocket-port warning did not fail local checks; no claim of completely warning-free logs."
+  ],
+  "evidenceRead": [
+    {
+      "path": "artifacts/verification.json",
+      "bytes": 1072,
+      "sha256": "30128901215f0b05f5c10723dc7df57339008e4a34d613dcebeed27604cb970d"
+    },
+    {
+      "path": "artifacts/unit.json",
+      "bytes": 234261,
+      "sha256": "8cada331e075ef8a99f9de82bcd5172b7a4cb3d1c6ebc0fb030f7823d1923bf3"
+    },
+    {
+      "path": "artifacts/browser-evidence.json",
+      "bytes": 603,
+      "sha256": "323602faccb74f61d8039b8691e79bfdba055eca1784b2cbc5756bd8a7b50b0e"
+    },
+    {
+      "path": "artifacts/e2e.json",
+      "bytes": 16229,
+      "sha256": "d9ebcc4ca618e63d15f7ac82dc5e898c7396f3d72012cdb280b8955e7a9b7161"
+    },
+    {
+      "path": "artifacts/program-runtime-build.json",
+      "bytes": 816,
+      "sha256": "6a96e93d9d158870c68eb793ce118a0f9a78ec74d390662217c797cf171144e4"
+    },
+    {
+      "path": "apps/web/dist/build-info.json",
+      "bytes": 507,
+      "sha256": "6b0fa3547afb32ddcd7ff0872d7932809ae4d45758a640bd180e687af29d2f37"
+    },
+    {
+      "path": "artifacts/ci-2026-11-07-program-watchdog/local-server-runtime.json",
+      "bytes": 929,
+      "sha256": "2ebd358f6535844deffb82f3c4ab86a5822c34305272f4c20d1207ac90b87a0b"
+    },
+    {
+      "path": "artifacts/ci-2026-11-07-program-watchdog/local-mcp-runtime.json",
+      "bytes": 2584,
+      "sha256": "8dcc6e60714d4f92acb56a24c904b44301c5374c0015a423ccb002aafd4ff550"
+    },
+    {
+      "path": "artifacts/ci-2026-11-07-program-watchdog/README.md",
+      "bytes": 2764,
+      "sha256": "56d2e5e3e0615889dae7c16db09dde316cbfc4bca1ff907c32fcd1ac4e612a01"
+    },
+    {
+      "path": "work/ci-program-candidate.patch",
+      "bytes": 24560,
+      "sha256": "e0acaebaf79ac675ae408c24dac9eabe21312cdf6e413a760d95be2f9ec05a63"
+    },
+    {
+      "path": "work/ci-program-targeted.log",
+      "bytes": 461,
+      "sha256": "94e91a254fb7cb7c7ba1288b6639f710725759b8e0d32e54e0a544110b5b6f7f"
+    },
+    {
+      "path": "work/ci-program-typecheck.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "work/ci-program-verify.log",
+      "bytes": 36488,
+      "sha256": "f163b5abbc8b0d12dcc7e73821c52ae808c466f16984a517e6b68ba16fa0d30b"
+    },
+    {
+      "path": "work/ci-program-browser.log",
+      "bytes": 3154,
+      "sha256": "4963f12861ac5a1fd9200ede38596104cb2320eb122a6a1dd63e52830409c7d7"
+    },
+    {
+      "path": "work/ci-run-113.log",
+      "bytes": 117739,
+      "sha256": "ff64b4f4ec05633169e33372bdee62a8c3391d4145f7e12aa7bc61db72e8de81"
+    },
+    {
+      "path": "work/program-memory-probe.json",
+      "bytes": 1145,
+      "sha256": "2a9f910c0a364a4f6cf6c0c02ff81db780e4a7a4223f23381e1c4c19921222e2"
+    },
+    {
+      "path": "work/rea-materials/review/ci-113-analysis.md",
+      "bytes": 6334,
+      "sha256": "246e821bb422a75c9d3ef048ff2f3a3f476eb678bf37926445c8204c613f6d9e"
+    }
+  ],
+  "retainedCopiesByteEqual": {
+    "local-verification.json": true,
+    "local-unit.json": true,
+    "local-browser-evidence.json": true,
+    "local-e2e.json": true,
+    "local-verify.log": true,
+    "local-browser.log": true,
+    "candidate.patch": true,
+    "probe.json": true,
+    "ci-113-job.log": true,
+    "diagnosis.md": true
+  },
+  "commandsUsed": [
+    "rg bounded source/report searches",
+    "cat/sed/tail bounded source,raw diff and log reads",
+    "Node read-only source/parsed-JSON/runtime-asset SHA-256 recomputation",
+    "Python in-memory reverse patch and complete base-digest reconstruction",
+    "shasum -a256 relevant files",
+    "Python report write restricted to work/rea-materials/review/ci-113-fix-review.md and .json"
+  ]
+}

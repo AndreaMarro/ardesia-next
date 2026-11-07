@@ -1,8 +1,9 @@
 import type {QuickJSWASMModule} from 'quickjs-emscripten-core';
 import {ProgramEventSchema, ProgramBodySchema, ProgramStateSchema, type ProgramBody, type ProgramEvent, type ProgramResult} from '@ardesia/contracts';
 import {validateProgramResult} from './program-view';
+import {PROGRAM_LIMITS} from './program-limits';
+export {PROGRAM_LIMITS} from './program-limits';
 
-export const PROGRAM_LIMITS = Object.freeze({memoryBytes:16*1024*1024,stackBytes:128*1024,executionMs:100,outputBytes:131072,watchdogMs:2000,initializationMs:15000,queue:16});
 /** Untrusted code stays inside QuickJS. There are deliberately no native functions, loaders or IO bridges. */
 export function executeProgram(engine:QuickJSWASMModule, body:ProgramBody, state:ProgramResult['state'], event:ProgramEvent):ProgramResult {
   ProgramBodySchema.parse(body); ProgramStateSchema.parse(state); ProgramEventSchema.parse(event);
@@ -10,6 +11,8 @@ export function executeProgram(engine:QuickJSWASMModule, body:ProgramBody, state
   runtime.setMemoryLimit(PROGRAM_LIMITS.memoryBytes);
   runtime.setMaxStackSize(PROGRAM_LIMITS.stackBytes);
   const deadline=performance.now()+PROGRAM_LIMITS.executionMs;
+  // Native VM intrinsics can return late: only the owning Worker watchdog can
+  // enforce an external deadline, including for the first guest interaction.
   runtime.setInterruptHandler(()=>performance.now()>deadline);
   const vm=runtime.newContext();
   try {

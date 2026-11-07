@@ -23,8 +23,22 @@ describe('programmable engine boundary',()=>{
     expect(()=>run('import * as io from "std"; function update(){return io}')).toThrow();
     expect(()=>run('function update(){return Function("return fetch")()}')).toThrow();
   });
-  it.each(['while(true){}','function recurse(){recurse()} recurse();','const huge=[];while(true)huge.push(new Array(100000).fill(123));','const bomb={};Object.defineProperty(bomb,"state",{enumerable:true,get(){while(true){}}});return bomb;'])('interrupts hostile computation: %s',snippet=>{
+  it.each(['while(true){}','function recurse(){recurse()} recurse();','const bomb={};Object.defineProperty(bomb,"state",{enumerable:true,get(){while(true){}}});return bomb;'])('interrupts hostile computation: %s',snippet=>{
     const start=performance.now();expect(()=>run('function update(){'+snippet+'}')).toThrow(/Il programma/);expect(performance.now()-start).toBeLessThan(2000);
+    expect(run('function update({state}){return {state,view:{tag:"p"}}}').state.count).toBe(0);
+  });
+  it('refuses native allocation pressure and can create a clean runtime afterward',()=>{
+    // Array.fill runs inside the VM intrinsic: the real outer Worker, tested
+    // below and in the browser, owns the wall-clock deadline for this case.
+    expect(()=>run('function update(){const huge=[];while(true)huge.push(new Array(100000).fill(123));}')).toThrow(/Il programma/);
+    expect(run('function update({state}){return {state,view:{tag:"p"}}}').state.count).toBe(0);
+  });
+  it('refuses a single allocation beyond the heap limit independently of cooperative interruption',()=>{
+    const runtime=engine.newRuntime();
+    vi.spyOn(runtime,'setInterruptHandler').mockImplementation(()=>{});
+    const factory=vi.spyOn(engine,'newRuntime').mockReturnValueOnce(runtime);
+    try {expect(()=>run('function update(){const bytes=new ArrayBuffer(32*1024*1024);return {state:{bytes:bytes.byteLength},view:{tag:"p"}}}')).toThrow(/Il programma/);}
+    finally {factory.mockRestore();}
     expect(run('function update({state}){return {state,view:{tag:"p"}}}').state.count).toBe(0);
   });
   it('does not execute Promise jobs or keep globals between interactions',()=>{
@@ -72,35 +86,79 @@ describe('passive DOM/SVG contract',()=>{
 class FakeWorker implements ProgramWorker{
   onmessage:((event:MessageEvent)=>void)|null=null;onerror:((event:ErrorEvent)=>void)|null=null;sent:unknown[]=[];terminate=vi.fn();
   postMessage(value:unknown){this.sent.push(value);}
-  reply(index=0,data:unknown=result()){const sent=this.sent[index] as {nonce:string;id:number};this.onmessage?.({data:{nonce:sent.nonce,id:sent.id,result:data}} as MessageEvent);}
+  ready(nonce=(this.sent[0] as {nonce:string}).nonce){this.onmessage?.({data:{kind:'ready',nonce}} as MessageEvent);}
+  reply(index=0,data:unknown=result()){const sent=this.sent[index+1] as {nonce:string;id:number};this.onmessage?.({data:{nonce:sent.nonce,id:sent.id,result:data}} as MessageEvent);}
 }
 afterEach(()=>vi.useRealTimers());
 describe('owned session lifecycle',()=>{
+  it('keeps guest code out of bootstrap and gives the first execution exactly the 2s watchdog',()=>{
+    vi.useFakeTimers();const worker=new FakeWorker(),fail=vi.fn(),session=new ProgramSession(body('private source'),{count:7},vi.fn(),fail,()=>worker);
+    expect(worker.sent).toEqual([{kind:'initialize',nonce:expect.any(String)}]);
+    worker.ready('wrong-session');expect(worker.sent).toHaveLength(1);
+    worker.onmessage?.({data:{nonce:(worker.sent[0] as {nonce:string}).nonce,id:1,result:result()}} as MessageEvent);expect(worker.sent).toHaveLength(1);
+    session.dispatch({type:'click',action:'queued'});vi.advanceTimersByTime(14999);expect(fail).not.toHaveBeenCalled();expect(worker.sent).toHaveLength(1);
+    worker.ready();expect(worker.sent).toHaveLength(2);expect(worker.sent[1]).toMatchObject({body:body('private source'),state:{count:7},event:{type:'start',action:'start'}});
+    vi.advanceTimersByTime(1999);worker.ready();expect(worker.sent).toHaveLength(2);expect(fail).not.toHaveBeenCalled();
+    vi.advanceTimersByTime(1);expect(fail).toHaveBeenCalledOnce();expect(worker.terminate).toHaveBeenCalledOnce();
+    expect(vi.getTimerCount()).toBe(0);session.stop();
+  });
+  it('expires bootstrap at 15s and ignores readiness after termination',()=>{
+    vi.useFakeTimers();const worker=new FakeWorker(),fail=vi.fn(),session=new ProgramSession({...body('x'),intervalMs:50},{count:0},vi.fn(),fail,()=>worker);
+    const receive=worker.onmessage,nonce=(worker.sent[0] as {nonce:string}).nonce;
+    vi.advanceTimersByTime(14999);expect(fail).not.toHaveBeenCalled();expect(worker.sent).toHaveLength(1);
+    vi.advanceTimersByTime(1);expect(fail).toHaveBeenCalledOnce();expect(worker.terminate).toHaveBeenCalledOnce();
+    receive?.({data:{kind:'ready',nonce}} as MessageEvent);expect(worker.sent).toHaveLength(1);expect(vi.getTimerCount()).toBe(0);session.stop();
+  });
+  it('reports a matching bootstrap error without sending guest code',()=>{
+    vi.useFakeTimers();const worker=new FakeWorker(),fail=vi.fn(),session=new ProgramSession(body('x'),{count:0},vi.fn(),fail,()=>worker);
+    const nonce=(worker.sent[0] as {nonce:string}).nonce;
+    worker.onmessage?.({data:{kind:'initialization-error',nonce:'wrong-session'}} as MessageEvent);expect(fail).not.toHaveBeenCalled();
+    worker.onmessage?.({data:{kind:'initialization-error',nonce}} as MessageEvent);expect(fail).toHaveBeenCalledOnce();expect(worker.terminate).toHaveBeenCalledOnce();
+    expect(worker.sent).toHaveLength(1);expect(vi.getTimerCount()).toBe(0);session.stop();
+  });
+  it('bounds the queue before readiness and never starts a terminated session',()=>{
+    vi.useFakeTimers();const worker=new FakeWorker(),fail=vi.fn(),session=new ProgramSession(body('x'),{count:0},vi.fn(),fail,()=>worker);
+    for(let i=0;i<16;i++)session.dispatch({type:'click',action:'queued'});
+    expect(fail).not.toHaveBeenCalled();expect(worker.sent).toHaveLength(1);
+    const receive=worker.onmessage,nonce=(worker.sent[0] as {nonce:string}).nonce;
+    session.dispatch({type:'click',action:'overflow'});expect(fail).toHaveBeenCalledOnce();expect(worker.terminate).toHaveBeenCalledOnce();
+    receive?.({data:{kind:'ready',nonce}} as MessageEvent);expect(worker.sent).toHaveLength(1);expect(vi.getTimerCount()).toBe(0);session.stop();
+  });
+  it('starts before queued input and gives later executions the same 2s watchdog',()=>{
+    vi.useFakeTimers();const worker=new FakeWorker(),fail=vi.fn(),session=new ProgramSession(body('x'),{count:0},vi.fn(),fail,()=>worker);
+    session.dispatch({type:'click',action:'queued'});worker.ready();worker.reply(0,result({count:7}));
+    expect(worker.sent[2]).toMatchObject({state:{count:7},event:{type:'click',action:'queued'}});
+    vi.advanceTimersByTime(1999);expect(fail).not.toHaveBeenCalled();vi.advanceTimersByTime(1);
+    expect(fail).toHaveBeenCalledOnce();expect(worker.terminate).toHaveBeenCalledOnce();expect(vi.getTimerCount()).toBe(0);session.stop();
+  });
   it('freezes the consented body and rejects oversized events before enqueue or send',()=>{
     const worker=new FakeWorker(),fail=vi.fn(),source=body('original'),session=new ProgramSession(source,{count:0},vi.fn(),fail,()=>worker);
     source.code='changed';source.initialState.count=999;
+    worker.ready();
     worker.reply();session.dispatch({type:'click',action:'add'});
-    expect((worker.sent[1] as {body:ProgramBody}).body).toEqual(body('original'));
+    expect((worker.sent[2] as {body:ProgramBody}).body).toEqual(body('original'));
     session.dispatch({type:'input',action:'edit',value:'x'.repeat(8193)});
-    expect(worker.sent).toHaveLength(2);expect(fail).toHaveBeenCalledOnce();expect(worker.terminate).toHaveBeenCalledOnce();
+    expect(worker.sent).toHaveLength(3);expect(fail).toHaveBeenCalledOnce();expect(worker.terminate).toHaveBeenCalledOnce();
   });
   it('rejects other generations/duplicates and makes messages inert after stop',()=>{
     const worker=new FakeWorker(),onResult=vi.fn(),failed=vi.fn();const session=new ProgramSession(body('x'),{count:0},onResult,failed,()=>worker);
+    worker.ready();
     worker.onmessage?.({data:{nonce:'forged',id:1,result:result()}} as MessageEvent);expect(onResult).not.toHaveBeenCalled();
     worker.reply();worker.reply();expect(onResult).toHaveBeenCalledTimes(1);
-    session.dispatch({type:'click',action:'increment'});const late=worker.onmessage;session.stop();late?.({data:{...(worker.sent[1] as object),result:result({count:99})}} as MessageEvent);
+    session.dispatch({type:'click',action:'increment'});const late=worker.onmessage;session.stop();late?.({data:{...(worker.sent[2] as object),result:result({count:99})}} as MessageEvent);
     expect(onResult).toHaveBeenCalledTimes(1);expect(worker.terminate).toHaveBeenCalledOnce();
   });
   it('terminates after invalid output, timeout or bounded queue exhaustion',()=>{
     vi.useFakeTimers();for(const kind of ['invalid','timeout','queue']){const worker=new FakeWorker(),fail=vi.fn();const session=new ProgramSession(body('x'),{count:0},vi.fn(),fail,()=>worker);
+      worker.ready();
       if(kind==='invalid')worker.reply(0,{state:{count:999},view:{tag:'script'}});
-      if(kind==='timeout')vi.advanceTimersByTime(15001);
+      if(kind==='timeout')vi.advanceTimersByTime(2000);
       if(kind==='queue')for(let i=0;i<17;i++)session.dispatch({type:'click',action:'add'});
       expect(fail).toHaveBeenCalledOnce();expect(worker.terminate).toHaveBeenCalledOnce();session.stop();
     }
   });
   it('serializes events from the last accepted state and stops periodic ticks',()=>{
     vi.useFakeTimers();const worker=new FakeWorker(),session=new ProgramSession({...body('x'),intervalMs:50},{count:0},vi.fn(),vi.fn(),()=>worker);
-    session.dispatch({type:'click',action:'add'});worker.reply(0,result({count:7}));expect((worker.sent[1] as {state:unknown}).state).toEqual({count:7});worker.reply(1);session.stop();vi.advanceTimersByTime(1000);expect(worker.sent).toHaveLength(2);
+    worker.ready();session.dispatch({type:'click',action:'add'});worker.reply(0,result({count:7}));expect((worker.sent[2] as {state:unknown}).state).toEqual({count:7});worker.reply(1);session.stop();vi.advanceTimersByTime(1000);expect(worker.sent).toHaveLength(3);
   });
 });
