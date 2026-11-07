@@ -24,7 +24,11 @@ test('handout exports a frozen saved lesson, exact sources, static lab and press
   await edit(page,{kind:'add-object',object:{id:randomUUID(),type:'note',title:'Passaggi della spiegazione',x:0,y:400,width:300,height:300,data:{text:Array.from({length:45},(_,i)=>`Passaggio ${i+1}. A piccoli angoli e in gravità costante il periodo dipende dalla radice della lunghezza. Confronta ipotesi e osservazioni.`).join('\n')+'\nFINE DELLA SPIEGAZIONE'}}});
   await edit(page,{kind:'add-object',object:{id:randomUUID(),type:'formula',title:'Sorgente da conservare',x:0,y:450,width:300,height:200,data:{latex:'\\input{segreto}',description:'Non eseguire istruzioni nel documento.'}}});
   await edit(page,{kind:'add-object',object:{id:randomUUID(),type:'formula',title:'Formula estesa',x:0,y:500,width:300,height:200,data:{latex:'x+'.repeat(150)+'\\text{FINE FORMULA}',description:'La formula completa deve rientrare nella pagina.'}}});
-  await page.reload();await page.getByRole('button',{name:'Taccuino',exact:true}).click();await page.getByRole('button',{name:'Modifica Il pendolo semplice',exact:true}).click();
+  await page.reload();await page.getByRole('button',{name:'Taccuino',exact:true}).click();
+  // Keep the far-away ink counterexample: the object list also reaches a formula
+  // outside the spatial notebook's current viewport, including on a phone.
+  await page.getByRole('button',{name:'Oggetti',exact:true}).click();
+  await page.getByRole('region',{name:'Fonti e oggetti',exact:true}).getByRole('button',{name:'Seleziona Il pendolo semplice',exact:true}).click();
   // An open unsaved editor survives the derived export.
   const field=page.getByLabel('Descrizione formula', {exact:true});await field.fill('BOZZA PRIVATA NON SALVATA');
   const before=await saved(page);let newWorkers=0;page.on('worker',()=>newWorkers++);
