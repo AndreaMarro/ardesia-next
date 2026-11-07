@@ -1,0 +1,117 @@
+diff --git a/docs/handoffs/2026-11-07.md b/docs/handoffs/2026-11-07.md
+index 7e7609a..9de39c5 100644
+--- a/docs/handoffs/2026-11-07.md
++++ b/docs/handoffs/2026-11-07.md
+@@ -4,6 +4,8 @@ Questa consegna rende riprendibile il lavoro applicativo della conversazione. Il
+ 
+ **Chiusura CI successiva alla prima pubblicazione.** La [PR #50](https://github.com/AndreaMarro/ardesia-next/pull/50) conserva la consegna cumulativa. La prima CI, sul commit `045fa205`, ha rilevato 551/552 test passati e un superamento del tempo nel probe di allocazione QuickJS: 2,48 s contro 2 s. La diagnosi ha distinto il limite cooperativo dell’interprete dal watchdog esterno e corretto una lacuna reale: i 15 s di bootstrap non comprendono più il primo codice utente. Un handshake associato alla sessione precede l’invio del programma; ogni esecuzione ha il watchdog di 2 s. Quote memoria/stack invariate. [Diagnosi, review e prove della correzione](../../artifacts/ci-2026-11-07-program-watchdog/README.md). Il pacchetto materiali e i 42 passi REA restano prove della sorgente `290f597d…`, non vengono attribuiti al successivo commit. Per il nuovo candidato fa fede l’esito della sua CI, collegato dalla PR.
+ 
++La seconda CI (`474650e`, esecuzione 114) ha superato Verify e tutti i 558 test, poi ha rilevato import relativi senza estensione nel grafo pubblico dei contratti, funzionanti con Vite ma non con Node nativo. Sono corretti i percorsi, senza cambi di schema, ed è aggiunta una prova sotto Node nel Verify esistente. La verifica locale successiva ha rilevato anche una fixture storica del collector che copiava campi moderni in snapshot v1–v3: ora costruisce esplicitamente la forma storica, mantenendo tutte le controprove di ricevute, consenso, duplicati e ownership. Il collector e il benchmark vengono verificati su database dedicati prima della nuova pubblicazione. [Prove e limiti](../../artifacts/ci-2026-11-07-native-contracts/README.md); esito della CI finale nella PR, senza trasformare le esecuzioni precedenti in PASS completi.
++
+ ## Punto di ripresa
+ 
+ Branch `codex/lavagna-continuity-20261107`, base `f7adf5db02913e25fbab0b1da071f650b4f78676`. Il candidato è cumulativo: non applicare di nuovo le vecchie patch. Commit pubblicati, review, CI e identità dei byte sono collegati dalla PR e dal pacchetto [evidenze](../../artifacts/handoff-2026-11-07/README.md). Sorgenti e artefatti hanno identità distinte, esplicitate nel manifest.
+diff --git a/packages/contracts/src/document-history.ts b/packages/contracts/src/document-history.ts
+index ca15910..0911914 100644
+--- a/packages/contracts/src/document-history.ts
++++ b/packages/contracts/src/document-history.ts
+@@ -1,4 +1,4 @@
+-import {canonicalJson, CoreError, CoreEventSchema, EducationalObjectSchema, LessonDocumentSchema, type CoreEvent, type LessonDocument} from './index';
++import {canonicalJson, CoreError, CoreEventSchema, EducationalObjectSchema, LessonDocumentSchema, type CoreEvent, type LessonDocument} from './index.ts';
+ 
+ const record = (value: unknown): value is Record<string, unknown> => !!value && typeof value === 'object' && !Array.isArray(value);
+ function invalid(): never {throw new CoreError('INVALID_SNAPSHOT', 'Exact replay requires the complete, coherent authorized document history.');}
+diff --git a/packages/contracts/src/index.ts b/packages/contracts/src/index.ts
+index 4d5124f..8506ba2 100644
+--- a/packages/contracts/src/index.ts
++++ b/packages/contracts/src/index.ts
+@@ -1,14 +1,14 @@
+ import { z } from 'zod';
+-import {MaterialDataSchema, InkAnchorSchema} from './materials';
+-export * from './materials';
+-import {ExtensionDataSchema} from './extensions';
+-export * from './extensions';
+-export * from './recordings';
+-export * from './courses';
+-export * from './tutor';
+-import {TutorRecordSchema, TutorEventSchema, TutorReceiptSchema} from './tutor';
+-export {projectDocumentRevision} from './document-history';
+-import {CourseSchema, CourseEditionSchema, CourseDeliverySchema, CourseWorkSchema, CourseEventSchema, CourseReceiptSchema} from './courses';
++import {MaterialDataSchema, InkAnchorSchema} from './materials.ts';
++export * from './materials.ts';
++import {ExtensionDataSchema} from './extensions.ts';
++export * from './extensions.ts';
++export * from './recordings.ts';
++export * from './courses.ts';
++export * from './tutor.ts';
++import {TutorRecordSchema, TutorEventSchema, TutorReceiptSchema} from './tutor.ts';
++export {projectDocumentRevision} from './document-history.ts';
++import {CourseSchema, CourseEditionSchema, CourseDeliverySchema, CourseWorkSchema, CourseEventSchema, CourseReceiptSchema} from './courses.ts';
+ 
+ export const CONTRACT_VERSION = '0.10.0' as const;
+ export const SNAPSHOT_VERSION = 9 as const;
+@@ -815,7 +815,7 @@ export class CoreError extends Error {
+ }
+ 
+ 
+-export * from './programs';
++export * from './programs.ts';
+ 
+ /** Resolve page-anchored ink without mutating persisted geometry or source bytes. */
+ export function materialPosition<T extends NewEducationalObject | EducationalObject>(object: T, objects: readonly (NewEducationalObject | EducationalObject)[]): T {
+diff --git a/packages/contracts/src/programs.ts b/packages/contracts/src/programs.ts
+index c1fb7f4..3e32da7 100644
+--- a/packages/contracts/src/programs.ts
++++ b/packages/contracts/src/programs.ts
+@@ -1,5 +1,5 @@
+ import {z} from 'zod';
+-import {isExtensionJson, type ExtensionValue} from './extensions';
++import {isExtensionJson, type ExtensionValue} from './extensions.ts';
+ 
+ export const PROGRAM_RENDERER = 'ardesia.program/1';
+ export const PROGRAM_VIEW_TAGS = Object.freeze('div section article header footer main p span h1 h2 h3 h4 h5 h6 strong em small code pre blockquote ul ol li dl dt dd table caption thead tbody tfoot tr th td button label input select option textarea output progress meter details summary hr br svg g path circle ellipse rect line polyline polygon text title desc'.split(' '));
+diff --git a/tools/contracts-runtime.test.mjs b/tools/contracts-runtime.test.mjs
+new file mode 100644
+index 0000000..f079f40
+--- /dev/null
++++ b/tools/contracts-runtime.test.mjs
+@@ -0,0 +1,11 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++// This consumer deliberately uses native Node, like the operator CLI. Vite's
++// resolver would conceal missing extensions in the public contract graph.
++import {canonicalJson, ProgramBodySchema, projectDocumentRevision} from '@ardesia/contracts';
++
++test('the public contracts load under native Node without a bundler or private imports', () => {
++  assert.equal(canonicalJson({b: 2, a: 1}), '{"a":1,"b":2}');
++  assert.equal(ProgramBodySchema.safeParse({code: 'function update({state}) { return {state,view:{tag:"p"}} }', initialState: {}}).success, true);
++  assert.equal(typeof projectDocumentRevision, 'function');
++});
+diff --git a/tools/m3-operator.mjs b/tools/m3-operator.mjs
+index 15a96eb..e2ab6ee 100644
+--- a/tools/m3-operator.mjs
++++ b/tools/m3-operator.mjs
+@@ -91,8 +91,11 @@ export async function collectOperatorAcceptance({current, deployment, browser, e
+       if (version === 3) for (const spec of [{kind: 'install-plugin', expectedRevision: 0, release},
+         {kind: 'consent-plugin', expectedRevision: 1, releaseDigest: release.bundleDigest, capabilities: release.capabilities},
+         {kind: 'activate-plugin', expectedRevision: 2}]) await local.executePlugin(actor, {...spec, commandId: randomUUID(), pluginId: release.pluginId});
+-      const sourceSnapshot = local.snapshot(), {assignments, learnerWork, installations, ...old} = sourceSnapshot;
+-      const snapshotText = JSON.stringify({...old, schemaVersion: version, ...(version === 3 ? {installations} : {})}, null, 2);
++      const sourceSnapshot = local.snapshot(), {workspaceId: legacyWorkspaceId, documents, events, receipts, installations} = sourceSnapshot;
++      // Author the actual historical wire shape. Removing a few current fields
++      // would let every new Core projection silently invalidate this fixture.
++      const snapshotText = JSON.stringify({schemaVersion: version, workspaceId: legacyWorkspaceId, documents, events, receipts,
++        ...(version === 3 ? {installations} : {})}, null, 2);
+       const value = {action: 'import-local', expectedAccountId: teacher.id, commandId: randomUUID(), title: `QA import ${version}`, snapshotText};
+       const imported = await request(value, teacher); need(imported.status === 200);
+       const workspaceId = imported.body.result.workspaceId;
+diff --git a/tools/status.test.mjs b/tools/status.test.mjs
+index 8fe29e7..82216db 100644
+--- a/tools/status.test.mjs
++++ b/tools/status.test.mjs
+@@ -1,4 +1,5 @@
+ import './m3-evidence.test.mjs';
++import './contracts-runtime.test.mjs';
+ import './program-budget.test.mjs';
+ import './m3-transition.test.mjs';
+ import './m4-preparation.test.mjs';

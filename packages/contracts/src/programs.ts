@@ -1,5 +1,5 @@
 import {z} from 'zod';
-import {isExtensionJson, type ExtensionValue} from './extensions';
+import {isExtensionJson, type ExtensionValue} from './extensions.ts';
 
 export const PROGRAM_RENDERER = 'ardesia.program/1';
 export const PROGRAM_VIEW_TAGS = Object.freeze('div section article header footer main p span h1 h2 h3 h4 h5 h6 strong em small code pre blockquote ul ol li dl dt dd table caption thead tbody tfoot tr th td button label input select option textarea output progress meter details summary hr br svg g path circle ellipse rect line polyline polygon text title desc'.split(' '));

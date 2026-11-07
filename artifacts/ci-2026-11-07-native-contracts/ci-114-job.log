@@ -1,0 +1,1336 @@
+﻿2026-11-07T19:03:54.9223883Z Current runner version: '2.338.2'
+2026-11-07T19:03:54.9248914Z ##[group]Runner Image Provisioner
+2026-11-07T19:03:54.9249829Z Hosted Compute Agent
+2026-11-07T19:03:54.9250384Z Version: 20261028.624
+2026-11-07T19:03:54.9251008Z Commit: 54898b74c23fde5556c9b3c3a2290865feef0dfe
+2026-11-07T19:03:54.9251705Z Build Date: 2026-10-28T21:51:42Z
+2026-11-07T19:03:54.9252355Z Worker ID: {c261a788-b0dd-4c9e-830c-ed39f6a77595}
+2026-11-07T19:03:54.9253127Z Region: centralus
+2026-11-07T19:03:54.9253769Z Cloud: Azure
+2026-11-07T19:03:54.9254315Z ##[endgroup]
+2026-11-07T19:03:54.9255728Z ##[group]Operating System
+2026-11-07T19:03:54.9256379Z Ubuntu
+2026-11-07T19:03:54.9257259Z 24.04.5
+2026-11-07T19:03:54.9257777Z LTS
+2026-11-07T19:03:54.9258280Z ##[endgroup]
+2026-11-07T19:03:54.9258846Z ##[group]Runner Image
+2026-11-07T19:03:54.9259400Z Image: ubuntu-24.04
+2026-11-07T19:03:54.9259941Z Version: 20261101.360.1
+2026-11-07T19:03:54.9261177Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261101.360/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-07T19:03:54.9262625Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261101.360
+2026-11-07T19:03:54.9263507Z ##[endgroup]
+2026-11-07T19:03:54.9264568Z ##[group]GITHUB_TOKEN Permissions
+2026-11-07T19:03:54.9266612Z Contents: read
+2026-11-07T19:03:54.9267583Z Metadata: read
+2026-11-07T19:03:54.9268119Z ##[endgroup]
+2026-11-07T19:03:54.9270071Z Secret source: Actions
+2026-11-07T19:03:54.9270947Z Cache mode: write
+2026-11-07T19:03:54.9271623Z Prepare workflow directory
+2026-11-07T19:03:54.9902025Z Prepare all required actions
+2026-11-07T19:03:54.9969648Z Getting action download info
+2026-11-07T19:03:55.2342390Z Download action repository 'actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09' (SHA:fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09)
+2026-11-07T19:03:55.3350891Z Download action repository 'actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444' (SHA:a0853c24544627f65ddf259abe73b1d18a591444)
+2026-11-07T19:03:55.4468146Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-07T19:03:55.7245910Z Complete job name: verify
+2026-11-07T19:03:55.7776510Z ##[group]Checking docker version
+2026-11-07T19:03:55.7790599Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+2026-11-07T19:03:55.8743018Z '1.48'
+2026-11-07T19:03:55.8761120Z Docker daemon API version: '1.48'
+2026-11-07T19:03:55.8762034Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+2026-11-07T19:03:55.8965198Z '1.48'
+2026-11-07T19:03:55.8989733Z Docker client API version: '1.48'
+2026-11-07T19:03:55.8994486Z ##[endgroup]
+2026-11-07T19:03:55.8997841Z ##[group]Clean up resources from previous jobs
+2026-11-07T19:03:55.9002747Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=8d3492"
+2026-11-07T19:03:55.9152161Z ##[command]/usr/bin/docker network prune --force --filter "label=8d3492"
+2026-11-07T19:03:55.9302206Z ##[endgroup]
+2026-11-07T19:03:55.9302831Z ##[group]Create local container network
+2026-11-07T19:03:55.9313203Z ##[command]/usr/bin/docker network create --label 8d3492 github_network_3df3125f588b489b9e1d6c53128d9a4a
+2026-11-07T19:03:55.9824678Z 100ad9065af640524d00ac59e0e086e612f49129025fa387d514bf9ccaf39503
+2026-11-07T19:03:55.9846579Z ##[endgroup]
+2026-11-07T19:03:55.9883616Z ##[group]Starting postgres service container
+2026-11-07T19:03:55.9913394Z ##[command]/usr/bin/docker pull postgres:18
+2026-11-07T19:03:56.6497026Z 18: Pulling from library/postgres
+2026-11-07T19:03:56.7943765Z 37fb86c2a767: Pulling fs layer
+2026-11-07T19:03:56.7945502Z e9dd37612d7b: Pulling fs layer
+2026-11-07T19:03:56.7947179Z 369949eb0229: Pulling fs layer
+2026-11-07T19:03:56.7948548Z 7e0f86eb8508: Pulling fs layer
+2026-11-07T19:03:56.7949871Z da434b32d480: Pulling fs layer
+2026-11-07T19:03:56.7951106Z bcc75ab4e010: Pulling fs layer
+2026-11-07T19:03:56.7952431Z a28de24f57c0: Pulling fs layer
+2026-11-07T19:03:56.7953747Z 6d141360b363: Pulling fs layer
+2026-11-07T19:03:56.7955340Z fcd0e9514062: Pulling fs layer
+2026-11-07T19:03:56.7956561Z cbe0afc9eb7b: Pulling fs layer
+2026-11-07T19:03:56.7957897Z fc6c21aca07c: Pulling fs layer
+2026-11-07T19:03:56.7959038Z 2a59118cca0e: Pulling fs layer
+2026-11-07T19:03:56.7960093Z 7e0f86eb8508: Waiting
+2026-11-07T19:03:56.7961096Z eac25292b613: Pulling fs layer
+2026-11-07T19:03:56.7962172Z bcc75ab4e010: Waiting
+2026-11-07T19:03:56.7963126Z da434b32d480: Waiting
+2026-11-07T19:03:56.7964060Z a28de24f57c0: Waiting
+2026-11-07T19:03:56.7964984Z fc6c21aca07c: Waiting
+2026-11-07T19:03:56.7965903Z 2a59118cca0e: Waiting
+2026-11-07T19:03:56.7967145Z eac25292b613: Waiting
+2026-11-07T19:03:56.7968108Z 6d141360b363: Waiting
+2026-11-07T19:03:56.7969161Z fcd0e9514062: Waiting
+2026-11-07T19:03:56.7970296Z cbe0afc9eb7b: Waiting
+2026-11-07T19:03:56.9424148Z e9dd37612d7b: Verifying Checksum
+2026-11-07T19:03:56.9426256Z e9dd37612d7b: Download complete
+2026-11-07T19:03:57.0537193Z 369949eb0229: Verifying Checksum
+2026-11-07T19:03:57.0542661Z 369949eb0229: Download complete
+2026-11-07T19:03:57.0756437Z 37fb86c2a767: Verifying Checksum
+2026-11-07T19:03:57.1680495Z 37fb86c2a767: Download complete
+2026-11-07T19:03:57.1681496Z 7e0f86eb8508: Verifying Checksum
+2026-11-07T19:03:57.1682358Z 7e0f86eb8508: Download complete
+2026-11-07T19:03:57.3096098Z bcc75ab4e010: Verifying Checksum
+2026-11-07T19:03:57.3098090Z bcc75ab4e010: Download complete
+2026-11-07T19:03:57.3124448Z da434b32d480: Verifying Checksum
+2026-11-07T19:03:57.3125287Z da434b32d480: Download complete
+2026-11-07T19:03:57.3330422Z a28de24f57c0: Verifying Checksum
+2026-11-07T19:03:57.3332113Z a28de24f57c0: Download complete
+2026-11-07T19:03:57.4407371Z 6d141360b363: Verifying Checksum
+2026-11-07T19:03:57.4692249Z 6d141360b363: Download complete
+2026-11-07T19:03:57.4693270Z cbe0afc9eb7b: Verifying Checksum
+2026-11-07T19:03:57.4693993Z cbe0afc9eb7b: Download complete
+2026-11-07T19:03:57.5787681Z fc6c21aca07c: Download complete
+2026-11-07T19:03:57.6295926Z 2a59118cca0e: Download complete
+2026-11-07T19:03:57.7176222Z eac25292b613: Verifying Checksum
+2026-11-07T19:03:57.7191555Z eac25292b613: Download complete
+2026-11-07T19:03:57.9457256Z fcd0e9514062: Download complete
+2026-11-07T19:03:57.9943700Z 37fb86c2a767: Pull complete
+2026-11-07T19:03:59.4059237Z e9dd37612d7b: Pull complete
+2026-11-07T19:03:59.6821128Z 369949eb0229: Pull complete
+2026-11-07T19:03:59.7357677Z 7e0f86eb8508: Pull complete
+2026-11-07T19:04:00.1625039Z da434b32d480: Pull complete
+2026-11-07T19:04:00.2327522Z bcc75ab4e010: Pull complete
+2026-11-07T19:04:00.2416132Z a28de24f57c0: Pull complete
+2026-11-07T19:04:00.2523161Z 6d141360b363: Pull complete
+2026-11-07T19:04:04.6254567Z fcd0e9514062: Pull complete
+2026-11-07T19:04:04.6421471Z cbe0afc9eb7b: Pull complete
+2026-11-07T19:04:04.6522066Z fc6c21aca07c: Pull complete
+2026-11-07T19:04:04.6623377Z 2a59118cca0e: Pull complete
+2026-11-07T19:04:04.6855729Z eac25292b613: Pull complete
+2026-11-07T19:04:04.6901744Z Digest: sha256:e3d24f6906d0760bf4da0dae872415391ededefad23fd471c47dc53b0ddf3c42
+2026-11-07T19:04:04.6920814Z Status: Downloaded newer image for postgres:18
+2026-11-07T19:04:04.6933692Z docker.io/library/postgres:18
+2026-11-07T19:04:04.6993600Z ##[command]/usr/bin/docker create --name 8b4e132b58af4129aa27790358ef536b_postgres18_0f582d --label 8d3492 --network github_network_3df3125f588b489b9e1d6c53128d9a4a --network-alias postgres -p 5432:5432 --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 5s --health-retries 10 -e "POSTGRES_HOST_AUTH_METHOD=trust" -e GITHUB_ACTIONS=true -e CI=true postgres:18
+2026-11-07T19:04:04.7267905Z f9b415cde5afbc183ee3457dd5556936864dc34d4a5894697a7a948c606d93a3
+2026-11-07T19:04:04.7288184Z ##[command]/usr/bin/docker start f9b415cde5afbc183ee3457dd5556936864dc34d4a5894697a7a948c606d93a3
+2026-11-07T19:04:04.9250600Z f9b415cde5afbc183ee3457dd5556936864dc34d4a5894697a7a948c606d93a3
+2026-11-07T19:04:04.9267387Z ##[command]/usr/bin/docker ps --all --filter id=f9b415cde5afbc183ee3457dd5556936864dc34d4a5894697a7a948c606d93a3 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2026-11-07T19:04:04.9420783Z f9b415cde5afbc183ee3457dd5556936864dc34d4a5894697a7a948c606d93a3 Up Less than a second (health: starting)
+2026-11-07T19:04:04.9437364Z ##[command]/usr/bin/docker port f9b415cde5afbc183ee3457dd5556936864dc34d4a5894697a7a948c606d93a3
+2026-11-07T19:04:04.9588104Z 5432/tcp -> 0.0.0.0:5432
+2026-11-07T19:04:04.9589004Z 5432/tcp -> [::]:5432
+2026-11-07T19:04:04.9628575Z ##[endgroup]
+2026-11-07T19:04:04.9637854Z ##[group]Waiting for all services to be ready
+2026-11-07T19:04:04.9650843Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" f9b415cde5afbc183ee3457dd5556936864dc34d4a5894697a7a948c606d93a3
+2026-11-07T19:04:04.9792620Z starting
+2026-11-07T19:04:04.9809496Z postgres service is starting, waiting 2 seconds before checking again.
+2026-11-07T19:04:06.9814052Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" f9b415cde5afbc183ee3457dd5556936864dc34d4a5894697a7a948c606d93a3
+2026-11-07T19:04:06.9964838Z starting
+2026-11-07T19:04:06.9976216Z postgres service is starting, waiting 3 seconds before checking again.
+2026-11-07T19:04:10.9795166Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" f9b415cde5afbc183ee3457dd5556936864dc34d4a5894697a7a948c606d93a3
+2026-11-07T19:04:10.9949365Z healthy
+2026-11-07T19:04:10.9964497Z postgres service is healthy.
+2026-11-07T19:04:10.9965267Z ##[endgroup]
+2026-11-07T19:04:11.0257230Z ##[group]Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+2026-11-07T19:04:11.0257949Z with:
+2026-11-07T19:04:11.0258284Z   ref: 474650e235a5317d74dccbed40158c908154b1cd
+2026-11-07T19:04:11.0258670Z   persist-credentials: false
+2026-11-07T19:04:11.0259034Z   repository: AndreaMarro/ardesia-next
+2026-11-07T19:04:11.0261461Z   token: ***
+2026-11-07T19:04:11.0261796Z   ssh-strict: true
+2026-11-07T19:04:11.0262089Z   ssh-user: git
+2026-11-07T19:04:11.0262395Z   clean: true
+2026-11-07T19:04:11.0262712Z   sparse-checkout-cone-mode: true
+2026-11-07T19:04:11.0263076Z   fetch-depth: 1
+2026-11-07T19:04:11.0263379Z   fetch-tags: false
+2026-11-07T19:04:11.0263671Z   show-progress: true
+2026-11-07T19:04:11.0264001Z   lfs: false
+2026-11-07T19:04:11.0264286Z   submodules: false
+2026-11-07T19:04:11.0264604Z   set-safe-directory: true
+2026-11-07T19:04:11.0264942Z   allow-unsafe-pr-checkout: false
+2026-11-07T19:04:11.0265382Z env:
+2026-11-07T19:04:11.0265642Z   ARDESIA_E2E_MODE: local
+2026-11-07T19:04:11.0266319Z   M3_TEST_ADMIN_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/postgres
+2026-11-07T19:04:11.0266976Z   M3_TEST_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_test
+2026-11-07T19:04:11.0267553Z   M3_BROWSER_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_browser
+2026-11-07T19:04:11.0268119Z   M3_BENCHMARK_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_benchmark
+2026-11-07T19:04:11.0268688Z   ARDESIA_COMMIT_SHA: 474650e235a5317d74dccbed40158c908154b1cd
+2026-11-07T19:04:11.0269103Z ##[endgroup]
+2026-11-07T19:04:11.2693572Z Syncing repository: AndreaMarro/ardesia-next
+2026-11-07T19:04:11.2695251Z ##[group]Getting Git version info
+2026-11-07T19:04:11.2695777Z Working directory is '/home/runner/work/ardesia-next/ardesia-next'
+2026-11-07T19:04:11.2696585Z [command]/usr/bin/git version
+2026-11-07T19:04:11.2765923Z git version 2.56.0
+2026-11-07T19:04:11.2797230Z ##[endgroup]
+2026-11-07T19:04:11.2802140Z Temporarily overriding HOME='/home/runner/work/_temp/61d2fc8c-e85f-4fd8-bbd5-a93da31b06a2' before making global git config changes
+2026-11-07T19:04:11.2803148Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-07T19:04:11.2809369Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ardesia-next/ardesia-next
+2026-11-07T19:04:11.2863866Z Deleting the contents of '/home/runner/work/ardesia-next/ardesia-next'
+2026-11-07T19:04:11.2868222Z ##[group]Initializing the repository
+2026-11-07T19:04:11.2875265Z [command]/usr/bin/git init /home/runner/work/ardesia-next/ardesia-next
+2026-11-07T19:04:11.2975890Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-07T19:04:11.2977136Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-07T19:04:11.2978106Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-07T19:04:11.2978782Z hint: call:
+2026-11-07T19:04:11.2979200Z hint:
+2026-11-07T19:04:11.2979873Z hint: 	git config --global init.defaultBranch <name>
+2026-11-07T19:04:11.2980597Z hint:
+2026-11-07T19:04:11.2981191Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-07T19:04:11.2982010Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-07T19:04:11.2982669Z hint:
+2026-11-07T19:04:11.2983059Z hint: 	git branch -m <name>
+2026-11-07T19:04:11.2983464Z hint:
+2026-11-07T19:04:11.2984148Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-07T19:04:11.2986079Z Initialized empty Git repository in /home/runner/work/ardesia-next/ardesia-next/.git/
+2026-11-07T19:04:11.2996252Z [command]/usr/bin/git remote add origin https://github.com/AndreaMarro/ardesia-next
+2026-11-07T19:04:11.3041062Z ##[endgroup]
+2026-11-07T19:04:11.3042064Z ##[group]Disabling automatic garbage collection
+2026-11-07T19:04:11.3043422Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-07T19:04:11.3073810Z ##[endgroup]
+2026-11-07T19:04:11.3075158Z ##[group]Setting up auth
+2026-11-07T19:04:11.3080804Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-07T19:04:11.3111693Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-07T19:04:11.3459991Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-07T19:04:11.3494428Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-07T19:04:11.3710704Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-07T19:04:11.3741598Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-07T19:04:11.3928199Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-07T19:04:11.4094039Z ##[endgroup]
+2026-11-07T19:04:11.4094880Z ##[group]Fetching the repository
+2026-11-07T19:04:11.4106190Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 474650e235a5317d74dccbed40158c908154b1cd
+2026-11-07T19:04:13.1060398Z From https://github.com/AndreaMarro/ardesia-next
+2026-11-07T19:04:13.1061387Z  * branch            474650e235a5317d74dccbed40158c908154b1cd -> FETCH_HEAD
+2026-11-07T19:04:13.1064808Z ##[endgroup]
+2026-11-07T19:04:13.1065670Z ##[group]Determining the checkout info
+2026-11-07T19:04:13.1068508Z ##[endgroup]
+2026-11-07T19:04:13.1073952Z [command]/usr/bin/git sparse-checkout disable
+2026-11-07T19:04:13.1128411Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-07T19:04:13.1159255Z ##[group]Checking out the ref
+2026-11-07T19:04:13.1163269Z [command]/usr/bin/git checkout --progress --force 474650e235a5317d74dccbed40158c908154b1cd
+2026-11-07T19:04:13.2690941Z Note: switching to '474650e235a5317d74dccbed40158c908154b1cd'.
+2026-11-07T19:04:13.2691703Z 
+2026-11-07T19:04:13.2692012Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-11-07T19:04:13.2692577Z changes and commit them, and you can discard any commits you make in this
+2026-11-07T19:04:13.2693211Z state without impacting any branches by switching back to a branch.
+2026-11-07T19:04:13.2693778Z 
+2026-11-07T19:04:13.2694166Z If you want to create a new branch to retain commits you create, you may
+2026-11-07T19:04:13.2694829Z do so (now or later) by using -c with the switch command. Example:
+2026-11-07T19:04:13.2695225Z 
+2026-11-07T19:04:13.2695464Z   git switch -c <new-branch-name>
+2026-11-07T19:04:13.2695712Z 
+2026-11-07T19:04:13.2695962Z Or undo this operation with:
+2026-11-07T19:04:13.2696187Z 
+2026-11-07T19:04:13.2696386Z   git switch -
+2026-11-07T19:04:13.2696898Z 
+2026-11-07T19:04:13.2697237Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-11-07T19:04:13.2697726Z 
+2026-11-07T19:04:13.2698060Z HEAD is now at 474650e fix: separate program bootstrap from the execution watchdog
+2026-11-07T19:04:13.2713622Z ##[endgroup]
+2026-11-07T19:04:13.2752086Z [command]/usr/bin/git log -1 --format=%H
+2026-11-07T19:04:13.2774554Z 474650e235a5317d74dccbed40158c908154b1cd
+2026-11-07T19:04:13.2786226Z ##[group]Removing auth
+2026-11-07T19:04:13.2794900Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-07T19:04:13.2816076Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-07T19:04:13.3005136Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-07T19:04:13.3032352Z http.https://github.com/.extraheader
+2026-11-07T19:04:13.3039074Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-07T19:04:13.3069473Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-07T19:04:13.3252799Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-07T19:04:13.3282020Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-07T19:04:13.3457705Z ##[endgroup]
+2026-11-07T19:04:13.3696971Z ##[group]Run actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444
+2026-11-07T19:04:13.3697422Z with:
+2026-11-07T19:04:13.3697743Z   node-version-file: .nvmrc
+2026-11-07T19:04:13.3698057Z   cache: npm
+2026-11-07T19:04:13.3698383Z   always-auth: false
+2026-11-07T19:04:13.3698759Z   check-latest: false
+2026-11-07T19:04:13.3701141Z   token: ***
+2026-11-07T19:04:13.3701811Z   package-manager-cache: true
+2026-11-07T19:04:13.3702135Z env:
+2026-11-07T19:04:13.3702395Z   ARDESIA_E2E_MODE: local
+2026-11-07T19:04:13.3702870Z   M3_TEST_ADMIN_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/postgres
+2026-11-07T19:04:13.3703440Z   M3_TEST_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_test
+2026-11-07T19:04:13.3703994Z   M3_BROWSER_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_browser
+2026-11-07T19:04:13.3705011Z   M3_BENCHMARK_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_benchmark
+2026-11-07T19:04:13.3705714Z   ARDESIA_COMMIT_SHA: 474650e235a5317d74dccbed40158c908154b1cd
+2026-11-07T19:04:13.3706101Z ##[endgroup]
+2026-11-07T19:04:13.5085777Z Resolved .nvmrc as 24
+2026-11-07T19:04:13.5144392Z Found in cache @ /opt/hostedtoolcache/node/24.22.2/x64
+2026-11-07T19:04:13.5148814Z (node:2831) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-07T19:04:13.5149553Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-07T19:04:13.5151291Z ##[group]Environment details
+2026-11-07T19:04:13.9336904Z node: v24.22.2
+2026-11-07T19:04:13.9337479Z npm: 11.19.1
+2026-11-07T19:04:13.9338011Z yarn: 1.22.22
+2026-11-07T19:04:13.9339608Z ##[endgroup]
+2026-11-07T19:04:13.9359163Z [command]/opt/hostedtoolcache/node/24.22.2/x64/bin/npm config get cache
+2026-11-07T19:04:14.0381990Z /home/runner/.npm
+2026-11-07T19:04:14.1967954Z npm cache is not found
+2026-11-07T19:04:14.2159542Z ##[group]Run npm ci
+2026-11-07T19:04:14.2159905Z [36;1mnpm ci[0m
+2026-11-07T19:04:14.2185218Z shell: /usr/bin/bash -e {0}
+2026-11-07T19:04:14.2185677Z env:
+2026-11-07T19:04:14.2185971Z   ARDESIA_E2E_MODE: local
+2026-11-07T19:04:14.2186406Z   M3_TEST_ADMIN_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/postgres
+2026-11-07T19:04:14.2187316Z   M3_TEST_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_test
+2026-11-07T19:04:14.2187864Z   M3_BROWSER_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_browser
+2026-11-07T19:04:14.2188499Z   M3_BENCHMARK_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_benchmark
+2026-11-07T19:04:14.2189032Z   ARDESIA_COMMIT_SHA: 474650e235a5317d74dccbed40158c908154b1cd
+2026-11-07T19:04:14.2189413Z ##[endgroup]
+2026-11-07T19:04:18.6877888Z 
+2026-11-07T19:04:18.6891805Z added 111 packages, and audited 124 packages in 4s
+2026-11-07T19:04:18.6892392Z 
+2026-11-07T19:04:18.6892729Z found 0 vulnerabilities
+2026-11-07T19:04:18.7242248Z ##[group]Run node tools/setup-test-databases.mjs
+2026-11-07T19:04:18.7242923Z [36;1mnode tools/setup-test-databases.mjs[0m
+2026-11-07T19:04:18.7263252Z shell: /usr/bin/bash -e {0}
+2026-11-07T19:04:18.7263737Z env:
+2026-11-07T19:04:18.7264274Z   ARDESIA_E2E_MODE: local
+2026-11-07T19:04:18.7264969Z   M3_TEST_ADMIN_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/postgres
+2026-11-07T19:04:18.7265815Z   M3_TEST_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_test
+2026-11-07T19:04:18.7266812Z   M3_BROWSER_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_browser
+2026-11-07T19:04:18.7267720Z   M3_BENCHMARK_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_benchmark
+2026-11-07T19:04:18.7268604Z   ARDESIA_COMMIT_SHA: 474650e235a5317d74dccbed40158c908154b1cd
+2026-11-07T19:04:18.7269219Z ##[endgroup]
+2026-11-07T19:04:19.0970976Z Dedicated test databases ready; no remote database was contacted.
+2026-11-07T19:04:19.1157712Z ##[group]Run npm run verify
+2026-11-07T19:04:19.1158316Z [36;1mnpm run verify[0m
+2026-11-07T19:04:19.1173865Z shell: /usr/bin/bash -e {0}
+2026-11-07T19:04:19.1174222Z env:
+2026-11-07T19:04:19.1174606Z   ARDESIA_E2E_MODE: local
+2026-11-07T19:04:19.1175047Z   M3_TEST_ADMIN_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/postgres
+2026-11-07T19:04:19.1175620Z   M3_TEST_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_test
+2026-11-07T19:04:19.1176170Z   M3_BROWSER_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_browser
+2026-11-07T19:04:19.1176962Z   M3_BENCHMARK_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_benchmark
+2026-11-07T19:04:19.1177555Z   ARDESIA_COMMIT_SHA: 474650e235a5317d74dccbed40158c908154b1cd
+2026-11-07T19:04:19.1177959Z ##[endgroup]
+2026-11-07T19:04:19.2153480Z 
+2026-11-07T19:04:19.2154262Z > ardesia-next@0.1.0 verify
+2026-11-07T19:04:19.2155199Z > node tools/verify.mjs
+2026-11-07T19:04:19.2155625Z 
+2026-11-07T19:04:19.4712166Z Vercel configuration source bytes: PASS.
+2026-11-07T19:04:19.4931545Z Coordination structure verified; product acceptance remains separate.
+2026-11-07T19:04:20.1227024Z ✔ rejects the pre-38 M4 scope before implementation, naming exact missing paths (4.869615ms)
+2026-11-07T19:04:20.1228619Z ✔ valid current scope returns diagnostics without a grant or PASS evidence (0.836991ms)
+2026-11-07T19:04:20.1229736Z ✔ refuses an unknown canonical task (0.481038ms)
+2026-11-07T19:04:20.1230839Z ✔ refuses caller-expanded scope despite matching task identity (1.176695ms)
+2026-11-07T19:04:20.1231878Z ✔ refuses caller-weakened exit criteria (0.771733ms)
+2026-11-07T19:04:20.1232522Z ✔ does not start a done task (0.807129ms)
+2026-11-07T19:04:20.1233054Z ✔ refuses an incomplete dependency (0.743686ms)
+2026-11-07T19:04:20.1233772Z ✔ refuses a missing dependency observation (0.840745ms)
+2026-11-07T19:04:20.1234305Z ✔ refuses an unresolved task blocker (1.050346ms)
+2026-11-07T19:04:20.1235001Z ✔ refuses duplicate prerequisite IDs instead of last-write wins (0.852189ms)
+2026-11-07T19:04:20.1235989Z ✔ refuses missing observations (0.426791ms)
+2026-11-07T19:04:20.1237089Z ✔ refuses unknown or unavailable capability (0.987666ms)
+2026-11-07T19:04:20.1238136Z ✔ refuses a missing student fixture even when database is available (0.616814ms)
+2026-11-07T19:04:20.1239201Z ✔ refuses an unknown effective execution profile (0.669895ms)
+2026-11-07T19:04:20.1240238Z ✔ refuses unsupported effort or silent model substitution (1.18302ms)
+2026-11-07T19:04:20.1241129Z ✔ refuses old observations when policy changes (0.597133ms)
+2026-11-07T19:04:20.1241991Z ✔ refuses old observations when source changes (0.543746ms)
+2026-11-07T19:04:20.1242667Z ✔ refuses requirements from an unadopted procedure (0.612049ms)
+2026-11-07T19:04:20.1243286Z ✔ refuses reused READY when canonical task changes (0.568812ms)
+2026-11-07T19:04:20.1243920Z ✔ refuses reused READY when requirements change (0.636248ms)
+2026-11-07T19:04:20.1244470Z ✔ refuses expired or future observations (1.805722ms)
+2026-11-07T19:04:20.1245027Z ✔ rejects invalid dates instead of normalizing them (0.533835ms)
+2026-11-07T19:04:20.1245648Z ✔ does not confuse apps/web-old with apps/web (0.637318ms)
+2026-11-07T19:04:20.1246287Z ✔ rejects traversal, globs, absolute and ambiguous repository paths (2.901971ms)
+2026-11-07T19:04:20.1248270Z ✔ rejects missing required checks, rollback, or consumer (0.896945ms)
+2026-11-07T19:04:20.1249114Z ✔ rejects duplicate capability reports (0.364714ms)
+2026-11-07T19:04:20.1250088Z ✔ refuses mismatched requirement task identity (0.361641ms)
+2026-11-07T19:04:20.1250680Z ✔ requires immutable full SHAs and policy digest (0.926383ms)
+2026-11-07T19:04:20.1251511Z ✔ input stays unchanged and output arrays are independent (0.713806ms)
+2026-11-07T19:04:20.1252434Z ✔ does not invoke accessors or accept non-data input (0.367202ms)
+2026-11-07T19:04:20.1253217Z ✔ rejects cyclic input without throwing (0.438199ms)
+2026-11-07T19:04:20.1254547Z ✔ canonical digest ignores object key order but preserves array order (0.373883ms)
+2026-11-07T19:04:20.1255724Z ✔ rejects arrays with an executable inherited prototype without invoking it (0.258731ms)
+2026-11-07T19:04:20.1256874Z ✔ valid coordination is accepted without mutating the caller data (0.903607ms)
+2026-11-07T19:04:20.1257689Z ✔ malformed roots, unknown fields and invented product acceptance are rejected (0.805941ms)
+2026-11-07T19:04:20.1258456Z ✔ the current mandate cannot be weakened by changing policy flags or limits (20.679428ms)
+2026-11-07T19:04:20.1259194Z ✔ required fields and impossible dates fail validation (0.838568ms)
+2026-11-07T19:04:20.1260300Z ✔ duplicate observation, blocker and task identities are rejected (0.449379ms)
+2026-11-07T19:04:20.1261455Z ✔ review-ready and done need evidence references and cannot use a PASS status (0.367896ms)
+2026-11-07T19:04:20.1262607Z ✔ traversal, absolute paths, backslashes and glob scopes are refused (1.723213ms)
+2026-11-07T19:04:20.1263923Z ✔ unknown task dependencies and cycles including self-cycles fail (0.426092ms)
+2026-11-07T19:04:20.1264829Z ✔ unknown blockers and empty blocker explanations or sources fail (0.27183ms)
+2026-11-07T19:04:20.1265552Z ✔ only in-progress increments count against the single-increment limit (0.307323ms)
+2026-11-07T19:04:20.1266227Z ✔ claims require an existing active task and matching owner (0.284316ms)
+2026-11-07T19:04:20.1267024Z ✔ claims require full SHA and a valid isolated branch (0.839165ms)
+2026-11-07T19:04:20.1267654Z ✔ claimed paths must fall within the task scope (0.306975ms)
+2026-11-07T19:04:20.1268425Z ✔ overlapping ancestors and duplicate paths are refused while sibling prefixes are separate (0.997071ms)
+2026-11-07T19:04:20.1269260Z ✔ claim expiry is display-only and never grants takeover or time-dependent CI failure (0.437381ms)
+2026-11-07T19:04:20.1270107Z ✔ canonical references must exist inside the supplied root and retain the acceptance engine (1.925066ms)
+2026-11-07T19:04:20.1270903Z ✔ brief CLI prints operational context without manufacturing acceptance (0.99438ms)
+2026-11-07T19:04:20.1271672Z ✔ brief retains a bounded deferred horizon without making future work active (0.663893ms)
+2026-11-07T19:04:20.1272648Z ✔ canonical post-M3 work waits for transition without weakening the original gate (15.310892ms)
+2026-11-07T19:04:20.1273434Z ✔ CLI rejects invalid coordination and unsupported flags before emitting a brief (1.528068ms)
+2026-11-07T19:04:20.1274293Z ✔ observation kinds and references cannot become acceptance records or credentialed URLs (0.645613ms)
+2026-11-07T19:04:20.1275121Z ✔ an in-progress increment requires a claim; malformed claims return errors without throwing (0.496277ms)
+2026-11-07T19:04:20.1275906Z ✔ in-progress work cannot start before every direct dependency is done (0.625533ms)
+2026-11-07T19:04:20.1276825Z ✔ in-progress work requires resolved associated blockers while review may wait on a freeze (0.22622ms)
+2026-11-07T19:04:20.1277760Z ✔ real start includes bootstrap time and rejects future or overlapping starts (3.175925ms)
+2026-11-07T19:04:20.1278548Z ✔ review cannot change the reviewed head, digest or PR while finishing (1.287912ms)
+2026-11-07T19:04:20.1279245Z ✔ ready dispositions require no unresolved blockers for every task kind (0.682295ms)
+2026-11-07T19:04:20.1280051Z ✔ Codex handoff requires an unexpired useful window while allowing a future start (1.583455ms)
+2026-11-07T19:04:20.1280828Z ✔ a valid ticket is structural coordination only and validation does not mutate it (0.225913ms)
+2026-11-07T19:04:20.1281618Z ✔ malformed roots, missing fields and invented acceptance are refused without throwing (1.073007ms)
+2026-11-07T19:04:20.1282361Z ✔ identity and dates must be full, explicit and possible (0.454393ms)
+2026-11-07T19:04:20.1283068Z ✔ writable scopes reject traversal, filesystem roots, globs, metadata and empty scope (0.891041ms)
+2026-11-07T19:04:20.1284238Z ✔ Codex and implementation tickets cannot target protected or malformed branches (0.757884ms)
+2026-11-07T19:04:20.1285306Z ✔ evidence URLs are structural references and credentialed or malformed input is refused (0.468326ms)
+2026-11-07T19:04:20.1286256Z ✔ claim requires the expected revision and creates bounded deadlines without mutating input (0.481896ms)
+2026-11-07T19:04:20.1287403Z ✔ an existing claim blocks both actors even after every deadline has expired (0.523983ms)
+2026-11-07T19:04:20.1288708Z ✔ wrong actors, Codex coordination and inactive Codex tickets are rejected (0.394226ms)
+2026-11-07T19:04:20.1290072Z ✔ early or expired Codex tickets cannot start and a short remaining window retains closure time (0.329ms)
+2026-11-07T19:04:20.1291460Z ✔ Pro can reconcile an expired unclaimed Codex ticket but receives no product-work budget (0.884681ms)
+2026-11-07T19:04:20.1293041Z ✔ an undated Pro coordination expiry keeps the prepared bootstrap usable and grants no Codex ticket (0.472026ms)
+2026-11-07T19:04:20.1294659Z ✔ budget rejects wrong ownership, nonpositive or oversized commands, and backward or invalid clocks (1.047204ms)
+2026-11-07T19:04:20.1296146Z ✔ Codex finishes review-ready only with verify PASS on the exact head and digest, routed to Pro (1.1467ms)
+2026-11-07T19:04:20.1299554Z ✔ pending CI is preserved as WAITING_CI and never turns into review-ready through a handoff (0.613755ms)
+2026-11-07T19:04:20.1300996Z ✔ BLOCKED must explain a real blocker and Pro may claim it for reconciliation (0.592939ms)
+2026-11-07T19:04:20.1302641Z ✔ only Pro can complete an increment, requiring same-source CI and review without certifying product (0.881455ms)
+2026-11-07T19:04:20.1304311Z ✔ Pro can hand off a new coordination task after completing the previous increment (1.123498ms)
+2026-11-07T19:04:20.1306014Z ✔ finishing preserves control identity and rejects ownership, revision, scope and assignment drift (1.14185ms)
+2026-11-07T19:04:20.1307719Z ✔ Pro hands off explicit new work to Codex but Codex cannot create its own successor (0.700581ms)
+2026-11-07T19:04:20.1309260Z ✔ a late owner can record completion with an explicit overrun but its run ID cannot be replayed (0.449751ms)
+2026-11-07T19:04:20.1311039Z ✔ contradictory same-source evidence cannot pass readiness while historical evidence remains identifiable (0.667627ms)
+2026-11-07T19:04:20.1312928Z ✔ CLI validate is clock-independent and malformed JSON, flags and clock overrides fail closed (0.743996ms)
+2026-11-07T19:04:20.1315122Z ✔ exported CLI entry supports a real-clock claim, budget and finish without subprocesses or file writes (0.865028ms)
+2026-11-07T19:04:20.1317017Z ✔ post-M3 selection reads baseline at the immutable procedure ref, never a local substitute (59.630609ms)
+2026-11-07T19:04:20.1318408Z ✔ v1 historical coordination remains valid (0.1636ms)
+2026-11-07T19:04:20.1319315Z ✔ v2 accepts Codex coordinator without a Pro worker (0.07988ms)
+2026-11-07T19:04:20.1323106Z ✔ v2 rejects a Pro successor and active owner (0.945833ms)
+2026-11-07T19:04:20.1324082Z ✔ Codex claim charges bootstrap time and does not mutate input (0.415405ms)
+2026-11-07T19:04:20.1325386Z ✔ read-only bootstrap may overlap a prior run, but the next claim cannot overlap its release or reset the budget (1.276367ms)
+2026-11-07T19:04:20.1326533Z ✔ stale expected revision and expired active claim cannot be taken over (0.517556ms)
+2026-11-07T19:04:20.1330869Z ✔ explicit terminal recovery preserves source/evidence/deadlines and does not renew the failed run (5.056686ms)
+2026-11-07T19:04:20.1332182Z ✔ expiry, native status alone, live writers and incomplete preservation cannot recover a claim (1.666477ms)
+2026-11-07T19:04:20.1333284Z ✔ recovery cannot change the preserved assignment or hide a failure or pending CI (1.793191ms)
+2026-11-07T19:04:20.1334340Z ✔ terminal recovery releases expired and short-window claims without creating a new ticket window (1.847212ms)
+2026-11-07T19:04:20.1336285Z ✔ durable recovery summary binds the terminal receipt and preservation without exporting private reference text (1.450859ms)
+2026-11-07T19:04:20.1337468Z ✔ migrate is explicit, inactive-only and preserves old evidence (0.461129ms)
+2026-11-07T19:04:20.1338525Z ✔ same run may select one canonical implementation without resetting budget (1.139113ms)
+2026-11-07T19:04:20.1339606Z ✔ selection rejects missing task, unmet dependency, blockers, overlapping claim and out-of-scope path (3.193646ms)
+2026-11-07T19:04:20.1340587Z ✔ review can examine ready work despite a merge-only freeze, without granting writes (0.68542ms)
+2026-11-07T19:04:20.1341590Z ✔ implementation cannot target protected branch or traversal (1.02335ms)
+2026-11-07T19:04:20.1342437Z ✔ sequential WAITING_CI stays with Codex and keeps original pending run (1.142008ms)
+2026-11-07T19:04:20.1359867Z ✔ Codex may hand off to its next scheduled cycle without self-accepting (0.615984ms)
+2026-11-07T19:04:20.1360740Z ✔ completion requires exact CI, distinct review contexts and a matching review reference (2.905561ms)
+2026-11-07T19:04:20.1361580Z ✔ review identity is immutable and old FAIL cannot be promoted to complete (1.528949ms)
+2026-11-07T19:04:20.1362310Z ✔ expired packet supports reconciliation only, not product budget (0.422637ms)
+2026-11-07T19:04:20.1362985Z ✔ source scope and gates are not granted by a valid cursor (0.249986ms)
+2026-11-07T19:04:20.1363747Z ✔ one active increment forbids starting an unrelated implementation even with disjoint paths (0.722073ms)
+2026-11-07T19:04:20.1364472Z ✔ malformed queue ownership cannot be silently ignored (2.783722ms)
+2026-11-07T19:04:20.1365228Z ✔ duplicate canonical task and blocker identities are refused before selection (1.302396ms)
+2026-11-07T19:04:20.1365991Z ✔ an implementation cannot hand off unfinished work as a new ready assignment (1.321404ms)
+2026-11-07T19:04:20.1366854Z ✔ CLI v2 migration and assignment use existing files and never perform writes (1.967035ms)
+2026-11-07T19:04:20.1367687Z ✔ a later cycle can select work from a completed packet without spending a scheduling-only slot (0.835963ms)
+2026-11-07T19:04:20.1368563Z ✔ partial v1-to-v2 relabelling is rejected and unknown future versions stay unsupported (0.177372ms)
+2026-11-07T19:04:20.1369443Z ✔ v2 WAITING_CI closes the current assignment near its deadline without extending it (0.995268ms)
+2026-11-07T19:04:20.1370411Z ✔ v2 BLOCKED closes the current assignment near its deadline without extending it (0.886277ms)
+2026-11-07T19:04:20.1371194Z ✔ v2 INTERRUPTED closes the current assignment near its deadline without extending it (0.845737ms)
+2026-11-07T19:04:20.1371853Z ✔ v2 new HANDOFF still requires a useful successor window (0.58926ms)
+2026-11-07T19:04:20.1372597Z ✔ v2 late closure records the overrun without extending an expired assignment (0.832478ms)
+2026-11-07T19:04:20.1373332Z ✔ HANDOFF refuses missing task in an otherwise valid canonical queue (0.593939ms)
+2026-11-07T19:04:20.1374026Z ✔ HANDOFF refuses scope escape in an otherwise valid canonical queue (0.511548ms)
+2026-11-07T19:04:20.1374744Z ✔ HANDOFF refuses incomplete dependency in an otherwise valid canonical queue (0.529084ms)
+2026-11-07T19:04:20.1375463Z ✔ HANDOFF refuses unresolved blocker in an otherwise valid canonical queue (0.562067ms)
+2026-11-07T19:04:20.1376270Z ✔ HANDOFF refuses competing claim in an otherwise valid canonical queue (0.747338ms)
+2026-11-07T19:04:20.1377339Z ✔ COMPLETE_INCREMENT may retain the exact existing claim for canonical closure (0.986129ms)
+2026-11-07T19:04:20.1378217Z ✔ selection and HANDOFF reject hypothetical queues and changed mandate policy (8.698665ms)
+2026-11-07T19:04:20.1379088Z ✔ retained completion still rejects author review, mismatched SHA, expiry and unsupported outcomes (1.74789ms)
+2026-11-07T19:04:20.1379937Z ✔ canonical reconciliation emits only the completed row, evidence, next action and timestamp (2.715682ms)
+2026-11-07T19:04:20.1380904Z ✔ reconciliation rejects wrong owner, scope, completion lineage, reviewer, policy and task claims (7.925731ms)
+2026-11-07T19:04:20.1381752Z ✔ two consecutive increments reconcile and select successors inside one unchanged budget (3.732977ms)
+2026-11-07T19:04:20.1382582Z ✔ CLI binds the queue to real immutable Git bytes and refuses a plausible invented task (9.256624ms)
+2026-11-07T19:04:20.1383459Z ✔ coordination cannot discard an original pending CI through assign or HANDOFF (1.053491ms)
+2026-11-07T19:04:20.1384299Z ✔ CLI retain, assign and reconcile emit recoverable JSON without writing their inputs (2.101432ms)
+2026-11-07T19:04:20.1385130Z ✔ assign and HANDOFF preserve canonical criteria and permit additional bounded checks (0.933073ms)
+2026-11-07T19:04:20.1385909Z ✔ reconciliation refuses a historical completion with weaker canonical criteria (1.304564ms)
+2026-11-07T19:04:20.1386644Z ✔ same durable completion emits identical bytes at different times (1.876402ms)
+2026-11-07T19:04:20.1387644Z ✔ published completion survives INTERRUPTED and a new legitimate claim without renewing that claim (4.237566ms)
+2026-11-07T19:04:20.1388575Z ✔ replay after queue publication and explicit adoption is a no-op, conflicting receipt is rejected (2.877114ms)
+2026-11-07T19:04:20.1389720Z ✔ a completion that released its own claim remains a durable release after intervening runs (2.253513ms)
+2026-11-07T19:04:20.1390821Z ✔ changed canonical contracts, dependencies and blockers cannot inherit completion (2.232134ms)
+2026-11-07T19:04:20.1391624Z ✔ a reopened canonical task cannot reuse its already recorded completion (1.899926ms)
+2026-11-07T19:04:20.1392452Z ✔ reopened tasks reject aliases of recorded candidates and accept genuinely new candidates (4.512585ms)
+2026-11-07T19:04:20.1393298Z ✔ removing or combining recorded proof references does not make a reopened completion fresh (2.450263ms)
+2026-11-07T19:04:20.1394168Z ✔ post-M3 reconciliation is independent of the local checkout baseline (262.783442ms)
+2026-11-07T19:04:20.1394903Z ✔ E1 adopted 1.2 selection rejects absent observations before selecting work (4.838592ms)
+2026-11-07T19:04:20.1395746Z ✔ E1 real assign and HANDOFF enforce the same observed contract without changing inputs or budget (2.530934ms)
+2026-11-07T19:04:20.1397047Z ✔ E1 real selection rejects unverified profiles, effort UNKNOWN, missing fixture/access and stale exact bindings (14.592755ms)
+2026-11-07T19:04:20.1398245Z ✔ E1 consumer rejects unknown task, incomplete dependency, missing consumer path, unapproved requirements and hypothetical queue (5.94495ms)
+2026-11-07T19:04:20.1399314Z ✔ E1 CLI pre-mutation budget refreshes source and observations; reading remains available (4.157635ms)
+2026-11-07T19:04:20.1400010Z ✔ E2 reconciliation refuses changed readiness consumer (4.596592ms)
+2026-11-07T19:04:20.1400648Z ✔ E2 reconciliation refuses changed readiness risk (3.170342ms)
+2026-11-07T19:04:20.1401222Z ✔ E2 reconciliation refuses changed readiness paths (3.198545ms)
+2026-11-07T19:04:20.1401846Z ✔ E2 reconciliation refuses changed readiness capability (3.28207ms)
+2026-11-07T19:04:20.1402445Z ✔ E2 reconciliation refuses changed readiness evidence (3.061469ms)
+2026-11-07T19:04:20.1403027Z ✔ E2 reconciliation refuses changed readiness profile (2.804242ms)
+2026-11-07T19:04:20.1403659Z ✔ E2 reconciliation refuses changed readiness rollback (4.07795ms)
+2026-11-07T19:04:20.1404293Z ✔ E2 reconciliation refuses changed readiness observation-window (4.941668ms)
+2026-11-07T19:04:20.1405024Z ✔ E2 readiness addition and removal cannot inherit an earlier completion (8.245264ms)
+2026-11-07T19:04:20.1405841Z ✔ E2 unchanged and legacy readiness preserve cross-procedure completion and deterministic replay (9.315963ms)
+2026-11-07T19:04:20.1406391Z ℹ tests 160
+2026-11-07T19:04:20.1406844Z ℹ suites 0
+2026-11-07T19:04:20.1407192Z ℹ pass 160
+2026-11-07T19:04:20.1407488Z ℹ fail 0
+2026-11-07T19:04:20.1407779Z ℹ cancelled 0
+2026-11-07T19:04:20.1408072Z ℹ skipped 0
+2026-11-07T19:04:20.1408367Z ℹ todo 0
+2026-11-07T19:04:20.1408678Z ℹ duration_ms 658.352728
+2026-11-07T19:04:28.9809312Z Module boundaries: PASS (one app, public exports, declared dependency direction).
+2026-11-07T19:04:31.5102767Z ✔ program budget retains the total cost and the initial threshold and explicit tutor total (2.620772ms)
+2026-11-07T19:04:31.5104899Z ✔ program budget refuses eager interpreter, missing WASM, forged totals, duplicates and raised caps (0.427764ms)
+2026-11-07T19:04:31.5107329Z ✔ PDF costs include worker mjs and support files, never permit eager loading or reclassification of existing assets (0.225734ms)
+2026-11-07T19:04:31.5109313Z ✔ QA refuses resource aliases, credential-only changes, unbound restore targets and remote benchmark writes (1.455045ms)
+2026-11-07T19:04:31.5110855Z ✔ E2E target defaults to a single local origin and preserves local artifact paths (1.212123ms)
+2026-11-07T19:04:31.5112082Z ✔ E2E remote target requires explicit opt-in and existing stable staging (0.388074ms)
+2026-11-07T19:04:31.5113429Z ✔ E2E target rejects credential-bearing, noncanonical and bypass URLs without echoing them (0.533798ms)
+2026-11-07T19:04:31.5114718Z ✔ E2E real local configuration uses the same API/page/server origin and original outputs (388.562478ms)
+2026-11-07T19:04:31.5116120Z ✔ E2E real remote configuration starts no local server and cannot overwrite local evidence (400.268034ms)
+2026-11-07T19:04:31.5117485Z ✔ local projects have distinct budgets and stable identities inside each scenario (1.124998ms)
+2026-11-07T19:04:31.5118826Z ✔ remote credentials remain exact and unknown local projects fail closed without leaking values (0.457832ms)
+2026-11-07T19:04:31.5120320Z ✔ remote E2E missing or duplicate credentials fails before launch and preserves gate evidence (171.007579ms)
+2026-11-07T19:04:31.5121788Z ✔ missing platform access or a failed preflight cannot launch browser login or create workspaces (199.000138ms)
+2026-11-07T19:04:31.5123262Z ✔ remote E2E rejects overrides that could replace the configuration or gate artifacts (763.377164ms)
+2026-11-07T19:04:31.5124832Z ✔ a failed remote child has no DB credentials or seeding flag and writes only a negative regression summary (144.273682ms)
+2026-11-07T19:04:31.5366226Z ✔ remote API transport sends one OIDC header only to its exact origin and disables redirects/retries/TLS overrides (30.128898ms)
+2026-11-07T19:04:31.5447157Z ✔ real 302 and 307 responses cannot forward an OIDC token or login body to another origin (8.000011ms)
+2026-11-07T19:04:31.5536534Z ✔ transport and malformed JSON failures discard driver call logs, response bodies and causes (8.843438ms)
+2026-11-07T19:04:31.5631837Z ✔ a shared platform token does not share application cookies between request contexts (9.457309ms)
+2026-11-07T19:04:31.5713091Z ✔ routed transport uses the same no-redirect policy and never installs global browser headers (8.00484ms)
+2026-11-07T19:04:31.5745076Z ✔ local API calls and contexts do not acquire platform credentials (3.146623ms)
+2026-11-07T19:04:31.5752054Z ✔ context cleanup preserves earlier failures without treating intentional close aborts as remote faults (0.600309ms)
+2026-11-07T19:04:33.1004943Z ✔ direct Playwright output and trace overrides fail before output cleanup or network access (1525.121137ms)
+2026-11-07T19:04:35.3870887Z ✔ actual remote configuration rejects diagnostic and JSON output environments during import (2286.305955ms)
+2026-11-07T19:04:35.3943387Z ✔ acceptance producer binds twelve observed counterproofs to local evidence and unchanged deployment (7.129906ms)
+2026-11-07T19:04:35.4098584Z ✔ acceptance producer refuses partial, stale, secret-bearing or unsafe operator evidence (15.422727ms)
+2026-11-07T19:04:35.4107624Z ✔ acceptance credentials and diagnostic guards run before browser or database access (0.83008ms)
+2026-11-07T19:04:35.4115307Z ✔ persisted browser evidence contains pseudonyms and excludes operator account selectors and salt (0.690893ms)
+2026-11-07T19:04:35.4995765Z ✔ offline assembly consumes collected evidence without browser credentials or new remote writes (87.881341ms)
+2026-11-07T19:04:35.5031546Z ✔ M3 public source needs an observed owner instruction and cannot substitute it for remote evidence (3.520293ms)
+2026-11-07T19:04:35.5055296Z ✔ M3 local evidence passes independently; missing remote proof cannot become ACCEPTED (2.274372ms)
+2026-11-07T19:04:35.5075745Z ✔ M3 verification, named test suites and report bytes must match the current source (1.903875ms)
+2026-11-07T19:04:35.5103203Z ✔ M3 browser summary cannot invent flows, ignore skips/flakes or substitute a different machine report (2.408492ms)
+2026-11-07T19:04:35.5202073Z ✔ private source: M3 remote requires protected non-loopback Vercel, exact deployment, CI SHA and report digest (9.906923ms)
+2026-11-07T19:04:35.5253094Z ✔ private source: M3 continuity needs three identities, distinct cookie jars/sessions and exact persisted IDs, revisions and state (5.009644ms)
+2026-11-07T19:04:35.5415326Z ✔ private source: M3 remote counterproofs cannot be missing, relabeled booleans, unsupported assertions or secret-bearing records (16.185237ms)
+2026-11-07T19:04:35.5469869Z ✔ public source: M3 remote requires protected non-loopback Vercel, exact deployment, CI SHA and report digest (5.399086ms)
+2026-11-07T19:04:35.5500393Z ✔ public source: M3 continuity needs three identities, distinct cookie jars/sessions and exact persisted IDs, revisions and state (2.930944ms)
+2026-11-07T19:04:35.5623554Z ✔ public source: M3 remote counterproofs cannot be missing, relabeled booleans, unsupported assertions or secret-bearing records (12.238469ms)
+2026-11-07T19:04:35.6355712Z ✔ historical M3 requires every original report and rejects changed bytes and identity (73.123389ms)
+2026-11-07T19:04:35.6811060Z ✔ freeze progression needs original evidence and cannot authorize production, spending or jobs (45.438078ms)
+2026-11-07T19:04:35.7895611Z ✔ status advances from the complete historical M3 without accepting a new candidate (108.067967ms)
+2026-11-07T19:04:35.7914547Z ✔ M4 preparation requires final-source Verify, bound unit and consumer bytes (2.086714ms)
+2026-11-07T19:04:35.7932942Z ✔ M4 rejects missing checks, second domains/stores, skipped tests and asserted acceptance even with recomputed digest (1.642869ms)
+2026-11-07T19:04:35.9087151Z ✔ M4 shallow head plus scientific parent still needs the exact assigned base for a reuse diff (115.237129ms)
+2026-11-07T19:04:35.9121044Z ✔ M4 recognizes the real consumer separately from isolated preparation and changed source (3.299425ms)
+2026-11-07T19:04:35.9178685Z ✔ M4 requires both browser controls, executed PostgreSQL, bound reports, runtime reuse and integral budget (5.690854ms)
+2026-11-07T19:04:35.9249241Z ✔ M4 remote refuses different builds/deployments, open SSO, missing observations and non-DRAFT state (6.898696ms)
+2026-11-07T19:04:36.0299735Z ✔ status reports an observed older consumer without certifying current source or human acceptance (103.677976ms)
+2026-11-07T19:04:36.0318517Z ✔ remote preflight validates exact target, identity and short-lived access before any request (1.598337ms)
+2026-11-07T19:04:36.0380122Z ✔ remote preflight performs only protected read checks with no redirects, cookies or application passwords (6.201262ms)
+2026-11-07T19:04:36.0395584Z ✔ anonymous public access, untrusted redirects and duplicate redirect destinations stop before authorized access (2.305027ms)
+2026-11-07T19:04:36.0408221Z ✔ authenticated redirects are not followed or returned as build success (1.443895ms)
+2026-11-07T19:04:36.0428711Z ✔ SHA or digest mismatch stops before session probes or browser fixture writes (1.279596ms)
+2026-11-07T19:04:36.0448082Z ✔ a platform environment mismatch is reported without retaining provider bodies or credentials (1.040559ms)
+2026-11-07T19:04:36.0459799Z ✔ unrecognized provider error values cannot enter the report or override a valid application response (1.863818ms)
+2026-11-07T19:04:36.0483015Z ✔ HTML protection, malformed JSON, invalid UTF-8 and oversized bodies fail without retaining content (2.912722ms)
+2026-11-07T19:04:36.0489679Z ✔ an unavailable PostgreSQL authority fails before login or further probes (0.6278ms)
+2026-11-07T19:04:36.0499678Z ✔ incorrect application session or Origin rejection fails closed (0.92712ms)
+2026-11-07T19:04:36.0506122Z ✔ request exceptions cannot copy secrets, URLs or driver errors into the report (0.540683ms)
+2026-11-07T19:04:36.0518316Z ✔ a changed identity during preflight blocks the browser phase (0.780581ms)
+2026-11-07T19:04:36.0782255Z ✔ the request timeout also bounds a response that never finishes its JSON body (26.605629ms)
+2026-11-07T19:04:36.0791237Z ✔ public source requires a closed, explicit owner instruction limited to this repository source (0.886732ms)
+2026-11-07T19:04:36.0794895Z ✔ private source: observed Vercel SSO redirects are accepted only for the deployment origin (0.274357ms)
+2026-11-07T19:04:36.0797311Z ✔ private source: 401/403 remain valid and an explicit null provider target is preview (0.183245ms)
+2026-11-07T19:04:36.0801026Z ✔ private source: anonymous 200, unrecognized status and incomplete redirects fail closed (0.272994ms)
+2026-11-07T19:04:36.0808146Z ✔ private source: spoofed host, protocol, path and different decoded target origin are rejected (0.53357ms)
+2026-11-07T19:04:36.0811211Z ✔ private source: a production provider target never becomes a preview by relabeling evidence (0.26253ms)
+2026-11-07T19:04:36.0815473Z ✔ private source: source, build-info and CI must all correspond to the current immutable revision (0.311247ms)
+2026-11-07T19:04:36.0825726Z ✔ private source: essential state, URL, deployment identity and observation time cannot be omitted (0.374807ms)
+2026-11-07T19:04:36.0828650Z ✔ public source: observed Vercel SSO redirects are accepted only for the deployment origin (0.231419ms)
+2026-11-07T19:04:36.0829904Z ✔ public source: 401/403 remain valid and an explicit null provider target is preview (0.096139ms)
+2026-11-07T19:04:36.0831523Z ✔ public source: anonymous 200, unrecognized status and incomplete redirects fail closed (0.117212ms)
+2026-11-07T19:04:36.0833906Z ✔ public source: spoofed host, protocol, path and different decoded target origin are rejected (0.194008ms)
+2026-11-07T19:04:36.0835097Z ✔ public source: a production provider target never becomes a preview by relabeling evidence (0.09682ms)
+2026-11-07T19:04:36.0836368Z ✔ public source: source, build-info and CI must all correspond to the current immutable revision (0.096178ms)
+2026-11-07T19:04:36.0840236Z ✔ public source: essential state, URL, deployment identity and observation time cannot be omitted (0.302391ms)
+2026-11-07T19:04:36.0847799Z ✔ M1 accepts only a complete current-source local and protected remote experiment (0.664478ms)
+2026-11-07T19:04:36.0854774Z ✔ M1 rejects every missing evidence group and non-boolean success claims (0.62652ms)
+2026-11-07T19:04:36.0859797Z ✔ M1 requires all named verification checks, especially signed-plugin, on the same SHA and source digest (0.436777ms)
+2026-11-07T19:04:36.0865547Z ✔ M1 does not accept test totals without executed Host, model, protocol and Core assertions (0.507606ms)
+2026-11-07T19:04:36.0869635Z ✔ M1 binds the parsed unit report content to current verification instead of accepting a stale success report (0.342394ms)
+2026-11-07T19:04:36.0879051Z ✔ M1 browser evidence needs every actual desktop and mobile scenario, with no skipped, failed or flaky tests (0.854192ms)
+2026-11-07T19:04:36.0892138Z ✔ M1 requires an actual protected remote reopen on the exact current release (1.249287ms)
+2026-11-07T19:04:36.0901341Z ✔ M2 requires M1 plus actual Core, Host, catalog, browser counterproofs and protected remote lifecycle (0.834365ms)
+2026-11-07T19:04:36.0930624Z ✔ M2 rejects a missing security counterproof, stale build, missing test suite or forged success flag (2.777452ms)
+2026-11-07T19:04:36.0968839Z ✔ M2 remote record must demonstrate current installation, consent, same state, reload and disable in order (3.706825ms)
+2026-11-07T19:04:36.0973322Z ℹ tests 87
+2026-11-07T19:04:36.0973755Z ℹ suites 0
+2026-11-07T19:04:36.0974130Z ℹ pass 87
+2026-11-07T19:04:36.0974628Z ℹ fail 0
+2026-11-07T19:04:36.0975037Z ℹ cancelled 0
+2026-11-07T19:04:36.0975481Z ℹ skipped 0
+2026-11-07T19:04:36.0976212Z ℹ todo 0
+2026-11-07T19:04:36.0977008Z ℹ duration_ms 6981.637068
+2026-11-07T19:04:36.3851925Z 
+2026-11-07T19:04:36.3855810Z [1m[30m[46m RUN [49m[39m[22m [36mv5.0.5 [39m[90m/home/runner/work/ardesia-next/ardesia-next[39m
+2026-11-07T19:04:36.3856831Z 
+2026-11-07T19:05:03.5666262Z  [32m✓[39m packages/server/src/server.integration.test.ts [2m([22m[2m33 tests[22m[2m)[22m[33m 26631[2mms[22m[39m
+2026-11-07T19:05:03.5668105Z    [32m✓[39m M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) [2m(29)[22m
+2026-11-07T19:05:03.5669499Z      [33m[2m✓[22m[39m creates learner-owned spaces without role promotion and rejects authoring in assigned containers[33m 463[2mms[22m[39m
+2026-11-07T19:05:03.5670751Z      [33m[2m✓[22m[39m persists exact course editions, private work and revocation through restricted PostgreSQL without implicit lesson grants[33m 496[2mms[22m[39m
+2026-11-07T19:05:03.5676553Z      [33m[2m✓[22m[39m preserves exact laboratory IDs/state across independent sessions and rejects stale plugin or consent use[33m 596[2mms[22m[39m
+2026-11-07T19:05:03.5678936Z      [33m[2m✓[22m[39m M4 Poiseuille PostgreSQL preserves exact revisions and private student state; rejects invalid writes and revocation[33m 1706[2mms[22m[39m
+2026-11-07T19:05:03.5680790Z      [33m[2m✓[22m[39m migrates stored v4 on read without writes and keeps feedback, source access and retries authorized[33m 485[2mms[22m[39m
+2026-11-07T19:05:03.5682239Z      [33m[2m✓[22m[39m reserves imported actor identities against later account provisioning[33m 342[2mms[22m[39m
+2026-11-07T19:05:03.5683657Z      [33m[2m✓[22m[39m rejects an existing alias collision before listing or returning any private workspace data[33m 386[2mms[22m[39m
+2026-11-07T19:05:03.5685007Z      [33m[2m✓[22m[39m serializes racing account provisioning and legacy import without admitting an identity collision[33m 338[2mms[22m[39m
+2026-11-07T19:05:03.5686436Z      [33m[2m✓[22m[39m stores exact recording bytes and transcripts through restricted HTTP transactions, with recovery, isolation and erasure[33m 328[2mms[22m[39m
+2026-11-07T19:05:03.5688179Z      [33m[2m✓[22m[39m backs up and restores synthetic data into an empty database without passwords, sessions or overwrites[33m 2204[2mms[22m[39m
+2026-11-07T19:05:03.5689920Z      [33m[2m✓[22m[39m restores disabled source accounts and never re-enables disabled targets, with session revocation in the same transaction[33m 3056[2mms[22m[39m
+2026-11-07T19:05:03.5691711Z      [33m[2m✓[22m[39m rejects expired, revoked and logged-out sessions before reads or retries[33m 350[2mms[22m[39m
+2026-11-07T19:05:03.5693018Z      [33m[2m✓[22m[39m isolates project login budgets while fresh sessions keep identity and the thirteenth valid login stays forbidden[33m 8692[2mms[22m[39m
+2026-11-07T19:05:03.5694394Z      [33m[2m✓[22m[39m applies durable rate limits and fails closed when the service is not configured[33m 4077[2mms[22m[39m
+2026-11-07T19:05:03.9635134Z  [32m✓[39m packages/remote-client/src/client.test.ts [2m([22m[2m28 tests[22m[2m)[22m[32m 108[2mms[22m[39m
+2026-11-07T19:05:04.4122025Z  [32m✓[39m packages/core/src/marketplace.test.ts [2m([22m[2m22 tests[22m[2m)[22m[32m 254[2mms[22m[39m
+2026-11-07T19:05:04.9047480Z  [32m✓[39m packages/core/src/learning.test.ts [2m([22m[2m18 tests[22m[2m)[22m[32m 295[2mms[22m[39m
+2026-11-07T19:05:05.7583513Z  [32m✓[39m apps/web/src/offline-client.test.ts [2m([22m[2m22 tests[22m[2m)[22m[33m 625[2mms[22m[39m
+2026-11-07T19:05:06.1044825Z  [32m✓[39m packages/plugin-host/src/runtime.test.ts [2m([22m[2m27 tests[22m[2m)[22m[32m 148[2mms[22m[39m
+2026-11-07T19:05:06.7188880Z  [32m✓[39m apps/web/src/workspace-queue.test.ts [2m([22m[2m12 tests[22m[2m)[22m[33m 408[2mms[22m[39m
+2026-11-07T19:05:07.0144746Z  [32m✓[39m packages/core/src/lab.test.ts [2m([22m[2m26 tests[22m[2m)[22m[32m 100[2mms[22m[39m
+2026-11-07T19:05:07.3754587Z  [32m✓[39m packages/mcp-core/src/adapter.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 121[2mms[22m[39m
+2026-11-07T19:05:10.3524179Z  [32m✓[39m packages/plugin-host/src/program.test.ts [2m([22m[2m40 tests[22m[2m)[22m[33m 2758[2mms[22m[39m
+2026-11-07T19:05:10.3525397Z    [32m✓[39m programmable engine boundary [2m(9)[22m
+2026-11-07T19:05:10.3526587Z      [33m[2m✓[22m[39m refuses native allocation pressure and can create a clean runtime afterward[33m 2474[2mms[22m[39m
+2026-11-07T19:05:10.6105676Z  [32m✓[39m packages/core/src/core.test.ts [2m([22m[2m15 tests[22m[2m)[22m[32m 65[2mms[22m[39m
+2026-11-07T19:05:10.9353335Z  [32m✓[39m packages/core/src/extensions.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 118[2mms[22m[39m
+2026-11-07T19:05:11.2391450Z  [32m✓[39m packages/core/src/feedback.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 115[2mms[22m[39m
+2026-11-07T19:05:11.6267011Z  [32m✓[39m packages/core/src/tutor.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 196[2mms[22m[39m
+2026-11-07T19:05:11.8793761Z  [32m✓[39m packages/plugin-host/src/marketplace.test.ts [2m([22m[2m15 tests[22m[2m)[22m[32m 50[2mms[22m[39m
+2026-11-07T19:05:12.2144394Z  [32m✓[39m packages/core/src/courses.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 147[2mms[22m[39m
+2026-11-07T19:05:12.4565962Z  [32m✓[39m packages/remote-client/src/browser-storage.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 41[2mms[22m[39m
+2026-11-07T19:05:12.7912712Z  [32m✓[39m apps/web/src/workspace-shared-recovery.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 140[2mms[22m[39m
+2026-11-07T19:05:13.3287562Z  [32m✓[39m apps/web/src/recordings/capture.test.ts [2m([22m[2m7 tests[22m[2m)[22m[33m 325[2mms[22m[39m
+2026-11-07T19:05:13.4843189Z  [32m✓[39m plugins/ideal-spring/src/model.test.ts [2m([22m[2m35 tests[22m[2m)[22m[32m 39[2mms[22m[39m
+2026-11-07T19:05:13.7669153Z  [32m✓[39m apps/web/src/workspace-recovery-storage.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 75[2mms[22m[39m
+2026-11-07T19:05:14.6958572Z  [32m✓[39m packages/contracts/src/json.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 717[2mms[22m[39m
+2026-11-07T19:05:14.9323461Z  [32m✓[39m packages/lesson-os/src/replay.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 35[2mms[22m[39m
+2026-11-07T19:05:15.1658510Z  [32m✓[39m packages/core/src/recordings.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 51[2mms[22m[39m
+2026-11-07T19:05:15.3609296Z  [32m✓[39m plugins/poiseuille/src/model.test.ts [2m([22m[2m21 tests[22m[2m)[22m[32m 21[2mms[22m[39m
+2026-11-07T19:05:15.6242835Z  [32m✓[39m apps/web/src/workspace.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 77[2mms[22m[39m
+2026-11-07T19:05:16.0059186Z  [32m✓[39m apps/web/src/components/Icons.test.ts [2m([22m[2m30 tests[22m[2m)[22m[32m 155[2mms[22m[39m
+2026-11-07T19:05:16.2533145Z  [32m✓[39m apps/web/src/plugins/first-party-authorization.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 36[2mms[22m[39m
+2026-11-07T19:05:17.3593348Z  [32m✓[39m apps/web/src/plugins/bundle-transport.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 902[2mms[22m[39m
+2026-11-07T19:05:17.3594288Z    [32m✓[39m first-party byte transport, before mandatory Host verification [2m(4)[22m
+2026-11-07T19:05:17.3595489Z      [33m[2m✓[22m[39m roundtrips both real signed releases through the packer/decoder/Host and refuses altered shared bytes[33m 897[2mms[22m[39m
+2026-11-07T19:05:17.5429850Z  [32m✓[39m packages/plugin-sdk/src/catalog.test.ts [2m([22m[2m19 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+2026-11-07T19:05:17.7921752Z  [32m✓[39m apps/web/src/handout/latex.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 27[2mms[22m[39m
+2026-11-07T19:05:18.0428044Z  [32m✓[39m packages/core/src/personal.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 61[2mms[22m[39m
+2026-11-07T19:05:18.1831070Z  [32m✓[39m apps/web/src/build/offline-worker.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 32[2mms[22m[39m
+2026-11-07T19:05:18.4193771Z  [32m✓[39m packages/core/src/materials.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 42[2mms[22m[39m
+2026-11-07T19:05:18.6319111Z  [32m✓[39m apps/web/src/components/board-geometry.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 32[2mms[22m[39m
+2026-11-07T19:05:18.8248394Z  [32m✓[39m packages/lesson-os/src/projections.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 14[2mms[22m[39m
+2026-11-07T19:05:19.0539494Z  [32m✓[39m apps/web/src/tutor/values.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 35[2mms[22m[39m
+2026-11-07T19:05:19.2891462Z  [32m✓[39m apps/web/src/plugins/first-party-epoch.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 38[2mms[22m[39m
+2026-11-07T19:05:19.5217911Z  [32m✓[39m packages/remote-client/src/materials.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 30[2mms[22m[39m
+2026-11-07T19:05:19.7290137Z  [32m✓[39m packages/lesson-os/src/handout.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+2026-11-07T19:05:19.9439514Z  [32m✓[39m apps/web/src/creator/definitions.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+2026-11-07T19:05:20.1360472Z  [32m✓[39m packages/lesson-os/src/learning-diary.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+2026-11-07T19:05:20.3279581Z  [32m✓[39m packages/plugin-host/src/composition.test.ts [2m([22m[2m18 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+2026-11-07T19:05:20.5127520Z  [32m✓[39m plugins/ideal-spring/src/handler.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+2026-11-07T19:05:20.7121952Z  [32m✓[39m packages/plugin-host/src/policy.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+2026-11-07T19:05:20.9086037Z  [32m✓[39m packages/mcp-core/src/prompt.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+2026-11-07T19:05:21.1026188Z  [32m✓[39m apps/web/src/recordings/recovery.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 10[2mms[22m[39m
+2026-11-07T19:05:21.3396172Z  [32m✓[39m apps/web/src/creator/ExtensionView.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 26[2mms[22m[39m
+2026-11-07T19:05:21.4545504Z  [32m✓[39m apps/web/src/materials/render-queue.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+2026-11-07T19:05:21.5909111Z  [32m✓[39m apps/web/src/components/ScienceView.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+2026-11-07T19:05:21.8245713Z  [32m✓[39m packages/remote-client/src/recordings.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 58[2mms[22m[39m
+2026-11-07T19:05:22.4014021Z  [32m✓[39m apps/web/src/build/ui-runtime.test.ts [2m([22m[2m1 test[22m[2m)[22m[33m 368[2mms[22m[39m
+2026-11-07T19:05:22.4015527Z    [33m[2m✓[22m[39m the real browser entry uses one Preact runtime without React, ReactDOM or scheduler[33m 367[2mms[22m[39m
+2026-11-07T19:05:22.4067907Z 
+2026-11-07T19:05:22.4081533Z [2m Test Files [22m [1m[32m52 passed[39m[22m[90m (52)[39m
+2026-11-07T19:05:22.4082861Z [2m      Tests [22m [1m[32m558 passed[39m[22m[90m (558)[39m
+2026-11-07T19:05:22.4083867Z [2m   Start at [22m 19:04:36
+2026-11-07T19:05:22.4085624Z [2m   Duration [22m 46.01s[2m (tests 87%, import 11%, transform 2%)[22m
+2026-11-07T19:05:22.4099076Z 
+2026-11-07T19:05:22.4100783Z [2m    Isolate [22m [33m52 workers spawned[39m[2m · ~86ms startup each (spawn + environment, per file)[22m
+2026-11-07T19:05:22.4103167Z [2m            [22m [2mat least ~4.37s faster with [22m[33misolate: false[39m[2m — reuses workers across files instead of one per file[22m
+2026-11-07T19:05:22.4104008Z 
+2026-11-07T19:05:22.4144846Z JSON report written to /home/runner/work/ardesia-next/ardesia-next/artifacts/unit.json
+2026-11-07T19:05:22.6849431Z Signed plugin rebuild: PASS (184120 bytes, SHA-256 713b10ce53337e5bb03f0da86afec8a1266a8229115e9d1f571cf49766814148)
+2026-11-07T19:05:23.1090063Z Poiseuille candidate rebuild/signature: PASS (184145 bytes, bd7eced69753424c7da3076783917d4fb235bd90d975dbbce2fe71371b06e00b)
+2026-11-07T19:05:24.1759227Z Poiseuille signed Host/Core integration: PASS; M4 acceptance remains pending.
+2026-11-07T19:05:24.5339958Z Signed plugin rebuild: PASS (184120 bytes, SHA-256 713b10ce53337e5bb03f0da86afec8a1266a8229115e9d1f571cf49766814148)
+2026-11-07T19:05:24.7472464Z [36mvite v8.3.5 [32mbuilding client environment for production...[36m[39m
+2026-11-07T19:05:24.7615864Z transforming...
+2026-11-07T19:05:24.9223796Z ✓ 191 modules transformed.
+2026-11-07T19:05:25.0945040Z rendering chunks...
+2026-11-07T19:05:30.4738587Z computing gzip size...
+2026-11-07T19:05:30.4818962Z apps/web/dist/index.html                                           0.65 kB │ gzip:   0.35 kB
+2026-11-07T19:05:30.4820431Z apps/web/dist/assets/KaTeX_Size3-Regular-gV2CO0n9.woff2            3.62 kB
+2026-11-07T19:05:30.4821775Z apps/web/dist/assets/KaTeX_Size3-Regular-CTq5MqoE.woff             4.42 kB
+2026-11-07T19:05:30.4822929Z apps/web/dist/assets/KaTeX_Size4-Regular-Dl5lxZxV.woff2            4.92 kB
+2026-11-07T19:05:30.4824324Z apps/web/dist/assets/KaTeX_Size2-Regular-Dy4dx90m.woff2            5.20 kB
+2026-11-07T19:05:30.4825366Z apps/web/dist/assets/KaTeX_Size1-Regular-mCD8mA8B.woff2            5.46 kB
+2026-11-07T19:05:30.4826409Z apps/web/dist/assets/KaTeX_Size4-Regular-BF-4gkZK.woff             5.98 kB
+2026-11-07T19:05:30.4827636Z apps/web/dist/assets/KaTeX_Size2-Regular-oD1tc_U0.woff             6.18 kB
+2026-11-07T19:05:30.4828551Z apps/web/dist/assets/KaTeX_Size1-Regular-C195tn64.woff             6.49 kB
+2026-11-07T19:05:30.4829640Z apps/web/dist/assets/KaTeX_Caligraphic-Regular-Di6jR-x-.woff2      6.90 kB
+2026-11-07T19:05:30.4830553Z apps/web/dist/assets/KaTeX_Caligraphic-Bold-Dq_IR9rO.woff2         6.91 kB
+2026-11-07T19:05:30.4831623Z apps/web/dist/assets/KaTeX_Size3-Regular-DgpXs0kz.ttf              7.58 kB
+2026-11-07T19:05:30.4832825Z apps/web/dist/assets/KaTeX_Caligraphic-Regular-CTRA-rTL.woff       7.65 kB
+2026-11-07T19:05:30.4833813Z apps/web/dist/assets/KaTeX_Caligraphic-Bold-BEiXGLvX.woff          7.71 kB
+2026-11-07T19:05:30.4834729Z apps/web/dist/assets/KaTeX_Script-Regular-D3wIWfF6.woff2           9.64 kB
+2026-11-07T19:05:30.4835661Z apps/web/dist/assets/KaTeX_SansSerif-Regular-DDBCnlJ7.woff2       10.34 kB
+2026-11-07T19:05:30.4836641Z apps/web/dist/assets/KaTeX_Size4-Regular-DWFBv043.ttf             10.36 kB
+2026-11-07T19:05:30.4837974Z apps/web/dist/assets/KaTeX_Script-Regular-D5yQViql.woff           10.58 kB
+2026-11-07T19:05:30.4838991Z apps/web/dist/assets/KaTeX_Fraktur-Regular-CTYiF6lA.woff2         11.31 kB
+2026-11-07T19:05:30.4840313Z apps/web/dist/assets/KaTeX_Fraktur-Bold-CL6g_b3V.woff2            11.34 kB
+2026-11-07T19:05:30.4841469Z apps/web/dist/assets/KaTeX_Size2-Regular-B7gKUWhC.ttf             11.50 kB
+2026-11-07T19:05:30.4842423Z apps/web/dist/assets/KaTeX_SansSerif-Italic-C3H0VqGB.woff2        12.02 kB
+2026-11-07T19:05:30.4843443Z apps/web/dist/assets/KaTeX_SansSerif-Bold-D1sUS0GD.woff2          12.21 kB
+2026-11-07T19:05:30.4844359Z apps/web/dist/assets/KaTeX_Size1-Regular-Dbsnue_I.ttf             12.22 kB
+2026-11-07T19:05:30.4845348Z apps/web/dist/assets/KaTeX_SansSerif-Regular-CS6fqUqJ.woff        12.31 kB
+2026-11-07T19:05:30.4846284Z apps/web/dist/assets/KaTeX_Caligraphic-Regular-wX97UBjC.ttf       12.34 kB
+2026-11-07T19:05:30.4847482Z apps/web/dist/assets/KaTeX_Caligraphic-Bold-ATXxdsX0.ttf          12.36 kB
+2026-11-07T19:05:30.4848478Z apps/web/dist/assets/KaTeX_Fraktur-Regular-Dxdc4cR9.woff          13.20 kB
+2026-11-07T19:05:30.4849336Z apps/web/dist/assets/KaTeX_Fraktur-Bold-BsDP51OF.woff             13.29 kB
+2026-11-07T19:05:30.4849954Z apps/web/dist/assets/KaTeX_Typewriter-Regular-CO6r4hn1.woff2      13.56 kB
+2026-11-07T19:05:30.4850577Z apps/web/dist/assets/KaTeX_SansSerif-Italic-DN2j7dab.woff         14.11 kB
+2026-11-07T19:05:30.4851186Z apps/web/dist/assets/KaTeX_SansSerif-Bold-DbIhKOiC.woff           14.40 kB
+2026-11-07T19:05:30.4851807Z apps/web/dist/assets/KaTeX_Typewriter-Regular-C0xS9mPB.woff       16.02 kB
+2026-11-07T19:05:30.4852389Z apps/web/dist/assets/KaTeX_Math-BoldItalic-CZnvNsCZ.woff2         16.40 kB
+2026-11-07T19:05:30.4853045Z apps/web/dist/assets/KaTeX_Math-Italic-t53AETM-.woff2             16.44 kB
+2026-11-07T19:05:30.4853693Z apps/web/dist/assets/KaTeX_Script-Regular-C5JkGWo-.ttf            16.64 kB
+2026-11-07T19:05:30.4854294Z apps/web/dist/assets/KaTeX_Main-BoldItalic-DxDJ3AOS.woff2         16.78 kB
+2026-11-07T19:05:30.4855142Z apps/web/dist/assets/KaTeX_Main-Italic-NWA7e6Wa.woff2             16.98 kB
+2026-11-07T19:05:30.4855964Z apps/web/dist/.vite/manifest.json                                 17.26 kB │ gzip:   1.87 kB
+2026-11-07T19:05:30.4856579Z apps/web/dist/assets/KaTeX_Math-BoldItalic-iY-2wyZ7.woff          18.66 kB
+2026-11-07T19:05:30.4857478Z apps/web/dist/assets/KaTeX_Math-Italic-DA0__PXp.woff              18.74 kB
+2026-11-07T19:05:30.4858139Z apps/web/dist/assets/KaTeX_Main-BoldItalic-SpSLRI95.woff          19.41 kB
+2026-11-07T19:05:30.4858825Z apps/web/dist/assets/KaTeX_SansSerif-Regular-BNo7hRIc.ttf         19.43 kB
+2026-11-07T19:05:30.4859408Z apps/web/dist/assets/KaTeX_Fraktur-Regular-CB_wures.ttf           19.57 kB
+2026-11-07T19:05:30.4860032Z apps/web/dist/assets/KaTeX_Fraktur-Bold-BdnERNNW.ttf              19.58 kB
+2026-11-07T19:05:30.4860768Z apps/web/dist/assets/KaTeX_Main-Italic-BMLOBm91.woff              19.67 kB
+2026-11-07T19:05:30.4861458Z apps/web/dist/assets/KaTeX_SansSerif-Italic-YYjJ1zSn.ttf          22.36 kB
+2026-11-07T19:05:30.4862210Z apps/web/dist/assets/KaTeX_SansSerif-Bold-CFMepnvq.ttf            24.50 kB
+2026-11-07T19:05:30.4862892Z apps/web/dist/assets/KaTeX_Main-Bold-Cx986IdX.woff2               25.32 kB
+2026-11-07T19:05:30.4863614Z apps/web/dist/assets/KaTeX_Main-Regular-B22Nviop.woff2            26.27 kB
+2026-11-07T19:05:30.4864293Z apps/web/dist/assets/KaTeX_Typewriter-Regular-D3Ib7_Hf.ttf        27.55 kB
+2026-11-07T19:05:30.4864975Z apps/web/dist/assets/KaTeX_AMS-Regular-BQhdFMY1.woff2             28.07 kB
+2026-11-07T19:05:30.4865726Z apps/web/dist/assets/KaTeX_Main-Bold-Jm3AIy58.woff                29.91 kB
+2026-11-07T19:05:30.4866362Z apps/web/dist/assets/KaTeX_Main-Regular-Dr94JaBh.woff             30.77 kB
+2026-11-07T19:05:30.4867292Z apps/web/dist/assets/KaTeX_Math-BoldItalic-B3XSjfu4.ttf           31.19 kB
+2026-11-07T19:05:30.4868006Z apps/web/dist/assets/KaTeX_Math-Italic-flOr_0UB.ttf               31.30 kB
+2026-11-07T19:05:30.4868738Z apps/web/dist/assets/KaTeX_Main-BoldItalic-DzxPMmG6.ttf           32.96 kB
+2026-11-07T19:05:30.4869462Z apps/web/dist/assets/KaTeX_AMS-Regular-DMm9YOAa.woff              33.51 kB
+2026-11-07T19:05:30.4872460Z apps/web/dist/assets/KaTeX_Main-Italic-3WenGoN9.ttf               33.58 kB
+2026-11-07T19:05:30.4873540Z apps/web/dist/assets/KaTeX_Main-Bold-waoOVXN0.ttf                 51.33 kB
+2026-11-07T19:05:30.4874662Z apps/web/dist/assets/KaTeX_Main-Regular-ypZvNtVU.ttf              53.58 kB
+2026-11-07T19:05:30.4875623Z apps/web/dist/assets/KaTeX_AMS-Regular-DRggAlZN.ttf               63.63 kB
+2026-11-07T19:05:30.4876546Z apps/web/dist/assets/pdf.worker.min-B5Yc7dP4.mjs               1,327.59 kB
+2026-11-07T19:05:30.4877900Z apps/web/dist/assets/TutorStudio-BPmqfL5X.css                      9.96 kB │ gzip:   2.67 kB
+2026-11-07T19:05:30.4878949Z apps/web/dist/assets/math-BR5XaBGe.css                            24.98 kB │ gzip:   4.00 kB
+2026-11-07T19:05:30.4879968Z apps/web/dist/assets/index-CILdLUOw.css                           77.02 kB │ gzip:  16.17 kB
+2026-11-07T19:05:30.4880808Z apps/web/dist/assets/program-example-TD3ut5MG.js                   1.91 kB │ gzip:   0.96 kB
+2026-11-07T19:05:30.4881658Z apps/web/dist/assets/ProgramSurface-DnJ-kkDb.js                   11.12 kB │ gzip:   4.56 kB
+2026-11-07T19:05:30.4882486Z apps/web/dist/assets/TutorStudio-eu0xIVM_.js                      31.37 kB │ gzip:   9.96 kB
+2026-11-07T19:05:30.4883430Z apps/web/dist/assets/math-dJ2525rv.js                            264.23 kB │ gzip:  76.80 kB
+2026-11-07T19:05:30.4884298Z apps/web/dist/assets/index-Dv4olfpE.js                           425.58 kB │ gzip: 131.20 kB
+2026-11-07T19:05:30.4885018Z apps/web/dist/assets/pdf-engine-CT8MaRfQ.js                      496.64 kB │ gzip: 151.44 kB
+2026-11-07T19:05:30.4885381Z 
+2026-11-07T19:05:30.4885774Z [33m[plugin builtin:vite-reporter] 
+2026-11-07T19:05:30.4886302Z (!) Some chunks are larger than 450 kB after minification. Consider:
+2026-11-07T19:05:30.4887196Z - Using dynamic import() to code-split the application
+2026-11-07T19:05:30.4888332Z - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+2026-11-07T19:05:30.4889230Z - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+2026-11-07T19:05:30.4890010Z [33m[33m[PLUGIN_TIMINGS] [0mJavaScript callbacks ran for 5.6s of this 5.7s build (98%).
+2026-11-07T19:05:30.4891172Z 1 callback is listed without a time. Its calls overlapped, so the time inside one call includes work from other calls. To find its cost, profile the build with `node --cpu-prof`:
+2026-11-07T19:05:30.4892140Z   - plugin vite:terser renderChunk (6 calls)
+2026-11-07T19:05:30.4892740Z See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+2026-11-07T19:05:30.4893282Z [39m
+2026-11-07T19:05:30.4893660Z [32m✓ built in 5.73s[39m
+2026-11-07T19:05:31.9299981Z Vercel Node function: bundled workspaces, PostgreSQL driver and immutable plugin assets.
+2026-11-07T19:05:32.0425495Z MCP Core: standalone stdio artifact, separate from the browser/server deployment.
+2026-11-07T19:05:34.3546997Z Server bundle regression: PASS (5 checks; native Node, isolated PostgreSQL and signed Worker).
+2026-11-07T19:05:40.4487512Z MCP runtime: PASS (15 checks; official external client, stdio, real HTTP/PostgreSQL).
+2026-11-07T19:05:40.7354728Z {"coreGzipBytes":276442,"optionalGzipBytes":292383,"allGzipBytes":3159613,"limits":{"coreGzipBytes":278528,"initialJavaScriptGzipBytes":245760,"optionalGzipBytes":327680,"optionalRawBytes":1048576,"pdfGzipBytes":3145728,"pdfRawBytes":6291456},"legacyComparison":{"metric":"all-javascript-gzip-bytes","bytes":1017069,"limit":245760,"passed":false},"passed":true}
+2026-11-07T19:05:40.7553808Z ##[group]Run node tools/qa-integration.mjs
+2026-11-07T19:05:40.7554249Z [36;1mnode tools/qa-integration.mjs[0m
+2026-11-07T19:05:40.7568368Z shell: /usr/bin/bash -e {0}
+2026-11-07T19:05:40.7568699Z env:
+2026-11-07T19:05:40.7568999Z   ARDESIA_E2E_MODE: local
+2026-11-07T19:05:40.7569482Z   M3_TEST_ADMIN_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/postgres
+2026-11-07T19:05:40.7570181Z   M3_TEST_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_test
+2026-11-07T19:05:40.7570755Z   M3_BROWSER_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_browser
+2026-11-07T19:05:40.7571315Z   M3_BENCHMARK_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_benchmark
+2026-11-07T19:05:40.7571841Z   ARDESIA_COMMIT_SHA: 474650e235a5317d74dccbed40158c908154b1cd
+2026-11-07T19:05:40.7572241Z ##[endgroup]
+2026-11-07T19:05:40.9096579Z node:internal/modules/esm/resolve:272
+2026-11-07T19:05:40.9097905Z     throw new ERR_MODULE_NOT_FOUND(
+2026-11-07T19:05:40.9098739Z           ^
+2026-11-07T19:05:40.9099024Z 
+2026-11-07T19:05:40.9100913Z Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/home/runner/work/ardesia-next/ardesia-next/packages/contracts/src/materials' imported from /home/runner/work/ardesia-next/ardesia-next/packages/contracts/src/index.ts
+2026-11-07T19:05:40.9102607Z     at finalizeResolution (node:internal/modules/esm/resolve:272:11)
+2026-11-07T19:05:40.9103289Z     at moduleResolve (node:internal/modules/esm/resolve:879:10)
+2026-11-07T19:05:40.9108094Z     at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+2026-11-07T19:05:40.9108993Z     at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+2026-11-07T19:05:40.9109988Z     at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+2026-11-07T19:05:40.9110951Z     at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+2026-11-07T19:05:40.9111844Z     at #resolve (node:internal/modules/esm/loader:687:17)
+2026-11-07T19:05:40.9112703Z     at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+2026-11-07T19:05:40.9113605Z     at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33)
+2026-11-07T19:05:40.9114380Z     at ModuleJob.link (node:internal/modules/esm/module_job:381:17) {
+2026-11-07T19:05:40.9115024Z   code: 'ERR_MODULE_NOT_FOUND',
+2026-11-07T19:05:40.9115809Z   url: 'file:///home/runner/work/ardesia-next/ardesia-next/packages/contracts/src/materials'
+2026-11-07T19:05:40.9116535Z }
+2026-11-07T19:05:40.9116906Z 
+2026-11-07T19:05:40.9117126Z Node.js v24.22.2
+2026-11-07T19:05:40.9158310Z ##[error]Process completed with exit code 1.
+2026-11-07T19:05:40.9248558Z ##[group]Run npm run status
+2026-11-07T19:05:40.9248983Z [36;1mnpm run status[0m
+2026-11-07T19:05:40.9264137Z shell: /usr/bin/bash -e {0}
+2026-11-07T19:05:40.9264607Z env:
+2026-11-07T19:05:40.9265310Z   ARDESIA_E2E_MODE: local
+2026-11-07T19:05:40.9266178Z   M3_TEST_ADMIN_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/postgres
+2026-11-07T19:05:40.9267239Z   M3_TEST_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_test
+2026-11-07T19:05:40.9267860Z   M3_BROWSER_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_browser
+2026-11-07T19:05:40.9268738Z   M3_BENCHMARK_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_benchmark
+2026-11-07T19:05:40.9269701Z   ARDESIA_COMMIT_SHA: 474650e235a5317d74dccbed40158c908154b1cd
+2026-11-07T19:05:40.9270445Z ##[endgroup]
+2026-11-07T19:05:41.0143870Z 
+2026-11-07T19:05:41.0144484Z > ardesia-next@0.1.0 status
+2026-11-07T19:05:41.0145085Z > node tools/status.mjs
+2026-11-07T19:05:41.0145357Z 
+2026-11-07T19:05:41.1610340Z {
+2026-11-07T19:05:41.1611399Z   "commit": "474650e235a5317d74dccbed40158c908154b1cd",
+2026-11-07T19:05:41.1612558Z   "sourceDigest": "0c4c2493f19cd14835d38c7d900725fae1ed4af0b2d03c3ae3b4f361f7e9fdee",
+2026-11-07T19:05:41.1613172Z   "generatedAt": "2026-11-07T19:05:41.108Z",
+2026-11-07T19:05:41.1613573Z   "milestone": "M4",
+2026-11-07T19:05:41.1613958Z   "foundationMilestone": "M0",
+2026-11-07T19:05:41.1614367Z   "acceptedBaselines": [
+2026-11-07T19:05:41.1614763Z     {
+2026-11-07T19:05:41.1615164Z       "commit": "3c2738eef34b65cfbb7ee5451f8fc5e8e6bb610d",
+2026-11-07T19:05:41.1615786Z       "sourceDigest": "936e0cccf9384819662dfd8fc9654deba2e59386ba62559259689246b8499bc7",
+2026-11-07T19:05:41.1616288Z       "milestones": [
+2026-11-07T19:05:41.1646328Z         "M0",
+2026-11-07T19:05:41.1647221Z         "M1",
+2026-11-07T19:05:41.1648372Z         "M2"
+2026-11-07T19:05:41.1649060Z       ],
+2026-11-07T19:05:41.1649839Z       "status": "ACCEPTED",
+2026-11-07T19:05:41.1650899Z       "evidence": "operations/baselines/m2",
+2026-11-07T19:05:41.1652332Z       "url": "https://ardesia-next-8yc224you-andreas-projects-6d4e9791.vercel.app/"
+2026-11-07T19:05:41.1653467Z     },
+2026-11-07T19:05:41.1654109Z     {
+2026-11-07T19:05:41.1655054Z       "commit": "d0aa2014b131335d5c278543cea35098dcefdfd3",
+2026-11-07T19:05:41.1656460Z       "sourceDigest": "9cbd6617ebb16b3a8f42187c354a64f5667a821778bfa41eb8dd654eace1b0f4",
+2026-11-07T19:05:41.1657692Z       "tree": "b1feaaba18d2283a98898b84ceefc135f9f2ae2c",
+2026-11-07T19:05:41.1658240Z       "milestones": [
+2026-11-07T19:05:41.1658738Z         "M3"
+2026-11-07T19:05:41.1659138Z       ],
+2026-11-07T19:05:41.1659569Z       "status": "ACCEPTED",
+2026-11-07T19:05:41.1660121Z       "evidence": "operations/baselines/m3",
+2026-11-07T19:05:41.1660832Z       "url": "https://ardesia-next-staging.vercel.app",
+2026-11-07T19:05:41.1661597Z       "completionRef": "336edfb520c45adeec5a316e33c7db597ecd6c06"
+2026-11-07T19:05:41.1662137Z     }
+2026-11-07T19:05:41.1662517Z   ],
+2026-11-07T19:05:41.1663056Z   "verification": "PASS",
+2026-11-07T19:05:41.1663637Z   "browser": "NOT_VERIFIED_FOR_CURRENT_SOURCE",
+2026-11-07T19:05:41.1664261Z   "deployment": {
+2026-11-07T19:05:41.1664772Z     "status": "NOT_VERIFIED_FOR_CURRENT_COMMIT"
+2026-11-07T19:05:41.1665345Z   },
+2026-11-07T19:05:41.1665784Z   "productAcceptance": "NOT_COMPLETE",
+2026-11-07T19:05:41.1666329Z   "M0": "AWAITING_COMPLETE_EVIDENCE",
+2026-11-07T19:05:41.1668472Z   "M1": "AWAITING_COMPLETE_EVIDENCE",
+2026-11-07T19:05:41.1669020Z   "m1Evidence": {
+2026-11-07T19:05:41.1669531Z     "verifiedSourceAndSignedBundle": "PASS",
+2026-11-07T19:05:41.1670151Z     "hostModelAndCoreTests": "PASS",
+2026-11-07T19:05:41.1670791Z     "localBrowserFlows": "NOT_VERIFIED_FOR_CURRENT_SOURCE",
+2026-11-07T19:05:41.1671599Z     "protectedRemoteReopen": "NOT_VERIFIED_FOR_CURRENT_COMMIT"
+2026-11-07T19:05:41.1672275Z   },
+2026-11-07T19:05:41.1672691Z   "M2": "AWAITING_COMPLETE_EVIDENCE",
+2026-11-07T19:05:41.1673197Z   "m2Evidence": {
+2026-11-07T19:05:41.1673942Z     "coreCatalogAndHostTests": "PASS",
+2026-11-07T19:05:41.1674757Z     "browserLifecycleAndCounterproofs": "NOT_VERIFIED_FOR_CURRENT_SOURCE",
+2026-11-07T19:05:41.1675679Z     "protectedRemoteLifecycle": "NOT_VERIFIED_FOR_CURRENT_COMMIT"
+2026-11-07T19:05:41.1676300Z   },
+2026-11-07T19:05:41.1676930Z   "M3": "AWAITING_COMPLETE_EVIDENCE",
+2026-11-07T19:05:41.1677516Z   "M4": "PREPARATION_UNVERIFIED",
+2026-11-07T19:05:41.1678060Z   "M5": "NOT_STARTED",
+2026-11-07T19:05:41.1679165Z   "m4Evidence": {
+2026-11-07T19:05:41.1679799Z     "signedHostCorePreparation": "NOT_VERIFIED_FOR_CURRENT_SOURCE",
+2026-11-07T19:05:41.1680679Z     "webAndPostgresConsumer": "NOT_VERIFIED_FOR_CURRENT_SOURCE",
+2026-11-07T19:05:41.1681475Z     "protectedRemoteConsumer": "NOT_VERIFIED_FOR_CURRENT_COMMIT",
+2026-11-07T19:05:41.1682189Z     "humanScientificEditorialReview": "PENDING",
+2026-11-07T19:05:41.1682916Z     "observedConsumer": null,
+2026-11-07T19:05:41.1684505Z     "acceptanceRequires": "Technical consumer evidence, scientific/editorial human acceptance and DRAFT remain distinct. Original reports stay bound to their own SHA/digest; a historical consumer never verifies changed source."
+2026-11-07T19:05:41.1685490Z   },
+2026-11-07T19:05:41.1685761Z   "m3Evidence": {
+2026-11-07T19:05:41.1686157Z     "historicalBaseline": "ACCEPTED",
+2026-11-07T19:05:41.1686609Z     "localPostgresAndBrowser": "NOT_VERIFIED_FOR_CURRENT_SOURCE",
+2026-11-07T19:05:41.1687419Z     "protectedRemoteContinuity": "NOT_VERIFIED_FOR_CURRENT_COMMIT",
+2026-11-07T19:05:41.1687861Z     "infrastructure": {
+2026-11-07T19:05:41.1688210Z       "observedAt": "2026-10-30T23:46:21Z",
+2026-11-07T19:05:41.1688749Z       "scope": "AndreaMarro/ardesia-next; existing protected staging only",
+2026-11-07T19:05:41.1689292Z       "status": "REMOTE_INFRASTRUCTURE_VERIFIED_ACCEPTANCE_PENDING",
+2026-11-07T19:05:41.1690086Z       "acceptanceEvidence": false,
+2026-11-07T19:05:41.1690701Z       "repositoryVisibilityObserved": "public",
+2026-11-07T19:05:41.1691080Z       "baselineObserved": {
+2026-11-07T19:05:41.1691643Z         "commit": "af5c5873152600bafe74cb4bea3de9310c51bab7",
+2026-11-07T19:05:41.1692224Z         "sourceDigest": "46b8c669251203d41156ac68d1dfe8c4d17be7b2c0851cd70b77968643f93250",
+2026-11-07T19:05:41.1692782Z         "ciRunId": 40896605513,
+2026-11-07T19:05:41.1693278Z         "ciConclusion": "success",
+2026-11-07T19:05:41.1693804Z         "generatedM3Status": "AWAITING_COMPLETE_EVIDENCE"
+2026-11-07T19:05:41.1694305Z       },
+2026-11-07T19:05:41.1694682Z       "neonObserved": {
+2026-11-07T19:05:41.1695099Z         "projectName": "ardesia-next-m3",
+2026-11-07T19:05:41.1695602Z         "projectId": "royal-bar-31252959",
+2026-11-07T19:05:41.1696035Z         "plan": "Free",
+2026-11-07T19:05:41.1696483Z         "region": "aws-eu-central-1",
+2026-11-07T19:05:41.1697244Z         "postgresVersion": 18,
+2026-11-07T19:05:41.1697610Z         "projectCount": 1,
+2026-11-07T19:05:41.1698099Z         "branchCount": 1,
+2026-11-07T19:05:41.1698472Z         "databaseNames": [
+2026-11-07T19:05:41.1698903Z           "ardesia_next_m3",
+2026-11-07T19:05:41.1699296Z           "ardesia_next_m3_restore_20261030",
+2026-11-07T19:05:41.1700081Z           "ardesia_next_m3_restore_live_20261030"
+2026-11-07T19:05:41.1700560Z         ],
+2026-11-07T19:05:41.1701059Z         "activeApplicationDatabase": "ardesia_next_m3",
+2026-11-07T19:05:41.1701679Z         "activeApplicationRole": "ardesia_next_m3_app",
+2026-11-07T19:05:41.1702224Z         "syntheticAccountCount": 3,
+2026-11-07T19:05:41.1702714Z         "accountRoles": {
+2026-11-07T19:05:41.1703209Z           "teacher": 1,
+2026-11-07T19:05:41.1703601Z           "student": 2
+2026-11-07T19:05:41.1703965Z         },
+2026-11-07T19:05:41.1704360Z         "migrationVersion": 1,
+2026-11-07T19:05:41.1704999Z         "migrationDigest": "5d5b50de6debe5d08658f110030672bb4cbe7666e5be559d63aa003f6862b25c",
+2026-11-07T19:05:41.1705685Z         "runtimePrivileges": {
+2026-11-07T19:05:41.1706133Z           "superuser": false,
+2026-11-07T19:05:41.1706801Z           "createDatabase": false,
+2026-11-07T19:05:41.1707422Z           "createRole": false,
+2026-11-07T19:05:41.1707832Z           "bypassRls": false,
+2026-11-07T19:05:41.1708375Z           "createSchema": false,
+2026-11-07T19:05:41.1708791Z           "createInSchema": false,
+2026-11-07T19:05:41.1709229Z           "changeAccountRole": false,
+2026-11-07T19:05:41.1709735Z           "updateWorkspace": true
+2026-11-07T19:05:41.1710148Z         },
+2026-11-07T19:05:41.1710624Z         "runtimeGroupLogin": false,
+2026-11-07T19:05:41.1711198Z         "workspaceCount": 2,
+2026-11-07T19:05:41.1711597Z         "snapshotTextBytes": 66562,
+2026-11-07T19:05:41.1712034Z         "maxConnectionsObserved": 901,
+2026-11-07T19:05:41.1712459Z         "computeRangeCU": [
+2026-11-07T19:05:41.1712808Z           0.25,
+2026-11-07T19:05:41.1713271Z           2
+2026-11-07T19:05:41.1713576Z         ],
+2026-11-07T19:05:41.1713926Z         "historyRetentionHours": 6,
+2026-11-07T19:05:41.1714397Z         "tlsObservation": {
+2026-11-07T19:05:41.1714759Z           "postgresBackendSsl": false,
+2026-11-07T19:05:41.1715163Z           "postgresBackendProtocol": null,
+2026-11-07T19:05:41.1715699Z           "applicationSourceEnforcesCertificateAndHostnameVerification": true,
+2026-11-07T19:05:41.1716268Z           "runtimeClientSocketMetadata": "NOT_OBSERVED",
+2026-11-07T19:05:41.1717206Z           "interpretation": "The backend flag does not establish transport security of the separate client-to-Neon-proxy connection."
+2026-11-07T19:05:41.1717808Z         }
+2026-11-07T19:05:41.1718080Z       },
+2026-11-07T19:05:41.1718424Z       "vercelObserved": {
+2026-11-07T19:05:41.1718837Z         "projectId": "prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd",
+2026-11-07T19:05:41.1719533Z         "existingTeamPlan": "Pro",
+2026-11-07T19:05:41.1721462Z         "deploymentId": "dpl_EeAhW3UxVkWwnGYEDduXSEMLahB1",
+2026-11-07T19:05:41.1722322Z         "state": "READY",
+2026-11-07T19:05:41.1722771Z         "providerTarget": null,
+2026-11-07T19:05:41.1723286Z         "gitRef": "preview/m3",
+2026-11-07T19:05:41.1723947Z         "stableOrigin": "https://ardesia-next-staging.vercel.app",
+2026-11-07T19:05:41.1724607Z         "ssoDeploymentType": "all",
+2026-11-07T19:05:41.1725094Z         "buildInfoMatchesBaseline": true,
+2026-11-07T19:05:41.1725516Z         "apiHealth": {
+2026-11-07T19:05:41.1725969Z           "ok": true,
+2026-11-07T19:05:41.1726341Z           "configured": true,
+2026-11-07T19:05:41.1727025Z           "authority": "postgres"
+2026-11-07T19:05:41.1727491Z         },
+2026-11-07T19:05:41.1727825Z         "anonymousStatusAfterRevocation": 302,
+2026-11-07T19:05:41.1728265Z         "anonymousRedirectOrigin": "https://vercel.com",
+2026-11-07T19:05:41.1728705Z         "anonymousRedirectPath": "/sso-api",
+2026-11-07T19:05:41.1729211Z         "shareableLinkExceptionsAfterRevocation": 0,
+2026-11-07T19:05:41.1729775Z         "temporaryShareableLinkRevoked": true,
+2026-11-07T19:05:41.1730282Z         "replacementBypassCreated": false,
+2026-11-07T19:05:41.1730758Z         "variablesMetadata": [
+2026-11-07T19:05:41.1731181Z           {
+2026-11-07T19:05:41.1731589Z             "key": "ARDESIA_DATABASE_URL",
+2026-11-07T19:05:41.1732041Z             "type": "Secret",
+2026-11-07T19:05:41.1732570Z             "target": "preview",
+2026-11-07T19:05:41.1733043Z             "gitBranch": "preview/m3"
+2026-11-07T19:05:41.1733485Z           },
+2026-11-07T19:05:41.1733814Z           {
+2026-11-07T19:05:41.1734230Z             "key": "ARDESIA_APP_ORIGIN",
+2026-11-07T19:05:41.1734655Z             "type": "Config",
+2026-11-07T19:05:41.1735088Z             "target": "preview",
+2026-11-07T19:05:41.1735554Z             "gitBranch": "preview/m3"
+2026-11-07T19:05:41.1735957Z           }
+2026-11-07T19:05:41.1736287Z         ],
+2026-11-07T19:05:41.1736840Z         "variableValuesRead": false,
+2026-11-07T19:05:41.1737789Z         "variableConnectorResult": "403: projectEnvVars list not permitted; metadata observed in authenticated dashboard",
+2026-11-07T19:05:41.1739213Z         "originBehavior": "Stable-origin UI requests succeed; deployment-host UI refuses the different origin.",
+2026-11-07T19:05:41.1740074Z         "existingProjectInfrastructureUsageUSD": 0.15,
+2026-11-07T19:05:41.1740668Z         "usagePeriod": "2026-10-25/2026-11-25",
+2026-11-07T19:05:41.1741136Z         "usageMayLagHours": 1,
+2026-11-07T19:05:41.1741656Z         "teamIncludedCreditUsedUSD": 1.02,
+2026-11-07T19:05:41.1742148Z         "teamIncludedCreditTotalUSD": 20,
+2026-11-07T19:05:41.1742659Z         "existingSubscriptionUSD": 20,
+2026-11-07T19:05:41.1743161Z         "teamInfrastructureCreditsAppliedUSD": 1.02
+2026-11-07T19:05:41.1743662Z       },
+2026-11-07T19:05:41.1744063Z       "browserObserved": {
+2026-11-07T19:05:41.1744460Z         "accountRole": "student",
+2026-11-07T19:05:41.1745012Z         "syntheticAccount": "A",
+2026-11-07T19:05:41.1745514Z         "serverConfirmedReopen": true,
+2026-11-07T19:05:41.1746095Z         "existingWorkspacesVisible": 2,
+2026-11-07T19:05:41.1746986Z         "independentTeacherAndTwoStudentSessions": "NOT_RUN_THIS_SESSION",
+2026-11-07T19:05:41.1747740Z         "completeRemoteCounterproofs": "NOT_RUN"
+2026-11-07T19:05:41.1748267Z       },
+2026-11-07T19:05:41.1754600Z       "codeGapVerified": {
+2026-11-07T19:05:41.1755397Z         "mixedLocalRemoteTargetReproducedBeforeCorrection": true,
+2026-11-07T19:05:41.1756950Z         "targetResolutionCorrection": "One explicit target now shared by Playwright configuration and API fixtures; separated local and remote reports.",
+2026-11-07T19:05:41.1758074Z         "completeRemoteAcceptanceRunnerPresent": false,
+2026-11-07T19:05:41.1758763Z         "partialRegressionIsAcceptance": false
+2026-11-07T19:05:41.1759246Z       },
+2026-11-07T19:05:41.1759773Z       "constraintsPreserved": {
+2026-11-07T19:05:41.1760327Z         "legacyUnchanged": true,
+2026-11-07T19:05:41.1760899Z         "productionUnchanged": true,
+2026-11-07T19:05:41.1761731Z         "newDatabaseResources": false,
+2026-11-07T19:05:41.1762257Z         "newProjects": false,
+2026-11-07T19:05:41.1762813Z         "newPaidServices": false,
+2026-11-07T19:05:41.1763602Z         "databaseWritesThisObservation": false,
+2026-11-07T19:05:41.1764285Z         "credentialsRotated": false
+2026-11-07T19:05:41.1764905Z       },
+2026-11-07T19:05:41.1766413Z       "nextGate": "Complete real remote M3 acceptance on one deployed revision, using existing synthetic accounts, independent platform-authorized browser contexts and all twelve counterproofs. Do not start M4 or production promotion.",
+2026-11-07T19:05:41.1768122Z       "historicalObservations": [
+2026-11-07T19:05:41.1768548Z         {
+2026-11-07T19:05:41.1769035Z           "observedAt": "2026-10-29T14:47:33Z",
+2026-11-07T19:05:41.1769779Z           "scope": "AndreaMarro/ardesia-next; protected preview only",
+2026-11-07T19:05:41.1770451Z           "status": "BLOCKED_ACCOUNT_AUTHORIZATION",
+2026-11-07T19:05:41.1771172Z           "providerSelected": {
+2026-11-07T19:05:41.1771652Z             "name": "Neon",
+2026-11-07T19:05:41.1772190Z             "plan": "Free",
+2026-11-07T19:05:41.1775236Z             "regionRequested": "aws-eu-central-1",
+2026-11-07T19:05:41.1775845Z             "publishedMonthlyUSD": 0,
+2026-11-07T19:05:41.1776239Z             "accountPlanVerified": false,
+2026-11-07T19:05:41.1776676Z             "resourceCreated": false,
+2026-11-07T19:05:41.1777499Z             "pricingSource": "https://neon.com/pricing",
+2026-11-07T19:05:41.1778053Z             "limitsSource": "https://neon.com/docs/introduction/plans",
+2026-11-07T19:05:41.1778515Z             "publishedLimits": {
+2026-11-07T19:05:41.1778991Z               "storageGBPerProject": 1,
+2026-11-07T19:05:41.1780281Z               "computeCUHoursPerProjectPerMonth": 100,
+2026-11-07T19:05:41.1780942Z               "publicEgressGBPerProjectPerMonth": 5,
+2026-11-07T19:05:41.1781885Z               "branchesPerProject": 10
+2026-11-07T19:05:41.1782496Z             },
+2026-11-07T19:05:41.1783242Z             "runtimeConnection": "pooled PostgreSQL with existing verify-full TLS validation",
+2026-11-07T19:05:41.1785103Z             "operatorConnection": "separate direct PostgreSQL login outside Vercel runtime"
+2026-11-07T19:05:41.1786122Z           },
+2026-11-07T19:05:41.1786630Z           "checks": [
+2026-11-07T19:05:41.1787877Z             {
+2026-11-07T19:05:41.1788620Z               "service": "Supabase",
+2026-11-07T19:05:41.1789398Z               "operation": "get_cost(project)",
+2026-11-07T19:05:41.1790024Z               "organizationId": "twwqhsykkicciejficme",
+2026-11-07T19:05:41.1790716Z               "quotedMonthlyUSD": 0
+2026-11-07T19:05:41.1791199Z             },
+2026-11-07T19:05:41.1791557Z             {
+2026-11-07T19:05:41.1792026Z               "service": "Supabase",
+2026-11-07T19:05:41.1792666Z               "operation": "create_project(ardesia-next-m3)",
+2026-11-07T19:05:41.1793325Z               "result": "REJECTED",
+2026-11-07T19:05:41.1794095Z               "reason": "Owner has reached the 2 active Free projects limit. No project was created."
+2026-11-07T19:05:41.1795015Z             },
+2026-11-07T19:05:41.1795590Z             {
+2026-11-07T19:05:41.1796121Z               "service": "Vercel",
+2026-11-07T19:05:41.1797486Z               "operation": "GET project environment metadata",
+2026-11-07T19:05:41.1798229Z               "projectId": "prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd",
+2026-11-07T19:05:41.1798899Z               "result": "403 forbidden",
+2026-11-07T19:05:41.1799595Z               "reason": "Connection lacks projectEnvVars list permission."
+2026-11-07T19:05:41.1800217Z             },
+2026-11-07T19:05:41.1800641Z             {
+2026-11-07T19:05:41.1801053Z               "service": "Vercel",
+2026-11-07T19:05:41.1801587Z               "operation": "GET integration configurations",
+2026-11-07T19:05:41.1802259Z               "result": "403 forbidden",
+2026-11-07T19:05:41.1802960Z               "reason": "Connection lacks integrationConfiguration list permission."
+2026-11-07T19:05:41.1804034Z             },
+2026-11-07T19:05:41.1804406Z             {
+2026-11-07T19:05:41.1804789Z               "service": "Render",
+2026-11-07T19:05:41.1805679Z               "operation": "list_postgres_instances",
+2026-11-07T19:05:41.1806408Z               "workspaceId": "tea-d4gouafdiees73b2m8f0",
+2026-11-07T19:05:41.1807152Z               "result": "EMPTY",
+2026-11-07T19:05:41.1807867Z               "reason": "No existing PostgreSQL instance is available in the accessible workspace."
+2026-11-07T19:05:41.1808588Z             },
+2026-11-07T19:05:41.1809025Z             {
+2026-11-07T19:05:41.1809523Z               "service": "Render",
+2026-11-07T19:05:41.1810275Z               "operation": "Review Free PostgreSQL eligibility",
+2026-11-07T19:05:41.1810996Z               "result": "NOT_SELECTED",
+2026-11-07T19:05:41.1812138Z               "reason": "The Free plan expires after 30 days and requires a paid upgrade to remain accessible; it was not selected as the continuing authoritative store. No database was created.",
+2026-11-07T19:05:41.1813254Z               "source": "https://render.com/docs/free"
+2026-11-07T19:05:41.1813763Z             },
+2026-11-07T19:05:41.1814161Z             {
+2026-11-07T19:05:41.1814528Z               "service": "GitHub",
+2026-11-07T19:05:41.1815021Z               "operation": "Verify main and original CI artifact",
+2026-11-07T19:05:41.1815575Z               "result": "VERIFIED",
+2026-11-07T19:05:41.1816114Z               "commit": "540fa2d886257ec664329d50444d2cfac75fffc6",
+2026-11-07T19:05:41.1817089Z               "sourceDigest": "1c2d683212f47603ec5ff06ebd8c24dbef519c0715092b7c8ab5a9fd21f8a420",
+2026-11-07T19:05:41.1817921Z               "ciRunId": 40886746644,
+2026-11-07T19:05:41.1818541Z               "artifactId": 12903985346,
+2026-11-07T19:05:41.1819317Z               "artifactSha256": "ddc3c4fbce3a1bcaa8cf7f41c66ad300540222560f406a329aeb6e908949cf46"
+2026-11-07T19:05:41.1820020Z             },
+2026-11-07T19:05:41.1820527Z             {
+2026-11-07T19:05:41.1821103Z               "service": "Supabase",
+2026-11-07T19:05:41.1821754Z               "operation": "List project metadata only",
+2026-11-07T19:05:41.1822547Z               "result": "NO_DEDICATED_NEXT_PROJECT",
+2026-11-07T19:05:41.1823347Z               "reason": "Existing legacy and other project data were not queried or changed."
+2026-11-07T19:05:41.1824084Z             },
+2026-11-07T19:05:41.1824447Z             {
+2026-11-07T19:05:41.1824802Z               "service": "Vercel",
+2026-11-07T19:05:41.1825358Z               "operation": "Inspect Storage dashboard",
+2026-11-07T19:05:41.1825902Z               "result": "NO_DEDICATED_NEXT_POSTGRES",
+2026-11-07T19:05:41.1827036Z               "reason": "Only an existing Turso store connected to another project was shown; it was not used."
+2026-11-07T19:05:41.1827754Z             },
+2026-11-07T19:05:41.1828083Z             {
+2026-11-07T19:05:41.1828617Z               "service": "Vercel",
+2026-11-07T19:05:41.1829271Z               "operation": "Inspect Next Environment Variables dashboard",
+2026-11-07T19:05:41.1833882Z               "projectId": "prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd",
+2026-11-07T19:05:41.1834536Z               "result": "ACCESSIBLE_EMPTY",
+2026-11-07T19:05:41.1837749Z               "reason": "Authenticated dashboard shows No Environment Variables Added and the Add Environment Variable control. No values were written."
+2026-11-07T19:05:41.1838981Z             },
+2026-11-07T19:05:41.1839356Z             {
+2026-11-07T19:05:41.1840029Z               "service": "Neon",
+2026-11-07T19:05:41.1840584Z               "operation": "Open console",
+2026-11-07T19:05:41.1841140Z               "result": "LOGIN_REQUIRED",
+2026-11-07T19:05:41.1841921Z               "reason": "No authenticated Neon account was available in the selected browser."
+2026-11-07T19:05:41.1842571Z             },
+2026-11-07T19:05:41.1842992Z             {
+2026-11-07T19:05:41.1843454Z               "service": "Vercel/Neon",
+2026-11-07T19:05:41.1844026Z               "operation": "Prepare Marketplace integration",
+2026-11-07T19:05:41.1845032Z               "result": "OWNER_TERMS_ACCEPTANCE_REQUIRED",
+2026-11-07T19:05:41.1846380Z               "reason": "Install Integration shows Accept and Create for Vercel Marketplace Addendum and Neon Terms. No acceptance, resource provisioning or billing change was performed."
+2026-11-07T19:05:41.1847618Z             },
+2026-11-07T19:05:41.1848163Z             {
+2026-11-07T19:05:41.1848569Z               "service": "Aiven",
+2026-11-07T19:05:41.1849231Z               "operation": "Review PostgreSQL Free alternative",
+2026-11-07T19:05:41.1849835Z               "result": "NOT_SELECTED",
+2026-11-07T19:05:41.1850757Z               "reason": "Official getting-started documentation does not allow selection of a specific cloud region on Free; pooling is unavailable. Neon remains preferred.",
+2026-11-07T19:05:41.1851805Z               "source": "https://aiven.io/docs/products/postgresql/get-started"
+2026-11-07T19:05:41.1852456Z             },
+2026-11-07T19:05:41.1852892Z             {
+2026-11-07T19:05:41.1853324Z               "service": "GitHub",
+2026-11-07T19:05:41.1854061Z               "operation": "Requested private-to-public visibility change",
+2026-11-07T19:05:41.1854761Z               "result": "OWNER_REAUTHENTICATION_REQUIRED",
+2026-11-07T19:05:41.2007261Z               "reason": "GitHub requires Confirm access with passkey or another owner authentication method before completing the change. Visibility remains private.",
+2026-11-07T19:05:41.2008373Z               "ruleset": {
+2026-11-07T19:05:41.2008751Z                 "id": 26087821,
+2026-11-07T19:05:41.2009222Z                 "name": "main-reviewed-verified",
+2026-11-07T19:05:41.2009790Z                 "target": "branch",
+2026-11-07T19:05:41.2010256Z                 "enforcement": "active"
+2026-11-07T19:05:41.2010667Z               }
+2026-11-07T19:05:41.2010985Z             },
+2026-11-07T19:05:41.2011304Z             {
+2026-11-07T19:05:41.2011675Z               "service": "Vercel",
+2026-11-07T19:05:41.2012391Z               "operation": "Authenticated baseline build-info and API inspection",
+2026-11-07T19:05:41.2013119Z               "result": "SOURCE_MATCH_DATABASE_UNCONFIGURED",
+2026-11-07T19:05:41.2013931Z               "deploymentId": "dpl_CG8FYtrivnCBgrh8izBxqx7q9Zq1",
+2026-11-07T19:05:41.2014432Z               "target": "staging",
+2026-11-07T19:05:41.2014837Z               "ssoDeploymentType": "all",
+2026-11-07T19:05:41.2015295Z               "buildInfoMatchesBaseline": true,
+2026-11-07T19:05:41.2015738Z               "api": {
+2026-11-07T19:05:41.2016170Z                 "configured": false,
+2026-11-07T19:05:41.2016582Z                 "authority": "unavailable"
+2026-11-07T19:05:41.2017098Z               }
+2026-11-07T19:05:41.2017359Z             }
+2026-11-07T19:05:41.2017616Z           ],
+2026-11-07T19:05:41.2017949Z           "constraintsPreserved": {
+2026-11-07T19:05:41.2018357Z             "legacyUnchanged": true,
+2026-11-07T19:05:41.2018774Z             "productionUnchanged": true,
+2026-11-07T19:05:41.2019207Z             "newPaidServices": false,
+2026-11-07T19:05:41.2019607Z             "ssoBypassUsed": false
+2026-11-07T19:05:41.2019937Z           },
+2026-11-07T19:05:41.2020214Z           "remaining": [
+2026-11-07T19:05:41.2020908Z             "Owner authentication to complete the explicitly requested GitHub visibility change",
+2026-11-07T19:05:41.2022080Z             "Owner Neon account/integration authorization; verify Free plan and EU region before creating any resource",
+2026-11-07T19:05:41.2023280Z             "Dedicated Next database; explicit migrations; SQL-created restricted runtime login and three synthetic accounts",
+2026-11-07T19:05:41.2024309Z             "Preview-only runtime credential; exact allowed origin; no production variables",
+2026-11-07T19:05:41.2025211Z             "New exact-SHA CI and protected preview after the source-publication gate correction",
+2026-11-07T19:05:41.2026064Z             "Actual remote continuity, all 12 counterproofs, isolated synthetic backup/restore and status gate"
+2026-11-07T19:05:41.2027136Z           ],
+2026-11-07T19:05:41.2027470Z           "sourcePublication": {
+2026-11-07T19:05:41.2027913Z             "kind": "explicit-owner-instruction",
+2026-11-07T19:05:41.2028374Z             "owner": "AndreaMarro",
+2026-11-07T19:05:41.2028801Z             "repository": "AndreaMarro/ardesia-next",
+2026-11-07T19:05:41.2029134Z             "visibility": "public",
+2026-11-07T19:05:41.2029556Z             "scope": "source-only",
+2026-11-07T19:05:41.2029834Z             "recordedAt": "2026-10-29T14:47:33Z"
+2026-11-07T19:05:41.2030086Z           },
+2026-11-07T19:05:41.2030334Z           "repositoryVisibilityObserved": "private"
+2026-11-07T19:05:41.2030651Z         }
+2026-11-07T19:05:41.2030839Z       ]
+2026-11-07T19:05:41.2031018Z     },
+2026-11-07T19:05:41.2031785Z     "acceptanceRequires": "Distinct application identities, independent sessions, authorization, recovery and remote database observations on the same protected deployment SHA/digest"
+2026-11-07T19:05:41.2032427Z   },
+2026-11-07T19:05:41.2032612Z   "limits": [
+2026-11-07T19:05:41.2033036Z     "Remote M3 acceptance incomplete; local PostgreSQL and browser tests do not establish remote continuity",
+2026-11-07T19:05:41.2033801Z     "Pinned first-party releases plus user-consented QuickJS programs with bounded passive views; independent engine security audit NOT_RUN",
+2026-11-07T19:05:41.2034480Z     "No update or rollback release currently authorized in the shipped catalog",
+2026-11-07T19:05:41.2034915Z     "Physical pen/touch and human UX acceptance NOT_RUN",
+2026-11-07T19:05:41.2035234Z     "No public application deployment"
+2026-11-07T19:05:41.2035467Z   ],
+2026-11-07T19:05:41.2035682Z   "acceptedProductCriteria": 0,
+2026-11-07T19:05:41.2035958Z   "preservedProductCriteria": 68
+2026-11-07T19:05:41.2036194Z }
+2026-11-07T19:05:41.2108697Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+2026-11-07T19:05:41.2109092Z with:
+2026-11-07T19:05:41.2109464Z   name: evidence-474650e235a5317d74dccbed40158c908154b1cd
+2026-11-07T19:05:41.2109826Z   path: artifacts/
+test-results/
+
+2026-11-07T19:05:41.2110096Z   retention-days: 30
+2026-11-07T19:05:41.2110309Z   if-no-files-found: warn
+2026-11-07T19:05:41.2110591Z   compression-level: 6
+2026-11-07T19:05:41.2110798Z   overwrite: false
+2026-11-07T19:05:41.2111012Z   include-hidden-files: false
+2026-11-07T19:05:41.2111256Z env:
+2026-11-07T19:05:41.2111437Z   ARDESIA_E2E_MODE: local
+2026-11-07T19:05:41.2111849Z   M3_TEST_ADMIN_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/postgres
+2026-11-07T19:05:41.2112288Z   M3_TEST_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_test
+2026-11-07T19:05:41.2112732Z   M3_BROWSER_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_browser
+2026-11-07T19:05:41.2113235Z   M3_BENCHMARK_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/ardesia_m3_benchmark
+2026-11-07T19:05:41.2113667Z   ARDESIA_COMMIT_SHA: 474650e235a5317d74dccbed40158c908154b1cd
+2026-11-07T19:05:41.2113961Z ##[endgroup]
+2026-11-07T19:05:41.3755114Z (node:4513) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-07T19:05:41.3755936Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-07T19:05:41.4332380Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-11-07T19:05:41.4334681Z The least common ancestor is /home/runner/work/ardesia-next/ardesia-next. This will be the root directory of the artifact
+2026-11-07T19:05:41.4335697Z With the provided path, there will be 326 files uploaded
+2026-11-07T19:05:41.4340428Z Artifact name is valid!
+2026-11-07T19:05:41.4341310Z Root directory input is valid!
+2026-11-07T19:05:41.7594583Z Beginning upload of artifact content to blob storage
+2026-11-07T19:05:42.2773287Z (node:4513) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-07T19:05:42.7551637Z Uploaded bytes 8388608
+2026-11-07T19:05:42.9875078Z Uploaded bytes 16777216
+2026-11-07T19:05:43.0757425Z Uploaded bytes 25165824
+2026-11-07T19:05:43.2507320Z Uploaded bytes 33554432
+2026-11-07T19:05:43.5172488Z Uploaded bytes 41943040
+2026-11-07T19:05:43.7428329Z Uploaded bytes 50331648
+2026-11-07T19:05:43.9403104Z Uploaded bytes 58720256
+2026-11-07T19:05:44.1626269Z Uploaded bytes 67108864
+2026-11-07T19:05:44.4741205Z Uploaded bytes 74277956
+2026-11-07T19:05:44.7041781Z Finished uploading artifact content to blob storage!
+2026-11-07T19:05:44.7044860Z SHA256 digest of uploaded artifact zip is 324cb2a933244b555867dc9d47e47de39da630741eeb894a5d3214aeb4b79a8d
+2026-11-07T19:05:44.7046820Z Finalizing artifact upload
+2026-11-07T19:05:45.0962748Z Artifact evidence-474650e235a5317d74dccbed40158c908154b1cd.zip successfully finalized. Artifact ID 13586484445
+2026-11-07T19:05:45.0963891Z Artifact evidence-474650e235a5317d74dccbed40158c908154b1cd has been successfully uploaded! Final size is 74277956 bytes. Artifact ID is 13586484445
+2026-11-07T19:05:45.0970451Z Artifact download URL: https://github.com/AndreaMarro/ardesia-next/actions/runs/42404357685/artifacts/13586484445
+2026-11-07T19:05:45.1199530Z Post job cleanup.
+2026-11-07T19:05:45.2059990Z [command]/usr/bin/git version
+2026-11-07T19:05:45.2108229Z git version 2.56.0
+2026-11-07T19:05:45.2150927Z Temporarily overriding HOME='/home/runner/work/_temp/6070f859-2548-43f0-897e-72df6c143af4' before making global git config changes
+2026-11-07T19:05:45.2151929Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-07T19:05:45.2157748Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ardesia-next/ardesia-next
+2026-11-07T19:05:45.2202513Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-07T19:05:45.2237297Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-07T19:05:45.2466998Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-07T19:05:45.2504816Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-07T19:05:45.2735673Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-07T19:05:45.2815883Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-07T19:05:45.3172761Z Print service container logs: 8b4e132b58af4129aa27790358ef536b_postgres18_0f582d
+2026-11-07T19:05:45.3178752Z ##[command]/usr/bin/docker logs --details f9b415cde5afbc183ee3457dd5556936864dc34d4a5894697a7a948c606d93a3
+2026-11-07T19:05:45.3321194Z  ********************************************************************************
+2026-11-07T19:05:45.3322000Z  The files belonging to this database system will be owned by user "postgres".
+2026-11-07T19:05:45.3322741Z  This user must also own the server process.
+2026-11-07T19:05:45.3323184Z  
+2026-11-07T19:05:45.3323668Z  The database cluster will be initialized with locale "en_US.utf8".
+2026-11-07T19:05:45.3324345Z  The default database encoding has accordingly been set to "UTF8".
+2026-11-07T19:05:45.3324783Z  The default text search configuration will be set to "english".
+2026-11-07T19:05:45.3325159Z  
+2026-11-07T19:05:45.3325401Z  Data page checksums are enabled.
+2026-11-07T19:05:45.3325665Z  
+2026-11-07T19:05:45.3326076Z  fixing permissions on existing directory /var/lib/postgresql/18/docker ... ok
+2026-11-07T19:05:45.3326506Z  creating subdirectories ... ok
+2026-11-07T19:05:45.3327064Z  selecting dynamic shared memory implementation ... posix
+2026-11-07T19:05:45.3327566Z  selecting default "max_connections" ... 100
+2026-11-07T19:05:45.3328011Z  selecting default "shared_buffers" ... 128MB
+2026-11-07T19:05:45.3328703Z  selecting default time zone ... Etc/UTC
+2026-11-07T19:05:45.3329114Z  creating configuration files ... ok
+2026-11-07T19:05:45.3329511Z  running bootstrap script ... ok
+2026-11-07T19:05:45.3329934Z  performing post-bootstrap initialization ... ok
+2026-11-07T19:05:45.3330306Z  syncing data to disk ... ok
+2026-11-07T19:05:45.3330540Z  
+2026-11-07T19:05:45.3330715Z  
+2026-11-07T19:05:45.3330943Z  Success. You can now start the database server using:
+2026-11-07T19:05:45.3331228Z  
+2026-11-07T19:05:45.3331483Z      pg_ctl -D /var/lib/postgresql/18/docker -l logfile start
+2026-11-07T19:05:45.3331777Z  
+2026-11-07T19:05:45.3332373Z  waiting for server to start....2026-11-07 19:04:05.734 UTC [54] LOG:  starting PostgreSQL 18.6 (Debian 18.6-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+2026-11-07T19:05:45.3333159Z  2026-11-07 19:04:05.735 UTC [54] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-11-07T19:05:45.3333674Z  2026-11-07 19:04:05.738 UTC [60] LOG:  database system was shut down at 2026-11-07 19:04:05 UTC
+2026-11-07T19:05:45.3334146Z  2026-11-07 19:04:05.741 UTC [54] LOG:  database system is ready to accept connections
+2026-11-07T19:05:45.3334493Z   done
+2026-11-07T19:05:45.3334685Z  server started
+2026-11-07T19:05:45.3334885Z  
+2026-11-07T19:05:45.3335200Z  /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+2026-11-07T19:05:45.3335559Z  
+2026-11-07T19:05:45.3335806Z  2026-11-07 19:04:05.849 UTC [54] LOG:  received fast shutdown request
+2026-11-07T19:05:45.3336285Z  waiting for server to shut down....2026-11-07 19:04:05.856 UTC [54] LOG:  aborting any active transactions
+2026-11-07T19:05:45.3337073Z  2026-11-07 19:04:05.858 UTC [54] LOG:  background worker "logical replication launcher" (PID 63) exited with exit code 1
+2026-11-07T19:05:45.3337569Z  2026-11-07 19:04:05.858 UTC [58] LOG:  shutting down
+2026-11-07T19:05:45.3337942Z  2026-11-07 19:04:05.858 UTC [58] LOG:  checkpoint starting: shutdown immediate
+2026-11-07T19:05:45.3338913Z  2026-11-07 19:04:05.861 UTC [58] LOG:  checkpoint complete: wrote 0 buffers (0.0%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.004 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/1761888, redo lsn=0/1761888
+2026-11-07T19:05:45.3339863Z  2026-11-07 19:04:05.868 UTC [54] LOG:  database system is shut down
+2026-11-07T19:05:45.3340165Z   done
+2026-11-07T19:05:45.3340355Z  server stopped
+2026-11-07T19:05:45.3340553Z  
+2026-11-07T19:05:45.3340794Z  PostgreSQL init process complete; ready for start up.
+2026-11-07T19:05:45.3341217Z  
+2026-11-07T19:05:45.3341535Z  WARNING: POSTGRES_HOST_AUTH_METHOD has been set to "trust". This will allow
+2026-11-07T19:05:45.3341992Z           anyone with access to the Postgres port to access your database without
+2026-11-07T19:05:45.3342411Z           a password, even if POSTGRES_PASSWORD is set. See PostgreSQL
+2026-11-07T19:05:45.3342751Z           documentation about "trust":
+2026-11-07T19:05:45.3343094Z           https://www.postgresql.org/docs/current/auth-trust.html
+2026-11-07T19:05:45.3343483Z           In Docker's default configuration, this is effectively any other
+2026-11-07T19:05:45.3343822Z           container on the same system.
+2026-11-07T19:05:45.3344074Z  
+2026-11-07T19:05:45.3344342Z           It is not recommended to use POSTGRES_HOST_AUTH_METHOD=trust. Replace
+2026-11-07T19:05:45.3344766Z           it with "-e POSTGRES_PASSWORD=password" instead to set a password in
+2026-11-07T19:05:45.3345112Z           "docker run".
+2026-11-07T19:05:45.3345374Z  ********************************************************************************
+2026-11-07T19:05:45.3345743Z  initdb: warning: enabling "trust" authentication for local connections
+2026-11-07T19:05:45.3346352Z  initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+2026-11-07T19:05:45.3355056Z  2026-11-07 19:04:05.969 UTC [1] LOG:  starting PostgreSQL 18.6 (Debian 18.6-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+2026-11-07T19:05:45.3355765Z  2026-11-07 19:04:05.969 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-11-07T19:05:45.3356204Z  2026-11-07 19:04:05.969 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2026-11-07T19:05:45.3356669Z  2026-11-07 19:04:05.970 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-11-07T19:05:45.3357399Z  2026-11-07 19:04:05.974 UTC [74] LOG:  database system was shut down at 2026-11-07 19:04:05 UTC
+2026-11-07T19:05:45.3357888Z  2026-11-07 19:04:05.977 UTC [1] LOG:  database system is ready to accept connections
+2026-11-07T19:05:45.3358368Z  2026-11-07 19:04:39.197 UTC [130] ERROR:  permission denied for schema ardesia_next at character 14
+2026-11-07T19:05:45.3358866Z  2026-11-07 19:04:39.197 UTC [130] STATEMENT:  CREATE TABLE ardesia_next.forbidden(id int)
+2026-11-07T19:05:45.3359306Z  2026-11-07 19:04:40.267 UTC [133] ERROR:  synthetic write failure
+2026-11-07T19:05:45.3359760Z  2026-11-07 19:04:40.267 UTC [133] CONTEXT:  PL/pgSQL function ardesia_next.test_fail_write() line 1 at RAISE
+2026-11-07T19:05:45.3360403Z  2026-11-07 19:04:40.267 UTC [133] STATEMENT:  UPDATE ardesia_next.workspaces SET snapshot=$1::jsonb,revision=revision+1,updated_at=now()
+2026-11-07T19:05:45.3360941Z  	        WHERE id=$2 AND revision=$3 RETURNING revision
+2026-11-07T19:05:45.3361282Z  2026-11-07 19:04:44.789 UTC [132] ERROR:  synthetic delete failure
+2026-11-07T19:05:45.3361746Z  2026-11-07 19:04:44.789 UTC [132] CONTEXT:  PL/pgSQL function ardesia_next.fail_audio_delete() line 1 at RAISE
+2026-11-07T19:05:45.3362306Z  2026-11-07 19:04:44.789 UTC [132] STATEMENT:  DELETE FROM ardesia_next.recording_parts WHERE recording_id=$1
+2026-11-07T19:05:45.3362787Z  2026-11-07 19:04:46.815 UTC [72] LOG:  checkpoint starting: immediate force wait
+2026-11-07T19:05:45.3363787Z  2026-11-07 19:04:47.379 UTC [72] LOG:  checkpoint complete: wrote 4890 buffers (29.8%), wrote 4 SLRU buffers; 0 WAL file(s) added, 0 removed, 2 recycled; write=0.515 s, sync=0.045 s, total=0.565 s; sync files=1580, longest=0.020 s, average=0.001 s; distance=28111 kB, estimate=28111 kB; lsn=0/32D5808, redo lsn=0/32D57B0
+2026-11-07T19:05:45.3364799Z  2026-11-07 19:04:49.625 UTC [150] ERROR:  synthetic restore failure
+2026-11-07T19:05:45.3365256Z  2026-11-07 19:04:49.625 UTC [150] CONTEXT:  PL/pgSQL function ardesia_next.reject_restore() line 1 at RAISE
+2026-11-07T19:05:45.3366073Z  2026-11-07 19:04:49.625 UTC [150] STATEMENT:  INSERT INTO ardesia_next.workspaces(id,owner_account_id,title,revision,snapshot,created_at,updated_at)
+2026-11-07T19:05:45.3366641Z  	        VALUES ($1,$2,$3,$4,$5::jsonb,$6,$7)
+2026-11-07T19:05:45.3367087Z  2026-11-07 19:04:50.432 UTC [72] LOG:  checkpoint starting: immediate force wait
+2026-11-07T19:05:45.3368061Z  2026-11-07 19:04:50.436 UTC [72] LOG:  checkpoint complete: wrote 9 buffers (0.1%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.005 s; sync files=10, longest=0.001 s, average=0.001 s; distance=4995 kB, estimate=25800 kB; lsn=0/37B6450, redo lsn=0/37B63F8
+2026-11-07T19:05:45.3369018Z  2026-11-07 19:05:34.298 UTC [72] LOG:  checkpoint starting: immediate force wait
+2026-11-07T19:05:45.3369973Z  2026-11-07 19:05:34.303 UTC [72] LOG:  checkpoint complete: wrote 31 buffers (0.2%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.001 s, total=0.005 s; sync files=30, longest=0.001 s, average=0.001 s; distance=4916 kB, estimate=23711 kB; lsn=0/3C835C0, redo lsn=0/3C83568
+2026-11-07T19:05:45.3370920Z  2026-11-07 19:05:40.415 UTC [72] LOG:  checkpoint starting: immediate force wait
+2026-11-07T19:05:45.3371848Z  2026-11-07 19:05:40.422 UTC [72] LOG:  checkpoint complete: wrote 115 buffers (0.7%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.002 s, sync=0.002 s, total=0.007 s; sync files=37, longest=0.001 s, average=0.001 s; distance=5750 kB, estimate=21915 kB; lsn=0/4220ED8, redo lsn=0/4220E80
+2026-11-07T19:05:45.3377711Z Stop and remove container: 8b4e132b58af4129aa27790358ef536b_postgres18_0f582d
+2026-11-07T19:05:45.3381638Z ##[command]/usr/bin/docker rm --force f9b415cde5afbc183ee3457dd5556936864dc34d4a5894697a7a948c606d93a3
+2026-11-07T19:05:45.5460983Z f9b415cde5afbc183ee3457dd5556936864dc34d4a5894697a7a948c606d93a3
+2026-11-07T19:05:45.5489637Z Remove container network: github_network_3df3125f588b489b9e1d6c53128d9a4a
+2026-11-07T19:05:45.5493633Z ##[command]/usr/bin/docker network rm github_network_3df3125f588b489b9e1d6c53128d9a4a
+2026-11-07T19:05:45.6353989Z github_network_3df3125f588b489b9e1d6c53128d9a4a
+2026-11-07T19:05:45.6427207Z Cleaning up orphan processes
+2026-11-07T19:05:45.6738726Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

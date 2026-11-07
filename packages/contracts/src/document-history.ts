@@ -1,4 +1,4 @@
-import {canonicalJson, CoreError, CoreEventSchema, EducationalObjectSchema, LessonDocumentSchema, type CoreEvent, type LessonDocument} from './index';
+import {canonicalJson, CoreError, CoreEventSchema, EducationalObjectSchema, LessonDocumentSchema, type CoreEvent, type LessonDocument} from './index.ts';
 
 const record = (value: unknown): value is Record<string, unknown> => !!value && typeof value === 'object' && !Array.isArray(value);
 function invalid(): never {throw new CoreError('INVALID_SNAPSHOT', 'Exact replay requires the complete, coherent authorized document history.');}

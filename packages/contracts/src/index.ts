@@ -1,14 +1,14 @@
 import { z } from 'zod';
-import {MaterialDataSchema, InkAnchorSchema} from './materials';
-export * from './materials';
-import {ExtensionDataSchema} from './extensions';
-export * from './extensions';
-export * from './recordings';
-export * from './courses';
-export * from './tutor';
-import {TutorRecordSchema, TutorEventSchema, TutorReceiptSchema} from './tutor';
-export {projectDocumentRevision} from './document-history';
-import {CourseSchema, CourseEditionSchema, CourseDeliverySchema, CourseWorkSchema, CourseEventSchema, CourseReceiptSchema} from './courses';
+import {MaterialDataSchema, InkAnchorSchema} from './materials.ts';
+export * from './materials.ts';
+import {ExtensionDataSchema} from './extensions.ts';
+export * from './extensions.ts';
+export * from './recordings.ts';
+export * from './courses.ts';
+export * from './tutor.ts';
+import {TutorRecordSchema, TutorEventSchema, TutorReceiptSchema} from './tutor.ts';
+export {projectDocumentRevision} from './document-history.ts';
+import {CourseSchema, CourseEditionSchema, CourseDeliverySchema, CourseWorkSchema, CourseEventSchema, CourseReceiptSchema} from './courses.ts';
 
 export const CONTRACT_VERSION = '0.10.0' as const;
 export const SNAPSHOT_VERSION = 9 as const;
@@ -815,7 +815,7 @@ export class CoreError extends Error {
 }
 
 
-export * from './programs';
+export * from './programs.ts';
 
 /** Resolve page-anchored ink without mutating persisted geometry or source bytes. */
 export function materialPosition<T extends NewEducationalObject | EducationalObject>(object: T, objects: readonly (NewEducationalObject | EducationalObject)[]): T {

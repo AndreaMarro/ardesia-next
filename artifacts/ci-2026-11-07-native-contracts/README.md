@@ -1,0 +1,13 @@
+# Correzione dei contratti Node e della fixture storica
+
+La [CI 114](https://github.com/AndreaMarro/ardesia-next/actions/runs/42404357685), sul commit `474650e235a5317d74dccbed40158c908154b1cd` e digest `0c4c2493…`, ha superato Verify 8/8 e 558/558 test. Il successivo collector operatore si è fermato prima delle operazioni sul database: il loader nativo Node24 non risolveva gli import relativi senza estensione del grafo `@ardesia/contracts`, che Vite invece risolveva. Log e sei report originali sono conservati; lo ZIP originale GitHub aveva SHA-256 `324cb2a933244b555867dc9d47e47de39da630741eeb894a5d3214aeb4b79a8d`. Non viene duplicato l'archivio di 74 MB contenente le consegne precedenti.
+
+Il delta rende esplicita l'estensione .ts nei 13 specifier dei tre file coinvolti, coerentemente con Node24 e il tsconfig esistente. Non cambia schema, API o regole del dominio. Un test del vero entry point pubblico è eseguito da Node dentro il gate Verify esistente, senza loader Vite e senza import privati.
+
+La prova locale successiva ha poi rivelato una fixture v1–v3 che sottraeva pochi campi al Core attuale ma lasciava tutorRecords e strutture corso moderne: il parser storico strict la respingeva. Il collector ora genera esattamente i campi storici workspaceId/documents/events/receipts, aggiungendo installations solo per v3. Non si allenta il parser né si riscrivono dati reali. Sono invariate le controprove di byte archiviati, ricevute originali non nulle, revisione, reset del consenso, duplicati 409 e mismatch ownership 409. Il primo tentativo fallito è conservato.
+
+Sorgente finale locale `dff30dd433249225ded2f9bb5ba3af2292d9a379de5de015b14ba359bca96b91`, HEAD base `474650e` più working tree: **Verify 8/8, 558/558 test, server 5/5, MCP 15/15, budget PASS**. In più: **collector operatore con quattro controprove e import 1/2/3 PASS**, benchmark PostgreSQL PASS su cinque dimensioni e due casi di contesa. Questi extra sono eseguiti su un nuovo cluster sintetico PostgreSQL 16.14 loopback, poi fermato; la CI usa PostgreSQL 18 separatamente. Il benchmark è una prova limitata di Core/PostgreSQL, senza HTTP/TLS/rendering, non una stima di capacità produttiva.
+
+Nessun nuovo test browser locale viene attribuito a questo digest: i 12 test programmi appartengono a `0c4c2493` e i 191 della consegna applicativa a `290f597d`. La CI finale della [PR #50](https://github.com/AndreaMarro/ardesia-next/pull/50) esegue la suite completa e riferisce il proprio commit. La [review indipendente](review.md) delimita il verdetto locale; il nuovo esito CI è documentato nella PR.
+
+Prodotto **NOT_COMPLETE**, nessun merge o deploy remoto. Le prove originali restano legate a sorgente/ambiente/tentativo; non vengono rietichettate con il commit successivo.

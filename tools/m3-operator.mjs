@@ -91,8 +91,11 @@ export async function collectOperatorAcceptance({current, deployment, browser, e
       if (version === 3) for (const spec of [{kind: 'install-plugin', expectedRevision: 0, release},
         {kind: 'consent-plugin', expectedRevision: 1, releaseDigest: release.bundleDigest, capabilities: release.capabilities},
         {kind: 'activate-plugin', expectedRevision: 2}]) await local.executePlugin(actor, {...spec, commandId: randomUUID(), pluginId: release.pluginId});
-      const sourceSnapshot = local.snapshot(), {assignments, learnerWork, installations, ...old} = sourceSnapshot;
-      const snapshotText = JSON.stringify({...old, schemaVersion: version, ...(version === 3 ? {installations} : {})}, null, 2);
+      const sourceSnapshot = local.snapshot(), {workspaceId: legacyWorkspaceId, documents, events, receipts, installations} = sourceSnapshot;
+      // Author the actual historical wire shape. Removing a few current fields
+      // would let every new Core projection silently invalidate this fixture.
+      const snapshotText = JSON.stringify({schemaVersion: version, workspaceId: legacyWorkspaceId, documents, events, receipts,
+        ...(version === 3 ? {installations} : {})}, null, 2);
       const value = {action: 'import-local', expectedAccountId: teacher.id, commandId: randomUUID(), title: `QA import ${version}`, snapshotText};
       const imported = await request(value, teacher); need(imported.status === 200);
       const workspaceId = imported.body.result.workspaceId;

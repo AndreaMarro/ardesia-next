@@ -1,0 +1,344 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-ci114-native-contracts-fix-review",
+  "generatedAt": "2026-11-07T19:15:31.351728+00:00",
+  "reviewer": "/root/board_review",
+  "author": "/root",
+  "verdict": "PASS_BOUNDED_LOCAL_NATIVE_CONTRACTS_FIX",
+  "localPatchPass": true,
+  "publishedCiPass": false,
+  "openFindings": [],
+  "context": {
+    "independentNonAuthorContext": true,
+    "readOnly": "Instructional restriction, not a technical ACL. No tests, services, installs, Git, remote operations, source/index writes or agent delegation performed. Only this Markdown/JSON review written.",
+    "approvalLimit": "Not human scientific/editorial/device approval."
+  },
+  "reviewedSource": {
+    "sourceDigest": "dff30dd433249225ded2f9bb5ba3af2292d9a379de5de015b14ba359bca96b91",
+    "files": 431,
+    "independentlyConfirmed": true,
+    "baseHeadFromParentAndReports": "474650e235a5317d74dccbed40158c908154b1cd",
+    "baseSourceDigest": "0c4c2493f19cd14835d38c7d900725fae1ed4af0b2d03c3ae3b4f361f7e9fdee",
+    "baseFiles": 430,
+    "publicationCommit": "NOT_OBSERVED",
+    "qualification": "Report commit identifies base HEAD plus working tree, not the future commit containing the correction. Exact reviewed bytes bind via sourceDigest."
+  },
+  "rawDiff": {
+    "path": "work/ci-contracts-candidate.patch",
+    "sha256": "cb104b284d276b0e2f6028dfa6a21eaea384e49be67a0e5dfeb8537c8499a6d8",
+    "origin": "Author-supplied diff against HEAD474650e. No reviewer Git execution.",
+    "validation": "Every final/context hunk matches current bytes; reversing seven files in memory reconstructs430 files and sourceDigest0c4c2493… exactly."
+  },
+  "changedSourceFiles": [
+    {
+      "path": "docs/handoffs/2026-11-07.md",
+      "bytes": 11690,
+      "sha256": "82aed0a84970dc3a8f89c6a58699df7728d0107f8e0c1029487b6a358add7566"
+    },
+    {
+      "path": "packages/contracts/src/document-history.ts",
+      "bytes": 4717,
+      "sha256": "b29b77cb6e52e638470ab7f13c7df584e38fba8c70d53d72e8813d08cc0b0faa"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "bytes": 50793,
+      "sha256": "777386f6181ae0980130df1af94799b5d103f1d136ce8b4800c952cc049b5232"
+    },
+    {
+      "path": "packages/contracts/src/programs.ts",
+      "bytes": 1957,
+      "sha256": "466df56aad0428d9c25a7e7deee64cd98b0719048040d0dbb4fccb5a1093d160"
+    },
+    {
+      "path": "tools/contracts-runtime.test.mjs",
+      "bytes": 689,
+      "sha256": "beaf21baf13e065442e8492549c4860701e041282f29112d1146fe5e72ab3159"
+    },
+    {
+      "path": "tools/m3-operator.mjs",
+      "bytes": 11553,
+      "sha256": "47d38b27863c05929c091a523642d6e82001d19ed36597c64d2b4d9001dbf300"
+    },
+    {
+      "path": "tools/status.test.mjs",
+      "bytes": 21991,
+      "sha256": "3d064649c8f9258033aa9ca4b5f2798f424b69a129afad890c1c23234814c69c"
+    }
+  ],
+  "diagnosis": {
+    "ci114": {
+      "commit": "474650e235a5317d74dccbed40158c908154b1cd",
+      "node": "24.22.2",
+      "failure": "ERR_MODULE_NOT_FOUND: packages/contracts/src/materials imported without extension from index.ts during static loading of qa-integration.mjs, before its DB code.",
+      "priorVerify": "8/8 and558/558 on prior source; not final CI PASS."
+    },
+    "localIntermediate": {
+      "sourceDigest": "ba6e618f13244260d0039d33c10e4e923614a6c1b5f3b94dfbcc94eff69c3b0a",
+      "qa": "FAILED; original generic failure log retained",
+      "benchmark": "PASS on intermediate source only",
+      "cause": "Old fixture removed assignments/learnerWork/installations from current snapshot but retained tutorRecords and course projections; migration guards and strict historical schema reject such falsely labelled v1-v3 data. Static code supports root diagnosis; reviewer did not rerun the failed collector."
+    }
+  },
+  "criteria": [
+    {
+      "criterion": "Native public contract graph resolves without bundler",
+      "status": "PASS_LOCAL",
+      "evidence": "All13 production relative specifiers now use explicit.ts and existing files. Public package export remains src/index.ts; unchanged tsconfig already enables allowImportingTsExtensions/noEmit. Native test imports only @ardesia/contracts."
+    },
+    {
+      "criterion": "No schema/API/limit changes",
+      "status": "PASS_STATIC",
+      "evidence": "Contract-file diff changes13 string specifiers only. No schema field, validation, migration, export name or numeric limit changes."
+    },
+    {
+      "criterion": "Regression test covers the actual failing boundary",
+      "status": "PASS_LOCAL",
+      "evidence": "Static public import traverses all reachable runtime imports/re-exports in native Node, before test assertions. Basic canonical JSON/program schema/projector export checks run; Verify release-evidence invokes node tools/status.test.mjs which imports this test. Original CI supplies module-resolution failure; no reviewer red rerun claimed."
+    },
+    {
+      "criterion": "Legacy fixture represents actual historical schema",
+      "status": "PASS_LOCAL",
+      "evidence": "Explicit schemaVersion/workspaceId/documents/events/receipts, plus installations only forv3, matches existing strict v1/v2 andv3 schemas. Actual v3 install/consent/activate events remain; archived bytes, original receipt prefix, revision, consent reset, duplicate and ownership refusals unchanged."
+    },
+    {
+      "criterion": "QA and benchmark complete on final source",
+      "status": "PASS_LOCAL",
+      "evidence": "QA four checks and imports1/2/3 pass on dff30dd…; four nested artifactDigest values independently recomputed. Final benchmark reports same digest and passed:true; intermediate ba6 evidence not transferred."
+    },
+    {
+      "criterion": "Verify on final frozen source including docs",
+      "status": "PASS_LOCAL",
+      "evidence": "8/8,558/558, added Node test within release-evidence, server5/MCP15, fresh build matching dff30dd…; unit parsed-JSON digest independently matches report."
+    }
+  ],
+  "localVerification": {
+    "sourceDigest": "dff30dd433249225ded2f9bb5ba3af2292d9a379de5de015b14ba359bca96b91",
+    "verifyPassed": 8,
+    "unitPassed": 558,
+    "unitFailed": 0,
+    "unitPending": 0,
+    "nativeContractsTestPassed": true,
+    "nativeTestLocation": "release-evidence Node gate; not counted as an extra Vitest test",
+    "serverPassed": 5,
+    "mcpPassed": 15,
+    "unitParsedDigest": "531a827d40ef84356a9dc52b766cd0bc84cdf4eb4af267b1e0b9f2c0cabc2f0b",
+    "unitParsedDigestIndependentlyConfirmed": true,
+    "qaChecks": [
+      "backupRestore",
+      "expired",
+      "outage",
+      "import"
+    ],
+    "qaNestedDigestsIndependentlyConfirmed": 4,
+    "qaImportVersions": [
+      1,
+      2,
+      3
+    ],
+    "qaM3Acceptance": "NOT_EVALUATED",
+    "benchmarkPassed": true,
+    "browserOnThisSource": "NOT_RUN_LOCALLY; FINAL_CI_PENDING",
+    "evidenceOrigin": "Author ran all tests/builds/DB workflows; reviewer read source, raw results and checked hashes only."
+  },
+  "qaObserved": {
+    "backupDigestMatches": true,
+    "expiredStatus": 401,
+    "outageStatus": 503,
+    "recoveredStatus": 200,
+    "stateDigestUnchangedAcrossOutage": true,
+    "importVersions": [
+      {
+        "version": 1,
+        "bytesMatch": true,
+        "nonNullReceiptsDigestMatch": true,
+        "beforeRevision": 1,
+        "afterRevision": 1,
+        "consentReset": true,
+        "duplicateStatus": 409,
+        "ownershipMismatchStatus": 409
+      },
+      {
+        "version": 2,
+        "bytesMatch": true,
+        "nonNullReceiptsDigestMatch": true,
+        "beforeRevision": 1,
+        "afterRevision": 1,
+        "consentReset": true,
+        "duplicateStatus": 409,
+        "ownershipMismatchStatus": 409
+      },
+      {
+        "version": 3,
+        "bytesMatch": true,
+        "nonNullReceiptsDigestMatch": true,
+        "beforeRevision": 1,
+        "afterRevision": 1,
+        "consentReset": true,
+        "duplicateStatus": 409,
+        "ownershipMismatchStatus": 409
+      }
+    ]
+  },
+  "benchmarkObserved": {
+    "measuredBoundary": "authenticated PostgresStore command/read including Core validation and authorized projections; HTTP, TLS and browser rendering excluded",
+    "percentileMethod": "nearest-rank; bounded smoke workload, not a capacity or production latency estimate",
+    "profiles": {
+      "strokeScale": {
+        "assignedStudents": 1,
+        "strokes": [
+          8,
+          32,
+          128
+        ]
+      },
+      "studentScale": {
+        "inkStrokes": 128,
+        "assignedStudents": [
+          1,
+          8,
+          24
+        ]
+      }
+    },
+    "measurements": 5,
+    "sameWorkspace": {
+      "successful": 4,
+      "conflicts": 28
+    },
+    "independentWorkspaces": {
+      "successful": 32,
+      "conflicts": 0
+    },
+    "monitoring": {
+      "sampleIntervalMs": 5,
+      "samples": 1504,
+      "maxDatabaseConnections": 5,
+      "maxLockWaiters": 4,
+      "maxPoolConnections": 5,
+      "maxPoolWaiters": 3,
+      "missedSamples": 465
+    },
+    "scope": "Smoke evidence that CLI/consumer executes; not acceptance of production capacity or latency."
+  },
+  "toolchain": {
+    "localServerMcpNodeObserved": "24.22.1",
+    "failedCiNodeObserved": "24.22.2",
+    "localQaPostgresFromAuthor": "16.14 on dedicated loopback port55439",
+    "ciPostgresFromWorkflow": "18",
+    "vitest": "5.0.5",
+    "vite": "8.3.5",
+    "databaseAccessByReviewer": false
+  },
+  "pendingGates": [
+    "Publish correction and bind immutable new commit to reviewed sourceDigest.",
+    "Observe complete final CI on new commit including Verify,QA,benchmark and full browser suite."
+  ],
+  "limits": [
+    "Local PostgreSQL16.14 is not CI PostgreSQL18 acceptance.",
+    "No new local browser run claimed or required for this narrow review; previous191 or12 browser results are not reassigned.",
+    "Intermediate failed QA and ba6 benchmark are retained, not relabelled as final successes.",
+    "Product NOT_COMPLETE; deployment NOT_VERIFIED_FOR_CURRENT_COMMIT; no merge/deploy assessed.",
+    "No weakening of strict legacy parsers or removal of existing QA assertions.",
+    "Observed Vite WebSocket24678 warning does not alter completed positive checks; no warning-free claim."
+  ],
+  "evidenceRead": [
+    {
+      "path": "artifacts/verification.json",
+      "bytes": 1072,
+      "sha256": "e185049838238a3ab63794c920d42ab1c873c6fb7ce7326927036bf059f48a60"
+    },
+    {
+      "path": "artifacts/unit.json",
+      "bytes": 234183,
+      "sha256": "531a827d40ef84356a9dc52b766cd0bc84cdf4eb4af267b1e0b9f2c0cabc2f0b"
+    },
+    {
+      "path": "artifacts/server-runtime.json",
+      "bytes": 929,
+      "sha256": "71fbeeb9cfb3ae044d432fb958dadd37d424a2ca723e17193f54304a19e3b907"
+    },
+    {
+      "path": "artifacts/mcp-runtime.json",
+      "bytes": 2584,
+      "sha256": "df8ad536b46885884d769ef6cd77b93ee0742ded55ec3650f3b5475d33ba6af6"
+    },
+    {
+      "path": "artifacts/m3-operator-contract.json",
+      "bytes": 4217,
+      "sha256": "b7552fd32a93a9d9a9b2a91c25782cb4cbb7e02ab8f2ef9c0172f435feb2389f"
+    },
+    {
+      "path": "artifacts/benchmark.json",
+      "bytes": 5225,
+      "sha256": "6f5fcb80c68faa5e1e3e283b81e2c8548cb5f195b2dd9ac33525dcbff15c5b1c"
+    },
+    {
+      "path": "apps/web/dist/build-info.json",
+      "bytes": 507,
+      "sha256": "9634f32ae162e023114be01638dbce0d6a75a3c11fd4b2cfbe06bffeb40022e1"
+    },
+    {
+      "path": "work/ci-run-114.log",
+      "bytes": 124765,
+      "sha256": "a3d9f0448a8248372b6026f191c4d1517e60a4e9a9ee37e4db1a82bf0806fd8c"
+    },
+    {
+      "path": "work/ci-contracts-candidate.patch",
+      "bytes": 8837,
+      "sha256": "cb104b284d276b0e2f6028dfa6a21eaea384e49be67a0e5dfeb8537c8499a6d8"
+    },
+    {
+      "path": "work/ci-contracts-native.log",
+      "bytes": 211,
+      "sha256": "f59f1e7c16e6005a3642ed4883967181d0f8a2aea3e5f795237574ce72c3e3ae"
+    },
+    {
+      "path": "work/ci-contracts-qa.log",
+      "bytes": 79,
+      "sha256": "6d72985ae5ab38d3f24e44c60631c29a3c260f556b203e312c61fba900f31bb5"
+    },
+    {
+      "path": "work/ci-contracts-qa-corrected.log",
+      "bytes": 136,
+      "sha256": "96b045e3eb78f71495ec0a43ec869711aaf8b8a5cfdc875dd654e139b4e0f5d8"
+    },
+    {
+      "path": "work/ci-contracts-benchmark.log",
+      "bytes": 3620,
+      "sha256": "dace7c7676d67b8ab8d1b7670a77a79e9bb3ca23062c3f4e651c0fb4708b6066"
+    },
+    {
+      "path": "work/ci-contracts-benchmark-corrected.log",
+      "bytes": 3626,
+      "sha256": "238b7fb26f49b6b875dc5e9d13d7198304ef37c539dcf44bc0766459e9dab9ce"
+    },
+    {
+      "path": "work/ci-contracts-setup.log",
+      "bytes": 66,
+      "sha256": "197cf889305ab4642d11d3574593d907dad6f1522c81b8c9384b02f4edf9e13d"
+    },
+    {
+      "path": "work/ci-contracts-verify.log",
+      "bytes": 36590,
+      "sha256": "49d77e18d3fa717adf4805f134e524c473133136b38e88c79298425483b9a10f"
+    }
+  ],
+  "additionalSourceRead": [
+    "packages/contracts/AGENTS.md",
+    "packages/contracts/package.json",
+    "tsconfig.json",
+    "tools/verify.mjs",
+    "tools/qa-integration.mjs",
+    ".github/workflows/verify.yml",
+    "contracts historical schemas/migration guards",
+    "operator collector surrounding counterproofs"
+  ],
+  "commandsUsed": [
+    "rg/cat/sed/tail bounded read-only source and log inspection",
+    "Python source hash and in-memory reverse-diff reconstruction",
+    "Node read-only parsed-JSON and nested artifactDigest recomputation",
+    "shasum file hashes",
+    "Python write of only ci-114-fix-review.md and .json"
+  ]
+}
