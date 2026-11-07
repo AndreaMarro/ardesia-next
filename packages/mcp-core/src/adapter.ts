@@ -1,6 +1,6 @@
 import {createHash, randomUUID} from 'node:crypto';
 import {z} from 'zod';
-import {projectDocumentRevision, RecordingStateSchema, RecordingSummarySchema, RecordingSearchSchema, RecordingCommandSchema, RecordingReceiptSchema, type RecordingState, type RecordingCommand} from '@ardesia/contracts';
+import {projectDocumentRevision,objectSearchText,searchTextExcerpt, RecordingStateSchema, RecordingSummarySchema, RecordingSearchSchema, RecordingCommandSchema, RecordingReceiptSchema, type RecordingState, type RecordingCommand} from '@ardesia/contracts';
 import {materialPage, MaterialStateSchema, WorkspaceAccessSchema, ownsWorkspace, TutorSpaceSchema, TutorCommandSchema, TutorReceiptSchema, tutorTarget, type TutorCommand, CourseSchema, CourseEditionSchema, CourseAuthorCommandSchema, CourseReceiptSchema, courseTarget, type CourseAuthorCommand, ActorSchema, canonicalJson, CommandReceiptSchema, CoreCommandSchema, CoreEventSchema,
   EducationalObjectSchema, LessonDocumentSchema, type Actor, type CoreCommand, type LessonDocument} from '@ardesia/contracts';
 import {ConfigSchema, fail, id, revision, type McpConfig} from './config';
@@ -163,11 +163,9 @@ export function createAdapter(input: McpConfig, options: {beforeWrite?: () => Pr
         const base = {documentId: doc.id, documentRevision: doc.revision, status: doc.status};
         if (normalized(doc.title).includes(query)) matches.push({...base, kind: 'document', title: doc.title});
         for (const object of doc.objects) {
-          const text = object.type === 'note' ? object.data.text : object.type === 'formula' ? object.data.latex + ' ' + object.data.description
-            : object.type === 'source' ? object.data.publisher + ' ' + object.data.locator : '';
-          const haystack = normalized(object.title + ' ' + text), position = haystack.indexOf(query);
-          if (position >= 0) matches.push({...base, kind: 'object', objectId: object.id, objectRevision: object.revision,
-            type: object.type, title: object.title, excerpt: (object.title + ' ' + text).slice(Math.max(0, position - 40), position + 200),
+          const excerpt=searchTextExcerpt(objectSearchText(object),args.query);
+          if (excerpt!==null) matches.push({...base, kind: 'object', objectId: object.id, objectRevision: object.revision,
+            type: object.type, title: object.title, excerpt,
             provenance: object.provenance});
         }
       }

@@ -6,7 +6,7 @@ import {chmod, mkdtemp, rm, symlink, writeFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {execFileSync} from 'node:child_process';
-import {canonicalJson, type CoreCommand} from '@ardesia/contracts';
+import {canonicalJson,extensionDefinitionDigest,type ExtensionDefinition, type CoreCommand} from '@ardesia/contracts';
 import {ConfigSchema, readConfig, validOrigin, type McpConfig} from './config';
 import {createAdapter, PREVIEW_TTL_MS} from './adapter';
 import {MAX_RESPONSE_BYTES, post} from './http';
@@ -90,6 +90,17 @@ describe('MCP private configuration and transport', () => {
 });
 
 describe('MCP authorized projections and immutable editing envelopes', () => {
+  it('finds nested authored content in an unknown Creator type with current exact revisions',async()=>{
+    const definition:ExtensionDefinition={format:'ardesia-extension/1',typeId:'personal.new-type',version:1,name:'Esperimento',description:'',license:'CC0',renderer:'personal.renderer/1',fallback:'Dati portabili',body:{}};
+    actionResults['open-workspace']={...initial,documents:[{...doc,objects:[{...object,id:'custom',type:'extension',data:{definition,definitionDigest:await extensionDefinitionDigest(definition),state:{rows:[{notes:'Introduzione. '.repeat(50)+'Frazione di tempo acceso: ＡＢＣ'}]}}}]}]};
+    const adapter=createAdapter(config),found=await adapter.search({workspaceId:'workspace',query:'frazione   di tempo acceso',offset:0,limit:10});
+    expect(found.matches).toHaveLength(1);expect(found.matches[0]).toMatchObject({objectId:'custom',objectRevision:2,documentId:'lesson',documentRevision:3,excerpt:expect.stringContaining('Frazione di tempo acceso')});
+    expect((await adapter.search({workspaceId:'workspace',query:'abc',offset:0,limit:10})).matches).toHaveLength(1);
+    expect((await adapter.search({workspaceId:'workspace',query:'PRIVATE_STUDENT_SECRET',offset:0,limit:10})).matches).toEqual([]);
+    await expect(adapter.search({workspaceId:'other',query:'frazione',offset:0,limit:10})).rejects.toMatchObject({code:'SCOPE_REJECTED'});
+    actionResults['open-workspace']=initial;
+    expect((await adapter.search({workspaceId:'workspace',query:'frazione',offset:0,limit:10})).matches).toEqual([]);
+  });
   it('scopes listing and refuses out-of-scope requests before any upstream access', async () => {
     const adapter = createAdapter(config);
     expect((await adapter.list()).workspaces.map(item => item.workspaceId)).toEqual(['workspace']);

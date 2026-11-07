@@ -6,7 +6,7 @@ import {AudioSession} from './recordings/AudioSession';
 import {HandoutView} from './handout/HandoutView';
 import {prepareHandout} from './handout/prepare';
 import type {Handout} from '@ardesia/lesson-os';
-import type {AudioCapture} from './recordings/capture';
+import type {AudioCapture, CaptureStatus} from './recordings/capture';
 import type {RecordingAccess} from '@ardesia/remote-client';
 import type {LessonDocument} from '@ardesia/contracts';
 import {useLayoutEffect, useMemo, useRef, useState} from 'react';
@@ -26,10 +26,11 @@ import {Dialog} from './components/Dialog';
 import {createFirstPartyLab, firstPartyLabName, type LabCondition} from './plugins/first-party';
 
 type Mode = 'board' | 'notebook' | 'reader';
-export function App({core, actor, onEdit, saveStatus, onAccount, onExport, onCourses, onTutor, onKnowledge, workspaceId, pending = [], offlineControl, recordingAccess, sourceRevision,inkRecovery}: {inkRecovery?: RemoteClient['inkRecovery']; onTutor?: () => void; onCourses?: () => void; onKnowledge?: () => void; sourceRevision?: number; recordingAccess?: () => RecordingAccess; offlineControl?: (transition: (action: () => Promise<unknown>) => void) => import('react').ReactNode; pending?: readonly PendingCommand[]; workspaceId: string; core: CoreService; actor: Actor; onEdit: RemoteClient['edit']; saveStatus: string; onAccount: () => void; onExport: () => Promise<void>}) {
+export function App({core, actor, onEdit, saveStatus, onAccount, onExport, onCourses, onTutor, onKnowledge, workspaceId, pending = [], offlineControl, recordingAccess, sourceRevision,inkRecovery,initialSelection}: {initialSelection?:{documentId:string;objectId:string;objectRevision:number};inkRecovery?: RemoteClient['inkRecovery']; onTutor?: () => void; onCourses?: () => void; onKnowledge?: () => void; sourceRevision?: number; recordingAccess?: () => RecordingAccess; offlineControl?: (transition: (action: () => Promise<unknown>) => void) => import('react').ReactNode; pending?: readonly PendingCommand[]; workspaceId: string; core: CoreService; actor: Actor; onEdit: RemoteClient['edit']; saveStatus: string; onAccount: () => void; onExport: () => Promise<void>}) {
   const [importing,setImporting]=useState(false);
   const capture = useRef<AudioCapture | null>(null);
   const [audioBusy, setAudioBusy] = useState(false), [inkActive, setInkActive] = useState(false);
+  const [captureStatus,setCaptureStatus]=useState<CaptureStatus>('idle');
   const [replay, setReplay] = useState<LessonDocument | null>(null);
   const editorDirtyRef = useRef(false), inkActiveRef = useRef(false);
   const [version, setVersion] = useState(0);
@@ -38,17 +39,18 @@ export function App({core, actor, onEdit, saveStatus, onAccount, onExport, onCou
   const documents = useMemo(() => core.listDocuments(actor).sort((a,b) => b.updatedAt.localeCompare(a.updatedAt)), [core, actor.actorId, sourceRevision, version]);
   const navigationKey = `ardesia-next-document:${actor.actorId}:${workspaceId}`;
   let savedId: string | null = null; try {savedId = sessionStorage.getItem(navigationKey);} catch { /* Optional navigation. */ }
-  const initial = documents.find(document => document.id === savedId) ?? documents[0]!;
+  const initial = documents.find(document => document.id === initialSelection?.documentId) ?? documents.find(document => document.id === savedId) ?? documents[0]!;
+  const initialObject=initial.id===initialSelection?.documentId?initial.objects.find(object=>object.id===initialSelection.objectId&&object.revision===initialSelection.objectRevision):undefined;
   const [documentId, setDocumentId] = useState(initial.id);
   const [mode, setMode] = useState<Mode>('board');
-  const [selectedId, setSelectedId] = useState<string|null>(null);
-  const [inspectorOpen, setInspectorOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState<string|null>(initialObject?.id??null);
+  const [inspectorOpen, setInspectorOpen] = useState(!!initialObject);
   const [objectsOpen, setObjectsOpen] = useState(false);
   const [creator, setCreator] = useState<ExtensionObject | null | undefined>(undefined);
   const [creationId,setCreationId]=useState(()=>crypto.randomUUID());
   const [creatorDirty, setCreatorDirty] = useState(false);
   const [dialog, setDialog] = useState<DialogName | null>(null);
-  const [error, setError] = useState<string|null>(null);
+  const [error, setError] = useState<string|null>(initialSelection&&!initialObject?'L’oggetto scelto è cambiato o non è più disponibile. Seleziona la sua versione corrente dalla lezione.':null);
   const [undo, setUndo] = useState<EditCommand[]>([]);
   const [editorDirty, setEditorDirty] = useState(false);
   const [editorReset, setEditorReset] = useState(0);
@@ -123,7 +125,7 @@ export function App({core, actor, onEdit, saveStatus, onAccount, onExport, onCou
       onKnowledge={onKnowledge ? () => navigate(onKnowledge) : undefined}
       onModules={()=>navigate(()=>setDialog('modules'))} onSettings={()=>setDialog('settings')}
       onAccount={()=>navigate(onAccount)} onShare={actor.role === 'teacher' ? ()=>setSharing(true) : undefined} onHandout={openHandout}
-      audio={recordingAccess && <AudioSession key={document.id} access={recordingAccess} document={document} events={events} bridge={capture} onBusy={setAudioBusy} onReplay={frame => {
+      audio={recordingAccess && <AudioSession key={document.id} access={recordingAccess} document={document} events={events} bridge={capture} onBusy={setAudioBusy} onCaptureStatus={setCaptureStatus} onReplay={frame => {
         if (frame && (editorDirtyRef.current || inkActiveRef.current)) {setError('Salva o scarta la bozza e termina il tratto prima del replay.'); return false;}
         setReplay(frame); return true;
       }} canReplay={() => !editorDirtyRef.current && !inkActiveRef.current} replayBlocked={editorDirty || inkActive} inkActive={inkActive}/>} />
@@ -137,7 +139,7 @@ export function App({core, actor, onEdit, saveStatus, onAccount, onExport, onCou
       <div className="lesson-stage">
       {replay ? <Board key={'replay-' + replay.id} document={replay} selectedId={null} onSelect={() => {}} onMove={() => {}} onAdd={async () => {}} onInk={() => {}} onUndo={() => {}} canUndo={false} readOnlyObjects replayOnly/> : mode!=='reader' ? <Board key={document.id} appearance={mode} inkRecovery={inkRecovery} pendingRemovals={pendingRemovalsForDocument(pending,workspaceId,document.id)} onErase={objectId=>run({kind:'remove-object',objectId})} pendingObjects={pendingObjectsForDocument(pending, workspaceId, document.id)} document={document} selectedId={selectedId} onSelect={select}
         onMove={(id,x,y) => {const before=document.objects.find(o => o.id===id)!;void run({kind:'move-object',objectId:id,x,y},{kind:'move-object',objectId:id,x:before.x,y:before.y});}}
-        onAdd={add} onInkActiveChange={active => {inkActiveRef.current = active; setInkActive(active);}} onInk={(object, sampleTimes,recovered) => {if(!recovered)capture.current?.ink(object.id, sampleTimes); return run({kind:'add-object',object},{kind:'remove-object',objectId:object.id});}}
+        onAdd={add} writingStatus={captureStatus==='recording'?'Registrazione audio attiva · '+saveStatus:captureStatus==='requesting'?'Attesa microfono · '+saveStatus:captureStatus==='stopping'?'Salvataggio audio · '+saveStatus:saveStatus} onWritingMode={enter=>{if(inkActiveRef.current)return;const action=()=>{setInspectorOpen(false);setObjectsOpen(false);enter();};if(editorDirty||creatorDirty)setPendingNavigation(()=>action);else action();}} onInkActiveChange={active => {inkActiveRef.current = active; setInkActive(active);}} onInk={(object, sampleTimes,recovered) => {if(!recovered)capture.current?.ink(object.id, sampleTimes); return run({kind:'add-object',object},{kind:'remove-object',objectId:object.id});}}
         canUndo={undo.length>0} onUndo={() => {const last=undo.at(-1);if(last) void run(last).then(ok => {if(ok)setUndo(history=>history.slice(0,-1));});}}/>
         : <DocumentView document={document} mode={mode} onSelect={select}/>}
       {objectsOpen && <section id="lesson-objects" className="object-strip" aria-label="Fonti e oggetti"><div className="object-drawer-heading"><h2>Fonti e oggetti</h2><button className="icon-button" aria-label="Chiudi elenco oggetti" onClick={()=>setObjectsOpen(false)}><X size={18}/></button></div><div className="object-strip-items">{viewDocument.objects.map(object => {const Icon=icons[object.type];return <button key={object.id} disabled={!!replay} onClick={() => select(object.id)} aria-label={`Seleziona ${object.title}`}><span className={`mini-object type-${object.type}`}><Icon size={19}/></span><span><strong>{object.title}</strong><small>{object.type==='note'?'Nota testuale':object.type==='formula'?'Formula':object.type==='source'?'Collegamento':object.type==='lab'?'Laboratorio scientifico':object.type==='extension'?'Oggetto componibile':'Annotazione'}</small></span></button>;})}</div></section>}

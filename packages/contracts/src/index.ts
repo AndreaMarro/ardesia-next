@@ -824,6 +824,7 @@ export class CoreError extends Error {
 
 
 export * from './programs.ts';
+export * from './search.ts';
 
 /** Resolve page-anchored ink without mutating persisted geometry or source bytes. */
 export function materialPosition<T extends NewEducationalObject | EducationalObject>(object: T, objects: readonly (NewEducationalObject | EducationalObject)[]): T {

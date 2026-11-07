@@ -2,8 +2,22 @@ import {describe,it,expect} from 'vitest';
 import {createCore,MemoryStorage} from '@ardesia/core';
 import {conceptLinkDefinition,extensionDefinitionDigest,type Actor,type ConceptLinkState} from '@ardesia/contracts';
 import {knowledgeEdges,searchKnowledge} from './graph';
+import {readFile} from 'node:fs/promises';
+import {PhysicsImportSchema} from '../courses/physics/import';
 const actor:Actor={actorId:'author',role:'teacher'};
 describe('knowledge links over authorized exact Core revisions',()=>{
+ it('finds the original distributed problem through content only present in its Creator state',async()=>{
+  const pack=PhysicsImportSchema.parse(JSON.parse(await readFile(new URL('../courses/physics/data/sf-2026-strumenti-meccanica.json',import.meta.url),'utf8')));
+  const original=pack.documents.flatMap(d=>d.objects).find(o=>o.title==='La potenza che compare solo durante gli impulsi')!;
+  expect(original).toBeDefined();
+  const core=await createCore({storage:new MemoryStorage()});
+  await core.execute(actor,{kind:'create-document',commandId:'create',documentId:'course',expectedRevision:0,title:'Meccanica'});
+  await core.execute(actor,{kind:'add-object',commandId:'add',documentId:'course',expectedRevision:1,object:{...original,provenance:{origin:'imported',sources:[]}}});
+  const results=searchKnowledge(core.listDocuments(actor),'FRAZIONE DI TEMPO ACCESO');
+  expect(results).toHaveLength(1);expect(results[0]).toMatchObject({object:{id:original.id,revision:1},document:{id:'course',revision:2}});
+  expect(results[0]!.excerpt).toContain('frazione di tempo acceso');
+  expect(searchKnowledge(core.listDocuments({actorId:'stranger',role:'teacher'}),'frazione')).toEqual([]);
+ });
  it('keeps an old target after edits and resolves nothing outside the authorized documents',async()=>{
   const core=await createCore({storage:new MemoryStorage()});
   for(const id of ['from','to']){

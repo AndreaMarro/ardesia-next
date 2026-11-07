@@ -26,11 +26,14 @@ test('records synthetic audio with timed ink, resumes a lost upload, seeks exact
   await expect(page.getByText('● Microfono attivo', {exact: false})).toBeVisible();
   // Close only the contextual panel; capture remains visible and the board stays editable.
   await page.getByRole('button', {name: /Audio e replay/}).click();
-  await page.getByRole('button', {name: 'Penna', exact: true}).click();
+  await page.getByRole('button', {name: 'Scrittura immersiva', exact: true}).click();
+  await expect(page.locator('.writing-status')).toContainText('Registrazione audio attiva');
+  expect(await page.evaluate(() => (window as any).syntheticAudioStream.getTracks().every((track: MediaStreamTrack) => track.readyState === 'live'))).toBe(true);
   const bounds = (await page.locator('.board-surface').boundingBox())!;
   await page.mouse.move(bounds.x + 70, bounds.y + 210); await page.mouse.down();
   await page.mouse.move(bounds.x + 230, bounds.y + 245, {steps: 30}); await page.mouse.up();
   await expect.poll(async () => (await personalProjection(page)).documents[0]!.objects.filter(o => o.type === 'ink').length).toBe(1);
+  await page.getByRole('button', {name: 'Esci dalla scrittura immersiva', exact: true}).click();
   await page.getByRole('button', {name: 'Interrompi registrazione', exact: true}).click();
   await page.getByRole('button', {name: /Audio e replay/}).click();
   const upload = page.getByRole('button', {name: 'Archivia / riprendi caricamento', exact: true});
@@ -124,6 +127,12 @@ test('withdrawn consent stops a late synthetic microphone and never starts recor
   await syntheticMicrophone(page, true); await page.goto('/'); await page.getByRole('button', {name: /Audio e replay/}).click();
   await page.getByLabel('Consenso alla registrazione audio').check(); await page.getByRole('button', {name: 'Registra spiegazione', exact: true}).click();
   await expect(page.getByRole('button', {name: 'Annulla richiesta microfono', exact: true})).toBeVisible();
+  await page.getByRole('button', {name: /Audio e replay/}).click();
+  await page.getByRole('button', {name: 'Scrittura immersiva', exact: true}).click();
+  await expect(page.locator('.writing-status')).toContainText('Attesa microfono');
+  await expect(page.locator('.writing-status')).not.toContainText('Registrazione audio attiva');
+  await page.getByRole('button', {name: 'Esci dalla scrittura immersiva', exact: true}).click();
+  await page.getByRole('button', {name: /Audio e replay/}).click();
   await page.getByLabel('Consenso alla registrazione audio').uncheck();
   await page.evaluate(() => (window as any).releaseSyntheticMicrophone());
   await expect.poll(() => page.evaluate(() => (window as any).syntheticAudioStream.getTracks().every((track: MediaStreamTrack) => track.readyState === 'ended'))).toBe(true);

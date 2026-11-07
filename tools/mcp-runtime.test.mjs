@@ -236,8 +236,10 @@ export async function verifyMcpRuntime() {
     await mutate({kind:'add-object',object:programmable});
     const programRead=(await call(reader,'ardesia_read_document',{workspaceId:workspace,documentId,revision})).document.objects.find(o=>o.id===programmable.id);
     check(isDeepStrictEqual(programRead.data,programmable.data)&&programRead.status==='draft','PROGRAM_CHANGED_OR_EXECUTED_ON_IMPORT');
-    await mutate({kind:'replace-object',object:{...programmable,data:{...programmable.data,state:{count:9}}}});
+    await mutate({kind:'replace-object',object:{...programmable,data:{...programmable.data,state:{count:9,notes:[{observation:'La frazione di tempo acceso resta una misura distinta.'}]}}}});
     check((await call(reader,'ardesia_read_object_revision',{workspaceId:workspace,documentId,objectId:programmable.id,revision:1})).object.data.state.count===0,'PROGRAM_HISTORY_LOST');
+    const stateSearch=await call(reader,'ardesia_search',{workspaceId:workspace,query:'FRAZIONE DI TEMPO ACCESO'});
+    check(stateSearch.matches.length===1&&stateSearch.matches[0].objectId===programmable.id&&stateSearch.matches[0].objectRevision===2&&stateSearch.matches[0].excerpt.includes('frazione di tempo acceso'),'PROGRAM_STATE_SEARCH');
     pass('official-client-program-source-state-roundtrip-no-implicit-execution');
 
     phase = 'tutor-through-mcp';

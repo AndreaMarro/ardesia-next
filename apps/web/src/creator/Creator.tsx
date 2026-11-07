@@ -1,4 +1,4 @@
-import {lazy,Suspense,useEffect,useMemo,useState} from 'react';
+import {lazy,Suspense,useEffect,useRef,useState} from 'react';
 import {canonicalJson,PROGRAM_RENDERER,ProgramBodySchema,COMPOSITION_RENDERER,CompositionBodySchema,ExtensionDataSchema,extensionDefinitionDigest,extensionOrigin,appendExtensionOrigin,type ProgramBody,type CompositionBody,type CompositionNode,type ExtensionData,type ExtensionDefinition,type ExtensionObject,type ExtensionValue,type ExtensionLineage} from '@ardesia/contracts';
 import {Dialog} from '../components/Dialog';
 import {Plus,Trash2,Type,SquareFunction,ChartLine,Settings2,Layers3,Shapes} from '../components/Icons';
@@ -8,8 +8,9 @@ const PhysicsWorkbench=lazy(()=>import('../science/PhysicsWorkbench'));
 
 function exportData(data:ExtensionData){const checked=ExtensionDataSchema.parse(data);const url=URL.createObjectURL(new Blob([JSON.stringify(checked,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=data.definition.typeId+'.ardesia.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 const componentIcons:Record<string,typeof Shapes>={text:Type,input:Settings2,value:SquareFunction,plot:ChartLine,group:Layers3,action:Plus,scene:Shapes,shape:Shapes};
+type Replacement={definition:ExtensionDefinition;state:ExtensionData['state'];lineage?:ExtensionData['lineage'];importBase?:ExtensionData;imported:boolean};
 export function Creator({original,lineageSource,onSave,onClose,onDirtyChange}:{original?:ExtensionObject;lineageSource?:ExtensionLineage;onSave:(data:ExtensionData,base?:ExtensionObject,imported?:boolean)=>Promise<boolean>;onClose:()=>void;onDirtyChange:(dirty:boolean)=>void}){
-  const [science,setScience]=useState(false),[replacement,setReplacement]=useState<ExtensionData|null>(null);
+  const [science,setScience]=useState(false),[replacement,setReplacement]=useState<Replacement|null>(null);
   const [definition,setDefinition]=useState<ExtensionDefinition>(()=>original?.data.definition??initialDefinition());
   // Keep structurally valid editor drafts even when a label/range is temporarily invalid.
   // All external definitions are schema-checked on import; only our controls edit this shape.
@@ -19,6 +20,11 @@ export function Creator({original,lineageSource,onSave,onClose,onDirtyChange}:{o
   const [rawDirty,setRawDirty]=useState(false),[rawBase,setRawBase]=useState(()=>canonicalJson(definition));
   const [state,setState]=useState<ExtensionData['state']>(()=>original?.data.state??Object.fromEntries(CompositionBodySchema.parse(definition.body).fields.map(f=>[f.key,f.initial])));
   const [selected,setSelected]=useState<string|null>('length'),[dirty,setDirty]=useState(false),[saving,setSaving]=useState(false),[error,setError]=useState(''),[adding,setAdding]=useState(false),[raw,setRaw]=useState(()=>JSON.stringify(definition,null,2));
+  // Async file reads/module loads belong to this editor and the latest request.
+  // Check the live draft after awaiting: the user may have edited while reading.
+  const request=useRef({generation:0,mounted:true}),hasDraft=useRef(false);
+  hasDraft.current=dirty||rawDirty;
+  useEffect(()=>{request.current.mounted=true;return()=>{request.current.mounted=false;request.current.generation++;};},[]);
   const node=body.success?flattenNodes(body.data.nodes).find(n=>n.node.id===selected)?.node:undefined;
   const field=body.success&&node?.kind==='input'?body.data.fields.find(f=>f.key===node.props.field):undefined;
   const baseline=original?.data.definition??importBase?.definition;
@@ -42,24 +48,35 @@ export function Creator({original,lineageSource,onSave,onClose,onDirtyChange}:{o
     const sealed={...parsed,definitionDigest:await extensionDefinitionDigest(parsed.definition)};
     return importBase&&changedDefinition?appendExtensionOrigin(sealed,extensionOrigin(importBase)):sealed;
   }
-  async function act(action:(data:ExtensionData)=>Promise<void>){if(saving)return;setSaving(true);setError('');try{await action(await sealed());}catch(e){setError(e instanceof Error&&e.name!=='ZodError'?e.message:'Controlla proprietà, valori e intervalli prima di salvare.');}finally{setSaving(false);}}
+  async function act(action:(data:ExtensionData)=>Promise<void>){if(saving||replacement)return;request.current.generation++;setSaving(true);setError('');try{await action(await sealed());}catch(e){setError(e instanceof Error&&e.name!=='ZodError'?e.message:'Controlla proprietà, valori e intervalli prima di salvare.');}finally{setSaving(false);}}
   function add(kind:string){if(!body.success)return;const result=appendComponent(body.data,kind,selected);updateBody(result.body);setState(s=>Object.fromEntries(result.body.fields.map(f=>[f.key,s[f.key]??f.initial])));setSelected(result.selected);setAdding(false);}
-  function useLab(data:ExtensionData){setDefinition(data.definition);setState(data.state);setLineage(data.lineage);setImportBase(data);setImported(true);setDirty(true);setRawDirty(false);setSelected(null);setError('');setScience(false);setReplacement(null);}
-  return <Dialog title={original?'Modifica oggetto':'Crea un oggetto'} className="creator-dialog" onClose={()=>{if(!saving)onClose();}}>
+  function applyReplacement(next:Replacement){
+    request.current.generation++;setDefinition(next.definition);setState(next.state);setLineage(next.lineage);setImportBase(next.importBase);setImported(next.imported);
+    setDirty(true);setRawDirty(false);setRaw(JSON.stringify(next.definition,null,2));setRawBase(canonicalJson(next.definition));
+    setSelected(null);setAdding(false);setError('');setScience(false);setReplacement(null);
+  }
+  function replace(next:Replacement){request.current.generation++;if(hasDraft.current)setReplacement(next);else applyReplacement(next);}
+  const fromImport=(data:ExtensionData):Replacement=>({...data,importBase:data,imported:true});
+  async function prepareReplacement(load:()=>Promise<Replacement>){
+    const generation=++request.current.generation;
+    try{const next=await load();if(request.current.mounted&&request.current.generation===generation)replace(next);}
+    catch{if(request.current.mounted&&request.current.generation===generation)setError('Importazione non valida. La bozza attuale è conservata.');}
+  }
+  return <Dialog title={original?'Modifica oggetto':'Crea un oggetto'} className="creator-dialog" onClose={()=>{if(!saving){request.current.generation++;onClose();}}}>
     <p className="creator-intro">Definisci, prova, riutilizza.</p>
-    <div className="creator-layout" aria-busy={saving} inert={saving}>
-      {science&&<div className="creator-science"><Suspense fallback={<p>Preparo i laboratori…</p>}><PhysicsWorkbench onClose={()=>setScience(false)} onUse={data=>{if(dirty||rawDirty)setReplacement(data);else useLab(data);}}/></Suspense></div>}
+    <div className="creator-layout" aria-busy={saving} inert={saving||!!replacement}>
+      {science&&<div className="creator-science"><Suspense fallback={<p>Preparo i laboratori…</p>}><PhysicsWorkbench onClose={()=>setScience(false)} onUse={data=>replace(fromImport(data))}/></Suspense></div>}
       <section className="creator-composition"><h3>Composizione</h3><label className="sr-only" htmlFor="creator-name">Nome del tipo</label><input id="creator-name" aria-label="Nome del tipo" value={definition.name} maxLength={240} onChange={e=>update({...definition,name:e.target.value})}/>
         {!original&&<button type="button" className="text-button" onClick={()=>setScience(v=>!v)}>Esplora i laboratori di fisica</button>}
-        {!original&&!program&&<button type="button" className="text-button" onClick={()=>{void import('./program-example').then(({initialProgram})=>{const next=initialProgram();update(next);setState(structuredClone(ProgramBodySchema.parse(next.body).initialState));setSelected(null);setRawDirty(false);setImportBase(undefined);setImported(false);setLineage(undefined);});}}>Crea un programma</button>}
+        {!original&&!program&&<button type="button" className="text-button" onClick={()=>void prepareReplacement(async()=>{const {initialProgram}=await import('./program-example'),definition=initialProgram();return {definition,state:structuredClone(ProgramBodySchema.parse(definition.body).initialState),imported:false};})}>Crea un programma</button>}
         {program&&<div className="program-editor"><label>Codice dell’esperienza<textarea aria-label="Codice del programma" spellCheck={false} rows={24} value={program.code} onChange={e=>update({...definition,body:{...program,code:e.target.value}})}/></label><p className="hint">La funzione update riceve stato e interazione, poi restituisce stato e interfaccia. Modificare il codice interrompe l’anteprima.</p></div>}
         <div className="creator-tree" role="group" aria-label="Struttura dell’oggetto">{body.success&&flattenNodes(body.data.nodes).map(({node,depth})=>{const Icon=Object.hasOwn(componentIcons,node.kind)?componentIcons[node.kind]!:Shapes;return <div key={node.id} className="creator-tree-row" style={{paddingLeft:depth*12}}>
           <button type="button" className={selected===node.id?'selected':''} aria-pressed={selected===node.id} onClick={()=>{setSelected(node.id);setAdding(false);}}><Icon size={19}/><span>{Object.hasOwn(componentLabels,node.kind)?componentLabels[node.kind]:node.kind}{node.kind==='input'?': '+body.data.fields.find(f=>f.key===node.props.field)?.label:node.kind==='value'?': '+node.props.label:''}</span></button>
         </div>;})}</div>
         {body.success&&<button className="secondary-button" aria-expanded={adding} onClick={()=>setAdding(v=>!v)}><Plus size={17}/>Aggiungi elemento</button>}
         {adding&&<div className="creator-palette">{Object.entries(componentLabels).filter(([kind])=>kind!=='shape'||node?.kind==='scene').map(([kind,label])=><button key={kind} type="button" onClick={()=>add(kind)}>{label}</button>)}</div>}
-        {body.success&&<button className="text-button" onClick={()=>{updateBody({fields:[],nodes:[]});setState({});setSelected(null);}}>Parti da zero</button>}
-        <label className="creator-import">Importa definizione<input type="file" accept="application/json,.json" aria-label="Importa definizione" disabled={!!original} onChange={e=>{const file=e.target.files?.[0];if(!file)return;void (async()=>{try{if(file.size>131072)throw Error('Definizione troppo grande.');const data=ExtensionDataSchema.parse(JSON.parse(await file.text()));if(await extensionDefinitionDigest(data.definition)!==data.definitionDigest)throw Error('Impronta della definizione non valida.');setDefinition(data.definition);setState(data.state);setLineage(data.lineage);setImported(true);setImportBase(data);setDirty(true);setRawDirty(false);setSelected(null);setError('');}catch{setError('Importazione non valida. La bozza attuale è conservata.');}})();}}/></label>
+        {body.success&&<button className="text-button" onClick={()=>replace({definition:{...definition,body:{fields:[],nodes:[]}},state:{},lineage,importBase,imported})}>Parti da zero</button>}
+        <label className="creator-import">Importa definizione<input type="file" accept="application/json,.json" aria-label="Importa definizione" disabled={!!original} onChange={e=>{const file=e.target.files?.[0];e.target.value='';if(!file)return;void prepareReplacement(async()=>{if(file.size>131072)throw Error('Definizione troppo grande.');const data=ExtensionDataSchema.parse(JSON.parse(await file.text()));if(await extensionDefinitionDigest(data.definition)!==data.definitionDigest)throw Error('Impronta della definizione non valida.');return fromImport(data);});}}/></label>
       </section>
       <section className="creator-preview"><h3>Anteprima</h3><article><h2>{definition.name||'Il mio strumento'}</h2>{validation.success?<ExtensionView data={validation.data} onChange={saving?undefined:s=>{setState(s);setDirty(true);}}/>:<p role="alert">Completa le proprietà dell’elemento per visualizzarlo.</p>}{body.success&&!body.data.nodes.length&&<p className="hint">Aggiungi un elemento alla composizione.</p>}</article></section>
       <section className="creator-properties"><h3>Proprietà</h3>
@@ -82,7 +99,7 @@ export function Creator({original,lineageSource,onSave,onClose,onDirtyChange}:{o
       </section>
     </div>
     {error&&<p className="creator-error" role="alert">{error}</p>}
-    {replacement&&<section role="alertdialog" aria-label="Sostituisci la composizione" className="creator-error"><p>La composizione aperta contiene modifiche. Sostituirla con {replacement.definition.name}?</p><button className="secondary-button" onClick={()=>setReplacement(null)}>Conserva la composizione</button><button className="primary-button" onClick={()=>useLab(replacement)}>Sostituisci la composizione</button></section>}
-    <footer className="creator-footer"><span>Bozza privata</span><button className="secondary-button" disabled={saving||rawDirty||!validation.success} onClick={()=>void act(async data=>exportData(lineageSource?appendExtensionOrigin(data,lineageSource):data))}>Esporta definizione</button><button className="primary-button" disabled={saving||rawDirty||!validation.success} onClick={()=>void act(async data=>{if(await onSave(data,original,imported)){setDirty(false);onDirtyChange(false);}else setError('Salvataggio non confermato. La bozza resta aperta: verifica la connessione, la versione e il pannello di recupero.');})}>{saving?'Salvataggio…':original?changedDefinition?'Salva nuova versione':'Salva oggetto':'Aggiungi alla lezione'}</button></footer>
+    {replacement&&<section role="alertdialog" aria-label="Sostituisci la composizione" className="creator-error"><p>La composizione aperta contiene modifiche. Sostituirla con {replacement.definition.name}?</p><button className="secondary-button" autoFocus onClick={()=>setReplacement(null)}>Conserva la composizione</button><button className="primary-button" onClick={()=>applyReplacement(replacement)}>Sostituisci la composizione</button></section>}
+    <footer className="creator-footer"><span>Bozza privata</span><button className="secondary-button" disabled={saving||!!replacement||rawDirty||!validation.success} onClick={()=>void act(async data=>exportData(lineageSource?appendExtensionOrigin(data,lineageSource):data))}>Esporta definizione</button><button className="primary-button" disabled={saving||!!replacement||rawDirty||!validation.success} onClick={()=>void act(async data=>{if(await onSave(data,original,imported)){setDirty(false);onDirtyChange(false);}else setError('Salvataggio non confermato. La bozza resta aperta: verifica la connessione, la versione e il pannello di recupero.');})}>{saving?'Salvataggio…':original?changedDefinition?'Salva nuova versione':'Salva oggetto':'Aggiungi alla lezione'}</button></footer>
   </Dialog>;
 }

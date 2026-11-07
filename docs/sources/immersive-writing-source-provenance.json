@@ -1,0 +1,121 @@
+{
+  "sources": [
+    {
+      "project": "excalidraw",
+      "path": "LICENSE",
+      "url": "https://github.com/excalidraw/excalidraw/blob/master/LICENSE",
+      "modifiedDate": "2020-01-05T21:09:29Z",
+      "source": "GitHub connector text, bounded selection; not a full checkout",
+      "sha256": "1352d204fdb90d5e482c13139d848bc2c9300a9a7de358a0a558a23e72d0d8be",
+      "bytes": 1067
+    },
+    {
+      "project": "excalidraw",
+      "path": "actions/actionToggleZenMode.tsx",
+      "url": "https://github.com/excalidraw/excalidraw/blob/master/packages/excalidraw/actions/actionToggleZenMode.tsx",
+      "modifiedDate": "2025-11-04T11:20:55Z",
+      "source": "GitHub connector text, bounded selection; not a full checkout",
+      "sha256": "ab1b683396e8bab0cedd66cafd0a2d4231efb2072a8fe1c085f5357ad7eeae81",
+      "bytes": 973
+    },
+    {
+      "project": "excalidraw",
+      "path": "components/LayerUI.tsx",
+      "url": "https://github.com/excalidraw/excalidraw/blob/master/packages/excalidraw/components/LayerUI.tsx",
+      "modifiedDate": "2026-09-10T14:45:37Z",
+      "source": "GitHub connector text, bounded selection; not a full checkout",
+      "sha256": "32bbc7da2b827fa87b2b6931f8ed9825884e90a8c4ddfc00ef52fe9e32fb48f4",
+      "bytes": 25417
+    },
+    {
+      "project": "excalidraw",
+      "path": "components/LayerUI.scss",
+      "url": "https://github.com/excalidraw/excalidraw/blob/master/packages/excalidraw/components/LayerUI.scss",
+      "modifiedDate": "2026-09-24T22:42:59Z",
+      "source": "GitHub connector text, bounded selection; not a full checkout",
+      "sha256": "3442310abf5c49fec492c985132b62b78c4210e2ba68e01bc10b0f9aaedeeb62",
+      "bytes": 5018
+    },
+    {
+      "project": "tldraw",
+      "path": "LICENSE.md",
+      "url": "https://github.com/tldraw/tldraw/blob/main/LICENSE.md",
+      "modifiedDate": "2025-09-17T16:02:11Z",
+      "source": "GitHub connector text, bounded selection; not a full checkout",
+      "sha256": "9578fcddc20e404b6a29f44b6fea81d8b331698c0e7e9be34132d6f4394fa533",
+      "bytes": 4609
+    },
+    {
+      "project": "tldraw",
+      "path": "ui-LICENSE.md",
+      "url": "https://github.com/tldraw/tldraw/blob/main/packages/tldraw/LICENSE.md",
+      "modifiedDate": "2023-12-19T10:41:01Z",
+      "source": "GitHub connector text, bounded selection; not a full checkout",
+      "sha256": "4575c72988945bb8fe9a205a096866cb1ccda2908b0fdee96a967c08e3bfd3dd",
+      "bytes": 104
+    },
+    {
+      "project": "tldraw",
+      "path": "editor-LICENSE.md",
+      "url": "https://github.com/tldraw/tldraw/blob/main/packages/editor/LICENSE.md",
+      "modifiedDate": "2023-12-19T10:41:01Z",
+      "source": "GitHub connector text, bounded selection; not a full checkout",
+      "sha256": "4575c72988945bb8fe9a205a096866cb1ccda2908b0fdee96a967c08e3bfd3dd",
+      "bytes": 104
+    },
+    {
+      "project": "tldraw",
+      "path": "tlschema-LICENSE.md",
+      "url": "https://github.com/tldraw/tldraw/blob/main/packages/tlschema/LICENSE.md",
+      "modifiedDate": "2025-09-11T09:32:24Z",
+      "source": "GitHub connector text, bounded selection; not a full checkout",
+      "sha256": "b4b75652dab891849d2198756eeae23120a8999bdd3740b3ab819a5c28c902c1",
+      "bytes": 1076
+    },
+    {
+      "project": "tldraw",
+      "path": "ui/TldrawUi.tsx",
+      "url": "https://github.com/tldraw/tldraw/blob/main/packages/tldraw/src/lib/ui/TldrawUi.tsx",
+      "modifiedDate": "2026-11-07T15:23:20Z",
+      "source": "GitHub connector text, bounded selection; not a full checkout",
+      "sha256": "0b164e75b870980023d0adffce6715082ace2d9ede3fe633becc39ca93b6dccd",
+      "bytes": 6433
+    },
+    {
+      "project": "tldraw",
+      "path": "hooks/useViewportHeight.ts",
+      "url": "https://github.com/tldraw/tldraw/blob/main/packages/editor/src/lib/hooks/useViewportHeight.ts",
+      "modifiedDate": "2026-08-03T13:29:28Z",
+      "source": "GitHub connector text, bounded selection; not a full checkout",
+      "sha256": "a29905272273bee641449059fea871f093e480f1ae4c38639c2c816bd5ef9461",
+      "bytes": 1705
+    },
+    {
+      "project": "tldraw",
+      "path": "hooks/useScreenBounds.ts",
+      "url": "https://github.com/tldraw/tldraw/blob/main/packages/editor/src/lib/hooks/useScreenBounds.ts",
+      "modifiedDate": "2026-06-22T12:43:21Z",
+      "source": "GitHub connector text, bounded selection; not a full checkout",
+      "sha256": "42b145bbbaf432238f7b361c0b0f4a39aba1b4407394e0d70d29ad750ad0bc1e",
+      "bytes": 2563
+    },
+    {
+      "project": "tldraw",
+      "path": "records/TLPage.ts",
+      "url": "https://github.com/tldraw/tldraw/blob/main/packages/tlschema/src/records/TLPage.ts",
+      "modifiedDate": "2026-08-10T12:53:31Z",
+      "source": "GitHub connector text, bounded selection; not a full checkout",
+      "sha256": "46d1656d09f7b85df1dcc7ef8b2e98e6029184aca1b527b71b59d284cefa487f",
+      "bytes": 4471
+    },
+    {
+      "project": "tldraw",
+      "path": "records/TLCamera.ts",
+      "url": "https://github.com/tldraw/tldraw/blob/main/packages/tlschema/src/records/TLCamera.ts",
+      "modifiedDate": "2025-10-06T09:57:32Z",
+      "source": "GitHub connector text, bounded selection; not a full checkout",
+      "sha256": "0e4204442c953eb0ef8cf34c1ae256d472a167b2f78424a46d734b6e66c5e4ba",
+      "bytes": 4513
+    }
+  ]
+}

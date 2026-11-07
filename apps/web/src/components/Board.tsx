@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState, type PointerEvent, type KeyboardEvent, type CSSProperties} from 'react';
+import {useEffect, useLayoutEffect, useRef, useState, type PointerEvent, type KeyboardEvent, type CSSProperties} from 'react';
 import type {InkDraft, InkDraftAccess} from '@ardesia/remote-client';
 import {MousePointer2, PenLine, Hand, Type, SquareFunction, Link2, Undo2, Plus} from './Icons';
 import {materialPosition} from '@ardesia/contracts';
@@ -19,10 +19,15 @@ type Props = {
   readOnlyObjects?: boolean;
   replayOnly?: boolean;
   onInkActiveChange?: (active: boolean) => void;
+  onWritingMode?: (enter:()=>void)=>void;
+  writingStatus?:string;
 };
 type Stroke = StrokeBuffer & {id:string;recovery?:InkDraftAccess;anchor?: {objectId:string;x:number;y:number};pointerId:number; pointerType:string; color:string; width:number};
-export function Board({document,selectedId,onSelect,onMove,onAdd,onInk,onUndo,canUndo,pendingObjects=[],pendingRemovals=[],readOnlyObjects=false,replayOnly=false,onInkActiveChange,onErase,inkRecovery,appearance='board'}: Props) {
+export function Board({document,selectedId,onSelect,onMove,onAdd,onInk,onUndo,canUndo,pendingObjects=[],pendingRemovals=[],readOnlyObjects=false,replayOnly=false,onInkActiveChange:reportInkActive,onErase,inkRecovery,appearance='board',onWritingMode,writingStatus}: Props) {
   const [tool,setTool]=useState<'select'|'pen'|'pan'|'eraser'>(replayOnly?'pan':readOnlyObjects?'pen':'select');
+  const [immersive,setImmersive]=useState(false),[toolsOpen,setToolsOpen]=useState(true),[penOptionsOpen,setPenOptionsOpen]=useState(false),[inkActive,setInkActive]=useState(false);
+  const previousBounds=useRef<{left:number;top:number}|null>(null);
+  const onInkActiveChange=(active:boolean)=>{setInkActive(active);reportInkActive?.(active);};
   const [camera,setCamera]=useState<Camera>(initialCamera), cameraRef=useRef(camera);
   const [size,setSize]=useState({width:1000,height:590});const measured=useRef(false);
   const creating=useRef(false),[isCreating,setIsCreating]=useState(false);
@@ -53,6 +58,19 @@ export function Board({document,selectedId,onSelect,onMove,onAdd,onInk,onUndo,ca
   },[selectedId,document.objects,size]);
   useEffect(()=>{if(!initialized.current&&measured.current&&size.width>0&&size.height>0){fit();initialized.current=true;}},[size]);
   const updateCamera=(next:Camera)=>{cameraRef.current=next;setCamera(next);};
+  function writingMode(next:boolean){
+    if(stroke.current||eraser.current||drag.current||pan.current||touches.current.size)return;
+    const bounds=surface.current!.getBoundingClientRect();previousBounds.current={left:bounds.left,top:bounds.top};
+    setImmersive(next);setToolsOpen(true);setPenOptionsOpen(false);if(next)setTool('pen');
+  }
+  // Enter/exit can change the canvas origin. Keep the same world point at the
+  // same screen coordinates, without remounting the canvas or refitting content.
+  useLayoutEffect(()=>{
+    const before=previousBounds.current;if(!before)return;previousBounds.current=null;
+    const bounds=surface.current!.getBoundingClientRect(),current=cameraRef.current;
+    updateCamera({...current,x:current.x+before.left-bounds.left,y:current.y+before.top-bounds.top});
+    surface.current!.focus({preventScroll:true});
+  },[immersive]);
   function local(e:{clientX:number;clientY:number}) {const rect=surface.current!.getBoundingClientRect();return {x:e.clientX-rect.left,y:e.clientY-rect.top};}
   function sample(e:globalThis.PointerEvent):Point {
     const p=toWorld(local(e),cameraRef.current);
@@ -122,6 +140,9 @@ export function Board({document,selectedId,onSelect,onMove,onAdd,onInk,onUndo,ca
   function down(e:PointerEvent<HTMLDivElement>) {
     if(e.button!==0 && e.button!==1 && !(e.pointerType==='pen'&&e.button===5))return;
     if((stroke.current?.pointerType==='pen' && e.pointerId!==stroke.current.pointerId)||eraser.current&&eraser.current.pointerId!==e.pointerId)return;
+    // Move focus out of the controls before the live stroke makes them inert.
+    // Escape and keyboard navigation then remain scoped to this canvas.
+    if(immersive)e.currentTarget.focus({preventScroll:true});
     if(e.pointerType==='pen'){if(stroke.current?.pointerType==='touch')clearStroke(true);touches.current.clear();pan.current=null;drag.current=null;setDragOffset(null);}
     e.preventDefault();e.currentTarget.setPointerCapture(e.pointerId);
     if(e.pointerType==='touch') {
@@ -184,12 +205,13 @@ export function Board({document,selectedId,onSelect,onMove,onAdd,onInk,onUndo,ca
   }
   function keyboardPan(e:KeyboardEvent<HTMLDivElement>){
     if(e.target!==e.currentTarget || e.altKey || e.ctrlKey || e.metaKey)return;
+    if(stroke.current||eraser.current||drag.current||pan.current||touches.current.size){if(['Home','ArrowLeft','ArrowRight','ArrowUp','ArrowDown','PageUp','PageDown'].includes(e.key))e.preventDefault();return;}
     if(e.key==='Home'){e.preventDefault();fit();return;}
     const steps:Record<string,[number,number]>={ArrowLeft:[80,0],ArrowRight:[-80,0],ArrowUp:[0,80],ArrowDown:[0,-80],PageUp:[0,size.height*.8],PageDown:[0,-size.height*.8]};
     const step=steps[e.key];if(!step)return;e.preventDefault();updateCamera({...cameraRef.current,x:cameraRef.current.x+step[0],y:cameraRef.current.y+step[1]});
   }
   function keyboardMove(e:KeyboardEvent,object:EducationalObject){
-    if(readOnlyObjects)return;
+    if(readOnlyObjects||stroke.current||eraser.current||drag.current||pan.current||touches.current.size)return;
     const steps:Record<string,[number,number]>={ArrowLeft:[-10,0],ArrowRight:[10,0],ArrowUp:[0,-10],ArrowDown:[0,10]};
     const step=steps[e.key];if(!e.altKey||!step)return;e.preventDefault();onMove(object.id,Math.max(-999999,Math.min(999999,(document.objects.find(o=>o.id===object.id)?.x??object.x)+step[0])),Math.max(-999999,Math.min(999999,(document.objects.find(o=>o.id===object.id)?.y??object.y)+step[1])));
   }
@@ -218,7 +240,7 @@ export function Board({document,selectedId,onSelect,onMove,onAdd,onInk,onUndo,ca
     updateCamera({x:(size.width+(inset===24?0:64)-(right-left)*zoom)/2-left*zoom,y:100+(availableHeight-(bottom-top)*zoom)/2-top*zoom,zoom});
   }
   const visible=document.objects.filter(o=>!pendingRemovals.includes(o.id)).map(o=>materialPosition(o,document.objects)).sort((a,b)=>Number(a.type==='ink')-Number(b.type==='ink')).filter(o=>!['ink','material'].includes(o.type)||o.id===selectedId||isVisible(o,camera,size.width,size.height));
-  return <section className={`board-region spatial-board ${appearance==='notebook'?'notebook-board':''} ${tool==='pen'?'drawing':''} ${tool==='pan'?'panning':''} ${tool==='eraser'?'erasing':''}`} aria-label={appearance==='notebook'?'Taccuino della lezione':'Lavagna della lezione'}>
+  return <section className={`board-region spatial-board ${appearance==='notebook'?'notebook-board':''} ${tool==='pen'?'drawing':''} ${tool==='pan'?'panning':''} ${tool==='eraser'?'erasing':''} ${immersive?'writing-immersive':''} ${inkActive?'ink-active':''} ${!toolsOpen?'writing-tools-closed':''}`} aria-label={appearance==='notebook'?'Taccuino della lezione':'Lavagna della lezione'} onKeyDown={event=>{if(immersive&&event.key==='Escape'&&!inkActive){event.preventDefault();writingMode(false);}}}>
     <div className="board-surface" ref={surface} tabIndex={0} aria-label="Superficie lavagna: frecce o trascinamento per spostarti, due dita per lo zoom, Home per inquadrare"
       onKeyDown={keyboardPan} onPointerDown={down} onPointerMove={move} onPointerUp={e=>up(e)} onPointerCancel={e=>up(e,true)} onLostPointerCapture={e=>up(e,true)}
       style={{backgroundSize:`${32*camera.zoom}px ${32*camera.zoom}px`,backgroundPosition:`${camera.x}px ${camera.y}px`}}>
@@ -230,7 +252,7 @@ export function Board({document,selectedId,onSelect,onMove,onAdd,onInk,onUndo,ca
         })}</svg>
         {visible.map(object=><button key={object.id} data-object-id={object.id} data-testid={`object-${object.id}`} className={`board-object type-${object.type} ${object.id===selectedId?'selected':''}`}
           aria-label={`${appearance==='notebook'?'Modifica':'Apri'} ${object.title}`} aria-pressed={object.id===selectedId} style={{left:object.x,top:object.y,width:object.width,minHeight:object.height,...(['ink','material'].includes(object.type)?{height:object.height}:{}),transform:dragOffset?.id===object.id?`translate(${dragOffset.x}px,${dragOffset.y}px)`:undefined}}
-          onClick={e=>{if(e.detail===0||(!suppressClick.current&&tool==='select'))onSelect(object.id);}} onKeyDown={e=>keyboardMove(e,object)}>
+          onClick={e=>{if(e.detail===0||(!suppressClick.current&&tool==='select')){if(immersive)writingMode(false);onSelect(object.id);}}} onKeyDown={e=>keyboardMove(e,object)}>
           {object.type!=='ink'&&<h2>{object.title}</h2>}{readOnlyObjects&&object.type==='lab'?<p>{replayOnly?'Laboratorio della revisione registrata · esecuzione sospesa durante il replay.':'Ricollegati per eseguire questo laboratorio con i permessi aggiornati.'}</p>:<ObjectContent object={object}/>}</button>)}
         {pendingObjects.map(o=>materialPosition(o,document.objects)).filter(o=>!pendingRemovals.includes(o.id)&&o.type==='ink'&&!document.objects.some(saved=>saved.id===o.id)).map(o=>o.type==='ink'&&<svg key={o.id} className="pending-ink" data-testid={`pending-ink-${o.id}`} aria-label="Tratto in attesa di conferma" style={{left:o.x,top:o.y,width:o.width,height:o.height}} viewBox={`0 0 ${o.width} ${o.height}`}><path d={inkPath(o.data.points,o.data.width)} fill={o.data.color}/></svg>)}
         {recovered.filter(draft=>!pendingObjects.some(o=>o.id===draft.object.id)&&!document.objects.some(o=>o.id===draft.object.id)).map(draft=><svg key={draft.object.id} className="pending-ink" aria-label="Tratto interrotto da recuperare" style={{left:draft.object.x,top:draft.object.y,width:draft.object.width,height:draft.object.height}} viewBox={`0 0 ${draft.object.width} ${draft.object.height}`}><path d={inkPath(draft.object.data.points,draft.object.data.width)} fill={draft.object.data.color}/></svg>)}
@@ -239,24 +261,29 @@ export function Board({document,selectedId,onSelect,onMove,onAdd,onInk,onUndo,ca
     </div>
     {(inkError||recovered.length>0)&&<div className="ink-recovery-notice" role="status">{inkError&&<p>{inkError}</p>}<button onClick={exportDrafts}>Esporta tratti</button>{recovered.length>0&&<><p>{recovered.length} tratti conservati su questo dispositivo, anche da altre schede.</p><button disabled={recovering} onClick={async()=>{setRecovering(true);try {const recovery=inkRecovery?.(document.id);for(const draft of recovery?.read()??[]){const ok=await recovery!.recover(draft.object.id,async latest=>(await onInk(latest.object,latest.sampleTimes,true))===true);if(!ok){setInkError('Un tratto è ancora in uso o in attesa di conferma. Riprova quando l’altra scheda ha terminato.');break;}}refreshDrafts();}catch(reason){setInkError(reason instanceof Error?reason.message:'Recupero non disponibile.');}finally{setRecovering(false);}}}>Recupera tratti interrotti</button></>}</div>}
     {!document.objects.length&&!pendingObjects.length&&<div className="canvas-empty"><h2>Ogni lezione comincia da una domanda.</h2><p>{readOnlyObjects?'Scrivi con la penna. I tratti restano sul dispositivo fino alla riconnessione.':'Scrivi sulla lavagna o aggiungi una nota, una formula, una fonte.'}</p>{!readOnlyObjects&&<button className="primary-button" disabled={isCreating} onClick={()=>void add('note')}>Scrivi la prima nota</button>}</div>}
-    <div className="board-navigation" role="group" aria-label="Navigazione lavagna">
+    {!immersive&&<div className="board-navigation" role="group" aria-label="Navigazione lavagna">
+      {!replayOnly&&<button aria-label="Scrittura immersiva" title="Scrittura immersiva" disabled={inkActive} onClick={()=>{const enter=()=>writingMode(true);if(onWritingMode)onWritingMode(enter);else enter();}}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m8 0h5v-5M8 16l2-5 5-5 3 3-5 5-5 2Z"/></svg></button>}
       <button aria-label="Riduci zoom" onClick={()=>updateCamera(zoomAt(cameraRef.current,{x:size.width/2,y:size.height/2},1/1.25))}><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" stroke="currentColor" strokeWidth="2"/></svg></button>
       <button aria-label={`Zoom ${Math.round(camera.zoom*100)}%, ripristina 100%`} onClick={()=>updateCamera(zoomAt(cameraRef.current,{x:size.width/2,y:size.height/2},1/cameraRef.current.zoom))}>{Math.round(camera.zoom*100)}%</button>
       <button aria-label="Aumenta zoom" onClick={()=>updateCamera(zoomAt(cameraRef.current,{x:size.width/2,y:size.height/2},1.25))}><Plus size={18}/></button>
       <button onClick={fit}>Inquadra tutto</button>
-    </div>
-    {tool==='pen'&&<div className="pen-options" role="group" aria-label="Stile della penna">{[['#203e62','Blu'],['#638575','Verde'],['#973b3b','Rosso']].map(([value,label])=><button key={value} aria-label={`Inchiostro ${label}`} aria-pressed={color===value} onClick={()=>setColor(value!)}><span style={{background:value}}/></button>)}<select aria-label="Spessore della penna" value={width} onChange={e=>setWidth(Number(e.target.value))}><option value="1.5">Fine</option><option value="2.5">Medio</option><option value="5">Ampio</option></select><label><input type="checkbox" checked={touchWrites} onChange={e=>setTouchWrites(e.target.checked)}/>Scrivi con un dito</label></div>}
-    <div className="board-toolbar" role="toolbar" aria-label="Strumenti lavagna">
-      <button aria-label="Seleziona oggetti" title="Seleziona · Alt + frecce per spostare" aria-pressed={tool==='select'} onClick={()=>setTool('select')}><MousePointer2 size={21}/></button>
+    </div>}
+    {immersive&&<><button className="writing-exit" data-writing-control="exit" aria-label="Esci dalla scrittura immersiva" title="Esci dalla scrittura immersiva · Esc" disabled={inkActive} onClick={()=>writingMode(false)}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="m14 6-6 6 6 6M8 12h13"/></svg></button>
+      <button className="writing-toggle" data-writing-control="toggle" aria-label={toolsOpen?'Nascondi strumenti di scrittura':'Mostra strumenti di scrittura'} aria-expanded={toolsOpen} disabled={inkActive} onClick={()=>{setToolsOpen(open=>!open);setPenOptionsOpen(false);}}>Strumenti</button>
+      {writingStatus&&<span className="writing-status" data-writing-control="status" role="status">{writingStatus}</span>}</>}
+    {tool==='pen'&&(!immersive||toolsOpen&&penOptionsOpen)&&<div className="pen-options" data-writing-control={immersive?'pen-options':undefined} inert={immersive&&inkActive} role="group" aria-label="Stile della penna">{[['#203e62','Blu'],['#638575','Verde'],['#973b3b','Rosso']].map(([value,label])=><button key={value} aria-label={`Inchiostro ${label}`} aria-pressed={color===value} onClick={()=>setColor(value!)}><span style={{background:value}}/></button>)}<select aria-label="Spessore della penna" value={width} onChange={e=>setWidth(Number(e.target.value))}><option value="1.5">Fine</option><option value="2.5">Medio</option><option value="5">Ampio</option></select><label><input type="checkbox" checked={touchWrites} onChange={e=>setTouchWrites(e.target.checked)}/>Scrivi con un dito</label></div>}
+    <div className="board-toolbar" data-writing-control={immersive?'tools':undefined} inert={immersive&&(inkActive||!toolsOpen)} role="toolbar" aria-label="Strumenti lavagna">
+      {!immersive&&<button aria-label="Seleziona oggetti" title="Seleziona · Alt + frecce per spostare" aria-pressed={tool==='select'} onClick={()=>setTool('select')}><MousePointer2 size={21}/></button>}
       <button disabled={replayOnly} aria-label="Penna" title="Penna" aria-pressed={tool==='pen'} onClick={()=>setTool('pen')}><PenLine size={21}/></button>
       <button disabled={replayOnly||!onErase} aria-label="Gomma a tratto" title="Gomma a tratto" aria-pressed={tool==='eraser'} onClick={()=>setTool('eraser')}><svg width="21" height="21" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 17 8-10 5 4-8 10H8l-5-4 8-10M8 17l5 4M13 21h9" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/></svg></button>
       <button aria-label="Sposta lavagna" title="Sposta lavagna" aria-pressed={tool==='pan'} onClick={()=>setTool('pan')}><Hand size={21}/></button>
-      {!readOnlyObjects&&<><span className="toolbar-divider"/>
+      {!readOnlyObjects&&!immersive&&<><span className="toolbar-divider"/>
       <button aria-label="Aggiungi nota" disabled={isCreating} onClick={()=>add('note')}><Type size={22}/></button>
       <button aria-label="Aggiungi formula" disabled={isCreating} onClick={()=>add('formula')}><SquareFunction size={22}/></button>
       <button aria-label="Aggiungi fonte" disabled={isCreating} onClick={()=>add('source')}><Link2 size={21}/></button>
-      <span className="toolbar-divider"/>
-      <button aria-label="Annulla ultima modifica" disabled={!canUndo} onClick={onUndo}><Undo2 size={21}/></button></>}
+      <span className="toolbar-divider"/></>}
+      {!readOnlyObjects&&<button aria-label="Annulla ultima modifica" disabled={!canUndo} onClick={onUndo}><Undo2 size={21}/></button>}
+      {immersive&&<button aria-label="Opzioni della penna" title="Colore e spessore" aria-expanded={penOptionsOpen} onClick={()=>{setTool('pen');setPenOptionsOpen(open=>!open);}}><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M4 7h16M4 17h16"/><circle cx="8" cy="7" r="3" fill="white"/><circle cx="16" cy="17" r="3" fill="white"/></svg></button>}
     </div>
   </section>;
 }
