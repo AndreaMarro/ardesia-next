@@ -1,0 +1,36 @@
+{
+  "kind": "ardesia-local-runtime-delivery",
+  "source": {
+    "baseCommit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+    "sourceDigest": "1faf8656386c1aca295e2229496f7181c665f7ee4ab9abf7dcb4a5a43ba9303d",
+    "branch": "codex/lavagna-continuity-20261107",
+    "committed": false
+  },
+  "verification": {
+    "passed": true,
+    "checks": 8,
+    "unitTestsPassed": 335,
+    "browserTestsPassed": 93,
+    "serverRuntimeChecksPassed": 5,
+    "javascriptGzipBytes": 192159,
+    "javascriptLimit": 245760
+  },
+  "reports": "runtime-preact/",
+  "manual": {
+    "browser": "IAB on Mac",
+    "devUrl": "http://127.0.0.1:4181/",
+    "previewUrl": "http://127.0.0.1:4180/",
+    "flow": "login; edit formula description; save; reload; same text and lesson revision9/object revision4",
+    "consoleAfterReload": [],
+    "screenshot": "../ardesia-runtime.png"
+  },
+  "limits": [
+    "physical iPad/Apple Pencil NOT_RUN",
+    "physical Safari NOT_RUN",
+    "native build NOT_RUN; Xcode absent",
+    "cold offline boot NOT_IMPLEMENTED",
+    "remote M3 NOT_ACCEPTED",
+    "no deploy/push/merge"
+  ],
+  "previousEvidence": "runtime-preact/primo-tentativo/"
+}

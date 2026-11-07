@@ -1,6 +1,8 @@
 import {describe, expect, it} from 'vitest';
 import {createRemoteClient, browserPendingStorage, type PendingStorage, type RemoteAccount, type WorkspaceProjection} from './index';
 import type {CoreCommand} from '@ardesia/contracts';
+import {IDBFactory} from 'fake-indexeddb';
+import {browserOfflineStore} from './offline';
 
 const at = '2026-10-29T14:00:00.000Z';
 const teacher: RemoteAccount = {id: 'teacher-a', role: 'teacher', displayName: 'Docente sintetico'};
@@ -38,6 +40,88 @@ async function open(fetcher: typeof fetch, pendingStorage?: PendingStorage) {
 }
 
 describe('remote Core facade and account-scoped recovery', () => {
+  it('does not restore revoked course material from a late cross-domain receipt or material read', async () => {
+    const shared = projection(1, studentA), saved = projection().documents[0]!;
+    shared.assignments = [{documentId: saved.id, studentId: studentA.id, assignedBy: teacher.id, revision: 1, status: 'active', createdAt: at, updatedAt: at}];
+    shared.assignedDocuments = [saved];
+    shared.courseSpace = {courses: [], editions: [{
+      edition: {id: 'edition', courseId: 'course', courseRevision: 1, courseDigest: 'b'.repeat(64), ownerId: teacher.id, revision: 1, label: 'Draft', status: 'draft', createdAt: at},
+      course: {id: 'course', ownerId: teacher.id, revision: 1, status: 'draft', title: 'Course', description: '', license: 'Reserved', createdAt: at, updatedAt: at,
+        units: [{id: 'unit', revision: 1, title: 'Unit', objective: '', prerequisites: '', explanation: '', prediction: '', activity: '', referenceFeedback: '', recovery: '', transfer: '', sources: [], lesson: {documentId: saved.id, revision: 1}}]},
+    }], deliveries: [{id: 'delivery', editionId: 'edition', ownerId: teacher.id, learnerId: studentA.id, revision: 1, status: 'active', createdAt: at, updatedAt: at}],
+      work: [{id: 'delivery', revision: 1, currentUnitId: 'unit', currentStage: 'prediction', shared: false, attempts: [], help: [], createdAt: at, updatedAt: at}]};
+    const ack = deferred<Response>(), material = deferred<Response>(); let reads = 0;
+    const client = await open(fetchFor(body => body.action === 'login' ? json(session(studentA))
+      : body.action === 'open-workspace' ? json(shared)
+      : body.action === 'read-course-lesson' ? ++reads === 1 ? material.promise : error('NOT_FOUND', 404) : ack.promise));
+    const learner = shared.actor;
+    const saving = client.core.executeLearning(learner, {kind: 'save-learner-note', commandId: 'notes', documentId: saved.id, expectedRevision: 0, text: 'Own note'});
+    const oldRead = client.core.readCourseLesson(learner, 'edition', 'unit'); await tick();
+    await expect(client.core.readCourseLesson(learner, 'edition', 'unit')).rejects.toMatchObject({code: 'NOT_FOUND'});
+    expect(client.projection?.courseSpace?.editions).toEqual([]);
+    expect(client.projection?.courseSpace?.work).toHaveLength(1);
+    ack.resolve(json({projection: {...shared, workspaceRevision: 2}, receipt: {commandId: 'notes', actorId: studentA.id, fingerprint: 'a'.repeat(64), lessonId: saved.id, studentId: studentA.id, stream: 'learner-work', learningRevision: 1, eventId: 'notes-event'}}));
+    await saving;
+    expect(client.state.pending).toEqual([]); // A genuine receipt is still acknowledged.
+    expect(client.projection?.courseSpace?.editions).toEqual([]);
+    material.resolve(json(saved)); await expect(oldRead).rejects.toMatchObject({code: 'WORKSPACE_CHANGED'});
+    expect(client.projection?.courseSpace?.editions).toEqual([]);
+  });
+  it('checks exact attempt source identity and drops late reads after revocation or account changes', async () => {
+    const source = {id: 'object', type: 'note', title: 'Source', x: 0, y: 0, width: 200, height: 100, revision: 1, status: 'draft',
+      createdAt: at, updatedAt: at, provenance: {origin: 'authored', sources: []}, data: {text: 'Original exercise'}};
+    const shared = projection();
+    shared.assignments = [{documentId: 'lesson-1', studentId: studentA.id, assignedBy: teacher.id, revision: 1, status: 'active', createdAt: at, updatedAt: at}];
+    shared.learnerWork = [{documentId: 'lesson-1', studentId: studentA.id, revision: 2, notes: '', labs: [], consents: [], evidenceShared: true, createdAt: at, updatedAt: at,
+      attempts: [{id: 'attempt', objectId: 'object', sourceObjectRevision: 1, answer: 'Answer', createdAt: at}]}];
+    let response = deferred<Response>(), current = shared;
+    const client = await open(fetchFor(body => {
+      if (body.action === 'login') return json(session(teacher));
+      if (body.action === 'open-workspace') return json(current);
+      if (body.action === 'logout') return json(null);
+      return response.promise;
+    }));
+    const mismatched = client.core.readAttemptSource(actor, 'lesson-1', 'attempt', studentA.id);
+    response.resolve(json({...source, revision: 2})); await expect(mismatched).rejects.toMatchObject({code: 'INVALID_RESPONSE'});
+    response = deferred<Response>();
+    const revoked = client.core.readAttemptSource(actor, 'lesson-1', 'attempt', studentA.id);
+    current = {...shared, workspaceRevision: 2, learnerWork: []}; await client.refresh();
+    response.resolve(json(source)); await expect(revoked).rejects.toMatchObject({code: 'NOT_FOUND'});
+    current = {...shared, workspaceRevision: 3}; await client.refresh(); response = deferred<Response>();
+    const signedOut = client.core.readAttemptSource(actor, 'lesson-1', 'attempt', studentA.id);
+    await client.logout(); response.resolve(json(source)); await expect(signedOut).rejects.toMatchObject({code: 'SESSION_CHANGED'});
+  });
+
+  it('invalidates displayed evidence on the first denied source or feedback request and retains immutable recovery', async () => {
+    const shared = projection();
+    shared.assignments = [{documentId: 'lesson-1', studentId: studentA.id, assignedBy: teacher.id, revision: 1, status: 'active', createdAt: at, updatedAt: at}];
+    shared.learnerWork = [{documentId: 'lesson-1', studentId: studentA.id, revision: 2, notes: 'Private after revocation', labs: [], consents: [], evidenceShared: true, createdAt: at, updatedAt: at,
+      attempts: [{id: 'attempt', objectId: 'object', sourceObjectRevision: 1, answer: 'Answer', createdAt: at}]}];
+    const late = deferred<Response>(); let hold = false;
+    const client = await open(fetchFor(body => body.action === 'login' ? json(session(teacher))
+      : body.action === 'open-workspace' ? hold ? late.promise : json(shared) : error('NOT_FOUND', 404)));
+    hold = true; const oldRead = client.refresh(); await tick();
+    await expect(client.core.readAttemptSource(actor, 'lesson-1', 'attempt', studentA.id)).rejects.toMatchObject({code: 'NOT_FOUND'});
+    expect(client.projection).toBeNull(); late.resolve(json(shared)); await expect(oldRead).rejects.toMatchObject({code: 'WORKSPACE_CHANGED'}); expect(client.projection).toBeNull();
+    hold = false; await client.openWorkspace('workspace-a');
+    const command = {kind: 'review-learner-attempt', commandId: 'review', documentId: 'lesson-1', studentId: studentA.id, expectedRevision: 2,
+      attemptId: 'attempt', feedbackId: 'feedback', outcome: 'revise', comment: 'Comment', nextStep: 'Next'} as const;
+    await expect(client.core.executeLearning(actor, command)).rejects.toMatchObject({code: 'NOT_FOUND'});
+    expect(client.projection).toBeNull(); expect(client.state.pending[0]!.request).toEqual({action: 'learning-command', workspaceId: 'workspace-a', command});
+  });
+
+  it('refuses an old export after a newer projection has observed revoked sharing', async () => {
+    const shared = projection();
+    shared.assignments = [{documentId: 'lesson-1', studentId: studentA.id, assignedBy: teacher.id, revision: 1, status: 'active', createdAt: at, updatedAt: at}];
+    shared.learnerWork = [{documentId: 'lesson-1', studentId: studentA.id, revision: 2, notes: 'No longer shared', labs: [], consents: [], evidenceShared: true, createdAt: at, updatedAt: at, attempts: []}];
+    let current = shared; const exportReply = deferred<Response>();
+    const client = await open(fetchFor(body => body.action === 'login' ? json(session(teacher)) : body.action === 'open-workspace' ? json(current) : exportReply.promise));
+    const exporting = client.exportPersonal();
+    current = {...shared, workspaceRevision: 2, learnerWork: []}; await client.refresh();
+    exportReply.resolve(json({format: 'ardesia-personal-v1', accountId: teacher.id, workspaceId: shared.workspaceId, exportedAt: at, projection: shared}));
+    await expect(exporting).rejects.toMatchObject({code: 'REVISION_CONFLICT'}); expect(client.projection!.learnerWork).toEqual([]);
+  });
+
   it('accepts the contract’s 200-character identifier boundary and rejects a longer account ID', async () => {
     const longAccount = {...teacher, id: 'a'.repeat(200)}, workspaceId = 'w'.repeat(200);
     const client = createRemoteClient({fetch: fetchFor(body => body.action === 'login'
@@ -280,19 +364,26 @@ describe('remote Core facade and account-scoped recovery', () => {
     expect([...values.keys()]).toEqual(['ardesia-next.pending.v1.student-b/pending-b']);
   });
 
-  it('preserves the server-bound historical teacher actor of an imported workspace', async () => {
-    const imported = projection(); imported.actor.actorId = 'device-owner'; imported.documents[0]!.ownerId = 'device-owner';
+  it.each([teacher, studentA])('preserves the imported owner binding and real $role role through authoring and an offline copy', async account => {
+    const imported = projection(); imported.access = 'owner'; imported.actor = {actorId:'device-owner',role:account.role}; imported.documents[0]!.ownerId = 'device-owner';
     const next = structuredClone(imported); next.workspaceRevision = 2; next.documents[0]!.revision = 2;
-    const client = await open(fetchFor(body => {
-      if (body.action === 'login') return json(session(teacher));
+    const offlineStore = browserOfflineStore(new IDBFactory());
+    const client = createRemoteClient({offlineStore,fetch:fetchFor(body => {
+      if (body.action === 'login') return json(session(account));
       if (body.action === 'open-workspace') return json(imported);
       return json(mutation(body.command as CoreCommand, next));
-    }));
-    expect(client.account?.id).toBe(teacher.id);
+    })});
+    await client.login('synthetic','synthetic'); await client.openWorkspace(imported.workspaceId);
+    expect(client.account).toEqual(account);
     expect(client.core.getDocument(imported.actor, 'lesson-1').ownerId).toBe('device-owner');
     expect(() => client.core.getDocument(actor, 'lesson-1')).toThrow();
     const receipt = await client.core.execute(imported.actor, rename());
     expect(receipt.actorId).toBe('device-owner'); expect(client.projection?.workspaceRevision).toBe(2);
+    await client.makeAvailableOffline();
+    const cold = createRemoteClient({offlineStore,fetch:async()=>{throw new TypeError('Offline fixture');}});
+    await expect(cold.session()).rejects.toMatchObject({code:'NETWORK_ERROR'});
+    await cold.openOffline(); expect(cold.account).toBeNull(); expect(cold.projection).toBeNull();
+    expect(cold.offline?.actor).toEqual(imported.actor); expect(cold.offline?.documents).toEqual(next.documents);
   });
 
   it('rejects a changed Core binding for the same workspace even when its revision increases', async () => {

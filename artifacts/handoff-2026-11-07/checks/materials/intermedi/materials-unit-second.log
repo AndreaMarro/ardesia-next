@@ -1,0 +1,73 @@
+
+> ardesia-next@0.1.0 test
+> vitest run packages/core/src/materials.test.ts packages/server/src/server.integration.test.ts
+
+
+ RUN  v5.0.5 /Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next
+
+ ❯ packages/server/src/server.integration.test.ts (33 tests | 1 failed) 11904ms
+   ✓ M4 distributed release policy (1)
+     ✓ accepts the exact signed Poiseuille pressure and flow states through the shipped Host 47ms
+   ✓ PostgreSQL transport policy (3)
+     ✓ enables verified TLS for a remote URL and retains an explicitly trusted CA after pg parses it 4ms
+     ✓ refuses remote URL and option downgrades instead of letting pg replace certificate verification 1ms
+     ✓ checks the actual query-selected host and recognizes only explicit loopback endpoints 0ms
+   ❯ M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) (29)
+     ✓ uses a restricted runtime role and hashes credentials/tokens instead of persisting them 2ms
+     ✓ continues to connect to the real isolated loopback database without requiring TLS 2ms
+     ✓ rejects unauthenticated, CSRF, forged role/owner fields and account-switch requests 9ms
+     ✓ creates learner-owned spaces without role promotion and rejects authoring in assigned containers 195ms
+     ✓ persists exact course editions, private work and revocation through restricted PostgreSQL without implicit lesson grants 215ms
+     ✓ denies IDOR and filters private work from the teacher and second student 12ms
+     ✓ serializes competing revisions and returns the original receipt after a lost response 8ms
+     ✓ rolls back the entire snapshot, receipt and event when storage rejects the update 5ms
+     ✓ checks revoked assignments before duplicate receipts or reads and honors evidence revocation 14ms
+     ✓ preserves exact laboratory IDs/state across independent sessions and rejects stale plugin or consent use 249ms
+     ✓ M4 Poiseuille PostgreSQL preserves exact revisions and private student state; rejects invalid writes and revocation 703ms
+     ✓ rejects tampered releases and scientific states using the signed Host runtime 35ms
+     ✓ serializes competing tutor bookings and payments, retains v7 bytes on reads and excludes students 36ms
+     ✓ migrates stored v4 on read without writes and keeps feedback, source access and retries authorized 202ms
+     ✓ imports v1/v2/v3 explicitly into fresh containers and preserves original bytes, IDs and receipts 16ms
+     ✓ reserves imported actor identities against later account provisioning 164ms
+     ✓ rejects an existing alias collision before listing or returning any private workspace data 178ms
+     ✓ serializes racing account provisioning and legacy import without admitting an identity collision 163ms
+     ✓ preserves imported learner owner aliases and permits personal audio without a teaching role 10ms
+     ✓ withdraws device plugin consent through Core during import, requiring explicit remote reconsent 6ms
+     ✓ rejects corrupt imports atomically without deleting any local source 1ms
+     ✓ stores exact recording bytes and transcripts through restricted HTTP transactions, with recovery, isolation and erasure 109ms
+     × stores immutable originals, enforces lesson authorization and revocation, validates backups and denies forged pages 9ms
+     ✓ validates extension integrity before restoring even when the backup has no audio 38ms
+     ✓ backs up and restores synthetic data into an empty database without passwords, sessions or overwrites 719ms
+     ✓ restores disabled source accounts and never re-enables disabled targets, with session revocation in the same transaction 1456ms
+     ✓ rejects expired, revoked and logged-out sessions before reads or retries 172ms
+     ✓ isolates project login budgets while fresh sessions keep identity and the thirteenth valid login stays forbidden 4133ms
+     ✓ applies durable rate limits and fails closed when the service is not configured 1962ms
+ ✓ packages/core/src/materials.test.ts (2 tests) 14ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > stores immutable originals, enforces lesson authorization and revocation, validates backups and denies forged pages
+AssertionError: expected 422 to be 409 // Object.is equality
+
+- Expected
++ Received
+
+- 409
++ 422
+
+ ❯ packages/server/src/server.integration.test.ts:663:80
+    661|     const base={workspaceId:space.workspaceId,assetId};
+    662|     expect((await request({action:'prepare-material',workspaceId:space…
+    663|     expect((await request({action:'finish-material',...base},teacher))…
+       |                                                                                ^
+    664|     expect((await request({action:'put-material-part',...base,index:0,…
+    665|     expect((await request({action:'put-material-part',...base,index:0,…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 34 passed (35)
+   Start at  18:51:29
+   Duration  12.15s (tests 99%, import 1%)
+

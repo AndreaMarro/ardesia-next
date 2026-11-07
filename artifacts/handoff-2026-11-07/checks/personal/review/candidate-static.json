@@ -1,0 +1,301 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-personal-static-final-candidate",
+  "reviewer": "/root/board_review",
+  "generatedAt": "2026-11-07T17:25:48.581Z",
+  "sourceDigest": "81eec80ac69a13a6a13064fca63e780330a6e12de5e6881393c8d142f38b79dd",
+  "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "baselineSourceDigest": "097a685d9d53c9ef56f9454e72d142b32df793216a5dd950719c27d31bc0e87e",
+  "baselineFiles": 402,
+  "sourceFiles": 408,
+  "changedFiles": [
+    {
+      "path": "README.md",
+      "sha256": "1fd68363f643ead9be3c9895c5bc442d9074cb8c6721c510a429ab690f64a9dc",
+      "kind": "modified"
+    },
+    {
+      "path": "apps/web/src/App.tsx",
+      "sha256": "a4e8f274f769c10082f55db24674b832d5ef7ee603dc622117afbf48eb56a943",
+      "kind": "modified"
+    },
+    {
+      "path": "apps/web/src/RemoteWorkspace.tsx",
+      "sha256": "ae3952218d7d06041ea1b3dd00d07a96e6dc726b88dac2e6cffe7e408385586c",
+      "kind": "modified"
+    },
+    {
+      "path": "apps/web/src/components/Inspector.tsx",
+      "sha256": "b8ed39ee5728e673c6dd46c9a0018c31c83cbe5491529202b9096410e4c6f670",
+      "kind": "modified"
+    },
+    {
+      "path": "apps/web/src/components/StudioChrome.tsx",
+      "sha256": "92e405f524aaa462908e553592150a7f3d05aab52acea2d61a4d871fd8e2dc9b",
+      "kind": "modified"
+    },
+    {
+      "path": "apps/web/src/components/WorkspaceHome.tsx",
+      "sha256": "57d627b5cc85d5dde088d9461b9c51b55661004a5fdb12fa0801475cfa1c3ef8",
+      "kind": "new"
+    },
+    {
+      "path": "apps/web/src/components/workspace-home.css",
+      "sha256": "e6b7b37b1b1768841ee10d2289ad2b41d03ef1d5c47fb7c8c027ed7dd00d43d9",
+      "kind": "new"
+    },
+    {
+      "path": "apps/web/src/courses/CourseStudio.tsx",
+      "sha256": "58bf0b0b237084dde81285867787751b5bee5231055612b98bb05b32caf467a8",
+      "kind": "modified"
+    },
+    {
+      "path": "apps/web/src/plugins/first-party.ts",
+      "sha256": "2c288baa9f17d6edff63c0807f77b6161443260ef0e99026e89094c2085c94e5",
+      "kind": "modified"
+    },
+    {
+      "path": "docs/adr/0019-personal-creation.md",
+      "sha256": "bddb30e113fa2044e2030802acfd16bdcfcaa5b510d3fca46f85cfd88e1938ed",
+      "kind": "new"
+    },
+    {
+      "path": "docs/history.md",
+      "sha256": "e3ca863f81ef8be6ca892c87a86b0f8dc493889153d63178232b3a15911db940",
+      "kind": "modified"
+    },
+    {
+      "path": "docs/product-map.md",
+      "sha256": "7377e53e7b41a146bb89abdcd90c319d241a173daa8f2146c6f5a77605a0c2ae",
+      "kind": "modified"
+    },
+    {
+      "path": "docs/sources/personal-creation-2026-11-07.md",
+      "sha256": "51ba0ae63314e65576da24a5e8c7957f238ce59d7af1ea977c6ef16ea870b803",
+      "kind": "new"
+    },
+    {
+      "path": "e2e/README.md",
+      "sha256": "e4ff9985f67ce5f232287217181ab356fd18de1b48518d4b292e273952cf1e5c",
+      "kind": "modified"
+    },
+    {
+      "path": "e2e/personal.spec.ts",
+      "sha256": "54653710376ce8906535bea7c0ee4c3d0c744bfe049f7065b9dc147f2e491008",
+      "kind": "new"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "9aa5f595c1097edc77f50bab5ea3a5df000d5043bc85d8689626cb8182d6d13e",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/core/src/core.test.ts",
+      "sha256": "755aa7809dd539d8ae39a8309b391f37b05fee766d3de01b3521962b9a14c412",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/core/src/courses.ts",
+      "sha256": "ee92a7cf5a17d71ea4cf42a6b7596f95a77058bb7874860b2efe92b67f9cd76f",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/core/src/index.ts",
+      "sha256": "df4407a928ec3fe2678738867c609f75a9693168c18b892713ff6facf3bee153",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/core/src/learning.test.ts",
+      "sha256": "6cce50e3316d4e49ef97916803dbc37ffb064d5bffa8f3613b6042e8766c2db2",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/core/src/marketplace.test.ts",
+      "sha256": "b4284f4656243935e4fe2405381364ade9baf77ae37b8882de88aad5c6952b3a",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/core/src/personal.test.ts",
+      "sha256": "5f0ae41f2e6bbd51489c304a36fef2caef29d78a6e9aac70e26223bd3a2e67c3",
+      "kind": "new"
+    },
+    {
+      "path": "packages/core/src/recordings.test.ts",
+      "sha256": "f32c31556c57319a330c8f19f9af5d1dd8018c3ca220359e8cd6c320cd4e18e8",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/core/src/recordings.ts",
+      "sha256": "80e617493f910e17df6f69ed425be793d0fd69ce257810fb737ca998072fa053",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/mcp-core/AGENTS.md",
+      "sha256": "763b28bf059a9a2d05ca369996b8e646c6c00b97ef2ab20a6542db51f61794b6",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/mcp-core/README.md",
+      "sha256": "32e32370de98a6f34bba0f459e3502ae1c238545ee8e00beff311345ae7b5d81",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/mcp-core/src/adapter.test.ts",
+      "sha256": "3f2a0a179191a7c9907bd266ecbcc3a7578c22fbc41d5a3dd1c3b6944a21899a",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/mcp-core/src/adapter.ts",
+      "sha256": "208e247b23258d835e82e557bb55a739ed6096fc47567bf6cdec4ae03756e0f7",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/mcp-core/src/cli.ts",
+      "sha256": "bd760d7f7d7b8a755ff26a3f215adbba7f2b11f36d0c29a0adb8567213c82908",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/mcp-core/src/config.ts",
+      "sha256": "2487f27629a02e54922790cc714cb2ab34dbcbae3dda3b4f3f9f02e8c97f8475",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/mcp-core/src/index.ts",
+      "sha256": "eb04df45bcbd8ed58b87bb52cc47514524cf1f438872e6f79d3a5af321404d23",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/remote-client/README.md",
+      "sha256": "d68613908cb63fa1d7b3a037223c3e30fb1fd626fd7a7d632243b79415e4038e",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/remote-client/src/client.test.ts",
+      "sha256": "b6aa9f7358deb67a47d7e252407312b72be58ba3004ac5055f0c22d2dde3f6cc",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/remote-client/src/index.ts",
+      "sha256": "114576d401c8420f876e905c17d9ac0989bd17eca79512bc27bc1f0465f81e61",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/remote-client/src/offline.ts",
+      "sha256": "04e5ae5684edf8e5300a56c8c2019d44f9c3a4835de26882629fc40e5b111f4d",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/server/README.md",
+      "sha256": "97642c381d6274e055409e8a2a35191ef3d40b1171cbc272fb17d9de19f30a94",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/server/src/auth.ts",
+      "sha256": "e67272f1528cfd447850309eebb59af4f29106f34936a22045d9d5b75650b64b",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/server/src/backup.ts",
+      "sha256": "d71a459274e4e8585d6c1dadc77e77bfe96edc67434ed97ceb65d820cf20abd3",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/server/src/recordings.ts",
+      "sha256": "fa5669746e6897b36623a8aae6a1a1be5990be6f501380737e664b86962178e1",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/server/src/server.integration.test.ts",
+      "sha256": "06e7b47c89f620b50dbb20a768c3baa8811ed77809d2bf849fd3c2dc9313f026",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/server/src/store.ts",
+      "sha256": "d284dffc6defa77a1c6c299dad0157cf68e5456ce5713abb5edc3bb864567f64",
+      "kind": "modified"
+    },
+    {
+      "path": "packages/server/src/types.ts",
+      "sha256": "62c6354de8eb32baaf2934e3337340adf5b8e28529d3df92aaf8ccc01030d8b4",
+      "kind": "modified"
+    },
+    {
+      "path": "tools/e2e-accounts.d.mts",
+      "sha256": "919ecd8819748df769bd11abac360ea0443deb76cca37eb7844ca4ca246c5b90",
+      "kind": "modified"
+    },
+    {
+      "path": "tools/e2e-accounts.mjs",
+      "sha256": "b89921692136760d6eb46c7f30708edf1272649822051e0c936b69bb5b7fa656",
+      "kind": "modified"
+    },
+    {
+      "path": "tools/e2e-runner.test.mjs",
+      "sha256": "c067c29f49cc5e33c621c9e4d99685a30bccff9b896b6544c9f93a16098c6a3c",
+      "kind": "modified"
+    },
+    {
+      "path": "tools/e2e.mjs",
+      "sha256": "9bfbce16382470793c700647da67b343b0ab34b993d3303637bb90c724607b11",
+      "kind": "modified"
+    },
+    {
+      "path": "tools/mcp-runtime.test.mjs",
+      "sha256": "50cc80c752134b2a85ac2d244c879a2f81ce0445dfc7f5826f058d32a72e8cd7",
+      "kind": "modified"
+    }
+  ],
+  "deletedFiles": [],
+  "continuityFromFixReview": {
+    "unchanged": [
+      "apps/web/src/plugins/first-party.ts",
+      "packages/server/src/auth.ts",
+      "packages/server/src/store.ts",
+      "packages/server/src/backup.ts",
+      "packages/server/src/handler.ts",
+      "packages/server/src/database.ts",
+      "packages/server/src/server.integration.test.ts",
+      "packages/remote-client/src/client.test.ts",
+      "packages/mcp-core/src/adapter.test.ts",
+      "tools/mcp-runtime.test.mjs"
+    ],
+    "changedAndReread": [
+      "e2e/personal.spec.ts"
+    ]
+  },
+  "findings": [
+    {
+      "id": "PERSONAL-01",
+      "status": "RESOLVED_STATIC"
+    },
+    {
+      "id": "PERSONAL-02",
+      "status": "RESOLVED_STATIC"
+    },
+    {
+      "id": "PERSONAL-03",
+      "status": "RESOLVED_STATIC",
+      "fix": "canOpenTutor = personal && account.role === teacher; Home exclusion and Tutor rendering use the same predicate.",
+      "regression": "e2e/personal.spec.ts deep-link /#tutor through empty student-owned workspace, creation, role unchanged, no authoring rights for assignments, no pageerror."
+    }
+  ],
+  "newConfirmedFindings": [],
+  "routeRed": {
+    "sourceDigest": "6807a44eca6d725beba20725fa38fd0db6109bc78b3cd462d00965b68664fbee",
+    "reportDigest": "a680a63124ac5d21443f99fbdb7173746b93ac9aba4906904576357b59f8e16a",
+    "normalizedHashMatches": true,
+    "failed": 1,
+    "passed": 0,
+    "project": "desktop-chromium",
+    "failure": "Home absent at /#tutor with empty personal workspace; original evidence retained."
+  },
+  "fixtureReview": "Two additional student identities, one per local project, separate personal tests from existing QA login budget. personalBrowserCredentials rejects remote mode; existing exact remote credentials are unchanged. No auth/rate-limit production change.",
+  "inspectorCopy": "I valori salvati fanno parte di questa lezione.",
+  "verdict": "STATIC_FAVORABLE_FINAL_EVIDENCE_PENDING",
+  "method": {
+    "testsExecutedByReviewer": false,
+    "sourceModified": false,
+    "servicesStarted": false,
+    "remoteMutation": false
+  }
+}

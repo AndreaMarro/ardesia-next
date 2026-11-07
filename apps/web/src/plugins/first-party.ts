@@ -31,7 +31,7 @@ function current() {if (!context) fail('WORKSPACE_UNAVAILABLE'); return context;
 export function getInstallation(pluginId: string = idealSpringId) {const {core, actor} = current(); return core.getInstallation(actor, pluginId);}
 function runtimeGrants(pluginId: string) {
   const {core, actor, remote} = current();
-  if (actor.role === 'teacher') {const installation = core.getInstallation(actor, pluginId); return installation ? [installation] : [];}
+  if (!remote.documentId) {const installation = core.getInstallation(actor, pluginId); return installation ? [installation] : [];}
   if (!remote.documentId) return [];
   try {return core.getAssignedDocument(actor, remote.documentId).objects.filter(object => object.type === 'lab' && object.data.pluginId === pluginId)
     .map(object => core.getAssignedLabAccess(actor, remote.documentId!, object.id));} catch {return [];}
@@ -177,7 +177,7 @@ function activeInstallation(data?: LabData, pluginId?: string) {
   if (staleWorkspace) fail('STALE_WORKSPACE');
   const {core, actor, remote} = current();
   let installed: {release: PluginRelease; consent: {capabilities: string[]} | null; status: string} | null;
-  if (actor.role === 'student') {
+  if (remote.documentId) {
     if (!data || !remote.documentId) fail('CAPABILITY_DENIED');
     const object = core.getAssignedDocument(actor, remote.documentId).objects.find(object => object.type === 'lab' && object.data.instanceId === data.instanceId);
     if (!object) fail('CAPABILITY_DENIED');

@@ -1,0 +1,24 @@
+{
+  "kind": "lossless-worker-byte-transport",
+  "prefixBytes": 176331,
+  "beforeGzipBytes": 85231,
+  "afterGzipBytes": 45249,
+  "container": {
+    "path": "/plugins/shared/ba4b63b0618f56201e42768492af6eeac8b8dbf7a6509c6f465bbd5c8a4a440a.js",
+    "bytes": 191934,
+    "sha256": "ba4b63b0618f56201e42768492af6eeac8b8dbf7a6509c6f465bbd5c8a4a440a"
+  },
+  "workers": [
+    {
+      "path": "/plugins/ideal-spring/1.0.0/plugin.js",
+      "originalSha256": "713b10ce53337e5bb03f0da86afec8a1266a8229115e9d1f571cf49766814148",
+      "originalBytes": 184120
+    },
+    {
+      "path": "/plugins/poiseuille/1.0.0/plugin.js",
+      "originalSha256": "bd7eced69753424c7da3076783917d4fb235bd90d975dbbce2fe71371b06e00b",
+      "originalBytes": 184145
+    }
+  ],
+  "gate": "Every descriptor and the complete shared payload retain .js paths and remain charged by the existing total gzip gate; no asset excluded."
+}

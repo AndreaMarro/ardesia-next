@@ -1,6 +1,6 @@
 import {describe, expect, it} from 'vitest';
 import {
-  CoreSnapshotSchema, toObjectInput,
+  CoreSnapshotSchema, toObjectInput, extensionDefinitionDigest, type ExtensionDefinition, type ExtensionObject,
   type Actor, type CoreSnapshot, type LabObject, type NewEducationalObject, type PluginCommand, type PluginRelease,
 } from '@ardesia/contracts';
 import {createCore, MemoryStorage, type CoreService, type PluginPolicyRequest, type StorageAdapter} from './index';
@@ -179,13 +179,14 @@ describe('Core marketplace lifecycle and consent authority', () => {
     expect(core.getDocument(actor, 'lesson-1').objects[0]).toEqual(lab);
   });
 
-  it('isolates owners and rejects a student role even with the same actor ID', async () => {
+  it('isolates owners and allows personal module management independently of teaching role', async () => {
     const {core} = await fixture();
     await ready(core);
     expect(core.listInstallations(other)).toEqual([]);
     expect(core.getInstallation(other, initialRelease.pluginId)).toBeNull();
     await expect(core.executePlugin(other, {kind: 'disable-plugin', commandId: 'foreign-disable', pluginId: initialRelease.pluginId, expectedRevision: 3})).rejects.toMatchObject({code: 'NOT_FOUND'});
-    await expect(core.executePlugin({...actor, role: 'student'}, {kind: 'disable-plugin', commandId: 'student-disable', pluginId: initialRelease.pluginId, expectedRevision: 3})).rejects.toMatchObject({code: 'FORBIDDEN'});
+    await core.executePlugin({...actor, role: 'student'}, {kind: 'disable-plugin', commandId: 'student-disable', pluginId: initialRelease.pluginId, expectedRevision: 3});
+    expect(core.getInstallation({...actor,role:'student'},initialRelease.pluginId)?.status).toBe('disabled');
     await ready(core, other);
     expect(core.snapshot().installations).toHaveLength(2);
     expect(core.listInstallations(actor)).toHaveLength(1);
@@ -206,6 +207,23 @@ describe('Core marketplace lifecycle and consent authority', () => {
 });
 
 describe('Core authorized release transitions', () => {
+  it.each(['object','previous'] as const)('rejects an extension disguised in the %s slot of plugin transition history', async slot => {
+    const {core,policy}=await fixture();await ready(core);const original=await addLab(core);
+    policy.permitted.add('1.0.0:1.0.1:update');await core.executePlugin(actor,transition(core));
+    const definition:ExtensionDefinition={format:'ardesia-extension/1',typeId:'test.impossible-transition',version:1,name:'Invalid transition',description:'Synthetic counterexample',license:'CC0-1.0',renderer:'future.renderer/1',body:{},fallback:'Preserved'};
+    const digest=await extensionDefinitionDigest(definition);
+    for(const definitionDigest of [digest,'0'.repeat(64)])for(const schemaVersion of [4,5,6,7,8]){
+      const current=core.snapshot(); const {tutorRecords: _tutor,...v7}=current;
+      const snapshot={...(schemaVersion < 7 ? preCourse(current) : schemaVersion===7 ? v7 : current),schemaVersion};
+      const event=snapshot.events.find(e=>e.type==='plugin-release-changed')!;
+      const objects=(event.payload as unknown as {objects:Record<string,unknown>[]}).objects;
+      objects[0]![slot]={...original,id:'only-in-transition',type:'extension',data:{definition,definitionDigest,state:{}}} satisfies ExtensionObject;
+      expect(CoreSnapshotSchema.safeParse({...snapshot,courses:[],courseEditions:[],courseDeliveries:[],courseWork:[],tutorRecords:[],schemaVersion:9}).success).toBe(true);
+      const storage=new ObservedStorage(snapshot);
+      await expect(createCore({...options(storage),pluginPolicy:policy.policy})).rejects.toMatchObject({code:'INVALID_SNAPSHOT'});
+      expect(storage.writes).toBe(0);expect(await storage.read()).toEqual(snapshot);
+    }
+  });
   it('updates several existing laboratories atomically and rolls back code while retaining latest scientific state and identities', async () => {
     const {core, storage, policy} = await fixture();
     await ready(core);
@@ -371,7 +389,7 @@ describe('M1 to M2 migration preserves saved data without implied authority', ()
   async function legacy() {
     const core = await createCore(options(new MemoryStorage()));
     await addLab(core);
-    const {installations: _installations, assignments: _assignments, learnerWork: _learnerWork, ...snapshot} = core.snapshot();
+    const {installations: _installations, assignments: _assignments, learnerWork: _learnerWork, ...snapshot} = preCourse(core.snapshot());
     return {...snapshot, schemaVersion: 2};
   }
 
@@ -380,7 +398,7 @@ describe('M1 to M2 migration preserves saved data without implied authority', ()
     const storage = new ObservedStorage(raw);
     const policy = policyFixture();
     const core = await createCore({...options(storage, 'migration'), pluginPolicy: policy.policy});
-    expect(core.snapshot()).toEqual({...raw, schemaVersion: 4, installations: [], assignments: [], learnerWork: []});
+    expect(core.snapshot()).toEqual({...raw, schemaVersion: 9, tutorRecords: [], installations: [], assignments: [], learnerWork: [], courses: [], courseEditions: [], courseDeliveries: [], courseWork: []});
     expect(await storage.read()).toEqual(raw);
     expect(storage.writes).toBe(0);
     const savedLab = core.getDocument(actor, 'lesson-1').objects[0] as LabObject;
@@ -388,7 +406,7 @@ describe('M1 to M2 migration preserves saved data without implied authority', ()
     expect(await storage.read()).toEqual(raw);
     await ready(core);
     expect(core.getDocument(actor, 'lesson-1').objects[0]).toEqual(savedLab);
-    expect((await storage.read() as CoreSnapshot).schemaVersion).toBe(4);
+    expect((await storage.read() as CoreSnapshot).schemaVersion).toBe(9);
     expect(core.snapshot().events.slice(0, raw.events.length)).toEqual(raw.events);
   });
 
@@ -413,3 +431,9 @@ describe('M1 to M2 migration preserves saved data without implied authority', ()
     expect(await storage.read()).toEqual(raw);
   });
 });
+
+// Model historical envelopes with exactly their old fields, not a relabelled v7 snapshot.
+function preCourse<T extends object>(snapshot: T) {
+  const {tutorRecords: _t, courses: _c, courseEditions: _e, courseDeliveries: _d, courseWork: _w, ...legacy} = snapshot as T & {tutorRecords?: unknown; courses?: unknown; courseEditions?: unknown; courseDeliveries?: unknown; courseWork?: unknown};
+  return legacy;
+}

@@ -1,0 +1,66 @@
+{
+  "kind": "ardesia-local-delivery",
+  "status": "VERIFIED_LOCAL_INCREMENT",
+  "increment": "attempt-feedback-correction-continuity",
+  "baseCommit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "branch": "codex/lavagna-continuity-20261107",
+  "sourceDigest": "283a31d7c03badc41c50c7a724cd693b2dcbf3b59f09fac8cb1689b1ed93b840",
+  "uncommitted": true,
+  "remotePublished": false,
+  "generatedAt": "2026-11-07T11:57:41.216Z",
+  "verification": {
+    "passed": true,
+    "checks": 8,
+    "unitPassed": 416,
+    "browserPassed": 119,
+    "browserSkipped": 0,
+    "browserFlaky": 0,
+    "browserFailed": 0,
+    "serverChecks": 5,
+    "mcpChecks": 9,
+    "allJavaScriptGzipBytes": 215467,
+    "budgetBytes": 245760
+  },
+  "reports": "feedback/",
+  "canonicalProductStatus": {
+    "report": "feedback/status.json",
+    "productAcceptance": "NOT_COMPLETE",
+    "deployment": "NOT_VERIFIED_FOR_CURRENT_COMMIT"
+  },
+  "preview": "http://127.0.0.1:4180",
+  "manual": {
+    "report": "feedback/manuale-mac.json",
+    "fixture": "feedback/anteprima-feedback.json",
+    "physicalDevice": "Mac; Codex in-app browser",
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "nativeApp": false,
+    "flow": "Build-info identity observed in browser → authenticated student reopens assigned lesson → saved attempts → exact source of correction"
+  },
+  "patch": {
+    "path": "../ardesia-next.patch",
+    "sha256": "aedb427ee0b77afdd14fa6e5964b6def6adc577efeeff4404b2f62e5789c6528",
+    "bytes": 656088,
+    "reverseApplyCheck": "PASS"
+  },
+  "review": {
+    "agent": "/root/board_review",
+    "report": "feedback/review-indipendente.md",
+    "sourceReadOnly": true,
+    "testsExecutedBy": "/root",
+    "scope": "local attempt-feedback-correction increment"
+  },
+  "limits": {
+    "physicalSafariIPadApplePencil": "NOT_RUN",
+    "nativeApps": "NOT_BUILT_XCODE_UNAVAILABLE",
+    "remoteAcceptance": "NOT_EVALUATED",
+    "generalMultideviceCollaboration": "NOT_IMPLEMENTED",
+    "universalLearnerOffline": "NOT_IMPLEMENTED",
+    "crossLessonDiaryTransferRetest": "NOT_IMPLEMENTED",
+    "feedbackMcpAi": "NOT_IMPLEMENTED",
+    "fullEcosystem": "IN_PROGRESS"
+  },
+  "historicalDelivery": "audio/esito-consegna.json"
+}

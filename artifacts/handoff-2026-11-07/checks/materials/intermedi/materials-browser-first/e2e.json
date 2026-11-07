@@ -1,0 +1,307 @@
+{
+  "config": {
+    "configFile": "/Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/playwright.config.ts",
+    "rootDir": "/Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "artifacts/e2e.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "/Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-chromium",
+        "name": "mobile-chromium",
+        "testDir": "/Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/e2e",
+        "testIgnore": [
+          "**/pointer-desktop.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": false,
+      "timeout": 60000
+    }
+  },
+  "suites": [
+    {
+      "title": "materials.spec.ts",
+      "file": "materials.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "imports real PDF pages, preserves the original, anchors ink when moving and reopens offline",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5580,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: 'Porta un materiale nella lezione' }).locator('[data-material-state=\"ready\"]')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Porta un materiale nella lezione' }).locator('[data-material-state=\"ready\"]')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: 'Porta un materiale nella lezione' }).locator('[data-material-state=\"ready\"]')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Porta un materiale nella lezione' }).locator('[data-material-state=\"ready\"]')\u001b[22m\n\n    at /Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/e2e/materials.spec.ts:29:65",
+                    "location": {
+                      "file": "/Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/e2e/materials.spec.ts",
+                      "column": 65,
+                      "line": 29
+                    },
+                    "snippet": "  27 |   const dialog=page.getByRole('dialog',{name:'Porta un materiale nella lezione'});\n  28 |   await dialog.getByLabel('File da importare').setInputFiles({name:'Le tre domande.pdf',mimeType:'application/pdf',buffer:bytes});\n> 29 |   await expect(dialog.locator('[data-material-state=\"ready\"]')).toBeVisible();\n     |                                                                 ^\n  30 |   await dialog.getByRole('button',{name:'Pagina successiva',exact:true}).click();\n  31 |   await expect(dialog.getByRole('img',{name:'Le tre domande.pdf · pagina 2 di 3'})).toBeVisible();\n  32 |   await dialog.getByLabel('Pagine da importare').fill('1, 3');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/e2e/materials.spec.ts",
+                        "column": 65,
+                        "line": 29
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: 'Porta un materiale nella lezione' }).locator('[data-material-state=\"ready\"]')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Porta un materiale nella lezione' }).locator('[data-material-state=\"ready\"]')\u001b[22m\n\n\n  27 |   const dialog=page.getByRole('dialog',{name:'Porta un materiale nella lezione'});\n  28 |   await dialog.getByLabel('File da importare').setInputFiles({name:'Le tre domande.pdf',mimeType:'application/pdf',buffer:bytes});\n> 29 |   await expect(dialog.locator('[data-material-state=\"ready\"]')).toBeVisible();\n     |                                                                 ^\n  30 |   await dialog.getByRole('button',{name:'Pagina successiva',exact:true}).click();\n  31 |   await expect(dialog.getByRole('img',{name:'Le tre domande.pdf · pagina 2 di 3'})).toBeVisible();\n  32 |   await dialog.getByLabel('Pagine da importare').fill('1, 3');\n    at /Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/e2e/materials.spec.ts:29:65"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T17:55:51.275Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/test-results/materials-imports-real-PDF-31c3d--moving-and-reopens-offline-desktop-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/test-results/materials-imports-real-PDF-31c3d--moving-and-reopens-offline-desktop-chromium/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/e2e/materials.spec.ts",
+                    "column": 65,
+                    "line": 29
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2a5f2cd64db01880877b-93927e6cdc8cde3b97cd",
+          "file": "materials.spec.ts",
+          "line": 25,
+          "column": 1
+        },
+        {
+          "title": "imports a decoded image and rejects corrupt files without adding objects",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 920,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T17:55:57.248Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a5f2cd64db01880877b-bb54ec7d5ef9594d3cda",
+          "file": "materials.spec.ts",
+          "line": 137,
+          "column": 1
+        },
+        {
+          "title": "imports real PDF pages, preserves the original, anchors ink when moving and reopens offline",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5607,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: 'Porta un materiale nella lezione' }).locator('[data-material-state=\"ready\"]')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Porta un materiale nella lezione' }).locator('[data-material-state=\"ready\"]')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: 'Porta un materiale nella lezione' }).locator('[data-material-state=\"ready\"]')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Porta un materiale nella lezione' }).locator('[data-material-state=\"ready\"]')\u001b[22m\n\n    at /Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/e2e/materials.spec.ts:29:65",
+                    "location": {
+                      "file": "/Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/e2e/materials.spec.ts",
+                      "column": 65,
+                      "line": 29
+                    },
+                    "snippet": "  27 |   const dialog=page.getByRole('dialog',{name:'Porta un materiale nella lezione'});\n  28 |   await dialog.getByLabel('File da importare').setInputFiles({name:'Le tre domande.pdf',mimeType:'application/pdf',buffer:bytes});\n> 29 |   await expect(dialog.locator('[data-material-state=\"ready\"]')).toBeVisible();\n     |                                                                 ^\n  30 |   await dialog.getByRole('button',{name:'Pagina successiva',exact:true}).click();\n  31 |   await expect(dialog.getByRole('img',{name:'Le tre domande.pdf · pagina 2 di 3'})).toBeVisible();\n  32 |   await dialog.getByLabel('Pagine da importare').fill('1, 3');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/e2e/materials.spec.ts",
+                        "column": 65,
+                        "line": 29
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: 'Porta un materiale nella lezione' }).locator('[data-material-state=\"ready\"]')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Porta un materiale nella lezione' }).locator('[data-material-state=\"ready\"]')\u001b[22m\n\n\n  27 |   const dialog=page.getByRole('dialog',{name:'Porta un materiale nella lezione'});\n  28 |   await dialog.getByLabel('File da importare').setInputFiles({name:'Le tre domande.pdf',mimeType:'application/pdf',buffer:bytes});\n> 29 |   await expect(dialog.locator('[data-material-state=\"ready\"]')).toBeVisible();\n     |                                                                 ^\n  30 |   await dialog.getByRole('button',{name:'Pagina successiva',exact:true}).click();\n  31 |   await expect(dialog.getByRole('img',{name:'Le tre domande.pdf · pagina 2 di 3'})).toBeVisible();\n  32 |   await dialog.getByLabel('Pagine da importare').fill('1, 3');\n    at /Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/e2e/materials.spec.ts:29:65"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T17:55:58.469Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/test-results/materials-imports-real-PDF-31c3d--moving-and-reopens-offline-mobile-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/test-results/materials-imports-real-PDF-31c3d--moving-and-reopens-offline-mobile-chromium/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/e2e/materials.spec.ts",
+                    "column": 65,
+                    "line": 29
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2a5f2cd64db01880877b-b77822a3e6528df4c3f2",
+          "file": "materials.spec.ts",
+          "line": 25,
+          "column": 1
+        },
+        {
+          "title": "imports a decoded image and rejects corrupt files without adding objects",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 990,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T17:56:04.375Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2a5f2cd64db01880877b-31d883f751f7deedc314",
+          "file": "materials.spec.ts",
+          "line": 137,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-07T17:55:49.078Z",
+    "duration": 16393.924,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

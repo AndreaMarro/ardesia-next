@@ -1,0 +1,41 @@
+{
+  "kind": "manual-mac-web-review",
+  "build": {
+    "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+    "sourceDigest": "08874b3cbf54a4da020bbcc6c7e3a7cbe6dbd2d02a2a75021a5a87b2863fd689",
+    "generatedAt": "2026-11-07T14:15:56.921Z",
+    "application": "ardesia-next",
+    "milestone": "M3",
+    "persistence": "remote-postgres-required",
+    "remoteAcceptance": "INCOMPLETE",
+    "thirdPartyExecution": false
+  },
+  "environment": {
+    "physicalDevice": "Mac host",
+    "browser": "Codex in-app browser",
+    "desktopViewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "mobileViewport": {
+      "width": 412,
+      "height": 915
+    },
+    "mobileIsEmulated": true,
+    "nativeApp": false
+  },
+  "method": "cua_repl accessibility actions, read-only DOM asset inventory, screenshots and browser console",
+  "observations": [
+    "Cold reopen after service worker upgrade reaches Creator lesson, confirmed revision3.",
+    "Crea un oggetto opens composition/preview/properties; input L1 to L2 changes period2.00607 to2.83701.",
+    "Closing a dirty composition opens a guard; discard returns to unchanged persisted revision3.",
+    "Mobile Creator scroll reaches all properties and JSON details; footer remains visible.",
+    "Mobile board fits saved object using Inquadra tutto; desktop viewport restored.",
+    "New tab final error console is empty; preview tab17 marked as deliverable."
+  ],
+  "upgradeObservation": "The older cached client showed an invalid-server-response message after contract upgrade. Reload then closing the sole origin tab and reopening activates the new shell without erasing cache or user data.",
+  "resizeObservation": "A large desktop-to-mobile viewport change retains the existing camera; Inquadra tutto recenters. Initial mobile load is separately captured with REA.",
+  "physicalIPadApplePencilSafari": "NOT_RUN",
+  "arbitraryPluginsOrExternalHosts": "NOT_RUN",
+  "dataMutation": "Temporary unsaved preview values only; persisted lesson remains revision3."
+}

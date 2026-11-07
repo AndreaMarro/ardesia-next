@@ -1,0 +1,54 @@
+{
+  "kind": "ardesia-local-delivery",
+  "status": "VERIFIED_LOCAL_INCREMENT",
+  "baseCommit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "branch": "codex/lavagna-continuity-20261107",
+  "sourceDigest": "6286f01654705b255cad2412bd3f6bb591e2e35ebe33104941ba405819d72c7e",
+  "uncommitted": true,
+  "remotePublished": false,
+  "generatedAt": "2026-11-07T09:36:19.722Z",
+  "verification": {
+    "passed": true,
+    "checks": 8,
+    "unitPassed": 381,
+    "browserPassed": 109,
+    "browserSkipped": 0,
+    "browserFlaky": 0,
+    "serverChecks": 5,
+    "mcpChecks": 9,
+    "allJavaScriptGzipBytes": 202119,
+    "budgetBytes": 245760
+  },
+  "reports": "mcp/",
+  "preview": "http://127.0.0.1:4180",
+  "manual": {
+    "report": "mcp/anteprima-mcp.json",
+    "sourceDigest": "6286f01654705b255cad2412bd3f6bb591e2e35ebe33104941ba405819d72c7e",
+    "flow": "MCP create at revision6 → UI edit at revision7 → fresh read-only MCP reads current7 and object historical1",
+    "physicalDevice": "Mac; Codex in-app browser",
+    "nativeApp": false
+  },
+  "patch": {
+    "path": "../ardesia-next.patch",
+    "sha256": "c4b809043a7a7a1f3abcbbf92dca74e2e5a487bd1abab039c9dbfa5c0d0c9441",
+    "bytes": 371704,
+    "reverseApplyCheck": "PASS"
+  },
+  "review": {
+    "agent": "/root/board_review",
+    "report": "mcp/review-indipendente.md",
+    "sourceReadOnly": true,
+    "testsExecutedBy": "/root",
+    "finalEvidenceCheck": "PASS",
+    "findingsP1P2": 0
+  },
+  "limits": {
+    "physicalIPadApplePencilSafari": "NOT_RUN",
+    "nativeApps": "NOT_BUILT_XCODE_UNAVAILABLE",
+    "remoteM3Acceptance": "NOT_EVALUATED",
+    "mcpCloudAndCommercialHosts": "NOT_TESTED",
+    "generalMultideviceCollaboration": "NOT_IMPLEMENTED",
+    "fullEcosystem": "IN_PROGRESS"
+  },
+  "historicalDelivery": "offline/esito-consegna.json"
+}

@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-personal-review-fa15",
+  "reviewer": "/root/board_review",
+  "generatedAt": "2026-11-07T17:21:48.332Z",
+  "reviewedCandidateSourceDigest": "fa15aaf2f37d57afe2d4ed274e92a6112a86e9b6925dfdc683c25cbd070b1d8e",
+  "sourceDigestIndependentlyRecalculatedAtStart": true,
+  "baselineSourceDigest": "097a685d9d53c9ef56f9454e72d142b32df793216a5dd950719c27d31bc0e87e",
+  "verdict": "CHANGES_REQUIRED_FINAL_CANDIDATE_PENDING",
+  "scope": "Intero incremento personale contro la baseline: contratti, Core/documenti/corsi/registrazioni, server/auth/binding/import/restore/proiezioni, client/offline, MCP, Home/App/CourseStudio/laboratori, test modificati e nuovi, ADR0019 e documentazione correlata.",
+  "reviewContinuity": "I dodici file con SHA256 registrato nella fix-review sono stati ricontrollati: i fix auth/server/backup, consumer laboratorio e relative prove sono invariati. Riletti gli altri delta finali, le nuove Home/CSS e i test Core che separano identità owner dal ruolo didattico.",
+  "findings": [
+    {
+      "id": "PERSONAL-01",
+      "status": "RESOLVED_STATIC",
+      "priority": "P2"
+    },
+    {
+      "id": "PERSONAL-02",
+      "status": "RESOLVED_STATIC",
+      "priority": "P1"
+    },
+    {
+      "id": "PERSONAL-03",
+      "status": "OPEN_ON_FA15",
+      "priority": "P2",
+      "path": "apps/web/src/RemoteWorkspace.tsx",
+      "relatedPath": "apps/web/src/App.tsx:39",
+      "title": "Route Tutor non autorizzata fa montare App con workspace personale vuoto",
+      "preconditions": {
+        "accountRole": "student",
+        "workspaceAccess": "owner",
+        "documents": 0,
+        "hash": "#tutor"
+      },
+      "explanation": "Il guard Home richiede !tutorOpen, mentre il rendering Tutor richiede anche ruolo teacher e proprietà. Con tutorOpen vero ma ruolo student entrambi vengono saltati e il ramo personal monta App. App usa documents[0] come initial e legge initial.id senza una lezione, causando crash/blank.",
+      "sourceGuard": "personal && projection.documents.length === 0 && !coursesOpen && !tutorOpen",
+      "trigger": "Apertura diretta /#tutor con spazio student personale vuoto, oppure contenitore vuoto dopo creazione parzialmente completata.",
+      "expected": "Home e creazione funzionanti, niente Tutor, nessun pageerror. Non basta nascondere il pulsante Tutor nella Home.",
+      "evidence": "Rilievo statico indipendente; root ha confermato il percorso e sta preparando controprova e fix."
+    }
+  ],
+  "rootEvidenceRead": {
+    "verification": {
+      "sourceDigest": "fa15aaf2f37d57afe2d4ed274e92a6112a86e9b6925dfdc683c25cbd070b1d8e",
+      "passed": true,
+      "checks": 8,
+      "unitReportDigest": "6a6482cf750cb5a2d7512cf38876180b105d4283796cbe163f958f292d253e78"
+    },
+    "unit": {
+      "sha256": "6a6482cf750cb5a2d7512cf38876180b105d4283796cbe163f958f292d253e78",
+      "count": 545
+    },
+    "serverChecks": 5,
+    "mcpChecks": 14,
+    "browserFinal": "IN_PROGRESS_AT_REVIEW; nessun esito dedotto",
+    "priorTargetedBrowser": "8 PASS su sorgente e6a729…, non trasferiti a fa15 né alla prossima candidata"
+  },
+  "otherAssessment": "Nessun altro nuovo rilievo confermato nel resto dell’incremento. Lo studente rimane student, le facoltà di assegnare ad altri/Studio tutor restano legate al docente, e le copie offline non diventano una sessione. Il limite della prova race senza barriera è ora dichiarato nell’ADR0019.",
+  "method": {
+    "testsExecutedByReviewer": false,
+    "servicesStarted": false,
+    "sourceModified": false,
+    "remoteMutation": false
+  },
+  "next": "Rileggere fix PERSONAL-03 e copy Inspector annunciati da root, verificare nuovo digest finale e nuovi report prima della final-review. Nessuna accettazione trasferita da fa15."
+}

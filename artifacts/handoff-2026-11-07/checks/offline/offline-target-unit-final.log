@@ -1,0 +1,17 @@
+
+> ardesia-next@0.1.0 test
+> vitest run apps/web/src/offline-client.test.ts apps/web/src/build/offline-worker.test.ts packages/remote-client/src/client.test.ts apps/web/src/workspace-queue.test.ts
+
+
+ RUN  v5.0.5 /Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next
+
+ ✓ apps/web/src/build/offline-worker.test.ts (5 tests) 25ms
+ ✓ packages/remote-client/src/client.test.ts (23 tests) 48ms
+ ✓ apps/web/src/workspace-queue.test.ts (12 tests) 350ms
+ ✓ apps/web/src/offline-client.test.ts (20 tests) 498ms
+
+ Test Files  4 passed (4)
+      Tests  60 passed (60)
+   Start at  09:44:05
+   Duration  635ms (tests 79%, import 10%, transform 10%, worker 1%)
+

@@ -1,0 +1,122 @@
+{
+  "kind": "ardesia-local-delivery",
+  "status": "VERIFIED_LOCAL_INCREMENT",
+  "increment": "studio-open-composable-creator",
+  "baseCommit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "branch": "codex/lavagna-continuity-20261107",
+  "sourceDigest": "08874b3cbf54a4da020bbcc6c7e3a7cbe6dbd2d02a2a75021a5a87b2863fd689",
+  "uncommitted": true,
+  "remotePublished": false,
+  "generatedAt": "2026-11-07T14:25:29.843Z",
+  "verification": {
+    "passed": true,
+    "checks": 8,
+    "unitPassed": 472,
+    "browserPassed": 139,
+    "browserSkipped": 0,
+    "browserFlaky": 0,
+    "browserFailed": 0,
+    "serverChecks": 5,
+    "mcpChecks": 10,
+    "allJavaScriptGzipBytes": 234080,
+    "budgetBytes": 245760
+  },
+  "reports": "redesign/",
+  "canonicalProductStatus": {
+    "report": "redesign/status.json",
+    "productAcceptance": "NOT_COMPLETE",
+    "deployment": "NOT_VERIFIED_FOR_CURRENT_COMMIT"
+  },
+  "preview": "http://127.0.0.1:4180/",
+  "manual": {
+    "report": "redesign/manuale-mac.json",
+    "environment": {
+      "physicalDevice": "Mac host",
+      "browser": "Codex in-app browser",
+      "desktopViewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "mobileViewport": {
+        "width": 412,
+        "height": 915
+      },
+      "mobileIsEmulated": true,
+      "nativeApp": false
+    }
+  },
+  "rea": {
+    "report": "../rea-evidence/redesign/README.md",
+    "version": "6.8.0",
+    "captures": [
+      {
+        "file": "ardesia-desktop-final.json",
+        "evidenceId": "ev_76e37f15b2730c05312a0aa94fd7641268add0f52ff864732f98fbfb216d2c4b",
+        "sha256": "45fcb4a875c5faced0679310f7c74a800bfe600a0fdfe1db5a99ef24ac5abce5",
+        "steps": 11,
+        "actions": 10,
+        "complete": true,
+        "cleanup": "terminated-owned-process",
+        "browser": "156.0.8078.80"
+      },
+      {
+        "file": "ardesia-mobile-final.json",
+        "evidenceId": "ev_86719fc71f97010a7a2ed76d5574a12b377e854cd907b1b306e190f5d5a501e0",
+        "sha256": "a95893f669ad1b5b8d3452a6aee8b4211d4975de11eb05d738e391b739e5a406",
+        "steps": 11,
+        "actions": 10,
+        "complete": true,
+        "cleanup": "terminated-owned-process",
+        "browser": "156.0.8078.80"
+      }
+    ],
+    "sourceAssociation": "External build-info receipt; no fabricated REA artifact identity"
+  },
+  "visual": {
+    "ledger": "../design/verifica-finale.md",
+    "concepts": [
+      "../design/lavagna-concept.png",
+      "../design/creator-concept.png"
+    ],
+    "explicitUserDesignApproval": false,
+    "comparison": "view_image native-size1536x1024 and412x915; manual IAB1280x720 and412x915",
+    "inspected": [
+      "layout",
+      "palette",
+      "typography",
+      "icons",
+      "canvas",
+      "graph",
+      "responsive",
+      "copy",
+      "real-state"
+    ]
+  },
+  "patch": {
+    "path": "../ardesia-next.patch",
+    "sha256": "a53fee88305a622fa80e40ac95e729e7914bc6eba372d67a1eecaa9e54c1f1e5",
+    "bytes": 891928,
+    "diffMatch": "PASS",
+    "reverseApplyCheck": "PASS"
+  },
+  "review": {
+    "agent": "/root/board_review",
+    "report": "redesign/review-indipendente.md",
+    "sourceReadOnly": true,
+    "testsExecutedBy": "/root",
+    "independentContext": "Distinct from author, with earlier specification discussion",
+    "verdict": "FAVORABLE_NO_P1_P2_FOUND",
+    "scope": "Local Studio/Creator increment; source/raw diff and same-source test receipt hashes; final REA captures excluded from reviewer verdict"
+  },
+  "limits": {
+    "physicalSafariIPadApplePencil": "NOT_RUN",
+    "nativeApps": "NOT_BUILT",
+    "commercialAIHosts": "NOT_RUN",
+    "arbitraryThirdPartyCode": "NOT_IMPLEMENTED",
+    "generalExternalWorkflows": "NOT_IMPLEMENTED",
+    "multideviceCollaboration": "NOT_IMPLEMENTED",
+    "creatorOfflineWrites": "NOT_IMPLEMENTED",
+    "fullEcosystem": "IN_PROGRESS"
+  },
+  "historicalDelivery": "dispensa/consegna-precedente/esito.json"
+}

@@ -1,0 +1,66 @@
+{
+  "kind": "ardesia-independent-local-increment-review",
+  "recordedAt": "2026-11-07T15:12:40Z",
+  "sourceDigest": "081188333e269835da397aeed2959ce7a80f3d72552f1893c167f19f895f5458",
+  "baseCommit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "verdict": "FAVORABLE_NO_P1_P2_FOUND",
+  "scope": "Local versioned courses increment and its integration with the existing Core, Remote Client, server, UI and MCP",
+  "reviewer": {
+    "agent": "/root/board_review",
+    "context": "Separate AI agent context, distinct from author and test runner",
+    "readOnly": true,
+    "sourceEdits": false,
+    "testSuitesExecutedByReviewer": false,
+    "received": ["raw source and diff", "acceptance criteria", "raw final reports", "REA release records and runtime asset hashes"],
+    "humanReview": false
+  },
+  "reviewerStatement": "Verdetto favorevole per il solo incremento locale corsi. Nessun finding sostanziale aperto.",
+  "verified": {
+    "sourceDigestRecomputed": true,
+    "rawHeadDiffSha256": "26c0d473a14e2e1824d8b43e953a34bc57e0073b5739bb7c1eacc48ceb2796b8",
+    "diffCheck": "PASS",
+    "verificationChecks": 8,
+    "unitPassed": 485,
+    "unitCanonicalSha256": "7efc4d5ffc6e6870ce31166b9c17637040e6207e9ea0d7c6a1518366575454ed",
+    "browserPassed": 151,
+    "courseBrowserTests": 12,
+    "browserSkipped": 0,
+    "browserFlaky": 0,
+    "browserUnexpected": 0,
+    "browserGlobalErrors": 0,
+    "e2eRawSha256": "2ff9156aa593a9d3fa015f2439505e02267011653f466db3e7e4ed58d0c8e419",
+    "e2eCanonicalSha256": "cc45ed34a9d39fe6a19160069fc0fdaaa5e3ae81a91bbdc88ae201ad0a7e3383",
+    "serverChecks": 5,
+    "mcpChecks": 11,
+    "javaScriptGzipBytes": 243286,
+    "budgetBytes": 245760,
+    "runtimeArtifactHashesMatched": true,
+    "reaDesktopStepsCompleted": 8,
+    "reaMobileStepsCompleted": 8,
+    "reaRuntimeAssetHashesMatched": 9
+  },
+  "correctionsReviewed": [
+    "Course access without existing lessons",
+    "Open answer retained while consulting help and materials",
+    "Lost acknowledgement recovery reconciles the original command without replacing later edits",
+    "Concurrent course editing does not silently rebase",
+    "Late cross-domain responses cannot restore revoked materials",
+    "Saved study stage resumes; an answer remains bound to its original question under concurrent navigation",
+    "Unsent answer export preserves its question context after revocation",
+    "MCP freeze retry returns the exact course revision and edition"
+  ],
+  "previousFailuresPreserved": "intermedi/dd3/",
+  "limits": [
+    "Reviewer inspected reports and code; did not independently execute the suites",
+    "REA captures were produced by the coordinator, not physical device tests by the reviewer",
+    "No deployment attestation",
+    "No physical iPad, Apple Pencil or Safari validation",
+    "No native app validation",
+    "No human scientific or editorial approval",
+    "No claim of educational efficacy or complete product acceptance"
+  ],
+  "canonicalStatus": {
+    "productAcceptance": "NOT_COMPLETE",
+    "deployment": "NOT_VERIFIED_FOR_CURRENT_COMMIT"
+  }
+}

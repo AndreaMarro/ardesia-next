@@ -1,0 +1,1550 @@
+{
+  "sourceDigest": "81eec80ac69a13a6a13064fca63e780330a6e12de5e6881393c8d142f38b79dd",
+  "files": [
+    {
+      "file": "verifiche/personal/README.md",
+      "bytes": 1824,
+      "sha256": "7d57b7dbbca3d199551381d31e1a39432df187ef536f813036c6176e8b7b7a5d"
+    },
+    {
+      "file": "verifiche/personal/browser-evidence.json",
+      "bytes": 4703,
+      "sha256": "df211693ad64b0c229e7c8a96ae6be9bee21ccc558c7aba55cdabff848c1a3a3"
+    },
+    {
+      "file": "verifiche/personal/budget.json",
+      "bytes": 3169,
+      "sha256": "77274a9fe1aa3ad5b4995a6dc2098d6ad4106312771203dc0b3086b73c32af88"
+    },
+    {
+      "file": "verifiche/personal/build-info.json",
+      "bytes": 507,
+      "sha256": "4c6d5ec82043915f4be24c4908ca8ee2a92f80e142882174442c0d37ba90ea1f"
+    },
+    {
+      "file": "verifiche/personal/consegna-precedente/LEGGIMI.md",
+      "bytes": 1713,
+      "sha256": "88c57525370ed17afa2c971fb0aab6df244a70d13c2de48bb15317835e878c76"
+    },
+    {
+      "file": "verifiche/personal/consegna-precedente/ardesia-next.patch",
+      "bytes": 1280934,
+      "sha256": "5af20e20939aa5035106f9418c0d165623859ff8629723abbfec7c73f44b99c2"
+    },
+    {
+      "file": "verifiche/personal/consegna-precedente/esito.json",
+      "bytes": 4617,
+      "sha256": "474ca57f974b4649bc8a3266dac058e100da83b6b94f3808ebe1d34565ec7c2a"
+    },
+    {
+      "file": "verifiche/personal/consegna.patch",
+      "bytes": 1371553,
+      "sha256": "7b32f39a4b0acc89f62be1ee7f67f9235a0a2ec2c5d61ba1d67ca48d6eda5d0e"
+    },
+    {
+      "file": "verifiche/personal/e2e.json",
+      "bytes": 207851,
+      "sha256": "ed0c2f257cdafa9ac283f3c84f87f998eab9910e420332def0b25cfee2d8088f"
+    },
+    {
+      "file": "verifiche/personal/e2e.log",
+      "bytes": 30640,
+      "sha256": "5f7de1c1cdac26bc225a906f456d941ff104d03089110bb5ecbd1dee5f2fa25c"
+    },
+    {
+      "file": "verifiche/personal/esito-consegna.json",
+      "bytes": 2911,
+      "sha256": "ada6ab449235806a16bcd30ecea7b3becacfea8dd24512cc9f457bc1b1c822a0"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-02/browser-evidence.json",
+      "bytes": 612,
+      "sha256": "0b80c4b5baf85ef6432130142e2257cfde061418e67c2cf0bdbdb91e9aec0c66"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-02/e2e.json",
+      "bytes": 17363,
+      "sha256": "f4e268e740d9080ca5fe792660d39fcdaac34eae5405a5fbbf50622aa43f19ed"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-02/test-results/.last-run.json",
+      "bytes": 101,
+      "sha256": "b83bace9f7ac6771cb2eadf1b3b8aac820bec9452f48053b85845797ef6f5aa0"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-02/test-results/personal-a-learner-creates-771b5-keeps-the-real-account-role-desktop-chromium/error-context.md",
+      "bytes": 5508,
+      "sha256": "acff58d5831ac3c25862ae829b738820db97678f7dedb74490fcbf9a8fda4a1f"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-02/test-results/personal-a-learner-creates-771b5-keeps-the-real-account-role-desktop-chromium/personal-home.png",
+      "bytes": 96943,
+      "sha256": "4f4bb2e6be95c9c2b8ed07900fd56f33553c720ccbb9cfb4050e8d1df3da29f5"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-02/test-results/personal-a-learner-creates-771b5-keeps-the-real-account-role-desktop-chromium/test-failed-1.png",
+      "bytes": 6233,
+      "sha256": "d624ac7bc578433c7bb600c1b5841fa5b2030e7a9526031201d54bb26e5739b8"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-02/test-results/personal-a-learner-creates-771b5-keeps-the-real-account-role-desktop-chromium/test-failed-2.png",
+      "bytes": 96542,
+      "sha256": "72eddf169fac01d469ae507b952f3a29b02504d51483ee43d875d6a2d1255281"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-02/test-results/personal-a-learner-owns-a--ead5e-eopens-its-saved-laboratory-desktop-chromium/personal-home.png",
+      "bytes": 103709,
+      "sha256": "ef28543db818a738bae6aac12975ae6f4613c812ea64bcd91edcf091a796f511"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-02/test-results/personal-a-learner-owns-a--ead5e-eopens-its-saved-laboratory-desktop-chromium/test-failed-1.png",
+      "bytes": 6233,
+      "sha256": "d624ac7bc578433c7bb600c1b5841fa5b2030e7a9526031201d54bb26e5739b8"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-02/test-results/personal-a-learner-owns-a--ead5e-eopens-its-saved-laboratory-desktop-chromium/test-failed-2.png",
+      "bytes": 90018,
+      "sha256": "4fce8695d2f2c00fe25630e0315782c802e81fc3a3e1d92c19c9aac6c029b2e3"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-02.log",
+      "bytes": 8533,
+      "sha256": "fcbcf7a10083063b60ae56ac1cb87878dc56f76a64c1dff4d03d94dc8d02afa6"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-03/browser-evidence.json",
+      "bytes": 602,
+      "sha256": "c7815d67ae98c8b26e47ddfe27d042e3617a0cdb8a81cb4a9031b21586424299"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-03/e2e.json",
+      "bytes": 11663,
+      "sha256": "28f93a93bb5b3c7186e40d3539130207db0de9609dec683054e544587e815eb4"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-03/test-results/.last-run.json",
+      "bytes": 45,
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-03/test-results/personal-a-learner-creates-771b5-keeps-the-real-account-role-desktop-chromium/personal-home.png",
+      "bytes": 95754,
+      "sha256": "c49b98a230699811b050ff98667fbc31f909b6a0f4c89976df9dde994dbd33f0"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-03/test-results/personal-a-learner-creates-771b5-keeps-the-real-account-role-mobile-chromium/personal-home.png",
+      "bytes": 219878,
+      "sha256": "fd76a2c82161510ae073d641c208d28082a30b1f6d597df1f7de5cf4c7539112"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-03/test-results/personal-a-learner-moves-b-f8cc8-ng-tools-or-private-content-desktop-chromium/personal-home.png",
+      "bytes": 115702,
+      "sha256": "dad49f4d316ee7324aa7a1378ef56a40dde6355e7af2616eacda7a011bb54bd8"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-03/test-results/personal-a-learner-moves-b-f8cc8-ng-tools-or-private-content-mobile-chromium/personal-home.png",
+      "bytes": 281359,
+      "sha256": "6b6c625cc7c1d5690dfb55c00cd9adc9da6c55ffbea7d2c4feb2cbe1aa6eac1d"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-03/test-results/personal-a-learner-owns-a--ead5e-eopens-its-saved-laboratory-desktop-chromium/personal-home.png",
+      "bytes": 102200,
+      "sha256": "3ffe6885d6560b19afa9ac8144296a0d1e20a3f7d91bfd2fa541edbb291d91da"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-03/test-results/personal-a-learner-owns-a--ead5e-eopens-its-saved-laboratory-mobile-chromium/personal-home.png",
+      "bytes": 240315,
+      "sha256": "ce5408d00a33a560f0aa8f482efb12b3492eb2a814fdcf3e1c38247a0f5863fb"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-03/test-results/personal-a-learner-retains-18f2e-confirms-it-after-reconnect-desktop-chromium/personal-home.png",
+      "bytes": 108654,
+      "sha256": "f68334dd30fb597746928e4cefe153361dccd7c3de0f071f5a5c8e082c0176ee"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-03/test-results/personal-a-learner-retains-18f2e-confirms-it-after-reconnect-mobile-chromium/personal-home.png",
+      "bytes": 261003,
+      "sha256": "b37ca3856e8834b991a411a5e05769e78235b613f1fbf87b6ab1ed4a4764ca06"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-browser-03.log",
+      "bytes": 2359,
+      "sha256": "80fd9aa6cba656c88f267d0c262ef49d979d83e3dd5fe7670016cb5e31d00423"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-build-01.log",
+      "bytes": 5816,
+      "sha256": "9a49776bf91a1bd571a273fb171f32c1c63bfb999abdd01479b23da932ee09c4"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-build-02.log",
+      "bytes": 5816,
+      "sha256": "ebe0b7e6e6dd03aeed86e7901c7272bdfca103eae05ac85c60cd3b7be81e9b23"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-build-03.log",
+      "bytes": 5816,
+      "sha256": "1cfe208250bfa3b059b54235044d8b824ea5cd58bd55f5ec8ee0c4bc3b1880fe"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-build-route-red.log",
+      "bytes": 5816,
+      "sha256": "18c1f5c15f1be7e47b09bfa2d3f1ed6eec52874ca8367ac0b6d8b6f7bf1561b3"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-collision-green.log",
+      "bytes": 360,
+      "sha256": "5961d519924767d2eae4e616e7c2b44df3e3ee3b8f7f0a3cb6d5c53ed716748c"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-collision-red.log",
+      "bytes": 4144,
+      "sha256": "ed082ad66ba08990291a9ea4713dc607cdd25cf4367345a43bdb5cf16a3e222c"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-core-green.log",
+      "bytes": 331,
+      "sha256": "6eba5a2188ec44665da47bb5f8bbfeb1fd4c49fb60542ae19761e9abc59d71f1"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-core-red.log",
+      "bytes": 1671,
+      "sha256": "0fa55f2a0e6f3c49b59b0bf693d9c3a6adc5fec77ac49604d8f5d920a57ed5f7"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-e2e-final.log",
+      "bytes": 30640,
+      "sha256": "5f7de1c1cdac26bc225a906f456d941ff104d03089110bb5ecbd1dee5f2fa25c"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/browser-evidence.json",
+      "bytes": 2554,
+      "sha256": "2e9f0a73c43c9a01c5c08fe0ce1c7004489fbad94059eeb10c56be452425af9e"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/e2e.json",
+      "bytes": 182416,
+      "sha256": "1f4dbf80d4398f6318f60b71e17141da48929571bff56e36a479f52390720aad"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/e2e.log",
+      "bytes": 26647,
+      "sha256": "506466a54927b1c22fdf9317cdf4f3739f5458bcc9fce692ec5fd2ed75e7a8ae"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/mcp-runtime.json",
+      "bytes": 2445,
+      "sha256": "31d2295e56de8d8398c420272728ef4d0eeb29bf56572ccd96706624407e8cdc"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/current-surface-evidence.json",
+      "bytes": 17234,
+      "sha256": "5ab54f16b42296a856388a912069cadc7671a24b61048031cade3ec130a002c5"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/desktop-evidence.json",
+      "bytes": 3715154,
+      "sha256": "da1e7838d764a90194475133bd0b69bcec01cb60bd4ad222d849f57ad186621f"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/desktop-summary.json",
+      "bytes": 5213,
+      "sha256": "38bca0b773bb0b4c2334824e7786725aaaea2b07dfe7aa06b9f57c392c38e322"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/desktop.json",
+      "bytes": 7426,
+      "sha256": "567e52d95b24c5338a4188a7c857395c166e2766bb554aed5f53d7782631ea85"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/desktop.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/donor/LICENSE",
+      "bytes": 1067,
+      "sha256": "1352d204fdb90d5e482c13139d848bc2c9300a9a7de358a0a558a23e72d0d8be"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/donor/excalidraw-app/data/LocalData.ts",
+      "bytes": 8277,
+      "sha256": "fbcdffc593fcf34de128d3f4d69bdfb37ce0ba2ec5f33cc25f68e64a18ea8933"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/donor/excalidraw-app/data/localStorage.ts",
+      "bytes": 2596,
+      "sha256": "5a6b915b562a06ab679192e272246e04b8e713af385cd3a7da0cc39c31e396b0"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/donor/packages/excalidraw/actions/actionToggleViewMode.tsx",
+      "bytes": 957,
+      "sha256": "d6c9c7ee5c4822f0abba09771150656476b360ab8ef309a14673745560786d66"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/donor/packages/excalidraw/actions/manager.tsx",
+      "bytes": 6797,
+      "sha256": "fd9740dc54aae851b8759e3c7fb7c8dff40e9668309a5f44c5a7b94a4a3b3031"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/donor/packages/excalidraw/actions/types.ts",
+      "bytes": 5472,
+      "sha256": "98d4efb4ffa5832154d4ef0cf099956019fcf9a012761fc753ccfc6ac4dd2339"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/donor-manifest.json",
+      "bytes": 4315,
+      "sha256": "b711bb0229b50e1eda77964b2cf78f703f51f8af020ceedc272d414386baa240"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/legacy/docs/ardesia-v4/specs/02_PERSONE_CORSI_E_GESTIONALE.md",
+      "bytes": 6850,
+      "sha256": "7007a5cb8d058f11e9be3cbf1cef4f5a01afaf9a67aa206620276179ccceabf7"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/legacy/docs/product/ARDESIA_specifiche_integrali_ricostruite_2026-10-28.md",
+      "bytes": 137958,
+      "sha256": "6d446bb433c35878b3540d89431955ab86664409f9705d167922ecc9077836bc"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/legacy-manifest.json",
+      "bytes": 851,
+      "sha256": "6fec04c5aa99170a9177def8fe43d5812badf429fd3250f36f71b4a2dda68f3a"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/mobile-evidence.json",
+      "bytes": 2101567,
+      "sha256": "9a42ccd1689f47bf1b4649050017e7b62e620f0f5c7634bde714e6c1c70079f7"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/mobile-summary.json",
+      "bytes": 5213,
+      "sha256": "8171acd0d0d503256552e38fb362593aaf9cf77006fbfcfc2102cc4350c2396a"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/mobile.json",
+      "bytes": 7422,
+      "sha256": "3bb95444c3dc85d6227880a4e272927427035fe496443fd6b86db05a0816f0d5"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/mobile.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/personal-authoring-dossier.md",
+      "bytes": 12852,
+      "sha256": "d3086e66f64a9e29d04a6b1640f0d8cd793b02e4476bb2b0a1b11f2598bafd33"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/personal-authoring-review.json",
+      "bytes": 3077,
+      "sha256": "239739b6d24661e0453284daf37142ecc656869fcc2d1789e625c1b956171af3"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/prior-source-index.json",
+      "bytes": 554,
+      "sha256": "b436bfc2a3c2e941b1b43855e777ec0297591bd184d8a722f55636eab28af146"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/rea-personal-authoring.json",
+      "bytes": 2617261,
+      "sha256": "cd6f5b0349d814e525691de75398f7ab4d7bd063fe5317bd14dd67923ab2a6c9"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/rea-personal-authoring.stderr",
+      "bytes": 7288,
+      "sha256": "000b1b98ad3ede5035bcffc67627d4610c843ea86797138025ab612553afa605"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/rea-summary.json",
+      "bytes": 18480,
+      "sha256": "782ce282aa96d9feb5d84392cb4e5a1402886d5e7a28c877c0bfe99f654bae92"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/review/fix-review.json",
+      "bytes": 7671,
+      "sha256": "547525b5f052bf15b297a2f39820280013df1f27ea3182a867b4f0f3a0a441f0"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/review/fix-review.md",
+      "bytes": 1792,
+      "sha256": "5f6d3c95a7b282583aa14c6ed8a307587114f533edc7849a8e38b1672696c69c"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/review/preliminary.json",
+      "bytes": 4147,
+      "sha256": "e4e97d59f9432f978499d18d6c153c52b536b20f45e1627764976d3d15cd2418"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/review/preliminary.md",
+      "bytes": 876,
+      "sha256": "05120e5e87961d8d85400aceb2a51ec2f48da748fabaf753fca65d4c4dd075b1"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/rea/run.json",
+      "bytes": 956,
+      "sha256": "52f2554dacae6aaae05f29dbed3950550ecc40458253d784bcc7e7216886a930"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/server-runtime.json",
+      "bytes": 928,
+      "sha256": "7cc99bde0308525388e82ba6f3395e990d7bce585b46d05ffb758558252bb3ad"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/.last-run.json",
+      "bytes": 150,
+      "sha256": "20ada2900397f1fc15d5aee05bb9744cf700cbc310fb6ee11653447466ceb414"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/audio-records-synthetic-au-dedf7-s-a-transcript-after-reload-desktop-chromium/replay.png",
+      "bytes": 155288,
+      "sha256": "3478e980b3f698cde1cc66f1e76bd2ef1b924aed8fab50cd9358f8d731585191"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/audio-records-synthetic-au-dedf7-s-a-transcript-after-reload-mobile-chromium/replay.png",
+      "bytes": 247068,
+      "sha256": "6ad76848804db696ddc577be0ccb45929bbe147b2ef88a01b0f2a15e65b95881"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/courses-uncertain-and-conc-5c75e--or-retarget-an-open-answer-mobile-chromium/test-failed-1.png",
+      "bytes": 199351,
+      "sha256": "a57c414e00fbd9fc8009e911ff81ca4bdd867539b6cdb75c5a25fea16940dfcc"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/creator-Creator-composes-a-5c1ad-act-next-definition-version-desktop-chromium/creator-composition.png",
+      "bytes": 137659,
+      "sha256": "048d8cc448e1410abe30c5800db7abb26b37e70150be83821fb956eb42ceb226"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/creator-Creator-preserves--cec01-local-plot-variable-capture-desktop-chromium/future.ardesia.json",
+      "bytes": 2033,
+      "sha256": "367d20db117d0bc1fed0dcff471ed9c28864dfda7f4a58916e0050ec46e4cf89"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/creator-Creator-rename-upd-7483e-source-lineage-for-reimport-desktop-chromium/extension.ardesia.json",
+      "bytes": 2939,
+      "sha256": "7be2c264f4c8aad2363d2337d01b0886b95d7cf0e939528f94fc18d18d176bec"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/creator-studio-keeps-conte-a98a6-at-desktop-and-mobile-sizes-desktop-chromium/creator.png",
+      "bytes": 94163,
+      "sha256": "a10d17ccfb480f482d1659456af0aeb611edb30265f3795ccc041b058c93a800"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/creator-studio-keeps-conte-a98a6-at-desktop-and-mobile-sizes-desktop-chromium/studio.png",
+      "bytes": 94130,
+      "sha256": "43ccdc3f397f0e553f698120e22001253a67729753c3bddc2f0af1fb3f0763e9"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-desktop-chromium/learner-diary.png",
+      "bytes": 111586,
+      "sha256": "8da4cb62f022e59c1881d13bff9aba78bc208945d8bc09eac43103b368fe3650"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-desktop-chromium/teacher-feedback.png",
+      "bytes": 187126,
+      "sha256": "d87035f44f59f7acad43076fff797321a0f7b4ce7d41f690f4a74b7b800ab3c2"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-desktop-chromium/handout.pdf",
+      "bytes": 272271,
+      "sha256": "9c37e9cff40935689f7b3dd24f030a8cdfdb0ff3aca043d131b534bbe82362f7"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-desktop-chromium/handout.png",
+      "bytes": 185179,
+      "sha256": "2c7d9e7f54f50e52d8f97dab8d50cbd4ca527fc13cc7014c849684664995d861"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-desktop-chromium/lesson.tex",
+      "bytes": 33345,
+      "sha256": "1cc2c3af6dd00f98e37d37b904fa0e398eefaf4b3b30f4e2c557edc383ac3557"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/handout-offline-handout-us-6f48a-ves-pending-ink-recoverable-desktop-chromium/offline-handout.pdf",
+      "bytes": 223502,
+      "sha256": "9127c1279e5bfd0797cd7f20f148bff3c03631988715f62a99384f195a5bd454"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/m3-acceptance--QA-acceptan-d8529-eight-browser-counterproofs-desktop-chromium/test-failed-1.png",
+      "bytes": 95637,
+      "sha256": "2ae32ae212067448c0263ad5b01a4f7144eb9032af8f80e6e4eecf934c447cbf"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/m3-acceptance--QA-acceptan-d8529-eight-browser-counterproofs-desktop-chromium/test-failed-2.png",
+      "bytes": 56935,
+      "sha256": "5dcc65916cc3eea020bbe407ff33ffb0e8e69b48bc8ec51e986d42c09417ce1e"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/personal-a-learner-creates-771b5-keeps-the-real-account-role-desktop-chromium/personal-home.png",
+      "bytes": 134116,
+      "sha256": "296306209bc4c4ed0111ff9b7d67d5cf630b5b4b3b1748ead8762bb52ab9e514"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/personal-a-learner-moves-b-f8cc8-ng-tools-or-private-content-desktop-chromium/personal-home.png",
+      "bytes": 155896,
+      "sha256": "0180564756eed37fd77ca130b8d1258bb0428cb75670420cc1f1b8ebe234c79e"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/personal-a-learner-owns-a--ead5e-eopens-its-saved-laboratory-desktop-chromium/personal-home.png",
+      "bytes": 141097,
+      "sha256": "b6a7bdba61a6e66fee30545cfdcd27c63f1631845f24c5b4a178a35f0f5c6c74"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/personal-a-learner-retains-18f2e-confirms-it-after-reconnect-desktop-chromium/personal-home.png",
+      "bytes": 148408,
+      "sha256": "f764fc403e8ee5b9bf7fcac89d831533830b2cfe199ddcda57891dec31cdc389"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/poiseuille--M4-flow-learne-58714-ndent-reopen-and-revocation-desktop-chromium/m4-learner-flow.png",
+      "bytes": 521405,
+      "sha256": "1fbc4c816331780960d415f88042deca1de763336329ed0397c223197b222fd5"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/poiseuille--M4-pressure-le-54a82-ndent-reopen-and-revocation-desktop-chromium/m4-learner-pressure.png",
+      "bytes": 526457,
+      "sha256": "89e4b919a6b5de8e74c279b87034dceff48632cdfc940992c25c1c13c922828c"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/programs-hostile-programs--887b7-lacing-the-last-valid-draft-desktop-chromium/program-recovered.png",
+      "bytes": 175351,
+      "sha256": "8dafc0eab3947fcca462b243065876ed401f80686117df8ac3e227ba282e82e3"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/programs-programmable-Crea-e547c-source-with-portable-export-desktop-chromium/program-running.png",
+      "bytes": 137461,
+      "sha256": "c0ff53df245dca8ea9fe0f3e189418b72ed8b08ee6470ea1ee377d1f5f9ca9ab"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/programs-programmable-Crea-e547c-source-with-portable-export-desktop-chromium/program.ardesia.json",
+      "bytes": 3051,
+      "sha256": "13c102b69112ecf592827b1b51fafd8db01191e8f2ddf5b51aeecc9fa8852f63"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-desktop-chromium/error-context.md",
+      "bytes": 5698,
+      "sha256": "3d02789741ba9d70925da9c86638ad533b6e13bd72630cc830d84299d3d994c2"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-desktop-chromium/student-first-session.png",
+      "bytes": 418634,
+      "sha256": "d6a534a66ed0f54d491c41cb1cfd2fc7446bb5c419b08ff8def1e4f598f2e48a"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-desktop-chromium/test-failed-1.png",
+      "bytes": 96467,
+      "sha256": "e1407947d488838db163fb4223de5a061378cba9d022bd175c7d3809a84bc267"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-desktop-chromium/test-failed-2.png",
+      "bytes": 47175,
+      "sha256": "b21f094f8ec9f0f63751738fe249e090f89ffa6533824b234becbf7ace83e377"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-desktop-chromium/test-failed-3.png",
+      "bytes": 85852,
+      "sha256": "e72a219dd36aae21d0abd38ee0bafb5ba107f7491c5f85e932216ebc4e6ca5c7"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-desktop-chromium/test-failed-4.png",
+      "bytes": 56214,
+      "sha256": "aceed814fc36528eb401e7eb78e5205ad9dc55fc49e7aa9ea93fe1680d002316"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/unit.json",
+      "bytes": 228721,
+      "sha256": "6a6482cf750cb5a2d7512cf38876180b105d4283796cbe163f958f292d253e78"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-fa15/verification.json",
+      "bytes": 1072,
+      "sha256": "bada28cca44b24f551cd61ffc601b263ff5873f3bce42082f57463b7175af6bb"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-focused-01.log",
+      "bytes": 1480,
+      "sha256": "5d7a8c5b498ea6bad18f08869e56db5c56c1cf2d6d4d3d2557e2b0ad5b4ed4ea"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-focused-02.log",
+      "bytes": 8649,
+      "sha256": "80229e77f2872429f1e44fbca7dcd5c5de99eeba281fd172047c7c3170e565bc"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-focused-03.log",
+      "bytes": 1083,
+      "sha256": "bd15750b800115902f20625310d422d623d620bcae409c2693fc844125e482c3"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-module-red/browser-evidence.json",
+      "bytes": 611,
+      "sha256": "fa5d8e6eba3c1430b54602f7eec1bd474541ca868f9454489b2142ccc095aae7"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-module-red/e2e.json",
+      "bytes": 9321,
+      "sha256": "5a0e7c6da108f664b239a73e577e2c976d7f91480605c94e42c2e79e02dfb365"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-module-red/test-results/.last-run.json",
+      "bytes": 96,
+      "sha256": "e21155a036a44def6552485a0306d7bd72410ae0cc34f18d38f2d40c9ffd9efd"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-module-red/test-results/personal-a-learner-owns-a--ead5e-eopens-its-saved-laboratory-desktop-chromium/personal-home.png",
+      "bytes": 96996,
+      "sha256": "0341218e88c4c4bdd388cec52e8e80ae0b674008e7a58cc01992d95f9497b511"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-module-red/test-results/personal-a-learner-owns-a--ead5e-eopens-its-saved-laboratory-desktop-chromium/test-failed-1.png",
+      "bytes": 6233,
+      "sha256": "d624ac7bc578433c7bb600c1b5841fa5b2030e7a9526031201d54bb26e5739b8"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-module-red/test-results/personal-a-learner-owns-a--ead5e-eopens-its-saved-laboratory-desktop-chromium/test-failed-2.png",
+      "bytes": 76713,
+      "sha256": "b6b142190c140d5d7cda4571c21c05d8fdd356ba0f140131398baa7d5149cb70"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-module-red.log",
+      "bytes": 3898,
+      "sha256": "1b41830a2329caf9ad57cce87f453ee0d326c11feb2668ba88fb22bb7e7d4561"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-preview-final.log",
+      "bytes": 118,
+      "sha256": "aa98a32d61f997dbce8f717728b7190e1ce551190f8a37cdd77e2a8eb972a05d"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-rea-runtime-final.log",
+      "bytes": 293,
+      "sha256": "d2a276363ed1135f562dec5b44f40d8ec90498beb59424c6956a00db2d08f2f1"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-rea-runtime.log",
+      "bytes": 293,
+      "sha256": "04d352e4264b2c6ed90f7d4526cd4e9809d79df6663fd5504c4943f07cc91291"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-route-red/browser-evidence.json",
+      "bytes": 602,
+      "sha256": "f083e6bfd55f6efa65b44e2ead369db828b743729984e1bae4c2c33cbd5f3f16"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-route-red/e2e.json",
+      "bytes": 9383,
+      "sha256": "0b0cc0c9ae43ab1b20cf9a92f4a20288f950ec606d0fda49af08766abb3de7ef"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-route-red/test-results/.last-run.json",
+      "bytes": 96,
+      "sha256": "9cb1c91b1b514ef3e3968333f2e58246a7a944360afbde26ca58c866be19c61f"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-route-red/test-results/personal-a-learner-followi-b5dde-te-a-lesson-without-a-crash-desktop-chromium/test-failed-1.png",
+      "bytes": 6233,
+      "sha256": "d624ac7bc578433c7bb600c1b5841fa5b2030e7a9526031201d54bb26e5739b8"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-route-red/test-results/personal-a-learner-followi-b5dde-te-a-lesson-without-a-crash-desktop-chromium/test-failed-2.png",
+      "bytes": 6235,
+      "sha256": "f074218770dab0a678b6e3e190b2acb79e43ace7fa28195795a429742ada64bb"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-route-red.log",
+      "bytes": 4015,
+      "sha256": "888bbcc19fc1a3d0d232d8c188f2e78dac6b1a237407289f274d1f303f3ea882"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-status-final.log",
+      "bytes": 16346,
+      "sha256": "12fa09e5dbd340b6fb33a8ef2e16e4d3fb0b597ef0413928315de898c36d9951"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-types-01.log",
+      "bytes": 48,
+      "sha256": "7ba0855ee26fa168ecfb6ab90ee2b6fb55f4cae7609d6249167d74709fc35ee5"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-types-02.log",
+      "bytes": 387,
+      "sha256": "1371a91a5ca890f3ed5350c563bb6830f4dfe8bd0be84eb494a3c52c842f0748"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-verify-01/unit.json",
+      "bytes": 229175,
+      "sha256": "bfa6084c35a791869e2019920111773fe655af3976ed922f48b88749774f4ad1"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-verify-01/verification.json",
+      "bytes": 641,
+      "sha256": "3d37a245bf6fa4aa9429957b204c2c9a581286d1b30051ea652672be43e60629"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-verify-01.log",
+      "bytes": 31614,
+      "sha256": "8368a1b813055b1db760824ca323a16755c83a36171161a864ccff1672c90a9b"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-verify-02.log",
+      "bytes": 35385,
+      "sha256": "93fe690740584089a333d8bb67fc0dad307a7d98820391b844364db7d92a5dd1"
+    },
+    {
+      "file": "verifiche/personal/intermedi/personal-verify-final.log",
+      "bytes": 35377,
+      "sha256": "698893776d2fb57aa9a292bcff43b401eb4772e0fe5f161c6b13900ed2b8c084"
+    },
+    {
+      "file": "verifiche/personal/mcp-runtime.json",
+      "bytes": 2445,
+      "sha256": "57d8fb11b024b4d7d09f42e15331ac419ad5d55ec45562971da9d9488bec1590"
+    },
+    {
+      "file": "verifiche/personal/program-runtime-build.json",
+      "bytes": 816,
+      "sha256": "2e3b708a57a199823335caeb928beacf89bfcf671730e13bbe584d361136931b"
+    },
+    {
+      "file": "verifiche/personal/review/candidate-static.json",
+      "bytes": 10519,
+      "sha256": "c1811f6263341c7ccd283c5108b867f78914a699f6da944951e9254e2f70bb9e"
+    },
+    {
+      "file": "verifiche/personal/review/candidate.patch",
+      "bytes": 1371553,
+      "sha256": "7b32f39a4b0acc89f62be1ee7f67f9235a0a2ec2c5d61ba1d67ca48d6eda5d0e"
+    },
+    {
+      "file": "verifiche/personal/review/fa15-review.json",
+      "bytes": 3772,
+      "sha256": "142e26c487bbae42e68dd7e692b88c382574e5ed9b328448a0ec7d9b0931aefe"
+    },
+    {
+      "file": "verifiche/personal/review/fa15-review.md",
+      "bytes": 812,
+      "sha256": "f6d5df4a3b1dcf58f9412b2df368d9ff20611ccf1ca6f6771d3b8c7f1d47efa9"
+    },
+    {
+      "file": "verifiche/personal/review/final-review.json",
+      "bytes": 33605,
+      "sha256": "c184a7358ce4ba49503a5a12b4522dab86f72942677617aeebc0a52255a45d97"
+    },
+    {
+      "file": "verifiche/personal/review/final-review.md",
+      "bytes": 4097,
+      "sha256": "648a6e8887fa20b2dd3d9c442d4bc88627273cd27f8e1918ad22a6a27777b60b"
+    },
+    {
+      "file": "verifiche/personal/review/fix-review.json",
+      "bytes": 7671,
+      "sha256": "547525b5f052bf15b297a2f39820280013df1f27ea3182a867b4f0f3a0a441f0"
+    },
+    {
+      "file": "verifiche/personal/review/fix-review.md",
+      "bytes": 1792,
+      "sha256": "5f6d3c95a7b282583aa14c6ed8a307587114f533edc7849a8e38b1672696c69c"
+    },
+    {
+      "file": "verifiche/personal/review/preliminary.json",
+      "bytes": 4147,
+      "sha256": "e4e97d59f9432f978499d18d6c153c52b536b20f45e1627764976d3d15cd2418"
+    },
+    {
+      "file": "verifiche/personal/review/preliminary.md",
+      "bytes": 876,
+      "sha256": "05120e5e87961d8d85400aceb2a51ec2f48da748fabaf753fca65d4c4dd075b1"
+    },
+    {
+      "file": "verifiche/personal/review-indipendente.json",
+      "bytes": 477,
+      "sha256": "f0c4a76a73251c280746b15eddb9089f853f612e65dc879e60f863732805741a"
+    },
+    {
+      "file": "verifiche/personal/server-runtime.json",
+      "bytes": 928,
+      "sha256": "b18818e89914039919ca0c40ebc32e119da032da203e19f7aec39cccae4622c8"
+    },
+    {
+      "file": "verifiche/personal/source-files.json",
+      "bytes": 59562,
+      "sha256": "f651b738ded9d4519af073e2e609cfaa281eaeefd523e36e7d9278816bf37920"
+    },
+    {
+      "file": "verifiche/personal/status.json",
+      "bytes": 16292,
+      "sha256": "25c5329d134fcf57382cdcd89918cba928a679fff14437dd72ee9039bc6645d6"
+    },
+    {
+      "file": "verifiche/personal/test-results/.last-run.json",
+      "bytes": 45,
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+    },
+    {
+      "file": "verifiche/personal/test-results/audio-records-synthetic-au-dedf7-s-a-transcript-after-reload-desktop-chromium/replay.png",
+      "bytes": 155288,
+      "sha256": "3478e980b3f698cde1cc66f1e76bd2ef1b924aed8fab50cd9358f8d731585191"
+    },
+    {
+      "file": "verifiche/personal/test-results/audio-records-synthetic-au-dedf7-s-a-transcript-after-reload-mobile-chromium/replay.png",
+      "bytes": 247016,
+      "sha256": "a69564b28ac2490eacd5a6bb9905763fc35d5d5c5d1df2a30f1050a642c509a8"
+    },
+    {
+      "file": "verifiche/personal/test-results/creator-Creator-composes-a-5c1ad-act-next-definition-version-desktop-chromium/creator-composition.png",
+      "bytes": 137661,
+      "sha256": "76ec65c96ef15435a60431dd7472f790d1fc359b58d60e41ab277c63636e8aae"
+    },
+    {
+      "file": "verifiche/personal/test-results/creator-Creator-composes-a-5c1ad-act-next-definition-version-mobile-chromium/creator-composition.png",
+      "bytes": 147367,
+      "sha256": "b1089732cd31031b9e3052b42849a93538041f3e007f58a6a367e4109498eef1"
+    },
+    {
+      "file": "verifiche/personal/test-results/creator-Creator-preserves--cec01-local-plot-variable-capture-desktop-chromium/future.ardesia.json",
+      "bytes": 2033,
+      "sha256": "0e9ce1fd66b253d39514e59f3350383176fb5880fa1c680010dd38f649c49482"
+    },
+    {
+      "file": "verifiche/personal/test-results/creator-Creator-preserves--cec01-local-plot-variable-capture-mobile-chromium/future.ardesia.json",
+      "bytes": 2033,
+      "sha256": "6272d125ecf3dc73893b5899ae0e6154cdfe4da3c4c438fe67c54247a67ed5cd"
+    },
+    {
+      "file": "verifiche/personal/test-results/creator-Creator-rename-upd-7483e-source-lineage-for-reimport-desktop-chromium/extension.ardesia.json",
+      "bytes": 2939,
+      "sha256": "8cbcb4ff69916e155dbd0e6c32b5c976f11c75a418fdf8283dc0909b0bd75c36"
+    },
+    {
+      "file": "verifiche/personal/test-results/creator-Creator-rename-upd-7483e-source-lineage-for-reimport-mobile-chromium/extension.ardesia.json",
+      "bytes": 2938,
+      "sha256": "becbbe720b7a84444289ceb3e5975b38da2d8238f0e6ded3c8f27ad90385cda5"
+    },
+    {
+      "file": "verifiche/personal/test-results/creator-studio-keeps-conte-a98a6-at-desktop-and-mobile-sizes-desktop-chromium/creator.png",
+      "bytes": 94163,
+      "sha256": "a10d17ccfb480f482d1659456af0aeb611edb30265f3795ccc041b058c93a800"
+    },
+    {
+      "file": "verifiche/personal/test-results/creator-studio-keeps-conte-a98a6-at-desktop-and-mobile-sizes-desktop-chromium/studio.png",
+      "bytes": 94130,
+      "sha256": "43ccdc3f397f0e553f698120e22001253a67729753c3bddc2f0af1fb3f0763e9"
+    },
+    {
+      "file": "verifiche/personal/test-results/creator-studio-keeps-conte-a98a6-at-desktop-and-mobile-sizes-mobile-chromium/creator.png",
+      "bytes": 156540,
+      "sha256": "540de8ccf22302e304a45c8f3d2b32f6aa0d067da82f8a272b328fbb08162138"
+    },
+    {
+      "file": "verifiche/personal/test-results/creator-studio-keeps-conte-a98a6-at-desktop-and-mobile-sizes-mobile-chromium/studio.png",
+      "bytes": 215054,
+      "sha256": "77d6d149df0bba8e709395e9d07746138c577b26cdc39e60a4271145de3b5f3c"
+    },
+    {
+      "file": "verifiche/personal/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-desktop-chromium/learner-diary.png",
+      "bytes": 111278,
+      "sha256": "828e14b30895b80743d2c0658df1b8e0b0bede686cfbbf627d2f13ad250dead5"
+    },
+    {
+      "file": "verifiche/personal/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-desktop-chromium/teacher-feedback.png",
+      "bytes": 186900,
+      "sha256": "7c558b68dfbbe82c4b387b05d8c6e6119df1fdaf813216503cb937e1c83033a3"
+    },
+    {
+      "file": "verifiche/personal/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-mobile-chromium/learner-diary.png",
+      "bytes": 236198,
+      "sha256": "452d1e289de2dc234b1426eea7cd7648a97a1ba22a963856b13a2d77d9ed1c12"
+    },
+    {
+      "file": "verifiche/personal/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-mobile-chromium/teacher-feedback.png",
+      "bytes": 301292,
+      "sha256": "9ee864a80585a332c782b011a799a90f3179bee60a57bb21b29de6c6502cd008"
+    },
+    {
+      "file": "verifiche/personal/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-desktop-chromium/handout.pdf",
+      "bytes": 270533,
+      "sha256": "1400ade637a2c1eacdd7480d0a1d4c55ea62658fb5aea9ac57f889bf3370b325"
+    },
+    {
+      "file": "verifiche/personal/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-desktop-chromium/handout.png",
+      "bytes": 184780,
+      "sha256": "077ae21269b6817977cd6f1c95a35d80dd27f73d0ccebe45d83b063691492cee"
+    },
+    {
+      "file": "verifiche/personal/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-desktop-chromium/lesson.tex",
+      "bytes": 33345,
+      "sha256": "d9a0c181bd5529fc3588967f2abcd402bb7a3a9c109ed8d172541f759a3c78f8"
+    },
+    {
+      "file": "verifiche/personal/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-mobile-chromium/handout.pdf",
+      "bytes": 268792,
+      "sha256": "e2eb5fb532d9a2e1a5e7437012144fb05a109f082d116c8ccd1e20d7fbbd0bd7"
+    },
+    {
+      "file": "verifiche/personal/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-mobile-chromium/handout.png",
+      "bytes": 223982,
+      "sha256": "0e29de54530ac5f40c2401cb656e67ad88472c29ec9fa712c69cebcb5451c651"
+    },
+    {
+      "file": "verifiche/personal/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-mobile-chromium/lesson.tex",
+      "bytes": 33323,
+      "sha256": "24eb5ffde4f46f86d5aa37e4091090c84d642704ad421e34104399b2013d6b13"
+    },
+    {
+      "file": "verifiche/personal/test-results/handout-offline-handout-us-6f48a-ves-pending-ink-recoverable-desktop-chromium/offline-handout.pdf",
+      "bytes": 223265,
+      "sha256": "6a0147c99978a268e7a4cb2890c3d64131c0365b14549e2ff954a6e77293c90e"
+    },
+    {
+      "file": "verifiche/personal/test-results/handout-offline-handout-us-6f48a-ves-pending-ink-recoverable-mobile-chromium/offline-handout.pdf",
+      "bytes": 221478,
+      "sha256": "4290ad77e3308d43ed926bcd55c7c1a61d69fdf0176e481b3a69593db1f0ce7e"
+    },
+    {
+      "file": "verifiche/personal/test-results/personal-a-learner-creates-771b5-keeps-the-real-account-role-desktop-chromium/personal-home.png",
+      "bytes": 102729,
+      "sha256": "fb18a292c30d69cc3f47a509a772af0ac35e78bda94ff54e5b3fc052b0c8e9b5"
+    },
+    {
+      "file": "verifiche/personal/test-results/personal-a-learner-creates-771b5-keeps-the-real-account-role-mobile-chromium/personal-home.png",
+      "bytes": 243005,
+      "sha256": "9ff45b0bfea897bcbf0e1d90a65752185837c5fa9928a87618003027e1726045"
+    },
+    {
+      "file": "verifiche/personal/test-results/personal-a-learner-followi-b5dde-te-a-lesson-without-a-crash-desktop-chromium/personal-home.png",
+      "bytes": 96122,
+      "sha256": "131be7dce618af16a315a6ae8bb1dc88cb637656e987cddb934df1ee9b2ee388"
+    },
+    {
+      "file": "verifiche/personal/test-results/personal-a-learner-followi-b5dde-te-a-lesson-without-a-crash-mobile-chromium/personal-home.png",
+      "bytes": 222436,
+      "sha256": "cb02bcf71d975d81ca7a244804461f756db15820c28073cc8577f2efb93c1321"
+    },
+    {
+      "file": "verifiche/personal/test-results/personal-a-learner-moves-b-f8cc8-ng-tools-or-private-content-desktop-chromium/personal-home.png",
+      "bytes": 122805,
+      "sha256": "8792b7023dcf7b145e18c65c3c0947343d2b8b44f22d395cafd0747ff1f7fc77"
+    },
+    {
+      "file": "verifiche/personal/test-results/personal-a-learner-moves-b-f8cc8-ng-tools-or-private-content-mobile-chromium/personal-home.png",
+      "bytes": 302942,
+      "sha256": "25da26644247fab5e277a5cff561052898fe86babcefd3a25cbf033afd0e8d68"
+    },
+    {
+      "file": "verifiche/personal/test-results/personal-a-learner-owns-a--ead5e-eopens-its-saved-laboratory-desktop-chromium/personal-home.png",
+      "bytes": 108808,
+      "sha256": "175af5b388e2503983ba3a90d9aebf915c614c1e1cc2fde91534048f4ad76d59"
+    },
+    {
+      "file": "verifiche/personal/test-results/personal-a-learner-owns-a--ead5e-eopens-its-saved-laboratory-mobile-chromium/personal-home.png",
+      "bytes": 261691,
+      "sha256": "2e0827c0aa9c675816c14435341c86b33e2686c8332a88a7551559e8b6965f31"
+    },
+    {
+      "file": "verifiche/personal/test-results/personal-a-learner-retains-18f2e-confirms-it-after-reconnect-desktop-chromium/personal-home.png",
+      "bytes": 115595,
+      "sha256": "b78021c9e238869d3b71bd7473ccb8cc153a9d606c4d597a810a2e11c15469e1"
+    },
+    {
+      "file": "verifiche/personal/test-results/personal-a-learner-retains-18f2e-confirms-it-after-reconnect-mobile-chromium/personal-home.png",
+      "bytes": 282918,
+      "sha256": "4c6e34caa264a3c706cc415be25b584c137d5902ed96a90f6c55654fdaa0990a"
+    },
+    {
+      "file": "verifiche/personal/test-results/poiseuille--M4-flow-learne-58714-ndent-reopen-and-revocation-desktop-chromium/m4-learner-flow.png",
+      "bytes": 521405,
+      "sha256": "1fbc4c816331780960d415f88042deca1de763336329ed0397c223197b222fd5"
+    },
+    {
+      "file": "verifiche/personal/test-results/poiseuille--M4-flow-learne-58714-ndent-reopen-and-revocation-mobile-chromium/m4-learner-flow.png",
+      "bytes": 1678162,
+      "sha256": "d2d7b6fb45c98e52a555ded17c4faf4318f3a2516c08040de40f5eed8c2987f5"
+    },
+    {
+      "file": "verifiche/personal/test-results/poiseuille--M4-pressure-le-54a82-ndent-reopen-and-revocation-desktop-chromium/m4-learner-pressure.png",
+      "bytes": 526457,
+      "sha256": "89e4b919a6b5de8e74c279b87034dceff48632cdfc940992c25c1c13c922828c"
+    },
+    {
+      "file": "verifiche/personal/test-results/poiseuille--M4-pressure-le-54a82-ndent-reopen-and-revocation-mobile-chromium/m4-learner-pressure.png",
+      "bytes": 1690875,
+      "sha256": "e4dfd08d7c24d804d568887d8e76e9f0529f0da105b9628de954d7bc573cb8ef"
+    },
+    {
+      "file": "verifiche/personal/test-results/programs-hostile-programs--887b7-lacing-the-last-valid-draft-desktop-chromium/program-recovered.png",
+      "bytes": 175351,
+      "sha256": "8dafc0eab3947fcca462b243065876ed401f80686117df8ac3e227ba282e82e3"
+    },
+    {
+      "file": "verifiche/personal/test-results/programs-hostile-programs--887b7-lacing-the-last-valid-draft-mobile-chromium/program-recovered.png",
+      "bytes": 166983,
+      "sha256": "7006ac4e4fedcaf1db953d4c8c0e4cdf4ab978ab8e312e0e16fd1e89a446a950"
+    },
+    {
+      "file": "verifiche/personal/test-results/programs-programmable-Crea-e547c-source-with-portable-export-desktop-chromium/program-running.png",
+      "bytes": 136606,
+      "sha256": "4ae62db507c26f6e88379c5f91eae56027d46624ee7edbba3640df69bacb979b"
+    },
+    {
+      "file": "verifiche/personal/test-results/programs-programmable-Crea-e547c-source-with-portable-export-desktop-chromium/program.ardesia.json",
+      "bytes": 3051,
+      "sha256": "f0fbc353ba65b667d4fa7bdb9d49c34a00db0598271b40af769272c81369f48c"
+    },
+    {
+      "file": "verifiche/personal/test-results/programs-programmable-Crea-e547c-source-with-portable-export-mobile-chromium/program-running.png",
+      "bytes": 164299,
+      "sha256": "5c7941fe4047065a81076ba7e5b0a639f5f6f16be1f98929965efdd488a284b8"
+    },
+    {
+      "file": "verifiche/personal/test-results/programs-programmable-Crea-e547c-source-with-portable-export-mobile-chromium/program.ardesia.json",
+      "bytes": 3050,
+      "sha256": "c37c5a6b6cd0838920a18c62ad6d72fa66f105bd2f52356839d4d448393fb2a2"
+    },
+    {
+      "file": "verifiche/personal/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-desktop-chromium/student-first-session.png",
+      "bytes": 418634,
+      "sha256": "d6a534a66ed0f54d491c41cb1cfd2fc7446bb5c419b08ff8def1e4f598f2e48a"
+    },
+    {
+      "file": "verifiche/personal/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-desktop-chromium/student-independent-session.png",
+      "bytes": 417144,
+      "sha256": "8ca78d1b1a3c7227af1513b2b58da705efa733ce245ffee3756d411fefe9a691"
+    },
+    {
+      "file": "verifiche/personal/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-mobile-chromium/student-first-session.png",
+      "bytes": 1292461,
+      "sha256": "2809d4cd97041e895645c280d47e67ca1484aa1a468bd413e3d34443b82aea98"
+    },
+    {
+      "file": "verifiche/personal/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-mobile-chromium/student-independent-session.png",
+      "bytes": 1292461,
+      "sha256": "2809d4cd97041e895645c280d47e67ca1484aa1a468bd413e3d34443b82aea98"
+    },
+    {
+      "file": "verifiche/personal/unit.json",
+      "bytes": 228671,
+      "sha256": "f29cb2d884af7337d6e4cbc10f012cc7315e07c27135a9f5f46288f06c644c6b"
+    },
+    {
+      "file": "verifiche/personal/verification.json",
+      "bytes": 1072,
+      "sha256": "556478e9a45eec69bf29fcd3946535dcd1f22b50888a463df034b9d156c40e94"
+    },
+    {
+      "file": "verifiche/personal/verify.log",
+      "bytes": 35377,
+      "sha256": "698893776d2fb57aa9a292bcff43b401eb4772e0fe5f161c6b13900ed2b8c084"
+    },
+    {
+      "file": "rea-evidence/personal/README.md",
+      "bytes": 1741,
+      "sha256": "48f3b8a4e87c90a06168f3711d7a7b934c011efbac4b602564f4f37b66722017"
+    },
+    {
+      "file": "rea-evidence/personal/current-surface-evidence.json",
+      "bytes": 17234,
+      "sha256": "5ab54f16b42296a856388a912069cadc7671a24b61048031cade3ec130a002c5"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-account.png",
+      "bytes": 89818,
+      "sha256": "2ea74c1df3be91e13c346921d5de6438b1eeba757db7c2694cd4cf6f11ed15c7"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-add-control.png",
+      "bytes": 102662,
+      "sha256": "b31ad65893c894eac3cf5cbbbf4e6fed23787c211d47b1ff0a0ba980811f93d6"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-add-element.png",
+      "bytes": 125986,
+      "sha256": "e30168f316b33021303eb5000000e943c811d85b3dd54d4f52507bebc426dec3"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-back-home.png",
+      "bytes": 89818,
+      "sha256": "2ea74c1df3be91e13c346921d5de6438b1eeba757db7c2694cd4cf6f11ed15c7"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-board.png",
+      "bytes": 67530,
+      "sha256": "6729fdcbc6740da287f97f6f7ef3b897269656b578d2e9213b08c3d796f90204"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-close-again.png",
+      "bytes": 70112,
+      "sha256": "0d8b5e75ed9ff77e6b9d098a1911d52b595cfc1dd481d6a43659e15dbf2d5c04"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-close-inspector.png",
+      "bytes": 56003,
+      "sha256": "eafd7222b748981aa2ce46803283a58bb448766506feb1125b0f569ce1ab4968"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-control-label.png",
+      "bytes": 107047,
+      "sha256": "0fc3679525daa15ff56b9b2955406422b46ff45eed1dfcf1bacf5048ffa6bcbb"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-creator-ax.json",
+      "bytes": 4182,
+      "sha256": "a670074fe565d986fff7b941b918d935678295e6bffb8e65c574baeb0470bf26"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-creator.png",
+      "bytes": 124495,
+      "sha256": "973e6b77d7e7217dbb7677e86780ff9d50eed7a6e44f4c483dd688b280024201"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-empty-composition.png",
+      "bytes": 129181,
+      "sha256": "02233ad5ade9ab52889bb1a70bac7710eab1795938f474736003d7ad0bfe05f8"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-evidence.json",
+      "bytes": 3750015,
+      "sha256": "dee868b4f57c16a4ac3c9c79ea5284ee3598759ff53bdc2af37d72f653131656"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-final-home-ax.json",
+      "bytes": 1368,
+      "sha256": "30c6a9368fc15624ec269b9cff99af927c7346ab0d060e2b047a5dbe04a0b8c5"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-final-home.png",
+      "bytes": 89818,
+      "sha256": "2ea74c1df3be91e13c346921d5de6438b1eeba757db7c2694cd4cf6f11ed15c7"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-home-ax.json",
+      "bytes": 1196,
+      "sha256": "1f9f281f2c5cc9cb284c8d4161dc39d0ea86c3b7ceb06b2bf1ea0a27f5d71774"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-home.png",
+      "bytes": 87628,
+      "sha256": "a6f8beb5eb7170afd460c5918b114047bf09afab8f47af95864395c4c89eab8c"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-lesson-title.png",
+      "bytes": 88449,
+      "sha256": "aba2f6bdac1b4b86b4a9121b01113d7b891145a17a314c8400d8a5bbd1d12c84"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-login.png",
+      "bytes": 53179,
+      "sha256": "38d24aeb958abc8e09c449d268a5d3a718f565917b41a895606b5832848d9a35"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-new-lesson.png",
+      "bytes": 94741,
+      "sha256": "d63f858ef7e4760c1183da1817099cbac365a42924803a51ea859b98088c6224"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-notebook.png",
+      "bytes": 68350,
+      "sha256": "f642617d3f39d00c9ec97bed7380a4b6b31f5145e5529677755f414c18c31831"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-password.png",
+      "bytes": 57573,
+      "sha256": "a8fcf126eeac13db32f9d76ab0a8f40984cc0af1f3cdf2a10daf03c1acc02d3d"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-personal-home-ax.json",
+      "bytes": 1368,
+      "sha256": "30c6a9368fc15624ec269b9cff99af927c7346ab0d060e2b047a5dbe04a0b8c5"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-personal-home.png",
+      "bytes": 89818,
+      "sha256": "2ea74c1df3be91e13c346921d5de6438b1eeba757db7c2694cd4cf6f11ed15c7"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-rename-type.png",
+      "bytes": 117415,
+      "sha256": "3d772684ba19092333bac083d23cab86a42a74359e92f781bc5f1a891b08105f"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-reopen-type.png",
+      "bytes": 106455,
+      "sha256": "77eb9ba91fd0edba902d2063f54f7c1690351967b1e83b0b46022260ad0a6faf"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-reopened-ax.json",
+      "bytes": 2661,
+      "sha256": "fda3796ba2a5a1d5d2738ed6beb606722e53519b615018a34fe79771ffde64cf"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-reopened.png",
+      "bytes": 106455,
+      "sha256": "77eb9ba91fd0edba902d2063f54f7c1690351967b1e83b0b46022260ad0a6faf"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-return.png",
+      "bytes": 55807,
+      "sha256": "4387714cd7145fb392f5124b77f909ac2453682ae7ebba62a4c50d5d7e2c8c65"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-save-type.png",
+      "bytes": 93977,
+      "sha256": "b0084151dbe3e4e88cf88128a00ba7666e7a0900c25cabfe9ea4e072565c86f8"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-save-version.png",
+      "bytes": 120601,
+      "sha256": "1e99c4eaae449119d596dcfa86993f24583cb240673be38d178bb07c3e680b29"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-saved-object.png",
+      "bytes": 93977,
+      "sha256": "b0084151dbe3e4e88cf88128a00ba7666e7a0900c25cabfe9ea4e072565c86f8"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-scenario_start.png",
+      "bytes": 13745,
+      "sha256": "f051e65a879f93222443335e8ed76481dc7fff7ea74b6b33b3ae38fa2801a52a"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-structure.png",
+      "bytes": 113220,
+      "sha256": "8fef3801f23f4f32d48b8c2f56491f26e64918745067ece2a6c52d81c52c68dd"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-summary.json",
+      "bytes": 5213,
+      "sha256": "ba7631f3d4cbdb26869c3d0e0047de840c9ced7eac840a888ae67b68c4540eec"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-type-name.png",
+      "bytes": 132513,
+      "sha256": "14ae1cec39d7ffda0142efaf527a0440104220c401af79815e36e08fa702857f"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-username.png",
+      "bytes": 57025,
+      "sha256": "36f066ce5ad282ce862350a3a1248a8d05e9c1e7f423f5cffae6e433a1d50310"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-version-saved-ax.json",
+      "bytes": 2711,
+      "sha256": "2d82a8124c176921543bae4de835490a562c1fcf0be64d2f22219907da998869"
+    },
+    {
+      "file": "rea-evidence/personal/desktop-version-saved.png",
+      "bytes": 111498,
+      "sha256": "cc320655fa6300e769f84f6627223ff9a8eedc050c65f2db31e94e28784869bd"
+    },
+    {
+      "file": "rea-evidence/personal/desktop.json",
+      "bytes": 7426,
+      "sha256": "3c27650fdb34ab3a5c1130c7b7d64c6c2a8468af8f627dc4630f9079d5810a43"
+    },
+    {
+      "file": "rea-evidence/personal/desktop.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "rea-evidence/personal/donor/LICENSE",
+      "bytes": 1067,
+      "sha256": "1352d204fdb90d5e482c13139d848bc2c9300a9a7de358a0a558a23e72d0d8be"
+    },
+    {
+      "file": "rea-evidence/personal/donor/excalidraw-app/data/LocalData.ts",
+      "bytes": 8277,
+      "sha256": "fbcdffc593fcf34de128d3f4d69bdfb37ce0ba2ec5f33cc25f68e64a18ea8933"
+    },
+    {
+      "file": "rea-evidence/personal/donor/excalidraw-app/data/localStorage.ts",
+      "bytes": 2596,
+      "sha256": "5a6b915b562a06ab679192e272246e04b8e713af385cd3a7da0cc39c31e396b0"
+    },
+    {
+      "file": "rea-evidence/personal/donor/packages/excalidraw/actions/actionToggleViewMode.tsx",
+      "bytes": 957,
+      "sha256": "d6c9c7ee5c4822f0abba09771150656476b360ab8ef309a14673745560786d66"
+    },
+    {
+      "file": "rea-evidence/personal/donor/packages/excalidraw/actions/manager.tsx",
+      "bytes": 6797,
+      "sha256": "fd9740dc54aae851b8759e3c7fb7c8dff40e9668309a5f44c5a7b94a4a3b3031"
+    },
+    {
+      "file": "rea-evidence/personal/donor/packages/excalidraw/actions/types.ts",
+      "bytes": 5472,
+      "sha256": "98d4efb4ffa5832154d4ef0cf099956019fcf9a012761fc753ccfc6ac4dd2339"
+    },
+    {
+      "file": "rea-evidence/personal/donor-manifest.json",
+      "bytes": 4315,
+      "sha256": "b711bb0229b50e1eda77964b2cf78f703f51f8af020ceedc272d414386baa240"
+    },
+    {
+      "file": "rea-evidence/personal/legacy/docs/ardesia-v4/specs/02_PERSONE_CORSI_E_GESTIONALE.md",
+      "bytes": 6850,
+      "sha256": "7007a5cb8d058f11e9be3cbf1cef4f5a01afaf9a67aa206620276179ccceabf7"
+    },
+    {
+      "file": "rea-evidence/personal/legacy/docs/product/ARDESIA_specifiche_integrali_ricostruite_2026-10-28.md",
+      "bytes": 137958,
+      "sha256": "6d446bb433c35878b3540d89431955ab86664409f9705d167922ecc9077836bc"
+    },
+    {
+      "file": "rea-evidence/personal/legacy-manifest.json",
+      "bytes": 851,
+      "sha256": "6fec04c5aa99170a9177def8fe43d5812badf429fd3250f36f71b4a2dda68f3a"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-account.png",
+      "bytes": 57449,
+      "sha256": "6f1b352fc62e6d51a9daed8332f4fe9c8184e38892722ae57214317fbe64fea6"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-add-control.png",
+      "bytes": 49716,
+      "sha256": "7811e6e48140d835a95a69d11e6686b27022c0340f9c81cd9577d59de06e74a9"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-add-element.png",
+      "bytes": 46910,
+      "sha256": "7c741841c5cda664956093aed2bb3da5dc07f45c63dab9b3c420e7b33922205b"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-back-home.png",
+      "bytes": 57449,
+      "sha256": "6f1b352fc62e6d51a9daed8332f4fe9c8184e38892722ae57214317fbe64fea6"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-board.png",
+      "bytes": 45967,
+      "sha256": "262d71692202e72248a0b2206114e3928800c95c5f8c77e67586c128bb61004c"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-close-again.png",
+      "bytes": 51519,
+      "sha256": "c963a910119ae5bb1d31e318f30b143d10ee1cc06e328dbce5963b688803db5d"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-close-inspector.png",
+      "bytes": 37560,
+      "sha256": "53745d21c331b9c9189196aabaf6c2560b9ca0c76a564473c0822a94c4aa17e3"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-control-label.png",
+      "bytes": 46789,
+      "sha256": "b414e0fb8c43104e160665fd67a7f70d4cdc957322a2a0372d9f598318275430"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-creator-ax.json",
+      "bytes": 4119,
+      "sha256": "d12e3f74f345bdc86d8daac7c78c1415280e364579e77901fb9bc63482d7c570"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-creator.png",
+      "bytes": 53810,
+      "sha256": "60edb555c2bf78edf63904551431564c5ae43b019a45cc77aeceb00a8ca64f50"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-empty-composition.png",
+      "bytes": 48775,
+      "sha256": "bcb5b82424ef2f424f3734ae077caf003ebefe9c3551ddc1b910736f5f8129ea"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-evidence.json",
+      "bytes": 2095447,
+      "sha256": "43aec69cd50c88ca54a9f975a5af844fd2cffa558f99099aab7e72f87dea9b10"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-final-home-ax.json",
+      "bytes": 1399,
+      "sha256": "252dbdcd4507c49ac359c68c5d0ddd6b522c8f549261fd998095fe3e9e8bc59c"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-final-home.png",
+      "bytes": 57449,
+      "sha256": "6f1b352fc62e6d51a9daed8332f4fe9c8184e38892722ae57214317fbe64fea6"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-home-ax.json",
+      "bytes": 1229,
+      "sha256": "313ea12a9b48faada64f330adcecdbdccb4bc98aa5c3f375ee2e7b810528f203"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-home.png",
+      "bytes": 58461,
+      "sha256": "ca89f46e1fb76fbbc56622713cc170eb9dd3e175762fe539ae45cde34d507f58"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-lesson-title.png",
+      "bytes": 58870,
+      "sha256": "4117ed1b9bd22b3ac2522ce7500aa1295c20bb6ca5bfc4c142326b3708c14ba6"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-login.png",
+      "bytes": 42387,
+      "sha256": "72b7fadfb4800480ecf52774ce37af842b554abeff7a1e41ddb309b7c70ab904"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-new-lesson.png",
+      "bytes": 30561,
+      "sha256": "fd6ba28ddfcab0a0632347a7a1d77d26ae8093740e14a6abd033374b60035104"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-notebook.png",
+      "bytes": 49790,
+      "sha256": "19e8f6ef734eb3eb2d384b7dcf5ac2f6a1e2f360546f8c9ced47ae890dea438f"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-password.png",
+      "bytes": 46373,
+      "sha256": "ecc5d373859155ba910676c4363586c54780697cf8eb1770c11cb7bb656b0146"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-personal-home-ax.json",
+      "bytes": 1399,
+      "sha256": "252dbdcd4507c49ac359c68c5d0ddd6b522c8f549261fd998095fe3e9e8bc59c"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-personal-home.png",
+      "bytes": 57449,
+      "sha256": "6f1b352fc62e6d51a9daed8332f4fe9c8184e38892722ae57214317fbe64fea6"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-rename-type.png",
+      "bytes": 54778,
+      "sha256": "f263d5a10c7fcdad718893f59d033065714056b538533017124bdeee478ad6a5"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-reopen-type.png",
+      "bytes": 53995,
+      "sha256": "2cfc68d98618f41562ba3060d939442a978b09c9a8f061317e4ea23ef901ee6f"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-reopened-ax.json",
+      "bytes": 2597,
+      "sha256": "24eedc415f81b0fd8234db7f5e2858d752ca551207ed6592f7e54779074af659"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-reopened.png",
+      "bytes": 53995,
+      "sha256": "2cfc68d98618f41562ba3060d939442a978b09c9a8f061317e4ea23ef901ee6f"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-return.png",
+      "bytes": 37556,
+      "sha256": "8b176a5a17c0b28b45e414b021545ee7da274c3c44f43add782c8a756495b723"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-save-type.png",
+      "bytes": 54270,
+      "sha256": "bb38350a4dff252a185769fea6d1626810c64e391159f1b18b670a081d16ce01"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-save-version.png",
+      "bytes": 55498,
+      "sha256": "8f82dc1be054a6efe7b1c0f603cc5e5ea55562ba3a07b96dedbe189af635cc97"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-saved-object.png",
+      "bytes": 54270,
+      "sha256": "bb38350a4dff252a185769fea6d1626810c64e391159f1b18b670a081d16ce01"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-scenario_start.png",
+      "bytes": 9421,
+      "sha256": "71bb1cdbb8342092671596a228a630d952f9f4e214ed63af3e9befbe0d002418"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-structure.png",
+      "bytes": 50659,
+      "sha256": "c3216e00bb61efb3e177c51cf6a7c3bda09447fe13f79f5050d5664e56aa0c62"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-summary.json",
+      "bytes": 5213,
+      "sha256": "97c5cd2d8cd4182532c6400314bf8f1c88fb0ff27b304ae9f2b6051709b5cc76"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-type-name.png",
+      "bytes": 51682,
+      "sha256": "6df2807dc32300fa362cbb7a33f44541313fafc54ab7468081d3803729eef330"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-username.png",
+      "bytes": 45883,
+      "sha256": "d76e4990ff30c04aa2dfd6f42213451fcb3f30d8a5943cb0ef51d39844869ac1"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-version-saved-ax.json",
+      "bytes": 2647,
+      "sha256": "76919ced1d563f1a8118501041d78e8f59f880e02f9587b7bc9f7a1daae0f794"
+    },
+    {
+      "file": "rea-evidence/personal/mobile-version-saved.png",
+      "bytes": 55498,
+      "sha256": "8f82dc1be054a6efe7b1c0f603cc5e5ea55562ba3a07b96dedbe189af635cc97"
+    },
+    {
+      "file": "rea-evidence/personal/mobile.json",
+      "bytes": 7422,
+      "sha256": "ab13816b33710fe82cbbe7f17ef2ce7bd4cea04627022156d9f73567a4797996"
+    },
+    {
+      "file": "rea-evidence/personal/mobile.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "rea-evidence/personal/personal-authoring-dossier.md",
+      "bytes": 12852,
+      "sha256": "d3086e66f64a9e29d04a6b1640f0d8cd793b02e4476bb2b0a1b11f2598bafd33"
+    },
+    {
+      "file": "rea-evidence/personal/personal-authoring-review.json",
+      "bytes": 3077,
+      "sha256": "239739b6d24661e0453284daf37142ecc656869fcc2d1789e625c1b956171af3"
+    },
+    {
+      "file": "rea-evidence/personal/prior-source-index.json",
+      "bytes": 554,
+      "sha256": "b436bfc2a3c2e941b1b43855e777ec0297591bd184d8a722f55636eab28af146"
+    },
+    {
+      "file": "rea-evidence/personal/rea-personal-authoring.json",
+      "bytes": 2617261,
+      "sha256": "cd6f5b0349d814e525691de75398f7ab4d7bd063fe5317bd14dd67923ab2a6c9"
+    },
+    {
+      "file": "rea-evidence/personal/rea-personal-authoring.stderr",
+      "bytes": 7288,
+      "sha256": "000b1b98ad3ede5035bcffc67627d4610c843ea86797138025ab612553afa605"
+    },
+    {
+      "file": "rea-evidence/personal/rea-summary.json",
+      "bytes": 18480,
+      "sha256": "782ce282aa96d9feb5d84392cb4e5a1402886d5e7a28c877c0bfe99f654bae92"
+    },
+    {
+      "file": "rea-evidence/personal/research-integrity.json",
+      "bytes": 196,
+      "sha256": "8b40dee1db531b31fed41c63a8c7103baa8aee2dae5726448743659a61e4e0dc"
+    },
+    {
+      "file": "rea-evidence/personal/run.json",
+      "bytes": 956,
+      "sha256": "52f2554dacae6aaae05f29dbed3950550ecc40458253d784bcc7e7216886a930"
+    },
+    {
+      "file": "rea-evidence/personal/runtime-source.json",
+      "bytes": 1440,
+      "sha256": "a2236b15a79b4262087f43c75c27f39baef9e0ec90f3f63a6c4c637746675e44"
+    },
+    {
+      "file": "verifiche/personal/delivery-integrity.json",
+      "bytes": 1244,
+      "sha256": "1e26c997f878839bdba74df292d09379677297dba5dc502c18366be2926385e7"
+    }
+  ]
+}

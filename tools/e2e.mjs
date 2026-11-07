@@ -36,7 +36,7 @@ if (target.mode === 'remote') {
     browserEnvironment[`ARDESIA_E2E_${name}_USERNAME`] ||= username;
     browserEnvironment[`ARDESIA_E2E_${name}_PASSWORD`] ||= randomBytes(24).toString('base64url');
   }
-  localBrowserAccounts(browserEnvironment); // Validate all six local identities before seeding or launch.
+  localBrowserAccounts(browserEnvironment); // Validate local study and personal authoring identities before launch.
 }
 const runIdentity = identity();
 if (target.mode === 'remote') preflightConfiguration(process.env, runIdentity);

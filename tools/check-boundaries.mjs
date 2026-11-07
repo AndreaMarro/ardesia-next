@@ -4,7 +4,7 @@ import {relative, resolve} from 'node:path';
 import {files, root} from './evidence.mjs';
 
 const dependencies = {
-  entry: ['server'], contracts: [], core: ['contracts'], server: ['contracts','core','plugin-host','plugin-sdk','ideal-spring'], 'remote-client': ['contracts','core'], 'lesson-os': ['contracts'],
+  entry: ['server'], contracts: [], core: ['contracts'], server: ['contracts','core','plugin-host','plugin-sdk','ideal-spring'], 'remote-client': ['contracts','core'], 'lesson-os': ['contracts'], 'mcp-core': ['contracts'],
   'ideal-spring': ['plugin-sdk'], poiseuille: ['plugin-sdk'], 'plugin-sdk': [], 'plugin-host': ['plugin-sdk', 'contracts'], ui: [],
   web: ['contracts', 'core', 'lesson-os', 'plugin-sdk', 'plugin-host', 'ui', 'ideal-spring','poiseuille','remote-client']
 };
@@ -24,7 +24,7 @@ for (const absolute of files().filter(file => /\.[cm]?[jt]sx?$/.test(file))) {
       if(name.startsWith('@ardesia/')) {
         const [target, ...rest] = name.slice(9).split('/');
         if(!dependencies[area]?.includes(target)) errors.push(`${path}: ${area} cannot import ${target}`);
-        if(rest.length && !(target === 'ui' && rest.join('/') === 'tokens.css')) errors.push(`${path}: only public package exports are allowed (${name})`);
+        if(rest.length && !(target === 'ui' && rest.join('/') === 'tokens.css') && !(target === 'plugin-host' && rest.join('/') === 'program')) errors.push(`${path}: only public package exports are allowed (${name})`);
       } else if(name.startsWith('.')) {
         const resolved = relative(root, resolve(absolute, '..', name));
         if(areaOf(resolved) && areaOf(resolved) !== area) errors.push(`${path}: relative cross-boundary import (${name})`);

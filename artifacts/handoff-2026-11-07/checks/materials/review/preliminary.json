@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-materials-preliminary-review",
+  "reviewer": "/root/board_review",
+  "generatedAt": "2026-11-07T18:00:41.383Z",
+  "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "baselineSourceDigest": "81eec80ac69a13a6a13064fca63e780330a6e12de5e6881393c8d142f38b79dd",
+  "baselineDigestIndependentlyConfirmed": true,
+  "baselineFiles": 408,
+  "sourceDigestAtStart": "9bd2024dc43f7db5702518627f27e41ad010abc7dc5f77f402fffd01010c62db",
+  "sourceDigestAtReport": "61dbe73ab1492f3c7b5441a2ac23de5205d72bb5161ba8734d24f4091a653b46",
+  "sourceFrozen": false,
+  "fileSha256AtReport": {
+    "apps/web/src/materials/MaterialView.tsx": "90454093b2c331265ce1bdbaf945e885d6bf298b09c9aa113a89bededf187aca",
+    "apps/web/src/materials/MaterialImport.tsx": "580faeff8a1c3da047274dfcbee48d17b3af982a3c696b72ca19a397d8e3b9ff",
+    "apps/web/src/materials/files.ts": "90197108fdd3b8884857972c1907e11dcfdcb4b8f8ccee2137d1498a41bb4b10",
+    "apps/web/src/components/Board.tsx": "4d926f6c9b783eac9eec0115d02bf3735966a13fc5e92b6c54d02383f351414f",
+    "packages/remote-client/src/index.ts": "7a9b7aa0d83a7e4e1eca2d808aa231245d4ca3a46a2aa79a31ab5e6f53113f1b",
+    "packages/remote-client/src/offline.ts": "7007d8a6411537a80986a6e429365adc7449ab6f2aea54d44d589cac0189d04d",
+    "packages/server/src/materials.ts": "32cd83c42423d196ce9f2df6247478fba98812529d05ed013cacaaacb8654abf",
+    "packages/contracts/src/materials.ts": "ced940bccfb29ab3af8b3394b24a7e243ffb93a21c10ee769eee0fd21e24d666",
+    "packages/server/src/backup.ts": "f11c1d8d9721268bba78ba0d168ef8d000eadd7208fb77a3a21938c15ae1c165"
+  },
+  "verdict": "CHANGES_REQUIRED_PRELIMINARY",
+  "findings": [
+    {
+      "id": "MATERIAL-01",
+      "priority": "P2",
+      "title": "PDF loading task creato dopo il cleanup",
+      "location": {
+        "path": "apps/web/src/materials/MaterialView.tsx",
+        "start": 31,
+        "end": 32
+      },
+      "status": "OPEN_STATIC_ROOT_ACKNOWLEDGED",
+      "trigger": "Cambiare pagina, documento o account mentre original.arrayBuffer() è ancora pending.",
+      "explanation": "Il check disposed precede await original.arrayBuffer(). Il cleanup può vedere task undefined; dopo la risoluzione viene chiamato openPdf e il controllo successivo ritorna senza destroy. La promise non ha un finally che liberi il task creato tardivamente.",
+      "observedCode": "if(disposed)return; task=openPdf(new Uint8Array(await original.arrayBuffer())); const pdf=await task.promise,page=await pdf.getPage(data.page); if(disposed)return;",
+      "impact": "Worker/parser fuori dal lifecycle della vista, accumulabile con navigazione rapida.",
+      "requestedCounterproof": "Bloccare artificialmente la lettura del Blob, smontare/cambiare pagina, poi risolverla: nessun task creato o task distrutto esattamente una volta; nessuna applicazione tardiva."
+    },
+    {
+      "id": "MATERIAL-02",
+      "priority": "P2",
+      "title": "Importazione non riprendibile dopo reload con originali orfani in quota",
+      "location": {
+        "path": "apps/web/src/materials/MaterialImport.tsx",
+        "start": 8,
+        "end": 27
+      },
+      "related": [
+        "apps/web/src/materials/files.ts:26",
+        "packages/server/src/materials.ts:43"
+      ],
+      "status": "OPEN_STATIC_ROOT_ACKNOWLEDGED",
+      "trigger": "Reload/crash dopo prepare-material, uno o più chunk, finish-material o un’aggiunta parziale delle pagine.",
+      "explanation": "Manifest, Blob e ID oggetto sono solo state React; inspectMaterial genera un nuovo assetId a ogni scelta. Non esiste una ripresa durevole del medesimo intento. Gli upload parziali rimangono nel DB e sommano il manifest completo alla quota, senza lista/resume/rimozione pubblica.",
+      "impact": "La ripetizione duplica upload e quota; un import iniziato non si può completare con i propri ID dopo cold reopen, e le pagine già aggiunte possono essere duplicate. Otto intenti da 32 MiB possono esaurire 256 MiB anche se incompleti.",
+      "requestedCounterproof": "Errore upload e reload dopo chunk/risposta persa/aggiunta parziale: ripresa stesso assetId, SHA256 e ID pagina; nessun duplicato; recovery eliminato solo dopo conferma definitiva, account B non lo può riprendere."
+    },
+    {
+      "id": "MATERIAL-03",
+      "priority": "P1",
+      "title": "Una copia e un worker PDF per ogni pagina, senza limite globale",
+      "location": {
+        "path": "apps/web/src/components/Board.tsx",
+        "start": 146,
+        "end": 160
+      },
+      "related": [
+        "apps/web/src/materials/MaterialView.tsx:31",
+        "apps/web/src/materials/files.ts:15",
+        "apps/web/src/materials/MaterialImport.tsx:22"
+      ],
+      "status": "OPEN_STATIC",
+      "trigger": "Importare un PDF di dimensione ammessa con decine o centinaia di pagine selezionate, oppure riaprire quella lezione.",
+      "explanation": "Il contratto/import accetta 1.000 pagine; il filtro Board esclude dalla culling tutti gli oggetti diversi da ink. Ogni MaterialView esegue openPdf con una nuova copia dell’intero Blob, mantiene il parser fino all’unmount e conserva anche il canvas. Non c’è limite globale di parsing/render o lazy mount per visibilità. La cache del Blob non limita questi costi.",
+      "impact": "Esaurimento memoria/worker e tab non utilizzabile con input normale ammesso; potenziale perdita di bozze non confermate nel crash.",
+      "requestedCounterproof": "PDF multipagina non minimo, selezione ampia e riapertura su viewport mobile: bound osservabile di parser/render/canvas vivi, pagine fuori vista non avviate e rilascio a navigazione/unmount. Un semplice cap per import senza limite ai mount dei documenti esistenti non copre la riapertura."
+    },
+    {
+      "id": "MATERIAL-04",
+      "priority": "P2",
+      "title": "Limite canvas calcolato da dimensioni dichiarate invece di quelle decodificate",
+      "location": {
+        "path": "apps/web/src/materials/MaterialView.tsx",
+        "start": 29,
+        "end": 36
+      },
+      "related": [
+        "packages/server/src/materials.ts:10",
+        "packages/contracts/src/materials.ts:6"
+      ],
+      "status": "OPEN_STATIC",
+      "trigger": "Manifest valido con pageWidth/pageHeight piccoli ma originale PDF con MediaBox/viewport molto grande, caricato tramite API autenticata e poi letto da owner o assegnatario.",
+      "explanation": "Il server verifica chunk/hash/magic, non la corrispondenza delle dimensioni. scale usa data.pageWidth/pageHeight del manifest; target.width/height vengono poi assegnati dal viewport reale. Pertanto i limiti nominali 1600 e 2000 non sono un cap sui pixel effettivamente allocati. Lo stesso principio vale per bitmap con metadata discordanti.",
+      "impact": "Un riferimento formalmente valido può provocare canvas enormi nel browser di chi lo legge, aggirando il budget previsto dal renderer.",
+      "requestedCounterproof": "PDF reale con grandi dimensioni e manifest discordante: verifica/limita width, height e area finali dopo decoding, prima di allocare il canvas; errore o rendering ridotto, mai allocazione oltre il cap."
+    },
+    {
+      "id": "MATERIAL-05",
+      "priority": "P2",
+      "title": "Copia offline aggiornata senza i nuovi originali referenziati",
+      "location": {
+        "path": "packages/remote-client/src/index.ts",
+        "start": 315,
+        "end": 323
+      },
+      "related": [
+        "packages/remote-client/src/index.ts:799",
+        "packages/remote-client/src/index.ts:834",
+        "apps/web/src/RemoteWorkspace.tsx:154"
+      ],
+      "status": "OPEN_STATIC",
+      "trigger": "Copia offline già abilitata; altro client aggiunge un materiale in una seconda lezione non aperta; il primo client riceve la proiezione aggiornata e poi fa cold reopen offline.",
+      "explanation": "updateOfflineCopy persiste tutte le nuove proiezioni e aggiorna offlineSavedAt senza sincronizzare i byte. Questi vengono salvati soltanto da upload/download o dalla prima makeAvailableOffline. Il renderer della lezione non aperta non li scarica. La UI, con offlineAvailable=true, offre soltanto Usa copia offline e non una nuova preparazione.",
+      "impact": "Copia presentata come attuale che non può aprire materiali già presenti nello snapshot; manca un percorso esplicito per preparare nuovamente gli originali mancanti.",
+      "requestedCounterproof": "Due lezioni e due client: abilitare prima la copia, introdurre materiale nella lezione non aperta, refresh, cold reopen senza rete; originale disponibile oppure stato esplicito incompleto con azione di aggiornamento. Quota/storage failure non devono confermare la copia completa."
+    },
+    {
+      "id": "MATERIAL-06",
+      "priority": "P2",
+      "title": "Focus e collegamenti usano ancora le vecchie coordinate dell’ink ancorato",
+      "location": {
+        "path": "apps/web/src/components/Board.tsx",
+        "start": 32,
+        "end": 32
+      },
+      "related": [
+        "apps/web/src/components/Board.tsx:152"
+      ],
+      "status": "OPEN_STATIC",
+      "trigger": "Annotare una pagina, spostarla di più di un viewport, quindi selezionare il tratto dalla libreria/lettura; oppure osservare una connessione verso quell’ink.",
+      "explanation": "Il render e fit applicano materialPosition, ma l’effect selectedId controlla isVisible e ricentra sulle coordinate persistite dell’ink. Anche gli endpoint del path connections usano coordinate persistite. La trasformazione dell’anchor non è applicata a questi consumer spaziali.",
+      "impact": "La selezione può ricentrare sulla posizione precedente e lasciare fuori vista l’annotazione; i collegamenti restano staccati.",
+      "requestedCounterproof": "Spostamento ampio, poi focus selezione ink e connessione: tutti devono seguire la posizione risolta senza mutare i campioni o l’anchor."
+    }
+  ],
+  "positiveStaticObservations": [
+    "Server material reads/writes pass authenticated workspace opening and document/course authority; assigned reads require a current exact material reference, writes require ownership. No concrete IDOR or revocation bypass confirmed in this pass.",
+    "Original byte chunks and full SHA256 are retained separately from page objects; repeat prepare/put/finish with same manifest/chunks are idempotent within the retained identity.",
+    "Material page identity and size, and ink anchor, are immutable on replace; removal of a page with ink references is denied. Translation resolves without rewriting samples.",
+    "Snapshot 9/contracts 0.10, explicit SQL migration 7; old versions containing new material/ink-anchor object payloads are refused by migration. Original import archive bytes remain separate.",
+    "Backup v4 includes material rows and chunks; restore validates owner binding, ready integrity and current/historical page references before target inserts.",
+    "PDF engine is dynamically imported from local pinned pdfjs-dist; offline shell intentionally caches its required resources after explicit preparation."
+  ],
+  "scopeRead": [
+    "Root/scoped AGENTS and materials research dossier",
+    "All new production material files, contract/Core/server/client deltas",
+    "Material UI/Board/Inspector/ObjectContent/Course/Handout integration",
+    "Backup and migration deltas, legacy import compatibility path",
+    "MCP material read adapter/tool, local build/runtime budget changes",
+    "New Core/materials browser scenarios and server material integration test source"
+  ],
+  "scopeLimits": [
+    "Preliminary read-only pass while root modifies source; not a complete final review of a frozen candidate.",
+    "No reviewer test execution, runtime, service, installation, source/index mutation or remote operation.",
+    "Current root verify and test reports are not accepted as final evidence.",
+    "No device/Safari/Pencil, full accessibility, PDF corpus or performance acceptance claimed.",
+    "Server magic-byte checks do not establish semantic PDF/image decoding; renderer must enforce its own resource bounds."
+  ],
+  "method": {
+    "testsExecuted": false,
+    "servicesStarted": false,
+    "sourceModified": false,
+    "indexModified": false,
+    "remoteMutations": false,
+    "reportWritesOnly": true
+  }
+}

@@ -1,0 +1,28 @@
+.handout-dialog{width:min(1040px,calc(100% - 32px));max-width:none;max-height:calc(100dvh - 32px);padding:0;background:#eeefeb;color:#283b35}
+.handout-dialog>header{padding:16px 24px;background:#fff;margin:0;border-bottom:1px solid #ddd}
+.handout-controls{display:flex;align-items:center;gap:12px;padding:12px 24px;background:#fff;flex-wrap:wrap}
+.handout-controls>div{flex:1 1 280px}.handout-controls p{margin:4px 0;font-size:13px;line-height:1.5}.handout-controls button{min-height:44px}
+.handout-screen-note{margin:12px 24px;font-size:13px;line-height:1.5}.handout-screen-note summary{min-height:44px;cursor:pointer;display:flex;align-items:center}
+.handout-paper{max-width:820px;margin:24px auto 40px;padding:52px 60px;background:#fff;box-shadow:0 3px 18px #22352d0b;font:17px/1.7 Georgia,serif;overflow-wrap:anywhere}
+.handout-title{padding-bottom:26px;border-bottom:1px solid #d8dfda;margin-bottom:24px}.handout-title h1{font:normal 40px/1.15 Georgia,serif;letter-spacing:-.02em;margin:12px 0 20px}.handout-title p{margin:8px 0}
+.handout-eyebrow{font:600 12px/1.5 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.16em;color:#657a6b}
+.handout-small{font:11px/1.6 system-ui,sans-serif;color:#56655e;overflow-wrap:anywhere}
+.handout-scope{font:13px/1.65 system-ui,sans-serif;color:#56655e;border-left:2px solid #c6d0c9;padding-left:16px;margin:0 0 32px}
+.handout-object{margin:30px 0}.handout-paper h2{font:normal 25px/1.3 Georgia,serif;margin:0 0 18px}.handout-paper h3{font:600 15px/1.4 system-ui,sans-serif;margin-top:24px}
+.handout-text{white-space:pre-wrap;overflow-wrap:anywhere}.handout-paper p{orphans:3;widows:3}.handout-paper .math{max-width:100%;overflow-x:auto;margin:24px 0}
+.handout-math .math{font-size:inherit}.handout-paper .math-error{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.handout-ink-svg{display:block;width:100%;height:220px;margin:16px 0;overflow:visible}.handout-source,.handout-citation{font:13px/1.6 system-ui,sans-serif;overflow-wrap:anywhere}.handout-citation{padding-left:16px;border-left:2px solid #d9e0da}
+.handout-data{font:12px/1.6 monospace;white-space:pre-wrap;overflow-wrap:anywhere;background:#f4f5f1;padding:16px;border-radius:4px}
+.handout-provenance,.handout-connections{border-top:1px solid #d8dfda;margin-top:40px;padding-top:28px}.handout-warning{font:13px/1.6 system-ui,sans-serif;color:#8b5134}.handout-end{margin-top:40px;border-top:1px solid #d8dfda;padding-top:16px;font:11px/1.5 system-ui,sans-serif;color:#657a6b}
+@media(max-width:760px){.handout-dialog{width:100%;max-height:100dvh;height:100dvh;border-radius:0}.handout-dialog>header,.handout-controls{padding:12px 16px}.handout-paper{padding:32px 22px;margin:16px 0;font-size:16px}.handout-title h1{font-size:30px}.handout-screen-note{margin:12px 16px}.handout-paper h2{font-size:23px}}
+@media print{
+  @page{size:A4;margin:18mm}
+  html,body{height:auto!important;overflow:visible!important;background:white!important}
+  body:has(.handout-portal)>:not(.handout-portal){display:none!important}
+  .handout-portal,.handout-dialog{display:block!important;position:static!important;width:auto!important;height:auto!important;max-width:none!important;max-height:none!important;overflow:visible!important;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;background:white!important}
+  .handout-dialog::backdrop{display:none}.handout-dialog>header,.handout-controls,.handout-screen-note{display:none!important}
+  .handout-paper{margin:0;padding:0;width:174mm;max-width:none;box-sizing:border-box;box-shadow:none;font-size:11pt;line-height:1.5;color:#182c24}
+  .handout-paper h1{font-size:28pt}.handout-paper h2{font-size:18pt;break-after:avoid}.handout-paper h3{break-after:avoid}
+  .handout-paper .math{overflow:visible}.handout-paper .katex{font-size:1em}.handout-object{margin:20pt 0;break-inside:auto}.handout-formula,.handout-ink{break-inside:avoid}.handout-ink-svg{height:50mm}
+  .handout-small{font-size:8pt}.handout-scope,.handout-source,.handout-citation{font-size:9pt}.handout-data{font-size:8pt;background:white;padding:0}
+}

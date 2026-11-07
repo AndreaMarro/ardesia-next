@@ -1,0 +1,59 @@
+{
+  "kind": "ardesia-manual-mac-learning-continuity",
+  "generatedAt": "2026-11-07T11:50:53.425953+00:00",
+  "build": {
+    "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+    "sourceDigest": "283a31d7c03badc41c50c7a724cd693b2dcbf3b59f09fac8cb1689b1ed93b840",
+    "generatedAt": "2026-11-07T11:47:31.013Z",
+    "application": "ardesia-next",
+    "milestone": "M3",
+    "persistence": "remote-postgres-required",
+    "remoteAcceptance": "INCOMPLETE",
+    "thirdPartyExecution": false
+  },
+  "environment": {
+    "device": "Mac host",
+    "browser": "Codex in-app browser",
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "url": "http://127.0.0.1:4180/",
+    "title": "Ardesia Next · Il mio spazio"
+  },
+  "fixture": "anteprima-feedback.json",
+  "observed": {
+    "attempts": 2,
+    "workRevision": 5,
+    "documentRevision": 3,
+    "originalSourceRevision": 1,
+    "diary": "0 da rivedere · 0 in attesa di feedback · 1 dimostrati",
+    "sourceText": "Un pendolo oscilla con piccoli angoli, in gravità costante. Se quadruplichi la lunghezza L, come cambia il periodo T? Giustifica il rapporto.",
+    "script": "/assets/index-Cw1m1Vcj.js",
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "horizontalOverflow": false
+  },
+  "checks": {
+    "pageIdentity": true,
+    "meaningfulContent": true,
+    "noFrameworkOverlay": true,
+    "consoleHealth": true,
+    "sourceReadInteraction": true,
+    "screenshotInspected": true
+  },
+  "manualFlow": "Build-info identity observed in browser → authenticated student reopens assigned lesson → saved attempts → exact source of correction",
+  "earlierFlow": {
+    "sourceDigest": "d8ec9098f2ead778f3d0e0e052a6821998ed98437a13a8df525da71165577cb7",
+    "flow": "teacher shared diary/source → logout → student login → same work/source",
+    "notTransferredAsFinalEvidence": true
+  },
+  "screenshots": "CUA images visually inspected; saved PNGs in this folder are from automated Playwright, not these manual captures.",
+  "upgradeObservation": "Older offline shell served previous build until reload and closing all origin tabs. No cached user data erased.",
+  "notRun": [
+    "Safari",
+    "physical iPad/Apple Pencil",
+    "native apps",
+    "manual new feedback mutation on final source"
+  ]
+}

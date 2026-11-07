@@ -1,0 +1,562 @@
+{
+  "kind": "ardesia-delivery-file-manifest",
+  "generatedAt": "2026-11-07T12:24:46.125Z",
+  "sourceDigest": "ef57bcc96c33bd0ff4114ef479a46b60149a2e80992f49104adbb74de55dfd11",
+  "files": [
+    {
+      "file": "Avvia Ardesia.command",
+      "sha256": "cf1f7fa8644a9abacbc3c28b1ebf27d39f3a230fbc896dea3a6a504bb89eacc9",
+      "bytes": 727
+    },
+    {
+      "file": "DISPENSA.md",
+      "sha256": "e7a4766a71fc3aa3a812972f515156ec56d830e3101ade3b85eebb887ae9f7dc",
+      "bytes": 4978
+    },
+    {
+      "file": "LEGGIMI.md",
+      "sha256": "19b3827fad42f362b04e868e01be169d4f27c33fbd1001bfdfe6561c6ea620b6",
+      "bytes": 10392
+    },
+    {
+      "file": "ardesia-next.patch",
+      "sha256": "43dee5c35a442bad6cea04a85a273ee8a9b2e04497123e578d611196818fc6be",
+      "bytes": 728555
+    },
+    {
+      "file": "verifiche/README.md",
+      "sha256": "f760b7338510d108765ddf136bbcdcb8f731859be714cf240b911bb94bc8b3c5",
+      "bytes": 2517
+    },
+    {
+      "file": "verifiche/dispensa/README.md",
+      "sha256": "412cebca4120709373366b08c84fc600b4d11e5f7b49a9b4abe16789693712e1",
+      "bytes": 7864
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/browser-evidence.json",
+      "sha256": "6d62b99a10c829555d8a87e12ef90cd8bb0ee6a9752bfd320308c77dcbaff5fa",
+      "bytes": 603
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/browser.log",
+      "sha256": "c134d02a979225aacc1d7841a2e419fa95cc4aff4e68cdf0fddd10abcd8ce7da",
+      "bytes": 47398
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/budget.json",
+      "sha256": "08587fe9b5f57fdb308df0d85a6440f3495ca7c4856b1ceb35fe625b0e59ef81",
+      "bytes": 1228
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/e2e.json",
+      "sha256": "f658186f11b11ddd84a462b710a2297e3a6d59b19176e0546a569df054f2649e",
+      "bytes": 142264
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/mcp-runtime.json",
+      "sha256": "466a532a215331a45cc5578eb512df3f998c6bb5fd0e02042009cbb28ea61bc2",
+      "bytes": 1757
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/server-runtime.json",
+      "sha256": "7a3b3c039c37a5ae8334c09e5fb75a3fbe8d40389cf90328c7c82a1c8fb75228",
+      "bytes": 929
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/test-results/.last-run.json",
+      "sha256": "6dbbac649d1500c9e675292725f598a0ed50c1ca44237f38cbac08864a3cbe6b",
+      "bytes": 243
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-desktop-chromium/error-context.md",
+      "sha256": "8b3b8f0501cb75409c1ae1a64fdfce9d01a76edf56ee663ecebf8c85318127f6",
+      "bytes": 35735
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-desktop-chromium/lesson.tex",
+      "sha256": "020e40e2a21276e8669c6df77171db5c1159d7d509a3983734ada75287f508f6",
+      "bytes": 29733
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-desktop-chromium/test-failed-1.png",
+      "sha256": "a9ecb45815ec38f4b51d89d6d43ccf81253f7e3c104a781ea6ca3339a842576d",
+      "bytes": 240540
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-mobile-chromium/error-context.md",
+      "sha256": "a6ef357b6d235f088b097d1df0ea8d2324f4f397b22b20565f4a59b8d7f1c530",
+      "bytes": 17832
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-mobile-chromium/test-failed-1.png",
+      "sha256": "815188e9d9aef24a1df5f169ec5f2a864ff5ac866a001ad59386f47fd2380cd3",
+      "bytes": 147987
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/test-results/handout-offline-handout-us-6f48a-ves-pending-ink-recoverable-desktop-chromium/error-context.md",
+      "sha256": "3fee9b9966644a8a2539b0086e2f9d762d8edc419f0e118c517e684147abdd62",
+      "bytes": 4502
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/test-results/handout-offline-handout-us-6f48a-ves-pending-ink-recoverable-desktop-chromium/test-failed-1.png",
+      "sha256": "641d1784f940cc243e493b70324ed90b3989298bf155dd1690dbe5e6ac12057b",
+      "bytes": 112802
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/test-results/handout-offline-handout-us-6f48a-ves-pending-ink-recoverable-mobile-chromium/error-context.md",
+      "sha256": "ed1074b22886c046081b513415407376bfebcd1a620a417186988c32a3c037bf",
+      "bytes": 4500
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/test-results/handout-offline-handout-us-6f48a-ves-pending-ink-recoverable-mobile-chromium/test-failed-1.png",
+      "sha256": "c16875328eaaac3ebf9a9876d1dedd37e1f671e64a6d7f182390251d0306770e",
+      "bytes": 226560
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/tex-compile/lesson.log",
+      "sha256": "c98169a05f0013d5ac90f69d43b6b928b0fe2d7702236d2bb4d406919c15ecec",
+      "bytes": 17163
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/tex-compile/lesson.tex",
+      "sha256": "020e40e2a21276e8669c6df77171db5c1159d7d509a3983734ada75287f508f6",
+      "bytes": 29733
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/tex-first.log",
+      "sha256": "956a45b2fc3028a1089574a911dad0fdb368edaefe7c35c81896b46065037d16",
+      "bytes": 14903
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/unit.json",
+      "sha256": "4e33dbff58f24812aedc39d63f6f7d52041f4d1150714e06e63c53463ba77b9a",
+      "bytes": 178523
+    },
+    {
+      "file": "verifiche/dispensa/attempt-01/verification.json",
+      "sha256": "21e47268771e996769c71fcbca7fc0491ef931282e2434887709c7e006c33020",
+      "bytes": 1072
+    },
+    {
+      "file": "verifiche/dispensa/attempt-02/browser-evidence.json",
+      "sha256": "e2b8d1969827a3b45326084589aa03eba4e38331184be8b713391c9440156762",
+      "bytes": 602
+    },
+    {
+      "file": "verifiche/dispensa/attempt-02/browser.log",
+      "sha256": "8abc4042559e4b3ca2d7454c4e897d425eaab30263e21330f775a9871fc68079",
+      "bytes": 2023
+    },
+    {
+      "file": "verifiche/dispensa/attempt-02/desktop-handout.pdf",
+      "sha256": "653cd55d4500d822b644fe42d4e4735ab83f45df009de1b26dcae0db56992786",
+      "bytes": 243907
+    },
+    {
+      "file": "verifiche/dispensa/attempt-02/desktop-handout.png",
+      "sha256": "17ed577aa93ec6f16ef3856a4a1c6fd58f2d46c9a6a78538043b7fbc92c929e1",
+      "bytes": 261502
+    },
+    {
+      "file": "verifiche/dispensa/attempt-02/desktop-lesson.tex",
+      "sha256": "a372506ba29bd9b49707b0489dee864dd2faa0ef703aecfff3c68ea3f221da9b",
+      "bytes": 33349
+    },
+    {
+      "file": "verifiche/dispensa/attempt-02/desktop-pdf-page1.png",
+      "sha256": "8c0968408c0032f59ff90e4bdea2f8b6d8df9bb6f74ba6a55453a645f43aeef3",
+      "bytes": 139588
+    },
+    {
+      "file": "verifiche/dispensa/attempt-02/desktop-pdf.txt",
+      "sha256": "d8a65b0c7a0c2f441f92c3fc9442c520a4e8c4c721168be915c8d819eb5914cf",
+      "bytes": 10406
+    },
+    {
+      "file": "verifiche/dispensa/attempt-02/e2e.json",
+      "sha256": "6dd3f2d0b22343d6c7e625102a2e8460a8419f146ac512de96fe469c1e04b4da",
+      "bytes": 9425
+    },
+    {
+      "file": "verifiche/dispensa/attempt-02/mobile-handout.pdf",
+      "sha256": "a4d975eb578e9a93919fc51a894136e919b3d73105e788e14dec647caea47116",
+      "bytes": 248833
+    },
+    {
+      "file": "verifiche/dispensa/attempt-02/mobile-handout.png",
+      "sha256": "37fb423724fe31d92f4f6fc56adbdcdda6b8ec145db1e984b875f85a6397734b",
+      "bytes": 291836
+    },
+    {
+      "file": "verifiche/dispensa/attempt-02/mobile-lesson.tex",
+      "sha256": "ea4efe9d118886ba3cb27a9e6eebc4fe5cf058a5b14a0ee8d23f02f96678a4a9",
+      "bytes": 33327
+    },
+    {
+      "file": "verifiche/dispensa/attempt-02/mobile-pdf-page1.png",
+      "sha256": "adbfa644014b8cd095715c7b44ab0c632f50a13886e88737f99292fbe8bf4e4d",
+      "bytes": 103839
+    },
+    {
+      "file": "verifiche/dispensa/attempt-02/mobile-pdf.txt",
+      "sha256": "66f744ea40e22fad29a2cface22dedc319b6a70da920b903f513363811ff984f",
+      "bytes": 10788
+    },
+    {
+      "file": "verifiche/dispensa/attempt-02/tex-compile/lesson.log",
+      "sha256": "d00da41c3bee356ed48abe51d4914fbd29d21334da05f6ce749dc5ed54ccddab",
+      "bytes": 17543
+    },
+    {
+      "file": "verifiche/dispensa/attempt-02/tex-compile/lesson.pdf",
+      "sha256": "0c41bba7dfec663bc05a605fd3782bf2633abcfba3d526c63f425e4089dafcaa",
+      "bytes": 31671
+    },
+    {
+      "file": "verifiche/dispensa/attempt-02/tex-compile/lesson.tex",
+      "sha256": "a372506ba29bd9b49707b0489dee864dd2faa0ef703aecfff3c68ea3f221da9b",
+      "bytes": 33349
+    },
+    {
+      "file": "verifiche/dispensa/attempt-02/tex-compile/lesson.txt",
+      "sha256": "e2bd37ce872f5f3746bada93e3f6ec0a00bc8cf4d24c424cc39d0b07afa95359",
+      "bytes": 10957
+    },
+    {
+      "file": "verifiche/dispensa/attempt-02/tex-compile/page1.png",
+      "sha256": "214321e9b716d0e0434abe75414f2e5ed50333cbf1fe7c52e2fcaf53244092e6",
+      "bytes": 151788
+    },
+    {
+      "file": "verifiche/dispensa/attempt-02/tex-second.log",
+      "sha256": "aa81fb3d8226b58fa55c303b96f6a8d0a40a74f99eb22864a2178aca2184abc1",
+      "bytes": 1425
+    },
+    {
+      "file": "verifiche/dispensa/attempt-03/browser-evidence.json",
+      "sha256": "a63673275cee0320a797e714c65a9a25f8b534b18e8910e29a53cd307ed75552",
+      "bytes": 602
+    },
+    {
+      "file": "verifiche/dispensa/attempt-03/browser.log",
+      "sha256": "d842e9ee5339ea4fc490c40eb8b74e0708189cf25995284a93d03a1b97784c43",
+      "bytes": 2022
+    },
+    {
+      "file": "verifiche/dispensa/attempt-03/desktop-handout.pdf",
+      "sha256": "d5459da1cef75d09af35a856066627390be258d8311eca149406f4d9ac6db542",
+      "bytes": 271328
+    },
+    {
+      "file": "verifiche/dispensa/attempt-03/desktop-handout.png",
+      "sha256": "d1a9ae8e0204e2c4575625f4d5b7418ed246cb88a6b42243383a4244b5dc3e7a",
+      "bytes": 201165
+    },
+    {
+      "file": "verifiche/dispensa/attempt-03/desktop-lesson.tex",
+      "sha256": "8c2ba683219333106cfb190c56563a2d57dd36c40e73426b38fb050b0f089d5c",
+      "bytes": 33345
+    },
+    {
+      "file": "verifiche/dispensa/attempt-03/desktop-pdf-page1.png",
+      "sha256": "89f0447222cbee2be239523a9505fc9e4356bbf575e3af42b1de853e8e686e0f",
+      "bytes": 105134
+    },
+    {
+      "file": "verifiche/dispensa/attempt-03/desktop-pdf.txt",
+      "sha256": "a6978c316ab0cb7b2aea6952dca5481c7be282bfdf0f3e029d6378dc3fc3b92f",
+      "bytes": 10995
+    },
+    {
+      "file": "verifiche/dispensa/attempt-03/e2e.json",
+      "sha256": "e11196120ed9a2f693f917b3e8fca9253970cef0bf3307239569fa63890299d7",
+      "bytes": 9426
+    },
+    {
+      "file": "verifiche/dispensa/attempt-03/mobile-handout.pdf",
+      "sha256": "b8d0b39d194dd082345c6628031a074c97ff9329a1ecbc85f385fed6b1789fca",
+      "bytes": 268717
+    },
+    {
+      "file": "verifiche/dispensa/attempt-03/mobile-handout.png",
+      "sha256": "5cd59346fe6eac00a5350ae0fb4b5de4bbfb91c34962bb7df83028243b0dcb10",
+      "bytes": 224044
+    },
+    {
+      "file": "verifiche/dispensa/attempt-03/mobile-lesson.tex",
+      "sha256": "414d5567eca1e1e6832bbb338626ccbef63bda06cfdac91064cc3c076b37e19d",
+      "bytes": 33323
+    },
+    {
+      "file": "verifiche/dispensa/attempt-03/mobile-pdf-page1.png",
+      "sha256": "be257e453b61059c176dad55d6089e933bfb92dffb93a614e738a369c73e9bd9",
+      "bytes": 104872
+    },
+    {
+      "file": "verifiche/dispensa/attempt-03/mobile-pdf.txt",
+      "sha256": "0ec60d308a15a7e7c61de5bf471f033fd99c22ce4bed6e33588e90b5f5af2a9a",
+      "bytes": 10985
+    },
+    {
+      "file": "verifiche/dispensa/browser-evidence.json",
+      "sha256": "606d8f4dbe16a504c40721be94de2860e43b25176b6482748565d4178d4b8725",
+      "bytes": 4711
+    },
+    {
+      "file": "verifiche/dispensa/browser.log",
+      "sha256": "e5ab002f0e2b83279fbb863a3f48af7a4c9c7c6ace16290fd810601d509d35c6",
+      "bytes": 21267
+    },
+    {
+      "file": "verifiche/dispensa/budget.json",
+      "sha256": "d7feff213125e25b120b6e0a2b7ac6d507f48a73a2c06dc9daacf8378c5fe94a",
+      "bytes": 1228
+    },
+    {
+      "file": "verifiche/dispensa/bundle-transport.json",
+      "sha256": "a3682e7093ed927c1efcd0305c32f52f13dff40c50c81a5eeb8bb21ae913459f",
+      "bytes": 897
+    },
+    {
+      "file": "verifiche/dispensa/desktop-handout-last-page.png",
+      "sha256": "38ea27b90b531606a995e2651f99dcefafc33cad05b0604d16dad6f7f81b29cc",
+      "bytes": 63161
+    },
+    {
+      "file": "verifiche/dispensa/desktop-handout-page1.png",
+      "sha256": "bbc5d8f20a77cd2dbb0f2cb99b2fb588257ce1ecae5ae877aa9b51e9dd1c79b6",
+      "bytes": 102699
+    },
+    {
+      "file": "verifiche/dispensa/desktop-handout-page2.png",
+      "sha256": "9837705d712c04673de4b7597522808af6dd95d98f0ae2ef2bc4e15a47aba4cc",
+      "bytes": 171767
+    },
+    {
+      "file": "verifiche/dispensa/desktop-handout.pdf",
+      "sha256": "1b7cfc1d5cde430fd42084ae8a23777b59816baa6b394b80414a35458afd5fbd",
+      "bytes": 269980
+    },
+    {
+      "file": "verifiche/dispensa/desktop-handout.png",
+      "sha256": "4f3c9d2e8e8ff48f2b1f5acc27c44e2e22434e13c43c07a0b0a062f4a390d195",
+      "bytes": 200595
+    },
+    {
+      "file": "verifiche/dispensa/desktop-handout.txt",
+      "sha256": "c278963e4312df05eb31188485e7f772f708df1c9a7d7b96448ede742a7deee7",
+      "bytes": 11353
+    },
+    {
+      "file": "verifiche/dispensa/desktop-lesson.tex",
+      "sha256": "3f2aafd4229eaf80bc133f8470a0204dcdca82538bcc82759bc3f1f11e9c235b",
+      "bytes": 33345
+    },
+    {
+      "file": "verifiche/dispensa/desktop-offline-handout-page1.png",
+      "sha256": "c143b296df55386074c0367c6cfb6210301d3bd2efb8196b56102ebebefa1110",
+      "bytes": 96331
+    },
+    {
+      "file": "verifiche/dispensa/desktop-offline-handout.pdf",
+      "sha256": "6fda0a6795a61d1c5ad0341a3328090bc6179566b49b110f357561ff9cdad505",
+      "bytes": 222860
+    },
+    {
+      "file": "verifiche/dispensa/desktop-offline-handout.txt",
+      "sha256": "a9660b1b89e81bd6a4fc4d21c6b5da71624421d3e476336375f2559aacb055c5",
+      "bytes": 2728
+    },
+    {
+      "file": "verifiche/dispensa/e2e.json",
+      "sha256": "400cd1b9fabb8c1e891620e53a16b8a6e5552236cd731e0766345e7d53a80e6a",
+      "bytes": 144928
+    },
+    {
+      "file": "verifiche/dispensa/legacy-integrity.json",
+      "sha256": "cf9ce09e1f08f1d2fe866ee896ad221f8d008b6ee34bf56b612dfdab8ed489df",
+      "bytes": 1339
+    },
+    {
+      "file": "verifiche/dispensa/m4-preparation.json",
+      "sha256": "2114676657cfc3a848acdde0ce7d26ce9e5772d00f4529347f2ff0faaa375720",
+      "bytes": 16306
+    },
+    {
+      "file": "verifiche/dispensa/manuale-mac.json",
+      "sha256": "193757f976ad9169ac6b54a7511f5a7151227661c7b77ca93715023b14a4ed9a",
+      "bytes": 2462
+    },
+    {
+      "file": "verifiche/dispensa/mcp-runtime.json",
+      "sha256": "c6e9c229dca0f04ca9d5b3b760fea2f2fcb8616028fa8ea33b6609e73245a8c4",
+      "bytes": 1757
+    },
+    {
+      "file": "verifiche/dispensa/mobile-handout-last-page.png",
+      "sha256": "02b893f11afa629d29842e33e17dd99afa7bc23de367dbdb8ba5238bff7aef39",
+      "bytes": 63340
+    },
+    {
+      "file": "verifiche/dispensa/mobile-handout-page1.png",
+      "sha256": "9f680133630d207458488f5f68b5994a348d9cfd8851ec28dd8f973a66285d80",
+      "bytes": 102968
+    },
+    {
+      "file": "verifiche/dispensa/mobile-handout-page4.png",
+      "sha256": "6adcf89e52ae33a1e84143cf1ff95768082a3607f5a4cbf4419b864cbd90ec03",
+      "bytes": 227125
+    },
+    {
+      "file": "verifiche/dispensa/mobile-handout.pdf",
+      "sha256": "2badd194f509ac846a172b1c6ee44d2ecb4dc1db62ec4d6e4a8f16bcc40f37be",
+      "bytes": 270932
+    },
+    {
+      "file": "verifiche/dispensa/mobile-handout.png",
+      "sha256": "f54078a10de23586cb99fdc367979417f1c0a92e8f70eed42750d1a9384936f0",
+      "bytes": 226284
+    },
+    {
+      "file": "verifiche/dispensa/mobile-handout.txt",
+      "sha256": "3bdd508f2bb17aeab80a186b46f6c6e5dc83d154b8ca28844f1983c613c48cba",
+      "bytes": 11343
+    },
+    {
+      "file": "verifiche/dispensa/mobile-lesson.tex",
+      "sha256": "38172fa1ab4cdc5eaf1945ffc1c5645ae856cfadecfd6e34d8114f331e574a0c",
+      "bytes": 33323
+    },
+    {
+      "file": "verifiche/dispensa/mobile-offline-handout-page1.png",
+      "sha256": "00e1f9971c9b6f9a3e8bd1526c5249e6a9877908fff3c44472693b632497e270",
+      "bytes": 95903
+    },
+    {
+      "file": "verifiche/dispensa/mobile-offline-handout.pdf",
+      "sha256": "f76b83885970ce6a543fdabb7d485924e6ab053a65f3b8cde31ac6e3a87d3528",
+      "bytes": 222967
+    },
+    {
+      "file": "verifiche/dispensa/mobile-offline-handout.txt",
+      "sha256": "a4505e7202a028a3d0987925d9a802c35c466ec5bff0327a3c9acc3c07fa3e2b",
+      "bytes": 2723
+    },
+    {
+      "file": "verifiche/dispensa/pdf-collector-first.txt",
+      "sha256": "8140a38cd28c4c48ee2197e2cc64441bcb2c037ef88457ee92fdeaa4f26e91c0",
+      "bytes": 336
+    },
+    {
+      "file": "verifiche/dispensa/pdf-inspection.json",
+      "sha256": "3090ecff13b512cbe211e19d30398d6c7dce4cfe4d7f055b22145dd1c5b74f1d",
+      "bytes": 2500
+    },
+    {
+      "file": "verifiche/dispensa/review-indipendente.md",
+      "sha256": "286349cc7d28d0f6be3204fcbeb43a8b00b6b0946424f66d2c30d375b3025c52",
+      "bytes": 2946
+    },
+    {
+      "file": "verifiche/dispensa/server-runtime.json",
+      "sha256": "de561448db33a9f28ae76b557fbefdd2b0b2da4574852af1211d7e67a06e97c3",
+      "bytes": 929
+    },
+    {
+      "file": "verifiche/dispensa/source-files.json",
+      "sha256": "10df7116afe15d64636e636488adfdb370c0a06810c559f61e173911db73ad71",
+      "bytes": 50373
+    },
+    {
+      "file": "verifiche/dispensa/status.json",
+      "sha256": "528343eebe70893791384ca5462f05e2efd864398c408f82082ec13edd595614",
+      "bytes": 16222
+    },
+    {
+      "file": "verifiche/dispensa/status.log",
+      "sha256": "9e27c60e43d5ade641fd8f04315e487751970109b5a22ee448e13aea58ba2a06",
+      "bytes": 16276
+    },
+    {
+      "file": "verifiche/dispensa/tex-compilation.json",
+      "sha256": "625516929674275d41f3f20f74fa1ede79ca35459498d8737770a8d60561d906",
+      "bytes": 1746
+    },
+    {
+      "file": "verifiche/dispensa/tex-desktop/compiler.log",
+      "sha256": "350b7be47bec12cd42e647535ddf8d1519374c3497fc74f3ffb99cf440865dd1",
+      "bytes": 859
+    },
+    {
+      "file": "verifiche/dispensa/tex-desktop/desktop-lesson-page1.png",
+      "sha256": "bfb5ff2084ac68d78c814597e5e1c1706c730f3f6bdca9094d90ea9d44650052",
+      "bytes": 143833
+    },
+    {
+      "file": "verifiche/dispensa/tex-desktop/desktop-lesson.log",
+      "sha256": "c06395826fcf0e76040f61e22aa77aa039b902b1802c912c11a586b583d06a16",
+      "bytes": 17583
+    },
+    {
+      "file": "verifiche/dispensa/tex-desktop/desktop-lesson.pdf",
+      "sha256": "a37b495d0bf1516eb4ac9626d3d754853b5cae12d2791722e4db4b9f26e49734",
+      "bytes": 31769
+    },
+    {
+      "file": "verifiche/dispensa/tex-desktop/desktop-lesson.txt",
+      "sha256": "631b8844b5e28680e8cef5d930cfcfb27705b9fd4a212e0c3e624a6d69ffa44f",
+      "bytes": 11702
+    },
+    {
+      "file": "verifiche/dispensa/tex-mobile/compiler.log",
+      "sha256": "a44d3f3a8759ebe7d91372518e0394434217ca2aa9d2aff703462a429505bcce",
+      "bytes": 849
+    },
+    {
+      "file": "verifiche/dispensa/tex-mobile/mobile-lesson-page1.png",
+      "sha256": "079d31c2ee1a937a0e8574fc73b84f034ae507442bc450164f64ee39f9e20357",
+      "bytes": 145503
+    },
+    {
+      "file": "verifiche/dispensa/tex-mobile/mobile-lesson.log",
+      "sha256": "bad616b6dcbd5bfeb76af390c45283f84d045b1badb9b3f0faea0fdd04d585cb",
+      "bytes": 17578
+    },
+    {
+      "file": "verifiche/dispensa/tex-mobile/mobile-lesson.pdf",
+      "sha256": "5f9facb3bf70ab04dc0a49f5404ac942aa05519bf122ea8fccb98313b92b04ae",
+      "bytes": 31649
+    },
+    {
+      "file": "verifiche/dispensa/tex-mobile/mobile-lesson.txt",
+      "sha256": "9fa0d88b4ebc376adc8d38133721f667be7bf0afbf78599d4bc88b536ea9b3e8",
+      "bytes": 11693
+    },
+    {
+      "file": "verifiche/dispensa/tex-toolchain.json",
+      "sha256": "a50ebc0d769f2467e030e94321380af4fa00de31d2518c4d0dc846dd7ac5a25a",
+      "bytes": 344
+    },
+    {
+      "file": "verifiche/dispensa/unit.json",
+      "sha256": "0c6563f6026967a1d477204c9ec69d25cc5eedc73440b19fc5a5dace27d9ad89",
+      "bytes": 178554
+    },
+    {
+      "file": "verifiche/dispensa/verification.json",
+      "sha256": "ab3f69debd25ba7c084be746bc256839fb1a7e8d9ad20c0d52cfe9cebc13c0a4",
+      "bytes": 1072
+    },
+    {
+      "file": "verifiche/dispensa/verify.log",
+      "sha256": "9f09531de982003af9fb143aa0d66cea2e5f8e99faa7e0e7da415d8e7dc65ef2",
+      "bytes": 33675
+    },
+    {
+      "file": "verifiche/esito.json",
+      "sha256": "8e3ba328f1f0c7e86931d3417c8613357726418932d8e2cc3c82529750a38feb",
+      "bytes": 2719
+    }
+  ]
+}

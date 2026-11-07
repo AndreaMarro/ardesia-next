@@ -8,7 +8,9 @@ import {localBrowserAccounts} from './e2e-accounts.mjs';
 const host = '127.0.0.1', port = Number(process.env.PORT || 4173), origin = `http://${host}:${port}`;
 const dev = process.argv.includes('--dev');
 const root = process.cwd(), publicRoot = resolve(root, 'apps/web/dist');
-const vite = await createViteServer({configFile: 'apps/web/vite.config.ts', server: {middlewareMode: true}, appType: dev ? 'spa' : 'custom'});
+const vite = await createViteServer({configFile: 'apps/web/vite.config.ts',
+  // Development uses manual reload under the same CSP as the preview.
+  server: {middlewareMode: true, ...(dev ? {hmr: false} : {})}, appType: dev ? 'spa' : 'custom'});
 const api = await vite.ssrLoadModule('/@fs/' + resolve(root, 'packages/server/src/index.ts'));
 let store = null;
 const e2e = process.env.ARDESIA_E2E === '1';
@@ -34,7 +36,7 @@ if (connectionString) store = api.createPostgresStore({connectionString,
 const handler = api.createApiHandler({store, allowedOrigins: [origin], secureCookies: false});
 const deployment = JSON.parse(await readFile('vercel.json', 'utf8'));
 const headers = Object.fromEntries(deployment.headers.flatMap(block => block.headers.map(header => [header.key, header.value])));
-const mime = {'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.woff2':'font/woff2','.woff':'font/woff','.ttf':'font/ttf'};
+const mime = {'.mjs':'text/javascript; charset=utf-8','.wasm':'application/wasm','.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.woff2':'font/woff2','.woff':'font/woff','.ttf':'font/ttf'};
 const server = createHttpServer(async (incoming, outgoing) => {
   try {
     const url = new URL(incoming.url || '/', origin);
@@ -42,7 +44,8 @@ const server = createHttpServer(async (incoming, outgoing) => {
       const request = new Request(url, {method: incoming.method, headers: incoming.headers,
         ...(['GET','HEAD'].includes(incoming.method || 'GET') ? {} : {body: Readable.toWeb(incoming), duplex: 'half'})});
       const response = await handler(request);
-      outgoing.writeHead(response.status, Object.fromEntries(response.headers)); outgoing.end(Buffer.from(await response.arrayBuffer())); return;
+      const bytes = Buffer.from(await response.arrayBuffer());
+      outgoing.writeHead(response.status, Object.fromEntries(response.headers)); outgoing.end(bytes); return;
     }
     if (dev) {
       for (const [key, value] of Object.entries(headers)) outgoing.setHeader(key, value);
@@ -51,9 +54,15 @@ const server = createHttpServer(async (incoming, outgoing) => {
     let target = resolve(publicRoot, '.' + decodeURIComponent(url.pathname));
     if (target !== publicRoot && !target.startsWith(publicRoot + sep)) {outgoing.writeHead(404); outgoing.end(); return;}
     try {if (!(await stat(target)).isFile()) target = resolve(publicRoot, 'index.html');} catch {target = resolve(publicRoot, 'index.html');}
+    // A rebuild may remove a file after stat(). Finish I/O before committing a
+    // success response so a missing asset cannot crash the whole local server.
+    const bytes = await readFile(target);
     outgoing.writeHead(200, {...headers, 'Content-Type': mime[extname(target)] || 'application/octet-stream', 'Cache-Control': 'no-store'});
-    outgoing.end(await readFile(target));
-  } catch {outgoing.writeHead(503, {'Content-Type':'application/json','Cache-Control':'no-store'}); outgoing.end(JSON.stringify({ok:false,error:{code:'SERVICE_UNAVAILABLE',message:'Il servizio non ha confermato la richiesta.'}}));}
+    outgoing.end(bytes);
+  } catch {
+    if (outgoing.headersSent) {outgoing.destroy(); return;}
+    outgoing.writeHead(503, {'Content-Type':'application/json','Cache-Control':'no-store'}); outgoing.end(JSON.stringify({ok:false,error:{code:'SERVICE_UNAVAILABLE',message:'Il servizio non ha confermato la richiesta.'}}));
+  }
 });
 await new Promise(resolve => server.listen(port, host, resolve));
 console.log(`Ardesia preview: ${origin}; authority: ${store ? 'PostgreSQL' : 'unavailable'}.`);

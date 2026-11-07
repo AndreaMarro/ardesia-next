@@ -1,0 +1,96 @@
+{
+  "generatedAt": "2026-11-07T09:39:36.245Z",
+  "sourceDigest": "6286f01654705b255cad2412bd3f6bb591e2e35ebe33104941ba405819d72c7e",
+  "files": [
+    {
+      "file": "README.md",
+      "bytes": 2081,
+      "sha256": "74ad6fae0b7b1f1738f103cb8d1928d051a8a00ddabb29b8af06d7a133b9ff01"
+    },
+    {
+      "file": "anteprima-mcp.json",
+      "bytes": 4232,
+      "sha256": "325904d723f42723c4f233655ae23ea3669510f96401630b2119a4986595b69c"
+    },
+    {
+      "file": "browser-evidence.json",
+      "bytes": 4703,
+      "sha256": "4a4f3dccd25fb47dff99b575ee31246739e4f13c2a7709f11264756de8d2a479"
+    },
+    {
+      "file": "browser.log",
+      "bytes": 18631,
+      "sha256": "25f3119ee9842b78411e4ba30fb4be9cc7dacc0c74f601c5841ad58c4ca85b3f"
+    },
+    {
+      "file": "budget.json",
+      "bytes": 1228,
+      "sha256": "9588478e08cfc5c59174ff9170fa333b05b9dfe75782aea6baf5057bede09493"
+    },
+    {
+      "file": "build-info.json",
+      "bytes": 357,
+      "sha256": "a4562bbcdefd01780ffe1efc40f383adf892513d6711be600a729e4cb2b5fd8a"
+    },
+    {
+      "file": "e2e.json",
+      "bytes": 126752,
+      "sha256": "61852acc2b81148cf937c8215df813d91fc7b5a17931594f3c6bb79eca9bb0a7"
+    },
+    {
+      "file": "legacy-integrity.json",
+      "bytes": 1277,
+      "sha256": "e0a62f2a10ca1f29faaf4f05f94a2a01ea4d637338119cdecefad6291b6c64ac"
+    },
+    {
+      "file": "manuale-mac.md",
+      "bytes": 2866,
+      "sha256": "dfa1bc304379111ba5febcbaf3835a9e2d55ec55d88aa95761e8ba4b146e7ee0"
+    },
+    {
+      "file": "mcp-build-info.json",
+      "bytes": 357,
+      "sha256": "dd7a43e3e557c52cd55a9449f286f4f5ca9bacb2f2638079cceb85affad3631f"
+    },
+    {
+      "file": "mcp-runtime.json",
+      "bytes": 1757,
+      "sha256": "7bdeeccf24830e2966df25b7da0627a2d626dc24d0977ec8e9666425876a814c"
+    },
+    {
+      "file": "product-status.log",
+      "bytes": 16254,
+      "sha256": "cce8a241e2a2a45d649eb6890637d403f59f9c9007205ccae16b06c10516c66c"
+    },
+    {
+      "file": "review-indipendente.md",
+      "bytes": 2129,
+      "sha256": "94d2162dc91117ca197d3d7b8d389a1afe645ea9bc681041f086d0a423ea30cb"
+    },
+    {
+      "file": "server-runtime.json",
+      "bytes": 929,
+      "sha256": "e41e25d4fa9b383c1739cfc87d3d97b0644480744c22d21aa2fbe5c9f621482e"
+    },
+    {
+      "file": "status.json",
+      "bytes": 16200,
+      "sha256": "c870de9b96cf0cc680151a13b4dc321e92f92c238ed47a79c23ed07b8ac78082"
+    },
+    {
+      "file": "unit.json",
+      "bytes": 158328,
+      "sha256": "93cd0807a5d30e4ea920dbbc830de40aa0618017a55be91a91fa17ff5ec9bb58"
+    },
+    {
+      "file": "verification.json",
+      "bytes": 1072,
+      "sha256": "8b761d2348eb9bf746b1148b36f97e13a197db1a5acfa4d06d5b9ca4fd237444"
+    },
+    {
+      "file": "verify.log",
+      "bytes": 33137,
+      "sha256": "21c955b92e6dee10b601b26b8d3d08a30ef02bfeb247832bea10edbb5659a093"
+    }
+  ]
+}

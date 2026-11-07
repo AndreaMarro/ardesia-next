@@ -1,0 +1,70 @@
+{
+  "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "sourceDigest": "08874b3cbf54a4da020bbcc6c7e3a7cbe6dbd2d02a2a75021a5a87b2863fd689",
+  "generatedAt": "2026-11-07T14:15:59.185Z",
+  "schemaVersion": 1,
+  "kind": "ardesia-mcp-stdio-local",
+  "remoteAcceptance": false,
+  "hostCompatibility": "NOT_TESTED",
+  "sdk": "2.4.0",
+  "runtime": "v24.22.1",
+  "checks": [
+    {
+      "name": "restricted-postgres-and-live-http",
+      "passed": true
+    },
+    {
+      "name": "official-client-stdio-discovery-readonly-strict-input",
+      "passed": true
+    },
+    {
+      "name": "real-core-create-compose-edit-search-exact-history",
+      "passed": true
+    },
+    {
+      "name": "official-client-new-type-create-edit-exact-history",
+      "passed": true
+    },
+    {
+      "name": "lost-response-process-restart-identical-receipt-no-duplicate",
+      "passed": true
+    },
+    {
+      "name": "concurrent-web-edit-cas-conflict",
+      "passed": true
+    },
+    {
+      "name": "student-private-records-excluded-and-assignment-revoked-live",
+      "passed": true
+    },
+    {
+      "name": "official-client-cancellation-and-eof-abort-upstream",
+      "passed": true
+    },
+    {
+      "name": "configuration-change-and-session-logout-fail-closed",
+      "passed": true
+    },
+    {
+      "name": "isolated-resource-cleanup",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "artifactSha256": "7bd875307a64e2014aaf1b01f64367c3e6d4b35a22083c7eb9cc1c1aab60405d",
+  "toolNamesReadOnly": [
+    "ardesia_list_workspaces",
+    "ardesia_search",
+    "ardesia_read_document",
+    "ardesia_read_object_revision"
+  ],
+  "observed": {
+    "commandRequests": 13,
+    "successfulHttpWriteResponses": 11,
+    "exactDocumentRevision": 9,
+    "privateLearnerDataReturned": false,
+    "credentialsReturned": false,
+    "aiInferenceUsed": false
+  },
+  "durationMs": 1690
+}

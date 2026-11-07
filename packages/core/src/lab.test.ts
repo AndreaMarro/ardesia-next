@@ -198,11 +198,27 @@ describe('Core generic JSON state boundary', () => {
 });
 
 describe('Lossless M0 snapshot migration on open', () => {
+  it.each([2,3,4,5])('preserves opaque lab state resembling a future object while opening v%i', async schemaVersion => {
+    const storage=new ObservedStorage(),core=await createCore(options(storage));
+    await core.execute(teacher,create);
+    const input=labInput();input.data.state.value={type:'extension',revision:1,provenance:{},nested:{type:'extension',revision:3,provenance:{}}};
+    await core.execute(teacher,add(input));
+    const current=core.snapshot();
+    const raw={schemaVersion,workspaceId:current.workspaceId,documents:current.documents,events:current.events,receipts:current.receipts,
+      ...(schemaVersion>=3?{installations:current.installations}:{}),...(schemaVersion>=4?{assignments:[],learnerWork:[]}:{} )};
+    const bytes=JSON.stringify(raw),legacyStorage=new ObservedStorage(raw);
+    const reopened=await createCore(options(legacyStorage));
+    expect(reopened.snapshot().schemaVersion).toBe(9);
+    expect(reopened.snapshot().documents).toEqual(current.documents);
+    expect(reopened.snapshot().events).toEqual(current.events);
+    expect(reopened.snapshot().receipts).toEqual(current.receipts);
+    expect(legacyStorage.writes).toBe(0);expect(JSON.stringify(raw)).toBe(bytes);expect(await legacyStorage.read()).toEqual(raw);
+  });
   async function legacySnapshot() {
     const core = await createCore(options());
     await core.execute(teacher, create);
     await core.execute(teacher, add({id: 'legacy-note', type: 'note', title: 'Ipotesi', x: 10, y: 20, width: 200, height: 120, data: {text: 'La massa è vincolata lungo l’asse.'}}, 1, 'add-legacy-note'));
-    const {installations: _installations, assignments: _assignments, learnerWork: _learnerWork, ...legacy} = core.snapshot();
+    const {installations: _installations, assignments: _assignments, learnerWork: _learnerWork, ...legacy} = preCourse(core.snapshot());
     return {...legacy, schemaVersion: 1};
   }
 
@@ -210,7 +226,7 @@ describe('Lossless M0 snapshot migration on open', () => {
     const raw = await legacySnapshot();
     const storage = new ObservedStorage(raw);
     const core = await createCore(options(storage, 'migration-event'));
-    expect(core.snapshot()).toEqual({...raw, schemaVersion: 4, installations: [], assignments: [], learnerWork: []});
+    expect(core.snapshot()).toEqual({...raw, schemaVersion: 9, tutorRecords: [], installations: [], assignments: [], learnerWork: [], courses: [], courseEditions: [], courseDeliveries: [], courseWork: []});
     expect(CoreSnapshotSchema.safeParse(core.snapshot()).success).toBe(true);
     expect(storage.writes).toBe(0);
     expect(await storage.read()).toEqual(raw);
@@ -219,7 +235,7 @@ describe('Lossless M0 snapshot migration on open', () => {
     expect(await storage.read()).toEqual(raw);
     await core.execute(teacher, add(labInput(), 2));
     expect(storage.writes).toBe(1);
-    expect((await storage.read() as CoreSnapshot).schemaVersion).toBe(4);
+    expect((await storage.read() as CoreSnapshot).schemaVersion).toBe(9);
     expect(core.snapshot().events.slice(0, 2)).toEqual(raw.events);
     expect(core.snapshot().receipts.slice(0, 2)).toEqual(raw.receipts);
     expect(core.snapshot().documents[0]!.objects[0]).toEqual(raw.documents[0]!.objects[0]);
@@ -240,3 +256,9 @@ describe('Lossless M0 snapshot migration on open', () => {
     expect(await falseStorage.read()).toEqual(falselyLabelled);
   });
 });
+
+// Model historical envelopes with exactly their old fields, not a relabelled v7 snapshot.
+function preCourse<T extends object>(snapshot: T) {
+  const {tutorRecords: _t, courses: _c, courseEditions: _e, courseDeliveries: _d, courseWork: _w, ...legacy} = snapshot as T & {tutorRecords?: unknown; courses?: unknown; courseEditions?: unknown; courseDeliveries?: unknown; courseWork?: unknown};
+  return legacy;
+}

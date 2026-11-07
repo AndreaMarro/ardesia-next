@@ -1,0 +1,15 @@
+{
+  "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "sourceDigest": "81eec80ac69a13a6a13064fca63e780330a6e12de5e6881393c8d142f38b79dd",
+  "generatedAt": "2026-11-07T17:24:05.323Z",
+  "application": "ardesia-next",
+  "milestone": "M3",
+  "persistence": "remote-postgres-required",
+  "remoteAcceptance": "INCOMPLETE",
+  "thirdPartyExecution": true,
+  "programRuntime": {
+    "abi": "ardesia.program/1",
+    "policy": "ephemeral-explicit-consent-no-io",
+    "engine": "quickjs-emscripten@0.32.0"
+  }
+}

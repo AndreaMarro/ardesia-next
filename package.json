@@ -15,6 +15,8 @@
   "scripts": {
     "dev": "node tools/server.mjs --dev",
     "build": "node tools/build.mjs",
+    "build:mcp": "node tools/build-mcp.mjs",
+    "mcp": "node packages/mcp-core/dist/ardesia-mcp.mjs",
     "preview": "node tools/server.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
@@ -25,18 +27,23 @@
     "status": "node tools/status.mjs"
   },
   "devDependencies": {
+    "@modelcontextprotocol/client": "2.4.0",
     "@playwright/test": "1.56.1",
     "@types/katex": "0.16.8",
     "@types/node": "26.6.6",
     "@types/pg": "8.23.1",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
-    "@vitejs/plugin-react": "6.1.2",
+    "fake-indexeddb": "6.2.7",
+    "lucide-react": "1.63.0",
+    "pg": "8.23.1",
+    "preact-render-to-string": "6.8.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "terser": "5.51.2",
     "typescript": "5.9.3",
     "vite": "8.3.5",
-    "vitest": "5.0.5",
-    "pg": "8.23.1"
+    "vitest": "5.0.5"
   },
   "dependencies": {
     "@ardesia/server": "0.1.0"

@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-personal-authoring-fix-review-interim",
+  "reviewer": "/root/board_review",
+  "generatedAt": "2026-11-07T17:14:45.169Z",
+  "sourceDigestAtReview": "e6a7294737b2889968d949b4e1949a5040267facbb44d90a301127b86a78410b",
+  "sourceState": "IN_DEVELOPMENT_NOT_FROZEN",
+  "baselineSourceDigest": "097a685d9d53c9ef56f9454e72d142b32df793216a5dd950719c27d31bc0e87e",
+  "baselineMatches097a": true,
+  "verdict": "FIX_STATICAMENTE_FAVOREVOLI_VALIDAZIONE_FINALE_PENDENTE",
+  "openConfirmedFindings": [],
+  "method": {
+    "staticReadOnly": true,
+    "testsExecutedByReviewer": false,
+    "servicesStartedByReviewer": false,
+    "sourceModifiedByReviewer": false,
+    "remoteStateModified": false
+  },
+  "fileSha256": {
+    "apps/web/src/plugins/first-party.ts": "2c288baa9f17d6edff63c0807f77b6161443260ef0e99026e89094c2085c94e5",
+    "packages/server/src/auth.ts": "e67272f1528cfd447850309eebb59af4f29106f34936a22045d9d5b75650b64b",
+    "packages/server/src/store.ts": "d284dffc6defa77a1c6c299dad0157cf68e5456ce5713abb5edc3bb864567f64",
+    "packages/server/src/backup.ts": "d71a459274e4e8585d6c1dadc77e77bfe96edc67434ed97ceb65d820cf20abd3",
+    "packages/server/src/handler.ts": "88f9a1449c5f70b21d6045f945ac4ab9237b23fbbdd467c877f524115d71d8e2",
+    "packages/server/src/database.ts": "072575a58e7333d1f440c696f16e8b71ab7655c40024f5239fd1092ec9b50f0e",
+    "packages/server/src/server.integration.test.ts": "06e7b47c89f620b50dbb20a768c3baa8811ed77809d2bf849fd3c2dc9313f026",
+    "packages/remote-client/src/client.test.ts": "b6aa9f7358deb67a47d7e252407312b72be58ba3004ac5055f0c22d2dde3f6cc",
+    "packages/mcp-core/src/adapter.test.ts": "3f2a0a179191a7c9907bd266ecbcc3a7578c22fbc41d5a3dd1c3b6944a21899a",
+    "tools/mcp-runtime.test.mjs": "50cc80c752134b2a85ac2d244c879a2f81ce0445dfc7f5826f058d32a72e8cd7",
+    "e2e/personal.spec.ts": "4fe7eb110c10b1f9ca7ce1457684c401514a8fc04d5510982ce9c3496ea10d3c"
+  },
+  "findings": [
+    {
+      "id": "PERSONAL-01",
+      "priority": "P2",
+      "status": "RESOLVED_STATIC_PENDING_FINAL_VALIDATION",
+      "location": "apps/web/src/plugins/first-party.ts:180",
+      "assessment": "activeInstallation distingue il ramo assigned tramite remote.documentId. Lo studente owner senza documentId usa la propria installazione come il docente; lo studente assigned continua a richiedere data, oggetto assegnato, release, consenso e stato active. Restano verifiche di release/state, revoca e sessione."
+    },
+    {
+      "id": "PERSONAL-02",
+      "priority": "P1",
+      "status": "RESOLVED_STATIC_PENDING_FINAL_VALIDATION",
+      "assessment": "Il contesto assegnato non può impersonare il binding dell’owner. Il server blocca la collisione prima di Core/proiezione; import e provisioning riservano lo stesso namespace; restore ricontrolla sia il backup sia gli account già presenti nel target.",
+      "controls": {
+        "open": "openLocked carica il binding dell’owner reale. account.id uguale al suo actor_id nel ramo assigned produce NOT_FOUND; altre collisioni con accounts producono INTEGRITY_FAILURE prima di creare Core e costruire dati di risposta.",
+        "list": "Il ramo assigned richiede un binding con actor_id diverso dall’account corrente: il percorso personale del docente non fa comparire lo spazio all’account collidente.",
+        "http": "handler attende store.execute e transaction attende COMMIT prima della risposta di successo. Sui rifiuti viene serializzato soltanto l’envelope errore; nessuna proiezione parziale viene trasmessa.",
+        "provisioning": "LOCK accounts ROW EXCLUSIVE prima dei lock advisory identity:id, acquisiti in ordine degli ID. Verifica owner_bindings prima di INSERT.",
+        "import": "authenticate acquisisce FOR SHARE su accounts/session prima del create lock e del lock identity:actorId; collisione accounts ricontrollata sotto lo stesso advisory del provisioning.",
+        "restore": "Validazione incrociata degli alias con accounts del backup; nel target LOCK accounts/workspaces ACCESS EXCLUSIVE e verifica degli account aggiuntivi prima di inserire dati.",
+        "lockOrdering": "L’ordine accounts → advisory delle operazioni import/provisioning è compatibile con restore, che prende accounts per primo. Il lock di tabella ROW EXCLUSIVE del provisioning impedisce che un restore inserisca binding tra controllo e INSERT. I lock restano di transazione."
+      }
+    }
+  ],
+  "testSourceRead": {
+    "collisionHistorical": [
+      "Nella fixture isolata viene simulato con INSERT operatore un account collidente già ammesso.",
+      "La sorgente del test controlla assenza del sentinel PRIVATE_ALIAS da list/open/export HTTP, 404 di read-course-lesson e 503 all’owner, poi disponibilità originale dopo rimozione della collisione."
+    ],
+    "race": "Promise.allSettled tra import HTTP e provisioning; verifica che un solo percorso sia ammesso e che non esistano accounts↔binding in collisione.",
+    "restore": "Backup con collisione interna rifiutato; account extra collidente nel target rifiutato, target ancora senza workspace, restore valido successivo e confronto dati.",
+    "client": "Test parametrico teacher/student preserva alias storico, ruolo reale, receipt actor e copia offline fredda separata dalla sessione.",
+    "mcp": "Sorgente unit controlla history owner student e rifiuto preview/apply quando diventa assigned; sorgente runtime SDK ufficiale comprende creazione tipo/corso personale, history esatta, tutor negato e accesso teacher negato.",
+    "browser": "Sorgente E2E comprende laboratorio consentito, salvataggio e reopen, oltre a switch owner/assigned con nota privata e strumenti separati."
+  },
+  "retainedRedEvidence": {
+    "executedBy": "root",
+    "sourceDigest": "ae68e011e3d72f10ab5eda3d33c43ba15f6a2a84f0be37eebe27ff21b72bd5ba",
+    "stats": {
+      "startTime": "2026-11-07T17:08:49.144Z",
+      "duration": 8204.071000000002,
+      "expected": 0,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "rawReportSha256": "5a0e7c6da108f664b239a73e577e2c976d7f91480605c94e42c2e79e02dfb365",
+    "normalizedReportSha256": "69112f8a4c809a65e707b2ee5cb90aa46cef618ca345e9f540d2663cbfb1fd4b",
+    "bindingMatches": true,
+    "outcome": "Un caso browser desktop fallito al primo tentativo nella prova precedente del laboratorio; non è prova GREEN della candidata corrente."
+  },
+  "evidenceLimits": [
+    {
+      "type": "race-test-coverage",
+      "blockingCodeFinding": false,
+      "text": "Promise.allSettled non forza i due ordini di acquisizione né dimostra attesa sovrapposta sul lock. Il provisioning calcola scrypt prima della transazione, quindi il test può ripetere sempre import-first. Il codice letto serializza entrambi gli ordini; la controprova documenta soltanto l’interleaving effettivamente eseguito."
+    },
+    {
+      "type": "execution",
+      "text": "Le nuove prove sono state lette nella sorgente. Il revisore non le ha eseguite e non attribuisce alcun PASS finale. La precedente prova RED resta distinta."
+    },
+    {
+      "type": "authority",
+      "text": "Scritture SQL dirette dell’operatore possono creare stato storico invalido: open/list rifiutano l’alias collidente; non viene riscritto automaticamente. Nessuna migrazione o riparazione remota è stata eseguita."
+    }
+  ],
+  "requiredForFinal": [
+    "Congelare la sorgente e ricalcolare digest e patch.",
+    "Verificare i report finali Verify/unit/server/MCP/browser e i rispettivi binding sulla stessa sorgente.",
+    "Mantenere i fallimenti intermedi e i limiti del test concorrente; nessuna accettazione di prodotto o deployment dedotta da questa review."
+  ]
+}

@@ -1,0 +1,397 @@
+{
+  "kind": "synthetic-tutor-local-fixture",
+  "generatedAt": "2026-11-07T16:23:58.133Z",
+  "workspaceId": "2e517233-c717-4d89-9a6c-e5a8869db00c",
+  "lesson": {
+    "documentId": "58f464ca-8f4f-4722-bcef-8654bdb977f8",
+    "revision": 14
+  },
+  "commands": [
+    {
+      "command": {
+        "kind": "save-tutor-record",
+        "recordId": "demo:tutor:ada",
+        "expectedRevision": 0,
+        "commandId": "demo:tutor:ada:create",
+        "reason": "",
+        "input": {
+          "notes": "Esempio fittizio per il collaudo locale. Nessuna persona o operazione reale.",
+          "custom": [
+            {
+              "label": "Percorso",
+              "value": "Analisi e metodo"
+            }
+          ],
+          "kind": "contact",
+          "title": "Ada Bianchi",
+          "email": "",
+          "phone": "",
+          "archived": false
+        }
+      },
+      "receipt": {
+        "commandId": "demo:tutor:ada:create",
+        "actorId": "ardesia-local-author",
+        "fingerprint": "d6e65bdc9793109be6cd5385883ba495f2f8fde8ef9dfe19bab1926b379bed86",
+        "entityId": "demo:tutor:ada",
+        "tutorEntity": "contact",
+        "entityRevision": 1,
+        "eventId": "7caad49e-456e-47d2-a210-97cf51e21c0b"
+      }
+    },
+    {
+      "command": {
+        "kind": "save-tutor-record",
+        "recordId": "demo:tutor:marta",
+        "expectedRevision": 0,
+        "commandId": "demo:tutor:marta:create",
+        "reason": "",
+        "input": {
+          "notes": "Esempio fittizio per il collaudo locale. Nessuna persona o operazione reale.",
+          "custom": [
+            {
+              "label": "Percorso",
+              "value": "Fisica e osservazione"
+            }
+          ],
+          "kind": "contact",
+          "title": "Marta Leone",
+          "email": "",
+          "phone": "",
+          "archived": false
+        }
+      },
+      "receipt": {
+        "commandId": "demo:tutor:marta:create",
+        "actorId": "ardesia-local-author",
+        "fingerprint": "c2465435c43292502f59ae5f185f8abbe2d428ba8c7823ddf419f96f57a5d30d",
+        "entityId": "demo:tutor:marta",
+        "tutorEntity": "contact",
+        "entityRevision": 1,
+        "eventId": "22e6347f-298b-4478-a715-74024093821a"
+      }
+    },
+    {
+      "command": {
+        "kind": "save-tutor-record",
+        "recordId": "demo:tutor:luca",
+        "expectedRevision": 0,
+        "commandId": "demo:tutor:luca:create",
+        "reason": "",
+        "input": {
+          "notes": "Esempio fittizio per il collaudo locale. Nessuna persona o operazione reale.",
+          "custom": [
+            {
+              "label": "Percorso",
+              "value": "Fisica e osservazione"
+            }
+          ],
+          "kind": "contact",
+          "title": "Luca Conti",
+          "email": "",
+          "phone": "",
+          "archived": false
+        }
+      },
+      "receipt": {
+        "commandId": "demo:tutor:luca:create",
+        "actorId": "ardesia-local-author",
+        "fingerprint": "61c34d66da0233f80cd873d24698bcc98b8fffb3628f06ca84dab19ef4a9d26b",
+        "entityId": "demo:tutor:luca",
+        "tutorEntity": "contact",
+        "entityRevision": 1,
+        "eventId": "6154d5bc-b10c-471b-9cfe-13c80bf1d55d"
+      }
+    },
+    {
+      "command": {
+        "kind": "save-tutor-record",
+        "recordId": "demo:tutor:request",
+        "expectedRevision": 0,
+        "commandId": "demo:tutor:request:create",
+        "reason": "",
+        "input": {
+          "notes": "Esempio fittizio per il collaudo locale. Nessuna persona o operazione reale.",
+          "custom": [],
+          "kind": "request",
+          "title": "Ritrovare il filo delle derivate",
+          "contactId": "demo:tutor:ada",
+          "status": "open"
+        }
+      },
+      "receipt": {
+        "commandId": "demo:tutor:request:create",
+        "actorId": "ardesia-local-author",
+        "fingerprint": "0dba9813a0d8dbc7ddfa6cc2af8121abc55d55678550770e5a3af7e6ea6677f5",
+        "entityId": "demo:tutor:request",
+        "tutorEntity": "request",
+        "entityRevision": 1,
+        "eventId": "bb82b83a-6da9-422b-8fc1-4cdb9b20e37b"
+      }
+    },
+    {
+      "command": {
+        "kind": "save-tutor-record",
+        "recordId": "demo:tutor:group",
+        "expectedRevision": 0,
+        "commandId": "demo:tutor:group:create",
+        "reason": "",
+        "input": {
+          "notes": "Esempio fittizio per il collaudo locale. Nessuna persona o operazione reale.",
+          "custom": [],
+          "kind": "group",
+          "title": "Fisica · laboratorio insieme",
+          "contactIds": [
+            "demo:tutor:marta",
+            "demo:tutor:luca"
+          ],
+          "archived": false
+        }
+      },
+      "receipt": {
+        "commandId": "demo:tutor:group:create",
+        "actorId": "ardesia-local-author",
+        "fingerprint": "254ef364d00a077b4297b6cc0ad7482f4f92063817d8c6b4b79aa49056e9c58c",
+        "entityId": "demo:tutor:group",
+        "tutorEntity": "group",
+        "entityRevision": 1,
+        "eventId": "b87035d4-fe82-4f87-8d4d-e860bab20fb2"
+      }
+    },
+    {
+      "command": {
+        "kind": "save-tutor-record",
+        "recordId": "demo:tutor:pack",
+        "expectedRevision": 0,
+        "commandId": "demo:tutor:pack:create",
+        "reason": "",
+        "input": {
+          "notes": "Esempio fittizio per il collaudo locale. Nessuna persona o operazione reale.",
+          "custom": [],
+          "kind": "package",
+          "title": "Cinque ore, un percorso",
+          "contactId": "demo:tutor:ada",
+          "totalMinutes": 300,
+          "priceMinor": 15000,
+          "currency": "EUR",
+          "expiresAt": null
+        }
+      },
+      "receipt": {
+        "commandId": "demo:tutor:pack:create",
+        "actorId": "ardesia-local-author",
+        "fingerprint": "5e9ceaf686232ed3e7978f93b5908be5fbe30dbae9089f4defee8c9e39670d20",
+        "entityId": "demo:tutor:pack",
+        "tutorEntity": "package",
+        "entityRevision": 1,
+        "eventId": "7112aea7-7916-45b9-9679-6fb054406e12"
+      }
+    },
+    {
+      "command": {
+        "kind": "save-tutor-record",
+        "recordId": "demo:tutor:delivered",
+        "expectedRevision": 0,
+        "commandId": "demo:tutor:delivered:create",
+        "reason": "",
+        "input": {
+          "notes": "Esempio fittizio per il collaudo locale. Nessuna persona o operazione reale.",
+          "custom": [],
+          "kind": "appointment",
+          "timeZone": "Europe/Rome",
+          "currency": "EUR",
+          "groupId": null,
+          "requestId": "demo:tutor:request",
+          "lesson": {
+            "documentId": "58f464ca-8f4f-4722-bcef-8654bdb977f8",
+            "revision": 14
+          },
+          "startAt": "2026-11-07T08:00:00.000Z",
+          "endAt": "2026-11-07T09:00:00.000Z",
+          "title": "Derivate: capire il cambiamento",
+          "status": "completed",
+          "participants": [
+            {
+              "contactId": "demo:tutor:ada",
+              "attended": true,
+              "packageId": "demo:tutor:pack",
+              "chargeMinor": 0
+            }
+          ]
+        }
+      },
+      "receipt": {
+        "commandId": "demo:tutor:delivered:create",
+        "actorId": "ardesia-local-author",
+        "fingerprint": "23d627b2abf2e84b99374f8f2082f5588480423e9b27745cd89cb09372b1b5c4",
+        "entityId": "demo:tutor:delivered",
+        "tutorEntity": "appointment",
+        "entityRevision": 1,
+        "eventId": "378a1b7a-9940-42f5-9fa1-d396ec54669e"
+      }
+    },
+    {
+      "command": {
+        "kind": "save-tutor-record",
+        "recordId": "demo:tutor:geometry",
+        "expectedRevision": 0,
+        "commandId": "demo:tutor:geometry:create",
+        "reason": "",
+        "input": {
+          "notes": "Esempio fittizio per il collaudo locale. Nessuna persona o operazione reale.",
+          "custom": [],
+          "kind": "appointment",
+          "timeZone": "Europe/Rome",
+          "currency": "EUR",
+          "groupId": null,
+          "requestId": null,
+          "lesson": {
+            "documentId": "58f464ca-8f4f-4722-bcef-8654bdb977f8",
+            "revision": 14
+          },
+          "startAt": "2026-11-07T14:00:00.000Z",
+          "endAt": "2026-11-07T15:00:00.000Z",
+          "title": "Una figura, più punti di vista",
+          "status": "scheduled",
+          "participants": [
+            {
+              "contactId": "demo:tutor:luca",
+              "attended": false,
+              "packageId": null,
+              "chargeMinor": 3000
+            }
+          ]
+        }
+      },
+      "receipt": {
+        "commandId": "demo:tutor:geometry:create",
+        "actorId": "ardesia-local-author",
+        "fingerprint": "cf8eb9cad5ce5dd54853058980daa88f4058047cc8f7eb3d270b74928d62e3dd",
+        "entityId": "demo:tutor:geometry",
+        "tutorEntity": "appointment",
+        "entityRevision": 1,
+        "eventId": "1461bde9-05f4-4a40-b6f9-8fd2f820c804"
+      }
+    },
+    {
+      "command": {
+        "kind": "save-tutor-record",
+        "recordId": "demo:tutor:lab",
+        "expectedRevision": 0,
+        "commandId": "demo:tutor:lab:create",
+        "reason": "",
+        "input": {
+          "notes": "Esempio fittizio per il collaudo locale. Nessuna persona o operazione reale.",
+          "custom": [],
+          "kind": "appointment",
+          "timeZone": "Europe/Rome",
+          "currency": "EUR",
+          "groupId": "demo:tutor:group",
+          "requestId": null,
+          "lesson": {
+            "documentId": "58f464ca-8f4f-4722-bcef-8654bdb977f8",
+            "revision": 14
+          },
+          "startAt": "2026-11-07T17:00:00.000Z",
+          "endAt": "2026-11-07T18:00:00.000Z",
+          "title": "La molla, vista da vicino",
+          "status": "scheduled",
+          "participants": [
+            {
+              "contactId": "demo:tutor:marta",
+              "attended": false,
+              "packageId": null,
+              "chargeMinor": 2500
+            },
+            {
+              "contactId": "demo:tutor:luca",
+              "attended": false,
+              "packageId": null,
+              "chargeMinor": 2500
+            }
+          ]
+        }
+      },
+      "receipt": {
+        "commandId": "demo:tutor:lab:create",
+        "actorId": "ardesia-local-author",
+        "fingerprint": "2e3e7a26d61710f4fcbf503cc2fdb513347c879cc8e8b73d7b60818efe80218c",
+        "entityId": "demo:tutor:lab",
+        "tutorEntity": "appointment",
+        "entityRevision": 1,
+        "eventId": "0d63563b-6d85-4496-b6a4-5c12613c641e"
+      }
+    },
+    {
+      "command": {
+        "kind": "save-tutor-record",
+        "recordId": "demo:tutor:next",
+        "expectedRevision": 0,
+        "commandId": "demo:tutor:next:create",
+        "reason": "",
+        "input": {
+          "notes": "Esempio fittizio per il collaudo locale. Nessuna persona o operazione reale.",
+          "custom": [],
+          "kind": "appointment",
+          "timeZone": "Europe/Rome",
+          "currency": "EUR",
+          "groupId": null,
+          "requestId": null,
+          "lesson": {
+            "documentId": "58f464ca-8f4f-4722-bcef-8654bdb977f8",
+            "revision": 14
+          },
+          "startAt": "2026-11-08T10:00:00.000Z",
+          "endAt": "2026-11-08T11:00:00.000Z",
+          "title": "Dall’intuizione al modello",
+          "status": "scheduled",
+          "participants": [
+            {
+              "contactId": "demo:tutor:ada",
+              "attended": false,
+              "packageId": "demo:tutor:pack",
+              "chargeMinor": 0
+            }
+          ]
+        }
+      },
+      "receipt": {
+        "commandId": "demo:tutor:next:create",
+        "actorId": "ardesia-local-author",
+        "fingerprint": "cf71a5e7930ec65bdd5cb77e9d852184122c905a8bba1099b6f9b5b6676edff3",
+        "entityId": "demo:tutor:next",
+        "tutorEntity": "appointment",
+        "entityRevision": 1,
+        "eventId": "8fb88b7c-d770-4b1d-8d6a-5ad666d65d54"
+      }
+    },
+    {
+      "command": {
+        "kind": "record-tutor-payment",
+        "recordId": "demo:tutor:payment",
+        "expectedRevision": 0,
+        "commandId": "demo:tutor:payment:create",
+        "targetId": "demo:tutor:pack",
+        "targetRevision": 1,
+        "contactId": "demo:tutor:ada",
+        "amountMinor": 6000,
+        "paidAt": "2026-11-07T15:23:58.037Z",
+        "method": "Esempio di bonifico annotato",
+        "reference": "DEMO-NON-REALE-001",
+        "notes": "Esempio fittizio per il collaudo locale. Nessuna persona o operazione reale."
+      },
+      "receipt": {
+        "commandId": "demo:tutor:payment:create",
+        "actorId": "ardesia-local-author",
+        "fingerprint": "f7c2ea05e72b6d2e49523ac08a916a86104ae944bf00bb03cc162a8a2e70bc64",
+        "entityId": "demo:tutor:payment",
+        "tutorEntity": "payment",
+        "entityRevision": 1,
+        "eventId": "2da28b69-a53a-495f-bcc1-563580b4c9c7"
+      }
+    }
+  ],
+  "records": 11,
+  "realMoney": false,
+  "realPeople": false
+}

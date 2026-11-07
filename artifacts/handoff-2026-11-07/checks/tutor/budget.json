@@ -1,0 +1,122 @@
+{
+  "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "sourceDigest": "097a685d9d53c9ef56f9454e72d142b32df793216a5dd950719c27d31bc0e87e",
+  "generatedAt": "2026-11-07T16:28:45.456Z",
+  "metric": "core-and-optional-program-runtime-v2",
+  "initialJavaScriptGzipBytes": 197425,
+  "coreGzipBytes": 257825,
+  "optionalGzipBytes": 291660,
+  "optionalRawBytes": 701585,
+  "allJavaScriptGzipBytes": 315442,
+  "allWasmGzipBytes": 234043,
+  "allRawBytes": 1601788,
+  "allGzipBytes": 549485,
+  "limits": {
+    "coreGzipBytes": 278528,
+    "initialJavaScriptGzipBytes": 245760,
+    "optionalGzipBytes": 327680,
+    "optionalRawBytes": 1048576
+  },
+  "deferredJavaScriptGzipBytes": 118017,
+  "previousCoreComparison": {
+    "metric": "all-non-program-assets-gzip",
+    "bytes": 257825,
+    "limit": 245760,
+    "passed": false
+  },
+  "legacyComparison": {
+    "metric": "all-javascript-gzip-bytes",
+    "bytes": 315442,
+    "limit": 245760,
+    "passed": false
+  },
+  "loadingMetric": "Static module graph; runtime network deferral is tested separately. No existing asset is reclassified as optional. All JS and WASM raw/gzip costs are retained.",
+  "files": [
+    {
+      "file": "assets/ProgramSurface-B-05CnH8.js",
+      "rawBytes": 10518,
+      "gzipBytes": 4375,
+      "initial": false
+    },
+    {
+      "file": "assets/TutorStudio-C-2CNueT.js",
+      "rawBytes": 31373,
+      "gzipBytes": 9906,
+      "initial": false
+    },
+    {
+      "file": "assets/index-CpGX9Z8r.js",
+      "rawBytes": 399140,
+      "gzipBytes": 121365,
+      "initial": true
+    },
+    {
+      "file": "assets/math-dJ2525rv.js",
+      "rawBytes": 264230,
+      "gzipBytes": 76060,
+      "initial": true
+    },
+    {
+      "file": "assets/program-example-Bk_8QC4t.js",
+      "rawBytes": 1915,
+      "gzipBytes": 964,
+      "initial": false
+    },
+    {
+      "file": "plugins/ideal-spring/1.0.0/plugin.js",
+      "rawBytes": 173,
+      "gzipBytes": 174,
+      "initial": false
+    },
+    {
+      "file": "plugins/poiseuille/1.0.0/plugin.js",
+      "rawBytes": 173,
+      "gzipBytes": 174,
+      "initial": false
+    },
+    {
+      "file": "plugins/shared/ba4b63b0618f56201e42768492af6eeac8b8dbf7a6509c6f465bbd5c8a4a440a.js",
+      "rawBytes": 191934,
+      "gzipBytes": 44901,
+      "initial": false
+    },
+    {
+      "file": "program-runtime/emscripten-module-uFzwHH0Y.wasm",
+      "rawBytes": 503134,
+      "gzipBytes": 234043,
+      "initial": false
+    },
+    {
+      "file": "program-runtime/emscripten-module.browser-CWXg-YmW.js",
+      "rawBytes": 9129,
+      "gzipBytes": 4159,
+      "initial": false
+    },
+    {
+      "file": "program-runtime/ffi-C3fJrDLQ.js",
+      "rawBytes": 6322,
+      "gzipBytes": 1001,
+      "initial": false
+    },
+    {
+      "file": "program-runtime/module-ES6BEMUI-CI3RSTOp.js",
+      "rawBytes": 176,
+      "gzipBytes": 143,
+      "initial": false
+    },
+    {
+      "file": "program-runtime/worker.js",
+      "rawBytes": 170391,
+      "gzipBytes": 46975,
+      "initial": false
+    },
+    {
+      "file": "sw.js",
+      "rawBytes": 13180,
+      "gzipBytes": 5245,
+      "initial": false
+    }
+  ],
+  "physicalPerformanceTest": "NOT_RUN",
+  "passed": true
+}

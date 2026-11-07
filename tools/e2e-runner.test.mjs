@@ -5,7 +5,7 @@ import {mkdtempSync, mkdirSync, writeFileSync, readFileSync, existsSync, rmSync}
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
-import {localBrowserAccounts, projectCredentials, projectCredentialEnvironment} from './e2e-accounts.mjs';
+import {localBrowserAccounts, projectCredentials, projectCredentialEnvironment, personalBrowserCredentials} from './e2e-accounts.mjs';
 
 const runner = fileURLToPath(new URL('./e2e.mjs', import.meta.url));
 const protectedPaths = ['e2e.json', 'browser-evidence.json', 'release-evidence.json', 'm3-remote-evidence.json'];
@@ -16,14 +16,17 @@ const credentials = Object.fromEntries(['TEACHER', 'STUDENT_A', 'STUDENT_B'].fla
 
 test('local projects have distinct budgets and stable identities inside each scenario', () => {
   const seeded = localBrowserAccounts(credentials);
-  assert.equal(seeded.length, 6);
-  assert.equal(new Set(seeded.map(account => account.username)).size, 6);
-  assert.equal(new Set(seeded.map(account => account.id)).size, 6);
+  assert.equal(seeded.length, 8);
+  assert.equal(new Set(seeded.map(account => account.username)).size, 8);
+  assert.equal(new Set(seeded.map(account => account.id)).size, 8);
   for (const project of ['desktop-chromium', 'mobile-chromium']) {
     const first = projectCredentials(credentials, 'local', project, 'STUDENT_A');
     assert.deepEqual(projectCredentials(credentials, 'local', project, 'STUDENT_A'), first);
     assert.equal(seeded.find(account => account.username === first.username).role, 'student');
     assert.notEqual(first.username, projectCredentials(credentials, 'local', project, 'STUDENT_B').username);
+    const personal=personalBrowserCredentials(credentials,'local',project);
+    assert.notEqual(first.username,personal.username);
+    assert.equal(seeded.find(account=>account.username===personal.username).role,'student');
   }
   assert.notEqual(projectCredentials(credentials, 'local', 'desktop-chromium', 'STUDENT_A').username,
     projectCredentials(credentials, 'local', 'mobile-chromium', 'STUDENT_A').username);
@@ -34,6 +37,7 @@ test('remote credentials remain exact and unknown local projects fail closed wit
     assert.deepEqual(projectCredentialEnvironment(credentials, 'remote', project), credentials);
   }
   assert.throws(() => projectCredentials(credentials, 'local', 'unknown', 'STUDENT_A'), /Unknown local browser project/);
+  assert.throws(() => personalBrowserCredentials(credentials, 'remote', 'desktop-chromium'), /require local/);
   assert.throws(() => projectCredentials({...credentials, ARDESIA_E2E_STUDENT_A_USERNAME:'x'.repeat(63)}, 'local', 'desktop-chromium', 'STUDENT_A'), /Invalid scoped/);
 });
 
