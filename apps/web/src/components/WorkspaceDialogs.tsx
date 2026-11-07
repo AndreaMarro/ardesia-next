@@ -7,8 +7,8 @@ import {Dialog} from './Dialog';
 import {Marketplace} from './Marketplace';
 
 export type DialogName = 'library' | 'settings' | 'new' | 'history' | 'modules';
-type Props = {name: DialogName; core: CoreService; actor: Actor; onExport: () => Promise<void>; document: LessonDocument; onClose: () => void; onOpen: (id: string) => void; onCreate: (title: string) => Promise<void>; onAddLab: (pluginId: string, condition?: 'pressure' | 'flow') => Promise<void>; addingLab: boolean; onModulesChanged: () => void};
-export function WorkspaceDialogs({name, core, actor, onExport, document, onClose, onOpen, onCreate, onAddLab, addingLab, onModulesChanged}: Props) {
+type Props = {offlineControl?: import('react').ReactNode; name: DialogName; core: CoreService; actor: Actor; onExport: () => Promise<void>; document: LessonDocument; onClose: () => void; onOpen: (id: string) => void; onCreate: (title: string) => Promise<void>; onAddLab: (pluginId: string, condition?: 'pressure' | 'flow') => Promise<void>; addingLab: boolean; onModulesChanged: () => void};
+export function WorkspaceDialogs({name, core, actor, onExport, document, onClose, onOpen, onCreate, onAddLab, addingLab, onModulesChanged, offlineControl}: Props) {
   const [title, setTitle] = useState('');
   const [build, setBuild] = useState<{commit: string; sourceDigest: string} | null>(null);
   useEffect(() => {if(name === 'settings') void fetch('/build-info.json').then(r => r.ok ? r.json() : null).then(setBuild).catch(() => setBuild(null));}, [name]);
@@ -18,7 +18,7 @@ export function WorkspaceDialogs({name, core, actor, onExport, document, onClose
     {name === 'library' && <div className="lesson-list">{core.listDocuments(actor).map(doc => <button key={doc.id} className="lesson-row" onClick={() => {onOpen(doc.id); onClose();}}><NotebookPen size={24}/><span><strong>{doc.title}</strong><small>Bozza · {doc.objects.length} oggetti · revisione {doc.revision}</small></span><ArrowUpRight size={18}/></button>)}</div>}
     {name === 'history' && <><p className="dialog-intro">Le modifiche salvate di questa lezione. Ogni voce rimanda a una revisione effettiva.</p><ol className="history-list">{projectContinuity(core.events(actor, document.id), document.id).changes.slice().reverse().map(item => <li key={item.eventId}><strong>Revisione {item.revision}</strong><span>{eventLabel(item.type)}</span><time dateTime={item.occurredAt}>{new Intl.DateTimeFormat('it-IT',{dateStyle:'short',timeStyle:'short'}).format(new Date(item.occurredAt))}</time></li>)}</ol></>}
     {name === 'modules' && <Marketplace onAddLab={onAddLab} addingLab={addingLab} onChanged={onModulesChanged}/>}
-    {name === 'settings' && <div className="settings-content"><p>Le modifiche confermate sono salvate nel tuo account. Riaprile con le stesse credenziali.</p><p>La preview ha un accesso separato. Il server verifica assegnazioni e consensi.</p><button className="secondary-button" onClick={() => void onExport()}><Download size={18}/> Esporta una copia dei dati</button><details><summary>Versione di questa preview</summary><p>Ardesia Next · M3 in verifica</p><code>{build?.commit ?? 'Ambiente di sviluppo locale'}</code>{build && <small>Impronta sorgenti: {build.sourceDigest}</small>}</details></div>}
+    {name === 'settings' && <div className="settings-content"><p>Le modifiche confermate sono salvate nel tuo account. Riaprile con le stesse credenziali.</p><p>La preview ha un accesso separato. Il server verifica assegnazioni e consensi.</p>{offlineControl}<button className="secondary-button" onClick={() => void onExport()}><Download size={18}/> Esporta una copia dei dati</button><details><summary>Versione dell’interfaccia caricata</summary><p>Ardesia Next · M3 in verifica</p><code>{build?.commit ?? 'Ambiente di sviluppo locale'}</code>{build && <small>Impronta sorgenti: {build.sourceDigest}</small>}</details></div>}
   </Dialog>;
 }
 function eventLabel(type: string) {

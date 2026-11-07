@@ -1,0 +1,313 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-static-tutor-review",
+  "reviewer": "/root/board_review",
+  "generatedAt": "2026-11-07T16:37:03.439Z",
+  "scope": "Incremento locale Tutor; nessuna accettazione dell’intero prodotto o del deployment.",
+  "identity": {
+    "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+    "sourceDigest": "097a685d9d53c9ef56f9454e72d142b32df793216a5dd950719c27d31bc0e87e",
+    "trackedDiffSha256": "5af20e20939aa5035106f9418c0d165623859ff8629723abbfec7c73f44b99c2",
+    "note": "La diff finale include i dodici nuovi file tramite intent-to-add eseguito da root; sourceDigest invariato. Nessuna modifica del sorgente o dell’indice eseguita dal revisore.",
+    "diffBytes": 1280934,
+    "candidatePatchSha256": "5af20e20939aa5035106f9418c0d165623859ff8629723abbfec7c73f44b99c2",
+    "candidatePatchMatchesWorkingDiff": true
+  },
+  "verdict": "FAVOREVOLE_INCREMENTO_LOCALE_TUTOR",
+  "confirmedOpenFindings": [],
+  "method": {
+    "sourceReview": true,
+    "artifactReadback": true,
+    "independentDigestAndSizeRecalculation": true,
+    "testsExecutedByReviewer": false,
+    "servicesStartedByReviewer": false,
+    "sourceModifiedByReviewer": false,
+    "remoteMutation": false
+  },
+  "reviewedPaths": [
+    "packages/contracts/src/tutor.ts",
+    "packages/core/src/tutor.ts",
+    "packages/core/src/index.ts",
+    "apps/web/src/tutor/TutorEditor.tsx",
+    "apps/web/src/tutor/TutorStudio.tsx",
+    "apps/web/src/tutor/values.ts",
+    "apps/web/src/RemoteWorkspace.tsx",
+    "packages/server/src/requests.ts",
+    "packages/server/src/store.ts",
+    "packages/server/src/backup.ts",
+    "packages/server/src/legacy-import.ts",
+    "packages/server/migrations/006_tutor.sql",
+    "packages/remote-client/src/index.ts",
+    "packages/mcp-core/src/adapter.ts",
+    "e2e/tutor.spec.ts",
+    "vitest.config.ts",
+    "tools/program-budget.mjs",
+    "tools/check-budget.mjs",
+    "docs/adr/0018-tutor-studio.md",
+    "docs/sources/tutor-studio-2026-11-07.md",
+    "apps/web/src/tutor/values.test.ts"
+  ],
+  "resolvedFindings": [
+    {
+      "id": "TUTOR-01",
+      "severity": "P2",
+      "finding": "Export incompleto delle modifiche strutturali e campi disabilitati.",
+      "resolution": "Export include stato, valuta, persone, pacchetti, gruppo, lezione e campi personalizzati; export disabilitato durante busy."
+    },
+    {
+      "id": "TUTOR-02",
+      "severity": "P2",
+      "finding": "Ambiguità DST non rilevata per transizioni di mezz’ora.",
+      "resolution": "Ricostruzione dei candidati dagli offset nel periodo di ±48h; caso Lord Howe nella sorgente unit."
+    },
+    {
+      "id": "TUTOR-03",
+      "severity": "P2",
+      "finding": "ICS non valido per ISO con più di tre cifre frazionarie.",
+      "resolution": "Normalizzazione Date/toISOString prima della serializzazione UTC senza frazioni."
+    },
+    {
+      "id": "TUTOR-04",
+      "severity": "P2",
+      "finding": "Cambio persona della richiesta invalida un appuntamento collegato.",
+      "resolution": "Guardia inversa Core sulle richieste referenziate dagli appuntamenti."
+    },
+    {
+      "id": "TUTOR-05",
+      "severity": "P2",
+      "finding": "Dirty tracking del form Preact tardivo durante la digitazione.",
+      "resolution": "Listener onInput e onChange; scenario E2E controlla il salvataggio abilitato prima del blur."
+    },
+    {
+      "id": "TUTOR-06",
+      "severity": "P2",
+      "finding": "Dialogo pagamento dereferenzia saldo assente dopo modifica concorrente.",
+      "resolution": "Contesto originale catturato, avviso di revisione cambiata, dati esportabili, ricontrollo al submit e targetRevision originale."
+    },
+    {
+      "id": "TUTOR-07",
+      "severity": "P2",
+      "finding": "Il secondo salvataggio può aggiornare implicitamente la revisione della lezione.",
+      "resolution": "Riferimento {documentId,revision} in stato dalla selezione esplicita; export lo conserva. ACK aggiorna input confermato senza rimontare, con guardia generazione per edit successivi."
+    },
+    {
+      "id": "TUTOR-08",
+      "foundBy": "root",
+      "finding": "CR isolato nel titolo non neutralizzato nell’export ICS.",
+      "resolution": "Regex copre CRLF/CR/LF, senza alterare l’escape del backslash o il folding UTF-8; fixture aggiornata con CR isolato.",
+      "review": "Confermata staticamente dal revisore."
+    }
+  ],
+  "staticAssessment": {
+    "privacy": "Registro autorizzato al docente proprietario; proiezione studente vuota, autorizzazione prima del ritorno di ricevute duplicate.",
+    "identity": "CAS, command fingerprint, ricevute e letture storiche esatte; retry account-scoped conserva il comando originale.",
+    "history": "Consuntivi non tornano programmati/annullati; correzioni motivate preservano lo storico. Apertura e commit verificano la storia tutor.",
+    "economics": "Minuti riservati/consumati distinti; capienza e incassi ricontrollati nel Core; minor units intere e aggregati BigInt per valuta.",
+    "externalEffects": "Nessun pagamento, calendario provider, messaggio o rimborso esterno implicito.",
+    "migration": "Snapshot8; letture precedenti migrate in memoria; rifiuto di campi/eventi tutor mascherati nelle versioni precedenti; SQL006 non riscrive snapshot.",
+    "testScheduling": "fileParallelism:false serializza i file; le asserzioni temporali e il runtime programmabile non vengono indeboliti. Il precedente timing 2036ms oltre 2000ms resta un tentativo fallito, non sostituito retroattivamente dal pass isolato."
+  },
+  "rootExecutedEvidence": {
+    "verification": {
+      "passed": true,
+      "checks": 8,
+      "sourceDigest": "097a685d9d53c9ef56f9454e72d142b32df793216a5dd950719c27d31bc0e87e"
+    },
+    "unit": {
+      "passed": 536,
+      "total": 536,
+      "failed": 0,
+      "pending": 0,
+      "todo": 0,
+      "sha256": "968bb55bb83d1bb6f7e6cfceae7682c3b71204d31bb1a562d3c64e670c596f19",
+      "matchesVerificationUnitReportDigest": true
+    },
+    "server": {
+      "passed": true,
+      "checks": 5,
+      "sourceDigest": "097a685d9d53c9ef56f9454e72d142b32df793216a5dd950719c27d31bc0e87e"
+    },
+    "mcp": {
+      "passed": true,
+      "checks": 13,
+      "sourceDigest": "097a685d9d53c9ef56f9454e72d142b32df793216a5dd950719c27d31bc0e87e"
+    },
+    "browser": {
+      "status": "PASS_FINAL_CANDIDATE_FULL_RUN",
+      "sourceDigest": "097a685d9d53c9ef56f9454e72d142b32df793216a5dd950719c27d31bc0e87e",
+      "total": 171,
+      "passed": 171,
+      "firstAttemptPassed": 171,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "tutorCases": 8,
+      "projects": [
+        "desktop-chromium",
+        "mobile-chromium"
+      ],
+      "rawReportSha256": "06cdef426242c3f1280907e34ae39d3127599cb952701241a9afbf9b1c201342",
+      "normalizedReportSha256": "51ffc0caa2fb08555d88074b4c84dd8f4a91477f1e5ef3cc2752d54d9ccc7581",
+      "reportedBinding": "51ffc0caa2fb08555d88074b4c84dd8f4a91477f1e5ef3cc2752d54d9ccc7581",
+      "reportBindingIndependentlyVerified": true,
+      "scenarioCoverage": [
+        "Richiesta → lezione esatta → consuntivo → pagamento parziale → storno → riapertura; lazy loading alla prima apertura.",
+        "Modifica concorrente del contesto economico con dialogo aperto e preservazione/export dei campi.",
+        "Risposta persa, retry con stesso comando, edit locale successivo conservato, conflitto senza rebase implicito.",
+        "Export delle modifiche strutturali e rifiuto del superamento della capienza del pacchetto senza perdere la bozza."
+      ],
+      "historicalCandidate": {
+        "sourceDigest": "a3927dc62be42521fe9ed18ace1a72435889e315e2567e866ba11acff3ed30d5",
+        "passed": 171,
+        "archive": "work/tutor-a392",
+        "usedAsFinalEvidence": false
+      }
+    },
+    "attribution": "I test sono stati eseguiti da root; questo revisore ha letto i risultati e ricalcolato digest/byte, senza eseguirli."
+  },
+  "budget": {
+    "metric": "core-and-optional-program-runtime-v2",
+    "independentlyCheckedDistributedFiles": 14,
+    "extraFiles": 0,
+    "missingFiles": 0,
+    "byteMismatches": 0,
+    "initialJavaScriptGzipBytes": 197425,
+    "initialLimit": 245760,
+    "nonProgramGzipBytes": 257825,
+    "nonProgramLimit": 278528,
+    "optionalGzipBytes": 291660,
+    "optionalRawBytes": 701585,
+    "totalGzipBytes": 549485,
+    "previousNonProgramLimitComparison": "FAIL: 257825 > 245760",
+    "legacyAllJavaScriptComparison": "FAIL: 315442 > 245760",
+    "note": "ADR0018 documenta la nuova soglia. Nessun asset preesistente riclassificato; il tutor rimane non-programmabile e lazy. Non è prova di latenza fisica."
+  },
+  "remainingAcceptanceRequirements": [
+    "Accettazione del prodotto completo e deployment sulla sorgente finale restano fuori dal parere locale.",
+    "Migrazione preview e relativi confronti di dati non sono attestati da questa review; usare evidenze specifiche se richiesti dal gate di rilascio.",
+    "Verifiche fisiche iPad/Apple Pencil, Safari, app native e carichi produttivi restano aperte."
+  ],
+  "limits": [
+    "Nessuna accettazione trasferita dagli incrementi precedenti.",
+    "Prodotto NOT_COMPLETE; deployment attuale non verificato.",
+    "iPad/Apple Pencil, Safari, app native, provider calendario/incassi, fiscalità e carichi produttivi non verificati qui."
+  ],
+  "deltaReview": {
+    "previousSourceDigest": "a3927dc62be42521fe9ed18ace1a72435889e315e2567e866ba11acff3ed30d5",
+    "changedFiles": [
+      "apps/web/src/tutor/values.ts",
+      "apps/web/src/tutor/values.test.ts"
+    ],
+    "independentExclusiveDeltaProof": "Ricalcolo sourceDigest ricostruendo soltanto in memoria la regex precedente /\\r?\\n/g e il titolo fixture con LF: risultato identico ad a3927dc6…. Nessun file sorgente scritto.",
+    "result": "PASS_STATIC",
+    "change": "L’escape ICS normalizza CRLF, CR isolato e LF nella sequenza letterale \\n. Il test ora include CR isolato."
+  },
+  "reviewComplete": true,
+  "artifactHashes": {
+    "verification": "381fa796394a643a334fbc547ef048ac32d42c9e99f5b7d3172c913a4254af66",
+    "unit": "968bb55bb83d1bb6f7e6cfceae7682c3b71204d31bb1a562d3c64e670c596f19",
+    "server-runtime": "024838e54a4758395417f8dd563936e733861f62f66b7168a64318ac914f2b11",
+    "mcp-runtime": "eedb91b36cc62c2cb33b71de53a487488a7ee10858cd6b9216ac9f8a7b895e9c",
+    "budget": "940a98dfb4a1bf86e26fb246aa12f929f4f846efa6a132d899a0e712602216b8",
+    "browser-evidence": "d4fb24e68e48f9147d34dc8f67d5cf47d50e2eb3158eca87aaa93e02caeb55bc",
+    "e2e": "06cdef426242c3f1280907e34ae39d3127599cb952701241a9afbf9b1c201342",
+    "status": "8cd9fb1770bc3c1c4a70066de1aaf01b07320470df71c2c01fb4ebb65696fd07"
+  },
+  "reaConsumer": {
+    "attribution": "Catture eseguite da root con REA; revisore ha letto i raw, verificato metadati/byte e ispezionato due screenshot esportati.",
+    "captures": [
+      {
+        "device": "desktop",
+        "evidenceId": "ev_430cde6822057632c44fd7135dfe44a47568101e20c6088414b8efc5e0a384a4",
+        "sha256": "fe2af4a65a055fe514d0ce5ce307b4d7dd32566b1e106b06858da5205300a5f3",
+        "viewport": {
+          "width": 1536,
+          "height": 1024,
+          "device_scale_factor": 1
+        },
+        "actions": 23,
+        "steps": 24,
+        "completedSteps": 24,
+        "completeSteps": 24,
+        "eventsRetained": 43,
+        "eventsDropped": 0,
+        "missingSections": [],
+        "truncatedSections": [],
+        "initial401Step": 0,
+        "tutorChunkFirstRequestStep": 5,
+        "screenshotFilesCompared": 24,
+        "screenshotByteMismatches": 0
+      },
+      {
+        "device": "mobile",
+        "evidenceId": "ev_02c640feafa36de5b2f6d9d1c5c2b50fb73cfe0e6a23f43270b1f5f1dd24995b",
+        "sha256": "340cbeb0a7f1bdcb5041b7f292e1eda3662c991e8a23400b892d79c84c2716ed",
+        "viewport": {
+          "width": 393,
+          "height": 852,
+          "device_scale_factor": 1
+        },
+        "actions": 23,
+        "steps": 24,
+        "completedSteps": 24,
+        "completeSteps": 24,
+        "eventsRetained": 43,
+        "eventsDropped": 0,
+        "missingSections": [],
+        "truncatedSections": [],
+        "initial401Step": 0,
+        "tutorChunkFirstRequestStep": 5,
+        "screenshotFilesCompared": 24,
+        "screenshotByteMismatches": 0
+      }
+    ],
+    "sourceAssociation": {
+      "sourceDigest": "097a685d9d53c9ef56f9454e72d142b32df793216a5dd950719c27d31bc0e87e",
+      "buildInfoMatchesCurrentDist": true,
+      "observedScriptAssets": [
+        {
+          "path": "assets/math-dJ2525rv.js",
+          "sha256": "42e68eaa75d48cf22e6f51cc59c15f43c4cb9f3a37ac7491283dfb182ea030a1",
+          "bytes": 264230
+        },
+        {
+          "path": "assets/index-CpGX9Z8r.js",
+          "sha256": "7e59b2fe8e38648eb45f243677936fbc51945b0a578d58c1ac722b42289d74f1",
+          "bytes": 399140
+        },
+        {
+          "path": "assets/TutorStudio-C-2CNueT.js",
+          "sha256": "fff90a5c09a6d98b2817f6c89fbf71057927f89e0f8f70630006debf5a5c17d7",
+          "bytes": 31373
+        }
+      ],
+      "assetHashesAndLengthsIndependentlyMatchedCurrentDist": true,
+      "captureIdsMatch": true,
+      "originalResponseBodiesCaptured": false,
+      "explanation": "runtime-source.json conserva un confronto HTTP separato di root. Il revisore ha ricalcolato hash e lunghezze dei tre asset locali e verificato i nomi nelle richieste REA. Le risposte originarie non sono state catturate da REA né rifetchate dal revisore."
+    },
+    "retainedIntermediate": {
+      "path": "outputs/rea-evidence/tutor/intermedi/selector-01",
+      "status": "incomplete",
+      "reason": "Selettore .tutor-record-row ambiguo: tre elementi; il successivo scenario precisa il selettore.",
+      "treatedAsPassing": false
+    },
+    "visualInspection": [
+      "desktop-back-agenda.png",
+      "mobile-back-agenda.png"
+    ],
+    "limitations": [
+      "Chrome desktop e viewport mobile emulata, non dispositivi fisici.",
+      "I 24 passi comprendono l’apertura iniziale e 23 azioni, non 24 mutazioni.",
+      "REA non prova da sola correttezza backend o causalità temporale; test causali e revisione statica restano distinti."
+    ]
+  },
+  "finalStatus": {
+    "sourceDigest": "097a685d9d53c9ef56f9454e72d142b32df793216a5dd950719c27d31bc0e87e",
+    "verification": "PASS",
+    "browser": "PASS",
+    "productAcceptance": "NOT_COMPLETE",
+    "deployment": "NOT_VERIFIED_FOR_CURRENT_COMMIT"
+  },
+  "remainingLocalReviewRequirements": []
+}

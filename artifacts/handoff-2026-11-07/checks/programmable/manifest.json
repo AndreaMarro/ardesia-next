@@ -1,0 +1,1082 @@
+{
+  "kind": "ardesia-delivery-file-manifest",
+  "generatedAt": "2026-11-07T15:57:54.332Z",
+  "sourceDigest": "ab181bddd390c15fe74a1a09f29d0dc3c3208e4936d540943779a5cbdc576e8a",
+  "files": [
+    {
+      "file": "Avvia Ardesia.command",
+      "sha256": "cf1f7fa8644a9abacbc3c28b1ebf27d39f3a230fbc896dea3a6a504bb89eacc9",
+      "bytes": 727
+    },
+    {
+      "file": "CREATOR-E-STUDIO.md",
+      "sha256": "f53b4459306e7b5bd8aa6da168822eee6c5afe8d4d94309a781e97dd464b29be",
+      "bytes": 4159
+    },
+    {
+      "file": "CREAZIONE-PROGRAMMABILE.md",
+      "sha256": "2b62283c611df43f3c6302329d46fe87bce618b3fc73a7dd164b42362a439d35",
+      "bytes": 4353
+    },
+    {
+      "file": "LEGGIMI.md",
+      "sha256": "974e3035007959e3279fbd9acffa169e12e2f226c1af27f36ccc6fd2cebeea18",
+      "bytes": 4591
+    },
+    {
+      "file": "ardesia-next.patch",
+      "sha256": "5f1e78e5e02431351ea5f1e0bdc6a7a01ae0c64ee65cb9e88180b6ab52d5cb6c",
+      "bytes": 1154160
+    },
+    {
+      "file": "design/programmable-verifica.md",
+      "sha256": "55f5f4567d81ea2e2f05dca405d2074e3d0648e2839e7710cdb93d2925724af4",
+      "bytes": 2802
+    },
+    {
+      "file": "esempi/atelier.ardesia.json",
+      "sha256": "d48569410b9748acbde97eccf73ce0c9ee6917490b6dc05a27ab7460dd73a9fd",
+      "bytes": 3051
+    },
+    {
+      "file": "rea-evidence/programmable/README.md",
+      "sha256": "2dfa677f31062c1bd4cdb867748169cfdf3c825fe5425ccd5fcc290b42ac528b",
+      "bytes": 4362
+    },
+    {
+      "file": "rea-evidence/programmable/SANDPACK-LICENSE.txt",
+      "sha256": "b75c33064bdc1c7f392dc4e42df8329f64332e841f87ccaa1f3954c5eeba5bc1",
+      "bytes": 10890
+    },
+    {
+      "file": "rea-evidence/programmable/intermedi/ardesia-desktop-evidence.json",
+      "sha256": "67c39fdce13fb51e375e228f0b72d2250b333e3f28df0702d69b229331ba2685",
+      "bytes": 4442929
+    },
+    {
+      "file": "rea-evidence/programmable/intermedi/ardesia-desktop.json",
+      "sha256": "afd64bb91dd178811c577bd3406447c18cb6e2926f8d5a8cd3fcd60a840a41f1",
+      "bytes": 5980
+    },
+    {
+      "file": "rea-evidence/programmable/intermedi/ardesia-desktop.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "rea-evidence/programmable/intermedi/ardesia-mobile-evidence.json",
+      "sha256": "9a48d9da74c53ced16390e31d5a82e177f5eb149b67d305a6d69718e5aa776cf",
+      "bytes": 1929538
+    },
+    {
+      "file": "rea-evidence/programmable/intermedi/ardesia-mobile.json",
+      "sha256": "b9d4a1950bc7270b67f105fc09c993b7774d0687b63a37acec79f20950dc2f5a",
+      "bytes": 5979
+    },
+    {
+      "file": "rea-evidence/programmable/intermedi/ardesia-mobile.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "rea-evidence/programmable/intermedi/desktop-consent.png",
+      "sha256": "f0d19c35afb46f5b9419a48940663590cee0ce6079079b5e757bd2f4db15b23a",
+      "bytes": 180954
+    },
+    {
+      "file": "rea-evidence/programmable/intermedi/desktop-idea-visible.png",
+      "sha256": "2688f8c47141c2f3273b739268eda6dfb72f9e9520904f91379071bb6a4f1751",
+      "bytes": 181466
+    },
+    {
+      "file": "rea-evidence/programmable/intermedi/desktop-reopened-state.png",
+      "sha256": "15b88210855380d5e27f26b189d86fb43ca8efbf20d2b6ac91cd8f8f2093e99a",
+      "bytes": 84867
+    },
+    {
+      "file": "rea-evidence/programmable/intermedi/mobile-consent.png",
+      "sha256": "2b5833e455190fab9a75734149fa908739a62d2af302861dc5656c0a335a17cd",
+      "bytes": 81878
+    },
+    {
+      "file": "rea-evidence/programmable/intermedi/mobile-idea-visible.png",
+      "sha256": "23d00cbb11da33ba7e606320fefb6f4d812bf2521dbe3651d25c572ee7f9a4f6",
+      "bytes": 48823
+    },
+    {
+      "file": "rea-evidence/programmable/intermedi/mobile-reopened-state.png",
+      "sha256": "e1773c99c53bb52e585b9540ab5e206e5816ecc8eba810c435b7d57b4a11904d",
+      "bytes": 56503
+    },
+    {
+      "file": "rea-evidence/programmable/intermedi/runtime-source.json",
+      "sha256": "2949a0b1761116c9930f70223003680ffb0ec686616cc3f16355f9d910e765be",
+      "bytes": 729
+    },
+    {
+      "file": "rea-evidence/programmable/quickjs-host-analysis.json",
+      "sha256": "4939c3df7bf17164d2b4e2b1906ecfb00909d707b705145ac15f9f0a32ffbbab",
+      "bytes": 752660
+    },
+    {
+      "file": "rea-evidence/programmable/quickjs-host-analysis.stderr",
+      "sha256": "092035549578c5de251e3570445d19e5822d3b757490ae94a979fa3d5b7f65ff",
+      "bytes": 3970
+    },
+    {
+      "file": "rea-evidence/programmable/release-asset-hashes.json",
+      "sha256": "ccfeb840528bb6d993e6e7e0d191d85506fa19885da0449d6a870416b1e1d472",
+      "bytes": 2268
+    },
+    {
+      "file": "rea-evidence/programmable/release-desktop-evidence.json",
+      "sha256": "0da91b78b4568fa64066d82cfb0b428cb4bf0db27eb7dcc0eefb8bd2d16561f7",
+      "bytes": 4668586
+    },
+    {
+      "file": "rea-evidence/programmable/release-desktop-idea-visible.png",
+      "sha256": "cac81aa17baa40d88f8837b217986e5ca0a168e5cf67faaca57d2be09618dd37",
+      "bytes": 187001
+    },
+    {
+      "file": "rea-evidence/programmable/release-desktop-idea-visible.txt",
+      "sha256": "a443ef01ccc662b4abd6752dc2d0106eeafc2487fc8523b399f0e74040f9552b",
+      "bytes": 4739
+    },
+    {
+      "file": "rea-evidence/programmable/release-desktop-reopened-state.png",
+      "sha256": "0f7766d667925baa0fb51888cd19b5ead5cd05fa4b935f074452acd03e37e019",
+      "bytes": 85070
+    },
+    {
+      "file": "rea-evidence/programmable/release-desktop-reopened-state.txt",
+      "sha256": "6f181d9c8e31ec2e740b0a8c30f7380949ca5fdbd19fbf9edda97ea05c47e821",
+      "bytes": 2125
+    },
+    {
+      "file": "rea-evidence/programmable/release-desktop-source-visible.png",
+      "sha256": "08f8b74c91f19cbae66a8fa325175f5492c1f5915ff2a4a2f62ba1bc3a6e86cb",
+      "bytes": 182052
+    },
+    {
+      "file": "rea-evidence/programmable/release-desktop-source-visible.txt",
+      "sha256": "42f8821ed04fb73fcc267db57797baf184d41cf3150806f3bea5ddcff2e75cdd",
+      "bytes": 4466
+    },
+    {
+      "file": "rea-evidence/programmable/release-desktop-version-consent.png",
+      "sha256": "e0351a35fe4498245583bdd5877da45cdec5f487e749db37754593605c4dc5f1",
+      "bytes": 182829
+    },
+    {
+      "file": "rea-evidence/programmable/release-desktop-version-consent.txt",
+      "sha256": "d2839e9469c42e4ee6e12575761da7a2b0e23d0843e73730a19b94e15ac3fb87",
+      "bytes": 4475
+    },
+    {
+      "file": "rea-evidence/programmable/release-desktop.json",
+      "sha256": "0077ea60414cd0ce1fdd55161dea851019fe84a127a707daf83766aede985db0",
+      "bytes": 6837
+    },
+    {
+      "file": "rea-evidence/programmable/release-desktop.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "rea-evidence/programmable/release-mobile-evidence.json",
+      "sha256": "aea62426a328b2eb94ba7af2a9e7d02008e85ca6eb46823b8540df2d8fee487a",
+      "bytes": 2190403
+    },
+    {
+      "file": "rea-evidence/programmable/release-mobile-idea-visible.png",
+      "sha256": "1b7c8354b2d74759716a13b1bdf452da7fac8c8b89121eea2b413d94f953f7f8",
+      "bytes": 49277
+    },
+    {
+      "file": "rea-evidence/programmable/release-mobile-idea-visible.txt",
+      "sha256": "ae3d1fe58ca6c208ceaf8fa690b33a3ccc7272433e15531ccdde813d3c31425c",
+      "bytes": 4682
+    },
+    {
+      "file": "rea-evidence/programmable/release-mobile-reopened-state.png",
+      "sha256": "438cab2bcd159b7f15c821350d30181cdea039202e52ebd467900452acfe6993",
+      "bytes": 56890
+    },
+    {
+      "file": "rea-evidence/programmable/release-mobile-reopened-state.txt",
+      "sha256": "f4c75b8d8392a00219b201ef7b77408f6e659124a3d2daaf71d8f7fc29bb496d",
+      "bytes": 2071
+    },
+    {
+      "file": "rea-evidence/programmable/release-mobile-source-visible.png",
+      "sha256": "4c35941d20267d2e98afc2c4cbb3e806ff3fe4806c12efc8b68bbe0adbe43a26",
+      "bytes": 82565
+    },
+    {
+      "file": "rea-evidence/programmable/release-mobile-source-visible.txt",
+      "sha256": "01e623e48da619c87cfed07dc2f8079adc79038a14588a180a6afd6872274251",
+      "bytes": 4409
+    },
+    {
+      "file": "rea-evidence/programmable/release-mobile-version-consent.png",
+      "sha256": "a53d36bd48cf796f798cf897db7ee238c8875cc95ce2dcda7cdf138729cec1c7",
+      "bytes": 78176
+    },
+    {
+      "file": "rea-evidence/programmable/release-mobile-version-consent.txt",
+      "sha256": "a1de7e1045ff29a7fcfd2c7cfcb44a0be077f18b16af2f4fd68ac6827bbe119c",
+      "bytes": 4418
+    },
+    {
+      "file": "rea-evidence/programmable/release-mobile.json",
+      "sha256": "d84e1e167a2d27cd2a44441c977631ce90c9ddd2360da68b5937b7196ea8531a",
+      "bytes": 6836
+    },
+    {
+      "file": "rea-evidence/programmable/release-mobile.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "rea-evidence/programmable/release-runtime-source.json",
+      "sha256": "4a90bbe4c605873814f699badbfc79c999f647647e049f38d6e99eff9b6e5bfa",
+      "bytes": 806
+    },
+    {
+      "file": "rea-evidence/programmable/sandpack-edit-evidence.json",
+      "sha256": "10e508869f7933f83aaee8b8293eb2f99eaf057513fe3e05b071a812a9c35a5c",
+      "bytes": 413583
+    },
+    {
+      "file": "rea-evidence/programmable/sandpack-edit-v2-evidence.json",
+      "sha256": "0bb85c17ca93099bc3222da8b09910717f79c35761a5eb28b635d5e7137bed85",
+      "bytes": 2004336
+    },
+    {
+      "file": "rea-evidence/programmable/sandpack-edit-v2.json",
+      "sha256": "ee3c5a82359fed30fe1be9b3b3f78a6fc56069c45cd7aa6ca972a8fab31f022b",
+      "bytes": 2912
+    },
+    {
+      "file": "rea-evidence/programmable/sandpack-edit-v2.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "rea-evidence/programmable/sandpack-edit.json",
+      "sha256": "64b9b6e03f6b67fd56b06c1345c8880c7a9dd83fd201605cc1cf5b1964c7bdec",
+      "bytes": 2632
+    },
+    {
+      "file": "rea-evidence/programmable/sandpack-edit.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "rea-evidence/programmable/sandpack-review.json",
+      "sha256": "2d25838dada601a264db0a75728fd2522aa8a4b02c70c1d025c374ff7b6e1a5f",
+      "bytes": 12141
+    },
+    {
+      "file": "rea-evidence/programmable/sandpack-source/LICENSE",
+      "sha256": "b75c33064bdc1c7f392dc4e42df8329f64332e841f87ccaa1f3954c5eeba5bc1",
+      "bytes": 10890
+    },
+    {
+      "file": "rea-evidence/programmable/sandpack-source/sandpack-client/package.json",
+      "sha256": "65a0a10cc726e1698b93517141d6e3f91fdc5c6dea6b5741afb646deed253fd5",
+      "bytes": 1975
+    },
+    {
+      "file": "rea-evidence/programmable/sandpack-source/sandpack-client/src/clients/base.ts",
+      "sha256": "23af0550dcc477830be96f68ec8f37bbf3950e1400f4d39e61ecddadaab4573f",
+      "bytes": 1455
+    },
+    {
+      "file": "rea-evidence/programmable/sandpack-source/sandpack-client/src/clients/runtime/file-resolver-protocol.ts",
+      "sha256": "40fbc4774c27e4a3600a1ad294f2f898ac4bfcbbebade3f2f29068cce1909c46",
+      "bytes": 1809
+    },
+    {
+      "file": "rea-evidence/programmable/sandpack-source/sandpack-client/src/clients/runtime/iframe-protocol.ts",
+      "sha256": "9e6aac3e97d5476aa0d94540d274bc173094a317f44e8ec5e4962c6c934032a1",
+      "bytes": 3649
+    },
+    {
+      "file": "rea-evidence/programmable/sandpack-source/sandpack-client/src/clients/runtime/index.ts",
+      "sha256": "65e0034fd36cb5b5613f2acdb37fe8dec5a2538a4bc37509720def4ad322ad57",
+      "bytes": 14084
+    },
+    {
+      "file": "rea-evidence/programmable/sandpack-source/sandpack-client/src/clients/runtime/types.ts",
+      "sha256": "1e527ccfef4f004cb132153c1ca91a2417937ebf38b9e1f7525ca6932e3bbad5",
+      "bytes": 3317
+    },
+    {
+      "file": "rea-evidence/programmable/sandpack-source/website/docs/src/pages/guides/hosting-the-bundler.mdx",
+      "sha256": "9240a9decb2a7fe3edfbfbd2a354ae61485f673cfd9211c1ffc488898238136e",
+      "bytes": 4817
+    },
+    {
+      "file": "rea-evidence/programmable/sandpack-static-evidence.json",
+      "sha256": "9a3703fec6fb9dca6f770f73453dfdeced911c1652ad58b4b5925588ff371aaa",
+      "bytes": 2187867
+    },
+    {
+      "file": "rea-evidence/programmable/sandpack-static.stderr",
+      "sha256": "f08c562e8e82a3d2690c0b8a9d8ed3a91e7f3bf947f26d1ad0fb04e7b562545f",
+      "bytes": 6486
+    },
+    {
+      "file": "verifiche/README.md",
+      "sha256": "4356eecdbcf4d74e7d1ca07e45c75873f35dd1abf13e1fd3a5fab39849dbc93c",
+      "bytes": 1482
+    },
+    {
+      "file": "verifiche/esito.json",
+      "sha256": "385bd18d084ffb130700c29569fb0e3817c38d5972a616e2ab013d029d327be0",
+      "bytes": 6631
+    },
+    {
+      "file": "verifiche/programmable/README.md",
+      "sha256": "6d8b6095fd86ddd8bfdcfc3cf875a55b7afc16d914c69e8d2e239ef65463897a",
+      "bytes": 3911
+    },
+    {
+      "file": "verifiche/programmable/browser-evidence.json",
+      "sha256": "11f5fbc22ff02c971f6eb66122cf93bf8e2e84f307e30b409c09991de92dd10e",
+      "bytes": 4711
+    },
+    {
+      "file": "verifiche/programmable/budget.json",
+      "sha256": "e713f249387628fbaff5c14563305ab61f533ece7f2c13b7f1ab532aaef4524c",
+      "bytes": 2851
+    },
+    {
+      "file": "verifiche/programmable/build-info.json",
+      "sha256": "1c658a5f442331fd2f2496502a91c1b6491073f28608f4554cc401535fa92a90",
+      "bytes": 507
+    },
+    {
+      "file": "verifiche/programmable/consegna-precedente/LEGGIMI.md",
+      "sha256": "1f294e1e3d1f6100b3a23a9eb9fd870adf4d89755546c5a68eac195c1869547c",
+      "bytes": 4226
+    },
+    {
+      "file": "verifiche/programmable/consegna-precedente/ardesia-next.patch",
+      "sha256": "1bf00406b9d302448bd8d6678a1e51119d0a0f434f775a17f64c62e3c575d766",
+      "bytes": 1061353
+    },
+    {
+      "file": "verifiche/programmable/consegna-precedente/esito.json",
+      "sha256": "e04c53f652c70f7995ce37f8e0d22fb8c920e6f28deaa313ea5205621d4ecca0",
+      "bytes": 6018
+    },
+    {
+      "file": "verifiche/programmable/consegna.patch",
+      "sha256": "5f1e78e5e02431351ea5f1e0bdc6a7a01ae0c64ee65cb9e88180b6ab52d5cb6c",
+      "bytes": 1154160
+    },
+    {
+      "file": "verifiche/programmable/e2e.json",
+      "sha256": "784f64c87fd708b9f429135b1f62922670a203bfb2db018a89212baf2b0c7c16",
+      "bytes": 187622
+    },
+    {
+      "file": "verifiche/programmable/e2e.log",
+      "sha256": "7d8e813ef4d1d72c7d2a2e470dc8f0023fbd307a38a2d3482fe5191c613437d9",
+      "bytes": 27672
+    },
+    {
+      "file": "verifiche/programmable/esito-consegna.json",
+      "sha256": "385bd18d084ffb130700c29569fb0e3817c38d5972a616e2ab013d029d327be0",
+      "bytes": 6631
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/browser-evidence.json",
+      "sha256": "60396799c7a50ec682bd7ffada6576176549e84bffa3e7c33a1d94a016f354f9",
+      "bytes": 4707
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/budget.json",
+      "sha256": "57489c81e5f489663cbe3a3175d447487be5705e5d3e368d3dc47fd0f964d9eb",
+      "bytes": 2851
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/build-info.json",
+      "sha256": "668c5a170f87abc5ed728125bd7740760a3eedba1ef9c19830b6b5e800911e1c",
+      "bytes": 507
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/e2e.json",
+      "sha256": "aaf8ef38ad6ac9f59121d51866e3ecbcd4f9428c9c262d45c72da7a2261e06ac",
+      "bytes": 213498
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/e2e.log",
+      "sha256": "e07a328098ed3aec27c12188331a9818d93c8000862bc2a06ecf5c0116e881e6",
+      "bytes": 40934
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/mcp-runtime.json",
+      "sha256": "7b6c184537f0086df647c34b81951aa54fb0a2e90423c299a910da1ac25a1fbe",
+      "bytes": 2153
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/program-runtime-build.json",
+      "sha256": "34e34ac021e50ff1a0c5c04a39f7898343bd42aeaf7927709b60ed100362d2bd",
+      "bytes": 816
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/server-runtime.json",
+      "sha256": "65e701eb1cb8db37c0b0c20dfb7781f9e15bba48c3b79928d51f2cbc70ee6716",
+      "bytes": 928
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/.last-run.json",
+      "sha256": "1cfcb17885cc95aee3473649e437f4ef8edbd2f4c164a205142bb6cc561040b2",
+      "bytes": 243
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/audio-records-synthetic-au-dedf7-s-a-transcript-after-reload-desktop-chromium/replay.png",
+      "sha256": "f2747203f158a962fe43c207d840b92c592ca7140e68d4c32e5867e9ac8562cd",
+      "bytes": 154303
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/audio-records-synthetic-au-dedf7-s-a-transcript-after-reload-mobile-chromium/replay.png",
+      "sha256": "327ec5d5825600cae79ac68ff41d4d370a9ea6261fb32461e838be4b5aa9191d",
+      "bytes": 246570
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/creator-Creator-composes-a-5c1ad-act-next-definition-version-desktop-chromium/creator-composition.png",
+      "sha256": "7a585765e9253cec9cf8a3bce4105b2e4f9431688bc4cf8f1d5f34fb282dd9ee",
+      "bytes": 137589
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/creator-Creator-composes-a-5c1ad-act-next-definition-version-mobile-chromium/creator-composition.png",
+      "sha256": "1d8565b9b01dc05216d37ee54622c9a44fb513bfb8c1e44b1936538937176e07",
+      "bytes": 147342
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/creator-Creator-preserves--cec01-local-plot-variable-capture-desktop-chromium/future.ardesia.json",
+      "sha256": "b74f7bd1991861b956acb89ca969e4852ae7ccf059dee9bcf4490317da979e49",
+      "bytes": 2033
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/creator-Creator-preserves--cec01-local-plot-variable-capture-mobile-chromium/future.ardesia.json",
+      "sha256": "e1a2d422ce776adca34efd47c04858f2e2fe57e298568db0a539ad8e44cd3021",
+      "bytes": 2033
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/creator-Creator-rename-upd-7483e-source-lineage-for-reimport-desktop-chromium/extension.ardesia.json",
+      "sha256": "1766680f5819ce9a15c076bcf602cf62a053a8d14fbe6b1543b04134edd4c3c6",
+      "bytes": 2939
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/creator-Creator-rename-upd-7483e-source-lineage-for-reimport-mobile-chromium/extension.ardesia.json",
+      "sha256": "285b676f6c0e9e59c5d4676ac3136c476b69c177c05572b12d3a5e80a9a9dfbc",
+      "bytes": 2938
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/creator-extension-inspecto-06227-rmits-a-subsequent-revision-desktop-chromium/error-context.md",
+      "sha256": "795219fa1f8486cfc7ac367a59dd8db36e38dca777cd1b1484985ec076a73338",
+      "bytes": 9844
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/creator-extension-inspecto-06227-rmits-a-subsequent-revision-desktop-chromium/test-failed-1.png",
+      "sha256": "c0f27d93bca88f23c16c84df51aa8ff7aad312e19c4d85f80fd1b77dc0df5703",
+      "bytes": 134095
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/creator-extension-inspecto-06227-rmits-a-subsequent-revision-mobile-chromium/error-context.md",
+      "sha256": "61a7967235739b3c48891882bb089bb9acf4b0831b90cf9c5c44aeff5fc1a6f8",
+      "bytes": 9079
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/creator-extension-inspecto-06227-rmits-a-subsequent-revision-mobile-chromium/test-failed-1.png",
+      "sha256": "81ae65e152d7aa0ad47e2144c3fd3be9266926f41a39bef699ce326a0370b7d6",
+      "bytes": 163543
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/creator-studio-keeps-conte-a98a6-at-desktop-and-mobile-sizes-desktop-chromium/creator.png",
+      "sha256": "894a8c20dbbd76aa62016783d85f9ce711fe281336e3d81109c3a19cfbaff625",
+      "bytes": 93030
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/creator-studio-keeps-conte-a98a6-at-desktop-and-mobile-sizes-desktop-chromium/studio.png",
+      "sha256": "82a2d71ebe8deb88259e707e3425d592b39d842e60134190920fce384bd8cd69",
+      "bytes": 93014
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/creator-studio-keeps-conte-a98a6-at-desktop-and-mobile-sizes-mobile-chromium/creator.png",
+      "sha256": "d02491606101d5ca04ccdf0228ec0e29ad514a0d470dde0f21259c88c6667a3b",
+      "bytes": 156513
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/creator-studio-keeps-conte-a98a6-at-desktop-and-mobile-sizes-mobile-chromium/studio.png",
+      "sha256": "7abd8a9f508578cfb74d85c6c5ed1c25e88fe213f62226e5e3b863bb68eb1837",
+      "bytes": 214400
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-desktop-chromium/learner-diary.png",
+      "sha256": "9adbd9a3336bb4756c1bb328f05c912b379fae1701f17da1788b7f7e1fdc7da6",
+      "bytes": 111131
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-desktop-chromium/teacher-feedback.png",
+      "sha256": "9cc8276fe28149b70f77b1f00817b9a6a8eab1bef594d443ad2a6fbd22bb8d10",
+      "bytes": 184554
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-mobile-chromium/learner-diary.png",
+      "sha256": "9faf13d1c1a497ed0bce5f016d5779d8adfa2222c8cc240b68c7f153a32fac75",
+      "bytes": 235442
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-mobile-chromium/teacher-feedback.png",
+      "sha256": "822dd203be8da93c83b0998bc124b90ab39faee6ebc3919ec183ad9d9b5f413c",
+      "bytes": 296666
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-desktop-chromium/handout.pdf",
+      "sha256": "9eb05907aae1ca03368f576c16995d331aa7babfa28bb10e56f418635b45a4fa",
+      "bytes": 271692
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-desktop-chromium/handout.png",
+      "sha256": "3d053405cbc8056924bda150fe8fe337bbacc9c417ee9d7f4d1ce394e6c58d23",
+      "bytes": 183538
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-desktop-chromium/lesson.tex",
+      "sha256": "39990d5d11eaedff490994a2aab38b3e6bffceab2b4ae804f565365e1a5cb346",
+      "bytes": 33345
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-mobile-chromium/handout.pdf",
+      "sha256": "7de8abad69dec1da74291d3c7894187f33b0daa5a7a3717e451a6a75ff18dbe3",
+      "bytes": 269933
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-mobile-chromium/handout.png",
+      "sha256": "f854084c1fcc6b36d5501afde3c4eb02bbb829e4da48488a5101154e87d71cee",
+      "bytes": 224375
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-mobile-chromium/lesson.tex",
+      "sha256": "e3dac53d467de0ee99fc2c1339eace2016374f53cf351059e3aff49d689a83e1",
+      "bytes": 33323
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/handout-offline-handout-us-6f48a-ves-pending-ink-recoverable-desktop-chromium/offline-handout.pdf",
+      "sha256": "64262f2141be9bb74af97c0a643e544456e23e8addc1a1dcd07450fdbef0e425",
+      "bytes": 222923
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/handout-offline-handout-us-6f48a-ves-pending-ink-recoverable-mobile-chromium/offline-handout.pdf",
+      "sha256": "c79e7ba2509ca59657f8c96662ebc895303eccfdddc6786b37831c2e6784fb1a",
+      "bytes": 222000
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/poiseuille--M4-flow-learne-58714-ndent-reopen-and-revocation-desktop-chromium/m4-learner-flow.png",
+      "sha256": "1fbc4c816331780960d415f88042deca1de763336329ed0397c223197b222fd5",
+      "bytes": 521405
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/poiseuille--M4-flow-learne-58714-ndent-reopen-and-revocation-mobile-chromium/m4-learner-flow.png",
+      "sha256": "d2d7b6fb45c98e52a555ded17c4faf4318f3a2516c08040de40f5eed8c2987f5",
+      "bytes": 1678162
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/poiseuille--M4-pressure-le-54a82-ndent-reopen-and-revocation-desktop-chromium/m4-learner-pressure.png",
+      "sha256": "89e4b919a6b5de8e74c279b87034dceff48632cdfc940992c25c1c13c922828c",
+      "bytes": 526457
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/poiseuille--M4-pressure-le-54a82-ndent-reopen-and-revocation-mobile-chromium/m4-learner-pressure.png",
+      "sha256": "e4dfd08d7c24d804d568887d8e76e9f0529f0da105b9628de954d7bc573cb8ef",
+      "bytes": 1690875
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/programs-hostile-programs--887b7-lacing-the-last-valid-draft-desktop-chromium/error-context.md",
+      "sha256": "dc2bb115cbaab921064b734f8ab4b49c6790d267f138f4a041fe70d6b2c31e08",
+      "bytes": 7766
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/programs-hostile-programs--887b7-lacing-the-last-valid-draft-desktop-chromium/test-failed-1.png",
+      "sha256": "7c0c2d6e76a9cd82905b309b5dd81fd4082a6fb962153fd272c0d7910342a914",
+      "bytes": 82984
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/programs-hostile-programs--887b7-lacing-the-last-valid-draft-mobile-chromium/error-context.md",
+      "sha256": "39e77a5d671f5cd65f0d1a8447f509478bcc1ba3032aadcda9d06df8da57a645",
+      "bytes": 7103
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/programs-hostile-programs--887b7-lacing-the-last-valid-draft-mobile-chromium/test-failed-1.png",
+      "sha256": "31c500a85d1278da5bebc7fc7b48fddce5d077aab28453192884e6d008701703",
+      "bytes": 159280
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/programs-programmable-Crea-e547c-source-with-portable-export-desktop-chromium/program-running.png",
+      "sha256": "81f5115e350a1603557ac558a24ae7f00c726d68d3954a5e7d21e1023308d541",
+      "bytes": 136499
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/programs-programmable-Crea-e547c-source-with-portable-export-desktop-chromium/program.ardesia.json",
+      "sha256": "6be4013e2658aa9f142bc6a7e67d995411b205f2a130b7b28814ebccd4c448aa",
+      "bytes": 3051
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/programs-programmable-Crea-e547c-source-with-portable-export-mobile-chromium/program-running.png",
+      "sha256": "3a82f802182e790f67f1a5ae95790a34d58dd610c9a49e7b0fda4f07a598861d",
+      "bytes": 163640
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/programs-programmable-Crea-e547c-source-with-portable-export-mobile-chromium/program.ardesia.json",
+      "sha256": "afac25def2465d7f04a660a4e66ac72b73dbe08bb8742f08566e16501bca747b",
+      "bytes": 3050
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-desktop-chromium/student-first-session.png",
+      "sha256": "d6a534a66ed0f54d491c41cb1cfd2fc7446bb5c419b08ff8def1e4f598f2e48a",
+      "bytes": 418634
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-desktop-chromium/student-independent-session.png",
+      "sha256": "8ca78d1b1a3c7227af1513b2b58da705efa733ce245ffee3756d411fefe9a691",
+      "bytes": 417144
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-mobile-chromium/student-first-session.png",
+      "sha256": "2809d4cd97041e895645c280d47e67ca1484aa1a468bd413e3d34443b82aea98",
+      "bytes": 1292461
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-mobile-chromium/student-independent-session.png",
+      "sha256": "2809d4cd97041e895645c280d47e67ca1484aa1a468bd413e3d34443b82aea98",
+      "bytes": 1292461
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/unit.json",
+      "sha256": "47242bc517f68aaccfa5eb5e49a823f847d579314d407163b7e79ad2c4e51ffd",
+      "bytes": 217632
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/verification.json",
+      "sha256": "f495bc0e341bd9e26fc4c0420ec362c926a7bd3d4e891bb8bebcf8f213544651",
+      "bytes": 1072
+    },
+    {
+      "file": "verifiche/programmable/intermedi/abf0/verify.log",
+      "sha256": "aa6df371ba140a3e702df618d92f40d4e9d204423a3d303d19679859d418c3c2",
+      "bytes": 34882
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-budget-01.log",
+      "sha256": "fe4d6e7d39f980edede58391354de17e8dd0370dddcdf0e17740557fc064bc0d",
+      "bytes": 279
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-build-01.log",
+      "sha256": "94aee1e3c209699ab7a44434c726a78380d1caad4724b6d40d677f4cb3421a9e",
+      "bytes": 2104
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-build-02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-build-03.log",
+      "sha256": "0992b20747d756988854cf53b8925843b063e8387fe15e3f6fa3e1e34efe368a",
+      "bytes": 5630
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-build-04.log",
+      "sha256": "7133171995edf12fee0dc2d88bf21ac997506a0c01f471e0eb614e7ef961da43",
+      "bytes": 5630
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-build-05.log",
+      "sha256": "64684dbed3a0e066020d04d828700075f285483b6c2f013623cadf2c43927b59",
+      "bytes": 5630
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-build-06.log",
+      "sha256": "ac03558c5b3b58312a4a60a5506dfd34ea9ab4c9911c9d6daa96b7fcc3cda877",
+      "bytes": 5630
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-build-07.log",
+      "sha256": "6f074b554b5fe3f3b6a3547854978f304cc34e6fe39d932223b066414ff0fd1d",
+      "bytes": 5630
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-build-08.log",
+      "sha256": "d3ef091fc956801dfa19129c07770c6ffe1ac6388bb1edf9ff7a47f7224e6270",
+      "bytes": 5630
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-context-red.log",
+      "sha256": "b676cf88e351bd70ee1a07ad776288d829d8405cf3e00360877855b4abb1eb75",
+      "bytes": 5835
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-e2e-01.log",
+      "sha256": "a587e453e76a83de4349f61b95d214d16cacbadc4cd856467fd5ae744fe98be5",
+      "bytes": 10015
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-e2e-02.log",
+      "sha256": "f39a408cf681c29392b99882def889a16e705ee6c21009ffd296b6cab43abad5",
+      "bytes": 14361
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-e2e-03.log",
+      "sha256": "978f7072f1539612236d985972b232e61160cc78b84b0b69bba97e470d696e1f",
+      "bytes": 7568
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-e2e-04.log",
+      "sha256": "c1137c23f60ef25234a223c8d388985e819e8d32937fe42381dc06c00e006d34",
+      "bytes": 2471
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-e2e-full-01.log",
+      "sha256": "e07a328098ed3aec27c12188331a9818d93c8000862bc2a06ecf5c0116e881e6",
+      "bytes": 40934
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-layout-red.log",
+      "sha256": "3f812497854e4138ffb9be3f0abe2a046d3544f70bec8198e1a8b227cc175d88",
+      "bytes": 5808
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-types-01.log",
+      "sha256": "ac8832c5844420b5fdf832aa3e970bbf8a10b843959b82a00a32863977d3ca18",
+      "bytes": 344
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-types-02.log",
+      "sha256": "0c237ad959047a24ef3ac40f0e5c06c4863fe08d1d946b05760b7f5ae202ba19",
+      "bytes": 1612
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-types-03.log",
+      "sha256": "7ba0855ee26fa168ecfb6ab90ee2b6fb55f4cae7609d6249167d74709fc35ee5",
+      "bytes": 48
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-types-04.log",
+      "sha256": "7ba0855ee26fa168ecfb6ab90ee2b6fb55f4cae7609d6249167d74709fc35ee5",
+      "bytes": 48
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-unit-01.log",
+      "sha256": "deb9d9d59edc49ca40e5f9e582d47836a51791483dc92402b44b7ac08f15f8da",
+      "bytes": 3527
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-unit-02.log",
+      "sha256": "10f1ba4df10270438ece6247dcf0c87bebf32883d1ca25951fda33c8f7c9095a",
+      "bytes": 751
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-unit-03.log",
+      "sha256": "57ebe83b50d8bd7c6137f8c5a65403fc2c6334cb4896d681f4d386b2a49403e7",
+      "bytes": 4717
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-unit-04.log",
+      "sha256": "cf5fb4be371a666c8c3f88b6f5f9c6ecc9d57bd955a5b5d49dd96044e21c1baa",
+      "bytes": 482
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-verify-01.json",
+      "sha256": "d143e50efae81176f9a1023789b3e3757345c9d0d77cf883a514aa98228fbad6",
+      "bytes": 564
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-verify-01.log",
+      "sha256": "577c7e7ad47192a725e2b6975e49d4cd121ebd51ffac4596159598fdbaace3b9",
+      "bytes": 24978
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/program-verify-02.log",
+      "sha256": "aa6df371ba140a3e702df618d92f40d4e9d204423a3d303d19679859d418c3c2",
+      "bytes": 34882
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/qjs-stack-128.log",
+      "sha256": "dde0f273657c17d2b4bab60ea8532c00412c1d903299917473254677c775fa40",
+      "bytes": 52
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/qjs-stack-256.log",
+      "sha256": "153737c648d7e9e4768ac0b348ec3f6be8f0a46a89316dec38961def9cbab9de",
+      "bytes": 52
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/qjs-stack-384.log",
+      "sha256": "88f60ab8bb51532c326a7befcafe9e37ef11fd6d24b8a4cedcd26eec43dd9762",
+      "bytes": 637
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/qjs-stack-512.log",
+      "sha256": "88f60ab8bb51532c326a7befcafe9e37ef11fd6d24b8a4cedcd26eec43dd9762",
+      "bytes": 637
+    },
+    {
+      "file": "verifiche/programmable/intermedi/log-iniziali/qjs-stack-64.log",
+      "sha256": "0ef1fc3edf9f69fa726569f8d3cee4588a54ace4dad5d83b341137c4cade3e5d",
+      "bytes": 51
+    },
+    {
+      "file": "verifiche/programmable/manuale-mac.json",
+      "sha256": "559134d6168117862a9f41958812d76c0da6b0405c43a53244dfce06859e974c",
+      "bytes": 581
+    },
+    {
+      "file": "verifiche/programmable/mcp-runtime.json",
+      "sha256": "2f02b054c491a0ca42bf220cb80a4fb9fb378f79624e1262785dbff6c0bda295",
+      "bytes": 2153
+    },
+    {
+      "file": "verifiche/programmable/program-runtime-build.json",
+      "sha256": "34e34ac021e50ff1a0c5c04a39f7898343bd42aeaf7927709b60ed100362d2bd",
+      "bytes": 816
+    },
+    {
+      "file": "verifiche/programmable/review-indipendente.json",
+      "sha256": "b5938e216b6d2feb3c0f977c77fddf0646e984ce529da33b699b424ffc97fdaf",
+      "bytes": 3489
+    },
+    {
+      "file": "verifiche/programmable/server-runtime.json",
+      "sha256": "de108e91867915ab37cde94739295e0d3ad9ab2ebd6488b07a5e0dc65e78361b",
+      "bytes": 928
+    },
+    {
+      "file": "verifiche/programmable/source-files.json",
+      "sha256": "cc0f8c7c0450bc07f6f0a30953747af1caa4924a420f04cda3a672b65f013fde",
+      "bytes": 56925
+    },
+    {
+      "file": "verifiche/programmable/status.json",
+      "sha256": "9c6acf7126630ca0c6e53a8364d5dc640af596444e18418decbcbfe2a7653d74",
+      "bytes": 16292
+    },
+    {
+      "file": "verifiche/programmable/test-results/.last-run.json",
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903",
+      "bytes": 45
+    },
+    {
+      "file": "verifiche/programmable/test-results/audio-records-synthetic-au-dedf7-s-a-transcript-after-reload-desktop-chromium/replay.png",
+      "sha256": "f2747203f158a962fe43c207d840b92c592ca7140e68d4c32e5867e9ac8562cd",
+      "bytes": 154303
+    },
+    {
+      "file": "verifiche/programmable/test-results/audio-records-synthetic-au-dedf7-s-a-transcript-after-reload-mobile-chromium/replay.png",
+      "sha256": "fb46ad60aa5545634eb54d1865ed1f35098c8bddd660de47ee13a2d6fc2c5e57",
+      "bytes": 246504
+    },
+    {
+      "file": "verifiche/programmable/test-results/creator-Creator-composes-a-5c1ad-act-next-definition-version-desktop-chromium/creator-composition.png",
+      "sha256": "7a585765e9253cec9cf8a3bce4105b2e4f9431688bc4cf8f1d5f34fb282dd9ee",
+      "bytes": 137589
+    },
+    {
+      "file": "verifiche/programmable/test-results/creator-Creator-composes-a-5c1ad-act-next-definition-version-mobile-chromium/creator-composition.png",
+      "sha256": "1d8565b9b01dc05216d37ee54622c9a44fb513bfb8c1e44b1936538937176e07",
+      "bytes": 147342
+    },
+    {
+      "file": "verifiche/programmable/test-results/creator-Creator-preserves--cec01-local-plot-variable-capture-desktop-chromium/future.ardesia.json",
+      "sha256": "e8825bf6758a5b96971c9f77b2355f68b9ae4848994c23ec3c70184731d04bfb",
+      "bytes": 2033
+    },
+    {
+      "file": "verifiche/programmable/test-results/creator-Creator-preserves--cec01-local-plot-variable-capture-mobile-chromium/future.ardesia.json",
+      "sha256": "8c517304e3a75310dd0bf43334672ed93cbd1da920de02badeec526ecff503a8",
+      "bytes": 2033
+    },
+    {
+      "file": "verifiche/programmable/test-results/creator-Creator-rename-upd-7483e-source-lineage-for-reimport-desktop-chromium/extension.ardesia.json",
+      "sha256": "df317a31fef788a08d2afbfa6fe57b65681a6121ddec9bae19caba1dbc6efa67",
+      "bytes": 2939
+    },
+    {
+      "file": "verifiche/programmable/test-results/creator-Creator-rename-upd-7483e-source-lineage-for-reimport-mobile-chromium/extension.ardesia.json",
+      "sha256": "6be38eab81a35242b84a169b55baa5660d9aac6b02d731d55b821c376cc861d4",
+      "bytes": 2938
+    },
+    {
+      "file": "verifiche/programmable/test-results/creator-studio-keeps-conte-a98a6-at-desktop-and-mobile-sizes-desktop-chromium/creator.png",
+      "sha256": "894a8c20dbbd76aa62016783d85f9ce711fe281336e3d81109c3a19cfbaff625",
+      "bytes": 93030
+    },
+    {
+      "file": "verifiche/programmable/test-results/creator-studio-keeps-conte-a98a6-at-desktop-and-mobile-sizes-desktop-chromium/studio.png",
+      "sha256": "82a2d71ebe8deb88259e707e3425d592b39d842e60134190920fce384bd8cd69",
+      "bytes": 93014
+    },
+    {
+      "file": "verifiche/programmable/test-results/creator-studio-keeps-conte-a98a6-at-desktop-and-mobile-sizes-mobile-chromium/creator.png",
+      "sha256": "d02491606101d5ca04ccdf0228ec0e29ad514a0d470dde0f21259c88c6667a3b",
+      "bytes": 156513
+    },
+    {
+      "file": "verifiche/programmable/test-results/creator-studio-keeps-conte-a98a6-at-desktop-and-mobile-sizes-mobile-chromium/studio.png",
+      "sha256": "7abd8a9f508578cfb74d85c6c5ed1c25e88fe213f62226e5e3b863bb68eb1837",
+      "bytes": 214400
+    },
+    {
+      "file": "verifiche/programmable/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-desktop-chromium/learner-diary.png",
+      "sha256": "86fb71d2fccac8a42b1eacae7080ae4615fbc8d4fb7706b5a657b26d45861573",
+      "bytes": 111280
+    },
+    {
+      "file": "verifiche/programmable/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-desktop-chromium/teacher-feedback.png",
+      "sha256": "cfc3f6de5e78fb6cd316ac592762a881ebc5f1113425f6922040dbc9b09e7efc",
+      "bytes": 185000
+    },
+    {
+      "file": "verifiche/programmable/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-mobile-chromium/learner-diary.png",
+      "sha256": "1be5144f6ea0b5e405179b1f5d80725e3e588060d79050ac8fa9658c9959cf87",
+      "bytes": 238225
+    },
+    {
+      "file": "verifiche/programmable/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-mobile-chromium/teacher-feedback.png",
+      "sha256": "3f2636e345add04fa39789b944d8741eb2fa3a538978550bdb80ba4ad5ddd827",
+      "bytes": 298662
+    },
+    {
+      "file": "verifiche/programmable/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-desktop-chromium/handout.pdf",
+      "sha256": "6bc41a91abdade403006fd1601774ee5c614a07055460c6f0f5717255faa5a4b",
+      "bytes": 270861
+    },
+    {
+      "file": "verifiche/programmable/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-desktop-chromium/handout.png",
+      "sha256": "40fa6cec7144c82a38fa706f351b8aba8d01aaabea1bdc1e48bfc0383ea5699d",
+      "bytes": 183021
+    },
+    {
+      "file": "verifiche/programmable/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-desktop-chromium/lesson.tex",
+      "sha256": "303e8591a51c0b6af07005f978118b98189004a9bfe8efab9b7ba4bfed5a0798",
+      "bytes": 33345
+    },
+    {
+      "file": "verifiche/programmable/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-mobile-chromium/handout.pdf",
+      "sha256": "75b20a54305b1d3d9223677034f7dc3e3c9ba2375185c22bf7a175a3038077f1",
+      "bytes": 269505
+    },
+    {
+      "file": "verifiche/programmable/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-mobile-chromium/handout.png",
+      "sha256": "e55f0c0b8560e18bca08169323f7412c80d98cee77dea232ed4ce8c277aac98f",
+      "bytes": 224115
+    },
+    {
+      "file": "verifiche/programmable/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-mobile-chromium/lesson.tex",
+      "sha256": "ea74ac0743e549757cf78aade6b53a30339ecd2ebbd56dcab0389aea53a0bbf9",
+      "bytes": 33323
+    },
+    {
+      "file": "verifiche/programmable/test-results/handout-offline-handout-us-6f48a-ves-pending-ink-recoverable-desktop-chromium/offline-handout.pdf",
+      "sha256": "c97a53ea7e2e69c2cf74e8d30dded1b6c1e7c3a9f08a836ecef58fa1747fe7dd",
+      "bytes": 223295
+    },
+    {
+      "file": "verifiche/programmable/test-results/handout-offline-handout-us-6f48a-ves-pending-ink-recoverable-mobile-chromium/offline-handout.pdf",
+      "sha256": "de3fed1809e1f4ba31c561af895861b9a0edc23bde7cd6650248a395025b6268",
+      "bytes": 222531
+    },
+    {
+      "file": "verifiche/programmable/test-results/poiseuille--M4-flow-learne-58714-ndent-reopen-and-revocation-desktop-chromium/m4-learner-flow.png",
+      "sha256": "1fbc4c816331780960d415f88042deca1de763336329ed0397c223197b222fd5",
+      "bytes": 521405
+    },
+    {
+      "file": "verifiche/programmable/test-results/poiseuille--M4-flow-learne-58714-ndent-reopen-and-revocation-mobile-chromium/m4-learner-flow.png",
+      "sha256": "d2d7b6fb45c98e52a555ded17c4faf4318f3a2516c08040de40f5eed8c2987f5",
+      "bytes": 1678162
+    },
+    {
+      "file": "verifiche/programmable/test-results/poiseuille--M4-pressure-le-54a82-ndent-reopen-and-revocation-desktop-chromium/m4-learner-pressure.png",
+      "sha256": "89e4b919a6b5de8e74c279b87034dceff48632cdfc940992c25c1c13c922828c",
+      "bytes": 526457
+    },
+    {
+      "file": "verifiche/programmable/test-results/poiseuille--M4-pressure-le-54a82-ndent-reopen-and-revocation-mobile-chromium/m4-learner-pressure.png",
+      "sha256": "e4dfd08d7c24d804d568887d8e76e9f0529f0da105b9628de954d7bc573cb8ef",
+      "bytes": 1690875
+    },
+    {
+      "file": "verifiche/programmable/test-results/programs-hostile-programs--887b7-lacing-the-last-valid-draft-desktop-chromium/program-recovered.png",
+      "sha256": "c6538ce43b4e3cd0bc90c2fe3d72295bc4173af018a0f6bfe459b0521c31ee9e",
+      "bytes": 175354
+    },
+    {
+      "file": "verifiche/programmable/test-results/programs-hostile-programs--887b7-lacing-the-last-valid-draft-mobile-chromium/program-recovered.png",
+      "sha256": "1a3a1bb8862c31c3c3b104a59393d5f762c16a57773585b73e72707e212415cc",
+      "bytes": 166933
+    },
+    {
+      "file": "verifiche/programmable/test-results/programs-programmable-Crea-e547c-source-with-portable-export-desktop-chromium/program-running.png",
+      "sha256": "41eab44594704e02ef795deef5dfacc45b36a4d28336893a84767a67209ad1c4",
+      "bytes": 136745
+    },
+    {
+      "file": "verifiche/programmable/test-results/programs-programmable-Crea-e547c-source-with-portable-export-desktop-chromium/program.ardesia.json",
+      "sha256": "d48569410b9748acbde97eccf73ce0c9ee6917490b6dc05a27ab7460dd73a9fd",
+      "bytes": 3051
+    },
+    {
+      "file": "verifiche/programmable/test-results/programs-programmable-Crea-e547c-source-with-portable-export-mobile-chromium/program-running.png",
+      "sha256": "3a82f802182e790f67f1a5ae95790a34d58dd610c9a49e7b0fda4f07a598861d",
+      "bytes": 163640
+    },
+    {
+      "file": "verifiche/programmable/test-results/programs-programmable-Crea-e547c-source-with-portable-export-mobile-chromium/program.ardesia.json",
+      "sha256": "1723770219409509925dfd9f5f543100974a59c04fab96b885872a77b74fb20a",
+      "bytes": 3050
+    },
+    {
+      "file": "verifiche/programmable/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-desktop-chromium/student-first-session.png",
+      "sha256": "d6a534a66ed0f54d491c41cb1cfd2fc7446bb5c419b08ff8def1e4f598f2e48a",
+      "bytes": 418634
+    },
+    {
+      "file": "verifiche/programmable/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-desktop-chromium/student-independent-session.png",
+      "sha256": "8ca78d1b1a3c7227af1513b2b58da705efa733ce245ffee3756d411fefe9a691",
+      "bytes": 417144
+    },
+    {
+      "file": "verifiche/programmable/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-mobile-chromium/student-first-session.png",
+      "sha256": "2809d4cd97041e895645c280d47e67ca1484aa1a468bd413e3d34443b82aea98",
+      "bytes": 1292461
+    },
+    {
+      "file": "verifiche/programmable/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-mobile-chromium/student-independent-session.png",
+      "sha256": "2809d4cd97041e895645c280d47e67ca1484aa1a468bd413e3d34443b82aea98",
+      "bytes": 1292461
+    },
+    {
+      "file": "verifiche/programmable/unit.json",
+      "sha256": "1cc8919d34226a9ae82191d06bf0b6e9da68c0d95685406d191d4db553ac54c5",
+      "bytes": 217598
+    },
+    {
+      "file": "verifiche/programmable/verification.json",
+      "sha256": "d7798c6afa4689a7bf6a747349c01f23bbf4cfeb2e667fb85c4662af22f10b0b",
+      "bytes": 1072
+    },
+    {
+      "file": "verifiche/programmable/verify.log",
+      "sha256": "1ee57ea50ae82e4e56d2b805cc3833898bc255e52b243a05d96b71e91f08f51f",
+      "bytes": 34828
+    }
+  ]
+}

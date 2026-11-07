@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-personal-authoring-review-preliminary",
+  "reviewer": "/root/board_review",
+  "generatedAt": "2026-11-07T16:48:36.528Z",
+  "sourceState": "IN_DEVELOPMENT_NOT_FROZEN",
+  "sourceDigestAtReport": "63a33629fb77a4faee7e991d9efb8c31c7d1ba321114a0c7f4628a3bf6c87a35",
+  "baselineSourceDigest": "097a685d9d53c9ef56f9454e72d142b32df793216a5dd950719c27d31bc0e87e",
+  "verdict": "FINDINGS_OPEN_FINAL_REVIEW_PENDING",
+  "method": {
+    "readOnlySourceAndDiff": true,
+    "testsExecuted": false,
+    "servicesStarted": false,
+    "sourceModified": false,
+    "remoteMutation": false
+  },
+  "findings": [
+    {
+      "id": "PERSONAL-01",
+      "priority": "P2",
+      "status": "reported",
+      "path": "apps/web/src/plugins/first-party.ts",
+      "line": 180,
+      "title": "Laboratori personali dello studente bloccati dal vecchio controllo di ruolo",
+      "trigger": "Studente nel proprio workspace, modulo personale attivo e consentito, creazione di un laboratorio o riapertura di un laboratorio importato.",
+      "analysis": "runtimeGrants usa già remote.documentId per distinguere il contesto, ma activeInstallation usa ancora actor.role===student. Nel nuovo contesto personale remote.documentId è assente; createFirstPartyLab chiama activeInstallation senza data e fallisce sempre CAPABILITY_DENIED. mountLab personale fallisce nello stesso ramo.",
+      "evidence": "Lettura statica, non esecuzione."
+    },
+    {
+      "id": "PERSONAL-02",
+      "priority": "P1",
+      "status": "reported",
+      "path": "packages/server/src/store.ts",
+      "line": 19,
+      "title": "Alias owner legacy collidente con un account successivo diventa proprietà nel contesto assigned",
+      "precondition": "Il provisioning crea un account il cui id coincide con un actor_id legacy già associato a un altro account. Il provisioning corrente e il restore non rifiutano tale collisione.",
+      "steps": [
+        "Docente importa un snapshot legacy con actor future-student prima che esista tale account; il controllo IMPORT_OWNER_COLLISION passa.",
+        "Il docente crea un corso e un percorso personale per il proprio actor alias future-student.",
+        "Il provisioning crea successivamente account id future-student, role student: auth.ts non controlla owner_bindings.",
+        "list-workspaces trova il workspace del docente tramite courseDeliveries. openLocked usa access assigned ma actorId uguale al binding owner.",
+        "projection chiama listDocuments/listInstallations/courseSpace che ora riconoscono proprietà dal solo actorId: la risposta HTTP espone documenti, eventi, installazioni e bozze private dell’altro account."
+      ],
+      "analysis": "Il parser Remote/MCP può rifiutare la risposta, ma non impedisce la divulgazione nell’HTTP. Il container server deve distinguere l’identità assigned dal binding owner anche in presenza di alias collidenti. Considerare riapertura, provisioning/import concorrenti e restore. Il percorso recording-command non ha un esplicito gate owner del container.",
+      "related": [
+        "packages/server/src/auth.ts:46",
+        "packages/server/src/store.ts:58",
+        "packages/server/src/store.ts:161",
+        "packages/server/src/backup.ts:82",
+        "packages/core/src/index.ts:109",
+        "packages/core/src/courses.ts:126"
+      ],
+      "evidence": "Sequenza statica di input ammessi dalle guardie correnti; nessun servizio/test avviato."
+    }
+  ],
+  "assessment": "La separazione owner/assigned è presente nel server e nelle proiezioni client; i comandi di assegnazione e tutor restano vincolati al ruolo docente. Import originale e actor alias sono preservati, la copia offline resta ridotta e il retry account-scoped. Oltre ai rilievi sopra, non sono stati confermati altri blocchi nella prima lettura.",
+  "requiredForFinal": [
+    "Correzione dei rilievi e controprove causali sulla relativa sorgente.",
+    "Digest finale congelato e report coerenti di Verify, server/PostgreSQL, MCP, browser desktop/mobile e offline/recovery.",
+    "Nessun trasferimento automatico del parere favorevole dalla baseline Tutor."
+  ]
+}

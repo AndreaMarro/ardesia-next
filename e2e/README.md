@@ -90,3 +90,22 @@ OPS-20261102-08 records the owner's bounded credential reset and platform experi
 OIDC remains short-lived and is issued by the already authorized Vercel CLI with explicit project/team and preview/m3 environment selection. The exact candidate is main03622b56; source/procedure revisions remain distinct. The canonical staging now resolves to Preview standard deployment `dpl_FTsyQYZuYbAPTzAeopne5tGTLtjy` (`providerTarget: null`), with unchanged SSO/all and default Trusted Sources. The old staging target's403 and rejected rule experiment remain historical failures. The current preflight and three application logins passed; these are prerequisites, not M3 acceptance. CLI env run deliberately omits the sensitive runtime DSN: database binding was instead observed by matching fresh application session hashes in a read-only query of the authorized source; no sensitive value was exported.
 
 Use the existing producer, independent platform-before/after observations and original CI artifacts for03622b56. Recheck the existing empty restore270479 before use. Never consume a populated restore a second time or fabricate missing counterproofs. Only the unchanged gate may accept M3.
+
+## Prepared offline own lessons
+
+`offline.spec.ts` uses the actual compiled shell, IndexedDB, localStorage and local PostgreSQL API on both Chromium projects. Cases cover cold page closure/reopen without network, exact pending commands and explicit receipt recovery, logout across tabs, observed revocation, corrupt copies, unsaved draft protection, a held real IndexedDB transaction during transition, failed transition followed by a new draft, and a delayed real session response during reconnect. No successful server mutation is fabricated. Tests emulate disconnection and a mobile viewport; physical iPad/Pencil/Safari, power interruption and general collaboration remain NOT_RUN. The unit boundary tests separately simulate cache installation failure, mixed-build bytes and eviction.
+
+
+`feedback.spec.ts` exercises the authorized attempt → teacher feedback → amendment → correction → independent session flow on desktop/mobile Chromium. It changes the actual source and feedback during a draft, verifies explicit rereading, recovers a lost acknowledgement with the original command, and holds a real ACK across revocation/re-sharing to protect a newer draft. These are local synthetic users; no physical Pencil or remote milestone acceptance follows from them.
+
+`handout.spec.ts` exports the confirmed lesson with exact historical citations, static laboratory data and pressure ink while preserving an unsaved editor. It downloads real TeX, checks print geometry and creates a multipage Chromium PDF on desktop/mobile. It also verifies assigned-document export without private work, observed revocation, cold offline reopen and preservation of pending ink. PDF text/raster inspection and compilation of the downloaded TeX are separate recorded checks; a button click or a file alone does not prove paginated content. Safari/native printing remains unverified.
+
+
+## Studio and open Creator
+
+`e2e/creator.spec.ts` exercises actual saved definitions and state on desktop/mobile: nested new types, incomplete inputs, source-revision export/import, version/license lineage, unknown payload preservation, plot-scope rename rejection, dirty JSON, frozen controls during an uncertain save, and original-command recovery after a lost ACK. Chrome visibility and layout assertions accompany screenshots; they are not physical Pencil, Safari or native-device evidence. `docs/adr/0015-open-creator-studio.md` records boundaries and migrations.
+
+
+## Creazione personale
+
+`personal.spec.ts` usa account student autentici: Home → nuova lezione → tipo originale → corso/edizione → self-study, modulo firmato con consenso e riapertura, ink offline dopo cold reopen e conferma esplicita, passaggio personale/assegnato/personale senza strumenti o dati mescolati. Entrambi i viewport Chromium; nessuna mutazione server simulata. Snapshot8 invariato, ruolo sempre student. Le prove server/client/MCP coprono in aggiunta alias importato, collisioni, restore, storia e rifiuti negli spazi altrui. Vedere ADR0019 per i limiti della prova concorrente e dei dispositivi.

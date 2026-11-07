@@ -1,0 +1,34 @@
+{
+  "kind": "ardesia-local-increment",
+  "increment": "original-materials-and-handoff",
+  "status": "VERIFIED_LOCAL_INCREMENT",
+  "generatedAt": "2026-11-07T18:41:54.799Z",
+  "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "sourceDigest": "290f597d24ea4ef92769faab9b309069ed9e50dd2fd9f8b778c460e186b12c82",
+  "verification": {
+    "checks": 8,
+    "unitTests": 552,
+    "browserTests": 191,
+    "serverRuntimeChecks": 5,
+    "mcpRuntimeChecks": 15,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "rea": {
+    "version": "6.8.0",
+    "runtimeSteps": 42,
+    "evidenceIds": [
+      "ev_9d371ad72b73c4c653af0bff9a958d1a2466372b67b1c88b4cac868dbc4e98d7",
+      "ev_599a64d3221c8a4f24aac583ddba6ea5620ae1c204adafbe3ac6beda43d290c4"
+    ]
+  },
+  "productAcceptance": "NOT_COMPLETE",
+  "sourceCommitMeaning": "Local checks identify the modified working tree by sourceDigest; commit is the base, not the later publication commit",
+  "patch": {
+    "sha256": "d680dc5390f9adc3dd787f6e166bb1205bbacc8e5120b6015d39c04262dfb0f8",
+    "bytes": 1544263
+  },
+  "publication": "See GitHub PR and publication.json; local report is not a deployment claim",
+  "physicalDevices": "Mac host browser; iPad/Pencil/Safari NOT_RUN"
+}

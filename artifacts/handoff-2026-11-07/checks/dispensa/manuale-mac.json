@@ -1,0 +1,60 @@
+{
+  "kind": "ardesia-manual-mac-handout",
+  "generatedAt": "2026-11-07T12:21:15.002645+00:00",
+  "build": {
+    "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+    "sourceDigest": "ef57bcc96c33bd0ff4114ef479a46b60149a2e80992f49104adbb74de55dfd11",
+    "generatedAt": "2026-11-07T12:16:38.147Z",
+    "application": "ardesia-next",
+    "milestone": "M3",
+    "persistence": "remote-postgres-required",
+    "remoteAcceptance": "INCOMPLETE",
+    "thirdPartyExecution": false
+  },
+  "environment": {
+    "device": "Mac host",
+    "browser": "Codex in-app browser",
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "url": "http://127.0.0.1:4180/",
+    "title": "Ardesia Next · Il mio spazio"
+  },
+  "fixture": "../feedback/anteprima-feedback.json",
+  "observed": {
+    "documentId": "preview-feedback-20261107",
+    "documentRevision": 3,
+    "workRevision": 5,
+    "attempts": 2,
+    "exportStatus": "DRAFT · non approvata",
+    "objects": [
+      "preview-feedback-question@1",
+      "preview-feedback-formula@1"
+    ],
+    "script": "/assets/index-DrtIf6fM.js",
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "horizontalOverflow": false,
+    "latexNotice": "Alcuni caratteri sono rappresentati con il loro codice Unicode nel sorgente LaTeX; la stampa dal browser conserva il testo originale."
+  },
+  "checks": {
+    "pageIdentity": true,
+    "meaningfulContent": true,
+    "noFrameworkOverlay": true,
+    "consoleHealth": true,
+    "handoutOpenAndClose": true,
+    "revisionAndProvenanceVisible": true,
+    "screenshotInspected": true
+  },
+  "manualFlow": "Authenticated student → assigned lesson revision 3 → Dispensa → exact IDs/revisions and provenance visible → conversion notice expanded → close → same work revision 5 and two attempts; build-info observed in browser",
+  "screenshots": "CUA images visually inspected; saved handout PNG files are automated Playwright evidence, not manual CUA captures.",
+  "upgradeObservation": "Older service worker served index-Cw1m1Vcj.js until reload and closing all origin tabs; reopened final index-DrtIf6fM.js. No user data erased.",
+  "toolInteractionLimit": "Role locator did not match details summary; retried with observed exact text and expanded it successfully.",
+  "notRun": [
+    "Safari",
+    "physical iPad/Apple Pencil",
+    "native apps",
+    "manual print dialog or OS PDF save; browser PDF automation and actual TeX compilation separately verified"
+  ]
+}

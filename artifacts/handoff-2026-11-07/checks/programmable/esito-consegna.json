@@ -1,0 +1,171 @@
+{
+  "kind": "ardesia-local-delivery",
+  "status": "VERIFIED_LOCAL_INCREMENT",
+  "increment": "programmable-creator-studio",
+  "baseCommit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "branch": "codex/lavagna-continuity-20261107",
+  "sourceDigest": "ab181bddd390c15fe74a1a09f29d0dc3c3208e4936d540943779a5cbdc576e8a",
+  "uncommitted": true,
+  "remotePublished": false,
+  "generatedAt": "2026-11-07T15:57:54.295Z",
+  "verification": {
+    "passed": true,
+    "checks": 8,
+    "unitPassed": 520,
+    "browserPassed": 163,
+    "browserSkipped": 0,
+    "browserFlaky": 0,
+    "browserFailed": 0,
+    "serverChecks": 5,
+    "mcpChecks": 12,
+    "budget": {
+      "metric": "core-and-optional-program-runtime-v1",
+      "coreGzipBytes": 245372,
+      "optionalGzipBytes": 290773,
+      "allGzipBytes": 536145,
+      "limits": {
+        "coreGzipBytes": 245760,
+        "optionalGzipBytes": 327680,
+        "optionalRawBytes": 1048576
+      },
+      "legacyComparison": {
+        "metric": "all-javascript-gzip-bytes",
+        "bytes": 302102,
+        "limit": 245760,
+        "passed": false
+      }
+    }
+  },
+  "reports": "programmable/",
+  "canonicalProductStatus": {
+    "report": "programmable/status.json",
+    "productAcceptance": "NOT_COMPLETE",
+    "deployment": "NOT_VERIFIED_FOR_CURRENT_COMMIT"
+  },
+  "preview": "http://127.0.0.1:4180/",
+  "rea": {
+    "version": "6.8.0",
+    "report": "../rea-evidence/programmable/README.md",
+    "releaseCaptures": [
+      {
+        "file": "release-desktop-evidence.json",
+        "evidenceId": "ev_8a4c0eb114467f313e630ab438825eefbe5c55e97434058e20d71fd145e6b52f",
+        "steps": 27
+      },
+      {
+        "file": "release-mobile-evidence.json",
+        "evidenceId": "ev_47450b760aeb826f625231271ce58e2cae0ad55cde30c4cb1a4e9ca17e165b35",
+        "steps": 27
+      }
+    ],
+    "donors": [
+      "Sandpack static/runtime",
+      "Excalidraw, tldraw, H5P, perfect-freehand and legacy from preceding increments"
+    ],
+    "sourceAssociation": "External build-info receipt; REA does not fabricate source identity"
+  },
+  "patch": {
+    "path": "../ardesia-next.patch",
+    "sha256": "5f1e78e5e02431351ea5f1e0bdc6a7a01ae0c64ee65cb9e88180b6ab52d5cb6c",
+    "bytes": 1154160,
+    "reverseApplyCheck": "PASS"
+  },
+  "review": {
+    "kind": "ardesia-independent-local-increment-review",
+    "recordedAt": "2026-11-07T15:57:32.923546+00:00",
+    "sourceDigest": "ab181bddd390c15fe74a1a09f29d0dc3c3208e4936d540943779a5cbdc576e8a",
+    "baseCommit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+    "verdict": "FAVORABLE_NO_P1_P2_FOUND",
+    "scope": "Local programmable Creator increment, isolation boundaries, consent/state lifecycle, UI, Core/MCP consumers, regressions and budget",
+    "reviewer": {
+      "agent": "/root/board_review",
+      "context": "Separate AI agent context, distinct from author/test runner",
+      "readOnly": true,
+      "sourceEdits": false,
+      "testSuitesExecutedByReviewer": false,
+      "humanReview": false,
+      "received": [
+        "raw source and diff",
+        "acceptance criteria",
+        "raw final reports",
+        "REA final records and asset hash comparison"
+      ]
+    },
+    "reviewerStatement": "Verdetto favorevole per l’incremento programmabile locale. Nessun bloccante residuo rilevato nel perimetro esaminato.",
+    "verified": {
+      "sourceDigestRecomputed": true,
+      "rawHeadDiffSha256": "5f1e78e5e02431351ea5f1e0bdc6a7a01ae0c64ee65cb9e88180b6ab52d5cb6c",
+      "diffCheck": "PASS",
+      "verificationChecks": 8,
+      "unitPassed": 520,
+      "unitCanonicalSha256": "1cc8919d34226a9ae82191d06bf0b6e9da68c0d95685406d191d4db553ac54c5",
+      "browserPassed": 163,
+      "programBrowserTests": 12,
+      "browserSkipped": 0,
+      "browserFlaky": 0,
+      "browserUnexpected": 0,
+      "browserGlobalErrors": 0,
+      "allTestsFirstAttempt": true,
+      "e2eRawSha256": "784f64c87fd708b9f429135b1f62922670a203bfb2db018a89212baf2b0c7c16",
+      "e2eCanonicalSha256": "212ebe1405b11fa906534be48475e5d2050af68ee973ba3370605629b7d2cf17",
+      "serverChecks": 5,
+      "mcpChecks": 12,
+      "budgetFilesRecomputed": 13,
+      "coreGzipBytes": 245372,
+      "optionalGzipBytes": 290773,
+      "optionalRawBytes": 698191,
+      "allGzipBytes": 536145,
+      "legacyAllJavaScriptGzipBytes": 302102,
+      "legacyLimit": 245760,
+      "legacyComparison": "FAIL",
+      "reaDesktopStepsCompleted": 27,
+      "reaMobileStepsCompleted": 27,
+      "reaEventsDropped": 0,
+      "runtimeRequestedAfterConsent": true,
+      "reaRuntimeAssetHashesMatched": 10
+    },
+    "correctionsReviewed": [
+      "Immutable consented body snapshot",
+      "Strict event and view typing",
+      "Bounded parent rendering and SVG resources",
+      "QuickJS recursion recovery and stack limit",
+      "Mutable state separate from initialization",
+      "Input/change only on actual controls",
+      "Nonmultiplicative heading fonts",
+      "Consent and state scoped to exact lesson",
+      "Hidden-before-mount and unavailable Worker recovery",
+      "Unchanged start does not dirty the draft",
+      "Declarative fields stay disabled and visible while program execution stops during save/conflict",
+      "Deep invalid fixture retained; valid heading fixture asserts actual count and computed sizes"
+    ],
+    "previousFailuresPreserved": "intermedi/abf0/",
+    "limits": [
+      "Reviewer read reports/code and recalculated hashes/budget, but did not rerun suites",
+      "REA Chromium mobile viewport is emulation, not physical iPad/Pencil",
+      "Asset hashes use post-capture refetch, not original network response-body bytes",
+      "No production QuickJS/browser security certification",
+      "No Safari/native app/human scientific validation",
+      "No full product or deployment acceptance"
+    ],
+    "canonicalStatus": {
+      "productAcceptance": "NOT_COMPLETE",
+      "deployment": "NOT_VERIFIED_FOR_CURRENT_COMMIT"
+    }
+  },
+  "limits": {
+    "physicalIPadApplePencilSafari": "NOT_RUN",
+    "nativeApps": "NOT_BUILT",
+    "commercialAIHosts": "NOT_RUN",
+    "humanScientificReview": "PENDING",
+    "learnerGeneralAuthoring": "NOT_IMPLEMENTED",
+    "coursesOffline": "NOT_IMPLEMENTED",
+    "programmableCreation": "IMPLEMENTED_WITH_DOCUMENTED_ABI_AND_QUOTAS",
+    "generalExternalWorkflows": "NOT_IMPLEMENTED",
+    "productionEngineSecurityAudit": "NOT_RUN",
+    "simultaneousMultideviceCollaboration": "NOT_IMPLEMENTED",
+    "tutorCommunityCommercialMarketplace": "IN_PROGRESS",
+    "fullEcosystem": "IN_PROGRESS"
+  },
+  "historicalDelivery": "corsi/esito-consegna.json",
+  "failedRegression": "programmable/intermedi/abf0/e2e.log"
+}

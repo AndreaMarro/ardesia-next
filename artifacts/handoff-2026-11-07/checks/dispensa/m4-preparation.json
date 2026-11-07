@@ -1,0 +1,599 @@
+{
+  "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "sourceDigest": "ef57bcc96c33bd0ff4114ef479a46b60149a2e80992f49104adbb74de55dfd11",
+  "generatedAt": "2026-11-07T12:16:37.960Z",
+  "schemaVersion": "1.0.0",
+  "kind": "ardesia-m4-preparation",
+  "acceptanceEvidence": false,
+  "plugin": {
+    "id": "ardesia.poiseuille",
+    "version": "1.0.0",
+    "bundleDigest": "bd7eced69753424c7da3076783917d4fb235bd90d975dbbce2fe71371b06e00b",
+    "sourceRevision": "9343921d716907918d94a6132fe89a1b881f0e06"
+  },
+  "passed": true,
+  "consumer": {
+    "consumer": "public-Host-Core-integration-fixture",
+    "storage": "existing-Core-MemoryStorage-test-adapter",
+    "checks": [
+      "signature-before-execution",
+      "explicit-consent",
+      "save-edit-reopen",
+      "exact-old-revision",
+      "invalid-state-no-write",
+      "owner-isolation",
+      "withdraw-consent",
+      "tampered-bundle-no-worker",
+      "forged-signature-no-worker"
+    ],
+    "workersStarted": 5,
+    "liveWorkers": 0,
+    "browser": "NOT_RUN",
+    "postgres": "NOT_RUN",
+    "humanReview": "PENDING"
+  },
+  "limits": [
+    "This check uses the existing MemoryStorage fixture",
+    "Web/PostgreSQL/browser and human acceptance require their own exact-source evidence"
+  ],
+  "reuse": {
+    "baseSha": "c4d38a612a73bc28df434c2d36d36025cf1b1adc",
+    "sdkVersion": "1.0.0",
+    "coreUnchanged": false,
+    "hostUnchanged": false,
+    "sdkUnchanged": true,
+    "persistenceUnchanged": false,
+    "changedPaths": [
+      ".github/pull_request_template.md",
+      "AGENTS.md",
+      "apps/web/package.json",
+      "apps/web/public/plugins/catalog.json",
+      "apps/web/public/plugins/poiseuille/1.0.0/THIRD_PARTY_NOTICES.txt",
+      "apps/web/public/plugins/poiseuille/1.0.0/manifest.json",
+      "apps/web/public/plugins/poiseuille/1.0.0/plugin.js",
+      "apps/web/src/App.tsx",
+      "apps/web/src/LearnerSpace.tsx",
+      "apps/web/src/RemoteWorkspace.tsx",
+      "apps/web/src/build/static-react-exports.test.ts",
+      "apps/web/src/components/LabInspector.tsx",
+      "apps/web/src/components/Marketplace.tsx",
+      "apps/web/src/components/ScienceView.test.ts",
+      "apps/web/src/components/ScienceView.tsx",
+      "apps/web/src/components/WorkspaceDialogs.tsx",
+      "apps/web/src/plugins/bundle-transport.test.ts",
+      "apps/web/src/plugins/bundle-transport.ts",
+      "apps/web/src/plugins/first-party-authorization.test.ts",
+      "apps/web/src/plugins/first-party-epoch.test.ts",
+      "apps/web/src/plugins/first-party.ts",
+      "apps/web/vite.config.ts",
+      "docs/START_HERE.md",
+      "docs/e1-task-readiness.md",
+      "docs/history.md",
+      "docs/hourly-delivery.md",
+      "docs/product-map.md",
+      "docs/prompts/codex-cycle.md",
+      "docs/prompts/engineering-cycle.md",
+      "docs/prompts/isolated-development-cycle.md",
+      "docs/prompts/review-cycle.md",
+      "docs/recurring-work.md",
+      "docs/sources/engineering-e0e7/02_Preparazione_E1.zip",
+      "docs/sources/engineering-e0e7/README.md",
+      "docs/sources/m4-poiseuille.md",
+      "docs/sources/native-run-recovery-20261103.md",
+      "docs/superpowers/plans/2026-11-02-engineering-delivery.md",
+      "docs/templates/engineering-task.md",
+      "e2e/editor-concurrency.spec.ts",
+      "e2e/fixtures.ts",
+      "e2e/m3-acceptance.spec.mjs",
+      "e2e/marketplace.spec.ts",
+      "e2e/plugin-lab.spec.ts",
+      "e2e/poiseuille.spec.ts",
+      "e2e/remote-continuity.spec.ts",
+      "e2e/workspace.spec.ts",
+      "operations/codex-automation.json",
+      "operations/coordination.json",
+      "package-lock.json",
+      "packages/plugin-host/src/first-party-trust.json",
+      "packages/server/src/server.integration.test.ts",
+      "plugins/poiseuille/AGENTS.md",
+      "plugins/poiseuille/README.md",
+      "plugins/poiseuille/package.json",
+      "plugins/poiseuille/release/1.0.0/THIRD_PARTY_NOTICES.txt",
+      "plugins/poiseuille/release/1.0.0/candidate-trust.json",
+      "plugins/poiseuille/release/1.0.0/manifest.json",
+      "plugins/poiseuille/release/1.0.0/plugin.js",
+      "plugins/poiseuille/src/handler.ts",
+      "plugins/poiseuille/src/index.ts",
+      "plugins/poiseuille/src/model.test.ts",
+      "plugins/poiseuille/src/model.ts",
+      "plugins/poiseuille/src/worker.ts",
+      "tools/build-poiseuille.mjs",
+      "tools/build.mjs",
+      "tools/check-boundaries.mjs",
+      "tools/check-config.mjs",
+      "tools/check-operations.mjs",
+      "tools/check-signed-plugins.mjs",
+      "tools/cycle-sequential.test.mjs",
+      "tools/cycle.mjs",
+      "tools/e2e-accounts.d.mts",
+      "tools/e2e-accounts.mjs",
+      "tools/e2e-runner.test.mjs",
+      "tools/e2e.mjs",
+      "tools/m3-browser.mjs",
+      "tools/m3-operator.mjs",
+      "tools/m4-preparation.test.mjs",
+      "tools/m4-source.mjs",
+      "tools/pack-worker-transport.d.mts",
+      "tools/pack-worker-transport.mjs",
+      "tools/poiseuille-consumer.ts",
+      "tools/qa-integration.mjs",
+      "tools/server.mjs",
+      "tools/static-react-exports.d.mts",
+      "tools/static-react-exports.mjs",
+      "tools/status.mjs",
+      "tools/status.test.mjs",
+      "tools/task-preflight.mjs",
+      "tools/task-preflight.test.mjs",
+      "tools/verify.mjs"
+    ],
+    "measuredDelta": [
+      {
+        "path": ".github/pull_request_template.md",
+        "addedLines": 2,
+        "removedLines": 0
+      },
+      {
+        "path": "AGENTS.md",
+        "addedLines": 3,
+        "removedLines": 3
+      },
+      {
+        "path": "apps/web/package.json",
+        "addedLines": 2,
+        "removedLines": 1
+      },
+      {
+        "path": "apps/web/public/plugins/catalog.json",
+        "addedLines": 41,
+        "removedLines": 2
+      },
+      {
+        "path": "apps/web/public/plugins/poiseuille/1.0.0/THIRD_PARTY_NOTICES.txt",
+        "addedLines": 23,
+        "removedLines": 0
+      },
+      {
+        "path": "apps/web/public/plugins/poiseuille/1.0.0/manifest.json",
+        "addedLines": 32,
+        "removedLines": 0
+      },
+      {
+        "path": "apps/web/public/plugins/poiseuille/1.0.0/plugin.js",
+        "addedLines": 5647,
+        "removedLines": 0
+      },
+      {
+        "path": "apps/web/src/App.tsx",
+        "addedLines": 4,
+        "removedLines": 4
+      },
+      {
+        "path": "apps/web/src/LearnerSpace.tsx",
+        "addedLines": 3,
+        "removedLines": 3
+      },
+      {
+        "path": "apps/web/src/RemoteWorkspace.tsx",
+        "addedLines": 1,
+        "removedLines": 1
+      },
+      {
+        "path": "apps/web/src/build/static-react-exports.test.ts",
+        "addedLines": 78,
+        "removedLines": 0
+      },
+      {
+        "path": "apps/web/src/components/LabInspector.tsx",
+        "addedLines": 13,
+        "removedLines": 7
+      },
+      {
+        "path": "apps/web/src/components/Marketplace.tsx",
+        "addedLines": 4,
+        "removedLines": 4
+      },
+      {
+        "path": "apps/web/src/components/ScienceView.test.ts",
+        "addedLines": 20,
+        "removedLines": 0
+      },
+      {
+        "path": "apps/web/src/components/ScienceView.tsx",
+        "addedLines": 2,
+        "removedLines": 2
+      },
+      {
+        "path": "apps/web/src/components/WorkspaceDialogs.tsx",
+        "addedLines": 1,
+        "removedLines": 1
+      },
+      {
+        "path": "apps/web/src/plugins/bundle-transport.test.ts",
+        "addedLines": 50,
+        "removedLines": 0
+      },
+      {
+        "path": "apps/web/src/plugins/bundle-transport.ts",
+        "addedLines": 24,
+        "removedLines": 0
+      },
+      {
+        "path": "apps/web/src/plugins/first-party-authorization.test.ts",
+        "addedLines": 58,
+        "removedLines": 0
+      },
+      {
+        "path": "apps/web/src/plugins/first-party-epoch.test.ts",
+        "addedLines": 35,
+        "removedLines": 0
+      },
+      {
+        "path": "apps/web/src/plugins/first-party.ts",
+        "addedLines": 57,
+        "removedLines": 42
+      },
+      {
+        "path": "apps/web/vite.config.ts",
+        "addedLines": 2,
+        "removedLines": 1
+      },
+      {
+        "path": "docs/START_HERE.md",
+        "addedLines": 5,
+        "removedLines": 1
+      },
+      {
+        "path": "docs/e1-task-readiness.md",
+        "addedLines": 39,
+        "removedLines": 0
+      },
+      {
+        "path": "docs/history.md",
+        "addedLines": 220,
+        "removedLines": 0
+      },
+      {
+        "path": "docs/hourly-delivery.md",
+        "addedLines": 48,
+        "removedLines": 0
+      },
+      {
+        "path": "docs/product-map.md",
+        "addedLines": 2,
+        "removedLines": 2
+      },
+      {
+        "path": "docs/prompts/codex-cycle.md",
+        "addedLines": 14,
+        "removedLines": 34
+      },
+      {
+        "path": "docs/prompts/engineering-cycle.md",
+        "addedLines": 19,
+        "removedLines": 0
+      },
+      {
+        "path": "docs/prompts/isolated-development-cycle.md",
+        "addedLines": 19,
+        "removedLines": 0
+      },
+      {
+        "path": "docs/prompts/review-cycle.md",
+        "addedLines": 21,
+        "removedLines": 0
+      },
+      {
+        "path": "docs/recurring-work.md",
+        "addedLines": 9,
+        "removedLines": 5
+      },
+      {
+        "path": "docs/sources/engineering-e0e7/02_Preparazione_E1.zip",
+        "addedLines": null,
+        "removedLines": null
+      },
+      {
+        "path": "docs/sources/engineering-e0e7/README.md",
+        "addedLines": 14,
+        "removedLines": 0
+      },
+      {
+        "path": "docs/sources/m4-poiseuille.md",
+        "addedLines": 60,
+        "removedLines": 0
+      },
+      {
+        "path": "docs/sources/native-run-recovery-20261103.md",
+        "addedLines": 87,
+        "removedLines": 0
+      },
+      {
+        "path": "docs/superpowers/plans/2026-11-02-engineering-delivery.md",
+        "addedLines": 396,
+        "removedLines": 0
+      },
+      {
+        "path": "docs/templates/engineering-task.md",
+        "addedLines": 14,
+        "removedLines": 0
+      },
+      {
+        "path": "e2e/editor-concurrency.spec.ts",
+        "addedLines": 1,
+        "removedLines": 1
+      },
+      {
+        "path": "e2e/fixtures.ts",
+        "addedLines": 7,
+        "removedLines": 8
+      },
+      {
+        "path": "e2e/m3-acceptance.spec.mjs",
+        "addedLines": 4,
+        "removedLines": 2
+      },
+      {
+        "path": "e2e/marketplace.spec.ts",
+        "addedLines": 13,
+        "removedLines": 0
+      },
+      {
+        "path": "e2e/plugin-lab.spec.ts",
+        "addedLines": 4,
+        "removedLines": 1
+      },
+      {
+        "path": "e2e/poiseuille.spec.ts",
+        "addedLines": 143,
+        "removedLines": 0
+      },
+      {
+        "path": "e2e/remote-continuity.spec.ts",
+        "addedLines": 76,
+        "removedLines": 11
+      },
+      {
+        "path": "e2e/workspace.spec.ts",
+        "addedLines": 27,
+        "removedLines": 9
+      },
+      {
+        "path": "operations/codex-automation.json",
+        "addedLines": 53,
+        "removedLines": 14
+      },
+      {
+        "path": "operations/coordination.json",
+        "addedLines": 11,
+        "removedLines": 5
+      },
+      {
+        "path": "package-lock.json",
+        "addedLines": 14,
+        "removedLines": 0
+      },
+      {
+        "path": "packages/plugin-host/src/first-party-trust.json",
+        "addedLines": 12,
+        "removedLines": 0
+      },
+      {
+        "path": "packages/server/src/server.integration.test.ts",
+        "addedLines": 107,
+        "removedLines": 2
+      },
+      {
+        "path": "plugins/poiseuille/AGENTS.md",
+        "addedLines": 3,
+        "removedLines": 0
+      },
+      {
+        "path": "plugins/poiseuille/README.md",
+        "addedLines": 9,
+        "removedLines": 0
+      },
+      {
+        "path": "plugins/poiseuille/package.json",
+        "addedLines": 14,
+        "removedLines": 0
+      },
+      {
+        "path": "plugins/poiseuille/release/1.0.0/THIRD_PARTY_NOTICES.txt",
+        "addedLines": 23,
+        "removedLines": 0
+      },
+      {
+        "path": "plugins/poiseuille/release/1.0.0/candidate-trust.json",
+        "addedLines": 18,
+        "removedLines": 0
+      },
+      {
+        "path": "plugins/poiseuille/release/1.0.0/manifest.json",
+        "addedLines": 32,
+        "removedLines": 0
+      },
+      {
+        "path": "plugins/poiseuille/release/1.0.0/plugin.js",
+        "addedLines": 5647,
+        "removedLines": 0
+      },
+      {
+        "path": "plugins/poiseuille/src/handler.ts",
+        "addedLines": 15,
+        "removedLines": 0
+      },
+      {
+        "path": "plugins/poiseuille/src/index.ts",
+        "addedLines": 10,
+        "removedLines": 0
+      },
+      {
+        "path": "plugins/poiseuille/src/model.test.ts",
+        "addedLines": 75,
+        "removedLines": 0
+      },
+      {
+        "path": "plugins/poiseuille/src/model.ts",
+        "addedLines": 77,
+        "removedLines": 0
+      },
+      {
+        "path": "plugins/poiseuille/src/worker.ts",
+        "addedLines": 4,
+        "removedLines": 0
+      },
+      {
+        "path": "tools/build-poiseuille.mjs",
+        "addedLines": 54,
+        "removedLines": 0
+      },
+      {
+        "path": "tools/build.mjs",
+        "addedLines": 2,
+        "removedLines": 0
+      },
+      {
+        "path": "tools/check-boundaries.mjs",
+        "addedLines": 2,
+        "removedLines": 2
+      },
+      {
+        "path": "tools/check-config.mjs",
+        "addedLines": 1,
+        "removedLines": 0
+      },
+      {
+        "path": "tools/check-operations.mjs",
+        "addedLines": 5,
+        "removedLines": 3
+      },
+      {
+        "path": "tools/check-signed-plugins.mjs",
+        "addedLines": 39,
+        "removedLines": 0
+      },
+      {
+        "path": "tools/cycle-sequential.test.mjs",
+        "addedLines": 168,
+        "removedLines": 2
+      },
+      {
+        "path": "tools/cycle.mjs",
+        "addedLines": 63,
+        "removedLines": 18
+      },
+      {
+        "path": "tools/e2e-accounts.d.mts",
+        "addedLines": 5,
+        "removedLines": 0
+      },
+      {
+        "path": "tools/e2e-accounts.mjs",
+        "addedLines": 31,
+        "removedLines": 0
+      },
+      {
+        "path": "tools/e2e-runner.test.mjs",
+        "addedLines": 34,
+        "removedLines": 3
+      },
+      {
+        "path": "tools/e2e.mjs",
+        "addedLines": 2,
+        "removedLines": 0
+      },
+      {
+        "path": "tools/m3-browser.mjs",
+        "addedLines": 4,
+        "removedLines": 4
+      },
+      {
+        "path": "tools/m3-operator.mjs",
+        "addedLines": 5,
+        "removedLines": 3
+      },
+      {
+        "path": "tools/m4-preparation.test.mjs",
+        "addedLines": 167,
+        "removedLines": 0
+      },
+      {
+        "path": "tools/m4-source.mjs",
+        "addedLines": 10,
+        "removedLines": 0
+      },
+      {
+        "path": "tools/pack-worker-transport.d.mts",
+        "addedLines": 2,
+        "removedLines": 0
+      },
+      {
+        "path": "tools/pack-worker-transport.mjs",
+        "addedLines": 45,
+        "removedLines": 0
+      },
+      {
+        "path": "tools/poiseuille-consumer.ts",
+        "addedLines": 89,
+        "removedLines": 0
+      },
+      {
+        "path": "tools/qa-integration.mjs",
+        "addedLines": 17,
+        "removedLines": 2
+      },
+      {
+        "path": "tools/server.mjs",
+        "addedLines": 2,
+        "removedLines": 7
+      },
+      {
+        "path": "tools/static-react-exports.d.mts",
+        "addedLines": 2,
+        "removedLines": 0
+      },
+      {
+        "path": "tools/static-react-exports.mjs",
+        "addedLines": 74,
+        "removedLines": 0
+      },
+      {
+        "path": "tools/status.mjs",
+        "addedLines": 157,
+        "removedLines": 1
+      },
+      {
+        "path": "tools/status.test.mjs",
+        "addedLines": 1,
+        "removedLines": 0
+      },
+      {
+        "path": "tools/task-preflight.mjs",
+        "addedLines": 196,
+        "removedLines": 0
+      },
+      {
+        "path": "tools/task-preflight.test.mjs",
+        "addedLines": 174,
+        "removedLines": 0
+      },
+      {
+        "path": "tools/verify.mjs",
+        "addedLines": 3,
+        "removedLines": 2
+      }
+    ],
+    "generatedWorkerBytes": 184145,
+    "measure": "git diff assigned base to exact candidate HEAD; generated worker measured separately"
+  }
+}

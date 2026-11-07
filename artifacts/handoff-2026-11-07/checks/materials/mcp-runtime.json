@@ -1,0 +1,95 @@
+{
+  "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "sourceDigest": "290f597d24ea4ef92769faab9b309069ed9e50dd2fd9f8b778c460e186b12c82",
+  "generatedAt": "2026-11-07T18:33:55.599Z",
+  "schemaVersion": 1,
+  "kind": "ardesia-mcp-stdio-local",
+  "remoteAcceptance": false,
+  "hostCompatibility": "NOT_TESTED",
+  "sdk": "2.4.0",
+  "runtime": "v24.22.1",
+  "checks": [
+    {
+      "name": "restricted-postgres-and-live-http",
+      "passed": true
+    },
+    {
+      "name": "official-client-stdio-discovery-readonly-strict-input",
+      "passed": true
+    },
+    {
+      "name": "real-core-create-compose-edit-search-exact-history",
+      "passed": true
+    },
+    {
+      "name": "official-client-new-type-create-edit-exact-history",
+      "passed": true
+    },
+    {
+      "name": "official-client-original-material-manifest-chunk-and-scope",
+      "passed": true
+    },
+    {
+      "name": "official-client-program-source-state-roundtrip-no-implicit-execution",
+      "passed": true
+    },
+    {
+      "name": "official-client-tutor-search-history-write-and-exact-retry",
+      "passed": true
+    },
+    {
+      "name": "official-client-course-authoring-edition-privacy-and-revocation",
+      "passed": true
+    },
+    {
+      "name": "lost-response-process-restart-identical-receipt-no-duplicate",
+      "passed": true
+    },
+    {
+      "name": "concurrent-web-edit-cas-conflict",
+      "passed": true
+    },
+    {
+      "name": "official-client-student-owned-type-course-history-and-assigned-write-refusal",
+      "passed": true
+    },
+    {
+      "name": "student-private-records-excluded-and-assignment-revoked-live",
+      "passed": true
+    },
+    {
+      "name": "official-client-cancellation-and-eof-abort-upstream",
+      "passed": true
+    },
+    {
+      "name": "configuration-change-and-session-logout-fail-closed",
+      "passed": true
+    },
+    {
+      "name": "isolated-resource-cleanup",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "artifactSha256": "1e1f734f63041a7154e224fde88a72ce0fa2efc342d3e4179a2fd4b6e48707e4",
+  "toolNamesReadOnly": [
+    "ardesia_list_workspaces",
+    "ardesia_search",
+    "ardesia_read_material",
+    "ardesia_read_document",
+    "ardesia_read_object_revision",
+    "ardesia_search_courses",
+    "ardesia_read_course",
+    "ardesia_search_tutor",
+    "ardesia_read_tutor"
+  ],
+  "observed": {
+    "commandRequests": 19,
+    "successfulHttpWriteResponses": 17,
+    "exactDocumentRevision": 12,
+    "privateLearnerDataReturned": false,
+    "credentialsReturned": false,
+    "aiInferenceUsed": false
+  },
+  "durationMs": 2526
+}

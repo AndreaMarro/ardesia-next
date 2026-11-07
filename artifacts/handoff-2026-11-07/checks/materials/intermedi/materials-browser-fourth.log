@@ -1,0 +1,30 @@
+
+> ardesia-next@0.1.0 test:e2e
+> node tools/e2e.mjs e2e/materials.spec.ts
+
+[2m[WebServer] [22m(node:83222) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22mWebSocket server error: Port 24678 is already in use
+
+Running 10 tests using 1 worker
+
+(node:83226) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:83226) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [desktop-chromium] › e2e/materials.spec.ts:26:1 › imports real PDF pages, preserves the original, anchors ink when moving and reopens offline (3.7s)
+  ✓   2 [desktop-chromium] › e2e/materials.spec.ts:207:1 › imports a decoded image and rejects corrupt files without adding objects (725ms)
+  ✓   3 [desktop-chromium] › e2e/materials.spec.ts:262:1 › resumes an interrupted material upload after reopening with the same original and page IDs (1.2s)
+  ✓   4 [desktop-chromium] › e2e/materials.spec.ts:339:1 › updates an already prepared offline copy with the original in an unopened lesson (1.0s)
+  ✓   5 [desktop-chromium] › e2e/materials.spec.ts:454:1 › lets the owner recover the file and abandon a permanently rejected import (1.7s)
+(node:83240) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:83240) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   6 [mobile-chromium] › e2e/materials.spec.ts:26:1 › imports real PDF pages, preserves the original, anchors ink when moving and reopens offline (3.9s)
+  ✓   7 [mobile-chromium] › e2e/materials.spec.ts:207:1 › imports a decoded image and rejects corrupt files without adding objects (793ms)
+  ✓   8 [mobile-chromium] › e2e/materials.spec.ts:262:1 › resumes an interrupted material upload after reopening with the same original and page IDs (1.3s)
+  ✓   9 [mobile-chromium] › e2e/materials.spec.ts:339:1 › updates an already prepared offline copy with the original in an unopened lesson (1.1s)
+  ✓  10 [mobile-chromium] › e2e/materials.spec.ts:454:1 › lets the owner recover the file and abandon a permanently rejected import (1.8s)
+
+  10 passed (20.2s)

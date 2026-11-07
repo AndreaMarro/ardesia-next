@@ -1,9 +1,16 @@
+import {authorizeTutor, applyTutor, tutorSpace, validateTutorHistory} from './tutor';
+import {authorizeCourse, applyCourse, courseSpace, readCourseLesson, validateCourseHistory} from './courses';
+import {validateExtensionDefinitions, validateExtensionUse} from './extensions';
 import {
-  ActorSchema,
+  TutorCommandSchema, tutorTarget, type TutorCommand, type TutorEvent, type TutorReceipt, type TutorSpace,
+  ActorSchema, CourseCommandSchema, courseTarget,
+  type CourseCommand, type CourseEvent, type CourseReceipt, type CourseSpace,
   CoreCommandSchema,
   CoreError,
   CoreSnapshotSchema,
   EducationalObjectSchema,
+  appendExtensionOrigin,
+  extensionOrigin,
   PluginCommandSchema,
   LearningCommandSchema,
   emptySnapshot,
@@ -29,6 +36,7 @@ import {
 } from '@ardesia/contracts';
 import {applyPluginCommand, findInstallation, validateLabUse, type PluginPolicy} from './plugin-commands';
 export type {PluginPolicy, PluginPolicyRequest} from './plugin-commands';
+export {validateRecordingCapture, applyRecordingCommand} from './recordings';
 import {applyLearningCommand, assignedDocument, assignedLabAccess, authorizeLearningCommand, readableLearnerWork} from './learning';
 
 /** One atomic replacement is required. M0 supports one writer per adapter. */
@@ -48,11 +56,17 @@ export interface CoreOptions {
 export interface CoreService {
   execute(actor: Actor, command: CoreCommand): Promise<CommandReceipt>;
   executePlugin(actor: Actor, command: PluginCommand): Promise<PluginReceipt>;
+  executeTutor(actor: Actor, command: TutorCommand): Promise<TutorReceipt>;
+  getTutorSpace(actor: Actor): TutorSpace;
+  executeCourse(actor: Actor, command: CourseCommand): Promise<CourseReceipt>;
+  getCourseSpace(actor: Actor): CourseSpace;
+  readCourseLesson(actor: Actor, editionId: string, unitId: string): Promise<LessonDocument>;
   executeLearning(actor: Actor, command: LearningCommand): Promise<LearningReceipt>;
   listAssignments(actor: Actor): LessonAssignment[];
   getAssignedDocument(actor: Actor, documentId: string): LessonDocument;
   getAssignedLabAccess(actor: Actor, documentId: string, objectId: string): AssignedLabAccess;
   getLearnerWork(actor: Actor, documentId: string, studentId?: string): LearnerWork | null;
+  readAttemptSource(actor: Actor, documentId: string, attemptId: string, studentId?: string): Promise<EducationalObject>;
   learningEvents(actor: Actor, documentId: string, studentId?: string): LearningEvent[];
   listInstallations(actor: Actor): PluginInstallation[];
   getInstallation(actor: Actor, pluginId: string): PluginInstallation | null;
@@ -86,7 +100,7 @@ function canonical(value: unknown): string {
   return JSON.stringify(value) ?? 'null';
 }
 
-async function commandFingerprint(actor: Actor, command: CoreCommand | PluginCommand | LearningCommand): Promise<string> {
+async function commandFingerprint(actor: Actor, command: CoreCommand | PluginCommand | LearningCommand | CourseCommand | TutorCommand): Promise<string> {
   const bytes = new TextEncoder().encode(canonical({ actor, command }));
   const digest = await crypto.subtle.digest('SHA-256', bytes);
   return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
@@ -95,7 +109,7 @@ async function commandFingerprint(actor: Actor, command: CoreCommand | PluginCom
 function requireOwner(state: CoreSnapshot, actor: Actor, documentId: string): LessonDocument {
   const document = state.documents.find((entry) => entry.id === documentId);
   // Do not reveal whether a different owner's identifier exists.
-  if (!document || actor.role !== 'teacher' || document.ownerId !== actor.actorId) throw new CoreError('NOT_FOUND', 'Document is unavailable in this workspace.');
+  if (!document || document.ownerId !== actor.actorId) throw new CoreError('NOT_FOUND', 'Document is unavailable in this workspace.');
   return document;
 }
 
@@ -103,6 +117,25 @@ function findObject(document: LessonDocument, id: string): EducationalObject {
   const object = document.objects.find((entry) => entry.id === id);
   if (!object) throw new CoreError('NOT_FOUND', 'Object is unavailable in this document.');
   return object;
+}
+
+function exactObjectRevision(state: CoreSnapshot, document: LessonDocument, objectId: string, wantedRevision: number): EducationalObject {
+      const current = document.objects.find((object) => object.id === objectId && object.revision === wantedRevision);
+      if (current) return structuredClone(current);
+      for (const event of state.events) {
+        if (!('documentId' in event) || event.documentId !== document.id || !event.payload || typeof event.payload !== 'object' || Array.isArray(event.payload)) continue;
+        const candidates = [event.payload.object, event.payload.previous];
+        if (event.type === 'plugin-release-changed' && Array.isArray(event.payload.objects)) {
+          for (const change of event.payload.objects) {
+            if (change && typeof change === 'object' && !Array.isArray(change)) candidates.push(change.object, change.previous);
+          }
+        }
+        for (const candidate of candidates) {
+          const result = EducationalObjectSchema.safeParse(candidate);
+          if (result.success && result.data.id === objectId && result.data.revision === wantedRevision) return structuredClone(result.data);
+        }
+      }
+      throw new CoreError('NOT_FOUND', 'The exact object revision is unavailable.');
 }
 
 function sourceRevisionExists(state: CoreSnapshot, document: LessonDocument, sourceId: string, revision: number): boolean {
@@ -178,6 +211,7 @@ function applyCommand(state: CoreSnapshot, actor: Actor, command: CoreCommand, a
         return object !== null && typeof object === 'object' && !Array.isArray(object) && object['id'] === command.object.id;
       });
       if (document.objects.some((object) => object.id === command.object.id) || previouslyUsed) throw new CoreError('ALREADY_EXISTS', 'Object identities cannot be reused, including after removal.');
+      validateMaterialAnchor(document, command.object);
       validateSources(state, document, command.object);
       const object = makeObject(command.object, actor, at);
       document.objects.push(object);
@@ -186,15 +220,27 @@ function applyCommand(state: CoreSnapshot, actor: Actor, command: CoreCommand, a
     }
     case 'replace-object': {
       const previous = findObject(document, command.object.id);
+      let replacement = command.object;
       if (previous.type !== command.object.type) throw new CoreError('INVALID_COMMAND', 'An existing object cannot change its type.');
+      if (previous.type === 'ink' && command.object.type === 'ink' && canonical(previous.data.anchor??null)!==canonical(command.object.data.anchor??null)) throw new CoreError('INVALID_REFERENCE','An annotation anchor is immutable.');
+      if (previous.type === 'material' && command.object.type === 'material' && (canonical(previous.data) !== canonical(command.object.data) || previous.width !== command.object.width || previous.height !== command.object.height)) throw new CoreError('INVALID_REFERENCE', 'Material page identity and size are immutable. Add another page instead.');
       if (previous.type === 'lab' && command.object.type === 'lab') {
         const {state: _oldState, ...beforeIdentity} = previous.data;
         const {state: _newState, ...afterIdentity} = command.object.data;
         if (canonical(beforeIdentity) !== canonical(afterIdentity)) throw new CoreError('INVALID_REFERENCE', 'Plugin identity, bundle and schema are immutable. An explicit migration is required.');
       }
+      if (previous.type === 'extension' && command.object.type === 'extension') {
+        const before = previous.data, after = command.object.data;
+        if(canonical(before.lineage??[])!==canonical(after.lineage??[]))throw new CoreError('INVALID_REFERENCE','Imported lineage cannot be rewritten by an instance edit.');
+        if (before.definition.typeId !== after.definition.typeId || before.definitionDigest !== after.definitionDigest && after.definition.version !== before.definition.version + 1 || before.definitionDigest === after.definitionDigest && before.definition.version !== after.definition.version) {
+          throw new CoreError('INVALID_REFERENCE', 'A changed extension definition needs its next explicit version; type identity is immutable.');
+        }
+        if(before.definitionDigest!==after.definitionDigest)replacement={...command.object,data:appendExtensionOrigin(after,extensionOrigin(before))};
+      }
+      validateMaterialAnchor(document, command.object);
       validateSources(state, document, command.object);
       const object = EducationalObjectSchema.parse({
-        ...command.object,
+        ...replacement,
         status: 'draft',
         revision: previous.revision + 1,
         provenance: { ...previous.provenance, ...(command.object.provenance ?? {}) },
@@ -215,6 +261,7 @@ function applyCommand(state: CoreSnapshot, actor: Actor, command: CoreCommand, a
       if (document.objects.some((object) => object.id !== previous.id && object.provenance.sources.some((source) => source.sourceId === previous.id))) {
         throw new CoreError('INVALID_REFERENCE', 'This source is cited by another object. Keep its provenance available.');
       }
+      if (document.objects.some(object => object.type === 'ink' && object.data.anchor?.objectId === previous.id)) throw new CoreError('INVALID_REFERENCE', 'Remove the page annotations before removing their material.');
       const removedConnections = document.connections.filter((connection) => connection.from === previous.id || connection.to === previous.id);
       document.objects = document.objects.filter((object) => object.id !== previous.id);
       document.connections = document.connections.filter((connection) => connection.from !== previous.id && connection.to !== previous.id);
@@ -250,6 +297,9 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
   const parsed = CoreSnapshotSchema.safeParse(raw === null ? emptySnapshot(options.workspaceId) : migrateSnapshotForOpen(raw));
   if (!parsed.success) throw new CoreError('INVALID_SNAPSHOT', 'The saved workspace is invalid or incompatible. Existing data was not replaced.');
   let state = structuredClone(parsed.data);
+  await validateExtensionDefinitions(state);
+  await validateCourseHistory(state);
+  await validateTutorHistory(state);
   const clock = options.clock ?? (() => new Date().toISOString());
   const id = options.id ?? (() => crypto.randomUUID());
   let queue: Promise<unknown> = Promise.resolve();
@@ -257,6 +307,8 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
   async function commit(next: CoreSnapshot): Promise<void> {
     const validated = CoreSnapshotSchema.safeParse(next);
     if (!validated.success) throw new CoreError('INVALID_COMMAND', 'The resulting state violates a Core invariant.');
+    await validateCourseHistory(validated.data);
+    await validateTutorHistory(validated.data);
     try { await options.storage.write(structuredClone(validated.data)); }
     catch { throw new CoreError('STORAGE_FAILURE', 'Saving failed. The command, events and receipt were not committed in memory.'); }
     state = validated.data;
@@ -276,7 +328,6 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
       if (!result.success) return Promise.reject(new CoreError('INVALID_COMMAND', 'Command does not satisfy the versioned contract.'));
       const command = structuredClone(result.data);
       const operation = queue.then(async () => {
-        if (actor.role !== 'teacher') throw new CoreError('FORBIDDEN', 'Only the teacher owner can edit in M0.');
         const fingerprint = await commandFingerprint(actor, command);
         const duplicate = state.receipts.find((receipt) => receipt.commandId === command.commandId);
         if (duplicate) {
@@ -288,6 +339,9 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
         const { document, payload } = applyCommand(next, actor, command, at);
         if ((command.kind === 'add-object' || command.kind === 'replace-object') && command.object.type === 'lab') {
           await validateLabUse(next, actor, command.object.data, options.pluginPolicy);
+        }
+        if ((command.kind === 'add-object' || command.kind === 'replace-object') && command.object.type === 'extension') {
+          await validateExtensionUse(state, command.object.data);
         }
         const eventId = newEventId(next);
         const event: CoreEvent = {
@@ -322,7 +376,6 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
       if (!result.success) return Promise.reject(new CoreError('INVALID_COMMAND', 'Module command does not satisfy the versioned contract.'));
       const command = structuredClone(result.data);
       const operation = queue.then(async () => {
-        if (actor.role !== 'teacher') throw new CoreError('FORBIDDEN', 'Only the teacher owner can manage modules in this preview.');
         const fingerprint = await commandFingerprint(actor, command);
         const duplicate = state.receipts.find(receipt => receipt.commandId === command.commandId);
         if (duplicate) {
@@ -359,6 +412,59 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
       queue = operation.catch(() => undefined);
       return operation;
     },
+    executeTutor(actorInput, commandInput) {
+      const actor = parseActor(actorInput), parsed = TutorCommandSchema.safeParse(commandInput);
+      if (!parsed.success) return Promise.reject(new CoreError('INVALID_COMMAND', 'Tutor command does not satisfy the versioned contract.'));
+      const command = structuredClone(parsed.data);
+      const operation = queue.then(async () => {
+        authorizeTutor(state, actor, command);
+        const fingerprint = await commandFingerprint(actor, command);
+        const duplicate = state.receipts.find(receipt => receipt.commandId === command.commandId);
+        if (duplicate) {
+          if (!('tutorEntity' in duplicate) || duplicate.actorId !== actor.actorId || duplicate.fingerprint !== fingerprint) {
+            throw new CoreError('IDEMPOTENCY_CONFLICT', 'This command identity already names a different request.');
+          }
+          return structuredClone(duplicate);
+        }
+        const next = structuredClone(state), at = clock();
+        const value = await applyTutor(next, actor, command, at), target = tutorTarget(command), eventId = newEventId(next);
+        const event: TutorEvent = {id: eventId, sequence: next.events.length + 1, ...target, entityRevision: value.revision,
+          type: command.kind, actorId: actor.actorId, actorRole: 'teacher', occurredAt: at, payload: {command, value}};
+        const receipt: TutorReceipt = {commandId: command.commandId, actorId: actor.actorId, fingerprint,
+          ...target, entityRevision: value.revision, eventId};
+        next.events.push(event); next.receipts.push(receipt); await commit(next);
+        return structuredClone(receipt);
+      });
+      queue = operation.catch(() => undefined); return operation;
+    },
+    getTutorSpace(actor) {return tutorSpace(state, parseActor(actor));},
+    executeCourse(actorInput, commandInput) {
+      const actor = parseActor(actorInput), parsed = CourseCommandSchema.safeParse(commandInput);
+      if (!parsed.success) return Promise.reject(new CoreError('INVALID_COMMAND', 'Course command does not satisfy the versioned contract.'));
+      const command = structuredClone(parsed.data);
+      const operation = queue.then(async () => {
+        authorizeCourse(state, actor, command);
+        const fingerprint = await commandFingerprint(actor, command);
+        const duplicate = state.receipts.find(receipt => receipt.commandId === command.commandId);
+        if (duplicate) {
+          if (!('courseEntity' in duplicate) || duplicate.actorId !== actor.actorId || duplicate.fingerprint !== fingerprint) {
+            throw new CoreError('IDEMPOTENCY_CONFLICT', 'This command identity already names a different request.');
+          }
+          return structuredClone(duplicate);
+        }
+        const next = structuredClone(state), at = clock();
+        const value = await applyCourse(next, actor, command, at), target = courseTarget(command), eventId = newEventId(next);
+        const event: CourseEvent = {id: eventId, sequence: next.events.length + 1, ...target, entityRevision: value.revision,
+          type: command.kind, actorId: actor.actorId, actorRole: actor.role, occurredAt: at, payload: {command, value}};
+        const receipt: CourseReceipt = {commandId: command.commandId, actorId: actor.actorId, fingerprint,
+          ...target, entityRevision: value.revision, eventId};
+        next.events.push(event); next.receipts.push(receipt); await commit(next);
+        return structuredClone(receipt);
+      });
+      queue = operation.catch(() => undefined); return operation;
+    },
+    getCourseSpace(actor) {return courseSpace(state, parseActor(actor));},
+    async readCourseLesson(actor, editionId, unitId) {return structuredClone(readCourseLesson(state, parseActor(actor), editionId, unitId));},
     executeLearning(actorInput, commandInput) {
       const actor = parseActor(actorInput);
       const result = LearningCommandSchema.safeParse(commandInput);
@@ -434,16 +540,14 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
     },
     listInstallations(actorInput) {
       const actor = parseActor(actorInput);
-      if (actor.role !== 'teacher') return [];
       return structuredClone(state.installations.filter(installation => installation.ownerId === actor.actorId));
     },
     getInstallation(actorInput, pluginId) {
       const actor = parseActor(actorInput);
-      return actor.role === 'teacher' ? structuredClone(findInstallation(state, actor, pluginId) ?? null) : null;
+      return structuredClone(findInstallation(state, actor, pluginId) ?? null);
     },
     listDocuments(actorInput) {
       const actor = parseActor(actorInput);
-      if (actor.role !== 'teacher') return [];
       return structuredClone(state.documents.filter((document) => document.ownerId === actor.actorId));
     },
     getDocument(actorInput, documentId) {
@@ -451,22 +555,14 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
     },
     getObjectRevision(actorInput, documentId, objectId, wantedRevision) {
       const document = requireOwner(state, parseActor(actorInput), documentId);
-      const current = document.objects.find((object) => object.id === objectId && object.revision === wantedRevision);
-      if (current) return structuredClone(current);
-      for (const event of state.events) {
-        if (!('documentId' in event) || event.documentId !== documentId || !event.payload || typeof event.payload !== 'object' || Array.isArray(event.payload)) continue;
-        const candidates = [event.payload.object, event.payload.previous];
-        if (event.type === 'plugin-release-changed' && Array.isArray(event.payload.objects)) {
-          for (const change of event.payload.objects) {
-            if (change && typeof change === 'object' && !Array.isArray(change)) candidates.push(change.object, change.previous);
-          }
-        }
-        for (const candidate of candidates) {
-          const result = EducationalObjectSchema.safeParse(candidate);
-          if (result.success && result.data.id === objectId && result.data.revision === wantedRevision) return structuredClone(result.data);
-        }
-      }
-      throw new CoreError('NOT_FOUND', 'The exact object revision is unavailable.');
+      return exactObjectRevision(state, document, objectId, wantedRevision);
+    },
+    async readAttemptSource(actorInput, documentId, attemptId, studentId) {
+      const work = readableLearnerWork(state, parseActor(actorInput), documentId, studentId);
+      const attempt = work?.attempts.find(entry => entry.id === attemptId);
+      const document = state.documents.find(entry => entry.id === documentId);
+      if (!attempt || !document) throw new CoreError('NOT_FOUND', 'The requested learning resource is unavailable.');
+      return exactObjectRevision(state, document, attempt.objectId, attempt.sourceObjectRevision);
     },
     events(actorInput, documentId) {
       requireOwner(state, parseActor(actorInput), documentId);
@@ -477,3 +573,11 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
   return service;
 }
 
+
+function validateMaterialAnchor(document: LessonDocument, object: NewEducationalObject) {
+  if (object.type !== 'ink' || !object.data.anchor) return;
+  const target = document.objects.find(o => o.id === object.data.anchor!.objectId);
+  if (!target || target.type !== 'material') throw new CoreError('INVALID_REFERENCE', 'An annotation must reference a material page in the same lesson.');
+}
+
+export {validateMaterialReference} from './materials';

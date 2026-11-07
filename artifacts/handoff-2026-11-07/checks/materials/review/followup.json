@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-materials-followup-review",
+  "reviewer": "/root/board_review",
+  "generatedAt": "2026-11-07T18:19:27.513112+00:00",
+  "verdict": "STATIC_FIXES_REVIEWED_FINAL_EVIDENCE_PENDING",
+  "finalPass": false,
+  "sourceFrozen": false,
+  "baselineSourceDigest": "81eec80ac69a13a6a13064fca63e780330a6e12de5e6881393c8d142f38b79dd",
+  "baselineFiles": 408,
+  "baselineIndependentlyConfirmedEarlier": true,
+  "sourceDigestAtReport": "43d28b6c2d0402435e27594a9055046d1bcabe9c4cd492e270d2f7209e37bf29",
+  "sourceFilesAtReport": 423,
+  "filesChangedFromBaseline": 55,
+  "fileSha256AtReport": {
+    "apps/web/src/materials/MaterialView.tsx": "97c086b53de8d10340100371072321ea9ed5639b2a8cc92bdfae23e8446fcde6",
+    "apps/web/src/materials/MaterialImport.tsx": "b956c185df2157448c5da75fb3e1e06e21446d46c026d2abfb89498a68ac65b3",
+    "apps/web/src/materials/files.ts": "b974fbef200100d453fa13605b1ea73ec87ca3cb3a0da7c6df6866951a839bcc",
+    "apps/web/src/materials/render-queue.ts": "d15706898ed5b4360795710d1b83376db47c6a4c2c6eb9cfbb61baf2b6168715",
+    "apps/web/src/materials/pdf-engine.ts": "9afe147a53727435783681d3added4a37d79e9e8a825834dae3e375b226f9013",
+    "apps/web/src/components/Board.tsx": "fae1ffbec2d28ec0477050a80888e9ec10025d6443676002404a89e776b6de41",
+    "apps/web/src/components/DocumentView.tsx": "ee31a82410bbfe6c7cd1d0ad2f09107cac10c168316b03fcc90f32d70caa46a8",
+    "apps/web/src/courses/CourseStudio.tsx": "655a5840504d889e4d51b869efa3b91300637b690755b814ff478b5dbe08f697",
+    "packages/remote-client/src/index.ts": "7a9b7aa0d83a7e4e1eca2d808aa231245d4ca3a46a2aa79a31ab5e6f53113f1b",
+    "packages/remote-client/src/offline.ts": "7007d8a6411537a80986a6e429365adc7449ab6f2aea54d44d589cac0189d04d",
+    "packages/server/src/materials.ts": "32cd83c42423d196ce9f2df6247478fba98812529d05ed013cacaaacb8654abf",
+    "packages/contracts/src/materials.ts": "ced940bccfb29ab3af8b3394b24a7e243ffb93a21c10ee769eee0fd21e24d666",
+    "packages/server/src/backup.ts": "f11c1d8d9721268bba78ba0d168ef8d000eadd7208fb77a3a21938c15ae1c165",
+    "e2e/materials.spec.ts": "0667c2fe7612026d5452c0b57bf52c6e77dc9313c9c9c8d37a9a75bc18dae86e",
+    "apps/web/src/offline-client.test.ts": "7eb4cd7bc55bd3f9aa0ac25f6b219211eea2769b3ff1808f23b88f5beea50af9",
+    "tools/check-budget.mjs": "3e8d8b0b8c9c00fed0fbb88a36fe217864016fe2e4a830f1e7cd442841946831",
+    "tools/program-budget.mjs": "4f004c9e98a0754efdde70dc826b1428b9b7e5c263017e27b08d3012e689ea17"
+  },
+  "findings": [
+    {
+      "id": "MATERIAL-01",
+      "priority": "P2",
+      "status": "ROOT_CAUSE_ADDRESSED_STATICALLY",
+      "evidence": "MaterialView.tsx:40 checks disposed after both lazy import and original.arrayBuffer; :50 destroys the task in finally; cleanup aborts queue signal and cancels render/task."
+    },
+    {
+      "id": "MATERIAL-02",
+      "priority": "P2",
+      "status": "ROOT_CAUSE_ADDRESSED_STATICALLY",
+      "evidence": "Manifest, original Blob and stable page objects are persisted before upload. IndexedDB account/generation checks and exact manifest/object CAS prevent replacing an existing intent. Reopen restores the draft; App add skips only already present identical objects; draft clears after onAdd confirms."
+    },
+    {
+      "id": "MATERIAL-03",
+      "priority": "P1",
+      "status": "ROOT_CAUSE_ADDRESSED_STATICALLY",
+      "evidence": "Board culls material and ink objects. MaterialView uses IntersectionObserver and resets offscreen canvas to 1x1. A shared serial promise queue covers render and inspection decoders; PDF task is destroyed after each render."
+    },
+    {
+      "id": "MATERIAL-04",
+      "priority": "P2",
+      "status": "ROOT_CAUSE_ADDRESSED_STATICALLY",
+      "evidence": "materialRasterSize receives decoded PDF viewport or bitmap dimensions, validates finite positive geometry and caps actual target width/height to 1600/2000 before assigning the canvas."
+    },
+    {
+      "id": "MATERIAL-05",
+      "priority": "P2",
+      "status": "ROOT_CAUSE_ADDRESSED_STATICALLY",
+      "evidence": "updateOfflineCopy enumerates material references across every snapshot document, verifies/downloads/persists originals first, and only then saves the snapshot and offlineSavedAt. Failures retain rejection for offline transitions and ACK cleanup."
+    },
+    {
+      "id": "MATERIAL-06",
+      "priority": "P2",
+      "status": "ROOT_CAUSE_ADDRESSED_STATICALLY",
+      "evidence": "Board focus and connection endpoints resolve materialPosition. Focus records selection only after the object exists. Derived reading/course views render anchored annotations as page-relative SVG overlay."
+    },
+    {
+      "id": "MATERIAL-07",
+      "priority": "P2",
+      "status": "FOUND_DURING_FOLLOWUP_THEN_ADDRESSED_STATICALLY",
+      "title": "A permanently refused durable draft blocked later imports in the lesson",
+      "trigger": "saveDraft succeeds, prepare-material permanently fails for quota; loaded objects disable file/range/license and the only old clear path depended on successful onAdd.",
+      "fixEvidence": "MaterialImport.tsx:46-51 now exposes an explicit abandon step and download of retained original; clearMaterialDraft only deletes the matching asset intent. The UI explains existing pages, pending commands and server originals remain.",
+      "runtimeAcceptance": "Pending final evidence. Source test exercises synthetic prepare refusal, exact retained-file download, abandon and enabled picker after reload; it does not yet reopen before abandon or complete a replacement import."
+    }
+  ],
+  "openObservations": [
+    {
+      "id": "MATERIAL-BUDGET-01",
+      "kind": "EVIDENCE_METRIC_PRECISION",
+      "location": "tools/check-budget.mjs:26",
+      "description": "previousCoreComparison still labels bytes all-non-program-assets-gzip but coreGzipBytes now excludes PDF assets as well as program assets. Preserve the historical metric using core+PDF, or rename it and add a faithful comparison. This is a reporting discrepancy, not a claim that total PDF cost is absent from v3 budgets.",
+      "status": "SENT_TO_ROOT"
+    }
+  ],
+  "testSourceObservations": [
+    "Five material browser scenarios read: PDF/original/ink/focus/offline, image plus corrupt PDF, interrupted upload resume, automatic offline update for unopened lesson, permanent-refusal draft abandon. No execution accepted in this follow-up.",
+    "The lost-response resume test at observation checks one final material and exact hash, but does not explicitly compare pre-failure assetId/page IDs with post-reopen IDs.",
+    "The abandon test at observation does not reopen the saved draft before abandoning or complete a new import afterwards. These are proof gaps, not additional confirmed implementation failures.",
+    "Offline-client unit source includes material original persistence failure, unchanged prior snapshot, refused offline transition, recovery and cold exact download. Render queue/raster and account-scoped durable draft unit sources read."
+  ],
+  "positiveStaticObservations": [
+    "The six preliminary root causes are addressed in source; no new confirmed unresolved P1/P2 implementation defect remains in this follow-up scope.",
+    "No concrete new IDOR confirmed. The material server, backup and contracts hashes are unchanged from preliminary review. MCP additionally requires exact owner and canonical page metadata match.",
+    "PDF loading remains lazy and local; legacy PDF.js build is pinned and auxiliary cmaps/fonts/wasm are local.",
+    "Material identity and ink anchor translation retain original samples; reading/course overlay removes the page anchor origin correctly."
+  ],
+  "pendingFinalAcceptance": [
+    "Root must provide a frozen source digest and final verify/browser/server/MCP evidence with matching source/build identity and retained first-attempt failures.",
+    "Check actual final REA artifact/build association, asset accounting including PDF worker/auxiliaries, docs/notices and reported limitations.",
+    "Do not inherit acceptance from the personal baseline, and do not claim current-source deployment, device/Safari/Pencil, full accessibility, arbitrary PDF corpus or general performance acceptance."
+  ],
+  "scopeLimits": [
+    "Read-only static follow-up against retained baseline; source is still evolving.",
+    "No tests, services, installations, source/index changes, Git or remote operations.",
+    "Only work/rea-materials/review/followup.* written."
+  ],
+  "method": {
+    "testsExecuted": false,
+    "servicesStarted": false,
+    "sourceModified": false,
+    "indexModified": false,
+    "gitOperations": false,
+    "remoteOperations": false,
+    "reportWritesOnly": true
+  },
+  "changedPathsFromBaseline": [
+    "apps/web/package.json",
+    "apps/web/src/App.tsx",
+    "apps/web/src/OfflineWorkspace.tsx",
+    "apps/web/src/RemoteWorkspace.tsx",
+    "apps/web/src/components/Board.tsx",
+    "apps/web/src/components/DocumentView.tsx",
+    "apps/web/src/components/Inspector.tsx",
+    "apps/web/src/components/ObjectContent.tsx",
+    "apps/web/src/components/StudioChrome.tsx",
+    "apps/web/src/courses/CourseStudio.tsx",
+    "apps/web/src/handout/HandoutView.tsx",
+    "apps/web/src/handout/latex.ts",
+    "apps/web/src/materials/MaterialImport.tsx",
+    "apps/web/src/materials/MaterialView.tsx",
+    "apps/web/src/materials/files.ts",
+    "apps/web/src/materials/materials.css",
+    "apps/web/src/materials/pdf-engine.ts",
+    "apps/web/src/materials/render-queue.test.ts",
+    "apps/web/src/materials/render-queue.ts",
+    "apps/web/src/offline-client.test.ts",
+    "e2e/materials.spec.ts",
+    "package-lock.json",
+    "packages/contracts/src/index.ts",
+    "packages/contracts/src/json.test.ts",
+    "packages/contracts/src/materials.ts",
+    "packages/core/src/courses.test.ts",
+    "packages/core/src/extensions.test.ts",
+    "packages/core/src/feedback.test.ts",
+    "packages/core/src/index.ts",
+    "packages/core/src/lab.test.ts",
+    "packages/core/src/learning.test.ts",
+    "packages/core/src/marketplace.test.ts",
+    "packages/core/src/materials.test.ts",
+    "packages/core/src/materials.ts",
+    "packages/core/src/tutor.test.ts",
+    "packages/mcp-core/src/adapter.ts",
+    "packages/mcp-core/src/index.ts",
+    "packages/remote-client/src/index.ts",
+    "packages/remote-client/src/materials.test.ts",
+    "packages/remote-client/src/materials.ts",
+    "packages/remote-client/src/offline.ts",
+    "packages/server/migrations/007_materials.sql",
+    "packages/server/src/backup.ts",
+    "packages/server/src/database.ts",
+    "packages/server/src/materials.ts",
+    "packages/server/src/requests.ts",
+    "packages/server/src/server.integration.test.ts",
+    "packages/server/src/store.ts",
+    "tools/build-offline-shell.mjs",
+    "tools/build.mjs",
+    "tools/check-budget.mjs",
+    "tools/mcp-runtime.test.mjs",
+    "tools/program-budget.mjs",
+    "tools/program-budget.test.mjs",
+    "tools/server.mjs"
+  ]
+}

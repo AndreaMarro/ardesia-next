@@ -1,0 +1,31 @@
+{
+  "kind": "ardesia-manual-observation",
+  "environment": {
+    "host": "macOS15.6 build24G84",
+    "browser": "Codex in-app browser",
+    "input": "mouse/keyboard",
+    "mobileHardware": "NOT_RUN"
+  },
+  "buildSourceDigest": "dd3c46a6c3df541d22070c29a6e5860dd9cc28faafb9c7e79c8ef764a941b266",
+  "observations": [
+    "Old offline shell remained after reload; closing/reopening the owned tab selected the updated shell without deleting local data",
+    "Course library and editor visually inspected",
+    "Original spring draft saved, immutable edition created, explicit teacher self-study started",
+    "Open answer retained while consulting model; answer saved",
+    "Activity selected, page reloaded, resume retained activity and saved answer"
+  ],
+  "userDesignApproval": false,
+  "limits": [
+    "No physical iPad/Apple Pencil/Safari or native app test",
+    "Manual observation predates final export-context change; final source has separate REA and automated reports"
+  ],
+  "releaseReopen": {
+    "sourceDigest": "081188333e269835da397aeed2959ce7a80f3d72552f1893c167f19f895f5458",
+    "actions": [
+      "Reloaded and closed old owned tab to allow new shell activation",
+      "Opened fresh local #corsi tab",
+      "Resumed original spring course, activity selected and original saved answer visible"
+    ],
+    "writes": false
+  }
+}

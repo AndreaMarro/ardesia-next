@@ -1,10 +1,17 @@
-import {useEffect, useState, useSyncExternalStore} from 'react';
+import {MaterialProvider} from './materials/MaterialView';
+import {lazy, Suspense, useEffect, useState, useSyncExternalStore} from 'react';
 import {createRemoteClient, type WorkspaceSummary} from '@ardesia/remote-client';
 import {App} from './App';
+import {ownsWorkspace} from '@ardesia/contracts';
+import {WorkspaceHome} from './components/WorkspaceHome';
+import {OfflineWorkspace} from './OfflineWorkspace';
+import {prepareOfflineShell} from './offline-shell';
+import {CourseStudio} from './courses/CourseStudio';
 import {LearnerSpace} from './LearnerSpace';
 import {newLesson} from './workspace';
 import {connectMarketplace, disconnectMarketplace, syncMarketplace} from './plugins/first-party';
 
+const TutorStudio = lazy(() => import('./tutor/TutorStudio'));
 const client = createRemoteClient();
 const selectionKey = (id: string) => 'ardesia-next-remote-workspace:' + id;
 function download(name: string, bytes: string) {
@@ -16,6 +23,10 @@ function legacyBytes() {try {return localStorage.getItem('ardesia-next.core.v1')
 export function RemoteWorkspace() {
   const state = useSyncExternalStore(client.subscribe, () => client.state);
   const projection = client.projection;
+  const [tutorOpen, setTutorOpen] = useState(() => location.hash === '#tutor');
+  function tutor(open: boolean) {setTutorOpen(open); history.replaceState(null, '', open ? '#tutor' : location.pathname);}
+  const [coursesOpen, setCoursesOpen] = useState(() => location.hash === '#corsi');
+  function courses(open: boolean) {setCoursesOpen(open); history.replaceState(null, '', open ? '#corsi' : location.pathname);}
   const [loading, setLoading] = useState(true), [busy, setBusy] = useState(false);
   const [configured, setConfigured] = useState<boolean | null>(null);
   const [username, setUsername] = useState(''), [password, setPassword] = useState('');
@@ -39,12 +50,24 @@ export function RemoteWorkspace() {
   useEffect(() => {
     let stopped = false;
     void fetch('/api/m3', {cache: 'no-store'}).then(response => response.json()).then(value => {if (!stopped) setConfigured(value?.result?.configured === true);}).catch(() => {if (!stopped) setConfigured(null);});
-    void client.session().then(discover).catch(reason => {if (reason?.code !== 'UNAUTHENTICATED' && !stopped) setError(reason instanceof Error ? reason.message : 'Servizio non disponibile.');}).finally(() => {if (!stopped) setLoading(false);});
+    void client.session().then(discover).catch(async reason => {
+      if (['NETWORK_ERROR', 'REQUEST_TIMEOUT'].includes(reason?.code)) {
+        try {await client.openOffline(); return;} catch { /* Show the original connectivity failure if no usable copy exists. */ }
+      }
+      if (reason?.code !== 'UNAUTHENTICATED' && !stopped) setError(reason instanceof Error ? reason.message : 'Servizio non disponibile.');
+    }).finally(() => {if (!stopped) setLoading(false);});
     return () => {stopped = true; disconnectMarketplace();};
   }, []);
   useEffect(() => {
+    const disconnected = () => setError(client.state.offlineAvailable
+      ? 'Rete assente. La bozza resta aperta. Per scrivere offline, apri la copia locale dalle Impostazioni.'
+      : 'Rete assente. La bozza resta aperta; le nuove modifiche non sono ancora confermate.');
+    window.addEventListener('offline', disconnected);
+    return () => window.removeEventListener('offline', disconnected);
+  }, []);
+  useEffect(() => {
     if (!projection || !state.account || manage) {disconnectMarketplace(); return;}
-    if (projection.actor.role === 'teacher') connectMarketplace(client.core, projection.actor, {refresh: client.refresh});
+    if (ownsWorkspace(projection)) connectMarketplace(client.core, projection.actor, {refresh: client.refresh});
     return disconnectMarketplace;
   }, [projection?.workspaceId, projection?.actor.actorId, state.account?.id, manage]);
   useEffect(() => {if (projection) syncMarketplace();}, [projection?.workspaceRevision]);
@@ -70,7 +93,7 @@ export function RemoteWorkspace() {
         void file.text().then(bytes => {setLegacy(bytes); setConfirmImport(false);});
       }}/></label>
       {legacy !== null && <><button className="secondary-button" onClick={() => download('ardesia-next-originale-locale.json', legacy)}>Esporta dati locali originali</button>
-        {state.account?.role === 'teacher' && <><label className="consent-option"><input type="checkbox" checked={confirmImport} onChange={event => setConfirmImport(event.target.checked)}/>
+        {state.account && <><label className="consent-option"><input type="checkbox" checked={confirmImport} onChange={event => setConfirmImport(event.target.checked)}/>
           La copia è mia: importala nell’account {state.account.displayName} ({state.account.id})</label>
           <p>Importerai una copia con gli stessi ID e lo storico. Dovrai autorizzare nuovamente i moduli.</p>
           <button className="primary-button" disabled={busy || !confirmImport} onClick={() => void perform(async () => {
@@ -82,10 +105,11 @@ export function RemoteWorkspace() {
     </section>;
   }
   if (loading) return <main className="boot-screen"><h1>Ardesia</h1><p>Verifica accesso…</p></main>;
+  if (client.offline) return <OfflineWorkspace key={client.offline.workspaceId} client={client}/>;
   const banner = <>
     {(error || state.error) && <div role="alert" className="remote-alert"><span>{error || state.error?.message}</span></div>}
     {state.recovery === 'invalid' && <section className="pending-panel"><h2>Copia di recupero da controllare</h2><p>Esporta l’originale prima di scartarlo.</p><button className="secondary-button" onClick={() => download('ardesia-next-recupero-originale.json', client.exportPendingRecovery() ?? '')}>Esporta recupero originale</button><button className="text-button" onClick={() => client.discardInvalidRecovery()}>Scarta copia di recupero non valida</button></section>}
-    {state.pending.length > 0 && <section className="pending-panel" aria-label="Modifiche da recuperare">
+    {state.pending.length > 0 && <section className="pending-panel pending-drawer" aria-label="Modifiche da recuperare"><details open={['conflict','uncertain','error'].includes(state.status)}><summary>{state.pending.length} modifiche da confermare · Apri recupero</summary>
       <h2>{state.status === 'conflict' ? 'Conflitto di revisione' : 'Modifiche in attesa di conferma'}</h2>
       <p>Verifica la richiesta inviata senza duplicarla. Riprendi poi esplicitamente le modifiche non inviate; le revisioni originali restano vincolanti.</p>
       {state.pending.map(pending => <div key={pending.commandId}><code>{pending.commandId}</code><span>{pending.status === 'blocked' ? 'Non inviata' : pending.status === 'queued' ? 'In coda, non inviata' : pending.status}</span>
@@ -97,7 +121,7 @@ export function RemoteWorkspace() {
       <button className="secondary-button" onClick={() => download('ardesia-next-comandi-da-recuperare.json', JSON.stringify(state.pending, null, 2))}>Esporta modifiche da recuperare</button>
       {projection && <button className="secondary-button" onClick={() => void perform(() => client.refresh())}>Rileggi dal server</button>}
       {state.recovery === 'memory' && <p>Esporta i comandi prima di chiudere: il browser non può conservarli.</p>}
-    </section>}
+    </details></section>}
   </>;
   if (!state.account) return <main className="account-page"><div className="account-card"><a className="wordmark" href="#">Ardesia<span>.</span></a><h1>Il tuo spazio</h1>
     <p>Accedi al tuo account.</p>
@@ -108,26 +132,29 @@ export function RemoteWorkspace() {
       <button className="primary-button" disabled={busy || configured === false}>Accedi</button>
     </form>{recovery()}</div></main>;
   const account = state.account;
-  if (manage || !projection || (account.role === 'teacher' && projection.documents.length === 0)) return <main className="account-page"><div className="account-card wide"><header className="account-heading"><h1>{account.displayName}</h1><button className="secondary-button" onClick={() => void perform(async () => {await client.logout(); setWorkspaces([]); setConfirmImport(false); setManage(false);})}>Esci</button></header>
-    <p>{account.role === 'teacher' ? 'Account docente' : 'Account studente'} · <code>{account.id}</code></p>{banner}
-    {projection && (account.role === 'student' || projection.documents.length > 0) && <button className="primary-button" onClick={() => setManage(false)}>Torna alla lezione</button>}
-    <button className="secondary-button" disabled={busy} onClick={() => void perform(async () => {setWorkspaces(await client.listWorkspaces());})}>Aggiorna i miei spazi</button>
-    <div className="lesson-list">{workspaces.map(workspace => <button className="lesson-row" key={workspace.workspaceId} onClick={() => void perform(() => select(workspace.workspaceId))}>{workspace.title}</button>)}</div>
-    {account.role === 'teacher' && <form className="account-form" onSubmit={event => {event.preventDefault(); void perform(async () => {
+  const personal = projection ? ownsWorkspace(projection) : false;
+  const canOpenTutor = personal && account.role === 'teacher';
+  if (manage || !projection || (personal && projection.documents.length === 0 && !coursesOpen && !(tutorOpen && canOpenTutor))) return <WorkspaceHome
+    account={account} projection={projection} workspaces={workspaces} title={title} onTitle={setTitle} busy={busy || state.pending.length > 0} banner={banner} recovery={recovery()}
+    onLogout={() => void perform(async () => {await client.logout(); setWorkspaces([]); setConfirmImport(false); setManage(false);})}
+    onSelect={id => void perform(() => select(id))} onRefresh={() => void perform(async () => setWorkspaces(await client.listWorkspaces()))}
+    onReturn={() => setManage(false)} onCourses={() => {setManage(false); courses(true);}} onTutor={() => {setManage(false); tutor(true);}}
+    onExport={() => void exportPersonal()} onCreate={() => void perform(async () => {
       let next = client.projection;
-      if (!next || manage) next = await client.createWorkspace(title.trim());
+      if (!next || manage || !ownsWorkspace(next)) next = await client.createWorkspace(title.trim());
       await newLesson(client.core, next.actor, title.trim());
-      try {sessionStorage.setItem(selectionKey(account.id), next.workspaceId);} catch { /* Optional selection. */ }
-      setTitle(''); setManage(false);
-    });}}><label>Titolo della lezione<input aria-label="Titolo prima lezione" value={title} onChange={event => setTitle(event.target.value)} required maxLength={240}/></label>
-      <button className="primary-button" disabled={busy}>Crea lezione nel mio account</button></form>}
-    {account.role === 'student' && !workspaces.length && <p>Attendi un’assegnazione dal docente, poi aggiorna gli spazi.</p>}
-    {projection && <button className="secondary-button" onClick={() => void exportPersonal()}>Esporta i miei dati autorizzati</button>}{recovery()}
-  </div></main>;
+      try {sessionStorage.setItem(selectionKey(account.id), next.workspaceId);} catch { /* Optional navigation preference. */ }
+      setTitle(''); setManage(false); setWorkspaces(await client.listWorkspaces());
+    })}/>;
   const saveStatus = state.status === 'confirmed' && state.pending.length === 0 ? 'Confermato dal server' : state.status === 'loading' ? 'Aggiornamento dal server…' : 'Salvataggio da verificare';
-  return <>{banner}{account.role === 'teacher'
-    ? <App key={projection.workspaceId} workspaceId={projection.workspaceId} core={client.core} actor={projection.actor} onEdit={client.edit} saveStatus={saveStatus} onAccount={() => {setManage(true); void client.listWorkspaces().then(setWorkspaces).catch(() => undefined);}} onExport={exportPersonal}/>
-    : <LearnerSpace key={projection.workspaceId} client={client} onAccount={() => {setManage(true); void client.listWorkspaces().then(setWorkspaces).catch(() => undefined);}}/>}
+  if (tutorOpen && canOpenTutor) return <>{banner}<Suspense fallback={<main className="boot-screen">Apertura dello studio…</main>}><TutorStudio key={projection.workspaceId} client={client} onClose={() => tutor(false)} onOpenLesson={id => {try {sessionStorage.setItem(`ardesia-next-document:${projection.actor.actorId}:${projection.workspaceId}`, id);} catch {setError('Seleziona la lezione dalla libreria.');} tutor(false);}}/></Suspense></>;
+  if (coursesOpen) return <MaterialProvider key={account.id+projection.workspaceId} access={client.materials}>{banner}<CourseStudio key={projection.workspaceId} client={client} onClose={() => courses(false)}/></MaterialProvider>;
+  return <MaterialProvider key={account.id+projection.workspaceId} access={client.materials}>{banner}{personal
+    ? <App onTutor={account.role === 'teacher' ? () => tutor(true) : undefined} onCourses={() => courses(true)} sourceRevision={projection.workspaceRevision} recordingAccess={client.recordings} offlineControl={transition => <section className="offline-settings"><h2>Continua anche senza rete</h2><p>Conserva su questo dispositivo le tue lezioni personali di questo spazio. Le nuove annotazioni restano da confermare online. Non sono inclusi lavori degli studenti o autorizzazioni dei moduli.</p><button className="secondary-button" disabled={busy} onClick={() => {
+        if (state.offlineAvailable) transition(() => perform(() => client.openOffline()));
+        else void perform(async () => {await prepareOfflineShell(); await client.makeAvailableOffline();});
+      }}>{busy ? 'Preparazione copia locale…' : state.offlineAvailable ? 'Usa copia offline' : 'Rendi disponibile offline'}</button>{error && <p role="alert">{error}</p>}</section>} pending={state.pending.filter(entry => entry.accountId === account.id)} key={projection.workspaceId} workspaceId={projection.workspaceId} core={client.core} actor={projection.actor} onEdit={client.edit} saveStatus={saveStatus} onAccount={() => {setManage(true); void client.listWorkspaces().then(setWorkspaces).catch(() => undefined);}} onExport={exportPersonal}/>
+    : <LearnerSpace onCourses={() => courses(true)} key={projection.workspaceId} client={client} onAccount={() => {setManage(true); void client.listWorkspaces().then(setWorkspaces).catch(() => undefined);}}/>}
     <div className="remote-status" aria-live="polite">{saveStatus} · <button onClick={() => void perform(() => client.refresh())}>Aggiorna</button></div>
-  </>;
+  </MaterialProvider>;
 }

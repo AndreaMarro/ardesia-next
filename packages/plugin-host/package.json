@@ -1,1 +1,15 @@
-{"name":"@ardesia/plugin-host","version":"0.1.0","private":true,"type":"module","exports":{".":"./src/index.ts"},"dependencies":{"@ardesia/plugin-sdk":"0.1.0"}}
+{
+  "name": "@ardesia/plugin-host",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./program": "./src/program-session.ts"
+  },
+  "dependencies": {
+    "@ardesia/plugin-sdk": "0.1.0",
+    "@jitl/quickjs-wasmfile-release-sync": "0.32.0",
+    "quickjs-emscripten-core": "0.32.0"
+  }
+}

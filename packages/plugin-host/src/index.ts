@@ -1,3 +1,4 @@
+export {compileExpression, renameExpression, expressionValue, compositionBody} from './composition';
 import {
   CapabilitySchema, PluginManifestSchema, PluginStateSchema, PluginResponseSchema,
   SDK_VERSION, PLUGIN_PROTOCOL, MAX_PLUGIN_RESPONSE_BYTES, isBoundedJson, resolveCapabilities

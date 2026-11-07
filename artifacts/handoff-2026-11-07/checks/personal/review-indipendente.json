@@ -1,0 +1,9 @@
+{
+  "sourceDigest": "81eec80ac69a13a6a13064fca63e780330a6e12de5e6881393c8d142f38b79dd",
+  "reviewer": "/root/board_review",
+  "verdict": "FAVORABLE_LOCAL_INCREMENT_ONLY",
+  "method": "Independent agent context, read-only static review and inspection of root-produced evidence; not human review or reviewer-executed tests.",
+  "openFindings": [],
+  "original": "review/final-review.json",
+  "originalSha256": "c184a7358ce4ba49503a5a12b4522dab86f72942677617aeebc0a52255a45d97"
+}

@@ -1,0 +1,517 @@
+{
+  "kind": "synthetic-audio-preview-fixture",
+  "generatedAt": "2026-11-07T10:30:26.202Z",
+  "origin": "http://127.0.0.1:4180",
+  "build": {
+    "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+    "sourceDigest": "ddf06e4251e40ac80561079519a0a36119137d4595fb64e90e23f4c3e772e718",
+    "generatedAt": "2026-11-07T10:28:19.723Z",
+    "application": "ardesia-next",
+    "milestone": "M3",
+    "persistence": "remote-postgres-required",
+    "remoteAcceptance": "INCOMPLETE",
+    "thirdPartyExecution": false
+  },
+  "workspaceId": "2e517233-c717-4d89-9a6c-e5a8869db00c",
+  "documentId": "513a923e-b582-43b6-adb1-3a103e521ef4",
+  "recordingId": "9e9304a1-58e7-41e1-981e-1401a553c6bd",
+  "inkId": "609d3e71-689b-42b7-9138-65dfc7580ea8",
+  "durationMs": 21905.44217687075,
+  "audio": {
+    "source": "macOS local say, installed Alice voice",
+    "sha256": "680179e213b5f2d27abe179f26214d74ac4dfe329ce85a73a69fafb4989632c4",
+    "bytes": 970126,
+    "physicalMicrophone": false,
+    "transcript": "imported, manually prepared approximate timecodes; not ASR"
+  },
+  "capture": {
+    "format": "ardesia-recording-v1",
+    "recordingId": "9e9304a1-58e7-41e1-981e-1401a553c6bd",
+    "documentId": "513a923e-b582-43b6-adb1-3a103e521ef4",
+    "title": "Spiegazione con voce sintetica · collaudo",
+    "capturedAt": "2026-11-07T10:30:26.138Z",
+    "baseRevision": 3,
+    "endRevision": 4,
+    "durationMs": 21905.44217687075,
+    "mimeType": "audio/wav",
+    "parts": [
+      {
+        "index": 0,
+        "bytes": 524288,
+        "sha256": "05d27dd1201b739abb2f692306fc9b2c25fa3b70583dfe234c141c91d9cb8e96"
+      },
+      {
+        "index": 1,
+        "bytes": 445838,
+        "sha256": "b077c0213f2120ca85e8b68e5b5c46878cab8c277d1d17b033962c3771236525"
+      }
+    ],
+    "timeline": [
+      {
+        "eventId": "5414b6fe-ffe8-44a3-8b35-f30e24b9528f",
+        "atMs": 6000,
+        "timing": "captured",
+        "ink": {
+          "objectId": "609d3e71-689b-42b7-9138-65dfc7580ea8",
+          "objectRevision": 1,
+          "sampleTimesMs": [
+            2000,
+            2066.6666666666665,
+            2133.3333333333335,
+            2200,
+            2266.6666666666665,
+            2333.3333333333335,
+            2400,
+            2466.6666666666665,
+            2533.3333333333335,
+            2600,
+            2666.6666666666665,
+            2733.333333333333,
+            2800,
+            2866.666666666667,
+            2933.3333333333335,
+            3000,
+            3066.666666666667,
+            3133.333333333333,
+            3200,
+            3266.6666666666665,
+            3333.333333333333,
+            3400,
+            3466.6666666666665,
+            3533.3333333333335,
+            3600,
+            3666.666666666667,
+            3733.3333333333335,
+            3800,
+            3866.666666666667,
+            3933.333333333333,
+            4000,
+            4066.666666666667,
+            4133.333333333334,
+            4200,
+            4266.666666666666,
+            4333.333333333334,
+            4400,
+            4466.666666666667,
+            4533.333333333333,
+            4600,
+            4666.666666666666,
+            4733.333333333334,
+            4800,
+            4866.666666666666,
+            4933.333333333333,
+            5000,
+            5066.666666666667,
+            5133.333333333334,
+            5200,
+            5266.666666666666,
+            5333.333333333334,
+            5400,
+            5466.666666666667,
+            5533.333333333333,
+            5600,
+            5666.666666666666,
+            5733.333333333334,
+            5800,
+            5866.666666666666,
+            5933.333333333333,
+            6000
+          ]
+        }
+      }
+    ]
+  },
+  "commands": [
+    {
+      "action": "command",
+      "workspaceId": "2e517233-c717-4d89-9a6c-e5a8869db00c",
+      "command": {
+        "kind": "create-document",
+        "expectedRevision": 0,
+        "title": "Energia elastica · audio sintetico",
+        "commandId": "9af25ea0-3de8-46ac-a89e-8fd673443fb6",
+        "documentId": "513a923e-b582-43b6-adb1-3a103e521ef4"
+      }
+    },
+    {
+      "action": "command",
+      "workspaceId": "2e517233-c717-4d89-9a6c-e5a8869db00c",
+      "command": {
+        "kind": "add-object",
+        "expectedRevision": 1,
+        "object": {
+          "id": "ca10d51b-1093-4d3e-be2b-7403b73cf9c3",
+          "type": "note",
+          "title": "Una legge, due previsioni",
+          "x": 70,
+          "y": 100,
+          "width": 310,
+          "height": 240,
+          "data": {
+            "text": "Molla ideale · energia E = ½kx². Se raddoppi x, l’energia quadruplica. Se raddoppi k a parità di x, l’energia raddoppia.\n\nCollaudo con voce sintetica locale Alice: nessun microfono reale. Marker e trascrizione importata preparati per la prova, non riconoscimento automatico."
+          }
+        },
+        "commandId": "323a37a2-773a-44f4-a5c4-7a993a9788ac",
+        "documentId": "513a923e-b582-43b6-adb1-3a103e521ef4"
+      }
+    },
+    {
+      "action": "command",
+      "workspaceId": "2e517233-c717-4d89-9a6c-e5a8869db00c",
+      "command": {
+        "kind": "add-object",
+        "expectedRevision": 2,
+        "object": {
+          "id": "8b1b200f-8eb9-44b2-a89d-808fc3fdc547",
+          "type": "formula",
+          "title": "Energia potenziale elastica",
+          "x": 450,
+          "y": 130,
+          "width": 320,
+          "height": 180,
+          "data": {
+            "latex": "E = \\frac{1}{2}kx^2",
+            "description": "k in N/m · x in m · E in joule. Modello elastico lineare ideale."
+          }
+        },
+        "commandId": "cc613b35-04be-419a-853c-40f3b11fcbb7",
+        "documentId": "513a923e-b582-43b6-adb1-3a103e521ef4"
+      }
+    },
+    {
+      "action": "command",
+      "workspaceId": "2e517233-c717-4d89-9a6c-e5a8869db00c",
+      "command": {
+        "kind": "add-object",
+        "expectedRevision": 3,
+        "object": {
+          "id": "609d3e71-689b-42b7-9138-65dfc7580ea8",
+          "type": "ink",
+          "title": "Tratto per collaudo del replay",
+          "x": 470,
+          "y": 350,
+          "width": 250,
+          "height": 120,
+          "data": {
+            "color": "#203e62",
+            "width": 3,
+            "points": [
+              {
+                "x": 0,
+                "y": 110,
+                "pressure": 0.45
+              },
+              {
+                "x": 4,
+                "y": 109.97083333333333,
+                "pressure": 0.455
+              },
+              {
+                "x": 8,
+                "y": 109.88333333333334,
+                "pressure": 0.46
+              },
+              {
+                "x": 12,
+                "y": 109.7375,
+                "pressure": 0.465
+              },
+              {
+                "x": 16,
+                "y": 109.53333333333333,
+                "pressure": 0.47000000000000003
+              },
+              {
+                "x": 20,
+                "y": 109.27083333333333,
+                "pressure": 0.47500000000000003
+              },
+              {
+                "x": 24,
+                "y": 108.95,
+                "pressure": 0.48
+              },
+              {
+                "x": 28,
+                "y": 108.57083333333334,
+                "pressure": 0.485
+              },
+              {
+                "x": 32,
+                "y": 108.13333333333334,
+                "pressure": 0.49
+              },
+              {
+                "x": 36,
+                "y": 107.6375,
+                "pressure": 0.495
+              },
+              {
+                "x": 40,
+                "y": 107.08333333333333,
+                "pressure": 0.5
+              },
+              {
+                "x": 44,
+                "y": 106.47083333333333,
+                "pressure": 0.505
+              },
+              {
+                "x": 48,
+                "y": 105.8,
+                "pressure": 0.51
+              },
+              {
+                "x": 52,
+                "y": 105.07083333333333,
+                "pressure": 0.515
+              },
+              {
+                "x": 56,
+                "y": 104.28333333333333,
+                "pressure": 0.52
+              },
+              {
+                "x": 60,
+                "y": 103.4375,
+                "pressure": 0.525
+              },
+              {
+                "x": 64,
+                "y": 102.53333333333333,
+                "pressure": 0.53
+              },
+              {
+                "x": 68,
+                "y": 101.57083333333334,
+                "pressure": 0.535
+              },
+              {
+                "x": 72,
+                "y": 100.55,
+                "pressure": 0.54
+              },
+              {
+                "x": 76,
+                "y": 99.47083333333333,
+                "pressure": 0.545
+              },
+              {
+                "x": 80,
+                "y": 98.33333333333333,
+                "pressure": 0.55
+              },
+              {
+                "x": 84,
+                "y": 97.1375,
+                "pressure": 0.555
+              },
+              {
+                "x": 88,
+                "y": 95.88333333333334,
+                "pressure": 0.56
+              },
+              {
+                "x": 92,
+                "y": 94.57083333333333,
+                "pressure": 0.5650000000000001
+              },
+              {
+                "x": 96,
+                "y": 93.19999999999999,
+                "pressure": 0.5700000000000001
+              },
+              {
+                "x": 100,
+                "y": 91.77083333333333,
+                "pressure": 0.575
+              },
+              {
+                "x": 104,
+                "y": 90.28333333333333,
+                "pressure": 0.5800000000000001
+              },
+              {
+                "x": 108,
+                "y": 88.7375,
+                "pressure": 0.585
+              },
+              {
+                "x": 112,
+                "y": 87.13333333333333,
+                "pressure": 0.59
+              },
+              {
+                "x": 116,
+                "y": 85.47083333333333,
+                "pressure": 0.595
+              },
+              {
+                "x": 120,
+                "y": 83.75,
+                "pressure": 0.6
+              },
+              {
+                "x": 124,
+                "y": 81.97083333333333,
+                "pressure": 0.605
+              },
+              {
+                "x": 128,
+                "y": 80.13333333333333,
+                "pressure": 0.61
+              },
+              {
+                "x": 132,
+                "y": 78.2375,
+                "pressure": 0.615
+              },
+              {
+                "x": 136,
+                "y": 76.28333333333333,
+                "pressure": 0.62
+              },
+              {
+                "x": 140,
+                "y": 74.27083333333333,
+                "pressure": 0.625
+              },
+              {
+                "x": 144,
+                "y": 72.2,
+                "pressure": 0.63
+              },
+              {
+                "x": 148,
+                "y": 70.07083333333333,
+                "pressure": 0.635
+              },
+              {
+                "x": 152,
+                "y": 67.88333333333333,
+                "pressure": 0.64
+              },
+              {
+                "x": 156,
+                "y": 65.63749999999999,
+                "pressure": 0.645
+              },
+              {
+                "x": 160,
+                "y": 63.333333333333336,
+                "pressure": 0.65
+              },
+              {
+                "x": 164,
+                "y": 60.97083333333333,
+                "pressure": 0.655
+              },
+              {
+                "x": 168,
+                "y": 58.550000000000004,
+                "pressure": 0.66
+              },
+              {
+                "x": 172,
+                "y": 56.07083333333333,
+                "pressure": 0.665
+              },
+              {
+                "x": 176,
+                "y": 53.533333333333346,
+                "pressure": 0.6699999999999999
+              },
+              {
+                "x": 180,
+                "y": 50.9375,
+                "pressure": 0.675
+              },
+              {
+                "x": 184,
+                "y": 48.283333333333324,
+                "pressure": 0.68
+              },
+              {
+                "x": 188,
+                "y": 45.57083333333334,
+                "pressure": 0.685
+              },
+              {
+                "x": 192,
+                "y": 42.79999999999998,
+                "pressure": 0.69
+              },
+              {
+                "x": 196,
+                "y": 39.97083333333333,
+                "pressure": 0.6950000000000001
+              },
+              {
+                "x": 200,
+                "y": 37.08333333333333,
+                "pressure": 0.7
+              },
+              {
+                "x": 204,
+                "y": 34.1375,
+                "pressure": 0.7050000000000001
+              },
+              {
+                "x": 208,
+                "y": 31.133333333333326,
+                "pressure": 0.71
+              },
+              {
+                "x": 212,
+                "y": 28.07083333333334,
+                "pressure": 0.715
+              },
+              {
+                "x": 216,
+                "y": 24.94999999999999,
+                "pressure": 0.72
+              },
+              {
+                "x": 220,
+                "y": 21.770833333333343,
+                "pressure": 0.725
+              },
+              {
+                "x": 224,
+                "y": 18.53333333333333,
+                "pressure": 0.73
+              },
+              {
+                "x": 228,
+                "y": 15.237499999999997,
+                "pressure": 0.735
+              },
+              {
+                "x": 232,
+                "y": 11.88333333333334,
+                "pressure": 0.74
+              },
+              {
+                "x": 236,
+                "y": 8.470833333333346,
+                "pressure": 0.745
+              },
+              {
+                "x": 240,
+                "y": 5,
+                "pressure": 0.75
+              }
+            ]
+          }
+        },
+        "commandId": "a53593e8-8872-4315-8f52-1d4c9a0b6f1e",
+        "documentId": "513a923e-b582-43b6-adb1-3a103e521ef4"
+      }
+    }
+  ],
+  "realBrowserObservation": {
+    "status": "OBSERVED",
+    "report": "manuale-mac.json",
+    "sourceDigest": "eed657f78653ed3a4f0cc9a0e4ec3c8ce7f5b1abf2628720ac6985cf0dabea8b"
+  }
+}

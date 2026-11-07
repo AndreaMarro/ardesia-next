@@ -1,0 +1,392 @@
+
+> ardesia-next@0.1.0 verify
+> node tools/verify.mjs
+
+Vercel configuration source bytes: PASS.
+Coordination structure verified; product acceptance remains separate.
+✔ rejects the pre-38 M4 scope before implementation, naming exact missing paths (1.476709ms)
+✔ valid current scope returns diagnostics without a grant or PASS evidence (0.468625ms)
+✔ refuses an unknown canonical task (0.157208ms)
+✔ refuses caller-expanded scope despite matching task identity (0.177917ms)
+✔ refuses caller-weakened exit criteria (0.206584ms)
+✔ does not start a done task (0.22775ms)
+✔ refuses an incomplete dependency (0.1795ms)
+✔ refuses a missing dependency observation (0.172875ms)
+✔ refuses an unresolved task blocker (0.209666ms)
+✔ refuses duplicate prerequisite IDs instead of last-write wins (0.175875ms)
+✔ refuses missing observations (0.105ms)
+✔ refuses unknown or unavailable capability (0.321709ms)
+✔ refuses a missing student fixture even when database is available (0.157625ms)
+✔ refuses an unknown effective execution profile (0.172208ms)
+✔ refuses unsupported effort or silent model substitution (0.332875ms)
+✔ refuses old observations when policy changes (0.142875ms)
+✔ refuses old observations when source changes (0.142875ms)
+✔ refuses requirements from an unadopted procedure (0.139583ms)
+✔ refuses reused READY when canonical task changes (0.309584ms)
+✔ refuses reused READY when requirements change (0.165292ms)
+✔ refuses expired or future observations (0.279167ms)
+✔ rejects invalid dates instead of normalizing them (0.088166ms)
+✔ does not confuse apps/web-old with apps/web (0.147334ms)
+✔ rejects traversal, globs, absolute and ambiguous repository paths (0.791584ms)
+✔ rejects missing required checks, rollback, or consumer (0.271666ms)
+✔ rejects duplicate capability reports (0.083291ms)
+✔ refuses mismatched requirement task identity (0.102ms)
+✔ requires immutable full SHAs and policy digest (0.211375ms)
+✔ input stays unchanged and output arrays are independent (0.1375ms)
+✔ does not invoke accessors or accept non-data input (0.067333ms)
+✔ rejects cyclic input without throwing (0.079625ms)
+✔ canonical digest ignores object key order but preserves array order (0.106084ms)
+✔ rejects arrays with an executable inherited prototype without invoking it (0.087125ms)
+✔ valid coordination is accepted without mutating the caller data (0.293708ms)
+✔ malformed roots, unknown fields and invented product acceptance are rejected (0.227083ms)
+✔ the current mandate cannot be weakened by changing policy flags or limits (5.954583ms)
+✔ required fields and impossible dates fail validation (0.311875ms)
+✔ duplicate observation, blocker and task identities are rejected (0.1375ms)
+✔ review-ready and done need evidence references and cannot use a PASS status (0.110834ms)
+✔ traversal, absolute paths, backslashes and glob scopes are refused (0.686125ms)
+✔ unknown task dependencies and cycles including self-cycles fail (0.130333ms)
+✔ unknown blockers and empty blocker explanations or sources fail (0.099792ms)
+✔ only in-progress increments count against the single-increment limit (0.0835ms)
+✔ claims require an existing active task and matching owner (0.079667ms)
+✔ claims require full SHA and a valid isolated branch (0.212084ms)
+✔ claimed paths must fall within the task scope (0.056292ms)
+✔ overlapping ancestors and duplicate paths are refused while sibling prefixes are separate (0.13925ms)
+✔ claim expiry is display-only and never grants takeover or time-dependent CI failure (0.15125ms)
+✔ canonical references must exist inside the supplied root and retain the acceptance engine (2.730416ms)
+✔ brief CLI prints operational context without manufacturing acceptance (1.47575ms)
+✔ brief retains a bounded deferred horizon without making future work active (0.205667ms)
+✔ canonical post-M3 work waits for transition without weakening the original gate (6.626875ms)
+✔ CLI rejects invalid coordination and unsupported flags before emitting a brief (1.669541ms)
+✔ observation kinds and references cannot become acceptance records or credentialed URLs (0.291833ms)
+✔ an in-progress increment requires a claim; malformed claims return errors without throwing (0.178708ms)
+✔ in-progress work cannot start before every direct dependency is done (0.192542ms)
+✔ in-progress work requires resolved associated blockers while review may wait on a freeze (0.078541ms)
+✔ real start includes bootstrap time and rejects future or overlapping starts (1.187333ms)
+✔ review cannot change the reviewed head, digest or PR while finishing (0.410583ms)
+✔ ready dispositions require no unresolved blockers for every task kind (0.20725ms)
+✔ Codex handoff requires an unexpired useful window while allowing a future start (0.355ms)
+✔ a valid ticket is structural coordination only and validation does not mutate it (0.071417ms)
+✔ malformed roots, missing fields and invented acceptance are refused without throwing (0.379209ms)
+✔ identity and dates must be full, explicit and possible (0.144916ms)
+✔ writable scopes reject traversal, filesystem roots, globs, metadata and empty scope (0.219083ms)
+✔ Codex and implementation tickets cannot target protected or malformed branches (0.310334ms)
+✔ evidence URLs are structural references and credentialed or malformed input is refused (0.145833ms)
+✔ claim requires the expected revision and creates bounded deadlines without mutating input (0.175042ms)
+✔ an existing claim blocks both actors even after every deadline has expired (0.177333ms)
+✔ wrong actors, Codex coordination and inactive Codex tickets are rejected (0.112333ms)
+✔ early or expired Codex tickets cannot start and a short remaining window retains closure time (0.13475ms)
+✔ Pro can reconcile an expired unclaimed Codex ticket but receives no product-work budget (0.237875ms)
+✔ an undated Pro coordination expiry keeps the prepared bootstrap usable and grants no Codex ticket (0.099625ms)
+✔ budget rejects wrong ownership, nonpositive or oversized commands, and backward or invalid clocks (0.586375ms)
+✔ Codex finishes review-ready only with verify PASS on the exact head and digest, routed to Pro (0.470792ms)
+✔ pending CI is preserved as WAITING_CI and never turns into review-ready through a handoff (0.247833ms)
+✔ BLOCKED must explain a real blocker and Pro may claim it for reconciliation (0.211125ms)
+✔ only Pro can complete an increment, requiring same-source CI and review without certifying product (0.324084ms)
+✔ Pro can hand off a new coordination task after completing the previous increment (0.288666ms)
+✔ finishing preserves control identity and rejects ownership, revision, scope and assignment drift (0.414708ms)
+✔ Pro hands off explicit new work to Codex but Codex cannot create its own successor (0.238875ms)
+✔ a late owner can record completion with an explicit overrun but its run ID cannot be replayed (0.152667ms)
+✔ contradictory same-source evidence cannot pass readiness while historical evidence remains identifiable (0.22875ms)
+✔ CLI validate is clock-independent and malformed JSON, flags and clock overrides fail closed (0.224709ms)
+✔ exported CLI entry supports a real-clock claim, budget and finish without subprocesses or file writes (0.295ms)
+✔ post-M3 selection reads baseline at the immutable procedure ref, never a local substitute (83.707167ms)
+✔ v1 historical coordination remains valid (0.056917ms)
+✔ v2 accepts Codex coordinator without a Pro worker (0.037208ms)
+✔ v2 rejects a Pro successor and active owner (0.255666ms)
+✔ Codex claim charges bootstrap time and does not mutate input (0.174292ms)
+✔ read-only bootstrap may overlap a prior run, but the next claim cannot overlap its release or reset the budget (0.407167ms)
+✔ stale expected revision and expired active claim cannot be taken over (0.145167ms)
+✔ explicit terminal recovery preserves source/evidence/deadlines and does not renew the failed run (1.724666ms)
+✔ expiry, native status alone, live writers and incomplete preservation cannot recover a claim (0.654583ms)
+✔ recovery cannot change the preserved assignment or hide a failure or pending CI (0.614833ms)
+✔ terminal recovery releases expired and short-window claims without creating a new ticket window (0.573083ms)
+✔ durable recovery summary binds the terminal receipt and preservation without exporting private reference text (0.480875ms)
+✔ migrate is explicit, inactive-only and preserves old evidence (0.170292ms)
+✔ same run may select one canonical implementation without resetting budget (0.313791ms)
+✔ selection rejects missing task, unmet dependency, blockers, overlapping claim and out-of-scope path (0.809583ms)
+✔ review can examine ready work despite a merge-only freeze, without granting writes (0.206625ms)
+✔ implementation cannot target protected branch or traversal (0.366833ms)
+✔ sequential WAITING_CI stays with Codex and keeps original pending run (0.347792ms)
+✔ Codex may hand off to its next scheduled cycle without self-accepting (0.208209ms)
+✔ completion requires exact CI, distinct review contexts and a matching review reference (1.062625ms)
+✔ review identity is immutable and old FAIL cannot be promoted to complete (0.540709ms)
+✔ expired packet supports reconciliation only, not product budget (0.120875ms)
+✔ source scope and gates are not granted by a valid cursor (0.079709ms)
+✔ one active increment forbids starting an unrelated implementation even with disjoint paths (0.172375ms)
+✔ malformed queue ownership cannot be silently ignored (0.731167ms)
+✔ duplicate canonical task and blocker identities are refused before selection (0.293666ms)
+✔ an implementation cannot hand off unfinished work as a new ready assignment (0.283542ms)
+✔ CLI v2 migration and assignment use existing files and never perform writes (0.445375ms)
+✔ a later cycle can select work from a completed packet without spending a scheduling-only slot (0.250917ms)
+✔ partial v1-to-v2 relabelling is rejected and unknown future versions stay unsupported (0.052583ms)
+✔ v2 WAITING_CI closes the current assignment near its deadline without extending it (0.320375ms)
+✔ v2 BLOCKED closes the current assignment near its deadline without extending it (0.311875ms)
+✔ v2 INTERRUPTED closes the current assignment near its deadline without extending it (0.309792ms)
+✔ v2 new HANDOFF still requires a useful successor window (0.177125ms)
+✔ v2 late closure records the overrun without extending an expired assignment (0.245625ms)
+✔ HANDOFF refuses missing task in an otherwise valid canonical queue (0.175834ms)
+✔ HANDOFF refuses scope escape in an otherwise valid canonical queue (0.154792ms)
+✔ HANDOFF refuses incomplete dependency in an otherwise valid canonical queue (0.169125ms)
+✔ HANDOFF refuses unresolved blocker in an otherwise valid canonical queue (0.164167ms)
+✔ HANDOFF refuses competing claim in an otherwise valid canonical queue (0.1915ms)
+✔ COMPLETE_INCREMENT may retain the exact existing claim for canonical closure (0.25225ms)
+✔ selection and HANDOFF reject hypothetical queues and changed mandate policy (10.481166ms)
+✔ retained completion still rejects author review, mismatched SHA, expiry and unsupported outcomes (0.539667ms)
+✔ canonical reconciliation emits only the completed row, evidence, next action and timestamp (0.824917ms)
+✔ reconciliation rejects wrong owner, scope, completion lineage, reviewer, policy and task claims (5.83675ms)
+✔ two consecutive increments reconcile and select successors inside one unchanged budget (1.095291ms)
+✔ CLI binds the queue to real immutable Git bytes and refuses a plausible invented task (13.188375ms)
+✔ coordination cannot discard an original pending CI through assign or HANDOFF (0.326625ms)
+✔ CLI retain, assign and reconcile emit recoverable JSON without writing their inputs (0.675708ms)
+✔ assign and HANDOFF preserve canonical criteria and permit additional bounded checks (0.485041ms)
+✔ reconciliation refuses a historical completion with weaker canonical criteria (0.452667ms)
+✔ same durable completion emits identical bytes at different times (0.575667ms)
+✔ published completion survives INTERRUPTED and a new legitimate claim without renewing that claim (1.33675ms)
+✔ replay after queue publication and explicit adoption is a no-op, conflicting receipt is rejected (0.782084ms)
+✔ a completion that released its own claim remains a durable release after intervening runs (0.782958ms)
+✔ changed canonical contracts, dependencies and blockers cannot inherit completion (0.736459ms)
+✔ a reopened canonical task cannot reuse its already recorded completion (0.588667ms)
+✔ reopened tasks reject aliases of recorded candidates and accept genuinely new candidates (1.61425ms)
+✔ removing or combining recorded proof references does not make a reopened completion fresh (0.784625ms)
+✔ post-M3 reconciliation is independent of the local checkout baseline (285.46725ms)
+✔ E1 adopted 1.2 selection rejects absent observations before selecting work (4.999958ms)
+✔ E1 real assign and HANDOFF enforce the same observed contract without changing inputs or budget (0.846708ms)
+✔ E1 real selection rejects unverified profiles, effort UNKNOWN, missing fixture/access and stale exact bindings (4.050584ms)
+✔ E1 consumer rejects unknown task, incomplete dependency, missing consumer path, unapproved requirements and hypothetical queue (1.264542ms)
+✔ E1 CLI pre-mutation budget refreshes source and observations; reading remains available (1.16925ms)
+✔ E2 reconciliation refuses changed readiness consumer (1.361792ms)
+✔ E2 reconciliation refuses changed readiness risk (0.992875ms)
+✔ E2 reconciliation refuses changed readiness paths (0.960166ms)
+✔ E2 reconciliation refuses changed readiness capability (0.95575ms)
+✔ E2 reconciliation refuses changed readiness evidence (0.970625ms)
+✔ E2 reconciliation refuses changed readiness profile (1.140708ms)
+✔ E2 reconciliation refuses changed readiness rollback (1.150167ms)
+✔ E2 reconciliation refuses changed readiness observation-window (1.277291ms)
+✔ E2 readiness addition and removal cannot inherit an earlier completion (1.656ms)
+✔ E2 unchanged and legacy readiness preserve cross-procedure completion and deterministic replay (2.047416ms)
+ℹ tests 160
+ℹ suites 0
+ℹ pass 160
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 501.900708
+Module boundaries: PASS (one app, public exports, declared dependency direction).
+✔ program budget retains the total cost and the initial threshold and explicit tutor total (0.981375ms)
+✔ program budget refuses eager interpreter, missing WASM, forged totals, duplicates and raised caps (0.166917ms)
+✔ PDF costs include worker mjs and support files, never permit eager loading or reclassification of existing assets (0.082125ms)
+✔ QA refuses resource aliases, credential-only changes, unbound restore targets and remote benchmark writes (0.455083ms)
+✔ E2E target defaults to a single local origin and preserves local artifact paths (0.439334ms)
+✔ E2E remote target requires explicit opt-in and existing stable staging (0.136791ms)
+✔ E2E target rejects credential-bearing, noncanonical and bypass URLs without echoing them (0.173083ms)
+✔ E2E real local configuration uses the same API/page/server origin and original outputs (160.324958ms)
+✔ E2E real remote configuration starts no local server and cannot overwrite local evidence (160.074ms)
+✔ local projects have distinct budgets and stable identities inside each scenario (0.319458ms)
+✔ remote credentials remain exact and unknown local projects fail closed without leaking values (0.120208ms)
+✔ remote E2E missing or duplicate credentials fails before launch and preserves gate evidence (103.278333ms)
+✔ missing platform access or a failed preflight cannot launch browser login or create workspaces (113.192167ms)
+✔ remote E2E rejects overrides that could replace the configuration or gate artifacts (458.911417ms)
+✔ a failed remote child has no DB credentials or seeding flag and writes only a negative regression summary (320.007458ms)
+✔ remote API transport sends one OIDC header only to its exact origin and disables redirects/retries/TLS overrides (26.536541ms)
+✔ real 302 and 307 responses cannot forward an OIDC token or login body to another origin (2.797291ms)
+✔ transport and malformed JSON failures discard driver call logs, response bodies and causes (2.886625ms)
+✔ a shared platform token does not share application cookies between request contexts (3.174792ms)
+✔ routed transport uses the same no-redirect policy and never installs global browser headers (2.705208ms)
+✔ local API calls and contexts do not acquire platform credentials (1.089084ms)
+✔ context cleanup preserves earlier failures without treating intentional close aborts as remote faults (0.174792ms)
+✔ direct Playwright output and trace overrides fail before output cleanup or network access (535.717042ms)
+✔ actual remote configuration rejects diagnostic and JSON output environments during import (961.44975ms)
+✔ acceptance producer binds twelve observed counterproofs to local evidence and unchanged deployment (2.64ms)
+✔ acceptance producer refuses partial, stale, secret-bearing or unsafe operator evidence (5.524083ms)
+✔ acceptance credentials and diagnostic guards run before browser or database access (0.332959ms)
+✔ persisted browser evidence contains pseudonyms and excludes operator account selectors and salt (0.19325ms)
+✔ offline assembly consumes collected evidence without browser credentials or new remote writes (57.957ms)
+✔ M3 public source needs an observed owner instruction and cannot substitute it for remote evidence (1.049709ms)
+✔ M3 local evidence passes independently; missing remote proof cannot become ACCEPTED (0.547792ms)
+✔ M3 verification, named test suites and report bytes must match the current source (0.625833ms)
+✔ M3 browser summary cannot invent flows, ignore skips/flakes or substitute a different machine report (0.847291ms)
+✔ private source: M3 remote requires protected non-loopback Vercel, exact deployment, CI SHA and report digest (2.4225ms)
+✔ private source: M3 continuity needs three identities, distinct cookie jars/sessions and exact persisted IDs, revisions and state (1.531584ms)
+✔ private source: M3 remote counterproofs cannot be missing, relabeled booleans, unsupported assertions or secret-bearing records (5.662458ms)
+✔ public source: M3 remote requires protected non-loopback Vercel, exact deployment, CI SHA and report digest (1.941292ms)
+✔ public source: M3 continuity needs three identities, distinct cookie jars/sessions and exact persisted IDs, revisions and state (1.140834ms)
+✔ public source: M3 remote counterproofs cannot be missing, relabeled booleans, unsupported assertions or secret-bearing records (5.239ms)
+✔ historical M3 requires every original report and rejects changed bytes and identity (29.375167ms)
+✔ freeze progression needs original evidence and cannot authorize production, spending or jobs (18.884667ms)
+✔ status advances from the complete historical M3 without accepting a new candidate (62.825041ms)
+✔ M4 preparation requires final-source Verify, bound unit and consumer bytes (0.467208ms)
+✔ M4 rejects missing checks, second domains/stores, skipped tests and asserted acceptance even with recomputed digest (0.373667ms)
+✔ M4 shallow head plus scientific parent still needs the exact assigned base for a reuse diff (176.483833ms)
+✔ M4 recognizes the real consumer separately from isolated preparation and changed source (1.2965ms)
+✔ M4 requires both browser controls, executed PostgreSQL, bound reports, runtime reuse and integral budget (2.055791ms)
+✔ M4 remote refuses different builds/deployments, open SSO, missing observations and non-DRAFT state (2.531875ms)
+✔ status reports an observed older consumer without certifying current source or human acceptance (63.010292ms)
+✔ remote preflight validates exact target, identity and short-lived access before any request (0.268833ms)
+✔ remote preflight performs only protected read checks with no redirects, cookies or application passwords (1.751583ms)
+✔ anonymous public access, untrusted redirects and duplicate redirect destinations stop before authorized access (0.500834ms)
+✔ authenticated redirects are not followed or returned as build success (0.265375ms)
+✔ SHA or digest mismatch stops before session probes or browser fixture writes (0.289125ms)
+✔ a platform environment mismatch is reported without retaining provider bodies or credentials (0.170209ms)
+✔ unrecognized provider error values cannot enter the report or override a valid application response (0.407667ms)
+✔ HTML protection, malformed JSON, invalid UTF-8 and oversized bodies fail without retaining content (0.796417ms)
+✔ an unavailable PostgreSQL authority fails before login or further probes (0.14275ms)
+✔ incorrect application session or Origin rejection fails closed (0.203292ms)
+✔ request exceptions cannot copy secrets, URLs or driver errors into the report (0.112417ms)
+✔ a changed identity during preflight blocks the browser phase (0.145125ms)
+✔ the request timeout also bounds a response that never finishes its JSON body (26.36725ms)
+✔ public source requires a closed, explicit owner instruction limited to this repository source (0.248041ms)
+✔ private source: observed Vercel SSO redirects are accepted only for the deployment origin (0.060791ms)
+✔ private source: 401/403 remain valid and an explicit null provider target is preview (0.033708ms)
+✔ private source: anonymous 200, unrecognized status and incomplete redirects fail closed (0.045708ms)
+✔ private source: spoofed host, protocol, path and different decoded target origin are rejected (0.115791ms)
+✔ private source: a production provider target never becomes a preview by relabeling evidence (0.04175ms)
+✔ private source: source, build-info and CI must all correspond to the current immutable revision (0.06525ms)
+✔ private source: essential state, URL, deployment identity and observation time cannot be omitted (0.088416ms)
+✔ public source: observed Vercel SSO redirects are accepted only for the deployment origin (0.050208ms)
+✔ public source: 401/403 remain valid and an explicit null provider target is preview (0.021167ms)
+✔ public source: anonymous 200, unrecognized status and incomplete redirects fail closed (0.035791ms)
+✔ public source: spoofed host, protocol, path and different decoded target origin are rejected (0.071083ms)
+✔ public source: a production provider target never becomes a preview by relabeling evidence (0.02925ms)
+✔ public source: source, build-info and CI must all correspond to the current immutable revision (0.02975ms)
+✔ public source: essential state, URL, deployment identity and observation time cannot be omitted (0.100042ms)
+✔ M1 accepts only a complete current-source local and protected remote experiment (0.219958ms)
+✔ M1 rejects every missing evidence group and non-boolean success claims (0.188375ms)
+✔ M1 requires all named verification checks, especially signed-plugin, on the same SHA and source digest (0.133292ms)
+✔ M1 does not accept test totals without executed Host, model, protocol and Core assertions (0.189167ms)
+✔ M1 binds the parsed unit report content to current verification instead of accepting a stale success report (0.099708ms)
+✔ M1 browser evidence needs every actual desktop and mobile scenario, with no skipped, failed or flaky tests (0.308625ms)
+✔ M1 requires an actual protected remote reopen on the exact current release (0.502875ms)
+✔ M2 requires M1 plus actual Core, Host, catalog, browser counterproofs and protected remote lifecycle (0.26325ms)
+✔ M2 rejects a missing security counterproof, stale build, missing test suite or forged success flag (1.042584ms)
+✔ M2 remote record must demonstrate current installation, consent, same state, reload and disable in order (1.417083ms)
+ℹ tests 87
+ℹ suites 0
+ℹ pass 87
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3447.938167
+
+ RUN  v5.0.5 /Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next
+
+ ❯ packages/server/src/server.integration.test.ts (33 tests | 1 failed) 11916ms
+   ✓ M4 distributed release policy (1)
+     ✓ accepts the exact signed Poiseuille pressure and flow states through the shipped Host 46ms
+   ✓ PostgreSQL transport policy (3)
+     ✓ enables verified TLS for a remote URL and retains an explicitly trusted CA after pg parses it 4ms
+     ✓ refuses remote URL and option downgrades instead of letting pg replace certificate verification 0ms
+     ✓ checks the actual query-selected host and recognizes only explicit loopback endpoints 0ms
+   ❯ M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) (29)
+     ✓ uses a restricted runtime role and hashes credentials/tokens instead of persisting them 1ms
+     ✓ continues to connect to the real isolated loopback database without requiring TLS 2ms
+     ✓ rejects unauthenticated, CSRF, forged role/owner fields and account-switch requests 9ms
+     ✓ creates learner-owned spaces without role promotion and rejects authoring in assigned containers 196ms
+     ✓ persists exact course editions, private work and revocation through restricted PostgreSQL without implicit lesson grants 218ms
+     ✓ denies IDOR and filters private work from the teacher and second student 12ms
+     ✓ serializes competing revisions and returns the original receipt after a lost response 8ms
+     ✓ rolls back the entire snapshot, receipt and event when storage rejects the update 5ms
+     ✓ checks revoked assignments before duplicate receipts or reads and honors evidence revocation 14ms
+     ✓ preserves exact laboratory IDs/state across independent sessions and rejects stale plugin or consent use 250ms
+     ✓ M4 Poiseuille PostgreSQL preserves exact revisions and private student state; rejects invalid writes and revocation 706ms
+     ✓ rejects tampered releases and scientific states using the signed Host runtime 29ms
+     ✓ serializes competing tutor bookings and payments, retains v7 bytes on reads and excludes students 36ms
+     ✓ migrates stored v4 on read without writes and keeps feedback, source access and retries authorized 199ms
+     ✓ imports v1/v2/v3 explicitly into fresh containers and preserves original bytes, IDs and receipts 15ms
+     ✓ reserves imported actor identities against later account provisioning 163ms
+     ✓ rejects an existing alias collision before listing or returning any private workspace data 182ms
+     ✓ serializes racing account provisioning and legacy import without admitting an identity collision 165ms
+     ✓ preserves imported learner owner aliases and permits personal audio without a teaching role 10ms
+     ✓ withdraws device plugin consent through Core during import, requiring explicit remote reconsent 6ms
+     ✓ rejects corrupt imports atomically without deleting any local source 1ms
+     ✓ stores exact recording bytes and transcripts through restricted HTTP transactions, with recovery, isolation and erasure 109ms
+     × stores immutable originals, enforces lesson authorization and revocation, validates backups and denies forged pages 25ms
+     ✓ validates extension integrity before restoring even when the backup has no audio 37ms
+     ✓ backs up and restores synthetic data into an empty database without passwords, sessions or overwrites 743ms
+     ✓ restores disabled source accounts and never re-enables disabled targets, with session revocation in the same transaction 1454ms
+     ✓ rejects expired, revoked and logged-out sessions before reads or retries 168ms
+     ✓ isolates project login budgets while fresh sessions keep identity and the thirteenth valid login stays forbidden 4128ms
+     ✓ applies durable rate limits and fails closed when the service is not configured 1948ms
+ ✓ packages/plugin-host/src/program.test.ts (34 tests) 1548ms
+   ✓ programmable engine boundary (8)
+     ✓ interrupts hostile computation: const huge=[];while(true)huge.push(new Array(100000).fill(123)); 1321ms
+ ✓ apps/web/src/offline-client.test.ts (21 tests) 574ms
+ ✓ apps/web/src/workspace-queue.test.ts (12 tests) 372ms
+ ✓ apps/web/src/recordings/capture.test.ts (7 tests) 336ms
+ ✓ apps/web/src/plugins/bundle-transport.test.ts (4 tests) 316ms
+   ✓ first-party byte transport, before mandatory Host verification (4)
+     ✓ roundtrips both real signed releases through the packer/decoder/Host and refuses altered shared bytes 314ms
+ ✓ packages/contracts/src/json.test.ts (8 tests) 275ms
+ ✓ apps/web/src/build/ui-runtime.test.ts (1 test) 123ms
+ ✓ packages/core/src/learning.test.ts (18 tests) 95ms
+ ✓ apps/web/src/workspace-shared-recovery.test.ts (4 tests) 86ms
+ ✓ packages/core/src/marketplace.test.ts (22 tests) 84ms
+ ✓ packages/core/src/tutor.test.ts (12 tests) 66ms
+ ✓ packages/plugin-host/src/runtime.test.ts (27 tests) 66ms
+ ✓ apps/web/src/components/Icons.test.ts (30 tests) 64ms
+ ✓ packages/remote-client/src/recordings.test.ts (1 test) 58ms
+ ✓ packages/remote-client/src/client.test.ts (28 tests) 56ms
+ ✓ packages/mcp-core/src/adapter.test.ts (16 tests) 48ms
+ ✓ packages/core/src/courses.test.ts (11 tests) 47ms
+ ✓ packages/core/src/extensions.test.ts (9 tests) 38ms
+ ✓ packages/core/src/feedback.test.ts (7 tests) 36ms
+ ✓ packages/core/src/lab.test.ts (26 tests) 33ms
+ ✓ apps/web/src/workspace.test.ts (5 tests) 29ms
+ ✓ apps/web/src/workspace-recovery-storage.test.ts (4 tests) 28ms
+ ✓ packages/core/src/personal.test.ts (2 tests) 22ms
+ ✓ packages/core/src/core.test.ts (15 tests) 21ms
+ ✓ packages/core/src/recordings.test.ts (5 tests) 18ms
+ ✓ apps/web/src/plugins/first-party-authorization.test.ts (4 tests) 15ms
+ ✓ packages/plugin-host/src/marketplace.test.ts (15 tests) 16ms
+ ✓ apps/web/src/plugins/first-party-epoch.test.ts (1 test) 15ms
+ ✓ packages/remote-client/src/browser-storage.test.ts (7 tests) 16ms
+ ✓ packages/core/src/materials.test.ts (2 tests) 15ms
+ ✓ apps/web/src/tutor/values.test.ts (3 tests) 15ms
+ ✓ plugins/ideal-spring/src/model.test.ts (35 tests) 14ms
+ ✓ apps/web/src/creator/ExtensionView.test.ts (3 tests) 14ms
+ ✓ apps/web/src/build/offline-worker.test.ts (5 tests) 13ms
+ ✓ packages/lesson-os/src/replay.test.ts (7 tests) 12ms
+ ✓ apps/web/src/components/board-geometry.test.ts (6 tests) 11ms
+ ✓ packages/remote-client/src/materials.test.ts (1 test) 11ms
+ ✓ apps/web/src/components/ScienceView.test.ts (3 tests) 11ms
+ ✓ apps/web/src/handout/latex.test.ts (6 tests) 10ms
+ ✓ plugins/poiseuille/src/model.test.ts (21 tests) 7ms
+ ✓ packages/plugin-sdk/src/catalog.test.ts (19 tests) 6ms
+ ✓ packages/lesson-os/src/handout.test.ts (4 tests) 6ms
+ ✓ plugins/ideal-spring/src/handler.test.ts (9 tests) 6ms
+ ✓ packages/lesson-os/src/projections.test.ts (4 tests) 6ms
+ ✓ apps/web/src/creator/definitions.test.ts (3 tests) 5ms
+ ✓ packages/lesson-os/src/learning-diary.test.ts (2 tests) 4ms
+ ✓ packages/mcp-core/src/prompt.test.ts (5 tests) 4ms
+ ✓ packages/plugin-host/src/composition.test.ts (18 tests) 4ms
+ ✓ packages/plugin-host/src/policy.test.ts (3 tests) 4ms
+ ✓ apps/web/src/recordings/recovery.test.ts (1 test) 3ms
+ ✓ apps/web/src/materials/render-queue.test.ts (2 tests) 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > stores immutable originals, enforces lesson authorization and revocation, validates backups and denies forged pages
+AssertionError: expected 422 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 422
+
+ ❯ packages/server/src/server.integration.test.ts:682:210
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 51 passed (52)
+      Tests  1 failed | 550 passed (551)
+   Start at  19:07:39
+   Duration  20.78s (tests 90%, import 9%, transform 1%)
+
+    Isolate  52 workers spawned · ~42ms startup each (spawn + environment, per file)
+             at least ~2.16s faster with isolate: false — reuses workers across files instead of one per file
+
+JSON report written to /Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/artifacts/unit.json

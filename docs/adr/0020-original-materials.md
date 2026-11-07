@@ -1,0 +1,35 @@
+# ADR0020 — Materiali originali nella stessa lezione
+
+Stato: preparazione locale isolata del 7 novembre 2026. Nessuna integrazione remota o accettazione del prodotto completo. Le ricevute finali identificano il sorgente effettivamente verificato.
+
+## Esperienza e identità
+
+Il percorso aggiunge PDF, PNG, JPEG e WebP dalla regia Materiali. L’anteprima scorre il documento autentico; l’utente sceglie le pagine da portare sulla lavagna e dichiara i diritti. Ogni pagina è un oggetto `material` con ID stabile, hash dell’originale, pagina, dimensioni e licenza. Il file completo resta scaricabile byte per byte; il canvas è soltanto una rappresentazione. Materiali importati ed esercizi restano DRAFT. L’importazione non attesta diritti, scientificità o assenza di contenuti ostili.
+
+Un tratto che comincia sulla pagina conserva `anchor.objectId` e l’origine della pagina al momento della scrittura. La posizione visualizzata applica la traslazione della pagina corrente; i campioni originali non vengono riscritti. Identità, dimensioni e contenuto della pagina non possono essere sostituiti attraverso replace-object. Questa prima esperienza non offre rotazione o ridimensionamento delle pagine; la traslazione ha quindi un mapping preciso. Per rimuovere una pagina vanno prima rimossi i tratti che la usano. Taccuino/lettura mostrano le annotazioni sopra il materiale. L’export LaTeX e la dispensa esistente conservano il riferimento e dichiarano l’assenza dei byte; non sono un roundtrip del materiale.
+
+## Autorità, originali e recupero
+
+Contratti0.10, snapshot9 e SQL007. Snapshot1–8 si aprono attraverso migrazione in memoria: nessuna riscrittura durante la lettura, nessuna accettazione retroattiva di material/anchor nei vecchi formati. Il comando successivo salva il nuovo formato. Core mantiene oggetti, eventi, ricevute, ancore e geometria; PostgreSQL conserva originali/parti nella medesima autorità e transazione autenticata. Nessun base64 entra negli eventi o nello snapshot; il base64 è solo trasporto dei chunk512KiB. Manifest immutabile, SHA256 dei chunk e dell’intero file, dimensioni e firma del formato verificati prima del finish. Firma/MIME non equivalgono a decodifica o sanitizzazione completa: browser e renderer devono comunque rifiutare file non leggibili.
+
+Upload riservato al proprietario della lezione, indipendentemente dal ruolo. Lettura assegnata solo attraverso una lezione attualmente autorizzata che riferisce il materiale, o una revisione esatta autorizzata dal corso. Ogni richiesta ricontrolla l’accesso. Originali non ancora associati a una pagina sono privati del proprietario. Hash non equivale ad autenticazione dell’autore. Nessuna risorsa esterna viene scaricata da un URL fornito nel materiale.
+
+Prima dell’upload, il Remote Client conserva nel medesimo IndexedDB/gate una bozza con Blob originale, manifest e gli ID delle pagine scelte. La riapertura riprende lo stesso intento; la recovery si elimina soltanto dopo conferma delle pagine. Gli ACK incerti delle pagine usano la coda documentale già esistente. Una seconda bozza differente per la stessa lezione non sovrascrive la prima. Un abbandono esplicito offre prima il download del file conservato e cancella soltanto quella bozza tramite CAS; pagine confermate, recovery documentale e originali sul server rimangono separati. Il copia-incolla di snapshot non importa i byte. Gli originali confermati rimangono conservati anche dopo la rimozione delle pagine, per mantenere la storia; erasure/garbage collection generale non fanno parte di questo incremento.
+
+La copia offline è personale e non costituisce una sessione né un’autorizzazione server. Prima di salvare una nuova revisione della copia, ogni originale referenziato è verificato e reso durevole; un guasto conserva la copia precedente e la recovery. Gate/account/spazio e checksum proteggono letture locali, riapertura e cambio account. Nessuna AI o connessione è necessaria ai nuovi tratti nella copia preparata.
+
+Backupv4 include originali e chunk. Restore valida binding, hash, parti, riferimenti attuali e storici prima di scrivere nel target vuoto; supporta i vecchi envelopev2/v3 verificandone prima il checksum originale. Un rollback al codice precedente non rende leggibili gli snapshot9: servirebbe una migrazione inversa esplicita con analisi delle perdite, non un restore distruttivo.
+
+## Renderer, prestazioni e interoperabilità
+
+PDF.js6.5.438 Apache-2.0, distribuzione compatibile ufficiale `legacy` per i browser che non implementano ancora Map/WeakMap.getOrInsertComputed. Il termine riguarda il bundle del donor, non l’architettura di Ardesia. Parsing worker della stessa versione, CMap/font/WASM locali; niente viewer, scripting manager, AnnotationLayer interattivo o XFA. Immagini decodificate in canvas; niente SVG/HTML attivi. Il buffer trasferito al worker è una copia dell’originale. Cleanup copre cambio pagina/account e attese asincrone; timeout20s, una decodifica attiva globale, rendering solo vicino al viewport, raster massimo1600×2000 calcolato sulle dimensioni decodificate. Questi controlli non costituiscono una certificazione di sicurezza del decoder o una prova di fluidità Pencil.
+
+PDF engine e supporti si caricano su richiesta; la shell offline li include solo con preparazione esplicita. La policy di risorse v3 contabilizza `.mjs`, CMap, font e WASM del nuovo renderer separatamente, senza riclassificare asset preesistenti o aumentare i tetti Core272KiB/iniziale240KiB/programma320KiB gzip. Nuovo tetto PDF3MiB gzip/6MiB raw: include il costo completo dei supporti, oltre ai JS. Limiti attuali: originale32MiB, immagini40Mpixel,1000pagine per PDF,256MiB di originali per spazio. Sono difese dichiarate della prima implementazione; servono misure reali prima di ampliarli.
+
+MCP legge manifest e chunk verificati mediante `ardesia_read_material` con ID/revisione esatta della pagina corrente, stesso HTTP e stessa ACL. Creazione/composizione delle pagine già caricate usa preview/apply documentali. Upload binario da host commerciali, MCP remoto/OAuth, OCR e ricerca full-text dei PDF non sono attestati.
+
+## REA, prove e limiti
+
+REA6.8 è usato su PDF.js, navigazione pagine e import immagini Excalidraw: commit/licenze, byte/hash, AST, unknown e limiti sono nel dossier. Nessun codice sorgente donor viene trapiantato: si usa la dipendenza pubblicata e si implementano consumer originali. REA non supporta upload locale e cancella i download osservati; i test browser separati verificano file chooser e originali scaricati. Il runtime REA parte da fixture durevoli e osserva le azioni effettivamente disponibili.
+
+Sono richieste controprove per originali corrotti, upload interrotto e riaperto, byte esportati, pagina/ink spostati, cold-open offline, revoca, accesso attraverso corso, backup/restore e carico del decoder. Review non autrice e Verify sul sorgente finale precedono la consegna locale. Mac/iPad installabili, Safari e Apple Pencil fisica, collaborazione simultanea, erasure completa, grandi PDF reali e host ChatGPT/Claude/Gemini restano da collaudare o completare.

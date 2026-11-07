@@ -1,0 +1,12 @@
+{"mode":"desktop","evidenceId":"ev_a2977a1cdf9040e16e04b4b237b342ee04ae78b81d29d1fbc466d2be23566fad","steps":23,"complete":"incomplete","failed":[{"id":"write-on-page","status":"failed","error":"Analysis operation timed out after 8000ms: capture_browser_scenario"},{"id":"saved-annotation","status":"cancelled","error":"not executed after an earlier action failure"},{"id":"move-page","status":"cancelled","error":"not executed after an earlier action failure"},{"id":"notebook","status":"cancelled","error":"not executed after an earlier action failure"},{"id":"annotated-page","status":"cancelled","error":"not executed after an earlier action failure"},{"id":"reader","status":"cancelled","error":"not executed after an earlier action failure"},{"id":"reading","status":"cancelled","error":"not executed after an earlier action failure"},{"id":"home-again","status":"cancelled","error":"not executed after an earlier action failure"},{"id":"saved-space","status":"cancelled","error":"not executed after an earlier action failure"},{"id":"reopen","status":"cancelled","error":"not executed after an earlier action failure"},{"id":"notebook-again","status":"cancelled","error":"not executed after an earlier action failure"},{"id":"reopened-original","status":"cancelled","error":"not executed after an earlier action failure"}]}
+file:///Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/work/run-rea-materials.mjs:20
+ if(summary.steps.some(s=>s.status!=='completed'))throw Error('Scenario incomplete');
+                                                        ^
+
+Error: Scenario incomplete
+    at file:///Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/work/run-rea-materials.mjs:20:57
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.22.1

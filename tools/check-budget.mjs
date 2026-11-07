@@ -1,7 +1,8 @@
 import {readdirSync, readFileSync, mkdirSync, writeFileSync} from 'node:fs';
 import {gzipSync} from 'node:zlib';
+import {PROGRAM_BUDGET,programBudgetTotals,programBudgetMatches} from './program-budget.mjs';
 import {identity} from './evidence.mjs';
-function javascriptFiles(dir) {return readdirSync(dir, {withFileTypes:true}).flatMap(entry => entry.isDirectory() ? javascriptFiles(`${dir}/${entry.name}`) : entry.name.endsWith('.js') ? [`${dir}/${entry.name}`] : []);}
+function javascriptFiles(dir) {return readdirSync(dir, {withFileTypes:true}).flatMap(entry => entry.isDirectory() ? javascriptFiles(`${dir}/${entry.name}`) : (/\.(?:m?js|wasm)$/.test(entry.name)||dir.includes('/pdf-runtime')) ? [`${dir}/${entry.name}`] : []);}
 const assets = javascriptFiles('apps/web/dist');
 const manifest = JSON.parse(readFileSync('apps/web/dist/.vite/manifest.json', 'utf8'));
 const initialFiles = new Set();
@@ -16,16 +17,18 @@ function initial(key) {
 }
 for (const [key, entry] of Object.entries(manifest)) if (entry.isEntry) initial(key);
 if (!initialFiles.size) throw Error('Build manifest has no initial JavaScript entry.');
-const files = assets.map(name => ({file: name.slice('apps/web/dist/'.length), gzipBytes: gzipSync(readFileSync(name)).byteLength}));
+const files = assets.map(name => ({file: name.slice('apps/web/dist/'.length), rawBytes:readFileSync(name).byteLength,gzipBytes: gzipSync(readFileSync(name)).byteLength}));
 if ([...initialFiles].some(file => !files.some(asset => asset.file === file))) throw Error('Initial JavaScript is missing from the distributed files.');
-const bytes = files.reduce((total, file) => total + file.gzipBytes, 0);
-const initialJavaScriptGzipBytes = files.filter(file => initialFiles.has(file.file)).reduce((total, file) => total + file.gzipBytes, 0);
-const limit = 240 * 1024;
-const report = {...identity(), metric: 'all-javascript-gzip-bytes', bytes, limit, passed: bytes <= limit,
-  initialJavaScriptGzipBytes, deferredJavaScriptGzipBytes: bytes - initialJavaScriptGzipBytes,
-  loadingMetric: 'Static entry/import graph; deferred code remains included in the total gate; not a measured network trace',
-  files: files.map(file => ({...file, initial: initialFiles.has(file.file)})), physicalPerformanceTest: 'NOT_RUN'};
+const totals=programBudgetTotals(files);
+const initialJavaScriptGzipBytes=files.filter(file=>initialFiles.has(file.file)).reduce((sum,file)=>sum+file.gzipBytes,0);
+const report={...identity(),metric:'core-and-optional-runtimes-v3',...totals,limits:PROGRAM_BUDGET,
+  initialJavaScriptGzipBytes,deferredJavaScriptGzipBytes:totals.allJavaScriptGzipBytes-initialJavaScriptGzipBytes,
+  previousCoreComparison:{metric:'all-non-program-assets-gzip',bytes:totals.coreGzipBytes+totals.pdfGzipBytes,limit:245760,passed:totals.coreGzipBytes+totals.pdfGzipBytes<=245760},
+  legacyComparison:{metric:'all-javascript-gzip-bytes',bytes:totals.allJavaScriptGzipBytes,limit:245760,passed:totals.allJavaScriptGzipBytes<=245760},
+  loadingMetric:'Static module graph; runtime network deferral is tested separately. No existing asset is reclassified as optional. All JS and WASM raw/gzip costs are retained.',
+  files:files.map(file=>({...file,initial:initialFiles.has(file.file)})),physicalPerformanceTest:'NOT_RUN'};
+report.passed=programBudgetMatches(report);
 mkdirSync('artifacts', {recursive: true}); writeFileSync('artifacts/budget.json', JSON.stringify(report, null, 2));
-console.log(`JavaScript gzip: ${Math.round(bytes / 1024)} KiB / ${limit / 1024} KiB budget.`);
-if(bytes > limit) process.exit(1);
+console.log(JSON.stringify({coreGzipBytes:report.coreGzipBytes,optionalGzipBytes:report.optionalGzipBytes,allGzipBytes:report.allGzipBytes,limits:report.limits,legacyComparison:report.legacyComparison,passed:report.passed}));
+if(!report.passed)process.exit(1);
 

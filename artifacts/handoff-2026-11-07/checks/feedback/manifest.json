@@ -1,0 +1,482 @@
+{
+  "kind": "ardesia-delivery-file-manifest",
+  "generatedAt": "2026-11-07T11:57:41.250Z",
+  "sourceDigest": "283a31d7c03badc41c50c7a724cd693b2dcbf3b59f09fac8cb1689b1ed93b840",
+  "files": [
+    {
+      "file": "Avvia Ardesia.command",
+      "sha256": "cf1f7fa8644a9abacbc3c28b1ebf27d39f3a230fbc896dea3a6a504bb89eacc9",
+      "bytes": 727
+    },
+    {
+      "file": "LEGGIMI.md",
+      "sha256": "8be7180f354954d4457ad4486b3b24c6220452d00e7b8cbac826de6b05743ecd",
+      "bytes": 9395
+    },
+    {
+      "file": "LEZIONE-FEEDBACK.md",
+      "sha256": "c1898d699a979d3324884b3ae9b5f893e3f3340cb2bf4337b50bffdff55feb11",
+      "bytes": 3649
+    },
+    {
+      "file": "ardesia-next.patch",
+      "sha256": "aedb427ee0b77afdd14fa6e5964b6def6adc577efeeff4404b2f62e5789c6528",
+      "bytes": 656088
+    },
+    {
+      "file": "verifiche/README.md",
+      "sha256": "d81f4521575110a257a1f0b45c4deb62d42ed30dd4a60157f50e4bb9fd39194f",
+      "bytes": 2160
+    },
+    {
+      "file": "verifiche/esito.json",
+      "sha256": "14b089b4f7b3e9374410c1e2dbde93618a10f2cd53d0f413f7c21bb14b566249",
+      "bytes": 2217
+    },
+    {
+      "file": "verifiche/feedback/README.md",
+      "sha256": "1b403cb3d4c918d71ea39b1322b33eea0543c79d6c161c24f74f26c0427ce5d9",
+      "bytes": 6575
+    },
+    {
+      "file": "verifiche/feedback/anteprima-feedback.json",
+      "sha256": "6f097956431fae235a9cf712a3c3db55c29c1411dda128e7071bbb3f511dc6b9",
+      "bytes": 5308
+    },
+    {
+      "file": "verifiche/feedback/attempt-01/budget.json",
+      "sha256": "e28562c443b69a6d4dd43df12bd97cadba9bf7f334cebee0175c6cb2933b1655",
+      "bytes": 1228
+    },
+    {
+      "file": "verifiche/feedback/attempt-01/mcp-runtime.json",
+      "sha256": "d6e948a51db4895abe9ca5eb82c3b4ea12233c7da434152ba7df93bf3e0436c1",
+      "bytes": 1757
+    },
+    {
+      "file": "verifiche/feedback/attempt-01/server-runtime.json",
+      "sha256": "d12ec42bc1043bd906d19e7d34c4f23cf3797605bba469921985dc93fde4a02f",
+      "bytes": 929
+    },
+    {
+      "file": "verifiche/feedback/attempt-01/unit.json",
+      "sha256": "7ebed699cee92455065d5829642ac63a6dbef9e4d411210b2ad9b2cbf9ddb441",
+      "bytes": 174058
+    },
+    {
+      "file": "verifiche/feedback/attempt-01/verification.json",
+      "sha256": "f1d6dc4f203ef2fd3c9ace71461abb23d605eab61dab1560875c8cfec996ca4e",
+      "bytes": 1072
+    },
+    {
+      "file": "verifiche/feedback/attempt-01/verify.log",
+      "sha256": "04c5b1e5331023dcbebd82d82c10da855ecfc1de6f55c687bbf83b1e47100364",
+      "bytes": 33558
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/browser-evidence.json",
+      "sha256": "4b20de50016a5f667fb731ee4b0f51b4338310a16ec7088664f01d9706c6fef0",
+      "bytes": 602
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/browser.log",
+      "sha256": "78b7704522518a63e285ec815fe8af7da32aca3ef34deb4085662c74b3eb5f80",
+      "bytes": 22526
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/budget.json",
+      "sha256": "6287d148d5700e820da83c7c6ae192253f14f76905e3684d811e94c3e936f706",
+      "bytes": 1228
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/e2e.json",
+      "sha256": "6628a52c34edbdf285cb01d6578dd4b4437ecbe469ed5d692f4eeffdabaa8289",
+      "bytes": 45247
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/mcp-runtime.json",
+      "sha256": "a930256183b34dd64105ff4b7a01696492a3e84dfcf9b9e7ff0982e429c5b1f9",
+      "bytes": 1757
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/server-runtime.json",
+      "sha256": "19b09b8ce96b8dd9d4410f2f910b62e04879bf2608a99ecabbf184a8b91cf894",
+      "bytes": 929
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/test-results/.last-run.json",
+      "sha256": "7be14df97f08379677c5334e6eadc24fcf5b0aee7a4c89568dd7132e7c7e20d1",
+      "bytes": 341
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-desktop-chromium/error-context.md",
+      "sha256": "2fc3e750a437135a9244954057a811f7193f0011e6278097046f0240413e1110",
+      "bytes": 4384
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-desktop-chromium/test-failed-1.png",
+      "sha256": "d624ac7bc578433c7bb600c1b5841fa5b2030e7a9526031201d54bb26e5739b8",
+      "bytes": 6233
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-desktop-chromium/test-failed-2.png",
+      "sha256": "8908900032056a5268a72596251c603c5bc8bcdee3adef75150536fd0cf66557",
+      "bytes": 66217
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-mobile-chromium/error-context.md",
+      "sha256": "1fb112cc2bacffedb2f16c5712f9806e4b64008b4e4436d7a21a6c099e3c3026",
+      "bytes": 4096
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-mobile-chromium/test-failed-1.png",
+      "sha256": "e0cee512bb5df3f1dc5ef706cb008831e2624f0c85a6d591dc4fd4852dd8edb9",
+      "bytes": 11702
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-mobile-chromium/test-failed-2.png",
+      "sha256": "ebc9e01cfe6224ca01a68f0bb7cf0e406abc814e4a47acdbd2ac60392c41ee48",
+      "bytes": 119763
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/test-results/feedback-late-teacher-ackn-e37d6-ocation-and-renewed-sharing-desktop-chromium/error-context.md",
+      "sha256": "a84e34632e979a9f3d232881e86b8d6e1ae08a370a439dbcb4a890fb3831804e",
+      "bytes": 4374
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/test-results/feedback-late-teacher-ackn-e37d6-ocation-and-renewed-sharing-desktop-chromium/test-failed-1.png",
+      "sha256": "d624ac7bc578433c7bb600c1b5841fa5b2030e7a9526031201d54bb26e5739b8",
+      "bytes": 6233
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/test-results/feedback-late-teacher-ackn-e37d6-ocation-and-renewed-sharing-desktop-chromium/test-failed-2.png",
+      "sha256": "c0cad2b498315a30d564228bba69c8f98f14898a307241d6062cc81eca5bce04",
+      "bytes": 61481
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/test-results/feedback-late-teacher-ackn-e37d6-ocation-and-renewed-sharing-mobile-chromium/error-context.md",
+      "sha256": "1fb112cc2bacffedb2f16c5712f9806e4b64008b4e4436d7a21a6c099e3c3026",
+      "bytes": 4096
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/test-results/feedback-late-teacher-ackn-e37d6-ocation-and-renewed-sharing-mobile-chromium/test-failed-1.png",
+      "sha256": "e0cee512bb5df3f1dc5ef706cb008831e2624f0c85a6d591dc4fd4852dd8edb9",
+      "bytes": 11702
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/test-results/feedback-late-teacher-ackn-e37d6-ocation-and-renewed-sharing-mobile-chromium/test-failed-2.png",
+      "sha256": "ebc9e01cfe6224ca01a68f0bb7cf0e406abc814e4a47acdbd2ac60392c41ee48",
+      "bytes": 119763
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/test-results/feedback-lost-feedback-ack-62eeb-d-stale-drafts-stay-blocked-desktop-chromium/error-context.md",
+      "sha256": "a84e34632e979a9f3d232881e86b8d6e1ae08a370a439dbcb4a890fb3831804e",
+      "bytes": 4374
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/test-results/feedback-lost-feedback-ack-62eeb-d-stale-drafts-stay-blocked-desktop-chromium/test-failed-1.png",
+      "sha256": "d624ac7bc578433c7bb600c1b5841fa5b2030e7a9526031201d54bb26e5739b8",
+      "bytes": 6233
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/test-results/feedback-lost-feedback-ack-62eeb-d-stale-drafts-stay-blocked-desktop-chromium/test-failed-2.png",
+      "sha256": "c0cad2b498315a30d564228bba69c8f98f14898a307241d6062cc81eca5bce04",
+      "bytes": 61481
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/test-results/feedback-lost-feedback-ack-62eeb-d-stale-drafts-stay-blocked-mobile-chromium/error-context.md",
+      "sha256": "1fb112cc2bacffedb2f16c5712f9806e4b64008b4e4436d7a21a6c099e3c3026",
+      "bytes": 4096
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/test-results/feedback-lost-feedback-ack-62eeb-d-stale-drafts-stay-blocked-mobile-chromium/test-failed-1.png",
+      "sha256": "e0cee512bb5df3f1dc5ef706cb008831e2624f0c85a6d591dc4fd4852dd8edb9",
+      "bytes": 11702
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/test-results/feedback-lost-feedback-ack-62eeb-d-stale-drafts-stay-blocked-mobile-chromium/test-failed-2.png",
+      "sha256": "ebc9e01cfe6224ca01a68f0bb7cf0e406abc814e4a47acdbd2ac60392c41ee48",
+      "bytes": 119763
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/unit.json",
+      "sha256": "5454ee610f1df53357747d32c449de294de025849a6fe2652a60c477634f21ca",
+      "bytes": 174545
+    },
+    {
+      "file": "verifiche/feedback/attempt-02/verification.json",
+      "sha256": "7bee9968d43854677e0e94a389a819c373f7d49800415a1e828f69596946618b",
+      "bytes": 1072
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/browser-evidence.json",
+      "sha256": "0e8e6c7b3c4e7c78d22f65384346e23d14266c68b5f675c298b4340155fb6e87",
+      "bytes": 4715
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/browser.log",
+      "sha256": "eac96b70c03afcaa01782f50c43457884338c5dfec3f537925814ecec4ab9fd6",
+      "bytes": 28280
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/budget.json",
+      "sha256": "f8e8f7c33c87df0b0e2340d0aa9b08b387241842de752cd7ce88c41bccadfc76",
+      "bytes": 1228
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/e2e.json",
+      "sha256": "221a8353ab16b3112e47b0f3c289e7e4f9375cf73b623588220768c76ec73fba",
+      "bytes": 147586
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/login-limits.json",
+      "sha256": "1cc554f82d2d4c7a6fe13408bba0702f6fb6f009e410166bc7257514ab2a951e",
+      "bytes": 278
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/mcp-runtime.json",
+      "sha256": "14e4acaaa5188009493220be6baae652447048e84f7bb191089b8a66c2e0feb2",
+      "bytes": 1757
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/server-runtime.json",
+      "sha256": "01c4db579698f9451b535885c333fda236581ddcef36b61e7018eacc59ad4904",
+      "bytes": 929
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/.last-run.json",
+      "sha256": "bb73b00e59adae08ca43e2a26481e4c0dff53500e287c3cd625062019da0cd0d",
+      "bytes": 145
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-desktop-chromium/learner-diary.png",
+      "sha256": "b70ae53b0010a4f7dba59d9bbe35c711c9a67c5e6cc82800403b2f29f56d45cd",
+      "bytes": 110755
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-desktop-chromium/teacher-feedback.png",
+      "sha256": "80fff9cfcc71e6b5fe7ea156cfcbbe371a3f5a23afc6b83da9ba408ac8e84a2f",
+      "bytes": 233374
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-mobile-chromium/learner-diary.png",
+      "sha256": "6732c9c98b234a5fdd0057b61ad8393ceed9a594f0b9c8f6ce11dee24f427900",
+      "bytes": 235104
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-mobile-chromium/teacher-feedback.png",
+      "sha256": "6592102860ed2e4ba464c0e50ef254cbaed9737c2b7e35bb343c47af8261bea3",
+      "bytes": 287569
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/m3-acceptance--QA-acceptan-d8529-eight-browser-counterproofs-desktop-chromium/test-failed-1.png",
+      "sha256": "4686dbcc74bbf12ed028390fc162be5dd9741a2f5d2a24023195e2927d5c4891",
+      "bytes": 154007
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/m3-acceptance--QA-acceptan-d8529-eight-browser-counterproofs-desktop-chromium/test-failed-2.png",
+      "sha256": "b61f8fb7656ac6ea88948b9b7460a3eee6bf25eeeae13343f273f5a84bf1820d",
+      "bytes": 147588
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/m3-acceptance--QA-acceptan-d8529-eight-browser-counterproofs-desktop-chromium/test-failed-3.png",
+      "sha256": "358bf2ef6e27c41cec4c75c180859846c7f18a484bf192cceb43cebf8ff18aca",
+      "bytes": 92336
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/m3-acceptance--QA-acceptan-d8529-eight-browser-counterproofs-desktop-chromium/test-failed-4.png",
+      "sha256": "615b484d80f52cdde1439efb461009d41a4dbf1a5fb0925a9b7a194b79d63bca",
+      "bytes": 57018
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/m3-acceptance--QA-acceptan-d8529-eight-browser-counterproofs-mobile-chromium/test-failed-1.png",
+      "sha256": "930612fbedcbe5e30c01d3b5506cfbf1239bd964569274b6b71ba46cbeb83cc8",
+      "bytes": 127913
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/m3-acceptance--QA-acceptan-d8529-eight-browser-counterproofs-mobile-chromium/test-failed-2.png",
+      "sha256": "da10b90975df79062ea2c729c8ffddfd50b2cfaee5c360bceaafa5ec708eba1d",
+      "bytes": 181998
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/m3-acceptance--QA-acceptan-d8529-eight-browser-counterproofs-mobile-chromium/test-failed-3.png",
+      "sha256": "2a2dedbe8e7b847b2a2007bbda54447172b27d4ae2a4428bb7f7d9dab3cd973f",
+      "bytes": 192229
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/m3-acceptance--QA-acceptan-d8529-eight-browser-counterproofs-mobile-chromium/test-failed-4.png",
+      "sha256": "cbf76cfe00ece8865515d90a92cd22708dd8be7e473176c5f04c7bffc861db22",
+      "bytes": 141879
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/poiseuille--M4-flow-learne-58714-ndent-reopen-and-revocation-desktop-chromium/m4-learner-flow.png",
+      "sha256": "7cc5bb1d99a82bc3592123ba15e58d0abc73a071cf3dfe50794b08291f502555",
+      "bytes": 517421
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/poiseuille--M4-flow-learne-58714-ndent-reopen-and-revocation-mobile-chromium/m4-learner-flow.png",
+      "sha256": "97d637b13fad8acc04c11d0ff5c0e23279f31151c7d3740e9c658922f472d5cf",
+      "bytes": 1671110
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/poiseuille--M4-pressure-le-54a82-ndent-reopen-and-revocation-desktop-chromium/m4-learner-pressure.png",
+      "sha256": "bb18b2627b1f9f9c75c7d7fd7c552df0f02f359a3fcf6bc80f6f06e85c9ee31a",
+      "bytes": 522425
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/poiseuille--M4-pressure-le-54a82-ndent-reopen-and-revocation-mobile-chromium/m4-learner-pressure.png",
+      "sha256": "b8a09a1d82b866065bf9eb29563167092ddf6f4045fb328099c0dc41f1994218",
+      "bytes": 1683110
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-desktop-chromium/student-first-session.png",
+      "sha256": "5b1392a4a4693dd5465330f6e636c0f36d6d30c4cfb08d34ff7d0f6c16ec0a3b",
+      "bytes": 415150
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-desktop-chromium/student-independent-session.png",
+      "sha256": "78d3a0ee6cd6c4b0801bdfc034fe682f877a5dbe6e652207304f155ef4013d93",
+      "bytes": 414019
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-mobile-chromium/student-first-session.png",
+      "sha256": "64e2a3740f2b0e59838161bfc1cfc5203cd429b80fff0a9b7cdd8308888b1426",
+      "bytes": 1284618
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-mobile-chromium/student-independent-session.png",
+      "sha256": "64e2a3740f2b0e59838161bfc1cfc5203cd429b80fff0a9b7cdd8308888b1426",
+      "bytes": 1284618
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/unit.json",
+      "sha256": "051f47ac76e8327968414a1c9b0bd75cdff796b31bac226ff75a9906db9b50b9",
+      "bytes": 174493
+    },
+    {
+      "file": "verifiche/feedback/attempt-03/verification.json",
+      "sha256": "4b86c6d9d985b7b2af103811c5241b325e9dd2a94a60da06ee6e7537d268bc3a",
+      "bytes": 1072
+    },
+    {
+      "file": "verifiche/feedback/browser-evidence.json",
+      "sha256": "53407085ca4f3cf29e14b53c3bae9b7dec0028fb614a87faaa1af76abd1ca38c",
+      "bytes": 4703
+    },
+    {
+      "file": "verifiche/feedback/browser.log",
+      "sha256": "d2e78513c03f2150df0160c82fb852b1943f4c1d4796a6b27a926436200e6ccb",
+      "bytes": 20297
+    },
+    {
+      "file": "verifiche/feedback/budget.json",
+      "sha256": "66c172eeaf139c3933425d8a517ca5dbab58c542eabeb60a5cd6a758ac39c6c2",
+      "bytes": 1228
+    },
+    {
+      "file": "verifiche/feedback/desktop-chromium-learner-diary.png",
+      "sha256": "087f23c8c6efb4980d2df2bb7313bec986f7c69cc2215fbb5a42496702517969",
+      "bytes": 110761
+    },
+    {
+      "file": "verifiche/feedback/desktop-chromium-teacher-feedback.png",
+      "sha256": "3af407dd70b555d91e2468aaab2f265382124caf13ebad59d502b6d3380d61ec",
+      "bytes": 232668
+    },
+    {
+      "file": "verifiche/feedback/e2e.json",
+      "sha256": "353520d8548bf1895e84967cca80b6b1819aa7144285e5bb4f691324a40770e8",
+      "bytes": 138145
+    },
+    {
+      "file": "verifiche/feedback/legacy-integrity.json",
+      "sha256": "1916937fa7b6320b8b2355e924ea6daa9d5d50083141385a793edf2a033d3a50",
+      "bytes": 1339
+    },
+    {
+      "file": "verifiche/feedback/manuale-mac.json",
+      "sha256": "1afebe735d89ec9aaf463d372624dc52b73cb4661f42f3305a719b7bba87dfd0",
+      "bytes": 2278
+    },
+    {
+      "file": "verifiche/feedback/mcp-runtime.json",
+      "sha256": "6054fa11fe0f32b8aa15d379df3720dafeed6baa06def02b4ef794985b52ba3c",
+      "bytes": 1757
+    },
+    {
+      "file": "verifiche/feedback/mobile-chromium-learner-diary.png",
+      "sha256": "cf96994f2541703134f4599f27338ab3ad6a6bec6bd603dbc81b7dc768fdbae8",
+      "bytes": 237067
+    },
+    {
+      "file": "verifiche/feedback/mobile-chromium-teacher-feedback.png",
+      "sha256": "77763e937d95fcb8857740c3f6ca8b704bf25780d021fbb46dfda141f278a9da",
+      "bytes": 288140
+    },
+    {
+      "file": "verifiche/feedback/preview-migration.json",
+      "sha256": "804436a1a0d5d33cfca3fa88d559335da4d78b55845171236469e0d2df07815b",
+      "bytes": 467
+    },
+    {
+      "file": "verifiche/feedback/review-indipendente.md",
+      "sha256": "1dbe16bdd7f0ca5c9c9ef50751a0dd5ddc9d06a0610baec7a8f364de133c2ee7",
+      "bytes": 3777
+    },
+    {
+      "file": "verifiche/feedback/server-runtime.json",
+      "sha256": "015958a10f6b24341ea10517f25bfe6f70a2a7b39f4a4871ba12e497125cfebe",
+      "bytes": 929
+    },
+    {
+      "file": "verifiche/feedback/source-files.json",
+      "sha256": "ad9eb31ff0d22b782ab8190511d9be044a8f0ca2922a9cca4809c56a292c47bf",
+      "bytes": 48923
+    },
+    {
+      "file": "verifiche/feedback/status.json",
+      "sha256": "cbaccd9b0244f2af540aef5880d433524abcc14ed52c9cc17dd9b20d96dc3cab",
+      "bytes": 16222
+    },
+    {
+      "file": "verifiche/feedback/status.log",
+      "sha256": "0dc82080b13007d83d3c1a771d57a8d314315857011d76dca615b869dfa0dc21",
+      "bytes": 16276
+    },
+    {
+      "file": "verifiche/feedback/targeted/browser-evidence.json",
+      "sha256": "012d4c1eb5d94a9f39217d958110d8a259f543bab116ca14a6fb0c6d3ea19be3",
+      "bytes": 602
+    },
+    {
+      "file": "verifiche/feedback/targeted/browser.log",
+      "sha256": "6d7c9bb09c67a053f08aa08654d936b7c0e5d8575769f7e840f203a9f851c999",
+      "bytes": 2042
+    },
+    {
+      "file": "verifiche/feedback/targeted/e2e.json",
+      "sha256": "7c31b04981220946fb51627a1638a3964f95a02d8f49230a00b83ad399a96ff3",
+      "bytes": 9455
+    },
+    {
+      "file": "verifiche/feedback/targeted/postgres.log",
+      "sha256": "70bfef4b325788515230af925cc66a4fce4b9f3529bde3038b3a582683192ca5",
+      "bytes": 1083
+    },
+    {
+      "file": "verifiche/feedback/unit.json",
+      "sha256": "09170a98ae2e2c2a8ac6c5638f4bea69c0fac7b6c6762d8ca0a44499486a6858",
+      "bytes": 174522
+    },
+    {
+      "file": "verifiche/feedback/verification.json",
+      "sha256": "455ae7bd0136dec5d96dff6fcb0c724ae081c9db3219d833bade866da8a683d1",
+      "bytes": 1072
+    },
+    {
+      "file": "verifiche/feedback/verify.log",
+      "sha256": "8c66f80da7158dabd2f5e8bbebaf48c2d40dcf29b5892a392d8190c1476ccd3f",
+      "bytes": 33535
+    }
+  ]
+}

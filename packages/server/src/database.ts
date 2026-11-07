@@ -64,9 +64,10 @@ export async function transaction<T>(pool: Pool, operation: (client: PoolClient)
 }
 
 /** Operator-only, explicit migration. No request handler calls this function. */
-export async function migrate(pool: Pool): Promise<{version: 1; digest: string}> {
-  const sql = await readFile(new URL('../migrations/001_initial.sql', import.meta.url), 'utf8');
-  const digest = hash(sql);
+export async function migrate(pool: Pool): Promise<{version: 7; digest: string}> {
+  const migrations = await Promise.all(['001_initial.sql', '002_recordings.sql', '003_learning_feedback.sql', '004_extensions.sql', '005_courses.sql', '006_tutor.sql', '007_materials.sql'].map(async name => {
+    const sql = await readFile(new URL('../migrations/' + name, import.meta.url), 'utf8'); return {sql, digest: hash(sql)};
+  }));
   return transaction(pool, async client => {
     await client.query("SELECT pg_advisory_xact_lock(hashtextextended('ardesia-next-migrations', 0))");
     const legacy = await client.query("SELECT to_regclass('public.study_resources') IS NOT NULL OR to_regclass('public.study_principals') IS NOT NULL AS present");
@@ -75,13 +76,16 @@ export async function migrate(pool: Pool): Promise<{version: 1; digest: string}>
     await client.query('REVOKE ALL ON SCHEMA ardesia_next FROM PUBLIC');
     await client.query('CREATE TABLE IF NOT EXISTS ardesia_next.schema_migrations (version integer PRIMARY KEY, digest text NOT NULL, applied_at timestamptz NOT NULL DEFAULT now())');
     await client.query('REVOKE ALL ON ardesia_next.schema_migrations FROM PUBLIC');
-    const applied = await client.query('SELECT digest FROM ardesia_next.schema_migrations WHERE version = 1');
-    if (applied.rows[0]) {
-      if (applied.rows[0].digest !== digest) throw new ServerError('MIGRATION_DRIFT', 'The applied migration differs from the reviewed SQL.', 409);
-    } else {
-      await client.query(sql);
-      await client.query('INSERT INTO ardesia_next.schema_migrations(version,digest) VALUES (1,$1)', [digest]);
+    for (const [index, migration] of migrations.entries()) {
+      const version = index + 1;
+      const applied = await client.query('SELECT digest FROM ardesia_next.schema_migrations WHERE version=$1', [version]);
+      if (applied.rows[0]) {
+        if (applied.rows[0].digest !== migration.digest) throw new ServerError('MIGRATION_DRIFT', 'The applied migration differs from the reviewed SQL.', 409);
+      } else {
+        await client.query(migration.sql);
+        await client.query('INSERT INTO ardesia_next.schema_migrations(version,digest) VALUES ($1,$2)', [version, migration.digest]);
+      }
     }
-    return {version: 1, digest};
+    return {version: 7, digest: migrations[6]!.digest};
   });
 }

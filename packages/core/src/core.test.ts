@@ -40,11 +40,12 @@ describe('Core authority and persistence', () => {
     expect(core.snapshot()).toEqual(before);
   });
 
-  it('does not treat a matching actor ID with student role as an editor', async () => {
+  it('authorizes personal editing by owner identity and retains role in the command fingerprint', async () => {
     const core = await createCore(deterministic());
     await core.execute(teacher, create);
-    await expect(core.execute(student, add(note))).rejects.toMatchObject({ code: 'FORBIDDEN' });
-    expect(core.getDocument(teacher, 'lesson-1').objects).toEqual([]);
+    await core.execute(student, add(note));
+    expect(core.getDocument(student, 'lesson-1').objects[0]?.provenance.createdBy).toBe(student.actorId);
+    await expect(core.execute(teacher, add(note))).rejects.toMatchObject({code:'IDEMPOTENCY_CONFLICT'});
   });
 
   it('retries an identical command idempotently, including after reopen', async () => {

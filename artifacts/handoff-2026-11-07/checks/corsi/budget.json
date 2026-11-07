@@ -1,0 +1,45 @@
+{
+  "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "sourceDigest": "081188333e269835da397aeed2959ce7a80f3d72552f1893c167f19f895f5458",
+  "generatedAt": "2026-11-07T15:05:15.213Z",
+  "metric": "all-javascript-gzip-bytes",
+  "bytes": 243286,
+  "limit": 245760,
+  "passed": true,
+  "initialJavaScriptGzipBytes": 193042,
+  "deferredJavaScriptGzipBytes": 50244,
+  "loadingMetric": "Static entry/import graph; deferred code remains included in the total gate; not a measured network trace",
+  "files": [
+    {
+      "file": "assets/index-ByYdPrIV.js",
+      "gzipBytes": 116982,
+      "initial": true
+    },
+    {
+      "file": "assets/math-dJ2525rv.js",
+      "gzipBytes": 76060,
+      "initial": true
+    },
+    {
+      "file": "plugins/ideal-spring/1.0.0/plugin.js",
+      "gzipBytes": 174,
+      "initial": false
+    },
+    {
+      "file": "plugins/poiseuille/1.0.0/plugin.js",
+      "gzipBytes": 174,
+      "initial": false
+    },
+    {
+      "file": "plugins/shared/ba4b63b0618f56201e42768492af6eeac8b8dbf7a6509c6f465bbd5c8a4a440a.js",
+      "gzipBytes": 44901,
+      "initial": false
+    },
+    {
+      "file": "sw.js",
+      "gzipBytes": 4995,
+      "initial": false
+    }
+  ],
+  "physicalPerformanceTest": "NOT_RUN"
+}

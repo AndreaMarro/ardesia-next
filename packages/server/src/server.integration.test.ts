@@ -1,12 +1,12 @@
 import {beforeAll, afterAll, describe, expect, it} from 'vitest';
-import {randomUUID} from 'node:crypto';
+import {randomUUID, createHash} from 'node:crypto';
 import {readFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {checkServerIdentity} from 'node:tls';
 import {Client, type PoolConfig} from 'pg';
 import {createDatabasePool, hash} from './database';
 import {canonical} from './errors';
-import {CoreSnapshotSchema, type CoreSnapshot, type PluginRelease, type JsonValue} from '@ardesia/contracts';
+import {MaterialManifestSchema, materialPage, CoreSnapshotSchema, extensionDefinitionDigest, type ExtensionDefinition, type CoreSnapshot, type PluginRelease, type JsonValue} from '@ardesia/contracts';
 import {createCore, MemoryStorage} from '@ardesia/core';
 import {idealSpringInitialState} from '@ardesia/ideal-spring';
 import {localBrowserAccounts} from '../../../tools/e2e-accounts.mjs';
@@ -189,7 +189,70 @@ describe('M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL)', () => {
     const switched = {id: studentA.id, cookie: studentB.cookie};
     const result = await request({action: 'open-workspace', workspaceId: w.workspaceId}, switched);
     expect(result.status).toBe(409); expect(result.body.error?.code).toBe('SESSION_CHANGED');
-    expect((await request({action: 'create-workspace', title: 'forbidden', commandId: randomUUID()}, studentA)).status).toBe(403);
+    expect((await request({action: 'create-workspace', title: 'forbidden', commandId: randomUUID(), ownerId:teacher.id}, studentA)).status).toBe(400);
+  });
+
+  it('creates learner-owned spaces without role promotion and rejects authoring in assigned containers',async()=>{
+    const input={action:'create-workspace',title:'Spazio privato dello studente',commandId:randomUUID()};
+    const created=await request(input,studentA);expect(created.status).toBe(200);
+    const w=created.body.result;
+    expect(w).toMatchObject({access:'owner',actor:{actorId:studentA.id,role:'student'},documents:[],assignedDocuments:[]});
+    expect((await request(input,studentA)).body.result.workspaceId).toBe(w.workspaceId);
+    const documentId=randomUUID(),cmd={kind:'create-document',commandId:randomUUID(),documentId,expectedRevision:0,title:'La mia invenzione'};
+    const written=await command(studentA,w.workspaceId,cmd);expect(written.status).toBe(200);
+    const fresh=await signIn('a');
+    expect((await command(fresh,w.workspaceId,cmd)).body.result.receipt).toEqual(written.body.result.receipt);
+    expect((await request({action:'open-workspace',workspaceId:w.workspaceId},fresh)).body.result.documents[0]).toMatchObject({id:documentId,ownerId:studentA.id,status:'draft'});
+    expect((await request({action:'list-workspaces'},fresh)).body.result).toContainEqual(expect.objectContaining({workspaceId:w.workspaceId,access:'owner'}));
+    for(const outside of [teacher,studentB,outsider]){
+      expect((await request({action:'open-workspace',workspaceId:w.workspaceId},outside)).status).toBe(404);
+      expect((await request({action:'export-personal',workspaceId:w.workspaceId},outside)).status).toBe(404);
+    }
+    const shared=await workspace('Assigned container'),doc=await lesson(shared.workspaceId);
+    await command(teacher,shared.workspaceId,{kind:'assign-lesson',commandId:randomUUID(),documentId:doc,studentId:studentA.id,expectedRevision:0},'learning-command');
+    const before=(await request({action:'open-workspace',workspaceId:shared.workspaceId},teacher)).body.result.workspaceRevision;
+    expect((await request({action:'open-workspace',workspaceId:shared.workspaceId},studentA)).body.result).toMatchObject({access:'assigned',documents:[],installations:[]});
+    expect((await command(studentA,shared.workspaceId,{...cmd,commandId:randomUUID(),documentId:randomUUID()})).status).toBe(403);
+    expect((await command(studentA,shared.workspaceId,{kind:'install-plugin',commandId:randomUUID(),pluginId:release.pluginId,expectedRevision:0,release},'plugin-command')).status).toBe(403);
+    expect((await request({action:'open-workspace',workspaceId:shared.workspaceId},teacher)).body.result.workspaceRevision).toBe(before);
+    expect((await command(studentA,w.workspaceId,{kind:'assign-lesson',commandId:randomUUID(),documentId,studentId:studentB.id,expectedRevision:0},'learning-command')).status).toBe(403);
+    expect((await request({action:'session'},fresh)).body.result.account.role).toBe('student');
+  });
+
+  it('persists exact course editions, private work and revocation through restricted PostgreSQL without implicit lesson grants', async () => {
+    const w = await workspace('Course transactions'), doc = await lesson(w.workspaceId);
+    const courseId = randomUUID(), editionId = randomUUID(), deliveryId = randomUUID(), unitId = randomUUID();
+    const input = {title: 'Course', description: 'Synthetic', license: 'Synthetic fixture', units: [{id: unitId, title: 'Unit', objective: 'Explain', prerequisites: 'Units',
+      explanation: 'A model', prediction: 'Predict', activity: 'Try', referenceFeedback: 'Reference', recovery: 'Recover', transfer: 'Transfer', sources: [], lesson: {documentId: doc, revision: 1}}]};
+    const save = {kind: 'save-course', courseId, commandId: randomUUID(), expectedRevision: 0, input};
+    const created = await command(teacher, w.workspaceId, save, 'course-command'); expect(created.status).toBe(200);
+    expect((await command(teacher, w.workspaceId, save, 'course-command')).body.result.receipt).toEqual(created.body.result.receipt);
+    const freezing = {kind: 'create-course-edition', commandId: randomUUID(), expectedRevision: 0, courseId, courseRevision: 1, editionId, label: 'Frozen'};
+    expect((await command(teacher, w.workspaceId, freezing, 'course-command')).status).toBe(200);
+    expect((await command(teacher, w.workspaceId, {kind: 'assign-course', commandId: randomUUID(), expectedRevision: 0, editionId, deliveryId, learnerId: studentA.id}, 'course-command')).status).toBe(200);
+    expect((await request({action: 'open-workspace', workspaceId: w.workspaceId}, studentB)).status).toBe(404);
+    const initial = (await request({action: 'open-workspace', workspaceId: w.workspaceId}, studentA)).body.result;
+    expect(initial.assignedDocuments).toEqual([]); expect(initial.assignments).toEqual([]);
+    expect(initial.courseSpace.editions[0].course.revision).toBe(1);
+    await command(teacher, w.workspaceId, {kind: 'rename-document', commandId: randomUUID(), documentId: doc, expectedRevision: 1, title: 'Changed'});
+    expect((await request({action: 'read-course-lesson', workspaceId: w.workspaceId, editionId, unitId}, studentA)).body.result).toMatchObject({revision: 1, title: 'Lesson'});
+    const attempt = {kind: 'record-course-attempt', commandId: randomUUID(), expectedRevision: 0, deliveryId, unitId, attemptId: randomUUID(), stage: 'prediction', answer: 'PRIVATE_COURSE_ANSWER'};
+    const result = await command(studentA, w.workspaceId, attempt, 'course-command'); expect(result.status).toBe(200);
+    const secondSession = await signIn('a');
+    expect((await command(secondSession, w.workspaceId, attempt, 'course-command')).body.result.receipt).toEqual(result.body.result.receipt);
+    expect(JSON.stringify((await request({action: 'export-personal', workspaceId: w.workspaceId}, teacher)).body)).not.toContain('PRIVATE_COURSE_ANSWER');
+    await command(studentA, w.workspaceId, {kind: 'share-course-work', commandId: randomUUID(), expectedRevision: 1, deliveryId, shared: true}, 'course-command');
+    expect((await request({action: 'open-workspace', workspaceId: w.workspaceId}, teacher)).body.result.courseSpace.work[0].attempts[0].answer).toBe('PRIVATE_COURSE_ANSWER');
+    await command(teacher, w.workspaceId, {kind: 'revoke-course-delivery', commandId: randomUUID(), expectedRevision: 1, deliveryId}, 'course-command');
+    expect((await command(secondSession, w.workspaceId, attempt, 'course-command')).status).toBe(404);
+    expect((await request({action: 'read-course-lesson', workspaceId: w.workspaceId, editionId, unitId}, studentA)).status).toBe(404);
+    const own = (await request({action: 'export-personal', workspaceId: w.workspaceId}, studentA)).body.result.projection;
+    expect(own.courseSpace.editions).toEqual([]); expect(own.courseSpace.work[0].attempts).toHaveLength(1);
+    expect((await request({action: 'open-workspace', workspaceId: w.workspaceId}, teacher)).body.result.courseSpace.work).toEqual([]);
+    expect((await request({action: 'list-workspaces'}, studentA)).body.result.some((value: any) => value.workspaceId === w.workspaceId)).toBe(true);
+    const state = (await admin.query('SELECT snapshot FROM ardesia_next.workspaces WHERE id=$1', [w.workspaceId])).rows[0].snapshot;
+    expect(state.courseWork).toHaveLength(1); expect(state.courseDeliveries[0].revision).toBe(2);
+    expect(state.events.filter((event: any) => event.type === 'record-course-attempt')).toHaveLength(1);
   });
 
   it('denies IDOR and filters private work from the teacher and second student', async () => {
@@ -349,13 +412,77 @@ describe('M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL)', () => {
     expect(invalid.body.error?.code).toBe('PLUGIN_POLICY_REJECTED');
   });
 
+  it('serializes competing tutor bookings and payments, retains v7 bytes on reads and excludes students', async () => {
+    const w = await workspace('Tutor private'), doc = await lesson(w.workspaceId);
+    const row = (await admin.query('SELECT snapshot,revision FROM ardesia_next.workspaces WHERE id=$1',[w.workspaceId])).rows[0];
+    const {tutorRecords: _tutor, ...old} = row.snapshot;
+    const legacy = {...old,schemaVersion:7};
+    await admin.query('UPDATE ardesia_next.workspaces SET snapshot=$1::jsonb WHERE id=$2',[JSON.stringify(legacy),w.workspaceId]);
+    expect((await request({action:'open-workspace',workspaceId:w.workspaceId},teacher)).status).toBe(200);
+    expect((await admin.query('SELECT snapshot,revision FROM ardesia_next.workspaces WHERE id=$1',[w.workspaceId])).rows[0]).toEqual({snapshot:legacy,revision:row.revision});
+    const common={title:'Synthetic',notes:'PRIVATE_TUTOR_NOTE',custom:[]};
+    const save=(recordId:string,input:unknown,expectedRevision=0)=>command(teacher,w.workspaceId,{kind:'save-tutor-record',commandId:randomUUID(),recordId,expectedRevision,input,reason:''},'tutor-command');
+    expect((await save('person',{...common,kind:'contact',email:'',phone:'',archived:false})).status).toBe(200);
+    const input={...common,kind:'appointment',startAt:'2026-01-01T09:00:00.000Z',endAt:'2026-01-01T10:00:00.000Z',timeZone:'Europe/Rome',status:'completed',currency:'EUR',participants:[{contactId:'person',attended:true,packageId:null,chargeMinor:3000}],groupId:null,requestId:null,lesson:{documentId:doc,revision:1}};
+    const race=await Promise.all([save('slot-a',input),save('slot-b',input)]);
+    expect(race.filter(r=>r.status===200)).toHaveLength(1);
+    const targetId=race.find(r=>r.status===200)!.body.result.receipt.entityId;
+    const cash={kind:'record-tutor-payment',recordId:'payment-a',expectedRevision:0,commandId:randomUUID(),targetId,targetRevision:1,contactId:'person',amountMinor:2000,paidAt:'2026-01-01T11:00:00.000Z',method:'Manual',reference:'',notes:''};
+    const payments=await Promise.all([command(teacher,w.workspaceId,cash,'tutor-command'),command(teacher,w.workspaceId,{...cash,recordId:'payment-b',commandId:randomUUID()},'tutor-command')]);
+    expect(payments.filter(r=>r.status===200)).toHaveLength(1);
+    await assign(w.workspaceId,doc,studentA.id);
+    const student=(await request({action:'open-workspace',workspaceId:w.workspaceId},studentA)).body.result;
+    expect(student.tutorSpace).toEqual({records:[],history:[]});expect(JSON.stringify(student)).not.toContain('PRIVATE_TUTOR_NOTE');
+    expect((await command(studentA,w.workspaceId,cash,'tutor-command')).status).toBe(403);
+    expect((await command(outsider,w.workspaceId,cash,'tutor-command')).status).toBe(404);
+    const stored=(await admin.query('SELECT snapshot FROM ardesia_next.workspaces WHERE id=$1',[w.workspaceId])).rows[0].snapshot;
+    expect(stored.schemaVersion).toBe(9);expect(stored.events.slice(0,old.events.length)).toEqual(old.events);
+    const reopened=(await request({action:'open-workspace',workspaceId:w.workspaceId},teacher)).body.result;
+    expect(reopened.tutorSpace.records.filter((r:any)=>r.kind==='payment')).toHaveLength(1);
+  });
+
+  it('migrates stored v4 on read without writes and keeps feedback, source access and retries authorized', async () => {
+    const w = await workspace('Feedback continuity'), doc = await lesson(w.workspaceId), objectId = randomUUID(), attemptId = randomUUID();
+    expect((await command(teacher, w.workspaceId, {kind: 'add-object', commandId: randomUUID(), documentId: doc, expectedRevision: 1,
+      object: {id: objectId, type: 'note', title: 'Energia elastica', x: 0, y: 0, width: 200, height: 100, data: {text: 'Raddoppia x: E = kx²/2'}}})).status).toBe(200);
+    await assign(w.workspaceId, doc, studentA.id); await assign(w.workspaceId, doc, studentB.id);
+    const attempt = {kind: 'record-learner-attempt', commandId: randomUUID(), documentId: doc, expectedRevision: 0, expectedDocumentRevision: 2, objectId, attemptId, answer: 'Raddoppia'};
+    const saved = await command(studentA, w.workspaceId, attempt, 'learning-command'); expect(saved.status).toBe(200);
+    await command(studentA, w.workspaceId, {kind: 'share-learner-evidence', commandId: randomUUID(), documentId: doc, expectedRevision: 1, shared: true}, 'learning-command');
+    const previous = (await admin.query('SELECT snapshot,revision FROM ardesia_next.workspaces WHERE id=$1', [w.workspaceId])).rows[0];
+    const old = {...preCourse(previous.snapshot as CoreSnapshot), schemaVersion: 4};
+    await admin.query('UPDATE ardesia_next.workspaces SET snapshot=$1::jsonb WHERE id=$2', [JSON.stringify(old), w.workspaceId]);
+    expect((await request({action: 'open-workspace', workspaceId: w.workspaceId}, studentA)).status).toBe(200);
+    expect((await command(studentA, w.workspaceId, attempt, 'learning-command')).body.result.receipt).toEqual(saved.body.result.receipt);
+    expect((await admin.query('SELECT snapshot,revision FROM ardesia_next.workspaces WHERE id=$1', [w.workspaceId])).rows[0]).toEqual({snapshot: old, revision: previous.revision});
+    const source = {action: 'read-attempt-source', workspaceId: w.workspaceId, documentId: doc, attemptId, studentId: studentA.id};
+    expect((await request(source, studentB)).status).toBe(404); expect((await request(source, outsider)).status).toBe(404);
+    const review = {kind: 'review-learner-attempt', commandId: randomUUID(), documentId: doc, expectedRevision: 2, studentId: studentA.id,
+      attemptId, feedbackId: randomUUID(), outcome: 'revise', comment: 'Controlla la potenza.', nextStep: 'Sostituisci 2x.'};
+    const result = await command(teacher, w.workspaceId, review, 'learning-command'); expect(result.status).toBe(200);
+    expect(result.body.result.projection.learnerWork[0].feedback[0]).toMatchObject({authorId: teacher.id, attemptId});
+    const secondSession = await signIn('teacher');
+    expect((await command(secondSession, w.workspaceId, review, 'learning-command')).body.result.receipt).toEqual(result.body.result.receipt);
+    expect((await command(studentA, w.workspaceId, {...review, commandId: randomUUID()}, 'learning-command')).status).toBe(403);
+    await command(teacher, w.workspaceId, {kind: 'remove-object', commandId: randomUUID(), documentId: doc, expectedRevision: 2, objectId});
+    expect((await request(source, teacher)).body.result).toMatchObject({id: objectId, revision: 1, title: 'Energia elastica'});
+    expect((await request(source, studentA)).body.result.data.text).toBe('Raddoppia x: E = kx²/2');
+    await command(studentA, w.workspaceId, {kind: 'share-learner-evidence', commandId: randomUUID(), documentId: doc, expectedRevision: 3, shared: false}, 'learning-command');
+    expect((await request(source, secondSession)).status).toBe(404);
+    expect((await command(secondSession, w.workspaceId, review, 'learning-command')).status).toBe(404);
+    expect((await request({action: 'open-workspace', workspaceId: w.workspaceId}, studentA)).body.result.learnerWork[0].feedback).toHaveLength(1);
+    const stored = (await admin.query('SELECT snapshot FROM ardesia_next.workspaces WHERE id=$1', [w.workspaceId])).rows[0].snapshot;
+    expect(stored.schemaVersion).toBe(9); expect(stored.events.slice(0, old.events.length)).toEqual(old.events);
+    expect(stored.receipts.slice(0, old.receipts.length)).toEqual(old.receipts);
+  });
+
   it('imports v1/v2/v3 explicitly into fresh containers and preserves original bytes, IDs and receipts', async () => {
     const localActor = {actorId: 'device-owner', role: 'teacher'} as const;
     const local = await createCore({storage: new MemoryStorage(), pluginPolicy: policy});
     await local.execute(localActor, {kind: 'create-document', commandId: 'local-create', documentId: 'local-doc', expectedRevision: 0, title: 'Imported'});
     const source = local.snapshot();
     for (const version of [1, 2, 3]) {
-      const {assignments: _assignments, learnerWork: _learnerWork, installations, ...old} = source;
+      const {assignments: _assignments, learnerWork: _learnerWork, installations, ...old} = preCourse(source);
       const raw = {...old, workspaceId: 'device-v' + version, schemaVersion: version, ...(version === 3 ? {installations} : {})};
       const snapshotText = JSON.stringify(raw, null, 2), commandId = randomUUID();
       const requestBody = {action: 'import-local', expectedAccountId: teacher.id, commandId, title: 'Import ' + version, snapshotText};
@@ -364,13 +491,87 @@ describe('M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL)', () => {
       expect(imported.body.result.documents[0].id).toBe('local-doc');
       const stored = (await admin.query('SELECT snapshot FROM ardesia_next.workspaces WHERE id=$1', [imported.body.result.workspaceId])).rows[0].snapshot;
       expect(stored.workspaceId).toBe(raw.workspaceId); expect(stored.receipts).toEqual(source.receipts);
-      const archive = (await admin.query('SELECT original_text FROM ardesia_next.import_archives WHERE workspace_id=$1', [imported.body.result.workspaceId])).rows[0];
+      const archive = (await admin.query('SELECT original_text,semantic_digest FROM ardesia_next.import_archives WHERE workspace_id=$1', [imported.body.result.workspaceId])).rows[0];
       expect(archive.original_text).toBe(snapshotText);
+      expect(archive.semantic_digest).toBe(hash(canonical({...preCourse(stored), schemaVersion: 4}))); // frozen pre-feedback import identity
       expect((await request(requestBody, teacher)).body.result.workspaceId).toBe(imported.body.result.workspaceId);
       expect((await request({...requestBody, commandId: randomUUID()}, teacher)).body.error?.code).toBe('IMPORT_ALREADY_EXISTS');
       expect((await request({...requestBody, snapshotText: JSON.stringify(raw), commandId: randomUUID()}, teacher)).body.error?.code).toBe('IMPORT_ALREADY_EXISTS');
       expect((await request({...requestBody, expectedAccountId: studentA.id, commandId: randomUUID()}, teacher)).body.error?.code).toBe('SESSION_CHANGED');
     }
+  });
+
+  it('reserves imported actor identities against later account provisioning',async()=>{
+    const actorId='future-'+randomUUID(),local=await createCore({storage:new MemoryStorage()});
+    await local.execute({actorId,role:'teacher'},{kind:'create-document',commandId:randomUUID(),documentId:randomUUID(),expectedRevision:0,title:'Private imported document'});
+    const {assignments:_a,learnerWork:_w,...legacy}=preCourse(local.snapshot());
+    const imported=await request({action:'import-local',expectedAccountId:teacher.id,commandId:randomUUID(),title:'Reserved identity',snapshotText:JSON.stringify({...legacy,schemaVersion:3})},teacher);
+    expect(imported.status).toBe(200);
+    await expect(provisionTestAccounts(admin,[{id:actorId,username:actorId,displayName:'Collision fixture',role:'student',password:passwords.a}])).rejects.toMatchObject({code:'IDENTITY_COLLISION'});
+    expect((await admin.query('SELECT id FROM ardesia_next.accounts WHERE id=$1',[actorId])).rows).toEqual([]);
+  });
+
+  it('rejects an existing alias collision before listing or returning any private workspace data',async()=>{
+    const actorId='collision-'+randomUUID(),local=await createCore({storage:new MemoryStorage()});
+    const actor={actorId,role:'teacher'} as const,documentId=randomUUID();
+    await local.execute(actor,{kind:'create-document',commandId:randomUUID(),documentId,expectedRevision:0,title:'PRIVATE_ALIAS_DOCUMENT'});
+    const {assignments:_a,learnerWork:_w,...legacy}=preCourse(local.snapshot());
+    const imported=await request({action:'import-local',expectedAccountId:teacher.id,commandId:randomUUID(),title:'PRIVATE_ALIAS_WORKSPACE',snapshotText:JSON.stringify({...legacy,schemaVersion:3})},teacher);
+    expect(imported.status).toBe(200);const workspaceId=imported.body.result.workspaceId,courseId=randomUUID(),editionId=randomUUID();
+    const input={title:'PRIVATE_ALIAS_COURSE',description:'Fixture',license:'Private',units:[{id:'unit',title:'Unit',objective:'Explain',prerequisites:'Units',explanation:'Model',prediction:'Predict',activity:'Try',referenceFeedback:'Compare',recovery:'Recover',transfer:'Apply',sources:[],lesson:{documentId,revision:1}}]};
+    expect((await command(teacher,workspaceId,{kind:'save-course',commandId:randomUUID(),courseId,expectedRevision:0,input},'course-command')).status).toBe(200);
+    expect((await command(teacher,workspaceId,{kind:'create-course-edition',commandId:randomUUID(),courseId,courseRevision:1,editionId,expectedRevision:0,label:'Private'},'course-command')).status).toBe(200);
+    expect((await command(teacher,workspaceId,{kind:'assign-course',commandId:randomUUID(),editionId,deliveryId:randomUUID(),learnerId:actorId,expectedRevision:0},'course-command')).status).toBe(200);
+    // Simulate a previously admitted collision using the isolated operator fixture.
+    await admin.query("INSERT INTO ardesia_next.accounts(id,username,display_name,role,password_hash) SELECT $1,$1,'Old collision','student',password_hash FROM ardesia_next.accounts WHERE id=$2",[actorId,studentA.id]);
+    try{
+      const login=await request({action:'login',username:actorId,password:passwords.a});expect(login.status).toBe(200);
+      const collision={id:actorId,cookie:login.cookie!.split(';')[0]!};
+      const list=await request({action:'list-workspaces'},collision);expect(list.status).toBe(200);expect(JSON.stringify(list.body)).not.toContain('PRIVATE_ALIAS');
+      for(const action of ['open-workspace','export-personal']){
+        const result=await request({action,workspaceId},collision);expect(result.status).toBe(404);expect(JSON.stringify(result.body)).not.toContain('PRIVATE_ALIAS');
+      }
+      expect((await request({action:'read-course-lesson',workspaceId,editionId,unitId:'unit'},collision)).status).toBe(404);
+      expect((await request({action:'open-workspace',workspaceId},teacher)).status).toBe(503);
+    }finally{
+      await admin.query('DELETE FROM ardesia_next.sessions WHERE account_id=$1',[actorId]);
+      await admin.query('DELETE FROM ardesia_next.accounts WHERE id=$1',[actorId]);
+    }
+    expect((await request({action:'open-workspace',workspaceId},teacher)).body.result.documents[0].title).toBe('PRIVATE_ALIAS_DOCUMENT');
+  });
+
+  it('serializes racing account provisioning and legacy import without admitting an identity collision',async()=>{
+    const actorId='race-'+randomUUID(),local=await createCore({storage:new MemoryStorage()});
+    await local.execute({actorId,role:'teacher'},{kind:'create-document',commandId:randomUUID(),documentId:randomUUID(),expectedRevision:0,title:'Private concurrent import'});
+    const {assignments:_a,learnerWork:_w,...legacy}=preCourse(local.snapshot());
+    const [imported,provisioned]=await Promise.allSettled([
+      request({action:'import-local',expectedAccountId:teacher.id,commandId:randomUUID(),title:'Concurrent identity',snapshotText:JSON.stringify({...legacy,schemaVersion:3})},teacher),
+      provisionTestAccounts(admin,[{id:actorId,username:actorId,displayName:'Concurrent fixture',role:'student',password:passwords.a}]),
+    ]);
+    expect(imported.status).toBe('fulfilled');if(imported.status!=='fulfilled')throw imported.reason;
+    try{
+      if(imported.value.status===200){expect(provisioned).toMatchObject({status:'rejected',reason:{code:'IDENTITY_COLLISION'}});}
+      else{expect(imported.value.body.error?.code).toBe('IMPORT_OWNER_COLLISION');expect(provisioned.status).toBe('fulfilled');}
+      const overlap=await admin.query('SELECT a.id FROM ardesia_next.accounts a JOIN ardesia_next.owner_bindings b ON a.id=b.actor_id WHERE a.id=$1 AND b.account_id<>a.id',[actorId]);
+      expect(overlap.rows).toEqual([]);
+    }finally{if(provisioned.status==='fulfilled')await admin.query('DELETE FROM ardesia_next.accounts WHERE id=$1',[actorId]);}
+  });
+
+  it('preserves imported learner owner aliases and permits personal audio without a teaching role',async()=>{
+    const actorId='learner-device-'+randomUUID(),local=await createCore({storage:new MemoryStorage()}),documentId=randomUUID();
+    await local.execute({actorId,role:'teacher'},{kind:'create-document',commandId:randomUUID(),documentId,expectedRevision:0,title:'Il mio originale'});
+    const {assignments:_a,learnerWork:_w,...legacy}=preCourse(local.snapshot()),snapshotText=JSON.stringify({...legacy,schemaVersion:3});
+    const result=await request({action:'import-local',expectedAccountId:studentA.id,commandId:randomUUID(),title:'Import personale',snapshotText},studentA);
+    expect(result.status).toBe(200);const w=result.body.result;
+    expect(w).toMatchObject({access:'owner',actor:{actorId,role:'student'}});expect(w.documents[0]).toMatchObject({id:documentId,ownerId:actorId,revision:1});
+    const recordingId=randomUUID(),bytes=Buffer.from('Synthetic learner media'),part={index:0,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')};
+    const capture={format:'ardesia-recording-v1',recordingId,documentId,title:'Spiegazione personale',capturedAt:new Date().toISOString(),baseRevision:1,endRevision:1,durationMs:1000,mimeType:'audio/webm',parts:[part],timeline:[]};
+    expect((await request({action:'recording-command',workspaceId:w.workspaceId,command:{kind:'prepare-recording',commandId:randomUUID(),recordingId,expectedRevision:0,capture}},studentA)).status).toBe(200);
+    expect((await request({action:'put-recording-part',workspaceId:w.workspaceId,recordingId,index:0,base64:bytes.toString('base64')},studentA)).status).toBe(200);
+    expect((await request({action:'recording-command',workspaceId:w.workspaceId,command:{kind:'finish-recording',commandId:randomUUID(),recordingId,expectedRevision:1}},studentA)).status).toBe(200);
+    expect((await request({action:'read-recording',workspaceId:w.workspaceId,recordingId},studentA)).body.result.summary).toMatchObject({ownerId:actorId,status:'ready'});
+    expect((await request({action:'read-recording',workspaceId:w.workspaceId,recordingId},teacher)).status).toBe(404);
+    expect((await admin.query('SELECT original_text FROM ardesia_next.import_archives WHERE workspace_id=$1',[w.workspaceId])).rows[0].original_text).toBe(snapshotText);
   });
 
   it('withdraws device plugin consent through Core during import, requiring explicit remote reconsent', async () => {
@@ -379,7 +580,7 @@ describe('M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL)', () => {
     await local.executePlugin(actor, {kind: 'install-plugin', commandId: randomUUID(), pluginId: release.pluginId, expectedRevision: 0, release});
     await local.executePlugin(actor, {kind: 'consent-plugin', commandId: randomUUID(), pluginId: release.pluginId, expectedRevision: 1, releaseDigest: release.bundleDigest, capabilities: release.capabilities});
     await local.executePlugin(actor, {kind: 'activate-plugin', commandId: randomUUID(), pluginId: release.pluginId, expectedRevision: 2});
-    const {assignments: _a, learnerWork: _w, ...legacy} = local.snapshot();
+    const {assignments: _a, learnerWork: _w, ...legacy} = preCourse(local.snapshot());
     const response = await request({action: 'import-local', expectedAccountId: teacher.id, commandId: randomUUID(), title: 'Imported modules', snapshotText: JSON.stringify({...legacy, schemaVersion: 3})}, teacher);
     expect(response.status).toBe(200);
     expect(response.body.result.installations[0]).toMatchObject({status: 'disabled', consent: null, revision: 4});
@@ -396,13 +597,122 @@ describe('M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL)', () => {
     expect((await admin.query('SELECT count(*) FROM ardesia_next.workspaces')).rows[0].count).toBe(count);
   });
 
+  it('stores exact recording bytes and transcripts through restricted HTTP transactions, with recovery, isolation and erasure', async () => {
+    const space = await workspace('Audio fixture'), documentId = await lesson(space.workspaceId), recordingId = randomUUID();
+    const bytes = Buffer.from('Synthetic media bytes for persistence tests only');
+    const part = {index: 0, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex')};
+    const capture = {format: 'ardesia-recording-v1', recordingId, documentId, title: 'Audio sintetico', capturedAt: new Date().toISOString(),
+      baseRevision: 1, endRevision: 1, durationMs: 2000, mimeType: 'audio/webm', parts: [part], timeline: []};
+    const act = (command: unknown, identity = teacher) => request({action: 'recording-command', workspaceId: space.workspaceId, command}, identity);
+    const prepare = {kind: 'prepare-recording', commandId: randomUUID(), recordingId, expectedRevision: 0, capture};
+    expect((await act(prepare)).status).toBe(200);
+    const finish = {kind: 'finish-recording', commandId: randomUUID(), recordingId, expectedRevision: 1};
+    expect((await act(finish)).body.error?.code).toBe('INVALID_REFERENCE');
+    const put = {action: 'put-recording-part', workspaceId: space.workspaceId, recordingId, index: 0, base64: bytes.toString('base64')};
+    expect((await request({...put, base64: Buffer.from('tampered').toString('base64')}, teacher)).body.error?.code).toBe('INVALID_REFERENCE');
+    expect((await request(put, teacher)).status).toBe(200); expect((await request(put, teacher)).status).toBe(200);
+    expect((await act(finish)).body.result.state.summary.status).toBe('ready');
+    const edit = {kind: 'edit-recording-transcript', commandId: randomUUID(), recordingId, expectedRevision: 2, origin: 'manual', cues: [{id: 'cue', fromMs: 0, toMs: 1500, text: 'Energia elastica'}]};
+    const saved = await act(edit); expect(saved.status).toBe(200);
+    const search = {action: 'search-recordings', workspaceId: space.workspaceId, documentId, query: 'ELASTICA'};
+    const found = await request(search, teacher); expect(found.body.result.matches).toEqual([{recordingId, documentId, recordingRevision: 3, title: 'Audio sintetico', atMs: 0, transcriptRevision: 1, excerpt: 'Energia elastica'}]);
+    // Discarded response, then a fresh request through the authority yields the original receipt.
+    expect((await act(edit)).body.result.receipt).toEqual(saved.body.result.receipt);
+    expect((await act({...edit, cues: []})).body.error?.code).toBe('IDEMPOTENCY_CONFLICT');
+    await assign(space.workspaceId, documentId, studentA.id);
+    for (const identity of [studentA, outsider]) {
+      expect((await request(search, identity)).status).toBe(404);
+      expect((await request({action: 'read-recording', workspaceId: space.workspaceId, recordingId}, identity)).status).toBe(404);
+      expect((await request({action: 'read-recording-part', workspaceId: space.workspaceId, recordingId, index: 0}, identity)).status).toBe(404);
+    }
+    const media = await request({action: 'read-recording-part', workspaceId: space.workspaceId, recordingId, index: 0}, teacher);
+    expect(media.body.result.base64).toBe(bytes.toString('base64'));
+    const backup = await exportBackup(admin);
+    expect(backup.data.recordings.some(row => row.id === recordingId)).toBe(true);
+    expect(backup.data.recordingParts.find(row => row.recording_id === recordingId)?.base64).toBe(bytes.toString('base64'));
+    const corrupt = structuredClone(backup); corrupt.data.recordingParts.find(row => row.recording_id === recordingId)!.base64 = Buffer.from('corrupt').toString('base64'); corrupt.sha256 = hash(canonical(corrupt.data));
+    await expect(restoreBackup(admin, corrupt)).rejects.toMatchObject({code: 'INVALID_BACKUP'});
+    const wrongDigest = structuredClone(backup); wrongDigest.data.recordings.find(row => row.id === recordingId)!.state.summary.mediaDigest = '0'.repeat(64); wrongDigest.sha256 = hash(canonical(wrongDigest.data));
+    await expect(restoreBackup(admin, wrongDigest)).rejects.toMatchObject({code: 'INVALID_BACKUP'});
+    const wrongCue = structuredClone(backup); wrongCue.data.recordings.find(row => row.id === recordingId)!.state.transcripts[0]!.cues[0]!.toMs = 5000; wrongCue.sha256 = hash(canonical(wrongCue.data));
+    await expect(restoreBackup(admin, wrongCue)).rejects.toMatchObject({code: 'INVALID_BACKUP'});
+    const erase = {kind: 'erase-recording', commandId: randomUUID(), recordingId, expectedRevision: 3};
+    await admin.query("CREATE FUNCTION ardesia_next.fail_audio_delete() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION 'synthetic delete failure'; END $$");
+    await admin.query('CREATE TRIGGER fail_audio_delete BEFORE DELETE ON ardesia_next.recording_parts FOR EACH ROW EXECUTE FUNCTION ardesia_next.fail_audio_delete()');
+    try {
+      expect((await act(erase)).status).toBe(503);
+      expect((await request({action: 'read-recording', workspaceId: space.workspaceId, recordingId}, teacher)).body.result.summary.status).toBe('ready');
+    } finally {await admin.query('DROP TRIGGER fail_audio_delete ON ardesia_next.recording_parts'); await admin.query('DROP FUNCTION ardesia_next.fail_audio_delete()');}
+    expect((await act(erase)).status).toBe(200); expect((await act(prepare)).body.result.state.summary.status).toBe('erased');
+    expect((await request(put, teacher)).status).toBe(404);
+    expect((await admin.query('SELECT count(*) FROM ardesia_next.recording_parts WHERE recording_id=$1', [recordingId])).rows[0].count).toBe('0');
+    expect((await request({action: 'read-recording', workspaceId: space.workspaceId, recordingId}, teacher)).status).toBe(404);
+    // Keep a ready recording for the following real restore round trip.
+    const retainedId = randomUUID();
+    await act({...prepare, commandId: randomUUID(), recordingId: retainedId, capture: {...capture, recordingId: retainedId}});
+    await request({...put, recordingId: retainedId}, teacher); await act({...finish, commandId: randomUUID(), recordingId: retainedId});
+  });
+
+  it('stores immutable originals, enforces lesson authorization and revocation, validates backups and denies forged pages',async()=>{
+    const space=await workspace('Material original'),documentId=await lesson(space.workspaceId),assetId=randomUUID();
+    const bytes=Buffer.from('%PDF-1.7\nSynthetic integrity fixture only; rendering is covered by browser tests.');
+    const digest=createHash('sha256').update(bytes).digest('hex');
+    const manifest=MaterialManifestSchema.parse({format:'ardesia-material-v1',assetId,documentId,name:'Original.pdf',mimeType:'application/pdf',sha256:digest,bytes:bytes.length,license:'CC0',pages:[{width:600,height:800}],parts:[{index:0,bytes:bytes.length,sha256:digest}]});
+    const base={workspaceId:space.workspaceId,assetId};
+    expect((await request({action:'prepare-material',workspaceId:space.workspaceId,manifest},teacher)).status).toBe(200);
+    expect((await request({action:'finish-material',...base},teacher)).status).toBe(422);
+    expect((await request({action:'put-material-part',...base,index:0,base64:Buffer.from('bad').toString('base64')},teacher)).status).toBe(422);
+    expect((await request({action:'put-material-part',...base,index:0,base64:bytes.toString('base64')},teacher)).status).toBe(200);
+    expect((await request({action:'finish-material',...base},teacher)).body.result.status).toBe('ready');
+    expect((await request({action:'finish-material',...base},teacher)).status).toBe(200);
+    expect((await request({action:'prepare-material',workspaceId:space.workspaceId,manifest:{...manifest,name:'Changed.pdf'}},teacher)).status).toBe(409);
+    const object={id:randomUUID(),type:'material',title:'Original',x:10,y:20,width:300,height:400,data:materialPage(manifest,1)};
+    const add={kind:'add-object',commandId:randomUUID(),documentId,expectedRevision:1,object};
+    expect((await command(teacher,space.workspaceId,{...add,object:{...object,data:{...object.data,sha256:'0'.repeat(64)}}})).status).toBe(422);
+    expect((await command(teacher,space.workspaceId,add)).status).toBe(200);
+    expect((await request({action:'read-material-part',...base,index:0},outsider)).status).toBe(404);
+    await assign(space.workspaceId,documentId,studentA.id);
+    expect((await request({action:'read-material-part',...base,index:0},studentA)).body.result.base64).toBe(bytes.toString('base64'));
+    expect((await request({action:'put-material-part',...base,index:0,base64:bytes.toString('base64')},studentA)).status).toBe(404);
+    await command(teacher,space.workspaceId,{kind:'revoke-assignment',commandId:randomUUID(),documentId,studentId:studentA.id,expectedRevision:1},'learning-command');
+    expect((await request({action:'read-material-part',...base,index:0},studentA)).status).toBe(404);
+    const courseId=randomUUID(),editionId=randomUUID(),unitId=randomUUID(),deliveryId=randomUUID();
+    const unit={id:unitId,title:'Leggi la fonte',objective:'Osservare la fonte',prerequisites:'Saper leggere una pagina',explanation:'Il file conserva il contenuto originale',prediction:'Prevedi quali pagine saranno visibili',activity:'Apri la pagina autorizzata',referenceFeedback:'Confronta con il file originale',recovery:'Rileggi la prima pagina',transfer:'Ripeti con un altro documento',sources:[],lesson:{documentId,revision:2}};
+    expect((await command(teacher,space.workspaceId,{kind:'save-course',commandId:randomUUID(),courseId,expectedRevision:0,input:{title:'Materiali nel corso',description:'',license:'CC0',units:[unit]}},'course-command')).status).toBe(200);
+    expect((await command(teacher,space.workspaceId,{kind:'create-course-edition',commandId:randomUUID(),editionId,expectedRevision:0,courseId,courseRevision:1,label:'Fonte esatta'},'course-command')).status).toBe(200);
+    expect((await command(teacher,space.workspaceId,{kind:'assign-course',commandId:randomUUID(),deliveryId,expectedRevision:0,editionId,learnerId:studentA.id},'course-command')).status).toBe(200);
+    expect((await request({action:'read-material-part',...base,index:0,course:{editionId,unitId}},studentA)).body.result.base64).toBe(bytes.toString('base64'));
+    expect((await request({action:'read-material-part',...base,index:0},studentA)).status).toBe(404);
+    await command(teacher,space.workspaceId,{kind:'revoke-course-delivery',commandId:randomUUID(),deliveryId,expectedRevision:1},'course-command');
+    expect((await request({action:'read-material-part',...base,index:0,course:{editionId,unitId}},studentA)).status).toBe(404);
+    const backup=await exportBackup(admin);expect(backup.data.materialParts.find(p=>p.asset_id===assetId)?.base64).toBe(bytes.toString('base64'));
+    const corrupt=structuredClone(backup);corrupt.data.materialParts.find(p=>p.asset_id===assetId)!.base64=Buffer.from('changed').toString('base64');corrupt.sha256=hash(canonical(corrupt.data));
+    await expect(restoreBackup(admin,corrupt)).rejects.toMatchObject({code:'INVALID_BACKUP'});
+    const missing=structuredClone(backup);missing.data.materials=missing.data.materials.filter(m=>m.id!==assetId);missing.data.materialParts=missing.data.materialParts.filter(p=>p.asset_id!==assetId);missing.sha256=hash(canonical(missing.data));
+    await expect(restoreBackup(admin,missing)).rejects.toMatchObject({code:'INVALID_BACKUP'});
+  });
+
+  it('validates extension integrity before restoring even when the backup has no audio', async()=>{
+    const fixture=await workspace('Extension backup fixture'),documentId=await lesson(fixture.workspaceId);
+    const definition:ExtensionDefinition={format:'ardesia-extension/1',typeId:'backup.private-counter',version:1,name:'Contatore',description:'Prova di integrità',license:'CC0-1.0',renderer:'ardesia.composition/1',fallback:'Contatore',body:{fields:[{key:'count',label:'Conteggio',kind:'number',initial:1}],nodes:[{id:'result',kind:'value',props:{label:'Totale',expression:'count'}}]}};
+    expect((await command(teacher,fixture.workspaceId,{kind:'add-object',commandId:randomUUID(),documentId,expectedRevision:1,object:{id:'counter',type:'extension',title:'Contatore',x:0,y:0,width:300,height:200,data:{definition,definitionDigest:await extensionDefinitionDigest(definition),state:{count:1}}}})).status).toBe(200);
+    const backup=await exportBackup(admin);
+    backup.data.recordings=[];backup.data.recordingParts=[];
+    const saved=backup.data.workspaces.find(w=>w.id===fixture.workspaceId)!.snapshot.documents[0]!.objects[0]!;
+    if(saved.type!=='extension')throw Error('Missing fixture');saved.data.definition.name='Altered after export';
+    backup.sha256=hash(canonical(backup.data));
+    await expect(restoreBackup(admin,backup)).rejects.toMatchObject({code:'INVALID_BACKUP'});
+    const reopened=await request({action:'open-workspace',workspaceId:fixture.workspaceId},teacher);
+    expect(reopened.body.result.documents[0].objects[0].data.definition.name).toBe('Contatore');
+  });
+
   it('backs up and restores synthetic data into an empty database without passwords, sessions or overwrites', async () => {
     const fixture = await workspace('Backup restore fixture'), documentId = await lesson(fixture.workspaceId);
     await assign(fixture.workspaceId, documentId, studentA.id);
     expect((await command(studentA, fixture.workspaceId, {kind: 'save-learner-note', commandId: randomUUID(), documentId,
       expectedRevision: 0, text: 'Synthetic restore evidence'}, 'learning-command')).status).toBe(200);
     const backup = await exportBackup(admin);
-    expect(backup.data.format).toBe('ardesia-server-backup-v2');
+    expect(backup.data.format).toBe('ardesia-server-backup-v4');
     expect(backup.data.accounts.every(account => account.disabled_at === null)).toBe(true);
     expect(JSON.stringify(backup)).not.toContain('password_hash'); expect(JSON.stringify(backup)).not.toContain('token_hash');
     const legacy = {data: {...backup.data, format: 'ardesia-server-backup-v1', accounts: backup.data.accounts.map(({disabled_at: _disabled, ...account}) => account)}, sha256: ''};
@@ -425,11 +735,29 @@ describe('M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL)', () => {
       await migrate(restorePool);
       await provisionTestAccounts(restorePool, Object.entries(ids).map(([key, id]) => ({id, username: id, displayName: id,
         role: key === 'a' || key === 'b' ? 'student' : 'teacher', password: passwords[key as keyof typeof passwords]})));
-      const result = await restoreBackup(restorePool, backup); expect(result.workspaces).toBe(backup.data.workspaces.length);
+      const alias=backup.data.bindings.find(binding=>binding.actor_id!==binding.account_id)!;
+      expect(alias).toBeDefined();
+      const sourceCollision=structuredClone(backup);
+      sourceCollision.data.accounts.push({id:alias.actor_id,role:'student',disabled_at:null});
+      sourceCollision.sha256=hash(canonical(sourceCollision.data));
+      await expect(restoreBackup(restorePool,sourceCollision)).rejects.toMatchObject({code:'INVALID_BACKUP'});
+      await provisionTestAccounts(restorePool,[{id:alias.actor_id,username:'target-collision',displayName:'Target collision',role:'student',password:passwords.a}]);
+      await expect(restoreBackup(restorePool,backup)).rejects.toMatchObject({code:'IDENTITY_COLLISION'});
+      expect((await restorePool.query('SELECT count(*) FROM ardesia_next.workspaces')).rows[0].count).toBe('0');
+      await restorePool.query('DELETE FROM ardesia_next.accounts WHERE id=$1',[alias.actor_id]);
+      const historical = JSON.parse(JSON.stringify(backup));
+      const oldRow = historical.data.workspaces.find((row: any) => row.id === fixture.workspaceId);
+      oldRow.snapshot = {...preCourse(oldRow.snapshot), schemaVersion: 4};
+      // A checksum computed after migration is not a checksum of the original backup.
+      await expect(restoreBackup(restorePool, historical)).rejects.toMatchObject({code: 'INVALID_BACKUP'});
+      historical.sha256 = hash(canonical(historical.data));
+      const result = await restoreBackup(restorePool, historical); expect(result.workspaces).toBe(backup.data.workspaces.length);
       const restored = await exportBackup(restorePool);
       expect(restored.data.workspaces).toEqual(backup.data.workspaces); expect(restored.data.imports).toEqual(backup.data.imports);
       expect(restored.data.creationReceipts).toEqual(backup.data.creationReceipts);
       expect(restored.data.accounts).toEqual(backup.data.accounts);
+      expect(restored.data.materials).toEqual(backup.data.materials); expect(restored.data.materialParts).toEqual(backup.data.materialParts);
+      expect(restored.data.recordings).toEqual(backup.data.recordings); expect(restored.data.recordingParts).toEqual(backup.data.recordingParts);
       const changed = structuredClone(backup); changed.data.workspaces[0]!.title = 'altered';
       await expect(restoreBackup(restorePool, changed)).rejects.toMatchObject({code: 'INVALID_BACKUP'});
     } finally {await restorePool.end(); await admin.query(`DROP DATABASE ${database}`);}
@@ -543,3 +871,9 @@ describe('M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL)', () => {
     expect(response.status).toBe(503); expect((await response.json()).error.code).toBe('SERVICE_UNAVAILABLE');
   }, 15_000);
 });
+
+// Model historical envelopes with exactly their old fields, not a relabelled v7 snapshot.
+function preCourse<T extends object>(snapshot: T) {
+  const {tutorRecords: _t, courses: _c, courseEditions: _e, courseDeliveries: _d, courseWork: _w, ...legacy} = snapshot as T & {tutorRecords?: unknown; courses?: unknown; courseEditions?: unknown; courseDeliveries?: unknown; courseWork?: unknown};
+  return legacy;
+}

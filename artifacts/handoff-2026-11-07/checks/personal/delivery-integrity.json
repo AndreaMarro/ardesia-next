@@ -1,0 +1,34 @@
+{
+  "kind": "delivery-integrity",
+  "checkedAt": "2026-11-07T17:33:48.075Z",
+  "passed": true,
+  "sourceDigest": "81eec80ac69a13a6a13064fca63e780330a6e12de5e6881393c8d142f38b79dd",
+  "manifestFilesChecked": 308,
+  "sourceFilesChecked": 408,
+  "patch": {
+    "sha256": "7b32f39a4b0acc89f62be1ee7f67f9235a0a2ec2c5d61ba1d67ca48d6eda5d0e",
+    "bytes": 1371553,
+    "sourceMatchesIndependentReview": true,
+    "reverseApplyCheck": "PASS"
+  },
+  "preview": {
+    "url": "http://127.0.0.1:4180/",
+    "httpStatus": 200,
+    "buildInfoSha256": "4c6d5ec82043915f4be24c4908ca8ee2a92f80e142882174442c0d37ba90ea1f",
+    "sourceDigest": "81eec80ac69a13a6a13064fca63e780330a6e12de5e6881393c8d142f38b79dd",
+    "assets": [
+      {
+        "path": "assets/math-dJ2525rv.js",
+        "sha256": "42e68eaa75d48cf22e6f51cc59c15f43c4cb9f3a37ac7491283dfb182ea030a1",
+        "bytes": 264230
+      },
+      {
+        "path": "assets/index-CPEtIR2p.js",
+        "sha256": "b63ce14f5d3360b569730688289224f0e53c27f6191d30b1d563be5fce3bba04",
+        "bytes": 401856
+      }
+    ]
+  },
+  "stagedContent": false,
+  "scope": "Controllo di integrità della consegna e identità HTTP della preview; non un nuovo test funzionale o un’accettazione del prodotto completo."
+}

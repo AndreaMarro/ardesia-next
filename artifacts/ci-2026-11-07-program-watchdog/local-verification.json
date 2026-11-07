@@ -1,0 +1,50 @@
+{
+  "commit": "045fa205c5a0fad97fefa774fc6f0de8a87c1aed",
+  "sourceDigest": "0c4c2493f19cd14835d38c7d900725fae1ed4af0b2d03c3ae3b4f361f7e9fdee",
+  "generatedAt": "2026-11-07T18:56:36.507Z",
+  "checks": [
+    {
+      "name": "config-source",
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "types",
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "boundaries",
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "release-evidence",
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "unit",
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "signed-plugin",
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "build",
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "bundle-budget",
+      "exitCode": 0,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "unitReportDigest": "8cada331e075ef8a99f9de82bcd5172b7a4cb3d1c6ebc0fb030f7823d1923bf3",
+  "m4PreparationDigest": "b5b40a0c0d63b99584006976b2dcf1475bf2ad9df4c6fdf545f2e7fb23f059e3"
+}

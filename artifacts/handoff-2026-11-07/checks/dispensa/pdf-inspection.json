@@ -1,0 +1,85 @@
+{
+  "sourceDigest": "ef57bcc96c33bd0ff4114ef479a46b60149a2e80992f49104adbb74de55dfd11",
+  "method": "Poppler pdftotext -layout, pdfinfo; raster page1 and last browser page prepared for visual inspection",
+  "offlineNotice": "shown in UI; printed article carries saved revision and document date, not cache acquisition time",
+  "files": [
+    {
+      "viewport": "desktop",
+      "variant": "browser",
+      "file": "desktop-handout.pdf",
+      "sha256": "1b7cfc1d5cde430fd42084ae8a23777b59816baa6b394b80414a35458afd5fbd",
+      "pages": 6,
+      "requiredMarkers": [
+        "FINE DELLA SPIEGAZIONE",
+        "FINE FORMULA",
+        "OpenStax"
+      ],
+      "privateDraftExcluded": true
+    },
+    {
+      "viewport": "desktop",
+      "variant": "offline",
+      "file": "desktop-offline-handout.pdf",
+      "sha256": "6fda0a6795a61d1c5ad0341a3328090bc6179566b49b110f357561ff9cdad505",
+      "pages": 2,
+      "requiredMarkers": [
+        "Revisione 6",
+        "Il pendolo semplice",
+        "OpenStax"
+      ],
+      "privateDraftExcluded": true
+    },
+    {
+      "viewport": "desktop",
+      "variant": "tex",
+      "file": "tex-desktop/desktop-lesson.pdf",
+      "sha256": "a37b495d0bf1516eb4ac9626d3d754853b5cae12d2791722e4db4b9f26e49734",
+      "pages": 5,
+      "requiredMarkers": [
+        "FINE DELLA SPIEGAZIONE",
+        "FINE FORMULA",
+        "OpenStax"
+      ],
+      "privateDraftExcluded": true
+    },
+    {
+      "viewport": "mobile",
+      "variant": "browser",
+      "file": "mobile-handout.pdf",
+      "sha256": "2badd194f509ac846a172b1c6ee44d2ecb4dc1db62ec4d6e4a8f16bcc40f37be",
+      "pages": 6,
+      "requiredMarkers": [
+        "FINE DELLA SPIEGAZIONE",
+        "FINE FORMULA",
+        "OpenStax"
+      ],
+      "privateDraftExcluded": true
+    },
+    {
+      "viewport": "mobile",
+      "variant": "offline",
+      "file": "mobile-offline-handout.pdf",
+      "sha256": "f76b83885970ce6a543fdabb7d485924e6ab053a65f3b8cde31ac6e3a87d3528",
+      "pages": 2,
+      "requiredMarkers": [
+        "Revisione 6",
+        "Il pendolo semplice",
+        "OpenStax"
+      ],
+      "privateDraftExcluded": true
+    },
+    {
+      "viewport": "mobile",
+      "variant": "tex",
+      "file": "tex-mobile/mobile-lesson.pdf",
+      "sha256": "5f9facb3bf70ab04dc0a49f5404ac942aa05519bf122ea8fccb98313b92b04ae",
+      "pages": 5,
+      "requiredMarkers": [
+        "FINE DELLA SPIEGAZIONE",
+        "FINE FORMULA",
+        "OpenStax"
+      ],
+      "privateDraftExcluded": true
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "sourceDigest": "dd3c46a6c3df541d22070c29a6e5860dd9cc28faafb9c7e79c8ef764a941b266",
+  "observation": "Read-only PostgreSQL query after the failed full regression and before restarting the test harness",
+  "database": "ardesia_m3_browser",
+  "accounts": [
+    {
+      "account": "student-a-m3-desktop",
+      "attempts": 9
+    },
+    {
+      "account": "student-a-m3-mobile",
+      "attempts": 9
+    },
+    {
+      "account": "student-b-m3-desktop",
+      "attempts": 13
+    },
+    {
+      "account": "student-b-m3-mobile",
+      "attempts": 13
+    },
+    {
+      "account": "teacher-m3-desktop",
+      "attempts": 3
+    },
+    {
+      "account": "teacher-m3-mobile",
+      "attempts": 3
+    }
+  ],
+  "configuredLimit": {
+    "perUser": 12,
+    "seconds": 900
+  },
+  "change": "Course scenario uses existing STUDENT_A, preserving authentication and collector assertions",
+  "operatorResetOrLimitChange": false
+}

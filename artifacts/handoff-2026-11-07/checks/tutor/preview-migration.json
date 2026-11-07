@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-11-07T16:22:02.328Z",
+  "database": "ardesia_local_preview",
+  "migration": {
+    "version": 6,
+    "digest": "493b5334db979405265fe8e11df465d1cf5ed8b4119baec4b951155b489c1a93"
+  },
+  "workspaces": 1,
+  "beforeHash": "2669a5de1dcc4c6d19ffd041e69451cbaa97c7d8d10c33e26e50697254895b7d",
+  "afterHash": "2669a5de1dcc4c6d19ffd041e69451cbaa97c7d8d10c33e26e50697254895b7d",
+  "workspaceDataUnchanged": true,
+  "preMigrationBackup": {
+    "retainedLocally": true,
+    "path": "work/preview-before-tutor.dump",
+    "sha256": "818181eca8d89c78dbd018246d59316d911fe663c06f62d7bd6b0d516d6ed85f",
+    "bytes": 1073375,
+    "notPublished": true
+  }
+}

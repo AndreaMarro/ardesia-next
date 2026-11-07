@@ -53,6 +53,17 @@ export async function provisionTestAccounts(pool: Pool, accounts: readonly {
   }));
   return transaction(pool, async client => {
     const result: Account[] = [];
+    // Match restore/import ordering before taking identity reservations. A restore
+    // must not insert bindings between this check and the account INSERT.
+    await client.query('LOCK TABLE ardesia_next.accounts IN ROW EXCLUSIVE MODE');
+    // Imports and account creation share this identity reservation. Sorted locks
+    // keep a batch from deadlocking another batch; no alias can become an account
+    // belonging to somebody else between the check and insertion.
+    for (const id of [...new Set(prepared.map(input => input.id))].sort()) {
+      await client.query('SELECT pg_advisory_xact_lock(hashtextextended($1,0))', ['identity:' + id]);
+      const collision = await client.query('SELECT workspace_id FROM ardesia_next.owner_bindings WHERE actor_id=$1 AND account_id<>$1 LIMIT 1', [id]);
+      if (collision.rowCount) throw new ServerError('IDENTITY_COLLISION', 'This account identity is reserved by an imported owner binding.', 409);
+    }
     for (const input of prepared) {
       await client.query('INSERT INTO ardesia_next.accounts(id,username,display_name,role,password_hash) VALUES ($1,$2,$3,$4,$5)',
         [input.id, input.username, input.displayName, input.role, input.encoded]);

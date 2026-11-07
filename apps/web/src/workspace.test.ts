@@ -65,3 +65,24 @@ describe('M3 authenticated workspace edits', () => {
     expect(client.state.status).not.toBe('confirmed');
   });
 });
+
+it('reserves only pending objects belonging to the active document and both workspace identities', async () => {
+  const {pendingObjectsForDocument} = await import('./workspace');
+  const {client} = await fixture({beforeCommand: () => {throw new Error('Synthetic lost connection');}});
+  await client.edit(teacher, lesson, ink('pending-visible')).catch(() => undefined);
+  const original = structuredClone(client.state.pending[0]!);
+  const foreignEntry = {...original, workspaceId: 'foreign-workspace'};
+  const foreignRequest = structuredClone(original);
+  const otherDocument = structuredClone(original);
+  const nonInk = structuredClone(original);
+  if (foreignRequest.request.action !== 'command' || otherDocument.request.action !== 'command' || nonInk.request.action !== 'command') throw Error('Expected document command');
+  foreignRequest.request.workspaceId = 'foreign-workspace';
+  otherDocument.request.command.documentId = 'foreign-document';
+  nonInk.request.command = {kind:'rename-document',commandId:'rename',documentId:lesson,expectedRevision:1,title:'Pending title'};
+  const pending = [original, foreignEntry, foreignRequest, otherDocument, nonInk];
+  const before = structuredClone(pending);
+  expect(pendingObjectsForDocument(pending, 'workspace-a', lesson).map(object => object.id)).toEqual(['pending-visible']);
+  expect(pendingObjectsForDocument(pending, 'workspace-a', 'closed-document')).toEqual([]);
+  expect(pending).toEqual(before);
+  expect(client.core.getDocument(teacher,lesson).objects).toEqual([]);
+});

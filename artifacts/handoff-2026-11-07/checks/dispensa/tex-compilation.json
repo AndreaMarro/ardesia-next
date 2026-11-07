@@ -1,0 +1,42 @@
+{
+  "kind": "ardesia-handout-tex-verification",
+  "sourceDigest": "ef57bcc96c33bd0ff4114ef479a46b60149a2e80992f49104adbb74de55dfd11",
+  "generatedAt": "2026-11-07T12:24:46.037Z",
+  "toolchain": {
+    "tag": "tectonic@0.17.0",
+    "url": "https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%400.17.0/tectonic-0.17.0-aarch64-apple-darwin.tar.gz",
+    "archiveSha256": "a3f1cac7c5678f01661a92212f58480ae3b0634115d880dbc59e2953ded45667",
+    "binarySha256": "b52b5a730e2b0b33087304f7720f649603953f270a6b1c88bb031e1ae01f7f9c"
+  },
+  "command": "TECTONIC_CACHE_DIR=<workspace>/work/tex-toolchain/cache tectonic --untrusted --keep-logs --outdir <output-dir> <UI-download.tex>",
+  "results": [
+    {
+      "viewport": "desktop",
+      "input": "desktop-lesson.tex",
+      "inputSha256": "3f2aafd4229eaf80bc133f8470a0204dcdca82538bcc82759bc3f1f11e9c235b",
+      "output": "tex-desktop/desktop-lesson.pdf",
+      "outputSha256": "a37b495d0bf1516eb4ac9626d3d754853b5cae12d2791722e4db4b9f26e49734",
+      "exitCode": 0,
+      "passed": true,
+      "overfull": 0,
+      "underfull": 2,
+      "wideMathScaled": true,
+      "log": "tex-desktop/desktop-lesson.log",
+      "compilerLog": "tex-desktop/compiler.log"
+    },
+    {
+      "viewport": "mobile",
+      "input": "mobile-lesson.tex",
+      "inputSha256": "38172fa1ab4cdc5eaf1945ffc1c5645ae856cfadecfd6e34d8114f331e574a0c",
+      "output": "tex-mobile/mobile-lesson.pdf",
+      "outputSha256": "5f9facb3bf70ab04dc0a49f5404ac942aa05519bf122ea8fccb98313b92b04ae",
+      "exitCode": 0,
+      "passed": true,
+      "overfull": 0,
+      "underfull": 2,
+      "wideMathScaled": true,
+      "log": "tex-mobile/mobile-lesson.log",
+      "compilerLog": "tex-mobile/compiler.log"
+    }
+  ]
+}

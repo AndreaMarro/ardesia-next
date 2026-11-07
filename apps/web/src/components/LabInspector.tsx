@@ -7,8 +7,8 @@ import {mountLab, firstPartyLabName, pluginErrorCode, subscribeMarketplace, mark
 import {ScienceView} from './ScienceView';
 import {draftConflictMessage, removedDraftMessage, type SaveObject} from '../workspace';
 
-type Props = {object: LabObject; missing?: boolean; onClose: () => void; onDirtyChange: (dirty: boolean) => void; onSave: SaveObject; onRemove?: (id: string) => Promise<boolean>; titleEditable?: boolean};
-export function LabInspector({object, missing = false, onClose, onDirtyChange, onSave, onRemove, titleEditable = true}: Props) {
+type Props = {object: LabObject; missing?: boolean; onClose: () => void; onDirtyChange: (dirty: boolean) => void; onSave: SaveObject; onRemove?: (id: string) => Promise<boolean>; titleEditable?: boolean; onHandout?:()=>void};
+export function LabInspector({object, missing = false, onClose, onDirtyChange, onSave, onRemove, titleEditable = true, onHandout}: Props) {
   const installationVersion = useSyncExternalStore(subscribeMarketplace, marketplaceVersion);
   const session = useRef<PluginSession|null>(null);
   const generation = useRef(0);
@@ -88,6 +88,7 @@ export function LabInspector({object, missing = false, onClose, onDirtyChange, o
       <button className="primary-button" type="submit" disabled={!dirty || busy || !evaluation || !session.current || conflict}>{busy && evaluation ? 'Calcolo…' : 'Salva laboratorio'}</button>
       {dirty && !missing && <button className="text-button" type="button" disabled={busy} onClick={() => restore()}><Undo2 size={15}/> Ripristina stato salvato</button>}
     </form>
+    {onHandout&&<button type="button" className="secondary-button" disabled={busy} onClick={onHandout}>Dispensa della lezione</button>}
     <p className="privacy-note">I parametri sono salvati solo dopo la conferma del server.</p>
     <details className="lab-identity"><summary>Identità del laboratorio</summary><p>Oggetto <code>{object.id}</code></p><p>Istanza <code>{object.data.instanceId}</code></p><p>{object.data.pluginId} · versione {object.data.pluginVersion} · stato {object.data.stateSchemaVersion}</p><p>Firma e integrità ricontrollate a ogni apertura.</p></details>
     {onRemove && <button className="text-button danger" disabled={busy || missing} onClick={async () => {if (await onRemove(object.id)) onClose();}}><Trash2 size={16}/> Rimuovi oggetto</button>}

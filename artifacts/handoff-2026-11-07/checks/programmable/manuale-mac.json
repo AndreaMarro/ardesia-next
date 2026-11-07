@@ -1,0 +1,17 @@
+{
+  "kind": "ardesia-cua-observation",
+  "target": "http://127.0.0.1:4180/",
+  "tab": "21",
+  "finalSourceClaim": false,
+  "status": "INCONCLUSIVE_EXISTING_SHELL",
+  "observed": [
+    "Previous renderer fallback for ardesia.program/1",
+    "Reload observation still showed the earlier composition dialog",
+    "Subsequent developer-log read aborted before dispatch"
+  ],
+  "actionsNotTaken": [
+    "No storage or data deletion",
+    "No discard of unconfirmed edits"
+  ],
+  "finalBrowserEvidence": "REA fresh Chrome sessions and repository Playwright suite, separately recorded"
+}

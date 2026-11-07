@@ -1,0 +1,63 @@
+
+> ardesia-next@0.1.0 test
+> vitest run apps/web/src/offline-client.test.ts
+
+
+ RUN  v5.0.5 /Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next
+
+ ❯ apps/web/src/offline-client.test.ts (21 tests | 1 failed) 565ms
+   ❯ own lessons offline with original Core recovery (21)
+     ✓ an ACK during offline loading keeps its command until the updated copy is durable 127ms
+     ✓ first availability includes a confirmation received while the first snapshot is being saved 108ms
+     ✓ failed snapshot persistence retains the acknowledged command across cold boot for an identical retry 13ms
+     ✓ cold-opens without a session, keeps pressure/IDs through another cold-open, and confirms only through real Core receipts 8ms
+     ✓ a lost real commit is recovered identically before its offline successor is released 4ms
+     ✓ an actual competing revision preserves unsent drafts without sending or rebasing 2ms
+     ✓ persists logout while disconnected, rejects stale cache writes and ink, but retains account-scoped recovery 3ms
+     ✓ account B with the same lesson ID cannot read or dispatch account A pending 2ms
+     ✓ a verified role change for the same ID invalidates the old teacher cache 1ms
+     ✓ observed authorization failure prevents stale fallback; corruption is not overwritten 2ms
+     ✓ concurrent cache writes never regress revision and contain no revocable projection fields 1ms
+     ✓ failed durable pending storage reports memory, preserves/export drafts and never sends 2ms
+     ✓ a delayed workspace gate cannot replace the newer selection or its availability 54ms
+     ✓ superseded reconnect cannot close a newer login 55ms
+     ✓ unreadable optional storage permits explicit online login but never restores an unverified automatic session 1ms
+     ✓ a cold FORBIDDEN response closes the active cached workspace before it can be reopened 1ms
+     ✓ a cold NOT_FOUND response closes the active cached workspace before it can be reopened 2ms
+     ✓ logout still closes the remote session and reports an unpersisted local close 1ms
+     ✓ logout between the final copy check and open publication cannot reopen local data 55ms
+     ✓ logout between the final copy check and prepare publication cannot reopen local data 55ms
+     × reconnect drains an already captured stroke before authenticating and refuses new input during transition 67ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/web/src/offline-client.test.ts > own lessons offline with original Core recovery > reconnect drains an already captured stroke before authenticating and refuses new input during transition
+AssertionError: expected { kind: 'queued', …(2) } to match object { code: 'OFFLINE_TRANSITION' }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "code": "OFFLINE_TRANSITION",
++   "commandId": "1030bdae-5570-4d4f-9f19-7648dc486708",
++   "kind": "queued",
++   "recovery": "durable",
+  }
+
+ ❯ apps/web/src/offline-client.test.ts:263:24
+    261|     held.release(); const written = await writing; await connecting;
+    262|     expect(prematureRequests).toBe(0); expect(written).toMatchObject({…
+    263|     expect(await late).toMatchObject({code: 'OFFLINE_TRANSITION'});
+       |                        ^
+    264|     expect(c.account?.id).toBe(account.id); expect(c.state.pending).to…
+    265|     expect(c.state.pending[0]?.request).toMatchObject({command: {objec…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 20 passed (21)
+   Start at  09:45:53
+   Duration  685ms (tests 90%, import 6%, transform 4%)
+
