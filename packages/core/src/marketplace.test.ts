@@ -218,7 +218,7 @@ describe('Core authorized release transitions', () => {
       const event=snapshot.events.find(e=>e.type==='plugin-release-changed')!;
       const objects=(event.payload as unknown as {objects:Record<string,unknown>[]}).objects;
       objects[0]![slot]={...original,id:'only-in-transition',type:'extension',data:{definition,definitionDigest,state:{}}} satisfies ExtensionObject;
-      expect(CoreSnapshotSchema.safeParse({...snapshot,courses:[],courseEditions:[],courseDeliveries:[],courseWork:[],tutorRecords:[],schemaVersion:9}).success).toBe(true);
+      expect(CoreSnapshotSchema.safeParse({...snapshot,courses:[],courseEditions:[],courseDeliveries:[],courseWork:[],tutorRecords:[],schemaVersion:10}).success).toBe(true);
       const storage=new ObservedStorage(snapshot);
       await expect(createCore({...options(storage),pluginPolicy:policy.policy})).rejects.toMatchObject({code:'INVALID_SNAPSHOT'});
       expect(storage.writes).toBe(0);expect(await storage.read()).toEqual(snapshot);
@@ -398,7 +398,7 @@ describe('M1 to M2 migration preserves saved data without implied authority', ()
     const storage = new ObservedStorage(raw);
     const policy = policyFixture();
     const core = await createCore({...options(storage, 'migration'), pluginPolicy: policy.policy});
-    expect(core.snapshot()).toEqual({...raw, schemaVersion: 9, tutorRecords: [], installations: [], assignments: [], learnerWork: [], courses: [], courseEditions: [], courseDeliveries: [], courseWork: []});
+    expect(core.snapshot()).toEqual({...raw, schemaVersion: 10, tutorRecords: [], installations: [], assignments: [], learnerWork: [], courses: [], courseEditions: [], courseDeliveries: [], courseWork: []});
     expect(await storage.read()).toEqual(raw);
     expect(storage.writes).toBe(0);
     const savedLab = core.getDocument(actor, 'lesson-1').objects[0] as LabObject;
@@ -406,7 +406,7 @@ describe('M1 to M2 migration preserves saved data without implied authority', ()
     expect(await storage.read()).toEqual(raw);
     await ready(core);
     expect(core.getDocument(actor, 'lesson-1').objects[0]).toEqual(savedLab);
-    expect((await storage.read() as CoreSnapshot).schemaVersion).toBe(9);
+    expect((await storage.read() as CoreSnapshot).schemaVersion).toBe(10);
     expect(core.snapshot().events.slice(0, raw.events.length)).toEqual(raw.events);
   });
 

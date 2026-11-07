@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "selectedExactAndAcceptedAnswersUnchanged": 259,
+  "manifestHashChecks": 17,
+  "sha256": {
+    "courses.json": "da4b771fcd2859e85adcfa9080c00673c2fc15dcae208ce36d460dc58d2228f1",
+    "bank-selection.json": "fdd548b9e404d40613560e150959198d4477fef8fbf1e5ec24e4116d4eab46f4",
+    "assessments.json": "43069e16472f620bad88d7a1b0478cf3fa8e7001e75144150f91444ca03288b5",
+    "coverage.json": "018e320595808d61f8982ccbfef93565e47486e576dd8d850c749a330587c13e",
+    "manifest.json": "a5bc08c8a3c0bffa39f4999efa991e49ef58978391c3faead8fca75c5efc7d45"
+  }
+}

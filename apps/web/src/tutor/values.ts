@@ -13,6 +13,17 @@ export function readMoney(value:string,currency:string){
   const amount=BigInt(match[1]!)*10n**BigInt(digits)+BigInt((match[2]??'').padEnd(digits,'0')||'0');
   if(amount>1_000_000_000_000n)throw Error('Importo troppo grande.');return Number(amount);
 }
+/** Empty optional fields remain absent, so editing an old record cannot invent
+ * zero-valued history or change its old command fingerprint. */
+export function appointmentEconomicsInput(directCost:string,preparation:string,currency:string):{directCostMinor?:number;preparationMinutes?:number}{
+  const result:{directCostMinor?:number;preparationMinutes?:number}={};
+  if(directCost.trim())result.directCostMinor=readMoney(directCost,currency);
+  if(preparation.trim()){
+    if(!/^\d+$/.test(preparation.trim())||Number(preparation)>44640)throw Error('Preparazione: indica minuti interi da 0 a 44640.');
+    result.preparationMinutes=Number(preparation);
+  }
+  return result;
+}
 export function money(minor:number|bigint,currency:string){
   const value=BigInt(minor),digits=fractionDigits(currency),divisor=10n**BigInt(digits),absolute=value<0n?-value:value;
   return (value<0n?'−':'')+new Intl.NumberFormat('it-IT',{style:'currency',currency}).formatToParts(absolute/divisor)

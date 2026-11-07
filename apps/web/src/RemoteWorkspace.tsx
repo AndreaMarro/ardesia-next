@@ -11,6 +11,7 @@ import {LearnerSpace} from './LearnerSpace';
 import {newLesson} from './workspace';
 import {connectMarketplace, disconnectMarketplace, syncMarketplace} from './plugins/first-party';
 
+const KnowledgeStudio = lazy(() => import('./knowledge/KnowledgeStudio'));
 const TutorStudio = lazy(() => import('./tutor/TutorStudio'));
 const client = createRemoteClient();
 const selectionKey = (id: string) => 'ardesia-next-remote-workspace:' + id;
@@ -25,6 +26,8 @@ export function RemoteWorkspace() {
   const projection = client.projection;
   const [tutorOpen, setTutorOpen] = useState(() => location.hash === '#tutor');
   function tutor(open: boolean) {setTutorOpen(open); history.replaceState(null, '', open ? '#tutor' : location.pathname);}
+  const [knowledgeOpen, setKnowledgeOpen] = useState(() => location.hash === '#idee');
+  function knowledge(open: boolean) {setKnowledgeOpen(open); history.replaceState(null, '', open ? '#idee' : location.pathname);}
   const [coursesOpen, setCoursesOpen] = useState(() => location.hash === '#corsi');
   function courses(open: boolean) {setCoursesOpen(open); history.replaceState(null, '', open ? '#corsi' : location.pathname);}
   const [loading, setLoading] = useState(true), [busy, setBusy] = useState(false);
@@ -134,11 +137,11 @@ export function RemoteWorkspace() {
   const account = state.account;
   const personal = projection ? ownsWorkspace(projection) : false;
   const canOpenTutor = personal && account.role === 'teacher';
-  if (manage || !projection || (personal && projection.documents.length === 0 && !coursesOpen && !(tutorOpen && canOpenTutor))) return <WorkspaceHome
+  if (manage || !projection || (personal && projection.documents.length === 0 && !coursesOpen && !knowledgeOpen && !(tutorOpen && canOpenTutor))) return <WorkspaceHome
     account={account} projection={projection} workspaces={workspaces} title={title} onTitle={setTitle} busy={busy || state.pending.length > 0} banner={banner} recovery={recovery()}
     onLogout={() => void perform(async () => {await client.logout(); setWorkspaces([]); setConfirmImport(false); setManage(false);})}
     onSelect={id => void perform(() => select(id))} onRefresh={() => void perform(async () => setWorkspaces(await client.listWorkspaces()))}
-    onReturn={() => setManage(false)} onCourses={() => {setManage(false); courses(true);}} onTutor={() => {setManage(false); tutor(true);}}
+    onKnowledge={() => {setManage(false); knowledge(true);}} onReturn={() => setManage(false)} onCourses={() => {setManage(false); courses(true);}} onTutor={() => {setManage(false); tutor(true);}}
     onExport={() => void exportPersonal()} onCreate={() => void perform(async () => {
       let next = client.projection;
       if (!next || manage || !ownsWorkspace(next)) next = await client.createWorkspace(title.trim());
@@ -148,9 +151,10 @@ export function RemoteWorkspace() {
     })}/>;
   const saveStatus = state.status === 'confirmed' && state.pending.length === 0 ? 'Confermato dal server' : state.status === 'loading' ? 'Aggiornamento dal server…' : 'Salvataggio da verificare';
   if (tutorOpen && canOpenTutor) return <>{banner}<Suspense fallback={<main className="boot-screen">Apertura dello studio…</main>}><TutorStudio key={projection.workspaceId} client={client} onClose={() => tutor(false)} onOpenLesson={id => {try {sessionStorage.setItem(`ardesia-next-document:${projection.actor.actorId}:${projection.workspaceId}`, id);} catch {setError('Seleziona la lezione dalla libreria.');} tutor(false);}}/></Suspense></>;
+  if (knowledgeOpen && personal) return <MaterialProvider key={account.id+projection.workspaceId} access={client.materials}>{banner}<Suspense fallback={<main className="boot-screen">Apertura dell’archivio…</main>}><KnowledgeStudio key={projection.workspaceId} client={client} onClose={() => knowledge(false)} onOpenLesson={id => {try {sessionStorage.setItem(`ardesia-next-document:${projection.actor.actorId}:${projection.workspaceId}`, id);} catch {setError('Seleziona la lezione dalla libreria.');} knowledge(false);}}/></Suspense></MaterialProvider>;
   if (coursesOpen) return <MaterialProvider key={account.id+projection.workspaceId} access={client.materials}>{banner}<CourseStudio key={projection.workspaceId} client={client} onClose={() => courses(false)}/></MaterialProvider>;
   return <MaterialProvider key={account.id+projection.workspaceId} access={client.materials}>{banner}{personal
-    ? <App onTutor={account.role === 'teacher' ? () => tutor(true) : undefined} onCourses={() => courses(true)} sourceRevision={projection.workspaceRevision} recordingAccess={client.recordings} offlineControl={transition => <section className="offline-settings"><h2>Continua anche senza rete</h2><p>Conserva su questo dispositivo le tue lezioni personali di questo spazio. Le nuove annotazioni restano da confermare online. Non sono inclusi lavori degli studenti o autorizzazioni dei moduli.</p><button className="secondary-button" disabled={busy} onClick={() => {
+    ? <App onKnowledge={() => knowledge(true)} inkRecovery={client.inkRecovery} onTutor={account.role === 'teacher' ? () => tutor(true) : undefined} onCourses={() => courses(true)} sourceRevision={projection.workspaceRevision} recordingAccess={client.recordings} offlineControl={transition => <section className="offline-settings"><h2>Continua anche senza rete</h2><p>Conserva su questo dispositivo le tue lezioni personali di questo spazio. Le nuove annotazioni restano da confermare online. Non sono inclusi lavori degli studenti o autorizzazioni dei moduli.</p><button className="secondary-button" disabled={busy} onClick={() => {
         if (state.offlineAvailable) transition(() => perform(() => client.openOffline()));
         else void perform(async () => {await prepareOfflineShell(); await client.makeAvailableOffline();});
       }}>{busy ? 'Preparazione copia locale…' : state.offlineAvailable ? 'Usa copia offline' : 'Rendi disponibile offline'}</button>{error && <p role="alert">{error}</p>}</section>} pending={state.pending.filter(entry => entry.accountId === account.id)} key={projection.workspaceId} workspaceId={projection.workspaceId} core={client.core} actor={projection.actor} onEdit={client.edit} saveStatus={saveStatus} onAccount={() => {setManage(true); void client.listWorkspaces().then(setWorkspaces).catch(() => undefined);}} onExport={exportPersonal}/>

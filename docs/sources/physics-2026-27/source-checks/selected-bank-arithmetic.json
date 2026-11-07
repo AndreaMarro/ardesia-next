@@ -1,0 +1,1278 @@
+{
+  "status": "PASS_WITH_EXPLICIT_UNVERIFIED_REMAINDER",
+  "questions": 259,
+  "questionsWithRecomputedNumericCheck": 98,
+  "questionsWithoutRecomputedNumericCheck": 161,
+  "checkResults": {
+    "PASS": 100,
+    "INHERITED_NOT_REVALIDATED": 34
+  },
+  "scopeCounts": {
+    "syllabus_core": 255,
+    "provided_law_extension": 4
+  },
+  "declaredDifficultyCounts": {
+    "base": 175,
+    "medio": 30,
+    "difficile": 35,
+    "facile": 19
+  },
+  "distinctLawAndReasoningSignatures": 254,
+  "sharedSignatures": [
+    {
+      "lawFamily": "vector-components",
+      "reasoningTask": "conceptual_application",
+      "questionIds": [
+        "u1-vector-angle-ratio-03",
+        "u1-vector-projection-03"
+      ]
+    },
+    {
+      "lawFamily": "elastic-energy",
+      "reasoningTask": "direct_evaluation",
+      "questionIds": [
+        "u2-spring-energy-01",
+        "u2-spring-launch-01"
+      ]
+    },
+    {
+      "lawFamily": "uniform-motion",
+      "reasoningTask": "direct_evaluation",
+      "questionIds": [
+        "u2-uniform-displacement-01",
+        "u2-uniform-position-01"
+      ]
+    },
+    {
+      "lawFamily": "uniform-motion",
+      "reasoningTask": "conceptual_application",
+      "questionIds": [
+        "u2-uniform-displacement-03",
+        "u2-uniform-position-03"
+      ]
+    },
+    {
+      "lawFamily": "buoyancy-payload",
+      "reasoningTask": "direct_evaluation",
+      "questionIds": [
+        "u3-loaded-raft-depth-01",
+        "u3-maximum-payload-01"
+      ]
+    }
+  ],
+  "humanScientificReview": "NOT_RUN",
+  "semanticUniqueness": "NOT_CERTIFIED",
+  "limits": [
+    "A passed arithmetic residual is not a verified physical premise or valid question.",
+    "Qualitative statements, dimensions and symbolic inversions remain inherited AI checks.",
+    "Declared difficulty levels are editorial, not measured on learners."
+  ],
+  "checks": [
+    {
+      "questionId": "u1-area-conversion-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "8",
+      "expected": "8",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u1-area-conversion-02",
+      "checkIndex": 0,
+      "kind": "declared_dimension",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u1-area-conversion-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u1-scalar-product-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u1-scientific-scale-08",
+      "checkIndex": 0,
+      "kind": "exact_power",
+      "result": "PASS",
+      "actual": "100000",
+      "expected": "100000",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u1-scientific-scale-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u1-vector-angle-ratio-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u1-vector-product-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "4",
+      "expected": "4",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u1-vector-sum-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "4",
+      "expected": "4",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u2-atwood-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u2-biceps-lever-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "60",
+      "expected": "60",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u2-biceps-lever-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u2-centripetal-acceleration-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u2-gravitational-energy-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "40",
+      "expected": "40",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u2-gravitational-energy-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u2-gravity-ratio-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "1/2",
+      "expected": "1/2",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u2-hooke-force-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "4",
+      "expected": "4",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u2-impulse-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u2-incline-normal-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "10",
+      "expected": "10",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u2-mean-acceleration-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "2",
+      "expected": "2",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u2-oblique-work-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "2",
+      "expected": "2",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u2-opposed-force-acceleration-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "2",
+      "expected": "2",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u2-projectile-range-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "4/5",
+      "expected": "4/5",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u2-spring-energy-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "4",
+      "expected": "4",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u2-spring-launch-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "1.0",
+      "expected": "1",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u2-uniform-displacement-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "4",
+      "expected": "4",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u2-uniform-position-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "6",
+      "expected": "6",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-apparent-weight-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "20",
+      "expected": "20",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-apparent-weight-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u3-bernoulli-height-speed-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "12",
+      "expected": "12",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-bernoulli-height-speed-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u3-bernoulli-horizontal-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "94",
+      "expected": "94",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-capillary-rise-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "10",
+      "expected": "10",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-capillary-rise-07",
+      "checkIndex": 0,
+      "kind": "ratio",
+      "result": "PASS",
+      "actual": "1/2",
+      "expected": "1/2",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-constriction-velocity-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "4",
+      "expected": "4",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-couette-force-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "20",
+      "expected": "20",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-couette-force-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u3-density-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "3/2",
+      "expected": "3/2",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-density-05",
+      "checkIndex": 0,
+      "kind": "inverse_substitution",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u3-differential-manometer-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "98",
+      "expected": "98",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-droplet-fragmentation-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "Unsupported numeric form: unsupported node or missing symbol"
+    },
+    {
+      "questionId": "u3-hydraulic-stroke-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "10",
+      "expected": "10",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-hydrostatic-weighing-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "2",
+      "expected": "2",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-junction-balance-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "6",
+      "expected": "6",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-layered-liquids-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "18",
+      "expected": "18",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-loaded-raft-depth-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "2",
+      "expected": "2",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-mass-flow-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "4",
+      "expected": "4",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-maximum-payload-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "10",
+      "expected": "10",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-network-stages-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "1",
+      "expected": "1",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-pressure-area-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "4",
+      "expected": "4",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-pressure-gradient-fixed-speed-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "80",
+      "expected": "80",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-soap-film-force-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "2",
+      "expected": "2",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-soap-film-force-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u3-stevino-absolute-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "120",
+      "expected": "120",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-surface-work-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "10",
+      "expected": "10",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-torricelli-flow-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "10.000000000000002",
+      "expected": "10",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-torricelli-speed-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "10.000000000000002",
+      "expected": "10",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-transport-time-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "4",
+      "expected": "4",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-two-liquid-floating-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "1/4",
+      "expected": "1/4",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-venturi-area-ratio-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "6",
+      "expected": "6",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u3-viscous-dissipation-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "18",
+      "expected": "18",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u4-coherent-constructive-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "3",
+      "expected": "3",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u4-coherent-constructive-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u4-echo-ranging-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u4-oscillator-energy-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "4",
+      "expected": "4",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u4-oscillator-energy-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u4-sound-decibel-08",
+      "checkIndex": 0,
+      "kind": "independent_substitution",
+      "result": "PASS",
+      "actual": "0.0",
+      "expected": "0",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u4-spherical-intensity-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "1",
+      "expected": "1",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u4-wave-displacement-projection-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "2",
+      "expected": "2",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u4-wave-phase-space-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "1/4",
+      "expected": "1/4",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u4-wave-phase-time-03",
+      "checkIndex": 0,
+      "kind": "independent_substitution",
+      "result": "PASS",
+      "actual": "0",
+      "expected": "0",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-adiabatic-monatomic-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "399.99999999999994",
+      "expected": "400",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-calorimeter-capacity-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "40",
+      "expected": "40",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-calorimeter-capacity-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u5-carnot-efficiency-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "1/2",
+      "expected": "1/2",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-carnot-efficiency-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u5-carnot-work-temperature-gap-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "200",
+      "expected": "200",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-composite-wall-series-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "30",
+      "expected": "30",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-composite-wall-series-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u5-compression-heating-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "50",
+      "expected": "50",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-compression-heating-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u5-convective-loss-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "50",
+      "expected": "50",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-cyclic-work-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "60",
+      "expected": "60",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-emitted-blackbody-power-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "48",
+      "expected": "48",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-engine-average-power-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "10",
+      "expected": "10",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-engine-efficiency-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "4/5",
+      "expected": "4/5",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-first-law-expansion-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "60",
+      "expected": "60",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-freezing-time-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "38",
+      "expected": "38",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-gas-density-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "1",
+      "expected": "1",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-gas-density-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u5-ice-final-temperature-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "5",
+      "expected": "5",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-ideal-gas-pressure-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "100",
+      "expected": "100",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-interface-temperature-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "50",
+      "expected": "50",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-isobaric-monatomic-heat-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "50",
+      "expected": "50",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-isochoric-heat-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "20",
+      "expected": "20",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-isothermal-work-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "10.0",
+      "expected": "10",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-parallel-heat-losses-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "100",
+      "expected": "100",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-refrigerator-cop-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "5",
+      "expected": "5",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-sensible-heat-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "40",
+      "expected": "40",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-subzero-ice-melting-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "320",
+      "expected": "320",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-temperature-difference-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "20",
+      "expected": "20",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-two-body-calorimetry-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "50",
+      "expected": "50",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u5-warm-water-and-ice-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "25",
+      "expected": "25",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u6-accelerated-magnetic-radius-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u6-capacitor-charge-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "6",
+      "expected": "6",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u6-capacitor-charge-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u6-capacitor-energy-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "4",
+      "expected": "4",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u6-capacitor-energy-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u6-charge-accelerating-voltage-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "2.0",
+      "expected": "2",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u6-connected-plate-separation-charge-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u6-coulomb-force-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "10",
+      "expected": "10",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u6-current-charge-time-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "3",
+      "expected": "3",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u6-faraday-average-emf-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u6-force-current-wire-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "60",
+      "expected": "60",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u6-joule-power-08",
+      "checkIndex": 0,
+      "kind": "independent_substitution",
+      "result": "PASS",
+      "actual": "0",
+      "expected": "0",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u6-midpoint-electric-field-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "18",
+      "expected": "18",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u6-ohmic-current-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "4",
+      "expected": "4",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u6-plane-capacitance-08",
+      "checkIndex": 0,
+      "kind": "independent_substitution",
+      "result": "PASS",
+      "actual": "0",
+      "expected": "0",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u6-point-electric-potential-08",
+      "checkIndex": 0,
+      "kind": "independent_substitution",
+      "result": "PASS",
+      "actual": "0",
+      "expected": "0",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u6-work-potential-difference-08",
+      "checkIndex": 0,
+      "kind": "independent_substitution",
+      "result": "PASS",
+      "actual": "0",
+      "expected": "0",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u7-absorbed-radiant-power-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u7-alpha-mass-number-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u7-beer-transmitted-intensity-16",
+      "checkIndex": 0,
+      "kind": "independent_substitution",
+      "result": "PASS",
+      "actual": "0",
+      "expected": "0",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u7-beer-transmitted-intensity-16",
+      "checkIndex": 1,
+      "kind": "uniqueness",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u7-critical-angle-sine-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u7-infer-attenuation-coefficient-16",
+      "checkIndex": 0,
+      "kind": "independent_substitution",
+      "result": "PASS",
+      "actual": "0",
+      "expected": "0",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u7-infer-attenuation-coefficient-16",
+      "checkIndex": 1,
+      "kind": "independent_substitution",
+      "result": "PASS",
+      "actual": "0",
+      "expected": "0",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u7-photon-packet-frequency-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "33",
+      "expected": "33",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u7-photon-packet-frequency-09",
+      "checkIndex": 0,
+      "kind": "symbolic_inverse",
+      "result": "INHERITED_NOT_REVALIDATED",
+      "actual": null,
+      "expected": null,
+      "note": "No complete numerical substitution provided."
+    },
+    {
+      "questionId": "u7-radioactive-activity-01",
+      "checkIndex": 0,
+      "kind": "substitution",
+      "result": "PASS",
+      "actual": "7",
+      "expected": "7",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u7-radioactive-survivors-16",
+      "checkIndex": 0,
+      "kind": "independent_substitution",
+      "result": "PASS",
+      "actual": "0",
+      "expected": "0",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u7-radioactive-survivors-16",
+      "checkIndex": 1,
+      "kind": "independent_substitution",
+      "result": "PASS",
+      "actual": "0",
+      "expected": "0",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u7-snell-refracted-sine-06",
+      "checkIndex": 0,
+      "kind": "independent_substitution",
+      "result": "PASS",
+      "actual": "0",
+      "expected": "0",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    },
+    {
+      "questionId": "u7-wavelength-in-medium-04",
+      "checkIndex": 0,
+      "kind": "independent_substitution",
+      "result": "PASS",
+      "actual": "0",
+      "expected": "0",
+      "note": "Bounded arithmetic AST recomputation; no symbolic or physical-model certification."
+    }
+  ]
+}

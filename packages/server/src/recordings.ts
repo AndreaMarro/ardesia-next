@@ -12,9 +12,10 @@ export const mediaHash = (bytes: Uint8Array) => createHash('sha256').update(byte
 /** Called only inside the existing authenticated, workspace-locked transaction. */
 export async function recordingRequest(client: PoolClient, account: Account, core: CoreService, actor: Actor, input: Request): Promise<unknown> {
   if (input.action === 'list-recordings' || input.action === 'search-recordings') {
-    core.getDocument(actor, input.documentId);
-    const rows = await client.query('SELECT state FROM ardesia_next.recordings WHERE workspace_id=$1 AND owner_account_id=$2 AND document_id=$3 ORDER BY created_at DESC,id', [input.workspaceId, account.id, input.documentId]);
+    if (input.documentId) core.getDocument(actor, input.documentId);
+    const rows = await client.query('SELECT state FROM ardesia_next.recordings WHERE workspace_id=$1 AND owner_account_id=$2 AND ($3::text IS NULL OR document_id=$3) ORDER BY created_at DESC,id', [input.workspaceId, account.id, input.documentId ?? null]);
     const states = rows.rows.map(row => RecordingStateSchema.parse(row.state));
+    for (const state of states) core.getDocument(actor, state.summary.documentId);
     if (input.action === 'list-recordings') return states.map(state => state.summary).filter(summary => summary.status !== 'erased');
     const normalize = (text: string) => text.normalize('NFKC').toLocaleLowerCase('it'), query = normalize(input.query);
     const matches: RecordingSearch['matches'] = [];

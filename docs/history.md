@@ -599,3 +599,10 @@ PDF/PNG/JPEG/WebP: originale immutabile SHA256/chunk, pagina Core e ink ancorato
 REA reale sul lifecycle PDF.js, navigazione/import immagini e consumer; donor licenziati, nessun trapianto sorgente. Bundle compatibile scelto dopo incompatibilità reale del moderno. La review non autrice ha fatto correggere teardown, concorrenza decoder, raster da metadata, upload non riprendibile, copia senza nuovi byte, focus/connessioni e bozza bloccante. Fallimenti/riesami e prove esatte sono conservati.
 
 Il programma originale del6novembre ha SHA2562de0ad702c65eccb43cc9b156fc9cc44fcc45902cf934d8873d34d2404fcbb9f. Nessuna chat Ardesia aggiornata quel giorno è stata individuata fra100metadati disponibili: nessuna conversazione inventata. Native/Pencil, collaborazione, ricostruzione AI, Knowledge/MCP universale e marketplace commerciale restano aperti.
+
+
+## Mandato diretto7novembre2026 — nucleo e cinque microcorsi
+
+Fonte: testo integrale allegato alla chat di continuazione, letto dal coordinatore; conferma successiva del titolare «Procedi con il Mac disponibile». Si riparte dalla PR50/a4835aa, verificando handoff e CI, recuperando il legacy in sola lettura e usando cinque microcorsi di Fisica per provare scrittura, audio/MCP, Creator, conoscenza e gestionale. Parallelismo utile autorizzato, con unico writer e due specialisti transitori al massimo. Il nuovo mandato non autorizza nuovi provider/spesa, accettazione didattica inventata o modifiche di scheduler; preparazione su branch isolato, sorgenti e handoff GitHub sono autorizzati. Nessun vecchio blocco M3/M4 viene riapplicato come patch o scambiato per l’obiettivo corrente.
+
+Mac mini M4 disponibile; solo Command Line Tools, senza Xcode/iOS SDK. La scelta del titolare consente di proseguire con prove sul Mac; iPad/Pencil fisici restano NOT_RUN. L’implementazione e i risultati sono nel [piano/handoff di continuità](handoffs/core-continuity-2026-11-07.md). Questa registrazione conserva la decisione una sola volta, non promuove il prodotto a completo né modifica coda/cursore.

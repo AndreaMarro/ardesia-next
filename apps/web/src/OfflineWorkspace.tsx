@@ -6,7 +6,7 @@ import type {Handout} from '@ardesia/lesson-os';
 import type {NewEducationalObject} from '@ardesia/contracts';
 import type {RemoteClient} from '@ardesia/remote-client';
 import {Board} from './components/Board';
-import {pendingObjectsForDocument} from './workspace';
+import {pendingObjectsForDocument,pendingRemovalsForDocument} from './workspace';
 
 export function OfflineWorkspace({client}: {client: RemoteClient}) {
   const copy = client.offline!;
@@ -20,10 +20,16 @@ export function OfflineWorkspace({client}: {client: RemoteClient}) {
   const state = client.state;
   const pending = state.pending.filter(entry => entry.workspaceId === copy.workspaceId);
   async function ink(object: NewEducationalObject) {
-    if (object.type !== 'ink' || !document) return;
+    if (object.type !== 'ink' || !document) return false;
     setError(''); setSavingInk(count => count + 1);
-    try {await client.queueOfflineInk(document.id, object);} catch (reason) {setError(reason instanceof Error ? reason.message : 'Tratto non salvato.');}
+    try {const result=await client.queueOfflineInk(document.id, object);return result.recovery==='durable';} catch (reason) {setError(reason instanceof Error ? reason.message : 'Tratto non salvato.');return false;}
     finally {setSavingInk(count => count - 1);}
+  }
+  async function erase(objectId:string){
+    if(!document)return false;
+    setSavingInk(count=>count+1);setError('');
+    try {await client.queueOfflineEraseInk(document.id,objectId);return true;}catch(reason){setError(reason instanceof Error?reason.message:'Cancellazione non conservata.');return false;}
+    finally{setSavingInk(count=>count-1);}
   }
   function exportCopy() {
     const bytes = JSON.stringify({format: 'ardesia-offline-recovery-v1', copy, recovery: client.exportPendingRecovery()}, null, 2);
@@ -41,8 +47,8 @@ export function OfflineWorkspace({client}: {client: RemoteClient}) {
           <button className="secondary-button" onClick={exportCopy}>Esporta copia e tratti</button><button className="secondary-button" disabled={!document || drawing || savingInk>0} onClick={()=>{if(document)setHandout(prepareHandout(document));}}>Dispensa</button></div></section>
       {(error || state.error) && <div className="error-banner" role="alert">{error || state.error?.message}</div>}
       {copy.documents.length > 1 && <label className="offline-selector">Lezione disponibile <select disabled={busy || drawing || savingInk > 0} value={documentId} onChange={event => {setDocumentId(event.target.value); setSelectedId(null);}}>{copy.documents.map(item => <option key={item.id} value={item.id}>{item.title}</option>)}</select></label>}
-      {document && <Board key={document.id} readOnlyObjects onInkActiveChange={setDrawing} document={document} selectedId={selectedId} onSelect={setSelectedId}
-        pendingObjects={pendingObjectsForDocument(pending, copy.workspaceId, document.id)} onInk={object => void ink(object)}
+      {document && <Board key={document.id} inkRecovery={client.inkRecovery} onErase={erase} pendingRemovals={pendingRemovalsForDocument(pending,copy.workspaceId,document.id)} readOnlyObjects onInkActiveChange={setDrawing} document={document} selectedId={selectedId} onSelect={setSelectedId}
+        pendingObjects={pendingObjectsForDocument(pending, copy.workspaceId, document.id)} onInk={object => ink(object)}
         onMove={() => undefined} onAdd={async () => undefined} onUndo={() => undefined} canUndo={false}/>}
       <p className="offline-footnote">La copia conserva la revisione {document?.revision ?? '—'}. I nuovi tratti saranno confermati soltanto dopo la verifica dell’account e delle revisioni. Laboratori e condivisioni richiedono la rete.</p>
     </main>

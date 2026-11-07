@@ -1,0 +1,171 @@
+[
+  {
+    "id": "video-khan-position-time",
+    "title": "Position-time graphs",
+    "youtubeId": "9XxzIoUQd78",
+    "primaryUrl": "https://www.khanacademy.org/science/physics/one-dimensional-motion/graphs-motion/v/position-time-graphs",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-01",
+    "objectiveIds": [
+      "U2-01.01",
+      "U2-01.02",
+      "U2-01.03"
+    ],
+    "before": "Prevedi il segno della velocità dove il grafico posizione-tempo sale, è orizzontale o scende.",
+    "after": "Ritorna a x(t)=6t−t²: segna il punto di inversione e confronta pendenza, spostamento e distanza.",
+    "caution": "Un grafico posizione-tempo non è il disegno della traiettoria.",
+    "url": "https://www.youtube.com/watch?v=9XxzIoUQd78",
+    "publisher": "Khan Academy",
+    "language": "en",
+    "segment": null,
+    "mandatory": false,
+    "status": "DRAFT",
+    "humanApproval": false,
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "identity": "BROWSER_PAGE_TITLE_AND_PUBLISHER",
+      "fullAudiovisualReview": "NOT_RUN",
+      "playback": "START_OBSERVED",
+      "currentAvailability": "CONFIRMED_IN_BROWSER",
+      "accessNote": "CUA in-app browser, anonymous session; optional cookies rejected, player muted. Title and playback progress observed by root on 7 November 2026. No whole-video review.",
+      "observedPositionSeconds": 22,
+      "observedDuration": "5:00"
+    },
+    "reuse": "Link only; no video, transcript, thumbnail or claim of playback rights copied."
+  },
+  {
+    "id": "video-khan-buoyancy",
+    "title": "Buoyant force",
+    "youtubeId": "NYWG5eXRBFQ",
+    "primaryUrl": null,
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-02",
+    "objectiveIds": [
+      "U3-02.03",
+      "U3-02.04"
+    ],
+    "before": "Disegna le pressioni sulle facce superiore e inferiore di un blocco immerso.",
+    "after": "Spiega perché la spinta su un corpo completamente immerso a volume costante non cresce con la profondità in un liquido omogeneo.",
+    "caution": "La spinta dipende dal volume spostato e dalla densità del fluido, non dalla sola densità dell’oggetto.",
+    "url": "https://www.youtube.com/watch?v=NYWG5eXRBFQ",
+    "publisher": "Khan Academy",
+    "language": "en",
+    "segment": null,
+    "mandatory": false,
+    "status": "DRAFT",
+    "humanApproval": false,
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "identity": "BROWSER_PAGE_TITLE_AND_PUBLISHER",
+      "fullAudiovisualReview": "NOT_RUN",
+      "playback": "START_OBSERVED",
+      "currentAvailability": "CONFIRMED_IN_BROWSER",
+      "accessNote": "CUA in-app browser, anonymous session; optional cookies rejected, player muted. Title and playback progress observed by root on 7 November 2026. No whole-video review.",
+      "observedPositionSeconds": 2,
+      "observedDuration": "12:41"
+    },
+    "reuse": "Link only; no video, transcript, thumbnail or claim of playback rights copied."
+  },
+  {
+    "id": "video-khan-first-law",
+    "title": "First law of thermodynamics / internal energy",
+    "youtubeId": "Xb05CaG7TsQ",
+    "primaryUrl": "https://www.khanacademy.org/science/chemistry/thermodynamics-chemistry/internal-energy-sal/v/first-law-of-thermodynamics-internal-energy",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-04",
+    "objectiveIds": [
+      "U5-04.01",
+      "U5-04.02",
+      "U5-04.03"
+    ],
+    "before": "Dichiara se il lavoro positivo è fatto dal gas oppure sul gas.",
+    "after": "Traduci la convenzione eventualmente usata nel video in ΔU=Q−W, con W fatto dal gas; applicala a Q=500 J e W=180 J.",
+    "caution": "Una convenzione ΔU=Q+W usa W fatto sul sistema: i segni cambiano, il bilancio fisico no.",
+    "url": "https://www.youtube.com/watch?v=Xb05CaG7TsQ",
+    "publisher": "Khan Academy",
+    "language": "en",
+    "segment": null,
+    "mandatory": false,
+    "status": "DRAFT",
+    "humanApproval": false,
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "identity": "BROWSER_PAGE_TITLE_AND_PUBLISHER",
+      "fullAudiovisualReview": "NOT_RUN",
+      "playback": "START_OBSERVED",
+      "currentAvailability": "CONFIRMED_IN_BROWSER",
+      "accessNote": "CUA in-app browser, anonymous session; optional cookies rejected, player muted. Title and playback progress observed by root on 7 November 2026. No whole-video review.",
+      "observedPositionSeconds": 2,
+      "observedDuration": "17:39"
+    },
+    "reuse": "Link only; no video, transcript, thumbnail or claim of playback rights copied."
+  },
+  {
+    "id": "video-khan-ohm",
+    "title": "Ohm’s law",
+    "youtubeId": "FuIn1L3qeqI",
+    "primaryUrl": "https://www.khanacademy.org/science/ap-physics-2/ap-circuits-topic/circuits-ap/v/ohms-law",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-04",
+    "objectiveIds": [
+      "U6-04.02",
+      "U6-04.03",
+      "U6-04.04"
+    ],
+    "before": "A tensione fissata, prevedi la corrente quando R raddoppia.",
+    "after": "Confronta R=8 Ω, I=0,5 A con il collegamento di resistori da 6 e 3 Ω; scrivi i vincoli di serie e parallelo.",
+    "caution": "La legge lineare V=RI descrive il resistore ohmico nelle condizioni dichiarate, non ogni componente elettrico.",
+    "url": "https://www.youtube.com/watch?v=FuIn1L3qeqI",
+    "publisher": "Khan Academy",
+    "language": "en",
+    "segment": null,
+    "mandatory": false,
+    "status": "DRAFT",
+    "humanApproval": false,
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "identity": "BROWSER_PAGE_TITLE_AND_PUBLISHER",
+      "fullAudiovisualReview": "NOT_RUN",
+      "playback": "START_OBSERVED",
+      "currentAvailability": "CONFIRMED_IN_BROWSER",
+      "accessNote": "CUA in-app browser, anonymous session; optional cookies rejected, player muted. Title and playback progress observed by root on 7 November 2026. No whole-video review.",
+      "observedPositionSeconds": 2,
+      "observedDuration": "12:17"
+    },
+    "reuse": "Link only; no video, transcript, thumbnail or claim of playback rights copied."
+  },
+  {
+    "id": "video-khan-snell",
+    "title": "Refraction and Snell’s law",
+    "youtubeId": "y55tzg_jW9I",
+    "primaryUrl": "https://www.khanacademy.org/science/physics/ap-physics-2/ap-geometric-optics/modal/v/refraction-and-snell-s-law",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-07",
+    "objectiveIds": [
+      "U7-07.02",
+      "U7-07.03",
+      "U7-07.04"
+    ],
+    "before": "Disegna la normale e prevedi verso quale lato devia la luce passando a indice maggiore.",
+    "after": "Usa n1=1, n2=2 e sinθ1=0,6; trova sinθ2 e controlla qualitativamente il disegno.",
+    "caution": "Gli angoli si misurano dalla normale; il video sulla rifrazione non verifica da solo il modello delle lenti.",
+    "url": "https://www.youtube.com/watch?v=y55tzg_jW9I",
+    "publisher": "Khan Academy",
+    "language": "en",
+    "segment": null,
+    "mandatory": false,
+    "status": "DRAFT",
+    "humanApproval": false,
+    "verification": {
+      "checkedOn": "2026-11-07",
+      "identity": "BROWSER_PAGE_TITLE_AND_PUBLISHER",
+      "fullAudiovisualReview": "NOT_RUN",
+      "playback": "START_OBSERVED",
+      "currentAvailability": "CONFIRMED_IN_BROWSER",
+      "accessNote": "CUA in-app browser, anonymous session; optional cookies rejected, player muted. Title and playback progress observed by root on 7 November 2026. No whole-video review.",
+      "observedPositionSeconds": 37,
+      "observedDuration": "14:23"
+    },
+    "reuse": "Link only; no video, transcript, thumbnail or claim of playback rights copied."
+  }
+]

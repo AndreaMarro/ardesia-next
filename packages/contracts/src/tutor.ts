@@ -13,6 +13,9 @@ export const TutorPackageInputSchema=z.object({...common,kind:z.literal('package
 export const TutorAppointmentInputSchema=z.object({...common,kind:z.literal('appointment'),startAt:timestamp,endAt:timestamp,
   timeZone:z.string().min(1).max(100).refine(value=>{try{new Intl.DateTimeFormat('en',{timeZone:value});return true;}catch{return false;}}),
   status:z.enum(['scheduled','completed','cancelled']),currency,
+  // Optional on purpose: reading an old command/event must not materialize defaults
+  // and change its receipt fingerprint. Consumers interpret absence as zero entered.
+  directCostMinor:amount.optional(),preparationMinutes:z.number().int().nonnegative().max(44640).optional(),
   participants:z.array(z.object({contactId:id,attended:z.boolean(),packageId:id.nullable(),chargeMinor:amount}).strict()).min(1).max(100),
   groupId:id.nullable(),requestId:id.nullable(),lesson:z.object({documentId:id,revision:z.number().int().positive()}).strict().nullable(),
 }).strict().superRefine((value,ctx)=>{

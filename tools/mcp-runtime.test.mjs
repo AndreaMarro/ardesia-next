@@ -122,7 +122,7 @@ export async function verifyMcpRuntime() {
     phase = 'read-only-discovery';
     const reader = await start(teacher, [workspace]);
     const tools = await reader.client.listTools(); report.toolNamesReadOnly = tools.tools.map(tool => tool.name);
-    check(tools.tools.length === 9 && tools.tools.every(tool => tool.annotations.readOnlyHint === true), 'READ_ONLY_TOOLS');
+    check(tools.tools.length === 14 && tools.tools.every(tool => tool.annotations.readOnlyHint === true), 'READ_ONLY_TOOLS');
     check((await reader.client.listResources()).resources.some(resource => resource.uri === 'ardesia://guide'), 'GUIDE_MISSING');
     const guide = JSON.parse((await reader.client.readResource({uri: 'ardesia://guide'})).contents[0].text);
     check(guide.previewIsHumanApproval === false && guide.access === 'read-only', 'MISLEADING_GUIDE');
@@ -186,6 +186,47 @@ export async function verifyMcpRuntime() {
     await call(reader,'ardesia_read_material',{...materialArgs,index:1},'NOT_FOUND');
     await call(reader,'ardesia_read_material',{...materialArgs,workspaceId:otherWorkspace},'SCOPE_REJECTED');
     pass('official-client-original-material-manifest-chunk-and-scope');
+
+    phase = 'recording-transcript-reconstruction';
+    const recordingId = randomUUID(), mediaBytes = Buffer.from('RIFF-synthetic-audio-original-not-a-microphone-test');
+    const mediaPart = {index: 0, sha256: digest(mediaBytes), bytes: mediaBytes.length};
+    const audioSource = (await post({action: 'open-workspace', workspaceId: workspace}, teacher)).result;
+    const timeline = audioSource.events.filter(event => event.documentId === documentId && event.documentRevision > 1)
+      .sort((a, b) => a.documentRevision - b.documentRevision).map((event, index) => ({eventId: event.id, atMs: (index + 1) * 100, timing: 'observed'}));
+    const capture = {format: 'ardesia-recording-v1', recordingId, documentId, title: 'Voce ed energia', capturedAt: new Date().toISOString(),
+      baseRevision: 1, endRevision: revision, durationMs: 10000, mimeType: 'audio/wav', parts: [mediaPart], timeline};
+    await post({action: 'recording-command', workspaceId: workspace, command: {kind: 'prepare-recording', commandId: randomUUID(), recordingId, expectedRevision: 0, capture}}, teacher);
+    await post({action: 'put-recording-part', workspaceId: workspace, recordingId, index: 0, base64: mediaBytes.toString('base64')}, teacher);
+    await post({action: 'recording-command', workspaceId: workspace, command: {kind: 'finish-recording', commandId: randomUUID(), recordingId, expectedRevision: 1}}, teacher);
+    const transcriptCommand = {kind: 'edit-recording-transcript', commandId: randomUUID(), recordingId, expectedRevision: 2, origin: 'imported',
+      cues: [{id: 'elastic', fromMs: 0, toMs: 5000, text: 'Energia elastica: verificare il regime lineare.'}, {id: 'units', fromMs: 5000, toMs: 10000, text: 'Le unità sono joule.'}]};
+    const transcriptPreview = await call(writer, 'ardesia_preview_transcript', {workspaceId: workspace, command: transcriptCommand});
+    check(transcriptPreview.committed === false && transcriptPreview.previousTranscriptRevision === 0, 'TRANSCRIPT_PREVIEW_WROTE');
+    const transcriptSaved = await apply(writer, transcriptPreview);
+    check(transcriptSaved.receipt.revision === 3 && transcriptSaved.transcriptVersions[0].origin === 'imported', 'TRANSCRIPT_NOT_VERSIONED');
+    check(isDeepStrictEqual((await apply(writer, transcriptPreview)).receipt, transcriptSaved.receipt), 'TRANSCRIPT_RETRY_DUPLICATED');
+    const recordingArgs = {workspaceId: workspace, recordingId, revision: 3};
+    const audioRead = await call(reader, 'ardesia_read_recording', {...recordingArgs, limit: 1});
+    check(audioRead.capture.baseRevision === 1 && audioRead.capture.endRevision === revision && audioRead.timeline.length === 1
+      && audioRead.timeline[0].timing === 'observed' && audioRead.timelineTotal === timeline.length, 'AUDIO_TIMELINE_IDENTITY');
+    check((await call(reader, 'ardesia_read_recording_part', {...recordingArgs, index: 0})).base64 === mediaBytes.toString('base64'), 'AUDIO_ORIGINAL_BYTES');
+    check((await call(reader, 'ardesia_search_recordings', {workspaceId: workspace, query: 'ELASTICA'})).matches[0].recordingId === recordingId, 'AUDIO_WORKSPACE_SEARCH');
+    const cuePage = await call(reader, 'ardesia_read_transcript', {workspaceId: workspace, recordingId, recordingRevision: 3, transcriptRevision: 1, limit: 1});
+    check(cuePage.total === 2 && cuePage.nextOffset === 1 && cuePage.transcript.cues[0].id === 'elastic', 'TRANSCRIPT_PAGE');
+    const correction = await call(writer, 'ardesia_preview_transcript', {workspaceId: workspace, command: {...transcriptCommand,
+      commandId: randomUUID(), expectedRevision: 3, cues: [{id: 'corrected', fromMs: 0, toMs: 10000, text: 'Energia in joule; modello elastico ideale.'}]}});
+    await apply(writer, correction);
+    await call(reader, 'ardesia_read_recording', recordingArgs, 'REVISION_CONFLICT');
+    check((await call(reader, 'ardesia_read_transcript', {workspaceId: workspace, recordingId, recordingRevision: 4, transcriptRevision: 1})).transcript.cues[0].id === 'elastic', 'TRANSCRIPT_HISTORY_OVERWRITTEN');
+    await call(reader, 'ardesia_read_transcript', {workspaceId: workspace, recordingId, recordingRevision: 4, transcriptRevision: 99}, 'NOT_FOUND');
+    const initialLesson = await call(reader, 'ardesia_read_document_revision', {workspaceId: workspace, documentId, revision: 1});
+    check(initialLesson.document.objects.length === 0 && initialLesson.document.revision === 1, 'DOCUMENT_REVISION_FALLBACK');
+    await call(reader, 'ardesia_read_document_revision', {workspaceId: workspace, documentId, revision: revision + 1}, 'NOT_FOUND');
+    const invalidTranscript = await call(writer, 'ardesia_preview_transcript', {workspaceId: workspace, command: {...transcriptCommand,
+      commandId: randomUUID(), expectedRevision: 4, cues: [{id: 'outside', fromMs: 0, toMs: 10001, text: 'Outside duration'}]}});
+    await call(writer, 'ardesia_apply_command', {proposalId: invalidTranscript.proposalId, commandDigest: invalidTranscript.commandDigest}, 'INVALID_REFERENCE');
+    check((await call(reader, 'ardesia_read_recording', {...recordingArgs, revision: 4})).summary.revision === 4, 'INVALID_TRANSCRIPT_MUTATED');
+    pass('official-client-original-audio-transcript-history-exact-lesson-reconstruction');
 
 
     phase = 'create-programmable-type';
@@ -272,6 +313,9 @@ export async function verifyMcpRuntime() {
     phase = 'student-isolation-revocation';
     await post({action: 'learning-command', workspaceId: workspace, command: {kind: 'assign-lesson', commandId: randomUUID(), documentId, studentId: student.accountId, expectedRevision: 0}}, teacher);
     const learner = await start(student, [workspace]);
+    await call(learner, 'ardesia_search_recordings', {workspaceId: workspace}, 'OWNER_REQUIRED');
+    await call(learner, 'ardesia_read_recording', {workspaceId: workspace, recordingId, revision: 4}, 'OWNER_REQUIRED');
+    await call(learner, 'ardesia_read_document_revision', {workspaceId: workspace, documentId, revision: 1}, 'OWNER_REQUIRED');
     await post({action: 'learning-command', workspaceId: workspace, command: {kind: 'save-learner-note', commandId: randomUUID(), documentId, expectedRevision: 0, text: 'PRIVATE_STUDENT_SENTINEL'}}, student);
     await call(learner, 'ardesia_read_document', {workspaceId: workspace, documentId});
     await call(reader, 'ardesia_read_document', {workspaceId: workspace, documentId});
@@ -340,6 +384,7 @@ export async function verifyMcpRuntime() {
     await held.pop()(); holdReads = false; await gatedRead; await writeFile(reader.path, readConfig);
     await post({action: 'logout'}, teacher);
     await call(reader, 'ardesia_read_document', {workspaceId: workspace, documentId}, 'UNAUTHENTICATED');
+    await call(reader, 'ardesia_read_recording_part', {workspaceId: workspace, recordingId, revision: 4, index: 0}, 'UNAUTHENTICATED');
     pass('configuration-change-and-session-logout-fail-closed');
     report.observed = {commandRequests, successfulHttpWriteResponses: writeReceipts, exactDocumentRevision: revision,
       privateLearnerDataReturned: false, credentialsReturned: false, aiInferenceUsed: false};

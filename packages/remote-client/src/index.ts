@@ -1,3 +1,5 @@
+import {browserInkDraftStorage, type InkDraftAccess, type InkDraft, type InkDraftStorage} from './ink-drafts';
+export {browserInkDraftStorage, parseInkDraft, type InkDraft, type InkDraftAccess, type InkDraftStorage} from './ink-drafts';
 import {materialAccess} from './materials';
 import type {MaterialAccess} from './materials';
 export {type MaterialAccess} from './materials';
@@ -75,6 +77,7 @@ export interface RemoteClientOptions {
   fetch?: typeof globalThis.fetch; endpoint?: string; timeoutMs?: number;
   pendingStorage?: PendingStorage; clock?: () => string; id?: () => string;
   offlineStore?: OfflineStore;
+  inkDraftStorage?: InkDraftStorage;
 }
 export class RemoteError extends Error {
   constructor(readonly code: string, message: string, readonly outcome: 'rejected' | 'unknown' = 'rejected', readonly status = 0) {
@@ -248,6 +251,8 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
   if (!Number.isInteger(timeoutMs) || timeoutMs < 10 || timeoutMs > 120_000) throw Error('Invalid timeout.');
   const clock = options.clock ?? (() => new Date().toISOString()), id = options.id ?? (() => crypto.randomUUID());
   let storage = options.pendingStorage;
+  let inkDraftStorage = options.inkDraftStorage;
+  if (!inkDraftStorage && typeof window !== 'undefined') {try {inkDraftStorage = browserInkDraftStorage(window.localStorage);} catch { /* Drawing reports unavailable checkpoint storage. */ }}
   if (!storage && typeof window !== 'undefined') {
     // Access may be denied by the browser. Keep explicit in-memory recovery in that case.
     try {storage = browserPendingStorage(window.localStorage);} catch { /* Transport remains usable. */ }
@@ -666,6 +671,44 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
     void operation.then(() => scheduled.delete(entry), () => scheduled.delete(entry));
     return operation;
   }
+  async function queueOfflineInkEdit(documentId: string, input: Extract<EditCommand, {kind: 'add-object' | 'remove-object'}>) {
+    const source = offline, expected = epoch;
+    if (!source) return fail('OFFLINE_UNAVAILABLE', 'Apri prima la copia offline.');
+    const captured = clone(input);
+    if (reconnecting === expected) return fail('OFFLINE_TRANSITION', 'Attendi la riconnessione prima di scrivere.');
+    const operation = localInkWrites.catch(() => undefined).then(async () => {
+      try {await checkLocalGate(source.account.id, true); requireEpoch(expected);} catch (error) {handleFailure(error, expected); throw error;}
+      if (recoveryBlocked) return fail('INVALID_RECOVERY', 'Esporta e controlla il recupero originale.');
+      if (pending.size >= 500) return fail('RECOVERY_LIMIT', 'Esporta o riconcilia le modifiche prima di proseguire.');
+      const document = source.documents.find(d => d.id === documentId);
+      if (!document) return fail('OFFLINE_UNAVAILABLE', 'Puoi modificare i tratti nelle lezioni personali disponibili offline.');
+      const sequence = [...pending.values()].filter(entry => entry.workspaceId === source.workspaceId);
+      if (captured.kind === 'add-object' && captured.object.type !== 'ink') return fail('OFFLINE_UNAVAILABLE', 'Solo i tratti a penna sono modificabili offline.');
+      if (captured.kind === 'remove-object') {
+        let target: NewEducationalObject | undefined = document.objects.find(o => o.id === captured.objectId);
+        for (const entry of sequence) if (entry.request.action === 'command' && entry.request.command.documentId === documentId) {
+          const command = entry.request.command;
+          if (command.kind === 'add-object' && command.object.id === captured.objectId) target = command.object;
+          if (command.kind === 'remove-object' && command.objectId === captured.objectId) target = undefined;
+        }
+        if (target?.type !== 'ink') return fail('OFFLINE_UNAVAILABLE', 'La gomma cancella soltanto tratti ancora presenti.');
+      }
+      const predecessor = sequence.at(-1);
+      const last = sequence.findLast(entry => entry.request.action === 'command' && entry.request.command.documentId === documentId);
+      const commandId = id(), expectedRevision = last?.request.action === 'command' ? last.request.command.expectedRevision + 1 : document.revision;
+      const request = freeze(parseRequest({action: 'command', workspaceId: source.workspaceId,
+        command: {...captured, commandId, documentId, expectedRevision}}));
+      if (pending.has(commandId)) return fail('IDEMPOTENCY_CONFLICT', 'ID già presente nel recupero.');
+      const entry: PendingCommand = {version: 2, accountId: source.account.id, actorId: source.actor.actorId, workspaceId: source.workspaceId,
+        commandId, request, createdAt: clock(), status: 'blocked', error: {code: 'OFFLINE_QUEUED', message: 'Conservata sul dispositivo, non inviata.'},
+        edit: {actor: freeze(clone(source.actor)), predecessorId: predecessor?.commandId ?? null}};
+      pending.set(commandId, entry);
+      try {saveRecovery(); lastError = null; emit();}
+      catch (error) {entry.error = issue(error); lastError = entry.error; rememberRecovery(); emit(); throw error;}
+      return {kind: 'queued' as const, commandId, recovery: state.recovery};
+    });
+    localInkWrites = operation; return operation;
+  }
   async function read(body: Record<string, unknown>): Promise<unknown> {
     const expected = epoch, owner = account();
     try {const result = await request(body, owner.id); requireEpoch(expected); return result;}
@@ -880,33 +923,52 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
         throw error;
       } finally {if (reconnecting === expected) reconnecting = null;}
     },
-    async queueOfflineInk(documentId: string, object: Extract<NewEducationalObject, {type: 'ink'}>) {
-      const source = offline, expected = epoch;
-      if (!source) return fail('OFFLINE_UNAVAILABLE', 'Apri prima la copia offline.');
-      const captured = clone(object);
-      if (reconnecting === expected) return fail('OFFLINE_TRANSITION', 'Attendi la riconnessione prima di scrivere.');
-      const operation = localInkWrites.catch(() => undefined).then(async () => {
-        try {await checkLocalGate(source.account.id, true); requireEpoch(expected);} catch (error) {handleFailure(error, expected); throw error;}
-        if (recoveryBlocked) return fail('INVALID_RECOVERY', 'Esporta e controlla il recupero originale.');
-        if (pending.size >= 500) return fail('RECOVERY_LIMIT', 'Esporta o riconcilia le modifiche prima di proseguire.');
-        const document = source.documents.find(d => d.id === documentId);
-        if (!document || captured.type !== 'ink') return fail('OFFLINE_UNAVAILABLE', 'Puoi scrivere nelle lezioni personali disponibili offline.');
-        const sequence = [...pending.values()].filter(entry => entry.workspaceId === source.workspaceId);
-        const predecessor = sequence.at(-1);
-        const last = sequence.findLast(entry => entry.request.action === 'command' && entry.request.command.documentId === documentId);
-        const commandId = id(), expectedRevision = last?.request.action === 'command' ? last.request.command.expectedRevision + 1 : document.revision;
-        const request = freeze(parseRequest({action: 'command', workspaceId: source.workspaceId,
-          command: {kind: 'add-object', commandId, documentId, expectedRevision, object: captured}}));
-        if (pending.has(commandId)) return fail('IDEMPOTENCY_CONFLICT', 'ID già presente nel recupero.');
-        const entry: PendingCommand = {version: 2, accountId: source.account.id, actorId: source.actor.actorId, workspaceId: source.workspaceId,
-          commandId, request, createdAt: clock(), status: 'blocked', error: {code: 'OFFLINE_QUEUED', message: 'Conservata sul dispositivo, non inviata.'},
-          edit: {actor: freeze(clone(source.actor)), predecessorId: predecessor?.commandId ?? null}};
-        pending.set(commandId, entry);
-        try {saveRecovery(); lastError = null; emit();}
-        catch (error) {entry.error = issue(error); lastError = entry.error; rememberRecovery(); emit(); throw error;}
-        return {kind: 'queued' as const, commandId, recovery: state.recovery};
-      });
-      localInkWrites = operation; return operation;
+    queueOfflineInk(documentId: string, object: Extract<NewEducationalObject, {type: 'ink'}>) {
+      return queueOfflineInkEdit(documentId, {kind: 'add-object', object});
+    },
+    queueOfflineEraseInk(documentId: string, objectId: string) {
+      return queueOfflineInkEdit(documentId, {kind: 'remove-object', objectId});
+    },
+    inkRecovery(documentId: string): InkDraftAccess {
+      const owner = recoveryAccount(), source = offline ?? projection, expected = epoch;
+      if (!owner || !source || !source.documents.some(d => d.id === documentId)
+        || !offline && !ownsWorkspace(source)) return fail('OFFLINE_UNAVAILABLE', 'Recupero penna disponibile nelle tue lezioni personali.');
+      const scope = {accountId: owner.id, workspaceId: source.workspaceId, documentId};
+      const authorize = () => {
+        requireEpoch(expected);
+        const active = offline ?? projection;
+        if (recoveryAccount()?.id !== owner.id || active?.workspaceId !== scope.workspaceId || !active.documents.some(d => d.id === documentId)) return fail('SESSION_CHANGED', 'Lo spazio della bozza è cambiato.');
+        if (!inkDraftStorage) return fail('RECOVERY_STORAGE_FAILURE', 'Il browser non può conservare il tratto in corso. Termina il tratto ed esporta prima di chiudere.');
+        return active.documents.find(d => d.id === documentId)!;
+      };
+      const retained = (draft: InkDraft) => {
+          const document = authorize();
+            const same = (object: NewEducationalObject) => object.id === draft.object.id && object.type === 'ink'
+              && ['x', 'y', 'width', 'height', 'title', 'data'].every(key => canonicalJson(object[key as keyof typeof object]) === canonicalJson(draft.object[key as keyof typeof draft.object]));
+            // Clear a checkpoint only after exact confirmed data or durable immutable recovery exists.
+            return document.objects.some(same) || state.recovery === 'durable' && [...pending.values()].some(entry => entry.workspaceId === scope.workspaceId && entry.request.action === 'command'
+              && entry.request.command.documentId === documentId && entry.request.command.kind === 'add-object' && same(entry.request.command.object));
+      };
+      return {
+        read() {authorize(); return inkDraftStorage!.read(scope).filter(draft => !retained(draft));},
+        recover(objectId, apply) {authorize(); return inkDraftStorage!.recover(scope, objectId, async draft => {
+          if (retained(draft)) return true;
+          const confirmed = await apply(draft); authorize(); return confirmed || retained(draft);
+        });},
+        release(objectId) {
+          try {
+            authorize();const draft=inkDraftStorage!.read(scope,objectId)[0];
+            // Transfer is complete even after a lost HTTP response if the exact
+            // immutable pending command is durable. Remove before unlocking so
+            // a stale second tab cannot create another command for this ID.
+            if(draft&&retained(draft))inkDraftStorage!.remove(scope,objectId);
+          } catch { /* Revocation/corruption preserves bytes; releasing needs no authority. */ }
+          finally {inkDraftStorage?.release(scope,objectId);}
+        },
+        write(draft) {authorize(); inkDraftStorage!.write(scope, draft);},
+        remove(objectId) {authorize(); inkDraftStorage!.remove(scope, objectId);},
+        exportRaw() {authorize(); return inkDraftStorage!.exportRaw(scope);},
+      };
     },
     get state(): RemoteState {return state;},
     get account(): RemoteAccount | null {return clone(session?.account ?? null);},

@@ -24,8 +24,9 @@ const sha = (value: unknown) => createHash('sha256').update(canonicalJson(value)
 
 let server: Server, config: McpConfig, projection: typeof initial, status: number, bodyOverride: unknown;
 let requests: {body: any; headers: Record<string, unknown>}[], directory: string;
+let actionResults: Record<string, unknown>;
 beforeEach(async () => {
-  projection = structuredClone(initial); requests = []; status = 200; bodyOverride = undefined;
+  projection = structuredClone(initial); requests = []; status = 200; bodyOverride = undefined; actionResults = {};
   server = createServer(async (request, response) => {
     let bytes = ''; for await (const part of request) bytes += part;
     const body = JSON.parse(bytes); requests.push({body, headers: request.headers});
@@ -34,6 +35,7 @@ beforeEach(async () => {
       : projection;
     if (body.action === 'command') result = {receipt: {commandId: body.command.commandId, actorId: actor.actorId,
       fingerprint: sha({actor, command: body.command}), documentId: 'lesson', documentRevision: 4, eventId: 'event4'}, projection};
+    if (body.action in actionResults) result = actionResults[body.action];
     response.writeHead(status, {'content-type': 'application/json'});
     response.end(JSON.stringify(bodyOverride ?? {ok: true, result}));
   });
@@ -172,5 +174,62 @@ describe('MCP authorized projections and immutable editing envelopes', () => {
         : action === 'open-workspace' ? projection : {projection, receipt: {commandId: 'rename', actorId: actor.actorId, documentId: 'lesson', documentRevision: 4, eventId: 'event4', fingerprint: 'f'.repeat(64)}}}));
     });
     await expect(adapter.apply(preview)).rejects.toMatchObject({code: 'INVALID_RESPONSE'});
+  });
+});
+
+describe('MCP original audio boundaries', () => {
+  function recordingFixture() {
+    const bytes = Buffer.from('Synthetic original media'), part = {index: 0, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex')};
+    const capture = {format: 'ardesia-recording-v1', recordingId: 'voice', documentId: 'lesson', title: 'Onde', capturedAt: at,
+      baseRevision: 3, endRevision: 3, durationMs: 1000, mimeType: 'audio/wav', parts: [part], timeline: []};
+    const state = {format: 'ardesia-recording-state-v1', capture,
+      summary: {recordingId: 'voice', documentId: 'lesson', ownerId: actor.actorId, title: 'Onde', revision: 3, status: 'ready', capturedAt: at, createdAt: at,
+        durationMs: 1000, mediaDigest: sha({mimeType: capture.mimeType, parts: capture.parts})},
+      transcripts: [{revision: 1, origin: 'imported', updatedBy: actor.actorId, updatedAt: at, cues: [{id: 'cue', fromMs: 0, toMs: 1000, text: 'Originale'}]}],
+      receipts: [1, 2, 3].map(revision => ({commandId: `audio-${revision}`, recordingId: 'voice', actorId: actor.actorId, revision, fingerprint: 'a'.repeat(64)}))};
+    actionResults['read-recording'] = state;
+    actionResults['read-recording-part'] = {part, base64: bytes.toString('base64')};
+    return {state, part, bytes};
+  }
+  const target = {workspaceId: 'workspace', recordingId: 'voice', revision: 3, index: 0};
+  it('verifies original chunk bytes and manifest identity independently of the upstream envelope', async () => {
+    const {part, bytes} = recordingFixture(), adapter = createAdapter(config);
+    expect((await adapter.recordingPart(target)).base64).toBe(bytes.toString('base64'));
+    actionResults['read-recording-part'] = {part, base64: Buffer.from('corrupt bytes').toString('base64')};
+    await expect(adapter.recordingPart(target)).rejects.toMatchObject({code: 'INVALID_RESPONSE'});
+    actionResults['read-recording-part'] = {part: {...part, index: 1}, base64: bytes.toString('base64')};
+    await expect(adapter.recordingPart(target)).rejects.toMatchObject({code: 'INVALID_RESPONSE'});
+    actionResults['read-recording-part'] = {part, base64: bytes.toString('base64') + '\n'};
+    await expect(adapter.recordingPart(target)).rejects.toMatchObject({code: 'INVALID_RESPONSE'});
+  });
+  it('does not expose another owner or a manifest whose media digest differs', async () => {
+    const {state} = recordingFixture(), adapter = createAdapter(config);
+    state.summary.mediaDigest = 'b'.repeat(64);
+    await expect(adapter.readRecording({...target, offset: 0, limit: 10})).rejects.toMatchObject({code: 'INVALID_RESPONSE'});
+    state.summary.mediaDigest = sha({mimeType: state.capture.mimeType, parts: state.capture.parts});
+    state.summary.ownerId = 'other';
+    state.receipts.forEach(receipt => {receipt.actorId = 'other';}); state.transcripts[0]!.updatedBy = 'other';
+    await expect(adapter.readRecording({...target, offset: 0, limit: 10})).rejects.toMatchObject({code: 'INVALID_RESPONSE'});
+  });
+  it('requires owned scope before reading media, and exact revision before returning a chunk', async () => {
+    recordingFixture(); const adapter = createAdapter(config);
+    await expect(adapter.recordingPart({...target, revision: 2})).rejects.toMatchObject({code: 'REVISION_CONFLICT'});
+    expect(requests.some(item => item.body.action === 'read-recording-part')).toBe(false);
+    config = {...config, role: 'student'};
+    Object.assign(projection, {access: 'assigned', actor: {actorId: 'account', role: 'student'}, documents: [], assignedDocuments: [doc], events: []});
+    const count = requests.length;
+    await expect(createAdapter(config).recordingPart(target)).rejects.toMatchObject({code: 'OWNER_REQUIRED'});
+    expect(requests.slice(count).every(item => item.body.action !== 'read-recording')).toBe(true);
+  });
+  it('keeps a transcript preview immutable and imported, with no write until apply', async () => {
+    recordingFixture(); const adapter = createAdapter(config);
+    const command = {kind: 'edit-recording-transcript' as const, commandId: 'transcript', recordingId: 'voice', expectedRevision: 3, origin: 'imported' as const,
+      cues: [{id: 'cue', fromMs: 0, toMs: 1000, text: 'Correzione'}]};
+    const preview = await adapter.previewTranscript({workspaceId: 'workspace', command});
+    command.cues[0]!.text = 'Changed after preview';
+    expect(preview.command.cues[0]!.text).toBe('Correzione');
+    expect(requests.every(item => item.body.action !== 'recording-command')).toBe(true);
+    await expect(adapter.previewTranscript({workspaceId: 'workspace', command: {...command, origin: 'manual'}})).rejects.toMatchObject({code: 'INVALID_COMMAND'});
+    await expect(createAdapter({...config, access: 'read-only'}).previewTranscript({workspaceId: 'workspace', command})).rejects.toMatchObject({code: 'WRITE_DISABLED'});
   });
 });

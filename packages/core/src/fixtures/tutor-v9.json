@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 9,
+  "workspaceId": "local-workspace",
+  "documents": [],
+  "installations": [],
+  "assignments": [],
+  "learnerWork": [],
+  "tutorRecords": [
+    {
+      "title": "Ada",
+      "notes": "",
+      "custom": [],
+      "kind": "contact",
+      "email": "",
+      "phone": "",
+      "archived": false,
+      "id": "ada",
+      "ownerId": "teacher",
+      "revision": 1,
+      "createdAt": "2026-11-07T12:00:00.000Z",
+      "updatedAt": "2026-11-07T12:00:00.000Z"
+    },
+    {
+      "title": "Lezione storica",
+      "notes": "",
+      "custom": [],
+      "kind": "appointment",
+      "startAt": "2026-11-06T09:00:00.000Z",
+      "endAt": "2026-11-06T10:00:00.000Z",
+      "timeZone": "Europe/Rome",
+      "status": "completed",
+      "currency": "EUR",
+      "participants": [
+        {
+          "contactId": "ada",
+          "attended": true,
+          "packageId": null,
+          "chargeMinor": 3000
+        }
+      ],
+      "groupId": null,
+      "requestId": null,
+      "lesson": null,
+      "id": "session",
+      "ownerId": "teacher",
+      "revision": 1,
+      "createdAt": "2026-11-07T12:00:00.000Z",
+      "updatedAt": "2026-11-07T12:00:00.000Z"
+    }
+  ],
+  "courses": [],
+  "courseEditions": [],
+  "courseDeliveries": [],
+  "courseWork": [],
+  "events": [
+    {
+      "id": "golden-event-1",
+      "sequence": 1,
+      "tutorEntity": "contact",
+      "entityId": "ada",
+      "entityRevision": 1,
+      "type": "save-tutor-record",
+      "actorId": "teacher",
+      "actorRole": "teacher",
+      "occurredAt": "2026-11-07T12:00:00.000Z",
+      "payload": {
+        "command": {
+          "commandId": "golden-contact",
+          "expectedRevision": 0,
+          "recordId": "ada",
+          "kind": "save-tutor-record",
+          "input": {
+            "title": "Ada",
+            "notes": "",
+            "custom": [],
+            "kind": "contact",
+            "email": "",
+            "phone": "",
+            "archived": false
+          },
+          "reason": ""
+        },
+        "value": {
+          "title": "Ada",
+          "notes": "",
+          "custom": [],
+          "kind": "contact",
+          "email": "",
+          "phone": "",
+          "archived": false,
+          "id": "ada",
+          "ownerId": "teacher",
+          "revision": 1,
+          "createdAt": "2026-11-07T12:00:00.000Z",
+          "updatedAt": "2026-11-07T12:00:00.000Z"
+        }
+      }
+    },
+    {
+      "id": "golden-event-2",
+      "sequence": 2,
+      "tutorEntity": "appointment",
+      "entityId": "session",
+      "entityRevision": 1,
+      "type": "save-tutor-record",
+      "actorId": "teacher",
+      "actorRole": "teacher",
+      "occurredAt": "2026-11-07T12:00:00.000Z",
+      "payload": {
+        "command": {
+          "commandId": "golden-session",
+          "expectedRevision": 0,
+          "recordId": "session",
+          "kind": "save-tutor-record",
+          "input": {
+            "title": "Lezione storica",
+            "notes": "",
+            "custom": [],
+            "kind": "appointment",
+            "startAt": "2026-11-06T09:00:00.000Z",
+            "endAt": "2026-11-06T10:00:00.000Z",
+            "timeZone": "Europe/Rome",
+            "status": "completed",
+            "currency": "EUR",
+            "participants": [
+              {
+                "contactId": "ada",
+                "attended": true,
+                "packageId": null,
+                "chargeMinor": 3000
+              }
+            ],
+            "groupId": null,
+            "requestId": null,
+            "lesson": null
+          },
+          "reason": ""
+        },
+        "value": {
+          "title": "Lezione storica",
+          "notes": "",
+          "custom": [],
+          "kind": "appointment",
+          "startAt": "2026-11-06T09:00:00.000Z",
+          "endAt": "2026-11-06T10:00:00.000Z",
+          "timeZone": "Europe/Rome",
+          "status": "completed",
+          "currency": "EUR",
+          "participants": [
+            {
+              "contactId": "ada",
+              "attended": true,
+              "packageId": null,
+              "chargeMinor": 3000
+            }
+          ],
+          "groupId": null,
+          "requestId": null,
+          "lesson": null,
+          "id": "session",
+          "ownerId": "teacher",
+          "revision": 1,
+          "createdAt": "2026-11-07T12:00:00.000Z",
+          "updatedAt": "2026-11-07T12:00:00.000Z"
+        }
+      }
+    }
+  ],
+  "receipts": [
+    {
+      "commandId": "golden-contact",
+      "actorId": "teacher",
+      "fingerprint": "46c909bd2f09ee75b7299039156ea7dbcc544452b3b287e6be8a68a20503bf09",
+      "tutorEntity": "contact",
+      "entityId": "ada",
+      "entityRevision": 1,
+      "eventId": "golden-event-1"
+    },
+    {
+      "commandId": "golden-session",
+      "actorId": "teacher",
+      "fingerprint": "f60aaf597de30d578f820d4c1ba7661c9a394061296b731030713b57def779a5",
+      "tutorEntity": "appointment",
+      "entityId": "session",
+      "entityRevision": 1,
+      "eventId": "golden-event-2"
+    }
+  ]
+}

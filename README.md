@@ -1,6 +1,8 @@
 # Ardesia Next
 
-> Consegna applicativa del 7 novembre: [handoff oggettivo](docs/handoffs/2026-11-07.md). Distingue candidato, main, procedura, preview e accettazione; non modifica il cursore né retrodata le prove.
+> Continuazione del nucleo: [cinque corsi, continuità, conoscenza e MCP](docs/handoffs/core-continuity-2026-11-07.md).
+
+> Consegna applicativa precedente del 7 novembre: [handoff oggettivo](docs/handoffs/2026-11-07.md). Distingue candidato, main, procedura, preview e accettazione; non modifica il cursore né retrodata le prove.
 
 
 Una sola applicazione, un solo Core e un solo Plugin Host. Rilascio applicativo limitato a preview Vercel protette. Il mandato del 29 ottobre autorizza la pubblicazione dei sorgenti su GitHub; la visibilità effettiva e gli eventuali passaggi di accesso ancora richiesti sono registrati in `operations/m3-environment.json`.
@@ -73,7 +75,7 @@ npm run status
 
 Usare un operatore di test con `CREATEDB` e `CREATEROLE`. Le suite limitano il reset a database loopback con suffisso `_test` o `_browser`, e le richieste applicative usano un login PostgreSQL senza privilegi amministrativi. Le credenziali sintetiche vengono generate dal runner; le tracce browser che potrebbero registrarle sono disattivate.
 
-`verify` conserva gli otto controlli esistenti, inclusi ricostruzione identica del plugin firmato e budget di **245.760 byte gzip per il nucleo** e **327.680 gzip / 1.048.576 raw per il nuovo runtime opzionale**, incluso WASM. Il report conserva il costo totale, il confronto con la precedente soglia su tutto il JavaScript e il grafo iniziale/differito; nessun asset preesistente è riclassificato. [Decisione](docs/adr/0017-programmable-creator.md). Desktop e mobile sono emulazioni Chromium: non certificano dispositivi fisici.
+`verify` conserva gli otto controlli esistenti, inclusi ricostruzione identica del plugin firmato e budget di **311.296 byte gzip per il nucleo complessivo**, **245.760 per il JavaScript iniziale** e **327.680 gzip / 1.048.576 raw per il runtime opzionale**, incluso WASM; il PDF differito comprende anche worker/font/CMap e mantiene i propri limiti. Il vecchio limite Core278.528 è superato e il confronto rimane visibile nel report ([motivazione misurata](docs/adr/0021-core-continuity.md)). Il report conserva il costo totale, il confronto con la precedente soglia su tutto il JavaScript e il grafo iniziale/differito; nessun asset preesistente è riclassificato. [Decisione](docs/adr/0017-programmable-creator.md). Desktop e mobile sono emulazioni Chromium: non certificano dispositivi fisici.
 
 La prova M3 richiede inoltre un report browser remoto, il database realmente remoto e configurato, tre identità applicative, sessioni indipendenti, controprove di sicurezza/recupero, CI e preview protetta sulla stessa SHA e impronta dei sorgenti. Un record mancante, obsoleto o riferito a un'altra build non produce `ACCEPTED`.
 
@@ -113,3 +115,12 @@ Le lezioni collegate sono fissate a una revisione esatta, senza assegnare automa
 ## Programmi inventati dagli utenti
 
 Creator aggiunge **Crea un programma**: codice, anteprima con avvio esplicito, stato salvabile, nuove versioni e file portabile. Il codice puro gira in QuickJS isolato e restituisce una vista HTML/SVG verificata; il Core conserva identità, licenze e storia. Lo stesso artefatto si crea via MCP, senza avvio implicito. [Guida e ABI](docs/programs.md) · [Scelta e limiti](docs/adr/0017-programmable-creator.md).
+
+
+## Cinque percorsi di Fisica e conoscenza personale
+
+**Corsi → Fisica** importa uno dei cinque microcorsi del semestre filtro2026/2027 come lezioni e oggetti modificabili nel proprio spazio. Ogni percorso collega spiegazione, previsione, indagine, recupero, trasferimento, quesiti e verifiche a revisioni reali. Fissa un’edizione e scegli **Inizia il mio percorso**; dentro un’unità, **Apri materiali della lezione** rende disponibili laboratori e domande con risposta riferita alla versione esatta. Una importazione interrotta riprende dopo la conferma del comando pendente. Le lezioni già modificate non vengono sovrascritte. Tutti i contenuti rimangono DRAFT. [Fonti e copertura](docs/sources/physics-2026-27/README.md).
+
+**Crea → Esplora i laboratori di fisica** offre15modelli manipolabili e riutilizzabili. **Idee** cerca nel patrimonio autorizzato, crea concept-link come oggetti Creator e mostra backlink e una mappa navigabile. **Tutor → Conti** distingue compensi maturati, costi sostenuti, tempo di preparazione e incassi per valuta; i dati mancanti sono indicati, non inventati.
+
+Sul Mac disponibile sono eseguite prove browser/PostgreSQL; viewport mobile, campioni sintetici e client SDK non equivalgono a iPad/Pencil, parlato o host AI reali. [Limiti e prossimo passo](docs/handoffs/core-continuity-2026-11-07.md).

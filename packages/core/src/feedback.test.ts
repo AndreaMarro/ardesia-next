@@ -107,7 +107,7 @@ describe('lesson feedback and correction continuity', () => {
     const {core, attempt, receipt} = await fixture();
     const old = {...preCourse(core.snapshot()), schemaVersion: 4}; const storage = new Storage(old);
     const reopened = await createCore({storage});
-    expect(reopened.snapshot()).toEqual({...old, schemaVersion: 9, tutorRecords: [], courses: [], courseEditions: [], courseDeliveries: [], courseWork: []}); expect(await storage.read()).toEqual(old); expect(storage.writes).toBe(0);
+    expect(reopened.snapshot()).toEqual({...old, schemaVersion: 10, tutorRecords: [], courses: [], courseEditions: [], courseDeliveries: [], courseWork: []}); expect(await storage.read()).toEqual(old); expect(storage.writes).toBe(0);
     expect(await reopened.executeLearning(learner, attempt)).toEqual(receipt); expect(storage.writes).toBe(0);
     await share(core); await core.executeLearning(teacher, feedback(core));
     const forged = {...preCourse(core.snapshot()), schemaVersion: 4};

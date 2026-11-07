@@ -15,7 +15,7 @@ import type {CoreService} from '@ardesia/core';
 import {canonicalJson, CoreError, toObjectInput, type EducationalObject, type NewEducationalObject} from '@ardesia/contracts';
 import {newLesson, type EditCommand} from './workspace';
 import type {RemoteClient, PendingCommand} from '@ardesia/remote-client';
-import {pendingObjectsForDocument} from './workspace';
+import {pendingObjectsForDocument,pendingRemovalsForDocument} from './workspace';
 import type {Actor} from '@ardesia/contracts';
 import {SharingDialog} from './components/SharingDialog';
 import {Board} from './components/Board';
@@ -26,7 +26,7 @@ import {Dialog} from './components/Dialog';
 import {createFirstPartyLab, firstPartyLabName, type LabCondition} from './plugins/first-party';
 
 type Mode = 'board' | 'notebook' | 'reader';
-export function App({core, actor, onEdit, saveStatus, onAccount, onExport, onCourses, onTutor, workspaceId, pending = [], offlineControl, recordingAccess, sourceRevision}: {onTutor?: () => void; onCourses?: () => void; sourceRevision?: number; recordingAccess?: () => RecordingAccess; offlineControl?: (transition: (action: () => Promise<unknown>) => void) => import('react').ReactNode; pending?: readonly PendingCommand[]; workspaceId: string; core: CoreService; actor: Actor; onEdit: RemoteClient['edit']; saveStatus: string; onAccount: () => void; onExport: () => Promise<void>}) {
+export function App({core, actor, onEdit, saveStatus, onAccount, onExport, onCourses, onTutor, onKnowledge, workspaceId, pending = [], offlineControl, recordingAccess, sourceRevision,inkRecovery}: {inkRecovery?: RemoteClient['inkRecovery']; onTutor?: () => void; onCourses?: () => void; onKnowledge?: () => void; sourceRevision?: number; recordingAccess?: () => RecordingAccess; offlineControl?: (transition: (action: () => Promise<unknown>) => void) => import('react').ReactNode; pending?: readonly PendingCommand[]; workspaceId: string; core: CoreService; actor: Actor; onEdit: RemoteClient['edit']; saveStatus: string; onAccount: () => void; onExport: () => Promise<void>}) {
   const [importing,setImporting]=useState(false);
   const capture = useRef<AudioCapture | null>(null);
   const [audioBusy, setAudioBusy] = useState(false), [inkActive, setInkActive] = useState(false);
@@ -120,6 +120,7 @@ export function App({core, actor, onEdit, saveStatus, onAccount, onExport, onCou
       onCreator={()=>navigate(()=>{setInspectorOpen(false);setCreationId(crypto.randomUUID());setCreator(null);})}
       onTutor={onTutor ? () => navigate(onTutor) : undefined}
       onCourses={onCourses ? () => navigate(onCourses) : undefined}
+      onKnowledge={onKnowledge ? () => navigate(onKnowledge) : undefined}
       onModules={()=>navigate(()=>setDialog('modules'))} onSettings={()=>setDialog('settings')}
       onAccount={()=>navigate(onAccount)} onShare={actor.role === 'teacher' ? ()=>setSharing(true) : undefined} onHandout={openHandout}
       audio={recordingAccess && <AudioSession key={document.id} access={recordingAccess} document={document} events={events} bridge={capture} onBusy={setAudioBusy} onReplay={frame => {
@@ -134,9 +135,9 @@ export function App({core, actor, onEdit, saveStatus, onAccount, onExport, onCou
       {error && <div role="alert" className="error-banner"><span>{error}</span><button className="icon-button" aria-label="Chiudi avviso" onClick={() => setError(null)}><X size={17}/></button></div>}
       <div className="lesson-content">
       <div className="lesson-stage">
-      {replay ? <Board key={'replay-' + replay.id} document={replay} selectedId={null} onSelect={() => {}} onMove={() => {}} onAdd={async () => {}} onInk={() => {}} onUndo={() => {}} canUndo={false} readOnlyObjects replayOnly/> : mode==='board' ? <Board key={document.id} pendingObjects={pendingObjectsForDocument(pending, workspaceId, document.id)} document={document} selectedId={selectedId} onSelect={select}
+      {replay ? <Board key={'replay-' + replay.id} document={replay} selectedId={null} onSelect={() => {}} onMove={() => {}} onAdd={async () => {}} onInk={() => {}} onUndo={() => {}} canUndo={false} readOnlyObjects replayOnly/> : mode!=='reader' ? <Board key={document.id} appearance={mode} inkRecovery={inkRecovery} pendingRemovals={pendingRemovalsForDocument(pending,workspaceId,document.id)} onErase={objectId=>run({kind:'remove-object',objectId})} pendingObjects={pendingObjectsForDocument(pending, workspaceId, document.id)} document={document} selectedId={selectedId} onSelect={select}
         onMove={(id,x,y) => {const before=document.objects.find(o => o.id===id)!;void run({kind:'move-object',objectId:id,x,y},{kind:'move-object',objectId:id,x:before.x,y:before.y});}}
-        onAdd={add} onInkActiveChange={active => {inkActiveRef.current = active; setInkActive(active);}} onInk={(object, sampleTimes) => {capture.current?.ink(object.id, sampleTimes); void run({kind:'add-object',object},{kind:'remove-object',objectId:object.id});}}
+        onAdd={add} onInkActiveChange={active => {inkActiveRef.current = active; setInkActive(active);}} onInk={(object, sampleTimes,recovered) => {if(!recovered)capture.current?.ink(object.id, sampleTimes); return run({kind:'add-object',object},{kind:'remove-object',objectId:object.id});}}
         canUndo={undo.length>0} onUndo={() => {const last=undo.at(-1);if(last) void run(last).then(ok => {if(ok)setUndo(history=>history.slice(0,-1));});}}/>
         : <DocumentView document={document} mode={mode} onSelect={select}/>}
       {objectsOpen && <section id="lesson-objects" className="object-strip" aria-label="Fonti e oggetti"><div className="object-drawer-heading"><h2>Fonti e oggetti</h2><button className="icon-button" aria-label="Chiudi elenco oggetti" onClick={()=>setObjectsOpen(false)}><X size={18}/></button></div><div className="object-strip-items">{viewDocument.objects.map(object => {const Icon=icons[object.type];return <button key={object.id} disabled={!!replay} onClick={() => select(object.id)} aria-label={`Seleziona ${object.title}`}><span className={`mini-object type-${object.type}`}><Icon size={19}/></span><span><strong>{object.title}</strong><small>{object.type==='note'?'Nota testuale':object.type==='formula'?'Formula':object.type==='source'?'Collegamento':object.type==='lab'?'Laboratorio scientifico':object.type==='extension'?'Oggetto componibile':'Annotazione'}</small></span></button>;})}</div></section>}

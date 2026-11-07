@@ -4,7 +4,7 @@ import {LibraryBig, Plus, Layers3, Settings2, Shapes, FileText, Share2, Puzzle} 
 type Props = {
   title: string; replay: boolean; canExport: boolean; audio?: ReactNode;
   objectsOpen: boolean; onObjects: () => void; onLibrary: () => void;
-  onMaterial?: () => void; onTutor?: () => void; onCourses?: () => void; onNew: () => void; onCreator?: () => void; onModules: () => void;
+  onMaterial?: () => void; onTutor?: () => void; onCourses?: () => void; onKnowledge?: () => void; onNew: () => void; onCreator?: () => void; onModules: () => void;
   onSettings: () => void; onAccount: () => void; onShare?: () => void; onHandout: () => void;
 };
 export function StudioChrome(p: Props) {
@@ -27,6 +27,7 @@ export function StudioChrome(p: Props) {
       {p.onMaterial && <button aria-label="Importa materiale" title="PDF e immagini" disabled={p.replay} onClick={p.onMaterial}><FileText size={22}/><span>Materiali</span></button>}
       {p.onCreator && <button aria-label="Crea un oggetto" title="Crea un oggetto" disabled={p.replay} onClick={p.onCreator}><Shapes size={22}/><span>Crea</span></button>}
       {p.onCourses && <button aria-label="Apri corsi" title="Corsi" disabled={p.replay} onClick={p.onCourses}><FileText size={22}/><span>Corsi</span></button>}
+      {p.onKnowledge && <button aria-label="Apri conoscenza" title="Conoscenza" disabled={p.replay} onClick={p.onKnowledge}><Share2 size={22}/><span>Idee</span></button>}
       {p.onTutor && <button aria-label="Apri studio tutor" title="Studio tutor" disabled={p.replay} onClick={p.onTutor}><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 11h18m-13 5h2m4 0h2"/></svg><span>Tutor</span></button>}
       <button aria-label="Apri moduli" title="Moduli" disabled={p.replay} onClick={p.onModules}><Puzzle size={22}/><span>Moduli</span></button>
       <button aria-label="Impostazioni" title="Impostazioni" disabled={p.replay} onClick={p.onSettings}><Settings2 size={22}/><span>Spazio</span></button>

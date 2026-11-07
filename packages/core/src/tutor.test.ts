@@ -102,7 +102,7 @@ describe('private tutor operations through Core',()=>{
   });
   it('opens authentic v7 without rewriting storage and refuses hidden tutor fields in old versions',async()=>{
     const {tutorRecords:_t,...old}=emptySnapshot(),legacy={...old,schemaVersion:7},storage=new MemoryStorage(legacy);
-    expect((await createCore({storage})).snapshot().schemaVersion).toBe(9);expect(await storage.read()).toEqual(legacy);
+    expect((await createCore({storage})).snapshot().schemaVersion).toBe(10);expect(await storage.read()).toEqual(legacy);
     for(const schemaVersion of [4,5,6,7])await expect(createCore({storage:new MemoryStorage({...legacy,schemaVersion,tutorRecords:[]})})).rejects.toMatchObject({code:'INVALID_SNAPSHOT'});
   });
 });

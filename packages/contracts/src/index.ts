@@ -1,3 +1,4 @@
+export {CONCEPT_LINK_TYPE, ConceptLinkStateSchema, conceptLinkDefinition, conceptLinkState, type ConceptLinkState} from './knowledge.ts';
 import { z } from 'zod';
 import {MaterialDataSchema, InkAnchorSchema} from './materials.ts';
 export * from './materials.ts';
@@ -10,8 +11,8 @@ import {TutorRecordSchema, TutorEventSchema, TutorReceiptSchema} from './tutor.t
 export {projectDocumentRevision} from './document-history.ts';
 import {CourseSchema, CourseEditionSchema, CourseDeliverySchema, CourseWorkSchema, CourseEventSchema, CourseReceiptSchema} from './courses.ts';
 
-export const CONTRACT_VERSION = '0.10.0' as const;
-export const SNAPSHOT_VERSION = 9 as const;
+export const CONTRACT_VERSION = '0.11.0' as const;
+export const SNAPSHOT_VERSION = 10 as const;
 
 const identifier = z.string().min(1).max(200).regex(/^[A-Za-z0-9][A-Za-z0-9._:-]*$/);
 const title = z.string().trim().min(1).max(240);
@@ -712,6 +713,13 @@ const MarketplaceSnapshotV3Schema = /* @__PURE__ */ (() => z.object({
 
 /** Versioned read-only migration. Historical bytes, consent and receipts are never rewritten on open. */
 export function migrateSnapshotForOpen(input: unknown): unknown {
+  if (input && typeof input === 'object' && 'schemaVersion' in input && [1,2,3,4,5,6,7,8,9].includes(input.schemaVersion as number)) {
+    const raw=input as Record<string,unknown>,array=(value:unknown):any[]=>Array.isArray(value)?value:[];
+    // Economics is new in v10. Never reinterpret a relabelled new record as old.
+    const tutorValues=[...array(raw.tutorRecords),...array(raw.events).filter(e=>e?.tutorEntity).flatMap(e=>[e.payload?.value,e.payload?.command?.kind==='save-tutor-record'?e.payload.command.input:null])];
+    if(tutorValues.some(value=>value?.kind==='appointment'&&('directCostMinor' in value||'preparationMinutes' in value)))return input;
+    if(input.schemaVersion===9){const parsed=CoreSnapshotSchema.safeParse({...input,schemaVersion:SNAPSHOT_VERSION});return parsed.success?parsed.data:input;}
+  }
   if (input && typeof input === 'object' && 'schemaVersion' in input && [1,2,3,4,5,6,7,8].includes(input.schemaVersion as number)) {
     const raw = input as Record<string, unknown>;
     const array = (v: unknown): any[] => Array.isArray(v) ? v : [];

@@ -436,7 +436,7 @@ describe('M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL)', () => {
     expect((await command(studentA,w.workspaceId,cash,'tutor-command')).status).toBe(403);
     expect((await command(outsider,w.workspaceId,cash,'tutor-command')).status).toBe(404);
     const stored=(await admin.query('SELECT snapshot FROM ardesia_next.workspaces WHERE id=$1',[w.workspaceId])).rows[0].snapshot;
-    expect(stored.schemaVersion).toBe(9);expect(stored.events.slice(0,old.events.length)).toEqual(old.events);
+    expect(stored.schemaVersion).toBe(10);expect(stored.events.slice(0,old.events.length)).toEqual(old.events);
     const reopened=(await request({action:'open-workspace',workspaceId:w.workspaceId},teacher)).body.result;
     expect(reopened.tutorSpace.records.filter((r:any)=>r.kind==='payment')).toHaveLength(1);
   });
@@ -472,7 +472,7 @@ describe('M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL)', () => {
     expect((await command(secondSession, w.workspaceId, review, 'learning-command')).status).toBe(404);
     expect((await request({action: 'open-workspace', workspaceId: w.workspaceId}, studentA)).body.result.learnerWork[0].feedback).toHaveLength(1);
     const stored = (await admin.query('SELECT snapshot FROM ardesia_next.workspaces WHERE id=$1', [w.workspaceId])).rows[0].snapshot;
-    expect(stored.schemaVersion).toBe(9); expect(stored.events.slice(0, old.events.length)).toEqual(old.events);
+    expect(stored.schemaVersion).toBe(10); expect(stored.events.slice(0, old.events.length)).toEqual(old.events);
     expect(stored.receipts.slice(0, old.receipts.length)).toEqual(old.receipts);
   });
 

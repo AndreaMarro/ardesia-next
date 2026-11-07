@@ -1,5 +1,6 @@
 import {createHash, randomUUID} from 'node:crypto';
 import {z} from 'zod';
+import {projectDocumentRevision, RecordingStateSchema, RecordingSummarySchema, RecordingSearchSchema, RecordingCommandSchema, RecordingReceiptSchema, type RecordingState, type RecordingCommand} from '@ardesia/contracts';
 import {materialPage, MaterialStateSchema, WorkspaceAccessSchema, ownsWorkspace, TutorSpaceSchema, TutorCommandSchema, TutorReceiptSchema, tutorTarget, type TutorCommand, CourseSchema, CourseEditionSchema, CourseAuthorCommandSchema, CourseReceiptSchema, courseTarget, type CourseAuthorCommand, ActorSchema, canonicalJson, CommandReceiptSchema, CoreCommandSchema, CoreEventSchema,
   EducationalObjectSchema, LessonDocumentSchema, type Actor, type CoreCommand, type LessonDocument} from '@ardesia/contracts';
 import {ConfigSchema, fail, id, revision, type McpConfig} from './config';
@@ -14,7 +15,8 @@ const ProjectionSchema = WorkspaceSummarySchema.extend({actor: ActorSchema, docu
   courseSpace: z.object({courses: z.array(CourseSchema), editions: z.array(z.object({edition: CourseEditionSchema, course: CourseSchema}).strict())}).strip().optional()}).strip();
 type Projection = z.infer<typeof ProjectionSchema>;
 type Proposal = {workspaceId: string; actor: Actor; commandDigest: string; expires: number} &
-  ({action: 'tutor-command'; command: TutorCommand} | {action: 'command'; command: CoreCommand} | {action: 'course-command'; command: CourseAuthorCommand});
+  ({action: 'tutor-command'; command: TutorCommand} | {action: 'command'; command: CoreCommand} | {action: 'course-command'; command: CourseAuthorCommand}
+    | {action: 'recording-command'; command: Extract<RecordingCommand, {kind: 'edit-recording-transcript'}>});
 export const PREVIEW_TTL_MS = 10 * 60_000;
 const MAX_PROPOSALS = 32;
 const hash = (value: unknown) => createHash('sha256').update(canonicalJson(value)).digest('hex');
@@ -55,8 +57,85 @@ export function createAdapter(input: McpConfig, options: {beforeWrite?: () => Pr
   function writable() {if (config.access !== 'read-write') fail('WRITE_DISABLED');}
   function requireOwned(data: Projection) {if (!ownsWorkspace(data)) fail('OWNER_REQUIRED');}
   function expire() {for (const [key, proposal] of proposals) if (proposal.expires <= Date.now()) proposals.delete(key);}
+  async function recording(workspaceId: string, recordingId: string, signal?: AbortSignal) {
+    const data = await open(workspaceId, signal); requireOwned(data);
+    const state = parse(RecordingStateSchema, (await post(config.origin, {action: 'read-recording', workspaceId, recordingId}, config, signal)).result);
+    if (state.summary.recordingId !== recordingId || state.summary.ownerId !== data.actor.actorId
+      || !data.documents.some(doc => doc.id === state.summary.documentId) || !state.capture || state.summary.status !== 'ready') return fail('INVALID_RESPONSE');
+    if (hash({mimeType: state.capture.mimeType, parts: state.capture.parts}) !== state.summary.mediaDigest) return fail('INVALID_RESPONSE');
+    return {data, state};
+  }
+  function exactRecording(state: RecordingState, wanted: number) {
+    if (state.summary.revision !== wanted) fail('REVISION_CONFLICT');
+  }
 
   return {
+    async recordings(args: {workspaceId: string; documentId?: string; query?: string}, signal?: AbortSignal) {
+      const data = await open(args.workspaceId, signal); requireOwned(data);
+      if (args.documentId) document(data, args.documentId);
+      const value = (await post(config.origin, {action: args.query ? 'search-recordings' : 'list-recordings',
+        workspaceId: args.workspaceId, ...(args.documentId ? {documentId: args.documentId} : {}), ...(args.query ? {query: args.query} : {})}, config, signal)).result;
+      if (args.query) {
+        const result = parse(RecordingSearchSchema, value);
+        if (result.matches.some(item => !data.documents.some(doc => doc.id === item.documentId) || args.documentId && item.documentId !== args.documentId)) return fail('INVALID_RESPONSE');
+        return {workspaceId: args.workspaceId, scope: 'owned-recordings-current-transcripts', ...result, truncated: result.total > result.matches.length};
+      }
+      const summaries = parse(z.array(RecordingSummarySchema), value);
+      if (summaries.some(item => item.ownerId !== data.actor.actorId || !data.documents.some(doc => doc.id === item.documentId)
+        || args.documentId && item.documentId !== args.documentId || item.status === 'erased')) return fail('INVALID_RESPONSE');
+      return {workspaceId: args.workspaceId, recordings: summaries};
+    },
+    async readRecording(args: {workspaceId: string; recordingId: string; revision: number; offset: number; limit: number}, signal?: AbortSignal) {
+      const {state} = await recording(args.workspaceId, args.recordingId, signal); exactRecording(state, args.revision);
+      const {timeline, ...capture} = state.capture!;
+      return {workspaceId: args.workspaceId, summary: state.summary, capture,
+        timeline: timeline.slice(args.offset, args.offset + args.limit), timelineTotal: timeline.length,
+        nextOffset: args.offset + args.limit < timeline.length ? args.offset + args.limit : null,
+        transcripts: state.transcripts.map(({cues, ...meta}) => ({...meta, cueCount: cues.length})),
+        timing: 'Media milliseconds; captured and observed marks remain distinct. Read exact lesson revisions with ardesia_read_document_revision.'};
+    },
+    async transcript(args: {workspaceId: string; recordingId: string; recordingRevision: number; transcriptRevision: number; offset: number; limit: number}, signal?: AbortSignal) {
+      const {state} = await recording(args.workspaceId, args.recordingId, signal); exactRecording(state, args.recordingRevision);
+      const transcript = state.transcripts.find(item => item.revision === args.transcriptRevision); if (!transcript) return fail('NOT_FOUND');
+      const {cues, ...meta} = transcript;
+      return {workspaceId: args.workspaceId, recordingId: args.recordingId, recordingRevision: state.summary.revision,
+        documentId: state.summary.documentId, transcript: {...meta, cues: cues.slice(args.offset, args.offset + args.limit)},
+        total: cues.length, nextOffset: args.offset + args.limit < cues.length ? args.offset + args.limit : null};
+    },
+    async recordingPart(args: {workspaceId: string; recordingId: string; revision: number; index: number}, signal?: AbortSignal) {
+      const {state} = await recording(args.workspaceId, args.recordingId, signal); exactRecording(state, args.revision);
+      const part = state.capture!.parts[args.index]; if (!part) return fail('NOT_FOUND');
+      const value = (await post(config.origin, {action: 'read-recording-part', workspaceId: args.workspaceId, recordingId: args.recordingId, index: args.index}, config, signal)).result;
+      if (!record(value) || typeof value.base64 !== 'string' || canonicalJson(value.part) !== canonicalJson(part)) return fail('INVALID_RESPONSE');
+      const bytes = Buffer.from(value.base64, 'base64');
+      if (bytes.toString('base64') !== value.base64 || bytes.length !== part.bytes || createHash('sha256').update(bytes).digest('hex') !== part.sha256) return fail('INVALID_RESPONSE');
+      const current = await recording(args.workspaceId, args.recordingId, signal); exactRecording(current.state, args.revision);
+      if (current.state.summary.mediaDigest !== state.summary.mediaDigest) return fail('INVALID_RESPONSE');
+      return {workspaceId: args.workspaceId, recordingId: args.recordingId, revision: args.revision, mimeType: state.capture!.mimeType,
+        mediaDigest: state.summary.mediaDigest, part, base64: value.base64};
+    },
+    async documentRevision(args: {workspaceId: string; documentId: string; revision: number}, signal?: AbortSignal) {
+      const data = await open(args.workspaceId, signal); requireOwned(data);
+      const current = document(data, args.documentId);
+      if (args.revision > current.revision) return fail('NOT_FOUND');
+      let historical: LessonDocument;
+      try {historical = projectDocumentRevision(data.events, args.documentId, args.revision);} catch {return fail('INVALID_RESPONSE');}
+      return {workspaceId: data.workspaceId, currentRevision: current.revision, document: historical};
+    },
+    async previewTranscript(args: {workspaceId: string; command: Extract<RecordingCommand, {kind: 'edit-recording-transcript'}>}, signal?: AbortSignal) {
+      writable(); expire();
+      const parsed = RecordingCommandSchema.safeParse(args.command);
+      if (!parsed.success || parsed.data.kind !== 'edit-recording-transcript' || parsed.data.origin !== 'imported') return fail('INVALID_COMMAND');
+      const command = structuredClone(parsed.data), {data, state} = await recording(args.workspaceId, command.recordingId, signal);
+      const proposalId = randomUUID(), expires = Date.now() + PREVIEW_TTL_MS;
+      const commandDigest = hash({accountId: config.accountId, workspaceId: args.workspaceId, actor: data.actor, command});
+      if (proposals.size >= MAX_PROPOSALS) return fail('PREVIEW_LIMIT');
+      proposals.set(proposalId, {action: 'recording-command', workspaceId: args.workspaceId, actor: data.actor, command, commandDigest, expires});
+      return {proposalId, commandDigest, expiresAt: new Date(expires).toISOString(), accountId: config.accountId, actor: data.actor,
+        workspaceId: args.workspaceId, previousSummary: state.summary, previousTranscriptRevision: state.transcripts.at(-1)?.revision ?? 0,
+        expectedRevisionMatches: command.expectedRevision === state.summary.revision, command, committed: false, approval: 'not-attested',
+        instruction: 'Imported transcript, not verified ASR or scientific approval. Preserve original command ID for an uncertain retry; prior transcript versions and original media are retained.'};
+    },
     async material(args:{workspaceId:string;documentId:string;objectId:string;revision:number;index?:number},signal?:AbortSignal){
       const data=await open(args.workspaceId,signal),doc=document(data,args.documentId),object=doc.objects.find(o=>o.id===args.objectId);
       if(!object||object.type!=='material'||object.revision!==args.revision)return fail('NOT_FOUND');
@@ -209,6 +288,16 @@ export function createAdapter(input: McpConfig, options: {beforeWrite?: () => Pr
       if (proposals.get(args.proposalId) !== proposal || proposal.expires <= Date.now()) return fail('PREVIEW_UNAVAILABLE');
       const response = (await post(config.origin, {action: proposal.action, workspaceId: proposal.workspaceId, command: proposal.command}, config, signal)).result;
       if (!record(response)) return fail('INVALID_RESPONSE');
+      if (proposal.action === 'recording-command') {
+        const receipt = parse(RecordingReceiptSchema, response.receipt), state = parse(RecordingStateSchema, response.state);
+        if (receipt.commandId !== proposal.command.commandId || receipt.actorId !== proposal.actor.actorId
+          || receipt.recordingId !== proposal.command.recordingId || receipt.revision !== proposal.command.expectedRevision + 1
+          || receipt.fingerprint !== hash({actor: proposal.actor, command: proposal.command})
+          || state.summary.recordingId !== receipt.recordingId || state.summary.ownerId !== proposal.actor.actorId
+          || !state.receipts.some(item => canonicalJson(item) === canonicalJson(receipt))) return fail('INVALID_RESPONSE');
+        return {committed: true, workspaceId: proposal.workspaceId, receipt, summary: state.summary,
+          transcriptVersions: state.transcripts.map(({revision, origin, updatedAt}) => ({revision, origin, updatedAt}))};
+      }
       if (proposal.action === 'tutor-command') {
         const receipt = parse(TutorReceiptSchema,response.receipt), after = projection(response.projection,proposal.workspaceId), target = tutorTarget(proposal.command);
         if(receipt.commandId!==proposal.command.commandId || receipt.actorId!==proposal.actor.actorId || receipt.tutorEntity!==target.tutorEntity || receipt.entityId!==target.entityId || receipt.entityRevision!==proposal.command.expectedRevision+1

@@ -28,10 +28,10 @@ export function inkPath(points: readonly Point[], width: number): string {
   }
   return parts.join('');
 }
-export function inkObject(points: readonly Point[], color: string, width: number): NewEducationalObject {
+export function inkObject(points: readonly Point[], color: string, width: number, id: string = crypto.randomUUID()): NewEducationalObject {
   let x=Infinity,y=Infinity,right=-Infinity,bottom=-Infinity;
   for(const p of points) {x=Math.min(x,p.x);y=Math.min(y,p.y);right=Math.max(right,p.x);bottom=Math.max(bottom,p.y);}
-  return {id:crypto.randomUUID(),type:'ink',title:'Annotazione a penna',x,y,width:Math.max(2,right-x),height:Math.max(2,bottom-y),
+  return {id,type:'ink',title:'Annotazione a penna',x,y,width:Math.max(2,right-x),height:Math.max(2,bottom-y),
     data:{points:points.map(p=>({x:p.x-x,y:p.y-y,pressure:p.pressure})),color,width}};
 }
 
@@ -49,4 +49,24 @@ export function appendSample(buffer:StrokeBuffer,p:Point,emit:(points:Point[])=>
     }
     buffer.points.push(q);buffer.left=Math.min(buffer.left,q.x);buffer.right=Math.max(buffer.right,q.x);buffer.top=Math.min(buffer.top,q.y);buffer.bottom=Math.max(buffer.bottom,q.y);
   }
+}
+
+/** Swept eraser hits actual ink segments (including dots), not their bounding box. */
+export function inkIntersectsEraser(object: Extract<NewEducationalObject, {type: 'ink'}>, from: {x:number;y:number}, to: {x:number;y:number}, padding: number): boolean {
+  const points = object.data.points;
+  const distance = (p: {x:number;y:number}, a: {x:number;y:number}, b: {x:number;y:number}) => {
+    const dx=b.x-a.x,dy=b.y-a.y,den=dx*dx+dy*dy;
+    const t=den ? Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.y-a.y)*dy)/den)) : 0;
+    return Math.hypot(p.x-a.x-t*dx,p.y-a.y-t*dy);
+  };
+  const cross = (a:{x:number;y:number}, b:{x:number;y:number}, c:{x:number;y:number}) => (b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x);
+  const world = (p: Point) => ({x:object.x+p.x,y:object.y+p.y});
+  for (let i=0;i<points.length;i++) {
+    const p=points[i]!,q=points[i+1]??p,a=world(p),b=world(q);
+    const limit=padding+Math.max(radius(p,object.data.width),radius(q,object.data.width));
+    const near=Math.min(distance(from,a,b),distance(to,a,b),distance(a,from,to),distance(b,from,to))<=limit;
+    const crosses=cross(from,to,a)*cross(from,to,b)<0 && cross(a,b,from)*cross(a,b,to)<0;
+    if(near||crosses)return true;
+  }
+  return false;
 }

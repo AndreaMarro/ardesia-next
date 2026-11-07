@@ -1,6 +1,6 @@
 import {describe,it,expect} from 'vitest';
 import {CoreCommandSchema} from '@ardesia/contracts';
-import {initialCamera,toWorld,zoomAt,inkObject,inkPath,isVisible,strokeBuffer,appendSample} from './board-geometry';
+import {initialCamera,toWorld,zoomAt,inkObject,inkPath,isVisible,strokeBuffer,appendSample,inkIntersectsEraser} from './board-geometry';
 
 describe('spatial whiteboard geometry',()=>{
   it('keeps the world point under the cursor fixed across zoom and pan',()=>{
@@ -43,4 +43,16 @@ it('segments more than 20000 samples without dropping the tail',()=>{
  for(let i=1;i<=25000;i++)appendSample(buffer,{x:i%100,y:Math.floor(i/100),pressure:.5},p=>chunks.push(p));
  chunks.push(buffer.points);expect(chunks).toHaveLength(2);expect(chunks[0]!.length).toBe(19999);
  expect(chunks.reduce((n,p)=>n+p.length,0)-(chunks.length-1)).toBe(25001);expect(chunks.at(-1)!.at(-1)).toEqual({x:0,y:250,pressure:.5});
+});
+
+it('a swept eraser hits ink and dots while ignoring empty regions inside the bounding box',()=>{
+ const object=inkObject([{x:100,y:100,pressure:.5},{x:200,y:200,pressure:.5}],'#203e62',2.5,'stable-gesture');
+ if(object.type!=='ink')throw Error('Ink required');
+ expect(object.id).toBe('stable-gesture');
+ expect(inkIntersectsEraser(object,{x:100,y:200},{x:200,y:100},2)).toBe(true);
+ expect(inkIntersectsEraser(object,{x:195,y:105},{x:195,y:105},2)).toBe(false);
+ expect(inkIntersectsEraser(object,{x:0,y:0},{x:0,y:0},2)).toBe(false);
+ const dot=inkObject([{x:-400,y:300,pressure:1}],'#203e62',5);
+ if(dot.type!=='ink')throw Error('Ink required');
+ expect(inkIntersectsEraser(dot,{x:-405,y:300},{x:-400,y:300},2)).toBe(true);
 });

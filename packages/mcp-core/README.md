@@ -118,4 +118,13 @@ La resource `ardesia://extension-format` espone ora anche ABI `ardesia.program/1
 
 ## Originali dei materiali
 
-`ardesia_read_material` richiede workspaceId, documentId, objectId e revision esatti della pagina corrente; senza index restituisce il manifest, con index il chunk base64 verificato. Usa HTTP/ACL correnti e confronta i metadata della pagina col manifest canonico, senza DB diretto o URL arbitrari. Il test esterno SDK/HTTP/PostgreSQL verifica originale e hash. Upload binario da MCP e navigazione audio/trascrizioni restano esclusi. [ADR0020](../../docs/adr/0020-original-materials.md).
+`ardesia_read_material` richiede workspaceId, documentId, objectId e revision esatti della pagina corrente; senza index restituisce il manifest, con index il chunk base64 verificato. Usa HTTP/ACL correnti e confronta i metadata della pagina col manifest canonico, senza DB diretto o URL arbitrari. Il test esterno SDK/HTTP/PostgreSQL verifica originale e hash. Upload binario da MCP resta escluso; audio e trascrizioni sono consultabili con gli strumenti descritti sotto. [ADR0020](../../docs/adr/0020-original-materials.md).
+
+
+## Audio, trascrizioni e lezioni esatte
+
+`ardesia_search_recordings` cerca registrazioni e trascrizioni correnti nello spazio posseduto, opzionalmente in una lezione. `ardesia_read_recording` richiede la revisione corrente esatta e restituisce manifest, timeline paginata e metadati della trascrizione. `ardesia_read_transcript` richiede revisioni esplicite di registrazione e trascrizione, con pagine di cue. `ardesia_read_recording_part` legge il chunk originale base64 dopo verifica di binding/digest e ricontrollo dell’autorizzazione. Non effettua fetch di URL arbitrari.
+
+`ardesia_read_document_revision` ricostruisce una lezione posseduta alla revisione richiesta, anche storica, attraverso gli eventi autorizzati. Non sostituisce una revisione mancante con quella corrente. `ardesia_preview_transcript` prepara una trascrizione importata attraverso lo stesso preview/apply e comando Core; tempi, provenienza e revisioni vengono verificati. Nessuna trascrizione automatica o inferenza cloud viene eseguita.
+
+Il test di runtime usa il client MCP ufficiale, bundle stdio, HTTP e PostgreSQL con identità limitata: ricerca dei cue, paginazione, bytes originali, revisione storica, import della trascrizione, isolamento e revoca. I bytes audio sono sintetici: il test non attesta riconoscimento del parlato, microfono reale o host Claude/ChatGPT. Claude sul Mac era installato ma non autenticato; nessuna sua configurazione o sessione è stata modificata.

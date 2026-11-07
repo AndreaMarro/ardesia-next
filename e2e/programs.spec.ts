@@ -103,11 +103,12 @@ test('execution consent and experimental state stay within their exact lesson ev
   const command=(value:Record<string,unknown>)=>api(page.request,{action:'command',workspaceId:workspace.workspaceId,command:{commandId:randomUUID(),documentId:otherId,...value}},workspace.account.id);
   await command({kind:'create-document',expectedRevision:0,title:'Seconda lezione con stesso oggetto'});
   await command({kind:'add-object',expectedRevision:1,object:{...toObjectInput(original),data:{...original.data,state:{draft:'',ideas:[{id:1,text:'Stato della seconda lezione'}],next:2}}}});
-  await refresh(page);await page.getByRole('button',{name:'Chiudi proprietà',exact:true}).click();await page.getByRole('button',{name:'Taccuino',exact:true}).click();
+  await refresh(page);await page.getByRole('button',{name:'Chiudi proprietà',exact:true}).click();await page.getByRole('button',{name:'Taccuino',exact:true}).click();await page.getByRole('button',{name:'Modifica Il mio atelier',exact:true}).click();
   let closed=0;page.on('worker',worker=>worker.on('close',()=>closed++));
   await start(page);await addIdea(page,'Esperimento della prima lezione');
   await page.getByRole('button',{name:'Apri libreria',exact:true}).click();await page.getByRole('button',{name:/Seconda lezione con stesso oggetto/}).click();
-  await expect.poll(()=>closed).toBe(1);await expect(page.getByRole('button',{name:'Avvia questa versione',exact:true})).toBeVisible();
+  await expect(page.getByRole('dialog',{name:'Hai modifiche da salvare',exact:true})).toBeVisible();await page.getByRole('button',{name:'Scarta modifiche',exact:true}).click();
+  await expect.poll(()=>closed).toBe(1);await page.getByRole('button',{name:'Modifica Il mio atelier',exact:true}).click();await expect(page.getByRole('button',{name:'Avvia questa versione',exact:true})).toBeVisible();
   await expect(page.locator('.program-canvas')).toHaveCount(0);await start(page);
   await expect(page.locator('.program-canvas')).toContainText('Stato della seconda lezione');await expect(page.locator('.program-canvas')).not.toContainText('Esperimento della prima lezione');
 });

@@ -2,6 +2,7 @@ import { CoreError, LessonDocumentSchema, type CoreEvent, type LessonDocument } 
 export {projectDocumentRevision, projectRecordingFrame, createRecordingReplay} from './replay';
 export {projectLearningDiary} from './learning-diary';
 export {projectHandout, type Handout} from './handout';
+export {projectTutorEconomics,type TutorAppointmentEconomics,type TutorCurrencyEconomics} from './tutor-economics';
 
 export type ContinuityProjection = Readonly<{
   documentId: string;

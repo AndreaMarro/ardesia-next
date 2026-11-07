@@ -102,7 +102,7 @@ describe('versioned courses and private learning', () => {
     const {tutorRecords, courses, courseEditions, courseDeliveries, courseWork, ...old} = emptySnapshot();
     const legacy = {...old, schemaVersion: 6}; const original = JSON.stringify(legacy);
     const storage = new MemoryStorage(legacy); const core = await createCore({storage});
-    expect(core.snapshot().schemaVersion).toBe(9); expect(JSON.stringify(await storage.read())).toBe(original);
+    expect(core.snapshot().schemaVersion).toBe(10); expect(JSON.stringify(await storage.read())).toBe(original);
     expect(migrateSnapshotForOpen({...legacy, courses})).toEqual({...legacy, courses});
   });
 });

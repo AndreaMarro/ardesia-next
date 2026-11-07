@@ -1,0 +1,35 @@
+import {test,expect,personalProjection} from './fixtures';
+import {continueRouteWithAccess,fetchRouteWithAccess} from './remote-access';
+
+test('a full physics course resumes an interrupted import, pins real lessons and stores a question-specific attempt',async({page},info)=>{
+ test.setTimeout(180000);const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
+ let dropped=false,count=0;
+ await page.route('**/api/m3',async route=>{const request=route.request();if(request.method()==='POST'&&request.postDataJSON()?.action==='command'&&!dropped&&++count===7){await fetchRouteWithAccess(route);dropped=true;await route.abort('failed');}else await continueRouteWithAccess(route);});
+ await page.goto('/#corsi');const catalog=page.getByRole('region',{name:'Cinque microcorsi di Fisica',exact:true});
+ const fluid=catalog.locator('.course-card').filter({has:page.getByRole('heading',{name:'Fluidi: pressione, flusso e superfici',exact:true})});
+ const start=Date.now();await fluid.getByRole('button',{name:'Aggiungi al mio spazio',exact:true}).click();
+ await expect(page.getByRole('button',{name:'Verifica e ritenta',exact:true})).toBeVisible({timeout:60000});
+ const partial=(await personalProjection(page)).documents.filter(d=>d.id.startsWith('sf-2026-fluidi-v1:'));expect(partial.length).toBeGreaterThan(0);
+ await page.getByRole('button',{name:'Verifica e ritenta',exact:true}).click();await expect(fluid.getByRole('button',{name:'Aggiungi al mio spazio',exact:true})).toBeEnabled();
+ await fluid.getByRole('button',{name:'Aggiungi al mio spazio',exact:true}).click();await expect(page.getByRole('heading',{name:'Dai forma al percorso.',exact:true})).toBeVisible({timeout:120000});
+ const imported=await personalProjection(page),course=imported.courseSpace!.courses.find(c=>c.id==='sf-2026-fluidi-v1')!;
+ expect(course.units).toHaveLength(5);expect(course.units.every(u=>imported.documents.some(d=>d.id===u.lesson?.documentId&&d.revision===u.lesson.revision))).toBe(true);
+ await page.getByRole('button',{name:'Fissa un’edizione',exact:true}).click();await page.getByRole('button',{name:'Inizia il mio percorso',exact:true}).click();
+ await page.getByRole('button',{name:/Idrostatica/}).click();
+ await page.getByRole('button',{name:'Apri materiali della lezione',exact:true}).click();
+ await expect(page.getByRole('region',{name:'Esercizi e verifiche dell’unità',exact:true})).toBeVisible();
+ const lab=page.locator('.course-material').filter({has:page.getByText('Pressione, profondità e galleggiamento',{exact:true})});
+ await expect(lab.getByRole('spinbutton',{name:'Profondità valore',exact:true})).toBeVisible();await lab.getByRole('spinbutton',{name:'Profondità valore',exact:true}).fill('2');
+ await expect(lab.locator('.composition-value').filter({hasText:'Pressione relativa'})).toContainText('19,62');
+ const questions=page.getByRole('region',{name:'Esercizi e verifiche dell’unità',exact:true}),question=questions.locator('details.course-material').first();
+ await question.locator(':scope > summary').click();await question.getByRole('button',{name:'Rispondi a questa domanda',exact:true}).click();
+ await page.getByLabel('Il tuo ragionamento',{exact:true}).fill('Confronto due profondità: raddoppiando h a densità costante raddoppia la pressione relativa.');
+ await page.getByRole('button',{name:'Salva risposta',exact:true}).click();await expect(page.getByLabel('Il tuo ragionamento',{exact:true})).toHaveValue('');
+ const saved=(await personalProjection(page)).courseSpace!,attempt=saved.work[0]!.attempts[0]!;
+ expect(attempt.stage).toBe('activity');expect(attempt.answer).toMatch(/^\[Domanda .+ · oggetto .+ r1 · lezione r\d+\]/);expect(attempt.unitId).toBe('sf-2026-u3-02');
+ await page.reload();await page.getByRole('button',{name:'Riprendi',exact:true}).click();await expect(page.locator('.course-attempts')).toContainText('Confronto due profondità');
+ expect((await personalProjection(page)).courseSpace!.work).toEqual(saved.work);
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);expect(errors).toEqual([]);
+ await info.attach('physics-course-workload',{body:JSON.stringify({device:info.project.name,importAndStudyElapsedMs:Date.now()-start,importedDocuments:course.units.length,importedObjects:imported.documents.filter(d=>d.id.startsWith('sf-2026-fluidi-v1:')).reduce((n,d)=>n+d.objects.length,0),physicalPen:false}),contentType:'application/json'});
+ await page.screenshot({path:info.outputPath('physics-course-studied.png'),fullPage:true});
+});

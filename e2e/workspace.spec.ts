@@ -13,7 +13,7 @@ test('one object survives board → notebook → reader → reload with provenan
   await page.getByRole('button',{name:'Chiudi proprietà'}).click();
   await page.getByRole('button',{name:'Taccuino',exact:true}).click();
   await expect(page.getByText('La lunghezza quadruplica: il periodo raddoppia, nel modello ideale.',{exact:true})).toBeVisible();
-  const objectId = await page.locator('.reading-object.type-formula').getAttribute('data-object-id');
+  const objectId = await page.locator('.board-object.type-formula').getAttribute('data-object-id');
   await page.getByRole('button',{name:'Lezione',exact:true}).click();
   await expect(page.locator(`.reading-object[data-object-id="${objectId}"]`)).toContainText('il periodo raddoppia');
   await page.reload();

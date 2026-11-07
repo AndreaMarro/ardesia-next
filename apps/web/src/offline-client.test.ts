@@ -1,7 +1,7 @@
 import {describe, expect, it, vi} from 'vitest';
 import {IDBFactory} from 'fake-indexeddb';
 import {MaterialManifestSchema, materialPage} from '@ardesia/contracts';
-import {browserOfflineStore, createRemoteClient, OfflineError, type OfflineStore} from '@ardesia/remote-client';
+import {browserOfflineStore, browserInkDraftStorage, createRemoteClient, OfflineError, type OfflineStore} from '@ardesia/remote-client';
 import {account, deferred, fixture, ink, lesson, teacher, workspace, type TransportHooks} from './workspace-queue-fixture';
 
 const stroke = (id: string) => {const command = ink(id); if (command.kind !== 'add-object' || command.object.type !== 'ink') throw Error('Ink fixture required'); return command.object;};
@@ -291,4 +291,65 @@ it('keeps the prior offline revision when a new original cannot be persisted, th
   expect(c.offline?.documents.find(d=>d.id===documentId)?.objects[0]?.id).toBe('page');
   f.network.online=false;const cold=f.newClient();await expect(cold.session()).rejects.toMatchObject({code: 'NETWORK_ERROR'});await cold.openOffline();
   expect(await (await cold.offlineMaterials().download(manifest.assetId,hash)).text()).toBe(new TextDecoder().decode(bytes));
+});
+
+
+it('offline erasure of saved and queued ink remains an immutable ordered command through cold reopen',async()=>{
+  const f=await setup();
+  await f.client.edit(teacher,lesson,ink('saved-ink'));
+  await f.client.edit(teacher,lesson,{kind:'add-object',object:{id:'note',type:'note',title:'Da conservare',x:1,y:2,width:100,height:100,data:{text:'Non è inchiostro'}}});
+  await f.client.openOffline();f.network.online=false;
+  const calls=[...f.network.calls];
+  await expect(f.client.queueOfflineEraseInk(lesson,'note')).rejects.toMatchObject({code:'OFFLINE_UNAVAILABLE'});
+  await f.client.queueOfflineInk(lesson,stroke('new-ink'));
+  await f.client.queueOfflineEraseInk(lesson,'saved-ink');
+  await f.client.queueOfflineEraseInk(lesson,'new-ink');
+  await expect(f.client.queueOfflineEraseInk(lesson,'new-ink')).rejects.toMatchObject({code:'OFFLINE_UNAVAILABLE'});
+  expect(f.network.calls).toEqual(calls);
+  const retained=structuredClone(f.client.state.pending);
+  expect(retained.map(p=>p.request.action==='command'&&p.request.command.kind)).toEqual(['add-object','remove-object','remove-object']);
+  const cold=f.newClient();await expect(cold.session()).rejects.toBeDefined();await cold.openOffline();
+  expect(cold.state.pending.map(p=>p.request)).toEqual(retained.map(p=>p.request));
+  f.network.online=true;await cold.reconnect();
+  for(const entry of retained)await cold.resumePending(entry.commandId);
+  expect(f.server.getDocument(teacher,lesson).objects.map(o=>o.id)).toEqual(['note']);
+  expect(f.sent.slice(-3).map(s=>s.body)).toEqual(retained.map(p=>p.request));
+  expect(cold.state.pending).toEqual([]);
+});
+
+it('a live gesture checkpoint uses one stable ID, never mutates Core, and clears only after exact durable handoff',async()=>{
+  const f=await setup(),values=new Map<string,string>();
+  const web={get length(){return values.size;},key:(n:number)=>[...values.keys()][n]??null,getItem:(key:string)=>values.get(key)??null,setItem:(key:string,value:string)=>{values.set(key,value);},removeItem:(key:string)=>{values.delete(key);}};
+  const store=browserInkDraftStorage(web);
+  const make=()=>createRemoteClient({fetch:f.transport,pendingStorage:f.storage,offlineStore:f.cache,inkDraftStorage:store});
+  const c=make();await c.login('synthetic','synthetic');await c.openWorkspace(workspace);
+  const access=c.inkRecovery(lesson),draft={object:stroke('interrupted'),sampleTimes:[100]};
+  access.write(draft);draft.object.data.points[0]!.pressure=.8;access.write(draft);
+  expect(values.size).toBe(1);expect(c.state.pending).toEqual([]);expect(f.sent).toHaveLength(0);
+  const cold=make();await cold.session();await cold.openWorkspace(workspace);
+  expect(cold.inkRecovery(lesson).read()).toEqual([draft]);
+  await cold.edit(teacher,lesson,{kind:'add-object',object:draft.object});
+  expect(cold.inkRecovery(lesson).read()).toEqual([]);expect(values.size).toBe(1);
+  access.release(draft.object.id);
+  await new Promise(resolve=>setTimeout(resolve,0));
+  expect(await cold.inkRecovery(lesson).recover(draft.object.id,async()=>{throw Error('Already retained');})).toBe(true);expect(values.size).toBe(0);
+  access.write({...draft,object:stroke('old-session')});
+  await c.logout();expect(()=>access.read()).toThrow();expect(()=>access.write(draft)).toThrow();
+  expect(values.size).toBe(1);
+});
+
+
+it('exclusive ink handoff clears a checkpoint before releasing even when the Core reply was lost',async()=>{
+ const f=await fixture({afterCommit:(_command,_receipt,index)=>{if(index===1)throw new TypeError('Lost acknowledged response');}}),values=new Map<string,string>();
+ const web={get length(){return values.size;},key:(n:number)=>[...values.keys()][n]??null,getItem:(key:string)=>values.get(key)??null,setItem:(key:string,value:string)=>{values.set(key,value);},removeItem:(key:string)=>{values.delete(key);}};
+ const a=createRemoteClient({fetch:f.fetcher,pendingStorage:f.storage,inkDraftStorage:browserInkDraftStorage(web)}),b=createRemoteClient({fetch:f.fetcher,pendingStorage:f.storage,inkDraftStorage:browserInkDraftStorage(web)});
+ await a.session();await a.openWorkspace(workspace);await b.session();await b.openWorkspace(workspace);
+ const draft={object:stroke('lost-reply-gesture'),sampleTimes:[1]},access=a.inkRecovery(lesson);access.write(draft);
+ await expect(a.edit(teacher,lesson,{kind:'add-object',object:draft.object})).rejects.toMatchObject({code:'NETWORK_ERROR'});
+ expect(a.state.recovery).toBe('durable');expect(a.state.pending).toHaveLength(1);access.release(draft.object.id);
+ await new Promise(resolve=>setTimeout(resolve,0));
+ expect(b.inkRecovery(lesson).read()).toEqual([]);
+ expect(await b.inkRecovery(lesson).recover(draft.object.id,async()=>{throw Error('A second command must not be submitted');})).toBe(true);
+ expect(f.sent).toHaveLength(1);await a.retryPending(a.state.pending[0]!.commandId);expect(f.sent[1]?.body).toEqual(f.sent[0]?.body);
+ expect(f.server.getDocument(teacher,lesson).objects).toHaveLength(1);
 });

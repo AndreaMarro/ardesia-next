@@ -1,13 +1,15 @@
-import {useEffect,useMemo,useState} from 'react';
+import {lazy,Suspense,useEffect,useMemo,useState} from 'react';
 import {canonicalJson,PROGRAM_RENDERER,ProgramBodySchema,COMPOSITION_RENDERER,CompositionBodySchema,ExtensionDataSchema,extensionDefinitionDigest,extensionOrigin,appendExtensionOrigin,type ProgramBody,type CompositionBody,type CompositionNode,type ExtensionData,type ExtensionDefinition,type ExtensionObject,type ExtensionValue,type ExtensionLineage} from '@ardesia/contracts';
 import {Dialog} from '../components/Dialog';
 import {Plus,Trash2,Type,SquareFunction,ChartLine,Settings2,Layers3,Shapes} from '../components/Icons';
 import {ExtensionView} from './ExtensionView';
 import {appendComponent,componentLabels,flattenNodes,initialDefinition,mapNodes,moveNode,renameCompositionField,validateCompositionExpressions} from './definitions';
+const PhysicsWorkbench=lazy(()=>import('../science/PhysicsWorkbench'));
 
 function exportData(data:ExtensionData){const checked=ExtensionDataSchema.parse(data);const url=URL.createObjectURL(new Blob([JSON.stringify(checked,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=data.definition.typeId+'.ardesia.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 const componentIcons:Record<string,typeof Shapes>={text:Type,input:Settings2,value:SquareFunction,plot:ChartLine,group:Layers3,action:Plus,scene:Shapes,shape:Shapes};
 export function Creator({original,lineageSource,onSave,onClose,onDirtyChange}:{original?:ExtensionObject;lineageSource?:ExtensionLineage;onSave:(data:ExtensionData,base?:ExtensionObject,imported?:boolean)=>Promise<boolean>;onClose:()=>void;onDirtyChange:(dirty:boolean)=>void}){
+  const [science,setScience]=useState(false),[replacement,setReplacement]=useState<ExtensionData|null>(null);
   const [definition,setDefinition]=useState<ExtensionDefinition>(()=>original?.data.definition??initialDefinition());
   // Keep structurally valid editor drafts even when a label/range is temporarily invalid.
   // All external definitions are schema-checked on import; only our controls edit this shape.
@@ -42,10 +44,13 @@ export function Creator({original,lineageSource,onSave,onClose,onDirtyChange}:{o
   }
   async function act(action:(data:ExtensionData)=>Promise<void>){if(saving)return;setSaving(true);setError('');try{await action(await sealed());}catch(e){setError(e instanceof Error&&e.name!=='ZodError'?e.message:'Controlla proprietà, valori e intervalli prima di salvare.');}finally{setSaving(false);}}
   function add(kind:string){if(!body.success)return;const result=appendComponent(body.data,kind,selected);updateBody(result.body);setState(s=>Object.fromEntries(result.body.fields.map(f=>[f.key,s[f.key]??f.initial])));setSelected(result.selected);setAdding(false);}
+  function useLab(data:ExtensionData){setDefinition(data.definition);setState(data.state);setLineage(data.lineage);setImportBase(data);setImported(true);setDirty(true);setRawDirty(false);setSelected(null);setError('');setScience(false);setReplacement(null);}
   return <Dialog title={original?'Modifica oggetto':'Crea un oggetto'} className="creator-dialog" onClose={()=>{if(!saving)onClose();}}>
     <p className="creator-intro">Definisci, prova, riutilizza.</p>
     <div className="creator-layout" aria-busy={saving} inert={saving}>
+      {science&&<div className="creator-science"><Suspense fallback={<p>Preparo i laboratori…</p>}><PhysicsWorkbench onClose={()=>setScience(false)} onUse={data=>{if(dirty||rawDirty)setReplacement(data);else useLab(data);}}/></Suspense></div>}
       <section className="creator-composition"><h3>Composizione</h3><label className="sr-only" htmlFor="creator-name">Nome del tipo</label><input id="creator-name" aria-label="Nome del tipo" value={definition.name} maxLength={240} onChange={e=>update({...definition,name:e.target.value})}/>
+        {!original&&<button type="button" className="text-button" onClick={()=>setScience(v=>!v)}>Esplora i laboratori di fisica</button>}
         {!original&&!program&&<button type="button" className="text-button" onClick={()=>{void import('./program-example').then(({initialProgram})=>{const next=initialProgram();update(next);setState(structuredClone(ProgramBodySchema.parse(next.body).initialState));setSelected(null);setRawDirty(false);setImportBase(undefined);setImported(false);setLineage(undefined);});}}>Crea un programma</button>}
         {program&&<div className="program-editor"><label>Codice dell’esperienza<textarea aria-label="Codice del programma" spellCheck={false} rows={24} value={program.code} onChange={e=>update({...definition,body:{...program,code:e.target.value}})}/></label><p className="hint">La funzione update riceve stato e interazione, poi restituisce stato e interfaccia. Modificare il codice interrompe l’anteprima.</p></div>}
         <div className="creator-tree" role="group" aria-label="Struttura dell’oggetto">{body.success&&flattenNodes(body.data.nodes).map(({node,depth})=>{const Icon=Object.hasOwn(componentIcons,node.kind)?componentIcons[node.kind]!:Shapes;return <div key={node.id} className="creator-tree-row" style={{paddingLeft:depth*12}}>
@@ -77,6 +82,7 @@ export function Creator({original,lineageSource,onSave,onClose,onDirtyChange}:{o
       </section>
     </div>
     {error&&<p className="creator-error" role="alert">{error}</p>}
+    {replacement&&<section role="alertdialog" aria-label="Sostituisci la composizione" className="creator-error"><p>La composizione aperta contiene modifiche. Sostituirla con {replacement.definition.name}?</p><button className="secondary-button" onClick={()=>setReplacement(null)}>Conserva la composizione</button><button className="primary-button" onClick={()=>useLab(replacement)}>Sostituisci la composizione</button></section>}
     <footer className="creator-footer"><span>Bozza privata</span><button className="secondary-button" disabled={saving||rawDirty||!validation.success} onClick={()=>void act(async data=>exportData(lineageSource?appendExtensionOrigin(data,lineageSource):data))}>Esporta definizione</button><button className="primary-button" disabled={saving||rawDirty||!validation.success} onClick={()=>void act(async data=>{if(await onSave(data,original,imported)){setDirty(false);onDirtyChange(false);}else setError('Salvataggio non confermato. La bozza resta aperta: verifica la connessione, la versione e il pannello di recupero.');})}>{saving?'Salvataggio…':original?changedDefinition?'Salva nuova versione':'Salva oggetto':'Aggiungi alla lezione'}</button></footer>
   </Dialog>;
 }
