@@ -108,7 +108,12 @@ test('execution consent and experimental state stay within their exact lesson ev
   await start(page);await addIdea(page,'Esperimento della prima lezione');
   await page.getByRole('button',{name:'Apri libreria',exact:true}).click();await page.getByRole('button',{name:/Seconda lezione con stesso oggetto/}).click();
   await expect(page.getByRole('dialog',{name:'Hai modifiche da salvare',exact:true})).toBeVisible();await page.getByRole('button',{name:'Scarta modifiche',exact:true}).click();
-  await expect.poll(()=>closed).toBe(1);await page.getByRole('button',{name:'Modifica Il mio atelier',exact:true}).click();await expect(page.getByRole('button',{name:'Avvia questa versione',exact:true})).toBeVisible();
+  await expect.poll(()=>closed).toBe(1);
+  await expect(page.getByRole('heading',{name:'Seconda lezione con stesso oggetto',exact:true})).toBeVisible();
+  // A standalone lesson opens in Lavagna; choose the notebook presentation
+  // explicitly before using its object-edit command. Consent still starts empty.
+  await page.getByRole('button',{name:'Taccuino',exact:true}).click();
+  await page.getByRole('button',{name:'Modifica Il mio atelier',exact:true}).click();await expect(page.getByRole('button',{name:'Avvia questa versione',exact:true})).toBeVisible();
   await expect(page.locator('.program-canvas')).toHaveCount(0);await start(page);
   await expect(page.locator('.program-canvas')).toContainText('Stato della seconda lezione');await expect(page.locator('.program-canvas')).not.toContainText('Esperimento della prima lezione');
 });
