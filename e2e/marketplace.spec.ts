@@ -1,5 +1,6 @@
 import type {Page} from '@playwright/test';
-import {test, expect, mutateReadProjection, selectedWorkspace, rawApi} from './fixtures';
+import {test, expect, mutateReadProjection, selectedWorkspace, rawApi, apiOrigin, loginContext, selectWorkspace} from './fixtures';
+import {closeContextWithAccess, installContextAccess, continueRouteWithAccess} from './remote-access';
 import {
   addMarketplaceSpring, authorizeSpring, openMarketplace, readConsentLabel,
   springId, storedBytes, storedSpring, storedWorkspace,
@@ -317,7 +318,7 @@ test('[M2] revoked module stays revoked after reload without deleting its state'
   await expect(page.getByRole('button', {name: 'Attiva Molla ideale', exact: true})).toHaveCount(0);
 });
 
-test('[M2] stale tab stops runtime after another tab disables module', async ({page, context}) => {
+test('[M2] stale tab stops runtime after another tab disables module', async ({page, context, browser}, testInfo) => {
   await addMarketplaceSpring(page);
   await saveFourKilograms(page);
   const saved = await storedSpring(page), selected = selectedWorkspace(page);
@@ -351,36 +352,61 @@ test('[M2] stale tab stops runtime after another tab disables module', async ({p
   await expect(inspector).toHaveAttribute('data-error-code', 'PLUGIN_DISABLED');
   expect(page.workers()).toHaveLength(0);
 
-  // Hold an actual activation request, then let another session activate and disable.
-  // The old request must be rejected by the real transaction after it is released.
-  let releaseCommand!: () => void, reportRequest!: () => void;
-  const held = new Promise<void>(resolve => {releaseCommand = resolve;});
-  const requested = new Promise<void>(resolve => {reportRequest = resolve;});
-  let staleCommandId: string | null = null, newWorkers = 0;
-  page.on('worker', () => {newWorkers++;});
-  await page.route('**/api/m3', async route => {
-    const input = route.request().method() === 'POST' ? route.request().postDataJSON() : null;
-    if (input?.action === 'plugin-command' && input.command.kind === 'activate-plugin') {
-      staleCommandId = input.command.commandId; reportRequest(); await held;
-    }
-    await route.continue();
-  });
-  let latestCommit: string | null = null;
+  // Same-context tabs share recovery. A separate authenticated context models
+  // a remote writer, with no access to that local queue or its Web Locks.
+  const remote = await browser.newContext({baseURL: apiOrigin, viewport: page.viewportSize(),
+    isMobile: testInfo.project.name === 'mobile-chromium', hasTouch: testInfo.project.name === 'mobile-chromium',
+    storageState: {cookies: [], origins: []}});
   try {
-    await openMarketplace(page);
-    await page.getByRole('button', {name: 'Attiva Molla ideale', exact: true}).click();
-    await requested;
-    await second.getByRole('button', {name: 'Attiva Molla ideale', exact: true}).click();
-    await expect(second.getByRole('button', {name: 'Disattiva Molla ideale', exact: true})).toBeEnabled();
-    await second.getByRole('button', {name: 'Disattiva Molla ideale', exact: true}).click();
-    await expect.poll(async () => (await storedWorkspace(second)).installations[0]!.status).toBe('disabled');
-    latestCommit = await storedBytes(second);
-  } finally {releaseCommand();}
-  await expect(page.getByRole('dialog').getByRole('alert')).toContainText('REVISION_CONFLICT');
-  expect(staleCommandId).not.toBeNull();
-  expect(newWorkers).toBe(0);
-  expect(page.workers()).toHaveLength(0);
-  expect(await storedBytes(page)).toBe(latestCommit);
-  expect(await storedSpring(page)).toEqual(saved);
+    await installContextAccess(remote);
+    const remoteAccount = await loginContext(remote, 'TEACHER', testInfo.project.name);
+    expect(remoteAccount.id).toBe(selected.account.id);
+    await selectWorkspace(remote, selected);
+    const writer = await remote.newPage(); await writer.goto('/'); await openMarketplace(writer);
+    await expect(writer.getByRole('button', {name: 'Attiva Molla ideale', exact: true})).toBeEnabled();
+    // Hold an actual activation request; the remote writer will advance its CAS.
+    let releaseCommand!: () => void, reportRequest!: () => void;
+    const held = new Promise<void>(resolve => {releaseCommand = resolve;});
+    const requested = new Promise<void>(resolve => {reportRequest = resolve;});
+    let staleCommandId: string | null = null, newWorkers = 0, staleStatus: number | null = null, sharedSends = 0;
+    page.on('worker', () => {newWorkers++;});
+    page.on('response', response => {
+      const request = response.request();
+      if (request.method() === 'POST' && request.postDataJSON()?.command?.commandId === staleCommandId) staleStatus = response.status();
+    });
+    second.on('request', request => {if (request.method() === 'POST' && request.postDataJSON()?.action === 'plugin-command') sharedSends++;});
+    await page.route('**/api/m3', async route => {
+      const input = route.request().method() === 'POST' ? route.request().postDataJSON() : null;
+      if (input?.action === 'plugin-command' && input.command.kind === 'activate-plugin') {
+        staleCommandId = input.command.commandId; reportRequest(); await held;
+      }
+      await continueRouteWithAccess(route);
+    });
+    const pendingBytes = () => second.evaluate(() => Object.entries(localStorage)
+      .filter(([key]) => key.startsWith('ardesia-next.pending.v1.')).sort(([a], [b]) => a.localeCompare(b)));
+    let latestCommit: string | null = null;
+    try {
+      await openMarketplace(page);
+      await page.getByRole('button', {name: 'Attiva Molla ideale', exact: true}).click();
+      await requested;
+      const recoveryBefore = await pendingBytes(); expect(recoveryBefore).toHaveLength(1);
+      await second.getByRole('button', {name: 'Attiva Molla ideale', exact: true}).click();
+      await expect(second.getByRole('dialog').getByRole('alert')).toContainText('PENDING_COMMAND');
+      expect(sharedSends).toBe(0); expect(await pendingBytes()).toEqual(recoveryBefore);
+      expect(await storedBytes(second)).toBe(committed);
+      await writer.getByRole('button', {name: 'Attiva Molla ideale', exact: true}).click();
+      await expect(writer.getByRole('button', {name: 'Disattiva Molla ideale', exact: true})).toBeEnabled();
+      await writer.getByRole('button', {name: 'Disattiva Molla ideale', exact: true}).click();
+      await expect.poll(async () => (await storedWorkspace(writer)).installations[0]!.status).toBe('disabled');
+      latestCommit = await storedBytes(writer);
+    } finally {releaseCommand();}
+    await expect(page.getByRole('dialog').getByRole('alert')).toContainText('REVISION_CONFLICT');
+    expect(staleStatus).toBe(409);
+    expect(staleCommandId).not.toBeNull();
+    expect(newWorkers).toBe(0);
+    expect(page.workers()).toHaveLength(0);
+    expect(await storedBytes(page)).toBe(latestCommit);
+    expect(await storedSpring(page)).toEqual(saved);
+  } finally {await closeContextWithAccess(remote);}
   await second.close();
 });
