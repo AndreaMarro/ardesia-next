@@ -242,7 +242,7 @@ describe('remote Core facade and account-scoped recovery', () => {
     await expect(client.retryPending()).rejects.toMatchObject({code: 'REVISION_CONFLICT'});
     expect(requests[0]).toEqual(requests[1]);
     expect(client.state.pending[0]?.request).toMatchObject({command: {expectedRevision: 1}});
-    client.discardPending('command-1'); expect(client.state.pending).toEqual([]);
+    await client.discardPending('command-1'); expect(client.state.pending).toEqual([]);
   });
 
   it('rejects an actor mismatch in a server projection and clears data on session expiration', async () => {

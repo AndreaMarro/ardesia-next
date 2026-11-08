@@ -13,6 +13,7 @@ import {connectMarketplace, disconnectMarketplace, syncMarketplace} from './plug
 
 const KnowledgeStudio = lazy(() => import('./knowledge/KnowledgeStudio'));
 const TutorStudio = lazy(() => import('./tutor/TutorStudio'));
+const InkConflictRecovery = lazy(() => import('./components/InkConflictRecovery'));
 const client = createRemoteClient();
 const selectionKey = (id: string) => 'ardesia-next-remote-workspace:' + id;
 function download(name: string, bytes: string) {
@@ -36,6 +37,7 @@ export function RemoteWorkspace() {
   const [configured, setConfigured] = useState<boolean | null>(null);
   const [username, setUsername] = useState(''), [password, setPassword] = useState('');
   const [error, setError] = useState(''), [manage, setManage] = useState(false);
+  const [inkRecoveryOpen, setInkRecoveryOpen] = useState(false);
   const [workspaces, setWorkspaces] = useState<WorkspaceSummary[]>([]);
   const [title, setTitle] = useState('');
   const [legacy, setLegacy] = useState<string | null>(legacyBytes);
@@ -116,17 +118,19 @@ export function RemoteWorkspace() {
     {state.recovery === 'invalid' && <section className="pending-panel"><h2>Copia di recupero da controllare</h2><p>Esporta l’originale prima di scartarlo.</p><button className="secondary-button" onClick={() => download('ardesia-next-recupero-originale.json', client.exportPendingRecovery() ?? '')}>Esporta recupero originale</button><button className="text-button" onClick={() => client.discardInvalidRecovery()}>Scarta copia di recupero non valida</button></section>}
     {state.pending.length > 0 && <section className="pending-panel pending-drawer" aria-label="Modifiche da recuperare"><details open={['conflict','uncertain','error'].includes(state.status)}><summary>{state.pending.length} modifiche da confermare · Apri recupero</summary>
       <h2>{state.status === 'conflict' ? 'Conflitto di revisione' : 'Modifiche in attesa di conferma'}</h2>
-      <p>Verifica la richiesta inviata senza duplicarla. Riprendi poi esplicitamente le modifiche non inviate; le revisioni originali restano vincolanti.</p>
+      <p>Verifica prima le richieste dall’esito incerto. Per i tratti respinti perché la lezione è cambiata, controlla l’anteprima e scegli se recuperarli.</p>
       {state.pending.map(pending => <div key={pending.commandId}><code>{pending.commandId}</code><span>{pending.status === 'blocked' ? 'Non inviata' : pending.status === 'queued' ? 'In coda, non inviata' : pending.status}</span>
         {pending.edit?.predecessorId && !state.pending.some(entry => entry.commandId === pending.edit!.predecessorId) && <span>Conferma precedente non disponibile. Esporta la bozza prima di ricomporla.</span>}
         {pending.status === 'blocked' || pending.status === 'queued'
           ? <button className="secondary-button" disabled={busy || pending.status === 'queued' || !!pending.edit?.predecessorId} onClick={() => void perform(() => client.resumePending(pending.commandId))}>Riprendi modifica non inviata</button>
           : <button className="secondary-button" disabled={busy || pending.status === 'pending'} onClick={() => void perform(() => client.retryPending(pending.commandId))}>Verifica e ritenta</button>}
         <button className="text-button" disabled={busy || pending.status === 'pending' || pending.status === 'queued'} onClick={() => void perform(async () => client.discardPending(pending.commandId))}>Scarta comando in attesa</button></div>)}
-      <button className="secondary-button" onClick={() => download('ardesia-next-comandi-da-recuperare.json', JSON.stringify(state.pending, null, 2))}>Esporta modifiche da recuperare</button>
+      <button className="secondary-button" onClick={() => download('ardesia-next-comandi-da-recuperare.json', client.exportPendingRecovery() ?? '')}>Esporta modifiche da recuperare</button>
+      {projection && ownsWorkspace(projection) && state.pending.some(entry => entry.workspaceId === projection.workspaceId && entry.request.action === 'command' && entry.request.command.kind === 'add-object' && entry.request.command.object.type === 'ink' && ['blocked','conflict'].includes(entry.status)) && <button className="primary-button" disabled={busy} onClick={() => setInkRecoveryOpen(true)}>Anteprima recupero tratti</button>}
       {projection && <button className="secondary-button" onClick={() => void perform(() => client.refresh())}>Rileggi dal server</button>}
       {state.recovery === 'memory' && <p>Esporta i comandi prima di chiudere: il browser non può conservarli.</p>}
     </details></section>}
+    {inkRecoveryOpen && state.account && projection && <Suspense fallback={<p role="status">Apertura recupero…</p>}><InkConflictRecovery key={state.account.id + ':' + projection.workspaceId} client={client} onClose={() => setInkRecoveryOpen(false)} onExport={() => download('ardesia-next-recupero-tratti.json', client.exportPendingRecovery() ?? '')}/></Suspense>}
   </>;
   if (!state.account) return <main className="account-page"><div className="account-card"><a className="wordmark" href="#">Ardesia<span>.</span></a><h1>Il tuo spazio</h1>
     <p>Accedi al tuo account.</p>

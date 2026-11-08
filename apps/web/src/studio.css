@@ -63,6 +63,13 @@
 .icon-button {min-width:44px;}
 .dialog {border-radius:16px;border-color:var(--line);box-shadow:0 24px 80px #172b212b;}
 .dialog::backdrop {background:#1b2a2452;backdrop-filter:blur(3px);}
+.ink-recovery-dialog {width:min(740px,calc(100vw - 32px));max-height:calc(100dvh - 32px);padding:24px;border:1px solid var(--line);border-radius:20px;color:var(--ink);background:var(--paper,#fffdf8);box-shadow:0 24px 80px #172b2138;overflow:auto;}
+.ink-recovery-dialog::backdrop {background:#172b2166;backdrop-filter:blur(4px);}
+.ink-recovery-heading {display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
+.ink-recovery-heading h2 {margin:0;}.ink-recovery-dialog p {line-height:1.6;}
+.ink-recovery-dialog label {display:grid;gap:8px;}.ink-recovery-dialog select {min-height:44px;max-width:100%;}
+.ink-recovery-preview {display:block;width:100%;height:clamp(180px,32vh,340px);margin:16px 0;border:1px solid var(--line);border-radius:12px;background:#fff;}
+.ink-recovery-actions {display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;margin-top:20px;}
 @container(max-width:1050px){.app-shell .board-navigation{top:20px;bottom:auto;}}
 @media(max-width:1180px){
  .app-shell .app-header {gap:16px;padding:0 18px;}
