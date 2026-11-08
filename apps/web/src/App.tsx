@@ -5,7 +5,7 @@ import {Creator} from './creator/Creator';
 import type {ExtensionObject,ExtensionLineage} from '@ardesia/contracts';
 import {StudioChrome} from './components/StudioChrome';
 import {AudioSession} from './recordings/AudioSession';
-import {HandoutView} from './handout/HandoutView';
+import {HandoutView} from './handout/HandoutDialog';
 import {prepareHandout} from './handout/prepare';
 import type {Handout} from '@ardesia/lesson-os';
 import type {AudioCapture, CaptureStatus} from './recordings/capture';

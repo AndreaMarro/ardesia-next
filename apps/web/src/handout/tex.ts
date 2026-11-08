@@ -9,7 +9,7 @@ export function texText(text: string): string {
     if (symbols[char]) return `\\ensuremath{\\${symbols[char]}}`;
     if (char === '\n' || char === '\r' || char === '\t') return ' ';
     if (char >= ' ' && char <= '~') return char;
-    const punctuation: Record<string, string> = {'’':"'",'‘':"'",'“':'``','”':"''",'–':'--','—':'---','…':'\\ldots{}',' ':'~','−':'-','°':'\\ensuremath{^\\circ}','§':'\\S{}','©':'\\copyright{}','•':'\\textbullet{}'};
+    const punctuation: Record<string, string> = {'«':'\\guillemotleft{}','»':'\\guillemotright{}','’':"'",'‘':"'",'“':'``','”':"''",'–':'--','—':'---','…':'\\ldots{}',' ':'~','−':'-','°':'\\ensuremath{^\\circ}','§':'\\S{}','©':'\\copyright{}','•':'\\textbullet{}'};
     if (punctuation[char]) return punctuation[char];
     const decomposed = [...char.normalize('NFD')], accents: Record<string, string> = {'\u0300':'`','\u0301':"'",'\u0302':'^','\u0303':'~','\u0308':'"','\u0327':'c'};
     if (decomposed.length === 2 && /^[A-Za-z]$/.test(decomposed[0]!) && accents[decomposed[1]!]) return `\\${accents[decomposed[1]!]!}{${decomposed[0]}}`;

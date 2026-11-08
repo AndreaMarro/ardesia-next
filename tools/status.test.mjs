@@ -9,6 +9,7 @@ import './e2e-runner.test.mjs';
 import './remote-preflight.test.mjs';
 import './e2e-access.test.mjs';
 import './e2e-guard.test.mjs';
+import './compile-handout.test.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {releaseEvidenceMatches, m1EvidenceMatches, M1_REQUIRED_FLOWS, unitReportDigest, m2EvidenceMatches, M2_REQUIRED_FLOWS, M2_LIFECYCLE_STEPS} from './status.mjs';

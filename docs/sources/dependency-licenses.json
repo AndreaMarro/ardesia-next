@@ -214,6 +214,16 @@
         "url": "https://github.com/mozilla/pdf.js"
       },
       "usage": "Lazy official legacy engine/worker; bundled core-js 3.51.0 MIT; resource notices preserved under pdf-runtime."
+    },
+    {
+      "name": "fflate",
+      "version": "0.8.2",
+      "license": "MIT",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/101arrowz/fflate"
+      },
+      "usage": "Lazy stored ZIP streaming for handout export; full license distributed in THIRD_PARTY_NOTICES.txt."
     }
   ]
 }

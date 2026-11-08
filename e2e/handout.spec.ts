@@ -1,3 +1,8 @@
+import {unzipSync} from 'fflate';
+import {verifyHandoutFiles} from '../apps/web/src/handout/bundle';
+import {pdfFixture} from './material-fixture';
+import {initialProgram} from '../apps/web/src/creator/program-example';
+import {extensionDefinitionDigest} from '@ardesia/contracts';
 import {randomUUID} from 'node:crypto';
 import {readFile} from 'node:fs/promises';
 import {test,expect,api,apiOrigin,personalProjection,selectedWorkspace,loginContext,selectWorkspace} from './fixtures';
@@ -91,4 +96,98 @@ test('offline handout uses the last confirmed copy and leaves pending ink recove
   await page.emulateMedia({media:'print'});await page.pdf({path:test.info().outputPath('offline-handout.pdf'),printBackground:true,preferCSSPageSize:true});await page.emulateMedia({media:'screen'});
   await page.getByRole('button',{name:'Chiudi finestra',exact:true}).click();await expect(page.getByLabel('Tratto in attesa di conferma')).toHaveCount(1);
   await context.setOffline(false);expect(await saved(page)).toEqual(before);
+});
+
+async function importHandoutPdf(page:Page){
+  const original=pdfFixture({rotatedCrop:true});
+  await page.goto('/');await page.getByRole('button',{name:'Importa materiale',exact:true}).click();
+  const dialog=page.getByRole('dialog',{name:'Porta un materiale nella lezione'});
+  await dialog.getByLabel('File da importare').setInputFiles({name:'Pagina ruotata.pdf',mimeType:'application/pdf',buffer:original});
+  await expect(dialog.locator('[data-material-state="ready"]')).toBeVisible();
+  await dialog.getByLabel('Pagine da importare').fill('2');await dialog.getByLabel('Diritti del materiale').fill('CC0 · fixture originale');
+  await dialog.getByRole('button',{name:'Aggiungi alla lavagna',exact:true}).click();await expect(dialog).toHaveCount(0);
+  await page.getByRole('button',{name:'Chiudi proprietà',exact:true}).click();
+  return {original,material:(await saved(page)).objects.find(o=>o.type==='material')!};
+}
+test('complete handout preserves cropped PDF originals, shared ink geometry and exact offline sources',async({page,context},info)=>{
+  test.setTimeout(90000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+  const {original,material}=await importHandoutPdf(page);
+  const definition=initialProgram(),programId=randomUUID();
+  await edit(page,{kind:'add-object',object:{id:programId,type:'extension',title:'Esperimento salvato',x:0,y:700,width:400,height:300,
+    data:{definition,definitionDigest:await extensionDefinitionDigest(definition),state:{draft:'',ideas:[{id:1,text:'IDEA SALVATA DA CONSERVARE'}],next:2}}}});
+  expect(material.data.pageWidth).toBe(720);expect(material.data.pageHeight).toBe(480);
+  const ids=[randomUUID(),randomUUID(),randomUUID(),randomUUID()];
+  for(let i=0;i<4;i++)await edit(page,{kind:'add-object',object:{id:ids[i],type:'ink',title:'Tratto '+i,x:i<2?material.x+40+i*50:40+(i-2)*30,y:i<2?material.y+70:30,width:40,height:20,
+    data:{color:i%2?'#205B45':'#AD3E2A',width:i%2?4:7,points:[{x:0,y:0,pressure:.1},{x:20,y:18,pressure:.9},{x:40,y:0,pressure:.4}],...(i<2?{anchor:{objectId:material.id,x:material.x,y:material.y}}:{})}}});
+  await edit(page,{kind:'move-object',objectId:material.id,x:material.x+5000,y:material.y-3000});
+  await page.reload();const before=await saved(page);await page.getByRole('button',{name:'Dispensa',exact:true}).click();
+  const paper=page.getByRole('article',{name:'Dispensa pronta'});await expect(paper).toBeVisible();
+  await expect(paper.locator('.handout-extension')).toContainText('IDEA SALVATA DA CONSERVARE');
+  await expect(paper.locator('.program-canvas')).toHaveCount(0);
+  await expect(paper.locator('.handout-material image')).toHaveCount(1);
+  await expect(paper.locator('.handout-material [data-ink-object]')).toHaveCount(2);
+  await expect(paper.locator('.handout-ink [data-ink-object]')).toHaveCount(2);
+  const downloadPromise=page.waitForEvent('download');await page.getByRole('button',{name:'Scarica pacchetto completo',exact:true}).click();
+  const download=await downloadPromise;await download.saveAs(info.outputPath('complete-handout.zip'));
+  const files=unzipSync(await readFile(info.outputPath('complete-handout.zip'))),verified=await verifyHandoutFiles(files);
+  const source=JSON.parse(new TextDecoder().decode(files['source.json']));
+  expect(source.document).toEqual(before);expect(Object.keys(files).filter(k=>k.startsWith('originals/'))).toHaveLength(1);
+  expect(Buffer.from(files[source.assets[0].originalPath]!)).toEqual(original);
+  expect(new TextDecoder().decode(verified.mainTex)).toContain('\\includegraphics');
+  const manifest=JSON.parse(new TextDecoder().decode(files['manifest.json']));
+  expect(manifest.coverage).toHaveLength(before.objects.length);
+  expect(new Set(manifest.coverage.map((c:{objectId:string})=>c.objectId)).size).toBe(before.objects.length);
+  await page.screenshot({path:info.outputPath('complete-handout.png'),fullPage:false});
+  await page.emulateMedia({media:'print'});await page.pdf({path:info.outputPath('complete-handout.pdf'),printBackground:true,preferCSSPageSize:true});await page.emulateMedia({media:'screen'});
+  await page.getByRole('button',{name:'Chiudi finestra',exact:true}).click();
+  await page.getByRole('button',{name:'Impostazioni',exact:true}).click();await page.getByRole('button',{name:'Rendi disponibile offline',exact:true}).click();await expect(page.getByRole('button',{name:'Usa copia offline',exact:true})).toBeEnabled();
+  await page.getByRole('button',{name:'Usa copia offline',exact:true}).click();await context.setOffline(true);await page.reload();
+  await page.getByRole('button',{name:'Dispensa',exact:true}).click();await expect(paper.locator('.handout-material image')).toHaveCount(1);await expect(paper).toContainText('Copia offline');
+  const offlinePromise=page.waitForEvent('download');await page.getByRole('button',{name:'Scarica pacchetto completo',exact:true}).click();
+  const offlineFiles=unzipSync(await readFile((await (await offlinePromise).path())!));await verifyHandoutFiles(offlineFiles);
+  expect(JSON.parse(new TextDecoder().decode(offlineFiles['source.json'])).document).toEqual(before);
+  await context.setOffline(false);expect(await saved(page)).toEqual(before);expect(errors).toEqual([]);
+});
+
+test('denied access invalidates a prepared handout and a closed preparation never returns',async({page})=>{
+  await importHandoutPdf(page);await page.getByRole('button',{name:'Dispensa',exact:true}).click();
+  const paper=page.getByRole('article',{name:'Dispensa pronta'});await expect(paper).toBeVisible();
+  let deny=true,held=false,release!:()=>void;const gate=new Promise<void>(r=>release=r);const downloads:string[]=[];page.on('download',d=>downloads.push(d.suggestedFilename()));
+  await page.route('**/api/m3',async route=>{
+    if(route.request().postDataJSON()?.action==='read-material'){
+      if(deny){await route.fulfill({status:403,json:{ok:false,error:{code:'FORBIDDEN',message:'Synthetic observed revocation'}}});return;}
+      if(!held){held=true;await gate;}
+    }
+    await route.continue();
+  });
+  await page.getByRole('button',{name:'Scarica pacchetto completo',exact:true}).click();
+  await expect(paper).toHaveCount(0);await expect(page.getByRole('button',{name:'Stampa / PDF',exact:true})).toBeDisabled();
+  await expect(page.getByRole('dialog',{name:'Dispensa della lezione'}).getByRole('alert')).toContainText('accesso ai materiali');expect(downloads).toEqual([]);
+  deny=false;await page.getByRole('button',{name:'Riprova preparazione',exact:true}).click();await expect.poll(()=>held).toBe(true);
+  await page.getByRole('button',{name:'Chiudi finestra',exact:true}).click();release();
+  await page.getByRole('button',{name:'Taccuino',exact:true}).click();await expect(page.getByRole('dialog',{name:'Dispensa della lezione'})).toHaveCount(0);
+  await page.unroute('**/api/m3');await page.getByRole('button',{name:'Dispensa',exact:true}).click();await expect(paper).toBeVisible();
+  expect(downloads).toEqual([]);
+});
+
+test('access denied during final image readiness never promotes the frozen handout to ready',async({page})=>{
+  await importHandoutPdf(page);
+  await page.evaluate(()=>{
+    const original=HTMLImageElement.prototype.decode;
+    let release!:()=>void;const gate=new Promise<void>(resolve=>release=resolve);
+    Object.assign(window,{handoutImageWaiting:false,releaseHandoutImage:release});
+    HTMLImageElement.prototype.decode=async function(){await original.call(this);if(this.src.startsWith('blob:')){Object.assign(window,{handoutImageWaiting:true});await gate;}};
+  });
+  let denied=false;
+  await page.route('**/api/m3',async route=>{
+    if(denied&&route.request().postDataJSON()?.action==='read-material'){await route.fulfill({status:403,json:{ok:false,error:{code:'FORBIDDEN',message:'Synthetic final-read refusal'}}});return;}
+    await route.continue();
+  });
+  await page.getByRole('button',{name:'Dispensa',exact:true}).click();
+  await expect.poll(()=>page.evaluate(()=>(window as unknown as {handoutImageWaiting:boolean}).handoutImageWaiting)).toBe(true);
+  denied=true;await page.evaluate(()=>(window as unknown as {releaseHandoutImage:()=>void}).releaseHandoutImage());
+  const dialog=page.getByRole('dialog',{name:'Dispensa della lezione'});
+  await expect(dialog.getByRole('alert')).toContainText('Synthetic final-read refusal');
+  await expect(page.getByRole('article',{name:'Dispensa pronta'})).toHaveCount(0);
+  await expect(dialog.getByRole('button',{name:'Stampa / PDF',exact:true})).toBeDisabled();
 });

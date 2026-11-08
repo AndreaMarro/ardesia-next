@@ -1,6 +1,6 @@
 import {MaterialProvider} from './materials/MaterialView';
 import {useState} from 'react';
-import {HandoutView} from './handout/HandoutView';
+import {HandoutView} from './handout/HandoutDialog';
 import {prepareHandout} from './handout/prepare';
 import type {Handout} from '@ardesia/lesson-os';
 import type {NewEducationalObject} from '@ardesia/contracts';

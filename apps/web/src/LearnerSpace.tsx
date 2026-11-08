@@ -1,5 +1,5 @@
 import {useEffect, useLayoutEffect, useRef, useState} from 'react';
-import {HandoutView} from './handout/HandoutView';
+import {HandoutView} from './handout/HandoutDialog';
 import {prepareHandout} from './handout/prepare';
 import type {Handout} from '@ardesia/lesson-os';
 import type {EducationalObject, LearningCommand} from '@ardesia/contracts';

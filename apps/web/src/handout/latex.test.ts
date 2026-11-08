@@ -1,7 +1,8 @@
 import {describe,expect,it} from 'vitest';
 import {CoreError,type LessonDocument,type InkObject} from '@ardesia/contracts';
 import {projectHandout} from '@ardesia/lesson-os';
-import {handoutLatex,inkBounds,inkTikz} from './latex';
+import {handoutLatex,inkBounds} from './latex';
+import {inkPlates,plateTikz} from './plates';
 import {texMath,texText} from './tex';
 import {prepareHandout} from './prepare';
 const time='2026-11-07T10:00:00.000Z';
@@ -31,7 +32,7 @@ describe('safe TeX and TikZ output',()=>{
   });
   it('normalizes ink from its actual sample bounds including pressure and extreme board positions',()=>{
     expect(inkBounds(ink)).toEqual({left:-30.6,top:14.4,width:234,height:139});
-    const text=inkTikz(ink);
+    const text=plateTikz(inkPlates([ink])[0]!);
     expect(text).not.toContain('999999');expect(text).not.toContain('NaN');expect(text).not.toContain('Infinity');
     const radii=[...text.matchAll(/radius=([\d.]+)cm/g)].map(m=>Number(m[1]));
     expect(radii).toHaveLength(2);expect(radii[1]!).toBeGreaterThan(radii[0]!);

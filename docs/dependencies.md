@@ -57,3 +57,7 @@ QuickJS/Emscripten0.32.0 (MIT) viene distribuito come Worker JS + WASM same-orig
 `pdfjs-dist`6.5.438 è fissato nel lockfile: engine e worker ufficiali compatibili `legacy`, stessi CMap/font/WASM distribuiti localmente. Apache-2.0, core-js3.51.0 MIT incluso dal donor; notices del pacchetto e supporti conservate. Si usa il renderer canvas, non il viewer o scripting manager. Il bundle moderno falliva nel Chromium fissato su Map.getOrInsertComputed: fallimento originale e scelta compatibile documentati in [ADR0020](adr/0020-original-materials.md).
 
 Policy risorsev3: tetti Core272KiB e iniziale240KiB gzip, runtime programmabile320KiB gzip/1MiB raw invariati; nuovo PDF3MiB gzip/6MiB raw include engine, worker.mjs, CMap/font/WASM. Il confronto storico all-non-program-assets include Core+PDF; vecchia soglia240KiB non passa. Nessuna riclassificazione dei precedenti asset. Sono misure di distribuzione, non latenza/memoria su iPad.
+
+## Dispensa completa
+
+`fflate`0.8.2 MIT, fissato nel lockfile, confeziona lo ZIP solo su download con `Zip`/`ZipPassThrough`; nessuna compressione o esecuzione Worker necessaria. Licenza integrale nei notices distribuiti. PDF.js e Zod già presenti sono riusati per preparazione e verifica. Tectonic/Poppler restano toolchain locale esplicita, non runtime web o provider. Policyv6 Core320KiB, iniziale240KiB e limiti Program/PDF invariati; confronto312KiB conservato. [Contratto, costo e limiti](adr/0023-complete-handout.md).

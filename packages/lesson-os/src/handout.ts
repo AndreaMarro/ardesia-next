@@ -21,8 +21,31 @@ export function projectHandout(input: LessonDocument, historicalSources: readonl
     if (sources.has(identity) && canonicalJson(sources.get(identity)) !== canonicalJson(source)) throw new CoreError('INVALID_SNAPSHOT', 'Conflicting source revision.');
     sources.set(identity, source);
   }
-  // Layout establishes a deterministic reading order; identity and source data stay intact.
-  document.objects.sort((a, b) => a.y - b.y || a.x - b.x || a.id.localeCompare(b.id, 'en'));
+  // Preserve the exact confirmed snapshot. Reading order belongs to the derived
+  // publication plan, never to the source document or its digest.
   return structuredClone({format: 'ardesia-handout-v1', document, sources: [...sources.values()],
     missingSources: [...required].filter(([identity]) => !sources.has(identity)).map(([, ref]) => ref)});
+}
+
+export type HandoutBlock = {kind: 'object' | 'material'; objectId: string; inkIds: string[]} | {kind: 'ink'; inkIds: string[]};
+export interface HandoutPlan {format: 'ardesia-handout-plan-v1'; blocks: HandoutBlock[]; coverage: {objectId: string; revision: number; representation: string}[]}
+/** Every saved object is accounted for exactly once; annotations travel with
+ * their material. Renderers may paginate a spatial ink plate without separating
+ * its strokes into independent, rescaled symbols. */
+export function planHandout(handout: Handout): HandoutPlan {
+  const objects = [...handout.document.objects].sort((a,b) => a.y-b.y || a.x-b.x || a.id.localeCompare(b.id,'en'));
+  const materials = new Set(objects.filter(o => o.type === 'material').map(o => o.id));
+  const free = objects.filter(o => o.type === 'ink' && (!o.data.anchor || !materials.has(o.data.anchor.objectId)));
+  const blocks: HandoutBlock[] = [];
+  let inkPlaced = false;
+  for (const object of objects) {
+    if (object.type === 'ink') {
+      if (free.some(o => o.id === object.id) && !inkPlaced) {blocks.push({kind:'ink',inkIds:free.map(o => o.id)});inkPlaced=true;}
+    } else if (object.type === 'material') {
+      blocks.push({kind:'material',objectId:object.id,inkIds:objects.filter(o => o.type === 'ink' && o.data.anchor?.objectId === object.id).map(o => o.id)});
+    } else blocks.push({kind:'object',objectId:object.id,inkIds:[]});
+  }
+  return {format:'ardesia-handout-plan-v1',blocks,coverage:objects.map(o => ({objectId:o.id,revision:o.revision,
+    representation:o.type === 'ink' ? (o.data.anchor && materials.has(o.data.anchor.objectId) ? 'material-annotation' : 'spatial-ink')
+      : o.type === 'material' ? 'material-plate' : o.type === 'extension' || o.type === 'lab' ? 'static-state' : o.type}))};
 }
