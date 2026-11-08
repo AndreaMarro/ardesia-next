@@ -331,11 +331,11 @@ describe('M3 read-only versioned migration', () => {
     const legacy = {...old, schemaVersion: 3};
     const storage = new ObservedStorage(legacy);
     const reopened = await createCore({...options(storage, 'migration'), pluginPolicy: verifier().policy});
-    expect(reopened.snapshot()).toEqual({...legacy, schemaVersion: 10, tutorRecords: [], assignments: [], learnerWork: [], courses: [], courseEditions: [], courseDeliveries: [], courseWork: []});
+    expect(reopened.snapshot()).toEqual({...legacy, schemaVersion: 11, notebookLibraries: [], tutorRecords: [], assignments: [], learnerWork: [], courses: [], courseEditions: [], courseDeliveries: [], courseWork: []});
     expect(await storage.read()).toEqual(legacy);
     expect(storage.writes).toBe(0);
     await reopened.executeLearning(teacher, {kind: 'assign-lesson', commandId: 'new-assignment', documentId: 'lesson-one', studentId: student.actorId, expectedRevision: 0});
-    expect((await storage.read() as CoreSnapshot).schemaVersion).toBe(10);
+    expect((await storage.read() as CoreSnapshot).schemaVersion).toBe(11);
     expect(reopened.snapshot().events.slice(0, legacy.events.length)).toEqual(legacy.events);
     expect(reopened.snapshot().receipts.slice(0, legacy.receipts.length)).toEqual(legacy.receipts);
     expect(reopened.snapshot().installations).toEqual(legacy.installations);
@@ -381,6 +381,6 @@ describe('M3 read-only versioned migration', () => {
 });
 
 function preCourse<T extends object>(snapshot: T) {
-  const {tutorRecords: _t, courses: _c, courseEditions: _e, courseDeliveries: _d, courseWork: _w, ...legacy} = snapshot as T & {tutorRecords?: unknown; courses?: unknown; courseEditions?: unknown; courseDeliveries?: unknown; courseWork?: unknown};
+  const {notebookLibraries: _notebooks, tutorRecords: _t, courses: _c, courseEditions: _e, courseDeliveries: _d, courseWork: _w, ...legacy} = snapshot as T & {notebookLibraries?: unknown; tutorRecords?: unknown; courses?: unknown; courseEditions?: unknown; courseDeliveries?: unknown; courseWork?: unknown};
   return legacy;
 }

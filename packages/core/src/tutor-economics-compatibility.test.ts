@@ -3,7 +3,7 @@ import {CoreSnapshotSchema,TutorCommandSchema,TutorInputSchema,canonicalJson,typ
 import {createCore,MemoryStorage} from './index';
 import legacy from './fixtures/tutor-v9.json';
 const actor={actorId:'teacher',role:'teacher'} as const;
-const upgraded={...legacy,schemaVersion:10};
+const upgraded={...legacy,schemaVersion:11,notebookLibraries:[]};
 const historical=TutorCommandSchema.parse(legacy.events[1]!.payload.command);
 const input=()=>{
  if(historical.kind!=='save-tutor-record'||historical.input.kind!=='appointment')throw Error('Historical appointment required');

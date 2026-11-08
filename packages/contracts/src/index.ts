@@ -1,5 +1,7 @@
 export {CONCEPT_LINK_TYPE, ConceptLinkStateSchema, conceptLinkDefinition, conceptLinkState, type ConceptLinkState} from './knowledge.ts';
 import { z } from 'zod';
+export * from './notebooks.ts';
+import {NotebookLibrarySchema, NotebookEventSchema, NotebookReceiptSchema, notebookNewDocument, notebookPages} from './notebooks.ts';
 import {MaterialDataSchema, InkAnchorSchema} from './materials.ts';
 export * from './materials.ts';
 import {ExtensionDataSchema} from './extensions.ts';
@@ -11,8 +13,8 @@ import {TutorRecordSchema, TutorEventSchema, TutorReceiptSchema} from './tutor.t
 export {projectDocumentRevision} from './document-history.ts';
 import {CourseSchema, CourseEditionSchema, CourseDeliverySchema, CourseWorkSchema, CourseEventSchema, CourseReceiptSchema} from './courses.ts';
 
-export const CONTRACT_VERSION = '0.11.0' as const;
-export const SNAPSHOT_VERSION = 10 as const;
+export const CONTRACT_VERSION = '0.12.0' as const;
+export const SNAPSHOT_VERSION = 11 as const;
 
 const identifier = z.string().min(1).max(200).regex(/^[A-Za-z0-9][A-Za-z0-9._:-]*$/);
 const title = z.string().trim().min(1).max(240);
@@ -516,9 +518,9 @@ export const LearningReceiptSchema = z.object({
 }).strict();
 export type LearningReceipt = z.infer<typeof LearningReceiptSchema>;
 
-export const WorkspaceEventSchema = /* @__PURE__ */ (() => z.union([CoreEventSchema, PluginEventSchema, LearningEventSchema, CourseEventSchema, TutorEventSchema]))();
+export const WorkspaceEventSchema = /* @__PURE__ */ (() => z.union([CoreEventSchema, PluginEventSchema, LearningEventSchema, CourseEventSchema, TutorEventSchema, NotebookEventSchema]))();
 export type WorkspaceEvent = z.infer<typeof WorkspaceEventSchema>;
-export const WorkspaceReceiptSchema = /* @__PURE__ */ (() => z.union([CommandReceiptSchema, PluginReceiptSchema, LearningReceiptSchema, CourseReceiptSchema, TutorReceiptSchema]))();
+export const WorkspaceReceiptSchema = /* @__PURE__ */ (() => z.union([CommandReceiptSchema, PluginReceiptSchema, LearningReceiptSchema, CourseReceiptSchema, TutorReceiptSchema, NotebookReceiptSchema]))();
 export type WorkspaceReceipt = z.infer<typeof WorkspaceReceiptSchema>;
 
 // Construction only allocates these schemas and registers validators. Marking the
@@ -528,6 +530,7 @@ export const CoreSnapshotSchema = /* @__PURE__ */ (() => z.object({
   schemaVersion: z.literal(SNAPSHOT_VERSION),
   workspaceId: identifier,
   documents: z.array(LessonDocumentSchema).max(500),
+  notebookLibraries: z.array(NotebookLibrarySchema).max(500),
   installations: z.array(PluginInstallationSchema).max(1_000),
   assignments: z.array(LessonAssignmentSchema).max(10_000),
   learnerWork: z.array(LearnerWorkSchema).max(10_000),
@@ -545,6 +548,14 @@ export const CoreSnapshotSchema = /* @__PURE__ */ (() => z.object({
     documentIds.add(document.id);
   }
   const installationKeys = new Set<string>();
+  const notebookOwners = new Set<string>(), latestNotebook = new Map<string, number>();
+  for (const [index, library] of snapshot.notebookLibraries.entries()) {
+    if (notebookOwners.has(library.ownerId) || notebookPages(library).some(({page}) =>
+      !snapshot.documents.some(document => document.id === page.documentId && document.ownerId === library.ownerId))) {
+      context.addIssue({code: 'custom', message: 'A notebook catalog requires a unique owner and canonical owned documents', path: ['notebookLibraries', index]});
+    }
+    notebookOwners.add(library.ownerId);
+  }
   const installationKey = (ownerId: string, id: string) => JSON.stringify([ownerId, id]);
   for (const [index, installation] of snapshot.installations.entries()) {
     const key = installationKey(installation.ownerId, installation.pluginId);
@@ -584,6 +595,13 @@ export const CoreSnapshotSchema = /* @__PURE__ */ (() => z.object({
       const key = installationKey(event.actorId, event.pluginId);
       if (!installationKeys.has(key) || event.installationRevision !== (latestInstallation.get(key) ?? 0) + 1) context.addIssue({code: 'custom', message: 'Invalid installation event or revision', path: ['events', index]});
       latestInstallation.set(key, event.installationRevision);
+    } else if ('notebookOwnerId' in event) {
+      if (!notebookOwners.has(event.notebookOwnerId) || event.notebookOwnerId !== event.actorId || event.type !== event.payload.command.kind
+        || event.notebookRevision !== (latestNotebook.get(event.notebookOwnerId) ?? 0) + 1
+        || event.payload.command.expectedRevision !== event.notebookRevision - 1) {
+        context.addIssue({code: 'custom', message: 'Invalid notebook stream identity or revision', path: ['events', index]});
+      }
+      latestNotebook.set(event.notebookOwnerId, event.notebookRevision);
     } else if ('tutorEntity' in event) {
       if (event.tutorEntity !== event.payload.value.kind || event.entityId !== event.payload.value.id || event.entityRevision !== event.payload.value.revision || event.type !== event.payload.command.kind) {
         context.addIssue({code: 'custom', message: 'Tutor event differs from its exact record', path: ['events', index]});
@@ -639,6 +657,9 @@ export const CoreSnapshotSchema = /* @__PURE__ */ (() => z.object({
   for (const [index, document] of snapshot.documents.entries()) {
     if (latest.get(document.id) !== document.revision) context.addIssue({ code: 'custom', message: 'Document revision is not backed by its events', path: ['documents', index, 'revision'] });
   }
+  for (const [index, library] of snapshot.notebookLibraries.entries()) {
+    if (latestNotebook.get(library.ownerId) !== library.revision) context.addIssue({code: 'custom', message: 'Notebook revision is not backed by its events', path: ['notebookLibraries', index]});
+  }
   for (const [index, installation] of snapshot.installations.entries()) {
     if (latestInstallation.get(installationKey(installation.ownerId, installation.pluginId)) !== installation.revision) context.addIssue({code: 'custom', message: 'Installation revision is not backed by its events', path: ['installations', index, 'revision']});
   }
@@ -671,6 +692,24 @@ export const CoreSnapshotSchema = /* @__PURE__ */ (() => z.object({
           || related.type !== 'plugin-release-changed' || related.actorId !== receipt.actorId || !related.payload
           || typeof related.payload !== 'object' || Array.isArray(related.payload) || related.payload.pluginId !== receipt.pluginId
           || event?.type !== 'change-plugin-release') context.addIssue({code: 'custom', message: 'Transition receipt does not cover a unique related document event', path: ['receipts', index, 'relatedEventIds']});
+        receiptEventIds.add(relatedId);
+      }
+    } else if ('notebookOwnerId' in receipt) {
+      if (!event || !('notebookOwnerId' in event) || event.notebookOwnerId !== receipt.notebookOwnerId
+        || receipt.notebookOwnerId !== receipt.actorId || event.notebookRevision !== receipt.notebookRevision
+        || event.payload.command.commandId !== receipt.commandId) {
+        context.addIssue({code: 'custom', message: 'Notebook receipt differs from its committed event', path: ['receipts', index]});
+      }
+      const created = event && 'notebookOwnerId' in event ? notebookNewDocument(event.payload.command) : null;
+      if (receipt.relatedEventIds.length !== (created ? 1 : 0)) context.addIssue({code: 'custom', message: 'Only page creation covers a related document event', path: ['receipts', index]});
+      for (const relatedId of receipt.relatedEventIds) {
+        const related = eventsById.get(relatedId);
+        if (!created || !event || relatedId === receipt.eventId || receiptEventIds.has(relatedId) || !related || !('documentId' in related)
+          || related.type !== 'create-document' || related.documentRevision !== 1 || related.documentId !== created.documentId
+          || related.actorId !== receipt.actorId || related.occurredAt !== event.occurredAt || related.sequence !== event.sequence - 1
+          || !related.payload || typeof related.payload !== 'object' || Array.isArray(related.payload) || related.payload.title !== created.title) {
+          context.addIssue({code: 'custom', message: 'Notebook receipt must cover its exact immediately preceding document creation', path: ['receipts', index, 'relatedEventIds']});
+        }
         receiptEventIds.add(relatedId);
       }
     } else if ('tutorEntity' in receipt) {
@@ -713,12 +752,22 @@ const MarketplaceSnapshotV3Schema = /* @__PURE__ */ (() => z.object({
 
 /** Versioned read-only migration. Historical bytes, consent and receipts are never rewritten on open. */
 export function migrateSnapshotForOpen(input: unknown): unknown {
+  const emptyNotebooks = {notebookLibraries: []};
+  if (input && typeof input === 'object' && 'schemaVersion' in input && [1,2,3,4,5,6,7,8,9,10].includes(input.schemaVersion as number)) {
+    const raw = input as Record<string, unknown>;
+    const ledger = [raw.events, raw.receipts].flatMap(value => Array.isArray(value) ? value : []);
+    if ('notebookLibraries' in input || ledger.some(entry => entry && typeof entry === 'object' && 'notebookOwnerId' in entry)) return input;
+    if (input.schemaVersion === 10) {
+      const parsed = CoreSnapshotSchema.safeParse({...input, ...emptyNotebooks, schemaVersion: SNAPSHOT_VERSION});
+      return parsed.success ? parsed.data : input;
+    }
+  }
   if (input && typeof input === 'object' && 'schemaVersion' in input && [1,2,3,4,5,6,7,8,9].includes(input.schemaVersion as number)) {
     const raw=input as Record<string,unknown>,array=(value:unknown):any[]=>Array.isArray(value)?value:[];
     // Economics is new in v10. Never reinterpret a relabelled new record as old.
     const tutorValues=[...array(raw.tutorRecords),...array(raw.events).filter(e=>e?.tutorEntity).flatMap(e=>[e.payload?.value,e.payload?.command?.kind==='save-tutor-record'?e.payload.command.input:null])];
     if(tutorValues.some(value=>value?.kind==='appointment'&&('directCostMinor' in value||'preparationMinutes' in value)))return input;
-    if(input.schemaVersion===9){const parsed=CoreSnapshotSchema.safeParse({...input,schemaVersion:SNAPSHOT_VERSION});return parsed.success?parsed.data:input;}
+    if(input.schemaVersion===9){const parsed=CoreSnapshotSchema.safeParse({...input, ...emptyNotebooks,schemaVersion:SNAPSHOT_VERSION});return parsed.success?parsed.data:input;}
   }
   if (input && typeof input === 'object' && 'schemaVersion' in input && [1,2,3,4,5,6,7,8].includes(input.schemaVersion as number)) {
     const raw = input as Record<string, unknown>;
@@ -730,7 +779,7 @@ export function migrateSnapshotForOpen(input: unknown): unknown {
     }
     for (const work of array(raw.learnerWork)) candidates.push(...array(work?.annotations));
     if (candidates.some(o => o?.type === 'material' || o?.type === 'ink' && o.data?.anchor !== undefined)) return input;
-    if (input.schemaVersion === 8) {const parsed = CoreSnapshotSchema.safeParse({...input, schemaVersion: SNAPSHOT_VERSION}); return parsed.success ? parsed.data : input;}
+    if (input.schemaVersion === 8) {const parsed = CoreSnapshotSchema.safeParse({...input, ...emptyNotebooks, schemaVersion: SNAPSHOT_VERSION}); return parsed.success ? parsed.data : input;}
   }
   const emptyTutor = {tutorRecords: []};
   if (input && typeof input === 'object' && 'schemaVersion' in input && [1,2,3,4,5,6,7].includes(input.schemaVersion as number)) {
@@ -738,7 +787,7 @@ export function migrateSnapshotForOpen(input: unknown): unknown {
     const receipts = 'receipts' in input && Array.isArray(input.receipts) ? input.receipts : [];
     if ('tutorRecords' in input || [...events, ...receipts].some(entry => entry && typeof entry === 'object' && 'tutorEntity' in entry)) return input;
     if (input.schemaVersion === 7) {
-      const candidate = CoreSnapshotSchema.safeParse({...input, ...emptyTutor, schemaVersion: SNAPSHOT_VERSION});
+      const candidate = CoreSnapshotSchema.safeParse({...input, ...emptyNotebooks, ...emptyTutor, schemaVersion: SNAPSHOT_VERSION});
       return candidate.success ? candidate.data : input;
     }
   }
@@ -750,7 +799,7 @@ export function migrateSnapshotForOpen(input: unknown): unknown {
     if ([...events, ...receipts].some(entry => entry && typeof entry === 'object' && 'courseEntity' in entry)) return input;
   }
   if (input && typeof input === 'object' && 'schemaVersion' in input && input.schemaVersion === 6) {
-    const candidate = CoreSnapshotSchema.safeParse({...input, ...emptyCourses, ...emptyTutor, schemaVersion: SNAPSHOT_VERSION});
+    const candidate = CoreSnapshotSchema.safeParse({...input, ...emptyNotebooks, ...emptyCourses, ...emptyTutor, schemaVersion: SNAPSHOT_VERSION});
     return candidate.success ? candidate.data : input;
   }
   if(input&&typeof input==='object'&&'schemaVersion'in input&&[1,2,3,4,5].includes(input.schemaVersion as number)){
@@ -769,7 +818,7 @@ export function migrateSnapshotForOpen(input: unknown): unknown {
     if(candidates.some(object=>own(object,'type')==='extension'))return input;
   }
   if (input && typeof input === 'object' && 'schemaVersion' in input && input.schemaVersion === 5) {
-    const candidate = CoreSnapshotSchema.safeParse({...input, ...emptyCourses, ...emptyTutor, schemaVersion: SNAPSHOT_VERSION});
+    const candidate = CoreSnapshotSchema.safeParse({...input, ...emptyNotebooks, ...emptyCourses, ...emptyTutor, schemaVersion: SNAPSHOT_VERSION});
     if (!candidate.success) return input;
     return candidate.data;
   }
@@ -783,25 +832,25 @@ export function migrateSnapshotForOpen(input: unknown): unknown {
       || !raw.events.every(event => event && typeof event === 'object' && event.type !== 'review-learner-attempt'
         && (!('lessonId' in event) || event.stream !== 'learner-work' || event.payload && oldWork(event.payload.work)
           && (event.payload.previous === null || oldWork(event.payload.previous))))) return input;
-    const migrated = CoreSnapshotSchema.safeParse({...raw, ...emptyCourses, ...emptyTutor, schemaVersion: SNAPSHOT_VERSION});
+    const migrated = CoreSnapshotSchema.safeParse({...raw, ...emptyNotebooks, ...emptyCourses, ...emptyTutor, schemaVersion: SNAPSHOT_VERSION});
     return migrated.success ? migrated.data : input;
   }
   const legacy = LegacySnapshotSchema.safeParse(input);
   let candidate: unknown;
   if (legacy.success) {
     if (legacy.data.schemaVersion === 1 && legacy.data.documents.some(doc => doc.objects.some(object => object.type === 'lab'))) return input;
-    candidate = {...legacy.data, ...emptyCourses, ...emptyTutor, schemaVersion: SNAPSHOT_VERSION, installations: [], assignments: [], learnerWork: []};
+    candidate = {...legacy.data, ...emptyNotebooks, ...emptyCourses, ...emptyTutor, schemaVersion: SNAPSHOT_VERSION, installations: [], assignments: [], learnerWork: []};
   } else {
     const marketplace = MarketplaceSnapshotV3Schema.safeParse(input);
     if (!marketplace.success) return input;
-    candidate = {...marketplace.data, ...emptyCourses, ...emptyTutor, schemaVersion: SNAPSHOT_VERSION, assignments: [], learnerWork: []};
+    candidate = {...marketplace.data, ...emptyNotebooks, ...emptyCourses, ...emptyTutor, schemaVersion: SNAPSHOT_VERSION, assignments: [], learnerWork: []};
   }
   const checked = CoreSnapshotSchema.safeParse(candidate);
   return checked.success ? checked.data : input;
 }
 
 export function emptySnapshot(workspaceId = 'local-workspace'): CoreSnapshot {
-  return {schemaVersion: SNAPSHOT_VERSION, workspaceId, tutorRecords: [], documents: [], installations: [], assignments: [], learnerWork: [], courses: [], courseEditions: [], courseDeliveries: [], courseWork: [], events: [], receipts: []};
+  return {schemaVersion: SNAPSHOT_VERSION, workspaceId, notebookLibraries: [], tutorRecords: [], documents: [], installations: [], assignments: [], learnerWork: [], courses: [], courseEditions: [], courseDeliveries: [], courseWork: [], events: [], receipts: []};
 }
 
 export const CoreErrorCodes = [

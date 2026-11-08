@@ -2,17 +2,7 @@ import {test, expect, personalProjection, selectedWorkspace, api} from './fixtur
 import {continueRouteWithAccess, fetchRouteWithAccess} from './remote-access';
 import type {RecordingState, RecordingSummary} from '@ardesia/contracts';
 
-async function syntheticMicrophone(page: import('@playwright/test').Page, delayed = false) {
-  await page.addInitScript(({delayed}) => {
-    Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {value: async () => {
-      const context = new AudioContext(), oscillator = context.createOscillator(), destination = context.createMediaStreamDestination();
-      oscillator.frequency.value = 220; oscillator.connect(destination); oscillator.start(); await context.resume();
-      (window as any).syntheticAudioStream = destination.stream;
-      if (delayed) await new Promise<void>(resolve => {(window as any).releaseSyntheticMicrophone = resolve;});
-      return destination.stream;
-    }});
-  }, {delayed});
-}
+import {syntheticMicrophone} from './audio-fixture';
 
 test('records synthetic audio with timed ink, resumes a lost upload, seeks exact history and retries a transcript after reload', async ({page}, testInfo) => {
   await syntheticMicrophone(page); await page.goto('/');

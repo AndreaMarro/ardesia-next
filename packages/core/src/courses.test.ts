@@ -99,10 +99,10 @@ describe('versioned courses and private learning', () => {
     await expect(createCore({storage: new MemoryStorage(state)})).rejects.toMatchObject({code: 'INVALID_SNAPSHOT'});
   });
   it('migrates v6 in memory and refuses new course fields disguised as legacy data', async () => {
-    const {tutorRecords, courses, courseEditions, courseDeliveries, courseWork, ...old} = emptySnapshot();
+    const {notebookLibraries, tutorRecords, courses, courseEditions, courseDeliveries, courseWork, ...old} = emptySnapshot();
     const legacy = {...old, schemaVersion: 6}; const original = JSON.stringify(legacy);
     const storage = new MemoryStorage(legacy); const core = await createCore({storage});
-    expect(core.snapshot().schemaVersion).toBe(10); expect(JSON.stringify(await storage.read())).toBe(original);
+    expect(core.snapshot().schemaVersion).toBe(11); expect(JSON.stringify(await storage.read())).toBe(original);
     expect(migrateSnapshotForOpen({...legacy, courses})).toEqual({...legacy, courses});
   });
 });

@@ -6,17 +6,23 @@ import type {Handout} from '@ardesia/lesson-os';
 import type {NewEducationalObject} from '@ardesia/contracts';
 import type {RemoteClient} from '@ardesia/remote-client';
 import {Board} from './components/Board';
+import {notebookPages} from '@ardesia/contracts';
+import {NotebookLibrary} from './notebooks/NotebookLibrary';
+import {NotebookNavigation} from './notebooks/NotebookNavigation';
 import {pendingObjectsForDocument,pendingRemovalsForDocument} from './workspace';
 
 export function OfflineWorkspace({client}: {client: RemoteClient}) {
   const copy = client.offline!;
   const [documentId, setDocumentId] = useState(copy.documents[0]?.id ?? '');
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [notebooksOpen, setNotebooksOpen] = useState(false);
   const [handout,setHandout]=useState<Handout|null>(null);
   const [busy, setBusy] = useState(false), [error, setError] = useState('');
   const [drawing, setDrawing] = useState(false);
   const [savingInk, setSavingInk] = useState(0);
   const document = copy.documents.find(item => item.id === documentId) ?? copy.documents[0];
+  const page = copy.notebookSpace && notebookPages(copy.notebookSpace).find(item => item.page.documentId === document?.id)?.page;
+  function openDocument(id: string) {if (busy || drawing || savingInk > 0) return; setDocumentId(id); setSelectedId(null); setNotebooksOpen(false);}
   const state = client.state;
   const pending = state.pending.filter(entry => entry.workspaceId === copy.workspaceId);
   async function ink(object: NewEducationalObject) {
@@ -47,11 +53,13 @@ export function OfflineWorkspace({client}: {client: RemoteClient}) {
           <button className="secondary-button" onClick={exportCopy}>Esporta copia e tratti</button><button className="secondary-button" disabled={!document || drawing || savingInk>0} onClick={()=>{if(document)setHandout(prepareHandout(document));}}>Dispensa</button></div></section>
       {(error || state.error) && <div className="error-banner" role="alert">{error || state.error?.message}</div>}
       {copy.documents.length > 1 && <label className="offline-selector">Lezione disponibile <select disabled={busy || drawing || savingInk > 0} value={documentId} onChange={event => {setDocumentId(event.target.value); setSelectedId(null);}}>{copy.documents.map(item => <option key={item.id} value={item.id}>{item.title}</option>)}</select></label>}
-      {document && <Board key={document.id} writingStatus={error||state.error?.message||(savingInk?'Conservazione sul dispositivo…':state.recovery!=='durable'?'Recupero non durevole · esporta i tratti':`Offline · ${pending.length} modifiche da confermare`)} inkRecovery={client.inkRecovery} onErase={erase} pendingRemovals={pendingRemovalsForDocument(pending,copy.workspaceId,document.id)} readOnlyObjects onInkActiveChange={setDrawing} document={document} selectedId={selectedId} onSelect={setSelectedId}
+      {copy.notebookSpace && <div className="notebook-page-tools"><button className="secondary-button" disabled={busy || drawing || savingInk > 0} onClick={() => setNotebooksOpen(true)}>Apri quaderni offline</button>{document && <NotebookNavigation space={copy.notebookSpace} documentId={document.id} disabled={busy || drawing || savingInk > 0} onLibrary={() => setNotebooksOpen(true)} onOpen={openDocument}/>}</div>}
+      {document && <Board key={document.id} appearance={page ? 'notebook' : 'board'} pageLayout={page?.layout} writingStatus={error||state.error?.message||(savingInk?'Conservazione sul dispositivo…':state.recovery!=='durable'?'Recupero non durevole · esporta i tratti':`Offline · ${pending.length} modifiche da confermare`)} inkRecovery={client.inkRecovery} onErase={erase} pendingRemovals={pendingRemovalsForDocument(pending,copy.workspaceId,document.id)} readOnlyObjects onInkActiveChange={setDrawing} document={document} selectedId={selectedId} onSelect={setSelectedId}
         pendingObjects={pendingObjectsForDocument(pending, copy.workspaceId, document.id)} onInk={object => ink(object)}
         onMove={() => undefined} onAdd={async () => undefined} onUndo={() => undefined} canUndo={false}/>}
       <p className="offline-footnote">La copia conserva la revisione {document?.revision ?? '—'}. I nuovi tratti saranno confermati soltanto dopo la verifica dell’account e delle revisioni. Laboratori e condivisioni richiedono la rete.</p>
     </main>
+    {notebooksOpen && copy.notebookSpace && <NotebookLibrary space={copy.notebookSpace} documents={copy.documents} currentDocumentId={document?.id ?? ''} onClose={() => setNotebooksOpen(false)} onOpen={openDocument}/>}
     {handout&&<HandoutView handout={handout} onClose={()=>setHandout(null)} notice={`Copia offline del ${new Date(copy.savedAt).toLocaleString('it-IT')}. I tratti in attesa di conferma non sono inclusi.`}/>}
   </div></MaterialProvider>;
 }

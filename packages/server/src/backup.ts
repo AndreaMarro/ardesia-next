@@ -95,6 +95,7 @@ export async function restoreBackup(pool: Pool, input: unknown): Promise<{worksp
       || accounts.get(workspace.owner_account_id) === 'student' && (workspace.snapshot.assignments.length > 0 || workspace.snapshot.tutorRecords.length > 0
         || workspace.snapshot.courseDeliveries.some(value => value.learnerId !== binding.actor_id))
       || workspace.snapshot.documents.some(document => document.ownerId !== binding.actor_id)
+      || workspace.snapshot.notebookLibraries.some(library => library.ownerId !== binding.actor_id)
       || workspace.snapshot.installations.some(installation => installation.ownerId !== binding.actor_id)
       || workspace.snapshot.assignments.some(assignment => accounts.get(assignment.studentId) !== 'student')
       || workspace.snapshot.learnerWork.some(work => accounts.get(work.studentId) !== 'student')

@@ -6,6 +6,8 @@ export {type MaterialAccess} from './materials';
 import {recordingAccess} from './recordings';
 export {sha256, type RecordingAccess} from './recordings';
 import {
+  NotebookSpaceSchema, NotebookCommandSchema, NotebookReceiptSchema, notebookPages, notebookNewDocument,
+  type NotebookSpace, type NotebookCommand, type NotebookReceipt,
   WorkspaceAccessSchema, ownsWorkspace, type WorkspaceAccess,
   TutorSpaceSchema, TutorCommandSchema, TutorReceiptSchema, tutorTarget, type TutorSpace, type TutorCommand, type TutorReceipt,
   CourseSpaceSchema, CourseCommandSchema, CourseReceiptSchema, courseTarget,
@@ -21,7 +23,7 @@ import {
 } from '@ardesia/contracts';
 import type {CoreService} from '@ardesia/core';
 import {browserOfflineStore, OfflineError, parseOfflineSnapshot, type OfflineStore, type OfflineSnapshot} from './offline';
-export {browserOfflineStore, OfflineError, parseOfflineSnapshot, type OfflineStore, type OfflineSnapshot} from './offline';
+export {browserOfflineStore, OfflineError, parseOfflineSnapshot, type OfflineStore, type OfflineSnapshot, type LegacyOfflineSnapshot} from './offline';
 
 export interface RemoteAccount {id: string; role: Actor['role']; displayName: string}
 export interface RemoteSession {account: RemoteAccount; expiresAt: string}
@@ -29,6 +31,7 @@ export interface WorkspaceSummary {workspaceId: string; title: string; workspace
 export interface WorkspaceProjection {
   workspaceId: string; title: string; workspaceRevision: number; actor: Actor; access?: WorkspaceAccess;
   tutorSpace?: TutorSpace;
+  notebookSpace?: NotebookSpace;
   courseSpace?: CourseSpace;
   documents: LessonDocument[]; assignedDocuments: LessonDocument[];
   installations: PluginInstallation[]; events: CoreEvent[]; assignments: LessonAssignment[];
@@ -39,6 +42,7 @@ export interface PersonalExport {
   exportedAt: string; projection: WorkspaceProjection;
 }
 type CommandRequest =
+  | {action: 'notebook-command'; workspaceId: string; command: NotebookCommand}
   | {action: 'command'; workspaceId: string; command: CoreCommand}
   | {action: 'plugin-command'; workspaceId: string; command: PluginCommand}
   | {action: 'tutor-command'; workspaceId: string; command: TutorCommand}
@@ -128,6 +132,7 @@ function parseProjection(value: unknown, account: RemoteAccount): WorkspaceProje
       workspaceId: value.workspaceId, title: value.title, workspaceRevision: value.workspaceRevision, actor: ActorSchema.parse(value.actor),
       ...(value.access === undefined ? {} : {access: WorkspaceAccessSchema.parse(value.access)}),
       ...(value.tutorSpace === undefined ? {} : {tutorSpace: TutorSpaceSchema.parse(value.tutorSpace)}),
+      ...(value.notebookSpace === undefined ? {} : {notebookSpace: NotebookSpaceSchema.parse(value.notebookSpace)}),
       ...(value.courseSpace === undefined ? {} : {courseSpace: CourseSpaceSchema.parse(value.courseSpace)}),
       documents: array(value.documents, LessonDocumentSchema), assignedDocuments: array(value.assignedDocuments, LessonDocumentSchema),
       installations: array(value.installations, PluginInstallationSchema), events: array(value.events, CoreEventSchema),
@@ -140,6 +145,8 @@ function parseProjection(value: unknown, account: RemoteAccount): WorkspaceProje
     if (projection.actor.role !== account.role || (!owner && (account.role !== 'student' || projection.actor.actorId !== account.id))) return invalid();
     const coreActorId = projection.actor.actorId;
     const owned = new Set(projection.documents.map(document => document.id));
+    if (projection.notebookSpace && (!owner && (projection.notebookSpace.revision !== 0 || projection.notebookSpace.notebooks.length > 0)
+      || notebookPages(projection.notebookSpace).some(({page}) => !owned.has(page.documentId)))) return invalid();
     const assigned = new Set(projection.assignments.filter(assignment => assignment.status === 'active' && assignment.studentId === account.id).map(assignment => assignment.documentId));
     if (projection.documents.some(document => document.ownerId !== coreActorId)
       || projection.installations.some(installation => installation.ownerId !== coreActorId)
@@ -172,7 +179,8 @@ function parseProjection(value: unknown, account: RemoteAccount): WorkspaceProje
 }
 function parseRequest(value: unknown): PendingRequest {
   if (!record(value)) return fail('INVALID_RECOVERY', 'Recupero non valido. I dati originali sono conservati.');
-  if (['command', 'plugin-command', 'learning-command', 'course-command', 'tutor-command'].includes(String(value.action)) && isId(value.workspaceId)) {
+  if (['command', 'plugin-command', 'learning-command', 'course-command', 'tutor-command', 'notebook-command'].includes(String(value.action)) && isId(value.workspaceId)) {
+    if (value.action === 'notebook-command') return {action: value.action, workspaceId: value.workspaceId, command: NotebookCommandSchema.parse(value.command)};
     if (value.action === 'tutor-command') return {action: value.action, workspaceId: value.workspaceId, command: TutorCommandSchema.parse(value.command)};
     if (value.action === 'course-command') return {action: value.action, workspaceId: value.workspaceId, command: CourseCommandSchema.parse(value.command)};
     if (value.action === 'command') return {action: value.action, workspaceId: value.workspaceId, command: CoreCommandSchema.parse(value.command)};
@@ -362,8 +370,8 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
     return cacheWrites;
   }
   function snapshotFor(owner: RemoteAccount, source: WorkspaceProjection): OfflineSnapshot {
-    return parseOfflineSnapshot({format: 'ardesia-own-lessons-v1', account: owner, workspaceId: source.workspaceId,
-      title: source.title, workspaceRevision: source.workspaceRevision, actor: source.actor, documents: source.documents, savedAt: clock()});
+    return parseOfflineSnapshot({format: 'ardesia-own-lessons-v2', account: owner, workspaceId: source.workspaceId,
+      title: source.title, workspaceRevision: source.workspaceRevision, actor: source.actor, documents: source.documents, savedAt: clock(), notebookSpace: source.notebookSpace ?? null});
   }
   function updateOfflineCopy(source: WorkspaceProjection, enable = false) {
     if (!cache || !localGeneration || !session || !ownsWorkspace(source)) return;
@@ -662,11 +670,12 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
           if (!record(raw)) return invalid();
           try {
             result = body.action === 'command' ? CommandReceiptSchema.parse(raw.receipt)
+              : body.action === 'notebook-command' ? NotebookReceiptSchema.parse(raw.receipt)
               : body.action === 'plugin-command' ? PluginReceiptSchema.parse(raw.receipt)
               : body.action === 'tutor-command' ? TutorReceiptSchema.parse(raw.receipt)
               : body.action === 'course-command' ? CourseReceiptSchema.parse(raw.receipt) : LearningReceiptSchema.parse(raw.receipt);
           } catch {return invalid();}
-          const receipt = result as CommandReceipt | PluginReceipt | LearningReceipt | CourseReceipt | TutorReceipt;
+          const receipt = result as WorkspaceReceipt;
           if (receipt.commandId !== transmittedId || receipt.actorId !== entry.actorId) return invalid();
           if (body.action === 'command' && (!('documentId' in receipt) || receipt.documentId !== body.command.documentId
             || receipt.documentRevision !== body.command.expectedRevision + 1)) return invalid();
@@ -684,6 +693,16 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
           }
           const next = parseProjection(raw.projection, account());
           if (next.actor.actorId !== entry.actorId) return invalid();
+          if (body.action === 'notebook-command') {
+            const created = notebookNewDocument(body.command);
+            if (!('notebookOwnerId' in receipt) || receipt.notebookOwnerId !== entry.actorId
+              || receipt.notebookRevision !== body.command.expectedRevision + 1 || !next.notebookSpace
+              || next.notebookSpace.revision < receipt.notebookRevision || receipt.relatedEventIds.length !== (created ? 1 : 0)) return invalid();
+            if (created && !next.events.some(event => event.id === receipt.relatedEventIds[0] && event.type === 'create-document'
+              && event.documentId === created.documentId && event.documentRevision === 1 && event.actorId === entry.actorId
+              && record(event.payload) && event.payload.title === created.title)) return invalid();
+            if (selected !== selection) throw new RemoteError('WORKSPACE_CHANGED', 'Spazio cambiato. Recupera la stessa modifica.', 'unknown');
+          }
           // The receipt remains valid after navigation or a refused evidence read,
           // but its earlier full projection must not restore invalidated grants.
           if (selected === selection) accept(next, expected, body.workspaceId);
@@ -736,11 +755,13 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
     active.set(key, operation); return operation;
   }
   async function mutate(input: PendingRequest): Promise<unknown> {
-    const owner = account(), body = clone(parseRequest(input)), expected = epoch;
+    const owner = account(), body = clone(parseRequest(input)), expected = epoch, selected = selection;
     const commandId = 'command' in body ? body.command.commandId : body.commandId, workspaceId = 'workspaceId' in body ? body.workspaceId : null;
+    const actorId = 'command' in body ? current().actor.actorId : null;
     return coordinate(workspaceId, 'workspace', 'shared', async () => {
       const entry = await recoveryQueue(workspaceId, () => {
         requireEpoch(expected);
+        if (workspaceId !== null && selection !== selected) return fail('WORKSPACE_CHANGED', 'Non inviata: spazio cambiato.');
         if (body.action === 'import-local' && body.expectedAccountId !== owner.id) return fail('SESSION_CHANGED', 'Conferma l’account destinatario dell’importazione.');
         const existing = pending.get(commandId);
         if (existing) {
@@ -751,11 +772,13 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
         if (pending.size >= 500) return fail('RECOVERY_LIMIT', 'Recupera o esporta le modifiche in attesa prima di aggiungerne altre.');
         if ([...pending.values()].some(item => item.workspaceId === workspaceId)) return fail('PENDING_COMMAND', 'Recupera o scarta la modifica precedente prima di proseguire.');
         const entry: PendingCommand = {version: 1, accountId: owner.id, commandId, workspaceId,
-          actorId: 'command' in body ? current().actor.actorId : null, request: body, createdAt: clock(), status: 'pending', error: null};
+          actorId, request: body, createdAt: clock(), status: 'pending', error: null};
         pending.set(commandId, entry);
         try {saveRecovery();} catch (error) {pending.delete(commandId); rememberRecovery(); lastError = issue(error); emit(); throw error;}
         return entry;
       });
+      requireEpoch(expected);
+      if (workspaceId !== null && selection !== selected) return fail('WORKSPACE_CHANGED', 'Non inviata: spazio cambiato.');
       return send(entry, true);
     });
   }
@@ -882,6 +905,15 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
     if (actor.role === 'teacher' && !work?.evidenceShared) throw new CoreError('NOT_FOUND', 'Learner work unavailable.'); return work;
   }
   const core: CoreService = {
+    executeNotebook(actor, command) {
+      requireActor(actor); if (!current().notebookSpace) return Promise.reject(new RemoteError('UNSUPPORTED_FEATURE', 'Quaderni non disponibili su questo server.'));
+      return mutate({action: 'notebook-command', workspaceId: current().workspaceId, command}) as Promise<NotebookReceipt>;
+    },
+    getNotebookSpace(actor) {
+      requireActor(actor); const space = current().notebookSpace;
+      if (!space) return fail('UNSUPPORTED_FEATURE', 'Quaderni non disponibili su questo server.');
+      return clone(space);
+    },
     executeTutor(actor, command) {requireActor(actor); return mutate({action: 'tutor-command', workspaceId: current().workspaceId, command}) as Promise<TutorReceipt>;},
     getTutorSpace(actor) {requireActor(actor); return clone(current().tutorSpace ?? {records: [], history: []});},
     executeCourse(actor, command) {requireActor(actor); return mutate({action: 'course-command', workspaceId: current().workspaceId, command}) as Promise<CourseReceipt>;},

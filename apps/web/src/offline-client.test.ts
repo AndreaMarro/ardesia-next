@@ -176,7 +176,7 @@ describe('own lessons offline with original Core recovery', () => {
     const secondTab = browserOfflineStore(f.factory);
     await Promise.all([f.cache.save(found.gate.generation, latest), secondTab.save(found.gate.generation, old)]);
     expect((await f.cache.load())?.snapshot.workspaceRevision).toBe(5);
-    expect(Object.keys((await f.cache.load())!.snapshot).sort()).toEqual(['format','account','workspaceId','title','workspaceRevision','actor','documents','savedAt'].sort());
+    expect(Object.keys((await f.cache.load())!.snapshot).sort()).toEqual(['format','account','workspaceId','title','workspaceRevision','actor','documents','savedAt','notebookSpace'].sort());
   });
 
   it('failed durable pending storage reports memory, preserves/export drafts and never sends', async () => {

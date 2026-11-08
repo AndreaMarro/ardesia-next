@@ -39,6 +39,7 @@ function projection(core: CoreService, actor: Actor, workspace: WorkspaceRow, ac
   return {
     workspaceId: workspace.id, title: workspace.title, workspaceRevision: Number(workspace.revision), actor, access,
     tutorSpace: core.getTutorSpace(actor),
+    notebookSpace: access === 'owner' ? core.getNotebookSpace(actor) : {revision: 0, notebooks: []},
     courseSpace: core.getCourseSpace(actor),
     documents, assignedDocuments, installations: core.listInstallations(actor),
     events: documents.flatMap(document => core.events(actor, document.id)), assignments, learnerWork, learningEvents,
@@ -179,7 +180,7 @@ export function createPostgresStore(options: StoreOptions) {
         // The workspace container is owned independently of teaching role. An assignment
         // authorizes learner work only; it must never become a place to create private
         // documents, installations or course drafts inside another person's snapshot.
-        if (opened.access !== 'owner' && (input.action === 'command' || input.action === 'plugin-command' || input.action === 'tutor-command'
+        if (opened.access !== 'owner' && (input.action === 'command' || input.action === 'plugin-command' || input.action === 'tutor-command' || input.action === 'notebook-command'
           || input.action === 'course-command' && ['save-course', 'create-course-edition', 'assign-course', 'revoke-course-delivery'].includes(input.command.kind))) {
           throw new ServerError('FORBIDDEN', 'Authoring requires your own workspace.', 403);
         }
@@ -202,6 +203,7 @@ export function createPostgresStore(options: StoreOptions) {
         };
         let receipt: WorkspaceReceipt;
         if (input.action === 'command') receipt = await opened.core.execute(opened.actor, input.command);
+        else if (input.action === 'notebook-command') receipt = await opened.core.executeNotebook(opened.actor, input.command);
         else if (input.action === 'plugin-command') receipt = await opened.core.executePlugin(opened.actor, input.command);
         else if (input.action === 'tutor-command') receipt = await opened.core.executeTutor(opened.actor, input.command);
         else if (input.action === 'course-command') {

@@ -1,7 +1,9 @@
 import {authorizeTutor, applyTutor, tutorSpace, validateTutorHistory} from './tutor';
+import {applyNotebook, notebookSpace, validateNotebookHistory} from './notebooks';
 import {authorizeCourse, applyCourse, courseSpace, readCourseLesson, validateCourseHistory} from './courses';
 import {validateExtensionDefinitions, validateExtensionUse} from './extensions';
 import {
+  NotebookCommandSchema, notebookNewDocument, type NotebookCommand, type NotebookEvent, type NotebookReceipt, type NotebookSpace,
   TutorCommandSchema, tutorTarget, type TutorCommand, type TutorEvent, type TutorReceipt, type TutorSpace,
   ActorSchema, CourseCommandSchema, courseTarget,
   type CourseCommand, type CourseEvent, type CourseReceipt, type CourseSpace,
@@ -54,6 +56,8 @@ export interface CoreOptions {
 }
 
 export interface CoreService {
+  executeNotebook(actor: Actor, command: NotebookCommand): Promise<NotebookReceipt>;
+  getNotebookSpace(actor: Actor): NotebookSpace;
   execute(actor: Actor, command: CoreCommand): Promise<CommandReceipt>;
   executePlugin(actor: Actor, command: PluginCommand): Promise<PluginReceipt>;
   executeTutor(actor: Actor, command: TutorCommand): Promise<TutorReceipt>;
@@ -100,7 +104,7 @@ function canonical(value: unknown): string {
   return JSON.stringify(value) ?? 'null';
 }
 
-async function commandFingerprint(actor: Actor, command: CoreCommand | PluginCommand | LearningCommand | CourseCommand | TutorCommand): Promise<string> {
+async function commandFingerprint(actor: Actor, command: CoreCommand | PluginCommand | LearningCommand | CourseCommand | TutorCommand | NotebookCommand): Promise<string> {
   const bytes = new TextEncoder().encode(canonical({ actor, command }));
   const digest = await crypto.subtle.digest('SHA-256', bytes);
   return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
@@ -300,6 +304,7 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
   await validateExtensionDefinitions(state);
   await validateCourseHistory(state);
   await validateTutorHistory(state);
+  await validateNotebookHistory(state);
   const clock = options.clock ?? (() => new Date().toISOString());
   const id = options.id ?? (() => crypto.randomUUID());
   let queue: Promise<unknown> = Promise.resolve();
@@ -309,6 +314,7 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
     if (!validated.success) throw new CoreError('INVALID_COMMAND', 'The resulting state violates a Core invariant.');
     await validateCourseHistory(validated.data);
     await validateTutorHistory(validated.data);
+    await validateNotebookHistory(validated.data);
     try { await options.storage.write(structuredClone(validated.data)); }
     catch { throw new CoreError('STORAGE_FAILURE', 'Saving failed. The command, events and receipt were not committed in memory.'); }
     state = validated.data;
@@ -321,6 +327,40 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
   }
 
   const service: CoreService = {
+    executeNotebook(actorInput, commandInput) {
+      const actor = parseActor(actorInput), parsed = NotebookCommandSchema.safeParse(commandInput);
+      if (!parsed.success) return Promise.reject(new CoreError('INVALID_COMMAND', 'Notebook command does not satisfy the versioned contract.'));
+      const command = structuredClone(parsed.data);
+      const operation = queue.then(async () => {
+        const fingerprint = await commandFingerprint(actor, command);
+        const duplicate = state.receipts.find(receipt => receipt.commandId === command.commandId);
+        if (duplicate) {
+          if (!('notebookOwnerId' in duplicate) || duplicate.actorId !== actor.actorId || duplicate.fingerprint !== fingerprint) {
+            throw new CoreError('IDEMPOTENCY_CONFLICT', 'This command identity already names a different request.');
+          }
+          return structuredClone(duplicate);
+        }
+        const next = structuredClone(state), at = clock(), created = notebookNewDocument(command), relatedEventIds: string[] = [];
+        if (created) {
+          const result = applyCommand(next, actor, {kind: 'create-document', commandId: command.commandId,
+            expectedRevision: 0, documentId: created.documentId, title: created.title}, at);
+          const eventId = newEventId(next);
+          next.events.push({id: eventId, sequence: next.events.length + 1, documentId: result.document.id,
+            documentRevision: 1, type: 'create-document', actorId: actor.actorId, occurredAt: at, payload: result.payload});
+          relatedEventIds.push(eventId);
+        }
+        const library = applyNotebook(next, actor, command, at), eventId = newEventId(next);
+        const event: NotebookEvent = {id: eventId, sequence: next.events.length + 1, notebookOwnerId: actor.actorId,
+          notebookRevision: library.revision, type: command.kind, actorId: actor.actorId, actorRole: actor.role,
+          occurredAt: at, payload: {command}};
+        const receipt: NotebookReceipt = {commandId: command.commandId, actorId: actor.actorId, fingerprint,
+          notebookOwnerId: actor.actorId, notebookRevision: library.revision, eventId, relatedEventIds};
+        next.events.push(event); next.receipts.push(receipt); await commit(next);
+        return structuredClone(receipt);
+      });
+      queue = operation.catch(() => undefined); return operation;
+    },
+    getNotebookSpace(actor) {return notebookSpace(state, parseActor(actor));},
     execute(actorInput, commandInput) {
       // Clone and validate before queuing, so caller mutation cannot alter a pending command.
       const actor = parseActor(actorInput);

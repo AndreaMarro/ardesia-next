@@ -88,3 +88,11 @@ Course recovery uses the existing immutable pending envelope and server receipt.
 ## Materiali originali
 
 `materials()` carica/legge originali immutabili con hash di manifest/chunk/file; conserva bozza e ID pagina nell’IndexedDB esistente prima dell’upload. Reload riprende il medesimo intento. Abbandono esplicito cancella solo la bozza corrispondente, dopo possibilità di scaricare il file. `offlineMaterials()` legge solo gli originali riferiti dalla copia personale e dal gate/account correnti. La nuova revisione offline diventa durevole solo dopo tutti i byte; quota/guasto conserva snapshot precedente e recovery. Nessun secondo Core. [ADR0020](../../docs/adr/0020-original-materials.md).
+
+## Canonical notebooks and offline v2
+
+`core.getNotebookSpace(actor)` reads the authorized disposable owner catalog; `core.executeNotebook(actor, command)` uses the same immutable recovery and server receipt as other domains. Catalog CAS is separate from document revisions. Actor and selection are captured before waiting for a workspace lock and checked again before local persistence and HTTP. A late response cannot redirect a notebook mutation into another workspace or account.
+
+The reduced own-lesson copy is now `ardesia-own-lessons-v2`, adding `notebookSpace`. Legacy v1 bytes normalize on read with `notebookSpace:null`, without rewriting storage. Missing server support is unknown, not authoritative emptiness; authoring refuses it before recovery/HTTP. A v2 catalog cannot be erased by an older snapshot. At equal workspace revision only the previously absent catalog may be enriched, with all other values identical. The actual previous reader is retained in a compatibility fixture and must refuse v2 read/write without overwriting it.
+
+Offline notebook browsing and ink use the same canonical document IDs and recovery. Catalog organization requires the server. No session, grants or local Core are reconstructed. Explicit reconnect verifies the account before resuming commands; the updated offline copy becomes durable before ACK cleanup. [Versions and rollback](../../docs/adr/0022-canonical-notebooks.md).

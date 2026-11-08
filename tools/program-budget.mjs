@@ -1,5 +1,7 @@
-/** Versioned resource policy for the newly optional programmable runtime. v3 accounts separately for the newly lazy PDF engine, worker, fonts, maps and WASM; v4 raises the measured core envelope from272 to304KiB for ink recovery, courses, knowledge and physics; initial JS and optional runtime caps stay unchanged. */
-export const PROGRAM_BUDGET = Object.freeze({coreGzipBytes:304*1024,initialJavaScriptGzipBytes:240*1024,optionalGzipBytes:320*1024,optionalRawBytes:1024*1024,pdfGzipBytes:3*1024*1024,pdfRawBytes:6*1024*1024});
+/** Resource policy v5: 312 KiB aggregate core for canonical notebooks (ADR0022).
+ * v3 separated the lazy PDF runtime; v4 allowed 304 KiB for continuity/courses.
+ * Initial JS, optional Program/PDF caps and asset classification are unchanged. */
+export const PROGRAM_BUDGET = Object.freeze({coreGzipBytes:312*1024,initialJavaScriptGzipBytes:240*1024,optionalGzipBytes:320*1024,optionalRawBytes:1024*1024,pdfGzipBytes:3*1024*1024,pdfRawBytes:6*1024*1024});
 export function isOptionalProgramAsset(file){
   return /^program-runtime\/[a-zA-Z0-9_.-]+\.(?:js|wasm)$/.test(file)
     || /^assets\/(?:ProgramSurface|program-example)-[a-zA-Z0-9_-]+\.js$/.test(file);

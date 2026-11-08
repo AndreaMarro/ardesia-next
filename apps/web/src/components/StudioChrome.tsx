@@ -1,10 +1,10 @@
 import type {ReactNode} from 'react';
-import {LibraryBig, Plus, Layers3, Settings2, Shapes, FileText, Share2, Puzzle} from './Icons';
+import {LibraryBig, Plus, Layers3, Settings2, Shapes, FileText, Share2, Puzzle, NotebookPen} from './Icons';
 
 type Props = {
   title: string; replay: boolean; canExport: boolean; audio?: ReactNode;
   objectsOpen: boolean; onObjects: () => void; onLibrary: () => void;
-  onMaterial?: () => void; onTutor?: () => void; onCourses?: () => void; onKnowledge?: () => void; onNew: () => void; onCreator?: () => void; onModules: () => void;
+  onNotebooks?: () => void; onMaterial?: () => void; onTutor?: () => void; onCourses?: () => void; onKnowledge?: () => void; onNew: () => void; onCreator?: () => void; onModules: () => void;
   onSettings: () => void; onAccount: () => void; onShare?: () => void; onHandout: () => void;
 };
 export function StudioChrome(p: Props) {
@@ -23,6 +23,7 @@ export function StudioChrome(p: Props) {
     </header>
     <nav className="app-rail studio-rail" aria-label="Spazio personale">
       <button aria-label="Apri libreria" title="Libreria" disabled={p.replay} onClick={p.onLibrary}><LibraryBig size={22}/><span>Libreria</span></button>
+      {p.onNotebooks && <button aria-label="Apri quaderni" title="Quaderni" disabled={p.replay} onClick={p.onNotebooks}><NotebookPen size={22}/><span>Quaderni</span></button>}
       <button aria-label="Nuova lezione" title="Nuova lezione" disabled={p.replay} onClick={p.onNew}><Plus size={22}/><span>Nuova</span></button>
       {p.onMaterial && <button aria-label="Importa materiale" title="PDF e immagini" disabled={p.replay} onClick={p.onMaterial}><FileText size={22}/><span>Materiali</span></button>}
       {p.onCreator && <button aria-label="Crea un oggetto" title="Crea un oggetto" disabled={p.replay} onClick={p.onCreator}><Shapes size={22}/><span>Crea</span></button>}
