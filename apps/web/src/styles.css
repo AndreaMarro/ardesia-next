@@ -354,3 +354,5 @@ textarea {resize:vertical;min-height:58px;}
 .ink-recovery-notice {position:absolute;left:14px;bottom:78px;z-index:3;max-width:min(440px,calc(100% - 28px));padding:12px 16px;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);font-size:13px;}
 .ink-recovery-notice p {margin:0 0 8px;}
 .ink-recovery-notice button {min-height:44px;margin-right:8px;}
+
+.learning-next-step{padding:20px;margin:20px 0;background:#edf3ec;border:1px solid #cfdbd0;border-radius:12px}.learning-next-step header{display:flex;align-items:baseline;justify-content:space-between;gap:12px}.learning-next-step h2{font-size:19px;margin:0 0 12px}.learning-next-step p{line-height:1.6}.learning-next-step blockquote{margin:14px 0;padding:0 0 0 16px;border-left:2px solid #819581}.learning-next-step nav{display:flex;justify-content:space-between;margin-top:12px}.learning-next-step summary{cursor:pointer;min-height:44px;display:flex;align-items:center}.learning-next-step details{margin-top:12px;font-size:13px}.learning-next-step li{margin:8px 0}.learning-diary li:focus{outline:2px solid var(--pine,#294435);outline-offset:3px}

@@ -1,6 +1,7 @@
 import { CoreError, LessonDocumentSchema, type CoreEvent, type LessonDocument } from '@ardesia/contracts';
 export {projectDocumentRevision, projectRecordingFrame, createRecordingReplay} from './replay';
 export {projectLearningDiary} from './learning-diary';
+export {projectLearningEvidence,type LearningEvidence,type EvidenceStep,type EvidenceLimit} from './learning-evidence';
 export {projectHandout, planHandout, type Handout, type HandoutPlan, type HandoutBlock} from './handout';
 export {projectTutorEconomics,type TutorAppointmentEconomics,type TutorCurrencyEconomics} from './tutor-economics';
 

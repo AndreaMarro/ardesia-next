@@ -107,11 +107,11 @@ export function LearnerSpace({client, onAccount, onCourses}: {client: RemoteClie
               {(!!answer.trim() || replyToFeedbackId) && <button className="text-button" disabled={busy} onClick={() => {setAnswer(''); setReplyToFeedbackId(null); setAnswerBase(null);}}>Scarta bozza del tentativo</button>}
               {replyStale && currentReply && <button className="secondary-button" disabled={busy} onClick={() => setReplyToFeedbackId(currentReply.id)}>Ho riletto il feedback aggiornato</button>}
               {replyStale && <button className="secondary-button" disabled={busy} onClick={() => setReplyToFeedbackId(null)}>Scollega il feedback mantenendo la risposta</button>}
-              {!!work?.attempts.length && <details><summary>Tentativi salvati ({work.attempts.length})</summary><LearningDiary core={core} actor={actor} work={work} disabled={busy} onReply={(attempt, feedback) => {
+              {!!work?.attempts.length && <LearningDiary collapsible core={core} actor={actor} work={work} disabled={busy} onReply={(attempt, feedback) => {
                 if (answer.trim() || labDirty) {setError('Salva o scarta la bozza aperta prima di riprendere un feedback.'); return;}
                 if (!document.objects.some(object => object.id === attempt.objectId)) {setError('L’oggetto non è più nella lezione. La fonte del tentativo resta consultabile.'); return;}
                 setReplyToFeedbackId(feedback.id); setSelectedId(attempt.objectId); setAnswerBase(document.objects.find(object => object.id === attempt.objectId)!); setError(''); answerRef.current?.focus(); answerRef.current?.scrollIntoView({block: 'center', behavior: 'smooth'});
-              }}/></details>}
+              }}/>}
               <label className="consent-option"><input type="checkbox" checked={work?.evidenceShared ?? false} disabled={busy} onChange={event => void run({kind: 'share-learner-evidence', shared: event.target.checked})}/>Condividi con il docente note, tentativi e stati salvati</label>
               <p>{work?.evidenceShared ? 'Il docente vede il lavoro salvato finché condividi.' : 'Il docente non può leggere il tuo lavoro personale.'}</p>
             </section>

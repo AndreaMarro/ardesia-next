@@ -1,7 +1,7 @@
 // Build replaces these constants with a closed set of same-build shell assets.
 const CACHE_NAME = __ARDESIA_CACHE_NAME__;
-const SHELL_PATHS = __ARDESIA_SHELL_PATHS__;
 const SHELL_DIGESTS = __ARDESIA_SHELL_DIGESTS__;
+const SHELL_PATHS = Object.keys(SHELL_DIGESTS);
 async function fillShell() {
   try {
     const cache = await caches.open(CACHE_NAME);
@@ -10,7 +10,7 @@ async function fillShell() {
       const response = await cache.match(path);
       if (!response) throw Error('Incomplete shell');
       const bytes = new Uint8Array(await crypto.subtle.digest('SHA-256', await response.arrayBuffer()));
-      const digest = Array.from(bytes, value => value.toString(16).padStart(2, '0')).join('');
+      const digest = btoa(String.fromCharCode(...bytes));
       if (digest !== SHELL_DIGESTS[path]) throw Error('Mixed or changed shell');
     }
   } catch (error) {await caches.delete(CACHE_NAME); throw error;}
