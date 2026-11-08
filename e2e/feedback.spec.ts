@@ -3,11 +3,15 @@ import type {Browser, BrowserContext, Page} from '@playwright/test';
 import {toObjectInput} from '@ardesia/contracts';
 import type {LearnerWork} from '@ardesia/contracts';
 import type {WorkspaceProjection} from '@ardesia/remote-client';
-import {test, expect, api, rawApi, apiOrigin, loginContext, personalProjection, selectedWorkspace, selectWorkspace, type TestWorkspace} from './fixtures';
+import {evidenceBrowserCredentials} from '../tools/e2e-accounts.mjs';
+import {resolveE2ETarget} from './target';
+import {test, expect, api, rawApi, apiOrigin, loginContext, personalProjection, selectedWorkspace, selectWorkspace, type TestWorkspace, type TestAccount} from './fixtures';
 
-async function learnerContext(browser: Browser, teacher: TestWorkspace, project: string, viewport: {width: number; height: number}) {
+async function learnerContext(browser: Browser, teacher: TestWorkspace, project: string, viewport: {width: number; height: number}, evidence = false) {
   const context = await browser.newContext({baseURL: apiOrigin, viewport, hasTouch: project === 'mobile-chromium', isMobile: project === 'mobile-chromium', storageState: {cookies: [], origins: []}});
-  const account = await loginContext(context, 'STUDENT_B', project);
+  const account = evidence
+    ? (await api<{account:TestAccount}>(context.request,{action:'login',...evidenceBrowserCredentials(process.env,resolveE2ETarget().mode,project)})).account
+    : await loginContext(context, 'STUDENT_B', project);
   await selectWorkspace(context, {...teacher, account, actor: {actorId: account.id, role: 'student'}});
   return {context, account, page: await context.newPage()};
 }
@@ -17,8 +21,8 @@ async function sharedDialog(page: Page) {
   return page.getByRole('dialog', {name: 'Assegna la lezione'});
 }
 async function work(page: Page): Promise<LearnerWork> {return (await personalProjection(page)).learnerWork[0]!;}
-async function prepare(page: Page, browser: Browser, project: string) {
-  const teacher = selectedWorkspace(page), student = await learnerContext(browser, teacher, project, page.viewportSize()!);
+async function prepare(page: Page, browser: Browser, project: string, evidence = false) {
+  const teacher = selectedWorkspace(page), student = await learnerContext(browser, teacher, project, page.viewportSize()!, evidence);
   await api(page.context().request, {action: 'learning-command', workspaceId: teacher.workspaceId, command: {kind: 'assign-lesson', commandId: randomUUID(), documentId: teacher.documentId, studentId: student.account.id, expectedRevision: 0}}, teacher.account.id);
   await student.page.goto('/');
   await student.page.getByLabel('Risposta del tentativo').fill('Se L quadruplica, il periodo quadruplica.');
@@ -198,7 +202,7 @@ test('late teacher acknowledgement cannot close a new draft after revocation and
 
 test('next steps distinguish pending corrections from amended feedback and preserve the exact evidence chain', async ({page, browser}, info) => {
   test.setTimeout(80_000);
-  const {teacher,student}=await prepare(page,browser,info.project.name),errors:string[]=[];
+  const {teacher,student}=await prepare(page,browser,info.project.name,true),errors:string[]=[];
   for(const target of [page,student.page]){
     target.on('pageerror',error=>errors.push(error.message));
     target.on('console',message=>{if(message.type()==='error')errors.push(message.text());});
@@ -290,7 +294,7 @@ test('next steps distinguish pending corrections from amended feedback and prese
 
 test('attempt sources never cross lessons with equal attempt identifiers and work revisions',async({page,browser},info)=>{
   test.setTimeout(60_000);
-  const {teacher,student}=await prepare(page,browser,info.project.name);
+  const {teacher,student}=await prepare(page,browser,info.project.name,true);
   try{
     const first=await work(student.page),original=first.attempts[0]!,otherDocument=randomUUID();
     let revision=0;
@@ -324,7 +328,7 @@ test('attempt sources never cross lessons with equal attempt identifiers and wor
 
 test('next steps and a late source read disappear when evidence sharing is revoked',async({page,browser},info)=>{
   test.setTimeout(60_000);
-  const {student}=await prepare(page,browser,info.project.name);
+  const {student}=await prepare(page,browser,info.project.name,true);
   let release!:()=>void,received!:()=>void,held!:()=>void;
   const gate=new Promise<void>(resolve=>{release=resolve;}),done=new Promise<void>(resolve=>{received=resolve;}),started=new Promise<void>(resolve=>{held=resolve;});
   try{
