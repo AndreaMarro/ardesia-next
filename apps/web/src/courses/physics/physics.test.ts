@@ -86,8 +86,9 @@ describe('five portable physics courses, exact lessons and original provenance',
     }
     expect(units).toBe(38);
     expect(objectives.size).toBe(200);
-    expect(labs.size).toBe(15);
+    // Risultato del lavoro di una chat Pro: one declared pressure lab and one new application.
+    expect(labs.size).toBe(16);
     expect(questions.size).toBe(259);
-    expect(originals.size).toBe(38);
+    expect(originals.size).toBe(39);
   });
 });
