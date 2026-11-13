@@ -49,11 +49,17 @@ test('the heat-engine lesson distinguishes energy balance from a physically admi
  expect(attempt.unitId).toBe('sf-2026-u5-05');
  expect(attempt.answer).toContain('oggetto '+before.id+':original-20261113-u5-05-a r1');
  expect(attempt.answer).toContain(answer);
+ expect(saved.work[0]!.help).toEqual([]);
  await question.getByRole('button',{name:'Confronta con la soluzione',exact:true}).click();
  await expect(question.locator('.course-reference-solution')).toContainText('COP=240/60=4');
+ const afterHelp=(await personalProjection(page)).courseSpace!;
+ expect(afterHelp.work[0]!.help).toEqual([{unitId:'sf-2026-u5-05',kind:'referenceFeedback',firstViewedAt:expect.any(String)}]);
+ expect(afterHelp.work[0]!.revision).toBe(saved.work[0]!.revision+1);
+ expect(afterHelp.work[0]!.attempts).toEqual(saved.work[0]!.attempts);
  await page.reload();await page.getByRole('button',{name:'Riprendi',exact:true}).click();
  await expect(page.locator('.course-attempts')).toContainText(answer);
- expect((await personalProjection(page)).courseSpace!.work).toEqual(saved.work);
+ await expect(page.locator('.course-attempts')).toContainText('Nessun aiuto consultato nel percorso prima della risposta');
+ expect((await personalProjection(page)).courseSpace!.work).toEqual(afterHelp.work);
  expect(errors).toEqual([]);
 });
 
