@@ -1,4 +1,5 @@
 // Risultato del lavoro di una chat Pro. Real browser, API and PostgreSQL; no successful-write mocks.
+// Attempt-history filters: Codex continuation,13November2026; original four-attempt learning flow retained.
 import {test,expect,personalProjection} from './fixtures';
 
 test('pressure unit preserves attempts through feedback, recovery, a new application and reload',async({page},info)=>{
@@ -19,6 +20,15 @@ test('pressure unit preserves attempts through feedback, recovery, a new applica
  const save=async(text:string)=>{await answer.fill(text);await page.getByRole('button',{name:'Salva risposta',exact:true}).click();await expect(answer).toHaveValue('');};
  const prediction='Previsione iniziale da conservare: penso che raddoppiando l’area raddoppino entrambe le pressioni.';
  await save(prediction);
+ const history=page.locator('.course-attempts'),filter=history.getByRole('combobox',{name:'Rileggi i tentativi',exact:true});
+ const firstSaved=(await personalProjection(page)).courseSpace!;
+ const draft='Appunto non ancora salvato: ricontrollare le unità.';await answer.fill(draft);
+ await filter.focus();await filter.press('Home');await filter.press('ArrowDown');await filter.press('Tab');
+ await expect(filter).toHaveValue('prediction');await expect(history.locator('article')).toHaveCount(1);
+ await filter.selectOption('activity');await expect(history.locator('article')).toHaveCount(0);
+ await expect(history.getByRole('status')).toContainText('Risposte: 0 di 1');await expect(answer).toHaveValue(draft);
+ expect((await personalProjection(page)).courseSpace).toEqual(firstSaved);
+ await filter.selectOption('');await expect(history.locator('article')).toHaveCount(1);await answer.fill('');
  await page.getByRole('button',{name:'Metti alla prova',exact:true}).click();
  await page.getByRole('button',{name:'Apri materiali della lezione',exact:true}).click();
  const lab=page.locator('details.course-material').filter({has:page.locator('summary').filter({hasText:/^Pressione nel pistone$/})});
@@ -59,12 +69,38 @@ test('pressure unit preserves attempts through feedback, recovery, a new applica
  const saved=(await personalProjection(page)).courseSpace!;
  expect(saved.work[0]!.attempts[0]!.answer).toBe(prediction);
  expect(saved.work[0]).not.toHaveProperty('score');expect(saved.work[0]).not.toHaveProperty('mastery');
+ await filter.selectOption('help');await expect(history.locator('article')).toHaveCount(2);
+ await expect(history.locator('article .eyebrow').first()).toHaveText('03 · Metti alla prova');
+ await expect(history.locator('article .eyebrow').last()).toHaveText('04 · In un altro contesto');
+ await expect(history).not.toContainText(prediction);await expect(history).toContainText('Ho corretto la conversione');
+ await history.screenshot({path:info.outputPath('attempts-with-recorded-help.png')});
+ await filter.selectOption('no-help');await expect(history.locator('article')).toHaveCount(2);
+ await expect(history).toContainText(prediction);await expect(history).toContainText('ho usato 20 cm² come 0,2 m²');
+ await expect(history.locator('article .eyebrow').first()).toHaveText('01 · Prima di iniziare');
+ await filter.selectOption('activity');await expect(history.locator('article')).toHaveCount(2);
+ await expect(history.locator('article .eyebrow').first()).toHaveText('02 · Metti alla prova');
+ await expect(history.locator('article .eyebrow').last()).toHaveText('03 · Metti alla prova');
+ await filter.selectOption('transfer');await expect(history.locator('article')).toHaveCount(1);
+ await expect(history.locator('article .eyebrow')).toHaveText('04 · In un altro contesto');
+ expect((await personalProjection(page)).courseSpace).toEqual(saved);
  // Study controls are exploratory local state, not an overwrite of the pinned lesson.
  expect((await personalProjection(page)).documents.find(value=>value.id===source.id)).toEqual(source);
+ const outline=page.locator('.course-outline');
+ await outline.getByRole('button',{name:new RegExp(course.units[1]!.title)}).click();
+ await expect(page.getByRole('heading',{name:course.units[1]!.title,exact:true})).toBeVisible();
+ await expect(filter).toHaveCount(0);
+ await outline.getByRole('button',{name:new RegExp(unit.title)}).click();
+ await expect(filter).toHaveValue('');await expect(history.locator('article')).toHaveCount(4);
+ await page.getByRole('button',{name:'In un altro contesto',exact:true}).click();
+ const continued=(await personalProjection(page)).courseSpace!;
+ expect(continued.work[0]!.attempts).toEqual(saved.work[0]!.attempts);expect(continued.work[0]!.help).toEqual(saved.work[0]!.help);
+ expect(continued.work[0]!.revision).toBe(saved.work[0]!.revision+3);
+ await filter.selectOption('help');
  await page.reload();await page.getByRole('button',{name:'Riprendi',exact:true}).click();
+ await expect(filter).toHaveValue('');
  await expect(page.getByRole('button',{name:'In un altro contesto',exact:true})).toHaveAttribute('aria-pressed','true');
  await expect(page.locator('.course-attempts article')).toHaveCount(4);
- expect((await personalProjection(page)).courseSpace).toEqual(saved);
+ expect((await personalProjection(page)).courseSpace).toEqual(continued);
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);expect(errors).toEqual([]);
  await info.attach('pressure-unit-pro-evidence',{body:JSON.stringify({attribution:'Risultato del lavoro di una chat Pro',device:info.project.name,courseId:course.id,unitId:unit.id,unitRevision:unit.revision,lesson:unit.lesson,attempts:4,helpRecorded:true,humanApproval:false,physicalPen:false}),contentType:'application/json'});
  await page.screenshot({path:info.outputPath('pressure-unit-resumed.png'),fullPage:true});

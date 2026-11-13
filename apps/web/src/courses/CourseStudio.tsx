@@ -25,6 +25,7 @@ export function CourseStudio({client, onClose}: {client: RemoteClient; onClose: 
   const [draft, setDraft] = useState<Draft | null>(null), [unitIndex, setUnitIndex] = useState(0);
   const [deliveryId, setDeliveryId] = useState<string | null>(null), [editionId, setEditionId] = useState<string | null>(null);
   const [answer, setAnswer] = useState('');
+  const [attemptFilter,setAttemptFilter]=useState('');
   const [answerContext, setAnswerContext] = useState<{deliveryId: string; editionId: string; unitId: string; unitRevision: number; stage: Stage} | null>(null);
   const [busy, setBusy] = useState(false), [error, setError] = useState(''), [message, setMessage] = useState('');
   const [leave, setLeave] = useState<(() => void) | null>(null), [recipient, setRecipient] = useState('');
@@ -49,6 +50,8 @@ export function CourseStudio({client, onClose}: {client: RemoteClient; onClose: 
   const pinned = answer.trim() && answerContext?.deliveryId === deliveryId ? answerContext : null;
   const stage = pinned?.stage ?? work?.currentStage ?? 'prediction';
   const unit = pack?.course.units.find(value => value.id === (pinned?.unitId ?? work?.currentUnitId)) ?? pack?.course.units[0];
+  const attempts=(work?.attempts.filter(value=>value.unitId===unit?.id)??[]).map((value,index)=>({value,index}));
+  const shownAttempts=attempts.filter(({value})=>!attemptFilter||(attemptFilter==='help'?value.helpUsed.length>0:attemptFilter==='no-help'?value.helpUsed.length===0:value.stage===attemptFilter));
   const selectedQuestion=questionContext&&questionContext.unitId===unit?.id&&questionContext.unitRevision===unit.revision&&questionContext.lessonRevision===unit.lesson?.revision?questionContext.object:null;
   const answerPrefix=selectedQuestion?`[Domanda ${courseQuestion(selectedQuestion)!.questionId} · oggetto ${selectedQuestion.id} r${selectedQuestion.revision} · lezione r${unit!.lesson!.revision}]\n`:'';
   const answerLimit=10000-answerPrefix.length;
@@ -62,7 +65,7 @@ export function CourseStudio({client, onClose}: {client: RemoteClient; onClose: 
     const guard = (event: BeforeUnloadEvent) => {event.preventDefault(); event.returnValue = '';};
     window.addEventListener('beforeunload', guard); return () => window.removeEventListener('beforeunload', guard);
   }, [dirty, answer, busy]);
-  useEffect(() => {materialRead.current++; setMaterial(null);setMaterialBusy(false);setQuestionContext(null);setOpenSolutions([]);}, [editionId, deliveryId, unit?.id, invalidDelivery]);
+  useEffect(() => {materialRead.current++; setMaterial(null);setMaterialBusy(false);setQuestionContext(null);setOpenSolutions([]);setAttemptFilter('');}, [editionId, deliveryId, unit?.id, invalidDelivery]);
   async function run(command: CourseCommand, done?: () => void) {
     if (lock.current) return;
     lock.current = true; setBusy(true); setError(''); setMessage('');
@@ -197,7 +200,7 @@ export function CourseStudio({client, onClose}: {client: RemoteClient; onClose: 
         })}</section>
         {unit.lesson && <section className="course-materials"><h2>La lezione accanto</h2><p className="hint">Revisione {unit.lesson.revision} conservata in questa edizione.</p><button className="secondary-button" disabled={blocked||materialBusy} aria-busy={materialBusy} onClick={() => void openMaterial()}>{materialBusy?'Apertura materiali…':'Apri materiali della lezione'}</button>{material && <MaterialProvider access={client.materials} course={{editionId:pack.edition.id,unitId:unit.id}}><CourseMaterials document={material} blocked={blocked} openSolutions={openSolutions} onReveal={id=>{const reveal=()=>setOpenSolutions(ids=>ids.includes(id)?ids:[...ids,id]);if(work?.help.some(h=>h.unitId===unit.id&&h.kind==='referenceFeedback'))reveal();else workCommand({kind:'view-course-help',unitId:unit.id,help:'referenceFeedback'},reveal);}} onQuestion={object=>navigate(()=>workCommand({kind:'set-course-position',unitId:unit.id,stage:courseQuestion(object)?.kind==='assessment'?'transfer':'activity'},()=>{setAnswer('');setQuestionContext({object,unitId:unit.id,unitRevision:unit.revision,lessonRevision:unit.lesson!.revision});setAnswerContext(null);window.document.querySelector('.course-question')?.scrollIntoView({behavior:'smooth',block:'start'});} ))}/></MaterialProvider>}</section>}
         {!!unit.sources.length && <section className="course-sources"><h2>Da dove partiamo</h2>{unit.sources.map((source, i) => <p key={i}><a href={source.url} target="_blank" rel="noreferrer">{source.title}</a><small>{source.revision} · {source.license}</small></p>)}</section>}
-        <section className="course-attempts"><h2>Il filo dei tuoi tentativi</h2>{work?.attempts.filter(value => value.unitId === unit.id).map((value, index) => <article key={value.id}><span className="eyebrow">{String(index + 1).padStart(2, '0')} · {phaseLabels[value.stage]}</span><p>{value.answer}</p><small>{new Date(value.createdAt).toLocaleString('it-IT')} · {value.helpUsed.length ? value.helpUsed.map(help => helpLabels[help]).join(', ') : 'Nessun aiuto consultato nel percorso prima della risposta'}</small></article>)}{!work?.attempts.some(value => value.unitId === unit.id) && <p className="hint">La prima risposta non deve essere perfetta. Serve a capire da dove partire.</p>}</section>
+        <section className="course-attempts"><h2>Il filo dei tuoi tentativi</h2>{!!attempts.length&&<div className="course-practice-filters"><label>Rileggi i tentativi<select value={attemptFilter} onChange={e=>setAttemptFilter(e.target.value)}><option value="">Tutti</option>{Object.entries(phaseLabels).map(([key,label])=><option key={key} value={key}>{label}</option>)}<option value="help">Con aiuti nel percorso</option><option value="no-help">Senza aiuti nel percorso</option></select></label><p role="status">Risposte: {shownAttempts.length} di {attempts.length}. Aiuti registrati prima del salvataggio.</p></div>}{shownAttempts.map(({value,index}) => <article key={value.id}><span className="eyebrow">{String(index + 1).padStart(2, '0')} · {phaseLabels[value.stage]}</span><p>{value.answer}</p><small>{new Date(value.createdAt).toLocaleString('it-IT')} · {value.helpUsed.length ? value.helpUsed.map(help => helpLabels[help]).join(', ') : 'Nessun aiuto consultato nel percorso prima della risposta'}</small></article>)}{!attempts.length && <p className="hint">La prima risposta non deve essere perfetta. Serve a capire da dove partire.</p>}</section>
       </article>
     </main>}
     {invalidDelivery && <main className="course-edition"><h1>Il percorso non è più attivo.</h1><p>Le risposte salvate restano esportabili dalla tua libreria. Un nuovo percorso avrà una nuova identità.</p>{answer && <button className="secondary-button" onClick={() => download('ardesia-risposta-non-inviata.json', {deliveryId, stage, answer, context: answerContext})}>Esporta risposta non inviata</button>}<button className="primary-button" onClick={home}>Torna ai corsi</button></main>}
