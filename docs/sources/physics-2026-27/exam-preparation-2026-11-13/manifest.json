@@ -21,8 +21,8 @@
     },
     {
       "path": "exam-rules-recheck.md",
-      "bytes": 4057,
-      "sha256": "f3103d3f7437611c5547cb5841063d65f64dc7ecd0ebb836daf9733a338ee83f"
+      "bytes": 4056,
+      "sha256": "f3c589f205b2ee508cd0ceaa9f1e94a6d28df9da959cdf49e83cf60d5e0c0a2f"
     },
     {
       "path": "feedback-before-physics-fix.json",
@@ -163,6 +163,15 @@
       "path": "selection.md",
       "bytes": 23030,
       "sha256": "3a9937e9598bd7073a4a909c6636c074929e2f335eff186dd17583b6e526e07b"
+    }
+  ],
+  "normalizations": [
+    {
+      "path": "exam-rules-recheck.md",
+      "originalCommit": "f5f873e30d0b51e1196a70f0f6c64ca5613d346c",
+      "originalSHA256": "f3103d3f7437611c5547cb5841063d65f64dc7ecd0ebb836daf9733a338ee83f",
+      "publishedSHA256": "f3c589f205b2ee508cd0ceaa9f1e94a6d28df9da959cdf49e83cf60d5e0c0a2f",
+      "change": "Removed exactly one trailing empty line from the copied Markdown source receipt. Original bytes remain in the preceding commit and /tmp; substantive text and structured source receipt unchanged."
     }
   ]
 }

@@ -41,4 +41,3 @@ Il titolo e il quadro normativo della pagina si riferiscono esplicitamente al 20
 La guida cita D.M. n. 941 del 10 luglio 2026 e D.D. n. 249 del 13 luglio 2026. **Quei testi normativi non sono stati letti in questo controllo**: non vengono dichiarati verificati direttamente. Il completamento è descritto nella guida come inserimento di una parola; questo non fornisce da solo le regole di normalizzazione, tolleranza numerica o equivalenza necessarie a un correttore automatico. Tali dettagli restano UNKNOWN, così come eventuali modifiche successive all’accesso.
 
 Nessun manuale o materiale privato consultato, nessun aggiramento, nessuna simulazione implementata o approvazione umana. Solo controllo della fonte e due reperti locali; repository, GitHub, servizi e Cortex invariati. L’HTML è stato elaborato in memoria e non salvato come artefatto aggiuntivo. Ricevuta strutturata: `/tmp/ardesia-exam-rules-recheck-2026-11-13.json`.
-
