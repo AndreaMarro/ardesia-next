@@ -1,0 +1,168 @@
+{
+  "format": "ardesia-exam-preparation-manifest/1",
+  "applicationBase": "8fbebc1e9e40ffd3e0c9210323a036560cf5b9d1",
+  "status": "PREPARATION_NOT_INTEGRATED",
+  "humanApproval": false,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 4942,
+      "sha256": "155ce79264997715122858d040a5c0686af6695cc085bea2e936302b2955aef2"
+    },
+    {
+      "path": "ardesia-exam-grading-proposal.ts",
+      "bytes": 3709,
+      "sha256": "dd2b754f2a4afc323fcd37ec1c6f8dd27cfc356cf64a720ff13570fbf873707c"
+    },
+    {
+      "path": "exam-rules-recheck.json",
+      "bytes": 7025,
+      "sha256": "de2c70a17bb3f007134cd3f9efe83b36dd27614abecc79338d44dace0361cf93"
+    },
+    {
+      "path": "exam-rules-recheck.md",
+      "bytes": 4057,
+      "sha256": "f3103d3f7437611c5547cb5841063d65f64dc7ecd0ebb836daf9733a338ee83f"
+    },
+    {
+      "path": "feedback-before-physics-fix.json",
+      "bytes": 166392,
+      "sha256": "c01dcc770ac4b895147256ecf6e4b665c2d84c1c0f6a3424be72ce2990de6d5c"
+    },
+    {
+      "path": "feedback-before-physics-fix.md",
+      "bytes": 51127,
+      "sha256": "18d0df0e8d97896f89e9ce7bdef7f084baea04e49288d427c5efec2b26d3aa2d"
+    },
+    {
+      "path": "feedback-correction.json",
+      "bytes": 3855,
+      "sha256": "dda6d78b47efc2fcacb99504e396c6c824cdc6aaac295b6896daa62f490b637e"
+    },
+    {
+      "path": "feedback-correction.md",
+      "bytes": 2265,
+      "sha256": "d8dc0b6d5b5ad0e94383c09e67d84e9791e960ddbdbfd11b5b6e90577f5c55ee"
+    },
+    {
+      "path": "feedback-initial.json",
+      "bytes": 166388,
+      "sha256": "c13aeac34d5be3a10650c0c4a01476f25e247e5a66653ea30f5993e0629ef30c"
+    },
+    {
+      "path": "feedback-initial.md",
+      "bytes": 51123,
+      "sha256": "aa014ab1d985dd58942eec0026783ab8d4ab54c5156d2a84aa1e13688d549f0f"
+    },
+    {
+      "path": "feedback-physics-correction.json",
+      "bytes": 1184,
+      "sha256": "8bea1a5a5903c3cd01bc08a0dfdfac45e499c0a3ad3d1874acec8d47be6857c6"
+    },
+    {
+      "path": "feedback-review-final.json",
+      "bytes": 5449,
+      "sha256": "d6b56b91e0bd5a3be719c5815d442a3d741916cbf75a6fb9edf75fa1d2dc43bd"
+    },
+    {
+      "path": "feedback-review-final.md",
+      "bytes": 2289,
+      "sha256": "7bc15cda243cfcd5c4a323c32aded806c14240224cb0ae4a71493c2265f799ac"
+    },
+    {
+      "path": "feedback-review-initial.json",
+      "bytes": 19491,
+      "sha256": "2ff65544e1630c03a95e11f9f2cc17bf86214579903444a7805efd5b713f3d5a"
+    },
+    {
+      "path": "feedback-review-initial.md",
+      "bytes": 4344,
+      "sha256": "fa543f15ab607ebea3652df19f211d52f5d512a64d2ee1535eb3f68028f721d5"
+    },
+    {
+      "path": "feedback.json",
+      "bytes": 166463,
+      "sha256": "bae4a00a55f2730c1cb5fbd03f22eb4b1f81346d5d243034fd31420fae3a0630"
+    },
+    {
+      "path": "feedback.md",
+      "bytes": 51198,
+      "sha256": "64fb713e16c38e635871e070f7d7d684a8c446da08ca1636f062389e2b2177dd"
+    },
+    {
+      "path": "grading-counterchecks-initial.json",
+      "bytes": 51624,
+      "sha256": "eafeea79f8534be4c2e8679ab7f3fa926c9ee2e46f818627735609f137263c2a"
+    },
+    {
+      "path": "grading-counterchecks-original-pass.json",
+      "bytes": 50016,
+      "sha256": "483add6420c8898fcdb4613780ebef324f6a06443ac878ec8e852816338415e3"
+    },
+    {
+      "path": "grading-counterchecks.mjs",
+      "bytes": 5736,
+      "sha256": "8e3f2393b901e0ffb6cb4e08fa6c0763a6683d37b27f81aaecd6f452993ae292"
+    },
+    {
+      "path": "grading-initial.test.mjs",
+      "bytes": 2907,
+      "sha256": "78e58e42489226172ea0180e687ee37f1b1f005d73927ffff144b06cd1b59d55"
+    },
+    {
+      "path": "grading-initial.ts",
+      "bytes": 3200,
+      "sha256": "a76b6455a6aecbe491c4e1646e0eb742b86e51fa1876c5e8c58f3e3c6f19b3c8"
+    },
+    {
+      "path": "grading-review-final.json",
+      "bytes": 7289,
+      "sha256": "04fd44ebc8d30f7e171fe098594134de5d813acdf95ce7da7d563a3bc9fc06e7"
+    },
+    {
+      "path": "grading-review-final.md",
+      "bytes": 5325,
+      "sha256": "4c5c69c192f93927c11b05272c3e8efddb9883846b27c0af868250d3f65e89a1"
+    },
+    {
+      "path": "grading-review-initial.json",
+      "bytes": 8270,
+      "sha256": "9b2f956fb7269aae90599de285ca0cb6c2e3393d68739a4706274a1a21427738"
+    },
+    {
+      "path": "grading-review-initial.md",
+      "bytes": 4484,
+      "sha256": "98926c898951f119880ccf30c1ef9d9021cee0aab6f44b2a25f8de0a6287e7a7"
+    },
+    {
+      "path": "grading-review-proposed.patch",
+      "bytes": 2502,
+      "sha256": "1697c032fd2e0e96bafc8487fbef3e6aa41f4f2628ea0a7d1932732e3864e520"
+    },
+    {
+      "path": "grading.test.mjs",
+      "bytes": 3654,
+      "sha256": "e120a4344f7daec3697947bf4ec7ca80cf7498f386d73da40eeceab106c4cb4c"
+    },
+    {
+      "path": "portability.json",
+      "bytes": 1160,
+      "sha256": "e81e6d03835b511cf317b800f6ca5b6cb0e7b70756077abfce3281b5048d9e35"
+    },
+    {
+      "path": "portable-counterchecks.json",
+      "bytes": 50016,
+      "sha256": "a328f00d1cb92cf6e1c3e6dc703c88a515a1b4372296fdaed37a8cae443e9bcd"
+    },
+    {
+      "path": "selection.json",
+      "bytes": 145975,
+      "sha256": "bc180ca01c9d4f14cdab533384f60f5065cbc263256a1e4ad1f52de0dae0b04a"
+    },
+    {
+      "path": "selection.md",
+      "bytes": 23030,
+      "sha256": "3a9937e9598bd7073a4a909c6636c074929e2f335eff186dd17583b6e526e07b"
+    }
+  ]
+}

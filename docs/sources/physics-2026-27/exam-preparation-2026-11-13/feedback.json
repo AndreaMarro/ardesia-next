@@ -1,0 +1,3286 @@
+{
+  "format": "ardesia-exam-feedback-proposal/1",
+  "status": "DRAFT",
+  "humanApproval": false,
+  "createdAt": "2026-11-13T14:16:49.279521+00:00",
+  "sourceHead": "8fbebc1e9e40ffd3e0c9210323a036560cf5b9d1",
+  "sourceHeadBasis": "Frozen selection receipt and matching current content hashes, without reading or modifying Git.",
+  "authoringScope": "New feedback and worked explanations for existing selected legacy questions. No new quizzes, source mutations, app, scoring parser, services, cursor, merge or publication.",
+  "counts": {
+    "legacyQuestionIdentities": 31,
+    "newQuestionIdentities": 0,
+    "multipleChoiceQuestions": 21,
+    "optionSpecificFeedback": 105,
+    "completionExplanations": 10,
+    "completionUnitChecks": 10,
+    "plausibleErrorHypotheses": 20,
+    "humanApproved": 0
+  },
+  "sourceFiles": [
+    {
+      "path": "docs/sources/physics-2026-27/editorial/bank-selection.json",
+      "sha256": "fdd548b9e404d40613560e150959198d4477fef8fbf1e5ec24e4116d4eab46f4",
+      "bytes": 2295231,
+      "sourceCommit": "8fbebc1e9e40ffd3e0c9210323a036560cf5b9d1",
+      "verification": "Current source bytes match frozen selection receipt; no Git command used."
+    },
+    {
+      "path": "docs/sources/physics-2026-27/coverage.json",
+      "sha256": "018e320595808d61f8982ccbfef93565e47486e576dd8d850c749a330587c13e",
+      "bytes": 189258,
+      "sourceCommit": "8fbebc1e9e40ffd3e0c9210323a036560cf5b9d1",
+      "verification": "Current source bytes match frozen selection receipt; no Git command used."
+    },
+    {
+      "path": "docs/sources/physics-2026-27/editorial/units.json",
+      "sha256": "5e9f6c350b7bf3f1bdf86a988028c392ab0e4fefe906d7fe3f67da4925587245",
+      "bytes": 41081,
+      "sourceCommit": "8fbebc1e9e40ffd3e0c9210323a036560cf5b9d1",
+      "verification": "Current source bytes match frozen selection receipt; no Git command used."
+    },
+    {
+      "path": "docs/sources/physics-2026-27/editorial/courses.json",
+      "sha256": "7527c62544a8d92da376a166ad951a58ae4bc95056c603718c52c7980cd7d341",
+      "bytes": 419571,
+      "sourceCommit": "8fbebc1e9e40ffd3e0c9210323a036560cf5b9d1",
+      "verification": "Current source bytes match frozen selection receipt; no Git command used."
+    },
+    {
+      "path": "docs/sources/physics-2026-27/source-registry.json",
+      "sha256": "4cd13cba2663b8972f7ebea8172b47b9230442307c142e379477fe565ceb1e6a",
+      "bytes": 4728,
+      "sourceCommit": "8fbebc1e9e40ffd3e0c9210323a036560cf5b9d1",
+      "verification": "Current source bytes match frozen selection receipt; no Git command used."
+    },
+    {
+      "path": "/tmp/ardesia-exam-candidate-selection-2026-11-13.json",
+      "sha256": "bc180ca01c9d4f14cdab533384f60f5065cbc263256a1e4ad1f52de0dae0b04a",
+      "bytes": 145975,
+      "sourceCommit": "8fbebc1e9e40ffd3e0c9210323a036560cf5b9d1"
+    }
+  ],
+  "aiAuthoringReview": {
+    "checked": "Physical reasoning and option-specific consistency during authoring; structural checks preserve prompts/options/keys and count every feedback.",
+    "independentReview": "PENDING",
+    "humanScientificApproval": "NOT_PERFORMED",
+    "numericalEvidence": "Uses the selection receipt with 38 constrained arithmetic rechecks; no new test-suite/runtime or official grading validation claimed."
+  },
+  "gradingBoundary": {
+    "purpose": "Editorial training feedback for explicit review after an attempt; not a ministerial correction algorithm.",
+    "officialNumericalEquivalence": "UNKNOWN",
+    "parserImplemented": false,
+    "studentDiagnosis": "No student-specific error inferred; completion errors are plausible educational hypotheses only.",
+    "masteryOrExamPrediction": false
+  },
+  "editorialNotes": [
+    "Legacy IDs, five source options, keys and provenance preserved exactly.",
+    "Lorentz feedback replaces the inaccurate ordinal option reference in the proposal only; source repository unchanged.",
+    "Numerical completions remain training items. Institutional guide wording about a missing word does not establish numerical input acceptance rules.",
+    "One unit check per completion is explicit; source-specific assumptions and approximation of ln2 are retained.",
+    "Feedback includes a review action for each alternative; a selected distractor alone cannot diagnose a learner.",
+    "31 selected source questions remain DRAFT and may already have been encountered in the courses."
+  ],
+  "questions": [
+    {
+      "id": "u1-scalar-product-03",
+      "unitId": "sf-2026-u1-04",
+      "courseCode": "C1",
+      "syllabusUnitId": "U1",
+      "title": "Distinguere ortogonalità, prodotto scalare e prodotto vettoriale",
+      "prompt": "Due vettori sono perpendicolari e hanno entrambi modulo non nullo. Quanto vale il loro prodotto scalare?\n\nIpotesi e convenzioni: Valgono le condizioni specificate nella domanda.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "824bda103f82af29c4aa41d3dd328934883433c9ab19720d03c6b98b18229a10",
+      "sourcePromptSHA256": "3b75e7506909ffe83470755b5de4b4f4ecb2971d535723608e2ce39995b606d2",
+      "sourceSolutionSHA256": "6f201464c10be9a545c72d5fdee1501312efa62067720308007908462dc41425",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "7c6ff57159100165a9f91fccd939984f3b28dc66c157aeb188bf1853d6bc07b6",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U1-scalar-product",
+          "authoringTaskId": "conceptual_application",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U1 — Vettori"
+            },
+            {
+              "sourceId": "UNIBO-SYLLABUS-2026",
+              "locator": "Prodotto scalare di vettori paralleli"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Due vettori non nulli, perpendicolari; prodotto scalare euclideo.",
+      "sourceCaveat": "Nessuna ambiguità decisiva identificata nel controllo circoscritto.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "A",
+        "correctText": "Zero",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "text",
+        "exact": "Zero",
+        "unit": "1",
+        "text": "Zero",
+        "accepted": [
+          "Zero"
+        ],
+        "correctOptionId": "A"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "Zero",
+          "isCorrect": true,
+          "feedback": "Il prodotto scalare è |A|·|B|cosθ. Con θ=90° il coseno è zero: il risultato si annulla anche se nessuno dei due vettori è nullo.",
+          "reviewHint": "Ripassa il prodotto scalare come modulo di un vettore per la componente dell’altro nella sua direzione."
+        },
+        {
+          "id": "B",
+          "text": "Il prodotto positivo dei moduli",
+          "isCorrect": false,
+          "feedback": "Il prodotto positivo dei moduli si ottiene per vettori paralleli concordi, quando cosθ=1. Per vettori perpendicolari manca invece una componente dell’uno lungo l’altro.",
+          "reviewHint": "Confronta i valori del prodotto scalare per θ=0°, 90° e 180°."
+        },
+        {
+          "id": "C",
+          "text": "La somma dei moduli",
+          "isCorrect": false,
+          "feedback": "Sommare i moduli è un’operazione diversa dal prodotto scalare. In particolare, due moduli positivi darebbero una somma positiva, mentre l’ortogonalità impone prodotto scalare nullo.",
+          "reviewHint": "Ripassa la differenza fra somma di vettori, somma dei moduli e prodotto scalare."
+        },
+        {
+          "id": "D",
+          "text": "Il rapporto dei moduli",
+          "isCorrect": false,
+          "feedback": "Il rapporto dei moduli è positivo e non misura l’allineamento dei vettori. Il prodotto scalare dipende anche dall’angolo e qui vale zero per cos90°=0.",
+          "reviewHint": "Ricostruisci la formula A·B=|A|·|B|cosθ e controlla il ruolo dell’angolo."
+        },
+        {
+          "id": "E",
+          "text": "Un vettore perpendicolare a entrambi",
+          "isCorrect": false,
+          "feedback": "Un vettore perpendicolare a entrambi descrive la direzione del prodotto vettoriale fra vettori non paralleli. Il prodotto scalare, invece, restituisce uno scalare: qui zero.",
+          "reviewHint": "Confronta risultato, formula e significato geometrico dei prodotti scalare e vettoriale."
+        }
+      ],
+      "correctOptionId": "A",
+      "specificCorrection": null
+    },
+    {
+      "id": "u1-scientific-scale-03",
+      "unitId": "sf-2026-u1-01",
+      "courseCode": "C1",
+      "syllabusUnitId": "U1",
+      "title": "Rapporto fra potenze di dieci",
+      "prompt": "Due tempi sono 4×10⁻³ s e 2×10⁻⁴ s. Senza usare una calcolatrice, quale valore ha il rapporto fra il primo e il secondo?\n\nIpotesi e convenzioni: Valgono le condizioni specificate nella domanda.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "656a275818a5b5d3d12a7b3f988c36264211f01488535aac4180d047337acc5c",
+      "sourcePromptSHA256": "3ad841dade64d928f4eeec8766137b6e3a8b808ce785c835afb02aa76ed5cbf4",
+      "sourceSolutionSHA256": "e3c2c65ffa436ee3cca63ad67456145702e8448b0e1a11f12f3cee1297b669ea",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "6800e7858f279fbce8da4eed256230f88d34297b1bb54530970ada979e54a12a",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U1-scientific-scale",
+          "authoringTaskId": "conceptual_application",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U1 — Notazione scientifica"
+            },
+            {
+              "sourceId": "UNIBO-SYLLABUS-2026",
+              "locator": "Valore di una notazione scientifica"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Rapporto primo tempo/secondo; entrambi in secondi.",
+      "sourceCaveat": "Nessuna ambiguità decisiva identificata nel controllo circoscritto.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "B",
+        "correctText": "20",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "text",
+        "exact": "20",
+        "unit": "1",
+        "text": "20",
+        "accepted": [
+          "20"
+        ],
+        "correctOptionId": "B"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "1/2",
+          "isCorrect": false,
+          "feedback": "Il valore 1/2 non è il rapporto richiesto: già il primo tempo, 0,004 s, è maggiore del secondo, 0,0002 s. Il rapporto primo/secondo deve quindi superare uno.",
+          "reviewHint": "Ripassa la stima del risultato prima del calcolo e l’ordine numeratore/denominatore."
+        },
+        {
+          "id": "B",
+          "text": "20",
+          "isCorrect": true,
+          "feedback": "Separando coefficienti ed esponenti si ottiene (4/2)·10^(−3−(−4))=2·10=20. Le unità s/s si cancellano.",
+          "reviewHint": "Controlla il risultato moltiplicando 20 per il secondo tempo: si ritrova il primo."
+        },
+        {
+          "id": "C",
+          "text": "2",
+          "isCorrect": false,
+          "feedback": "Il valore 2 considera soltanto 4/2. Il rapporto fra le potenze di dieci vale 10, perché −3−(−4)=1: quel fattore va ancora moltiplicato.",
+          "reviewHint": "Ripassa la divisione di potenze con la stessa base, soprattutto con esponenti negativi."
+        },
+        {
+          "id": "D",
+          "text": "1/20",
+          "isCorrect": false,
+          "feedback": "Il valore 1/20 corrisponde al secondo tempo diviso il primo. Il testo chiede l’ordine inverso, quindi il risultato è 20.",
+          "reviewHint": "Scrivi prima il rapporto con le etichette «primo/secondo», poi sostituisci i numeri."
+        },
+        {
+          "id": "E",
+          "text": "200",
+          "isCorrect": false,
+          "feedback": "Il valore 200 contiene un fattore dieci in eccesso. La differenza fra gli esponenti è 1, non 2: (4/2)·10=20.",
+          "reviewHint": "Esegui separatamente il rapporto dei coefficienti e la sottrazione degli esponenti."
+        }
+      ],
+      "correctOptionId": "B",
+      "specificCorrection": null
+    },
+    {
+      "id": "u2-center-mass-weighted-03",
+      "unitId": "sf-2026-u2-05",
+      "courseCode": "C1",
+      "syllabusUnitId": "U2",
+      "title": "Moto del centro di massa e forze esterne",
+      "prompt": "Due corpi interagiscono attraverso una molla e possono muoversi senza attrito su un piano orizzontale. La risultante esterna orizzontale sul sistema è nulla. Come si muove orizzontalmente il centro di massa?\n\nIpotesi e convenzioni: Valgono le condizioni specificate nella domanda.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "dab1450620cf3edba851eeec3f8fd35fdf6fda3ecad44cc2aca3ee4a6bc4089e",
+      "sourcePromptSHA256": "d385a072da0ab9b6f1f49e58da808cc995d4ace1ff5c8211cf469cf90acede4c",
+      "sourceSolutionSHA256": "b81dea064024577cef80657b098ff23f717b07e38ce3137dbca0c7e84f772ca4",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "815faf1f8234a52df51acd59f1de775ef48427d1b1aa2bf71a34c9d63eaab457",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U2-center-mass-weighted",
+          "authoringTaskId": "conceptual_application",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U2 — Centro di massa"
+            },
+            {
+              "sourceId": "UNIBO-SYLLABUS-2026",
+              "locator": "Centro di massa con origine su un corpo"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Sistema dei due corpi e interazione interna elastica; risultante esterna orizzontale nulla. Riferimento inerziale della meccanica ordinaria.",
+      "sourceCaveat": "Il riferimento inerziale è implicito nel contesto della lezione, non esplicitato nel prompt.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "C",
+        "correctText": "Con velocità costante, eventualmente nulla",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "text",
+        "exact": "Con velocità costante, eventualmente nulla",
+        "unit": "1",
+        "text": "Con velocità costante, eventualmente nulla",
+        "accepted": [
+          "Con velocità costante, eventualmente nulla"
+        ],
+        "correctOptionId": "C"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "Oscilla necessariamente come la molla",
+          "isCorrect": false,
+          "feedback": "La molla può far oscillare la distanza fra i corpi, ma le sue forze sono interne al sistema. Non impone un’oscillazione del centro di massa, che risponde alla risultante esterna.",
+          "reviewHint": "Ripassa la distinzione fra moto relativo dei corpi e moto del loro centro di massa."
+        },
+        {
+          "id": "B",
+          "text": "Accelera nella direzione del corpo più pesante",
+          "isCorrect": false,
+          "feedback": "La massa maggiore modifica la posizione del centro di massa, non crea una forza esterna. Con risultante esterna orizzontale nulla, M a_CM,x=0.",
+          "reviewHint": "Ripassa separatamente definizione del centro di massa ed equazione del suo moto."
+        },
+        {
+          "id": "C",
+          "text": "Con velocità costante, eventualmente nulla",
+          "isCorrect": true,
+          "feedback": "Nel riferimento inerziale del modello, M a_CM,x=F_ext,x=0. La velocità orizzontale del centro di massa resta quindi quella iniziale: può essere nulla oppure diversa da zero.",
+          "reviewHint": "Ripassa perché accelerazione nulla significa velocità costante, non necessariamente quiete."
+        },
+        {
+          "id": "D",
+          "text": "Sempre fermo, qualunque fosse la velocità iniziale",
+          "isCorrect": false,
+          "feedback": "La quiete è solo il caso particolare di velocità iniziale nulla. Se il sistema possiede quantità di moto orizzontale iniziale, questa si conserva e il centro di massa trasla.",
+          "reviewHint": "Confronta due condizioni iniziali con la stessa risultante esterna nulla."
+        },
+        {
+          "id": "E",
+          "text": "Con accelerazione uguale a quella del corpo più leggero",
+          "isCorrect": false,
+          "feedback": "L’accelerazione del centro di massa è la media pesata delle accelerazioni dei due corpi, non quella del più leggero. Le forze elastiche interne si compensano nella somma.",
+          "reviewHint": "Ripassa M a_CM=ΣF_esterne e la compensazione delle coppie di forze interne."
+        }
+      ],
+      "correctOptionId": "C",
+      "specificCorrection": null
+    },
+    {
+      "id": "u2-static-threshold-03",
+      "unitId": "sf-2026-u2-02",
+      "courseCode": "C1",
+      "syllabusUnitId": "U2",
+      "title": "Attrito statico effettivo e soglia",
+      "prompt": "Un blocco fermo su un piano orizzontale può sostenere un attrito statico massimo di 10 N. Una spinta orizzontale di 4 N non lo mette in moto e non ci sono altre forze orizzontali. Quanto vale il modulo dell’attrito effettivo?\n\nIpotesi e convenzioni: Valgono le condizioni specificate nella domanda.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "d740a8d623fc595bed4000d87d4326c3fb9b92a0f4c5b0de6b4749447a4b91cb",
+      "sourcePromptSHA256": "4230183e3444098fa81fb8fe756392c4a97c0a8d4e47fe734c844251185aefb4",
+      "sourceSolutionSHA256": "7aeced1d54339c3d0a13a2dd857644952a6829daad89ba5a12c5cea724128b22",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "634289547bf76b20ad96b662dec1e2af3fdf3fe6a2fe05bc461f4ca94b1bc4f5",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U2-static-threshold",
+          "authoringTaskId": "conceptual_application",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U2 — Attrito"
+            },
+            {
+              "sourceId": "UNIBO-SYLLABUS-2026",
+              "locator": "Soglia di scorrimento su piano orizzontale"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Blocco fermo; solo spinta e attrito in orizzontale; massimo statico 10 N.",
+      "sourceCaveat": "Nessuna ambiguità decisiva identificata nel controllo circoscritto.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "E",
+        "correctText": "4 N",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "text",
+        "exact": "4 N",
+        "unit": "1",
+        "text": "4 N",
+        "accepted": [
+          "4 N"
+        ],
+        "correctOptionId": "E"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "10 N",
+          "isCorrect": false,
+          "feedback": "10 N è il massimo attrito statico disponibile, non il valore obbligatorio. Con una spinta di 4 N, un attrito di 10 N lascerebbe una risultante di 6 N, incompatibile con l’equilibrio descritto.",
+          "reviewHint": "Ripassa la disuguaglianza |F_attr,s|≤μ_s N e il significato della soglia."
+        },
+        {
+          "id": "B",
+          "text": "6 N",
+          "isCorrect": false,
+          "feedback": "6 N è la differenza fra soglia e spinta, ma l’attrito effettivo deve bilanciare la spinta stessa. Servono 4 N nel verso opposto, non la capacità di attrito rimasta disponibile.",
+          "reviewHint": "Disegna il diagramma delle forze orizzontali e imponi somma nulla."
+        },
+        {
+          "id": "C",
+          "text": "0 N",
+          "isCorrect": false,
+          "feedback": "Con attrito nullo resterebbe la sola spinta orizzontale di 4 N: il blocco accelererebbe. Il testo specifica invece che resta fermo.",
+          "reviewHint": "Ripassa il legame fra equilibrio traslazionale e risultante delle forze."
+        },
+        {
+          "id": "D",
+          "text": "14 N",
+          "isCorrect": false,
+          "feedback": "14 N è la somma di due dati con ruoli diversi e supera anche il massimo statico ammesso. L’equilibrio richiede soltanto 4 N contrari alla spinta.",
+          "reviewHint": "Distingui forza applicata, forza di attrito e limite massimo di attrito."
+        },
+        {
+          "id": "E",
+          "text": "4 N",
+          "isCorrect": true,
+          "feedback": "La risultante deve essere nulla: l’attrito vale 4 N in verso opposto alla spinta. Il valore è possibile perché 4 N è inferiore alla soglia di 10 N.",
+          "reviewHint": "Ripassa come l’attrito statico si adatta alla forza applicata prima dello scorrimento."
+        }
+      ],
+      "correctOptionId": "E",
+      "specificCorrection": null
+    },
+    {
+      "id": "u2-mean-velocity-03",
+      "unitId": "sf-2026-u2-01",
+      "courseCode": "C1",
+      "syllabusUnitId": "U2",
+      "title": "Velocità media vettoriale e rapidità media",
+      "prompt": "Una persona cammina per 6 m verso est e torna al punto di partenza percorrendo 6 m verso ovest. L’intero percorso dura 4 s. Quali sono il modulo della velocità media vettoriale e la rapidità media?\n\nIpotesi e convenzioni: Valgono le condizioni specificate nella domanda.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "aab3a506c88bfc3d88ab1f2fec11d4a97e44286580e8ca1439661d477f250a7d",
+      "sourcePromptSHA256": "3491ca632f87c23dbfcd760d4fe31b9c07616a2a1ff0a9920517d3957bd24a50",
+      "sourceSolutionSHA256": "ad4827930196e4cb9683ce7f4780469d8fe6d99528894834f0d516cbec92dcfd",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "2e691b5743bd312ba8180da48324599138821a2db0896c88fffcba1411552967",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U2-mean-velocity",
+          "authoringTaskId": "conceptual_application",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U2 — Cinematica"
+            },
+            {
+              "sourceId": "UNIBO-SYLLABUS-2026",
+              "locator": "Velocità media da due misure"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Andata 6 m e ritorno 6 m sullo stesso asse; durata totale 4 s.",
+      "sourceCaveat": "Nessuna ambiguità decisiva identificata nel controllo circoscritto.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "B",
+        "correctText": "0 m/s e 3 m/s",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "text",
+        "exact": "0 m/s e 3 m/s",
+        "unit": "1",
+        "text": "0 m/s e 3 m/s",
+        "accepted": [
+          "0 m/s e 3 m/s"
+        ],
+        "correctOptionId": "B"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "6 m/s e 3 m/s",
+          "isCorrect": false,
+          "feedback": "La rapidità media di 3 m/s è corretta, ma la velocità media vettoriale non può avere modulo 6 m/s: posizione finale e iniziale coincidono e lo spostamento è nullo.",
+          "reviewHint": "Ripassa la definizione di velocità media come spostamento diviso tempo totale."
+        },
+        {
+          "id": "B",
+          "text": "0 m/s e 3 m/s",
+          "isCorrect": true,
+          "feedback": "Lo spostamento è 6−6=0 m, mentre la distanza è 6+6=12 m. Dividendo entrambi per 4 s si ottengono, nell’ordine, 0 m/s e 3 m/s.",
+          "reviewHint": "Confronta spostamento orientato e lunghezza totale del percorso."
+        },
+        {
+          "id": "C",
+          "text": "3 m/s e 0 m/s",
+          "isCorrect": false,
+          "feedback": "Le due grandezze sono invertite. La velocità media vettoriale usa lo spostamento nullo; la rapidità media usa la distanza positiva di 12 m.",
+          "reviewHint": "Associa a ciascuna definizione il suo numeratore prima di dividere per il tempo."
+        },
+        {
+          "id": "D",
+          "text": "3 m/s e 3 m/s",
+          "isCorrect": false,
+          "feedback": "3 m/s è la rapidità media, ma non la velocità media vettoriale: sommare i tratti come lunghezze elimina l’informazione sul ritorno verso ovest.",
+          "reviewHint": "Ripassa la somma algebrica degli spostamenti su un asse orientato."
+        },
+        {
+          "id": "E",
+          "text": "0 m/s e 0 m/s",
+          "isCorrect": false,
+          "feedback": "Il primo zero è corretto, il secondo no: tornare al punto di partenza non cancella i 12 m effettivamente percorsi. La rapidità media vale 12/4=3 m/s.",
+          "reviewHint": "Ripassa perché spostamento nullo non significa distanza nulla o assenza di moto."
+        }
+      ],
+      "correctOptionId": "B",
+      "specificCorrection": null
+    },
+    {
+      "id": "u2-inelastic-rest-03",
+      "unitId": "sf-2026-u2-04",
+      "courseCode": "C1",
+      "syllabusUnitId": "U2",
+      "title": "Quantità di moto in un urto anelastico",
+      "prompt": "Due corpi restano attaccati dopo un urto. Durante l’urto l’impulso delle forze esterne è trascurabile. Quale grandezza del sistema è necessariamente conservata?\n\nIpotesi e convenzioni: Valgono le condizioni specificate nella domanda.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "a4ae851e1f3d05803a554c5e703af278c1626742f4a754a33d1a5f2e655d96f9",
+      "sourcePromptSHA256": "c6df3bc43049da0200ec9a190f61b9cb14f859ce0ee9918ce93d35f6f096d679",
+      "sourceSolutionSHA256": "77f004af78cb270729e78eb44ffe8496692f62d8a8de553c49d5a48b1ecb8382",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "ceabac71aa29ea818fa8dcc46296ae3ccd77dfcb5fa6112b2dd13d4d7a786a52",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U2-inelastic-rest",
+          "authoringTaskId": "conceptual_application",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U2 — Urti"
+            },
+            {
+              "sourceId": "UNIBO-SYLLABUS-2026",
+              "locator": "Urto completamente anelastico con bersaglio fermo"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Sistema dei due corpi; impulso esterno trascurabile durante l’urto; corpi uniti dopo.",
+      "sourceCaveat": "Conservazione esatta nel modello J_ext=0; nel testo il termine trascurabile indica questa approssimazione.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "C",
+        "correctText": "La quantità di moto totale",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "text",
+        "exact": "La quantità di moto totale",
+        "unit": "1",
+        "text": "La quantità di moto totale",
+        "accepted": [
+          "La quantità di moto totale"
+        ],
+        "correctOptionId": "C"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "La quantità di moto di ciascun corpo separatamente",
+          "isCorrect": false,
+          "feedback": "Ogni corpo riceve un impulso dall’altro e può cambiare quantità di moto. A compensarsi sono gli impulsi interni nella somma sul sistema, non il cambiamento di ciascun corpo.",
+          "reviewHint": "Ripassa la scelta del sistema e la distinzione fra forze interne ed esterne."
+        },
+        {
+          "id": "B",
+          "text": "La somma dei moduli delle due velocità",
+          "isCorrect": false,
+          "feedback": "La somma delle rapidità non è protetta da una legge di conservazione. La quantità conservata pesa le velocità vettoriali con le masse: p_tot=m₁v₁+m₂v₂.",
+          "reviewHint": "Ripassa quantità di moto e differenza fra somma vettoriale e somma dei moduli."
+        },
+        {
+          "id": "C",
+          "text": "La quantità di moto totale",
+          "isCorrect": true,
+          "feedback": "La variazione di quantità di moto totale uguaglia l’impulso esterno. Nel modello in cui questo è trascurato, p_tot si conserva anche se i corpi rimangono uniti.",
+          "reviewHint": "Ripassa il bilancio impulso–quantità di moto per l’intero sistema."
+        },
+        {
+          "id": "D",
+          "text": "L’energia cinetica totale",
+          "isCorrect": false,
+          "feedback": "Restare attaccati caratterizza l’urto completamente anelastico: l’energia cinetica può trasformarsi in deformazioni e altre forme interne. La conservazione di p_tot non implica quella di K_tot.",
+          "reviewHint": "Confronta ciò che si conserva negli urti elastici e anelastici."
+        },
+        {
+          "id": "E",
+          "text": "La velocità di ciascun corpo",
+          "isCorrect": false,
+          "feedback": "Le velocità individuali generalmente cambiano e, dopo l’urto, diventano uguali perché i corpi proseguono uniti. La conservazione riguarda la quantità di moto totale.",
+          "reviewHint": "Ripassa il calcolo della velocità comune tramite m₁v₁+m₂v₂=(m₁+m₂)v_f."
+        }
+      ],
+      "correctOptionId": "C",
+      "specificCorrection": null
+    },
+    {
+      "id": "u3-archimedes-force-03",
+      "unitId": "sf-2026-u3-02",
+      "courseCode": "C2",
+      "syllabusUnitId": "U3",
+      "title": "Distinguere aumento della pressione assoluta e variazione della spinta risultante.",
+      "prompt": "La gravità è uniforme e il corpo è rigido.\n\nUn corpo rigido completamente immerso viene spostato più in profondità nello stesso liquido incomprimibile, senza toccare il fondo. Che cosa accade alla spinta di Archimede?\n\nIpotesi e convenzioni: Il liquido ha densità costante; il corpo resta completamente immerso e non tocca pareti o fondo.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "bdfa800c88664b0e5d154c30a6f489deffaeb2bcc5c421fe9b2090b2b8515699",
+      "sourcePromptSHA256": "5d269de5027b2643dee58ecdc6446c2ada6cb71581539bf7699820ed14ebfb64",
+      "sourceSolutionSHA256": "d1e2a0bfd72f69039b650ff776cb4fbc2f2cebb4de983db402b84709f588f32d",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "de86f427e31f23119e76daef576ca10fb24d0fd462ebef9fd219a997e8053741",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U3-archimedes-force",
+          "authoringTaskId": "conceptual_application",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U3: archimede"
+            },
+            {
+              "sourceId": "UPLOAD-VALDES",
+              "locator": "cap. 5, indice PDF 12-13; capitolo da PDF 122"
+            },
+            {
+              "sourceId": "UPLOAD-RAGOZZINO",
+              "locator": "indice PDF 10: capitoli 8-10"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Corpo rigido interamente immerso, densità del liquido e g costanti, nessun contatto.",
+      "sourceCaveat": "Nessuna ambiguità decisiva identificata nel controllo circoscritto.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "D",
+        "correctText": "Resta uguale se volume e densità del liquido non cambiano.",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "text",
+        "exact": "Resta uguale se volume e densità del liquido non cambiano.",
+        "unit": "1",
+        "text": "Resta uguale se volume e densità del liquido non cambiano.",
+        "accepted": [
+          "Resta uguale se volume e densità del liquido non cambiano."
+        ],
+        "correctOptionId": "D"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "Si annulla appena il corpo non è più visibile.",
+          "isCorrect": false,
+          "feedback": "La visibilità del corpo non determina alcuna forza idrostatica. La spinta dipende da densità del liquido, gravità e volume spostato, tutti costanti nelle condizioni assegnate.",
+          "reviewHint": "Ripassa F_A=ρ_liquido gV_spostato e il significato dei tre fattori."
+        },
+        {
+          "id": "B",
+          "text": "Aumenta perché tutte le pressioni aumentano.",
+          "isCorrect": false,
+          "feedback": "Le pressioni locali aumentano, ma la spinta è la loro risultante sulla superficie chiusa. L’aumento comune non cambia il peso del liquido spostato, quindi non aumenta F_A.",
+          "reviewHint": "Ripassa la differenza fra pressione in un punto e forza risultante delle pressioni."
+        },
+        {
+          "id": "C",
+          "text": "Diminuisce perché il corpo si allontana dalla superficie.",
+          "isCorrect": false,
+          "feedback": "Allontanarsi dalla superficie non riduce il volume immerso: il corpo resta interamente immerso e rigido. Con densità e g costanti, F_A resta invariata.",
+          "reviewHint": "Confronta immersione parziale e completa, tenendo distinto il volume spostato dalla profondità."
+        },
+        {
+          "id": "D",
+          "text": "Resta uguale se volume e densità del liquido non cambiano.",
+          "isCorrect": true,
+          "feedback": "F_A=ρ_liquido gV_spostato: tutti i fattori restano costanti. Le pressioni assolute cambiano con la profondità, ma la loro differenza produce la stessa spinta.",
+          "reviewHint": "Ripassa la derivazione idrostatica del principio di Archimede."
+        },
+        {
+          "id": "E",
+          "text": "Diventa uguale al peso del corpo in ogni caso.",
+          "isCorrect": false,
+          "feedback": "La spinta non è automaticamente uguale al peso del corpo. Tale uguaglianza richiede un particolare equilibrio senza altre forze verticali; qui conta il peso del liquido spostato.",
+          "reviewHint": "Confronta densità del corpo e del liquido e scrivi tutte le forze verticali presenti."
+        }
+      ],
+      "correctOptionId": "D",
+      "specificCorrection": null
+    },
+    {
+      "id": "u3-poiseuille-flow-08",
+      "unitId": "sf-2026-u3-04",
+      "courseCode": "C2",
+      "syllabusUnitId": "U3",
+      "title": "Portata laminare e viscosità — Combinare la dipendenza da lunghezza e raggio a portata imposta.",
+      "prompt": "Un fluido newtoniano incomprimibile scorre in un tubo cilindrico rigido in regime laminare sviluppato. La legge è Q=πr⁴ Δp/(8ηL). Si confrontano due tubi con la stessa portata imposta.\n\nIl raggio interno r viene raddoppiato e la lunghezza L viene quadruplicata. La viscosità e la portata volumetrica restano uguali. Quale rapporto Δp_nuova/Δp_iniziale è necessario?\n\nIpotesi e convenzioni: Viscosità costante; regime laminare sviluppato valido in entrambi i tubi; si confrontano differenze di pressione positive.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "a78ee2329e806a0bf4614f9d2fbe7dd78caba78434ef3f2aacb045fa9e22ce2c",
+      "sourcePromptSHA256": "bd1f58e51c277d202bb3e5ac3d7ee88f5ee65dae735e955616aed93ca74b47dc",
+      "sourceSolutionSHA256": "2731cbaea767ec28fe589c840be604a6513dca68961b4f38141f3975666061b5",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "c48eeb3ae20611fa913311ae0d8862ec1f7d432445f659b7e14178183b097e4a",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U3-poiseuille-flow",
+          "authoringTaskId": "poiseuille_fixed_flow_geometry",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U3: poiseuille"
+            },
+            {
+              "sourceId": "UPLOAD-VALDES",
+              "locator": "cap. 5, indice PDF 12-13; capitolo da PDF 122"
+            },
+            {
+              "sourceId": "UPLOAD-RAGOZZINO",
+              "locator": "indice PDF 10: capitoli 8-10"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Tubo rigido cilindrico, fluido newtoniano incomprimibile, laminare sviluppato; Q e η fissi; r raddoppia, L quadruplica.",
+      "sourceCaveat": "La soluzione legacy elenca cm, mPa·s e cm³/s: per valori assoluti occorrerebbe conversione coerente, mentre il rapporto qui richiesto cancella i fattori.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "C",
+        "correctText": "1/4",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "rational",
+        "exact": "1/4",
+        "unit": "1",
+        "text": "1/4",
+        "accepted": [
+          "1/4",
+          "0,25",
+          "0.25"
+        ],
+        "correctOptionId": "C"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "16",
+          "isCorrect": false,
+          "feedback": "16 è il fattore con cui cresce r⁴, ma a portata imposta questo fattore riduce la pressione richiesta. Va inoltre considerata la lunghezza quadruplicata: Δp_n/Δp_i=4/16.",
+          "reviewHint": "Ripassa la legge di Poiseuille risolta rispetto alla variabile richiesta."
+        },
+        {
+          "id": "B",
+          "text": "1/16",
+          "isCorrect": false,
+          "feedback": "1/16 sarebbe il rapporto di pressione con r raddoppiato e lunghezza invariata. Qui L aumenta di quattro volte, perciò il rapporto diventa 4/16=1/4.",
+          "reviewHint": "Elenca tutte le grandezze modificate e quelle mantenute fisse prima del confronto."
+        },
+        {
+          "id": "C",
+          "text": "1/4",
+          "isCorrect": true,
+          "feedback": "A Q e η fissi, Δp è proporzionale a L/r⁴. Quindi Δp_n/Δp_i=4/2⁴=1/4; reinserendo questo rapporto nella portata, Q resta uguale.",
+          "reviewHint": "Ripassa i confronti mediante rapporti, che cancellano costanti e unità comuni."
+        },
+        {
+          "id": "D",
+          "text": "1",
+          "isCorrect": false,
+          "feedback": "La compensazione non è completa: r raddoppiato divide la resistenza per 16, mentre L quadruplicata la moltiplica per 4. Rimane una riduzione di quattro volte.",
+          "reviewHint": "Confronta dipendenze lineari e dipendenze dalla quarta potenza."
+        },
+        {
+          "id": "E",
+          "text": "4",
+          "isCorrect": false,
+          "feedback": "4 considera la sola lunghezza quadruplicata. L’aumento del raggio è più influente: introduce un fattore 1/16, portando il rapporto complessivo a 1/4.",
+          "reviewHint": "Ripassa perché il raggio compare alla quarta potenza nella portata laminare sviluppata."
+        }
+      ],
+      "correctOptionId": "C",
+      "specificCorrection": null
+    },
+    {
+      "id": "u3-hydraulic-force-03",
+      "unitId": "sf-2026-u3-02",
+      "courseCode": "C2",
+      "syllabusUnitId": "U3",
+      "title": "Collegare Pascal, conservazione del volume e lavoro meccanico.",
+      "prompt": "I due pistoni comunicano tramite liquido incomprimibile, alla stessa quota e con lo stesso riferimento di pressione.\n\nUna pressa ideale aumenta di dieci volte la forza disponibile sul pistone d’uscita. Quale conseguenza è compatibile con l’incomprimibilità e la conservazione dell’energia?\n\nIpotesi e convenzioni: Pressa ideale, assenza di attrito e perdite, movimento lento.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "80622477f631464fd5d1a6647a1b3d51ce6f0f4c1925feb8105686bf39ad98d0",
+      "sourcePromptSHA256": "b9f8b4ac07b4c176aaae5d189fedee0929edaf6c6c00a182f690770318b947af",
+      "sourceSolutionSHA256": "6a8841f5b4112a061d5645bba3167f4a8d3bda5efd2d1835bd3db44b06b803da",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "856adfc023ba6fb6598b0efe4012092dd51997e9ad07293fb8c45baa0635c6b4",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U3-hydraulic-force",
+          "authoringTaskId": "conceptual_application",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U3: pascal"
+            },
+            {
+              "sourceId": "UPLOAD-VALDES",
+              "locator": "cap. 5, indice PDF 12-13; capitolo da PDF 122"
+            },
+            {
+              "sourceId": "UPLOAD-RAGOZZINO",
+              "locator": "indice PDF 10: capitoli 8-10"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Pressa ideale senza perdite, moto lento, liquido incomprimibile, pistoni alla stessa quota/riferimento di pressione.",
+      "sourceCaveat": "Nessuna ambiguità decisiva identificata nel controllo circoscritto.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "C",
+        "correctText": "L’uscita percorre un decimo della corsa d’ingresso.",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "text",
+        "exact": "L’uscita percorre un decimo della corsa d’ingresso.",
+        "unit": "1",
+        "text": "L’uscita percorre un decimo della corsa d’ingresso.",
+        "accepted": [
+          "L’uscita percorre un decimo della corsa d’ingresso."
+        ],
+        "correctOptionId": "C"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "Le due corse sono sempre uguali.",
+          "isCorrect": false,
+          "feedback": "Corse uguali con un’area d’uscita dieci volte maggiore richiederebbero volumi spostati diversi. Il liquido incomprimibile impone invece A_i s_i=A_o s_o.",
+          "reviewHint": "Ripassa la conservazione del volume nelle presse idrauliche ideali."
+        },
+        {
+          "id": "B",
+          "text": "L’uscita percorre dieci volte la corsa d’ingresso.",
+          "isCorrect": false,
+          "feedback": "Se forza e corsa d’uscita fossero entrambe dieci volte maggiori, il lavoro d’uscita sarebbe cento volte quello d’ingresso. La pressa ideale non crea questa energia.",
+          "reviewHint": "Controlla contemporaneamente volume spostato e lavoro F·s."
+        },
+        {
+          "id": "C",
+          "text": "L’uscita percorre un decimo della corsa d’ingresso.",
+          "isCorrect": true,
+          "feedback": "Il rapporto di forza 10 corrisponde a un rapporto di aree 10. Per conservare il volume, la corsa d’uscita è 1/10; il prodotto forza×corsa resta invariato.",
+          "reviewHint": "Ripassa come una macchina ideale scambia forza con spostamento."
+        },
+        {
+          "id": "D",
+          "text": "L’uscita compie cento volte il lavoro d’ingresso.",
+          "isCorrect": false,
+          "feedback": "In assenza di perdite, il lavoro d’uscita uguaglia quello d’ingresso. Una forza maggiore è compensata da una corsa minore, non da un guadagno di energia.",
+          "reviewHint": "Ripassa il bilancio energetico di una macchina semplice ideale."
+        },
+        {
+          "id": "E",
+          "text": "Il liquido deve creare energia interna dal nulla.",
+          "isCorrect": false,
+          "feedback": "Non serve creare energia: la stessa pressione agisce su aree diverse e il pistone più grande percorre meno strada. Il bilancio energetico resta soddisfatto.",
+          "reviewHint": "Collega il principio di Pascal alla conservazione del volume e del lavoro."
+        }
+      ],
+      "correctOptionId": "C",
+      "specificCorrection": null
+    },
+    {
+      "id": "u4-wave-phase-time-03",
+      "unitId": "sf-2026-u4-01",
+      "courseCode": "C5",
+      "syllabusUnitId": "U4",
+      "title": "Convertire un periodo in frequenza",
+      "prompt": "Un’oscillazione si ripete identica ogni 2/5 di secondo. Qual è la sua frequenza in hertz?\n\nIpotesi e convenzioni: Valgono esclusivamente i dati e le condizioni indicati nel testo.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "ab79c9f50d4479a619348348ccbcd6440646d2a35ecc7778fa03bd464d921e1b",
+      "sourcePromptSHA256": "5cc50987c81b2d9a5fe830b48422f39aa58ff9152fff79e51e12def0584f406c",
+      "sourceSolutionSHA256": "f8246457f9c44c27b5d906b9019d42c240cf2256826716fd2974e89533fd0c80",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "ad645b163b3bd23f7430283c65d1251b13c42d677e90c8fcbba96e4cf7e01f3a",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U4-wave-phase-time",
+          "authoringTaskId": "exam_alignment_p1q24",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U4: Frequenza e fase temporale"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Periodo T=2/5 s, oscillazione periodica.",
+      "sourceCaveat": "Nessuna ambiguità decisiva identificata nel controllo circoscritto.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "B",
+        "correctText": "5/2 Hz",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "rational",
+        "exact": "5/2",
+        "unit": "Hz",
+        "text": "5/2 Hz",
+        "accepted": [
+          "5/2",
+          "2,5",
+          "2.5"
+        ],
+        "correctOptionId": "B"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "1/2 Hz",
+          "isCorrect": false,
+          "feedback": "1/2 Hz significherebbe un periodo di 2 s. Il periodo assegnato è invece 2/5 s: il reciproco è 5/2 Hz.",
+          "reviewHint": "Ripassa la divisione per una frazione e la relazione f=1/T."
+        },
+        {
+          "id": "B",
+          "text": "5/2 Hz",
+          "isCorrect": true,
+          "feedback": "Il periodo è T=2/5 s, dunque f=1/T=5/2 Hz. Cinque periodi durano 2 s: è lo stesso conteggio di cinque cicli ogni due secondi.",
+          "reviewHint": "Controlla frequenza e periodo verificando fT=1."
+        },
+        {
+          "id": "C",
+          "text": "2/5 Hz",
+          "isCorrect": false,
+          "feedback": "2/5 è il valore numerico del periodo, non della frequenza. Trasferire lo stesso numero da secondi a hertz senza invertirlo non rispetta fT=1.",
+          "reviewHint": "Ripassa significato fisico e unità di periodo e frequenza."
+        },
+        {
+          "id": "D",
+          "text": "5 Hz",
+          "isCorrect": false,
+          "feedback": "5 Hz richiederebbe un periodo di 1/5 s. Nel testo cinque cicli durano 2 s, quindi vanno divisi per due: f=5/2 Hz.",
+          "reviewHint": "Ricava la frequenza contando cicli in un intervallo di durata nota."
+        },
+        {
+          "id": "E",
+          "text": "10 Hz",
+          "isCorrect": false,
+          "feedback": "10 Hz richiederebbe un periodo di 1/10 s, più breve di quello dato. Il rapporto corretto è un secondo diviso 2/5 di secondo.",
+          "reviewHint": "Ripassa il controllo inverso T=1/f per scartare un valore incompatibile."
+        }
+      ],
+      "correctOptionId": "B",
+      "specificCorrection": null
+    },
+    {
+      "id": "u4-coherent-constructive-06",
+      "unitId": "sf-2026-u4-02",
+      "courseCode": "C5",
+      "syllabusUnitId": "U4",
+      "title": "Collegare il cambiamento della fase relativa alla variazione dell’intensità",
+      "prompt": "Il confronto cambia la fase relativa delle onde, mantenendo invariati ampiezze, frequenza e mezzo.\n\nDue onde coerenti della stessa frequenza hanno ampiezze 3 mm e 4 mm. Inizialmente arrivano in fase; successivamente la fase di una sola onda viene invertita di π, senza cambiare le ampiezze. Sapendo che l’intensità è proporzionale al quadrato dell’ampiezza risultante, qual è il rapporto I_finale/I_iniziale?\n\nIpotesi e convenzioni: Onde coerenti con stessa frequenza e polarizzazione Mezzo lineare Intensità proporzionale ad A²",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "72d487e9d94e8bb5b131ead86217ebbb169be9a524e91723bb425395aab96cd8",
+      "sourcePromptSHA256": "29173781f72dbf80b12294fb2e80046ed490af77dfaf96a7cef270d4654ed6bc",
+      "sourceSolutionSHA256": "da20518bc42a189b773ba19668316d4860c608292f4ac522e62ac0999cd55bc7",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "6589df71249656241d35d124b9bab6ee6888cecd20cbf58cda96587e670da6d6",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U4-coherent-constructive",
+          "authoringTaskId": "phase_switch_intensity_ratio",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U4: Interferenza costruttiva"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Stessa frequenza e polarizzazione, mezzo lineare; ampiezze 3 e 4 mm; fase relativa da 0 a π; I proporzionale ad A² nel confronto.",
+      "sourceCaveat": "L’intensità è definita esplicitamente proporzionale ad A²: non generalizzare questa formula a geometrie di interferenza non dichiarate.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "A",
+        "correctText": "1/49",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "rational",
+        "exact": "1/49",
+        "unit": "1",
+        "text": "1/49",
+        "accepted": [
+          "1/49"
+        ],
+        "correctOptionId": "A"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "1/49",
+          "isCorrect": true,
+          "feedback": "In fase le ampiezze si sommano: 3+4=7 mm. Dopo l’inversione di π si sottraggono: |4−3|=1 mm. Il rapporto d’intensità è (1/7)²=1/49.",
+          "reviewHint": "Ripassa separatamente sovrapposizione delle ampiezze e dipendenza quadratica dell’intensità."
+        },
+        {
+          "id": "B",
+          "text": "1/7",
+          "isCorrect": false,
+          "feedback": "1/7 è il rapporto fra ampiezze risultanti, non fra intensità. Poiché il testo assegna I∝A², il rapporto deve essere elevato al quadrato.",
+          "reviewHint": "Confronta le unità e il significato di ampiezza e intensità."
+        },
+        {
+          "id": "C",
+          "text": "7",
+          "isCorrect": false,
+          "feedback": "7 è il rapporto iniziale/finale delle ampiezze; la domanda richiede finale/iniziale delle intensità. Occorrono sia inversione sia quadrato.",
+          "reviewHint": "Scrivi esplicitamente I_f/I_i=(A_f/A_i)² prima dei calcoli."
+        },
+        {
+          "id": "D",
+          "text": "49",
+          "isCorrect": false,
+          "feedback": "49 è il rapporto I_iniziale/I_finale. La fase passa da somma a differenza, quindi l’intensità finale diminuisce e I_finale/I_iniziale deve essere minore di uno.",
+          "reviewHint": "Usa una previsione qualitativa per controllare l’ordine del rapporto."
+        },
+        {
+          "id": "E",
+          "text": "1",
+          "isCorrect": false,
+          "feedback": "Le ampiezze delle singole onde restano uguali, ma la fase relativa cambia l’ampiezza risultante. Passare da 7 a 1 mm riduce l’intensità di un fattore 49.",
+          "reviewHint": "Ripassa il ruolo della fase relativa nell’interferenza coerente."
+        }
+      ],
+      "correctOptionId": "A",
+      "specificCorrection": null
+    },
+    {
+      "id": "u5-latent-heat-03",
+      "unitId": "sf-2026-u5-02",
+      "courseCode": "C3",
+      "syllabusUnitId": "U5",
+      "title": "Riconoscere energia di cambiamento di fase a temperatura costante.",
+      "prompt": "Si considera una sostanza pura in equilibrio di fase alla temperatura di fusione.\n\nDurante la fusione di una sostanza pura alla sua temperatura di fusione e a pressione fissata, quale descrizione è corretta finché coesistono solido e liquido?\n\nIpotesi e convenzioni: Pressione fissata; coesistenza di fase solida e liquida; nessuna reazione chimica.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "b0db255026e6f8c5cc9c0bcaf79c2b2778a52b60656f8b5c80c151c34995a4a5",
+      "sourcePromptSHA256": "5121581657573c6236a87a0964b1fca75c44381252561347b936b7f74f7e978d",
+      "sourceSolutionSHA256": "3ecbe3c9fc5b86613ae2cf81c1d0d0f60213e222db18607546e84afc0d387f97",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "c44924e2d122d5fde6e7eaf75d327590d123307bbc2fbcba74026d6938eebeac",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U5-latent-heat",
+          "authoringTaskId": "conceptual_application",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U5: cambiamenti-di-stato"
+            },
+            {
+              "sourceId": "UPLOAD-VALDES",
+              "locator": "cap. 6, PDF 180-209"
+            },
+            {
+              "sourceId": "UPLOAD-RAGOZZINO",
+              "locator": "indice PDF 10-11: capitoli 12-14"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Sostanza pura in equilibrio solido-liquido, pressione fissata, temperatura di fusione, nessuna reazione.",
+      "sourceCaveat": "Nessuna ambiguità decisiva identificata nel controllo circoscritto.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "A",
+        "correctText": "Il calore fornito cambia la frazione liquida mentre la temperatura resta costante.",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "text",
+        "exact": "Il calore fornito cambia la frazione liquida mentre la temperatura resta costante.",
+        "unit": "1",
+        "text": "Il calore fornito cambia la frazione liquida mentre la temperatura resta costante.",
+        "accepted": [
+          "Il calore fornito cambia la frazione liquida mentre la temperatura resta costante."
+        ],
+        "correctOptionId": "A"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "Il calore fornito cambia la frazione liquida mentre la temperatura resta costante.",
+          "isCorrect": true,
+          "feedback": "Alla pressione fissata, la coesistenza di solido e liquido della sostanza pura avviene alla temperatura di fusione. Il calore fornito trasforma ulteriore massa in liquido finché resta fase solida.",
+          "reviewHint": "Ripassa la relazione Q=m_fusa L e il tratto orizzontale della curva di riscaldamento."
+        },
+        {
+          "id": "B",
+          "text": "L’energia interna non può cambiare.",
+          "isCorrect": false,
+          "feedback": "Temperatura costante non impone energia interna costante: durante un cambio di fase cambia lo stato della sostanza. A pressione fissata il calore latente è legato alla variazione di entalpia, comprendendo l’eventuale lavoro di volume.",
+          "reviewHint": "Ripassa la differenza fra temperatura, energia interna e calore di trasformazione."
+        },
+        {
+          "id": "C",
+          "text": "Il calore specifico deve essere uguale a zero.",
+          "isCorrect": false,
+          "feedback": "Il tratto a temperatura costante non richiede calore specifico nullo. La formula Q=mcΔT descrive un riscaldamento nella stessa fase, mentre qui varia la frazione di fase.",
+          "reviewHint": "Distingui calore sensibile e calore latente."
+        },
+        {
+          "id": "D",
+          "text": "Non può entrare energia perché la temperatura è costante.",
+          "isCorrect": false,
+          "feedback": "Energia può entrare anche senza aumento di temperatura: viene impiegata nel cambiamento di fase. La temperatura non misura direttamente tutto il contenuto energetico.",
+          "reviewHint": "Ripassa perché un termometro fermo non dimostra che il calore scambiato sia zero."
+        },
+        {
+          "id": "E",
+          "text": "La temperatura cresce proporzionalmente a tutto il calore fornito.",
+          "isCorrect": false,
+          "feedback": "Finché coesistono le fasi, la pressione fissata mantiene la temperatura di fusione. La temperatura del liquido può aumentare dopo che la fusione è terminata, non lungo tutto questo tratto.",
+          "reviewHint": "Individua nella curva di riscaldamento i tratti monofase e quelli di coesistenza."
+        }
+      ],
+      "correctOptionId": "A",
+      "specificCorrection": null
+    },
+    {
+      "id": "u5-ideal-gas-pressure-03",
+      "unitId": "sf-2026-u5-01",
+      "courseCode": "C3",
+      "syllabusUnitId": "U5",
+      "title": "Separare equazione di stato e bilancio energetico del processo.",
+      "prompt": "Il gas è un sistema chiuso e gli stati iniziale e finale sono stati di equilibrio.\n\nConoscere soltanto gli stati iniziale e finale di un gas ideale tramite p, V, T permette di stabilire sempre quanto calore è stato scambiato?\n\nIpotesi e convenzioni: Si usa lavoro positivo se compiuto dal gas; non cambiano energia cinetica o potenziale macroscopica.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "be8f9b35198f9a5d350da30eb2f6b9219230c1d1823e0dd62d46408eac2128d2",
+      "sourcePromptSHA256": "7e51e6acc7e45def1b4f701d5725eea542d4d28de7e402c17a19a79633d3aefc",
+      "sourceSolutionSHA256": "e43209551b0d23f3969bfb2e88c53de79e70e60d4c512e21ffd87dc977332b14",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "50925c881aaedcd5f638dbe932f37c906d04506ce6cafc37d11f69f495b4c62f",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U5-ideal-gas-pressure",
+          "authoringTaskId": "conceptual_application",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U5: gas-perfetto"
+            },
+            {
+              "sourceId": "UPLOAD-VALDES",
+              "locator": "cap. 6, PDF 180-209"
+            },
+            {
+              "sourceId": "UPLOAD-RAGOZZINO",
+              "locator": "indice PDF 10-11: capitoli 12-14"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Gas ideale chiuso, stati estremi di equilibrio; lavoro del gas positivo; variazioni cinetiche/potenziali macroscopiche nulle.",
+      "sourceCaveat": "La composizione/quantità del campione resta quella del sistema chiuso nel modello ordinario.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "E",
+        "correctText": "No: il calore dipende anche dal percorso e dal lavoro scambiato.",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "text",
+        "exact": "No: il calore dipende anche dal percorso e dal lavoro scambiato.",
+        "unit": "1",
+        "text": "No: il calore dipende anche dal percorso e dal lavoro scambiato.",
+        "accepted": [
+          "No: il calore dipende anche dal percorso e dal lavoro scambiato."
+        ],
+        "correctOptionId": "E"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "No, perché l’energia interna non ha alcun legame con la temperatura.",
+          "isCorrect": false,
+          "feedback": "La risposta «no» è motivata in modo errato: per un campione di gas ideale l’energia interna dipende dalla temperatura. È il lavoro, e quindi il calore, a dipendere anche dal percorso.",
+          "reviewHint": "Ripassa U(T) per un gas ideale e Q=ΔU+W."
+        },
+        {
+          "id": "B",
+          "text": "Sì, ma soltanto usando Celsius al posto di Kelvin.",
+          "isCorrect": false,
+          "feedback": "Cambiare scala termometrica non fornisce il processo mancante. L’equazione di stato richiede kelvin e, anche con gli stati noti, non determina da sola il lavoro lungo il percorso.",
+          "reviewHint": "Distingui equazione di stato e bilancio energetico di una trasformazione."
+        },
+        {
+          "id": "C",
+          "text": "Sì, perché il calore è una funzione di stato.",
+          "isCorrect": false,
+          "feedback": "Il calore non è una funzione di stato: descrive energia trasferita durante un processo. Con gli stessi estremi, lavori diversi richiedono calori diversi tramite Q=ΔU+W.",
+          "reviewHint": "Confronta funzioni di stato e quantità di scambio."
+        },
+        {
+          "id": "D",
+          "text": "Sì, basta moltiplicare la pressione finale per il volume finale.",
+          "isCorrect": false,
+          "feedback": "Il prodotto p_fV_f ha dimensioni di energia ma non è in generale il calore scambiato. Non contiene l’informazione sul lavoro compiuto durante la trasformazione.",
+          "reviewHint": "Ripassa perché coerenza dimensionale è necessaria ma non basta a identificare una grandezza."
+        },
+        {
+          "id": "E",
+          "text": "No: il calore dipende anche dal percorso e dal lavoro scambiato.",
+          "isCorrect": true,
+          "feedback": "Gli stati estremi fissano ΔU del campione ideale, mentre il lavoro dipende dal percorso. Dato Q=ΔU+W, senza conoscere W o informazioni equivalenti non si determina sempre Q.",
+          "reviewHint": "Confronta un’espansione isoterma reversibile con una libera espansione isolata dello stesso gas ideale."
+        }
+      ],
+      "correctOptionId": "E",
+      "specificCorrection": null
+    },
+    {
+      "id": "u5-entropy-hot-cold-03",
+      "unitId": "sf-2026-u5-05",
+      "courseCode": "C3",
+      "syllabusUnitId": "U5",
+      "title": "Comprendere perché conservazione dell’energia e aumento di entropia sono compatibili.",
+      "prompt": "Due sorgenti ideali a temperature costanti T_h>T_c scambiano 600 J, senza altri scambi con l’esterno.\n\nIl trasferimento spontaneo di 600 J da caldo a freddo conserva l’energia. Perché aumenta comunque l’entropia totale?\n\nIpotesi e convenzioni: Il trasferimento spontaneo va dalla sorgente calda a quella fredda; usare temperature assolute.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "815080e82c27a1102e2b74657fe1d7c06c97679a2bfb9c089da53e5ded1daa9d",
+      "sourcePromptSHA256": "337e35824d681a033b8a0ad15d8fd1f60ced4c0add8b246eac4b1efdba0aefe3",
+      "sourceSolutionSHA256": "965136a656c800f4f08890bea069abe912b83f2077c0000740adb6887159a28b",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "64ba15d26da0464acf1c55a15684960d2eeaa1e6e723137dfd24b5fb93c97f17",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U5-entropy-hot-cold",
+          "authoringTaskId": "conceptual_application",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U5: secondo-principio"
+            },
+            {
+              "sourceId": "UPLOAD-VALDES",
+              "locator": "cap. 6, PDF 180-209"
+            },
+            {
+              "sourceId": "UPLOAD-RAGOZZINO",
+              "locator": "indice PDF 10-11: capitoli 12-14"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Due sorgenti ideali a T_h>T_c>0 costanti; Q=600 J dal caldo al freddo; nessun altro scambio.",
+      "sourceCaveat": "Il verbo produce nell’alternativa E va letto come variazione per la singola sorgente: la produzione irreversibile è il totale positivo.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "E",
+        "correctText": "Perché ogni joule trasferito produce una variazione di entropia maggiore alla temperatura più bassa.",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "text",
+        "exact": "Perché ogni joule trasferito produce una variazione di entropia maggiore alla temperatura più bassa.",
+        "unit": "1",
+        "text": "Perché ogni joule trasferito produce una variazione di entropia maggiore alla temperatura più bassa.",
+        "accepted": [
+          "Perché ogni joule trasferito produce una variazione di entropia maggiore alla temperatura più bassa."
+        ],
+        "correctOptionId": "E"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "Perché il calore perso dal caldo è inferiore a quello ricevuto dal freddo.",
+          "isCorrect": false,
+          "feedback": "Il caldo perde proprio i 600 J ricevuti dal freddo: non c’è una differenza di energia trasferita. La differenza nasce dai fattori 1/T nei due contributi di entropia.",
+          "reviewHint": "Ripassa separatamente bilancio energetico e bilancio entropico."
+        },
+        {
+          "id": "B",
+          "text": "Perché l’entropia si misura in joule come l’energia.",
+          "isCorrect": false,
+          "feedback": "L’entropia si misura in J/K, non in J. Per sorgenti a temperatura costante, la variazione è Q/T: lo stesso calore produce moduli diversi a temperature diverse.",
+          "reviewHint": "Esegui il controllo delle unità nella relazione ΔS=Q/T."
+        },
+        {
+          "id": "C",
+          "text": "Perché il corpo caldo non perde entropia.",
+          "isCorrect": false,
+          "feedback": "La sorgente calda perde entropia: ΔS_h=−600/T_h. Il totale aumenta perché il freddo guadagna 600/T_c, quantità maggiore in modulo dato T_c<T_h.",
+          "reviewHint": "Scrivi i due contributi con segno prima di sommarli."
+        },
+        {
+          "id": "D",
+          "text": "Perché viene creata energia nel corpo freddo.",
+          "isCorrect": false,
+          "feedback": "Non si crea energia: la somma dei due scambi è −600+600=0 J. È positiva la variazione totale di entropia, che segnala l’irreversibilità del trasferimento.",
+          "reviewHint": "Confronta la conservazione dell’energia con il secondo principio per il sistema complessivo."
+        },
+        {
+          "id": "E",
+          "text": "Perché ogni joule trasferito produce una variazione di entropia maggiore alla temperatura più bassa.",
+          "isCorrect": true,
+          "feedback": "Per ogni joule ricevuto, il freddo guadagna (1 J)/T_c di entropia; il caldo ne perde (1 J)/T_h. Poiché T_c<T_h, ΔS_tot=600(1/T_c−1/T_h)>0. Il termine «produce» qui indica la variazione delle singole sorgenti; la produzione irreversibile riguarda il totale.",
+          "reviewHint": "Ripassa variazione di entropia di una parte e produzione totale di entropia."
+        }
+      ],
+      "correctOptionId": "E",
+      "specificCorrection": null
+    },
+    {
+      "id": "u5-net-blackbody-exchange-03",
+      "unitId": "sf-2026-u5-03",
+      "courseCode": "C3",
+      "syllabusUnitId": "U5",
+      "title": "Distinguere un flusso lordo da uno scambio netto in equilibrio.",
+      "prompt": "Una piccola superficie nera è circondata da un grande ambiente nero alla stessa temperatura assoluta positiva.\n\nSuperficie e ambiente nero raggiungono la stessa temperatura. Quale descrizione dello scambio radiativo è corretta?\n\nIpotesi e convenzioni: Si confrontano potenza emessa, potenza assorbita e loro differenza; emissività e assorbività sono unitarie.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "9ce75363481b60671ae23e1361e2a5bfc800af9e605718ba96f077f5906abb70",
+      "sourcePromptSHA256": "f5da0386b5ad21ad1ed04f343cdac7061ef160a22d168256580ed00e592bb094",
+      "sourceSolutionSHA256": "ca04a48a05d23004b4833258b3d1835fe5d18d2cef5474e65d7291e25912ed68",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "b926470fbb3fde9a171248646b6ad29849d672f092e416acdfb86b0c4eac066b",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U5-net-blackbody-exchange",
+          "authoringTaskId": "conceptual_application",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U5: irraggiamento"
+            },
+            {
+              "sourceId": "UPLOAD-VALDES",
+              "locator": "cap. 6, PDF 180-209"
+            },
+            {
+              "sourceId": "UPLOAD-RAGOZZINO",
+              "locator": "indice PDF 10-11: capitoli 12-14"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Superficie nera piccola circondata da grande ambiente nero; stessa T assoluta positiva; assorbività/emissività 1.",
+      "sourceCaveat": "Nessuna ambiguità decisiva identificata nel controllo circoscritto.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "D",
+        "correctText": "Entrambi emettono e assorbono, ma la potenza netta scambiata è zero.",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "text",
+        "exact": "Entrambi emettono e assorbono, ma la potenza netta scambiata è zero.",
+        "unit": "1",
+        "text": "Entrambi emettono e assorbono, ma la potenza netta scambiata è zero.",
+        "accepted": [
+          "Entrambi emettono e assorbono, ma la potenza netta scambiata è zero."
+        ],
+        "correctOptionId": "D"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "La legge radiativa diventa indipendente dalla temperatura.",
+          "isCorrect": false,
+          "feedback": "La potenza emessa continua a dipendere da T⁴. A uguale temperatura si annulla la differenza fra emissione e assorbimento, non la dipendenza di ciascuno dalla temperatura.",
+          "reviewHint": "Ripassa P_em=σAT⁴ e P_net=P_em−P_ass."
+        },
+        {
+          "id": "B",
+          "text": "La superficie smette completamente di emettere radiazione.",
+          "isCorrect": false,
+          "feedback": "Una superficie nera a temperatura assoluta positiva continua a emettere. L’equilibrio è mantenuto perché riceve dall’ambiente una potenza uguale a quella emessa.",
+          "reviewHint": "Distingui equilibrio dinamico degli scambi e assenza di scambi."
+        },
+        {
+          "id": "C",
+          "text": "L’ambiente continua a emettere ma la superficie no.",
+          "isCorrect": false,
+          "feedback": "Entrambi, superficie e ambiente nero, emettono a temperatura positiva. Non esiste nel modello un motivo per attribuire l’emissione al solo ambiente.",
+          "reviewHint": "Applica la legge di Stefan–Boltzmann a ciascun corpo."
+        },
+        {
+          "id": "D",
+          "text": "Entrambi emettono e assorbono, ma la potenza netta scambiata è zero.",
+          "isCorrect": true,
+          "feedback": "I contributi lordi sono positivi e uguali: P_em=P_ass=σAT⁴. Il bilancio netto è quindi zero anche se radiazione continua a passare nei due versi.",
+          "reviewHint": "Ripassa il significato di potenza lorda e potenza netta."
+        },
+        {
+          "id": "E",
+          "text": "La potenza netta diventa infinita.",
+          "isCorrect": false,
+          "feedback": "Temperature e area finite danno potenze finite. A temperature uguali la differenza è precisamente zero, non infinita.",
+          "reviewHint": "Controlla il limite T_superficie=T_ambiente nella formula P_net=σA(T_s⁴−T_a⁴)."
+        }
+      ],
+      "correctOptionId": "D",
+      "specificCorrection": null
+    },
+    {
+      "id": "u6-lorentz-force-03",
+      "unitId": "sf-2026-u6-06",
+      "courseCode": "C4",
+      "syllabusUnitId": "U6",
+      "title": "Collegare la perpendicolarità della forza magnetica al lavoro nullo",
+      "prompt": "Una particella carica è soggetta soltanto a un campo magnetico uniforme e statico. Quale proprietà del suo moto rimane costante?\n\nIpotesi e convenzioni: Valgono esclusivamente le condizioni esplicitate nella domanda concettuale.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "b81b5324a5c10b0686a014951e7ad8a77ec438cd1a38ef27e98e6f17e43a5f8a",
+      "sourcePromptSHA256": "bf5957cf350fa3888c794803da754adfc9241b7c3d9af561e4760be49f0d9cda",
+      "sourceSolutionSHA256": "12f30fabc04fb6ea9b9bd82ae1cd609945e6dc0990684617021033630a3c2560",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "b5d41d1ec100cb0dbbdc4fe7f5acdc8feefc13afecfa18381260a12f8f233e67",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U6-lorentz-force",
+          "authoringTaskId": "conceptual_application",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U6: Forza di Lorentz"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Particella soggetta soltanto alla forza di un campo magnetico uniforme e statico nel modello classico della lezione.",
+      "sourceCaveat": "La soluzione legacy termina richiamando erroneamente la seconda opzione come errore velocità vettoriale: quella frase è imprecisa rispetto all’ordine A–E. Chiave D e ragionamento fisico sono corretti; correggere il rinvio editoriale prima di mostrare integralmente la soluzione. Radiazione/reazione di radiazione fuori dal modello dichiarato.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "D",
+        "correctText": "Il modulo della velocità e quindi l’energia cinetica",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "text",
+        "exact": "Il modulo della velocità e quindi l’energia cinetica",
+        "unit": "1",
+        "text": "Il modulo della velocità e quindi l’energia cinetica",
+        "accepted": [
+          "Il modulo della velocità e quindi l’energia cinetica"
+        ],
+        "correctOptionId": "D"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "La direzione del moto anche quando la velocità è perpendicolare a B",
+          "isCorrect": false,
+          "feedback": "Quando v è perpendicolare a B, la forza magnetica può essere non nulla e curva la traiettoria. Il modulo di v resta costante, mentre la direzione cambia.",
+          "reviewHint": "Ripassa il moto circolare di una carica nel campo magnetico uniforme."
+        },
+        {
+          "id": "B",
+          "text": "La posizione nello spazio",
+          "isCorrect": false,
+          "feedback": "La posizione varia se la particella si muove: lavoro nullo non significa particella ferma. Può percorrere una circonferenza o un’elica senza cambiare energia cinetica.",
+          "reviewHint": "Distingui posizione, velocità ed energia cinetica."
+        },
+        {
+          "id": "C",
+          "text": "La quantità di moto vettoriale in ogni situazione",
+          "isCorrect": false,
+          "feedback": "La quantità di moto vettoriale può cambiare direzione sotto la forza magnetica. Resta costante il suo modulo nel modello, non necessariamente il vettore.",
+          "reviewHint": "Ripassa dp/dt=F e la differenza fra variazione di modulo e variazione di direzione."
+        },
+        {
+          "id": "D",
+          "text": "Il modulo della velocità e quindi l’energia cinetica",
+          "isCorrect": true,
+          "feedback": "La forza q(v×B) è perpendicolare a v: la potenza F·v è nulla. Nel modello classico senza altre forze, K e il modulo della velocità restano costanti.",
+          "reviewHint": "Ripassa la relazione fra lavoro, potenza e variazione dell’energia cinetica."
+        },
+        {
+          "id": "E",
+          "text": "Il vettore velocità in ogni situazione",
+          "isCorrect": false,
+          "feedback": "Il vettore velocità resta costante solo in casi particolari, come il moto parallelo a B. In generale la forza ne cambia la direzione pur senza cambiarne il modulo.",
+          "reviewHint": "Confronta i casi v parallela, perpendicolare e obliqua a B."
+        }
+      ],
+      "correctOptionId": "D",
+      "specificCorrection": "Il feedback proposto descrive direttamente modulo/vettore e usa gli ID A–E effettivi; eliminato il rinvio legacy impreciso alla «seconda opzione». Nessuna chiave o alternativa cambiata."
+    },
+    {
+      "id": "u6-plane-capacitance-03",
+      "unitId": "sf-2026-u6-03",
+      "courseCode": "C4",
+      "syllabusUnitId": "U6",
+      "title": "Riconoscere campo nullo ed equipotenzialità del conduttore in equilibrio",
+      "prompt": "In un conduttore in equilibrio elettrostatico, quale affermazione è corretta per l’interno del materiale conduttore?\n\nIpotesi e convenzioni: Valgono esclusivamente le condizioni esplicitate nella domanda concettuale.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "18077f8b1f4223d16cf622d0cb2e7338fff0e5428097e29959c5de01bc55470c",
+      "sourcePromptSHA256": "2bbce1d4760ba36a6cc3662d2d4017c30f822babfc5d6380f0f2b5b7fd9ba7d1",
+      "sourceSolutionSHA256": "221e09ef5043ce49d6c1c22f656ff968458e8a4d2e91fb06fcd2bacf830a3375",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "b6d0271247aedab9d5f441f5fbaec3f5380715e6f4f67e693fb78e22dceaeb4e",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U6-plane-capacitance",
+          "authoringTaskId": "conceptual_application",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U6: Capacità del condensatore piano"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Interno del materiale di un conduttore in equilibrio elettrostatico, non una cavità o il dielettrico fra armature.",
+      "sourceCaveat": "Nessuna ambiguità decisiva identificata nel controllo circoscritto.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "A",
+        "correctText": "Il campo elettrico è nullo",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "text",
+        "exact": "Il campo elettrico è nullo",
+        "unit": "1",
+        "text": "Il campo elettrico è nullo",
+        "accepted": [
+          "Il campo elettrico è nullo"
+        ],
+        "correctOptionId": "A"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "Il campo elettrico è nullo",
+          "isCorrect": true,
+          "feedback": "Nel materiale conduttore in equilibrio elettrostatico, un campo non nullo muoverebbe le cariche libere. La loro redistribuzione porta quindi a E=0 all’interno del materiale.",
+          "reviewHint": "Ripassa come si raggiunge l’equilibrio elettrostatico in un conduttore."
+        },
+        {
+          "id": "B",
+          "text": "Il campo elettrico è sempre uguale al campo esterno applicato",
+          "isCorrect": false,
+          "feedback": "Il campo esterno applicato non coincide necessariamente con quello interno: le cariche del conduttore si redistribuiscono e il loro contributo annulla il campo nel materiale.",
+          "reviewHint": "Ripassa il principio di sovrapposizione e la redistribuzione superficiale delle cariche."
+        },
+        {
+          "id": "C",
+          "text": "Il potenziale deve essere necessariamente zero",
+          "isCorrect": false,
+          "feedback": "E=0 implica potenziale costante nel conduttore connesso, non valore obbligatoriamente zero. Lo zero di potenziale dipende dal riferimento e da eventuali collegamenti a terra.",
+          "reviewHint": "Distingui campo nullo, equipotenzialità e messa a terra."
+        },
+        {
+          "id": "D",
+          "text": "Le cariche libere continuano ad accelerare indefinitamente",
+          "isCorrect": false,
+          "feedback": "Un’accelerazione indefinita delle cariche contraddirebbe l’equilibrio elettrostatico. In tale condizione non rimane un campo interno che sostenga quella forza.",
+          "reviewHint": "Ripassa il significato di equilibrio e distinguilo da un conduttore percorso da corrente."
+        },
+        {
+          "id": "E",
+          "text": "La resistività deve essere esattamente infinita",
+          "isCorrect": false,
+          "feedback": "Resistività infinita descriverebbe un isolante ideale, non la ragione del campo nullo in un conduttore. Qui sono le cariche mobili a redistribuirsi fino all’equilibrio.",
+          "reviewHint": "Confronta conduzione, isolamento ed equilibrio elettrostatico."
+        }
+      ],
+      "correctOptionId": "A",
+      "specificCorrection": null
+    },
+    {
+      "id": "u6-faraday-average-emf-03",
+      "unitId": "sf-2026-u6-07",
+      "courseCode": "C4",
+      "syllabusUnitId": "U6",
+      "title": "Applicare Lenz alla variazione del flusso distinguendola dal valore del campo",
+      "prompt": "Il flusso di un campo magnetico diretto verso l’osservatore aumenta attraverso una spira conduttrice. Qual è il verso del campo prodotto dalla corrente indotta?\n\nIpotesi e convenzioni: Valgono esclusivamente le condizioni esplicitate nella domanda concettuale.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "d806e3b62f562965c355f444ab4ccc4f3692dbb5ee547ac2d5461cb249bcf931",
+      "sourcePromptSHA256": "695818602fb9e51cd848694882dedee0c369e7af217cb473b770b046ab04888d",
+      "sourceSolutionSHA256": "b4bf6c1838cfeba638d98e59861edf9654e6d17adee47945ee161a83730ba061",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "aef944e42441d1e8d1357bdef9677ddf4fb93ccce3a2060551817bd9ac3397e2",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U6-faraday-average-emf",
+          "authoringTaskId": "conceptual_application",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U6: Faraday-Neumann-Lenz"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Spira conduttrice; flusso verso l’osservatore crescente. Si intende il contributo del campo indotto attraverso la superficie della spira.",
+      "sourceCaveat": "Il verso si riferisce al campo attraverso la spira, non a ogni punto dello spazio esterno: una precisazione utile nella futura presentazione.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "C",
+        "correctText": "È diretto dalla spira lontano dall’osservatore, per opporsi all’aumento del flusso",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "text",
+        "exact": "È diretto dalla spira lontano dall’osservatore, per opporsi all’aumento del flusso",
+        "unit": "1",
+        "text": "È diretto dalla spira lontano dall’osservatore, per opporsi all’aumento del flusso",
+        "accepted": [
+          "È diretto dalla spira lontano dall’osservatore, per opporsi all’aumento del flusso"
+        ],
+        "correctOptionId": "C"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "È parallelo al filo in ogni punto",
+          "isCorrect": false,
+          "feedback": "Il campo di una corrente non è in generale parallelo al filo. Per il campo attraverso la spira, il criterio decisivo è il verso che contrasta la variazione del flusso applicato.",
+          "reviewHint": "Ripassa la geometria del campo di una spira e la regola della mano destra."
+        },
+        {
+          "id": "B",
+          "text": "Dipende soltanto dal colore del conduttore",
+          "isCorrect": false,
+          "feedback": "Il colore del conduttore non determina il segno dell’induzione. La legge di Lenz lo collega alla variazione temporale del flusso magnetico.",
+          "reviewHint": "Ripassa quali grandezze compaiono nella legge di Faraday–Lenz."
+        },
+        {
+          "id": "C",
+          "text": "È diretto dalla spira lontano dall’osservatore, per opporsi all’aumento del flusso",
+          "isCorrect": true,
+          "feedback": "Il flusso applicato verso l’osservatore aumenta; la corrente indotta genera attraverso la spira un contributo nel verso opposto. Vista dall’osservatore, la corrente corrispondente è oraria.",
+          "reviewHint": "Applica prima Lenz al flusso, poi la mano destra al verso della corrente."
+        },
+        {
+          "id": "D",
+          "text": "È diretto verso l’osservatore, per rinforzare sempre il campo applicato",
+          "isCorrect": false,
+          "feedback": "Un contributo verso l’osservatore rinforzerebbe l’aumento del flusso assegnato. Lenz richiede l’opposizione alla variazione, non il rinforzo automatico del campo applicato.",
+          "reviewHint": "Confronta separatamente un flusso crescente e lo stesso flusso decrescente."
+        },
+        {
+          "id": "E",
+          "text": "È sempre nullo perché il campo applicato non può produrre corrente",
+          "isCorrect": false,
+          "feedback": "Un flusso magnetico variabile può generare una forza elettromotrice e una corrente nella spira conduttrice. Non va confuso con un flusso costante, che in questo modello non induce la corrente.",
+          "reviewHint": "Ripassa la differenza fra valore di Φ e sua derivata dΦ/dt."
+        }
+      ],
+      "correctOptionId": "C",
+      "specificCorrection": null
+    },
+    {
+      "id": "u7-photon-rate-power-03",
+      "unitId": "sf-2026-u7-06",
+      "courseCode": "C5",
+      "syllabusUnitId": "U7",
+      "title": "Distinguere energia per fotone e intensità nella condizione energetica di ionizzazione",
+      "prompt": "Nel confronto elementare fra fotoni e ionizzazione di un atomo, quale proprietà del singolo fotone determina se può fornire l’energia necessaria a rimuovere un elettrone in un evento di assorbimento a un fotone?\n\nIpotesi e convenzioni: Valgono le condizioni specificate nella domanda.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "ff500e648997d0ad4320ced2ec8dbacff40b4320738e92fadee115135cf425bc",
+      "sourcePromptSHA256": "48d593a5d863140d1be4ac1c44d74601027daf8a7385dd6877b7e49dea1fd200",
+      "sourceSolutionSHA256": "11da3a383dc1ba8cb3b0e9381cd1afbe92ac362bf224566ddece401d03fcb542",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "67ffa8f59d1ca1746b9e4b868242c93a20b200349588788703b41b4eb64d0d6d",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U7-photon-rate-power",
+          "authoringTaskId": "qualitative_u7-photon-rate-power",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U7: Potenza e numero di fotoni"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Assorbimento a un solo fotone; confronto del requisito energetico per togliere un elettrone, senza pretesa di probabilità unitaria di assorbimento.",
+      "sourceCaveat": "Condizione energetica necessaria nel modello, non garanzia di un evento per ogni fotone.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "A",
+        "correctText": "La sua energia hf, quindi la frequenza, confrontata con l’energia richiesta dal processo",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "text",
+        "exact": "La sua energia hf, quindi la frequenza, confrontata con l’energia richiesta dal processo",
+        "unit": "1",
+        "text": "La sua energia hf, quindi la frequenza, confrontata con l’energia richiesta dal processo",
+        "accepted": [
+          "La sua energia hf, quindi la frequenza, confrontata con l’energia richiesta dal processo"
+        ],
+        "correctOptionId": "A"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "La sua energia hf, quindi la frequenza, confrontata con l’energia richiesta dal processo",
+          "isCorrect": true,
+          "feedback": "In un assorbimento a un fotone l’energia disponibile è hf. Va confrontata con l’energia richiesta per rimuovere l’elettrone; è un requisito energetico, non una garanzia che ogni fotone venga assorbito.",
+          "reviewHint": "Ripassa energia del fotone e soglia energetica di ionizzazione."
+        },
+        {
+          "id": "B",
+          "text": "Soltanto il numero totale di fotoni emessi dalla sorgente",
+          "isCorrect": false,
+          "feedback": "Il numero di fotoni modifica l’energia complessiva del fascio e il numero di occasioni d’interazione, ma non l’energia hf di ciascun fotone. Il quesito esclude l’assorbimento multifotonico.",
+          "reviewHint": "Distingui energia per fotone, flusso di fotoni e potenza del fascio."
+        },
+        {
+          "id": "C",
+          "text": "Soltanto l’area del laboratorio",
+          "isCorrect": false,
+          "feedback": "L’area del laboratorio non fissa l’energia del singolo fotone. Nel modello elementare questa dipende dalla frequenza tramite E=hf.",
+          "reviewHint": "Ripassa quali grandezze determinano l’energia di un quanto di radiazione."
+        },
+        {
+          "id": "D",
+          "text": "Il fatto che il fascio sia visibile all’occhio, indipendentemente dalla frequenza",
+          "isCorrect": false,
+          "feedback": "La visibilità dipende dalla sensibilità dell’occhio e non sostituisce il confronto energetico con l’atomo. Occorre conoscere hf rispetto alla soglia del processo.",
+          "reviewHint": "Confronta classificazione dello spettro visibile e requisito energetico di ionizzazione."
+        },
+        {
+          "id": "E",
+          "text": "Il numero di minuti da cui la lampada è accesa, indipendentemente dall’energia del fotone",
+          "isCorrect": false,
+          "feedback": "Aumentare la durata dell’illuminazione può aumentare il numero di fotoni ricevuti, ma non accumula automaticamente energia in un singolo evento a un fotone. Conta l’energia hf del fotone assorbito.",
+          "reviewHint": "Distingui energia totale erogata nel tempo ed energia del singolo evento."
+        }
+      ],
+      "correctOptionId": "A",
+      "specificCorrection": null
+    },
+    {
+      "id": "u7-thin-lens-real-image-03",
+      "unitId": "sf-2026-u7-07",
+      "courseCode": "C5",
+      "syllabusUnitId": "U7",
+      "title": "Collegare posizione entro il fuoco, segno di q e natura dell’immagine",
+      "prompt": "Un oggetto reale è posto fra una lente sottile convergente e il suo fuoco. Quale immagine si forma nel modello parassiale?\n\nIpotesi e convenzioni: Valgono esclusivamente le condizioni esplicitate nella domanda concettuale.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "22381e79a9e6cf356832c3a8741ae14b9838b7095a0e7b2d760393bbbff28911",
+      "sourcePromptSHA256": "098d0ec3032fc290e4568fc78ffa5473d914eb5d19d1bdb7c2ae46a60793b57a",
+      "sourceSolutionSHA256": "69d69675e6aaaee6cc918b5703f5e8432ee50a6fc667c6b5f49ce0646019c4b8",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "c709e165957666cb4d666ac616c9b9327337098f771b711fc220ed2e2b36d32f",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U7-thin-lens-real-image",
+          "authoringTaskId": "conceptual_application",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U7: Punti coniugati di una lente convergente"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Lente sottile convergente, oggetto reale con 0<p<f, modello parassiale.",
+      "sourceCaveat": "La convenzione di segno è esplicitata qui nel controllo; il prompt descrive la posizione geometricamente senza dipendere da una notazione.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "E",
+        "correctText": "Virtuale, diritta e ingrandita, sullo stesso lato dell’oggetto",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "text",
+        "exact": "Virtuale, diritta e ingrandita, sullo stesso lato dell’oggetto",
+        "unit": "1",
+        "text": "Virtuale, diritta e ingrandita, sullo stesso lato dell’oggetto",
+        "accepted": [
+          "Virtuale, diritta e ingrandita, sullo stesso lato dell’oggetto"
+        ],
+        "correctOptionId": "E"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "Reale e capovolta su uno schermo dall’altro lato, in ogni caso",
+          "isCorrect": false,
+          "feedback": "Con l’oggetto entro il fuoco, i raggi emergenti non convergono realmente dall’altro lato. L’immagine deriva dai loro prolungamenti sul lato dell’oggetto e non si raccoglie direttamente su quello schermo.",
+          "reviewHint": "Ripassa il tracciamento dei raggi per 0<p<f in una lente convergente."
+        },
+        {
+          "id": "B",
+          "text": "Sempre reale e della stessa dimensione dell’oggetto",
+          "isCorrect": false,
+          "feedback": "Il carattere reale e la stessa dimensione non valgono per un oggetto entro il fuoco. In questa posizione l’immagine è virtuale e l’ingrandimento è maggiore di uno.",
+          "reviewHint": "Confronta i casi p<f, p=2f e p>2f senza trasferire proprietà fra casi diversi."
+        },
+        {
+          "id": "C",
+          "text": "Nessuna immagine di alcun tipo",
+          "isCorrect": false,
+          "feedback": "Non si forma un’immagine reale sullo schermo, ma esiste un’immagine virtuale: i prolungamenti dei raggi emergenti si incontrano sul lato dell’oggetto.",
+          "reviewHint": "Ripassa la definizione geometrica di immagine virtuale."
+        },
+        {
+          "id": "D",
+          "text": "Virtuale ma necessariamente più piccola dell’oggetto",
+          "isCorrect": false,
+          "feedback": "L’immagine è virtuale, ma non più piccola. Dalla lente sottile si ottiene m=f/(f−p)>1 quando 0<p<f, quindi è diritta e ingrandita.",
+          "reviewHint": "Ripassa il segno e il modulo dell’ingrandimento trasversale."
+        },
+        {
+          "id": "E",
+          "text": "Virtuale, diritta e ingrandita, sullo stesso lato dell’oggetto",
+          "isCorrect": true,
+          "feedback": "Con 0<p<f, 1/q=1/f−1/p è negativo: q<0. L’ingrandimento m=−q/p è positivo e maggiore di uno, quindi l’immagine è virtuale, diritta e ingrandita sul lato dell’oggetto.",
+          "reviewHint": "Ripassa l’equazione della lente verificando il caso p=f/2: q=−f e m=2."
+        }
+      ],
+      "correctOptionId": "E",
+      "specificCorrection": null
+    },
+    {
+      "id": "u7-beta-minus-atomic-number-03",
+      "unitId": "sf-2026-u7-05",
+      "courseCode": "C5",
+      "syllabusUnitId": "U7",
+      "title": "Distinguere decadimento beta meno, ionizzazione elettronica e decadimento alfa",
+      "prompt": "Quale descrizione del decadimento β⁻ è corretta?\n\nIpotesi e convenzioni: Valgono esclusivamente le condizioni esplicitate nella domanda concettuale.",
+      "type": "multiple_choice",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "856af962aa16679e2d48e1152f450150576174541701cebe2f6dff89195f697e",
+      "sourcePromptSHA256": "eda0f9231b73abec3e13c0107d5cf8958927562fd99ecd373248dc603e153427",
+      "sourceSolutionSHA256": "abc8184f7d9aa41e31721af6c2240e230463c6f41d2c04ebae6f946951c08bf3",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "5b0dc93935f79b1763618d2598e08eb3900d7cea51e4c35f6fb6358cc0ab4803",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_individually_authored_task",
+          "authoringModelId": "U7-beta-minus-atomic-number",
+          "authoringTaskId": "conceptual_application",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U7: Decadimento beta meno"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Decadimento nucleare β⁻.",
+      "sourceCaveat": "Nessuna ambiguità decisiva identificata nel controllo circoscritto.",
+      "structuredKey": {
+        "kind": "single_choice",
+        "correctOptionId": "D",
+        "correctText": "Un neutrone si trasforma in protone e vengono emessi un elettrone e un antineutrino elettronico",
+        "uniqueCorrectChoiceReview": "AI conceptual/numerical review of all five supplied alternatives; no independent human approval"
+      },
+      "sourceAnswer": {
+        "kind": "text",
+        "exact": "Un neutrone si trasforma in protone e vengono emessi un elettrone e un antineutrino elettronico",
+        "unit": "1",
+        "text": "Un neutrone si trasforma in protone e vengono emessi un elettrone e un antineutrino elettronico",
+        "accepted": [
+          "Un neutrone si trasforma in protone e vengono emessi un elettrone e un antineutrino elettronico"
+        ],
+        "correctOptionId": "D"
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "options": [
+        {
+          "id": "A",
+          "text": "Un protone e un neutrone si annullano sempre lasciando solo luce visibile",
+          "isCorrect": false,
+          "feedback": "Il decadimento β⁻ non è annichilazione fra protone e neutrone. Trasforma un neutrone in protone con emissione di un elettrone e di un antineutrino elettronico.",
+          "reviewHint": "Ripassa i prodotti e i bilanci di carica del decadimento β⁻."
+        },
+        {
+          "id": "B",
+          "text": "Il nucleo perde obbligatoriamente quattro nucleoni",
+          "isCorrect": false,
+          "feedback": "La perdita di quattro nucleoni caratterizza un’emissione alfa. Nel β⁻ un nucleone cambia tipo: il numero di massa A resta invariato.",
+          "reviewHint": "Confronta le variazioni di A e Z nei decadimenti alfa e beta."
+        },
+        {
+          "id": "C",
+          "text": "Il numero atomico diminuisce di due in ogni evento",
+          "isCorrect": false,
+          "feedback": "Nel β⁻ il numero atomico aumenta di uno, perché un neutrone diventa protone. Una diminuzione di due appartiene al decadimento alfa, non a questo processo.",
+          "reviewHint": "Scrivi separatamente il bilancio dei protoni e quello dei nucleoni totali."
+        },
+        {
+          "id": "D",
+          "text": "Un neutrone si trasforma in protone e vengono emessi un elettrone e un antineutrino elettronico",
+          "isCorrect": true,
+          "feedback": "La trasformazione è n→p+e⁻+antineutrino elettronico. La carica si conserva: 0=(+e)+(−e)+0; il nucleo figlio ha Z aumentato di una unità e A invariato.",
+          "reviewHint": "Ripassa il passaggio dalla reazione elementare ai numeri A e Z del nucleo."
+        },
+        {
+          "id": "E",
+          "text": "Un elettrone orbitale viene semplicemente strappato senza modificare il nucleo",
+          "isCorrect": false,
+          "feedback": "Strappare un elettrone orbitale è ionizzazione: cambia lo stato di carica dell’atomo ma non Z del nucleo. Il β⁻ è invece una trasformazione nucleare e l’elettrone viene prodotto nel decadimento.",
+          "reviewHint": "Distingui processi della nube elettronica e trasformazioni del nucleo."
+        }
+      ],
+      "correctOptionId": "D",
+      "specificCorrection": null
+    },
+    {
+      "id": "u1-area-conversion-01",
+      "unitId": "sf-2026-u1-02",
+      "courseCode": "C1",
+      "syllabusUnitId": "U1",
+      "title": "Conversione di un’area — Calcolo diretto",
+      "prompt": "Un’area ha valore numerico A nella vecchia unità di superficie. Una vecchia unità di lunghezza contiene c nuove unità di lunghezza. Si vuole il valore B dell’area nella nuova unità di superficie. A e B sono valori numerici, non lunghezze.\n\nSono assegnati A = 2 e c = 2. Quanto vale valore numerico dell’area convertita (B) in 1?\n\nIpotesi e convenzioni: Si usano le unità dichiarate e valori esatti; non è necessaria una calcolatrice. Le grandezze definite come moduli sono positive. I vettori e le direzioni sono quelli dichiarati nel testo. I valori numerici rispettano: A > 0 e c > 0.\nInserisci solo il numero esatto (è ammessa una frazione); l’unità richiesta è 1.",
+      "type": "completion",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "6481c8832e5f3f8942380ee734d35b3ef744ce6921676c81eac747b7c22da640",
+      "sourcePromptSHA256": "b8bb32b362ea4e1b34eb8000a20e63fc26457565126967b4ccf0da3f7bad08e7",
+      "sourceSolutionSHA256": "7505eeaac21171eafba9d82c3544635211e663ff1d2e0528b752d42c3941c059",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "7d1b8669d47098f4bec2c7c3a8cc2bc081c44e2b03efa0b3ab44fb66a9a3fd96",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_authored_model_expansion",
+          "authoringModelId": "U1-area-conversion",
+          "authoringTaskId": "direct_evaluation",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U1 — Unità e conversioni"
+            },
+            {
+              "sourceId": "UNIBO-SYLLABUS-2026",
+              "locator": "Conversione di un’area"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "A=2 valore numerico dell’area; una vecchia unità lineare contiene c=2 nuove unità lineari.",
+      "sourceCaveat": "La formulazione «in 1» è poco naturale ma il prompt distingue esplicitamente valore numerico e area fisica.",
+      "structuredKey": {
+        "kind": "rational",
+        "numerator": 8,
+        "denominator": 1,
+        "exact": "8",
+        "unit": "1",
+        "acceptedLegacyStrings": [
+          "8",
+          "8"
+        ],
+        "officialOpenAnswerAlgorithm": "UNKNOWN",
+        "trainingComparator": "NOT_IMPLEMENTED; no inference of official normalization or tolerance"
+      },
+      "sourceAnswer": {
+        "kind": "rational",
+        "exact": "8",
+        "unit": "1",
+        "text": "8",
+        "accepted": [
+          "8",
+          "8"
+        ]
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "workedSolution": [
+        "A=2 è il valore numerico dell’area nella vecchia unità; c=2 indica che ogni vecchia unità lineare contiene due nuove unità.",
+        "Una vecchia unità di superficie contiene quindi c²=4 nuove unità di superficie. La superficie fisica resta la stessa.",
+        "Il nuovo valore numerico è B=A c²=2·4=8. Inserire 8 nel formato numerico richiesto.",
+        "Controllo inverso: B/c²=8/4=2, cioè il valore iniziale."
+      ],
+      "singleDimensionalCheck": "B è un valore numerico e la chiave usa unità 1. L’area fisica ha sempre dimensione L²: il fattore di conversione c² non la rende adimensionale.",
+      "plausibleErrorHypotheses": [
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Usare il fattore lineare anziché quello di superficie",
+          "explanationAndReview": "B=2·2=4 conterebbe soltanto una delle due direzioni. Ripassare perché le conversioni di area richiedono il quadrato del fattore lineare."
+        },
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Invertire il verso della conversione",
+          "explanationAndReview": "B=2/4=1/2 corrisponderebbe a usare una nuova unità di superficie più grande. Qui la nuova unità è più piccola, quindi il valore numerico deve aumentare."
+        }
+      ],
+      "normalizationOrGradingImplementation": null
+    },
+    {
+      "id": "u2-gravitational-energy-01",
+      "unitId": "sf-2026-u2-03",
+      "courseCode": "C1",
+      "syllabusUnitId": "U2",
+      "title": "Variazione di energia gravitazionale — Calcolo diretto",
+      "prompt": "Una massa m viene portata a una quota maggiore di h in un campo uniforme g=10 m/s². U è l’aumento di energia potenziale gravitazionale rispetto alla quota iniziale.\n\nSono assegnati m = 2 kg e h = 2 m. Quanto vale incremento di energia potenziale (U) in J?\n\nIpotesi e convenzioni: Si usano le unità dichiarate e valori esatti; non è necessaria una calcolatrice. Le grandezze definite come moduli sono positive. Il riferimento è inerziale, salvo la lettura di strumenti solidali al sistema esplicitamente descritta. I valori numerici rispettano: m > 0 e h > 0.\nInserisci solo il numero esatto (è ammessa una frazione); l’unità richiesta è J.",
+      "type": "completion",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "710a0472895b54e9491eb079e00a0df8625bd29c5e8b2d26629afa49dec0f1dd",
+      "sourcePromptSHA256": "04bd3527a0a0b0abce34d197ae7326a5cede59dab9f77a54f7f21101f340c093",
+      "sourceSolutionSHA256": "e705e21d7428fe3adcc91aa9a87aa03c4c9bbb70e8415ae45ab573d9e7351d75",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "bb80ba9af7c0a9d253bfedf2a658b11e2f1c4c66b3a6f85b0232b076967f6feb",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_authored_model_expansion",
+          "authoringModelId": "U2-gravitational-energy",
+          "authoringTaskId": "direct_evaluation",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U2 — Lavoro ed energia"
+            },
+            {
+              "sourceId": "UNIBO-SYLLABUS-2026",
+              "locator": "Variazione di energia gravitazionale"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "m=2 kg, aumento di quota h=2 m, g=10 m/s² uniforme; incremento di energia potenziale rispetto all’inizio.",
+      "sourceCaveat": "Nessuna ambiguità decisiva identificata nel controllo circoscritto.",
+      "structuredKey": {
+        "kind": "rational",
+        "numerator": 40,
+        "denominator": 1,
+        "exact": "40",
+        "unit": "J",
+        "acceptedLegacyStrings": [
+          "40",
+          "40"
+        ],
+        "officialOpenAnswerAlgorithm": "UNKNOWN",
+        "trainingComparator": "NOT_IMPLEMENTED; no inference of official normalization or tolerance"
+      },
+      "sourceAnswer": {
+        "kind": "rational",
+        "exact": "40",
+        "unit": "J",
+        "text": "40 J",
+        "accepted": [
+          "40",
+          "40"
+        ]
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "workedSolution": [
+        "La massa è 2 kg e la quota aumenta di 2 m in un campo uniforme g=10 m/s². Si chiede la variazione di energia potenziale, non il lavoro del peso.",
+        "Il peso ha modulo mg=2·10=20 N. La variazione di energia potenziale per una salita h è ΔU=mgh.",
+        "ΔU=2·10·2=40 J: è positiva perché la quota aumenta.",
+        "Controllo: il lavoro della gravità è W_g=−40 J; dunque ΔU=−W_g, come richiesto per una forza conservativa."
+      ],
+      "singleDimensionalCheck": "kg·(m/s²)·m=kg·m²/s²=J.",
+      "plausibleErrorHypotheses": [
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Confondere lavoro del peso e variazione di energia potenziale",
+          "explanationAndReview": "−40 J è il lavoro della gravità durante la salita, non l’incremento di U. Ripassare ΔU=−W_conservativa."
+        },
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Dimenticare il dislivello",
+          "explanationAndReview": "20 N è il peso, non un’energia. Serve ancora moltiplicarlo per i 2 m di aumento di quota. Ripassare la differenza dimensionale fra forza ed energia."
+        }
+      ],
+      "normalizationOrGradingImplementation": null
+    },
+    {
+      "id": "u3-bernoulli-height-speed-01",
+      "unitId": "sf-2026-u3-03",
+      "courseCode": "C2",
+      "syllabusUnitId": "U3",
+      "title": "Pressione necessaria per quota e velocità — Calcolo diretto",
+      "prompt": "Un grande serbatoio alimenta un getto d’acqua ideale a quota superiore di h m. La velocità alla superficie del serbatoio è trascurabile, quella del getto è v m/s; ρ=1000 kg/m³ e g=10 m/s². Si cerca p_serbatoio−p_getto in kPa.\n\nSono assegnati h = 1 m e v = 2 m/s. Quanto vale differenza di pressione richiesta (Δp) in kPa?\n\nIpotesi e convenzioni: Un grande serbatoio alimenta un getto d’acqua ideale a quota superiore di h m. La velocità alla superficie del serbatoio è trascurabile, quella del getto è v m/s; ρ=1000 kg/m³ e g=10 m/s². Si cerca p_serbatoio−p_getto in kPa. I valori numerici della formula sono riferiti esclusivamente alle unità dichiarate; non si mescolano unità senza conversione. I valori numerici rispettano: h > 0 e v > 0.\nInserisci solo il numero esatto (è ammessa una frazione); l’unità richiesta è kPa.",
+      "type": "completion",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "3eee3df66d79617acc11ac6a02ce9c7413e62619d6f569d67604c0e64d2472b9",
+      "sourcePromptSHA256": "242f5589fa3862d2f72c80f291c714e48aa9767d3d0363d77dcf611fb5a2dfa4",
+      "sourceSolutionSHA256": "f489fba5c45cbd918773d2ba20b49794dfa75733a2258c57b0e028716b8eac4e",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "807907b9b862a23a9c1ef90c41b203e9c4883f2185ecbfe5e047f7733ac882ac",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_authored_model_expansion",
+          "authoringModelId": "U3-bernoulli-height-speed",
+          "authoringTaskId": "direct_evaluation",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U3: bernoulli"
+            },
+            {
+              "sourceId": "UPLOAD-VALDES",
+              "locator": "cap. 5, indice PDF 12-13; capitolo da PDF 122"
+            },
+            {
+              "sourceId": "UPLOAD-RAGOZZINO",
+              "locator": "indice PDF 10: capitoli 8-10"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Grande serbatoio, v iniziale trascurabile, fluido ideale senza perdite; getto h=1 m sopra la superficie, v=2 m/s; ρ=1000 kg/m³ e g=10 m/s².",
+      "sourceCaveat": "Si usa Bernoulli lungo la linea di flusso nel modello ideale/quasi stazionario; la superficie del serbatoio può essere pressurizzata, non è obbligatoriamente aperta all’atmosfera.",
+      "structuredKey": {
+        "kind": "rational",
+        "numerator": 12,
+        "denominator": 1,
+        "exact": "12",
+        "unit": "kPa",
+        "acceptedLegacyStrings": [
+          "12",
+          "12"
+        ],
+        "officialOpenAnswerAlgorithm": "UNKNOWN",
+        "trainingComparator": "NOT_IMPLEMENTED; no inference of official normalization or tolerance"
+      },
+      "sourceAnswer": {
+        "kind": "rational",
+        "exact": "12",
+        "unit": "kPa",
+        "text": "12 kPa",
+        "accepted": [
+          "12",
+          "12"
+        ]
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "workedSolution": [
+        "Confrontare la superficie del grande serbatoio, dove la velocità è trascurabile, e il getto a quota maggiore di h=1 m, con velocità v=2 m/s. Usare il modello ideale senza perdite.",
+        "Bernoulli dà p_serb−p_getto=ρgh+ρv²/2: il salto di pressione sostiene sia la salita sia l’aumento di energia cinetica.",
+        "Il contributo di quota vale 1000·10·1=10000 Pa; quello cinetico 1000·2²/2=2000 Pa.",
+        "La somma è 12000 Pa=12 kPa. Inserire 12 perché l’unità richiesta è kPa.",
+        "Controllo fisico: ponendo v=0 resterebbero 10 kPa; la velocità non nulla richiede altri 2 kPa, quindi un risultato inferiore a 10 kPa non soddisferebbe il modello."
+      ],
+      "singleDimensionalCheck": "ρgh e ρv² hanno entrambi unità kg/(m·s²)=Pa; 12000 Pa/1000=12 kPa.",
+      "plausibleErrorHypotheses": [
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Trascurare il dislivello",
+          "explanationAndReview": "2 kPa tiene conto soltanto della velocità del getto. Ripassare il termine gravitazionale ρgh nel bilancio di Bernoulli."
+        },
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Restituire il valore in pascal anziché in kilopascal",
+          "explanationAndReview": "12000 è il valore in Pa, mentre il campo richiesto è in kPa. Ripassare il prefisso kilo e indicare 12 nel formato assegnato."
+        }
+      ],
+      "normalizationOrGradingImplementation": null
+    },
+    {
+      "id": "u3-apparent-weight-01",
+      "unitId": "sf-2026-u3-02",
+      "courseCode": "C2",
+      "syllabusUnitId": "U3",
+      "title": "Lettura di un dinamometro in immersione — Calcolo diretto",
+      "prompt": "Un corpo di massa m kg e volume esterno V L è appeso a un dinamometro e completamente immerso in acqua di densità 1 kg/L. Il corpo è più denso dell’acqua, g=10 m/s², il filo è verticale e il sistema è fermo.\n\nSono assegnati m = 3 kg e V = 1 L. Quanto vale tensione misurata dal dinamometro (T) in N?\n\nIpotesi e convenzioni: Un corpo di massa m kg e volume esterno V L è appeso a un dinamometro e completamente immerso in acqua di densità 1 kg/L. Il corpo è più denso dell’acqua, g=10 m/s², il filo è verticale e il sistema è fermo. I valori numerici della formula sono riferiti esclusivamente alle unità dichiarate; non si mescolano unità senza conversione. I valori numerici rispettano: m > V e V > 0.\nInserisci solo il numero esatto (è ammessa una frazione); l’unità richiesta è N.",
+      "type": "completion",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "6438cdf8f1c1f194429e6421996f675f5a0d7b549793819d2be27a173ee3ee14",
+      "sourcePromptSHA256": "e90fd56037a866e68eeccd00e66990c433953ca93a59fd504b84e211af21d928",
+      "sourceSolutionSHA256": "e2d2778f951b7e3f20cc95608b054917c194de6d61f924a6a3f16f20ad6e7eb0",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "611f5ba446ec5123727020ec2812c51eea4f3da190c3c7ae2fb5b8aa7ee60b67",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_authored_model_expansion",
+          "authoringModelId": "U3-apparent-weight",
+          "authoringTaskId": "direct_evaluation",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U3: archimede"
+            },
+            {
+              "sourceId": "UPLOAD-VALDES",
+              "locator": "cap. 5, indice PDF 12-13; capitolo da PDF 122"
+            },
+            {
+              "sourceId": "UPLOAD-RAGOZZINO",
+              "locator": "indice PDF 10: capitoli 8-10"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Corpo di m=3 kg e volume esterno 1 L, interamente immerso in acqua 1 kg/L, fermo, filo verticale, g=10 m/s².",
+      "sourceCaveat": "Modello ordinario di corpo libero nel liquido sostenuto dal filo, senza ulteriori contatti: un contatto con il fondo introdurrebbe una forza non prevista.",
+      "structuredKey": {
+        "kind": "rational",
+        "numerator": 20,
+        "denominator": 1,
+        "exact": "20",
+        "unit": "N",
+        "acceptedLegacyStrings": [
+          "20",
+          "20"
+        ],
+        "officialOpenAnswerAlgorithm": "UNKNOWN",
+        "trainingComparator": "NOT_IMPLEMENTED; no inference of official normalization or tolerance"
+      },
+      "sourceAnswer": {
+        "kind": "rational",
+        "exact": "20",
+        "unit": "N",
+        "text": "20 N",
+        "accepted": [
+          "20",
+          "20"
+        ]
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "workedSolution": [
+        "Il corpo è fermo e completamente immerso: il peso mg agisce verso il basso, tensione e spinta verso l’alto. Il modello non include contatti con fondo o pareti.",
+        "Il peso vale 3·10=30 N. Il volume esterno di 1 L sposta 1 kg d’acqua, quindi la spinta vale 1·10=10 N.",
+        "L’equilibrio verticale è T+F_A−mg=0, da cui T=30−10=20 N.",
+        "Controllo: tensione e spinta sommano 30 N. La lettura è positiva e minore del peso in aria, coerentemente con un corpo più denso dell’acqua."
+      ],
+      "singleDimensionalCheck": "(1 kg/L)·(1 L)·(10 m/s²)=10 kg·m/s²=10 N per la spinta; T è in N.",
+      "plausibleErrorHypotheses": [
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Usare il peso in aria come lettura del dinamometro",
+          "explanationAndReview": "30 N omette la spinta che sostiene parte del corpo. Ripassare il diagramma delle tre forze in immersione."
+        },
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Sommare la spinta al peso invece di sottrarla",
+          "explanationAndReview": "Il valore errato 40 N si ottiene trattando la spinta come una forza aggiuntiva verso il basso. In realtà tensione e spinta sono verso l’alto: T=mg−F_A=20 N. Ripassa il diagramma delle forze prima di scegliere i segni."
+        }
+      ],
+      "normalizationOrGradingImplementation": null
+    },
+    {
+      "id": "u4-wave-phase-space-01",
+      "unitId": "sf-2026-u4-01",
+      "courseCode": "C5",
+      "syllabusUnitId": "U4",
+      "title": "Fase fra due punti del mezzo — Calcolo diretto",
+      "prompt": "Due punti lungo la propagazione di un’onda armonica distano Δs. La lunghezza d’onda è λ. Si cerca la differenza di fase in numero di giri, ν = |Δφ|/(2π), prima di ridurla modulo un giro.\n\nSono assegnati Δs = 1 m e λ = 4 m. Quanto vale differenza di fase in giri (ν) in giri?\n\nIpotesi e convenzioni: Confronto simultaneo di due punti della stessa onda I valori numerici rispettano: Δs > 0 e λ > 0.\nInserisci solo il numero esatto (è ammessa una frazione); l’unità richiesta è giri.",
+      "type": "completion",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "22c8a04c1fa569c0784c2922a145bc57158e0e1f921062b248ab17d76c1fb747",
+      "sourcePromptSHA256": "336ca8a1f4d4ddb881c9f742ca1bdd9dfed750680abfc4127be8c28b08167566",
+      "sourceSolutionSHA256": "280953e0d5cefe206daa62bfa58b507759e53d096297303c42cf65ad2b75845f",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "e1a66aa5bc4bfa392e5f5dd0469680d473771a75837e791823b53c513f8245e1",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_authored_model_expansion",
+          "authoringModelId": "U4-wave-phase-space",
+          "authoringTaskId": "direct_evaluation",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U4: Differenza di fase spaziale"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Onda armonica, confronto simultaneo lungo la propagazione; Δs=1 m e λ=4 m; differenza prima del modulo di un giro.",
+      "sourceCaveat": "Qui il simbolo ν indica numero di giri di fase, non frequenza: è definito esplicitamente nel testo.",
+      "structuredKey": {
+        "kind": "rational",
+        "numerator": 1,
+        "denominator": 4,
+        "exact": "1/4",
+        "unit": "giri",
+        "acceptedLegacyStrings": [
+          "1/4",
+          "0,25",
+          "0.25"
+        ],
+        "officialOpenAnswerAlgorithm": "UNKNOWN",
+        "trainingComparator": "NOT_IMPLEMENTED; no inference of official normalization or tolerance"
+      },
+      "sourceAnswer": {
+        "kind": "rational",
+        "exact": "1/4",
+        "unit": "giri",
+        "text": "1/4 giri",
+        "accepted": [
+          "1/4",
+          "0,25",
+          "0.25"
+        ]
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "workedSolution": [
+        "Confrontare simultaneamente due punti distanti Δs=1 m lungo la propagazione di un’onda armonica di lunghezza λ=4 m.",
+        "Una lunghezza d’onda completa corrisponde a 2π radianti, cioè un giro di fase. La separazione data è un quarto di lunghezza d’onda.",
+        "Il numero di giri è ν=|Δφ|/(2π)=Δs/λ=1/4. Inserire 1/4, oppure una rappresentazione numerica equivalente soltanto se il futuro allenamento la ammetterà esplicitamente.",
+        "Controllo: 1/4 di giro moltiplicato per 4 m per giro restituisce la separazione di 1 m."
+      ],
+      "singleDimensionalCheck": "Δs/λ è adimensionale; il risultato è espresso in giri di fase. In radianti lo stesso angolo sarebbe π/2, non il valore da inserire come numero di giri.",
+      "plausibleErrorHypotheses": [
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Invertire il rapporto fra separazione e lunghezza d’onda",
+          "explanationAndReview": "4 giri corrisponderebbero a 16 m, non a 1 m. Ripassare che una λ rappresenta un solo giro."
+        },
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Inserire l’angolo in radianti nel campo espresso in giri",
+          "explanationAndReview": "π/2 è l’angolo corretto in radianti, ma il campo richiede giri: occorre dividerlo per 2π. Ripassare le unità angolari."
+        }
+      ],
+      "normalizationOrGradingImplementation": null
+    },
+    {
+      "id": "u5-calorimeter-capacity-01",
+      "unitId": "sf-2026-u5-02",
+      "courseCode": "C3",
+      "syllabusUnitId": "U5",
+      "title": "Miscela con recipiente che assorbe calore — Calcolo diretto",
+      "prompt": "Due porzioni della stessa sostanza hanno calore specifico c=1 J/(g K), masse m_h e m_c in g e temperature iniziali 80 °C e 20 °C. Il recipiente ha capacità 2 J/K e parte da 20 °C. Sistema isolato, nessun cambiamento di fase.\n\nSono assegnati m_h = 2 g e m_c = 2 g. Quanto vale temperatura di equilibrio (T_f) in °C?\n\nIpotesi e convenzioni: Due porzioni della stessa sostanza hanno calore specifico c=1 J/(g K), masse m_h e m_c in g e temperature iniziali 80 °C e 20 °C. Il recipiente ha capacità 2 J/K e parte da 20 °C. Sistema isolato, nessun cambiamento di fase. I valori numerici della formula sono riferiti esclusivamente alle unità dichiarate; non si mescolano unità senza conversione. Eventuali rapporti fra letture in °C sono rapporti dei valori numerici sulla scala Celsius, non rapporti di temperature assolute; questi ultimi richiedono kelvin. I valori numerici rispettano: m_h > 0 e m_c > 0.\nInserisci solo il numero esatto (è ammessa una frazione); l’unità richiesta è °C.",
+      "type": "completion",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "78a6f006a917240a94cd86f38255af303f9ec031f07b00b9bab1b1a14cba0e58",
+      "sourcePromptSHA256": "02fcfbb63111d51484ad7b988b9a190079abdd8b0422dd021b1b5fd63135c4ad",
+      "sourceSolutionSHA256": "ca2c223ac75f0c97347c554c42d4189e8d1e20a435a2f584699867f003fa0f05",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "78258f0070667a06eb9c0cbba7c88066424ec92245394d2a21cb5ce3da6b5a98",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_authored_model_expansion",
+          "authoringModelId": "U5-calorimeter-capacity",
+          "authoringTaskId": "direct_evaluation",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U5: calorimetria"
+            },
+            {
+              "sourceId": "UPLOAD-VALDES",
+              "locator": "cap. 6, PDF 180-209"
+            },
+            {
+              "sourceId": "UPLOAD-RAGOZZINO",
+              "locator": "indice PDF 10-11: capitoli 12-14"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Due porzioni da 2 g con c=1 J/(g K), inizialmente 80 e 20 °C; recipiente C=2 J/K a 20 °C, sistema isolato, nessun cambio di fase.",
+      "sourceCaveat": "Le capacità sono costanti nel modello del testo; non sommare masse e capacità senza prima moltiplicare per c.",
+      "structuredKey": {
+        "kind": "rational",
+        "numerator": 40,
+        "denominator": 1,
+        "exact": "40",
+        "unit": "°C",
+        "acceptedLegacyStrings": [
+          "40",
+          "40"
+        ],
+        "officialOpenAnswerAlgorithm": "UNKNOWN",
+        "trainingComparator": "NOT_IMPLEMENTED; no inference of official normalization or tolerance"
+      },
+      "sourceAnswer": {
+        "kind": "rational",
+        "exact": "40",
+        "unit": "°C",
+        "text": "40 °C",
+        "accepted": [
+          "40",
+          "40"
+        ]
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "workedSolution": [
+        "La porzione calda ha capacità termica 2 g·1 J/(g K)=2 J/K. La porzione fredda ha la stessa capacità; il recipiente aggiunge altri 2 J/K e parte anch’esso da 20 °C.",
+        "Il sistema è isolato e non cambia fase. Il calore ceduto dal caldo uguaglia quello ricevuto da freddo e recipiente: 2(80−T_f)=4(T_f−20).",
+        "Sviluppare: 160−2T_f=4T_f−80, quindi 240=6T_f e T_f=40 °C.",
+        "Controllo energetico: il caldo cede 2·40=80 J; freddo e recipiente ricevono 4·20=80 J. La temperatura finale è fra 20 e 80 °C e, per la capacità maggiore sul lato freddo, sotto la media semplice di 50 °C."
+      ],
+      "singleDimensionalCheck": "Ogni capacità in J/K moltiplicata per una differenza di temperatura in K dà J; gli intervalli di 1 °C e 1 K coincidono.",
+      "plausibleErrorHypotheses": [
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Trascurare la capacità termica del recipiente",
+          "explanationAndReview": "50 °C sarebbe l’equilibrio delle sole due porzioni uguali. Il recipiente inizialmente freddo assorbe energia e abbassa T_f: ripassare il bilancio di tutte le parti."
+        },
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Sommare masse e capacità termiche senza il calore specifico",
+          "explanationAndReview": "I grammi non si sommano direttamente ai J/K. Prima calcolare C=mc; qui c vale numericamente uno, ma le unità restano essenziali."
+        }
+      ],
+      "normalizationOrGradingImplementation": null
+    },
+    {
+      "id": "u5-first-law-expansion-01",
+      "unitId": "sf-2026-u5-04",
+      "courseCode": "C3",
+      "syllabusUnitId": "U5",
+      "title": "Energia interna con calore entrante e lavoro uscente — Calcolo diretto",
+      "prompt": "Un sistema chiuso assorbe calore Q J e compie lavoro W J sull’ambiente. Non cambia energia cinetica né potenziale macroscopica. Q e W sono forniti come quantità positive; la convenzione è ΔU=Q−W.\n\nSono assegnati Q = 100 J e W = 40 J. Quanto vale variazione di energia interna (ΔU) in J?\n\nIpotesi e convenzioni: Un sistema chiuso assorbe calore Q J e compie lavoro W J sull’ambiente. Non cambia energia cinetica né potenziale macroscopica. Q e W sono forniti come quantità positive; la convenzione è ΔU=Q−W. I valori numerici della formula sono riferiti esclusivamente alle unità dichiarate; non si mescolano unità senza conversione. I valori numerici rispettano: Q > 0 e W > 0.\nInserisci solo il numero esatto (è ammessa una frazione); l’unità richiesta è J.",
+      "type": "completion",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "34d8c78e6b160bc9c4f987bae1837a91a56fcc1d610643c126d0731661393bac",
+      "sourcePromptSHA256": "af6d687f0301c74955e035f06b515bf7fd7a6a527a48b1f1f1a0a856dc4acf84",
+      "sourceSolutionSHA256": "ed1b098c5247589cbb6edf8fe4d78658fd4e1f9712869bf4ca795ed5f3cc132c",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "b397f3cb53b55bef09f5c57227d7e12da505ff9a3e0e9b402f8eebd8fb89def6",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_authored_model_expansion",
+          "authoringModelId": "U5-first-law-expansion",
+          "authoringTaskId": "direct_evaluation",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U5: primo-principio"
+            },
+            {
+              "sourceId": "UPLOAD-VALDES",
+              "locator": "cap. 6, PDF 180-209"
+            },
+            {
+              "sourceId": "UPLOAD-RAGOZZINO",
+              "locator": "indice PDF 10-11: capitoli 12-14"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Sistema chiuso, Q=100 J entrante, W=40 J fatto dal sistema; variazioni di energia cinetica/potenziale macroscopica nulle.",
+      "sourceCaveat": "Nessuna ambiguità decisiva identificata nel controllo circoscritto.",
+      "structuredKey": {
+        "kind": "rational",
+        "numerator": 60,
+        "denominator": 1,
+        "exact": "60",
+        "unit": "J",
+        "acceptedLegacyStrings": [
+          "60",
+          "60"
+        ],
+        "officialOpenAnswerAlgorithm": "UNKNOWN",
+        "trainingComparator": "NOT_IMPLEMENTED; no inference of official normalization or tolerance"
+      },
+      "sourceAnswer": {
+        "kind": "rational",
+        "exact": "60",
+        "unit": "J",
+        "text": "60 J",
+        "accepted": [
+          "60",
+          "60"
+        ]
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "workedSolution": [
+        "Il sistema chiuso riceve 100 J come calore e cede 40 J all’ambiente come lavoro. Non cambiano le energie cinetica e potenziale macroscopiche.",
+        "Usare la convenzione dichiarata: Q positivo entrante e W positivo compiuto dal sistema, quindi ΔU=Q−W.",
+        "ΔU=100−40=60 J. L’energia interna aumenta, ma di meno del calore ricevuto perché una parte esce come lavoro.",
+        "Controllo: i 60 J rimasti nel sistema più i 40 J trasferiti come lavoro ricostruiscono i 100 J entranti."
+      ],
+      "singleDimensionalCheck": "Q, W e ΔU sono energie in J; la sottrazione è dimensionalmente omogenea.",
+      "plausibleErrorHypotheses": [
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Sommare il lavoro uscente al calore entrante",
+          "explanationAndReview": "140 J si otterrebbero se i 40 J fossero lavoro fatto sul sistema. Qui sono lavoro del sistema sull’ambiente: ripassare i versi dei trasferimenti."
+        },
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Identificare ΔU con tutto il calore ricevuto",
+          "explanationAndReview": "100 J trascura i 40 J usciti come lavoro. Ripassare il primo principio come bilancio fra entrate e uscite."
+        }
+      ],
+      "normalizationOrGradingImplementation": null
+    },
+    {
+      "id": "u6-current-charge-time-01",
+      "unitId": "sf-2026-u6-04",
+      "courseCode": "C4",
+      "syllabusUnitId": "U6",
+      "title": "Carica che attraversa una sezione — Calcolo diretto",
+      "prompt": "Una carica totale Q, espressa in mC, attraversa una sezione di un conduttore durante Δt millisecondi. Si cerca la corrente media in ampere.\n\nSono assegnati Q = 6 mC e Δt = 2 ms. Quanto vale corrente media (I) in A?\n\nIpotesi e convenzioni: Si richiede un valore medio Verso positivo coerente con il trasferimento assegnato I valori numerici rispettano: Q > 0 e Δt > 0.\nInserisci solo il numero esatto (è ammessa una frazione); l’unità richiesta è A.",
+      "type": "completion",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "424fb9ecffa1e09da557cdd2d245eb99d2d0889e3acfe7b5b2e770b8dc0dc6f4",
+      "sourcePromptSHA256": "375b1c71c4c03394770e03f75d903c20c8a2c37ecce95b57b6926e37e2994cca",
+      "sourceSolutionSHA256": "d26f48beb939b0d7b71c919e85d9500318e888a2fd7392929bc9c97f9a73fd72",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "099cef9ff86775e402aa635d5484c94477bb5706cddb53295ac154cf7227d3f0",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_authored_model_expansion",
+          "authoringModelId": "U6-current-charge-time",
+          "authoringTaskId": "direct_evaluation",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U6: Definizione di corrente"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Carica positiva trasferita Q=6 mC, intervallo 2 ms; corrente media e verso coerente con il trasferimento.",
+      "sourceCaveat": "Nessuna ambiguità decisiva identificata nel controllo circoscritto.",
+      "structuredKey": {
+        "kind": "rational",
+        "numerator": 3,
+        "denominator": 1,
+        "exact": "3",
+        "unit": "A",
+        "acceptedLegacyStrings": [
+          "3",
+          "3"
+        ],
+        "officialOpenAnswerAlgorithm": "UNKNOWN",
+        "trainingComparator": "NOT_IMPLEMENTED; no inference of official normalization or tolerance"
+      },
+      "sourceAnswer": {
+        "kind": "rational",
+        "exact": "3",
+        "unit": "A",
+        "text": "3 A",
+        "accepted": [
+          "3",
+          "3"
+        ]
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "workedSolution": [
+        "Si chiede la corrente media: dividere la carica trasferita nell’intervallo per la sua durata, senza assumere costanza della corrente istantanea.",
+        "Convertire 6 mC=0,006 C e 2 ms=0,002 s.",
+        "I_media=0,006/0,002=3 A. I due prefissi milli si cancellano anche nel rapporto diretto 6/2.",
+        "Controllo: 3 A·0,002 s=0,006 C, pari ai 6 mC assegnati."
+      ],
+      "singleDimensionalCheck": "C/s=A; il rapporto mC/ms coincide con C/s perché numeratore e denominatore contengono lo stesso fattore 10⁻³.",
+      "plausibleErrorHypotheses": [
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Convertire la carica ma non il tempo",
+          "explanationAndReview": "0,003 A deriva da 0,006 C diviso 2 s, ma l’intervallo è 2 ms. Ripassare conversioni coerenti su entrambi i dati."
+        },
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Moltiplicare carica e tempo",
+          "explanationAndReview": "6·2 non esprime un ritmo di trasferimento. La corrente è una carica per unità di tempo: ripassare la definizione I_media=ΔQ/Δt."
+        }
+      ],
+      "normalizationOrGradingImplementation": null
+    },
+    {
+      "id": "u6-coulomb-force-01",
+      "unitId": "sf-2026-u6-01",
+      "courseCode": "C4",
+      "syllabusUnitId": "U6",
+      "title": "Forza fra cariche puntiformi — Calcolo diretto",
+      "prompt": "Una carica positiva Q, espressa in μC, dista r centimetri da una carica positiva fissa q = 1 μC. Si usa kₑ = 9×10⁹ N m²/C² e si cerca il modulo della forza in newton.\n\nSono assegnati Q = 1 μC e r = 3 cm. Quanto vale modulo della forza (F) in N?\n\nIpotesi e convenzioni: Cariche puntiformi Vuoto o aria approssimata come vuoto I valori numerici rispettano: Q > 0 e r > 0.\nInserisci solo il numero esatto (è ammessa una frazione); l’unità richiesta è N.",
+      "type": "completion",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "ed387757d8817922753413e2b12fe23e10b65996853220493e893d013285515b",
+      "sourcePromptSHA256": "aaf9e7d8438abf16dc1baa5c78204ec11743a20e36c80b11dba0c9a6e6b7f7ef",
+      "sourceSolutionSHA256": "8dc3eeb2712178cf14e5ff37c0de28c0adc464e9c692da701ddd622caf9f4a9b",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "8796a5ef61daa63b14b6efc339d8436640005999a60c7f618dc2298073bbb46f",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_authored_model_expansion",
+          "authoringModelId": "U6-coulomb-force",
+          "authoringTaskId": "direct_evaluation",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U6: Legge di Coulomb"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Cariche puntiformi positive entrambe 1 μC, distanza 3 cm; k=9·10⁹ N·m²/C², vuoto/aria come vuoto.",
+      "sourceCaveat": "Nessuna ambiguità decisiva identificata nel controllo circoscritto.",
+      "structuredKey": {
+        "kind": "rational",
+        "numerator": 10,
+        "denominator": 1,
+        "exact": "10",
+        "unit": "N",
+        "acceptedLegacyStrings": [
+          "10",
+          "10"
+        ],
+        "officialOpenAnswerAlgorithm": "UNKNOWN",
+        "trainingComparator": "NOT_IMPLEMENTED; no inference of official normalization or tolerance"
+      },
+      "sourceAnswer": {
+        "kind": "rational",
+        "exact": "10",
+        "unit": "N",
+        "text": "10 N",
+        "accepted": [
+          "10",
+          "10"
+        ]
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "workedSolution": [
+        "Le due cariche sono puntiformi, positive e pari a 1 μC ciascuna; la distanza è 3 cm. Si chiede il modulo della forza nel vuoto o nell’approssimazione assegnata.",
+        "Convertire Q=q=10⁻⁶ C e r=3·10⁻² m. Applicare F=k_eQq/r².",
+        "Il numeratore vale 9·10⁹·10⁻⁶·10⁻⁶=9·10⁻³ N·m². Il denominatore è (3·10⁻²)²=9·10⁻⁴ m².",
+        "F=(9·10⁻³)/(9·10⁻⁴)=10 N. Il verso sarebbe repulsivo, ma la risposta richiesta contiene soltanto il modulo.",
+        "Controllo: F r²=10·9·10⁻⁴=9·10⁻³ N·m² ricostruisce k_eQq."
+      ],
+      "singleDimensionalCheck": "(N·m²/C²)·C·C/m²=N: la distanza va espressa in metri prima del quadrato.",
+      "plausibleErrorHypotheses": [
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Usare r=3 senza convertire i centimetri",
+          "explanationAndReview": "Con k_e in SI si tratterebbero 3 cm come 3 m, ottenendo 0,001 N anziché 10 N. Ripassare conversione e quadrato della distanza."
+        },
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Usare la distanza alla prima potenza",
+          "explanationAndReview": "Il prodotto k_eQq/r avrebbe unità N·m e non N. Ripassare la dipendenza inversamente quadratica della legge di Coulomb."
+        }
+      ],
+      "normalizationOrGradingImplementation": null
+    },
+    {
+      "id": "u7-radioactive-activity-01",
+      "unitId": "sf-2026-u7-05",
+      "courseCode": "C5",
+      "syllabusUnitId": "U7",
+      "title": "Decadimenti attesi nell’unità di tempo — Calcolo diretto",
+      "prompt": "Un campione contiene N nuclei radioattivi e ha emivita T½ in secondi. Si usa A = (ln 2)N/T½ e, soltanto per il calcolo numerico, si assume ln 2 ≈ 0,7. Si cerca A in Bq.\n\nSono assegnati N = 20 nuclei e T½ = 2 s. Quanto vale attività media (A) in Bq?\n\nIpotesi e convenzioni: Un solo radionuclide ln 2 ≈ 0,7 fornito per il calcolo Attività come valore medio I valori numerici rispettano: N > 0 e T½ > 0. N è un conteggio intero positivo.\nInserisci solo il numero esatto (è ammessa una frazione); l’unità richiesta è Bq.",
+      "type": "completion",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "newQuestion": false,
+      "newFeedback": true,
+      "sourceQuestionOrigin": "legacy_selection",
+      "sourceRecordCanonicalSHA256": "1e1ca35410bd3823a2d65470b20707a31c0558504b1bf8f78ac248805eefd04d",
+      "sourcePromptSHA256": "d2d3143c859b4a29feefd3b5f12ced4e243d5a1b1e513ae6abfa433bb1bc87b1",
+      "sourceSolutionSHA256": "1b5add784087c6373722fa3827c43715f27126c7cb92b6f00b60feae07197970",
+      "legacyProvenance": {
+        "repository": "AndreaMarro/ardesia",
+        "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+        "bankId": "physics-semestre-2026",
+        "originalRecordCanonicalSha256": "f628730e585285fc1d2da07f23c36dfa3bbdd8cd4aa159e7dff91aa36d2e3e45",
+        "canonicalization": "UTF-8 JSON, sorted keys, compact separators, Unicode preserved",
+        "originalProvenance": {
+          "kind": "original_authored_model_expansion",
+          "authoringModelId": "U7-radioactive-activity",
+          "authoringTaskId": "direct_evaluation",
+          "sources": [
+            {
+              "sourceId": "MUR-SYLLABUS-2026",
+              "locator": "U7: Attività e costante di decadimento"
+            }
+          ],
+          "copiedQuestion": false,
+          "aiAssisted": true,
+          "createdOn": "2026-10-21"
+        }
+      },
+      "assumptions": "Un solo radionuclide, N=20 nuclei, emivita 2 s; ln2 approssimato a 0,7 come esplicitamente prescritto.",
+      "sourceCaveat": "«Attività media» indica tasso atteso statistico, non media temporale sull’intervallo di emivita; campione piccolo implica fluttuazioni importanti.",
+      "structuredKey": {
+        "kind": "rational",
+        "numerator": 7,
+        "denominator": 1,
+        "exact": "7",
+        "unit": "Bq",
+        "acceptedLegacyStrings": [
+          "7",
+          "7"
+        ],
+        "officialOpenAnswerAlgorithm": "UNKNOWN",
+        "trainingComparator": "NOT_IMPLEMENTED; no inference of official normalization or tolerance"
+      },
+      "sourceAnswer": {
+        "kind": "rational",
+        "exact": "7",
+        "unit": "Bq",
+        "text": "7 Bq",
+        "accepted": [
+          "7",
+          "7"
+        ]
+      },
+      "feedbackOrigin": {
+        "origin": "authored",
+        "aiAssisted": true,
+        "revision": "exam-feedback-proposal-2026-11-13",
+        "status": "DRAFT",
+        "humanApproval": false
+      },
+      "learnerDiagnosis": null,
+      "workedSolution": [
+        "Il campione contiene N=20 nuclei del solo radionuclide e ha emivita 2 s. Per questo esercizio il testo prescrive ln2≈0,7.",
+        "La costante di decadimento è λ≈0,7/2=0,35 s⁻¹. L’attività al numero N assegnato è il tasso atteso λN.",
+        "A≈0,35·20=7 Bq. Inserire 7 secondo l’approssimazione numerica richiesta: il valore non è esatto rispetto a ln2 non approssimato.",
+        "Controllo: A/N=7/20=0,35 s⁻¹ coincide con λ. Con così pochi nuclei il numero effettivo di eventi fluttua: 7 Bq non promette esattamente sette decadimenti nel successivo secondo."
+      ],
+      "singleDimensionalCheck": "λ ha unità s⁻¹; N è un conteggio, quindi A=λN si esprime in Bq, equivalenti a s⁻¹ per il tasso atteso.",
+      "plausibleErrorHypotheses": [
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Usare N/T½ senza il fattore ln2",
+          "explanationAndReview": "10 Bq omette il fattore 0,7 prescritto. Ripassare λ=ln2/T½, che deriva dalla legge di dimezzamento."
+        },
+        {
+          "kind": "educational_hypothesis_not_student_diagnosis",
+          "label": "Confondere attività al tempo dato con media sull’intera emivita",
+          "explanationAndReview": "5 decadimenti/s deriva dai 10 decadimenti attesi in 2 s; è una media temporale su quell’intervallo, non il tasso iniziale A=λN≈7 Bq. Ripassare la diminuzione di N e dell’attività nel tempo."
+        }
+      ],
+      "normalizationOrGradingImplementation": null
+    }
+  ]
+}

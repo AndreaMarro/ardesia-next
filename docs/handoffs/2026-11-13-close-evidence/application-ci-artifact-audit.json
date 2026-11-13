@@ -1,0 +1,30 @@
+{
+  "kind": "original-ci-artifact-audit",
+  "commit": "8fbebc1e9e40ffd3e0c9210323a036560cf5b9d1",
+  "sourceDigest": "bd572f8ec39c20bb9d612a0faddfa3566db96dc56b289edcaa230b36a87c08cf",
+  "artifactZipSha256": "ee8e0e7410c01d8e63bfc7dc923363b1e11ce46cbc0a416fde2c7ea01fc0cf26",
+  "verifyChecks": 8,
+  "unitTests": 693,
+  "browserTests": 271,
+  "browserProjects": {
+    "desktop-chromium": 136,
+    "mobile-chromium": 135
+  },
+  "browserSkipped": 0,
+  "browserUnexpected": 0,
+  "browserFlaky": 0,
+  "browserRetries": 0,
+  "browserDurationMs": 1264725.539,
+  "coreGzipBytes": 327453,
+  "coreGzipLimit": 327680,
+  "physicalDevices": "NOT_RUN",
+  "scientificHumanApproval": "NOT_ESTABLISHED",
+  "productAcceptance": "NOT_INFERRED_FROM_CI",
+  "reportHashes": {
+    "verification.json": "c6c207b4613d3ccf8de4d068c81448205ea7dd648b41af35df17ecdc61f59a78",
+    "browser-evidence.json": "5f2d2569a63172bc7babdfde3e66fcc90288a9209cc6e50d4ce881b13e79331b",
+    "unit.json": "7c5a6b44315eb3d0c47001d6d81ed271b64c8bc4fc978d006ea7878360ea7973",
+    "e2e.json": "7fff97f15dffb11149dce0a3a49e4fcd2752d12da328d9d8b4363956226fbdc2",
+    "budget.json": "540aa02a9d67ce6037fb556fab6c8bc5a4241e8f31b9e894345b8ad8630d94c2"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "format": "ardesia-exam-feedback-physics-correction/1",
+  "recordedAt": "2026-11-13T14:27:24.860542+00:00",
+  "questionId": "u3-apparent-weight-01",
+  "field": "plausibleErrorHypotheses[1].explanationAndReview",
+  "before": "40 N richiederebbe una tensione che si aggiunge al peso verso il basso. Nel modello il filo e la spinta sostengono il corpo verso l’alto: T=mg−F_A.",
+  "after": "Il valore errato 40 N si ottiene trattando la spinta come una forza aggiuntiva verso il basso. In realtà tensione e spinta sono verso l’alto: T=mg−F_A=20 N. Ripassa il diagramma delle forze prima di scegliere i segni.",
+  "changedJsonFields": 1,
+  "humanApproval": false,
+  "files": [
+    {
+      "file": "/tmp/ardesia-exam-feedback-proposal-2026-11-13.json",
+      "before": "c01dcc770ac4b895147256ecf6e4b665c2d84c1c0f6a3424be72ce2990de6d5c",
+      "after": "bae4a00a55f2730c1cb5fbd03f22eb4b1f81346d5d243034fd31420fae3a0630"
+    },
+    {
+      "file": "/tmp/ardesia-exam-feedback-proposal-2026-11-13.md",
+      "before": "18d0df0e8d97896f89e9ce7bdef7f084baea04e49288d427c5efec2b26d3aa2d",
+      "after": "64fb713e16c38e635871e070f7d7d684a8c446da08ca1636f062389e2b2177dd"
+    }
+  ]
+}

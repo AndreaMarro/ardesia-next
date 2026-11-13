@@ -1,0 +1,31 @@
+{
+  "format": "ardesia-exam-prototype-portability/1",
+  "prototypeSHA256": "dd2b754f2a4afc323fcd37ec1c6f8dd27cfc356cf64a720ff13570fbf873707c",
+  "sourceUnchanged": true,
+  "authorTest": {
+    "originalSHA256": "e8eb54fd45cbe624fbae0ce80d5757c5264125b9df2abb25c0daca6d98532daf",
+    "portableSHA256": "e120a4344f7daec3697947bf4ec7ca80cf7498f386d73da40eeceab106c4cb4c",
+    "change": "Only the selection fixture path became relative to import.meta.url.",
+    "exitCode": 0
+  },
+  "counterchecks": {
+    "originalSHA256": "065f7f9d1c1a3a1f6748cdd05218f5acaa8d0d1ac42fff69c1ace9389637a46c",
+    "portableSHA256": "8e3f2393b901e0ffb6cb4e08fa6c0763a6683d37b27f81aaecd6f452993ae292",
+    "changes": [
+      "Source/test hash paths relative to import.meta.url",
+      "Optional output path argument; no implicit /tmp write",
+      "Exit nonzero if any recorded check fails"
+    ],
+    "passed": 585,
+    "caseNamesAndOutcomesIdentical": true
+  },
+  "standaloneStrictTypecheck": {
+    "exitCode": 0,
+    "target": "ES2023",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true
+  },
+  "integration": "NOT_INTEGRATED",
+  "humanApproval": false
+}

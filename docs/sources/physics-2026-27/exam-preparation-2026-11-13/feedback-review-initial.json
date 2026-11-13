@@ -1,0 +1,529 @@
+{
+  "format": "ardesia-exam-feedback-independent-review/1",
+  "status": "CHANGES_REQUESTED_ONE_P2",
+  "humanApproval": false,
+  "reviewedAtUtc": "2026-11-13T14:26:31.877574+00:00",
+  "sourceHead": "8fbebc1e9e40ffd3e0c9210323a036560cf5b9d1",
+  "reviewedProposalSha256": "c01dcc770ac4b895147256ecf6e4b665c2d84c1c0f6a3424be72ce2990de6d5c",
+  "scope": "Final independent scientific/content review only; no integration, UI, persistence, grading implementation, Git/service/cursor writes; Cortex suspended.",
+  "findings": [
+    {
+      "id": "FEEDBACK-01",
+      "priority": "P2",
+      "questionId": "u3-apparent-weight-01",
+      "jsonPointer": "/questions/24/plausibleErrorHypotheses/1/explanationAndReview",
+      "title": "The wrong force direction is attributed to tension instead of buoyancy",
+      "quoted": "40 N richiederebbe una tensione che si aggiunge al peso verso il basso.",
+      "reason": "T=mg+F_A=40 N is produced by incorrectly assigning downward buoyancy while tension stays upward. With the actual directions 40+10-30=20 N upward, not equilibrium.",
+      "proposedReplacement": "40 N si ottiene trattando erroneamente la spinta come una forza aggiuntiva verso il basso. In realtà tensione e spinta sono verso l’alto: T=mg−F_A=20 N.",
+      "status": "OPEN_ON_REVIEWED_HASH; root acknowledged correction necessary"
+    }
+  ],
+  "p1Count": 0,
+  "p2Count": 1,
+  "readCoverage": {
+    "questionIds": [
+      "u1-scalar-product-03",
+      "u1-scientific-scale-03",
+      "u2-center-mass-weighted-03",
+      "u2-static-threshold-03",
+      "u2-mean-velocity-03",
+      "u2-inelastic-rest-03",
+      "u3-archimedes-force-03",
+      "u3-poiseuille-flow-08",
+      "u3-hydraulic-force-03",
+      "u4-wave-phase-time-03",
+      "u4-coherent-constructive-06",
+      "u5-latent-heat-03",
+      "u5-ideal-gas-pressure-03",
+      "u5-entropy-hot-cold-03",
+      "u5-net-blackbody-exchange-03",
+      "u6-lorentz-force-03",
+      "u6-plane-capacitance-03",
+      "u6-faraday-average-emf-03",
+      "u7-photon-rate-power-03",
+      "u7-thin-lens-real-image-03",
+      "u7-beta-minus-atomic-number-03",
+      "u1-area-conversion-01",
+      "u2-gravitational-energy-01",
+      "u3-bernoulli-height-speed-01",
+      "u3-apparent-weight-01",
+      "u4-wave-phase-space-01",
+      "u5-calorimeter-capacity-01",
+      "u5-first-law-expansion-01",
+      "u6-current-charge-time-01",
+      "u6-coulomb-force-01",
+      "u7-radioactive-activity-01"
+    ],
+    "multipleChoiceQuestions": 21,
+    "optionFeedbacks": 105,
+    "reviewHints": 105,
+    "completionSolutions": 10,
+    "completionUnitChecks": 10,
+    "educationalHypotheses": 20,
+    "allRead": true
+  },
+  "structuralChecks": {
+    "idsPromptsTitlesOptionsKeysProvenancePreserved": true,
+    "sourceRecordPromptSolutionHashesMatchBank": true,
+    "allDraftHumanApprovalFalse": true,
+    "oneCorrectOptionPerMC": true,
+    "learnerDiagnosisNullAll31": true,
+    "hypothesesExplicitlyEducational": 20,
+    "authoredTextFieldsScanned": 302,
+    "delimiterResidues": 0,
+    "allAuthoredTextPresentInMarkdown": true
+  },
+  "delimiterCorrection": {
+    "matchesRecordedFourChanges": true,
+    "changes": [
+      {
+        "path": "/createdAt",
+        "before": "2026-11-13T14:12:47.130888+00:00",
+        "after": "2026-11-13T14:16:49.279521+00:00"
+      },
+      {
+        "path": "/questions/0/options/0/feedback",
+        "before": "Il prodotto scalare è |A||B|cosθ. Con θ=90° il coseno è zero: il risultato si annulla anche se nessuno dei due vettori è nullo.",
+        "after": "Il prodotto scalare è |A|·|B|cosθ. Con θ=90° il coseno è zero: il risultato si annulla anche se nessuno dei due vettori è nullo."
+      },
+      {
+        "path": "/questions/0/options/3/feedback",
+        "before": "Il rapporto dei moduli è positivo e non misura l’allineamento dei vettori. Il prodotto scalare dipende anche dall’angolo e qui vale zero per cos90°=0.||Ricostruisci la formula A·B=|A",
+        "after": "Il rapporto dei moduli è positivo e non misura l’allineamento dei vettori. Il prodotto scalare dipende anche dall’angolo e qui vale zero per cos90°=0."
+      },
+      {
+        "path": "/questions/0/options/3/reviewHint",
+        "before": "B|cosθ e controlla il ruolo dell’angolo.",
+        "after": "Ricostruisci la formula A·B=|A|·|B|cosθ e controlla il ruolo dell’angolo."
+      }
+    ],
+    "allTenCompletionRecordsUnchangedFromInitial": true,
+    "initialHashesVerified": true,
+    "generatorDelimiterGuardsReadNotExecuted": true
+  },
+  "lorentz": {
+    "newFeedbackConsistentWithActualOptionIds": true,
+    "correctOptionId": "D",
+    "vVectorDistractor": "E",
+    "momentumVectorDistractor": "C",
+    "legacyFullSourceStillContainsWrongSecondOptionReference": true,
+    "noSharedSourceCorrectionClaimed": true
+  },
+  "numericalChecks": [
+    {
+      "questionId": "u1-scientific-scale-03",
+      "expression": "(4*10**-3)/(2*10**-4)",
+      "expected": "20",
+      "actualExact": "20",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u1-scientific-scale-03",
+      "expression": "20*2*10**-4",
+      "expected": "1/250",
+      "actualExact": "1/250",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u2-static-threshold-03",
+      "expression": "4-4",
+      "expected": "0",
+      "actualExact": "0",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u2-static-threshold-03",
+      "expression": "10-4",
+      "expected": "6",
+      "actualExact": "6",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u2-mean-velocity-03",
+      "expression": "(6-6)/4",
+      "expected": "0",
+      "actualExact": "0",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u2-mean-velocity-03",
+      "expression": "(6+6)/4",
+      "expected": "3",
+      "actualExact": "3",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u3-poiseuille-flow-08",
+      "expression": "4/2**4",
+      "expected": "1/4",
+      "actualExact": "1/4",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u3-poiseuille-flow-08",
+      "expression": "2**4*(1/4)/4",
+      "expected": "1",
+      "actualExact": "1",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u3-hydraulic-force-03",
+      "expression": "1/10",
+      "expected": "1/10",
+      "actualExact": "1/10",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u3-hydraulic-force-03",
+      "expression": "10*(1/10)",
+      "expected": "1",
+      "actualExact": "1",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u4-wave-phase-time-03",
+      "expression": "1/(2/5)",
+      "expected": "5/2",
+      "actualExact": "5/2",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u4-wave-phase-time-03",
+      "expression": "5*(2/5)",
+      "expected": "2",
+      "actualExact": "2",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u4-coherent-constructive-06",
+      "expression": "((4-3)/(4+3))**2",
+      "expected": "1/49",
+      "actualExact": "1/49",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u5-entropy-hot-cold-03",
+      "expression": "-600+600",
+      "expected": "0",
+      "actualExact": "0",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u7-thin-lens-real-image-03",
+      "expression": "1/(1-1/(1/2))",
+      "expected": "-1",
+      "actualExact": "-1",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u7-thin-lens-real-image-03",
+      "expression": "-(-1)/(1/2)",
+      "expected": "2",
+      "actualExact": "2",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u7-beta-minus-atomic-number-03",
+      "expression": "1-1+0",
+      "expected": "0",
+      "actualExact": "0",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u1-area-conversion-01",
+      "expression": "2*2**2",
+      "expected": "8",
+      "actualExact": "8",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u1-area-conversion-01",
+      "expression": "8/2**2",
+      "expected": "2",
+      "actualExact": "2",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u2-gravitational-energy-01",
+      "expression": "2*10*2",
+      "expected": "40",
+      "actualExact": "40",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u2-gravitational-energy-01",
+      "expression": "40/2",
+      "expected": "20",
+      "actualExact": "20",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u3-bernoulli-height-speed-01",
+      "expression": "(1000*10*1+1000*2**2/2)/1000",
+      "expected": "12",
+      "actualExact": "12",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u3-bernoulli-height-speed-01",
+      "expression": "12*1000-1000*10*1",
+      "expected": "2000",
+      "actualExact": "2000",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u3-apparent-weight-01",
+      "expression": "3*10-1000*0.001*10",
+      "expected": "20",
+      "actualExact": "20",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u3-apparent-weight-01",
+      "expression": "20+1000*0.001*10",
+      "expected": "30",
+      "actualExact": "30",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u4-wave-phase-space-01",
+      "expression": "1/4",
+      "expected": "1/4",
+      "actualExact": "1/4",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u4-wave-phase-space-01",
+      "expression": "4/4",
+      "expected": "1",
+      "actualExact": "1",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u5-calorimeter-capacity-01",
+      "expression": "(2*1*80+(2*1+2)*20)/(2*1+2*1+2)",
+      "expected": "40",
+      "actualExact": "40",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u5-calorimeter-capacity-01",
+      "expression": "2*1*(80-40)",
+      "expected": "80",
+      "actualExact": "80",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u5-calorimeter-capacity-01",
+      "expression": "(2*1+2)*(40-20)",
+      "expected": "80",
+      "actualExact": "80",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u5-first-law-expansion-01",
+      "expression": "100-40",
+      "expected": "60",
+      "actualExact": "60",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u5-first-law-expansion-01",
+      "expression": "60+40",
+      "expected": "100",
+      "actualExact": "100",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u6-current-charge-time-01",
+      "expression": "(6*10**-3)/(2*10**-3)",
+      "expected": "3",
+      "actualExact": "3",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u6-current-charge-time-01",
+      "expression": "3*2*10**-3",
+      "expected": "3/500",
+      "actualExact": "3/500",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u6-coulomb-force-01",
+      "expression": "(9*10**9)*(10**-6)**2/(3*10**-2)**2",
+      "expected": "10",
+      "actualExact": "10",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u6-coulomb-force-01",
+      "expression": "10*(3*10**-2)**2",
+      "expected": "9/1000",
+      "actualExact": "9/1000",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u7-radioactive-activity-01",
+      "expression": "(7/10)*20/2",
+      "expected": "7",
+      "actualExact": "7",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u7-radioactive-activity-01",
+      "expression": "7/20",
+      "expected": "7/20",
+      "actualExact": "7/20",
+      "origin": "independent AST/Fraction re-evaluation of selection evidence"
+    },
+    {
+      "questionId": "u3-apparent-weight-01",
+      "label": "correct-force-balance",
+      "expression": "20+10-30",
+      "expected": "0",
+      "actualExact": "0",
+      "origin": "reviewer independent countercheck"
+    },
+    {
+      "questionId": "u3-apparent-weight-01",
+      "label": "wrong-40N-net-upward",
+      "expression": "40+10-30",
+      "expected": "20",
+      "actualExact": "20",
+      "origin": "reviewer independent countercheck"
+    },
+    {
+      "questionId": "u3-apparent-weight-01",
+      "label": "wrong-downward-buoyancy-balance",
+      "expression": "40-10-30",
+      "expected": "0",
+      "actualExact": "0",
+      "origin": "reviewer independent countercheck"
+    },
+    {
+      "questionId": "u6-coulomb-force-01",
+      "label": "cm-unconverted-error",
+      "expression": "9*10**9*(10**-6)**2/3**2",
+      "expected": "0.001",
+      "actualExact": "1/1000",
+      "origin": "reviewer independent countercheck"
+    },
+    {
+      "questionId": "u6-current-charge-time-01",
+      "label": "time-unconverted-error",
+      "expression": "0.006/2",
+      "expected": "0.003",
+      "actualExact": "3/1000",
+      "origin": "reviewer independent countercheck"
+    },
+    {
+      "questionId": "u5-calorimeter-capacity-01",
+      "label": "neglected-container",
+      "expression": "(2*80+2*20)/(2+2)",
+      "expected": "50",
+      "actualExact": "50",
+      "origin": "reviewer independent countercheck"
+    },
+    {
+      "questionId": "u7-radioactive-activity-01",
+      "label": "half-life-time-average",
+      "expression": "(20-10)/2",
+      "expected": "5",
+      "actualExact": "5",
+      "origin": "reviewer independent countercheck"
+    },
+    {
+      "questionId": "u5-entropy-hot-cold-03",
+      "label": "positive-total-example-600K-300K",
+      "expression": "600*(1/300-1/600)",
+      "expected": "1",
+      "actualExact": "1",
+      "origin": "reviewer independent countercheck"
+    },
+    {
+      "questionId": "u6-lorentz-force-03",
+      "label": "cross-product-dot-velocity-example",
+      "expression": "2*10+3*16+4*(-17)",
+      "expected": "0",
+      "actualExact": "0",
+      "origin": "reviewer independent countercheck"
+    },
+    {
+      "questionId": "u7-thin-lens-real-image-03",
+      "label": "virtual-image-example-cm",
+      "expression": "1/(1/10-1/5)",
+      "expected": "-10",
+      "actualExact": "-10",
+      "origin": "reviewer independent countercheck"
+    }
+  ],
+  "numericalCheckCounts": {
+    "selectionRecomputedExactly": 38,
+    "newReviewerChecks": 10,
+    "total": 48,
+    "passed": 48
+  },
+  "scientificNotes": [
+    "MC alternatives distinguish force threshold from actual static friction, vector velocity from speed, internal/external impulse, pressure from resultant buoyancy, and Q-fixed versus pressure-fixed Poiseuille assumptions.",
+    "Temperature/latent heat, path dependence of heat and entropy reservoir contributions are consistent with the stated models.",
+    "Lorentz no-work argument, conductor interior rather than cavity, Lenz flux direction, single-photon energetic threshold, virtual-image signs and beta-minus nuclear changes are coherent.",
+    "All ten completion answers, unit checks and worked calculations are coherent; the identified P2 affects one explanatory error hypothesis, not its numeric key or force-balance worked solution.",
+    "Radioactivity correctly marks ln2~0.7 as the prescribed approximation and distinguishes statistical expected rate from exactly observed decay count or a half-life time average."
+  ],
+  "limitations": [
+    "AI independent review is not human scientific approval or learner calibration.",
+    "Selection is editorial, incomplete over the syllabus and consists of existing legacy items, not unseen psychometric items.",
+    "Official numerical normalization/grading remains unknown; this artifact implements neither a parser nor an examination session.",
+    "Some inherited prompts remain awkward or rely on ordinary model assumptions, recorded in sourceCaveat; no broad official wording conformity is certified.",
+    "Old full Lorentz solution retains its historical bad option-order reference; only the new proposed feedback is corrected.",
+    "One P2 remains open on the exact frozen hash; the proposed sentence has not been applied by this reviewer."
+  ],
+  "sourceReceipts": [
+    {
+      "path": "/tmp/ardesia-exam-feedback-proposal-2026-11-13.json",
+      "sha256": "c01dcc770ac4b895147256ecf6e4b665c2d84c1c0f6a3424be72ce2990de6d5c",
+      "bytes": 166392
+    },
+    {
+      "path": "/tmp/ardesia-exam-feedback-proposal-2026-11-13.md",
+      "sha256": "18d0df0e8d97896f89e9ce7bdef7f084baea04e49288d427c5efec2b26d3aa2d",
+      "bytes": 51127
+    },
+    {
+      "path": "/tmp/ardesia-exam-candidate-selection-2026-11-13.json",
+      "sha256": "bc180ca01c9d4f14cdab533384f60f5065cbc263256a1e4ad1f52de0dae0b04a",
+      "bytes": 145975
+    },
+    {
+      "path": "/workspace/ardesia-next/docs/sources/physics-2026-27/editorial/bank-selection.json",
+      "sha256": "fdd548b9e404d40613560e150959198d4477fef8fbf1e5ec24e4116d4eab46f4",
+      "bytes": 2295231
+    },
+    {
+      "path": "/tmp/ardesia-exam-feedback-correction-2026-11-13.json",
+      "sha256": "dda6d78b47efc2fcacb99504e396c6c824cdc6aaac295b6896daa62f490b637e",
+      "bytes": 3855
+    },
+    {
+      "path": "/tmp/ardesia-exam-feedback-correction-2026-11-13.md",
+      "sha256": "d8dc0b6d5b5ad0e94383c09e67d84e9791e960ddbdbfd11b5b6e90577f5c55ee",
+      "bytes": 2265
+    },
+    {
+      "path": "/tmp/ardesia-exam-feedback-proposal-2026-11-13.initial.json",
+      "sha256": "c13aeac34d5be3a10650c0c4a01476f25e247e5a66653ea30f5993e0629ef30c",
+      "bytes": 166388
+    },
+    {
+      "path": "/tmp/ardesia-exam-feedback-proposal-2026-11-13.initial.md",
+      "sha256": "aa014ab1d985dd58942eec0026783ab8d4ab54c5156d2a84aa1e13688d549f0f",
+      "bytes": 51123
+    },
+    {
+      "path": "/tmp/ardesia-exam-feedback-authoring-2026-11-13.py",
+      "sha256": "271648826e8de8cbf8b88884460ad2cfaa24d9da9c752d2982276fd288481ff1",
+      "bytes": 45601
+    }
+  ]
+}

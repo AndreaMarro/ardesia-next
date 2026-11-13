@@ -1,0 +1,120 @@
+{
+  "format": "ardesia-exam-feedback-final-review/1",
+  "status": "REVIEWED_NO_OPEN_P1_P2",
+  "humanApproval": false,
+  "reviewedAtUtc": "2026-11-13T14:29:06.932798+00:00",
+  "scope": "Final read-only delta review closing the prior independent content review. Preparation only; no app integration, UI, persistence, services or publication. Cortex suspended.",
+  "finalProposalSha256": "bae4a00a55f2730c1cb5fbd03f22eb4b1f81346d5d243034fd31420fae3a0630",
+  "finalMarkdownSha256": "64fb713e16c38e635871e070f7d7d684a8c446da08ca1636f062389e2b2177dd",
+  "previousReviewStatusPreserved": "CHANGES_REQUESTED_ONE_P2",
+  "previousReviewSha256": "2ff65544e1630c03a95e11f9f2cc17bf86214579903444a7805efd5b713f3d5a",
+  "previousProposalSha256": "c01dcc770ac4b895147256ecf6e4b665c2d84c1c0f6a3424be72ce2990de6d5c",
+  "changes": [
+    {
+      "path": "/questions/24/plausibleErrorHypotheses/1/explanationAndReview",
+      "before": "40 N richiederebbe una tensione che si aggiunge al peso verso il basso. Nel modello il filo e la spinta sostengono il corpo verso l’alto: T=mg−F_A.",
+      "after": "Il valore errato 40 N si ottiene trattando la spinta come una forza aggiuntiva verso il basso. In realtà tensione e spinta sono verso l’alto: T=mg−F_A=20 N. Ripassa il diagramma delle forze prima di scegliere i segni."
+    }
+  ],
+  "findingsClosed": [
+    {
+      "id": "FEEDBACK-01",
+      "priority": "P2",
+      "questionId": "u3-apparent-weight-01",
+      "status": "FIX_VERIFIED",
+      "reason": "The incorrect downward direction is now attributed to buoyancy; actual tension and buoyancy point upward and T=mg-F_A=20 N. The explanation remains an educational hypothesis, not a student diagnosis."
+    }
+  ],
+  "openP1": 0,
+  "openP2": 0,
+  "checks": {
+    "exactlyOneJsonFieldChanged": true,
+    "timestampsAndOtherMetadataUnchanged": true,
+    "markdownExactlySameSentenceReplacement": true,
+    "priorProposalPreservedExactly": true,
+    "priorChangesRequestedReportsPreserved": true,
+    "31IdsPromptsOptionsKeysAndProvenanceUnchanged": true,
+    "105MCFeedbackAndHintsUnchanged": true,
+    "10SolutionsAnd10DimensionalChecksUnchanged": true,
+    "19OtherHypothesesUnchanged": true,
+    "20HypothesesRemainExplicitlyEducational": true,
+    "302AuthoredTextFieldsNoDelimiterResidues": true,
+    "allAuthoredTextPresentInFinalMarkdown": true,
+    "draftHumanApprovalFalsePreserved": true
+  },
+  "scientificEvidence": {
+    "priorReview": "All 105 option feedbacks, 105 hints, 10 worked solutions, 10 unit checks and 20 hypotheses read in full; 48 arithmetic checks executed in prior review.",
+    "priorNumericalChecks": {
+      "selectionRecomputedExactly": 38,
+      "newReviewerChecks": 10,
+      "total": 48,
+      "passed": 48
+    },
+    "deltaArithmeticRechecks": [
+      {
+        "label": "Correct upward tension and buoyancy balance downward weight",
+        "expression": "20+10-30",
+        "valueN": 0,
+        "expectedN": 0
+      },
+      {
+        "label": "40 N would imply upward acceleration with the actual force directions",
+        "expression": "40+10-30",
+        "valueN": 20,
+        "expectedN": 20
+      },
+      {
+        "label": "40 N arises from wrongly treating buoyancy as downward",
+        "expression": "40-10-30",
+        "valueN": 0,
+        "expectedN": 0
+      }
+    ],
+    "newDistinctArithmeticClaim": false
+  },
+  "limits": [
+    "Independent AI review, not human scientific approval or learner calibration.",
+    "Final artifact remains a DRAFT training-feedback proposal; no examination UI, timer, scoring integration, persistence or commercial product completion inferred.",
+    "Legacy question IDs/prompts/keys remain unchanged; this is feedback for existing questions, not 31 newly authored questions.",
+    "The old full Lorentz source solution retains its wrong option-order reference; the proposed replacement feedback is correct, but no shared-source fix is claimed.",
+    "Official numerical response equivalence and weighting/coverage/calibration are not established by this review.",
+    "No further implementation, new task or architectural analysis undertaken."
+  ],
+  "sourceReceipts": [
+    {
+      "path": "/tmp/ardesia-exam-feedback-proposal-2026-11-13.json",
+      "sha256": "bae4a00a55f2730c1cb5fbd03f22eb4b1f81346d5d243034fd31420fae3a0630",
+      "bytes": 166463
+    },
+    {
+      "path": "/tmp/ardesia-exam-feedback-proposal-2026-11-13.md",
+      "sha256": "64fb713e16c38e635871e070f7d7d684a8c446da08ca1636f062389e2b2177dd",
+      "bytes": 51198
+    },
+    {
+      "path": "/tmp/ardesia-exam-feedback-before-physics-fix.json",
+      "sha256": "c01dcc770ac4b895147256ecf6e4b665c2d84c1c0f6a3424be72ce2990de6d5c",
+      "bytes": 166392
+    },
+    {
+      "path": "/tmp/ardesia-exam-feedback-before-physics-fix.md",
+      "sha256": "18d0df0e8d97896f89e9ce7bdef7f084baea04e49288d427c5efec2b26d3aa2d",
+      "bytes": 51127
+    },
+    {
+      "path": "/tmp/ardesia-exam-feedback-independent-review.json",
+      "sha256": "2ff65544e1630c03a95e11f9f2cc17bf86214579903444a7805efd5b713f3d5a",
+      "bytes": 19491
+    },
+    {
+      "path": "/tmp/ardesia-exam-feedback-independent-review.md",
+      "sha256": "fa543f15ab607ebea3652df19f211d52f5d512a64d2ee1535eb3f68028f721d5",
+      "bytes": 4344
+    },
+    {
+      "path": "/tmp/ardesia-exam-feedback-physics-correction.json",
+      "sha256": "8bea1a5a5903c3cd01bc08a0dfdfac45e499c0a3ad3d1874acec8d47be6857c6",
+      "bytes": 1184
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "format": "ardesia-feedback-correction-receipt/1",
+  "createdAt": "2026-11-13T14:17:45.748348+00:00",
+  "sourceHead": "8fbebc1e9e40ffd3e0c9210323a036560cf5b9d1",
+  "status": "DRAFT",
+  "humanApproval": false,
+  "finding": "Authoring delimiter || collided with adjacent absolute-value bars in |A||B| inside option D review hint, splitting one formula and leaving the real delimiter in feedback.",
+  "fix": "Authored scalar-product formulas now use explicit multiplication |A|·|B|. Authoring refuses any line with other than exactly one || separator; output checks reject separator residue in every authored feedback, hint, completion step, unit check and error explanation.",
+  "changes": [
+    {
+      "path": "/createdAt",
+      "before": "2026-11-13T14:12:47.130888+00:00",
+      "after": "2026-11-13T14:16:49.279521+00:00"
+    },
+    {
+      "path": "/questions/0/options/0/feedback",
+      "before": "Il prodotto scalare è |A||B|cosθ. Con θ=90° il coseno è zero: il risultato si annulla anche se nessuno dei due vettori è nullo.",
+      "after": "Il prodotto scalare è |A|·|B|cosθ. Con θ=90° il coseno è zero: il risultato si annulla anche se nessuno dei due vettori è nullo."
+    },
+    {
+      "path": "/questions/0/options/3/feedback",
+      "before": "Il rapporto dei moduli è positivo e non misura l’allineamento dei vettori. Il prodotto scalare dipende anche dall’angolo e qui vale zero per cos90°=0.||Ricostruisci la formula A·B=|A",
+      "after": "Il rapporto dei moduli è positivo e non misura l’allineamento dei vettori. Il prodotto scalare dipende anche dall’angolo e qui vale zero per cos90°=0."
+    },
+    {
+      "path": "/questions/0/options/3/reviewHint",
+      "before": "B|cosθ e controlla il ruolo dell’angolo.",
+      "after": "Ricostruisci la formula A·B=|A|·|B|cosθ e controlla il ruolo dell’angolo."
+    }
+  ],
+  "preserved": [
+    "31 question IDs, prompts and legacy provenance",
+    "21×5 option IDs/texts/correctness and all keys",
+    "All 10 completion records byte-equivalent after JSON parsing",
+    "Original proposal preserved as .initial.json/.initial.md",
+    "Shared source, Git, services and cursor untouched"
+  ],
+  "checks": {
+    "distinctFeedback": 105,
+    "feedbackWithReviewHint": 105,
+    "completionSolutions": 10,
+    "completionUnitChecks": 10,
+    "completionErrorHypotheses": 20,
+    "authoredTextFieldsScanned": 302,
+    "delimiterResidues": 0,
+    "scalarProductFormulasComplete": true,
+    "onlyQuestionAffected": "u1-scalar-product-03",
+    "affectedOptions": [
+      "A: multiplication notation only",
+      "D: feedback/hint boundary and full formula restored"
+    ]
+  },
+  "files": [
+    {
+      "path": "/tmp/ardesia-exam-feedback-proposal-2026-11-13.initial.json",
+      "sha256": "c13aeac34d5be3a10650c0c4a01476f25e247e5a66653ea30f5993e0629ef30c",
+      "bytes": 166388
+    },
+    {
+      "path": "/tmp/ardesia-exam-feedback-proposal-2026-11-13.initial.md",
+      "sha256": "aa014ab1d985dd58942eec0026783ab8d4ab54c5156d2a84aa1e13688d549f0f",
+      "bytes": 51123
+    },
+    {
+      "path": "/tmp/ardesia-exam-feedback-proposal-2026-11-13.json",
+      "sha256": "c01dcc770ac4b895147256ecf6e4b665c2d84c1c0f6a3424be72ce2990de6d5c",
+      "bytes": 166392
+    },
+    {
+      "path": "/tmp/ardesia-exam-feedback-proposal-2026-11-13.md",
+      "sha256": "18d0df0e8d97896f89e9ce7bdef7f084baea04e49288d427c5efec2b26d3aa2d",
+      "bytes": 51127
+    },
+    {
+      "path": "/tmp/ardesia-exam-feedback-authoring-2026-11-13.py",
+      "sha256": "271648826e8de8cbf8b88884460ad2cfaa24d9da9c752d2982276fd288481ff1",
+      "bytes": 45601
+    }
+  ],
+  "limits": [
+    "Correction of own authoring artifact, not independent scientific review",
+    "No grading/parser/app or repository changes",
+    "Independent second review remains pending; no human approval"
+  ]
+}

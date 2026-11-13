@@ -1,0 +1,140 @@
+{
+  "format": "ardesia-exam-grading-fixed-review/1",
+  "reviewedAtUtc": "2026-11-13T14:23:44.090378+00:00",
+  "status": "TWO_P2_RESOLVED_PROTOTYPE_ONLY",
+  "humanApproval": false,
+  "independence": "Reviewer read root-authored fix and reran unchanged independent counterchecks; no prototype/test/source edits made by reviewer.",
+  "scope": "Final read-only review of isolated /tmp training comparator prototype. No repository/Git/service/cursor access or UI/persistence/official algorithm integration.",
+  "reviewedSourceSHA256": "dd2b754f2a4afc323fcd37ec1c6f8dd27cfc356cf64a720ff13570fbf873707c",
+  "priorReviewPreserved": true,
+  "initialCounterchecksPreservedBeforeRerun": true,
+  "resolvedFindings": [
+    {
+      "id": "GRADING-01",
+      "priority": "P2",
+      "resolution": "Runtime key kind is checked before either branch; choice array must be dense when spread and contain exactly five unique A–E string IDs with an included string key. Number exact must be a string parsed as a number before blank answer handling. Malformed keys reject even for blank; wrong discriminant no longer enters numeric branch.",
+      "runtimeEvidence": "All five previously failing malformed-key cases pass in unchanged 585-case suite; expanded author suite covers blank/A/1 with sparse/non-string/duplicate/unknown/null keys."
+    },
+    {
+      "id": "GRADING-02",
+      "priority": "P2",
+      "resolution": "Absent integer part contributes empty string, not a synthetic zero, to written mantissa digit count. Regex still requires fractional digits. Leading-dot 24-digit decimal accepted; 25 rejected.",
+      "runtimeEvidence": "Previously failing leading-dot boundary now passes; integer boundaries and exact rational comparisons remain green."
+    }
+  ],
+  "newFindings": [],
+  "p1Count": 0,
+  "unresolvedP2CountWithinScope": 0,
+  "authorTests": {
+    "exitCode": 0,
+    "output": {
+      "status": "PROTOTYPE_ONLY_PASS",
+      "candidateKeys": 31,
+      "alternativeChecks": 105,
+      "maximumPointsTenths": 310,
+      "arbitraryCodeExecuted": false,
+      "officialComparator": false,
+      "persistence": false
+    },
+    "log": "/tmp/ardesia-exam-grading-fixed-review-author.log"
+  },
+  "independentChecks": {
+    "exitCode": 0,
+    "caseCount": 585,
+    "passed": 585,
+    "failed": [],
+    "previousPassed": 579,
+    "previousFailed": 6,
+    "allPreviouslyFailingCasesNowPass": true,
+    "rationalPairs": 250,
+    "exactRationalComparisonChecks": 500,
+    "testFileSHA256": "065f7f9d1c1a3a1f6748cdd05218f5acaa8d0d1ac42fff69c1ace9389637a46c",
+    "testFileUnchangedFromHistoricalReview": true,
+    "sourceUnchangedDuringChecks": true
+  },
+  "confirmedInvariants": [
+    "No existing author test deleted or weakened; delta adds malformed-key, 24/25 fractional digit and non-string answer regressions.",
+    "Initial source/test hashes match historical review; original failed counterchecks retained byte-for-byte under .initial.json.",
+    "Rational comparison still uses BigInt cross-products; Number is limited to bounded two-digit exponent; no eval/parseFloat or arbitrary arithmetic evaluation.",
+    "Invalid key throws before blank; non-string answer is explicitly invalid, not a runtime TypeError.",
+    "Blank=0, wrong=-1, invalid=-1, correct=10 integer tenths; 31 correct=310, 31 wrong=-31, 16 correct+15 wrong=145.",
+    "Zero denominators, malformed notation, unsupported units/operators, numeric digit/exponent/normalized length boundaries remain rejected.",
+    "Comparator source has no network, storage, UI, timer, persistence, authorization or integration code. Test filesystem IO concerns local fixtures/evidence only."
+  ],
+  "clarificationsAndLimits": [
+    "96 characters applies after trim/Unicode-minus normalization and after blank detection, not to raw transport allocation; arbitrarily long whitespace is blank.",
+    "24 digits counts written mantissa digits per fraction part; +/-12 exponent bound is separate. An explicit leading zero is a written digit; no tolerance or unit conversion.",
+    "Trailing decimal separators 1./1, are invalid; numeric surrounding whitespace is accepted, choice surrounding whitespace is invalid unless wholly blank; comma and dot are decimal separators, never thousands grouping.",
+    "Invalid answer receives -1 tenth in this training prototype. Selection still says policy UNDECIDED: future integration must explicitly adopt/disclose or revise that policy; do not attribute it to official rules.",
+    "Institutional guide does not define this numerical equivalent-form algorithm. Ten numeric completions remain training candidates, not proof of conformity to missing-word exam questions.",
+    "No scientific review of new feedback, human approval, psychometric validation, complete simulation, deployment, UI/persistence or live system inferred.",
+    "This closes the requested local review; no further development started."
+  ],
+  "sourceReceipts": [
+    {
+      "path": "/tmp/ardesia-exam-grading-proposal.ts",
+      "sha256": "dd2b754f2a4afc323fcd37ec1c6f8dd27cfc356cf64a720ff13570fbf873707c",
+      "bytes": 3709
+    },
+    {
+      "path": "/tmp/ardesia-exam-grading-proposal.test.mjs",
+      "sha256": "e8eb54fd45cbe624fbae0ce80d5757c5264125b9df2abb25c0daca6d98532daf",
+      "bytes": 3666
+    },
+    {
+      "path": "/tmp/ardesia-exam-grading-proposal.initial.ts",
+      "sha256": "a76b6455a6aecbe491c4e1646e0eb742b86e51fa1876c5e8c58f3e3c6f19b3c8",
+      "bytes": 3200
+    },
+    {
+      "path": "/tmp/ardesia-exam-grading-proposal.initial.test.mjs",
+      "sha256": "78e58e42489226172ea0180e687ee37f1b1f005d73927ffff144b06cd1b59d55",
+      "bytes": 2907
+    },
+    {
+      "path": "/tmp/ardesia-exam-grading-review.md",
+      "sha256": "98926c898951f119880ccf30c1ef9d9021cee0aab6f44b2a25f8de0a6287e7a7",
+      "bytes": 4484
+    },
+    {
+      "path": "/tmp/ardesia-exam-grading-review.json",
+      "sha256": "9b2f956fb7269aae90599de285ca0cb6c2e3393d68739a4706274a1a21427738",
+      "bytes": 8270
+    },
+    {
+      "path": "/tmp/ardesia-exam-grading-review-proposed.patch",
+      "sha256": "1697c032fd2e0e96bafc8487fbef3e6aa41f4f2628ea0a7d1932732e3864e520",
+      "bytes": 2502
+    },
+    {
+      "path": "/tmp/ardesia-exam-grading-review-cases.mjs",
+      "sha256": "065f7f9d1c1a3a1f6748cdd05218f5acaa8d0d1ac42fff69c1ace9389637a46c",
+      "bytes": 5656
+    },
+    {
+      "path": "/tmp/ardesia-exam-grading-review-counterchecks.initial.json",
+      "sha256": "eafeea79f8534be4c2e8679ab7f3fa926c9ee2e46f818627735609f137263c2a",
+      "bytes": 51624
+    },
+    {
+      "path": "/tmp/ardesia-exam-grading-review-counterchecks.json",
+      "sha256": "483add6420c8898fcdb4613780ebef324f6a06443ac878ec8e852816338415e3",
+      "bytes": 50016
+    },
+    {
+      "path": "/tmp/ardesia-exam-grading-fixed-review-author.log",
+      "sha256": "1e7b91544d2edc204dda46a6c7ea7f720e4ba09a3084d1675167eb8e7bb9e287",
+      "bytes": 179
+    },
+    {
+      "path": "/tmp/ardesia-exam-grading-fixed-review-counterchecks.log",
+      "sha256": "c6ce7f317f389d93d5d3fda2e8950890d4d8a34c36579a5338314527e2d977cc",
+      "bytes": 369
+    },
+    {
+      "path": "/tmp/ardesia-exam-candidate-selection-2026-11-13.json",
+      "sha256": "bc180ca01c9d4f14cdab533384f60f5065cbc263256a1e4ad1f52de0dae0b04a",
+      "bytes": 145975
+    }
+  ]
+}

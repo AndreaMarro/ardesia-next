@@ -1,0 +1,186 @@
+{
+  "format": "ardesia-exam-grading-review/1",
+  "status": "CHANGES_REQUESTED",
+  "humanApproval": false,
+  "reviewedAtUtc": "2026-11-13T14:17:35.082775+00:00",
+  "scope": "Isolated training comparator prototype only. Cortex suspended; no shared source, Git, service, UI, persistence or official exam implementation.",
+  "findings": [
+    {
+      "id": "GRADING-01",
+      "priority": "P2",
+      "file": "/tmp/ardesia-exam-grading-proposal.ts",
+      "line": 33,
+      "title": "Invalid runtime keys can become blank or correct instead of throwing",
+      "reproductions": [
+        {
+          "key": {
+            "kind": "choice",
+            "correctOptionId": "",
+            "optionIds": [
+              "",
+              "B",
+              "C",
+              "D",
+              "E"
+            ]
+          },
+          "raw": "",
+          "actual": {
+            "kind": "blank",
+            "pointsTenths": 0
+          }
+        },
+        {
+          "key": {
+            "kind": "not-a-key",
+            "exact": "1"
+          },
+          "raw": "1",
+          "actual": {
+            "kind": "correct",
+            "pointsTenths": 10
+          }
+        }
+      ],
+      "additionalCases": [
+        "Whitespace-only correct choice ID",
+        "Non-string option IDs",
+        "Sparse five-element option array with a hole"
+      ],
+      "expected": "Reject invalid key before interpreting even a blank answer. Runtime discriminant must be choice or number; five option IDs must actually be strings and valid A-E identifiers for this proposal.",
+      "fix": "Validate runtime shape before blank handling; inspect sparse arrays via spread/Array.from, not Array.some directly, which skips holes."
+    },
+    {
+      "id": "GRADING-02",
+      "priority": "P2",
+      "file": "/tmp/ardesia-exam-grading-proposal.ts",
+      "line": 11,
+      "title": "Implicit leading zero consumes a written-digit slot",
+      "reproductions": [
+        {
+          "input": ".777777777777777777777777",
+          "writtenDigits": 24,
+          "actual": "invalid",
+          "expected": "number"
+        }
+      ],
+      "fix": "Change digits=(match[2]??'0')+fraction to digits=(match[2]??'')+fraction; the grammar guarantees a non-empty fractional sequence in this branch."
+    }
+  ],
+  "p1Count": 0,
+  "p2Count": 2,
+  "authorTests": {
+    "rerunByReviewer": true,
+    "exitCode": 0,
+    "output": {
+      "status": "PROTOTYPE_ONLY_PASS",
+      "candidateKeys": 31,
+      "alternativeChecks": 105,
+      "maximumPointsTenths": 310,
+      "arbitraryCodeExecuted": false,
+      "officialComparator": false,
+      "persistence": false
+    },
+    "coverageNote": "31 candidate keys, 105 MC alternatives, 21 accepted legacy numeric strings; maximum 310 integer tenths. This suite misses the reported malformed-key and leading-dot boundary cases."
+  },
+  "independentChecks": {
+    "caseCount": 585,
+    "passed": 579,
+    "failed": [
+      {
+        "name": "24 written fractional digits accepted without implicit leading zero",
+        "passed": false,
+        "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'invalid'\n- 'number'\n"
+      },
+      {
+        "name": "reject invalid key even blank {\"kind\":\"choice\",\"correctOptionId\":\"\",\"optionIds\":[\"\",\"B\",\"C\",\"D\",\"E\"]}",
+        "passed": false,
+        "error": "Missing expected exception."
+      },
+      {
+        "name": "reject invalid key even blank {\"kind\":\"choice\",\"correctOptionId\":\" \",\"optionIds\":[\" \",\"B\",\"C\",\"D\",\"E\"]}",
+        "passed": false,
+        "error": "Missing expected exception."
+      },
+      {
+        "name": "reject invalid key even blank {\"kind\":\"choice\",\"correctOptionId\":\"A\",\"optionIds\":[\"A\",1,2,3,4]}",
+        "passed": false,
+        "error": "Missing expected exception."
+      },
+      {
+        "name": "reject invalid key even blank {\"kind\":\"choice\",\"correctOptionId\":\"A\",\"optionIds\":[\"A\",\"B\",\"C\",\"D\",null]}",
+        "passed": false,
+        "error": "Missing expected exception."
+      },
+      {
+        "name": "reject invalid key even blank {\"kind\":\"not-a-key\",\"exact\":\"1\"}",
+        "passed": false,
+        "error": "Missing expected exception."
+      }
+    ],
+    "rationalPairs": 250,
+    "sourceUnchangedDuringChecks": true
+  },
+  "confirmedBehavior": [
+    "Exact BigInt cross-products, no parseFloat/eval or floating-point numeric answer comparison; Number only parses the bounded exponent.",
+    "Equivalent fractions, decimal comma/dot, leading-dot decimals within present bound, scientific notation, signed numerator/denominator and Unicode minus.",
+    "24-digit integer accepted and 25 rejected; exponent +/-12 accepted, outside range rejected; zero denominator rejected in signed, decimal and exponent forms.",
+    "Anchored grammar rejects extra units, operators, mixed/grouping separators, base prefixes, Infinity, NaN and malformed expressions.",
+    "Blank/invalid/wrong remain distinct result kinds; correct=10, wrong=-1, invalid=-1, blank=0 in integer tenths.",
+    "96 normalized nonblank characters accepted in a valid padded fraction; 97 rejected.",
+    "250 exact rational equivalences and 250 one-unit numerator counterexamples produce correct/wrong as expected."
+  ],
+  "limits": [
+    "The 96-character check applies after trim; all-whitespace input even longer than 96 is intentionally blank in the author test. It is not a cap on raw transport/string allocation.",
+    "24 digits refers to written mantissa digits per decimal part; fractions have two independently bounded parts. No unit conversion or tolerance is implemented.",
+    "Trailing decimal separator (1. or 1,) and choice strings with surrounding spaces are rejected by current explicit behavior; no silent normalization is inferred.",
+    "Selection still labels invalid-input policy UNDECIDED, while prototype assigns -1 tenth to invalid. This must become an explicit training decision before any user-facing integration; it is not a verified ministry rule.",
+    "Official completion acceptance/normalization remains unknown; these ten numerical training completions do not certify conformity to missing-word questions.",
+    "Initial failure log records a missing expected exception but does not preserve the initial failing source bytes; current numeric bad-key-on-blank case passes, broader key validation still fails as reproduced.",
+    "Proposed patch has been written for root review only and not applied or runtime-validated; no corrected implementation is claimed.",
+    "Input values outside TypeScript string type currently throw TypeError in places; proposed diff makes answer input invalid and key input an explicit error."
+  ],
+  "proposedPatch": "/tmp/ardesia-exam-grading-review-proposed.patch",
+  "sourceReceipts": [
+    {
+      "path": "/tmp/ardesia-exam-grading-proposal.ts",
+      "sha256": "a76b6455a6aecbe491c4e1646e0eb742b86e51fa1876c5e8c58f3e3c6f19b3c8",
+      "bytes": 3200
+    },
+    {
+      "path": "/tmp/ardesia-exam-grading-proposal.test.mjs",
+      "sha256": "78e58e42489226172ea0180e687ee37f1b1f005d73927ffff144b06cd1b59d55",
+      "bytes": 2907
+    },
+    {
+      "path": "/tmp/ardesia-exam-candidate-selection-2026-11-13.json",
+      "sha256": "bc180ca01c9d4f14cdab533384f60f5065cbc263256a1e4ad1f52de0dae0b04a",
+      "bytes": 145975
+    },
+    {
+      "path": "/tmp/ardesia-exam-grading-initial-failure.log",
+      "sha256": "2afa77827e31ea63b2b512a47bcea6c80187067b2d88b61a9562f6fed8616913",
+      "bytes": 556
+    },
+    {
+      "path": "/tmp/ardesia-exam-grading-prototype-test.log",
+      "sha256": "1e7b91544d2edc204dda46a6c7ea7f720e4ba09a3084d1675167eb8e7bb9e287",
+      "bytes": 179
+    },
+    {
+      "path": "/tmp/ardesia-exam-grading-review-cases.mjs",
+      "sha256": "065f7f9d1c1a3a1f6748cdd05218f5acaa8d0d1ac42fff69c1ace9389637a46c",
+      "bytes": 5656
+    },
+    {
+      "path": "/tmp/ardesia-exam-grading-review-counterchecks.json",
+      "sha256": "eafeea79f8534be4c2e8679ab7f3fa926c9ee2e46f818627735609f137263c2a",
+      "bytes": 51624
+    },
+    {
+      "path": "/tmp/ardesia-exam-grading-review-proposed.patch",
+      "sha256": "1697c032fd2e0e96bafc8487fbef3e6aa41f4f2628ea0a7d1932732e3864e520",
+      "bytes": 2502
+    }
+  ]
+}

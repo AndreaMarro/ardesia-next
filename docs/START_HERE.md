@@ -1,5 +1,7 @@
 # Ardesia Next — ingresso unico
 
+> Chiusura della sessione su richiesta del titolare, 13 novembre: [handoff conclusivo, sorgenti e limiti](handoffs/2026-11-13-close.md). L’app verificata resta `8fbebc1`; le preparazioni dell’allenamento non sono integrate e Cortex resta sospeso.
+
 > Consegna C1–C5 del 13 novembre: [stato concreto e riproduzione](handoffs/2026-11-13-physics.md).
 
 > Consegna applicativa del 7 novembre: [handoff oggettivo](handoffs/2026-11-07.md). Distingue candidato, main, procedura, preview e accettazione; non modifica il cursore né retrodata le prove.

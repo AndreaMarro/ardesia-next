@@ -1,0 +1,204 @@
+{
+  "kind": "exam-rules-institutional-source-recheck",
+  "reviewer": "/root/curriculum",
+  "observedCommit": "7efaa14844fd835b37c51eb6a153bc5a53a05595",
+  "sourceRegistry": {
+    "path": "docs/sources/physics-2026-27/source-registry.json",
+    "sha256": "4cd13cba2663b8972f7ebea8172b47b9230442307c142e379477fe565ceb1e6a",
+    "recordedCheckDate": "2026-11-07"
+  },
+  "source": {
+    "url": "https://www.uniroma1.it/it/pagina/semestre-aperto-2026-2027-guida-alla-frequenza-dei-corsi",
+    "requestedAtUtc": "2026-11-13T12:49:58.015913+00:00",
+    "receivedAtUtc": "2026-11-13T12:49:59.404418+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.uniroma1.it/it/pagina/semestre-aperto-2026-2027-guida-alla-frequenza-dei-corsi",
+    "contentType": "text/html; charset=utf-8",
+    "responseBytes": 83538,
+    "responseSha256": "610c56390b99f89110ed666b6cd7e1dabcd96bdb204f5d2974642a8e4775f76f",
+    "extractedTextSha256": "19a6cbef2501bf56f0f8c3148a6b18af363b06a4e0bb89dae811a990f13cdba1",
+    "textExtraction": "Python HTMLParser; script/style omitted; whitespace normalized line-wise; text processed in memory.",
+    "method": "Single ordinary GET, Python urllib default, no cookies/credentials/header evasion."
+  },
+  "result": "ALL_REQUESTED_RULES_CONFIRMED_IN_SAPIENZA_2026_27_GUIDE",
+  "fields": [
+    {
+      "field": "academicYear",
+      "value": "2026/2027",
+      "registeredValue": "2026/2027",
+      "citationIds": [
+        "year"
+      ],
+      "status": "CONFIRMED_IN_OBTAINED_INSTITUTIONAL_PAGE",
+      "changedFromRegistry": false
+    },
+    {
+      "field": "questionsPerSubjectExam",
+      "value": 31,
+      "registeredValue": 31,
+      "citationIds": [
+        "questions"
+      ],
+      "status": "CONFIRMED_IN_OBTAINED_INSTITUTIONAL_PAGE",
+      "changedFromRegistry": false
+    },
+    {
+      "field": "multipleChoiceQuestions",
+      "value": 21,
+      "registeredValue": 21,
+      "citationIds": [
+        "questions"
+      ],
+      "status": "CONFIRMED_IN_OBTAINED_INSTITUTIONAL_PAGE",
+      "changedFromRegistry": false
+    },
+    {
+      "field": "completionQuestions",
+      "value": 10,
+      "registeredValue": 10,
+      "citationIds": [
+        "questions"
+      ],
+      "status": "CONFIRMED_IN_OBTAINED_INSTITUTIONAL_PAGE",
+      "changedFromRegistry": false
+    },
+    {
+      "field": "minutesPerSubjectExam",
+      "value": 50,
+      "registeredValue": 50,
+      "citationIds": [
+        "minutes"
+      ],
+      "status": "CONFIRMED_IN_OBTAINED_INSTITUTIONAL_PAGE",
+      "changedFromRegistry": false
+    },
+    {
+      "field": "pointsCorrect",
+      "value": 1,
+      "registeredValue": 1,
+      "citationIds": [
+        "score"
+      ],
+      "status": "CONFIRMED_IN_OBTAINED_INSTITUTIONAL_PAGE",
+      "changedFromRegistry": false
+    },
+    {
+      "field": "pointsWrong",
+      "value": -0.1,
+      "registeredValue": -0.1,
+      "citationIds": [
+        "score"
+      ],
+      "status": "CONFIRMED_IN_OBTAINED_INSTITUTIONAL_PAGE",
+      "changedFromRegistry": false
+    },
+    {
+      "field": "pointsBlank",
+      "value": 0,
+      "registeredValue": 0,
+      "citationIds": [
+        "score"
+      ],
+      "status": "CONFIRMED_IN_OBTAINED_INSTITUTIONAL_PAGE",
+      "changedFromRegistry": false
+    },
+    {
+      "field": "examDates",
+      "value": [
+        "2026-12-10",
+        "2027-01-11"
+      ],
+      "registeredValue": [
+        "2026-12-10",
+        "2027-01-11"
+      ],
+      "citationIds": [
+        "date1",
+        "date2"
+      ],
+      "status": "CONFIRMED_IN_OBTAINED_INSTITUTIONAL_PAGE",
+      "changedFromRegistry": false
+    }
+  ],
+  "observedChanges": [],
+  "shortCitations": [
+    {
+      "id": "year",
+      "locator": "Titolo della pagina e §1",
+      "quote": "Semestre aperto 2026-2027: guida alla frequenza dei corsi"
+    },
+    {
+      "id": "questions",
+      "locator": "§7 Esami di profitto, punto 3",
+      "quote": "trentuno (31) domande, di cui ventuno (21) a risposta multipla e dieci (10) a risposta con modalità a completamento"
+    },
+    {
+      "id": "minutes",
+      "locator": "§7, punto 4",
+      "quote": "un tempo pari a 50 minuti"
+    },
+    {
+      "id": "score",
+      "locator": "§7, punto 5",
+      "quote": "1 punto per ogni risposta esatta;\n- 0 punti per ogni risposta omessa;\n- meno 0,10 (- 0,10) punti per ogni risposta errata."
+    },
+    {
+      "id": "date1",
+      "locator": "§7, punto 2",
+      "quote": "giovedì 10 dicembre 2026"
+    },
+    {
+      "id": "date2",
+      "locator": "§7, punto 2",
+      "quote": "lunedì 11 gennaio 2027"
+    },
+    {
+      "id": "choices",
+      "locator": "§7, punto 6",
+      "quote": "cinque opzioni di risposta, una sola delle quali corretta"
+    },
+    {
+      "id": "completion",
+      "locator": "§7, punto 6",
+      "quote": "uno spazio bianco in cui inserire la parola mancante. Una sola è la parola corretta."
+    },
+    {
+      "id": "break",
+      "locator": "§7, punto 4",
+      "quote": "Tra una prova e la successiva è previsto un intervallo di 30 minuti."
+    }
+  ],
+  "additionalExplicitRules": {
+    "optionsPerMultipleChoiceQuestion": 5,
+    "correctOptionsPerMultipleChoiceQuestion": 1,
+    "completionDescription": "One blank for the missing word; one correct word, as described by the guide. This is not a complete machine-grading specification.",
+    "breakMinutesBetweenSubjectExams": 30,
+    "examScope": "Each of the three subjects: Chemistry and biochemical propaedeutics, Physics, Biology. C1–C5 are Ardesia editorial subdivisions, not five separate national exams."
+  },
+  "legalDocuments": {
+    "independentlyRead": false,
+    "citedByPageOnly": [
+      {
+        "title": "Decreto Ministeriale n. 941",
+        "date": "2026-07-10"
+      },
+      {
+        "title": "Decreto Direttoriale n. 249",
+        "date": "2026-07-13"
+      }
+    ],
+    "status": "NOT_READ_PRIMARY_LEGAL_TEXTS"
+  },
+  "unknownDetailsNotSpecifiedByThisCheck": [
+    "Rules for automatic normalization of completion answers, numerical tolerances and accepted equivalent strings.",
+    "Any future amendment after the access timestamp.",
+    "A complete national grading/regulatory specification beyond the statements quoted from the guide."
+  ],
+  "limits": [
+    "Confirmation is of the institutional Sapienza page actually obtained, explicitly titled and described for 2026–2027; no claim of direct reading of the cited decrees or independent legal verification.",
+    "No additional linked source was needed to establish the requested fields; no extra requests, private materials or copies, login, 403 bypass or secret access occurred.",
+    "Only source verification and local reports: no exam simulator implemented, no shared code/repository/GitHub/service/push change, no human approval and no Cortex activity.",
+    "The page content can change; raw HTML bytes were hashed in memory but not retained as an additional artifact. Only the two requested /tmp reports are created."
+  ],
+  "reportFinalizedAtUtc": "2026-11-13T12:52:05.713167+00:00"
+}
