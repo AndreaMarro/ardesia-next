@@ -21,10 +21,32 @@ try{for(const width of [390,820,1440]){
   const href=await page.getByRole('link',{name:'Chiedi disponibilità su WhatsApp'}).getAttribute('href');
   assert.match(href,/^https:\/\/wa.me\/393461653930/);assert.match(decodeURIComponent(href),/non una prenotazione confermata/);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+  if(i===5){
+   const lab=page.locator('#interferenza');
+   assert.equal(await lab.locator('.interference-case:visible').count(),1);
+   await lab.getByRole('radio',{name:'Sfasate di 120°',exact:true}).focus();
+   await page.keyboard.press('ArrowRight');
+   assert.equal(await lab.getByRole('radio',{name:'Opposte e uguali',exact:true}).isChecked(),true);
+   assert.match(await lab.locator('.interference-case:visible').innerText(),/Ampiezza risultante\s+0 cm/);
+   assert.equal(await lab.getByRole('img').count(),1);
+   await lab.getByText('Opposte e diverse',{exact:true}).first().click();
+   assert.match(await lab.locator('.interference-case:visible').innerText(),/Ampiezza risultante\s+1 cm/);
+   assert.match(await lab.locator('.interference-case:visible').innerText(),/Spostamento a 0,125 s\s+-1 cm/);
+   await lab.getByText('In fase',{exact:true}).first().click();
+   assert.match(await lab.locator('.interference-case:visible').innerText(),/Ampiezza risultante\s+2 cm/);
+   await lab.screenshot({path:`/tmp/ardesia-demo-interference-${width}.png`});
+  }
  }
  await page.goto('http://127.0.0.1:4173/fisica/index.html');await page.screenshot({path:`/tmp/ardesia-demo-${width}.png`,fullPage:true});
  assert.deepEqual(errors,[]);assert.deepEqual(external,[]);results.push({width,courses:5,labEndpoints:'PASS',keyboard:'PASS',contact:'INSPECTED_NOT_SENT',errors,external});await page.close();
 }
 const context=await browser.newContext({javaScriptEnabled:false});const page=await context.newPage();await page.goto('http://127.0.0.1:4173/fisica/index.html');assert.equal(await page.locator('#radius').isDisabled(),true);assert.ok(await page.locator('noscript').isVisible());await page.goto('http://127.0.0.1:4173/fisica/c2.html');await page.getByText('Confronta i passaggi e il risultato',{exact:true}).click();assert.notEqual(await page.getByText('Confronta i passaggi e il risultato',{exact:true}).locator('..').getAttribute('open'),null);results.push({noJavaScript:'PASS'});
+await page.goto('http://127.0.0.1:4173/fisica/c5.html');
+const lab=page.locator('#interferenza');await lab.getByText('Opposte e uguali',{exact:true}).first().click();
+assert.equal(await lab.locator('.interference-case:visible').count(),1);
+assert.match(await lab.locator('.interference-case:visible').innerText(),/Ampiezza risultante\s+0 cm/);
+await lab.getByRole('radio',{name:'Opposte e uguali',exact:true}).focus();await page.keyboard.press('ArrowRight');
+assert.match(await lab.locator('.interference-case:visible').innerText(),/Ampiezza risultante\s+1 cm/);
+results.push({interferenceWithoutJavaScript:'PASS',source:'canonical declarative lab',states:4});
 fs.writeFileSync('/tmp/ardesia-demo-browser.json',JSON.stringify(results,null,2));console.log(JSON.stringify(results));
 }finally{await browser.close()}

@@ -353,5 +353,2091 @@
       },
       "fallback": "C=κC₀. Collegato: V=V₀, Q=κC₀V₀, U=κC₀V₀²/2. Isolato: Q=C₀V₀, V=V₀/κ, U=C₀V₀²/(2κ). Con C₀ in µF le cariche sono in µC e le energie in µJ. Stati elettrostatici ideali, nessun transitorio o perdita."
     }
+  },
+  {
+    "id": "physics-interference",
+    "definition": {
+      "format": "ardesia-extension/1",
+      "typeId": "ardesia.physics.interference",
+      "version": 1,
+      "name": "Interferenza: sommare gli spostamenti",
+      "description": "Due oscillazioni coerenti nello stesso punto: contributi e somma su una scala temporale comune e fissa. Modello originale Ardesia, DRAFT.",
+      "license": "Testi e modello originali Ardesia · tutti i diritti riservati · bozza didattica",
+      "renderer": "ardesia.composition/1",
+      "body": {
+        "fields": [
+          {
+            "key": "A1",
+            "label": "Ampiezza prima onda",
+            "kind": "number",
+            "initial": 1,
+            "min": 0.1,
+            "max": 2,
+            "step": 0.1,
+            "unit": "cm"
+          },
+          {
+            "key": "A2",
+            "label": "Ampiezza seconda onda",
+            "kind": "number",
+            "initial": 1,
+            "min": 0.1,
+            "max": 2,
+            "step": 0.1,
+            "unit": "cm"
+          },
+          {
+            "key": "phase",
+            "label": "Sfasamento",
+            "kind": "number",
+            "initial": 120,
+            "min": 0,
+            "max": 360,
+            "step": 1,
+            "unit": "°"
+          },
+          {
+            "key": "time",
+            "label": "Istante osservato",
+            "kind": "number",
+            "initial": 0.125,
+            "min": 0,
+            "max": 1,
+            "step": 0.005,
+            "unit": "s"
+          }
+        ],
+        "nodes": [
+          {
+            "id": "context",
+            "kind": "text",
+            "props": {
+              "text": "In un punto del mezzo arrivano due oscillazioni armoniche coerenti con la stessa frequenza f=2 Hz e la stessa direzione di oscillazione. Le loro componenti sono y₁(t)=A₁ sin(4πt) e y₂(t)=A₂ sin(4πt+φ). Nel modello lineare lo spostamento osservato è y=y₁+y₂, con i segni. Lo sfasamento φ è quello misurato in questo punto; non rappresenta una distanza senza conoscere geometria e lunghezza d’onda."
+            }
+          },
+          {
+            "id": "control_A1",
+            "kind": "input",
+            "props": {
+              "field": "A1",
+              "appearance": "slider"
+            }
+          },
+          {
+            "id": "control_A2",
+            "kind": "input",
+            "props": {
+              "field": "A2",
+              "appearance": "slider"
+            }
+          },
+          {
+            "id": "control_phase",
+            "kind": "input",
+            "props": {
+              "field": "phase",
+              "appearance": "slider"
+            }
+          },
+          {
+            "id": "control_time",
+            "kind": "input",
+            "props": {
+              "field": "time",
+              "appearance": "slider"
+            }
+          },
+          {
+            "id": "legend",
+            "kind": "text",
+            "props": {
+              "text": "Verde: prima onda. Rame: seconda onda. Blu: somma, con un punto all’istante selezionato. Le tre curve condividono la stessa scala fissa: il tempo va da 0 s a sinistra a 1 s a destra; la linea orizzontale centrale indica y=0, il bordo superiore della griglia +4 cm e quello inferiore −4 cm. Le linee orizzontali sono distanziate di 2 cm, quelle verticali di 0,25 s. La linea verticale scura segue il controllo dell’istante."
+            }
+          },
+          {
+            "id": "sharedScene",
+            "kind": "scene",
+            "props": {
+              "label": "Due onde e la loro somma su assi comuni: tempo da 0 a 1 s, spostamento da meno 4 a più 4 cm",
+              "width": 600,
+              "height": 280
+            },
+            "children": [
+              {
+                "id": "gridTime0",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "50",
+                  "y": "40",
+                  "width": "0",
+                  "height": "200",
+                  "color": "#d8e5df"
+                }
+              },
+              {
+                "id": "gridTime1",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "175",
+                  "y": "40",
+                  "width": "0",
+                  "height": "200",
+                  "color": "#d8e5df"
+                }
+              },
+              {
+                "id": "gridTime2",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "300",
+                  "y": "40",
+                  "width": "0",
+                  "height": "200",
+                  "color": "#d8e5df"
+                }
+              },
+              {
+                "id": "gridTime3",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "425",
+                  "y": "40",
+                  "width": "0",
+                  "height": "200",
+                  "color": "#d8e5df"
+                }
+              },
+              {
+                "id": "gridTime4",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "550",
+                  "y": "40",
+                  "width": "0",
+                  "height": "200",
+                  "color": "#d8e5df"
+                }
+              },
+              {
+                "id": "gridYm4",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "50",
+                  "y": "240",
+                  "width": "500",
+                  "height": "0",
+                  "color": "#d8e5df"
+                }
+              },
+              {
+                "id": "gridYm2",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "50",
+                  "y": "190",
+                  "width": "500",
+                  "height": "0",
+                  "color": "#d8e5df"
+                }
+              },
+              {
+                "id": "gridY0",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "50",
+                  "y": "140",
+                  "width": "500",
+                  "height": "0",
+                  "color": "#d8e5df"
+                }
+              },
+              {
+                "id": "gridY2",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "50",
+                  "y": "90",
+                  "width": "500",
+                  "height": "0",
+                  "color": "#d8e5df"
+                }
+              },
+              {
+                "id": "gridY4",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "50",
+                  "y": "40",
+                  "width": "500",
+                  "height": "0",
+                  "color": "#d8e5df"
+                }
+              },
+              {
+                "id": "axisTime",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "50",
+                  "y": "140",
+                  "width": "500",
+                  "height": "0",
+                  "color": "#66746c"
+                }
+              },
+              {
+                "id": "first0",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "50.0",
+                  "y": "140-25*(A1*sin(4*pi*(0/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(1/48)))-(A1*sin(4*pi*(0/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first1",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "60.416666666666664",
+                  "y": "140-25*(A1*sin(4*pi*(1/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(2/48)))-(A1*sin(4*pi*(1/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first2",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "70.83333333333333",
+                  "y": "140-25*(A1*sin(4*pi*(2/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(3/48)))-(A1*sin(4*pi*(2/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first3",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "81.25",
+                  "y": "140-25*(A1*sin(4*pi*(3/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(4/48)))-(A1*sin(4*pi*(3/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first4",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "91.66666666666666",
+                  "y": "140-25*(A1*sin(4*pi*(4/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(5/48)))-(A1*sin(4*pi*(4/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first5",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "102.08333333333334",
+                  "y": "140-25*(A1*sin(4*pi*(5/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(6/48)))-(A1*sin(4*pi*(5/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first6",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "112.5",
+                  "y": "140-25*(A1*sin(4*pi*(6/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(7/48)))-(A1*sin(4*pi*(6/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first7",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "122.91666666666667",
+                  "y": "140-25*(A1*sin(4*pi*(7/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(8/48)))-(A1*sin(4*pi*(7/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first8",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "133.33333333333331",
+                  "y": "140-25*(A1*sin(4*pi*(8/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(9/48)))-(A1*sin(4*pi*(8/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first9",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "143.75",
+                  "y": "140-25*(A1*sin(4*pi*(9/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(10/48)))-(A1*sin(4*pi*(9/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first10",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "154.16666666666669",
+                  "y": "140-25*(A1*sin(4*pi*(10/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(11/48)))-(A1*sin(4*pi*(10/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first11",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "164.58333333333331",
+                  "y": "140-25*(A1*sin(4*pi*(11/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(12/48)))-(A1*sin(4*pi*(11/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first12",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "175.0",
+                  "y": "140-25*(A1*sin(4*pi*(12/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(13/48)))-(A1*sin(4*pi*(12/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first13",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "185.41666666666666",
+                  "y": "140-25*(A1*sin(4*pi*(13/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(14/48)))-(A1*sin(4*pi*(13/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first14",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "195.83333333333334",
+                  "y": "140-25*(A1*sin(4*pi*(14/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(15/48)))-(A1*sin(4*pi*(14/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first15",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "206.25",
+                  "y": "140-25*(A1*sin(4*pi*(15/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(16/48)))-(A1*sin(4*pi*(15/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first16",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "216.66666666666666",
+                  "y": "140-25*(A1*sin(4*pi*(16/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(17/48)))-(A1*sin(4*pi*(16/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first17",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "227.08333333333334",
+                  "y": "140-25*(A1*sin(4*pi*(17/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(18/48)))-(A1*sin(4*pi*(17/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first18",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "237.5",
+                  "y": "140-25*(A1*sin(4*pi*(18/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(19/48)))-(A1*sin(4*pi*(18/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first19",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "247.91666666666666",
+                  "y": "140-25*(A1*sin(4*pi*(19/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(20/48)))-(A1*sin(4*pi*(19/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first20",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "258.33333333333337",
+                  "y": "140-25*(A1*sin(4*pi*(20/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(21/48)))-(A1*sin(4*pi*(20/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first21",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "268.75",
+                  "y": "140-25*(A1*sin(4*pi*(21/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(22/48)))-(A1*sin(4*pi*(21/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first22",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "279.16666666666663",
+                  "y": "140-25*(A1*sin(4*pi*(22/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(23/48)))-(A1*sin(4*pi*(22/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first23",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "289.58333333333337",
+                  "y": "140-25*(A1*sin(4*pi*(23/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(24/48)))-(A1*sin(4*pi*(23/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first24",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "300.0",
+                  "y": "140-25*(A1*sin(4*pi*(24/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(25/48)))-(A1*sin(4*pi*(24/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first25",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "310.4166666666667",
+                  "y": "140-25*(A1*sin(4*pi*(25/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(26/48)))-(A1*sin(4*pi*(25/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first26",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "320.8333333333333",
+                  "y": "140-25*(A1*sin(4*pi*(26/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(27/48)))-(A1*sin(4*pi*(26/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first27",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "331.25",
+                  "y": "140-25*(A1*sin(4*pi*(27/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(28/48)))-(A1*sin(4*pi*(27/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first28",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "341.6666666666667",
+                  "y": "140-25*(A1*sin(4*pi*(28/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(29/48)))-(A1*sin(4*pi*(28/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first29",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "352.0833333333333",
+                  "y": "140-25*(A1*sin(4*pi*(29/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(30/48)))-(A1*sin(4*pi*(29/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first30",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "362.5",
+                  "y": "140-25*(A1*sin(4*pi*(30/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(31/48)))-(A1*sin(4*pi*(30/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first31",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "372.9166666666667",
+                  "y": "140-25*(A1*sin(4*pi*(31/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(32/48)))-(A1*sin(4*pi*(31/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first32",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "383.3333333333333",
+                  "y": "140-25*(A1*sin(4*pi*(32/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(33/48)))-(A1*sin(4*pi*(32/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first33",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "393.75",
+                  "y": "140-25*(A1*sin(4*pi*(33/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(34/48)))-(A1*sin(4*pi*(33/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first34",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "404.1666666666667",
+                  "y": "140-25*(A1*sin(4*pi*(34/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(35/48)))-(A1*sin(4*pi*(34/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first35",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "414.5833333333333",
+                  "y": "140-25*(A1*sin(4*pi*(35/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(36/48)))-(A1*sin(4*pi*(35/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first36",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "425.0",
+                  "y": "140-25*(A1*sin(4*pi*(36/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(37/48)))-(A1*sin(4*pi*(36/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first37",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "435.4166666666667",
+                  "y": "140-25*(A1*sin(4*pi*(37/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(38/48)))-(A1*sin(4*pi*(37/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first38",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "445.8333333333333",
+                  "y": "140-25*(A1*sin(4*pi*(38/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(39/48)))-(A1*sin(4*pi*(38/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first39",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "456.25",
+                  "y": "140-25*(A1*sin(4*pi*(39/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(40/48)))-(A1*sin(4*pi*(39/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first40",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "466.6666666666667",
+                  "y": "140-25*(A1*sin(4*pi*(40/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(41/48)))-(A1*sin(4*pi*(40/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first41",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "477.0833333333333",
+                  "y": "140-25*(A1*sin(4*pi*(41/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(42/48)))-(A1*sin(4*pi*(41/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first42",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "487.5",
+                  "y": "140-25*(A1*sin(4*pi*(42/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(43/48)))-(A1*sin(4*pi*(42/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first43",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "497.9166666666667",
+                  "y": "140-25*(A1*sin(4*pi*(43/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(44/48)))-(A1*sin(4*pi*(43/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first44",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "508.3333333333333",
+                  "y": "140-25*(A1*sin(4*pi*(44/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(45/48)))-(A1*sin(4*pi*(44/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first45",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "518.75",
+                  "y": "140-25*(A1*sin(4*pi*(45/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(46/48)))-(A1*sin(4*pi*(45/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first46",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "529.1666666666667",
+                  "y": "140-25*(A1*sin(4*pi*(46/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(47/48)))-(A1*sin(4*pi*(46/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "first47",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "539.5833333333333",
+                  "y": "140-25*(A1*sin(4*pi*(47/48)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A1*sin(4*pi*(48/48)))-(A1*sin(4*pi*(47/48))))",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "second0",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "50.0",
+                  "y": "140-25*(A2*sin(4*pi*(0/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(1/48)+phase*pi/180))-(A2*sin(4*pi*(0/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second1",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "60.416666666666664",
+                  "y": "140-25*(A2*sin(4*pi*(1/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(2/48)+phase*pi/180))-(A2*sin(4*pi*(1/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second2",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "70.83333333333333",
+                  "y": "140-25*(A2*sin(4*pi*(2/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(3/48)+phase*pi/180))-(A2*sin(4*pi*(2/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second3",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "81.25",
+                  "y": "140-25*(A2*sin(4*pi*(3/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(4/48)+phase*pi/180))-(A2*sin(4*pi*(3/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second4",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "91.66666666666666",
+                  "y": "140-25*(A2*sin(4*pi*(4/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(5/48)+phase*pi/180))-(A2*sin(4*pi*(4/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second5",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "102.08333333333334",
+                  "y": "140-25*(A2*sin(4*pi*(5/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(6/48)+phase*pi/180))-(A2*sin(4*pi*(5/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second6",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "112.5",
+                  "y": "140-25*(A2*sin(4*pi*(6/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(7/48)+phase*pi/180))-(A2*sin(4*pi*(6/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second7",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "122.91666666666667",
+                  "y": "140-25*(A2*sin(4*pi*(7/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(8/48)+phase*pi/180))-(A2*sin(4*pi*(7/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second8",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "133.33333333333331",
+                  "y": "140-25*(A2*sin(4*pi*(8/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(9/48)+phase*pi/180))-(A2*sin(4*pi*(8/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second9",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "143.75",
+                  "y": "140-25*(A2*sin(4*pi*(9/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(10/48)+phase*pi/180))-(A2*sin(4*pi*(9/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second10",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "154.16666666666669",
+                  "y": "140-25*(A2*sin(4*pi*(10/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(11/48)+phase*pi/180))-(A2*sin(4*pi*(10/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second11",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "164.58333333333331",
+                  "y": "140-25*(A2*sin(4*pi*(11/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(12/48)+phase*pi/180))-(A2*sin(4*pi*(11/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second12",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "175.0",
+                  "y": "140-25*(A2*sin(4*pi*(12/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(13/48)+phase*pi/180))-(A2*sin(4*pi*(12/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second13",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "185.41666666666666",
+                  "y": "140-25*(A2*sin(4*pi*(13/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(14/48)+phase*pi/180))-(A2*sin(4*pi*(13/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second14",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "195.83333333333334",
+                  "y": "140-25*(A2*sin(4*pi*(14/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(15/48)+phase*pi/180))-(A2*sin(4*pi*(14/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second15",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "206.25",
+                  "y": "140-25*(A2*sin(4*pi*(15/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(16/48)+phase*pi/180))-(A2*sin(4*pi*(15/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second16",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "216.66666666666666",
+                  "y": "140-25*(A2*sin(4*pi*(16/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(17/48)+phase*pi/180))-(A2*sin(4*pi*(16/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second17",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "227.08333333333334",
+                  "y": "140-25*(A2*sin(4*pi*(17/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(18/48)+phase*pi/180))-(A2*sin(4*pi*(17/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second18",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "237.5",
+                  "y": "140-25*(A2*sin(4*pi*(18/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(19/48)+phase*pi/180))-(A2*sin(4*pi*(18/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second19",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "247.91666666666666",
+                  "y": "140-25*(A2*sin(4*pi*(19/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(20/48)+phase*pi/180))-(A2*sin(4*pi*(19/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second20",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "258.33333333333337",
+                  "y": "140-25*(A2*sin(4*pi*(20/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(21/48)+phase*pi/180))-(A2*sin(4*pi*(20/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second21",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "268.75",
+                  "y": "140-25*(A2*sin(4*pi*(21/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(22/48)+phase*pi/180))-(A2*sin(4*pi*(21/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second22",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "279.16666666666663",
+                  "y": "140-25*(A2*sin(4*pi*(22/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(23/48)+phase*pi/180))-(A2*sin(4*pi*(22/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second23",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "289.58333333333337",
+                  "y": "140-25*(A2*sin(4*pi*(23/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(24/48)+phase*pi/180))-(A2*sin(4*pi*(23/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second24",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "300.0",
+                  "y": "140-25*(A2*sin(4*pi*(24/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(25/48)+phase*pi/180))-(A2*sin(4*pi*(24/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second25",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "310.4166666666667",
+                  "y": "140-25*(A2*sin(4*pi*(25/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(26/48)+phase*pi/180))-(A2*sin(4*pi*(25/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second26",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "320.8333333333333",
+                  "y": "140-25*(A2*sin(4*pi*(26/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(27/48)+phase*pi/180))-(A2*sin(4*pi*(26/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second27",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "331.25",
+                  "y": "140-25*(A2*sin(4*pi*(27/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(28/48)+phase*pi/180))-(A2*sin(4*pi*(27/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second28",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "341.6666666666667",
+                  "y": "140-25*(A2*sin(4*pi*(28/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(29/48)+phase*pi/180))-(A2*sin(4*pi*(28/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second29",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "352.0833333333333",
+                  "y": "140-25*(A2*sin(4*pi*(29/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(30/48)+phase*pi/180))-(A2*sin(4*pi*(29/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second30",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "362.5",
+                  "y": "140-25*(A2*sin(4*pi*(30/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(31/48)+phase*pi/180))-(A2*sin(4*pi*(30/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second31",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "372.9166666666667",
+                  "y": "140-25*(A2*sin(4*pi*(31/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(32/48)+phase*pi/180))-(A2*sin(4*pi*(31/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second32",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "383.3333333333333",
+                  "y": "140-25*(A2*sin(4*pi*(32/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(33/48)+phase*pi/180))-(A2*sin(4*pi*(32/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second33",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "393.75",
+                  "y": "140-25*(A2*sin(4*pi*(33/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(34/48)+phase*pi/180))-(A2*sin(4*pi*(33/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second34",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "404.1666666666667",
+                  "y": "140-25*(A2*sin(4*pi*(34/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(35/48)+phase*pi/180))-(A2*sin(4*pi*(34/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second35",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "414.5833333333333",
+                  "y": "140-25*(A2*sin(4*pi*(35/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(36/48)+phase*pi/180))-(A2*sin(4*pi*(35/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second36",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "425.0",
+                  "y": "140-25*(A2*sin(4*pi*(36/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(37/48)+phase*pi/180))-(A2*sin(4*pi*(36/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second37",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "435.4166666666667",
+                  "y": "140-25*(A2*sin(4*pi*(37/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(38/48)+phase*pi/180))-(A2*sin(4*pi*(37/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second38",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "445.8333333333333",
+                  "y": "140-25*(A2*sin(4*pi*(38/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(39/48)+phase*pi/180))-(A2*sin(4*pi*(38/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second39",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "456.25",
+                  "y": "140-25*(A2*sin(4*pi*(39/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(40/48)+phase*pi/180))-(A2*sin(4*pi*(39/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second40",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "466.6666666666667",
+                  "y": "140-25*(A2*sin(4*pi*(40/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(41/48)+phase*pi/180))-(A2*sin(4*pi*(40/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second41",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "477.0833333333333",
+                  "y": "140-25*(A2*sin(4*pi*(41/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(42/48)+phase*pi/180))-(A2*sin(4*pi*(41/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second42",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "487.5",
+                  "y": "140-25*(A2*sin(4*pi*(42/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(43/48)+phase*pi/180))-(A2*sin(4*pi*(42/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second43",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "497.9166666666667",
+                  "y": "140-25*(A2*sin(4*pi*(43/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(44/48)+phase*pi/180))-(A2*sin(4*pi*(43/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second44",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "508.3333333333333",
+                  "y": "140-25*(A2*sin(4*pi*(44/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(45/48)+phase*pi/180))-(A2*sin(4*pi*(44/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second45",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "518.75",
+                  "y": "140-25*(A2*sin(4*pi*(45/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(46/48)+phase*pi/180))-(A2*sin(4*pi*(45/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second46",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "529.1666666666667",
+                  "y": "140-25*(A2*sin(4*pi*(46/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(47/48)+phase*pi/180))-(A2*sin(4*pi*(46/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "second47",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "539.5833333333333",
+                  "y": "140-25*(A2*sin(4*pi*(47/48)+phase*pi/180))",
+                  "width": "10.416666666666666",
+                  "height": "-25*((A2*sin(4*pi*(48/48)+phase*pi/180))-(A2*sin(4*pi*(47/48)+phase*pi/180)))",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "sum0",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "50.0",
+                  "y": "140-25*((A1*sin(4*pi*(0/48))+A2*sin(4*pi*(0/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(1/48))+A2*sin(4*pi*(1/48)+phase*pi/180)))-((A1*sin(4*pi*(0/48))+A2*sin(4*pi*(0/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum1",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "60.416666666666664",
+                  "y": "140-25*((A1*sin(4*pi*(1/48))+A2*sin(4*pi*(1/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(2/48))+A2*sin(4*pi*(2/48)+phase*pi/180)))-((A1*sin(4*pi*(1/48))+A2*sin(4*pi*(1/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum2",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "70.83333333333333",
+                  "y": "140-25*((A1*sin(4*pi*(2/48))+A2*sin(4*pi*(2/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(3/48))+A2*sin(4*pi*(3/48)+phase*pi/180)))-((A1*sin(4*pi*(2/48))+A2*sin(4*pi*(2/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum3",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "81.25",
+                  "y": "140-25*((A1*sin(4*pi*(3/48))+A2*sin(4*pi*(3/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(4/48))+A2*sin(4*pi*(4/48)+phase*pi/180)))-((A1*sin(4*pi*(3/48))+A2*sin(4*pi*(3/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum4",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "91.66666666666666",
+                  "y": "140-25*((A1*sin(4*pi*(4/48))+A2*sin(4*pi*(4/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(5/48))+A2*sin(4*pi*(5/48)+phase*pi/180)))-((A1*sin(4*pi*(4/48))+A2*sin(4*pi*(4/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum5",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "102.08333333333334",
+                  "y": "140-25*((A1*sin(4*pi*(5/48))+A2*sin(4*pi*(5/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(6/48))+A2*sin(4*pi*(6/48)+phase*pi/180)))-((A1*sin(4*pi*(5/48))+A2*sin(4*pi*(5/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum6",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "112.5",
+                  "y": "140-25*((A1*sin(4*pi*(6/48))+A2*sin(4*pi*(6/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(7/48))+A2*sin(4*pi*(7/48)+phase*pi/180)))-((A1*sin(4*pi*(6/48))+A2*sin(4*pi*(6/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum7",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "122.91666666666667",
+                  "y": "140-25*((A1*sin(4*pi*(7/48))+A2*sin(4*pi*(7/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(8/48))+A2*sin(4*pi*(8/48)+phase*pi/180)))-((A1*sin(4*pi*(7/48))+A2*sin(4*pi*(7/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum8",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "133.33333333333331",
+                  "y": "140-25*((A1*sin(4*pi*(8/48))+A2*sin(4*pi*(8/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(9/48))+A2*sin(4*pi*(9/48)+phase*pi/180)))-((A1*sin(4*pi*(8/48))+A2*sin(4*pi*(8/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum9",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "143.75",
+                  "y": "140-25*((A1*sin(4*pi*(9/48))+A2*sin(4*pi*(9/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(10/48))+A2*sin(4*pi*(10/48)+phase*pi/180)))-((A1*sin(4*pi*(9/48))+A2*sin(4*pi*(9/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum10",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "154.16666666666669",
+                  "y": "140-25*((A1*sin(4*pi*(10/48))+A2*sin(4*pi*(10/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(11/48))+A2*sin(4*pi*(11/48)+phase*pi/180)))-((A1*sin(4*pi*(10/48))+A2*sin(4*pi*(10/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum11",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "164.58333333333331",
+                  "y": "140-25*((A1*sin(4*pi*(11/48))+A2*sin(4*pi*(11/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(12/48))+A2*sin(4*pi*(12/48)+phase*pi/180)))-((A1*sin(4*pi*(11/48))+A2*sin(4*pi*(11/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum12",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "175.0",
+                  "y": "140-25*((A1*sin(4*pi*(12/48))+A2*sin(4*pi*(12/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(13/48))+A2*sin(4*pi*(13/48)+phase*pi/180)))-((A1*sin(4*pi*(12/48))+A2*sin(4*pi*(12/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum13",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "185.41666666666666",
+                  "y": "140-25*((A1*sin(4*pi*(13/48))+A2*sin(4*pi*(13/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(14/48))+A2*sin(4*pi*(14/48)+phase*pi/180)))-((A1*sin(4*pi*(13/48))+A2*sin(4*pi*(13/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum14",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "195.83333333333334",
+                  "y": "140-25*((A1*sin(4*pi*(14/48))+A2*sin(4*pi*(14/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(15/48))+A2*sin(4*pi*(15/48)+phase*pi/180)))-((A1*sin(4*pi*(14/48))+A2*sin(4*pi*(14/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum15",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "206.25",
+                  "y": "140-25*((A1*sin(4*pi*(15/48))+A2*sin(4*pi*(15/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(16/48))+A2*sin(4*pi*(16/48)+phase*pi/180)))-((A1*sin(4*pi*(15/48))+A2*sin(4*pi*(15/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum16",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "216.66666666666666",
+                  "y": "140-25*((A1*sin(4*pi*(16/48))+A2*sin(4*pi*(16/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(17/48))+A2*sin(4*pi*(17/48)+phase*pi/180)))-((A1*sin(4*pi*(16/48))+A2*sin(4*pi*(16/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum17",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "227.08333333333334",
+                  "y": "140-25*((A1*sin(4*pi*(17/48))+A2*sin(4*pi*(17/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(18/48))+A2*sin(4*pi*(18/48)+phase*pi/180)))-((A1*sin(4*pi*(17/48))+A2*sin(4*pi*(17/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum18",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "237.5",
+                  "y": "140-25*((A1*sin(4*pi*(18/48))+A2*sin(4*pi*(18/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(19/48))+A2*sin(4*pi*(19/48)+phase*pi/180)))-((A1*sin(4*pi*(18/48))+A2*sin(4*pi*(18/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum19",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "247.91666666666666",
+                  "y": "140-25*((A1*sin(4*pi*(19/48))+A2*sin(4*pi*(19/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(20/48))+A2*sin(4*pi*(20/48)+phase*pi/180)))-((A1*sin(4*pi*(19/48))+A2*sin(4*pi*(19/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum20",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "258.33333333333337",
+                  "y": "140-25*((A1*sin(4*pi*(20/48))+A2*sin(4*pi*(20/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(21/48))+A2*sin(4*pi*(21/48)+phase*pi/180)))-((A1*sin(4*pi*(20/48))+A2*sin(4*pi*(20/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum21",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "268.75",
+                  "y": "140-25*((A1*sin(4*pi*(21/48))+A2*sin(4*pi*(21/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(22/48))+A2*sin(4*pi*(22/48)+phase*pi/180)))-((A1*sin(4*pi*(21/48))+A2*sin(4*pi*(21/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum22",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "279.16666666666663",
+                  "y": "140-25*((A1*sin(4*pi*(22/48))+A2*sin(4*pi*(22/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(23/48))+A2*sin(4*pi*(23/48)+phase*pi/180)))-((A1*sin(4*pi*(22/48))+A2*sin(4*pi*(22/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum23",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "289.58333333333337",
+                  "y": "140-25*((A1*sin(4*pi*(23/48))+A2*sin(4*pi*(23/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(24/48))+A2*sin(4*pi*(24/48)+phase*pi/180)))-((A1*sin(4*pi*(23/48))+A2*sin(4*pi*(23/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum24",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "300.0",
+                  "y": "140-25*((A1*sin(4*pi*(24/48))+A2*sin(4*pi*(24/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(25/48))+A2*sin(4*pi*(25/48)+phase*pi/180)))-((A1*sin(4*pi*(24/48))+A2*sin(4*pi*(24/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum25",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "310.4166666666667",
+                  "y": "140-25*((A1*sin(4*pi*(25/48))+A2*sin(4*pi*(25/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(26/48))+A2*sin(4*pi*(26/48)+phase*pi/180)))-((A1*sin(4*pi*(25/48))+A2*sin(4*pi*(25/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum26",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "320.8333333333333",
+                  "y": "140-25*((A1*sin(4*pi*(26/48))+A2*sin(4*pi*(26/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(27/48))+A2*sin(4*pi*(27/48)+phase*pi/180)))-((A1*sin(4*pi*(26/48))+A2*sin(4*pi*(26/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum27",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "331.25",
+                  "y": "140-25*((A1*sin(4*pi*(27/48))+A2*sin(4*pi*(27/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(28/48))+A2*sin(4*pi*(28/48)+phase*pi/180)))-((A1*sin(4*pi*(27/48))+A2*sin(4*pi*(27/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum28",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "341.6666666666667",
+                  "y": "140-25*((A1*sin(4*pi*(28/48))+A2*sin(4*pi*(28/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(29/48))+A2*sin(4*pi*(29/48)+phase*pi/180)))-((A1*sin(4*pi*(28/48))+A2*sin(4*pi*(28/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum29",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "352.0833333333333",
+                  "y": "140-25*((A1*sin(4*pi*(29/48))+A2*sin(4*pi*(29/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(30/48))+A2*sin(4*pi*(30/48)+phase*pi/180)))-((A1*sin(4*pi*(29/48))+A2*sin(4*pi*(29/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum30",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "362.5",
+                  "y": "140-25*((A1*sin(4*pi*(30/48))+A2*sin(4*pi*(30/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(31/48))+A2*sin(4*pi*(31/48)+phase*pi/180)))-((A1*sin(4*pi*(30/48))+A2*sin(4*pi*(30/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum31",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "372.9166666666667",
+                  "y": "140-25*((A1*sin(4*pi*(31/48))+A2*sin(4*pi*(31/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(32/48))+A2*sin(4*pi*(32/48)+phase*pi/180)))-((A1*sin(4*pi*(31/48))+A2*sin(4*pi*(31/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum32",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "383.3333333333333",
+                  "y": "140-25*((A1*sin(4*pi*(32/48))+A2*sin(4*pi*(32/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(33/48))+A2*sin(4*pi*(33/48)+phase*pi/180)))-((A1*sin(4*pi*(32/48))+A2*sin(4*pi*(32/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum33",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "393.75",
+                  "y": "140-25*((A1*sin(4*pi*(33/48))+A2*sin(4*pi*(33/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(34/48))+A2*sin(4*pi*(34/48)+phase*pi/180)))-((A1*sin(4*pi*(33/48))+A2*sin(4*pi*(33/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum34",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "404.1666666666667",
+                  "y": "140-25*((A1*sin(4*pi*(34/48))+A2*sin(4*pi*(34/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(35/48))+A2*sin(4*pi*(35/48)+phase*pi/180)))-((A1*sin(4*pi*(34/48))+A2*sin(4*pi*(34/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum35",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "414.5833333333333",
+                  "y": "140-25*((A1*sin(4*pi*(35/48))+A2*sin(4*pi*(35/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(36/48))+A2*sin(4*pi*(36/48)+phase*pi/180)))-((A1*sin(4*pi*(35/48))+A2*sin(4*pi*(35/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum36",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "425.0",
+                  "y": "140-25*((A1*sin(4*pi*(36/48))+A2*sin(4*pi*(36/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(37/48))+A2*sin(4*pi*(37/48)+phase*pi/180)))-((A1*sin(4*pi*(36/48))+A2*sin(4*pi*(36/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum37",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "435.4166666666667",
+                  "y": "140-25*((A1*sin(4*pi*(37/48))+A2*sin(4*pi*(37/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(38/48))+A2*sin(4*pi*(38/48)+phase*pi/180)))-((A1*sin(4*pi*(37/48))+A2*sin(4*pi*(37/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum38",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "445.8333333333333",
+                  "y": "140-25*((A1*sin(4*pi*(38/48))+A2*sin(4*pi*(38/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(39/48))+A2*sin(4*pi*(39/48)+phase*pi/180)))-((A1*sin(4*pi*(38/48))+A2*sin(4*pi*(38/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum39",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "456.25",
+                  "y": "140-25*((A1*sin(4*pi*(39/48))+A2*sin(4*pi*(39/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(40/48))+A2*sin(4*pi*(40/48)+phase*pi/180)))-((A1*sin(4*pi*(39/48))+A2*sin(4*pi*(39/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum40",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "466.6666666666667",
+                  "y": "140-25*((A1*sin(4*pi*(40/48))+A2*sin(4*pi*(40/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(41/48))+A2*sin(4*pi*(41/48)+phase*pi/180)))-((A1*sin(4*pi*(40/48))+A2*sin(4*pi*(40/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum41",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "477.0833333333333",
+                  "y": "140-25*((A1*sin(4*pi*(41/48))+A2*sin(4*pi*(41/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(42/48))+A2*sin(4*pi*(42/48)+phase*pi/180)))-((A1*sin(4*pi*(41/48))+A2*sin(4*pi*(41/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum42",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "487.5",
+                  "y": "140-25*((A1*sin(4*pi*(42/48))+A2*sin(4*pi*(42/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(43/48))+A2*sin(4*pi*(43/48)+phase*pi/180)))-((A1*sin(4*pi*(42/48))+A2*sin(4*pi*(42/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum43",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "497.9166666666667",
+                  "y": "140-25*((A1*sin(4*pi*(43/48))+A2*sin(4*pi*(43/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(44/48))+A2*sin(4*pi*(44/48)+phase*pi/180)))-((A1*sin(4*pi*(43/48))+A2*sin(4*pi*(43/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum44",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "508.3333333333333",
+                  "y": "140-25*((A1*sin(4*pi*(44/48))+A2*sin(4*pi*(44/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(45/48))+A2*sin(4*pi*(45/48)+phase*pi/180)))-((A1*sin(4*pi*(44/48))+A2*sin(4*pi*(44/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum45",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "518.75",
+                  "y": "140-25*((A1*sin(4*pi*(45/48))+A2*sin(4*pi*(45/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(46/48))+A2*sin(4*pi*(46/48)+phase*pi/180)))-((A1*sin(4*pi*(45/48))+A2*sin(4*pi*(45/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum46",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "529.1666666666667",
+                  "y": "140-25*((A1*sin(4*pi*(46/48))+A2*sin(4*pi*(46/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(47/48))+A2*sin(4*pi*(47/48)+phase*pi/180)))-((A1*sin(4*pi*(46/48))+A2*sin(4*pi*(46/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "sum47",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "539.5833333333333",
+                  "y": "140-25*((A1*sin(4*pi*(47/48))+A2*sin(4*pi*(47/48)+phase*pi/180)))",
+                  "width": "10.416666666666666",
+                  "height": "-25*(((A1*sin(4*pi*(48/48))+A2*sin(4*pi*(48/48)+phase*pi/180)))-((A1*sin(4*pi*(47/48))+A2*sin(4*pi*(47/48)+phase*pi/180))))",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "cursor",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "50+500*time",
+                  "y": "35",
+                  "width": "0",
+                  "height": "210",
+                  "color": "#444d49"
+                }
+              },
+              {
+                "id": "sumPoint",
+                "kind": "shape",
+                "props": {
+                  "shape": "circle",
+                  "x": "50+500*time",
+                  "y": "140-25*(A1*sin(4*pi*(time))+A2*sin(4*pi*(time)+phase*pi/180))",
+                  "width": "5",
+                  "height": "5",
+                  "color": "#477995"
+                }
+              }
+            ]
+          },
+          {
+            "id": "instantaneous",
+            "kind": "group",
+            "props": {
+              "layout": "columns"
+            },
+            "children": [
+              {
+                "id": "firstValue",
+                "kind": "value",
+                "props": {
+                  "label": "Prima onda, y₁",
+                  "expression": "round(1000000*A1*sin(4*pi*(time)))/1000000 + 0",
+                  "unit": "cm"
+                }
+              },
+              {
+                "id": "secondValue",
+                "kind": "value",
+                "props": {
+                  "label": "Seconda onda, y₂",
+                  "expression": "round(1000000*A2*sin(4*pi*(time)+phase*pi/180))/1000000 + 0",
+                  "unit": "cm"
+                }
+              },
+              {
+                "id": "sumValue",
+                "kind": "value",
+                "props": {
+                  "label": "Somma, y",
+                  "expression": "round(1000000*(A1*sin(4*pi*(time))+A2*sin(4*pi*(time)+phase*pi/180)))/1000000 + 0",
+                  "unit": "cm"
+                }
+              }
+            ]
+          },
+          {
+            "id": "amplitudes",
+            "kind": "group",
+            "props": {
+              "layout": "columns"
+            },
+            "children": [
+              {
+                "id": "resultantAmplitude",
+                "kind": "value",
+                "props": {
+                  "label": "Ampiezza risultante",
+                  "expression": "sqrt(max(0,A1^2+A2^2+2*A1*A2*cos(phase*pi/180)))",
+                  "unit": "cm"
+                }
+              },
+              {
+                "id": "minAmplitude",
+                "kind": "value",
+                "props": {
+                  "label": "Ampiezza minima al variare di φ",
+                  "expression": "abs(A1-A2)",
+                  "unit": "cm"
+                }
+              },
+              {
+                "id": "maxAmplitude",
+                "kind": "value",
+                "props": {
+                  "label": "Ampiezza massima al variare di φ",
+                  "expression": "A1+A2",
+                  "unit": "cm"
+                }
+              }
+            ]
+          },
+          {
+            "id": "reasoning",
+            "kind": "text",
+            "props": {
+              "text": "Prima di muovere il controllo, prevedi quando la somma diventa piatta. Se le ampiezze sono uguali e φ=180°, i due spostamenti sono opposti a ogni istante. Se φ=0° o 360°, le oscillazioni sono concordi e l’ampiezza risultante è A₁+A₂. Se le ampiezze sono diverse, a 180° resta la loro differenza in valore assoluto. Non sommare sempre le ampiezze: si sommano gli spostamenti istantanei con segno."
+            }
+          },
+          {
+            "id": "limits",
+            "kind": "text",
+            "props": {
+              "text": "Ipotesi: risposta lineare, stessa frequenza e direzione di oscillazione, sfasamento costante e un punto di osservazione fissato. Il disegno è un grafico temporale, non una fotografia dell’onda nello spazio. Non descrive battimenti, onde stazionarie o una mappa di intensità. Una cancellazione locale dello spostamento non dimostra una perdita di energia: un bilancio energetico richiede anche sorgenti e campo nello spazio. Il laboratorio non tratta l’ampiezza come energia. DRAFT: revisione scientifica umana da completare."
+            }
+          }
+        ]
+      },
+      "fallback": "Per f=2 Hz: y₁=A₁ sin(4πt), y₂=A₂ sin(4πt+φ), y=y₁+y₂. Ampiezza risultante √(A₁²+A₂²+2A₁A₂cosφ), fra |A₁−A₂| e A₁+A₂. A parità di ampiezza, φ=180° produce cancellazione locale; φ=0° raddoppia l’ampiezza. Modello lineare, coerente, nel medesimo punto. Grafico del tempo, non dello spazio."
+    }
   }
 ]

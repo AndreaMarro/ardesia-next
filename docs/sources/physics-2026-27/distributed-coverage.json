@@ -7919,7 +7919,9 @@
     "unitId": "sf-2026-u4-02",
     "explanationLocator": "Punti da saper spiegare: U4-02.01",
     "experimentId": "investigation-u4-02",
-    "labIds": [],
+    "labIds": [
+      "physics-interference"
+    ],
     "exerciseIds": [
       "u4-coherent-constructive-01",
       "u4-coherent-constructive-06",
@@ -7936,7 +7938,7 @@
     "complete": false,
     "lesson": {
       "documentId": "sf-2026-onde-ottica-radiazioni-v1:sf-2026-u4-02",
-      "revision": 13
+      "revision": 14
     },
     "practiceObjectIds": [
       "sf-2026-onde-ottica-radiazioni-v1:sf-2026-u4-02:u4-coherent-constructive-01",
@@ -7948,7 +7950,9 @@
       "sf-2026-onde-ottica-radiazioni-v1:sf-2026-u4-02:original-20261107-u4-02"
     ],
     "assessmentObjectId": "sf-2026-onde-ottica-radiazioni-v1:sf-2026-u4-02:final-U4-02.01",
-    "labObjectIds": []
+    "labObjectIds": [
+      "sf-2026-onde-ottica-radiazioni-v1:sf-2026-u4-02:lab0"
+    ]
   },
   {
     "objectiveId": "U4-02.02",
@@ -7959,7 +7963,9 @@
     "unitId": "sf-2026-u4-02",
     "explanationLocator": "Punti da saper spiegare: U4-02.02",
     "experimentId": "investigation-u4-02",
-    "labIds": [],
+    "labIds": [
+      "physics-interference"
+    ],
     "exerciseIds": [
       "u4-coherent-constructive-01",
       "u4-coherent-constructive-06",
@@ -7976,7 +7982,7 @@
     "complete": false,
     "lesson": {
       "documentId": "sf-2026-onde-ottica-radiazioni-v1:sf-2026-u4-02",
-      "revision": 13
+      "revision": 14
     },
     "practiceObjectIds": [
       "sf-2026-onde-ottica-radiazioni-v1:sf-2026-u4-02:u4-coherent-constructive-01",
@@ -7988,7 +7994,9 @@
       "sf-2026-onde-ottica-radiazioni-v1:sf-2026-u4-02:original-20261107-u4-02"
     ],
     "assessmentObjectId": "sf-2026-onde-ottica-radiazioni-v1:sf-2026-u4-02:final-U4-02.02",
-    "labObjectIds": []
+    "labObjectIds": [
+      "sf-2026-onde-ottica-radiazioni-v1:sf-2026-u4-02:lab0"
+    ]
   },
   {
     "objectiveId": "U4-03.01",

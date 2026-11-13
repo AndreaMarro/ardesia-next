@@ -5,11 +5,15 @@
   "sourceFiles": [
     {
       "file": "docs/sources/physics-2026-27/editorial/courses.json",
-      "sha256": "83bb85323bd925b539d0b20c6341b8ad7523592e71de99e01bbe2a6343d23b3f"
+      "sha256": "51f2d30049e83261d2e1576448ea4a77fbdb6f99b215a0aa5a68737017f6514c"
     },
     {
       "file": "docs/sources/physics-2026-27/editorial/original-problems.json",
       "sha256": "087ce4046cddeab4e50da2125970f696322de71db3da0f0ec0c30eb48485c42e"
+    },
+    {
+      "file": "docs/sources/physics-2026-27/editorial/lab-definitions.json",
+      "sha256": "3b0b1e7d9d50eb4bec630c02b8dc2029a28493cb934b31b164c202aed509d4da"
     }
   ],
   "pages": [

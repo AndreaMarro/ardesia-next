@@ -1158,7 +1158,9 @@
     "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
     "legacyLessonCanonicalSha256": "f45ac1ace4e73a4154c1d3ef49b8adbfb5851c0d89330a49fde123a8f44aadb1",
     "experimentId": "investigation-u4-02",
-    "labIds": [],
+    "labIds": [
+      "physics-interference"
+    ],
     "exerciseIds": [
       "u4-coherent-constructive-01",
       "u4-coherent-constructive-06",

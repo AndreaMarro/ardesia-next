@@ -5,6 +5,7 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
+    "./composition": "./src/composition.ts",
     "./program": "./src/program-session.ts"
   },
   "dependencies": {

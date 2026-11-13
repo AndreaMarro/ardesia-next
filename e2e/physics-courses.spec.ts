@@ -1,6 +1,42 @@
 import {test,expect,personalProjection} from './fixtures';
 import {continueRouteWithAccess,fetchRouteWithAccess} from './remote-access';
 
+test('the interference lesson makes equal and unequal cancellation visible on the same scale',async({page},info)=>{
+ test.setTimeout(240000);const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
+ await page.goto('/#corsi');
+ const card=page.getByRole('region',{name:'Cinque microcorsi di Fisica',exact:true}).locator('.course-card').filter({has:page.getByRole('heading',{name:'Onde, ottica e radiazioni',exact:true})});
+ await card.getByRole('button',{name:'Aggiungi al mio spazio',exact:true}).click();
+ await expect(page.getByRole('heading',{name:'Dai forma al percorso.',exact:true})).toBeVisible({timeout:180000});
+ const before=(await personalProjection(page)).documents.find(d=>d.id==='sf-2026-onde-ottica-radiazioni-v1:sf-2026-u4-02')!;
+ expect(before).toBeDefined();
+ await page.getByRole('button',{name:'Fissa un’edizione',exact:true}).click();
+ await page.getByRole('button',{name:'Inizia il mio percorso',exact:true}).click();
+ await page.getByRole('button',{name:/Sovrapposizione/}).click();
+ await page.getByRole('button',{name:'Apri materiali della lezione',exact:true}).click();
+ const lab=page.locator('.course-material').filter({has:page.getByText('Interferenza: sommare gli spostamenti',{exact:true})});
+ const value=(label:string)=>lab.locator('.composition-value').filter({has:page.getByText(label,{exact:true})}).locator('output');
+ const scene=lab.getByRole('img',{name:'Due onde e la loro somma su assi comuni: tempo da 0 a 1 s, spostamento da meno 4 a più 4 cm',exact:true});
+ await expect(value('Ampiezza risultante')).toHaveText('1 cm');
+ await expect(value('Somma, y')).toHaveText('0,5 cm');
+ const phase=lab.getByRole('slider',{name:'Sfasamento',exact:true});await phase.focus();await phase.press('Home');
+ await expect(value('Ampiezza risultante')).toHaveText('2 cm');
+ await lab.getByRole('spinbutton',{name:'Sfasamento valore',exact:true}).fill('180');
+ await expect(value('Ampiezza risultante')).toHaveText('0 cm');
+ await expect(value('Somma, y')).toHaveText('0 cm');
+ const sumLines=scene.locator('line[stroke="#477995"]');await expect(sumLines).toHaveCount(48);
+ expect(await sumLines.evaluateAll(lines=>lines.every(line=>Math.abs(Number(line.getAttribute('y1'))-140)<1e-9&&Math.abs(Number(line.getAttribute('y2'))-140)<1e-9))).toBe(true);
+ await lab.getByRole('spinbutton',{name:'Ampiezza seconda onda valore',exact:true}).fill('2');
+ await expect(value('Ampiezza risultante')).toHaveText('1 cm');
+ await expect(value('Somma, y')).toHaveText('-1 cm');
+ expect(await sumLines.evaluateAll(lines=>lines.some(line=>Math.abs(Number(line.getAttribute('y1'))-140)>10))).toBe(true);
+ await expect(lab.getByText(/i valori di prova non vengono salvati/)).toBeVisible();
+ expect((await personalProjection(page)).documents.find(d=>d.id===before.id)).toEqual(before);
+ await lab.getByRole('button',{name:'Ripristina valori iniziali',exact:true}).click();
+ await expect(value('Somma, y')).toHaveText('0,5 cm');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);expect(errors).toEqual([]);
+ await lab.screenshot({path:info.outputPath('interference-shared-scale.png')});
+});
+
 test('a full physics course resumes an interrupted import, pins real lessons and stores a question-specific attempt',async({page},info)=>{
  test.setTimeout(180000);const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
  let dropped=false,count=0;
