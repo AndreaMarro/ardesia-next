@@ -791,7 +791,9 @@
     "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
     "legacyLessonCanonicalSha256": "424ddfbb0efce154eb6bc4961df00598d16dde855769510a803fdbec8bbc768f",
     "experimentId": "investigation-u5-05",
-    "labIds": [],
+    "labIds": [
+      "physics-heat-engine"
+    ],
     "exerciseIds": [
       "u5-carnot-efficiency-01",
       "u5-carnot-efficiency-03",

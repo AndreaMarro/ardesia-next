@@ -3240,7 +3240,9 @@
     "unitId": "sf-2026-u5-05",
     "explanationLocator": "Punti da saper spiegare: U5-05.02",
     "experimentId": "investigation-u5-05",
-    "labIds": [],
+    "labIds": [
+      "physics-heat-engine"
+    ],
     "exerciseIds": [
       "u5-carnot-efficiency-01",
       "u5-carnot-efficiency-03",
@@ -3316,7 +3318,9 @@
     "unitId": "sf-2026-u5-05",
     "explanationLocator": "Punti da saper spiegare: U5-05.04",
     "experimentId": "investigation-u5-05",
-    "labIds": [],
+    "labIds": [
+      "physics-heat-engine"
+    ],
     "exerciseIds": [
       "u5-carnot-efficiency-01",
       "u5-carnot-efficiency-03",
@@ -3354,7 +3358,9 @@
     "unitId": "sf-2026-u5-05",
     "explanationLocator": "Punti da saper spiegare: U5-05.05",
     "experimentId": "investigation-u5-05",
-    "labIds": [],
+    "labIds": [
+      "physics-heat-engine"
+    ],
     "exerciseIds": [
       "u5-carnot-efficiency-01",
       "u5-carnot-efficiency-03",
@@ -3392,7 +3398,9 @@
     "unitId": "sf-2026-u5-05",
     "explanationLocator": "Punti da saper spiegare: U5-05.06",
     "experimentId": "investigation-u5-05",
-    "labIds": [],
+    "labIds": [
+      "physics-heat-engine"
+    ],
     "exerciseIds": [
       "u5-carnot-efficiency-01",
       "u5-carnot-efficiency-03",
@@ -3468,7 +3476,9 @@
     "unitId": "sf-2026-u5-05",
     "explanationLocator": "Punti da saper spiegare: U5-05.08",
     "experimentId": "investigation-u5-05",
-    "labIds": [],
+    "labIds": [
+      "physics-heat-engine"
+    ],
     "exerciseIds": [
       "u5-carnot-efficiency-01",
       "u5-carnot-efficiency-03",

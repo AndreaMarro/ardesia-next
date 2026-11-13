@@ -2439,5 +2439,280 @@
       },
       "fallback": "Per f=2 Hz: y₁=A₁ sin(4πt), y₂=A₂ sin(4πt+φ), y=y₁+y₂. Ampiezza risultante √(A₁²+A₂²+2A₁A₂cosφ), fra |A₁−A₂| e A₁+A₂. A parità di ampiezza, φ=180° produce cancellazione locale; φ=0° raddoppia l’ampiezza. Modello lineare, coerente, nel medesimo punto. Grafico del tempo, non dello spazio."
     }
+  },
+  {
+    "id": "physics-heat-engine",
+    "definition": {
+      "format": "ardesia-extension/1",
+      "typeId": "ardesia.physics.heat-engine",
+      "version": 1,
+      "name": "Macchina termica: energia ed entropia",
+      "description": "Proponi un rendimento, chiudi il bilancio energetico e verifica separatamente il secondo principio. Modello didattico originale, DRAFT.",
+      "license": "Modello originale Ardesia · tutti i diritti riservati · DRAFT",
+      "renderer": "ardesia.composition/1",
+      "body": {
+        "fields": [
+          {
+            "key": "Th",
+            "label": "Serbatoio caldo",
+            "kind": "number",
+            "initial": 500,
+            "min": 400,
+            "max": 800,
+            "step": 10,
+            "unit": "K"
+          },
+          {
+            "key": "Tc",
+            "label": "Serbatoio freddo",
+            "kind": "number",
+            "initial": 300,
+            "min": 250,
+            "max": 350,
+            "step": 10,
+            "unit": "K"
+          },
+          {
+            "key": "Qh",
+            "label": "Calore assorbito per ciclo",
+            "kind": "number",
+            "initial": 900,
+            "min": 100,
+            "max": 2000,
+            "step": 50,
+            "unit": "J"
+          },
+          {
+            "key": "eta",
+            "label": "Rendimento proposto",
+            "kind": "number",
+            "initial": 30,
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "%"
+          }
+        ],
+        "nodes": [
+          {
+            "id": "intro",
+            "kind": "text",
+            "props": {
+              "text": "Progetta sulla carta una macchina ciclica che scambia calore soltanto con due grandi serbatoi a temperatura costante. Qh è il calore ricevuto dal caldo; Qc è il modulo di quello ceduto al freddo; W è il lavoro netto fornito. Proponi un rendimento: il bilancio energetico verrà chiuso, ma il secondo principio può rifiutare la proposta. Gli stati rifiutati sono ipotesi da analizzare, non macchine fisicamente realizzabili."
+            }
+          },
+          {
+            "id": "controlTh",
+            "kind": "input",
+            "props": {
+              "field": "Th",
+              "appearance": "slider"
+            }
+          },
+          {
+            "id": "controlTc",
+            "kind": "input",
+            "props": {
+              "field": "Tc",
+              "appearance": "slider"
+            }
+          },
+          {
+            "id": "controlQh",
+            "kind": "input",
+            "props": {
+              "field": "Qh",
+              "appearance": "slider"
+            }
+          },
+          {
+            "id": "controleta",
+            "kind": "input",
+            "props": {
+              "field": "eta",
+              "appearance": "slider"
+            }
+          },
+          {
+            "id": "energy",
+            "kind": "group",
+            "props": {
+              "layout": "columns"
+            },
+            "children": [
+              {
+                "id": "work",
+                "kind": "value",
+                "props": {
+                  "label": "Lavoro netto W",
+                  "expression": "round(1000000*(Qh*eta/100))/1000000+0",
+                  "unit": "J"
+                }
+              },
+              {
+                "id": "coldHeat",
+                "kind": "value",
+                "props": {
+                  "label": "Calore ceduto Qc",
+                  "expression": "round(1000000*(Qh*(1-eta/100)))/1000000+0",
+                  "unit": "J"
+                }
+              },
+              {
+                "id": "energyResidual",
+                "kind": "value",
+                "props": {
+                  "label": "Qh − Qc − W",
+                  "expression": "round(1000000*(Qh-(Qh*(1-eta/100))-(Qh*eta/100)))/1000000+0",
+                  "unit": "J"
+                }
+              }
+            ]
+          },
+          {
+            "id": "energyLegend",
+            "kind": "text",
+            "props": {
+              "text": "Stessa scala in joule: la prima barra verde è Qh; la seconda è divisa in lavoro W (rame, a sinistra) e calore ceduto Qc (blu, a destra). Entrambe hanno la stessa lunghezza perché il primo principio è imposto dal modello. La scala orizzontale fissa va da 0 a 2000 J. Queste barre non dimostrano che il rendimento proposto sia possibile."
+            }
+          },
+          {
+            "id": "energyScene",
+            "kind": "scene",
+            "props": {
+              "label": "Bilancio per ciclo: Qh e somma di lavoro e calore ceduto, scala comune da 0 a 2000 joule",
+              "width": 600,
+              "height": 180
+            },
+            "children": [
+              {
+                "id": "inputHeat",
+                "kind": "shape",
+                "props": {
+                  "shape": "rect",
+                  "x": "50",
+                  "y": "25",
+                  "width": "Qh/4",
+                  "height": "35",
+                  "color": "#235e50"
+                }
+              },
+              {
+                "id": "workBar",
+                "kind": "shape",
+                "props": {
+                  "shape": "rect",
+                  "x": "50",
+                  "y": "100",
+                  "width": "(Qh*eta/100)/4",
+                  "height": "35",
+                  "color": "#b56e46"
+                }
+              },
+              {
+                "id": "coldBar",
+                "kind": "shape",
+                "props": {
+                  "shape": "rect",
+                  "x": "50+(Qh*eta/100)/4",
+                  "y": "100",
+                  "width": "(Qh*(1-eta/100))/4",
+                  "height": "35",
+                  "color": "#477995"
+                }
+              },
+              {
+                "id": "axis",
+                "kind": "shape",
+                "props": {
+                  "shape": "line",
+                  "x": "50",
+                  "y": "155",
+                  "width": "500",
+                  "height": "0",
+                  "color": "#66746c"
+                }
+              }
+            ]
+          },
+          {
+            "id": "limitsAndEntropy",
+            "kind": "group",
+            "props": {
+              "layout": "columns"
+            },
+            "children": [
+              {
+                "id": "carnot",
+                "kind": "value",
+                "props": {
+                  "label": "Massimo di Carnot",
+                  "expression": "round(1000000*(100*(1-Tc/Th)))/1000000+0",
+                  "unit": "%"
+                }
+              },
+              {
+                "id": "hotEntropy",
+                "kind": "value",
+                "props": {
+                  "label": "Variazione di entropia del caldo",
+                  "expression": "round(1000000*(-Qh/Th))/1000000+0",
+                  "unit": "J/K"
+                }
+              },
+              {
+                "id": "coldEntropy",
+                "kind": "value",
+                "props": {
+                  "label": "Variazione di entropia del freddo",
+                  "expression": "round(1000000*((Qh*(1-eta/100))/Tc))/1000000+0",
+                  "unit": "J/K"
+                }
+              },
+              {
+                "id": "totalEntropy",
+                "kind": "value",
+                "props": {
+                  "label": "Variazione totale di entropia per ciclo",
+                  "expression": "round(1000000*((Qh*(1-eta/100))/Tc-Qh/Th))/1000000+0",
+                  "unit": "J/K"
+                }
+              }
+            ]
+          },
+          {
+            "id": "diagnosis",
+            "kind": "value",
+            "props": {
+              "label": "Controllo del secondo principio",
+              "expression": "if(eta>100*(1-Tc/Th)+0.000000001,\"Incompatibile: variazione totale di entropia negativa.\",if(abs(eta-100*(1-Tc/Th))<0.000000001,\"Limite reversibile: variazione totale di entropia nulla.\",\"Bilanci compatibili: variazione totale di entropia positiva.\"))",
+              "unit": ""
+            }
+          },
+          {
+            "id": "challenge",
+            "kind": "text",
+            "props": {
+              "text": "Prima di muovere il rendimento, prevedi il segno della variazione totale di entropia al 30%, 40% e 60%, mantenendo Th=500 K, Tc=300 K e Qh=900 J. Poi cambia soltanto Qh: perché energia ed entropia cambiano, mentre rendimento limite e giudizio di compatibilità restano uguali? Confronta inoltre Th=600 K e Tc=300 K: quale limite prevedi?"
+            }
+          },
+          {
+            "id": "explanation",
+            "kind": "text",
+            "props": {
+              "text": "Sul ciclo il fluido torna allo stato iniziale: ΔU=0 e ΔS=0. Per i serbatoi, ΔSh=−Qh/Th e ΔSc=Qc/Tc. Se macchina, due serbatoi e accumulatore ideale di lavoro costituiscono il complesso isolato, ΔStot=Qc/Tc−Qh/Th deve essere non negativa. Il lavoro trasferito all’accumulatore ideale non porta entropia. Si ottiene η≤1−Tc/Th. Una variazione totale di entropia calcolata negativa segnala che la proposta viola le ipotesi fisiche: non è una produzione negativa di entropia osservabile."
+            }
+          },
+          {
+            "id": "scope",
+            "kind": "text",
+            "props": {
+              "text": "Le temperature sono assolute; gli intervalli dei controlli mantengono sempre Th>Tc>0. Il modello chiude i bilanci di un ciclo, senza descriverne tempi, percorso p–V, potenza, fluido o realizzazione costruttiva. Una proposta compatibile soddisfa condizioni necessarie, non dimostra l’esistenza di un dispositivo. A rendimento zero il lavoro netto è nullo; non è un motore utile. L’uguaglianza con Carnot è il limite reversibile. DRAFT: revisione scientifica umana da completare. I risultati numerici sono arrotondati; il giudizio usa i valori prima dell’arrotondamento."
+            }
+          }
+        ]
+      },
+      "fallback": "W=ηQh; Qc=(1−η)Qh; ΔStot=Qc/Tc−Qh/Th. Per due soli termostati Th>Tc>0, il modello ciclico richiede η≤1−Tc/Th. Bilanci necessari, non prova di fattibilità del dispositivo. Il controllo rendimento usa percentuali."
+    }
   }
 ]

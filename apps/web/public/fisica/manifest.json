@@ -5,15 +5,15 @@
   "sourceFiles": [
     {
       "file": "docs/sources/physics-2026-27/editorial/courses.json",
-      "sha256": "51f2d30049e83261d2e1576448ea4a77fbdb6f99b215a0aa5a68737017f6514c"
+      "sha256": "7527c62544a8d92da376a166ad951a58ae4bc95056c603718c52c7980cd7d341"
     },
     {
       "file": "docs/sources/physics-2026-27/editorial/original-problems.json",
-      "sha256": "087ce4046cddeab4e50da2125970f696322de71db3da0f0ec0c30eb48485c42e"
+      "sha256": "68ac49b481bb8c93a0b010395b67ad4062fa1532f654f079e2b77a8dea6a8d31"
     },
     {
       "file": "docs/sources/physics-2026-27/editorial/lab-definitions.json",
-      "sha256": "3b0b1e7d9d50eb4bec630c02b8dc2029a28493cb934b31b164c202aed509d4da"
+      "sha256": "daca7553da2463ca56791f5f1b2c45dc05940fea7fdaae89bbfdf0ac7ec1832f"
     }
   ],
   "pages": [
@@ -29,7 +29,7 @@
       "file": "c2.html",
       "courseId": "sf-2026-fluidi",
       "unitId": "sf-2026-u3-04",
-      "problemId": "original-20261107-u3-04",
+      "problemId": "original-20261113-u3-04-b",
       "status": "DRAFT",
       "humanApproval": false
     },
@@ -37,7 +37,7 @@
       "file": "c3.html",
       "courseId": "sf-2026-termodinamica",
       "unitId": "sf-2026-u5-02",
-      "problemId": "original-20261107-u5-02",
+      "problemId": "original-20261113-u5-02-a",
       "status": "DRAFT",
       "humanApproval": false
     },

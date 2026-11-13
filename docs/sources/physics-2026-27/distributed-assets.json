@@ -5,7 +5,7 @@
     "units": 38,
     "objectives": 200,
     "bankSelected": 259,
-    "originalProblems": 39
+    "originalProblems": 69
   },
   "files": [
     {
@@ -24,31 +24,31 @@
     },
     {
       "file": "sf-2026-fluidi.json",
-      "bytes": 615943,
-      "gzipBytes": 98309,
-      "sha256": "98cf5e14f870080ae7b2b4b3ac0cdf7984d8e02a484411b7ebbec81b0d98e5c1",
+      "bytes": 681490,
+      "gzipBytes": 111107,
+      "sha256": "12b1a0eb456e049def1130afc15ea218f1d472c84bffc228f16708bda4b38016",
       "counts": {
         "objectives": 26,
         "practice": 58,
-        "originals": 6,
+        "originals": 21,
         "assessments": 26,
         "labs": 4
       },
-      "objects": 122
+      "objects": 137
     },
     {
       "file": "sf-2026-termodinamica.json",
-      "bytes": 673288,
-      "gzipBytes": 103376,
-      "sha256": "402ca1d63c912c339e2ef5821cdb8093aa7d615a2e3184e6570ad98b921d006e",
+      "bytes": 739544,
+      "gzipBytes": 116429,
+      "sha256": "c5b9c76088c2db581bf55b885bdc12c4061627c3bb1ae1dc0a2030ebb9509024",
       "counts": {
         "objectives": 31,
         "practice": 66,
-        "originals": 5,
+        "originals": 20,
         "assessments": 31,
-        "labs": 2
+        "labs": 3
       },
-      "objects": 132
+      "objects": 148
     },
     {
       "file": "sf-2026-elettricita-magnetismo.json",
@@ -79,7 +79,7 @@
       "objects": 198
     }
   ],
-  "totalRawBytes": 3565853,
-  "totalGzipBytes": 594938,
+  "totalRawBytes": 3697656,
+  "totalGzipBytes": 620789,
   "note": "Static JSON course materials, fetched only on explicit import; not JavaScript. Full data costs shown separately from measured runtime budgets."
 }

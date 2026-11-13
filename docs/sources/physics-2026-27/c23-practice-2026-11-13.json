@@ -1,0 +1,1573 @@
+{
+  "kind": "physics-c23-progressive-practice",
+  "baselineCommit": "dc2985eb0fb0ce648e0eec6b9fc4026870e4b32e",
+  "status": "DRAFT",
+  "humanApproval": false,
+  "problems": [
+    {
+      "problemId": "original-20261113-u3-01-a",
+      "unitId": "sf-2026-u3-01",
+      "sha256": "36a61e6aa9a2162f421fcd13212d816be6f7316e87bc7e10820a10f12d16eac8",
+      "numericalChecks": [
+        {
+          "label": "massa netta primo campione g",
+          "expression": "110-42",
+          "expected": 68,
+          "tolerance": 0,
+          "actual": 68,
+          "passed": true
+        },
+        {
+          "label": "massa netta secondo campione g",
+          "expression": "76-42",
+          "expected": 34,
+          "tolerance": 0,
+          "actual": 34,
+          "passed": true
+        },
+        {
+          "label": "densita prima prova kg/m3",
+          "expression": "(110-42)*10**-3/(80*10**-6)",
+          "expected": 850,
+          "tolerance": 1e-10,
+          "actual": 850.0000000000001,
+          "passed": true
+        },
+        {
+          "label": "densita seconda prova kg/m3",
+          "expression": "(76-42)*10**-3/(40*10**-6)",
+          "expected": 850,
+          "tolerance": 1e-10,
+          "actual": 850.0000000000001,
+          "passed": true
+        },
+        {
+          "label": "seconda pesata prevista g",
+          "expression": "850*40*10**-6*1000+42",
+          "expected": 76,
+          "tolerance": 1e-10,
+          "actual": 76.0,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u3-01-b",
+      "unitId": "sf-2026-u3-01",
+      "sha256": "a2b03f45c76305f2f999db7cf50fa412553f1ae1570b6e8b84ee95a9bb256973",
+      "numericalChecks": [
+        {
+          "label": "forza prima porzione N",
+          "expression": "(103-100)*1000*4*10**-4",
+          "expected": 1.2,
+          "tolerance": 1e-12,
+          "actual": 1.2,
+          "passed": true
+        },
+        {
+          "label": "forza seconda porzione N",
+          "expression": "(99-100)*1000*8*10**-4",
+          "expected": -0.8,
+          "tolerance": 1e-12,
+          "actual": -0.8,
+          "passed": true
+        },
+        {
+          "label": "risultante N",
+          "expression": "1.2-.8",
+          "expected": 0.4,
+          "tolerance": 1e-12,
+          "actual": 0.3999999999999999,
+          "passed": true
+        },
+        {
+          "label": "pressione equivalente Pa",
+          "expression": ".4/(12*10**-4)",
+          "expected": 333.3333333333333,
+          "tolerance": 1e-09,
+          "actual": 333.3333333333333,
+          "passed": true
+        },
+        {
+          "label": "somma forze interne N",
+          "expression": "103000*.0004+99000*.0008",
+          "expected": 120.4,
+          "tolerance": 1e-10,
+          "actual": 120.4,
+          "passed": true
+        },
+        {
+          "label": "forza esterna N",
+          "expression": "100000*.0012",
+          "expected": 120,
+          "tolerance": 1e-10,
+          "actual": 119.99999999999999,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u3-01-c",
+      "unitId": "sf-2026-u3-01",
+      "sha256": "fa575e9a8f0dee10bcd7e9c2085f0f2be83f37263456e08be05b9db277dbd9dd",
+      "numericalChecks": [
+        {
+          "label": "densita A kg/m3",
+          "expression": ".080/(100*10**-6)",
+          "expected": 800,
+          "tolerance": 1e-10,
+          "actual": 800.0000000000001,
+          "passed": true
+        },
+        {
+          "label": "densita B kg/m3",
+          "expression": ".120/(100*10**-6)",
+          "expected": 1200,
+          "tolerance": 1e-10,
+          "actual": 1200.0,
+          "passed": true
+        },
+        {
+          "label": "massa miscela kg",
+          "expression": ".080+.120",
+          "expected": 0.2,
+          "tolerance": 1e-12,
+          "actual": 0.2,
+          "passed": true
+        },
+        {
+          "label": "densita miscela kg/m3",
+          "expression": ".2/(192*10**-6)",
+          "expected": 1041.6666666666667,
+          "tolerance": 1e-09,
+          "actual": 1041.6666666666667,
+          "passed": true
+        },
+        {
+          "label": "contrazione volume percentuale",
+          "expression": "(200-192)/200*100",
+          "expected": 4,
+          "tolerance": 1e-12,
+          "actual": 4.0,
+          "passed": true
+        },
+        {
+          "label": "aumento densita percentuale",
+          "expression": "((.2/(192*10**-6))-1000)/1000*100",
+          "expected": 4.166666666666674,
+          "tolerance": 1e-10,
+          "actual": 4.166666666666674,
+          "passed": true
+        },
+        {
+          "label": "rapporto densita",
+          "expression": "200/192",
+          "expected": 1.0416666666666667,
+          "tolerance": 1e-12,
+          "actual": 1.0416666666666667,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u3-02-a",
+      "unitId": "sf-2026-u3-02",
+      "sha256": "b2902db9eed6145bc5f05c691c7409c8a02fc4cf5757685c8168fc6dedfbf171",
+      "numericalChecks": [
+        {
+          "label": "salto olio Pa",
+          "expression": "900*10*.20",
+          "expected": 1800,
+          "tolerance": 1e-10,
+          "actual": 1800.0,
+          "passed": true
+        },
+        {
+          "label": "pressione interfaccia Pa",
+          "expression": "98000+900*10*.20",
+          "expected": 99800,
+          "tolerance": 1e-10,
+          "actual": 99800.0,
+          "passed": true
+        },
+        {
+          "label": "salto acqua Pa",
+          "expression": "1000*10*.30",
+          "expected": 3000,
+          "tolerance": 1e-10,
+          "actual": 3000.0,
+          "passed": true
+        },
+        {
+          "label": "pressione fondo Pa",
+          "expression": "98000+900*10*.20+1000*10*.30",
+          "expected": 102800,
+          "tolerance": 1e-10,
+          "actual": 102800.0,
+          "passed": true
+        },
+        {
+          "label": "massa colonne per area kg/m2",
+          "expression": "900*.20+1000*.30",
+          "expected": 480,
+          "tolerance": 1e-10,
+          "actual": 480.0,
+          "passed": true
+        },
+        {
+          "label": "densita media ponderata kg/m3",
+          "expression": "(900*.20+1000*.30)/.50",
+          "expected": 960,
+          "tolerance": 1e-10,
+          "actual": 960.0,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u3-02-b",
+      "unitId": "sf-2026-u3-02",
+      "sha256": "45d31e94f04b88c9679bf7564308e3140f6c11039458dc30ffac1a789ea9f579",
+      "numericalChecks": [
+        {
+          "label": "pressione relativa grande Pa",
+          "expression": "350/(35*10**-4)",
+          "expected": 100000,
+          "tolerance": 1e-08,
+          "actual": 100000.0,
+          "passed": true
+        },
+        {
+          "label": "forza iniziale piccolo N",
+          "expression": "(100000+800*10*.5)*2*10**-4",
+          "expected": 20.8,
+          "tolerance": 1e-10,
+          "actual": 20.8,
+          "passed": true
+        },
+        {
+          "label": "spostamento piccolo m",
+          "expression": ".70*10**-6/(2*10**-4)",
+          "expected": 0.0035,
+          "tolerance": 1e-12,
+          "actual": 0.0034999999999999996,
+          "passed": true
+        },
+        {
+          "label": "spostamento grande m",
+          "expression": ".70*10**-6/(35*10**-4)",
+          "expected": 0.0002,
+          "tolerance": 1e-12,
+          "actual": 0.00019999999999999998,
+          "passed": true
+        },
+        {
+          "label": "nuovo dislivello m",
+          "expression": ".5+.0035+.0002",
+          "expected": 0.5037,
+          "tolerance": 1e-12,
+          "actual": 0.5036999999999999,
+          "passed": true
+        },
+        {
+          "label": "nuova forza N",
+          "expression": "(100000+800*10*.5037)*.0002",
+          "expected": 20.80592,
+          "tolerance": 1e-09,
+          "actual": 20.80592,
+          "passed": true
+        },
+        {
+          "label": "incremento forza N",
+          "expression": "800*10*.0002*(.0035+.0002)",
+          "expected": 0.00592,
+          "tolerance": 1e-12,
+          "actual": 0.005920000000000001,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u3-02-c",
+      "unitId": "sf-2026-u3-02",
+      "sha256": "05e1bf6539ff8dc2b472bbdd9ee1e3fd7f025830472734d7a4340bf5f9fd4d8c",
+      "numericalChecks": [
+        {
+          "label": "prima differenza Pa",
+          "expression": "13600*10*.700",
+          "expected": 95200,
+          "tolerance": 1e-08,
+          "actual": 95200.0,
+          "passed": true
+        },
+        {
+          "label": "seconda differenza Pa",
+          "expression": "850*10*11.20",
+          "expected": 95200,
+          "tolerance": 1e-08,
+          "actual": 95200.0,
+          "passed": true
+        },
+        {
+          "label": "pressione esterna Pa",
+          "expression": "4800+95200",
+          "expected": 100000,
+          "tolerance": 0,
+          "actual": 100000,
+          "passed": true
+        },
+        {
+          "label": "errore percentuale",
+          "expression": "4800/100000*100",
+          "expected": 4.8,
+          "tolerance": 1e-12,
+          "actual": 4.8,
+          "passed": true
+        },
+        {
+          "label": "rapporto altezze",
+          "expression": "11.20/.700",
+          "expected": 16,
+          "tolerance": 1e-12,
+          "actual": 16.0,
+          "passed": true
+        },
+        {
+          "label": "rapporto densita",
+          "expression": "13600/850",
+          "expected": 16,
+          "tolerance": 1e-12,
+          "actual": 16.0,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u3-03-a",
+      "unitId": "sf-2026-u3-03",
+      "sha256": "1fe844e0b1340d323a0b79ab2740f351d35c6e3e5c450654abf7c924f3ba8df9",
+      "numericalChecks": [
+        {
+          "label": "accumulo L/min",
+          "expression": "1.2-.7-.3",
+          "expected": 0.2,
+          "tolerance": 1e-12,
+          "actual": 0.2,
+          "passed": true
+        },
+        {
+          "label": "volume accumulato L",
+          "expression": "(1.2-.7-.3)*90/60",
+          "expected": 0.3,
+          "tolerance": 1e-12,
+          "actual": 0.3,
+          "passed": true
+        },
+        {
+          "label": "portata ingresso m3/s",
+          "expression": "1.2*10**-3/60",
+          "expected": 2e-05,
+          "tolerance": 1e-15,
+          "actual": 1.9999999999999998e-05,
+          "passed": true
+        },
+        {
+          "label": "velocita ingresso m/s",
+          "expression": "(1.2*10**-3/60)/(.5*10**-4)",
+          "expected": 0.4,
+          "tolerance": 1e-12,
+          "actual": 0.39999999999999997,
+          "passed": true
+        },
+        {
+          "label": "seconda uscita stazionaria L/min",
+          "expression": "1.2-.7",
+          "expected": 0.5,
+          "tolerance": 1e-12,
+          "actual": 0.5,
+          "passed": true
+        },
+        {
+          "label": "bilancio volumi L",
+          "expression": "1.2*1.5-(.7+.3)*1.5",
+          "expected": 0.3,
+          "tolerance": 1e-12,
+          "actual": 0.2999999999999998,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u3-03-b",
+      "unitId": "sf-2026-u3-03",
+      "sha256": "0177aae69ae2868f4919826c82d30471bace6d7282d324f51cca2f6388475691",
+      "numericalChecks": [
+        {
+          "label": "portata m3/s",
+          "expression": "2*10**-4*3",
+          "expected": 0.0006,
+          "tolerance": 1e-15,
+          "actual": 0.0006000000000000001,
+          "passed": true
+        },
+        {
+          "label": "velocita seconda sezione m/s",
+          "expression": ".0006/(6*10**-4)",
+          "expected": 1,
+          "tolerance": 1e-12,
+          "actual": 0.9999999999999998,
+          "passed": true
+        },
+        {
+          "label": "contributo cinetico Pa",
+          "expression": "1000*(3**2-1**2)/2",
+          "expected": 4000,
+          "tolerance": 1e-10,
+          "actual": 4000.0,
+          "passed": true
+        },
+        {
+          "label": "contributo quota Pa",
+          "expression": "-1000*10*.60",
+          "expected": -6000,
+          "tolerance": 1e-10,
+          "actual": -6000.0,
+          "passed": true
+        },
+        {
+          "label": "differenza pressione Pa",
+          "expression": "1000*(3**2-1**2)/2-1000*10*.60",
+          "expected": -2000,
+          "tolerance": 1e-10,
+          "actual": -2000.0,
+          "passed": true
+        },
+        {
+          "label": "quota pareggio m",
+          "expression": "(3**2-1**2)/(2*10)",
+          "expected": 0.4,
+          "tolerance": 1e-12,
+          "actual": 0.4,
+          "passed": true
+        },
+        {
+          "label": "chiusura bilancio Pa",
+          "expression": "-2000+(1000/2)*(1**2-3**2)+1000*10*.60",
+          "expected": 0,
+          "tolerance": 1e-10,
+          "actual": 0.0,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u3-03-c",
+      "unitId": "sf-2026-u3-03",
+      "sha256": "b7f2c394146d9acfd42b8a303355e7754dd3a49ee242135fb06e8dca73526261",
+      "numericalChecks": [
+        {
+          "label": "volume in 4s m3",
+          "expression": "2*10**-4*(.20*2+.80*2)",
+          "expected": 0.0004,
+          "tolerance": 1e-15,
+          "actual": 0.0004,
+          "passed": true
+        },
+        {
+          "label": "portata media m3/s",
+          "expression": ".0004/4",
+          "expected": 0.0001,
+          "tolerance": 1e-15,
+          "actual": 0.0001,
+          "passed": true
+        },
+        {
+          "label": "velocita media m/s",
+          "expression": "(.2+.8)/2",
+          "expected": 0.5,
+          "tolerance": 1e-12,
+          "actual": 0.5,
+          "passed": true
+        },
+        {
+          "label": "media v quadrato m2/s2",
+          "expression": "(.2**2+.8**2)/2",
+          "expected": 0.34,
+          "tolerance": 1e-12,
+          "actual": 0.3400000000000001,
+          "passed": true
+        },
+        {
+          "label": "termine cinetico medio Pa",
+          "expression": "1000/2*(.2**2+.8**2)/2",
+          "expected": 170,
+          "tolerance": 1e-10,
+          "actual": 170.00000000000003,
+          "passed": true
+        },
+        {
+          "label": "termine dalla velocita media Pa",
+          "expression": "1000/2*((.2+.8)/2)**2",
+          "expected": 125,
+          "tolerance": 1e-10,
+          "actual": 125.0,
+          "passed": true
+        },
+        {
+          "label": "differenza da varianza Pa",
+          "expression": "1000/2*.3**2",
+          "expected": 45,
+          "tolerance": 1e-10,
+          "actual": 45.0,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u3-04-a",
+      "unitId": "sf-2026-u3-04",
+      "sha256": "816d6382860627f71a7592469dc20b45676cd2a59ef2fbbb41115e01b453e0dd",
+      "numericalChecks": [
+        {
+          "label": "gradiente s^-1",
+          "expression": ".12/(.60*10**-3)",
+          "expected": 200,
+          "tolerance": 1e-10,
+          "actual": 200.0,
+          "passed": true
+        },
+        {
+          "label": "sforzo Pa",
+          "expression": ".004*.12/(.60*10**-3)",
+          "expected": 0.8,
+          "tolerance": 1e-12,
+          "actual": 0.8,
+          "passed": true
+        },
+        {
+          "label": "forza N",
+          "expression": ".8*50*10**-4",
+          "expected": 0.004,
+          "tolerance": 1e-12,
+          "actual": 0.004,
+          "passed": true
+        },
+        {
+          "label": "potenza W",
+          "expression": ".004*.12",
+          "expected": 0.00048,
+          "tolerance": 1e-14,
+          "actual": 0.00048,
+          "passed": true
+        },
+        {
+          "label": "fattore potenza velocita doppia",
+          "expression": "2**2",
+          "expected": 4,
+          "tolerance": 0,
+          "actual": 4,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u3-04-b",
+      "unitId": "sf-2026-u3-04",
+      "sha256": "28cc23642e278d70477a58d80886342324983888db7985151f6bea68ea5bc9f7",
+      "numericalChecks": [
+        {
+          "label": "portata riferimento mL/s",
+          "expression": "3/20",
+          "expected": 0.15,
+          "tolerance": 1e-12,
+          "actual": 0.15,
+          "passed": true
+        },
+        {
+          "label": "portata ignota mL/s",
+          "expression": "2.5/50",
+          "expected": 0.05,
+          "tolerance": 1e-12,
+          "actual": 0.05,
+          "passed": true
+        },
+        {
+          "label": "rapporto viscosita",
+          "expression": "(1/1.5)*((3/20)/(2.5/50))",
+          "expected": 2,
+          "tolerance": 1e-12,
+          "actual": 1.9999999999999996,
+          "passed": true
+        },
+        {
+          "label": "viscosita ignota Pa s",
+          "expression": ".0012*(1/1.5)*((3/20)/(2.5/50))",
+          "expected": 0.0024,
+          "tolerance": 1e-14,
+          "actual": 0.0023999999999999994,
+          "passed": true
+        },
+        {
+          "label": "nuova portata mL/s",
+          "expression": ".05*1.5",
+          "expected": 0.075,
+          "tolerance": 1e-12,
+          "actual": 0.07500000000000001,
+          "passed": true
+        },
+        {
+          "label": "nuovo tempo s",
+          "expression": "3/(.05*1.5)",
+          "expected": 40,
+          "tolerance": 1e-10,
+          "actual": 39.99999999999999,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u3-04-c",
+      "unitId": "sf-2026-u3-04",
+      "sha256": "58dd0ee1165915f54dda98212e37a7a3556283478541ee67e12c3e123d7098cb",
+      "numericalChecks": [
+        {
+          "label": "resistenza parallelo kPa s/L",
+          "expression": "6*12/(6+12)",
+          "expected": 4,
+          "tolerance": 1e-12,
+          "actual": 4.0,
+          "passed": true
+        },
+        {
+          "label": "portata totale iniziale L/s",
+          "expression": "14/(3+4)",
+          "expected": 2,
+          "tolerance": 1e-12,
+          "actual": 2.0,
+          "passed": true
+        },
+        {
+          "label": "pressione rami iniziale kPa",
+          "expression": "14-3*2",
+          "expected": 8,
+          "tolerance": 1e-12,
+          "actual": 8,
+          "passed": true
+        },
+        {
+          "label": "portata ramo1 iniziale L/s",
+          "expression": "8/6",
+          "expected": 1.3333333333333333,
+          "tolerance": 1e-12,
+          "actual": 1.3333333333333333,
+          "passed": true
+        },
+        {
+          "label": "portata ramo2 iniziale L/s",
+          "expression": "8/12",
+          "expected": 0.6666666666666666,
+          "tolerance": 1e-12,
+          "actual": 0.6666666666666666,
+          "passed": true
+        },
+        {
+          "label": "potenza iniziale W",
+          "expression": "14000*.002",
+          "expected": 28,
+          "tolerance": 1e-10,
+          "actual": 28.0,
+          "passed": true
+        },
+        {
+          "label": "portata finale L/s",
+          "expression": "14/(3+6)",
+          "expected": 1.5555555555555556,
+          "tolerance": 1e-12,
+          "actual": 1.5555555555555556,
+          "passed": true
+        },
+        {
+          "label": "rapporto ramo1 finale iniziale",
+          "expression": "(14/9)/(8/6)",
+          "expected": 1.1666666666666667,
+          "tolerance": 1e-12,
+          "actual": 1.1666666666666667,
+          "passed": true
+        },
+        {
+          "label": "pressione finale ramo1 kPa",
+          "expression": "6*14/9",
+          "expected": 9.333333333333334,
+          "tolerance": 1e-12,
+          "actual": 9.333333333333334,
+          "passed": true
+        },
+        {
+          "label": "caduta finale comune kPa",
+          "expression": "3*14/9",
+          "expected": 4.666666666666667,
+          "tolerance": 1e-12,
+          "actual": 4.666666666666667,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u3-05-a",
+      "unitId": "sf-2026-u3-05",
+      "sha256": "9aaf3c08a9148dc907f30efd5847718b164e6888c921c88fcc0089ed28b5cd23",
+      "numericalChecks": [
+        {
+          "label": "forza N",
+          "expression": "2*.030*.040",
+          "expected": 0.0024,
+          "tolerance": 1e-14,
+          "actual": 0.0024,
+          "passed": true
+        },
+        {
+          "label": "lavoro J",
+          "expression": "2*.030*.040*.015",
+          "expected": 3.6e-05,
+          "tolerance": 1e-15,
+          "actual": 3.5999999999999994e-05,
+          "passed": true
+        },
+        {
+          "label": "area singola faccia m2",
+          "expression": ".040*.015",
+          "expected": 0.0006,
+          "tolerance": 1e-14,
+          "actual": 0.0006,
+          "passed": true
+        },
+        {
+          "label": "area totale m2",
+          "expression": "2*.040*.015",
+          "expected": 0.0012,
+          "tolerance": 1e-14,
+          "actual": 0.0012,
+          "passed": true
+        },
+        {
+          "label": "controllo energia J",
+          "expression": ".030*(2*.040*.015)",
+          "expected": 3.6e-05,
+          "tolerance": 1e-15,
+          "actual": 3.5999999999999994e-05,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u3-05-b",
+      "unitId": "sf-2026-u3-05",
+      "sha256": "2ac0008dbdfb16a29435d1c078c3f7505e32fe7cc86f74c319abd4b869ed1fd4",
+      "numericalChecks": [
+        {
+          "label": "raggio finale m",
+          "expression": "(8*(.10*10**-3)**3)**(1/3)",
+          "expected": 0.0002,
+          "tolerance": 1e-12,
+          "actual": 0.00020000000000000012,
+          "passed": true
+        },
+        {
+          "label": "rapporto area finale iniziale",
+          "expression": "(2**2)/8",
+          "expected": 0.5,
+          "tolerance": 1e-12,
+          "actual": 0.5,
+          "passed": true
+        },
+        {
+          "label": "area eliminata m2",
+          "expression": "16*3.14159*(10**-4)**2",
+          "expected": 5.026544e-07,
+          "tolerance": 1e-17,
+          "actual": 5.026544e-07,
+          "passed": true
+        },
+        {
+          "label": "energia superficiale eliminata J",
+          "expression": ".050*16*3.14159*(10**-4)**2",
+          "expected": 2.513272e-08,
+          "tolerance": 1e-18,
+          "actual": 2.513272e-08,
+          "passed": true
+        },
+        {
+          "label": "salto pressione iniziale Pa",
+          "expression": "2*.050/(.10*10**-3)",
+          "expected": 1000,
+          "tolerance": 1e-09,
+          "actual": 1000.0,
+          "passed": true
+        },
+        {
+          "label": "salto pressione finale Pa",
+          "expression": "2*.050/(.20*10**-3)",
+          "expected": 500,
+          "tolerance": 1e-09,
+          "actual": 500.0,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u3-05-c",
+      "unitId": "sf-2026-u3-05",
+      "sha256": "bb83ebebd458c047ccdb4c561cfc58858468a7029ff2591458d2ed0c10f3fa73",
+      "numericalChecks": [
+        {
+          "label": "tensione da tubo B N/m",
+          "expression": ".016*1000*10*.00050/2",
+          "expected": 0.04,
+          "tolerance": 1e-12,
+          "actual": 0.04,
+          "passed": true
+        },
+        {
+          "label": "altezza A da rapporto mm",
+          "expression": "16*(.50/.25)",
+          "expected": 32,
+          "tolerance": 1e-12,
+          "actual": 32.0,
+          "passed": true
+        },
+        {
+          "label": "altezza A da legge m",
+          "expression": "2*.040/(1000*10*.00025)",
+          "expected": 0.032,
+          "tolerance": 1e-12,
+          "actual": 0.032,
+          "passed": true
+        },
+        {
+          "label": "tensione erronea da A N/m",
+          "expression": ".020*1000*10*.00025/2",
+          "expected": 0.025,
+          "tolerance": 1e-12,
+          "actual": 0.025,
+          "passed": true
+        },
+        {
+          "label": "rapporto stima errata corretta",
+          "expression": ".025/.040",
+          "expected": 0.625,
+          "tolerance": 1e-12,
+          "actual": 0.625,
+          "passed": true
+        },
+        {
+          "label": "controllo B m",
+          "expression": "2*.040/(1000*10*.00050)",
+          "expected": 0.016,
+          "tolerance": 1e-12,
+          "actual": 0.016,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u5-01-a",
+      "unitId": "sf-2026-u5-01",
+      "sha256": "6dea07a79fea555dc8db24dd9674b8c534a4615d28d947ea48685d75311239c3",
+      "numericalChecks": [
+        {
+          "label": "area in m²",
+          "expression": "50*10**-4",
+          "expected": 0.005,
+          "tolerance": 1e-12,
+          "actual": 0.005,
+          "passed": true
+        },
+        {
+          "label": "sovrapressione in Pa",
+          "expression": "5*10/.005",
+          "expected": 10000,
+          "tolerance": 1e-09,
+          "actual": 10000.0,
+          "passed": true
+        },
+        {
+          "label": "pressione assoluta in Pa",
+          "expression": "100000+5*10/.005",
+          "expected": 110000,
+          "tolerance": 1e-09,
+          "actual": 110000.0,
+          "passed": true
+        },
+        {
+          "label": "volume in m³",
+          "expression": ".4*8.31*(26.85+273.15)/110000",
+          "expected": 0.009065454545454547,
+          "tolerance": 1e-14,
+          "actual": 0.009065454545454547,
+          "passed": true
+        },
+        {
+          "label": "controllo pV in J",
+          "expression": "110000*.009065454545454547",
+          "expected": 997.2,
+          "tolerance": 1e-09,
+          "actual": 997.2000000000002,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u5-01-b",
+      "unitId": "sf-2026-u5-01",
+      "sha256": "5ba83a2482e49738555e389ae8beb3d3f75bf1c0ffe00a329296bc34eaaf571b",
+      "numericalChecks": [
+        {
+          "label": "pressione comune in kPa",
+          "expression": "(240*3+60*6)/(3+6)",
+          "expected": 120,
+          "tolerance": 1e-12,
+          "actual": 120.0,
+          "passed": true
+        },
+        {
+          "label": "rapporto quantità A",
+          "expression": "120/240",
+          "expected": 0.5,
+          "tolerance": 1e-12,
+          "actual": 0.5,
+          "passed": true
+        },
+        {
+          "label": "rapporto quantità B",
+          "expression": "120/60",
+          "expected": 2,
+          "tolerance": 1e-12,
+          "actual": 2.0,
+          "passed": true
+        },
+        {
+          "label": "controllo pV totale in J",
+          "expression": "120*(3+6)",
+          "expected": 1080,
+          "tolerance": 1e-09,
+          "actual": 1080,
+          "passed": true
+        },
+        {
+          "label": "previsione errata media semplice in J",
+          "expression": "((240+60)/2)*(3+6)",
+          "expected": 1350,
+          "tolerance": 1e-09,
+          "actual": 1350.0,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u5-01-c",
+      "unitId": "sf-2026-u5-01",
+      "sha256": "d376da6000e15f00e5876ad8cf083506a1181e3e8c3b3c346cf559ba3fb00909",
+      "numericalChecks": [
+        {
+          "label": "C in kPa L",
+          "expression": "(260-140)/(1/1-1/2)",
+          "expected": 240,
+          "tolerance": 1e-12,
+          "actual": 240.0,
+          "passed": true
+        },
+        {
+          "label": "offset in kPa",
+          "expression": "260-240/1",
+          "expected": 20,
+          "tolerance": 1e-12,
+          "actual": 20.0,
+          "passed": true
+        },
+        {
+          "label": "terzo punto predetto in kPa",
+          "expression": "240/4+20",
+          "expected": 80,
+          "tolerance": 1e-12,
+          "actual": 80.0,
+          "passed": true
+        },
+        {
+          "label": "moli",
+          "expression": "240/(8.31*300)",
+          "expected": 0.09626955475330927,
+          "tolerance": 1e-13,
+          "actual": 0.09626955475330927,
+          "passed": true
+        },
+        {
+          "label": "prodotto corretto terzo stato in J",
+          "expression": "(80-20)*4",
+          "expected": 240,
+          "tolerance": 1e-12,
+          "actual": 240,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u5-02-a",
+      "unitId": "sf-2026-u5-02",
+      "sha256": "a2b88c1ec345b1458d1272fbfe7cb60c264f867269277bb22c001c1dd5f6d61f",
+      "numericalChecks": [
+        {
+          "label": "capacità calorimetro J/K",
+          "expression": "360/3",
+          "expected": 120,
+          "tolerance": 1e-12,
+          "actual": 120.0,
+          "passed": true
+        },
+        {
+          "label": "capacità campione J/K",
+          "expression": "900/3-360/3",
+          "expected": 180,
+          "tolerance": 1e-12,
+          "actual": 180.0,
+          "passed": true
+        },
+        {
+          "label": "calore specifico J/(kg K)",
+          "expression": "(900/3-360/3)/.2",
+          "expected": 900,
+          "tolerance": 1e-12,
+          "actual": 900.0,
+          "passed": true
+        },
+        {
+          "label": "calore al campione J",
+          "expression": "180*3",
+          "expected": 540,
+          "tolerance": 1e-12,
+          "actual": 540,
+          "passed": true
+        },
+        {
+          "label": "stima errata J/(kg K)",
+          "expression": "900/(.2*3)",
+          "expected": 1500,
+          "tolerance": 1e-12,
+          "actual": 1499.9999999999998,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u5-02-b",
+      "unitId": "sf-2026-u5-02",
+      "sha256": "65fb607250c0a252637481d49f7fbfae490cdf35c9c66ad97bfec6e9bfaeade3",
+      "numericalChecks": [
+        {
+          "label": "aumento isocoro K",
+          "expression": "300/(.5*1.5*8.31)",
+          "expected": 48.13477737665463,
+          "tolerance": 1e-10,
+          "actual": 48.13477737665463,
+          "passed": true
+        },
+        {
+          "label": "aumento isobaro K",
+          "expression": "300/(.5*2.5*8.31)",
+          "expected": 28.880866425992778,
+          "tolerance": 1e-10,
+          "actual": 28.880866425992778,
+          "passed": true
+        },
+        {
+          "label": "rapporto aumenti",
+          "expression": "(300/(.5*1.5*8.31))/(300/(.5*2.5*8.31))",
+          "expected": 1.6666666666666667,
+          "tolerance": 1e-12,
+          "actual": 1.6666666666666667,
+          "passed": true
+        },
+        {
+          "label": "lavoro isobaro J",
+          "expression": ".5*8.31*(300/(.5*2.5*8.31))",
+          "expected": 120,
+          "tolerance": 1e-10,
+          "actual": 120.0,
+          "passed": true
+        },
+        {
+          "label": "energia interna isobara J",
+          "expression": "300-120",
+          "expected": 180,
+          "tolerance": 1e-12,
+          "actual": 180,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u5-02-c",
+      "unitId": "sf-2026-u5-02",
+      "sha256": "28a5ed1469ea0acf30818e8ba132cd2a4b1da953b021182ddc72441dfd7d9935",
+      "numericalChecks": [
+        {
+          "label": "energia per portare parte fredda a 100 °C J",
+          "expression": "(.1*4200+42)*(100-20)",
+          "expected": 36960,
+          "tolerance": 1e-09,
+          "actual": 36960.0,
+          "passed": true
+        },
+        {
+          "label": "calore latente ceduto J",
+          "expression": ".01*2.26e6",
+          "expected": 22600,
+          "tolerance": 1e-09,
+          "actual": 22600.0,
+          "passed": true
+        },
+        {
+          "label": "temperatura finale °C",
+          "expression": "(.01*2.26e6+.01*4200*100+(.1*4200+42)*20)/((.1+.01)*4200+42)",
+          "expected": 71.5079365079365,
+          "tolerance": 1e-10,
+          "actual": 71.5079365079365,
+          "passed": true
+        },
+        {
+          "label": "raffreddamento condensato J",
+          "expression": ".01*4200*(100-36040/504)",
+          "expected": 1196.6666666666667,
+          "tolerance": 1e-08,
+          "actual": 1196.6666666666667,
+          "passed": true
+        },
+        {
+          "label": "calore ricevuto parte fredda J",
+          "expression": "462*(36040/504-20)",
+          "expected": 23796.666666666668,
+          "tolerance": 1e-08,
+          "actual": 23796.666666666664,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u5-03-a",
+      "unitId": "sf-2026-u5-03",
+      "sha256": "8c2346cfc0e56bd8d91ed3118c77cf1c0e45c99ebbfeeac23893102d1477bfc7",
+      "numericalChecks": [
+        {
+          "label": "potenza A W",
+          "expression": ".5*.02*10/.01",
+          "expected": 10,
+          "tolerance": 1e-12,
+          "actual": 10.0,
+          "passed": true
+        },
+        {
+          "label": "potenza B W",
+          "expression": "2*.01*10/.02",
+          "expected": 10,
+          "tolerance": 1e-12,
+          "actual": 10.0,
+          "passed": true
+        },
+        {
+          "label": "energia totale J",
+          "expression": "(.5*.02*10/.01+2*.01*10/.02)*60",
+          "expected": 1200,
+          "tolerance": 1e-09,
+          "actual": 1200.0,
+          "passed": true
+        },
+        {
+          "label": "conduttanza totale W/K",
+          "expression": ".5*.02/.01+2*.01/.02",
+          "expected": 2,
+          "tolerance": 1e-12,
+          "actual": 2.0,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u5-03-b",
+      "unitId": "sf-2026-u5-03",
+      "sha256": "9ea1d4e3b8ef906a4cb5ffa7b41cff5716f1491a6c8c02e8553bfabae4829da2",
+      "numericalChecks": [
+        {
+          "label": "convezione iniziale W",
+          "expression": "5*.02*(400-300)",
+          "expected": 10,
+          "tolerance": 1e-12,
+          "actual": 10.0,
+          "passed": true
+        },
+        {
+          "label": "radiazione netta iniziale W",
+          "expression": ".5*5.67e-8*.02*(400**4-300**4)",
+          "expected": 9.9225,
+          "tolerance": 1e-10,
+          "actual": 9.9225,
+          "passed": true
+        },
+        {
+          "label": "pendenza iniziale K/s",
+          "expression": "-(10+9.9225)/200",
+          "expected": -0.0996125,
+          "tolerance": 1e-12,
+          "actual": -0.09961249999999999,
+          "passed": true
+        },
+        {
+          "label": "calo tangente in 60 s K",
+          "expression": "(10+9.9225)/200*60",
+          "expected": 5.97675,
+          "tolerance": 1e-10,
+          "actual": 5.976749999999999,
+          "passed": true
+        },
+        {
+          "label": "radiazione netta equilibrio W",
+          "expression": ".5*5.67e-8*.02*(300**4-300**4)",
+          "expected": 0,
+          "tolerance": 0,
+          "actual": 0.0,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u5-03-c",
+      "unitId": "sf-2026-u5-03",
+      "sha256": "8ebb158dca64e6a1d10b7f133efa369c310c5e583f1930fe07eb1ff6f9feda5f",
+      "numericalChecks": [
+        {
+          "label": "coefficiente radiazione a 400 K W",
+          "expression": "5.67e-8*.02*(400**4-300**4)",
+          "expected": 19.845,
+          "tolerance": 1e-10,
+          "actual": 19.845,
+          "passed": true
+        },
+        {
+          "label": "coefficiente radiazione a 500 K W",
+          "expression": "5.67e-8*.02*(500**4-300**4)",
+          "expected": 61.6896,
+          "tolerance": 1e-10,
+          "actual": 61.6896,
+          "passed": true
+        },
+        {
+          "label": "emissività inferita",
+          "expression": "(40.8448-2*14.9225)/(61.6896-2*19.845)",
+          "expected": 0.5,
+          "tolerance": 1e-12,
+          "actual": 0.5,
+          "passed": true
+        },
+        {
+          "label": "conduttanza inferita W/K",
+          "expression": "(14.9225-19.845*.5)/100",
+          "expected": 0.05,
+          "tolerance": 1e-12,
+          "actual": 0.05,
+          "passed": true
+        },
+        {
+          "label": "potenza prevista a 350 K W",
+          "expression": ".05*(350-300)+.5*5.67e-8*.02*(350**4-300**4)",
+          "expected": 6.4158437500000005,
+          "tolerance": 1e-10,
+          "actual": 6.4158437500000005,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u5-04-a",
+      "unitId": "sf-2026-u5-04",
+      "sha256": "43f70f4a8f0f65e164786302ac2c28504350b42f031adb0602fad44edf03e8f7",
+      "numericalChecks": [
+        {
+          "label": "lavoro totale fatto dal gas J",
+          "expression": "-80",
+          "expected": -80,
+          "tolerance": 0,
+          "actual": -80,
+          "passed": true
+        },
+        {
+          "label": "energia interna J",
+          "expression": "0-(-80)",
+          "expected": 80,
+          "tolerance": 0,
+          "actual": 80,
+          "passed": true
+        },
+        {
+          "label": "temperatura finale K",
+          "expression": "280+80/10",
+          "expected": 288,
+          "tolerance": 1e-12,
+          "actual": 288.0,
+          "passed": true
+        },
+        {
+          "label": "potenza entrante W",
+          "expression": "80/10",
+          "expected": 8,
+          "tolerance": 1e-12,
+          "actual": 8.0,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u5-04-b",
+      "unitId": "sf-2026-u5-04",
+      "sha256": "55c87d2ced6efac093644ae00fde36733aac96fcf569430ca585ea0ea011f377",
+      "numericalChecks": [
+        {
+          "label": "volume finale L",
+          "expression": "300*1/100",
+          "expected": 3,
+          "tolerance": 1e-12,
+          "actual": 3.0,
+          "passed": true
+        },
+        {
+          "label": "lavoro irreversibile J",
+          "expression": "100*(3-1)",
+          "expected": 200,
+          "tolerance": 1e-12,
+          "actual": 200,
+          "passed": true
+        },
+        {
+          "label": "lavoro reversibile J",
+          "expression": "300*1.0986122886681098",
+          "expected": 329.58368660043294,
+          "tolerance": 1e-09,
+          "actual": 329.58368660043294,
+          "passed": true
+        },
+        {
+          "label": "differenza lavori J",
+          "expression": "300*1.0986122886681098-200",
+          "expected": 129.58368660043294,
+          "tolerance": 1e-09,
+          "actual": 129.58368660043294,
+          "passed": true
+        },
+        {
+          "label": "errato uso pressione iniziale J",
+          "expression": "300*(3-1)",
+          "expected": 600,
+          "tolerance": 1e-12,
+          "actual": 600,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u5-04-c",
+      "unitId": "sf-2026-u5-04",
+      "sha256": "00048cc15c24a2138bad37fda81a4aa5851971f5acfbfafe90e9f74d4d1bc6cd",
+      "numericalChecks": [
+        {
+          "label": "rapporto temperature adiabatico",
+          "expression": "8**(2/3)",
+          "expected": 4,
+          "tolerance": 1e-12,
+          "actual": 3.9999999999999996,
+          "passed": true
+        },
+        {
+          "label": "temperatura B K",
+          "expression": "300*8**(2/3)",
+          "expected": 1200,
+          "tolerance": 1e-09,
+          "actual": 1199.9999999999998,
+          "passed": true
+        },
+        {
+          "label": "lavoro adiabatico J",
+          "expression": "-.1*1.5*8.31*(1200-300)",
+          "expected": -1121.85,
+          "tolerance": 1e-08,
+          "actual": -1121.8500000000001,
+          "passed": true
+        },
+        {
+          "label": "calore isocoro J",
+          "expression": ".1*1.5*8.31*(300-1200)",
+          "expected": -1121.85,
+          "tolerance": 1e-08,
+          "actual": -1121.8500000000001,
+          "passed": true
+        },
+        {
+          "label": "pressione A Pa",
+          "expression": ".1*8.31*300/.008",
+          "expected": 31162.5,
+          "tolerance": 1e-08,
+          "actual": 31162.5,
+          "passed": true
+        },
+        {
+          "label": "pressione C Pa",
+          "expression": ".1*8.31*300/.001",
+          "expected": 249300,
+          "tolerance": 1e-08,
+          "actual": 249300.0,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u5-05-a",
+      "unitId": "sf-2026-u5-05",
+      "sha256": "d3103e2b8fc503012caf3d8e03d885a32c96c65607cfe1306e7ee0599728057d",
+      "numericalChecks": [
+        {
+          "label": "calore al caldo J",
+          "expression": "240+60",
+          "expected": 300,
+          "tolerance": 0,
+          "actual": 300,
+          "passed": true
+        },
+        {
+          "label": "COP",
+          "expression": "240/60",
+          "expected": 4,
+          "tolerance": 1e-12,
+          "actual": 4.0,
+          "passed": true
+        },
+        {
+          "label": "bilancio ciclico J",
+          "expression": "(240-300)-(-60)",
+          "expected": 0,
+          "tolerance": 0,
+          "actual": 0,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u5-05-b",
+      "unitId": "sf-2026-u5-05",
+      "sha256": "a4ff947031accc0a9db130517b6a8b551cf1be46c38ab49b0a45b7f71f6a9d93",
+      "numericalChecks": [
+        {
+          "label": "microstati totali",
+          "expression": "2**4",
+          "expected": 16,
+          "tolerance": 0,
+          "actual": 16,
+          "passed": true
+        },
+        {
+          "label": "probabilità due a sinistra",
+          "expression": "6/16",
+          "expected": 0.375,
+          "tolerance": 1e-12,
+          "actual": 0.375,
+          "passed": true
+        },
+        {
+          "label": "probabilità tutte a sinistra",
+          "expression": "1/16",
+          "expected": 0.0625,
+          "tolerance": 1e-12,
+          "actual": 0.0625,
+          "passed": true
+        },
+        {
+          "label": "rapporto probabilità",
+          "expression": "(6/16)/(1/16)",
+          "expected": 6,
+          "tolerance": 1e-12,
+          "actual": 6.0,
+          "passed": true
+        },
+        {
+          "label": "differenza entropie J/K",
+          "expression": "1.380649e-23*1.791759469228055",
+          "expected": 2.4737909194302452e-23,
+          "tolerance": 1e-34,
+          "actual": 2.4737909194302452e-23,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "problemId": "original-20261113-u5-05-c",
+      "unitId": "sf-2026-u5-05",
+      "sha256": "14ad08a47f31397fc163e1dd07c4146d47d69e19e3fffd941ad940feafab0633",
+      "numericalChecks": [
+        {
+          "label": "temperatura finale K",
+          "expression": "(200*400+100*250)/(200+100)",
+          "expected": 350,
+          "tolerance": 1e-12,
+          "actual": 350.0,
+          "passed": true
+        },
+        {
+          "label": "calore ceduto A J",
+          "expression": "200*(400-350)",
+          "expected": 10000,
+          "tolerance": 1e-09,
+          "actual": 10000,
+          "passed": true
+        },
+        {
+          "label": "calore ricevuto B J",
+          "expression": "100*(350-250)",
+          "expected": 10000,
+          "tolerance": 1e-09,
+          "actual": 10000,
+          "passed": true
+        },
+        {
+          "label": "entropia A J/K",
+          "expression": "200*(-0.13353139262452263)",
+          "expected": -26.706278524904526,
+          "tolerance": 1e-09,
+          "actual": -26.706278524904526,
+          "passed": true
+        },
+        {
+          "label": "entropia B J/K",
+          "expression": "100*0.3364722366212129",
+          "expected": 33.64722366212129,
+          "tolerance": 1e-09,
+          "actual": 33.64722366212129,
+          "passed": true
+        },
+        {
+          "label": "entropia totale J/K",
+          "expression": "200*(-0.13353139262452263)+100*0.3364722366212129",
+          "expected": 6.940945137216765,
+          "tolerance": 1e-09,
+          "actual": 6.940945137216765,
+          "passed": true
+        },
+        {
+          "label": "falsa somma Qreale/Tf J/K",
+          "expression": "-10000/350+10000/350",
+          "expected": 0,
+          "tolerance": 1e-12,
+          "actual": 0.0,
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "newProblems": 30,
+  "numericalChecks": 169,
+  "limits": "Arithmetic checks and separate AI reviews do not constitute human scientific acceptance or psychometric validation."
+}
