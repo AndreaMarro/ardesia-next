@@ -16,7 +16,8 @@ export function extensionHistory(state:CoreSnapshot):ExtensionObject[]{
   }
   return result;
 }
-export async function validateExtensionDefinitions(state:CoreSnapshot):Promise<void>{
+/** Derived per-Core index. Rebuilt from all validated history, never persisted. */
+export async function validateExtensionDefinitions(state:CoreSnapshot):Promise<Map<string,string>>{
   const releases=new Map<string,string>(),checked=new Set<string>();
   for(const object of extensionHistory(state)){
     const d=object.data,identity=`${d.definition.typeId}@${d.definition.version}`;
@@ -29,9 +30,10 @@ export async function validateExtensionDefinitions(state:CoreSnapshot):Promise<v
       checked.add(bytes);
     }
   }
+  return releases;
 }
-export async function validateExtensionUse(state:CoreSnapshot,data:ExtensionData):Promise<void>{
+export async function validateExtensionUse(releases:ReadonlyMap<string,string>,data:ExtensionData):Promise<void>{
   if(await extensionDefinitionDigest(data.definition)!==data.definitionDigest)throw new CoreError('INVALID_REFERENCE','Extension definition digest mismatch.');
-  const collision=extensionHistory(state).some(o=>o.data.definition.typeId===data.definition.typeId&&o.data.definition.version===data.definition.version&&o.data.definitionDigest!==data.definitionDigest);
-  if(collision)throw new CoreError('INVALID_REFERENCE','This extension version already identifies a different definition. Create a new version.');
+  const known=releases.get(`${data.definition.typeId}@${data.definition.version}`);
+  if(known!==undefined&&known!==data.definitionDigest)throw new CoreError('INVALID_REFERENCE','This extension version already identifies a different definition. Create a new version.');
 }

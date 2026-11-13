@@ -11,6 +11,48 @@ async function fixture(){const storage=new MemoryStorage();const core=await crea
 const object=(data:ExtensionData,id='object'):NewEducationalObject=>({id,type:'extension',title:'Coincidenze',x:0,y:0,width:300,height:300,data});
 
 describe('versioned user-created types on the existing Core authority',()=>{
+  it('does not reserve a release after a failed write or leak it into another Core',async()=>{
+    const storage=new MemoryStorage();let fail=false;
+    const core=await createCore({storage:{read:()=>storage.read(),write:async snapshot=>{if(fail)throw Error('Synthetic write failure');await storage.write(snapshot);}}});
+    await core.execute(owner,{kind:'create-document',commandId:'new',documentId:'lesson',expectedRevision:0,title:'Laboratorio'});
+    const first=await data(),alternative=await data({name:'Alternative release'}),before=core.snapshot();
+    fail=true;
+    await expect(core.execute(owner,{kind:'add-object',commandId:'failed',documentId:'lesson',expectedRevision:1,object:object(first)})).rejects.toMatchObject({code:'STORAGE_FAILURE'});
+    expect(core.snapshot()).toEqual(before);expect(await storage.read()).toEqual(before);
+    fail=false;
+    await core.execute(owner,{kind:'add-object',commandId:'accepted',documentId:'lesson',expectedRevision:1,object:object(alternative)});
+    const next=await data({version:2,name:'Uncommitted version'}),accepted=core.snapshot();fail=true;
+    await expect(core.execute(owner,{kind:'replace-object',commandId:'failed-replace',documentId:'lesson',expectedRevision:2,object:object(next)})).rejects.toMatchObject({code:'STORAGE_FAILURE'});
+    expect(core.snapshot()).toEqual(accepted);expect(await storage.read()).toEqual(accepted);fail=false;
+    await core.execute(owner,{kind:'replace-object',commandId:'accepted-replace',documentId:'lesson',expectedRevision:2,object:object(await data({version:2,name:'Committed version'}))});
+    const isolated=await fixture();
+    await isolated.core.execute(owner,{kind:'add-object',commandId:'independent',documentId:'lesson',expectedRevision:1,object:object(first)});
+    expect(isolated.core.getDocument(owner,'lesson').objects[0]).toMatchObject({data:first});
+    expect((await createCore({storage})).snapshot()).toEqual(core.snapshot());
+  });
+  it('retains removed releases before and after reopen and rejects altered bytes with a known digest',async()=>{
+    const {core,storage}=await fixture(),first=await data(),alternative=await data({name:'Conflicting removed release'});
+    await core.execute(owner,{kind:'add-object',commandId:'add',documentId:'lesson',expectedRevision:1,object:object(first)});
+    await core.execute(owner,{kind:'remove-object',commandId:'remove',documentId:'lesson',expectedRevision:2,objectId:'object'});
+    const before=core.snapshot();
+    for(const instance of [core,await createCore({storage})]){
+      for(const [i,value] of [alternative,{...alternative,definitionDigest:first.definitionDigest}].entries()){
+        await expect(instance.execute(owner,{kind:'add-object',commandId:'conflict'+i,documentId:'lesson',expectedRevision:3,object:object(value,'replacement')})).rejects.toMatchObject({code:'INVALID_REFERENCE'});
+        expect(instance.snapshot()).toEqual(before);expect(await storage.read()).toEqual(before);
+      }
+    }
+  });
+  it('serializes release reservations across queued commands without keeping a rejected release',async()=>{
+    const {core}=await fixture(),first=await data(),alternative=await data({name:'Queued collision'});
+    const outcomes=await Promise.allSettled([
+      core.execute(owner,{kind:'add-object',commandId:'first',documentId:'lesson',expectedRevision:1,object:object(first)}),
+      core.execute(owner,{kind:'add-object',commandId:'second',documentId:'lesson',expectedRevision:2,object:object(alternative,'second')}),
+    ]);
+    expect(outcomes[0]!.status).toBe('fulfilled');expect(outcomes[1]).toMatchObject({status:'rejected',reason:{code:'INVALID_REFERENCE'}});
+    await core.execute(owner,{kind:'add-object',commandId:'third',documentId:'lesson',expectedRevision:2,object:object(first,'third')});
+    expect(core.getDocument(owner,'lesson').objects.map(o=>o.id)).toEqual(['object','third']);
+    expect(core.snapshot().receipts.map(r=>r.commandId)).toEqual(['new','first','third']);
+  });
   it('saves a new type, updates instance state, reopens exact history and changes definition through an explicit next version',async()=>{
     const {core,storage}=await fixture(),first=await data();
     const add={kind:'add-object' as const,commandId:'add',documentId:'lesson',expectedRevision:1,object:object(first)};

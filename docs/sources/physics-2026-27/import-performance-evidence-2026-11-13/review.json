@@ -1,0 +1,230 @@
+{
+  "format": "ardesia-extension-index-review/1",
+  "status": "REVIEWED_STATIC_NO_P1_P2_FOUND",
+  "humanApproval": false,
+  "baseCommit": "7efaa14844fd835b37c51eb6a153bc5a53a05595",
+  "reviewedAtUtc": "2026-11-13T13:49:33.744687+00:00",
+  "scope": "Independent source review of Core extension release index and synthetic physics-import benchmark; read-only repository, /tmp reports only; Cortex remains suspended.",
+  "findings": [],
+  "p1Count": 0,
+  "p2Count": 0,
+  "criteria": [
+    {
+      "id": "per-instance-derived-index",
+      "result": "SUPPORTED_BY_STATIC_REVIEW",
+      "evidence": [
+        "packages/core/src/index.ts:301",
+        "packages/core/src/extensions.ts:3"
+      ],
+      "reason": "Map allocated by validateExtensionDefinitions per createCore closure, after snapshot parsing. It includes live objects and historical object/previous payloads, validates historical object schemas and definition digests, and is not persisted or returned by CoreService."
+    },
+    {
+      "id": "digest-every-new-definition",
+      "result": "SUPPORTED_BY_STATIC_REVIEW",
+      "evidence": [
+        "packages/core/src/extensions.ts:35",
+        "packages/core/src/index.ts:383"
+      ],
+      "reason": "Unconditional extensionDefinitionDigest precedes the index lookup on every new add/replace extension command. A known digest cannot skip hashing changed bytes. Duplicate receipts retain the existing idempotency fingerprint check."
+    },
+    {
+      "id": "identity-and-removal",
+      "result": "SUPPORTED_BY_STATIC_REVIEW",
+      "evidence": [
+        "packages/contracts/src/extensions.ts:76",
+        "packages/core/src/extensions.ts:23",
+        "packages/core/src/index.ts:408"
+      ],
+      "reason": "typeId grammar excludes @ and version is a positive safe integer, so the composite key is unambiguous. Entries are never evicted; reopen reconstructs removed releases from history. Distinct digests for the same release remain rejected."
+    },
+    {
+      "id": "commit-and-failure",
+      "result": "SUPPORTED_BY_STATIC_REVIEW",
+      "evidence": [
+        "packages/core/src/index.ts:312",
+        "packages/core/src/index.ts:407",
+        "packages/core/src/extensions.test.ts:14"
+      ],
+      "reason": "Storage write resolves before state assignment and then index insertion. A thrown commit prevents both updates. Commands operate on cloned next state; new tests check failed add and failed replace followed by an alternative definition of the same previously uncommitted version."
+    },
+    {
+      "id": "queue-and-isolation",
+      "result": "SUPPORTED_BY_STATIC_REVIEW",
+      "evidence": [
+        "packages/core/src/index.ts:363",
+        "packages/core/src/index.ts:416",
+        "packages/core/src/extensions.test.ts:44"
+      ],
+      "reason": "All command entry points share the same per-instance queue. Index insertion is synchronous before operation resolves, so later queued commands observe the reservation. Command input is cloned before queueing. No module-global mutable index is introduced."
+    },
+    {
+      "id": "all-introduction-paths",
+      "result": "SUPPORTED_BY_STATIC_REVIEW",
+      "evidence": [
+        "packages/core/src/index.ts:210",
+        "packages/core/src/index.ts:225",
+        "packages/core/src/plugin-commands.ts:153"
+      ],
+      "reason": "Only add-object and replace-object introduce/change extension definitions. Move preserves data; remove retains history; plugin-release transitions map only lab objects. Notebook document creation starts empty. Learning, tutor and courses reference documents or keep separate records rather than introducing extension objects."
+    },
+    {
+      "id": "bytes-revisions-fingerprints",
+      "result": "STATICALLY_UNCHANGED_RUNTIME_COMPARISON_PENDING",
+      "evidence": [
+        "packages/core/src/index.ts:109",
+        "packages/core/src/index.ts:407",
+        "tools/benchmark-physics-import.mjs:49"
+      ],
+      "reason": "No wire/schema/snapshot fields, object transformation, revision increment or command fingerprint code changed. The benchmark asserts a common complete serialized snapshot hash across baseline/candidate, plus reopen and idempotent retry equivalence; those assertions have not been executed by this reviewer."
+    },
+    {
+      "id": "benchmark-claim-boundary",
+      "result": "SUPPORTED_BY_STATIC_REVIEW",
+      "evidence": [
+        "tools/benchmark-physics-import.mjs:1",
+        "tools/benchmark-physics-import.mjs:58"
+      ],
+      "reason": "Script explicitly measures Core reopen plus one command per request with MemoryStorage, excluding HTTP, PostgreSQL and browser. One warmup and three measured runs per implementation alternate order; timing separates open and execute. No end-to-end speed claim appears."
+    }
+  ],
+  "tests": {
+    "executedByReviewer": [],
+    "diffCheck": "PASS",
+    "applicationTests": "NOT_RUN_BY_REVIEWER",
+    "benchmark": "NOT_RUN_BY_REVIEWER",
+    "newCasesRead": [
+      "failed add reservation rollback",
+      "failed replace version-2 reservation rollback",
+      "independent Core isolation",
+      "removed release retained live and after reopen",
+      "known digest with altered payload rejected",
+      "queued conflicting release rejected and later valid command succeeds"
+    ],
+    "existingCasesRead": [
+      "explicit next-version replacement and history",
+      "digest/state/permission rejection",
+      "legacy envelopes and corrupted deleted history",
+      "opaque renderer preservation",
+      "provenance and lineage"
+    ]
+  },
+  "limitations": [
+    "No application test, benchmark, browser, PostgreSQL or server execution performed by this reviewer; root benchmark was still running during source review. git diff --check only completed successfully.",
+    "The rollback conclusion uses the existing atomic StorageAdapter.write contract and single-writer/transaction composition. The synthetic test throws before writing; it does not establish recovery from a non-conforming adapter that writes durably and then rejects.",
+    "Per-instance serialization is not a new lock between two simultaneously active Core instances sharing the same adapter. That unsupported composition was not changed or validated here.",
+    "Reopen still validates and walks current objects plus historical extension payloads; this patch does not remove general schema parsing, cloning, digest work or course/tutor/notebook history validation.",
+    "The benchmark uses only the C2 fixture and three measured samples, with no dispersion/error interval. Its source is suitable for a bounded synthetic comparison, not a claim for all five courses, large workspaces, remote deployment or Mac hardware.",
+    "The baseline module hash is recorded, but the benchmark does not itself prove that this module was compiled from the nominated base commit. Root must retain the capture receipt tying that baseline to pre-change source.",
+    "Candidate source hashes are read after the benchmark, while compilation occurs before measurements; exact attribution assumes those implementation sources stay unchanged throughout. The module hash separately identifies compiled bytes. No actual source mismatch was observed in this review.",
+    "Human scientific review, exam readiness and educational content are outside this Core change; no such approval is inferred."
+  ],
+  "sourceReceipts": [
+    {
+      "path": "packages/core/src/index.ts",
+      "sha256": "641070e486f0ae92d2f7afa21da6956e5e9752a5f82b4cf5f45073ff752f0471",
+      "bytes": 36234,
+      "baseSha256": "4bec8ec237d84e852d485f3b43cae3e3af007dfea115c8ed3a6f72a7779e3771",
+      "reviewDepth": "complete-file-and-raw-diff"
+    },
+    {
+      "path": "packages/core/src/extensions.ts",
+      "sha256": "c120a22e5b75e05dc381efa023bffd6dc1f308b8f338f7875c17b4d93f33fc6a",
+      "bytes": 2903,
+      "baseSha256": "3f28c416d6ee3352addb9f52b4414d9b7bcc566ea42b1c771e926ad6494462de",
+      "reviewDepth": "complete-file-and-raw-diff"
+    },
+    {
+      "path": "packages/core/src/extensions.test.ts",
+      "sha256": "41d46009d3198209ed12dd4421938ea874554feef3d4effd74a2a37d5b059a49",
+      "bytes": 16147,
+      "baseSha256": "bc6e95fd252353f6b9354e94757b35cf6100f36a1144a69a1d5a71b55289c42c",
+      "reviewDepth": "complete-file-and-raw-diff"
+    },
+    {
+      "path": "tools/benchmark-physics-import.mjs",
+      "sha256": "be17a8b5523eaf28e143ef1f3c15f4c56900771435f4ba955b8d06370ec53152",
+      "bytes": 5672,
+      "baseSha256": null,
+      "reviewDepth": "complete-file-and-raw-diff"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "6f65df2682487627b6ecd86efa209ecb63e7c4f662c376f2afb2dbc4339ffa79",
+      "bytes": 6193,
+      "baseSha256": "6f65df2682487627b6ecd86efa209ecb63e7c4f662c376f2afb2dbc4339ffa79",
+      "reviewDepth": "relevant-sections-and-mutation-path-search"
+    },
+    {
+      "path": "packages/core/AGENTS.md",
+      "sha256": "4f083563f19468a724a1a8dc47bad977c67ec8cfc9e4a746b4a9d8f9da44a8f3",
+      "bytes": 1070,
+      "baseSha256": "4f083563f19468a724a1a8dc47bad977c67ec8cfc9e4a746b4a9d8f9da44a8f3",
+      "reviewDepth": "relevant-sections-and-mutation-path-search"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "789f4fbb35d99f631bfbd38d3ddbfe275e3722e0887fae6c97371de1c484459c",
+      "bytes": 56020,
+      "baseSha256": "789f4fbb35d99f631bfbd38d3ddbfe275e3722e0887fae6c97371de1c484459c",
+      "reviewDepth": "relevant-sections-and-mutation-path-search"
+    },
+    {
+      "path": "packages/contracts/src/extensions.ts",
+      "sha256": "468bc67e763461e682402830efbd77d2c601437f45615a6ba96accb1a3f0102d",
+      "bytes": 10672,
+      "baseSha256": "468bc67e763461e682402830efbd77d2c601437f45615a6ba96accb1a3f0102d",
+      "reviewDepth": "relevant-sections-and-mutation-path-search"
+    },
+    {
+      "path": "packages/contracts/src/document-history.ts",
+      "sha256": "b29b77cb6e52e638470ab7f13c7df584e38fba8c70d53d72e8813d08cc0b0faa",
+      "bytes": 4717,
+      "baseSha256": "b29b77cb6e52e638470ab7f13c7df584e38fba8c70d53d72e8813d08cc0b0faa",
+      "reviewDepth": "relevant-sections-and-mutation-path-search"
+    },
+    {
+      "path": "packages/core/src/plugin-commands.ts",
+      "sha256": "1f6b8e5460c5d416c8ea9b44eab3cde587e7944fe2c70891decf95cb13787571",
+      "bytes": 11386,
+      "baseSha256": "1f6b8e5460c5d416c8ea9b44eab3cde587e7944fe2c70891decf95cb13787571",
+      "reviewDepth": "relevant-sections-and-mutation-path-search"
+    },
+    {
+      "path": "packages/core/src/learning.ts",
+      "sha256": "bddd8451aedb5d0c2a88d39ec3009d7d96e12cc91f318b840f33ac7654883ed3",
+      "bytes": 13674,
+      "baseSha256": "bddd8451aedb5d0c2a88d39ec3009d7d96e12cc91f318b840f33ac7654883ed3",
+      "reviewDepth": "relevant-sections-and-mutation-path-search"
+    },
+    {
+      "path": "packages/core/src/courses.ts",
+      "sha256": "ee92a7cf5a17d71ea4cf42a6b7596f95a77058bb7874860b2efe92b67f9cd76f",
+      "bytes": 11712,
+      "baseSha256": "ee92a7cf5a17d71ea4cf42a6b7596f95a77058bb7874860b2efe92b67f9cd76f",
+      "reviewDepth": "relevant-sections-and-mutation-path-search"
+    },
+    {
+      "path": "packages/core/src/tutor.ts",
+      "sha256": "8a8268a983ab2bd7a648a28c7d7d24b2e03ba1ec5179f17f13b8eae43bff6523",
+      "bytes": 9145,
+      "baseSha256": "8a8268a983ab2bd7a648a28c7d7d24b2e03ba1ec5179f17f13b8eae43bff6523",
+      "reviewDepth": "relevant-sections-and-mutation-path-search"
+    },
+    {
+      "path": "packages/core/src/notebooks.ts",
+      "sha256": "fffc90348cbae4be25f9bafdf3625637d9c18ea2339eb77b92df685cfc86b82e",
+      "bytes": 9353,
+      "baseSha256": "fffc90348cbae4be25f9bafdf3625637d9c18ea2339eb77b92df685cfc86b82e",
+      "reviewDepth": "relevant-sections-and-mutation-path-search"
+    }
+  ],
+  "trackedRawDiffSha256": "1f81c7c1175a8f7e0a325a4c87964ace96323d236b9bb6a24e729627ba51943e",
+  "untrackedBenchmarkIncludedByFullFileHash": "be17a8b5523eaf28e143ef1f3c15f4c56900771435f4ba955b8d06370ec53152",
+  "scopeMutations": {
+    "repository": false,
+    "git": false,
+    "services": false,
+    "cursor": false,
+    "reportsUnderTmpOnly": true
+  }
+}
