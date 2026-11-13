@@ -4064,7 +4064,9 @@
     "unitId": "sf-2026-u6-05",
     "explanationLocator": "Punti da saper spiegare: U6-05.01",
     "experimentId": "investigation-u6-05",
-    "labIds": [],
+    "labIds": [
+      "physics-capacitor-constraints"
+    ],
     "exerciseIds": [
       "u6-capacitor-charge-01",
       "u6-capacitor-charge-09",
@@ -4126,7 +4128,9 @@
     "unitId": "sf-2026-u6-05",
     "explanationLocator": "Punti da saper spiegare: U6-05.03",
     "experimentId": "investigation-u6-05",
-    "labIds": [],
+    "labIds": [
+      "physics-capacitor-constraints"
+    ],
     "exerciseIds": [
       "u6-capacitor-charge-01",
       "u6-capacitor-charge-09",
@@ -4157,7 +4161,9 @@
     "unitId": "sf-2026-u6-05",
     "explanationLocator": "Punti da saper spiegare: U6-05.04",
     "experimentId": "investigation-u6-05",
-    "labIds": [],
+    "labIds": [
+      "physics-capacitor-constraints"
+    ],
     "exerciseIds": [
       "u6-capacitor-charge-01",
       "u6-capacitor-charge-09",

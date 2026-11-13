@@ -6757,7 +6757,9 @@
     "unitId": "sf-2026-u6-05",
     "explanationLocator": "Punti da saper spiegare: U6-05.01",
     "experimentId": "investigation-u6-05",
-    "labIds": [],
+    "labIds": [
+      "physics-capacitor-constraints"
+    ],
     "exerciseIds": [
       "u6-capacitor-charge-01",
       "u6-capacitor-charge-09",
@@ -6780,7 +6782,7 @@
     "complete": false,
     "lesson": {
       "documentId": "sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05",
-      "revision": 22
+      "revision": 23
     },
     "practiceObjectIds": [
       "sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05:u6-capacitor-charge-01",
@@ -6798,7 +6800,9 @@
       "sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05:original-20261107-u6-05"
     ],
     "assessmentObjectId": "sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05:final-U6-05.01",
-    "labObjectIds": []
+    "labObjectIds": [
+      "sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05:lab0"
+    ]
   },
   {
     "objectiveId": "U6-05.02",
@@ -6832,7 +6836,7 @@
     "complete": false,
     "lesson": {
       "documentId": "sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05",
-      "revision": 22
+      "revision": 23
     },
     "practiceObjectIds": [
       "sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05:u6-capacitor-charge-01",
@@ -6861,7 +6865,9 @@
     "unitId": "sf-2026-u6-05",
     "explanationLocator": "Punti da saper spiegare: U6-05.03",
     "experimentId": "investigation-u6-05",
-    "labIds": [],
+    "labIds": [
+      "physics-capacitor-constraints"
+    ],
     "exerciseIds": [
       "u6-capacitor-charge-01",
       "u6-capacitor-charge-09",
@@ -6884,7 +6890,7 @@
     "complete": false,
     "lesson": {
       "documentId": "sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05",
-      "revision": 22
+      "revision": 23
     },
     "practiceObjectIds": [
       "sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05:u6-capacitor-charge-01",
@@ -6902,7 +6908,9 @@
       "sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05:original-20261107-u6-05"
     ],
     "assessmentObjectId": "sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05:final-U6-05.03",
-    "labObjectIds": []
+    "labObjectIds": [
+      "sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05:lab0"
+    ]
   },
   {
     "objectiveId": "U6-05.04",
@@ -6913,7 +6921,9 @@
     "unitId": "sf-2026-u6-05",
     "explanationLocator": "Punti da saper spiegare: U6-05.04",
     "experimentId": "investigation-u6-05",
-    "labIds": [],
+    "labIds": [
+      "physics-capacitor-constraints"
+    ],
     "exerciseIds": [
       "u6-capacitor-charge-01",
       "u6-capacitor-charge-09",
@@ -6936,7 +6946,7 @@
     "complete": false,
     "lesson": {
       "documentId": "sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05",
-      "revision": 22
+      "revision": 23
     },
     "practiceObjectIds": [
       "sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05:u6-capacitor-charge-01",
@@ -6954,7 +6964,9 @@
       "sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05:original-20261107-u6-05"
     ],
     "assessmentObjectId": "sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05:final-U6-05.04",
-    "labObjectIds": []
+    "labObjectIds": [
+      "sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05:lab0"
+    ]
   },
   {
     "objectiveId": "U6-05.05",
@@ -6988,7 +7000,7 @@
     "complete": false,
     "lesson": {
       "documentId": "sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05",
-      "revision": 22
+      "revision": 23
     },
     "practiceObjectIds": [
       "sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05:u6-capacitor-charge-01",

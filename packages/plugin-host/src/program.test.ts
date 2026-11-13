@@ -1,18 +1,51 @@
 import {describe,it,expect,beforeAll,vi,afterEach} from 'vitest';
-import {newQuickJSWASMModuleFromVariant,type QuickJSWASMModule} from 'quickjs-emscripten-core';
-import variant from '@jitl/quickjs-wasmfile-release-sync';
+import type {QuickJSWASMModule} from 'quickjs-emscripten-core';
 import {type ProgramBody,type ProgramResult} from '@ardesia/contracts';
 import {executeProgram} from './program-engine';
 import {validateProgramResult} from './program-view';
 import {ProgramSession,type ProgramWorker} from './program-session';
+import {createProgramModule} from './program-module';
+import {PROGRAM_LIMITS} from './program-limits';
 
 let engine:QuickJSWASMModule;
-beforeAll(async()=>{engine=await newQuickJSWASMModuleFromVariant(variant);});
+beforeAll(async()=>{engine=await createProgramModule();});
 const body=(code:string):ProgramBody=>({code,initialState:{count:0}});
 const result=(state:ProgramResult['state']={count:1}):ProgramResult=>({state,view:{tag:'p',children:['Valid']}});
 const run=(code:string)=>executeProgram(engine,body(code),{count:0},{type:'click',action:'increment'});
 
 describe('programmable engine boundary',()=>{
+  it.each([
+    'for(let i=0;i<32;i++)buffers.push(new ArrayBuffer(1024*1024));',
+    'for(let i=0;i<400;i++)buffers.push(new Array(10000).fill(123));',
+  ])('bounds cumulative allocations independently of interruption: %s',allocation=>{
+    const memory=engine.getWasmMemory();
+    expect(memory.buffer.byteLength).toBe(PROGRAM_LIMITS.memoryBytes);
+    expect(()=>memory.grow(1)).toThrow(RangeError);
+    const runtime=engine.newRuntime();
+    vi.spyOn(runtime,'setInterruptHandler').mockImplementation(()=>{});
+    const factory=vi.spyOn(engine,'newRuntime').mockReturnValueOnce(runtime);
+    try {
+      // Each allocation fits the runtime limit individually. Their total
+      // must still be refused; a per-allocation check alone used to accept it.
+      expect(()=>run('function update(){const buffers=[];'+allocation+'return {state:{count:buffers.length},view:{tag:"p"}}}')).toThrow(/Il programma/);
+    }finally{factory.mockRestore();}
+    expect(memory.buffer.byteLength).toBe(PROGRAM_LIMITS.memoryBytes);
+    expect(run('function update({state}){return {state,view:{tag:"p"}}}').state.count).toBe(0);
+  });
+  it('keeps the backing cap when a guest catches allocation failure',()=>{
+    const result=run('function update(){const buffers=[];let caught=false;try{for(let i=0;i<32;i++)buffers.push(new ArrayBuffer(1024*1024));}catch(error){caught=true;}return {state:{caught,count:buffers.length},view:{tag:"p"}}}');
+    expect(result.state.caught).toBe(true);
+    expect(Number(result.state.count)).toBeLessThan(16);
+    expect(engine.getWasmMemory().buffer.byteLength).toBe(PROGRAM_LIMITS.memoryBytes);
+    expect(run('function update({state}){return {state,view:{tag:"p"}}}').state.count).toBe(0);
+  });
+  it('gives each Worker module a separate bounded backing memory',async()=>{
+    const second=await createProgramModule();
+    expect(second.getWasmMemory()).not.toBe(engine.getWasmMemory());
+    expect(second.getWasmMemory().buffer.byteLength).toBe(PROGRAM_LIMITS.memoryBytes);
+    expect(()=>second.getWasmMemory().grow(1)).toThrow(RangeError);
+    expect(executeProgram(second,body('function update({state}){return {state,view:{tag:"p"}}}'),{count:7},{type:'click',action:'run'}).state.count).toBe(7);
+  });
   it('runs a new algorithm and view without mutating the supplied state',()=>{
     const state={count:4};const b=body('function update({state,event}) {state.count += event.action === "increment" ? 3 : 0; return {state,view:{tag:"svg",attrs:{viewBox:"0 0 100 100"},children:[{tag:"circle",attrs:{cx:state.count,cy:50,r:5,fill:"#235e50"}}]}}}');
     const output=executeProgram(engine,b,state,{type:'click',action:'increment'});expect(output.state.count).toBe(7);expect(state.count).toBe(4);

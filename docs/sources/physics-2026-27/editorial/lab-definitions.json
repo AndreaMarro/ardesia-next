@@ -11,24 +11,347 @@
       "renderer": "ardesia.composition/1",
       "body": {
         "fields": [
-          {"key": "force", "label": "Forza normale", "kind": "number", "initial": 60, "min": 0, "max": 120, "step": 1, "unit": "N"},
-          {"key": "area", "label": "Area del pistone", "kind": "number", "initial": 20, "min": 1, "max": 100, "step": 1, "unit": "cm²"},
-          {"key": "external", "label": "Pressione esterna", "kind": "number", "initial": 100, "min": 0, "max": 120, "step": 1, "unit": "kPa"}
+          {
+            "key": "force",
+            "label": "Forza normale",
+            "kind": "number",
+            "initial": 60,
+            "min": 0,
+            "max": 120,
+            "step": 1,
+            "unit": "N"
+          },
+          {
+            "key": "area",
+            "label": "Area del pistone",
+            "kind": "number",
+            "initial": 20,
+            "min": 1,
+            "max": 100,
+            "step": 1,
+            "unit": "cm²"
+          },
+          {
+            "key": "external",
+            "label": "Pressione esterna",
+            "kind": "number",
+            "initial": 100,
+            "min": 0,
+            "max": 120,
+            "step": 1,
+            "unit": "kPa"
+          }
         ],
         "nodes": [
-          {"id": "context", "kind": "text", "props": {"text": "Prevedi prima di variare un controllo. Il pistone orizzontale è in equilibrio; la forza normale preme verso il liquido. La pressione interna è uniforme nel modello. Δp = F_n/A e p_ass = p_ext + Δp."}},
-          {"id": "forceInput", "kind": "input", "props": {"field": "force", "appearance": "slider"}},
-          {"id": "areaInput", "kind": "input", "props": {"field": "area", "appearance": "slider"}},
-          {"id": "externalInput", "kind": "input", "props": {"field": "external", "appearance": "slider"}},
-          {"id": "areaSI", "kind": "value", "props": {"label": "Area in unità SI", "expression": "area / 10000", "unit": "m²"}},
-          {"id": "relative", "kind": "value", "props": {"label": "Pressione relativa all’esterno", "expression": "10 * force / area", "unit": "kPa"}},
-          {"id": "absolute", "kind": "value", "props": {"label": "Pressione assoluta", "expression": "external + 10 * force / area", "unit": "kPa"}},
-          {"id": "pressureByArea", "kind": "plot", "props": {"label": "Δp in kPa al variare dell’area in cm², a forza fissata", "expression": "10 * force / a", "variable": "a", "min": 1, "max": 100, "unit": "cm²"}},
-          {"id": "limits", "kind": "text", "props": {"text": "Limiti: pistone guidato senza attrito, peso senza componente lungo l’asse, forza normale compressiva, equilibrio e pressione uniforme. La guida sostiene eventuali componenti laterali. Il modello non descrive moto, attrito, variazioni idrostatiche, densità o deformabilità del recipiente. Per una forza obliqua, calcola prima la componente normale; il controllo non rappresenta il modulo obliquo."}},
-          {"id": "credit", "kind": "text", "props": {"text": "Risultato del lavoro di una chat Pro · DRAFT · revisione umana non eseguita."}}
+          {
+            "id": "context",
+            "kind": "text",
+            "props": {
+              "text": "Prevedi prima di variare un controllo. Il pistone orizzontale è in equilibrio; la forza normale preme verso il liquido. La pressione interna è uniforme nel modello. Δp = F_n/A e p_ass = p_ext + Δp."
+            }
+          },
+          {
+            "id": "forceInput",
+            "kind": "input",
+            "props": {
+              "field": "force",
+              "appearance": "slider"
+            }
+          },
+          {
+            "id": "areaInput",
+            "kind": "input",
+            "props": {
+              "field": "area",
+              "appearance": "slider"
+            }
+          },
+          {
+            "id": "externalInput",
+            "kind": "input",
+            "props": {
+              "field": "external",
+              "appearance": "slider"
+            }
+          },
+          {
+            "id": "areaSI",
+            "kind": "value",
+            "props": {
+              "label": "Area in unità SI",
+              "expression": "area / 10000",
+              "unit": "m²"
+            }
+          },
+          {
+            "id": "relative",
+            "kind": "value",
+            "props": {
+              "label": "Pressione relativa all’esterno",
+              "expression": "10 * force / area",
+              "unit": "kPa"
+            }
+          },
+          {
+            "id": "absolute",
+            "kind": "value",
+            "props": {
+              "label": "Pressione assoluta",
+              "expression": "external + 10 * force / area",
+              "unit": "kPa"
+            }
+          },
+          {
+            "id": "pressureByArea",
+            "kind": "plot",
+            "props": {
+              "label": "Δp in kPa al variare dell’area in cm², a forza fissata",
+              "expression": "10 * force / a",
+              "variable": "a",
+              "min": 1,
+              "max": 100,
+              "unit": "cm²"
+            }
+          },
+          {
+            "id": "limits",
+            "kind": "text",
+            "props": {
+              "text": "Limiti: pistone guidato senza attrito, peso senza componente lungo l’asse, forza normale compressiva, equilibrio e pressione uniforme. La guida sostiene eventuali componenti laterali. Il modello non descrive moto, attrito, variazioni idrostatiche, densità o deformabilità del recipiente. Per una forza obliqua, calcola prima la componente normale; il controllo non rappresenta il modulo obliquo."
+            }
+          },
+          {
+            "id": "credit",
+            "kind": "text",
+            "props": {
+              "text": "Risultato del lavoro di una chat Pro · DRAFT · revisione umana non eseguita."
+            }
+          }
         ]
       },
       "fallback": "Pressione nel pistone: area in m² = area in cm² / 10000; differenza di pressione in kPa = 10 × forza normale in N / area in cm²; pressione assoluta = pressione esterna + differenza. Pistone ideale in equilibrio, forza compressiva. Risultato del lavoro di una chat Pro. DRAFT."
+    }
+  },
+  {
+    "id": "physics-capacitor-constraints",
+    "definition": {
+      "format": "ardesia-extension/1",
+      "typeId": "ardesia.physics.capacitor-constraints",
+      "version": 1,
+      "name": "Dielettrico: carica o tensione costante?",
+      "description": "Confronto quantitativo tra un condensatore isolato e uno collegato a un generatore ideale durante l’inserimento di un dielettrico. Modello originale Ardesia, DRAFT.",
+      "license": "Testi e modello originali Ardesia · tutti i diritti riservati · bozza didattica",
+      "renderer": "ardesia.composition/1",
+      "body": {
+        "fields": [
+          {
+            "key": "C0",
+            "label": "Capacità iniziale",
+            "kind": "number",
+            "initial": 2,
+            "min": 0.1,
+            "max": 20,
+            "step": 0.1,
+            "unit": "µF"
+          },
+          {
+            "key": "V0",
+            "label": "Tensione iniziale",
+            "kind": "number",
+            "initial": 10,
+            "min": 1,
+            "max": 20,
+            "step": 0.5,
+            "unit": "V"
+          },
+          {
+            "key": "kappa",
+            "label": "Permittività relativa",
+            "kind": "number",
+            "initial": 4,
+            "min": 1,
+            "max": 10,
+            "step": 0.1,
+            "unit": ""
+          }
+        ],
+        "nodes": [
+          {
+            "id": "context",
+            "kind": "text",
+            "props": {
+              "text": "Due copie dello stesso condensatore partono da C₀ e V₀. Si inserisce completamente lo stesso dielettrico: C = κ C₀. Una copia resta collegata a un generatore ideale a V₀; l’altra viene scollegata prima dell’inserimento, perciò conserva la carica libera sulle armature. Confronta due esperimenti con lo stesso stato iniziale: gli stati finali differiscono per il vincolo. Non sono due fasi successive dello stesso circuito."
+            }
+          },
+          {
+            "id": "control_C0",
+            "kind": "input",
+            "props": {
+              "field": "C0",
+              "appearance": "slider"
+            }
+          },
+          {
+            "id": "control_V0",
+            "kind": "input",
+            "props": {
+              "field": "V0",
+              "appearance": "slider"
+            }
+          },
+          {
+            "id": "control_kappa",
+            "kind": "input",
+            "props": {
+              "field": "kappa",
+              "appearance": "slider"
+            }
+          },
+          {
+            "id": "capacitance",
+            "kind": "value",
+            "props": {
+              "label": "Capacità finale (entrambe le copie)",
+              "expression": "kappa*C0",
+              "unit": "µF"
+            }
+          },
+          {
+            "id": "initialCharge",
+            "kind": "value",
+            "props": {
+              "label": "Carica iniziale (modulo su una armatura)",
+              "expression": "C0*V0",
+              "unit": "µC"
+            }
+          },
+          {
+            "id": "initialEnergy",
+            "kind": "value",
+            "props": {
+              "label": "Energia elettrica iniziale",
+              "expression": "C0*V0^2/2",
+              "unit": "µJ"
+            }
+          },
+          {
+            "id": "connected",
+            "kind": "text",
+            "props": {
+              "text": "Copia collegata: V resta V₀, Q può cambiare perché scambia carica con il generatore."
+            }
+          },
+          {
+            "id": "connectedVoltage",
+            "kind": "value",
+            "props": {
+              "label": "Tensione, collegato",
+              "expression": "V0",
+              "unit": "V"
+            }
+          },
+          {
+            "id": "connectedCharge",
+            "kind": "value",
+            "props": {
+              "label": "Carica, collegato",
+              "expression": "kappa*C0*V0",
+              "unit": "µC"
+            }
+          },
+          {
+            "id": "connectedEnergy",
+            "kind": "value",
+            "props": {
+              "label": "Energia, collegato",
+              "expression": "kappa*C0*V0^2/2",
+              "unit": "µJ"
+            }
+          },
+          {
+            "id": "sourceWork",
+            "kind": "value",
+            "props": {
+              "label": "Energia fornita dal generatore",
+              "expression": "C0*V0^2*(kappa-1)",
+              "unit": "µJ"
+            }
+          },
+          {
+            "id": "isolated",
+            "kind": "text",
+            "props": {
+              "text": "Copia isolata: Q resta C₀V₀, V può cambiare. Isolato qui significa senza scambio di carica con un circuito esterno; non significa senza scambio di energia meccanica."
+            }
+          },
+          {
+            "id": "isolatedCharge",
+            "kind": "value",
+            "props": {
+              "label": "Carica, isolato",
+              "expression": "C0*V0",
+              "unit": "µC"
+            }
+          },
+          {
+            "id": "isolatedVoltage",
+            "kind": "value",
+            "props": {
+              "label": "Tensione, isolato",
+              "expression": "V0/kappa",
+              "unit": "V"
+            }
+          },
+          {
+            "id": "isolatedEnergy",
+            "kind": "value",
+            "props": {
+              "label": "Energia, isolato",
+              "expression": "C0*V0^2/(2*kappa)",
+              "unit": "µJ"
+            }
+          },
+          {
+            "id": "connectedPlot",
+            "kind": "plot",
+            "props": {
+              "label": "Collegato: rapporto U/U₀ al variare di κ",
+              "expression": "k",
+              "variable": "k",
+              "min": 1,
+              "max": 10,
+              "unit": "κ (senza unità)"
+            }
+          },
+          {
+            "id": "isolatedPlot",
+            "kind": "plot",
+            "props": {
+              "label": "Isolato: rapporto U/U₀ al variare di κ",
+              "expression": "1/k",
+              "variable": "k",
+              "min": 1,
+              "max": 10,
+              "unit": "κ (senza unità)"
+            }
+          },
+          {
+            "id": "balance",
+            "kind": "text",
+            "props": {
+              "text": "Non confondere energia del campo e bilancio dell’intero sistema. Nel caso collegato, il lavoro del generatore è V₀(Q−Q₀), mentre l’aumento di energia elettrica è la metà di quel lavoro. Nel limite quasistatico ideale, il resto può diventare lavoro meccanico durante l’inserimento. Nel caso isolato l’energia elettrica diminuisce, pur conservandosi la carica libera. Il laboratorio non calcola forza, accelerazione o perdite."
+            }
+          },
+          {
+            "id": "limits",
+            "kind": "text",
+            "props": {
+              "text": "Modello: condensatore ideale, dielettrico lineare omogeneo che riempie completamente lo spazio tra le armature, geometria fissa, effetti di bordo trascurati, nessuna perdita di carica o dissipazione. L’inserimento è quasistatico; il confronto riguarda solo stati elettrostatici. Non rappresenta un transitorio RC, una membrana reale o un dispositivo clinico. DRAFT: revisione scientifica umana da completare."
+            }
+          }
+        ]
+      },
+      "fallback": "C=κC₀. Collegato: V=V₀, Q=κC₀V₀, U=κC₀V₀²/2. Isolato: Q=C₀V₀, V=V₀/κ, U=C₀V₀²/(2κ). Con C₀ in µF le cariche sono in µC e le energie in µJ. Stati elettrostatici ideali, nessun transitorio o perdita."
     }
   }
 ]

@@ -33,3 +33,38 @@ test('a full physics course resumes an interrupted import, pins real lessons and
  await info.attach('physics-course-workload',{body:JSON.stringify({device:info.project.name,importAndStudyElapsedMs:Date.now()-start,importedDocuments:course.units.length,importedObjects:imported.documents.filter(d=>d.id.startsWith('sf-2026-fluidi-v1:')).reduce((n,d)=>n+d.objects.length,0),physicalPen:false}),contentType:'application/json'});
  await page.screenshot({path:info.outputPath('physics-course-studied.png'),fullPage:true});
 });
+
+test('the capacitor lesson compares charge and voltage constraints without changing its source',async({page},info)=>{
+ test.setTimeout(180000);const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
+ await page.goto('/#corsi');
+ const courseCard=page.getByRole('region',{name:'Cinque microcorsi di Fisica',exact:true}).locator('.course-card').filter({has:page.getByRole('heading',{name:'Elettricità e magnetismo',exact:true})});
+ await courseCard.getByRole('button',{name:'Aggiungi al mio spazio',exact:true}).click();
+ await expect(page.getByRole('heading',{name:'Dai forma al percorso.',exact:true})).toBeVisible({timeout:120000});
+ const before=(await personalProjection(page)).documents.find(d=>d.id==='sf-2026-elettricita-magnetismo-v1:sf-2026-u6-05')!;
+ expect(before).toBeDefined();
+ await page.getByRole('button',{name:'Fissa un’edizione',exact:true}).click();
+ await page.getByRole('button',{name:'Inizia il mio percorso',exact:true}).click();
+ await page.getByRole('button',{name:/Condensatori/}).click();
+ await page.getByRole('button',{name:'Apri materiali della lezione',exact:true}).click();
+ const lab=page.locator('.course-material').filter({has:page.getByText('Dielettrico: carica o tensione costante?',{exact:true})});
+ const value=(label:string)=>lab.locator('.composition-value').filter({has:page.getByText(label,{exact:true})}).locator('output');
+ await expect(value('Energia, collegato')).toHaveText('400 µJ');
+ await expect(value('Energia, isolato')).toHaveText('25 µJ');
+ const slider=lab.getByRole('slider',{name:'Permittività relativa',exact:true});
+ await slider.focus();await slider.press('Home');
+ await expect(value('Energia, collegato')).toHaveText('100 µJ');
+ await expect(value('Energia, isolato')).toHaveText('100 µJ');
+ await lab.getByRole('spinbutton',{name:'Permittività relativa valore',exact:true}).fill('2');
+ await expect(value('Carica, collegato')).toHaveText('40 µC');
+ await expect(value('Carica, isolato')).toHaveText('20 µC');
+ await expect(value('Energia, collegato')).toHaveText('200 µJ');
+ await expect(value('Energia, isolato')).toHaveText('50 µJ');
+ await expect(lab.getByRole('img',{name:'Isolato: rapporto U/U₀ al variare di κ',exact:true})).toBeVisible();
+ await expect(lab.getByText(/i valori di prova non vengono salvati/)).toBeVisible();
+ expect((await personalProjection(page)).documents.find(d=>d.id===before.id)).toEqual(before);
+ await lab.getByRole('button',{name:'Ripristina valori iniziali',exact:true}).click();
+ await expect(value('Energia, isolato')).toHaveText('25 µJ');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+ expect(errors).toEqual([]);
+ await lab.screenshot({path:info.outputPath('capacitor-constraints.png')});
+});

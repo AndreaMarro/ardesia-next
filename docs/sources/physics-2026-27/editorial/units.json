@@ -995,7 +995,9 @@
     "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
     "legacyLessonCanonicalSha256": "a76e6b1b2317ca8229460d67d73ce80febcdeb73db4e362dde052e1af8c550f0",
     "experimentId": "investigation-u6-05",
-    "labIds": [],
+    "labIds": [
+      "physics-capacitor-constraints"
+    ],
     "exerciseIds": [
       "u6-capacitor-charge-01",
       "u6-capacitor-charge-09",
