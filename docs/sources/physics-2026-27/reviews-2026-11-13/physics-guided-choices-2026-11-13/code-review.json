@@ -1,0 +1,88 @@
+{
+  "review": "independent read-only review of root implementation; group-A content authored separately by reviewer and independently reviewed by another agent",
+  "baseCommit": "70af28ce5f59365fd540bafbb58ab3ce6849d680",
+  "observedHead": "24fc875e8d05eddcdc3240f4d1fbf5641073bd0f",
+  "reviewedAtUTC": "2026-11-13T10:56:34.571186+00:00",
+  "filesReadSha256": {
+    "apps/web/src/courses/physics/CourseMaterials.tsx": "1633e80cfd1126f022f191524dbf4491fbdb14a586980c260290b70b04c7a9e0",
+    "apps/web/src/courses/courses.css": "ecdeec039436bc5bd836bd2c3d236abfc55e51991293fb000d70dd43eebb605c",
+    "tools/build-physics-pack.mjs": "5e6b4fad3ad3e7b34019e3b8bd299a30927f910150fc09f449958b436961706d",
+    "docs/sources/physics-2026-27/editorial/choice-question-definition.json": "72fc74b83ac6521b32ed4eddf9efa9242282a56b53831a103aa28213149d5bac",
+    "apps/web/src/courses/physics/guided-choices.test.ts": "3314c49f79a27d8c7df5f7df2b46e5570bf6d03d2220a94144785374759244e6",
+    "apps/web/src/courses/physics/physics.test.ts": "25152ec55bfbdb03c1fda51b1dc74472e528c22b547a662b93cb88c927bf5b71",
+    "e2e/physics-courses.spec.ts": "148fb1118ac92b915a257931802598a11ce576ea4c0b547acfb8e6ba9854d914",
+    "apps/web/src/courses/CourseStudio.tsx": "b7999d66e066d7f25a516b5efa59cbb04d616661b90b7f2ae4408892b52df40b",
+    "apps/web/src/components/ObjectContent.tsx": "f73caa6d239ba1b221e8a3a55ea214711424cf195e5276febf1aa01cf41ba303",
+    "apps/web/src/creator/ExtensionView.tsx": "0a8ebe2b05e2e293270aadc897178534ba54b78bd9305ffd689f58a91e35cc26",
+    "apps/web/src/courses/physics/import.ts": "84d819566bbea4a899770b013850fc64edba33ca850afcc12faa6814eb7a5ad6",
+    "packages/contracts/src/extensions.ts": "468bc67e763461e682402830efbd77d2c601437f45615a6ba96accb1a3f0102d",
+    "packages/remote-client/src/index.ts": "4d539316f7f1b3b0711f56c2a9349650cbab491f312cd10ef1f6a58bf1454816",
+    "docs/sources/physics-2026-27/editorial/original-problems.json": "24e31e684bcce5902ed529da8789f3e782ea460e8a4d38ab4eeda2343bb756f2",
+    "docs/sources/physics-2026-27/distributed-assets.json": "e049554eb0339fad66ca0bec59404fbd7fb07c6085c42a007706c269a1f1004d",
+    "apps/web/src/courses/physics/data/sf-2026-elettricita-magnetismo.json": "d8d305d087bc0f9c967e140574a002b9d049eb12cf0a9afa76c3add7faa3d2a5",
+    "apps/web/src/courses/physics/data/sf-2026-fluidi.json": "22227927f54bcf37382d02d18506fde7ad012827932c5b7fbb067cf603ba27e1",
+    "apps/web/src/courses/physics/data/sf-2026-onde-ottica-radiazioni.json": "86cdfefb0d37850f17d42ee0fc9d3b70724b4bda29b608b09c4eb2ca4dc7875f",
+    "apps/web/src/courses/physics/data/sf-2026-strumenti-meccanica.json": "023238c72b89e3cfdb529a3c80b4d969d271fd52cb15aea5ed7cd0d52eb66d35",
+    "apps/web/src/courses/physics/data/sf-2026-termodinamica.json": "629da237ba9c059add7d23c7815d9b9a24184309f775351b595d02cd683b0cd5"
+  },
+  "P1P2openFindings": [],
+  "resolvedFindings": [
+    {
+      "severity": "P2",
+      "title": "Returning to a previously checked option restored stale feedback without checking again",
+      "initialReproduction": [
+        "chooseA: choice1/submitted0, hidden",
+        "check: choice1/submitted1, feedback shown",
+        "chooseB: choice2/submitted1, hidden",
+        "chooseA: choice1/submitted1, old feedback and solution shown"
+      ],
+      "fix": "One finite-state field choice: 0 unset, 1..5 selected, 6..10 checked; every choose writes 1..5 and invalidates feedback.",
+      "rechecked": true
+    }
+  ],
+  "independentExecution": {
+    "tool": "public compileExpression API and existing ExtensionDataSchema/CompositionBodySchema/definition digest",
+    "questions": 10,
+    "feedbackBranches": 50,
+    "changeAndReturnSequences": 250,
+    "sameChoiceInvalidation": true,
+    "emptyCheckHidden": true,
+    "repeatedCheckIdempotent": true,
+    "sourceMutationDetected": false,
+    "passed": true
+  },
+  "integration": {
+    "oldOriginalRecordsPreserved": 69,
+    "newOriginalRecordsTotal": 79,
+    "groupAExactMatches": 6,
+    "groupBExactMatches": 4,
+    "legacyQuestionObjectsExactDataPreserved": 559,
+    "newPortableDefinitionCount": 1
+  },
+  "reviewedBehaviors": {
+    "widgetGatedOnExplicitReveal": true,
+    "revealUsesExistingAcknowledgedUnitHelp": true,
+    "selectionUsesExistingTransientExtensionExperiment": true,
+    "noNewCoreWriteFromWidget": true,
+    "noInitialOrStaleFeedbackFromReachableActions": true,
+    "existingLegacyRenderingPreserved": true,
+    "noMasteryOrScoreAdded": true
+  },
+  "testsRead": {
+    "unitCount": 4,
+    "allFiftyAlternatives": true,
+    "emptyChangedReturnedAndSameSelection": true,
+    "schemaAndDigests": true,
+    "e2eCoreHelpBeforeWidgetEvidence": true,
+    "e2eWidgetSourceAndWorkUnchanged": true,
+    "e2eReasoningAttemptAndReload": true
+  },
+  "limits": [
+    "Browser/E2E and full Verify not run by reviewer.",
+    "Probe executes declarative model, not React DOM or server recovery end-to-end.",
+    "Numeric fields use existing range contract; integer states are produced by the authored generator and actions, not a new generic enum schema.",
+    "No human scientific approval and no publication acceptance.",
+    "The 6 group-A quiz contents are not independently approved by their author here; this review independently examines root code and checks integration identity."
+  ],
+  "sharedSourceModifiedByReviewer": false
+}

@@ -1,0 +1,41 @@
+{
+  "reproducible": true,
+  "generatedSectionMatchesPage": true,
+  "generatedSectionSha256": "a038146f2644b721c14e0455556cf1080a7788a0f98856a0a7e3b6a8cc2e9b9d",
+  "c5Sha256": "e1f2da6960ca95bdffcdfb3ccf92ab4191a0048f68efaefdb2b901e0238a4982",
+  "scripts": [],
+  "radios": [
+    "<input class=\"interference-radio\" type=\"radio\" name=\"interference-case\" id=\"wave-aligned\" value=\"aligned\">",
+    "<input class=\"interference-radio\" type=\"radio\" name=\"interference-case\" id=\"wave-shifted\" value=\"shifted\" checked>",
+    "<input class=\"interference-radio\" type=\"radio\" name=\"interference-case\" id=\"wave-cancelled\" value=\"cancelled\">",
+    "<input class=\"interference-radio\" type=\"radio\" name=\"interference-case\" id=\"wave-unequal\" value=\"unequal\">"
+  ],
+  "caseHeadings": [
+    "In fase · φ = 0°",
+    "Sfasate di 120° · φ = 120°",
+    "Opposte e uguali · φ = 180°",
+    "Opposte e diverse · φ = 180°"
+  ],
+  "outputs": [
+    "2 cm",
+    "2 cm",
+    "1 cm",
+    "0,5 cm",
+    "0 cm",
+    "0 cm",
+    "1 cm",
+    "-1 cm"
+  ],
+  "helperSha256": "c566dac0532cac2308de06f5f1ef22ca846d87130fb204ced261f27677d8ebd9",
+  "publicExportDelta": {
+    "publicExportLoads": true,
+    "parserProbe": 1.5,
+    "outputIdenticalToPreviousReview": true,
+    "pageIdenticalToPreviousReview": true,
+    "sectionMatchesPage": true,
+    "generatedSectionSha256": "a038146f2644b721c14e0455556cf1080a7788a0f98856a0a7e3b6a8cc2e9b9d",
+    "c5Sha256": "e1f2da6960ca95bdffcdfb3ccf92ab4191a0048f68efaefdb2b901e0238a4982",
+    "helperSha256": "c566dac0532cac2308de06f5f1ef22ca846d87130fb204ced261f27677d8ebd9",
+    "packageJsonSha256": "30ce6b3772d770a87f207ad2d4fd11d81bc6f256ad01014aa5931ba496ab07a0"
+  }
+}

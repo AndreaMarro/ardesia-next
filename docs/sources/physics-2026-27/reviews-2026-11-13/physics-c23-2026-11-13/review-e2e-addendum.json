@@ -1,0 +1,18 @@
+{
+  "base": "527043ee5c52d8b210e3f66bda208dddd9722a04",
+  "reviewType": "independent static delta review with original raw failure",
+  "files": {
+    "e2e/physics-courses.spec.ts": "c03431b03c2ba648d4b5171f0ad6dc6c94a50c1bc63125ff3bb182787aa719f2",
+    "docs/sources/physics-2026-27/c23-practice-2026-11-13.md": "d54096545793df0967861ac110c5abf446b50cf6ad35afcfba154c07f37e2d97"
+  },
+  "initialBrowser": {
+    "passed": 2,
+    "failed": 2,
+    "skipped": 0,
+    "flaky": 0,
+    "failedAssertion": "deep equality against pre-help work, old line 56"
+  },
+  "P1P2findings": [],
+  "revisedBrowserRunByReviewer": false,
+  "sharedSourceModifiedByReviewer": false
+}

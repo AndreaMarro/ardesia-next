@@ -1,0 +1,685 @@
+{
+  "reviewer": "Independent delegated agent; not author of these six wave additions",
+  "candidate": "/tmp/ardesia-c5-wave/supplements.json",
+  "sha256": "c417d0357af6d8119595b46c493339a99ffe3d0c0bd22fe154cfd9c42f90e898",
+  "baseCommit": "18c6ad1f1d8b101f64f253d6915ec192587d39d1",
+  "status": "PASS_NO_OPEN_P1_P2",
+  "humanApproval": false,
+  "unitCount": 6,
+  "additionCharacters": 22112,
+  "numericalChecksPass": 73,
+  "independentPhysicalRecomputations": [
+    {
+      "label": "U4-01 sinusoid value at x0.42,t0.10 in m",
+      "actual": 0.008,
+      "expected": 0.008,
+      "pass": true
+    },
+    {
+      "label": "U4-01 geometric crest displacement in m",
+      "actual": 0.15,
+      "expected": 0.15,
+      "pass": true
+    },
+    {
+      "label": "U4-01 local velocity amplitude in m/s",
+      "actual": 0.12566370614359174,
+      "expected": 0.12566370614359174,
+      "pass": true
+    },
+    {
+      "label": "U4-02 maximum via independently optimized phase in cm",
+      "actual": 1.5,
+      "expected": 1.5,
+      "pass": true
+    },
+    {
+      "label": "U4-02 complex amplitude magnitude in cm",
+      "actual": 1.5,
+      "expected": 1.5,
+      "pass": true
+    },
+    {
+      "label": "U4-03 received energy from solid-angle fraction in J",
+      "actual": 0.0009599999999999999,
+      "expected": 0.00096,
+      "pass": true
+    },
+    {
+      "label": "U4-03 received energy at second distance in J",
+      "actual": 0.0001536,
+      "expected": 0.0001536,
+      "pass": true
+    },
+    {
+      "label": "U4-04 total dB via independent math.log10",
+      "actual": 50.0,
+      "expected": 50,
+      "pass": true
+    },
+    {
+      "label": "U4-04 attenuated dB via independent math.log10",
+      "actual": 30.0,
+      "expected": 30,
+      "pass": true
+    },
+    {
+      "label": "U4-05 forward fixed receiver spacing in s",
+      "actual": 0.75,
+      "expected": 0.75,
+      "pass": true
+    },
+    {
+      "label": "U4-05 rear fixed receiver spacing in s",
+      "actual": 1.25,
+      "expected": 1.25,
+      "pass": true
+    },
+    {
+      "label": "U4-05 moving receiver spacing in s",
+      "actual": 0.8000000000000003,
+      "expected": 0.8,
+      "pass": true
+    },
+    {
+      "label": "U7-01 wavelength in medium in m",
+      "actual": 3.84e-07,
+      "expected": 3.84e-07,
+      "pass": true
+    },
+    {
+      "label": "U7-01 nondispersive transit difference in s",
+      "actual": 1.9999999999999983e-11,
+      "expected": 2e-11,
+      "pass": true
+    },
+    {
+      "label": "U7-01 linear-polarization energy in J",
+      "actual": 2.3895000000000008e-05,
+      "expected": 2.3895e-05,
+      "pass": true
+    }
+  ],
+  "checks": [
+    {
+      "unitId": "sf-2026-u4-01",
+      "additionCharacters": 3388,
+      "combinedExplanationUpperBound": 5409,
+      "literalCopies": [],
+      "numericChecks": [
+        {
+          "label": "distanza fra zeri in m",
+          "actual": 0.3,
+          "expected": 0.3,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "lunghezza onda in m",
+          "actual": 0.6,
+          "expected": 0.6,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "frequenza in Hz",
+          "actual": 2.5,
+          "expected": 2.5,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "velocita propagazione in m/s",
+          "actual": 1.4999999999999998,
+          "expected": 1.5,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "ampiezza in m",
+          "actual": 0.008,
+          "expected": 0.008,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "coefficiente di pi di k in rad/m",
+          "actual": 3.3333333333333335,
+          "expected": 3.3333333333333335,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "coefficiente di pi di omega in rad/s",
+          "actual": 5.0,
+          "expected": 5.0,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "spostamento massimo profilo in m",
+          "actual": 0.15000000000000002,
+          "expected": 0.15,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "fase spaziale divisa per pi",
+          "actual": 0.4999999999999999,
+          "expected": 0.5,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "fase temporale divisa per pi",
+          "actual": 0.5,
+          "expected": 0.5,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "velocita locale massima in m/s",
+          "actual": 0.12566370614359174,
+          "expected": 0.12566370614359174,
+          "tolerance": 1e-12,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "unitId": "sf-2026-u4-02",
+      "additionCharacters": 3654,
+      "combinedExplanationUpperBound": 5113,
+      "literalCopies": [],
+      "numericChecks": [
+        {
+          "label": "periodo comune in s",
+          "actual": 0.5,
+          "expected": 0.5,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "quarto periodo in s",
+          "actual": 0.125,
+          "expected": 0.125,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "ampiezza risultante a 90 gradi in cm",
+          "actual": 1.5,
+          "expected": 1.5,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "norma coefficienti normalizzati",
+          "actual": 1.0,
+          "expected": 1,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "massimo verificato con ordinate simultanee in cm",
+          "actual": 1.5,
+          "expected": 1.5,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "ampiezza in fase in cm",
+          "actual": 2.1,
+          "expected": 2.1,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "ampiezza in opposizione in cm",
+          "actual": 0.29999999999999993,
+          "expected": 0.3,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "quadrato ampiezza fase zero in cm2",
+          "actual": 4.41,
+          "expected": 4.41,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "quadrato ampiezza fase 180 in cm2",
+          "actual": 0.08999999999999986,
+          "expected": 0.09,
+          "tolerance": 1e-12,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "unitId": "sf-2026-u4-03",
+      "additionCharacters": 3713,
+      "combinedExplanationUpperBound": 5128,
+      "literalCopies": [],
+      "numericChecks": [
+        {
+          "label": "area sensore in m2",
+          "actual": 0.0008,
+          "expected": 0.0008,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "intensita prima posizione in W/m2",
+          "actual": 0.09999999999999999,
+          "expected": 0.1,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "potenza intercettata prima posizione in W",
+          "actual": 8e-05,
+          "expected": 8e-05,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "energia incidente prima posizione in J",
+          "actual": 0.0009600000000000001,
+          "expected": 0.00096,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "rapporto intensita",
+          "actual": 0.15999999999999998,
+          "expected": 0.16,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "intensita seconda posizione in W/m2",
+          "actual": 0.016,
+          "expected": 0.016,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "energia incidente seconda posizione in J",
+          "actual": 0.00015360000000000002,
+          "expected": 0.0001536,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "controllo energia da frazione geometrica in J",
+          "actual": 0.0009599999999999999,
+          "expected": 0.00096,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "rapporto ampiezze",
+          "actual": 0.4,
+          "expected": 0.4,
+          "tolerance": 1e-12,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "unitId": "sf-2026-u4-04",
+      "additionCharacters": 3935,
+      "combinedExplanationUpperBound": 5334,
+      "literalCopies": [],
+      "numericChecks": [
+        {
+          "label": "intensita totale in W/m2",
+          "actual": 1.0000000000000001e-07,
+          "expected": 1e-07,
+          "tolerance": 1e-18,
+          "pass": true
+        },
+        {
+          "label": "rapporto intensita totale riferimento",
+          "actual": 100000.00000000001,
+          "expected": 100000,
+          "tolerance": 1e-08,
+          "pass": true
+        },
+        {
+          "label": "livello totale da esponente esatto in dB",
+          "actual": 50,
+          "expected": 50,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "intensita attenuata in W/m2",
+          "actual": 9.999999999999999e-10,
+          "expected": 1e-09,
+          "tolerance": 1e-20,
+          "pass": true
+        },
+        {
+          "label": "rapporto intensita attenuata riferimento",
+          "actual": 1000.0000000000001,
+          "expected": 1000,
+          "tolerance": 1e-09,
+          "pass": true
+        },
+        {
+          "label": "livello attenuato da esponente esatto in dB",
+          "actual": 30,
+          "expected": 30,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "ricostruzione intensita da 50 dB in W/m2",
+          "actual": 1e-07,
+          "expected": 1e-07,
+          "tolerance": 1e-18,
+          "pass": true
+        },
+        {
+          "label": "ricostruzione intensita da 30 dB in W/m2",
+          "actual": 1e-09,
+          "expected": 1e-09,
+          "tolerance": 1e-20,
+          "pass": true
+        },
+        {
+          "label": "rapporto intensita prima dopo",
+          "actual": 100.0,
+          "expected": 100,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "lunghezza onda primo mezzo in m",
+          "actual": 2.0,
+          "expected": 2.0,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "lunghezza onda secondo mezzo in m",
+          "actual": 0.5,
+          "expected": 0.5,
+          "tolerance": 1e-12,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "unitId": "sf-2026-u4-05",
+      "additionCharacters": 3838,
+      "combinedExplanationUpperBound": 5628,
+      "literalCopies": [],
+      "numericChecks": [
+        {
+          "label": "centro seconda emissione in m",
+          "actual": 1,
+          "expected": 1,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "fronte primo destro a t2 in m",
+          "actual": 8,
+          "expected": 8,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "fronte secondo destro a t2 in m",
+          "actual": 5,
+          "expected": 5,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "fronte secondo sinistro a t2 in m",
+          "actual": -3,
+          "expected": -3,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "spaziatura davanti in m",
+          "actual": 3,
+          "expected": 3,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "spaziatura dietro in m",
+          "actual": 5,
+          "expected": 5,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "primo arrivo al ricevitore fermo in s",
+          "actual": 3.5,
+          "expected": 3.5,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "secondo arrivo davanti in s",
+          "actual": 4.25,
+          "expected": 4.25,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "intervallo davanti in s",
+          "actual": 0.75,
+          "expected": 0.75,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "secondo arrivo dietro in s",
+          "actual": 4.75,
+          "expected": 4.75,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "intervallo dietro in s",
+          "actual": 1.25,
+          "expected": 1.25,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "controllo spaziatura davanti su velocita in s",
+          "actual": 0.75,
+          "expected": 0.75,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "controllo spaziatura dietro su velocita in s",
+          "actual": 1.25,
+          "expected": 1.25,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "primo incontro ricevitore mobile in s",
+          "actual": 2.4,
+          "expected": 2.4,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "secondo incontro ricevitore mobile in s",
+          "actual": 3.2,
+          "expected": 3.2,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "intervallo ricevuto da osservatore mobile in s",
+          "actual": 0.8000000000000003,
+          "expected": 0.8,
+          "tolerance": 1e-12,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "unitId": "sf-2026-u7-01",
+      "additionCharacters": 3584,
+      "combinedExplanationUpperBound": 5110,
+      "literalCopies": [],
+      "numericChecks": [
+        {
+          "label": "lunghezza onda vuoto in m",
+          "actual": 4.800000000000001e-07,
+          "expected": 4.8e-07,
+          "tolerance": 1e-18,
+          "pass": true
+        },
+        {
+          "label": "frequenza in Hz",
+          "actual": 624999999999999.9,
+          "expected": 625000000000000.0,
+          "tolerance": 1.0,
+          "pass": true
+        },
+        {
+          "label": "velocita nella lastra in m/s",
+          "actual": 240000000.0,
+          "expected": 240000000.0,
+          "tolerance": 1e-06,
+          "pass": true
+        },
+        {
+          "label": "lunghezza onda nella lastra in m",
+          "actual": 3.84e-07,
+          "expected": 3.84e-07,
+          "tolerance": 1e-18,
+          "pass": true
+        },
+        {
+          "label": "controllo lunghezza onda in nm",
+          "actual": 384.0,
+          "expected": 384,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "spessore lastra in m",
+          "actual": 0.024,
+          "expected": 0.024,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "tempo lastra in s",
+          "actual": 1e-10,
+          "expected": 1e-10,
+          "tolerance": 1e-22,
+          "pass": true
+        },
+        {
+          "label": "tempo vuoto in s",
+          "actual": 8.000000000000001e-11,
+          "expected": 8e-11,
+          "tolerance": 1e-22,
+          "pass": true
+        },
+        {
+          "label": "ritardo per differenza in s",
+          "actual": 1.9999999999999996e-11,
+          "expected": 2e-11,
+          "tolerance": 1e-22,
+          "pass": true
+        },
+        {
+          "label": "ritardo controllo diretto in s",
+          "actual": 2.0000000000000002e-11,
+          "expected": 2e-11,
+          "tolerance": 1e-22,
+          "pass": true
+        },
+        {
+          "label": "ampiezza magnetica in T",
+          "actual": 2e-07,
+          "expected": 2e-07,
+          "tolerance": 1e-18,
+          "pass": true
+        },
+        {
+          "label": "intensita media nel vuoto in W/m2",
+          "actual": 4.778999999999999,
+          "expected": 4.779,
+          "tolerance": 1e-12,
+          "pass": true
+        },
+        {
+          "label": "area sensore in m2",
+          "actual": 2.4999999999999998e-05,
+          "expected": 2.5e-05,
+          "tolerance": 1e-16,
+          "pass": true
+        },
+        {
+          "label": "potenza intercettata in W",
+          "actual": 0.00011947499999999999,
+          "expected": 0.000119475,
+          "tolerance": 1e-15,
+          "pass": true
+        },
+        {
+          "label": "energia incidente in J",
+          "actual": 2.3895e-05,
+          "expected": 2.3895e-05,
+          "tolerance": 1e-16,
+          "pass": true
+        },
+        {
+          "label": "energia incidente in microjoule",
+          "actual": 23.895,
+          "expected": 23.895,
+          "tolerance": 1e-10,
+          "pass": true
+        },
+        {
+          "label": "controllo intensita con campo efficace in W/m2",
+          "actual": 4.778999999999997,
+          "expected": 4.779,
+          "tolerance": 1e-12,
+          "pass": true
+        }
+      ]
+    }
+  ],
+  "initialCandidateSha256": "fd6a1f1e7e972e56ee39bc05508902e562dfb2a5f1559c9a5720cc24fa3df084",
+  "openFindings": [],
+  "resolvedFindings": [
+    {
+      "id": "C5-WAVE-P2-01",
+      "resolution": "Verified explicit common direction and sense plus perpendicular sensor in final candidate",
+      "unitId": "sf-2026-u4-04",
+      "severity": "P2",
+      "issue": "Scalar sum of acoustic intensities and sensor-energy relation need a common propagation direction and transverse sensor geometry, not only zero average interference.",
+      "minimalFix": "State that two progressive contributions are collinear and co-propagating, and sensor is perpendicular to their common propagation direction."
+    },
+    {
+      "id": "C5-WAVE-P2-02",
+      "resolution": "Verified linear polarization and peak electric amplitude explicitly specified in final candidate",
+      "unitId": "sf-2026-u7-01",
+      "severity": "P2",
+      "issue": "Average intensity 0.5*epsilon0*c*E0^2 assumes linear polarization when E0 denotes peak field magnitude.",
+      "minimalFix": "Explicitly say linearly polarized harmonic plane wave in the second example and relevant introductory wording."
+    }
+  ],
+  "limits": "Read-only scientific/content review of six supplements and source context. No own radiation additions reviewed. No human approval, no laboratory/runtime/rendering validation, no source integration performed."
+}

@@ -1,0 +1,135 @@
+{
+  "kind": "independent-static-demo-code-review",
+  "reviewer": "/root/curriculum",
+  "observedAtUtc": "2026-11-13T11:18:31.780607+00:00",
+  "baseCommit": "dd98a8c366a46e493ae4a8ba9de7d7b4311d1006",
+  "observedHead": "dd98a8c366a46e493ae4a8ba9de7d7b4311d1006",
+  "verifiedCommit": "e2f9236b1eb2106ab4980768be8f24fee2dd5f48",
+  "scope": "Root implementation of static guided quizzes; not a new scientific approval of own authored questions.",
+  "result": "NO_P1_P2_FOUND_IN_REVIEWED_DELTA",
+  "findings": [],
+  "hashes": {
+    "tools/build-physics-demo.mjs": "6ace61abadc37190a188cb0fa5bfa46ae9ce557ae8bad4fcfb0fde0caacd40a1",
+    "tools/test-physics-demo.mjs": "dc06dfe2d531bc252b58c968f02e30d3dbe007f5916ed0aa2a6d8a9a71949f53",
+    "apps/web/public/fisica/demo.css": "1ea1f89e2ad14279d8338897860e7a267df53bcc37c5c16699038876ed01eb05",
+    "apps/web/public/fisica/index.html": "450820fd7a4064861baf98778f4b40407b9bed05b989b42892d96e059a9f1179",
+    "apps/web/public/fisica/manifest.json": "8acfd7887a9e45c5d82282e85bfb4c0833e3d6c64d941b18529e40f5c4e6cb40",
+    "apps/web/public/fisica/c1.html": "72fc2448feb62a025aeab07f91e3019b41687bb0d6ca93b3ff2ecd6a9954d75b",
+    "apps/web/public/fisica/c2.html": "2e37fe6a0a333408c9ae2991ae26c35a5b0bde069fc2abd87973be010dabe8d8",
+    "apps/web/public/fisica/c3.html": "dcc39aa42264648086b394667bcd57f30162aeff469dea0003b781f97fb55683",
+    "apps/web/public/fisica/c4.html": "db4f4cd25a44161dec70b7b5802acccb46f888798262322e95ae3478eec9d3ad",
+    "apps/web/public/fisica/c5.html": "193f79be01c98532efa73f4639e226585fe032cb09c56ebc739543de2e09d571",
+    "docs/sources/launch-2026-11-13/guided-demo.md": "671ed060c50733c58ebd8bce82a61576a801379c3dc9db31d07dd4a044aef912",
+    "docs/history.md": "6dbd6152a11a6e9afdb82d6e28d168593dc74a1abf5d32241147d612fd9ed262",
+    "docs/sources/physics-2026-27/editorial/original-problems.json": "24e31e684bcce5902ed529da8789f3e782ea460e8a4d38ab4eeda2343bb756f2",
+    "docs/sources/physics-2026-27/editorial/courses.json": "7527c62544a8d92da376a166ad951a58ae4bc95056c603718c52c7980cd7d341",
+    "docs/sources/physics-2026-27/editorial/lab-definitions.json": "daca7553da2463ca56791f5f1b2c45dc05940fea7fdaae89bbfdf0ac7ec1832f",
+    "apps/web/public/fisica/demo.js": "ef1412640108ab8a111b40db005a6c3638b91b34649b7e30fc3a514a066e668f",
+    "docs/sources/launch-2026-11-13/contact.json": "11244e1259c3c584421be91fb23a0be633d0cc51cbe1572e5893cb807e24b2dd"
+  },
+  "checksExecuted": {
+    "htmlSourceComparison": [
+      {
+        "file": "c1.html",
+        "quizId": "quiz-20261113-u2-04-a",
+        "unitId": "sf-2026-u2-04",
+        "alternativesCompared": 5,
+        "exactPromptChoicesFeedbackSolution": true,
+        "allFeedbackAndSolutionInitiallyClosed": true,
+        "oldLessonProblemProgrammeOfferAndFooterPreserved": true
+      },
+      {
+        "file": "c2.html",
+        "quizId": "quiz-20261113-u3-04-a",
+        "unitId": "sf-2026-u3-04",
+        "alternativesCompared": 5,
+        "exactPromptChoicesFeedbackSolution": true,
+        "allFeedbackAndSolutionInitiallyClosed": true,
+        "oldLessonProblemProgrammeOfferAndFooterPreserved": true
+      },
+      {
+        "file": "c3.html",
+        "quizId": "quiz-20261113-u5-02-a",
+        "unitId": "sf-2026-u5-02",
+        "alternativesCompared": 5,
+        "exactPromptChoicesFeedbackSolution": true,
+        "allFeedbackAndSolutionInitiallyClosed": true,
+        "oldLessonProblemProgrammeOfferAndFooterPreserved": true
+      },
+      {
+        "file": "c4.html",
+        "quizId": "quiz-20261113-u6-01-a",
+        "unitId": "sf-2026-u6-01",
+        "alternativesCompared": 5,
+        "exactPromptChoicesFeedbackSolution": true,
+        "allFeedbackAndSolutionInitiallyClosed": true,
+        "oldLessonProblemProgrammeOfferAndFooterPreserved": true
+      },
+      {
+        "file": "c5.html",
+        "quizId": "quiz-20261113-u4-02-a",
+        "unitId": "sf-2026-u4-02",
+        "alternativesCompared": 5,
+        "exactPromptChoicesFeedbackSolution": true,
+        "allFeedbackAndSolutionInitiallyClosed": true,
+        "oldLessonProblemProgrammeOfferAndFooterPreserved": true
+      }
+    ],
+    "totalAlternativeComparisons": 25,
+    "manifestSourceHashesMatch": true,
+    "unchangedScopesComparedToBase": [
+      "docs/sources/physics-2026-27/editorial",
+      "apps/web/src/courses/physics/data",
+      "packages/server",
+      "packages/remote-client",
+      "apps/web/src/auth",
+      "apps/web/public/fisica/demo.js",
+      "tools/build-physics-interference-demo.mjs"
+    ],
+    "sourceWrites": false,
+    "browserRunByReviewer": false,
+    "builderRunByReviewer": false,
+    "finalHeaderRelativeOnAllSixHtml": true,
+    "allSeventeenHashesMatchVerifiedCommit": true
+  },
+  "testsInspected": {
+    "file": "tools/test-physics-demo.mjs",
+    "viewports": [
+      390,
+      820,
+      1440
+    ],
+    "quizCountPerViewport": 5,
+    "alternativeCountPerQuiz": 5,
+    "nativeEnterToggle": true,
+    "chromiumExclusiveDetails": true,
+    "noJavaScriptAllFiveQuizzes": true,
+    "storageChecksEveryQuiz": false,
+    "networkAndCookiesChecksInThreeJavaScriptEnabledViewportSessions": true,
+    "existingLabsAndContactInspectionRetained": true,
+    "storageChecksEveryHttpQuiz": true,
+    "offlineFileContext": {
+      "javaScriptEnabled": false,
+      "offline": true,
+      "viewportWidth": 390,
+      "quizCount": 5,
+      "alternativeCountPerQuiz": 5,
+      "relativeIndexNavigationChecked": true,
+      "httpOutboundRequestsCheckedEmpty": true,
+      "fileOriginStorageIntentionallyNotRead": true,
+      "executionByReviewer": false
+    }
+  },
+  "limits": [
+    "Browser execution was not performed by this reviewer; assertions inspected are not runtime PASS results.",
+    "No Safari/Firefox, physical touch/iPad, screen reader, comprehensive accessibility or explicit offline browser run attested.",
+    "details[name] exclusivity depends on browser support; documented fallback permits several open feedback panels.",
+    "Offline scope is interaction in already available static HTML/CSS, not installation, precaching or offline authentication.",
+    "Feedback and solutions are present in the downloaded HTML and accessible through source inspection; this is an exploratory demo, not an exam secrecy mechanism.",
+    "No new scientific independent approval for the three group-A records authored by this reviewer; prior cross-review remains the scientific evidence.",
+    "No deployment, authentication flow validation, contact submission, reservation or sale performed.",
+    "JavaScript-disabled helper checks storage but does not separately install network/error/cookie listeners; those assertions are in the three normal viewport sessions.",
+    "Offline file:// context is explicitly present in the final inspected browser test, including 25 alternatives and index navigation; its execution remains NOT_RUN by this reviewer. File-origin storage is intentionally not read because browser semantics differ."
+  ],
+  "finalDeltaReReadAtUtc": "2026-11-13T11:19:57.621803+00:00"
+}

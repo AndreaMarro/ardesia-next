@@ -1,0 +1,99 @@
+{
+  "kind": "independent-attempt-history-code-review",
+  "reviewer": "/root/curriculum",
+  "observedAtUtc": "2026-11-13T11:51:05.050431+00:00",
+  "baseCommit": "e2f9236b1eb2106ab4980768be8f24fee2dd5f48",
+  "observedHead": "d4d8456b6048aed00942b4f73a53396e04d19090",
+  "verifiedCommit": "d4d8456b6048aed00942b4f73a53396e04d19090",
+  "result": "NO_P1_P2_FOUND_IN_REVIEWED_DELTA",
+  "findings": [],
+  "hashes": {
+    "apps/web/src/courses/CourseStudio.tsx": "22b28bd105ddc06cf0e8c55b45b8d9635c20db7aa8ca337636d2320f0a14fd75",
+    "e2e/pressure-unit.spec.ts": "84c172e907dc05e9b2de9150d726bf1b706583c84ec9f0040e809c409c208994",
+    "docs/sources/physics-2026-27/attempt-review-2026-11-13.md": "434518950153f7ecd92431a4430f73d9887749e24c06168329ae6e8ac5187323",
+    "apps/web/src/courses/content.ts": "a1c9e73b787371180e5bfea5f48fd05a360ffa5948acdd477c98de661ebf8b95",
+    "apps/web/src/courses/courses.css": "ecdeec039436bc5bd836bd2c3d236abfc55e51991293fb000d70dd43eebb605c",
+    "packages/core/src/courses.ts": "ee92a7cf5a17d71ea4cf42a6b7596f95a77058bb7874860b2efe92b67f9cd76f",
+    "packages/contracts/src/courses.ts": "1ca6dc69e02a74ca3644a105b95ecb1b634756c9095e11d8499f2be3672d22cf",
+    "packages/remote-client/src/index.ts": "4d539316f7f1b3b0711f56c2a9349650cbab491f312cd10ef1f6a58bf1454816",
+    "e2e/fixtures.ts": "8d2e7ab99ab2c048cf50a342df5c4562ed220d31135d72d06ed4b670b2fd105a",
+    "playwright.config.ts": "eaab9a4e16e94d33bc1d53d3588a8e25b16a9560a6835e6217799e9e29c64af9"
+  },
+  "artifactHashes": {
+    "artifacts/physics-attempt-review-2026-11-13/initial-browser-5e26e6e/e2e.json": "6ba82a01158ed7fa7d5eb80f148829550fbf85ba240e2e00e9a8310ebe5b4114",
+    "artifacts/physics-attempt-review-2026-11-13/initial-browser-5e26e6e/e2e.log": "8ec20932bae06f19e88c303cc86f2198f3a5856020d27fa8c5eba6c411a7856f",
+    "artifacts/physics-attempt-review-2026-11-13/initial-browser-5e26e6e/browser-evidence.json": "2d873fb7de31e6100748b6ad1b4f90739fd1c5e09ceab2b8e29d4d564cbec614"
+  },
+  "checks": {
+    "snapshotHelpUsedUsedInsteadOfCurrentHelp": true,
+    "unitRelativeIndicesAssignedBeforeFiltering": true,
+    "filterOnlySetsReactState": true,
+    "resetDependencies": [
+      "editionId",
+      "deliveryId",
+      "unit.id",
+      "invalidDelivery"
+    ],
+    "draftAndCoreWritePathsUnchanged": true,
+    "sourceAndCssScopesUnchanged": [
+      "apps/web/src/courses/courses.css",
+      "docs/sources/physics-2026-27/editorial",
+      "apps/web/src/courses/physics/data",
+      "packages/core",
+      "packages/contracts",
+      "packages/remote-client"
+    ],
+    "allFileHashesMatchVerifiedCommit": true,
+    "uiUnchangedBetweenInitialAndFinalCommit": true,
+    "finalTestDeltaOnlyAddsConfirmedPhaseWait": true,
+    "timeoutsAndExpectedValuesUnchangedByFix": true
+  },
+  "initialBrowserEvidence": {
+    "commit": "5e26e6e4c56eeb78dec77d26acdcebc02dc89b6b",
+    "unexpected": 2,
+    "expected": 0,
+    "layouts": [
+      "desktop-chromium",
+      "mobile-chromium"
+    ],
+    "failure": "expected work revision 11, received 10 at pressure-unit.spec.ts:97",
+    "pendingEvidence": "Both retained error-context files show one change awaiting confirmation and the previous prediction phase pressed.",
+    "status": "FAIL_PRESERVED"
+  },
+  "testsInspected": {
+    "realApiProjection": true,
+    "fourExistingAttemptsRetained": true,
+    "helpSnapshots": [
+      [],
+      [],
+      [
+        "referenceFeedback",
+        "recovery"
+      ],
+      [
+        "referenceFeedback",
+        "recovery"
+      ]
+    ],
+    "emptyFilterWithDraftPreserved": true,
+    "keyboardNativeSelect": true,
+    "allSixFilterValues": true,
+    "originalIndices01To04": true,
+    "coreEqualityDuringFiltering": true,
+    "unitNavigationAndReset": true,
+    "expectedNavigationRevisionIncrement": 3,
+    "reloadResetAndExactContinuedSnapshot": true
+  },
+  "executionByReviewer": {
+    "browser": "NOT_RUN",
+    "unitTests": "NOT_RUN",
+    "build": "NOT_RUN"
+  },
+  "limits": [
+    "Final runtime success is not inferred from the corrected test; root retains responsibility for final same-commit evidence.",
+    "Edition and delivery reset dependencies were statically reviewed; extended browser test directly exercises unit reset and reload, not every edition/delivery transition.",
+    "No physical touch/Apple Pencil/iPad, Safari/Firefox, screen-reader or complete accessibility validation.",
+    "Without recorded help means absence of Core assistance in that unit before save; it does not prove independence from external help.",
+    "No scientific content changes or review, no diagnostic scoring/mastery or adaptive learning claims, and no publication performed by reviewer."
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "review": "independent read-only diff and actual-consumer review",
+  "base": "937937788aa0abe8ae4adbece932b1a3baedb034",
+  "observedHead": "937937788aa0abe8ae4adbece932b1a3baedb034",
+  "createdAtUTC": "2026-11-13T10:07:10.333328+00:00",
+  "filesReadSha256": {
+    "apps/web/src/courses/physics/CourseMaterials.tsx": "578ff80b584e4691622974f6df49fa4eac83fe4678ddd9b8002e9768a1de94fe",
+    "apps/web/src/courses/courses.css": "f8bd837e7892b49b64684de0dcc898f9033b3c9034979ea487b9913b251f8ccd",
+    "e2e/physics-courses.spec.ts": "8240b291ad1e8607f3423d1012cb0a31d7bd5312997f5af3c9e5d218eb3a374c",
+    "apps/web/src/courses/CourseStudio.tsx": "b7999d66e066d7f25a516b5efa59cbb04d616661b90b7f2ae4408892b52df40b",
+    "apps/web/AGENTS.md": "d9e0fc2906fdbc2a046397c5054232078158f8e5bea3499a9868aebc55639ead",
+    "apps/web/src/courses/physics/data/sf-2026-termodinamica.json": "c5b9c76088c2db581bf55b885bdc12c4061627c3bb1ae1dc0a2030ebb9509024",
+    "apps/web/src/courses/physics/physics.test.ts": "29aa29fbfa7526369f3914e1c7fd30bc47f946c5bb6205921423113c3a042d94",
+    "playwright.config.ts": "eaab9a4e16e94d33bc1d53d3588a8e25b16a9560a6835e6217799e9e29c64af9",
+    "package.json": "4b6f84d0e001396f10e9e255c35e1585098abb4096f9e4bdd1b9b3b6525bee80",
+    "apps/web/package.json": "ba9d44d9c19d4a4672f8ec40bda186e77f64c1351f4aea907243578766e2429e",
+    "docs/sources/physics-2026-27/practice-navigation-2026-11-13.md": "ebc0ea9ed8934ef3cfffb37de44bc99a54acdafd4f04075e6c7622170a2406ba",
+    "docs/history.md": "9967a7d39334f287b4b2827bce8b5f421de6937c0ca97d3171ac064e9fc92129"
+  },
+  "changedFilesInReviewedScope": [
+    "apps/web/src/courses/courses.css",
+    "apps/web/src/courses/physics/CourseMaterials.tsx",
+    "e2e/physics-courses.spec.ts",
+    "docs/sources/physics-2026-27/practice-navigation-2026-11-13.md",
+    "docs/history.md"
+  ],
+  "P1P2findings": [],
+  "requirements": {
+    "solutionsExcludedFromSearch": true,
+    "solutionRenderingStillExplicit": true,
+    "noFilterCoreCommands": true,
+    "answerOwnedByUnchangedParent": true,
+    "filtersTransient": true,
+    "resetDependencies": [
+      "document.id",
+      "document.revision"
+    ],
+    "levelsFromExactSourceStrings": true,
+    "nativeLabelledControls": true,
+    "noGradingOrMasteryAdded": true
+  },
+  "dataCrossCheck": {
+    "unit": "sf-2026-u5-05",
+    "questions": 29,
+    "kinds": {
+      "practice": 17,
+      "original": 4,
+      "assessment": 8
+    },
+    "originalDifficult": 2,
+    "solutionOnlyNeedle": "COP=240/60=4",
+    "needleInSearchableFields": false
+  },
+  "testReview": {
+    "conjunctionAccentCaseAndReset": true,
+    "solutionNotSearchable": true,
+    "draftAnswerSurvivesQuestionFiltering": true,
+    "originalQuestionReferencePersisted": true,
+    "attemptsAndHelpIntegrityChecksPreserved": true,
+    "reloadResetAsserted": true,
+    "filterKeyboardTraversalDirectlyTested": true,
+    "browserRunByReviewer": false,
+    "differentLessonResetDirectlyTested": true,
+    "sameDocumentNewRevisionResetDirectlyTested": false
+  },
+  "limitations": [
+    "No browser, screen-reader, physical mobile or service execution by reviewer.",
+    "Final test now explicitly changes lesson and exercises Home/ArrowDown/Tab, but remains unexecuted by this reviewer.",
+    "Same document id with changed revision is supported by reset dependencies, not directly exercised by this E2E.",
+    "No global accessibility, scientific approval or release acceptance claim."
+  ],
+  "sharedSourceModifiedByReviewer": false,
+  "verifiedCommit": "5ee09d3276af94161a0c20a8cb19414575a37a79",
+  "verifiedCommitCheckedAtUTC": "2026-11-13T10:08:16.240651+00:00",
+  "verifiedCommitFileCount": 12,
+  "verifiedCommitHashesMatch": true
+}

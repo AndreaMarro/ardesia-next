@@ -1,5 +1,7 @@
 # Ardesia Next — ingresso unico
 
+> Consegna C1–C5 del 13 novembre: [stato concreto e riproduzione](handoffs/2026-11-13-physics.md).
+
 > Consegna applicativa del 7 novembre: [handoff oggettivo](handoffs/2026-11-07.md). Distingue candidato, main, procedura, preview e accettazione; non modifica il cursore né retrodata le prove.
 
 

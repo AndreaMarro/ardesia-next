@@ -1,5 +1,7 @@
 # Cinque microcorsi di Fisica — fonti, copertura e limiti
 
+> I conteggi storici sottostanti restano attribuiti alle rispettive consegne. Per lo stato cumulativo del 13 novembre (795 oggetti, 79 problemi originali, 19 tipi di laboratorio) leggere il [nuovo handoff](../../handoffs/2026-11-13-physics.md) e le [ricevute preservate](reviews-2026-11-13/README.md).
+
 Il catalogo importa5corsi e38lezioni nel Core, con751oggetti ordinari e revisioni effettive. Il programma recuperato aveva4corsi: Fluidi/Termodinamica sono ora separati, mantenendo tutti i200sotto-obiettivi editoriali. I200codici non sono200obiettivi ufficiali MUR: dettagliano le sette unità del syllabus2026/2027.
 
 | Corso | Syllabus | Lezioni | Sotto-obiettivi |

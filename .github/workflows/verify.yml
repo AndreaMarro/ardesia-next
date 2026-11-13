@@ -13,7 +13,9 @@ jobs:
   verify:
     # Pin the OS supported by the pinned Playwright browser, not a moving runner alias.
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    # Run 43387937221 took 18m02s before six additional physics browser cases.
+    # Allow the complete sequential suite; individual test limits/retries stay unchanged.
+    timeout-minutes: 30
     services:
       postgres:
         image: postgres:18

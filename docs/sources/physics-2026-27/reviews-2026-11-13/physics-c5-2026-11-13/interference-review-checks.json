@@ -1,0 +1,12 @@
+{
+  "finding": "No P1/P2 identified in scientific formulas and coordinates",
+  "labDefinitionSha256": "3b0b1e7d9d50eb4bec630c02b8dc2029a28493cb934b31b164c202aed509d4da",
+  "cases": 120,
+  "curveEndpointsChecked": 34560,
+  "maxEndpointErrorPixels": 2.842170943040401e-14,
+  "analyticFunctions": "Independent hypot of phasor components and sine sums; parsed expressions without eval",
+  "chartApproximation": "48 linear segments per curve over two periods; interpolation bound <= 4*(4*pi/48)^2/8 cm",
+  "maxChordErrorCm": 0.03426945972600471,
+  "browser": "NOT_RUN by this reviewer; noJS demo not yet inspected",
+  "status": "DRAFT; no human scientific approval"
+}

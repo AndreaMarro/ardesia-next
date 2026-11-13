@@ -1,0 +1,69 @@
+{
+  "sourceSha256": "8b0119251f903938706cec48ee58fa77e4b07cb4ac1dea320d360f779fe8837c",
+  "base": "22e06d9",
+  "unitManifest": [
+    {
+      "unitId": "sf-2026-u1-01",
+      "additionSha256": "6bcc1a2919c67d41dcc18f98e824d50ee3c8735ec2d1d7c025b2923433414c74",
+      "sharedExplanationSha256": "d3c4a97e41fca3d184ccd99eaaf875369ed88c2fafae49401cf1defbacdb9db2",
+      "sharedExplanationChars": 4552
+    },
+    {
+      "unitId": "sf-2026-u1-02",
+      "additionSha256": "aaae6694069c9eca7718ba0885cd5c261ebfaf19b13bf5bcb95062d7d35ba0f4",
+      "sharedExplanationSha256": "96562a087159e0cf6d35218956051fde4dce1289b5e73f8831218698b8bd1174",
+      "sharedExplanationChars": 4777
+    },
+    {
+      "unitId": "sf-2026-u1-03",
+      "additionSha256": "4db88ea66cef3f90933458828c806e613a5f6946e127114c761324931507386e",
+      "sharedExplanationSha256": "208f0c8373b0a81f0e82fd23575c41b13c164f14bc0c53cc6b12f60c93860434",
+      "sharedExplanationChars": 4649
+    },
+    {
+      "unitId": "sf-2026-u1-04",
+      "additionSha256": "a64a12d48fd7ee723ed59b0f67e21450b20709cd883b2ac613e543889eb5fc5f",
+      "sharedExplanationSha256": "b1eb58fb24ef6f2ae2a41597807c305b03f0265fdc0d296adab27a6eb7306686",
+      "sharedExplanationChars": 5047
+    },
+    {
+      "unitId": "sf-2026-u2-01",
+      "additionSha256": "22a8b488637010384862c1b6401aa48132f2b48b3ec56f7b91e77471ebf4e7bd",
+      "sharedExplanationSha256": "b685c3eeaa5619fba2acd257448011c4b130b0d61e527e861d728e0445fb5f71",
+      "sharedExplanationChars": 5309
+    },
+    {
+      "unitId": "sf-2026-u2-02",
+      "additionSha256": "cefe57e3e854c8ad0a0db235fdf659e3ae764a179c6e910c69514c9022ae9ce4",
+      "sharedExplanationSha256": "efc29d3dc3a05f5275f52bcc4a508fdfb264d29f7cbf0f55c0ae2fff14da08ff",
+      "sharedExplanationChars": 5473
+    },
+    {
+      "unitId": "sf-2026-u2-03",
+      "additionSha256": "80d0e8f00e3ac33a708f1a0e980d00e16e608d1ee1204659686b40631cff724d",
+      "sharedExplanationSha256": "3c58d64f4aae454279623358801364e9f48438f9a42753c4cefdf9f2f82cb967",
+      "sharedExplanationChars": 5250
+    },
+    {
+      "unitId": "sf-2026-u2-04",
+      "additionSha256": "2e08392340c5d378c78fc6c90d9be20a9ade6938dfcbdb3a8719b8df1c28396e",
+      "sharedExplanationSha256": "930811bce84c5a40756ed7a960061d8fa1a317d17cd286d5a5861be6611f527c",
+      "sharedExplanationChars": 5075
+    },
+    {
+      "unitId": "sf-2026-u2-05",
+      "additionSha256": "6a47e0c90a29ffc2241849588a475dc7b2b1bf8b06b93d328acf222efa2255be",
+      "sharedExplanationSha256": "54a8d9d014c53d205cf0441eae19c858f278863e64a21773484a773024cb60c6",
+      "sharedExplanationChars": 5588
+    }
+  ],
+  "numericalChecksPassed": 56,
+  "exactFinalPromptsDuplicated": 0,
+  "P1": 0,
+  "P2Open": 0,
+  "P2Resolved": [
+    "Scalar examples now energy/temperature, not coordinate",
+    "Work-energy equation now uses distance d and explicit dimensional factors, not ambiguous N·s"
+  ],
+  "integration": "All nine additions are verbatim in shared source exactly once; original theory/example prefixes preserved"
+}

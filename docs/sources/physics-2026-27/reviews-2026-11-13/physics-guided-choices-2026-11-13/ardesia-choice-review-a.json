@@ -1,0 +1,396 @@
+{
+  "status": "PASS_NO_OPEN_P1_P2",
+  "reviewer": "Independent delegated agent; not author of group A",
+  "problemsSha256": "c3caae40ead4076e3261b988effb80f0eeb7556487310b10c588cc14a5c6a06b",
+  "checksSha256": "dc86589cac579387d2ed04d8f5d7d60f1640f4edf387c4151841ec69d0ce4a5f",
+  "baseCommit": "70af28ce5f59365fd540bafbb58ab3ce6849d680",
+  "quizCount": 6,
+  "choiceCount": 30,
+  "authorArithmeticChecksRecomputed": 33,
+  "independentRecomputations": [
+    {
+      "label": "U1-01 useful count with exact rational arithmetic",
+      "actual": 1500.0,
+      "expected": 1500,
+      "pass": true
+    },
+    {
+      "label": "U1-01 independent gross minus background",
+      "actual": 1500.0,
+      "expected": 1500,
+      "pass": true
+    },
+    {
+      "label": "U1-01 nearest logarithmic power of ten",
+      "actual": 1000.0,
+      "expected": 1000,
+      "pass": true
+    },
+    {
+      "label": "U2-04 external impulse N s",
+      "actual": 1.0,
+      "expected": 1,
+      "pass": true
+    },
+    {
+      "label": "U2-04 kinetic energy change J",
+      "actual": -15.5,
+      "expected": -15.5,
+      "pass": true
+    },
+    {
+      "label": "U3-02 water level change m",
+      "actual": -0.01,
+      "expected": -0.01,
+      "pass": true
+    },
+    {
+      "label": "U3-04 maximum velocity m/s",
+      "actual": 0.08,
+      "expected": 0.08,
+      "pass": true
+    },
+    {
+      "label": "U3-04 integrate radial velocity; Q/pi in mL/s",
+      "actual": 0.04,
+      "expected": 0.04,
+      "pass": true
+    },
+    {
+      "label": "U5-02 first equilibrium Celsius",
+      "actual": 40.0,
+      "expected": 40,
+      "pass": true
+    },
+    {
+      "label": "U5-02 water after removing block Celsius",
+      "actual": 30.0,
+      "expected": 30,
+      "pass": true
+    },
+    {
+      "label": "U5-02 simultaneous equilibrium Celsius",
+      "actual": 32.0,
+      "expected": 32,
+      "pass": true
+    },
+    {
+      "label": "U5-02 energy carried out above 20 Celsius J",
+      "actual": 2000.0,
+      "expected": 2000,
+      "pass": true
+    },
+    {
+      "label": "U5-04 expansion work J",
+      "actual": 200.0,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "label": "U5-04 integrated compression p=100V work J",
+      "actual": -400.0,
+      "expected": -400,
+      "pass": true
+    },
+    {
+      "label": "U5-04 total work J",
+      "actual": -200.0,
+      "expected": -200,
+      "pass": true
+    },
+    {
+      "label": "U5-04 oriented triangle alternative J",
+      "actual": -200.0,
+      "expected": -200,
+      "pass": true
+    }
+  ],
+  "uniqueAnswers": {
+    "quiz-20261113-u1-01-a": "C",
+    "quiz-20261113-u2-04-a": "A",
+    "quiz-20261113-u3-02-a": "D",
+    "quiz-20261113-u3-04-a": "E",
+    "quiz-20261113-u5-02-a": "B",
+    "quiz-20261113-u5-04-a": "C"
+  },
+  "choiceUniquenessMethod": "Read all 30 alternatives and feedback against physical givens; manual scientific assessment plus independent numerical reconstruction, not automatic semantic proof",
+  "mapping": "IDs exist in correct unit; semantic target relation reviewed",
+  "literalPromptCopies": [],
+  "openFindings": [],
+  "humanApproval": false,
+  "statusOfContent": "DRAFT",
+  "sourceSha256": {
+    "units.json": "5e9f6c350b7bf3f1bdf86a988028c392ab0e4fefe906d7fe3f67da4925587245",
+    "coverage.json": "277c49acf6a999cad8be3f691787e86924debcf2f54ccb909f3b718bf7571698",
+    "original-problems.json": "68ac49b481bb8c93a0b010395b67ad4062fa1532f654f079e2b77a8dea6a8d31",
+    "bank-selection.json": "fdd548b9e404d40613560e150959198d4477fef8fbf1e5ec24e4116d4eab46f4",
+    "assessments.json": "43069e16472f620bad88d7a1b0478cf3fa8e7001e75144150f91444ca03288b5"
+  },
+  "arithmeticChecks": [
+    {
+      "problemId": "quiz-20261113-u1-01-a",
+      "expression": "(4.8e6-4.2e6)*0.15/60",
+      "expected": 1500,
+      "tolerance": 1e-09,
+      "actual": 1500.0,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u1-01-a",
+      "expression": "4.8e6*0.15/60",
+      "expected": 12000,
+      "tolerance": 1e-09,
+      "actual": 12000.0,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u1-01-a",
+      "expression": "4.2e6*0.15/60",
+      "expected": 10500,
+      "tolerance": 1e-09,
+      "actual": 10500.0,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u1-01-a",
+      "expression": "(4.8e6+4.2e6)*0.15/60",
+      "expected": 22500,
+      "tolerance": 1e-09,
+      "actual": 22500.0,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u1-01-a",
+      "expression": "(4.8e6-4.2e6)*0.15",
+      "expected": 90000,
+      "tolerance": 1e-09,
+      "actual": 90000.0,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u1-01-a",
+      "expression": "(4.8e6-4.2e6)/4.8e6",
+      "expected": 0.125,
+      "tolerance": 1e-12,
+      "actual": 0.125,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u2-04-a",
+      "expression": "2*3+1*(-4)",
+      "expected": 2,
+      "tolerance": 1e-12,
+      "actual": 2,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u2-04-a",
+      "expression": "(2+1)*1-(2*3+1*(-4))",
+      "expected": 1,
+      "tolerance": 1e-12,
+      "actual": 1,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u2-04-a",
+      "expression": "(2*3+1*(-4))/(2+1)",
+      "expected": 0.6666666666666666,
+      "tolerance": 1e-12,
+      "actual": 0.6666666666666666,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u2-04-a",
+      "expression": "0.5*2*3**2+0.5*1*4**2",
+      "expected": 17,
+      "tolerance": 1e-12,
+      "actual": 17.0,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u2-04-a",
+      "expression": "0.5*3*1**2",
+      "expected": 1.5,
+      "tolerance": 1e-12,
+      "actual": 1.5,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u2-04-a",
+      "expression": "1.5-17",
+      "expected": -15.5,
+      "tolerance": 1e-12,
+      "actual": -15.5,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u3-02-a",
+      "expression": "0.30/1000",
+      "expected": 0.0003,
+      "tolerance": 1e-12,
+      "actual": 0.0003,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u3-02-a",
+      "expression": "0.30/3000",
+      "expected": 0.0001,
+      "tolerance": 1e-12,
+      "actual": 9.999999999999999e-05,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u3-02-a",
+      "expression": "(0.30/3000-0.30/1000)/0.020",
+      "expected": -0.01,
+      "tolerance": 1e-12,
+      "actual": -0.009999999999999998,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u3-02-a",
+      "expression": "(0.30/1000)/0.020",
+      "expected": 0.015,
+      "tolerance": 1e-12,
+      "actual": 0.014999999999999998,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u3-02-a",
+      "expression": "(0.30/3000)/0.020",
+      "expected": 0.005,
+      "tolerance": 1e-12,
+      "actual": 0.004999999999999999,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u3-04-a",
+      "expression": "0.06/(1-0.5**2)",
+      "expected": 0.08,
+      "tolerance": 1e-12,
+      "actual": 0.08,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u3-04-a",
+      "expression": "0.06/(1-0.5**2)/2",
+      "expected": 0.04,
+      "tolerance": 1e-12,
+      "actual": 0.04,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u3-04-a",
+      "expression": "(1e-3)**2*0.04*1e6",
+      "expected": 0.04,
+      "tolerance": 1e-12,
+      "actual": 0.04,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u3-04-a",
+      "expression": "3.141592653589793*(1e-3)**2*0.04*1e6",
+      "expected": 0.12566370614359174,
+      "tolerance": 1e-12,
+      "actual": 0.12566370614359174,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u3-04-a",
+      "expression": "0.04/0.06",
+      "expected": 0.6666666666666666,
+      "tolerance": 1e-12,
+      "actual": 0.6666666666666667,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u5-02-a",
+      "expression": "(100*80+200*20)/(100+200)",
+      "expected": 40,
+      "tolerance": 1e-12,
+      "actual": 40.0,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u5-02-a",
+      "expression": "(200*40+200*20)/400",
+      "expected": 30,
+      "tolerance": 1e-12,
+      "actual": 30.0,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u5-02-a",
+      "expression": "(100*80+200*20+200*20)/500",
+      "expected": 32,
+      "tolerance": 1e-12,
+      "actual": 32.0,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u5-02-a",
+      "expression": "100*(80-20)",
+      "expected": 6000,
+      "tolerance": 1e-12,
+      "actual": 6000,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u5-02-a",
+      "expression": "100*(40-20)",
+      "expected": 2000,
+      "tolerance": 1e-12,
+      "actual": 2000,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u5-02-a",
+      "expression": "(6000-2000)/400+20",
+      "expected": 30,
+      "tolerance": 1e-12,
+      "actual": 30.0,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u5-04-a",
+      "expression": "100e3*(3e-3-1e-3)",
+      "expected": 200,
+      "tolerance": 1e-10,
+      "actual": 200.0,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u5-04-a",
+      "expression": "((300e3+100e3)/2)*(1e-3-3e-3)",
+      "expected": -400,
+      "tolerance": 1e-10,
+      "actual": -400.0,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u5-04-a",
+      "expression": "200+0-400",
+      "expected": -200,
+      "tolerance": 1e-12,
+      "actual": -200,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u5-04-a",
+      "expression": "0.5*(3e-3-1e-3)*(300e3-100e3)",
+      "expected": 200,
+      "tolerance": 1e-10,
+      "actual": 200.0,
+      "pass": true
+    },
+    {
+      "problemId": "quiz-20261113-u5-04-a",
+      "expression": "1e3*1e-3",
+      "expected": 1,
+      "tolerance": 1e-12,
+      "actual": 1.0,
+      "pass": true
+    }
+  ],
+  "limits": "Read-only review of quiz content and relevant source comparisons. No own group-B approval. No consumer/UI/Core-help/persistence/accessibility testing or production validation."
+}

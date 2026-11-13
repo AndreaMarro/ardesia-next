@@ -1,0 +1,1067 @@
+{
+  "status": "PASS_NO_OPEN_P1_P2",
+  "reviewer": "Independent delegated agent, not author of the C2 problems",
+  "problemsSha256": "cfda7b01dfa0266cf7cad60781411750d932268dd00206b1ebbdaa31eb148b70",
+  "checksSha256": "72ad870366526fc73a455bf1386c57bce71ce1bfbfc79894d75899afc9a3ffec",
+  "baseCommit": "dc2985eb0fb0ce648e0eec6b9fc4026870e4b32e",
+  "problemCount": 15,
+  "numericChecksPass": 95,
+  "independentPhysicalRecomputations": [
+    {
+      "problemId": "original-20261113-u3-01-a",
+      "label": "density and independent second weighing",
+      "actual": 0.07600000000000001,
+      "expected": 0.076,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-b",
+      "label": "signed net force in N",
+      "actual": 0.3999999999999999,
+      "expected": 0.4,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-c",
+      "label": "density from conserved mass in kg/m³",
+      "actual": 1041.6666666666667,
+      "expected": 1041.6666666666667,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-c",
+      "label": "relative density increase",
+      "actual": 0.04166666666666674,
+      "expected": 0.041666666666666664,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-a",
+      "label": "bottom absolute pressure Pa",
+      "actual": 102800.0,
+      "expected": 102800,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-b",
+      "label": "final small piston force N",
+      "actual": 20.80592,
+      "expected": 20.80592,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-c",
+      "label": "two columns measure same pressure difference Pa",
+      "actual": 0.0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-c",
+      "label": "absolute external pressure after independent measurement Pa",
+      "actual": 100000.0,
+      "expected": 100000,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-a",
+      "label": "accumulation in 90s m³",
+      "actual": 0.00030000000000000003,
+      "expected": 0.0003,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-a",
+      "label": "inlet mean velocity m/s",
+      "actual": 0.39999999999999997,
+      "expected": 0.4,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-b",
+      "label": "pressure change Pa",
+      "actual": -2000.0,
+      "expected": -2000,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-b",
+      "label": "equal pressure elevation m",
+      "actual": 0.4,
+      "expected": 0.4,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-c",
+      "label": "nonlinear averaging discrepancy Pa",
+      "actual": 45.00000000000004,
+      "expected": 45,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-a",
+      "label": "Couette mechanical power from dissipation volume W",
+      "actual": 0.00047999999999999996,
+      "expected": 0.00048,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-b",
+      "label": "unknown viscosity Pa s",
+      "actual": 0.0023999999999999994,
+      "expected": 0.0024,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-b",
+      "label": "new collection time s",
+      "actual": 39.99999999999999,
+      "expected": 40,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-c",
+      "label": "branch pressure via nodal balance kPa",
+      "actual": 8.0,
+      "expected": 8,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-c",
+      "label": "surviving branch flow ratio",
+      "actual": 1.1666666666666667,
+      "expected": 1.1666666666666667,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-c",
+      "label": "total power from sum of resistor dissipation W",
+      "actual": 27.999999999999996,
+      "expected": 28,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-a",
+      "label": "surface work J",
+      "actual": 3.5999999999999994e-05,
+      "expected": 3.6e-05,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-b",
+      "label": "coalesced radius from volume m",
+      "actual": 0.00020000000000000012,
+      "expected": 0.0002,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-b",
+      "label": "surface energy decrease with stated pi J",
+      "actual": 2.5132719999999978e-08,
+      "expected": 2.513272e-08,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-c",
+      "label": "gamma from long capillary N/m",
+      "actual": 0.04,
+      "expected": 0.04,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-c",
+      "label": "short capillary equilibrium prediction m",
+      "actual": 0.032,
+      "expected": 0.032,
+      "pass": true
+    }
+  ],
+  "mapping": "All objectiveIds exist and belong to their respective unit; semantic relation read for every problem",
+  "literalPromptCopies": [],
+  "openFindings": [],
+  "resolvedFindings": [
+    {
+      "id": "C23-C2-P2-01",
+      "problemId": "original-20261113-u3-05-a",
+      "issue": "Ambiguous/wrong verbal conversion joule/newton/metre",
+      "resolution": "Explicit 1 J = 1 N·m and 1 N/m = 1 J/m² verified in final source"
+    },
+    {
+      "id": "C23-C2-P2-02",
+      "problemId": "original-20261113-u3-03-a",
+      "issue": "Volume accumulation requires constant density/incompressibility in the standalone problem",
+      "resolution": "Prompt now explicitly states incompressible liquid with constant density"
+    },
+    {
+      "id": "C23-C2-P2-03",
+      "problemId": "original-20261113-u3-04-b",
+      "issue": "Unchanged terminal elevations do not exclude gravity head for two fluids with unknown different densities",
+      "resolution": "Horizontal capillary and equal terminal elevations now explicit; numeric results unchanged"
+    }
+  ],
+  "humanApproval": false,
+  "scientificStatus": "DRAFT; independent AI review is not human scientific approval",
+  "sourceSha256": {
+    "coverage.json": "d6dc05b5f75f23128ea500c60cd7fc22fbb44caa3612d65046a90aca5d63bc73",
+    "assessments.json": "43069e16472f620bad88d7a1b0478cf3fa8e7001e75144150f91444ca03288b5",
+    "original-problems.json": "087ce4046cddeab4e50da2125970f696322de71db3da0f0ec0c30eb48485c42e"
+  },
+  "numericChecks": [
+    {
+      "problemId": "original-20261113-u3-01-a",
+      "label": "massa netta primo campione g",
+      "expression": "110-42",
+      "expected": 68,
+      "tolerance": 0,
+      "actual": 68,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-a",
+      "label": "massa netta secondo campione g",
+      "expression": "76-42",
+      "expected": 34,
+      "tolerance": 0,
+      "actual": 34,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-a",
+      "label": "densita prima prova kg/m3",
+      "expression": "(110-42)*10**-3/(80*10**-6)",
+      "expected": 850,
+      "tolerance": 1e-10,
+      "actual": 850.0000000000001,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-a",
+      "label": "densita seconda prova kg/m3",
+      "expression": "(76-42)*10**-3/(40*10**-6)",
+      "expected": 850,
+      "tolerance": 1e-10,
+      "actual": 850.0000000000001,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-a",
+      "label": "seconda pesata prevista g",
+      "expression": "850*40*10**-6*1000+42",
+      "expected": 76,
+      "tolerance": 1e-10,
+      "actual": 76.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-b",
+      "label": "forza prima porzione N",
+      "expression": "(103-100)*1000*4*10**-4",
+      "expected": 1.2,
+      "tolerance": 1e-12,
+      "actual": 1.2,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-b",
+      "label": "forza seconda porzione N",
+      "expression": "(99-100)*1000*8*10**-4",
+      "expected": -0.8,
+      "tolerance": 1e-12,
+      "actual": -0.8,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-b",
+      "label": "risultante N",
+      "expression": "1.2-.8",
+      "expected": 0.4,
+      "tolerance": 1e-12,
+      "actual": 0.3999999999999999,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-b",
+      "label": "pressione equivalente Pa",
+      "expression": ".4/(12*10**-4)",
+      "expected": 333.3333333333333,
+      "tolerance": 1e-09,
+      "actual": 333.3333333333333,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-b",
+      "label": "somma forze interne N",
+      "expression": "103000*.0004+99000*.0008",
+      "expected": 120.4,
+      "tolerance": 1e-10,
+      "actual": 120.4,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-b",
+      "label": "forza esterna N",
+      "expression": "100000*.0012",
+      "expected": 120,
+      "tolerance": 1e-10,
+      "actual": 119.99999999999999,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-c",
+      "label": "densita A kg/m3",
+      "expression": ".080/(100*10**-6)",
+      "expected": 800,
+      "tolerance": 1e-10,
+      "actual": 800.0000000000001,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-c",
+      "label": "densita B kg/m3",
+      "expression": ".120/(100*10**-6)",
+      "expected": 1200,
+      "tolerance": 1e-10,
+      "actual": 1200.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-c",
+      "label": "massa miscela kg",
+      "expression": ".080+.120",
+      "expected": 0.2,
+      "tolerance": 1e-12,
+      "actual": 0.2,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-c",
+      "label": "densita miscela kg/m3",
+      "expression": ".2/(192*10**-6)",
+      "expected": 1041.6666666666667,
+      "tolerance": 1e-09,
+      "actual": 1041.6666666666667,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-c",
+      "label": "contrazione volume percentuale",
+      "expression": "(200-192)/200*100",
+      "expected": 4,
+      "tolerance": 1e-12,
+      "actual": 4.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-c",
+      "label": "aumento densita percentuale",
+      "expression": "((.2/(192*10**-6))-1000)/1000*100",
+      "expected": 4.166666666666674,
+      "tolerance": 1e-10,
+      "actual": 4.166666666666674,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-01-c",
+      "label": "rapporto densita",
+      "expression": "200/192",
+      "expected": 1.0416666666666667,
+      "tolerance": 1e-12,
+      "actual": 1.0416666666666667,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-a",
+      "label": "salto olio Pa",
+      "expression": "900*10*.20",
+      "expected": 1800,
+      "tolerance": 1e-10,
+      "actual": 1800.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-a",
+      "label": "pressione interfaccia Pa",
+      "expression": "98000+900*10*.20",
+      "expected": 99800,
+      "tolerance": 1e-10,
+      "actual": 99800.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-a",
+      "label": "salto acqua Pa",
+      "expression": "1000*10*.30",
+      "expected": 3000,
+      "tolerance": 1e-10,
+      "actual": 3000.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-a",
+      "label": "pressione fondo Pa",
+      "expression": "98000+900*10*.20+1000*10*.30",
+      "expected": 102800,
+      "tolerance": 1e-10,
+      "actual": 102800.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-a",
+      "label": "massa colonne per area kg/m2",
+      "expression": "900*.20+1000*.30",
+      "expected": 480,
+      "tolerance": 1e-10,
+      "actual": 480.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-a",
+      "label": "densita media ponderata kg/m3",
+      "expression": "(900*.20+1000*.30)/.50",
+      "expected": 960,
+      "tolerance": 1e-10,
+      "actual": 960.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-b",
+      "label": "pressione relativa grande Pa",
+      "expression": "350/(35*10**-4)",
+      "expected": 100000,
+      "tolerance": 1e-08,
+      "actual": 100000.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-b",
+      "label": "forza iniziale piccolo N",
+      "expression": "(100000+800*10*.5)*2*10**-4",
+      "expected": 20.8,
+      "tolerance": 1e-10,
+      "actual": 20.8,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-b",
+      "label": "spostamento piccolo m",
+      "expression": ".70*10**-6/(2*10**-4)",
+      "expected": 0.0035,
+      "tolerance": 1e-12,
+      "actual": 0.0034999999999999996,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-b",
+      "label": "spostamento grande m",
+      "expression": ".70*10**-6/(35*10**-4)",
+      "expected": 0.0002,
+      "tolerance": 1e-12,
+      "actual": 0.00019999999999999998,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-b",
+      "label": "nuovo dislivello m",
+      "expression": ".5+.0035+.0002",
+      "expected": 0.5037,
+      "tolerance": 1e-12,
+      "actual": 0.5036999999999999,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-b",
+      "label": "nuova forza N",
+      "expression": "(100000+800*10*.5037)*.0002",
+      "expected": 20.80592,
+      "tolerance": 1e-09,
+      "actual": 20.80592,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-b",
+      "label": "incremento forza N",
+      "expression": "800*10*.0002*(.0035+.0002)",
+      "expected": 0.00592,
+      "tolerance": 1e-12,
+      "actual": 0.005920000000000001,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-c",
+      "label": "prima differenza Pa",
+      "expression": "13600*10*.700",
+      "expected": 95200,
+      "tolerance": 1e-08,
+      "actual": 95200.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-c",
+      "label": "seconda differenza Pa",
+      "expression": "850*10*11.20",
+      "expected": 95200,
+      "tolerance": 1e-08,
+      "actual": 95200.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-c",
+      "label": "pressione esterna Pa",
+      "expression": "4800+95200",
+      "expected": 100000,
+      "tolerance": 0,
+      "actual": 100000,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-c",
+      "label": "errore percentuale",
+      "expression": "4800/100000*100",
+      "expected": 4.8,
+      "tolerance": 1e-12,
+      "actual": 4.8,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-c",
+      "label": "rapporto altezze",
+      "expression": "11.20/.700",
+      "expected": 16,
+      "tolerance": 1e-12,
+      "actual": 16.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-02-c",
+      "label": "rapporto densita",
+      "expression": "13600/850",
+      "expected": 16,
+      "tolerance": 1e-12,
+      "actual": 16.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-a",
+      "label": "accumulo L/min",
+      "expression": "1.2-.7-.3",
+      "expected": 0.2,
+      "tolerance": 1e-12,
+      "actual": 0.2,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-a",
+      "label": "volume accumulato L",
+      "expression": "(1.2-.7-.3)*90/60",
+      "expected": 0.3,
+      "tolerance": 1e-12,
+      "actual": 0.3,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-a",
+      "label": "portata ingresso m3/s",
+      "expression": "1.2*10**-3/60",
+      "expected": 2e-05,
+      "tolerance": 1e-15,
+      "actual": 1.9999999999999998e-05,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-a",
+      "label": "velocita ingresso m/s",
+      "expression": "(1.2*10**-3/60)/(.5*10**-4)",
+      "expected": 0.4,
+      "tolerance": 1e-12,
+      "actual": 0.39999999999999997,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-a",
+      "label": "seconda uscita stazionaria L/min",
+      "expression": "1.2-.7",
+      "expected": 0.5,
+      "tolerance": 1e-12,
+      "actual": 0.5,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-a",
+      "label": "bilancio volumi L",
+      "expression": "1.2*1.5-(.7+.3)*1.5",
+      "expected": 0.3,
+      "tolerance": 1e-12,
+      "actual": 0.2999999999999998,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-b",
+      "label": "portata m3/s",
+      "expression": "2*10**-4*3",
+      "expected": 0.0006,
+      "tolerance": 1e-15,
+      "actual": 0.0006000000000000001,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-b",
+      "label": "velocita seconda sezione m/s",
+      "expression": ".0006/(6*10**-4)",
+      "expected": 1,
+      "tolerance": 1e-12,
+      "actual": 0.9999999999999998,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-b",
+      "label": "contributo cinetico Pa",
+      "expression": "1000*(3**2-1**2)/2",
+      "expected": 4000,
+      "tolerance": 1e-10,
+      "actual": 4000.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-b",
+      "label": "contributo quota Pa",
+      "expression": "-1000*10*.60",
+      "expected": -6000,
+      "tolerance": 1e-10,
+      "actual": -6000.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-b",
+      "label": "differenza pressione Pa",
+      "expression": "1000*(3**2-1**2)/2-1000*10*.60",
+      "expected": -2000,
+      "tolerance": 1e-10,
+      "actual": -2000.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-b",
+      "label": "quota pareggio m",
+      "expression": "(3**2-1**2)/(2*10)",
+      "expected": 0.4,
+      "tolerance": 1e-12,
+      "actual": 0.4,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-b",
+      "label": "chiusura bilancio Pa",
+      "expression": "-2000+(1000/2)*(1**2-3**2)+1000*10*.60",
+      "expected": 0,
+      "tolerance": 1e-10,
+      "actual": 0.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-c",
+      "label": "volume in 4s m3",
+      "expression": "2*10**-4*(.20*2+.80*2)",
+      "expected": 0.0004,
+      "tolerance": 1e-15,
+      "actual": 0.0004,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-c",
+      "label": "portata media m3/s",
+      "expression": ".0004/4",
+      "expected": 0.0001,
+      "tolerance": 1e-15,
+      "actual": 0.0001,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-c",
+      "label": "velocita media m/s",
+      "expression": "(.2+.8)/2",
+      "expected": 0.5,
+      "tolerance": 1e-12,
+      "actual": 0.5,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-c",
+      "label": "media v quadrato m2/s2",
+      "expression": "(.2**2+.8**2)/2",
+      "expected": 0.34,
+      "tolerance": 1e-12,
+      "actual": 0.3400000000000001,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-c",
+      "label": "termine cinetico medio Pa",
+      "expression": "1000/2*(.2**2+.8**2)/2",
+      "expected": 170,
+      "tolerance": 1e-10,
+      "actual": 170.00000000000003,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-c",
+      "label": "termine dalla velocita media Pa",
+      "expression": "1000/2*((.2+.8)/2)**2",
+      "expected": 125,
+      "tolerance": 1e-10,
+      "actual": 125.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-03-c",
+      "label": "differenza da varianza Pa",
+      "expression": "1000/2*.3**2",
+      "expected": 45,
+      "tolerance": 1e-10,
+      "actual": 45.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-a",
+      "label": "gradiente s^-1",
+      "expression": ".12/(.60*10**-3)",
+      "expected": 200,
+      "tolerance": 1e-10,
+      "actual": 200.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-a",
+      "label": "sforzo Pa",
+      "expression": ".004*.12/(.60*10**-3)",
+      "expected": 0.8,
+      "tolerance": 1e-12,
+      "actual": 0.8,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-a",
+      "label": "forza N",
+      "expression": ".8*50*10**-4",
+      "expected": 0.004,
+      "tolerance": 1e-12,
+      "actual": 0.004,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-a",
+      "label": "potenza W",
+      "expression": ".004*.12",
+      "expected": 0.00048,
+      "tolerance": 1e-14,
+      "actual": 0.00048,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-a",
+      "label": "fattore potenza velocita doppia",
+      "expression": "2**2",
+      "expected": 4,
+      "tolerance": 0,
+      "actual": 4,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-b",
+      "label": "portata riferimento mL/s",
+      "expression": "3/20",
+      "expected": 0.15,
+      "tolerance": 1e-12,
+      "actual": 0.15,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-b",
+      "label": "portata ignota mL/s",
+      "expression": "2.5/50",
+      "expected": 0.05,
+      "tolerance": 1e-12,
+      "actual": 0.05,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-b",
+      "label": "rapporto viscosita",
+      "expression": "(1/1.5)*((3/20)/(2.5/50))",
+      "expected": 2,
+      "tolerance": 1e-12,
+      "actual": 1.9999999999999996,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-b",
+      "label": "viscosita ignota Pa s",
+      "expression": ".0012*(1/1.5)*((3/20)/(2.5/50))",
+      "expected": 0.0024,
+      "tolerance": 1e-14,
+      "actual": 0.0023999999999999994,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-b",
+      "label": "nuova portata mL/s",
+      "expression": ".05*1.5",
+      "expected": 0.075,
+      "tolerance": 1e-12,
+      "actual": 0.07500000000000001,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-b",
+      "label": "nuovo tempo s",
+      "expression": "3/(.05*1.5)",
+      "expected": 40,
+      "tolerance": 1e-10,
+      "actual": 39.99999999999999,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-c",
+      "label": "resistenza parallelo kPa s/L",
+      "expression": "6*12/(6+12)",
+      "expected": 4,
+      "tolerance": 1e-12,
+      "actual": 4.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-c",
+      "label": "portata totale iniziale L/s",
+      "expression": "14/(3+4)",
+      "expected": 2,
+      "tolerance": 1e-12,
+      "actual": 2.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-c",
+      "label": "pressione rami iniziale kPa",
+      "expression": "14-3*2",
+      "expected": 8,
+      "tolerance": 1e-12,
+      "actual": 8,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-c",
+      "label": "portata ramo1 iniziale L/s",
+      "expression": "8/6",
+      "expected": 1.3333333333333333,
+      "tolerance": 1e-12,
+      "actual": 1.3333333333333333,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-c",
+      "label": "portata ramo2 iniziale L/s",
+      "expression": "8/12",
+      "expected": 0.6666666666666666,
+      "tolerance": 1e-12,
+      "actual": 0.6666666666666666,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-c",
+      "label": "potenza iniziale W",
+      "expression": "14000*.002",
+      "expected": 28,
+      "tolerance": 1e-10,
+      "actual": 28.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-c",
+      "label": "portata finale L/s",
+      "expression": "14/(3+6)",
+      "expected": 1.5555555555555556,
+      "tolerance": 1e-12,
+      "actual": 1.5555555555555556,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-c",
+      "label": "rapporto ramo1 finale iniziale",
+      "expression": "(14/9)/(8/6)",
+      "expected": 1.1666666666666667,
+      "tolerance": 1e-12,
+      "actual": 1.1666666666666667,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-c",
+      "label": "pressione finale ramo1 kPa",
+      "expression": "6*14/9",
+      "expected": 9.333333333333334,
+      "tolerance": 1e-12,
+      "actual": 9.333333333333334,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-04-c",
+      "label": "caduta finale comune kPa",
+      "expression": "3*14/9",
+      "expected": 4.666666666666667,
+      "tolerance": 1e-12,
+      "actual": 4.666666666666667,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-a",
+      "label": "forza N",
+      "expression": "2*.030*.040",
+      "expected": 0.0024,
+      "tolerance": 1e-14,
+      "actual": 0.0024,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-a",
+      "label": "lavoro J",
+      "expression": "2*.030*.040*.015",
+      "expected": 3.6e-05,
+      "tolerance": 1e-15,
+      "actual": 3.5999999999999994e-05,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-a",
+      "label": "area singola faccia m2",
+      "expression": ".040*.015",
+      "expected": 0.0006,
+      "tolerance": 1e-14,
+      "actual": 0.0006,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-a",
+      "label": "area totale m2",
+      "expression": "2*.040*.015",
+      "expected": 0.0012,
+      "tolerance": 1e-14,
+      "actual": 0.0012,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-a",
+      "label": "controllo energia J",
+      "expression": ".030*(2*.040*.015)",
+      "expected": 3.6e-05,
+      "tolerance": 1e-15,
+      "actual": 3.5999999999999994e-05,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-b",
+      "label": "raggio finale m",
+      "expression": "(8*(.10*10**-3)**3)**(1/3)",
+      "expected": 0.0002,
+      "tolerance": 1e-12,
+      "actual": 0.00020000000000000012,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-b",
+      "label": "rapporto area finale iniziale",
+      "expression": "(2**2)/8",
+      "expected": 0.5,
+      "tolerance": 1e-12,
+      "actual": 0.5,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-b",
+      "label": "area eliminata m2",
+      "expression": "16*3.14159*(10**-4)**2",
+      "expected": 5.026544e-07,
+      "tolerance": 1e-17,
+      "actual": 5.026544e-07,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-b",
+      "label": "energia superficiale eliminata J",
+      "expression": ".050*16*3.14159*(10**-4)**2",
+      "expected": 2.513272e-08,
+      "tolerance": 1e-18,
+      "actual": 2.513272e-08,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-b",
+      "label": "salto pressione iniziale Pa",
+      "expression": "2*.050/(.10*10**-3)",
+      "expected": 1000,
+      "tolerance": 1e-09,
+      "actual": 1000.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-b",
+      "label": "salto pressione finale Pa",
+      "expression": "2*.050/(.20*10**-3)",
+      "expected": 500,
+      "tolerance": 1e-09,
+      "actual": 500.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-c",
+      "label": "tensione da tubo B N/m",
+      "expression": ".016*1000*10*.00050/2",
+      "expected": 0.04,
+      "tolerance": 1e-12,
+      "actual": 0.04,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-c",
+      "label": "altezza A da rapporto mm",
+      "expression": "16*(.50/.25)",
+      "expected": 32,
+      "tolerance": 1e-12,
+      "actual": 32.0,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-c",
+      "label": "altezza A da legge m",
+      "expression": "2*.040/(1000*10*.00025)",
+      "expected": 0.032,
+      "tolerance": 1e-12,
+      "actual": 0.032,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-c",
+      "label": "tensione erronea da A N/m",
+      "expression": ".020*1000*10*.00025/2",
+      "expected": 0.025,
+      "tolerance": 1e-12,
+      "actual": 0.025,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-c",
+      "label": "rapporto stima errata corretta",
+      "expression": ".025/.040",
+      "expected": 0.625,
+      "tolerance": 1e-12,
+      "actual": 0.625,
+      "pass": true
+    },
+    {
+      "problemId": "original-20261113-u3-05-c",
+      "label": "controllo B m",
+      "expression": "2*.040/(1000*10*.00050)",
+      "expected": 0.016,
+      "tolerance": 1e-12,
+      "actual": 0.016,
+      "pass": true
+    }
+  ],
+  "limits": "Content and arithmetic review only; no shared-source integration, renderer, import or lab validation. Author of C3 problems did not review own C3 content here."
+}

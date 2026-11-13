@@ -1,0 +1,67 @@
+{
+  "review": "independent read-only locator correction addendum",
+  "baseCommit": "5ee09d3276af94161a0c20a8cb19414575a37a79",
+  "verifiedCommit": "70af28ce5f59365fd540bafbb58ab3ce6849d680",
+  "createdAtUTC": "2026-11-13T10:16:24.295581+00:00",
+  "filesReadSha256AtVerifiedCommit": {
+    "apps/web/src/courses/physics/CourseMaterials.tsx": "578ff80b584e4691622974f6df49fa4eac83fe4678ddd9b8002e9768a1de94fe",
+    "apps/web/src/courses/courses.css": "f8bd837e7892b49b64684de0dcc898f9033b3c9034979ea487b9913b251f8ccd",
+    "e2e/physics-courses.spec.ts": "519876bc26e4c9ace36f56e936cc1e921537638e175c52f343a241052f5a36e5",
+    "apps/web/src/courses/CourseStudio.tsx": "b7999d66e066d7f25a516b5efa59cbb04d616661b90b7f2ae4408892b52df40b",
+    "apps/web/AGENTS.md": "d9e0fc2906fdbc2a046397c5054232078158f8e5bea3499a9868aebc55639ead",
+    "apps/web/src/courses/physics/data/sf-2026-termodinamica.json": "c5b9c76088c2db581bf55b885bdc12c4061627c3bb1ae1dc0a2030ebb9509024",
+    "apps/web/src/courses/physics/physics.test.ts": "29aa29fbfa7526369f3914e1c7fd30bc47f946c5bb6205921423113c3a042d94",
+    "playwright.config.ts": "eaab9a4e16e94d33bc1d53d3588a8e25b16a9560a6835e6217799e9e29c64af9",
+    "package.json": "4b6f84d0e001396f10e9e255c35e1585098abb4096f9e4bdd1b9b3b6525bee80",
+    "apps/web/package.json": "ba9d44d9c19d4a4672f8ec40bda186e77f64c1351f4aea907243578766e2429e",
+    "docs/sources/physics-2026-27/practice-navigation-2026-11-13.md": "fa03802d235bfa77bba98a509f55bf98ca4230da776d6da5057649a9ff198d36",
+    "docs/history.md": "9967a7d39334f287b4b2827bce8b5f421de6937c0ca97d3171ac064e9fc92129"
+  },
+  "unchangedFromPriorReview": [
+    "apps/web/src/courses/physics/CourseMaterials.tsx",
+    "apps/web/src/courses/courses.css",
+    "apps/web/src/courses/CourseStudio.tsx",
+    "apps/web/AGENTS.md",
+    "apps/web/src/courses/physics/data/sf-2026-termodinamica.json",
+    "apps/web/src/courses/physics/physics.test.ts",
+    "playwright.config.ts",
+    "package.json",
+    "apps/web/package.json",
+    "docs/history.md"
+  ],
+  "changedFromPriorReview": [
+    "e2e/physics-courses.spec.ts",
+    "docs/sources/physics-2026-27/practice-navigation-2026-11-13.md"
+  ],
+  "originalArtifactsSha256": {
+    "artifacts/physics-practice-navigation-2026-11-13/initial-browser-5ee09d3/e2e.json": "59eea264ebe8919436b2b77885dfedef66e0b3cd39fbd946dadc821a09f89d6b",
+    "artifacts/physics-practice-navigation-2026-11-13/initial-browser-5ee09d3/run.log": "7aa34ac6cee2f656618cd125a179fdb64453db1c64db63683e8ad58f7b8d1d0f",
+    "artifacts/physics-practice-navigation-2026-11-13/initial-browser-5ee09d3/selector-reproduction.json": "2071ae8adf1ffe6bc729b4e0c232cfe1794b11d5029c87ab6dbb55192a94fcff",
+    "artifacts/physics-practice-navigation-2026-11-13/initial-browser-5ee09d3/browser-evidence.json": "142a9a69026078a9840c4cdca9c7c5d9ad5332c1b72fc2002f0ee3d2b5ce61ce",
+    "artifacts/physics-practice-navigation-2026-11-13/initial-browser-5ee09d3/screenshots/physics-courses-the-heat-e-68f26-physically-admissible-cycle-desktop-chromium/error-context.md": "96c644ca008e8654a47e083111e502fb5adcc16d00a35b704bc51d7069e634e3"
+  },
+  "originalRun": {
+    "passed": 0,
+    "failed": 1,
+    "interrupted": 1,
+    "notRun": 2,
+    "failure": "C3 desktop timeout in first kind.focus(), old exact getByLabel locator",
+    "C2InterruptionNotAPass": true
+  },
+  "minimalReproductionRead": {
+    "exactLabelMatches": 0,
+    "exactComboboxMatches": 1,
+    "independentlyRerunByReviewer": false
+  },
+  "P1P2findings": [],
+  "resolvedIssue": "Test locator matched raw label text instead of accessible combobox name",
+  "uiUnchanged": true,
+  "timeoutsAndAssertionsUnchanged": true,
+  "browserRerunByReviewer": false,
+  "sharedSourceModifiedByReviewer": false,
+  "limits": [
+    "No current browser or Verify success inferred.",
+    "C2 interrupted case and two unrun mobile cases remain unverified in the original run.",
+    "Original review remains bound to original commit; this addendum identifies the two-file correction and final hashes."
+  ]
+}

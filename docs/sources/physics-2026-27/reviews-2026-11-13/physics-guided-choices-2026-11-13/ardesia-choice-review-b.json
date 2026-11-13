@@ -1,0 +1,305 @@
+{
+  "review": "independent agent scientific review, not human approval",
+  "reviewedAtUTC": "2026-11-13T10:48:33.518625+00:00",
+  "sourceSha256": "d4645a877ea70a8c95158efc80a14305609124d6fa7cdd18ac16f14d0bf34c48",
+  "checksSha256": "5a410e4557d867646156040a7a03a0b8b70dfd57f05228ac84a8bfd3559735e9",
+  "fileHashes": {
+    "/tmp/ardesia-choice-b/problems.json": "d4645a877ea70a8c95158efc80a14305609124d6fa7cdd18ac16f14d0bf34c48",
+    "/tmp/ardesia-choice-b/checks.json": "5a410e4557d867646156040a7a03a0b8b70dfd57f05228ac84a8bfd3559735e9",
+    "/tmp/ardesia-choice-b/audit.md": "d7d465251ce6d5be2f4e80c5aae8030c3f35b0611e6e3b5b848e06cf9ce61444",
+    "/workspace/ardesia-next/docs/sources/physics-2026-27/editorial/units.json": "5e9f6c350b7bf3f1bdf86a988028c392ab0e4fefe906d7fe3f67da4925587245",
+    "/workspace/ardesia-next/docs/sources/physics-2026-27/editorial/coverage.json": "277c49acf6a999cad8be3f691787e86924debcf2f54ccb909f3b718bf7571698",
+    "/workspace/ardesia-next/docs/sources/physics-2026-27/editorial/original-problems.json": "68ac49b481bb8c93a0b010395b67ad4062fa1532f654f079e2b77a8dea6a8d31",
+    "/workspace/ardesia-next/docs/sources/physics-2026-27/editorial/bank-selection.json": "fdd548b9e404d40613560e150959198d4477fef8fbf1e5ec24e4116d4eab46f4",
+    "/workspace/ardesia-next/docs/sources/physics-2026-27/editorial/assessments.json": "43069e16472f620bad88d7a1b0478cf3fa8e7001e75144150f91444ca03288b5"
+  },
+  "problemCount": 4,
+  "choiceCount": 20,
+  "arithmeticCheckCount": 20,
+  "arithmeticFailures": [],
+  "P1P2findings": [],
+  "records": [
+    {
+      "problemId": "quiz-20261113-u6-01-a",
+      "correctChoice": "C",
+      "uniqueCorrectChoiceAfterSemanticReview": true,
+      "objectiveIds": [
+        "U6-01.06"
+      ],
+      "findings": []
+    },
+    {
+      "problemId": "quiz-20261113-u6-03-a",
+      "correctChoice": "A",
+      "uniqueCorrectChoiceAfterSemanticReview": true,
+      "objectiveIds": [
+        "U6-03.01"
+      ],
+      "findings": []
+    },
+    {
+      "problemId": "quiz-20261113-u4-02-a",
+      "correctChoice": "D",
+      "uniqueCorrectChoiceAfterSemanticReview": true,
+      "objectiveIds": [
+        "U4-02.01",
+        "U4-02.02"
+      ],
+      "findings": []
+    },
+    {
+      "problemId": "quiz-20261113-u7-01-a",
+      "correctChoice": "B",
+      "uniqueCorrectChoiceAfterSemanticReview": true,
+      "objectiveIds": [
+        "U7-01.03",
+        "U7-01.04",
+        "U7-01.05"
+      ],
+      "findings": []
+    }
+  ],
+  "arithmeticResults": [
+    {
+      "problemId": "quiz-20261113-u6-01-a",
+      "expression": "(-2e-9)*2000",
+      "expected": -4e-06,
+      "tolerance": 1e-17,
+      "actual": -4.000000000000001e-06,
+      "passed": true
+    },
+    {
+      "problemId": "quiz-20261113-u6-01-a",
+      "expression": "(-2e-9)*2000/1e-6",
+      "expected": -4,
+      "tolerance": 1e-12,
+      "actual": -4.000000000000001,
+      "passed": true
+    },
+    {
+      "problemId": "quiz-20261113-u6-01-a",
+      "expression": "2+(-4)*1",
+      "expected": -2,
+      "tolerance": 1e-12,
+      "actual": -2,
+      "passed": true
+    },
+    {
+      "problemId": "quiz-20261113-u6-01-a",
+      "expression": "2*1+0.5*(-4)*1**2",
+      "expected": 0,
+      "tolerance": 1e-12,
+      "actual": 0.0,
+      "passed": true
+    },
+    {
+      "problemId": "quiz-20261113-u6-01-a",
+      "expression": "-2/(-4)",
+      "expected": 0.5,
+      "tolerance": 1e-12,
+      "actual": 0.5,
+      "passed": true
+    },
+    {
+      "problemId": "quiz-20261113-u6-01-a",
+      "expression": "2*.5+0.5*(-4)*.5**2",
+      "expected": 0.5,
+      "tolerance": 1e-12,
+      "actual": 0.5,
+      "passed": true
+    },
+    {
+      "problemId": "quiz-20261113-u6-03-a",
+      "expression": "3e-9+(-3e-9)",
+      "expected": 0,
+      "tolerance": 1e-20,
+      "actual": 0.0,
+      "passed": true
+    },
+    {
+      "problemId": "quiz-20261113-u6-03-a",
+      "expression": "(-3e-9)+3e-9",
+      "expected": 0,
+      "tolerance": 1e-20,
+      "actual": 0.0,
+      "passed": true
+    },
+    {
+      "problemId": "quiz-20261113-u6-03-a",
+      "expression": "3e-9+(-3e-9)+3e-9",
+      "expected": 3e-09,
+      "tolerance": 1e-20,
+      "actual": 3e-09,
+      "passed": true
+    },
+    {
+      "problemId": "quiz-20261113-u6-03-a",
+      "expression": "3e-9+3e-9",
+      "expected": 6e-09,
+      "tolerance": 1e-20,
+      "actual": 6e-09,
+      "passed": true
+    },
+    {
+      "problemId": "quiz-20261113-u4-02-a",
+      "expression": "(-3)+(-3)",
+      "expected": -6,
+      "tolerance": 1e-12,
+      "actual": -6,
+      "passed": true
+    },
+    {
+      "problemId": "quiz-20261113-u4-02-a",
+      "expression": "2*3",
+      "expected": 6,
+      "tolerance": 1e-12,
+      "actual": 6,
+      "passed": true
+    },
+    {
+      "problemId": "quiz-20261113-u4-02-a",
+      "expression": "3*0-3*0",
+      "expected": 0,
+      "tolerance": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "problemId": "quiz-20261113-u4-02-a",
+      "expression": "-2*3e-3",
+      "expected": -0.006,
+      "tolerance": 1e-14,
+      "actual": -0.006,
+      "passed": true
+    },
+    {
+      "problemId": "quiz-20261113-u7-01-a",
+      "expression": "(30*(2**.5))/((2**.5)*1e-7)",
+      "expected": 300000000.0,
+      "tolerance": 1e-06,
+      "actual": 300000000.0,
+      "passed": true
+    },
+    {
+      "problemId": "quiz-20261113-u7-01-a",
+      "expression": "((2**.5)*1e-7)/(2**.5)",
+      "expected": 1e-07,
+      "tolerance": 1e-18,
+      "actual": 1e-07,
+      "passed": true
+    },
+    {
+      "problemId": "quiz-20261113-u7-01-a",
+      "expression": "8.85e-12*3e8*30**2",
+      "expected": 2.3895,
+      "tolerance": 1e-12,
+      "actual": 2.3895000000000004,
+      "passed": true
+    },
+    {
+      "problemId": "quiz-20261113-u7-01-a",
+      "expression": ".5*8.85e-12*3e8*(30*(2**.5))**2",
+      "expected": 2.3895,
+      "tolerance": 1e-12,
+      "actual": 2.3895000000000004,
+      "passed": true
+    },
+    {
+      "problemId": "quiz-20261113-u7-01-a",
+      "expression": ".5*8.85e-12*3e8*30**2",
+      "expected": 1.19475,
+      "tolerance": 1e-12,
+      "actual": 1.1947500000000002,
+      "passed": true
+    },
+    {
+      "problemId": "quiz-20261113-u7-01-a",
+      "expression": "8.85e-12*3e8*(30*(2**.5))**2",
+      "expected": 4.779,
+      "tolerance": 1e-12,
+      "actual": 4.779000000000001,
+      "passed": true
+    }
+  ],
+  "independentRecalculations": {
+    "u6-01": {
+      "accelerationM_s2": -4.000000000000001,
+      "stopTimeS": 0.4999999999999999,
+      "turnPositionM": 0.4999999999999999,
+      "finalVelocityM_s": -2.000000000000001,
+      "finalPositionM": -4.440892098500626e-16,
+      "initialAndFinalKineticEnergyJ": 2e-06,
+      "fieldWorkToTurnJ": -2e-06
+    },
+    "u6-03": {
+      "pointChargeC": 3e-09,
+      "innerSurfaceChargeC": -3e-09,
+      "outerSurfaceChargeC": 3e-09,
+      "metalNetChargeC": 0,
+      "allSystemChargeC": 3e-09,
+      "invertedInnerChargeEnclosedC": 6e-09
+    },
+    "u4-02": {
+      "wave1AtTargetM": -0.003,
+      "wave2AtTargetM": -0.003,
+      "sumM": -0.006,
+      "initialVelocityAtOriginM_sForT1s": -0.03769911184307752,
+      "maxIdentityErrorM": 3.0357660829594124e-18,
+      "chosenIndependentGrid": {
+        "A_m": 0.003,
+        "lambda_m": 2,
+        "T_s": 1,
+        "mu_kg_m": 0.01,
+        "tension_N": 0.04,
+        "positionsPerTime": 400
+      },
+      "spatialEnergyCheck": [
+        {
+          "timeSeconds": 0,
+          "spatialMeanEnergyDensityJm": 3.5530575843921693e-06
+        },
+        {
+          "timeSeconds": 0.125,
+          "spatialMeanEnergyDensityJm": 3.5530575843921693e-06
+        },
+        {
+          "timeSeconds": 0.25,
+          "spatialMeanEnergyDensityJm": 3.5530575843921693e-06
+        },
+        {
+          "timeSeconds": 0.5,
+          "spatialMeanEnergyDensityJm": 3.5530575843921693e-06
+        },
+        {
+          "timeSeconds": 0.875,
+          "spatialMeanEnergyDensityJm": 3.5530575843921693e-06
+        }
+      ]
+    },
+    "u7-01": {
+      "EpeakV_m": 42.42640687119285,
+      "BpeakT": 1.4142135623730952e-07,
+      "B_rmsT": 1e-07,
+      "velocityFromPeakRatioM_s": 300000000.0,
+      "mixedRatioM_s": 212132034.35596424,
+      "intensityFromMagneticRmsW_m2": 2.3894999999999995,
+      "wrongRmsHalfFactorW_m2": 1.1947500000000002,
+      "wrongDoublingInsteadOfSqrt2VelocityM_s": 424264068.7119285,
+      "wrongDoublingInsteadOfSqrt2IntensityW_m2": 4.779000000000001
+    }
+  },
+  "comparison": {
+    "previousOriginals": 4,
+    "finalAssessments": 15,
+    "selectedBankRecordsIdentified": 22,
+    "distinctBankFamiliesInspected": 13
+  },
+  "status": "DRAFT",
+  "humanApproval": false,
+  "limits": [
+    "No exhaustive semantic originality or psychometric validation.",
+    "Arithmetic checks are supplemented by physical reasoning; the sums alone do not prove Gauss or wave dynamics.",
+    "No browser, widget, Core ordering or persistence execution included.",
+    "No shared source or author files modified."
+  ]
+}
