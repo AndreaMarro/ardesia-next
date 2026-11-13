@@ -5,81 +5,81 @@
     "units": 38,
     "objectives": 200,
     "bankSelected": 259,
-    "originalProblems": 69
+    "originalProblems": 79
   },
   "files": [
     {
       "file": "sf-2026-strumenti-meccanica.json",
-      "bytes": 757420,
-      "gzipBytes": 126976,
-      "sha256": "9c5e250f7dd79754e368a9ef1428fd68cd29e3cf37d69d3b026ade52fca32f83",
+      "bytes": 772361,
+      "gzipBytes": 131608,
+      "sha256": "023238c72b89e3cfdb529a3c80b4d969d271fd52cb15aea5ed7cd0d52eb66d35",
       "counts": {
         "objectives": 52,
         "practice": 59,
-        "originals": 9,
+        "originals": 11,
         "assessments": 52,
         "labs": 4
       },
-      "objects": 173
+      "objects": 175
     },
     {
       "file": "sf-2026-fluidi.json",
-      "bytes": 681490,
-      "gzipBytes": 111107,
-      "sha256": "12b1a0eb456e049def1130afc15ea218f1d472c84bffc228f16708bda4b38016",
+      "bytes": 695859,
+      "gzipBytes": 114812,
+      "sha256": "22227927f54bcf37382d02d18506fde7ad012827932c5b7fbb067cf603ba27e1",
       "counts": {
         "objectives": 26,
         "practice": 58,
-        "originals": 21,
+        "originals": 23,
         "assessments": 26,
         "labs": 4
       },
-      "objects": 137
+      "objects": 139
     },
     {
       "file": "sf-2026-termodinamica.json",
-      "bytes": 739544,
-      "gzipBytes": 116429,
-      "sha256": "c5b9c76088c2db581bf55b885bdc12c4061627c3bb1ae1dc0a2030ebb9509024",
+      "bytes": 754954,
+      "gzipBytes": 120468,
+      "sha256": "629da237ba9c059add7d23c7815d9b9a24184309f775351b595d02cd683b0cd5",
       "counts": {
         "objectives": 31,
         "practice": 66,
-        "originals": 20,
+        "originals": 22,
         "assessments": 31,
         "labs": 3
       },
-      "objects": 148
+      "objects": 150
     },
     {
       "file": "sf-2026-elettricita-magnetismo.json",
-      "bytes": 581468,
-      "gzipBytes": 103708,
-      "sha256": "6bcaa694a018c8dea1d842c849061db7d356f505df89dc0194323351bf0ac53f",
+      "bytes": 597624,
+      "gzipBytes": 107962,
+      "sha256": "d8d305d087bc0f9c967e140574a002b9d049eb12cf0a9afa76c3add7faa3d2a5",
       "counts": {
         "objectives": 33,
         "practice": 48,
-        "originals": 7,
+        "originals": 9,
         "assessments": 33,
         "labs": 3
       },
-      "objects": 129
+      "objects": 131
     },
     {
       "file": "sf-2026-onde-ottica-radiazioni.json",
-      "bytes": 937734,
-      "gzipBytes": 162569,
-      "sha256": "b37b551f23c37f263b675e26e5ec00aeb1c7e5946e4cc6add4bb18f1a7592feb",
+      "bytes": 953948,
+      "gzipBytes": 167496,
+      "sha256": "86cdfefb0d37850f17d42ee0fc9d3b70724b4bda29b608b09c4eb2ca4dc7875f",
       "counts": {
         "objectives": 58,
         "practice": 59,
-        "originals": 12,
+        "originals": 14,
         "assessments": 58,
         "labs": 6
       },
-      "objects": 198
+      "objects": 200
     }
   ],
-  "totalRawBytes": 3697656,
-  "totalGzipBytes": 620789,
+  "totalRawBytes": 3774746,
+  "totalGzipBytes": 642346,
   "note": "Static JSON course materials, fetched only on explicit import; not JavaScript. Full data costs shown separately from measured runtime budgets."
 }

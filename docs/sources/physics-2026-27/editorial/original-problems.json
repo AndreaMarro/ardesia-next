@@ -1369,5 +1369,526 @@
     "noveltyNote": "Un dato privo del segno ammette due configurazioni da ricostruire; la verifica sperimentale e il passaggio attraverso il fuoco impediscono una falsa interpolazione geometrica.",
     "status": "DRAFT",
     "humanApproval": false
+  },
+  {
+    "id": "quiz-20261113-u1-01-a",
+    "unitId": "sf-2026-u1-01",
+    "title": "Il conteggio utile richiede di sottrarre il fondo",
+    "prompt": "Un contatore didattico registra, nelle stesse condizioni, un tasso totale di 4,8·10⁶ conteggi/min e un tasso di fondo di 4,2·10⁶ conteggi/min. Per questo modello considera i tassi costanti e i valori esatti, senza fluttuazioni statistiche; il contributo utile è il totale meno il fondo. Quanti conteggi utili corrispondono a un intervallo di 0,15 s, e qual è l’ordine di grandezza di questo numero? Definisci l’ordine di grandezza come la potenza di dieci più vicina sulla scala logaritmica: la soglia fra 10ⁿ e 10ⁿ⁺¹ è √10·10ⁿ, con √10≈3,162.",
+    "level": "medio",
+    "objectiveIds": [
+      "U1-01.01",
+      "U1-01.02",
+      "U1-01.03"
+    ],
+    "solution": "1. Si sottraggono tassi riferiti allo stesso intervallo unitario: (4,8−4,2)·10⁶=0,6·10⁶=6,0·10⁵ conteggi/min. Il fondo è già incluso nel totale: non va sommato.\n2. L’intervallo è 0,15/60=0,0025 min=2,5·10⁻³ min. Il prodotto è N=(6,0·10⁵)(2,5·10⁻³)=15·10²=1,5·10³ conteggi. Le unità minuto si cancellano: tasso per tempo restituisce un numero di conteggi, non un nuovo tasso.\n3. Il coefficiente normalizzato 1,5 è inferiore a √10: l’ordine di grandezza richiesto è 10³. Non si arrotonda separatamente il tasso totale prima di togliere il fondo.\n4. Controllo indipendente: in 0,15 s i conteggi totali sono 12000 e quelli di fondo 10500; la differenza è 1500. Il contributo utile è un ottavo del totale, coerentemente con (4,8−4,2)/4,8=1/8. La precisione qui deriva dalle ipotesi del modello; non è una stima dell’incertezza di una misura reale.",
+    "noveltyNote": "Sottrazione di un fondo prima dell’integrazione temporale e doppio controllo del conteggio. È diverso dal rapporto di tempi della banca e dall’emettitore intermittente: qui non vi è duty cycle e il nodo è il contributo utile fra due tassi vicini.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce5f59365fd540bafbb58ab3ce6849d680",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confronto con obiettivi, originali, verifiche finali e famiglie selezionate della stessa unità; non è un confronto esaustivo con tutto il patrimonio legacy"
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "1,2·10⁴ conteggi; ordine 10⁴.",
+        "feedback": "Hai integrato il tasso totale senza sottrarre il fondo. 4,8·10⁶·0,15/60=12000 è il conteggio lordo, non quello utile."
+      },
+      {
+        "id": "B",
+        "text": "2,25·10⁴ conteggi; ordine 10⁴.",
+        "feedback": "Questo valore nasce sommando totale e fondo. Il fondo è già compreso nella lettura totale; il segnale utile richiede una sottrazione fra tassi con le stesse unità."
+      },
+      {
+        "id": "C",
+        "text": "1,5·10³ conteggi; ordine 10³.",
+        "feedback": "La sottrazione dà 6·10⁵ conteggi/min; moltiplicando per 2,5·10⁻³ min si ottengono 1500 conteggi. Il coefficiente 1,5 è sotto la soglia √10."
+      },
+      {
+        "id": "D",
+        "text": "9,0·10⁴ conteggi; ordine 10⁵.",
+        "feedback": "Hai moltiplicato il tasso espresso per minuto per il numero di secondi, senza dividere per 60. Il risultato è sessanta volte troppo grande."
+      },
+      {
+        "id": "E",
+        "text": "1,5·10³ conteggi; ordine 10⁴.",
+        "feedback": "Il conteggio è giusto, ma non l’ordine di grandezza secondo la convenzione dichiarata: 1,5<√10, quindi si sceglie 10³, non 10⁴."
+      }
+    ],
+    "correctChoice": "C"
+  },
+  {
+    "id": "quiz-20261113-u2-04-a",
+    "unitId": "sf-2026-u2-04",
+    "title": "Le velocità misurate rivelano un impulso esterno",
+    "prompt": "Due carrelli si urtano lungo un asse e restano uniti. Immediatamente prima dell’urto il carrello A ha massa 2,0 kg e velocità +3,0 m/s; B ha massa 1,0 kg e velocità −4,0 m/s. Subito dopo, il complesso di massa 3,0 kg ha velocità misurata +1,0 m/s. Considera esatti questi dati nello stesso riferimento inerziale, senza perdita di massa. Non è stato stabilito se l’impulso esterno orizzontale sia trascurabile. Quale conclusione è necessaria per il sistema formato dai due carrelli durante l’urto?",
+    "level": "medio",
+    "objectiveIds": [
+      "U2-04.01",
+      "U2-04.02",
+      "U2-04.03",
+      "U2-04.04"
+    ],
+    "solution": "1. La quantità di moto va sommata con i segni: p_i=(2,0)(+3,0)+(1,0)(−4,0)=+2,0 kg·m/s. Dopo l’urto p_f=(3,0)(+1,0)=+3,0 kg·m/s.\n2. Il teorema dell’impulso per entrambi i carrelli dà J_ext=p_f−p_i=+1,0 kg·m/s=+1,0 N·s. Le forze interne di contatto non possono produrre questa variazione della quantità di moto totale. I dati richiedono quindi un impulso esterno non nullo verso il verso positivo.\n3. Controllo: se il sistema avesse impulso esterno nullo, la velocità comune sarebbe 2/3 m/s, diversa dal valore assegnato. Non è lecito imporre la conservazione della quantità di moto solo perché i carrelli restano uniti.\n4. Le energie cinetiche sono K_i=17 J e K_f=1,5 J. La loro differenza −15,5 J non rende impossibile l’urto. Senza conoscere il lavoro esterno non si può attribuire tutta la diminuzione a dissipazione interna: un impulso fissa una variazione di quantità di moto, non da solo il lavoro.",
+    "noveltyNote": "Il quiz usa due velocità iniziali opposte e una velocità finale misurata per diagnosticare il confine del sistema e un impulso esterno necessario. Non ripete il segnale triangolare del respingente né l’urto con bersaglio fermo della banca.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce5f59365fd540bafbb58ab3ce6849d680",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confronto con obiettivi, originali, verifiche finali e famiglie selezionate della stessa unità; non è un confronto esaustivo con tutto il patrimonio legacy"
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "È necessario un impulso esterno orizzontale di +1,0 N·s.",
+        "feedback": "La differenza p_f−p_i è +3−(+2)=+1 kg·m/s. Per il sistema dei due carrelli è l’impulso esterno, perché le forze interne non cambiano la quantità di moto totale."
+      },
+      {
+        "id": "B",
+        "text": "L’impulso esterno è nullo: basta che i carrelli restino attaccati.",
+        "feedback": "Restare uniti descrive l’urto, non l’isolamento. Con impulso esterno nullo la velocità comune sarebbe +2/3 m/s, incompatibile con il dato +1,0 m/s."
+      },
+      {
+        "id": "C",
+        "text": "È necessario un impulso esterno orizzontale di −1,0 N·s.",
+        "feedback": "Hai invertito la differenza. L’impulso è quantità di moto finale meno iniziale: +3−(+2), non +2−(+3)."
+      },
+      {
+        "id": "D",
+        "text": "È necessario un impulso esterno orizzontale di +3,0 N·s.",
+        "feedback": "+3 kg·m/s è la quantità di moto finale. L’impulso coincide con essa soltanto se quella iniziale è nulla; qui p_i=+2 kg·m/s."
+      },
+      {
+        "id": "E",
+        "text": "I dati sono impossibili perché l’energia cinetica diminuisce.",
+        "feedback": "Un urto in cui i corpi restano uniti può ridurre l’energia cinetica. Il bilancio richiede l’impulso esterno indicato; non richiede la conservazione separata dell’energia cinetica."
+      }
+    ],
+    "correctChoice": "A"
+  },
+  {
+    "id": "quiz-20261113-u3-02-a",
+    "unitId": "sf-2026-u3-02",
+    "title": "Spostare un carico dal galleggiante al fondo",
+    "prompt": "In un recipiente con pareti verticali e area interna orizzontale A=0,020 m² galleggia liberamente una piccola zattera rigida impermeabile. Sulla zattera, fuori dall’acqua, si trova un blocchetto di massa 0,30 kg e densità 3000 kg/m³. Si sposta soltanto il blocchetto e lo si lascia sul fondo, completamente immerso. Confronta i due stati di quiete. L’acqua ha densità costante 1000 kg/m³; non esce acqua, zattera e blocchetto non assorbono liquido, la zattera continua a galleggiare senza toccare fondo o pareti. Trascura tensione superficiale, volume degli strumenti e variazioni termiche. Come cambia il livello dell’acqua?",
+    "level": "difficile",
+    "objectiveIds": [
+      "U3-02.03",
+      "U3-02.04"
+    ],
+    "solution": "1. Quando il blocchetto è sulla zattera, il suo peso richiede un volume aggiuntivo di acqua spostata V_prima=m/ρ_acqua=0,30/1000=3,0·10⁻⁴ m³. Il volume spostato per sostenere la sola zattera è uguale nei due stati e si elimina nel confronto.\n2. Sul fondo il blocchetto occupa nell’acqua soltanto il proprio volume geometrico V_dopo=m/ρ_blocco=0,30/3000=1,0·10⁻⁴ m³. Non galleggia: parte del suo peso è sostenuta dal fondo.\n3. La variazione del volume totale occupato sotto il livello è ΔV=V_dopo−V_prima=−2,0·10⁻⁴ m³. Per pareti verticali Δh=ΔV/A=−0,010 m=−1,0 cm: il livello si abbassa.\n4. Controllo dimensionale: m³/m²=m. Controllo fisico: per un carico più denso dell’acqua m/ρ_blocco è minore di m/ρ_acqua; il segno deve essere negativo. La massa totale presente nel recipiente non cambia, ma il volume di acqua spostata non dipende dalla sola massa quando una parte è sostenuta dal fondo.",
+    "noveltyNote": "Confronta due modi di sostenere lo stesso carico e la variazione di livello dell’intero recipiente. Distingue sostegno idrostatico e sostegno del fondo; non è un nuovo valore del carico massimo, del pescaggio o della tensione del filo dei problemi già presenti.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce5f59365fd540bafbb58ab3ce6849d680",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confronto con obiettivi, originali, verifiche finali e famiglie selezionate della stessa unità; non è un confronto esaustivo con tutto il patrimonio legacy"
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "Il livello non cambia.",
+        "feedback": "La massa totale resta uguale, ma dopo lo spostamento il fondo sostiene parte del peso del blocchetto. Il suo volume immerso è geometrico, non più il volume necessario a sostenerne tutto il peso."
+      },
+      {
+        "id": "B",
+        "text": "Il livello si alza di 1,0 cm.",
+        "feedback": "Il modulo della differenza è corretto, ma il segno è invertito: passando al fondo il carico sposta 100 mL anziché i 300 mL aggiuntivi richiesti sulla zattera."
+      },
+      {
+        "id": "C",
+        "text": "Il livello si abbassa di 1,5 cm.",
+        "feedback": "Hai tolto i 300 mL iniziali senza aggiungere i 100 mL occupati dal blocchetto sul fondo. La variazione netta è −200 mL."
+      },
+      {
+        "id": "D",
+        "text": "Il livello si abbassa di 1,0 cm.",
+        "feedback": "Il carico richiede prima 300 mL di acqua spostata, poi occupa 100 mL. La diminuzione di 2·10⁻⁴ m³ divisa per 0,020 m² dà −0,010 m."
+      },
+      {
+        "id": "E",
+        "text": "Il livello si alza di 0,5 cm.",
+        "feedback": "Hai contato soltanto i 100 mL del blocchetto immerso, dimenticando che la zattera scaricata emerge e smette di spostare i 300 mL dovuti al carico."
+      }
+    ],
+    "correctChoice": "D"
+  },
+  {
+    "id": "quiz-20261113-u3-04-a",
+    "unitId": "sf-2026-u3-04",
+    "title": "Una velocità fuori asse non è la velocità media",
+    "prompt": "Un liquido newtoniano incomprimibile scorre in un tubo rigido circolare di raggio interno R=1,0 mm. Il flusso è stazionario, laminare e completamente sviluppato, con parete ferma e aderenza. Il profilo è u(s)=u_max[1−(s/R)²], dove s è la distanza dall’asse; per questo profilo la velocità media sulla sezione è u_max/2. Una sonda ideale, che non altera il moto, misura u=6,0 cm/s nel punto s=R/2. Qual è la portata volumetrica Q? Le risposte sono espresse in mL/s e possono conservare il fattore π.",
+    "level": "medio",
+    "objectiveIds": [
+      "U3-04.02"
+    ],
+    "solution": "1. La posizione della sonda conta: a s=R/2, il profilo fornisce u=(1−1/4)u_max=3u_max/4. Quindi u_max=6,0/(3/4)=8,0 cm/s.\n2. La media sulla sezione è u_media=u_max/2=4,0 cm/s=0,040 m/s. Non coincide né con i 6,0 cm/s locali né con il massimo sull’asse.\n3. L’area è πR²=π(10⁻³ m)²=π·10⁻⁶ m². La portata è Q=A u_media=4,0π·10⁻⁸ m³/s=0,040π mL/s, circa 0,126 mL/s, usando 1 m³=10⁶ mL.\n4. Controllo dimensionale: m²·m/s=m³/s. Inoltre Q/A deve risultare minore della velocità locale misurata in R/2, perché in questo profilo 1/2<3/4. Un valore Q=A·6,0 cm/s tratterebbe tutta la sezione come se scorresse alla velocità della sonda; non sarebbe una media pesata sull’area.",
+    "noveltyNote": "Ricostruisce massimo e media da una misura fuori asse prima di determinare la portata. I casi selezionati trattano asse/parete o Q=A u_max; qui il dato iniziale è una velocità locale intermedia, non uno dei due estremi.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce5f59365fd540bafbb58ab3ce6849d680",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confronto con obiettivi, originali, verifiche finali e famiglie selezionate della stessa unità; non è un confronto esaustivo con tutto il patrimonio legacy"
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "Q=0,060π mL/s.",
+        "feedback": "Hai usato direttamente la velocità locale della sonda come media. A R/2 la velocità vale 3/4 del massimo, mentre la media vale 1/2 del massimo."
+      },
+      {
+        "id": "B",
+        "text": "Q=0,080π mL/s.",
+        "feedback": "Hai trovato correttamente u_max=8,0 cm/s, ma poi l’hai usata sull’intera sezione. La velocità media del profilo assegnato è la metà."
+      },
+      {
+        "id": "C",
+        "text": "Q=0,030π mL/s.",
+        "feedback": "Hai dimezzato i 6,0 cm/s come se la sonda fosse sull’asse. Prima devi ricavare il massimo dal fattore 3/4 previsto nella posizione R/2."
+      },
+      {
+        "id": "D",
+        "text": "Q=4,0π mL/s.",
+        "feedback": "Il risultato è cento volte troppo grande: 4,0 cm/s sono 0,040 m/s, non 4,0 m/s. Le unità della velocità devono essere coerenti con il raggio in metri."
+      },
+      {
+        "id": "E",
+        "text": "Q=0,040π mL/s.",
+        "feedback": "Dalla misura ricavi u_max=8,0 cm/s e u_media=4,0 cm/s. Il prodotto per π(1,0 mm)² dà 0,040π mL/s."
+      }
+    ],
+    "correctChoice": "E"
+  },
+  {
+    "id": "quiz-20261113-u5-02-a",
+    "unitId": "sf-2026-u5-02",
+    "title": "Togliere il blocco cambia il bilancio della seconda miscela",
+    "prompt": "Due porzioni d’acqua hanno ciascuna capacità termica costante 200 J/K e temperatura iniziale 20 °C. Un blocco solido ha capacità 100 J/K e temperatura iniziale 80 °C. Confronta due esperimenti con questi stessi dati iniziali. Nell’esperimento A il blocco viene prima messo a contatto soltanto con la prima porzione d’acqua; raggiunto l’equilibrio, si estrae il blocco e si aggiunge la seconda porzione alla prima. Nell’esperimento B si mettono subito a contatto blocco e tutte e due le porzioni d’acqua. Recipienti e strumenti hanno capacità trascurabile, i complessi sono termicamente isolati durante ogni scambio, non vi sono cambiamenti di fase; l’estrazione non scambia calore apprezzabile e non porta via acqua. Trascura lavoro e variazioni di energia cinetica o potenziale nel bilancio termico. Qual è la coppia delle temperature finali dell’acqua (T_A, T_B)?",
+    "level": "medio",
+    "objectiveIds": [
+      "U5-02.01",
+      "U5-02.02",
+      "U5-02.07"
+    ],
+    "solution": "1. Nella prima fase di A il bilancio è 100(T₁−80)+200(T₁−20)=0, da cui T₁=40 °C. Il blocco ha ceduto 4000 J e la prima acqua li ha ricevuti: i segni sono opposti.\n2. Estratto il blocco, rimangono due porzioni con uguale capacità, una a 40 °C e l’altra a 20 °C. La loro temperatura finale è T_A=(200·40+200·20)/400=30 °C. Non si può includere il blocco nel bilancio della seconda fase, perché non è più a contatto col sistema considerato.\n3. In B tutti i corpi partecipano fino alla fine: T_B=(100·80+200·20+200·20)/500=32 °C. Le capacità pesano le temperature; il numero di corpi non determina i pesi.\n4. Controllo indipendente rispetto a 20 °C: inizialmente il blocco ha 100·60=6000 J di energia termica in eccesso nel modello a capacità costante. In A si estrae a 40 °C, portando via 100·20=2000 J rispetto allo stesso riferimento. I 4000 J rimasti scaldano la capacità 400 J/K di 10 K. In B i 6000 J scaldano la capacità totale 500 J/K di 12 K. La differenza non viola il bilancio energetico: è cambiato il confine dei corpi che restano nel recipiente.",
+    "noveltyNote": "Confronta un contatto sequenziale con rimozione di un corpo e un contatto simultaneo. La differenza fra i risultati dipende dall’energia trasportata dal corpo rimosso; non è una permutazione dei dati della miscela a due corpi o della calibrazione del calorimetro.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce5f59365fd540bafbb58ab3ce6849d680",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confronto con obiettivi, originali, verifiche finali e famiglie selezionate della stessa unità; non è un confronto esaustivo con tutto il patrimonio legacy"
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "(T_A,T_B)=(32 °C,32 °C).",
+        "feedback": "Questa coppia applica a entrambi i casi il bilancio di tre corpi sempre presenti. In A il blocco esce a 40 °C e porta con sé energia; la seconda fase contiene soltanto le due acque."
+      },
+      {
+        "id": "B",
+        "text": "(T_A,T_B)=(30 °C,32 °C).",
+        "feedback": "In A il primo equilibrio è a 40 °C, poi due capacità uguali a 40 e 20 °C portano a 30 °C. In B la media pesata con capacità 100, 200 e 200 J/K dà 32 °C."
+      },
+      {
+        "id": "C",
+        "text": "(T_A,T_B)=(40 °C,32 °C).",
+        "feedback": "40 °C è il risultato della prima fase di A, prima di aggiungere la seconda acqua. L’aggiunta della porzione fredda abbassa ulteriormente la temperatura."
+      },
+      {
+        "id": "D",
+        "text": "(T_A,T_B)=(30 °C,50 °C).",
+        "feedback": "Il primo risultato è giusto. Per B non si può fare (80+20)/2: il blocco ha capacità 100 J/K, mentre tutta l’acqua ha capacità 400 J/K. L’equilibrio è molto più vicino a 20 °C."
+      },
+      {
+        "id": "E",
+        "text": "(T_A,T_B)=(35 °C,40 °C).",
+        "feedback": "Questi valori derivano da medie aritmetiche delle temperature: prima (80+20)/2, poi la media con 20; in B la media di tre temperature. Le medie vanno invece pesate con le capacità, che non sono tutte uguali."
+      }
+    ],
+    "correctChoice": "B"
+  },
+  {
+    "id": "quiz-20261113-u5-04-a",
+    "unitId": "sf-2026-u5-04",
+    "title": "Il verso del ciclo determina il segno del lavoro",
+    "prompt": "Una quantità fissa di gas ideale percorre quasistaticamente il ciclo A→B→C→A nel piano (V,p). Gli stati sono A: V=1,0 L, p=100 kPa; B: V=3,0 L, p=100 kPa; C: V=3,0 L, p=300 kPa. Il tratto C→A è il segmento rettilineo che unisce i due stati nel diagramma. L’unico lavoro è quello di volume; non cambiano complessivamente energie cinetiche o potenziali macroscopiche. Usa Q positivo se ricevuto dal gas e W positivo se compiuto dal gas, quindi ΔU=Q−W. Quale coppia (W_ciclo,Q_ciclo) è corretta?",
+    "level": "medio",
+    "objectiveIds": [
+      "U5-04.01",
+      "U5-04.02",
+      "U5-04.03",
+      "U5-04.06",
+      "U5-04.07"
+    ],
+    "solution": "1. Lungo A→B l’espansione è isobara: W_AB=100 kPa·(3−1) L=+200 J. Si usa 1 kPa·L=1000 Pa·10⁻³ m³=1 J.\n2. B→C è isocoro: dV=0 e W_BC=0, anche se pressione e temperatura cambiano.\n3. C→A è una compressione lungo un segmento rettilineo. La pressione media rispetto al volume è (300+100)/2=200 kPa; il volume varia di −2 L. Quindi W_CA=−400 J. Il lavoro totale è +200+0−400=−200 J.\n4. Sul ciclo il gas torna allo stesso stato, perciò ΔU_ciclo=0. Il primo principio impone Q_ciclo=W_ciclo=−200 J. Il gas riceve complessivamente 200 J di lavoro e cede 200 J di calore: non fornisce lavoro netto come motore.\n5. Controllo geometrico: il modulo dell’area triangolare è (1/2)(2 L)(200 kPa)=200 J. La compressione avviene a pressioni maggiori dell’espansione, quindi il lavoro fatto dal gas è negativo. Tornare allo stato iniziale azzera la variazione di energia interna, non i trasferimenti netti di calore e lavoro.",
+    "noveltyNote": "Il ciclo triangolare include una compressione a pressione variabile e richiede di ricostruire il segno dell’area orientata. Non replica i due cammini rettangolari fra stati assegnati né il lavoro di una singola isobara presente in banca.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce5f59365fd540bafbb58ab3ce6849d680",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confronto con obiettivi, originali, verifiche finali e famiglie selezionate della stessa unità; non è un confronto esaustivo con tutto il patrimonio legacy"
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "(+200 J,+200 J).",
+        "feedback": "L’area ha questo modulo, ma il verso è invertito: la compressione avviene mediamente a pressione più alta dell’espansione. Il lavoro netto del gas è negativo."
+      },
+      {
+        "id": "B",
+        "text": "(0 J,0 J).",
+        "feedback": "Il ritorno allo stato iniziale impone ΔU=0. Calore e lavoro non sono funzioni di stato: possono avere valori netti non nulli e uguali fra loro sul ciclo."
+      },
+      {
+        "id": "C",
+        "text": "(−200 J,−200 J).",
+        "feedback": "Il lavoro è +200 J nell’espansione, zero nell’isocora e −400 J nella compressione. Sul ciclo ΔU=0, quindi anche il calore netto è −200 J."
+      },
+      {
+        "id": "D",
+        "text": "(−400 J,−400 J).",
+        "feedback": "Hai conservato soltanto il lavoro della compressione C→A. Devi sommare anche i +200 J forniti dal gas durante A→B."
+      },
+      {
+        "id": "E",
+        "text": "(−200 J,+200 J).",
+        "feedback": "Il lavoro è corretto, ma il segno del calore viola il primo principio: con ΔU=0 e convenzione ΔU=Q−W occorre Q=W, non Q=−W."
+      }
+    ],
+    "correctChoice": "C"
+  },
+  {
+    "id": "quiz-20261113-u6-01-a",
+    "unitId": "sf-2026-u6-01",
+    "title": "Tornare al punto iniziale non significa fermarsi",
+    "prompt": "Una piccola particella di carica q=−2,0 nC e massa m=1,0·10⁻⁶ kg si trova a x=0 con velocità iniziale vₓ=+2,0 m/s. Per tutto il moto considerato agisce soltanto un campo elettrico uniforme e costante Eₓ=+2000 N/C, esteso a tutta la traiettoria. Trascuriamo gravità, attrito, radiazione e perturbazione delle sorgenti. Quali sono lo spostamento Δx e la componente della velocità dopo 1,0 s?",
+    "level": "medio",
+    "objectiveIds": [
+      "U6-01.06"
+    ],
+    "solution": "1. Il campo è diretto verso +x, ma q è negativa: Fₓ=qEₓ=(−2,0·10⁻⁹)·2000=−4,0·10⁻⁶ N. L’accelerazione costante è aₓ=Fₓ/m=−4,0 m/s².\n2. Dopo 1,0 s, vₓ=v₀ₓ+aₓt=2,0−4,0=−2,0 m/s. Il segno negativo non indica velocità nulla: la particella si muove verso −x.\n3. Lo spostamento è Δx=v₀ₓt+aₓt²/2=2,0−2,0=0 m. La posizione iniziale viene raggiunta con velocità opposta a quella iniziale. È coerente l’alternativa C.\n4. Controllo indipendente: la particella si ferma soltanto a t=−v₀ₓ/aₓ=0,50 s, quando x=0,50 m. Nel mezzo secondo successivo torna da x=0,50 a x=0 accelerando verso sinistra. La simmetria del moto restituisce lo stesso modulo finale della velocità.\nLa forza non si inverte quando cambia il verso del moto: dipende da q ed E, qui costanti. I primi 0,50 s diminuiscono l’energia cinetica; i successivi la riportano al valore iniziale. Spostamento totale nullo e velocità finale nulla sono condizioni diverse.",
+    "noveltyNote": "Combina frenata, inversione del moto e ritorno alla posizione iniziale in campo uniforme: non è un cambio numerico del campo fra due cariche, del moto da fermo o della sola accelerazione presente nelle fonti.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce",
+      "contextPath": "docs/sources/physics-2026-27/editorial",
+      "attribution": "Testo originale composto con assistenza AI; revisione scientifica umana pendente.",
+      "notes": "Moto classico unidimensionale; campo uniforme esteso alla traiettoria, nessuna forza ulteriore. Mapping limitato al moto in campo uniforme. Feedback guidato, nessuna valutazione di competenza."
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "Δx=+2,0 m; vₓ=+2,0 m/s.",
+        "feedback": "Questa coppia descrive il moto uniforme senza forza. Qui qE è diverso da zero: anche se il campo non cambia nel tempo, produce accelerazione. Scrivi prima Fₓ=qEₓ, mantenendo il segno negativo della carica."
+      },
+      {
+        "id": "B",
+        "text": "Δx=0 m; vₓ=0 m/s.",
+        "feedback": "Hai identificato il ritorno alla posizione iniziale con l’arresto. L’arresto avviene a 0,50 s e a x=0,50 m; a 1,0 s la particella attraversa x=0 con velocità −2,0 m/s. Posizione e velocità sono dati indipendenti dello stato di moto."
+      },
+      {
+        "id": "C",
+        "text": "Δx=0 m; vₓ=−2,0 m/s.",
+        "feedback": "Il risultato rispetta entrambi i controlli: aₓ=−4,0 m/s², quindi vₓ(1 s)=−2,0 m/s, mentre i contributi +2,0 m e −2,0 m allo spostamento si cancellano. La particella è tornata al punto iniziale dopo aver invertito il moto."
+      },
+      {
+        "id": "D",
+        "text": "Δx=−2,0 m; vₓ=−2,0 m/s.",
+        "feedback": "La velocità finale è coerente, ma lo spostamento −2,0 m contiene soltanto aₓt²/2. Manca il contributo v₀ₓt=+2,0 m: la particella non parte da ferma."
+      },
+      {
+        "id": "E",
+        "text": "Δx=+4,0 m; vₓ=+6,0 m/s.",
+        "feedback": "Questi valori derivano da aₓ=+4,0 m/s², come per una carica positiva. Per la carica negativa assegnata la forza è opposta al campo. Il verso iniziale della velocità non decide il segno dell’accelerazione."
+      }
+    ],
+    "correctChoice": "C"
+  },
+  {
+    "id": "quiz-20261113-u6-03-a",
+    "unitId": "sf-2026-u6-03",
+    "title": "La carica nella cavità ridistribuisce quella del metallo",
+    "prompt": "Un guscio metallico chiuso, inizialmente neutro e isolato da terra, contiene una cavità. Dentro la cavità è mantenuta una carica puntiforme +3,0 nC, senza contatto con il metallo e mediante un supporto ideale che non trasferisce carica. Non vi sono altre cariche nella cavità; il metallo ha raggiunto l’equilibrio elettrostatico. Si ricorda una conseguenza di Gauss: una superficie chiusa interamente nello spessore del metallo, che racchiude la cavità, racchiude carica totale nulla perché lì E=0. Quale descrizione delle cariche totali sulle due superfici e del campo è coerente?",
+    "level": "medio",
+    "objectiveIds": [
+      "U6-03.01"
+    ],
+    "solution": "1. La carica puntiforme resta separata dal guscio: non ha consegnato al metallo i suoi +3,0 nC. Il guscio isolato conserva quindi carica totale zero.\n2. Una superficie gaussiana nel metallo circonda la carica puntiforme e tutta la faccia interna della cavità. La condizione fornita impone +3,0 nC+Q_interna=0, dunque Q_interna=−3,0 nC.\n3. La neutralità del metallo richiede Q_interna+Q_esterna=0: Q_esterna=+3,0 nC. Non è necessario che queste cariche siano distribuite uniformemente; i totali non dipendono da quella uniformità.\n4. Nel materiale metallico E=0 per equilibrio. La cavità, invece, contiene una carica: non si può estendere E=0 a tutta la cavità. Il campo deve avere flusso non nullo attraverso una piccola superficie che circondi soltanto la carica interna. È coerente l’alternativa A.\nControlli: la somma delle due cariche superficiali è zero; includendo anche la carica nella cavità, la carica totale del sistema è +3,0 nC. Nessuna carica è stata creata e nessun elettrone deve attraversare la cavità o passare a terra. Questo è un conduttore con cariche mobili, non una conduzione libera attraverso un dielettrico.",
+    "noveltyNote": "Usa una cavità chiusa con carica interna e due superfici, anziché la bacchetta esterna, il contatto fra sfere o la sequenza di messa a terra già presente. La conseguenza di Gauss necessaria è fornita nel prompt.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce",
+      "contextPath": "docs/sources/physics-2026-27/editorial",
+      "attribution": "Testo originale composto con assistenza AI; revisione scientifica umana pendente.",
+      "notes": "Guscio conduttore chiuso e isolato, nessuna carica trasferita per contatto o terra, equilibrio nel materiale; carica interna non a contatto. La conseguenza di Gauss è richiamata come supporto al ragionamento di induzione. Non si afferma uniformità delle densità superficiali né campo non nullo in ogni punto della cavità."
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "Superficie interna −3,0 nC; esterna +3,0 nC; E=0 nel metallo, ma non in tutta la cavità.",
+        "feedback": "Le due condizioni sono diverse e compatibili: Gauss impone −3,0 nC sulla faccia interna; la neutralità del guscio impone +3,0 nC su quella esterna. E=0 riguarda il materiale conduttore. La carica presente nella cavità impedisce che il campo sia nullo ovunque anche lì."
+      },
+      {
+        "id": "B",
+        "text": "Entrambe le superfici hanno carica totale zero; E=0 sia nel metallo sia in tutta la cavità.",
+        "feedback": "Neutro non significa privo di separazione di carica. Se la faccia interna avesse carica zero, la superficie gaussiana nel metallo racchiuderebbe +3,0 nC, in contrasto con il campo nullo. La schermatura da sorgenti esterne non elimina la sorgente collocata nella cavità."
+      },
+      {
+        "id": "C",
+        "text": "Superficie interna +3,0 nC; esterna −3,0 nC; E=0 nel metallo.",
+        "feedback": "La somma delle cariche del guscio è zero, ma il segno interno è invertito: carica puntiforme e faccia interna darebbero insieme +6,0 nC. Il flusso attraverso la superficie nel metallo non potrebbe allora essere nullo. Neutralità totale da sola non basta."
+      },
+      {
+        "id": "D",
+        "text": "Superficie interna −3,0 nC; esterna zero; E=0 nel metallo.",
+        "feedback": "Il totale interno è corretto per Gauss, ma il guscio acquisterebbe −3,0 nC netti senza contatto o messa a terra. Gli elettroni che si accumulano sulla faccia interna provengono dal metallo stesso: altrove rimane un eccesso positivo uguale."
+      },
+      {
+        "id": "E",
+        "text": "Superficie interna −3,0 nC; esterna +3,0 nC; E è necessariamente diverso da zero nel materiale metallico.",
+        "feedback": "Le cariche totali sono coerenti, ma il campo indicato contraddice l’equilibrio elettrostatico del conduttore. Un campo residuo nel materiale metterebbe in moto le cariche libere. La presenza di campo nella cavità non richiede campo nello spessore del metallo."
+      }
+    ],
+    "correctChoice": "A"
+  },
+  {
+    "id": "quiz-20261113-u4-02-a",
+    "unitId": "sf-2026-u4-02",
+    "title": "Una corda diritta in un istante può già essere in moto",
+    "prompt": "Su una corda nel regime lineare si sovrappongono due onde armoniche trasversali che viaggiano in versi opposti: y₁(x,t)=A sin(kx−ωt) e y₂(x,t)=−A sin(kx+ωt). L’ampiezza è A=3,0 mm, k=2π/λ e ω=2π/T, con λ e T positivi. A t=0 la somma degli spostamenti è nulla in ogni punto. Quali sono lo spostamento risultante del punto x=0 a t=T/4 e l’interpretazione corretta di quel profilo iniziale nullo? Le formule descrivono l’intero intervallo considerato, senza smorzamento.",
+    "level": "medio",
+    "objectiveIds": [
+      "U4-02.01",
+      "U4-02.02"
+    ],
+    "solution": "1. Il principio di sovrapposizione si applica allo stesso punto e allo stesso istante. A x=0 e t=T/4 il termine ωt vale π/2.\n2. La prima onda dà y₁=A sin(−π/2)=−A. La seconda dà y₂=−A sin(+π/2)=−A. Il segno esterno nella seconda formula è essenziale: i due contributi sono entrambi negativi.\n3. La somma è −2A=−6,0 mm. L’alternativa D associa questo valore alla corretta interpretazione: la cancellazione del profilo iniziale è istantanea, non permanente.\n4. Controllo sull’intera funzione: sin(kx−ωt)−sin(kx+ωt)=−2 cos(kx) sin(ωt), quindi y=−2A cos(kx) sin(ωt). In x=0 il punto oscilla con ampiezza 2A: non è un nodo. All’istante iniziale passa per l’equilibrio.\nNon si crea energia nel passaggio da un profilo diritto a uno deformato. Già a t=0 la velocità locale può essere non nulla: in x=0 vale −2Aω. L’energia cinetica non si ricava dal solo spostamento di quell’istante. Le onde restano descritte dalle espressioni assegnate: non si annientano per sempre quando le ordinate si cancellano.",
+    "noveltyNote": "Confronta la cancellazione istantanea di un profilo completo con l’evoluzione di due onde contropropaganti. È diverso dalla somma di onde concordi, dall’inversione di fase di una sola onda e dalla ricostruzione delle ampiezze da massimo/minimo.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce",
+      "contextPath": "docs/sources/physics-2026-27/editorial",
+      "attribution": "Testo originale composto con assistenza AI; revisione scientifica umana pendente.",
+      "notes": "Onde scalari trasversali, stessa frequenza e ampiezza, versi opposti, corda lineare senza smorzamento. Identità trigonometrica e valori sin(±π/2) esplicitati nella soluzione; checks aritmetici verificano i coefficienti, non fingono una verifica dinamica sperimentale. Velocità iniziale −2Aω citata come controllo concettuale."
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "0 mm; x=0 è un nodo permanente perché il profilo iniziale era nullo.",
+        "feedback": "Un nodo deve avere spostamento nullo a ogni istante. Qui y(0,t)=−2A sin(ωt): vale zero a t=0 ma −2A a t=T/4. Osservare una sola fotografia della corda non basta a riconoscere i nodi."
+      },
+      {
+        "id": "B",
+        "text": "−3,0 mm; dopo la cancellazione iniziale rimane soltanto la prima onda.",
+        "feedback": "La cancellazione non elimina uno dei contributi. Le due espressioni restano valide e, nell’istante richiesto, valgono entrambe −3,0 mm. Conservare una sola onda viola il modello di sovrapposizione assegnato."
+      },
+      {
+        "id": "C",
+        "text": "+6,0 mm; i due contributi sono entrambi positivi nell’istante richiesto.",
+        "feedback": "Hai perso un segno temporale o il segno esterno della seconda onda. In x=0: sin(−π/2)=−1 e −sin(+π/2)=−1. La somma ha modulo 6,0 mm ma verso negativo rispetto all’asse degli spostamenti."
+      },
+      {
+        "id": "D",
+        "text": "−6,0 mm; il profilo nullo a t=0 descrive una cancellazione istantanea, non una quiete permanente.",
+        "feedback": "Entrambe le ordinate valgono −A, dunque la somma è −2A. Il punto x=0 attraversa lo zero iniziale con velocità non nulla e un quarto di periodo dopo raggiunge −6,0 mm. Zero spostamento non significa zero energia del sistema."
+      },
+      {
+        "id": "E",
+        "text": "−6,0 mm; dal profilo iniziale nullo è stata creata energia meccanica.",
+        "feedback": "Lo spostamento è corretto, ma l’inferenza energetica no. Il profilo iniziale non specifica velocità nulle; qui la corda è già in moto. In un sistema ondulatorio conservativo energia cinetica ed energia associata alla deformazione possono scambiarsi senza produzione di energia."
+      }
+    ],
+    "correctChoice": "D"
+  },
+  {
+    "id": "quiz-20261113-u7-01-a",
+    "unitId": "sf-2026-u7-01",
+    "title": "Confrontare un valore efficace con un picco altera il rapporto",
+    "prompt": "Una singola onda elettromagnetica piana armonica, polarizzata linearmente, si propaga nel vuoto. Due strumenti correttamente calibrati riportano per la stessa onda E_eff=30,0 V/m (valore efficace del campo elettrico) e B₀=√2·10⁻⁷ T (ampiezza di picco del campo magnetico). Sono fornite E₀=√2 E_eff, E₀/B₀=c e I_media=ε₀cE₀²/2, con c≈3,00·10⁸ m/s ed ε₀≈8,85·10⁻¹² F/m. Quale interpretazione della velocità e dell’intensità media è coerente con entrambe le letture?",
+    "level": "medio",
+    "objectiveIds": [
+      "U7-01.03",
+      "U7-01.04",
+      "U7-01.05"
+    ],
+    "solution": "1. Le letture usano convenzioni diverse: E_eff è efficace, mentre B₀ è di picco. Prima di confrontarle occorre scegliere lo stesso tipo di ampiezza.\n2. E₀=30,0√2 V/m. Quindi E₀/B₀=(30,0√2)/(√2·10⁻⁷)=3,00·10⁸ m/s=c. Il rapporto E_eff/B₀=c/√2 mescola efficace e picco e non è la velocità dell’onda.\n3. Inserendo E₀²=2E_eff² nell’espressione fornita, I_media=ε₀cE_eff². Si ottiene 8,85·10⁻¹²·3,00·10⁸·30,0²=2,3895 W/m²≈2,39 W/m². L’alternativa B è coerente.\n4. Controllo indipendente: B_eff=B₀/√2=10⁻⁷ T, dunque E_eff/B_eff=30,0/10⁻⁷=c. Il rapporto torna c sia usando due picchi sia usando due valori efficaci.\nIl fattore 1/2 della formula con ampiezza di picco è già incluso quando si passa al quadrato del valore efficace. Usarlo una seconda volta dimezza l’intensità. I dati non indicano un diverso mezzo di propagazione o una diversa velocità nel vuoto: indicano soltanto due convenzioni di misura.",
+    "noveltyNote": "Diagnosi di una falsa incompatibilità fra due strumenti che riportano picco ed efficace: distinto dall’animazione con verso E×B errato, dal passaggio di mezzo e dal semplice calcolo diretto di intensità da un picco.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce",
+      "contextPath": "docs/sources/physics-2026-27/editorial",
+      "attribution": "Testo originale composto con assistenza AI; revisione scientifica umana pendente.",
+      "notes": "Onda piana armonica singola, polarizzazione lineare, vuoto. E_eff efficace e B₀ picco espliciti; relazione intensità fornita per il modello appropriato. c ed ε₀ approssimati dichiarati, nessuna deduzione sulla frequenza non fornita."
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "Velocità c/√2 e intensità circa 1,19 W/m².",
+        "feedback": "Il rapporto E_eff/B₀ mescola efficace e picco, quindi non misura la velocità. Inoltre 1,19 W/m² conserva impropriamente il fattore 1/2 dopo aver usato il campo efficace. Converti entrambe le ampiezze alla stessa convenzione prima del confronto."
+      },
+      {
+        "id": "B",
+        "text": "Velocità c e intensità circa 2,39 W/m²; le letture sono compatibili.",
+        "feedback": "E₀=30√2 V/m e B₀=√2·10⁻⁷ T danno E₀/B₀=c. Per l’intensità si può usare direttamente ε₀cE_eff²: il fattore 1/2 è già compensato dal passaggio da picco a valore efficace."
+      },
+      {
+        "id": "C",
+        "text": "Velocità c e intensità circa 1,19 W/m².",
+        "feedback": "La velocità è corretta, ma l’intensità è dimezzata. Nella formula con 1/2 compare E₀, non E_eff. Sostituendo E₀²=2E_eff² quel 1/2 si cancella."
+      },
+      {
+        "id": "D",
+        "text": "Le letture sono incompatibili con il vuoto, perché E_eff/B₀ è diverso da c.",
+        "feedback": "La relazione E/B=c richiede ampiezze confrontabili. Usando E₀/B₀ oppure E_eff/B_eff si ottiene c. La differenza del rapporto misto è prevista dalle definizioni degli strumenti, senza richiedere un errore di calibrazione."
+      },
+      {
+        "id": "E",
+        "text": "Velocità √2c e intensità circa 4,78 W/m².",
+        "feedback": "Nessuno dei due risultati segue dalle conversioni assegnate. Per passare da efficace a picco si moltiplica per √2, non per 2; inoltre usare E₀ nella formula ε₀cE_eff² conta due volte la conversione energetica. Il confronto omogeneo dei campi restituisce c."
+      }
+    ],
+    "correctChoice": "B"
   }
 ]

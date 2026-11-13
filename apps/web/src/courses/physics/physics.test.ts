@@ -34,7 +34,7 @@ describe('five portable physics courses, exact lessons and original provenance',
         const data = object.data, key = JSON.stringify(data.definition);
         if (!checked.has(key)) checked.set(key, await extensionDefinitionDigest(data.definition));
         expect(data.definitionDigest).toBe(checked.get(key));
-        if (data.definition.typeId === 'ardesia.curriculum.question') {
+        if (['ardesia.curriculum.question','ardesia.curriculum.choice-question'].includes(data.definition.typeId)) {
           expect(String(data.state.prompt).length).toBeGreaterThan(10);
           expect(String(data.state.solution).length).toBeGreaterThan(3);
           if (data.state.kind === 'original') {
@@ -65,7 +65,7 @@ describe('five portable physics courses, exact lessons and original provenance',
           if (object.type !== 'extension') continue;
           const data = object.data;
           if (data.definition.typeId.startsWith('ardesia.physics.')) labs.add(data.definition.typeId);
-          if (data.definition.typeId !== 'ardesia.curriculum.question') continue;
+          if (!['ardesia.curriculum.question','ardesia.curriculum.choice-question'].includes(data.definition.typeId)) continue;
           if (data.state.kind === 'assessment') objectives.add(String(data.state.objectives));
           else if (data.state.kind === 'original') originals.add(String(data.state.questionId));
           else questions.add(String(data.state.questionId));
@@ -89,6 +89,6 @@ describe('five portable physics courses, exact lessons and original provenance',
     // Unique physical lab types and original problems in the distributed curriculum.
     expect(labs.size).toBe(19);
     expect(questions.size).toBe(259);
-    expect(originals.size).toBe(69);
+    expect(originals.size).toBe(79);
   });
 });
