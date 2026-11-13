@@ -39,3 +39,7 @@ Gli input editoriali congelati sono in `editorial/`; le dimensioni/digest dei ci
 Dalla root con Node24 e dipendenze installate: `node tools/build-physics-pack.mjs`, poi `npx vitest run apps/web/src/courses/physics/physics.test.ts`. Il generatore non legge la rete, non scrive nel database e non applica approvazioni. Il test valida schema, provenienza, digest, definizioni e riferimenti della copertura. I JSON vengono richiesti soltanto quando l’utente importa il corso; raw/gzip sono riportati separatamente dai budget JS. L’import usa normali comandi Core e rifiuta contenuti già modificati.
 
 Restano aperti revisione umana, calibrazione didattica, prove complete con studenti e confronto aggiornato coi manuali non disponibili. [Esperienza integrata e limiti tecnici](../../handoffs/core-continuity-2026-11-07.md).
+
+## Aggiornamento 13 novembre 2026
+
+La PR52 aveva portato il totale a752oggetti,39problemi originali e16tipi di laboratorio (i conteggi precedenti descrivono la consegna storica). La continuazione separa200domande e risposte anticipate dalle38spiegazioni: teoria ed esempi restano byte-identici; il confronto completo è nel feedback esplicito. Le verifiche restano disponibili negli stessi oggetti, senza aggiungere quesiti o affermare indipendenza semantica. Le nuove importazioni ricevono il contenuto corretto; i corsi già importati rimangono nella loro edizione, senza aggiornamento silenzioso. [Audit attuale](audit-2026-11-13.md).

@@ -9,6 +9,7 @@ import {buildOfflineShell} from './build-offline-shell.mjs';
 import {buildProgramRuntime} from './build-program-runtime.mjs';
 import {buildMcp} from './build-mcp.mjs';
 import {verifyMcpRuntime} from './mcp-runtime.test.mjs';
+import './build-physics-demo.mjs';
 await checkPluginBuild();
 const build = {...identity(), application: 'ardesia-next', milestone: 'M3', persistence: 'remote-postgres-required', remoteAcceptance: 'INCOMPLETE', thirdPartyExecution: true, programRuntime: {abi: 'ardesia.program/1', policy: 'ephemeral-explicit-consent-no-io', engine: 'quickjs-emscripten@0.32.0'}};
 if(process.env.VERCEL && build.commit === 'local-uncommitted') throw new Error('Remote build requires a source SHA');

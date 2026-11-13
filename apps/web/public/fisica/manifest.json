@@ -1,0 +1,57 @@
+{
+  "kind": "physics-demo",
+  "status": "DRAFT",
+  "humanApproval": false,
+  "sourceFiles": [
+    {
+      "file": "docs/sources/physics-2026-27/editorial/courses.json",
+      "sha256": "c952882be767920d70874aa294489ef1f10e199b9aefda3aa263cc7e51bf7e57"
+    },
+    {
+      "file": "docs/sources/physics-2026-27/editorial/original-problems.json",
+      "sha256": "087ce4046cddeab4e50da2125970f696322de71db3da0f0ec0c30eb48485c42e"
+    }
+  ],
+  "pages": [
+    {
+      "file": "c1.html",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "unitId": "sf-2026-u2-03",
+      "problemId": "original-20261107-u2-03",
+      "status": "DRAFT",
+      "humanApproval": false
+    },
+    {
+      "file": "c2.html",
+      "courseId": "sf-2026-fluidi",
+      "unitId": "sf-2026-u3-04",
+      "problemId": "original-20261107-u3-04",
+      "status": "DRAFT",
+      "humanApproval": false
+    },
+    {
+      "file": "c3.html",
+      "courseId": "sf-2026-termodinamica",
+      "unitId": "sf-2026-u5-02",
+      "problemId": "original-20261107-u5-02",
+      "status": "DRAFT",
+      "humanApproval": false
+    },
+    {
+      "file": "c4.html",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "unitId": "sf-2026-u6-04",
+      "problemId": "original-20261107-u6-04",
+      "status": "DRAFT",
+      "humanApproval": false
+    },
+    {
+      "file": "c5.html",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "unitId": "sf-2026-u7-07",
+      "problemId": "original-20261107-u7-07",
+      "status": "DRAFT",
+      "humanApproval": false
+    }
+  ]
+}

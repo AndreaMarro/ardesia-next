@@ -1,0 +1,30 @@
+import {chromium} from '@playwright/test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const browser=await chromium.launch({...(process.env.ARDESIA_BROWSER?{executablePath:process.env.ARDESIA_BROWSER}:{}),headless:true,args:['--no-sandbox']});
+const results=[];
+try{for(const width of [390,820,1440]){
+ const page=await browser.newPage({viewport:{width,height:960}}), errors=[], external=[];
+ page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(!r.url().startsWith('http://127.0.0.1:4173/'))external.push(r.url())});
+ await page.goto('http://127.0.0.1:4173/fisica/index.html');
+ await page.keyboard.press('Tab');assert.equal(await page.locator(':focus').innerText(),'Vai al contenuto');
+ await page.keyboard.press('Enter');assert.equal(await page.locator(':focus').getAttribute('id'),'main');
+ await page.getByLabel('Raggio rispetto').focus();await page.keyboard.press('Home');assert.match(await page.locator('#ratio').innerText(),/0,0625/);assert.equal(await page.locator('#flow').getAttribute('width'),'6.25');
+ await page.keyboard.press('End');assert.match(await page.locator('#ratio').innerText(),/5,0625/);
+ await page.locator('#laboratorio').screenshot({path:`/tmp/ardesia-demo-lab-${width}.png`});
+ for(let i=1;i<=5;i++){
+  await page.goto(`http://127.0.0.1:4173/fisica/c${i}.html`);
+  assert.equal(await page.locator('h1').count(),1);
+  const solution=page.getByText('Confronta i passaggi e il risultato',{exact:true});
+  assert.equal(await solution.locator('..').getAttribute('open'),null);
+  await solution.click();assert.notEqual(await solution.locator('..').getAttribute('open'),null);
+  const href=await page.getByRole('link',{name:'Chiedi disponibilità su WhatsApp'}).getAttribute('href');
+  assert.match(href,/^https:\/\/wa.me\/393461653930/);assert.match(decodeURIComponent(href),/non una prenotazione confermata/);
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+ }
+ await page.goto('http://127.0.0.1:4173/fisica/index.html');await page.screenshot({path:`/tmp/ardesia-demo-${width}.png`,fullPage:true});
+ assert.deepEqual(errors,[]);assert.deepEqual(external,[]);results.push({width,courses:5,labEndpoints:'PASS',keyboard:'PASS',contact:'INSPECTED_NOT_SENT',errors,external});await page.close();
+}
+const context=await browser.newContext({javaScriptEnabled:false});const page=await context.newPage();await page.goto('http://127.0.0.1:4173/fisica/index.html');assert.equal(await page.locator('#radius').isDisabled(),true);assert.ok(await page.locator('noscript').isVisible());await page.goto('http://127.0.0.1:4173/fisica/c2.html');await page.getByText('Confronta i passaggi e il risultato',{exact:true}).click();assert.notEqual(await page.getByText('Confronta i passaggi e il risultato',{exact:true}).locator('..').getAttribute('open'),null);results.push({noJavaScript:'PASS'});
+fs.writeFileSync('/tmp/ardesia-demo-browser.json',JSON.stringify(results,null,2));console.log(JSON.stringify(results));
+}finally{await browser.close()}
