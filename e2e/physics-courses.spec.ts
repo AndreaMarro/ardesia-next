@@ -38,7 +38,7 @@ test('the heat-engine lesson distinguishes energy balance from a physically admi
  await lab.screenshot({path:info.outputPath('heat-engine-two-checks.png')});
  const questions=page.getByRole('region',{name:'Esercizi e verifiche dell’unità',exact:true});
  const search=questions.getByRole('searchbox',{name:'Cerca argomento o obiettivo',exact:true});
- const kind=questions.getByLabel('Tipo di domanda',{exact:true}),level=questions.getByLabel('Livello dichiarato',{exact:true});
+ const kind=questions.getByRole('combobox',{name:'Tipo di domanda',exact:true}),level=questions.getByRole('combobox',{name:'Livello dichiarato',exact:true});
  const shown=questions.locator('details.course-material');
  await kind.focus();await kind.press('Home');await kind.press('ArrowDown');await kind.press('Tab');
  await expect(kind).toHaveValue('original');await expect(level).toBeFocused();await expect(shown).toHaveCount(4);
