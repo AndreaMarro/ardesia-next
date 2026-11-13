@@ -1,7 +1,7 @@
 import {readFileSync} from 'node:fs';
 import {describe,expect,it} from 'vitest';
 import {CompositionBodySchema,ExtensionDataSchema,extensionDefinitionDigest,type CompositionNode,type ExtensionData} from '@ardesia/contracts';
-import {compileExpression} from '@ardesia/plugin-host/composition';
+import {compileExpression} from '@ardesia/plugin-host';
 import {PhysicsImportSchema} from './import';
 
 type Question={id:string;prompt:string;solution:string;correctChoice:string;choices:{id:string;text:string;feedback:string}[]};
