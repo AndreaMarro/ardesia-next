@@ -1,0 +1,13 @@
+# Scegliere gli esercizi di un'unità
+
+Preparazione locale del 13 novembre 2026 sulla consegna C2–C3 `9379377`. Il mandato diretto del titolare privilegia minicorsi utilizzabili e pratica progressiva; Cortex rimane sospeso. Questo incremento riguarda soltanto la navigazione della banca di domande già distribuita.
+
+`CourseMaterials` offre ricerca per parole, tipo di domanda e livello dichiarato dalla fonte. La ricerca confronta titolo, domanda e identificatori degli obiettivi, senza distinguere maiuscole e accenti; tutte le parole devono comparire in questi campi. Soluzione e provenienza sono escluse dalla ricerca. I tipi distinguono esercizi, problemi originali e verifiche per obiettivo. I livelli mantengono i valori esistenti, senza trasformarli in voti o stime della competenza.
+
+Il conteggio mostra domande visibili e totali nell'unità corrente; risultati vuoti e azzeramento dei filtri sono espliciti. I controlli usano etichette, input e select nativi e la griglia si adatta allo schermo. I filtri sono stato transitorio della vista, si azzerano cambiando documento/revisione e non introducono persistenza parallela. Filtrare una domanda non annulla la risposta già iniziata né cambia il suo riferimento alla revisione. Consultare una soluzione continua a passare dal flusso di aiuto esistente e dal Core.
+
+La prova browser C3 estesa verifica filtri combinati, confronto senza accenti/maiuscole, esclusione di un'espressione presente soltanto nella soluzione, risultato vuoto, ripristino dell'elenco e conservazione della risposta quando la domanda viene nascosta dal filtro. Mantiene laboratorio, salvataggio, ricevuta dell'aiuto e riapertura del tentativo. L'esito finale appartiene ai rapporti sul commit/digest esatto; questo documento non anticipa PASS. La review indipendente è un contesto distinto dall'autore e non una revisione scientifica umana.
+
+Nessun contenuto didattico, schema, comando Core, identificatore o revisione dei pacchetti viene modificato. I contenuti restano DRAFT. Non si introduce valutazione automatica del testo libero, ripasso personalizzato, modalità d'esame o iscrizione/pagamento. L'importazione mantiene il protocollo sequenziale e la recovery esistenti; i tempi complessivi delle precedenti prove browser non sono un benchmark isolato dell'importazione. Nessuna nuova pubblicazione, deploy o attività Cortex.
+
+Rollback: ripristinare i file della vista, lo stile e la prova browser dalla base con un nuovo commit; nessuna migrazione di dati è necessaria. Le risposte salvate rimangono nel Core.
