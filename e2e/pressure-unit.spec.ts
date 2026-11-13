@@ -92,6 +92,7 @@ test('pressure unit preserves attempts through feedback, recovery, a new applica
  await outline.getByRole('button',{name:new RegExp(unit.title)}).click();
  await expect(filter).toHaveValue('');await expect(history.locator('article')).toHaveCount(4);
  await page.getByRole('button',{name:'In un altro contesto',exact:true}).click();
+ await expect(page.getByRole('button',{name:'In un altro contesto',exact:true})).toHaveAttribute('aria-pressed','true');
  const continued=(await personalProjection(page)).courseSpace!;
  expect(continued.work[0]!.attempts).toEqual(saved.work[0]!.attempts);expect(continued.work[0]!.help).toEqual(saved.work[0]!.help);
  expect(continued.work[0]!.revision).toBe(saved.work[0]!.revision+3);

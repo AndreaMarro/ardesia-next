@@ -11,3 +11,5 @@ La prova di pressione già esistente, attribuita al lavoro precedente della chat
 Questo è uno strumento di rilettura personale, non il completamento della diagnostica automatica o del ripasso adattivo richiesti per il prodotto. Contenuti DRAFT e revisione scientifica umana pendente restano espliciti. Cortex rimane sospeso; le prove locali avvengono su Linux, senza attestare un accesso al Mac mini.
 
 Rollback mediante nuovo commit dei due file applicativi/test verso la base; nessuna migrazione o perdita delle risposte salvate.
+
+La prima prova browser sul commit `5e26e6e` fallisce in entrambi i layout: il controllo legge la revisione 10 aspettando 11 mentre l’ultimo comando di posizione è ancora pendente. Le schermate mostrano la modifica da confermare. Il test corretto attende che la nuova fase abbia `aria-pressed=true`, derivato dal lavoro confermato, prima della lettura API. Prodotto, valori attesi e timeout rimangono invariati; i due fallimenti iniziali sono conservati.
