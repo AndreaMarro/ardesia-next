@@ -1,8 +1,9 @@
-/** Resource policy v6: 320 KiB aggregate core for complete handout export (ADR0023).
+/** Resource policy v7: 336 KiB aggregate core for public practice and field lab (ADR0025).
+ * v6 allowed 320 KiB for complete handout export (ADR0023).
  * v5 allowed 312 KiB for canonical notebooks (ADR0022).
  * v3 separated the lazy PDF runtime; v4 allowed 304 KiB for continuity/courses.
  * Initial JS, optional Program/PDF caps and asset classification are unchanged. */
-export const PROGRAM_BUDGET = Object.freeze({coreGzipBytes:320*1024,initialJavaScriptGzipBytes:240*1024,optionalGzipBytes:320*1024,optionalRawBytes:1024*1024,pdfGzipBytes:3*1024*1024,pdfRawBytes:6*1024*1024});
+export const PROGRAM_BUDGET = Object.freeze({coreGzipBytes:336*1024,initialJavaScriptGzipBytes:240*1024,optionalGzipBytes:320*1024,optionalRawBytes:1024*1024,pdfGzipBytes:3*1024*1024,pdfRawBytes:6*1024*1024});
 export function isOptionalProgramAsset(file){
   return /^program-runtime\/[a-zA-Z0-9_.-]+\.(?:js|wasm)$/.test(file)
     || /^assets\/(?:ProgramSurface|program-example)-[a-zA-Z0-9_-]+\.js$/.test(file);

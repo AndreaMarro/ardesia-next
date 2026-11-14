@@ -177,6 +177,78 @@ class CortexTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             cortex.connect(link, self.repo)
 
+    def test_definition_survives_many_short_test_mentions(self):
+        # New symbol, absent from the pilot: frequency must not consume the budget
+        # before the actual declaration, even with more than the old120 candidates.
+        for i in range(135):
+            self.file(f"tests/case-{i}.test.ts", "verifyThermalBalance();\n" * 5)
+        content = "// Context and assumptions\n" * 18 + "export function verifyThermalBalance(input) {\n  return input.left === input.right;\n}\n"
+        self.file("src/thermodynamics.ts", content)
+        result = self.search("verifyThermalBalance", budget_bytes=1500, limit=2)
+        self.assertEqual(result["results"][0]["path"], "src/thermodynamics.ts")
+        self.assertIn("export function verifyThermalBalance", result["results"][0]["body"])
+        self.assertLessEqual(result["evidence_bytes"], 1500)
+
+    def test_definition_hints_cover_python_types_and_constants(self):
+        for path, declaration, symbol in [
+            ("src/pressure.py", "async def compute_pressure(value):\n    return value\n", "compute_pressure"),
+            ("src/units.ts", "export interface MeterReading { value: number }\n", "MeterReading"),
+            ("src/energy.ts", "export const energyScale = 1000;\n", "energyScale"),
+        ]:
+            self.file(path, declaration)
+            self.file("benchmark.py", f'queries = ["{symbol}", "{symbol}"]\n')
+            result = self.search(symbol, budget_bytes=600, limit=1)
+            self.assertEqual(result["results"][0]["path"], path)
+            self.assertEqual(result["results"][0]["body"], declaration)
+
+    def test_declaration_strings_are_not_hints(self):
+        self.file("a.ts", 'const example = "export function resolveImpulse()";\n')
+        self.file("z.ts", "export function resolveImpulse() { return 42; }\n")
+        result = self.search("resolveImpulse", limit=1)
+        self.assertEqual(result["results"][0]["path"], "z.ts")
+
+    def test_italian_query_centers_real_evidence_not_benchmark_prompt(self):
+        self.file("tools/benchmark.py", 'query = "pressione recipiente equilibrio"\n')
+        content = "Introduzione e ipotesi.\n" * 31 + "La pressione del recipiente raggiunge equilibrio.\n" + "Dettagli sulle misure.\n" * 8
+        self.file("docs/fluidi.md", content)
+        result = self.search("pressione recipiente equilibrio", budget_bytes=500, limit=1)
+        row = result["results"][0]
+        self.assertEqual(row["path"], "docs/fluidi.md")
+        self.assertIn("La pressione del recipiente raggiunge equilibrio.", row["body"])
+        self.assertEqual(row["body"], "".join(content.splitlines(keepends=True)[row["start"]-1:row["end"]]))
+        self.assertLessEqual(result["evidence_bytes"], 500)
+
+    def test_accent_insensitive_query_focus_keeps_original_source_bytes(self):
+        content = "Introduzione al modello.\n" * 30 + "La quantità si conserva nel sistema isolato.\n"
+        self.file("docs/conservazione.md", content)
+        result = self.search("quantita", budget_bytes=300, limit=1)
+        row = result["results"][0]
+        self.assertIn("quantità", row["body"])
+        self.assertEqual(row["body"], "".join(content.splitlines(keepends=True)[row["start"]-1:row["end"]]))
+        self.assertLessEqual(result["evidence_bytes"], 300)
+
+    def test_multibyte_match_line_never_truncated_or_misnumbered(self):
+        content = "à energia\n" * 32 + "Misura quantità e velocità osservabile.\n" + "ω μ\n" * 6
+        self.file("docs/quantita.md", content)
+        result = self.search("quantità velocità", budget_bytes=300)
+        row = result["results"][0]
+        self.assertIn("Misura quantità e velocità osservabile.", row["body"])
+        self.assertEqual(row["body"], "".join(content.splitlines(keepends=True)[row["start"]-1:row["end"]]))
+        self.assertLessEqual(result["evidence_bytes"], 300)
+
+    def test_oversized_matching_line_is_omitted_not_fabricated(self):
+        self.file("src/one.ts", "const veryLongScientificSymbol = '" + "x" * 3000 + "';\n")
+        result = self.search("veryLongScientificSymbol", budget_bytes=500)
+        self.assertFalse(result["results"])
+        self.assertEqual(result["evidence_bytes"], 0)
+
+    def test_repeated_split_line_never_appears_as_duplicate_evidence(self):
+        self.file("doc.md", "pressure " * 120 + "\n")
+        result = self.search("pressure", budget_bytes=8000)
+        self.assertEqual(len(result["results"]), 1)
+        self.assertEqual((result["results"][0]["start"], result["results"][0]["end"]), (1, 1))
+
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

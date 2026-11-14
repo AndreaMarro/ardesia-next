@@ -10,9 +10,9 @@
   "files": [
     {
       "file": "sf-2026-strumenti-meccanica.json",
-      "bytes": 772361,
-      "gzipBytes": 131608,
-      "sha256": "023238c72b89e3cfdb529a3c80b4d969d271fd52cb15aea5ed7cd0d52eb66d35",
+      "bytes": 772180,
+      "gzipBytes": 131682,
+      "sha256": "29cd8212d396fc343b019790df2afd462823b2eacfb5332327337f33140fd56d",
       "counts": {
         "objectives": 52,
         "practice": 59,
@@ -24,9 +24,9 @@
     },
     {
       "file": "sf-2026-fluidi.json",
-      "bytes": 695859,
-      "gzipBytes": 114812,
-      "sha256": "22227927f54bcf37382d02d18506fde7ad012827932c5b7fbb067cf603ba27e1",
+      "bytes": 695943,
+      "gzipBytes": 114862,
+      "sha256": "67917bd5b7d8c29509f94da51166cbcfda1c5156eeb0a392098aa6365944fbe0",
       "counts": {
         "objectives": 26,
         "practice": 58,
@@ -38,9 +38,9 @@
     },
     {
       "file": "sf-2026-termodinamica.json",
-      "bytes": 754954,
-      "gzipBytes": 120468,
-      "sha256": "629da237ba9c059add7d23c7815d9b9a24184309f775351b595d02cd683b0cd5",
+      "bytes": 754893,
+      "gzipBytes": 120513,
+      "sha256": "5db6dc2f7ee716d57600e6d1e049ad0dc4fb1583a27a8bd6c021530f3551c39b",
       "counts": {
         "objectives": 31,
         "practice": 66,
@@ -52,9 +52,9 @@
     },
     {
       "file": "sf-2026-elettricita-magnetismo.json",
-      "bytes": 597624,
-      "gzipBytes": 107962,
-      "sha256": "d8d305d087bc0f9c967e140574a002b9d049eb12cf0a9afa76c3add7faa3d2a5",
+      "bytes": 597903,
+      "gzipBytes": 108055,
+      "sha256": "83251b9773d99225e5e76be01bc8fead2a4c230885d35e813c1e048e01b5e9fb",
       "counts": {
         "objectives": 33,
         "practice": 48,
@@ -66,9 +66,9 @@
     },
     {
       "file": "sf-2026-onde-ottica-radiazioni.json",
-      "bytes": 953948,
-      "gzipBytes": 167496,
-      "sha256": "86cdfefb0d37850f17d42ee0fc9d3b70724b4bda29b608b09c4eb2ca4dc7875f",
+      "bytes": 954220,
+      "gzipBytes": 167631,
+      "sha256": "6281447c78a0b04911059758b1e96b2fc62519c7a10e67bfc9a4e7d34f67a9a3",
       "counts": {
         "objectives": 58,
         "practice": 59,
@@ -79,7 +79,7 @@
       "objects": 200
     }
   ],
-  "totalRawBytes": 3774746,
-  "totalGzipBytes": 642346,
+  "totalRawBytes": 3775139,
+  "totalGzipBytes": 642743,
   "note": "Static JSON course materials, fetched only on explicit import; not JavaScript. Full data costs shown separately from measured runtime budgets."
 }

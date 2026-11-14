@@ -1,0 +1,100 @@
+{
+  "kind": "physics-practice-exam",
+  "status": "DRAFT",
+  "humanApproval": false,
+  "sourceFile": "docs/sources/physics-2026-27/editorial/exam-2026-a.json",
+  "sourceSha256": "36a1cb61bbba42a2f7de734dce2c170659095ace26a1e9ac71e49c9757c2aa53",
+  "questionCount": 31,
+  "choice": 21,
+  "completion": 10,
+  "embeddedData": {
+    "format": "inert application/json",
+    "rawBytes": 43684,
+    "gzipBytes": 13275,
+    "sha256": "8a88afcc696a1b471cb3ccbd38ffd137031a601624a93b59353024b967b52a00"
+  },
+  "files": [
+    {
+      "file": "simulazione.html",
+      "bytes": 52056,
+      "sha256": "2f95b53b2038a795d8e1ef487a2f4b92560441cab4e40dd9473ce91b805e2942"
+    },
+    {
+      "file": "exam.js",
+      "bytes": 19731,
+      "sha256": "a95627b3b2177ca60a5e3470c5b71b31cf71c9f78456e2f605980b8b0e8db4b9"
+    },
+    {
+      "file": "exam.css",
+      "bytes": 8709,
+      "sha256": "1ef631cbd63dd0ab4ef83da7fe01b3524e7cec12139a8a32fe05fec014c4d205"
+    },
+    {
+      "file": "ardesia-prova-fisica-offline.zip",
+      "bytes": 1088909,
+      "sha256": "8244dc4391e36f1d59a8ca347dcc17eb318455e1b31a115f765177dbd72262aa"
+    }
+  ],
+  "offlineFiles": [
+    "simulazione.html",
+    "c1.html",
+    "c2.html",
+    "c3.html",
+    "c4.html",
+    "c5.html",
+    "campo.css",
+    "campo.html",
+    "campo.js",
+    "demo.css",
+    "demo.js",
+    "exam.css",
+    "exam.js",
+    "index.html",
+    "lessons.css",
+    "sf-2026-u1-01.html",
+    "sf-2026-u1-02.html",
+    "sf-2026-u1-03.html",
+    "sf-2026-u1-04.html",
+    "sf-2026-u2-01.html",
+    "sf-2026-u2-02.html",
+    "sf-2026-u2-03.html",
+    "sf-2026-u2-04.html",
+    "sf-2026-u2-05.html",
+    "sf-2026-u3-01.html",
+    "sf-2026-u3-02.html",
+    "sf-2026-u3-03.html",
+    "sf-2026-u3-04.html",
+    "sf-2026-u3-05.html",
+    "sf-2026-u4-01.html",
+    "sf-2026-u4-02.html",
+    "sf-2026-u4-03.html",
+    "sf-2026-u4-04.html",
+    "sf-2026-u4-05.html",
+    "sf-2026-u5-01.html",
+    "sf-2026-u5-02.html",
+    "sf-2026-u5-03.html",
+    "sf-2026-u5-04.html",
+    "sf-2026-u5-05.html",
+    "sf-2026-u6-01.html",
+    "sf-2026-u6-02.html",
+    "sf-2026-u6-03.html",
+    "sf-2026-u6-04.html",
+    "sf-2026-u6-05.html",
+    "sf-2026-u6-06.html",
+    "sf-2026-u6-07.html",
+    "sf-2026-u7-01.html",
+    "sf-2026-u7-02.html",
+    "sf-2026-u7-03.html",
+    "sf-2026-u7-04.html",
+    "sf-2026-u7-05.html",
+    "sf-2026-u7-06.html",
+    "sf-2026-u7-07.html",
+    "LEGGIMI.txt"
+  ],
+  "offlineLimits": {
+    "files": 256,
+    "totalBytes": 16777216,
+    "fileBytes": 2097152,
+    "depth": 8
+  }
+}
