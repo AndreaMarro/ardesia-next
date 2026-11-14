@@ -2,6 +2,7 @@ import {describe, expect, it} from 'vitest';
 import {randomUUID} from 'node:crypto';
 import {readFile, readdir} from 'node:fs/promises';
 import {resolve} from 'node:path';
+import {setTimeout as delay} from 'node:timers/promises';
 import {Pool} from 'pg';
 import {hash} from './database';
 import {migrations} from './migrations';
@@ -15,16 +16,33 @@ type Fixture = {
   handler: ReturnType<typeof createApiHandler>;
 };
 
-/** Each case owns its database and login role; only the supplied loopback cluster is used. */
-async function withDatabase(schema: 'initial' | 'complete', run: (fixture: Fixture) => Promise<void>) {
+function testDatabaseAddress() {
   const configured = process.env.M3_TEST_DATABASE_URL;
   if (!configured) throw Error('M3_TEST_DATABASE_URL is required; readiness needs real PostgreSQL.');
   const address = new URL(configured);
   if (!['localhost', '127.0.0.1'].includes(address.hostname) || !address.pathname.endsWith('_test')) {
     throw Error('Readiness fixtures require a dedicated loopback *_test database.');
   }
+  return address;
+}
+
+async function dropFixtureDatabase(control: Pool, database: string, timeoutMs = 2000) {
+  // pg-pool.end() resolves after removing idle clients from its list, before all
+  // client.end callbacks. Observe server-side closure; FORCE can kill an ending
+  // client and emit an uncaught 57P01 after every assertion has already passed.
+  const deadline = performance.now() + timeoutMs;
+  while ((await control.query('SELECT 1 FROM pg_stat_activity WHERE datname=$1', [database])).rowCount) {
+    if (performance.now() >= deadline) throw Error('Readiness fixture still has active connections; database was not dropped.');
+    await delay(20);
+  }
+  await control.query(`DROP DATABASE ${database}`);
+}
+
+/** Each case owns its database and login role; only the supplied loopback cluster is used. */
+async function withDatabase(schema: 'initial' | 'complete', run: (fixture: Fixture) => Promise<void>) {
+  const address = testDatabaseAddress();
   const suffix = randomUUID().replaceAll('-', ''), database = `readiness_${suffix}_test`, role = `readiness_${suffix}`;
-  const control = new Pool({connectionString: configured});
+  const control = new Pool({connectionString: address.href});
   let operator: Pool | undefined, runtime: Pool | undefined, databaseCreated = false, roleCreated = false;
   try {
     await control.query(`CREATE DATABASE ${database} ENCODING 'UTF8' TEMPLATE template0`); databaseCreated = true;
@@ -49,10 +67,11 @@ async function withDatabase(schema: 'initial' | 'complete', run: (fixture: Fixtu
       pluginPolicy: createFirstPartyPolicy({artifactRoot: resolve('apps/web/public')})}), allowedOrigins: [origin]});
     await run({operator, runtime, username, password, handler});
   } finally {
-    await runtime?.end(); await operator?.end();
-    if (databaseCreated) await control.query(`DROP DATABASE ${database} WITH (FORCE)`);
-    if (roleCreated) await control.query(`DROP ROLE ${role}`);
-    await control.end();
+    try {
+      await runtime?.end(); await operator?.end();
+      if (databaseCreated) await dropFixtureDatabase(control, database);
+      if (roleCreated) await control.query(`DROP ROLE ${role}`);
+    } finally {await control.end();}
   }
 }
 
@@ -78,6 +97,30 @@ async function counts(f: Fixture) {
 }
 
 describe('Runtime database readiness uses canonical migrations', () => {
+  it('cleanup waits for actual backend closure and refuses to terminate a held connection', async () => {
+    const address = testDatabaseAddress(), database = `readiness_${randomUUID().replaceAll('-', '')}_test`;
+    const control = new Pool({connectionString: address.href});
+    let held: Pool | undefined, databaseCreated = false;
+    try {
+      await control.query(`CREATE DATABASE ${database} ENCODING 'UTF8' TEMPLATE template0`); databaseCreated = true;
+      address.pathname = '/' + database; held = new Pool({connectionString: address.href});
+      await held.query('SELECT 1');
+      await expect(dropFixtureDatabase(control, database, 60)).rejects.toThrow('database was not dropped');
+      expect((await held.query('SELECT 1 AS alive')).rows[0].alive).toBe(1);
+      let finished = false;
+      const cleanup = dropFixtureDatabase(control, database).then(() => {finished = true; databaseCreated = false;});
+      await delay(30); expect(finished).toBe(false);
+      await held.end(); held = undefined;
+      await cleanup;
+      expect((await control.query('SELECT 1 FROM pg_database WHERE datname=$1', [database])).rowCount).toBe(0);
+    } finally {
+      try {
+        await held?.end();
+        if (databaseCreated) await dropFixtureDatabase(control, database);
+      } finally {await control.end();}
+    }
+  });
+
   it('uses the exact checked-in SQL bytes and includes every numbered migration', async () => {
     const names = (await readdir(migrationDirectory)).filter(name => /^\d+_.*\.sql$/.test(name)).sort();
     expect(migrations).toHaveLength(names.length);
