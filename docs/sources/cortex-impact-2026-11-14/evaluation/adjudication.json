@@ -1,0 +1,28 @@
+{
+  "recorded_at": "2026-11-14T03:26:53.663051+00:00",
+  "kind": "explicit post-hoc ground-truth correction and stronger rg comparator; never substitute for frozen protocol",
+  "case": "physics-import",
+  "frozen_expected_count": 9,
+  "verified_additional_consumer": {
+    "path": "tools/build-physics-pack.mjs",
+    "line": 9,
+    "sha256": "5e6b4fad3ad3e7b34019e3b8bd299a30927f910150fc09f449958b436961706d",
+    "source_line": "import {PhysicsImportSchema} from '../apps/web/src/courses/physics/import.ts';"
+  },
+  "corrected_expected_count": 10,
+  "posthoc_rg_regex": "(?:\\./import|/courses/physics/import)(?:\\.ts)?['\"]",
+  "posthoc_rg_files": [
+    "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+    "apps/web/src/courses/physics/assessment-separation.test.ts",
+    "apps/web/src/courses/physics/capacitor.test.ts",
+    "apps/web/src/courses/physics/guided-choices.test.ts",
+    "apps/web/src/courses/physics/heat-engine.test.ts",
+    "apps/web/src/courses/physics/interference.test.ts",
+    "apps/web/src/courses/physics/physics.test.ts",
+    "apps/web/src/courses/physics/pressure.test.ts",
+    "apps/web/src/knowledge/graph.test.ts",
+    "tools/build-physics-pack.mjs"
+  ],
+  "posthoc_rg_bytes": 992,
+  "finding": "Index discovered one manual omission; an improved rg expression also returns all 10. No heldout superiority established."
+}

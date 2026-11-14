@@ -1,0 +1,822 @@
+{
+  "evaluated_at": "2026-11-14T03:25:14.820026+00:00",
+  "split": "heldout",
+  "protocol_sha256": "1a9e60203948c4e33462f961469368c593512a86903fcb04355863020b815fc9",
+  "implementation_sha256": "dfe122289a112a5f883dbe0e55d17f7f0958e04a7d81205fe3b9bde9cf433631",
+  "extractor_sha256": "eee6abfa26747eb954d95c8c61c43ab5a8059929e5263c8f00a203092ae747df",
+  "corpus": {
+    "updated": 720,
+    "unchanged": 0,
+    "removed": 0,
+    "excluded": 0,
+    "files": 720,
+    "source_bytes": 9297935,
+    "head": "8e1f1d9c31d92375a5d05e4f42594548200d4005",
+    "manifest_sha256": "f78fc32f50131c3b96b8ee7c5ba228177c8d6fc79d47074457af65a1bb31045b",
+    "elapsed_ms": 1608.759
+  },
+  "coverage": {
+    "parsed_files": 327,
+    "parse_error_files": [],
+    "computed_dynamic_imports": 5,
+    "unsupported_commonjs": 3,
+    "unresolved": {
+      "external-or-unsupported": 519,
+      "missing": 14
+    },
+    "typescript": "5.9.3",
+    "resolved_edges": 861
+  },
+  "results": [
+    {
+      "case": "ink",
+      "comparisons": [
+        {
+          "repeat": 0,
+          "impact_ms": 2364.3403332680464,
+          "cache_hit": false,
+          "impact_bytes": 1581,
+          "rg_ms": 8.142000064253807,
+          "rg_bytes": 215,
+          "rg_without_target_bytes": 215,
+          "impact_all": {
+            "found": [
+              "packages/remote-client/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "packages/remote-client/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "packages/remote-client/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "packages/remote-client/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 2,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 1,
+          "impact_ms": 1183.4433749318123,
+          "cache_hit": true,
+          "impact_bytes": 1580,
+          "rg_ms": 8.046625182032585,
+          "rg_bytes": 215,
+          "rg_without_target_bytes": 215,
+          "impact_all": {
+            "found": [
+              "packages/remote-client/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "packages/remote-client/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "packages/remote-client/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "packages/remote-client/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 2,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 2,
+          "impact_ms": 1265.9362070262432,
+          "cache_hit": true,
+          "impact_bytes": 1580,
+          "rg_ms": 7.912332192063332,
+          "rg_bytes": 215,
+          "rg_without_target_bytes": 215,
+          "impact_all": {
+            "found": [
+              "packages/remote-client/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "packages/remote-client/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "packages/remote-client/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "packages/remote-client/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 2,
+          "omitted_by_budget": 0
+        }
+      ]
+    },
+    {
+      "case": "recording-recovery",
+      "comparisons": [
+        {
+          "repeat": 0,
+          "impact_ms": 1159.4472490251064,
+          "cache_hit": true,
+          "impact_bytes": 1569,
+          "rg_ms": 7.784539833664894,
+          "rg_bytes": 192,
+          "rg_without_target_bytes": 192,
+          "impact_all": {
+            "found": [
+              "apps/web/src/recordings/AudioSession.tsx",
+              "apps/web/src/recordings/recovery.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "apps/web/src/recordings/AudioSession.tsx",
+              "apps/web/src/recordings/recovery.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "apps/web/src/recordings/AudioSession.tsx",
+              "apps/web/src/recordings/recovery.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "apps/web/src/recordings/AudioSession.tsx",
+              "apps/web/src/recordings/recovery.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 2,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 1,
+          "impact_ms": 1206.0208339244127,
+          "cache_hit": true,
+          "impact_bytes": 1569,
+          "rg_ms": 7.251458242535591,
+          "rg_bytes": 192,
+          "rg_without_target_bytes": 192,
+          "impact_all": {
+            "found": [
+              "apps/web/src/recordings/AudioSession.tsx",
+              "apps/web/src/recordings/recovery.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "apps/web/src/recordings/AudioSession.tsx",
+              "apps/web/src/recordings/recovery.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "apps/web/src/recordings/AudioSession.tsx",
+              "apps/web/src/recordings/recovery.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "apps/web/src/recordings/AudioSession.tsx",
+              "apps/web/src/recordings/recovery.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 2,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 2,
+          "impact_ms": 1639.0570811927319,
+          "cache_hit": true,
+          "impact_bytes": 1569,
+          "rg_ms": 11.082042008638382,
+          "rg_bytes": 192,
+          "rg_without_target_bytes": 192,
+          "impact_all": {
+            "found": [
+              "apps/web/src/recordings/AudioSession.tsx",
+              "apps/web/src/recordings/recovery.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "apps/web/src/recordings/AudioSession.tsx",
+              "apps/web/src/recordings/recovery.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "apps/web/src/recordings/AudioSession.tsx",
+              "apps/web/src/recordings/recovery.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "apps/web/src/recordings/AudioSession.tsx",
+              "apps/web/src/recordings/recovery.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 2,
+          "omitted_by_budget": 0
+        }
+      ]
+    },
+    {
+      "case": "tutor-values",
+      "comparisons": [
+        {
+          "repeat": 0,
+          "impact_ms": 1303.216751664877,
+          "cache_hit": true,
+          "impact_bytes": 3743,
+          "rg_ms": 8.984040468931198,
+          "rg_bytes": 547,
+          "rg_without_target_bytes": 547,
+          "impact_all": {
+            "found": [
+              "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+              "apps/web/src/tutor/TutorEditor.tsx",
+              "apps/web/src/tutor/TutorStudio.tsx",
+              "apps/web/src/tutor/values.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+              "apps/web/src/tutor/TutorEditor.tsx",
+              "apps/web/src/tutor/TutorStudio.tsx",
+              "apps/web/src/tutor/values.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+              "apps/web/src/tutor/TutorEditor.tsx",
+              "apps/web/src/tutor/TutorStudio.tsx",
+              "apps/web/src/tutor/values.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+              "apps/web/src/tutor/TutorEditor.tsx",
+              "apps/web/src/tutor/TutorStudio.tsx",
+              "apps/web/src/tutor/values.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 4,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 1,
+          "impact_ms": 1264.7861689329147,
+          "cache_hit": true,
+          "impact_bytes": 3743,
+          "rg_ms": 12.68087513744831,
+          "rg_bytes": 547,
+          "rg_without_target_bytes": 547,
+          "impact_all": {
+            "found": [
+              "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+              "apps/web/src/tutor/TutorEditor.tsx",
+              "apps/web/src/tutor/TutorStudio.tsx",
+              "apps/web/src/tutor/values.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+              "apps/web/src/tutor/TutorEditor.tsx",
+              "apps/web/src/tutor/TutorStudio.tsx",
+              "apps/web/src/tutor/values.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+              "apps/web/src/tutor/TutorEditor.tsx",
+              "apps/web/src/tutor/TutorStudio.tsx",
+              "apps/web/src/tutor/values.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+              "apps/web/src/tutor/TutorEditor.tsx",
+              "apps/web/src/tutor/TutorStudio.tsx",
+              "apps/web/src/tutor/values.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 4,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 2,
+          "impact_ms": 1246.0729572921991,
+          "cache_hit": true,
+          "impact_bytes": 3743,
+          "rg_ms": 7.711209356784821,
+          "rg_bytes": 547,
+          "rg_without_target_bytes": 547,
+          "impact_all": {
+            "found": [
+              "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+              "apps/web/src/tutor/TutorEditor.tsx",
+              "apps/web/src/tutor/TutorStudio.tsx",
+              "apps/web/src/tutor/values.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+              "apps/web/src/tutor/TutorEditor.tsx",
+              "apps/web/src/tutor/TutorStudio.tsx",
+              "apps/web/src/tutor/values.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+              "apps/web/src/tutor/TutorEditor.tsx",
+              "apps/web/src/tutor/TutorStudio.tsx",
+              "apps/web/src/tutor/values.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+              "apps/web/src/tutor/TutorEditor.tsx",
+              "apps/web/src/tutor/TutorStudio.tsx",
+              "apps/web/src/tutor/values.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 4,
+          "omitted_by_budget": 0
+        }
+      ]
+    },
+    {
+      "case": "backup-reexport",
+      "comparisons": [
+        {
+          "repeat": 0,
+          "impact_ms": 1226.6631685197353,
+          "cache_hit": true,
+          "impact_bytes": 1282,
+          "rg_ms": 9.67429205775261,
+          "rg_bytes": 104,
+          "rg_without_target_bytes": 104,
+          "impact_all": {
+            "found": [
+              "packages/server/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "packages/server/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "packages/server/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "packages/server/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 1,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 1,
+          "impact_ms": 1278.3963736146688,
+          "cache_hit": true,
+          "impact_bytes": 1282,
+          "rg_ms": 7.957708090543747,
+          "rg_bytes": 104,
+          "rg_without_target_bytes": 104,
+          "impact_all": {
+            "found": [
+              "packages/server/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "packages/server/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "packages/server/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "packages/server/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 1,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 2,
+          "impact_ms": 1265.9549992531538,
+          "cache_hit": true,
+          "impact_bytes": 1282,
+          "rg_ms": 8.533000946044922,
+          "rg_bytes": 104,
+          "rg_without_target_bytes": 104,
+          "impact_all": {
+            "found": [
+              "packages/server/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "packages/server/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "packages/server/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "packages/server/src/index.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 1,
+          "omitted_by_budget": 0
+        }
+      ]
+    },
+    {
+      "case": "pdf-dynamic-type",
+      "comparisons": [
+        {
+          "repeat": 0,
+          "impact_ms": 1262.65399903059,
+          "cache_hit": true,
+          "impact_bytes": 1960,
+          "rg_ms": 9.820500388741493,
+          "rg_bytes": 391,
+          "rg_without_target_bytes": 391,
+          "impact_all": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 3,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 1,
+          "impact_ms": 1259.8318737000227,
+          "cache_hit": true,
+          "impact_bytes": 1960,
+          "rg_ms": 8.174249902367592,
+          "rg_bytes": 391,
+          "rg_without_target_bytes": 391,
+          "impact_all": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 3,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 2,
+          "impact_ms": 1258.1270840018988,
+          "cache_hit": true,
+          "impact_bytes": 1960,
+          "rg_ms": 8.634582161903381,
+          "rg_bytes": 391,
+          "rg_without_target_bytes": 391,
+          "impact_all": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 3,
+          "omitted_by_budget": 0
+        }
+      ]
+    }
+  ]
+}

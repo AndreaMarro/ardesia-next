@@ -718,3 +718,19 @@ Companion macOS AppKit/SwiftUI, senza secondoCore: penna, gomma, pagine, undo/re
 La riapertura degli snapshot correnti evita i parser di migrazione obsoleti, mantenendo tutte le validazioni. Core/MemoryStorage C2:−30,72%; test completo browser/server/PostgreSQL locale:36,575→32,472secondi mediani,−11,22%, trecampioni prima/tre dopo. Limiti e dati grezzi nel [rapporto](sources/physics-2026-27/import-performance-2026-11-14/README.md).
 
 Cortex/Qwenlocale realmente provato:nessun nuovo file recuperato, ordinamento e latenza peggiori; resta escluso dal percorso predefinito. [Protocollo congelato e risultato negativo](sources/cortex-local-2026-11-14/REPORT.md), senza claim di token/costi risparmiati. Review e verifiche rimangono distinte da approvazione umana, CI e deployment.
+
+
+### Quarto incremento — trasferimento degli apprendimenti e autosave
+
+Il laboratorio C1 sugli urti distingue quantità di moto firmata ed energia cinetica: previsione, confronto aggancio/elastico, feedback separato e problema di trasferimento. Review indipendente su20.000configurazioni e browser a320/390/1440px; modello permanentesu5.120combinazioni. Il risultato degli esami si esporta anche inHTML autonomo, leggibile senza rete/JavaScript e stampabile dal browser: conserva31quesiti e105feedback, risposte eprovenienza. Input ostili restano testo; difetto di overflow con titoli lunghi trovato e corretto.
+
+Runtime pubblici generati con Terser giàpresente, sorgenti leggibili in tools/physics-runtime; nessuna dipendenza runtime o riclassificazione dei budget. I test confrontano comportamento, offline e identità. Il contattoinformativo disponeanche di alternativaemail, senza invio automatico.
+
+Il companion macOS ora usa autosalvataggio nativo solo dopo la scelta diun file. Review ha individuato perdita delprimo tratto all'uscita e blocchi di chiusura/runloopmodale, corretti mediante lecontinuazioni NSDocument. Annulla/gestocorrente/errori conservati; i limiti dellebozze senza nome e delle modifiche nonscritte rimangono espliciti. Root ha provato la build integrata reale:3tratti salvati→4autosalvati→Annulla→chiusura, file finaleesattamenteuguale alprimo. Nessuna promessa di sincronizzazione, cronologia versioni o recuperouniversale dopo crash.
+
+
+Audit indipendente dei contenuti:79originali ricalcolati,200prompt/risposte di verifica esaminati,7teorie approfondite e integrità279quesiti controllata. Precisata la formula del prodotto scalare nel piano e in3D, propagata in sorgente/C1/lettore; le altre4pack restano identiche. Non si afferma review esaustiva delle altre31teorie o dei290oggetti legacy. Ricevuta `content-science.md`.
+
+Ottimizzazione successiva del catalogo: una copia della proiezione per render invece di15, uno spazio corsi invece di10; handlerfreschi alclick. Test completo C2 locale:32,489→24,047s mediani,−25,98%, trecampioni perversione, tuttiPASS. [Dati e limiti](sources/physics-2026-27/catalog-performance-2026-11-14/README.md).
+
+Cortex: valutato anche un grafo deterministico degli importdiretti. Rileva un consumer prima omesso manualmente, ma il confronto non giustifica promozione: querymediana1,183s contro7,88ms con `rg`, outputpiùgrande e nessun risparmio token dimostrato. [Esperimento e patch non integrata](sources/cortex-impact-2026-11-14/REPORT.md), nessuna modifica del flusso predefinito o selezione automatica dei test.

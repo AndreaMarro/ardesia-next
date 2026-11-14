@@ -1,0 +1,74 @@
+{
+  "files": [
+    {
+      "path": "candidate.patch",
+      "bytes": 17806,
+      "sha256": "5d2a52029cd12dc94be248286ff7c3ef8360a4837d62dbc0a927a7cbf14799d4"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 8896,
+      "sha256": "6535ca29dd79a58fc9512e061fa8aa38620bc5922763fdfbe049ede014c96a46"
+    },
+    {
+      "path": "tools/cortex/impact.py",
+      "bytes": 9063,
+      "sha256": "dfe122289a112a5f883dbe0e55d17f7f0958e04a7d81205fe3b9bde9cf433631"
+    },
+    {
+      "path": "tools/cortex/extract-imports.mjs",
+      "bytes": 2624,
+      "sha256": "eee6abfa26747eb954d95c8c61c43ab5a8059929e5263c8f00a203092ae747df"
+    },
+    {
+      "path": "tools/cortex/IMPACT.md",
+      "bytes": 5450,
+      "sha256": "6531ed289a3507e83c0f0e752f524d3caed4a6cd0e9627c176bc6cdcf5c7f44d"
+    },
+    {
+      "path": "test_impact.py",
+      "bytes": 9567,
+      "sha256": "07dd98836ade63ffea32c3afc297a3e9f762f959ce80b44a0c318783d24372bb"
+    },
+    {
+      "path": "evaluate.py",
+      "bytes": 3198,
+      "sha256": "fa0dec4164305d908283409e4e35cb32a26d8202ef5662efb3f2dd3527962ece"
+    },
+    {
+      "path": "evaluation/protocol.json",
+      "bytes": 4713,
+      "sha256": "1a9e60203948c4e33462f961469368c593512a86903fcb04355863020b815fc9"
+    },
+    {
+      "path": "evaluation/heldout-freeze.json",
+      "bytes": 665,
+      "sha256": "fdedb3eaa7808681100997b28e5df1059b48b9e032137a3a9aa3c7ecf3f7da2e"
+    },
+    {
+      "path": "evaluation/results-dev.json",
+      "bytes": 36128,
+      "sha256": "64d8ec4c83ba57fd0993b1834b30cc4a72d2570c7d995dffb82a8115572ca53e"
+    },
+    {
+      "path": "evaluation/results-heldout.json",
+      "bytes": 24017,
+      "sha256": "31ed3ddf69e09d3c3ff377bbd82d26c550e125f9798b03cae8b1f6b5b9fd70a4"
+    },
+    {
+      "path": "evaluation/adjudication.json",
+      "bytes": 1352,
+      "sha256": "e180b82f60b936a2146072cfe41c043577e3ae2dddce238d26a001693aa76e70"
+    },
+    {
+      "path": "evaluation/summary.json",
+      "bytes": 262,
+      "sha256": "0bae06855d9841562866e7e01b24f3372a4f3106a70de2554cbae667dfda3084"
+    },
+    {
+      "path": "evaluation/tests.log",
+      "bytes": 2751,
+      "sha256": "6bd599529adee02745d64825b83908e0a6277c3ed0c65a30b76b67e208327958"
+    }
+  ]
+}

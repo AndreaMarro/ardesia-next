@@ -10,9 +10,9 @@
   "files": [
     {
       "file": "sf-2026-strumenti-meccanica.json",
-      "bytes": 772180,
-      "gzipBytes": 131682,
-      "sha256": "29cd8212d396fc343b019790df2afd462823b2eacfb5332327337f33140fd56d",
+      "bytes": 772327,
+      "gzipBytes": 131737,
+      "sha256": "1c68c1e907f4559132381af77bf963e7e78bf2cc1a178105ff8d26148cecc05e",
       "counts": {
         "objectives": 52,
         "practice": 59,
@@ -79,7 +79,7 @@
       "objects": 200
     }
   ],
-  "totalRawBytes": 3775139,
-  "totalGzipBytes": 642743,
+  "totalRawBytes": 3775286,
+  "totalGzipBytes": 642798,
   "note": "Static JSON course materials, fetched only on explicit import; not JavaScript. Full data costs shown separately from measured runtime budgets."
 }

@@ -2,10 +2,26 @@ import AppKit
 
 @objc(ANNotebookApplication)
 final class NotebookApplication: NSApplication {
+    private var preparingTermination = false
     override func terminate(_ sender: Any?) {
-        // NSDocumentController may filter for edited documents before asking
-        // canClose. Flush live gestures before entering that standard flow.
-        for case let document as NotebookDocument in NSDocumentController.shared.documents { document.finishGesture?() }
+        guard !preparingTermination else { return }
+        let documents = NSDocumentController.shared.documents.compactMap { $0 as? NotebookDocument }
+        guard !documents.isEmpty else { super.terminate(sender); return }
+        preparingTermination = true
+        var remaining = documents.count
+        for document in documents {
+            document.finishGestureForDocumentAction { [self] in
+                remaining -= 1
+                if remaining == 0 {
+                    preparingTermination = false
+                    finishTermination(sender)
+                }
+            }
+        }
+    }
+    private func finishTermination(_ sender: Any?) {
+        // Every live gesture and its native change-count activity have completed
+        // before NSDocumentController filters the documents requiring a save.
         super.terminate(sender)
     }
 }
@@ -74,5 +90,6 @@ precondition(app is NotebookApplication, "The document preflight application sub
 let delegate = AppDelegate()
 app.delegate = delegate
 installMenus()
-_ = NSDocumentController.shared
+// Native periodic autosave; AppKit controls exact timing and safe-write lifecycle.
+NSDocumentController.shared.autosavingDelay = 15
 app.run()

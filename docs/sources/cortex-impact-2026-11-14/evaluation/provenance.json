@@ -1,0 +1,3617 @@
+{
+  "protocol_sha256": "1a9e60203948c4e33462f961469368c593512a86903fcb04355863020b815fc9",
+  "source": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/ardesia-next",
+  "refresh": {
+    "updated": 720,
+    "unchanged": 0,
+    "removed": 0,
+    "excluded": 384,
+    "files": 720,
+    "source_bytes": 9297935,
+    "head": "7c9c061f5650d054acc8f4f8f4a53da30812fdcc",
+    "manifest_sha256": "f78fc32f50131c3b96b8ee7c5ba228177c8d6fc79d47074457af65a1bb31045b",
+    "elapsed_ms": 1714.931
+  },
+  "files": [
+    {
+      "path": ".agents/skills/ardesia-product-slice/SKILL.md",
+      "sha256": "82a632bedfeeece9f41db33f4bf1900550ae6ff610022bdc9713c1a863cc3eb3",
+      "bytes": 2038
+    },
+    {
+      "path": ".agents/skills/ardesia-sequential-execution/SKILL.md",
+      "sha256": "2253357870d006ba97f89abd26c2e9c7229323d2a079efc46c340621afeb7d17",
+      "bytes": 2551
+    },
+    {
+      "path": ".agents/skills/ardesia-sequential-learning/SKILL.md",
+      "sha256": "8e645e07a723ba012d13c51e38733ca77c060fe7f49595026a49e718c46e0fa1",
+      "bytes": 1636
+    },
+    {
+      "path": ".agents/skills/ardesia-sequential-review/SKILL.md",
+      "sha256": "8ce5be2a7dffa0b59317c3cde3fdb4c417e501eca6e0b0c05da3b3c8ffbd3888",
+      "bytes": 1665
+    },
+    {
+      "path": ".codex/agents/ardesia_architect.toml",
+      "sha256": "414b0cd510ce6c6aef3f2e12c064d3dc3ac2fa03c1154cd5c7ce508982c31baa",
+      "bytes": 833
+    },
+    {
+      "path": ".codex/agents/ardesia_memory.toml",
+      "sha256": "d947f990ec6cbb932d2a25c8e325c5c432a1899b65ce65f1b2da8cb44f167344",
+      "bytes": 903
+    },
+    {
+      "path": ".codex/agents/ardesia_reviewer.toml",
+      "sha256": "4417a210d485d24bb6f6cb7ece33ffc06e9a54d9425105085c8f47b0cc130be3",
+      "bytes": 950
+    },
+    {
+      "path": ".codex/agents/ardesia_science.toml",
+      "sha256": "d7a6c0e59dd44d970f8f2dbc135152b78d74e220bddf697bd5cffd813a537e2c",
+      "bytes": 850
+    },
+    {
+      "path": ".codex/agents/ardesia_ux.toml",
+      "sha256": "1740992de8fe42b3719baa2ccaf0f46c61e68a5d9b466e187f07df036a85d2b9",
+      "bytes": 897
+    },
+    {
+      "path": ".codex/config.toml",
+      "sha256": "69636dd8d19de7157dd008dba59d64bf62cc055db256b0c04105fd84919f9656",
+      "bytes": 140
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/engineering.yml",
+      "sha256": "db99983cecebbb743e55cd14c0d1e91106132e78119083e90ea0f8b824f54688",
+      "bytes": 1284
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "sha256": "b2d2f329d7d292fdc7c5908da2fd775a1aea6694ecb4f52d8e5a90c25e6f7443",
+      "bytes": 1725
+    },
+    {
+      "path": ".github/workflows/verify.yml",
+      "sha256": "05b3beb3fb15b2eac08f4093f0971ae80d54351be67f9a8fb53c6448de80cb58",
+      "bytes": 2234
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "6f65df2682487627b6ecd86efa209ecb63e7c4f662c376f2afb2dbc4339ffa79",
+      "bytes": 6193
+    },
+    {
+      "path": "README.md",
+      "sha256": "6a3b90d5add9f2619374f675c54d1ffa04e895328ebd97f4f7526440e69cc6cf",
+      "bytes": 15130
+    },
+    {
+      "path": "apps/web/AGENTS.md",
+      "sha256": "d9e0fc2906fdbc2a046397c5054232078158f8e5bea3499a9868aebc55639ead",
+      "bytes": 1012
+    },
+    {
+      "path": "apps/web/index.html",
+      "sha256": "e03eb5d77a540b393a3a4d052fc9fdb9af3356b59f61d303753ea41b6e65828f",
+      "bytes": 407
+    },
+    {
+      "path": "apps/web/offline-worker.js",
+      "sha256": "2afb18ccdcf602271315ba49e7e1ac6a82be401b6479db4194dd13d2eb62ede5",
+      "bytes": 2439
+    },
+    {
+      "path": "apps/web/package.json",
+      "sha256": "ba9d44d9c19d4a4672f8ec40bda186e77f64c1351f4aea907243578766e2429e",
+      "bytes": 547
+    },
+    {
+      "path": "apps/web/public/fisica/c1.html",
+      "sha256": "2e865ba096719ec9950b983512637c3c41ccaf2e8b6f3ce67be65602c652e475",
+      "bytes": 19467
+    },
+    {
+      "path": "apps/web/public/fisica/c2.html",
+      "sha256": "bc00e82d3257d0d95fb9c8bf775ac9b4a65e94d6d74d07e342d555f43231acd9",
+      "bytes": 16285
+    },
+    {
+      "path": "apps/web/public/fisica/c3.html",
+      "sha256": "e7ee02e44721976c7535c1dbb93f8aa8cb5c84204d6f6f2dfa6294af4d82e808",
+      "bytes": 17741
+    },
+    {
+      "path": "apps/web/public/fisica/c4.html",
+      "sha256": "277b955ea18a1a38be60cfd3247aaa2a7d843c7127436f33aae43f0356a1501d",
+      "bytes": 18664
+    },
+    {
+      "path": "apps/web/public/fisica/c5.html",
+      "sha256": "63bfeb11a097a9ff99620632ebebd8d11f072bab1d43f7f59a060c559953b007",
+      "bytes": 89370
+    },
+    {
+      "path": "apps/web/public/fisica/campo.css",
+      "sha256": "85f3edef3b53515cd1a2e184c4385cb3667c2f5b5a91311a2e3b962fa892bbaa",
+      "bytes": 9518
+    },
+    {
+      "path": "apps/web/public/fisica/campo.html",
+      "sha256": "c04a37674ddf6b4c696c50e007afe202447f5361b454d6f77318c036a182ecd7",
+      "bytes": 12492
+    },
+    {
+      "path": "apps/web/public/fisica/campo.js",
+      "sha256": "724d71909c3a06ce6bad28b1097251a32b8a7b8b485dcb7ecc0c780bf06a3372",
+      "bytes": 14555
+    },
+    {
+      "path": "apps/web/public/fisica/demo.css",
+      "sha256": "1ea1f89e2ad14279d8338897860e7a267df53bcc37c5c16699038876ed01eb05",
+      "bytes": 4775
+    },
+    {
+      "path": "apps/web/public/fisica/demo.js",
+      "sha256": "bc3ae07cf03cff50fe555cb58297bc9f82c065b60fc78d83b8265e33a3f098a9",
+      "bytes": 495
+    },
+    {
+      "path": "apps/web/public/fisica/exam-manifest.json",
+      "sha256": "cd3293f0c36541da612f73ca3a60a5fa0580cc457db1f8ace98816b7eaadfff5",
+      "bytes": 3550
+    },
+    {
+      "path": "apps/web/public/fisica/exam.css",
+      "sha256": "f8b260e8db72e820cf213a78ca2e9c18cdca882cdc4e199834fbd9e8058a3f98",
+      "bytes": 9044
+    },
+    {
+      "path": "apps/web/public/fisica/exam.js",
+      "sha256": "c35117991590f8fa28ec8337add368b6ee6efd911b7e35cc57156a292cb79b62",
+      "bytes": 18159
+    },
+    {
+      "path": "apps/web/public/fisica/index.html",
+      "sha256": "9c3f17e2e281e6b61ec97c4e4a78d81824ce74e7293c1ecfd443d6787e7700c0",
+      "bytes": 7393
+    },
+    {
+      "path": "apps/web/public/fisica/lessons-manifest.json",
+      "sha256": "879f71c520ab5f4bd9be731138beaf24258828d5020200d39fee2d64e815cfc3",
+      "bytes": 11999
+    },
+    {
+      "path": "apps/web/public/fisica/lessons.css",
+      "sha256": "24183adc025003309d050cf9c9719b576c29b022954bb37715cdc57a51aa7f63",
+      "bytes": 2774
+    },
+    {
+      "path": "apps/web/public/fisica/manifest.json",
+      "sha256": "92e35545d5a7aef26b9877c856c47980a15aeb4e71ef74aa52aa68f74c3972eb",
+      "bytes": 2110
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u1-01.html",
+      "sha256": "34c35eea1b34443d471a34c6b9c0114985494fe493c07dd2693f7d866dacdb82",
+      "bytes": 18564
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u1-02.html",
+      "sha256": "46e1efab3fa0331c0d79320a485220f02e1549ce3c35987cfb5cbfcb2f0a8ead",
+      "bytes": 17821
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u1-03.html",
+      "sha256": "4e304d37269ac4c41386dbac3532daa28ae00607cf792f3f92e3c283fc39b756",
+      "bytes": 16060
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u1-04.html",
+      "sha256": "2d905f96f1cb89b10c93c54b1f98146042701edcac71c63b60d94ae59fdfce51",
+      "bytes": 16340
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u2-01.html",
+      "sha256": "b82e2de5d4f50776c2f3c0010bf8bc2141ad9945f2dc4d71999ff80f9ddbe082",
+      "bytes": 21747
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u2-02.html",
+      "sha256": "5d60717fc58542572a6682dc4c0f1d1abc3553ab3cad6c674e0af42f9b12853b",
+      "bytes": 21343
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u2-03.html",
+      "sha256": "d2bbd52fd73535143720c536f67bebf958e0854d66fd07d8b65ee0aadd138e02",
+      "bytes": 18714
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u2-04.html",
+      "sha256": "6c18998567a436b60a70d3801eea5e57fdfec1510cc5ad40c532d220f51a0e23",
+      "bytes": 20086
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u2-05.html",
+      "sha256": "65ce33ba2d93f08d53226a42ad9fa93444090f25e2be74ca968fc57bf1e46c4d",
+      "bytes": 18368
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u3-01.html",
+      "sha256": "604472a04d90c045acb899d3a237a3296dbca108d279b54cd01fa5e6802f10e9",
+      "bytes": 31768
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u3-02.html",
+      "sha256": "6958e5248e0d61442c9829ace1c341017c74b9dee473e8260ba524ffa4ab869a",
+      "bytes": 28694
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u3-03.html",
+      "sha256": "46c850c3c83b04ce2fa46575803b9451dffb22efa6c72d03a21864458f1fd075",
+      "bytes": 25285
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u3-04.html",
+      "sha256": "0a216a12460474aa9a4f86a9a1f46eb733739a86f76732a0bec27a61cdfae59c",
+      "bytes": 26533
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u3-05.html",
+      "sha256": "1bf8e317e07a7f070205defc6a40f8a507f1c39dc23e4258fe24f50da0cb8a38",
+      "bytes": 24785
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u4-01.html",
+      "sha256": "140bc9bbe1cccda5d1351d0a7b8dce0fdaed912a483a976daa240a33889c40c7",
+      "bytes": 20482
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u4-02.html",
+      "sha256": "3965f200867d2c4743c9303f07495e5fa91494389c81567fb6c9c84416102988",
+      "bytes": 20660
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u4-03.html",
+      "sha256": "86d5180d0e72fb7b73f8214e0f8a836d787c32d4d00e260d3a8593d4c2e2b2d5",
+      "bytes": 16741
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u4-04.html",
+      "sha256": "a44a2d5f65419604c0fdb45e91331a9c02de1324b7ac6cdafac43879866eddcf",
+      "bytes": 16670
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u4-05.html",
+      "sha256": "088a091e92acc784b7a8b6fb82ddbe13393107b04ff727316829cd5e05cb8956",
+      "bytes": 18579
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u5-01.html",
+      "sha256": "f15b6ea094ec1b1d0b64dfc318b7f95686a7089f7ca41007c849d267eadc4e05",
+      "bytes": 22357
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u5-02.html",
+      "sha256": "39a00f3cf723b3b152ddd4e3dfab069e44400d6bef50204ce1019fbba000bb3d",
+      "bytes": 28741
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u5-03.html",
+      "sha256": "ab9b425fd5073406bb79948cc83461e082b05341b4cba14970e59297c5455a2a",
+      "bytes": 20283
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u5-04.html",
+      "sha256": "d4f72f5a36b0311d2f09b9cc586034209abe2e2ad498f3febcd1c231b394441f",
+      "bytes": 29366
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u5-05.html",
+      "sha256": "6aefeceaf4b62416fe6028a6923bfbfcdff13888d456e23af0a73830423252e5",
+      "bytes": 28960
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u6-01.html",
+      "sha256": "d33d43102bc8a07700d6ac4eb2d901028c3ce004bf36ed22fed885def3f7db9e",
+      "bytes": 21108
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u6-02.html",
+      "sha256": "0b3c36b74180653ea963153b2c6c44ec4bd7217478559a277dc62622e3f47ed9",
+      "bytes": 15840
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u6-03.html",
+      "sha256": "d65d59821c61c428fce6e141685329504b069c1570fffe9a7c9cc7682efc81e5",
+      "bytes": 20987
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u6-04.html",
+      "sha256": "a834ec73f996e2404f5fb77337a9ad3d262e9f60e1203ef0614110d04abf52a9",
+      "bytes": 18935
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u6-05.html",
+      "sha256": "ab7c840d27949a3f2be7e43cf979ee0f8f2bb066a4aeae0edfa840c532a16694",
+      "bytes": 17682
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u6-06.html",
+      "sha256": "a420426e39efd9626ad418e675851dcdf9a27970d9699089ba35a737742e8e41",
+      "bytes": 17665
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u6-07.html",
+      "sha256": "ccc07a8908bfb4b263138fd509fe1bb337f5dea23085038c5eea7288fa2177bd",
+      "bytes": 16927
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u7-01.html",
+      "sha256": "342e81421dea562848d01dbf147500fee55dd7c8de146a22fea454d6748c5c62",
+      "bytes": 20894
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u7-02.html",
+      "sha256": "c1625a2e4af902dc00b0165517a7fbf15c44ab0a25620869d18ebd4daf781c9b",
+      "bytes": 19804
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u7-03.html",
+      "sha256": "70a9c059f696e0dd42aab8ddff60db72b0ec744631217693e68755a3691f23fd",
+      "bytes": 15010
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u7-04.html",
+      "sha256": "3bafe66cab89c0ad5322bb88871451c859350ace311fe4a1cead3d1591c13407",
+      "bytes": 17020
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u7-05.html",
+      "sha256": "28fd19decd4e5a821e7c15709be076f21fd1410a2f4ac50ec834e4460e9711f9",
+      "bytes": 18322
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u7-06.html",
+      "sha256": "3e53ca891d2f6999ad8d7b5761dd8bfa39b33f1a0acc1221c4b85c52c8ae39df",
+      "bytes": 18295
+    },
+    {
+      "path": "apps/web/public/fisica/sf-2026-u7-07.html",
+      "sha256": "a59058f1b28c8ea88ad884a201a65ed95b700b5387937116801426e7580122dd",
+      "bytes": 19617
+    },
+    {
+      "path": "apps/web/public/fisica/simulazione-b.html",
+      "sha256": "f27ef48e67fa8cb501e981d00ea9f0e8f03fbb1c92f538dfbd26c9abcd619f4b",
+      "bytes": 62869
+    },
+    {
+      "path": "apps/web/public/fisica/simulazione.html",
+      "sha256": "a063f9d7896cde58a3755cd9e6f1d29cbffaa206a8b17145b44d10a6e84aeda6",
+      "bytes": 53171
+    },
+    {
+      "path": "apps/web/public/licenses/pdfjs/LICENSE",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "bytes": 10174
+    },
+    {
+      "path": "apps/web/public/plugins/catalog.json",
+      "sha256": "7aa3a4bd95faf5720c1600fc4560cad232370116e1886882afc9fd6f5691fbf5",
+      "bytes": 3099
+    },
+    {
+      "path": "apps/web/public/plugins/ideal-spring/1.0.0/manifest.json",
+      "sha256": "3fc4233e08e3353ec61ce85f845f73fc5dd0efb6f5e446f945b6b9663f12385b",
+      "bytes": 898
+    },
+    {
+      "path": "apps/web/public/plugins/ideal-spring/1.0.0/plugin.js",
+      "sha256": "713b10ce53337e5bb03f0da86afec8a1266a8229115e9d1f571cf49766814148",
+      "bytes": 184120
+    },
+    {
+      "path": "apps/web/public/plugins/poiseuille/1.0.0/manifest.json",
+      "sha256": "7f767df4a2ee217d1e13446af1861011cdb10cd76deef00c71d477bbba108e1e",
+      "bytes": 908
+    },
+    {
+      "path": "apps/web/public/plugins/poiseuille/1.0.0/plugin.js",
+      "sha256": "bd7eced69753424c7da3076783917d4fb235bd90d975dbbce2fe71371b06e00b",
+      "bytes": 184145
+    },
+    {
+      "path": "apps/web/public/plugins/revocations.json",
+      "sha256": "6d6e9fe00920db30c4fb655c1f7f965c1e2010f2dfd039bc10e91ab9128de142",
+      "bytes": 100
+    },
+    {
+      "path": "apps/web/src/App.tsx",
+      "sha256": "352442d3c0dac2804cf2efda538ab4ec1df69ee4bce74ca579b7e6912e626192",
+      "bytes": 22193
+    },
+    {
+      "path": "apps/web/src/LearnerSpace.tsx",
+      "sha256": "56e2135c7cd4cfd7e42aa4e622f29d2bf598661620bf4a24a5e5aa3f43b23be5",
+      "bytes": 14415
+    },
+    {
+      "path": "apps/web/src/OfflineWorkspace.tsx",
+      "sha256": "f417fa57ca17f5ad13ff4b276a45ddc85c141f18ecd96832300f989b1e038303",
+      "bytes": 7184
+    },
+    {
+      "path": "apps/web/src/RemoteWorkspace.tsx",
+      "sha256": "a45deef96a8e2e779488c51ce499a8d249d9b446a59ee5665ee30224c4241e21",
+      "bytes": 18199
+    },
+    {
+      "path": "apps/web/src/adapters/browser-storage.ts",
+      "sha256": "4f6b2d78b3284152400a99ec90e0197ac9a71e36dcb158543fa469b1c9286290",
+      "bytes": 1238
+    },
+    {
+      "path": "apps/web/src/components/Board.tsx",
+      "sha256": "1c43380921d95042a1d18f370613530415b1f7e91a2fc75ff17ae9f3705aded7",
+      "bytes": 32792
+    },
+    {
+      "path": "apps/web/src/components/Dialog.tsx",
+      "sha256": "94b336702b70c8b65db0a728e20669748723bb570687fbc69b7fbdc2d7956e6a",
+      "bytes": 977
+    },
+    {
+      "path": "apps/web/src/components/DocumentView.tsx",
+      "sha256": "ee31a82410bbfe6c7cd1d0ad2f09107cac10c168316b03fcc90f32d70caa46a8",
+      "bytes": 1679
+    },
+    {
+      "path": "apps/web/src/components/Icons.test.ts",
+      "sha256": "160f5dbe7ae216d507c4b644384f87a91b57d4d14fbc197b328d210c7704aef4",
+      "bytes": 4600
+    },
+    {
+      "path": "apps/web/src/components/Icons.tsx",
+      "sha256": "28a4e2779981db864a367fd1f9a17a63d7963e326c4d21fb89a9a48200d845f1",
+      "bytes": 10261
+    },
+    {
+      "path": "apps/web/src/components/InkConflictRecovery.tsx",
+      "sha256": "800daac524e180fdfb86dad2de1030504c3f02e5389e6dbc9ec8c244f170482b",
+      "bytes": 5511
+    },
+    {
+      "path": "apps/web/src/components/Inspector.tsx",
+      "sha256": "d7765d06b5081b332cfcf8f74023c4a893ca732230282a1446fe4d3696ebb42a",
+      "bytes": 8221
+    },
+    {
+      "path": "apps/web/src/components/LabContent.tsx",
+      "sha256": "2169e0550ace866fbd807b749ead0b808084f27ff38c57dcb8a05a5a2e26565f",
+      "bytes": 1757
+    },
+    {
+      "path": "apps/web/src/components/LabInspector.tsx",
+      "sha256": "bfe636f86d3c52d722cfea3150a63fb15400605e69974914f19074c0be7580ab",
+      "bytes": 7943
+    },
+    {
+      "path": "apps/web/src/components/LearningDiary.tsx",
+      "sha256": "6ccf082f4d3e500c43ef7794a513f3cf1677d79b34cdfa97fad4ed125e811308",
+      "bytes": 7022
+    },
+    {
+      "path": "apps/web/src/components/LearningNextStep.tsx",
+      "sha256": "6a958c1ece9c04d937397a279e3e4f0d90cadb316abdcde46af1addb97d2918d",
+      "bytes": 3782
+    },
+    {
+      "path": "apps/web/src/components/Marketplace.tsx",
+      "sha256": "d71acf71f8be547a20af6c3d781d1381d9b062d1ba5b50fbfe361a767890986f",
+      "bytes": 11825
+    },
+    {
+      "path": "apps/web/src/components/MathFormula.tsx",
+      "sha256": "bdc5345caf4a5ca08e3dec1b7ff550ee07b5be9f1f7dcc9d27540fd472f1555f",
+      "bytes": 546
+    },
+    {
+      "path": "apps/web/src/components/ObjectContent.tsx",
+      "sha256": "f73caa6d239ba1b221e8a3a55ea214711424cf195e5276febf1aa01cf41ba303",
+      "bytes": 1838
+    },
+    {
+      "path": "apps/web/src/components/ScienceView.test.ts",
+      "sha256": "dad14523ee640c8f44ac28ece9479a4c10592f268bcff5ba69ebf6b80cff3091",
+      "bytes": 1211
+    },
+    {
+      "path": "apps/web/src/components/ScienceView.tsx",
+      "sha256": "fcf266b809cbb9b900203fe6e17824a63a4f2f515643e856dffbd3f7e88b672f",
+      "bytes": 4224
+    },
+    {
+      "path": "apps/web/src/components/SharingDialog.tsx",
+      "sha256": "acd7f596da4033b9e6f72e7f6f361ee2f050164a6e330a5a24e06d358c5a4c77",
+      "bytes": 7788
+    },
+    {
+      "path": "apps/web/src/components/StudioChrome.tsx",
+      "sha256": "e0cfd740d248819013b915bf2fda642212501ef3d6fe4d1de8891e81fab099e8",
+      "bytes": 3994
+    },
+    {
+      "path": "apps/web/src/components/WorkspaceDialogs.tsx",
+      "sha256": "b12e1389664729a8cfbf987e97c85ff7df6d40ffff7ec746b9b21f58cc73b60f",
+      "bytes": 4127
+    },
+    {
+      "path": "apps/web/src/components/WorkspaceHome.tsx",
+      "sha256": "87ef8fe301e58300f4bad3903ddca287654638dc13cfd42c691002017c722c84",
+      "bytes": 4497
+    },
+    {
+      "path": "apps/web/src/components/board-geometry.test.ts",
+      "sha256": "32a0cbcb62e1a231027e0ed305b7c6db076060ee84a10fde4fcffb556c2cfa9c",
+      "bytes": 4138
+    },
+    {
+      "path": "apps/web/src/components/board-geometry.ts",
+      "sha256": "d9ac9acfa6628efc41b9de11ac470a750a8c55e84894e1b856fd067f9dee3d7a",
+      "bytes": 4916
+    },
+    {
+      "path": "apps/web/src/components/workspace-home.css",
+      "sha256": "e6b7b37b1b1768841ee10d2289ad2b41d03ef1d5c47fb7c8c027ed7dd00d43d9",
+      "bytes": 4196
+    },
+    {
+      "path": "apps/web/src/courses/CourseStudio.tsx",
+      "sha256": "19aefaad47a70390aa456e9e9e38cbbb944d5a14cf720b5d672448cb987cabd5",
+      "bytes": 31928
+    },
+    {
+      "path": "apps/web/src/courses/content.ts",
+      "sha256": "a1c9e73b787371180e5bfea5f48fd05a360ffa5948acdd477c98de661ebf8b95",
+      "bytes": 4255
+    },
+    {
+      "path": "apps/web/src/courses/courses.css",
+      "sha256": "4cf3757345778ca981170947dc6f30e7b509e320d89a751effa28839952f13a7",
+      "bytes": 11674
+    },
+    {
+      "path": "apps/web/src/courses/physics/CourseMaterials.tsx",
+      "sha256": "1633e80cfd1126f022f191524dbf4491fbdb14a586980c260290b70b04c7a9e0",
+      "bytes": 4682
+    },
+    {
+      "path": "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+      "sha256": "e6e05d0c06915e5cdf8c91893c8c2634dd90e4c7489268ee11938aab5c1570f7",
+      "bytes": 2976
+    },
+    {
+      "path": "apps/web/src/courses/physics/assessment-separation.test.ts",
+      "sha256": "62b2f3b4d5e5db2bd227db967cb887e8fa16749def1f751d910d49db7ccfddda",
+      "bytes": 3151
+    },
+    {
+      "path": "apps/web/src/courses/physics/capacitor.test.ts",
+      "sha256": "610abe1ce3b0ee9f3abc746a1458d445a0b7dadf21131cf8de592eb8e938b383",
+      "bytes": 4511
+    },
+    {
+      "path": "apps/web/src/courses/physics/catalog.ts",
+      "sha256": "6075fb024080a2acd2fed89c410c8ce3f7ecd4b859091717f82931653444d482",
+      "bytes": 1849
+    },
+    {
+      "path": "apps/web/src/courses/physics/guided-choices.test.ts",
+      "sha256": "6539006647c99ebd5127df8e058c12347e03d2e88ea2720623e00166909d97b0",
+      "bytes": 5276
+    },
+    {
+      "path": "apps/web/src/courses/physics/heat-engine.test.ts",
+      "sha256": "cfaaddb083657a4129c598dbe45f7deefec150808551bf873a67293b89f8f06f",
+      "bytes": 5427
+    },
+    {
+      "path": "apps/web/src/courses/physics/import.ts",
+      "sha256": "84d819566bbea4a899770b013850fc64edba33ca850afcc12faa6814eb7a5ad6",
+      "bytes": 4414
+    },
+    {
+      "path": "apps/web/src/courses/physics/interference.test.ts",
+      "sha256": "3cb9e0e836da441c6248a7f2c41e5473c38f1b114161b227cd3702b672ef3200",
+      "bytes": 5652
+    },
+    {
+      "path": "apps/web/src/courses/physics/physics.test.ts",
+      "sha256": "25152ec55bfbdb03c1fda51b1dc74472e528c22b547a662b93cb88c927bf5b71",
+      "bytes": 4983
+    },
+    {
+      "path": "apps/web/src/courses/physics/pressure.test.ts",
+      "sha256": "ed62ba58b9c8eb63531a609d2dcfd690df4f9b34461321911fa3e2a3986ad21e",
+      "bytes": 4534
+    },
+    {
+      "path": "apps/web/src/courses/physics/start.test.ts",
+      "sha256": "22070ac6728effb65fa759d5250d7752141ac5c6b2d66db3e18bdb1f26315bc0",
+      "bytes": 5963
+    },
+    {
+      "path": "apps/web/src/courses/physics/start.ts",
+      "sha256": "d814d831a40c78bac2a76e1ac072ad0b6ea47baad1993c750c881cf9574b73d8",
+      "bytes": 3086
+    },
+    {
+      "path": "apps/web/src/creator/Creator.tsx",
+      "sha256": "64a5f913ec11a51925d127d037ec7222bec4ec7839c113d0fb79559ee3d53d94",
+      "bytes": 19212
+    },
+    {
+      "path": "apps/web/src/creator/ExtensionView.test.ts",
+      "sha256": "2ed24595e32739cc1aeb11dce769b398c71f3d1bba8c0e5432d5392d163aebaf",
+      "bytes": 1457
+    },
+    {
+      "path": "apps/web/src/creator/ExtensionView.tsx",
+      "sha256": "0a8ebe2b05e2e293270aadc897178534ba54b78bd9305ffd689f58a91e35cc26",
+      "bytes": 7049
+    },
+    {
+      "path": "apps/web/src/creator/ProgramPreview.tsx",
+      "sha256": "7e6ede7c7f4b22d5fb1924bb5d7fabd9c32e3d48a1be6b513efe26e2349e03f6",
+      "bytes": 1929
+    },
+    {
+      "path": "apps/web/src/creator/ProgramSurface.tsx",
+      "sha256": "ea5d50d479983999b52e9d87f35a6edd959466a1abf981f1695a6070119944fb",
+      "bytes": 4595
+    },
+    {
+      "path": "apps/web/src/creator/creator.css",
+      "sha256": "f36c0e72f8ca1c5938908e96f54a19926588fe9b113eae5bb6da2e05e70dd519",
+      "bytes": 9837
+    },
+    {
+      "path": "apps/web/src/creator/definitions.test.ts",
+      "sha256": "281d563ba0c27f25954e345b2d74f142b4ae763cf401fc1de05168c6c4f7e2f5",
+      "bytes": 2453
+    },
+    {
+      "path": "apps/web/src/creator/definitions.ts",
+      "sha256": "7f304a5105f93a47027bc7756f26d885844d65bf2969eff314f9f3dd12a7d820",
+      "bytes": 5514
+    },
+    {
+      "path": "apps/web/src/creator/program-example.ts",
+      "sha256": "d31bb1f37ca43a46806412f91ec185060ba26f126b3d9b5ffd40eb65998724f4",
+      "bytes": 1978
+    },
+    {
+      "path": "apps/web/src/handout/HandoutDialog.tsx",
+      "sha256": "23ac74b31f648b9d1fe9d78cd98241692781bdc55cd76e96d1f6b22982f48039",
+      "bytes": 411
+    },
+    {
+      "path": "apps/web/src/handout/HandoutView.tsx",
+      "sha256": "84999bf17f641843b3c1405390540d5e34289535db8255e175fdea66590fe6ae",
+      "bytes": 14689
+    },
+    {
+      "path": "apps/web/src/handout/assets.ts",
+      "sha256": "568c41308ca1842d2700ac4154a2e387fb1d7488cca3873b55324d15de2e565e",
+      "bytes": 3074
+    },
+    {
+      "path": "apps/web/src/handout/bundle.test.ts",
+      "sha256": "fa965c5a9e15a0c3804e67a0019d40357c49378d70f8b56854b2414f858552a8",
+      "bytes": 7406
+    },
+    {
+      "path": "apps/web/src/handout/bundle.ts",
+      "sha256": "ecfdb717db3d3369469f37b28934ef9dfce448406120a62eb886ba2a7382c3cf",
+      "bytes": 9619
+    },
+    {
+      "path": "apps/web/src/handout/handout.css",
+      "sha256": "5ad7e1932e624cd8ea1e010cacc9ef4b0590468f1ff0e014c933d94eb8924a59",
+      "bytes": 4562
+    },
+    {
+      "path": "apps/web/src/handout/latex.test.ts",
+      "sha256": "655085cf5c3e74434c1bf4bff8fa688f85fa18fd3e4a48bf66c91f6eb60436bc",
+      "bytes": 4226
+    },
+    {
+      "path": "apps/web/src/handout/latex.ts",
+      "sha256": "c9cdb0bbcf1a39bf1f7707dba4ad5cc232f337bd8c49583dc4edfa6054cb1bea",
+      "bytes": 7071
+    },
+    {
+      "path": "apps/web/src/handout/plates.ts",
+      "sha256": "272b948ff46941f2fdd89ba3913466c6cc5bc0cb889c7d3b808f5ac80b05824f",
+      "bytes": 8697
+    },
+    {
+      "path": "apps/web/src/handout/prepare.ts",
+      "sha256": "f658fb39a442d85948d8332ec6a8a9d2a78e9c2afffb03384b56c6abca510622",
+      "bytes": 785
+    },
+    {
+      "path": "apps/web/src/handout/tex.ts",
+      "sha256": "1d4f8f3ca43c22efca9592c8645629b7a1954c796dc73a7474efdff429ef0c8f",
+      "bytes": 6945
+    },
+    {
+      "path": "apps/web/src/ink-conflict-recovery.test.ts",
+      "sha256": "dbf9ea0b0f75b446ca15e469e5e33e19ca8c0a287861801d61c4dd4da7ad7fd3",
+      "bytes": 22627
+    },
+    {
+      "path": "apps/web/src/knowledge/KnowledgeMap.tsx",
+      "sha256": "a553de958890e005fd7c5c44fb672efdeecce3a60117ae45a07d63f970b44383",
+      "bytes": 4584
+    },
+    {
+      "path": "apps/web/src/knowledge/KnowledgeStudio.tsx",
+      "sha256": "71c32d8402c096eabd25f4ed6eaf4a8e6295c0511c6d573cf4e77315d42e7839",
+      "bytes": 8611
+    },
+    {
+      "path": "apps/web/src/knowledge/graph.test.ts",
+      "sha256": "46c0b0662532251cb69994d3f3a3c222c7f72faa6970ab65fb747146e216a1ee",
+      "bytes": 4096
+    },
+    {
+      "path": "apps/web/src/knowledge/graph.ts",
+      "sha256": "20e018d0cd8421cd88e0937683ad0dbe3b61708f4e9c18760e8034ecddca7935",
+      "bytes": 2208
+    },
+    {
+      "path": "apps/web/src/knowledge/knowledge.css",
+      "sha256": "65c7f0286322128564112966a01eccdd62c6e2aea08c4b8b3fb828d2e2e97d08",
+      "bytes": 2719
+    },
+    {
+      "path": "apps/web/src/main.tsx",
+      "sha256": "a43a537d2c36dbf7d8a0ffa4d6677208023bcb5133f91668fdadfc2b796d7c2f",
+      "bytes": 347
+    },
+    {
+      "path": "apps/web/src/materials/MaterialImport.tsx",
+      "sha256": "20f20bd46905ba06e8d0d3942177ce10046ca340637db4424fa17563ee0ff0e1",
+      "bytes": 8019
+    },
+    {
+      "path": "apps/web/src/materials/MaterialView.tsx",
+      "sha256": "9003e0988c85a7db552f1df0b5999148931c2cea002d091c5f339ea1ce2c3255",
+      "bytes": 5332
+    },
+    {
+      "path": "apps/web/src/materials/files.ts",
+      "sha256": "b974fbef200100d453fa13605b1ea73ec87ca3cb3a0da7c6df6866951a839bcc",
+      "bytes": 3129
+    },
+    {
+      "path": "apps/web/src/materials/materials.css",
+      "sha256": "8c4af9e01c2f19fce888a718cd04a9dfe4e2916963f74ca23fb92f23b9a2d232",
+      "bytes": 2962
+    },
+    {
+      "path": "apps/web/src/materials/pdf-engine.ts",
+      "sha256": "9afe147a53727435783681d3added4a37d79e9e8a825834dae3e375b226f9013",
+      "bytes": 623
+    },
+    {
+      "path": "apps/web/src/materials/render-queue.test.ts",
+      "sha256": "0575550c66d7db4b219458e0780f5a4e09a2e8a3485cda0eac9da74ccbc59c2f",
+      "bytes": 1225
+    },
+    {
+      "path": "apps/web/src/materials/render-queue.ts",
+      "sha256": "d15706898ed5b4360795710d1b83376db47c6a4c2c6eb9cfbb61baf2b6168715",
+      "bytes": 816
+    },
+    {
+      "path": "apps/web/src/materials/render.test.ts",
+      "sha256": "a0f2a273164a2830e460123c517a895ce6e8896caff3a4487940bc8d3466d274",
+      "bytes": 1413
+    },
+    {
+      "path": "apps/web/src/materials/render.ts",
+      "sha256": "5e0c6a4bd855deea3d54f1643046117c504b901f58ec3132492a6bab4c985a63",
+      "bytes": 3356
+    },
+    {
+      "path": "apps/web/src/notebooks-client.test.ts",
+      "sha256": "4bfea2f8374db76218fb2d3070871cfce0875268f80bc02237acb479ccd4cd97",
+      "bytes": 11682
+    },
+    {
+      "path": "apps/web/src/notebooks/NotebookLibrary.tsx",
+      "sha256": "4dd17655cc78a73c9d2808759700ffe4445a604d30c9c5cc662cfc8c5aedd3b3",
+      "bytes": 17589
+    },
+    {
+      "path": "apps/web/src/notebooks/NotebookNavigation.tsx",
+      "sha256": "56486561a06245ee430ecdf4c25109f44bd2c3dc560389bde72e88a3e921b2a9",
+      "bytes": 1416
+    },
+    {
+      "path": "apps/web/src/notebooks/PagePreview.tsx",
+      "sha256": "7f7600fe079588f887cc8553f6e0097ce8418e6538489f6dff84d5570be5db4a",
+      "bytes": 1772
+    },
+    {
+      "path": "apps/web/src/notebooks/notebooks.css",
+      "sha256": "265d05db376509b671b9b969c757422d7d86f8506427e3e3081f88ff23d7f530",
+      "bytes": 9760
+    },
+    {
+      "path": "apps/web/src/offline-client.test.ts",
+      "sha256": "846c433cc8fa21fb30dd9651f52b44ac9368f95ef0230475323a92f5090225e8",
+      "bytes": 28810
+    },
+    {
+      "path": "apps/web/src/offline-shell.ts",
+      "sha256": "2b75544f0dd198ee727ce4da3271e547ad72a94053afcb1989c9e89850f974e8",
+      "bytes": 2367
+    },
+    {
+      "path": "apps/web/src/plugins/bundle-transport.test.ts",
+      "sha256": "3cfd32de69aefe85dc4e476493669f5a08aefe4a44a24ec7d60c3a107d36d6a9",
+      "bytes": 4295
+    },
+    {
+      "path": "apps/web/src/plugins/bundle-transport.ts",
+      "sha256": "184161f4a8499cf718662f1d4936fc1692e76366f437cdb29c8150bd91be9d2d",
+      "bytes": 1909
+    },
+    {
+      "path": "apps/web/src/plugins/first-party-authorization.test.ts",
+      "sha256": "76b19a9e37c9a08e9e1437513ca7b943cd51c82001d62007b5a0432abf3bad13",
+      "bytes": 4346
+    },
+    {
+      "path": "apps/web/src/plugins/first-party-epoch.test.ts",
+      "sha256": "4c52d24531afd1a12b2e6242c8b6c00bab220a9f74a4c15af186497dd2dfbb10",
+      "bytes": 2755
+    },
+    {
+      "path": "apps/web/src/plugins/first-party.ts",
+      "sha256": "2c288baa9f17d6edff63c0807f77b6161443260ef0e99026e89094c2085c94e5",
+      "bytes": 15862
+    },
+    {
+      "path": "apps/web/src/recordings/AudioSession.tsx",
+      "sha256": "09f7de401ad61de1dd3e3ec7d52c741eb3e52f6d96b036712d4456eac80fe1d0",
+      "bytes": 19917
+    },
+    {
+      "path": "apps/web/src/recordings/capture.test.ts",
+      "sha256": "b54e034d0893a7959af9ae51fca7d3d07e217ce4bccd84f1da401ac27d905330",
+      "bytes": 8250
+    },
+    {
+      "path": "apps/web/src/recordings/capture.ts",
+      "sha256": "ccf0ebde49cf71f707c6fa88a8151a72f960f5f046777b8a2053d892da62f0bd",
+      "bytes": 11595
+    },
+    {
+      "path": "apps/web/src/recordings/recovery.test.ts",
+      "sha256": "5d91d34ccad334bc95e85c3939430ef33995a2acb16bbeec38935a1334a39c9c",
+      "bytes": 1539
+    },
+    {
+      "path": "apps/web/src/recordings/recovery.ts",
+      "sha256": "da38f08c83cc34868dc895cb30f073eded303a92c2a1f19f5f1827c8ecda7b4c",
+      "bytes": 1719
+    },
+    {
+      "path": "apps/web/src/science/PhysicsWorkbench.tsx",
+      "sha256": "fa37ba277ad6ceb72b2536fbbc232a7a2503c9aa8e604c0b4eb1c25f1ab9c7f1",
+      "bytes": 2529
+    },
+    {
+      "path": "apps/web/src/science/labs.test.ts",
+      "sha256": "54d4cf8257e20b710a44e986bdfba8d5d25db0149d0119a50fd602252edfc943",
+      "bytes": 4112
+    },
+    {
+      "path": "apps/web/src/science/labs.ts",
+      "sha256": "ffc5f96692d5da75dece635d15a2c4ef2d8fc4343792c04d916fe2f46099d4e3",
+      "bytes": 21647
+    },
+    {
+      "path": "apps/web/src/science/science.css",
+      "sha256": "788b9ef6a48b831438c7b25326b39b18ce06e7ff888665b50a5f0c640cf6a631",
+      "bytes": 2154
+    },
+    {
+      "path": "apps/web/src/studio.css",
+      "sha256": "d9b0151f00debf61d1e00c8302df5567697dc55a076a59726997c96365ad080a",
+      "bytes": 14500
+    },
+    {
+      "path": "apps/web/src/styles.css",
+      "sha256": "4c4db95a4bb5dd94a5fb1385353e17aab06f23a566e095f73e0c0b683c5c55f6",
+      "bytes": 38413
+    },
+    {
+      "path": "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+      "sha256": "c31f55c0df9467cf3281ba6d640eae927b01a8d4a697a6f853c219e132cf784e",
+      "bytes": 3181
+    },
+    {
+      "path": "apps/web/src/tutor/TutorEditor.tsx",
+      "sha256": "98602a0dcc79ad8035be21f170f705ad9538986c28dbe0d38b9646ed0084b721",
+      "bytes": 12789
+    },
+    {
+      "path": "apps/web/src/tutor/TutorStudio.tsx",
+      "sha256": "4bd6374d6d4de440138642d1ff1054ffe72e7690017b910e5f84e888e9ef125f",
+      "bytes": 22014
+    },
+    {
+      "path": "apps/web/src/tutor/tutor.css",
+      "sha256": "a34cbc875fecc35ba50b6afcd803666a8761b2ec0125e441433b09d4f3cb3318",
+      "bytes": 11257
+    },
+    {
+      "path": "apps/web/src/tutor/values.test.ts",
+      "sha256": "0b1d2f7c5025ed442806d07412cafa3cac502d87a6226f84e4387c221077f40f",
+      "bytes": 4597
+    },
+    {
+      "path": "apps/web/src/tutor/values.ts",
+      "sha256": "4b9054c0d08361f4681943f5e473782405ca727e5b420684bbe158bfd500d803",
+      "bytes": 6585
+    },
+    {
+      "path": "apps/web/src/workspace-queue-fixture.ts",
+      "sha256": "1c1527a872073e05ad2aa2321b2ddceafc6130efc481979d2344fabd07886e8d",
+      "bytes": 5657
+    },
+    {
+      "path": "apps/web/src/workspace-queue.test.ts",
+      "sha256": "57c32ef80fb3d6e021befcd998c35f9c81f3015af7c1d06517b3dc93eb051f15",
+      "bytes": 16008
+    },
+    {
+      "path": "apps/web/src/workspace-recovery-storage.test.ts",
+      "sha256": "9998cd36fd74423d93ebbcaa101fdcbe0b25d733094de9cddcca6d66fe4c4457",
+      "bytes": 7085
+    },
+    {
+      "path": "apps/web/src/workspace-shared-recovery.test.ts",
+      "sha256": "54afaf90eec3f62ddc31f85e89c0245099b7a8ec5c2a929106b3b00a1a322a0d",
+      "bytes": 8682
+    },
+    {
+      "path": "apps/web/src/workspace.test.ts",
+      "sha256": "872fc0e57a361967e33a21bbad4de83bae1aafcb27a58cac4a176f7664ca0679",
+      "bytes": 5231
+    },
+    {
+      "path": "apps/web/src/workspace.ts",
+      "sha256": "59aeb02b064e635d610886127143b5b02a34dae43db560e0f24375e6f3ba7a63",
+      "bytes": 2745
+    },
+    {
+      "path": "apps/web/vite.config.ts",
+      "sha256": "7bf3a8672c47bdd424d0ccf3f5c5e0b26b080e755bd1f9f97da701a86dcaa46d",
+      "bytes": 1353
+    },
+    {
+      "path": "docs/START_HERE.md",
+      "sha256": "326021bf1d1ad418ad1f7039f8e2e09b00febfd457e2ba278474d3f7ab04b5ab",
+      "bytes": 4725
+    },
+    {
+      "path": "docs/acceptance/D01-D68.json",
+      "sha256": "b55271a570ba71e8fc88007d90b48807b6a33322ece126d4310e2ec6864d9292",
+      "bytes": 38076
+    },
+    {
+      "path": "docs/adr/0001-modular-monolith.md",
+      "sha256": "146a150b4ee71fe097615060d654cafef194a0f48c5cbb0ab4c8b6a930793116",
+      "bytes": 3531
+    },
+    {
+      "path": "docs/adr/0002-plugin-trust.md",
+      "sha256": "cf110b733deb2d70c4e02b44ef5643d2094167348a8d6525c93f4f99c0068745",
+      "bytes": 4683
+    },
+    {
+      "path": "docs/adr/0003-device-preview.md",
+      "sha256": "ec7c119ec5f89602387840c85e209f149f1db55133114ade784b9929296a2c40",
+      "bytes": 4034
+    },
+    {
+      "path": "docs/adr/0004-m1-plugin-runtime.md",
+      "sha256": "8fd49ebf61c2be162d6a972c8e49949d4afd5a16ad41213eb07a3c68c28ceee5",
+      "bytes": 5267
+    },
+    {
+      "path": "docs/adr/0005-m3-remote-authority.md",
+      "sha256": "f709f38b3101d44651f5b170a817797ac7309c6f1d0d6319b0c6b2f68a8c63be",
+      "bytes": 5956
+    },
+    {
+      "path": "docs/adr/0006-operating-model.md",
+      "sha256": "f53af1a61dd66cb4f47e2f240e0772c9e5b0ff372cd42048f25fe7ed80e94a67",
+      "bytes": 3108
+    },
+    {
+      "path": "docs/adr/0007-paired-recurring-cycles.md",
+      "sha256": "f6fcbdca95fc1e6352ef7255aee627ddce485fd18d1ebe715d2d392681668636",
+      "bytes": 6565
+    },
+    {
+      "path": "docs/adr/0008-codex-sequential.md",
+      "sha256": "c0fb7a97bab4f0eb8e58ce031165658e8f78b0e2d04f5765427d6556b5d8578d",
+      "bytes": 3732
+    },
+    {
+      "path": "docs/adr/0009-web-runtime.md",
+      "sha256": "19f8e22294910f6f6908065da782406dfbc3698d301b4b541e752641480e00d9",
+      "bytes": 2726
+    },
+    {
+      "path": "docs/adr/0010-own-lessons-offline.md",
+      "sha256": "e406a808652b09c97c03944cc091ba130aff3d5dafa70438e2e58720ecf77e27",
+      "bytes": 5460
+    },
+    {
+      "path": "docs/adr/0011-mcp-core-stdio.md",
+      "sha256": "d9fa49fc07f3d0643ddf63265256d00610790f6f1fd8aad67a6d0fba6061c7af",
+      "bytes": 5892
+    },
+    {
+      "path": "docs/adr/0012-personal-recordings.md",
+      "sha256": "520669f2d0610c503c5454a6f6e19bae6f45009f523bcf251128f093609b207e",
+      "bytes": 6721
+    },
+    {
+      "path": "docs/adr/0013-learner-feedback.md",
+      "sha256": "1e8d0a22223300c50a2d7e2e8c7fff4938b2a14f98e527ccf5b79296464b1c0b",
+      "bytes": 5068
+    },
+    {
+      "path": "docs/adr/0014-lesson-handout.md",
+      "sha256": "bdb09d3202484e7983f8377fcea99887b7d5cab707b7ab564923253c66b03c2e",
+      "bytes": 5698
+    },
+    {
+      "path": "docs/adr/0015-open-creator-studio.md",
+      "sha256": "37775b9c0f15348e1675f24a2a2d17fc5f51c7002f30f779e143dacdfa133490",
+      "bytes": 8046
+    },
+    {
+      "path": "docs/adr/0016-versioned-courses.md",
+      "sha256": "7380a08a519b2312e37490a179ea00e02e1e2320bd604a1b6f4a088224d95d82",
+      "bytes": 6610
+    },
+    {
+      "path": "docs/adr/0017-programmable-creator.md",
+      "sha256": "2e34b8b31419e26a7009d593a4945832a48531e5e10e7df96c679606f98ba8f4",
+      "bytes": 5767
+    },
+    {
+      "path": "docs/adr/0018-tutor-studio.md",
+      "sha256": "e5ad5c4696837d3ae6acdb140078e35275cdf63137fbf21759bb594ec45334de",
+      "bytes": 6652
+    },
+    {
+      "path": "docs/adr/0019-personal-creation.md",
+      "sha256": "bddb30e113fa2044e2030802acfd16bdcfcaa5b510d3fca46f85cfd88e1938ed",
+      "bytes": 4490
+    },
+    {
+      "path": "docs/adr/0020-original-materials.md",
+      "sha256": "4012536c76815606875e1201259b98c8988ff18b189e165d5a34f7209e2a356c",
+      "bytes": 7131
+    },
+    {
+      "path": "docs/adr/0021-core-continuity.md",
+      "sha256": "4c88fe42b3c46d20dc27a7e7341ad6c534c0138ea8ba9509400aa70085191ee4",
+      "bytes": 8331
+    },
+    {
+      "path": "docs/adr/0022-canonical-notebooks.md",
+      "sha256": "c7959817e1990225160cd7ad5409a67be56878e337a8d0cb182f3fb1df397544",
+      "bytes": 8968
+    },
+    {
+      "path": "docs/adr/0023-complete-handout.md",
+      "sha256": "2daa80c8bbcb9dd2769884cc9fa09ba4df640c4a9049f427b7b3ad55895a6381",
+      "bytes": 5697
+    },
+    {
+      "path": "docs/adr/0024-learning-evidence.md",
+      "sha256": "253769a132c52200d4a169f6db113919c14c7876a75ca6cc76a786639051b474",
+      "bytes": 4687
+    },
+    {
+      "path": "docs/adr/0025-public-physics-practice.md",
+      "sha256": "735a1b77a76f4d162ea4f845274d4193810e336fec167f7c2293d664028a0505",
+      "bytes": 3870
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "dafdfd10eb857e9c93603673f8bf44a807af2677ca497ae51e71aa4bafce2d96",
+      "bytes": 11408
+    },
+    {
+      "path": "docs/dependencies.md",
+      "sha256": "f12cbb002f35659df7aa0b31af4d3cb30ed677ec39852f52ece450c140790850",
+      "bytes": 7262
+    },
+    {
+      "path": "docs/design-verification.md",
+      "sha256": "24846c710ea53f6f64087ddf4fb6e027463700aaae9ca7d4b1becc5ab9050b97",
+      "bytes": 3177
+    },
+    {
+      "path": "docs/e1-task-readiness.md",
+      "sha256": "9fa0423f7bd86111d941d6c4fab1ab6cbd99f952204c83820c52eedbc31e534e",
+      "bytes": 6085
+    },
+    {
+      "path": "docs/handoff.md",
+      "sha256": "4103fe3b85c372c0ab6969bc6bd20cc8d33cb267fd05b6dcdcda10f097a2465d",
+      "bytes": 9530
+    },
+    {
+      "path": "docs/handoffs/2026-11-07.md",
+      "sha256": "82aed0a84970dc3a8f89c6a58699df7728d0107f8e0c1029487b6a358add7566",
+      "bytes": 11690
+    },
+    {
+      "path": "docs/handoffs/2026-11-13-physics.md",
+      "sha256": "b8b44fc363349ce4c3e0682ecf9bcdb6ca4ec7f3ed4fe7edcad6855ec7189de5",
+      "bytes": 10290
+    },
+    {
+      "path": "docs/handoffs/confronto-programma-chat-2026-11-07.md",
+      "sha256": "122ffb1fb73c45a7f2753f810f0404fea9f7002449aa9f9204218fe5e7626fc0",
+      "bytes": 15786
+    },
+    {
+      "path": "docs/handoffs/core-continuity-2026-11-07.md",
+      "sha256": "b03c92fefe6ace45aae7f1c4e10c123865c9c13effcfe5169e3d86f214d2847c",
+      "bytes": 40159
+    },
+    {
+      "path": "docs/history-through-20261101.md",
+      "sha256": "950eedf3fe6d1afb75ab6594652565860acefb424cc30979d76efe6419d15f43",
+      "bytes": 23835
+    },
+    {
+      "path": "docs/history.md",
+      "sha256": "d59cd499eee155d6344c604f3c2a9e497aa93407d3284d652c45d663be17b495",
+      "bytes": 177680
+    },
+    {
+      "path": "docs/hourly-delivery.md",
+      "sha256": "e2d6e78e879b8364a7e1b72014c0a2c4f247bbae1789b34663b3addac34a8476",
+      "bytes": 10139
+    },
+    {
+      "path": "docs/integrations.md",
+      "sha256": "8cedcfe7f6978684c41691d615b19198f0802f96acc0a35a0e0fdafed297683b",
+      "bytes": 6028
+    },
+    {
+      "path": "docs/lessons.md",
+      "sha256": "0b6a2dfcd823f06a78de4cb80d6d0e532e41b8cc162cd59d0719a1398e05be64",
+      "bytes": 13849
+    },
+    {
+      "path": "docs/m1-delivery.md",
+      "sha256": "e01a4d5d72558b837e2dbb8d726767219393ac9f28da883e2cdab18c47c9186e",
+      "bytes": 7310
+    },
+    {
+      "path": "docs/m2-delivery.md",
+      "sha256": "5a137761f9b9057126479609487bea876f524104288219ad59fac69f202c98bc",
+      "bytes": 4553
+    },
+    {
+      "path": "docs/media/dipole-c4/DESIGN.md",
+      "sha256": "b2b9c4c9a87ff8d14774520bfa5d567183c8d0b527c86a79f685a418fb725d3a",
+      "bytes": 2986
+    },
+    {
+      "path": "docs/media/dipole-c4/README.md",
+      "sha256": "eb9e44e4e8001f19b30320590aa3ac94443171c0b9d31c1c9fce2512a73d8bfd",
+      "bytes": 3025
+    },
+    {
+      "path": "docs/media/dipole-c4/assets/GSAP-README.md",
+      "sha256": "36224e521bdd9b79dc74ef262effc1a636d960b9be918bc2412ed69f9eee27b0",
+      "bytes": 6199
+    },
+    {
+      "path": "docs/media/dipole-c4/compositions/dipole-board.html",
+      "sha256": "6003c4ed5134d575bd211e4fc0f3c5621e23b8e1d065ce3585fe1d2b45ef7e90",
+      "bytes": 11267
+    },
+    {
+      "path": "docs/media/dipole-c4/hyperframes.json",
+      "sha256": "53dbce1e19aa713cbb12ee0bc4d206143b45ab15e6ffbfcaa8f69572d4d24d50",
+      "bytes": 318
+    },
+    {
+      "path": "docs/media/dipole-c4/index.html",
+      "sha256": "34c053d78874025b21a11b01264674c4435dfeb805cc960b09d98d4c6bd04f8d",
+      "bytes": 867
+    },
+    {
+      "path": "docs/media/dipole-c4/meta.json",
+      "sha256": "4dc069e6b179220113d0c8209537ac11f4e469c0453f0d75e4ce0a21d1c160d0",
+      "bytes": 95
+    },
+    {
+      "path": "docs/media/dipole-c4/package.json",
+      "sha256": "63086f580da679979e65dc814f86018eb2b34e3b1a9d4d172c3ae0df48525d83",
+      "bytes": 297
+    },
+    {
+      "path": "docs/operations.md",
+      "sha256": "f337286a47f20bba04c9bd134e79fed4d439f14074cdfeddb8b0629d2b75c686",
+      "bytes": 3825
+    },
+    {
+      "path": "docs/product-map.md",
+      "sha256": "bfbeb7cd43f5a6f12a7926a29e36ac451862d777ba9bfdd0d6bf8d28fd58694c",
+      "bytes": 22925
+    },
+    {
+      "path": "docs/programs.md",
+      "sha256": "38d453479ab6ab8f7bb4e4a76c2eee00bdc1ff1e6283ea5c137d4408df9a2600",
+      "bytes": 4981
+    },
+    {
+      "path": "docs/prompts/codex-cycle.md",
+      "sha256": "aaffbb696926e0d44bdfc0fed578f43b913f2cdcef34b2c028d76ce372709382",
+      "bytes": 9734
+    },
+    {
+      "path": "docs/prompts/engineering-cycle.md",
+      "sha256": "2d6688e3d8a8409aae2eb672af1eea795b053f240c047c50f5a31b910cd82163",
+      "bytes": 4920
+    },
+    {
+      "path": "docs/prompts/isolated-development-cycle.md",
+      "sha256": "f62e02bb08ea1d1a1e3f27b6e42cffce6be264f0363395ac2331f1a3e2f746f7",
+      "bytes": 6077
+    },
+    {
+      "path": "docs/prompts/pro-cycle.md",
+      "sha256": "5a0c27d020a9303ec1c86f71d34c45748264ae87b3baae0b3d7a288e4f3c4739",
+      "bytes": 659
+    },
+    {
+      "path": "docs/prompts/review-cycle.md",
+      "sha256": "dfefc899b2182ac1e5636e9bd28815416bf1ba4688623de61e8933088aa67983",
+      "bytes": 5305
+    },
+    {
+      "path": "docs/recurring-work.md",
+      "sha256": "b0abf60b951474ee73610020f6422117c7ee786d259d8acf4e0ae708aa88480b",
+      "bytes": 21068
+    },
+    {
+      "path": "docs/release-runbook.md",
+      "sha256": "f1946103c689e04fa456fee9318645f4e351bb9acb702d3a122443291c39d7bd",
+      "bytes": 12367
+    },
+    {
+      "path": "docs/security/m1-exposure-review.md",
+      "sha256": "d691d35cb896acc2c7b530dc50ce4d3d9dbb6ba19a49de731bc19c5ddafe2d8d",
+      "bytes": 8200
+    },
+    {
+      "path": "docs/sources/cortex-local-2026-11-14/REPORT.md",
+      "sha256": "a3a61f556235cfd5155ca23fda3a1e5e8108837ff21659ae6b654d0d150f956e",
+      "bytes": 7715
+    },
+    {
+      "path": "docs/sources/cortex-local-2026-11-14/environment.json",
+      "sha256": "43cc2f19843bed6adf8716f2b18152bb3fede8422837642edda905984f20aa00",
+      "bytes": 31336
+    },
+    {
+      "path": "docs/sources/cortex-local-2026-11-14/protocol.json",
+      "sha256": "7374b2ea4b65d6adae3886666a75bf04a678d001f0f78443734542cca31ec7dd",
+      "bytes": 5346
+    },
+    {
+      "path": "docs/sources/cortex-local-2026-11-14/results.json",
+      "sha256": "f4b9d86a108a228fdb4280a179b0325450fbf77662027c44827b04a7000a02b0",
+      "bytes": 97082
+    },
+    {
+      "path": "docs/sources/cortex-local-2026-11-14/unload.json",
+      "sha256": "e6481042f2b20880dc9729ba62ad3f4296ad5d8e52423a7e22c1e4436d2ae6c1",
+      "bytes": 144
+    },
+    {
+      "path": "docs/sources/courses-2026-11-07.md",
+      "sha256": "cdbd339e58f941a2b30bb5223272d5d6023c0b6bb26b2f76d84c5518645df06e",
+      "bytes": 5609
+    },
+    {
+      "path": "docs/sources/creator-studio-2026-11-07.md",
+      "sha256": "a58b50fd48c58f544f086a0185314b7cf1b740fabb7d1a3b827a100e226203c9",
+      "bytes": 6259
+    },
+    {
+      "path": "docs/sources/dependency-licenses.json",
+      "sha256": "9cdaec8366be3d57621d544cf302045855547c1ded7ec4c3f23ce78034cc2242",
+      "bytes": 6356
+    },
+    {
+      "path": "docs/sources/engineering-e0e7/README.md",
+      "sha256": "975f6a502dab093e9a84e8eca1cb459c5e03b31e054e7e542f4bb05e1b9312ea",
+      "bytes": 2358
+    },
+    {
+      "path": "docs/sources/immersive-writing-2026-11-08.md",
+      "sha256": "bffc04c3adb368c5afb73df82a50453f4230c29bd349bc4893fbbe5c8ec1f1d0",
+      "bytes": 4251
+    },
+    {
+      "path": "docs/sources/immersive-writing-rea-summary.json",
+      "sha256": "a2ee7b17fecaba409b003a020dbeb632717347e72564685cb6a465f92e9100c9",
+      "bytes": 5201
+    },
+    {
+      "path": "docs/sources/immersive-writing-source-provenance.json",
+      "sha256": "b7d8ed1a37e87d86606178e77f05d51e5b7d89ad849907c4315b97a827addf82",
+      "bytes": 5306
+    },
+    {
+      "path": "docs/sources/launch-2026-11-13/README.md",
+      "sha256": "5e569c78af2a77fce1d2a3b21ffdcf3481b224641c95c67f8de715754d7d1706",
+      "bytes": 6142
+    },
+    {
+      "path": "docs/sources/launch-2026-11-13/contact.json",
+      "sha256": "11244e1259c3c584421be91fb23a0be633d0cc51cbe1572e5893cb807e24b2dd",
+      "bytes": 474
+    },
+    {
+      "path": "docs/sources/launch-2026-11-13/guided-demo.md",
+      "sha256": "671ed060c50733c58ebd8bce82a61576a801379c3dc9db31d07dd4a044aef912",
+      "bytes": 4880
+    },
+    {
+      "path": "docs/sources/legacy-review.md",
+      "sha256": "a5e7f45ffd8d041617cdb3f6d491dd2f35af0b523a39499172fa3ec4b49f81ec",
+      "bytes": 14073
+    },
+    {
+      "path": "docs/sources/lessonos-evidence-2026-11-08.md",
+      "sha256": "711a50239bd3b4db49d17eea97b4770657b67ba1a30ef53781591b046bfea2c3",
+      "bytes": 4234
+    },
+    {
+      "path": "docs/sources/m1-ideal-spring.md",
+      "sha256": "5f374eac39b10f2649d08a29db443489f790a53a25de641d1aa73b75706301e1",
+      "bytes": 4864
+    },
+    {
+      "path": "docs/sources/m4-poiseuille.md",
+      "sha256": "022c0ef28072afc9eaf08567cf65a0c6021be1ee0742595a9ba5c39e29e686a9",
+      "bytes": 12848
+    },
+    {
+      "path": "docs/sources/materials-2026-11-07.md",
+      "sha256": "cd171fcb0727da65b03d92275a9e82b96ff46ee3cada3f6ef434fd09172e832d",
+      "bytes": 3281
+    },
+    {
+      "path": "docs/sources/native-run-recovery-20261103.md",
+      "sha256": "46da0fa55ed16d58928a4ee36f5b78caa7b45360644db54dad7b47e17c8c7346",
+      "bytes": 5217
+    },
+    {
+      "path": "docs/sources/personal-creation-2026-11-07.md",
+      "sha256": "51ba0ae63314e65576da24a5e8c7957f238ce59d7af1ea977c6ef16ea870b803",
+      "bytes": 1483
+    },
+    {
+      "path": "docs/sources/physics-2026-27/README.md",
+      "sha256": "957adbc3317200a163a376dcb41ffdf2ab180c99f79c9cc5cdef55a489477227",
+      "bytes": 6572
+    },
+    {
+      "path": "docs/sources/physics-2026-27/assessment-separation-receipt.json",
+      "sha256": "4ce6c63e0dfa1c8114b411933f335033e23398666eff746c87142afc1156a01b",
+      "bytes": 7198
+    },
+    {
+      "path": "docs/sources/physics-2026-27/attempt-review-2026-11-13.md",
+      "sha256": "f71ee9ae4f58859708fdc687a9f4b500b49d82cb0626c9c4c6c3ca2f6d270080",
+      "bytes": 2911
+    },
+    {
+      "path": "docs/sources/physics-2026-27/audit-2026-11-13.md",
+      "sha256": "e0e86b8ad70fe869f5ff247fd6400d8553d823cadca599644473cf19a5e29820",
+      "bytes": 6502
+    },
+    {
+      "path": "docs/sources/physics-2026-27/c23-practice-2026-11-13.json",
+      "sha256": "11e15cc921e34d25a2b828d0ca0ab1485ac932787f7e07898acd225fe75235a5",
+      "bytes": 44777
+    },
+    {
+      "path": "docs/sources/physics-2026-27/c23-practice-2026-11-13.md",
+      "sha256": "d54096545793df0967861ac110c5abf446b50cf6ad35afcfba154c07f37e2d97",
+      "bytes": 7343
+    },
+    {
+      "path": "docs/sources/physics-2026-27/c5-depth-2026-11-13.json",
+      "sha256": "d553984899a0d11cfb67426c6114fd9742777e95e1439294be43c57ae9cecaf3",
+      "bytes": 42607
+    },
+    {
+      "path": "docs/sources/physics-2026-27/c5-depth-2026-11-13.md",
+      "sha256": "79375ecd9f380ea7799f7c9dab46b3fd1463539ac2c769d943248af24664d1c4",
+      "bytes": 5671
+    },
+    {
+      "path": "docs/sources/physics-2026-27/chat-pro-pressure-review.md",
+      "sha256": "fcef4e33add4b7b5a8d662564eced83c5ec2b0b31b1feceddc038c3c315ec24c",
+      "bytes": 7444
+    },
+    {
+      "path": "docs/sources/physics-2026-27/coverage.json",
+      "sha256": "018e320595808d61f8982ccbfef93565e47486e576dd8d850c749a330587c13e",
+      "bytes": 189258
+    },
+    {
+      "path": "docs/sources/physics-2026-27/distributed-assets.json",
+      "sha256": "83e5ff2788fa01070dd294fe6c62c3cb3ca881c0e6a8b4c307b21c664569c2a1",
+      "bytes": 2211
+    },
+    {
+      "path": "docs/sources/physics-2026-27/distributed-coverage.json",
+      "sha256": "3bb05dba690d30fd36a75f110dc824357901e15796bfd02aa51980cc6c4519d5",
+      "bytes": 401296
+    },
+    {
+      "path": "docs/sources/physics-2026-27/editorial-corrections.json",
+      "sha256": "9fca645a09894c686973df25740e24d921950be3230defd6d9228ef62ae18cc9",
+      "bytes": 1060
+    },
+    {
+      "path": "docs/sources/physics-2026-27/editorial/assessments.json",
+      "sha256": "43069e16472f620bad88d7a1b0478cf3fa8e7001e75144150f91444ca03288b5",
+      "bytes": 179982
+    },
+    {
+      "path": "docs/sources/physics-2026-27/editorial/choice-question-definition.json",
+      "sha256": "72fc74b83ac6521b32ed4eddf9efa9242282a56b53831a103aa28213149d5bac",
+      "bytes": 5701
+    },
+    {
+      "path": "docs/sources/physics-2026-27/editorial/courses.json",
+      "sha256": "e8d979c4764705c8d9cbf505735f61b59c6270f44ef1f9600ff2d03ac639c5b9",
+      "bytes": 419964
+    },
+    {
+      "path": "docs/sources/physics-2026-27/editorial/coverage.json",
+      "sha256": "277c49acf6a999cad8be3f691787e86924debcf2f54ccb909f3b718bf7571698",
+      "bytes": 189614
+    },
+    {
+      "path": "docs/sources/physics-2026-27/editorial/exam-2026-a.json",
+      "sha256": "0fe70d30a5bbc59ae0201c8307248c59e9c0ce7b29f4d1fe36cbc1bea1576f46",
+      "bytes": 54596
+    },
+    {
+      "path": "docs/sources/physics-2026-27/editorial/exam-2026-b.json",
+      "sha256": "e427742505d5c2e3ffb82348f6dd90293db59f758aec10b13c5d298b04d7830f",
+      "bytes": 64230
+    },
+    {
+      "path": "docs/sources/physics-2026-27/editorial/experiments.json",
+      "sha256": "8380a9d1340fab47d3e73fc398b4eca25c07329d1223753f12761ea53b798af3",
+      "bytes": 54893
+    },
+    {
+      "path": "docs/sources/physics-2026-27/editorial/guided-choices-2026-11-13.json",
+      "sha256": "a02d79e9577ee65ff5665821c44076a3353db8aadfe4ed253dcb86f7e9258e84",
+      "bytes": 11685
+    },
+    {
+      "path": "docs/sources/physics-2026-27/editorial/lab-definitions.json",
+      "sha256": "daca7553da2463ca56791f5f1b2c45dc05940fea7fdaae89bbfdf0ac7ec1832f",
+      "bytes": 105508
+    },
+    {
+      "path": "docs/sources/physics-2026-27/editorial/original-problems.json",
+      "sha256": "24e31e684bcce5902ed529da8789f3e782ea460e8a4d38ab4eeda2343bb756f2",
+      "bytes": 201684
+    },
+    {
+      "path": "docs/sources/physics-2026-27/editorial/units.json",
+      "sha256": "5e9f6c350b7bf3f1bdf86a988028c392ab0e4fefe906d7fe3f67da4925587245",
+      "bytes": 41081
+    },
+    {
+      "path": "docs/sources/physics-2026-27/expansion-audit.md",
+      "sha256": "951911ec08ebc206e6560dc664e9ef7facfd9faaf8f95d0df48a17130d7ae83e",
+      "bytes": 8543
+    },
+    {
+      "path": "docs/sources/physics-2026-27/final-integrity.json",
+      "sha256": "848c07b2caa67d0a768cec13a0d5da3bb6533a30d41af1c2bbc821522d71453c",
+      "bytes": 573
+    },
+    {
+      "path": "docs/sources/physics-2026-27/guided-choices-2026-11-13.md",
+      "sha256": "c73824ad174df351bb2a53130b211263f60114a6786006b640d094898d4a1eaa",
+      "bytes": 4643
+    },
+    {
+      "path": "docs/sources/physics-2026-27/import-performance-2026-11-13.md",
+      "sha256": "6c01134b3fd3a3ceee7cce54b092217d9d52bbd784167c4b21e960d7cbd906ae",
+      "bytes": 4950
+    },
+    {
+      "path": "docs/sources/physics-2026-27/import-performance-2026-11-14/README.md",
+      "sha256": "e449edb72c046737326540b99826fae328959db147147b0a6dad4853aaf0cecd",
+      "bytes": 10220
+    },
+    {
+      "path": "docs/sources/physics-2026-27/import-performance-2026-11-14/browser-comparison.json",
+      "sha256": "f29e5bc00ed8c47e3d9ead419c171c8fd298794334e82e9aed361fb9f503a2a5",
+      "bytes": 1377
+    },
+    {
+      "path": "docs/sources/physics-2026-27/import-performance-2026-11-14/isolated-comparison.json",
+      "sha256": "308d5f38eca785b2f5d97e63bf2ffc6c1016ccfee57378c8cd5c747952739e37",
+      "bytes": 3511
+    },
+    {
+      "path": "docs/sources/physics-2026-27/import-performance-evidence-2026-11-13/architecture.json",
+      "sha256": "3fa3cd70a74486a069bdf04cbf95768fd8ba77ac13a383159363269ce6c98c7b",
+      "bytes": 7359
+    },
+    {
+      "path": "docs/sources/physics-2026-27/import-performance-evidence-2026-11-13/architecture.md",
+      "sha256": "2df9ab1c32bc924d0312c020d6c4a235ec5379555476fcaac8ae87fb6cf10fc6",
+      "bytes": 8440
+    },
+    {
+      "path": "docs/sources/physics-2026-27/import-performance-evidence-2026-11-13/baseline-receipt.json",
+      "sha256": "a8ac51a19ce2e4a88137d22865255a459ab4a78c44e916855f8312de31ca33c7",
+      "bytes": 962
+    },
+    {
+      "path": "docs/sources/physics-2026-27/import-performance-evidence-2026-11-13/benchmark.json",
+      "sha256": "98e4138f7605c56f280be34a5c34a646d5f2219a738299dbf849e2de315f54ad",
+      "bytes": 3527
+    },
+    {
+      "path": "docs/sources/physics-2026-27/import-performance-evidence-2026-11-13/review.json",
+      "sha256": "d0f1d0288e8b02e1dffc3f6f93d94325c985cb24197ddc30e566e32d7d481e40",
+      "bytes": 12092
+    },
+    {
+      "path": "docs/sources/physics-2026-27/import-performance-evidence-2026-11-13/review.md",
+      "sha256": "0e8be51011360ce38bbc02191dccd31038e8175ca760e83d7ba5f1f15e86d4b5",
+      "bytes": 6712
+    },
+    {
+      "path": "docs/sources/physics-2026-27/lesson-depth-2026-11-13.json",
+      "sha256": "5e341947619b0d64672d26578f54aadf7d2868fd8700253d26921c5f7eae33b8",
+      "bytes": 35401
+    },
+    {
+      "path": "docs/sources/physics-2026-27/lesson-depth-2026-11-13.md",
+      "sha256": "cd674e3169a2d83ffce530d2e0eb6dc4f4d9cbb5a8a90a69e47182d55e0f001b",
+      "bytes": 5005
+    },
+    {
+      "path": "docs/sources/physics-2026-27/media-resources.json",
+      "sha256": "87d84c8a70fe6bda378418a8aaff8e0c23c34d4185734ac4e2ca3d4ae258a548",
+      "bytes": 7614
+    },
+    {
+      "path": "docs/sources/physics-2026-27/practice-navigation-2026-11-13.md",
+      "sha256": "fa03802d235bfa77bba98a509f55bf98ca4230da776d6da5057649a9ff198d36",
+      "bytes": 3183
+    },
+    {
+      "path": "docs/sources/physics-2026-27/recovery-audit.md",
+      "sha256": "73d64419e2de75a0f6a47f84d5d98e4f740be2e6292afd62960c994684dab475",
+      "bytes": 13042
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/README.md",
+      "sha256": "9c7316dcf35c23845dccf79f44a94b05300aa9d4e78bff6fd3ff96b6ea92caee",
+      "bytes": 7123
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/manifest.json",
+      "sha256": "625a67734c29155141516e93bc1c13f36eb4bd446fa7d070cef6a9685fa9b670",
+      "bytes": 13963
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-attempt-review-2026-11-13/browser-evidence.json",
+      "sha256": "8b40b6125363a9376e666afb8f46d916ddf515547f97eb3a4cf3ef52c368047d",
+      "bytes": 602
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-attempt-review-2026-11-13/independent-review.json",
+      "sha256": "5ca705a1e26abdef876d0fc9b4fda586c69c33ae0befdb3f4d70d60ed86e15f0",
+      "bytes": 4664
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-attempt-review-2026-11-13/independent-review.md",
+      "sha256": "df351d81c25b8317140c86ddcc3d8b843802b5e6a23facba0e30899192677046",
+      "bytes": 3839
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-attempt-review-2026-11-13/verification.json",
+      "sha256": "5fadb931be201b639af499619ec9fec6eb8c7ce6475a8575457a783d939b6534",
+      "bytes": 1072
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c23-2026-11-13/browser-evidence.json",
+      "sha256": "8401fe0cb34d95fb122433139b550242597b37263670b9db365f52025e20b072",
+      "bytes": 603
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c23-2026-11-13/review-c2.json",
+      "sha256": "ec2bc3b0f6fa9e75efe8c65d037d7aa682a75905c94eb0d21f5c0352ce89ef65",
+      "bytes": 29314
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c23-2026-11-13/review-c2.md",
+      "sha256": "2eb6f7b25f1350c022dcf5b3337bac95845f1da8cd5ea6b76cafe5a489f09af2",
+      "bytes": 6106
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c23-2026-11-13/review-c3.json",
+      "sha256": "127404199ca96fa7c18156f7a8111e50b6806bba9ccc5165d3163d2cf795b4a6",
+      "bytes": 26559
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c23-2026-11-13/review-c3.md",
+      "sha256": "c53d712b117e10bde77cb7da3fea138e508158841a591167d184a24396c03217",
+      "bytes": 6549
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c23-2026-11-13/review-e2e-addendum.json",
+      "sha256": "ed1332b68898d0c949a34bc027ab16f6b5a4a6a66a76cc5ed185412cbac091d3",
+      "bytes": 659
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c23-2026-11-13/review-e2e-addendum.md",
+      "sha256": "93e3eb37cb37f9667214afe629bc902fbf2cc01cc1aa31d7c4cd5192d4a7c518",
+      "bytes": 3784
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c23-2026-11-13/review-lab.json",
+      "sha256": "49fc57cd515fccb798765ab715c19bf6aed1e416d4ee4dd770f656cdea287fe2",
+      "bytes": 1268
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c23-2026-11-13/review-lab.md",
+      "sha256": "8ca5b5bb435247b023eebe39cbfef97f75f0d0763b282db02fb97bd4fe2e6f74",
+      "bytes": 5455
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c23-2026-11-13/verification.json",
+      "sha256": "de54a0acd39430873e304fc404c2b97371a6ace909b232bfc84ccbdf5bdde4b0",
+      "bytes": 1072
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c5-2026-11-13/ardesia-c5-demo-review-checks.json",
+      "sha256": "7953e095a7f315bd1a74faaf9e07070e61384e586b8db2a9db498d00ec6edf85",
+      "bytes": 1724
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c5-2026-11-13/ardesia-c5-demo-review.md",
+      "sha256": "4cda44ae1ac41a8ec2a255f4e64a64e9fac5a00e25164aa9d0603e8b22cf6cf1",
+      "bytes": 6058
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c5-2026-11-13/ardesia-c5-review-radiation.json",
+      "sha256": "2779b24788e76cae0dad258f11f88b48aed1dd9704222bcb7e316b51f1164cb6",
+      "bytes": 17522
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c5-2026-11-13/ardesia-c5-review-radiation.md",
+      "sha256": "e5cf239450ebdc6174a950de3060590df20f71c26672c66ef4b46d51cc7a7373",
+      "bytes": 4303
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c5-2026-11-13/ardesia-c5-review-wave.json",
+      "sha256": "6bf55e179a0ea82023f570abdf5603f6b5dba10474ddec61f4c93eb7e55f47aa",
+      "bytes": 18835
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c5-2026-11-13/ardesia-c5-review-wave.md",
+      "sha256": "c97b2b7609ebb2b8a1ed9bc50fa4a4ea2bd780f082a9f721920edb9bdff15768",
+      "bytes": 5245
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c5-2026-11-13/browser-evidence.json",
+      "sha256": "82d20629ab1cf1972d88fe6ba2be6738da42bdc8fec22af551ffa021c0d7f939",
+      "bytes": 603
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c5-2026-11-13/interference-review-checks.json",
+      "sha256": "a78dd36ca71049de063401b32d34c73964ddd7e1c3c7981c4c50fd602c0c7c8b",
+      "bytes": 663
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c5-2026-11-13/interference-review.md",
+      "sha256": "c718aec069c7cafaf9d11b199cf489d0bb99ddb6a0cc36dd4c3bc9cabe65a951",
+      "bytes": 3145
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-c5-2026-11-13/verification.json",
+      "sha256": "92a8aa656123a504fa0841acc6b4876234087572d36cc7b9bcda17df0b098167",
+      "bytes": 1072
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-demo-guided-2026-11-13/independent-review.json",
+      "sha256": "dd36d3db35d3e11cd74a195faed8a5e4c4ffd81d3c3546e551aced3b6afaa928",
+      "bytes": 7028
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-demo-guided-2026-11-13/independent-review.md",
+      "sha256": "946f6dcd890915f4e27882e753b78d783501e9327012321a338e859c66736775",
+      "bytes": 5061
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-demo-guided-2026-11-13/review-binding.json",
+      "sha256": "d33ec92c4448e3ffeccd4b4ef0ad3b546fedd43d9b5af3f1b81eaf42da4c13ca",
+      "bytes": 153
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-demo-guided-2026-11-13/verification.json",
+      "sha256": "1d2d8c2ce761a0d6590412d7e2741fb7b1b54f3d89f455cdd04361a4111b5162",
+      "bytes": 1072
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-depth-2026-11-13/ardesia-depth-review-c1-final.json",
+      "sha256": "0cdc7140d31df28b5b53588496e582b8150517e9c2603cbf7f7ac25d38fd4f42",
+      "bytes": 3022
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-depth-2026-11-13/ardesia-depth-review-c1.md",
+      "sha256": "d5356f21a69173cf5ab09fe52095222868b2c9f03fb87eb6be003686b3416525",
+      "bytes": 4588
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-depth-2026-11-13/ardesia-depth-review-c4.json",
+      "sha256": "da2e1573e4d2a021949092334cb95b1b1c397a17db640e5c794faca5ed321153",
+      "bytes": 9862
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-depth-2026-11-13/ardesia-depth-review-c4.md",
+      "sha256": "d47f7e020c548a93cc2128c39d74c1ef1893aeb99599d1bc7a4a7e0e22f06631",
+      "bytes": 5639
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-depth-2026-11-13/ardesia-native-allocation-review.md",
+      "sha256": "49e2ea0fe5fce22fdb3a26203f246d70496c2997cf6ae2000587d41f61a247de",
+      "bytes": 7237
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-depth-2026-11-13/ardesia-wasm-cap-review.md",
+      "sha256": "1a388bfb9be206b33487a49dc118a422fd4705b5d64d45263ce095e77dcadcfb",
+      "bytes": 6389
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-depth-2026-11-13/browser-evidence.json",
+      "sha256": "8946203676dcfc84a0740b3a906af7d2c87a3fdedeb98538d46ffba70030ba39",
+      "bytes": 604
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-depth-2026-11-13/verification.json",
+      "sha256": "933ace1b92ac344bd1fa0cd93dc80d859043c803bfb4bc53fa2cd14ef043c5ab",
+      "bytes": 1072
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-guided-choices-2026-11-13/ardesia-choice-review-a.json",
+      "sha256": "6a478056380cc63839170d7cf2a5c5331d9a67632897c703804995455c0087c3",
+      "bytes": 10277
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-guided-choices-2026-11-13/ardesia-choice-review-a.md",
+      "sha256": "a38e3bc4289cf203935c399a5c2ac625dbbae639caedfa0c0f55e8eaa9df2552",
+      "bytes": 4959
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-guided-choices-2026-11-13/ardesia-choice-review-b.json",
+      "sha256": "e07372dab3ea088215a7a2d986e0fb53679695e660cf14b9be0eb51769a0df0c",
+      "bytes": 8970
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-guided-choices-2026-11-13/ardesia-choice-review-b.md",
+      "sha256": "e43bb0f2e71d5519da172576b3871dbde14703b8a01e39b87383413ea700a379",
+      "bytes": 5137
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-guided-choices-2026-11-13/browser-evidence.json",
+      "sha256": "4d64dfea367ebfa2969ff53959cd5161b3445bcc45f3de1a6c7a406b4ca81dd1",
+      "bytes": 603
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-guided-choices-2026-11-13/code-review-addendum.json",
+      "sha256": "cc204a8759b217bffc8c3a1569cdab4afc3c8468d22e68a28a347b4618b7dfdb",
+      "bytes": 5888
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-guided-choices-2026-11-13/code-review-addendum.md",
+      "sha256": "c1fa0c3be95724e70a43cd4329604955f371d5dc1725e005fe67289027276b68",
+      "bytes": 2674
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-guided-choices-2026-11-13/code-review.json",
+      "sha256": "6376c4fa28471977e884a632c1f56ea914f5b37865b64a6bcc2f2fcc2f3969b0",
+      "bytes": 5331
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-guided-choices-2026-11-13/code-review.md",
+      "sha256": "c35ce5b0b009aeb35a1ee045a9ee4cae447f61e08dd54bff828a001fe066a596",
+      "bytes": 6350
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-guided-choices-2026-11-13/review-binding.json",
+      "sha256": "1db87291f3a9afcee781ed1b0d482e2d38389d4b9b7ee920068069fe2a26681a",
+      "bytes": 173
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-guided-choices-2026-11-13/verification.json",
+      "sha256": "ad3972bd057a342c32c9685abb8c7083b9dcaa3ffe77174b4c4d8b9491067401",
+      "bytes": 1072
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-guided-choices-2026-11-13/visual-review.json",
+      "sha256": "759b660aefb3f3a7b18c83651d25c5d435038be4e9debaca832ac1587b617491",
+      "bytes": 600
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-practice-navigation-2026-11-13/browser-evidence.json",
+      "sha256": "2d9167a4958da6d17647144da21306a116868e16baa5d6694a7f55baaa401e9c",
+      "bytes": 602
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-practice-navigation-2026-11-13/independent-review-addendum.json",
+      "sha256": "67754da58457059278527ef5b1be567bff5d0df41a7ee7390620734bf78265cb",
+      "bytes": 4013
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-practice-navigation-2026-11-13/independent-review-addendum.md",
+      "sha256": "22ac3715007ce96ab5759c4731961137ef93eea75c88ad622f350ebaec9da566",
+      "bytes": 3594
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-practice-navigation-2026-11-13/independent-review.json",
+      "sha256": "f8ac8ff2943ade5eafc082af62ba287f12c7e42e3e917b8b02cd3b9a58c5d9b0",
+      "bytes": 3694
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-practice-navigation-2026-11-13/independent-review.md",
+      "sha256": "2bd63f09e01b6ec218c807fa5f906e52697abf48cdc461e3bf1a451e82fb348d",
+      "bytes": 6311
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-13/physics-practice-navigation-2026-11-13/verification.json",
+      "sha256": "86f53ac23575542800687ab9602ae2598da603bc8dbdcc7df195718584266ae2",
+      "bytes": 1072
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-14/README.md",
+      "sha256": "e355079112c9aae340e7793c72b83cdf2d487f35ba124bde156f33ccc907d15f",
+      "bytes": 3869
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-14/cortex-accents.md",
+      "sha256": "89bbc2b2a4578f5065ed109ed5f9aa94d3f6a307931593ac92500cfd1673daf9",
+      "bytes": 800
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-14/cortex.md",
+      "sha256": "69856a33bcbd298b4ce713104f393a9b75dd7231463beae505769b73d0eecbb4",
+      "bytes": 2946
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-14/current-snapshot-fast-path.md",
+      "sha256": "77b2baef8af26e85d3318541496610a6fe223b075762ec7bf6242e706fcbee92",
+      "bytes": 6093
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-14/dipole-video.md",
+      "sha256": "056869d9815d2f18ee5f846fb445e95678394ef69b073b2016f466840bca1892",
+      "bytes": 2216
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-14/exam-ab-offline.md",
+      "sha256": "ae24cf74163d358f4059007d5b8727acb47bdeac20a84a90de9ad08245caeb27",
+      "bytes": 3196
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-14/exam-b-science.md",
+      "sha256": "079ace6879c30a7937e03d27cedec885caf231575de60748e2e778a68049263a",
+      "bytes": 5174
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-14/exam-reader.md",
+      "sha256": "0e248670b806cd6833d0a3175c87e1093a312091337a2ee58db0e9e6fd1a3259",
+      "bytes": 4428
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-14/exam-science.md",
+      "sha256": "ab82574cc16c3bb3fcdf4c26681df2701db125483d99d0f35eeebb90f4c893c5",
+      "bytes": 4520
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-14/field-offline-budget.md",
+      "sha256": "9057a36f779a799a47552332c6e9fce4024bc18fe2e9459d8a3e79df79fb3c33",
+      "bytes": 3055
+    },
+    {
+      "path": "docs/sources/physics-2026-27/reviews-2026-11-14/native-notebook.md",
+      "sha256": "a1a18d4a3433bcd0a1093b99c813c2547c79e8e0e7836420e7aec4a217442a14",
+      "bytes": 5536
+    },
+    {
+      "path": "docs/sources/physics-2026-27/source-checks/authoring-arithmetic.json",
+      "sha256": "cf609bf5c1a31d5cd466a6d3717a84058e5abc694e936f3bb0661600e8693473",
+      "bytes": 20410
+    },
+    {
+      "path": "docs/sources/physics-2026-27/source-checks/bank-shards.json",
+      "sha256": "699b9c3b5991b6e9981dc495e709a25db5d66dbb5b1fd74ff401b79b4cca971c",
+      "bytes": 4480
+    },
+    {
+      "path": "docs/sources/physics-2026-27/source-checks/candidate-validation.json",
+      "sha256": "a388178744bd21e652d9ffaca6cb424e29e7fb9126581e8f71bdc5f7df3973c9",
+      "bytes": 1503
+    },
+    {
+      "path": "docs/sources/physics-2026-27/source-checks/corpus-comparison.json",
+      "sha256": "1b6fc2dd901f58abf2a94040737a8bdad657bb0d959b9514b2bb713ea0289919",
+      "bytes": 275982
+    },
+    {
+      "path": "docs/sources/physics-2026-27/source-checks/editorial-text-review.json",
+      "sha256": "7c802124830e3a9c73a29d2985816627ac8add3a0e0e2728aa35e19138b92813",
+      "bytes": 4095
+    },
+    {
+      "path": "docs/sources/physics-2026-27/source-checks/mathematical-checks.json",
+      "sha256": "352f8beb046acfa70de8474bb1622984bcdf7525f4d84da92f5e008da7b48c9c",
+      "bytes": 30325
+    },
+    {
+      "path": "docs/sources/physics-2026-27/source-checks/selected-bank-arithmetic.json",
+      "sha256": "9f0abdfef62a93f537541232a0c6d400f82e4b80acff941fa53f6b2c7824567e",
+      "bytes": 39454
+    },
+    {
+      "path": "docs/sources/physics-2026-27/source-manifest.json",
+      "sha256": "a5bc08c8a3c0bffa39f4999efa991e49ef58978391c3faead8fca75c5efc7d45",
+      "bytes": 4202
+    },
+    {
+      "path": "docs/sources/physics-2026-27/source-registry.json",
+      "sha256": "4cd13cba2663b8972f7ebea8172b47b9230442307c142e379477fe565ceb1e6a",
+      "bytes": 4728
+    },
+    {
+      "path": "docs/sources/program-memory-2026-11-13.md",
+      "sha256": "933e380b89f277ade0e91e6bbcee056976fff2508ecc8912a7d67a1acb356f86",
+      "bytes": 4111
+    },
+    {
+      "path": "docs/sources/programmable-creator-2026-11-07.md",
+      "sha256": "f96c147cf7486b6e4f220fd2b96295cffdcdf30d2385bf4a7c63ea9dbf15e973",
+      "bytes": 3929
+    },
+    {
+      "path": "docs/sources/source-integrity.json",
+      "sha256": "2b3fb2d4b307fd211a9a3f0e0965c46fe32517256801a45489c9a8ba7654576c",
+      "bytes": 577
+    },
+    {
+      "path": "docs/sources/spatial-board-2026-11-07.md",
+      "sha256": "a13a46b6be5b322dc5b920f652be4ef67428721b83f629994ef6ce8c47364f18",
+      "bytes": 6639
+    },
+    {
+      "path": "docs/sources/tutor-economics-2026-11-07.md",
+      "sha256": "90cafb89757d70a84737a90f497265f408d720b92b599564345bcb13533b56e2",
+      "bytes": 4364
+    },
+    {
+      "path": "docs/sources/tutor-studio-2026-11-07.md",
+      "sha256": "6c746caae7a829fd429b9bca78d8baa907f645490c7a18585f8107e4ccc63291",
+      "bytes": 2494
+    },
+    {
+      "path": "docs/sources/visual-and-product-review.md",
+      "sha256": "eb0dba19bbea8058a17d8bc74893a4af7ce53ec5c857a73b9155d19c527fea31",
+      "bytes": 16026
+    },
+    {
+      "path": "docs/superpowers/plans/2026-11-02-engineering-delivery.md",
+      "sha256": "e51f15602bea159a16edf999561d39a3b9fbf1cdfe898ebd41cad5c0918503b1",
+      "bytes": 38267
+    },
+    {
+      "path": "docs/templates/engineering-task.md",
+      "sha256": "6f2d8786468c446f6970f3ccda9a75dc4ce32b50041be498413299b4f9617f18",
+      "bytes": 1029
+    },
+    {
+      "path": "e2e/README.md",
+      "sha256": "e4ff9985f67ce5f232287217181ab356fd18de1b48518d4b292e273952cf1e5c",
+      "bytes": 20509
+    },
+    {
+      "path": "e2e/audio-fixture.ts",
+      "sha256": "fcb1f2aa3071003f059ac5ec1c08b5979b764a95dd0a406843ade2136e36be11",
+      "bytes": 802
+    },
+    {
+      "path": "e2e/audio.spec.ts",
+      "sha256": "34348394c22108d345dac2ed792b88d9cffc15a2f61bd896908960b4a9b52fb4",
+      "bytes": 11228
+    },
+    {
+      "path": "e2e/courses.spec.ts",
+      "sha256": "d1f3243dc9cf202e98276a9e0d6558b1f39428a6bc45c58331976de80b02ff87",
+      "bytes": 18025
+    },
+    {
+      "path": "e2e/creator.spec.ts",
+      "sha256": "de1a8abc926e5dc5dc57ee2fe8bb3bf0868d2f668a9294e0404eab78a25e1020",
+      "bytes": 24393
+    },
+    {
+      "path": "e2e/dialog.spec.ts",
+      "sha256": "b47b751edcc7fc84196eaf8e115cc08147e9feb9c7cb397dbf43cf1780d53132",
+      "bytes": 2939
+    },
+    {
+      "path": "e2e/editor-concurrency.spec.ts",
+      "sha256": "fb73cabe82cdd8f87d22eb99510442380de05b7b8cb839c044f80dc96af4b82f",
+      "bytes": 19930
+    },
+    {
+      "path": "e2e/feedback.spec.ts",
+      "sha256": "ff697d251b7b441c2d573441b916e521df884452936c30a4aeb140f366140f77",
+      "bytes": 30868
+    },
+    {
+      "path": "e2e/fixtures.ts",
+      "sha256": "8d2e7ab99ab2c048cf50a342df5c4562ed220d31135d72d06ed4b670b2fd105a",
+      "bytes": 8168
+    },
+    {
+      "path": "e2e/fixtures/native-quaderno.json",
+      "sha256": "dd2992f2b1c693cac5831749b06e49d3d32f5c4300287a1374f87746e31109c8",
+      "bytes": 697
+    },
+    {
+      "path": "e2e/handout.spec.ts",
+      "sha256": "101020c7f9387e9e2795070af03309ff9b328257eaa9858ae5fceea9827545d8",
+      "bytes": 19462
+    },
+    {
+      "path": "e2e/immersive-writing.spec.ts",
+      "sha256": "d6b5e557a31a99e95601343807606c3d2daf16672115088abc4158cf51962871",
+      "bytes": 12784
+    },
+    {
+      "path": "e2e/ink-continuity.spec.ts",
+      "sha256": "98b0733a975f64257558bdbae97c9cd2964ab589a45e9682526d99642f70d4b0",
+      "bytes": 6877
+    },
+    {
+      "path": "e2e/knowledge.spec.ts",
+      "sha256": "93bccdfdc48af21cdf1349b36397499f212dbcbd04f8beb5856f837d2ee69159",
+      "bytes": 9139
+    },
+    {
+      "path": "e2e/lesson-workload.spec.ts",
+      "sha256": "c1dbc9c7274048c76bb69001a064b7688d3d38a7f53ba678f31722d2a4b38764",
+      "bytes": 33725
+    },
+    {
+      "path": "e2e/m3-acceptance.spec.mjs",
+      "sha256": "d261a03930764223ed42b5c88496faf15bd734f33343fc2486936721d0cef33f",
+      "bytes": 1720
+    },
+    {
+      "path": "e2e/marketplace-helpers.ts",
+      "sha256": "a15e45b687bcde0a54dde13c31f24842a076f1776e78d816290e3de05aebf911",
+      "bytes": 3104
+    },
+    {
+      "path": "e2e/marketplace.spec.ts",
+      "sha256": "b0bc29565712d3d296b7853eb0f06021f1d22b5567ce3cdc252087b55622555c",
+      "bytes": 24394
+    },
+    {
+      "path": "e2e/material-fixture.ts",
+      "sha256": "d04a586802edda89f838a5a2d025e1d34acffa7ccc4247747cf1202e2ffabc48",
+      "bytes": 1219
+    },
+    {
+      "path": "e2e/materials.spec.ts",
+      "sha256": "9891390d11e5ce758ee9dffd1a3e87e4be2cb4c8a532b5b042e46ed171e078af",
+      "bytes": 14818
+    },
+    {
+      "path": "e2e/native-notebook-import.spec.ts",
+      "sha256": "5c0609739d15cbc7c41f4b4b5186578f05fa13920f40b8e196e2fddf38bd6c9d",
+      "bytes": 2970
+    },
+    {
+      "path": "e2e/notebooks.spec.ts",
+      "sha256": "9122ac59cc558f5e6b538b96c4c0dde5b79f50a9c8c28b049702857d3a722c49",
+      "bytes": 28556
+    },
+    {
+      "path": "e2e/offline.spec.ts",
+      "sha256": "40e698d96821f43c589801eb396b58b9b47f9aefe603e49a0ca15cfe1521489b",
+      "bytes": 14284
+    },
+    {
+      "path": "e2e/personal.spec.ts",
+      "sha256": "54653710376ce8906535bea7c0ee4c3d0c744bfe049f7065b9dc147f2e491008",
+      "bytes": 11208
+    },
+    {
+      "path": "e2e/physics-courses.spec.ts",
+      "sha256": "148fb1118ac92b915a257931802598a11ce576ea4c0b547acfb8e6ba9854d914",
+      "bytes": 21767
+    },
+    {
+      "path": "e2e/physics-public.spec.ts",
+      "sha256": "b7513af2fc21df79887961b7cfe70686b92ffee6d15c6d9c638540c9d09c7219",
+      "bytes": 13102
+    },
+    {
+      "path": "e2e/physics-start.spec.ts",
+      "sha256": "ec510b6677762805a606cc559d238b6c628b0e2619d572344f54dfa2cf7558ec",
+      "bytes": 1800
+    },
+    {
+      "path": "e2e/plugin-lab.spec.ts",
+      "sha256": "e16fb3cbc7d35d0ee105f62ffa91e7d7f98fc6708abb013979ed24e805debaf4",
+      "bytes": 8050
+    },
+    {
+      "path": "e2e/pointer-desktop.spec.ts",
+      "sha256": "e4466ecc9fc2b75d8b6cf0c52dfcb8f98fd5788672d5fd3000eb446f64335088",
+      "bytes": 1061
+    },
+    {
+      "path": "e2e/poiseuille.spec.ts",
+      "sha256": "74bbfd8b9fdf71974c10b338cca3e1941772f72b3fb124d0568984daa694a80f",
+      "bytes": 11934
+    },
+    {
+      "path": "e2e/pressure-unit.spec.ts",
+      "sha256": "84c172e907dc05e9b2de9150d726bf1b706583c84ec9f0040e809c409c208994",
+      "bytes": 10035
+    },
+    {
+      "path": "e2e/programs.spec.ts",
+      "sha256": "edebdb0f430d1a331a3d7d32a6ff3e946e0cf7a191378dd1c625ce578c32bb73",
+      "bytes": 16411
+    },
+    {
+      "path": "e2e/remote-access.ts",
+      "sha256": "92f340d38a0df844c6286594488357abeba9105e5d4a55bcfd3ccec2bcce85c8",
+      "bytes": 6324
+    },
+    {
+      "path": "e2e/remote-continuity.spec.ts",
+      "sha256": "85b0de93a36e582a4f65dc7f7eabafb460cd094581e6dedac391c373b8874a6d",
+      "bytes": 26427
+    },
+    {
+      "path": "e2e/science.spec.ts",
+      "sha256": "a6a00b896f9460d52719399360c557616179819ce1657844a83f522ac8600ca3",
+      "bytes": 2172
+    },
+    {
+      "path": "e2e/spatial-board.spec.ts",
+      "sha256": "88263808b6b13a19815fb1e203b522336d86f706e9dde93b0bbe19094ec536ca",
+      "bytes": 9706
+    },
+    {
+      "path": "e2e/target.ts",
+      "sha256": "64967c1f384923638b3ee1019dd8fa6dd3f14b8da3be0ad6f69a339b2dc268b3",
+      "bytes": 3007
+    },
+    {
+      "path": "e2e/tutor.spec.ts",
+      "sha256": "84c8600dc081ee870a9752ff86b731205deb6e0e4ae006618716204915f0eea0",
+      "bytes": 15392
+    },
+    {
+      "path": "e2e/workspace.spec.ts",
+      "sha256": "f6f8c2135dd724b2aa6cf8bc5508a73466bfcf132bcd4b7e5728a8bafbeaa24d",
+      "bytes": 10428
+    },
+    {
+      "path": "e2e/write-queue.spec.ts",
+      "sha256": "0f7c8a6886b32e19d8efc284a8bdb273b90fe7e9b34da6d4412906679f222dce",
+      "bytes": 25097
+    },
+    {
+      "path": "native/macos-notebook/.codex/environments/environment.toml",
+      "sha256": "f707a598d540dc1e8218be227720f1a0aaaff33711be672b92644731fc720f25",
+      "bytes": 188
+    },
+    {
+      "path": "native/macos-notebook/Package.swift",
+      "sha256": "21490fa07a8d873765dfe5d5785b3dc1c4128f481d88ab057dd7b8366744eb6f",
+      "bytes": 712
+    },
+    {
+      "path": "native/macos-notebook/README.md",
+      "sha256": "c825d922178d37e390c78a73b56228bfccf0e14634ada712129d2726124f5c68",
+      "bytes": 6850
+    },
+    {
+      "path": "native/macos-notebook/Sources/ArdesiaNotebook/App/main.swift",
+      "sha256": "3cdef91960ba1329f3ed83e97e3119ca7ff177581c808cc1d3ced1371472d421",
+      "bytes": 4823
+    },
+    {
+      "path": "native/macos-notebook/Sources/ArdesiaNotebook/Stores/NotebookDocument.swift",
+      "sha256": "3c1c82b3172f027e5c7deda01bdbc3005921be5dd882b9696a63247aefb03e55",
+      "bytes": 13148
+    },
+    {
+      "path": "native/macos-notebook/Sources/ArdesiaNotebook/Views/ContentView.swift",
+      "sha256": "afaea91cba69a2085f9978a4016049402e084749864b98457f7589400a935f5e",
+      "bytes": 6818
+    },
+    {
+      "path": "native/macos-notebook/Sources/ArdesiaNotebook/Views/DrawingToolbar.swift",
+      "sha256": "e3e27444ab91ceaa65fd00b7730ac477ed2551867221e18dbeb86285e504c4ce",
+      "bytes": 2549
+    },
+    {
+      "path": "native/macos-notebook/Sources/ArdesiaNotebook/Views/InkCanvas.swift",
+      "sha256": "562af2dd9458a19e045c01ef7c0bb242adeaa3724e0d840182f05917a2289de8",
+      "bytes": 10974
+    },
+    {
+      "path": "native/macos-notebook/Sources/NotebookCore/InkGeometry.swift",
+      "sha256": "d31d7c7361fa0b0f0fd6ac69e17d30f9a6a9c37dddbae2998c7f49f02034df7b",
+      "bytes": 2936
+    },
+    {
+      "path": "native/macos-notebook/Sources/NotebookCore/Notebook.swift",
+      "sha256": "3df941c6fa272caefbfccdb2a5d6fcaa2d79ce292921cbb63806ac001c0714b4",
+      "bytes": 5438
+    },
+    {
+      "path": "native/macos-notebook/Sources/NotebookCore/NotebookCodec.swift",
+      "sha256": "8030261caf9f0bf16d0e55a979f29992e40cd069b64d9574010dc32951650443",
+      "bytes": 3752
+    },
+    {
+      "path": "native/macos-notebook/Sources/NotebookCore/NotebookPDF.swift",
+      "sha256": "56c124352d532df39cdd96c44152d5e011cdf62ab687dbdba8efea7c7fa88f2f",
+      "bytes": 3959
+    },
+    {
+      "path": "native/macos-notebook/Tests/NotebookChecks/main.swift",
+      "sha256": "261068d70b53a4547f3bff8fb1e494f1b37c5868aa4509f87aa6007fc99d63f1",
+      "bytes": 8935
+    },
+    {
+      "path": "native/macos-notebook/script/build_and_run.sh",
+      "sha256": "cf5a56f93fdad3c809af888e15354222b2801d6402934e23d65d2a5dca98c745",
+      "bytes": 2614
+    },
+    {
+      "path": "native/macos-notebook/script/check.sh",
+      "sha256": "5894642a02749e7bc099bd51b273365a5b18065b4e43f0d3e94957629b308f14",
+      "bytes": 831
+    },
+    {
+      "path": "operations/agent-evals.json",
+      "sha256": "7d8a0a48ced60f6b3dd5ff98d83ce36f905ed3c76e206ec5cf1267120e3823a7",
+      "bytes": 7146
+    },
+    {
+      "path": "operations/archive/coordination-before-sequential.json",
+      "sha256": "2b8949401786af1c4e22adceccc6a2db5c9901ec8137377f95b12817f984afd5",
+      "bytes": 18773
+    },
+    {
+      "path": "operations/baselines/m2/browser-evidence.json",
+      "sha256": "cd8eb40d28c46a8c99a3b6913e2f9db93bfb1530238c76079ad25bc9b2ced7d6",
+      "bytes": 3693
+    },
+    {
+      "path": "operations/baselines/m2/release-evidence.json",
+      "sha256": "a2381448ae3a9a6ea39124d78d37fa7486216e396f3b4fa27e4d4d69732a7f12",
+      "bytes": 2650
+    },
+    {
+      "path": "operations/baselines/m2/status.json",
+      "sha256": "f633a7e601365e32203e5b19700e496294ad06164f92601715d73e5cd279d9b9",
+      "bytes": 4013
+    },
+    {
+      "path": "operations/baselines/m2/unit.json",
+      "sha256": "4a22e5ab0efa3c8a7ffbd018a691c7b70d20ca015490154d068214989e599d67",
+      "bytes": 65040
+    },
+    {
+      "path": "operations/baselines/m2/verification.json",
+      "sha256": "4207f60dcc28d01559c50750dfa68042e27cbcf08786427555e5399146d6827a",
+      "bytes": 979
+    },
+    {
+      "path": "operations/baselines/m3/browser-evidence.json",
+      "sha256": "12b781e460392b58ac29ff4d87035c34c619d73b33fca5ef6151eeab0d19d24b",
+      "bytes": 4499
+    },
+    {
+      "path": "operations/baselines/m3/browser.json",
+      "sha256": "cfeb22dcfa436f19e4a3e298353340b4a266a20a1a97eaead9fc5faf07b95dc7",
+      "bytes": 6559
+    },
+    {
+      "path": "operations/baselines/m3/candidate.json",
+      "sha256": "9a9fbf1344e39fcb6fa16201d0ee05f7eb759aaefcf950590ab3e2ae9b054235",
+      "bytes": 13214
+    },
+    {
+      "path": "operations/baselines/m3/e2e.json",
+      "sha256": "78ca9b78668a1c81c74b39ad83a0e45ed46e719c7baaf554c86bd59bffab9f28",
+      "bytes": 88503
+    },
+    {
+      "path": "operations/baselines/m3/m3-remote-evidence.json",
+      "sha256": "587a4e366357bf1bbdeb47ac6bf3dd534b5f5328bf1ecbd4bffd82631fd56c4a",
+      "bytes": 11290
+    },
+    {
+      "path": "operations/baselines/m3/manifest.json",
+      "sha256": "bfcdac911f00de3b1cbb25643c5ef4d694eae53ffa0c249f28bcb11204a5826e",
+      "bytes": 2132
+    },
+    {
+      "path": "operations/baselines/m3/operator.json",
+      "sha256": "3f47aa1aefaad5536762cd22c9e26b0279bf9e92a808c4afc1253be9ddefff65",
+      "bytes": 4752
+    },
+    {
+      "path": "operations/baselines/m3/platform-after.json",
+      "sha256": "98d3f1aa6bbedfbefb8d579ed9db4354cd65eb952fac6c869df5261e1f4212e1",
+      "bytes": 459
+    },
+    {
+      "path": "operations/baselines/m3/platform-before.json",
+      "sha256": "c77bd37825d6f4fc7c4802f6697535435012e97c08356e5f0ff393ec6e097b64",
+      "bytes": 459
+    },
+    {
+      "path": "operations/baselines/m3/postflight.json",
+      "sha256": "d6c6822d5dddf88fe8305de94b9621ecb36309d22b49e4101874169600ab618b",
+      "bytes": 1418
+    },
+    {
+      "path": "operations/baselines/m3/preflight.json",
+      "sha256": "709d39c46583b2c705432bb848db7cb3701346f0a3fbf6a8fc25a2cc9c8c730b",
+      "bytes": 1418
+    },
+    {
+      "path": "operations/baselines/m3/release-evidence.json",
+      "sha256": "9bdfdf82e8442c25215fb6d7b1326295f1779aed8dcaa2ae66b510b08dc83e38",
+      "bytes": 1302
+    },
+    {
+      "path": "operations/baselines/m3/result.json",
+      "sha256": "c670433682d99a331219ae508036e54ff273abd3bfda9df67d7a295e6598a6dd",
+      "bytes": 239
+    },
+    {
+      "path": "operations/baselines/m3/status.json",
+      "sha256": "c9c9b49b2487588de87102329e8f239ca17d73535a4b6c7aea26564e929b22bf",
+      "bytes": 16331
+    },
+    {
+      "path": "operations/baselines/m3/unit.json",
+      "sha256": "9e22dd378368f89419c78e150ee6a1162725bccbd77f7c7b81968b2380a7c1d0",
+      "bytes": 118198
+    },
+    {
+      "path": "operations/baselines/m3/verification.json",
+      "sha256": "ebfe3ec2ce3d139a8bb29393eefc01ef046d822f32d8a0f8e81effd6a6424dc7",
+      "bytes": 979
+    },
+    {
+      "path": "operations/codex-automation.json",
+      "sha256": "9d660dee3bbe7e7ef6f6468e3fb59b49adf5ea96c40fc7d2e5d0368403f2af38",
+      "bytes": 2365
+    },
+    {
+      "path": "operations/coordination.json",
+      "sha256": "f819eadc1efda7da220b058e46b6cb7547b1a37be47957c496f4f0f73e35c8b7",
+      "bytes": 44050
+    },
+    {
+      "path": "operations/m3-environment.json",
+      "sha256": "98dc40d07df88f6df412671786c894e0e7580b95ec2a3d82693bd8064e8cf371",
+      "bytes": 11831
+    },
+    {
+      "path": "operations/milestones.json",
+      "sha256": "4056ea4a6d0891b339c2fac51eb5df68549d60745115e64b68eb89b9c315d696",
+      "bytes": 1018
+    },
+    {
+      "path": "operations/release-evidence.schema.json",
+      "sha256": "a9c13a6bcd1d9d73ea2c93cf034eeb943451a37b45613e735c9f699a18fe4301",
+      "bytes": 9716
+    },
+    {
+      "path": "package.json",
+      "sha256": "4b6f84d0e001396f10e9e255c35e1585098abb4096f9e4bdd1b9b3b6525bee80",
+      "bytes": 1339
+    },
+    {
+      "path": "packages/contracts/AGENTS.md",
+      "sha256": "5f14b67233609aa0115dd7ab0cd198bdda626004ad30c3a7dfe9a715e9918e9d",
+      "bytes": 664
+    },
+    {
+      "path": "packages/contracts/package.json",
+      "sha256": "c74fe5f92df8edbe12c9c14104faa4ff0f8e912570883d1047dae500b5187126",
+      "bytes": 174
+    },
+    {
+      "path": "packages/contracts/src/courses.ts",
+      "sha256": "1ca6dc69e02a74ca3644a105b95ecb1b634756c9095e11d8499f2be3672d22cf",
+      "bytes": 6959
+    },
+    {
+      "path": "packages/contracts/src/document-history.ts",
+      "sha256": "b29b77cb6e52e638470ab7f13c7df584e38fba8c70d53d72e8813d08cc0b0faa",
+      "bytes": 4717
+    },
+    {
+      "path": "packages/contracts/src/extensions.ts",
+      "sha256": "468bc67e763461e682402830efbd77d2c601437f45615a6ba96accb1a3f0102d",
+      "bytes": 10672
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "885cce9eeaff9ea0ae0b44a80a91f8e68f494a9d01a517bfc30a38128979d4ce",
+      "bytes": 56355
+    },
+    {
+      "path": "packages/contracts/src/json.test.ts",
+      "sha256": "7ea1bd4e3d89c8112b4d28996d7e6c9d1f2b8ec3c7cec1d4a9ac7947e62ccafa",
+      "bytes": 6763
+    },
+    {
+      "path": "packages/contracts/src/knowledge.ts",
+      "sha256": "e53cc5052dd50aa66944a83dc4f107516b11bf0a61c2819d364fae8281f61643",
+      "bytes": 2208
+    },
+    {
+      "path": "packages/contracts/src/materials.ts",
+      "sha256": "ced940bccfb29ab3af8b3394b24a7e243ffb93a21c10ee769eee0fd21e24d666",
+      "bytes": 3244
+    },
+    {
+      "path": "packages/contracts/src/notebooks.ts",
+      "sha256": "ddfa5b5f5edc17df03ca75d7665095839e30c7710db77efa056b57b4e5dd87eb",
+      "bytes": 6535
+    },
+    {
+      "path": "packages/contracts/src/programs.ts",
+      "sha256": "466df56aad0428d9c25a7e7deee64cd98b0719048040d0dbb4fccb5a1093d160",
+      "bytes": 1957
+    },
+    {
+      "path": "packages/contracts/src/recordings.ts",
+      "sha256": "9e40ed7acde18c894c118ade01b7aafb86d27d13729d119c2c9faece82e0ddae",
+      "bytes": 7436
+    },
+    {
+      "path": "packages/contracts/src/search.test.ts",
+      "sha256": "d96e2b306c2536db85067e261edabe2270f7555a5d39610c4b76572f0c97a555",
+      "bytes": 2380
+    },
+    {
+      "path": "packages/contracts/src/search.ts",
+      "sha256": "1c7cb648f7e87aab2790ca67aaa04620981eddf91572b4e3c236c8ad694855e2",
+      "bytes": 3572
+    },
+    {
+      "path": "packages/contracts/src/tutor.ts",
+      "sha256": "852bdccceecc916fce252ae96a3410e67334b1755eebaaa045f5c7436bf846b1",
+      "bytes": 7593
+    },
+    {
+      "path": "packages/core/AGENTS.md",
+      "sha256": "4f083563f19468a724a1a8dc47bad977c67ec8cfc9e4a746b4a9d8f9da44a8f3",
+      "bytes": 1070
+    },
+    {
+      "path": "packages/core/README.md",
+      "sha256": "74ab66b7a9ab010235d4b4b131543c7b8efef3ad766f9afb7785f08392404829",
+      "bytes": 6334
+    },
+    {
+      "path": "packages/core/package.json",
+      "sha256": "37f3cc356dc09f140efee4a29318dcb192aff73ef512e11342e117e8514fe279",
+      "bytes": 184
+    },
+    {
+      "path": "packages/core/src/core.test.ts",
+      "sha256": "e995c9e02dc48700527458c5cd9980aa141bb02f69c2f6ddfecc685f7db9c012",
+      "bytes": 12704
+    },
+    {
+      "path": "packages/core/src/courses.test.ts",
+      "sha256": "f8725cd54cad8c6553971c61376951529846d082954e7a2aafff4e2b4c087070",
+      "bytes": 9491
+    },
+    {
+      "path": "packages/core/src/courses.ts",
+      "sha256": "ee92a7cf5a17d71ea4cf42a6b7596f95a77058bb7874860b2efe92b67f9cd76f",
+      "bytes": 11712
+    },
+    {
+      "path": "packages/core/src/extensions.test.ts",
+      "sha256": "c644fb1af54ea9d590d1c48e0cf9a7cbbb8e69b1dff70e080088f7ba721a59b0",
+      "bytes": 16340
+    },
+    {
+      "path": "packages/core/src/extensions.ts",
+      "sha256": "c120a22e5b75e05dc381efa023bffd6dc1f308b8f338f7875c17b4d93f33fc6a",
+      "bytes": 2903
+    },
+    {
+      "path": "packages/core/src/feedback.test.ts",
+      "sha256": "a1e46210aa52868b871c94cb856b6bad5c3303ac83c3501182aa56c91009ac4a",
+      "bytes": 10960
+    },
+    {
+      "path": "packages/core/src/fixtures/tutor-v9.json",
+      "sha256": "ebdc025da605a2560e8a4c7a4e827e8d74a3407396720df2a710f9009565f035",
+      "bytes": 5020
+    },
+    {
+      "path": "packages/core/src/index.ts",
+      "sha256": "641070e486f0ae92d2f7afa21da6956e5e9752a5f82b4cf5f45073ff752f0471",
+      "bytes": 36234
+    },
+    {
+      "path": "packages/core/src/lab.test.ts",
+      "sha256": "035cb63151a612c0b4240c9115b9f412f37b6630adca474f6a2684121c73110c",
+      "bytes": 14982
+    },
+    {
+      "path": "packages/core/src/learning.test.ts",
+      "sha256": "51f0a8d413be66f1681761b0e4052a011642f7bf837889554fa57f19c9142b36",
+      "bytes": 27212
+    },
+    {
+      "path": "packages/core/src/learning.ts",
+      "sha256": "bddd8451aedb5d0c2a88d39ec3009d7d96e12cc91f318b840f33ac7654883ed3",
+      "bytes": 13674
+    },
+    {
+      "path": "packages/core/src/marketplace.test.ts",
+      "sha256": "0c04d795dabe32f0dfae25b805b7c341365a407a450433921c62dedc8cd4bf9d",
+      "bytes": 27940
+    },
+    {
+      "path": "packages/core/src/materials.test.ts",
+      "sha256": "375d98c6a3382bbd3cb8337cf1ff36f2cc0e2d5a33ddffbb8d9aacad996edaae",
+      "bytes": 3455
+    },
+    {
+      "path": "packages/core/src/materials.ts",
+      "sha256": "c250c994817ace2ce5cb8091b9e8926a3ceb0309933c90e98dcd84be968b79ff",
+      "bytes": 514
+    },
+    {
+      "path": "packages/core/src/notebooks.test.ts",
+      "sha256": "b00f4cbbf910a48f607dc3b912d3d34f8aac931c1845b6984178b196a8216ec4",
+      "bytes": 17515
+    },
+    {
+      "path": "packages/core/src/notebooks.ts",
+      "sha256": "fffc90348cbae4be25f9bafdf3625637d9c18ea2339eb77b92df685cfc86b82e",
+      "bytes": 9353
+    },
+    {
+      "path": "packages/core/src/personal.test.ts",
+      "sha256": "5f0ae41f2e6bbd51489c304a36fef2caef29d78a6e9aac70e26223bd3a2e67c3",
+      "bytes": 4075
+    },
+    {
+      "path": "packages/core/src/plugin-commands.ts",
+      "sha256": "1f6b8e5460c5d416c8ea9b44eab3cde587e7944fe2c70891decf95cb13787571",
+      "bytes": 11386
+    },
+    {
+      "path": "packages/core/src/recordings.test.ts",
+      "sha256": "f32c31556c57319a330c8f19f9af5d1dd8018c3ca220359e8cd6c320cd4e18e8",
+      "bytes": 5950
+    },
+    {
+      "path": "packages/core/src/recordings.ts",
+      "sha256": "80e617493f910e17df6f69ed425be793d0fd69ce257810fb737ca998072fa053",
+      "bytes": 7174
+    },
+    {
+      "path": "packages/core/src/tutor-economics-compatibility.test.ts",
+      "sha256": "e3bfb878b72552bd69f3d374fc86d3dc64ecc3e906c469b1acb0b32053c255cb",
+      "bytes": 4108
+    },
+    {
+      "path": "packages/core/src/tutor.test.ts",
+      "sha256": "0a0b2fb826c766623c26bc4c8990bf605b7e0492435cf7e300ab6aa209221c42",
+      "bytes": 10666
+    },
+    {
+      "path": "packages/core/src/tutor.ts",
+      "sha256": "8a8268a983ab2bd7a648a28c7d7d24b2e03ba1ec5179f17f13b8eae43bff6523",
+      "bytes": 9145
+    },
+    {
+      "path": "packages/lesson-os/AGENTS.md",
+      "sha256": "a93c46630471f95a682c5c58f9ff3483ed741d35acb8277d219d9a34de7c3ad7",
+      "bytes": 468
+    },
+    {
+      "path": "packages/lesson-os/README.md",
+      "sha256": "b144b9bd2f25cd6d48a272e9b27ae7338e972a74ffb7d8db15075355ea460f11",
+      "bytes": 1665
+    },
+    {
+      "path": "packages/lesson-os/package.json",
+      "sha256": "19ef29d3c9db5d0b95d145e3fa0d1869505f5eacdc2c8865409ca8fa9a13e6a4",
+      "bytes": 189
+    },
+    {
+      "path": "packages/lesson-os/src/handout.test.ts",
+      "sha256": "d68232eb30b51cae13fbfb8353351f3a99e4e83c1f4c45fe59a21d163bb246dd",
+      "bytes": 2741
+    },
+    {
+      "path": "packages/lesson-os/src/handout.ts",
+      "sha256": "d4306e81db60bc738a46eafbad280cb2a4ae9dd920e6de1cb93078d9846b4410",
+      "bytes": 3821
+    },
+    {
+      "path": "packages/lesson-os/src/index.ts",
+      "sha256": "0b9bc3f50f7a16078a847074a435b81ae4ea5a3b93ad8b7bfcdcb0d6de8ad103",
+      "bytes": 2812
+    },
+    {
+      "path": "packages/lesson-os/src/learning-diary.test.ts",
+      "sha256": "d1182119361958313de1ebccab20737a1a89cee31520bffe682606b1836ad874",
+      "bytes": 2237
+    },
+    {
+      "path": "packages/lesson-os/src/learning-diary.ts",
+      "sha256": "177b06c88f1599d2917a7ed261af8ba60a0d431bca0dbf088e0e1cf00925fd79",
+      "bytes": 1302
+    },
+    {
+      "path": "packages/lesson-os/src/learning-evidence.test.ts",
+      "sha256": "7801e05c74057bc708337057a872250a53bcbbc5c0fb31e6138e2bb6b6a41bb3",
+      "bytes": 5388
+    },
+    {
+      "path": "packages/lesson-os/src/learning-evidence.ts",
+      "sha256": "a30b94c4e48209d2ac95f9e89b5636b57c33211383b21d5e357ba2ae77fa1ed7",
+      "bytes": 3673
+    },
+    {
+      "path": "packages/lesson-os/src/projections.test.ts",
+      "sha256": "1dadc84a61ca3d4504e67b70afc4e86297186c642f9264f1012ac86129f2a5ae",
+      "bytes": 3335
+    },
+    {
+      "path": "packages/lesson-os/src/replay.test.ts",
+      "sha256": "31053f62091cb129fa3c54e5fe2d8ca716792997944c561584f281079aca722b",
+      "bytes": 6044
+    },
+    {
+      "path": "packages/lesson-os/src/replay.ts",
+      "sha256": "71b052e85bf744ddd6820574bcf0658bed71ddb0a0daf9dff902efdd5d7c04e0",
+      "bytes": 3687
+    },
+    {
+      "path": "packages/lesson-os/src/tutor-economics.test.ts",
+      "sha256": "847b54b971ba53ec7d79809ab385f320d1555a582cfddaac43dca914f20380c5",
+      "bytes": 6810
+    },
+    {
+      "path": "packages/lesson-os/src/tutor-economics.ts",
+      "sha256": "79c03d57f71a05ebea5dbe60c0dbbc5412a2afcc5679d478ff8671456311c13c",
+      "bytes": 5810
+    },
+    {
+      "path": "packages/mcp-core/AGENTS.md",
+      "sha256": "763b28bf059a9a2d05ca369996b8e646c6c00b97ef2ab20a6542db51f61794b6",
+      "bytes": 1434
+    },
+    {
+      "path": "packages/mcp-core/README.md",
+      "sha256": "3866b2ea422d2aee44600f5b139288c3a34f68d1746d77c80ac63f1df9f56cda",
+      "bytes": 14282
+    },
+    {
+      "path": "packages/mcp-core/package.json",
+      "sha256": "3ab05b9009a084167c9de03eb7cd004740075e6bb2e3a427dd10d02cd8605219",
+      "bytes": 257
+    },
+    {
+      "path": "packages/mcp-core/src/adapter.test.ts",
+      "sha256": "fa47ae1544a2d21091dbfc3d6622ed38f8d1c5a4464392129da43d8fb9954d69",
+      "bytes": 21446
+    },
+    {
+      "path": "packages/mcp-core/src/adapter.ts",
+      "sha256": "c647c485f452751a1402930c6986c3411541b97491b39788446e69df20cec4a8",
+      "bytes": 31547
+    },
+    {
+      "path": "packages/mcp-core/src/cli.ts",
+      "sha256": "bd760d7f7d7b8a755ff26a3f215adbba7f2b11f36d0c29a0adb8567213c82908",
+      "bytes": 5035
+    },
+    {
+      "path": "packages/mcp-core/src/config.ts",
+      "sha256": "2487f27629a02e54922790cc714cb2ab34dbcbae3dda3b4f3f9f02e8c97f8475",
+      "bytes": 2541
+    },
+    {
+      "path": "packages/mcp-core/src/http.ts",
+      "sha256": "d529fcb261b4d07da2849f2bc619d3a0b1c2979f52e48dde8efc01a9e212d91b",
+      "bytes": 4573
+    },
+    {
+      "path": "packages/mcp-core/src/index.ts",
+      "sha256": "83c93e855ea13d7606e467c666992393ad6e96d4904957f43ea92f2f4681e5b0",
+      "bytes": 22224
+    },
+    {
+      "path": "packages/mcp-core/src/prompt.ts",
+      "sha256": "84f51353e0c21d357976c899c200eb216d93c4cd571d32693e1419954c13c24b",
+      "bytes": 1104
+    },
+    {
+      "path": "packages/plugin-host/AGENTS.md",
+      "sha256": "c897d3c71c1f25069915a4703da09eb5c3e05080e23c1c8ad28b1112bee103b7",
+      "bytes": 432
+    },
+    {
+      "path": "packages/plugin-host/package.json",
+      "sha256": "30ce6b3772d770a87f207ad2d4fd11d81bc6f256ad01014aa5931ba496ab07a0",
+      "bytes": 388
+    },
+    {
+      "path": "packages/plugin-host/src/composition.test.ts",
+      "sha256": "47c9efe44bf04d27effec2951452e26492f8b91073779d59ac61014ce5e911c0",
+      "bytes": 2121
+    },
+    {
+      "path": "packages/plugin-host/src/composition.ts",
+      "sha256": "2597cdd118ad126b95ef96f318e94195a3ccf9ca282e21c3a93ec4bf7f4b5fa4",
+      "bytes": 5786
+    },
+    {
+      "path": "packages/plugin-host/src/first-party-trust.json",
+      "sha256": "a3de05a234986f3ab93be4d3ef424ce1b5aef44a71a598ca99081b94bd502726",
+      "bytes": 843
+    },
+    {
+      "path": "packages/plugin-host/src/index.ts",
+      "sha256": "4600925aebf419c411799dc532ffa4b18fc0b8f8bed2b67caf5b18f831c4c6a0",
+      "bytes": 20237
+    },
+    {
+      "path": "packages/plugin-host/src/marketplace.test.ts",
+      "sha256": "890363daaec0e5efefb417e514334d8b3dcafa015763d6aca3f84a7f2b3c40a9",
+      "bytes": 10607
+    },
+    {
+      "path": "packages/plugin-host/src/policy.test.ts",
+      "sha256": "6c5941fa875e01d23e3415cc4f828e1f0242ead81e32a51971ee44faaa9d4e54",
+      "bytes": 1939
+    },
+    {
+      "path": "packages/plugin-host/src/program-engine.ts",
+      "sha256": "17e5a67a553ef2db9bbc1e70fed5f87501d72c0496cd9e2a9108eda2b7f79e1e",
+      "bytes": 2306
+    },
+    {
+      "path": "packages/plugin-host/src/program-limits.ts",
+      "sha256": "742c3336ec4a69ca4b34a908640128f8f654f0aa495a3a6261f338bd8edbfd33",
+      "bytes": 356
+    },
+    {
+      "path": "packages/plugin-host/src/program-module.ts",
+      "sha256": "809a4f0b2cc8449ea1bb3078d077738ddddeaac52584722e0ed231fa599a6f2e",
+      "bytes": 743
+    },
+    {
+      "path": "packages/plugin-host/src/program-session.ts",
+      "sha256": "51bb81768cdc7b07126e6e3133c42c9e3839b0439d2297ea42789727a16c421e",
+      "bytes": 4418
+    },
+    {
+      "path": "packages/plugin-host/src/program-view.ts",
+      "sha256": "e40e384d8f8e512a4c77ddaf5e17b20a05d979a0308f8c2c1b3ed714fcf828e1",
+      "bytes": 7801
+    },
+    {
+      "path": "packages/plugin-host/src/program-worker.ts",
+      "sha256": "ee29e9162bfecf48176f3054d2dafe02e3986932d985ee761c70b5fb90d9df3e",
+      "bytes": 1266
+    },
+    {
+      "path": "packages/plugin-host/src/program.test.ts",
+      "sha256": "4870754dcb7c0f6271c9f5aa61b57eb0cd3e1b3124c8a0779fb28fbb769d2ec7",
+      "bytes": 15879
+    },
+    {
+      "path": "packages/plugin-host/src/runtime.test.ts",
+      "sha256": "213cadc782186bba2ae184d18d2a75cea09184e3b23a624b7c0967781c138db9",
+      "bytes": 19489
+    },
+    {
+      "path": "packages/plugin-sdk/AGENTS.md",
+      "sha256": "7a3ce8b5f0ef348144b1ec42dbd03be240bd8d9fe6f8812ad7a95f515c4f015c",
+      "bytes": 467
+    },
+    {
+      "path": "packages/plugin-sdk/package.json",
+      "sha256": "1bcc6fcac7f659b5e0d4fecd1a1d47d432c0cc29b22cde7ce1d3b2c87190b6a1",
+      "bytes": 144
+    },
+    {
+      "path": "packages/plugin-sdk/src/catalog.test.ts",
+      "sha256": "93099d654d47c7212b2c7981b1b97923b5711aa3a8833a4003c54948521fb2d3",
+      "bytes": 4219
+    },
+    {
+      "path": "packages/plugin-sdk/src/index.ts",
+      "sha256": "8d1c55852afb844ed47e345a88aff00d9bbc92f0224a99f66eecd8798d301f1b",
+      "bytes": 9614
+    },
+    {
+      "path": "packages/remote-client/AGENTS.md",
+      "sha256": "2f1c018cfb846ae1f9f9aff2e811e869e458e5ef92bec2214518e26b7aa900fa",
+      "bytes": 1000
+    },
+    {
+      "path": "packages/remote-client/README.md",
+      "sha256": "2650116bae6839dde1a65b65a81d2f57ea05b1fe807df06f712c983ecb4e3bf9",
+      "bytes": 17163
+    },
+    {
+      "path": "packages/remote-client/package.json",
+      "sha256": "6918c687028f8e764fa81b4f11bd427d22cece4319736dddac6e150906b7ef6d",
+      "bytes": 229
+    },
+    {
+      "path": "packages/remote-client/src/browser-storage.test.ts",
+      "sha256": "11dca662b6bc6b239fa0e126d6b09795da76a21983fcdd68a0f7fcb431ab8b6e",
+      "bytes": 10200
+    },
+    {
+      "path": "packages/remote-client/src/client.test.ts",
+      "sha256": "f145253790fc59bcf5a459b0fc1a8b3c5887a0b01084756cbd85ddf5bf414c28",
+      "bytes": 32107
+    },
+    {
+      "path": "packages/remote-client/src/fixtures/offline-v1-013221f.ts",
+      "sha256": "1ae3aada05379eab02ff430a690a4ee44ec22d1d4c71989821b04a49a1bb4d97",
+      "bytes": 14262
+    },
+    {
+      "path": "packages/remote-client/src/index.ts",
+      "sha256": "4d539316f7f1b3b0711f56c2a9349650cbab491f312cd10ef1f6a58bf1454816",
+      "bytes": 95501
+    },
+    {
+      "path": "packages/remote-client/src/ink-drafts.test.ts",
+      "sha256": "3994a063cad0f177436f4744916767fdd094f7493a14223d111cc04e1bcde055",
+      "bytes": 5461
+    },
+    {
+      "path": "packages/remote-client/src/ink-drafts.ts",
+      "sha256": "10e3a4e879eabc2f1cf2374a9d2b907787b77a07d59ac5e111e05fd9b1312476",
+      "bytes": 5610
+    },
+    {
+      "path": "packages/remote-client/src/ink-reconciliation.ts",
+      "sha256": "bbe8613c8bd5227ee7b530964a3ba3dad888e07e101b543ff68fd16d536949d7",
+      "bytes": 5423
+    },
+    {
+      "path": "packages/remote-client/src/materials.test.ts",
+      "sha256": "2124d2d97c9f407f9d836fb42e8a550b3cd41b6e175de36800480cd77b5339c4",
+      "bytes": 2670
+    },
+    {
+      "path": "packages/remote-client/src/materials.ts",
+      "sha256": "60764b1c0fdae497facf655ad04f228c575c316b564cfe79b67cc306fd51e736",
+      "bytes": 3544
+    },
+    {
+      "path": "packages/remote-client/src/notebooks-offline.test.ts",
+      "sha256": "cad0587e2e5fcc3077c0c9dbe04d7ba7ea13487a7864792e9f000114da944f19",
+      "bytes": 4570
+    },
+    {
+      "path": "packages/remote-client/src/offline.ts",
+      "sha256": "9e4d858f1f899c586afeb00ef593fd02f99676e8f963f5591e3a6e31be96050e",
+      "bytes": 15248
+    },
+    {
+      "path": "packages/remote-client/src/recordings.test.ts",
+      "sha256": "8d85daec04199107dfdffb8d6bf8a822b79a06a8bf246cb18e1dd70ff87e171b",
+      "bytes": 1111
+    },
+    {
+      "path": "packages/remote-client/src/recordings.ts",
+      "sha256": "042b3ec9f121a9e370eab05c004917eb6d46ce595671aee446effedafba69d26",
+      "bytes": 4189
+    },
+    {
+      "path": "packages/server/AGENTS.md",
+      "sha256": "4689880b375c167fe8ab1149eccb1f5608b686e1026bf0965f52a15985a97cde",
+      "bytes": 1282
+    },
+    {
+      "path": "packages/server/README.md",
+      "sha256": "d9bf76d15f287530aae5c94c00f5d802fb84f24ab398d43e16bd5874bbefe14c",
+      "bytes": 14136
+    },
+    {
+      "path": "packages/server/migrations/001_initial.sql",
+      "sha256": "5d5b50de6debe5d08658f110030672bb4cbe7666e5be559d63aa003f6862b25c",
+      "bytes": 4480
+    },
+    {
+      "path": "packages/server/migrations/002_recordings.sql",
+      "sha256": "29d5452d2c77f96ed910ad35e8f9ed0841731b6cb6c5197b40ceb9028b1d25d0",
+      "bytes": 1269
+    },
+    {
+      "path": "packages/server/migrations/003_learning_feedback.sql",
+      "sha256": "6ab3542e171f82151980e6597b3fe82251d715bcd4b6b5a1d047f8dcadc41a75",
+      "bytes": 503
+    },
+    {
+      "path": "packages/server/migrations/004_extensions.sql",
+      "sha256": "4d65075ec977c1b9baae276a375bebf43c2efe561a41efda0f0807a3c67b1f5b",
+      "bytes": 326
+    },
+    {
+      "path": "packages/server/migrations/005_courses.sql",
+      "sha256": "a364d2fbc93740931787e6ecf4a09af039a800e33bdf9898946a25fae3831e63",
+      "bytes": 340
+    },
+    {
+      "path": "packages/server/migrations/006_tutor.sql",
+      "sha256": "493b5334db979405265fe8e11df465d1cf5ed8b4119baec4b951155b489c1a93",
+      "bytes": 330
+    },
+    {
+      "path": "packages/server/migrations/007_materials.sql",
+      "sha256": "accf5631eb1d3746f87df7097f138c47c1793809d9ef7b031dba48e1f4fcd04c",
+      "bytes": 1350
+    },
+    {
+      "path": "packages/server/migrations/008_tutor_economics.sql",
+      "sha256": "5083c8a924c9515c24c27bd3c876d61cd9a505d4411cab3d76dfa39eaac285eb",
+      "bytes": 427
+    },
+    {
+      "path": "packages/server/migrations/009_notebooks.sql",
+      "sha256": "2748f6fa3d3d09586417de25986f963a880507c67afbcac04e103d9908545671",
+      "bytes": 426
+    },
+    {
+      "path": "packages/server/package.json",
+      "sha256": "8700ce56319f621d2c85d631132f058eab3ac0db17357dc227786b33945bbce5",
+      "bytes": 373
+    },
+    {
+      "path": "packages/server/src/auth.ts",
+      "sha256": "e67272f1528cfd447850309eebb59af4f29106f34936a22045d9d5b75650b64b",
+      "bytes": 8788
+    },
+    {
+      "path": "packages/server/src/backup.ts",
+      "sha256": "4a2b99c371fe6c2a4dd729938183fd2faea4f6ff861dbada5a5a6641c6f9c615",
+      "bytes": 19970
+    },
+    {
+      "path": "packages/server/src/database.ts",
+      "sha256": "739caa510d9d5de5bf5672f79b065e956adf0bf661eb1c5de6562f71bd4ee1cd",
+      "bytes": 6321
+    },
+    {
+      "path": "packages/server/src/errors.ts",
+      "sha256": "83d85bed2a69d7b0a99713bc87d80e0c7294a59f3078f1b9e914bc26d4ea0ed1",
+      "bytes": 802
+    },
+    {
+      "path": "packages/server/src/first-party-policy.ts",
+      "sha256": "57b8a86f3b00e64dff58e059b98da4bd17b47f5dd57acc0a32a9a8c09c952f46",
+      "bytes": 6776
+    },
+    {
+      "path": "packages/server/src/handler.ts",
+      "sha256": "88f9a1449c5f70b21d6045f945ac4ab9237b23fbbdd467c877f524115d71d8e2",
+      "bytes": 6489
+    },
+    {
+      "path": "packages/server/src/index.ts",
+      "sha256": "7a2cc65fa70eaa81f4c0291d44cd4e849c0e1e585bdb8723f76aecce73caf373",
+      "bytes": 552
+    },
+    {
+      "path": "packages/server/src/legacy-import.ts",
+      "sha256": "4fe2bd2573a15943f1fb358871a81e2a98024facd0908a10cb2a444e7e1c20ef",
+      "bytes": 1500
+    },
+    {
+      "path": "packages/server/src/materials.ts",
+      "sha256": "32cd83c42423d196ce9f2df6247478fba98812529d05ed013cacaaacb8654abf",
+      "bytes": 6322
+    },
+    {
+      "path": "packages/server/src/recordings.ts",
+      "sha256": "1ad8de76d2037fb6913ec5c893540904f3c3aee6df68b397dba6ddd933a07629",
+      "bytes": 5920
+    },
+    {
+      "path": "packages/server/src/requests.ts",
+      "sha256": "d4d828b4e3aa8216cd45724f2ade54e9f0a8749af1fedd88f2536bc182c57b9d",
+      "bytes": 3853
+    },
+    {
+      "path": "packages/server/src/server.integration.test.ts",
+      "sha256": "ee7c87ce1d91971ed90f080a906699a90ad08891d9d1a0b6089a1dcfb0144a51",
+      "bytes": 88789
+    },
+    {
+      "path": "packages/server/src/store.ts",
+      "sha256": "b29ef8d33fb4d5e056931f09c1ca97a461e5dccb74661aca32e0fa7edf841949",
+      "bytes": 17881
+    },
+    {
+      "path": "packages/server/src/types.ts",
+      "sha256": "39a4acb3ff3344e075623796e5b95347b699f2bdd3f6939e6ea2aec743e48365",
+      "bytes": 1023
+    },
+    {
+      "path": "packages/ui/AGENTS.md",
+      "sha256": "37cce5cb3fd91d2030f0ce38ba696e6937b2b43143a4d089e51bdcbbbeb7ec46",
+      "bytes": 239
+    },
+    {
+      "path": "packages/ui/package.json",
+      "sha256": "c910a642f2b337b2c06cf768dcdc24fab7c76fb4481d7a649717c9617f318953",
+      "bytes": 118
+    },
+    {
+      "path": "packages/ui/src/tokens.css",
+      "sha256": "3e5b67dab65a40c9cbab31a02bc4523f94f8a142dfb699fbdf48b8a6f35196e1",
+      "bytes": 1316
+    },
+    {
+      "path": "playwright.config.ts",
+      "sha256": "eaab9a4e16e94d33bc1d53d3588a8e25b16a9560a6835e6217799e9e29c64af9",
+      "bytes": 1141
+    },
+    {
+      "path": "plugins/ideal-spring/AGENTS.md",
+      "sha256": "6af4134808c5af6a9aa4a0f7e21ce2b0fa09654b91ca11ecb000c678f4d8f513",
+      "bytes": 574
+    },
+    {
+      "path": "plugins/ideal-spring/README.md",
+      "sha256": "2da0b799f6ce1dce3caf0ec00c04bfd049105b19204966776ef4f8b8403f9307",
+      "bytes": 3029
+    },
+    {
+      "path": "plugins/ideal-spring/package.json",
+      "sha256": "f98de5f81d3882366e7c0c6d3d684895bb10e060ff46cfe02922542c9adb0424",
+      "bytes": 185
+    },
+    {
+      "path": "plugins/ideal-spring/src/handler.test.ts",
+      "sha256": "1962bdd95506f487e5d913582d1dcd94cbe2dc9a7c864b408247c09a6727775c",
+      "bytes": 2014
+    },
+    {
+      "path": "plugins/ideal-spring/src/handler.ts",
+      "sha256": "0e8fe6ea8113971ab37d1865d7d57c99c56e2c7184acbfe032a3d462c9c55eb9",
+      "bytes": 970
+    },
+    {
+      "path": "plugins/ideal-spring/src/index.ts",
+      "sha256": "af8d9ea7dce47e0700208a9b4f29a3b588860966f9a4621004fd813d3c41560c",
+      "bytes": 794
+    },
+    {
+      "path": "plugins/ideal-spring/src/model.test.ts",
+      "sha256": "73aaa35917d6713decedec6646e70cfdfbcf3177304e2d226f9ab7734c5371d7",
+      "bytes": 8121
+    },
+    {
+      "path": "plugins/ideal-spring/src/model.ts",
+      "sha256": "0aae0346321ee6fb8ce6da38604e23fb2c5f52cd6290680b25e9737438002f80",
+      "bytes": 7865
+    },
+    {
+      "path": "plugins/ideal-spring/src/worker.ts",
+      "sha256": "cfcc9f4046740fe42eeacdc3d94a0dd3094e389fb24c9d61dfe3d1f90f497870",
+      "bytes": 385
+    },
+    {
+      "path": "plugins/poiseuille/AGENTS.md",
+      "sha256": "3e0b5873e21a2fd6f9ea721fce88a854f4ca2bc890b88ba5fccd71afab01dae3",
+      "bytes": 473
+    },
+    {
+      "path": "plugins/poiseuille/README.md",
+      "sha256": "32db13ce93487e83649e5f36a43de45fd32b6f2ed75e7aea259e9bb3b2befc4b",
+      "bytes": 1872
+    },
+    {
+      "path": "plugins/poiseuille/package.json",
+      "sha256": "45907bef0e1495d461ee16ba6f820e95b4827c59ca44ce1b4b29cc8814d90071",
+      "bytes": 250
+    },
+    {
+      "path": "plugins/poiseuille/release/1.0.0/candidate-trust.json",
+      "sha256": "6a965366fbf07b7c974dbd374d6e36fd07af7e9137e67ea786e31d913db40c69",
+      "bytes": 439
+    },
+    {
+      "path": "plugins/poiseuille/release/1.0.0/manifest.json",
+      "sha256": "7f767df4a2ee217d1e13446af1861011cdb10cd76deef00c71d477bbba108e1e",
+      "bytes": 908
+    },
+    {
+      "path": "plugins/poiseuille/release/1.0.0/plugin.js",
+      "sha256": "bd7eced69753424c7da3076783917d4fb235bd90d975dbbce2fe71371b06e00b",
+      "bytes": 184145
+    },
+    {
+      "path": "plugins/poiseuille/src/handler.ts",
+      "sha256": "61fe86ec99fb156162f88d0148462503daa7daba49da291cbc538e2916f281f2",
+      "bytes": 851
+    },
+    {
+      "path": "plugins/poiseuille/src/index.ts",
+      "sha256": "e06c2019123be3cf0a05c7c8adc01e3483ff6d8234e2486f9d5714fa549e3b91",
+      "bytes": 749
+    },
+    {
+      "path": "plugins/poiseuille/src/model.test.ts",
+      "sha256": "f6a970c94e2f41b966c0e27fe1e02601d6b49e1a591f6dc42b75c40ea411b0de",
+      "bytes": 5741
+    },
+    {
+      "path": "plugins/poiseuille/src/model.ts",
+      "sha256": "ee3c3abac7a086217fab52b9f382bf93feca2c72b24b98f5b59afe5063c1eda4",
+      "bytes": 7573
+    },
+    {
+      "path": "plugins/poiseuille/src/worker.ts",
+      "sha256": "92a074f942ab825a999409d0f749c0e50c9a90f542d67344f063d87aa88590dd",
+      "bytes": 366
+    },
+    {
+      "path": "server/m3.ts",
+      "sha256": "cd578725a509426209b802acee850bb11abd4d1ee594947896db67749076de7b",
+      "bytes": 2329
+    },
+    {
+      "path": "tools/benchmark-physics-import.mjs",
+      "sha256": "be17a8b5523eaf28e143ef1f3c15f4c56900771435f4ba955b8d06370ec53152",
+      "bytes": 5672
+    },
+    {
+      "path": "tools/benchmark.mjs",
+      "sha256": "bf324f6484c16f1b9ff3bf4d91fc152e4f7b36eee887c977f844dabcd8221ca2",
+      "bytes": 11436
+    },
+    {
+      "path": "tools/build-mcp.mjs",
+      "sha256": "001f76f5e695282b2046aecab00b6a9987240954678b8b87dbd1cc1771ed17a3",
+      "bytes": 2130
+    },
+    {
+      "path": "tools/build-offline-shell.mjs",
+      "sha256": "2a680a23e96754f6aa68db1929deb8b3997cbd8ebd226caa9396af3d604820ac",
+      "bytes": 1400
+    },
+    {
+      "path": "tools/build-physics-demo.mjs",
+      "sha256": "360c6a3e1dcfdf5f03a4d881081325990f3d7894c3874713557067504a69b670",
+      "bytes": 13911
+    },
+    {
+      "path": "tools/build-physics-exam.mjs",
+      "sha256": "c1a8e029abd717cdf4549e3033337f4144f5f6e738ca8b7d10b8078f5ecebb87",
+      "bytes": 17448
+    },
+    {
+      "path": "tools/build-physics-field.mjs",
+      "sha256": "adcaad2b0fd41e258e9c99bbc51f60c7684ece4f798a85c3fec9247df9cab3e1",
+      "bytes": 11523
+    },
+    {
+      "path": "tools/build-physics-interference-demo.mjs",
+      "sha256": "c566dac0532cac2308de06f5f1ef22ca846d87130fb204ced261f27677d8ebd9",
+      "bytes": 5018
+    },
+    {
+      "path": "tools/build-physics-lessons.mjs",
+      "sha256": "d5f1aadcbb794a1e261f594044b3d5950a2531ed19ff16f5ba9574ddcb5cc56b",
+      "bytes": 5756
+    },
+    {
+      "path": "tools/build-physics-pack.mjs",
+      "sha256": "5e6b4fad3ad3e7b34019e3b8bd299a30927f910150fc09f449958b436961706d",
+      "bytes": 11845
+    },
+    {
+      "path": "tools/build-plugin.mjs",
+      "sha256": "4201706eeecf381046089292d91e87403004b9e1cc64259a99ef67337f0562f4",
+      "bytes": 3487
+    },
+    {
+      "path": "tools/build-poiseuille.mjs",
+      "sha256": "0f6fe2c3d7229af01b3106fa9abfb71701a346c823e4bb9a332544c53dbec30e",
+      "bytes": 3940
+    },
+    {
+      "path": "tools/build-program-runtime.mjs",
+      "sha256": "ccf50ea89a69ce7ce9cab42a2b0c75a1c4c3b52e74a04034df76200fdde19164",
+      "bytes": 1558
+    },
+    {
+      "path": "tools/build-server.mjs",
+      "sha256": "9a26e15ae77f00e5e66a1171a9dc077c95e6dd818467fd8108337205e16afc68",
+      "bytes": 3503
+    },
+    {
+      "path": "tools/build.mjs",
+      "sha256": "d46ea77fe77d54582ab936adf77e03e1aa807f4ee187b4e1fcfdb5bcd3dbca5a",
+      "bytes": 1918
+    },
+    {
+      "path": "tools/check-boundaries.mjs",
+      "sha256": "a938dcf8c6a9eee5cf0a0eee5994f48e360bf80e3d5f33c841f6df924a9d83ca",
+      "bytes": 2613
+    },
+    {
+      "path": "tools/check-budget.mjs",
+      "sha256": "33acdefa82f7228957e0c37eb31d1c75639447ffbbc0b816122e4091be8fece9",
+      "bytes": 3385
+    },
+    {
+      "path": "tools/check-config.mjs",
+      "sha256": "fdd8191dc85136d9fe2932d6965f39403a291fc75ec049ccfaa2b2b954b71302",
+      "bytes": 1062
+    },
+    {
+      "path": "tools/check-operations.mjs",
+      "sha256": "ca8b414b1761009f2593fd57b2fc16e81756c7567ba0cc4147091f270ac9500e",
+      "bytes": 16073
+    },
+    {
+      "path": "tools/check-operations.test.mjs",
+      "sha256": "f7c6d0443808c3a6ff2435ffb2e2319a019f6d27a355cef7068c6cb4d84f8f6a",
+      "bytes": 15117
+    },
+    {
+      "path": "tools/check-signed-plugins.mjs",
+      "sha256": "a60a155a323c7136282f808ff3b44a1d2ea643b1566402006e7e43ac6788421c",
+      "bytes": 2962
+    },
+    {
+      "path": "tools/compile-handout.mjs",
+      "sha256": "35d6b1ccd27b5b1fbb5aa0c6b28975f065fca45b7d96915b65ac136662534349",
+      "bytes": 28842
+    },
+    {
+      "path": "tools/contracts-runtime.test.mjs",
+      "sha256": "beaf21baf13e065442e8492549c4860701e041282f29112d1146fe5e72ab3159",
+      "bytes": 689
+    },
+    {
+      "path": "tools/cortex/README.md",
+      "sha256": "0ac81644aa252dd3f0ea1c9c2aaf303719061a790f75bcc5eee99009b4070903",
+      "bytes": 9600
+    },
+    {
+      "path": "tools/cortex/benchmark.py",
+      "sha256": "c10f23ccb0def00069f8cb085b8c5020f97c24695e2d1983efce37676f57346d",
+      "bytes": 3764
+    },
+    {
+      "path": "tools/cortex/cortex.py",
+      "sha256": "aa5c1d5fbd152506fe912641698be0ec426c06b261a41c68350327934a6fb92f",
+      "bytes": 17101
+    },
+    {
+      "path": "tools/cycle-sequential.test.mjs",
+      "sha256": "4debb9c03778c309e83069378675d32252b8262fc0ed7975c8c2f0a502e29ade",
+      "bytes": 57468
+    },
+    {
+      "path": "tools/cycle.mjs",
+      "sha256": "b3b9adadd8bbaf36a385bc4aa989ff76631f47860381758d28384cf020562cec",
+      "bytes": 46971
+    },
+    {
+      "path": "tools/cycle.test.mjs",
+      "sha256": "659d6608b61f4360c4dc3a00ce87ead0eba1d24e1a94286d387c77d9356ad945",
+      "bytes": 24843
+    },
+    {
+      "path": "tools/database.mjs",
+      "sha256": "7b9f7373b14b7b451d26cc08e73afe8d1469d6c894a25625e703978f70a938f8",
+      "bytes": 2221
+    },
+    {
+      "path": "tools/e2e-accounts.d.mts",
+      "sha256": "15cb8bdbb8bcf1e49b5d894b7c110c7fa5d2f96ce12f9731d0f5bb9b1de92b49",
+      "bytes": 868
+    },
+    {
+      "path": "tools/e2e-accounts.mjs",
+      "sha256": "d2dcf85b13861bee51cbd838bf6de62693fab610934360644761f34e82939306",
+      "bytes": 2968
+    },
+    {
+      "path": "tools/e2e-guard.test.mjs",
+      "sha256": "bb57f989bab8639f1a95ce4b9ba80b08158143f0a5b86eaa75aebc9bbad2c75d",
+      "bytes": 2791
+    },
+    {
+      "path": "tools/e2e-target.test.mjs",
+      "sha256": "ec088e126f1220c08514ab96df18d0676cbd81a9bc17de29a35c74361325539a",
+      "bytes": 5722
+    },
+    {
+      "path": "tools/e2e.mjs",
+      "sha256": "9bfbce16382470793c700647da67b343b0ab34b993d3303637bb90c724607b11",
+      "bytes": 7188
+    },
+    {
+      "path": "tools/evidence.mjs",
+      "sha256": "95571ae9a371f9fe1a738f8c6d0b2a7e711da9f061970fcf1222fedc3a9a69ab",
+      "bytes": 1443
+    },
+    {
+      "path": "tools/m3-acceptance.mjs",
+      "sha256": "0095e2efb29d101e24f7df40b121b3624b33fe551d1f3285e95c0760a54251f9",
+      "bytes": 10834
+    },
+    {
+      "path": "tools/m3-browser.mjs",
+      "sha256": "1114fe13bc23d0824a5b0e05efbd86d288eecaa867e632aed86bcc0c15ecb54f",
+      "bytes": 19992
+    },
+    {
+      "path": "tools/m3-evidence.mjs",
+      "sha256": "39e2523095fbd8e9f441d86462dd19835a72c9aba111a8f705f44f1479a824f5",
+      "bytes": 16160
+    },
+    {
+      "path": "tools/m3-operator.mjs",
+      "sha256": "47d38b27863c05929c091a523642d6e82001d19ed36597c64d2b4d9001dbf300",
+      "bytes": 11553
+    },
+    {
+      "path": "tools/m3-transition.test.mjs",
+      "sha256": "f069c0c84b6a7a9126b389d6ce4678266086f82851586f558d7a9ebb631674cf",
+      "bytes": 4928
+    },
+    {
+      "path": "tools/m4-preparation.test.mjs",
+      "sha256": "3f79c4eef6816b173e8e3ac5bb2a483405796ae7edf48ae6d7722043a5e0691b",
+      "bytes": 16102
+    },
+    {
+      "path": "tools/m4-source.mjs",
+      "sha256": "7f1a62288591d42eaf38b9257c5944838eded1ab8708b8c037edc8976c9df4be",
+      "bytes": 659
+    },
+    {
+      "path": "tools/mcp-runtime.test.mjs",
+      "sha256": "48c155892cdf59b16f31c243041c8e5e7c07237b95ffca53b2a96029743991d6",
+      "bytes": 43632
+    },
+    {
+      "path": "tools/offline-shell.test.mjs",
+      "sha256": "1fe5dbd4be9747b3f5168a0c4ddbee617e8e34c7345b01b983781068674fc058",
+      "bytes": 3656
+    },
+    {
+      "path": "tools/pack-worker-transport.d.mts",
+      "sha256": "c5d68ea24248b444653356d4124fe299d81f79f77c02196e7aeefeeeecdbc4db",
+      "bytes": 155
+    },
+    {
+      "path": "tools/pack-worker-transport.mjs",
+      "sha256": "94904d8ada5ca6da01c1cb9dd328ef681f921b3c16fd353dd1433207b4cec0f1",
+      "bytes": 3429
+    },
+    {
+      "path": "tools/physics-field.test.mjs",
+      "sha256": "d415a6529abca7220ff5052d1aec8a1225447cf794fe9ddea85a54f885cd5221",
+      "bytes": 5163
+    },
+    {
+      "path": "tools/physics-public-assets.test.mjs",
+      "sha256": "12a5a43bd0f7d764565caf09e644e6ce0580bb5ae2219d2ee8803de1ee596001",
+      "bytes": 3628
+    },
+    {
+      "path": "tools/poiseuille-consumer.ts",
+      "sha256": "2cca6fb9e05ef3dcc609550c1d07e1e57d803649d232bc625289bb1890ca70cb",
+      "bytes": 8032
+    },
+    {
+      "path": "tools/program-budget.mjs",
+      "sha256": "9f1fb362c6699bf6d73f24580c5c2afc1d64555616165fafdc99d5c42315e47c",
+      "bytes": 3296
+    },
+    {
+      "path": "tools/program-budget.test.mjs",
+      "sha256": "711e5c3cfd484303e3a3f77edc97aaa3fc303da6af6ca08884e9832c2eb99f01",
+      "bytes": 3154
+    },
+    {
+      "path": "tools/qa-database.mjs",
+      "sha256": "03716426a0a7b0c0548a121022e98a3a5ba843d3ff69091958624304bfa4a3e9",
+      "bytes": 1419
+    },
+    {
+      "path": "tools/qa-database.test.mjs",
+      "sha256": "8aef5f15015aba499aca1e49ef3be5f061271d24668dcded760fb77d69c9178d",
+      "bytes": 1579
+    },
+    {
+      "path": "tools/qa-integration.mjs",
+      "sha256": "2eca4e2680a4d77016fb3f7f6bddb95d30328ef6ff762cad7e6e33a849191d49",
+      "bytes": 5095
+    },
+    {
+      "path": "tools/remote-playwright-setup.mjs",
+      "sha256": "3bf42fd2eeae859ec6bbf9d91b215ffede9a2208d800bb2c02f9022a12a1d04c",
+      "bytes": 600
+    },
+    {
+      "path": "tools/remote-preflight.mjs",
+      "sha256": "8e4dca8b000ba8def34470d044aaebd18fa24651a0d48b77c1e998028de59334",
+      "bytes": 10036
+    },
+    {
+      "path": "tools/server-bundle.test.mjs",
+      "sha256": "f4a20afd213e21caeeb6e6ca1e1c16b53dbefd6d7a19d37a4919c49936524da6",
+      "bytes": 13716
+    },
+    {
+      "path": "tools/server.mjs",
+      "sha256": "cb6e3c7da0b2cc3aac243c800b35338e12404fc9f6ebfedbfdb1b22c9d55d23b",
+      "bytes": 5059
+    },
+    {
+      "path": "tools/setup-test-databases.mjs",
+      "sha256": "3c47325bcd627f26196a829389abf6e8ab213242894abb8d715985db532bb1b7",
+      "bytes": 818
+    },
+    {
+      "path": "tools/sign-plugin.mjs",
+      "sha256": "1077f1b36b012092b203153b4f4cc6b3b33649f2b7e5207cc2d48e3a23861a67",
+      "bytes": 2428
+    },
+    {
+      "path": "tools/source-visibility.mjs",
+      "sha256": "9aae21431bc0bb229e971e930b40684eb7c1d5bc9d8fab3ff6571015cd088edd",
+      "bytes": 1547
+    },
+    {
+      "path": "tools/status.mjs",
+      "sha256": "3ea10802dd36a65add0e208c8911b59e2f0946c81ad995a841b24f3ec9a9da0a",
+      "bytes": 36032
+    },
+    {
+      "path": "tools/status.test.mjs",
+      "sha256": "ffd69ba3381d46403ac4d5ba9ca0e5e28973132204b29c2330cfdf614a3c5409",
+      "bytes": 22221
+    },
+    {
+      "path": "tools/task-preflight.mjs",
+      "sha256": "77039e817b50506bf257f863dce43576489f83b101f0827fd95da248e3d757c4",
+      "bytes": 12779
+    },
+    {
+      "path": "tools/task-preflight.test.mjs",
+      "sha256": "54daa2aeac693b795a6dd1dda382234058e3f4626f1a4e5a6e5daaeb334b9d09",
+      "bytes": 10037
+    },
+    {
+      "path": "tools/test-physics-demo.mjs",
+      "sha256": "dc06dfe2d531bc252b58c968f02e30d3dbe007f5916ed0aa2a6d8a9a71949f53",
+      "bytes": 8713
+    },
+    {
+      "path": "tools/ui-runtime.d.mts",
+      "sha256": "1eff57b16cc0504fbe5b410e6b548a270080925153f225c8f4567cd4f7271f2a",
+      "bytes": 81
+    },
+    {
+      "path": "tools/ui-runtime.mjs",
+      "sha256": "6eec43a26e3acbae14bf798a7642687992a0758456d5cfad8a58fae347edb243",
+      "bytes": 604
+    },
+    {
+      "path": "tools/verify.mjs",
+      "sha256": "1b0c6729f6e5708abacca722521c7da252684b7d81debc3d3235712c21dfca81",
+      "bytes": 1645
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "3dd16b6c008b8ade371fbf2ac5d11465ba17d1f077e45c5ee7d869c22b6c6d15",
+      "bytes": 757
+    },
+    {
+      "path": "vercel.json",
+      "sha256": "2fcbdb48d2713198c7ffc1dc8a1f30c9b3beca20be9a123e4318bd4cc6f2a882",
+      "bytes": 868
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "869a047cbf8a121fbf4aad6379d3d0158c65bca450fa6cd6c068fb7d1055e329",
+      "bytes": 515
+    }
+  ]
+}

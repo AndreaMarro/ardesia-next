@@ -45,6 +45,29 @@ test('practice runs without an Ardesia account, grades answers and exports a sou
  expect(errors).toEqual([]);
 });
 
+test('a downloaded readable report preserves hostile input as text and works without scripts or network',async({page,browser},info)=>{
+ await page.goto('/fisica/simulazione-b.html');await page.locator('#start-practice').click();
+ await page.getByRole('button',{name:'Domanda 22: senza risposta',exact:true}).click();
+ const answer='</p><img src="https://invalid.test/x" onerror="alert(1)">';
+ await page.locator('#completion-answer').fill(answer);
+ await page.locator('#submit-exam').click();await page.locator('#confirm-submit').click();
+ const pending=page.waitForEvent('download');await page.locator('#export-readable').click();
+ const download=await pending;expect(download.suggestedFilename()).toMatch(/^ardesia-ripasso-physics-2026-original-b-.*\.html$/);
+ const file=info.outputPath('ripasso.html');await download.saveAs(file);
+ const context=await browser.newContext({offline:true,javaScriptEnabled:false,viewport:page.viewportSize()!});
+ try{
+  const report=await context.newPage();const network:string[]=[];report.on('request',request=>{if(/^https?:/.test(request.url()))network.push(request.url());});
+  await report.goto(pathToFileURL(file).href);
+  await expect(report.locator('article')).toHaveCount(31);await expect(report.locator('script,img,iframe,object,embed')).toHaveCount(0);
+  await expect(report.locator('article').nth(21)).toContainText(answer);
+  await expect(report.locator('main')).toContainText('Fisica · Prova ragionata B');
+  await expect(report.locator('main')).toContainText('1 da rivedere · 30 non risposte');
+  expect(await report.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+  await report.emulateMedia({media:'print'});await expect(report.locator('article').last()).toBeVisible();
+  expect(network).toEqual([]);
+ }finally{await context.close();}
+});
+
 test('a timed practice submits at the deadline when its confirmation dialog is open',async({page})=>{
  const start=new Date('2026-11-14T00:00:00Z');await page.clock.setFixedTime(start);
  await page.goto('/fisica/simulazione.html');await page.locator('#start-timed').click();
@@ -90,6 +113,24 @@ test('edition B uses new questions, accepts the mobile sign control and links ex
  await first.locator('a').click();await expect(page.locator('#teoria')).toBeVisible();
 });
 
+test('the collision lab separates signed momentum from kinetic energy and clears stale predictions',async({page})=>{
+ await page.goto('/fisica/c1.html');await page.getByRole('link',{name:'Prova il laboratorio degli urti →',exact:true}).click();
+ await expect(page.locator('#results')).toBeHidden();
+ await page.locator('[name=momentum][value=zero]').check();await page.locator('[name=energy][value=same]').check();
+ await page.getByRole('button',{name:'Metti alla prova la previsione',exact:true}).click();
+ await expect(page.locator('#p-wrong')).toBeVisible();await expect(page.locator('#e-wrong')).toBeVisible();
+ await expect(page.locator('[data-value=loss]')).toHaveText('3,375');
+ await page.locator('[data-preset="1"]').click();await expect(page.locator('#results')).toBeHidden();
+ await expect(page.locator('#time')).toBeDisabled();await page.locator('[name=momentum][value=positive]').check();
+ await page.locator('[name=energy][value=same]').check();await page.getByRole('button',{name:'Metti alla prova la previsione',exact:true}).click();
+ await expect(page.locator('#p-right')).toBeVisible();await expect(page.locator('#e-right')).toBeVisible();
+ await expect(page.locator('[data-value=v1]')).toHaveText('0');await expect(page.locator('[data-value=v2]')).toHaveText('2');
+ await page.locator('[name=transfer][value=left]').check();await page.getByRole('button',{name:'Confronta il ragionamento',exact:true}).click();
+ await expect(page.locator('#transfer-ok')).toBeVisible();await page.locator('[data-preset="3"]').click();
+ await expect(page.locator('#u2')).toHaveValue('-1');await expect(page.locator('#results')).toBeHidden();
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+});
+
 test('the downloaded ZIP contains complete lessons and starts its interactive experiences offline',async({page,browser})=>{
  await page.goto('/fisica/simulazione.html');
  const pending=page.waitForEvent('download');await page.locator('a[download]').click();
@@ -125,6 +166,10 @@ test('the downloaded ZIP contains complete lessons and starts its interactive ex
   await expect(offlinePage.locator('#field-strength')).toContainText('28,086');
   await offlinePage.locator('#charge').fill('2');await offlinePage.locator('#charge').dispatchEvent('input');
   await expect(offlinePage.locator('#field-strength')).toContainText('56,172');
+  await offlinePage.goto(pathToFileURL(resolve(folder,'urti.html')).href);
+  await offlinePage.locator('[name=momentum][value=positive]').check();await offlinePage.locator('[name=energy][value=less]').check();
+  await offlinePage.getByRole('button',{name:'Metti alla prova la previsione',exact:true}).click();
+  await expect(offlinePage.locator('[data-value=loss]')).toHaveText('3,375');
   await offlinePage.goto(pathToFileURL(resolve(folder,'sf-2026-u1-01.html')).href);
   await expect(offlinePage.locator('#teoria')).toBeVisible();
   await expect(offlinePage.getByText('Per salvare il lavoro nello spazio Ardesia',{exact:false})).toBeVisible();

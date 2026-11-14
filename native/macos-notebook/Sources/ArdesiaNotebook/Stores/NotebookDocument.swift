@@ -21,6 +21,7 @@ final class NotebookDocument: NSDocument, ObservableObject {
     @Published var historyRevision = 0
     @Published var errorMessage: String?
     var finishGesture: (() -> Void)?
+    private var isWritingAutosave = false
     private var undoObservers: [NSObjectProtocol] = []
 
     override init() {
@@ -33,14 +34,33 @@ final class NotebookDocument: NSDocument, ObservableObject {
             undoObservers.append(NotificationCenter.default.addObserver(forName: name, object: undoManager, queue: .main) { [weak self] _ in
                 guard let self else { return }
                 self.historyRevision += 1
-                if !self.isDocumentEdited {
-                    self.status = self.fileURL == nil ? "Pronto · salva il quaderno con ⌘S" : "Versione salvata · nessuna modifica"
-                }
             })
         }
     }
     deinit { undoObservers.forEach(NotificationCenter.default.removeObserver) }
-    override class var autosavesInPlace: Bool { false }
+    override class var autosavesInPlace: Bool { true }
+    override class var autosavesDrafts: Bool { false }
+    override class var preservesVersions: Bool { false }
+    // Only a location chosen by the user is eligible. Untitled notebooks retain
+    // the normal first-save prompt; no separate recovery archive is created.
+    override func scheduleAutosaving() {
+        guard fileURL != nil else { return }
+        super.scheduleAutosaving()
+    }
+    override func autosave(withImplicitCancellability autosavingIsImplicitlyCancellable: Bool, completionHandler: @escaping (Error?) -> Void) {
+        guard fileURL != nil else { completionHandler(nil); return }
+        super.autosave(withImplicitCancellability: autosavingIsImplicitlyCancellable, completionHandler: completionHandler)
+    }
+    override func updateChangeCount(_ change: NSDocument.ChangeType) {
+        super.updateChangeCount(change)
+        // AppKit may finish its autosave-safety activity after the undo-manager
+        // notification. Read the dirty state here, once AppKit has updated it.
+        if hasUnautosavedChanges {
+            status = fileURL == nil ? "Modifiche da salvare · ⌘S" : "Autosalvataggio in attesa · ⌘S per salvare ora"
+        } else {
+            status = fileURL == nil ? "Pronto · salva il quaderno con ⌘S" : "Versione salvata · nessuna modifica"
+        }
+    }
     override func defaultDraftName() -> String { "Quaderno senza titolo" }
     // The model and live pointer input are main-thread owned. Keep NSDocument's
     // safe-write operation synchronous; never touch SwiftUI state from its I/O queue.
@@ -74,24 +94,49 @@ final class NotebookDocument: NSDocument, ObservableObject {
         undoManager?.removeAllActions()
     }
     override func data(ofType typeName: String) throws -> Data {
-        finishGesture?()
+        // A periodic save must not end a pointer gesture halfway through. Its
+        // committed strokes are saved now; mouseUp makes the live gesture dirty.
+        if !isWritingAutosave { finishGesture?() }
         return try NotebookCodec.encode(notebook)
     }
-    override func save(_ sender: Any?) {
+    // Finalizing the first gesture can start AppKit's asynchronous autosave
+    // safety activity. Queue the following document action behind that activity
+    // instead of synchronously waiting inside the same event (which can deadlock).
+    func finishGestureForDocumentAction(_ continuation: @escaping () -> Void) {
         finishGesture?()
-        super.save(sender)
+        performActivity(withSynchronousWaiting: false) { completed in
+            completed()
+            self.continueAsynchronousWorkOnMainThread(continuation)
+        }
+    }
+    override func save(_ sender: Any?) {
+        finishGestureForDocumentAction { super.save(sender) }
+    }
+    override func saveAs(_ sender: Any?) {
+        finishGestureForDocumentAction { super.saveAs(sender) }
     }
     override func writeSafely(to url: URL, ofType typeName: String, for saveOperation: NSDocument.SaveOperationType) throws {
-        try super.writeSafely(to: url, ofType: typeName, for: saveOperation)
-        if saveOperation == .saveOperation || saveOperation == .saveAsOperation {
-            status = "Salvato sul Mac · \(pageCountLabel)"
+        let prior = isWritingAutosave
+        isWritingAutosave = saveOperation == .autosaveInPlaceOperation || saveOperation == .autosaveElsewhereOperation || saveOperation == .autosaveAsOperation
+        defer { isWritingAutosave = prior }
+        do {
+            try super.writeSafely(to: url, ofType: typeName, for: saveOperation)
+            if saveOperation == .autosaveInPlaceOperation {
+                status = "Salvataggio automatico sul Mac · \(pageCountLabel)"
+            } else if saveOperation == .saveOperation || saveOperation == .saveAsOperation {
+                status = "Salvato sul Mac · autosalvataggio attivo"
+            }
+        } catch {
+            status = "Salvataggio non riuscito · modifiche in memoria"
+            throw error
         }
     }
     override func canClose(withDelegate delegate: Any, shouldClose shouldCloseSelector: Selector?, contextInfo: UnsafeMutableRawPointer?) {
         // A still-pressed pointer lives in the canvas until finalized. Include
         // it BEFORE NSDocument decides whether a save/discard prompt is needed.
-        finishGesture?()
-        super.canClose(withDelegate: delegate, shouldClose: shouldCloseSelector, contextInfo: contextInfo)
+        finishGestureForDocumentAction {
+            super.canClose(withDelegate: delegate, shouldClose: shouldCloseSelector, contextInfo: contextInfo)
+        }
     }
     override func close() {
         finishGesture?()
@@ -116,7 +161,7 @@ final class NotebookDocument: NSDocument, ObservableObject {
         // and updates its change count. Manually incrementing here double-counts
         // edits and makes a fully undone saved document appear dirty.
         historyRevision += 1
-        status = "Modifiche da salvare · ⌘S"
+        status = fileURL == nil ? "Modifiche da salvare · ⌘S" : "Autosalvataggio in attesa · ⌘S per salvare ora"
     }
     func edit(_ action: String, _ mutation: (inout Notebook) -> Void) {
         var next = notebook

@@ -13,6 +13,7 @@ import './compile-handout.test.mjs';
 import './offline-shell.test.mjs';
 import './test-physics-exam-engine.cjs';
 import './physics-field.test.mjs';
+import './physics-collision.test.mjs';
 import './physics-public-assets.test.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';

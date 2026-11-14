@@ -90,7 +90,7 @@ struct ContentView: View {
             Divider()
             VStack(alignment: .leading, spacing: 7) {
                 Label("Sul tuo Mac", systemImage: "externaldrive").font(.caption).fontWeight(.medium)
-                Text("Salva il quaderno per ritrovare i tratti. Porta il PDF in Ardesia come materiale.").font(.system(size: 11)).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
+                Text("Salva una volta: poi il quaderno si aggiorna automaticamente. Porta il PDF in Ardesia come materiale.").font(.system(size: 11)).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
             }.padding(16)
         }
     }

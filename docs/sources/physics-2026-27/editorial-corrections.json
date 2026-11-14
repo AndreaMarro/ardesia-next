@@ -17,5 +17,28 @@
     "humanScientificReview": "NOT_RUN",
     "exactSymbolicAnswerChanged": false,
     "physicalClarification": "Independent prepared trials permit a different initial charge; voltage is fixed within each trial, not across both preparations."
+  },
+  {
+    "unitId": "sf-2026-u1-04",
+    "date": "2026-11-14",
+    "kind": "formula_scope_clarification",
+    "reason": "The introduction gave AxBx+AyBy without restricting the formula to a plane, while the same lesson includes a three-dimensional dot-product problem.",
+    "change": "State explicitly the xy-plane formula and add AzBz in three dimensions.",
+    "counterexample": {
+      "A": [
+        2,
+        -1,
+        2
+      ],
+      "B": [
+        -1,
+        2,
+        2
+      ],
+      "xyOnly": -4,
+      "threeDimensionalDotProduct": 0
+    },
+    "humanScientificReview": "NOT_RUN",
+    "exactSymbolicAnswerChanged": false
   }
 ]

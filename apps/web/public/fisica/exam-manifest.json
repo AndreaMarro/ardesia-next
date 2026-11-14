@@ -40,18 +40,18 @@
   "files": [
     {
       "file": "simulazione.html",
-      "bytes": 53014,
-      "sha256": "14925d4689127204076f172d522bfd302e49fd571c77ead56a0c9e5e9597043a"
+      "bytes": 53247,
+      "sha256": "f2ad0138140c0b87ffa98227d49ee18f6a84799747fb5e5bdb4a7db76cc13507"
     },
     {
       "file": "simulazione-b.html",
-      "bytes": 62712,
-      "sha256": "02d189b0faf4a95e51e16be444bc0aa615f86f48a235caef95695aa5af0aa82f"
+      "bytes": 62945,
+      "sha256": "d98398e21d9519c5efc112763a191b1db25c389946886dfca4eac32666c49c96"
     },
     {
       "file": "exam.js",
-      "bytes": 20512,
-      "sha256": "d703db2d19db0eb42b25a5b63f7a04a25b6ebb9485272e15e38c93ac89abb459"
+      "bytes": 18159,
+      "sha256": "c35117991590f8fa28ec8337add368b6ee6efd911b7e35cc57156a292cb79b62"
     },
     {
       "file": "exam.css",
@@ -60,8 +60,8 @@
     },
     {
       "file": "ardesia-prova-fisica-offline.zip",
-      "bytes": 3264492,
-      "sha256": "ef2a165ee871e94dab89330f96f3c712916a52473e532d594462f06fd1294c8e"
+      "bytes": 3279255,
+      "sha256": "ff881ea88344d7a3ed89c4d85279dcf135725e4e1d980b42b9f50837f5be0d21"
     }
   ],
   "offlineFiles": [
@@ -123,6 +123,9 @@
     "sf-2026-u7-05.html",
     "sf-2026-u7-06.html",
     "sf-2026-u7-07.html",
+    "urti.css",
+    "urti.html",
+    "urti.js",
     "LEGGIMI.txt"
   ],
   "offlineLimits": {

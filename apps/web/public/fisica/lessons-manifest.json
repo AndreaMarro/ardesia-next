@@ -35,9 +35,9 @@
       "unitId": "sf-2026-u1-04",
       "courseId": "sf-2026-strumenti-meccanica",
       "questions": 6,
-      "sha256": "2d905f96f1cb89b10c93c54b1f98146042701edcac71c63b60d94ae59fdfce51",
-      "rawBytes": 16340,
-      "gzipBytes": 5990
+      "sha256": "65dd7c8712453cbb234e9a2673ebba853d6c6f37a622ae79bd5071f857e48e2d",
+      "rawBytes": 16401,
+      "gzipBytes": 6016
     },
     {
       "file": "sf-2026-u2-01.html",
@@ -349,7 +349,7 @@
   "sourcePacks": [
     {
       "file": "apps/web/src/courses/physics/data/sf-2026-strumenti-meccanica.json",
-      "sha256": "29cd8212d396fc343b019790df2afd462823b2eacfb5332327337f33140fd56d"
+      "sha256": "1c68c1e907f4559132381af77bf963e7e78bf2cc1a178105ff8d26148cecc05e"
     },
     {
       "file": "apps/web/src/courses/physics/data/sf-2026-fluidi.json",
@@ -368,7 +368,7 @@
       "sha256": "6281447c78a0b04911059758b1e96b2fc62519c7a10e67bfc9a4e7d34f67a9a3"
     }
   ],
-  "sourceSha256": "e8d979c4764705c8d9cbf505735f61b59c6270f44ef1f9600ff2d03ac639c5b9",
-  "totalRawBytes": 787053,
-  "totalGzipBytes": 268933
+  "sourceSha256": "e8d7544619576d352c774cc5ec68653fa8095a05e039ccb1b53be8958c59ab2a",
+  "totalRawBytes": 787114,
+  "totalGzipBytes": 268959
 }

@@ -1,0 +1,12 @@
+{
+  "warm_impact_median_ms": 1183.1176253035665,
+  "graph_miss_ms": [
+    2344.677336513996,
+    2364.3403332680464
+  ],
+  "rg_median_ms": 7.883810438215733,
+  "impact_median_bytes": 2047.0,
+  "rg_median_bytes": 380.5,
+  "truncated_queries": 0,
+  "repeats": 30
+}

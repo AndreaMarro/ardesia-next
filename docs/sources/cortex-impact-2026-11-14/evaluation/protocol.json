@@ -1,0 +1,136 @@
+{
+  "frozen_at": "2026-11-14T03:19:10.658746+00:00",
+  "task": "Direct import/reexport readers after Physics/Core changes; deterministic graph, no causal or runtime impact claims.",
+  "comparison": "rg -n using literal specifier regex or symbol, same admitted JS/TS corpus; report both raw and excluding target definition. Includes manual specifier setup; do not count this as measured savings.",
+  "acceptance": "All frozen direct-consumer sets exact; hash/allowlist/budget adversarial checks pass. Promote only with a practical benefit over fair rg, otherwise keep experimental. No token/cost or automatic test-selection claims.",
+  "repetitions": 3,
+  "output_budget": 8000,
+  "limitations": "Cases manually examined before freezing; heldout means no tuning on result, not independently designed benchmark.",
+  "cases": [
+    {
+      "id": "physics-import",
+      "split": "dev",
+      "target": "apps/web/src/courses/physics/import.ts",
+      "symbol": null,
+      "rg": "(?:\\./import|\\.\\./courses/physics/import)['\"]",
+      "expected": [
+        "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+        "apps/web/src/courses/physics/physics.test.ts",
+        "apps/web/src/courses/physics/heat-engine.test.ts",
+        "apps/web/src/courses/physics/interference.test.ts",
+        "apps/web/src/courses/physics/pressure.test.ts",
+        "apps/web/src/courses/physics/guided-choices.test.ts",
+        "apps/web/src/courses/physics/capacitor.test.ts",
+        "apps/web/src/courses/physics/assessment-separation.test.ts",
+        "apps/web/src/knowledge/graph.test.ts"
+      ]
+    },
+    {
+      "id": "migration-symbol",
+      "split": "dev",
+      "target": "packages/contracts/src/index.ts",
+      "symbol": "migrateSnapshotForOpen",
+      "rg": "migrateSnapshotForOpen",
+      "expected": [
+        "packages/core/src/index.ts",
+        "packages/server/src/store.ts",
+        "packages/server/src/backup.ts",
+        "packages/server/src/legacy-import.ts",
+        "packages/contracts/src/json.test.ts",
+        "packages/core/src/feedback.test.ts",
+        "packages/core/src/learning.test.ts",
+        "packages/core/src/courses.test.ts",
+        "packages/core/src/materials.test.ts"
+      ]
+    },
+    {
+      "id": "learning-evidence",
+      "split": "dev",
+      "target": "packages/lesson-os/src/learning-evidence.ts",
+      "symbol": null,
+      "rg": "\\./learning-evidence['\"]",
+      "expected": [
+        "packages/lesson-os/src/learning-evidence.test.ts",
+        "packages/lesson-os/src/index.ts",
+        "packages/lesson-os/src/learning-diary.ts"
+      ]
+    },
+    {
+      "id": "creator-dynamic",
+      "split": "dev",
+      "target": "apps/web/src/creator/ProgramSurface.tsx",
+      "symbol": null,
+      "rg": "\\./ProgramSurface['\"]",
+      "expected": [
+        "apps/web/src/creator/ProgramPreview.tsx"
+      ]
+    },
+    {
+      "id": "render-queue",
+      "split": "dev",
+      "target": "apps/web/src/materials/render-queue.ts",
+      "symbol": null,
+      "rg": "\\./render-queue['\"]",
+      "expected": [
+        "apps/web/src/materials/files.ts",
+        "apps/web/src/materials/render.ts",
+        "apps/web/src/materials/render-queue.test.ts"
+      ]
+    },
+    {
+      "id": "ink",
+      "split": "heldout",
+      "target": "packages/remote-client/src/ink-reconciliation.ts",
+      "symbol": null,
+      "rg": "\\./ink-reconciliation['\"]",
+      "expected": [
+        "packages/remote-client/src/index.ts"
+      ]
+    },
+    {
+      "id": "recording-recovery",
+      "split": "heldout",
+      "target": "apps/web/src/recordings/recovery.ts",
+      "symbol": null,
+      "rg": "\\./recovery['\"]",
+      "expected": [
+        "apps/web/src/recordings/AudioSession.tsx",
+        "apps/web/src/recordings/recovery.test.ts"
+      ]
+    },
+    {
+      "id": "tutor-values",
+      "split": "heldout",
+      "target": "apps/web/src/tutor/values.ts",
+      "symbol": null,
+      "rg": "\\./values['\"]",
+      "expected": [
+        "apps/web/src/tutor/TutorStudio.tsx",
+        "apps/web/src/tutor/TutorEditor.tsx",
+        "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+        "apps/web/src/tutor/values.test.ts"
+      ]
+    },
+    {
+      "id": "backup-reexport",
+      "split": "heldout",
+      "target": "packages/server/src/backup.ts",
+      "symbol": null,
+      "rg": "\\./backup['\"]",
+      "expected": [
+        "packages/server/src/index.ts"
+      ]
+    },
+    {
+      "id": "pdf-dynamic-type",
+      "split": "heldout",
+      "target": "apps/web/src/materials/pdf-engine.ts",
+      "symbol": null,
+      "rg": "\\./pdf-engine['\"]",
+      "expected": [
+        "apps/web/src/materials/files.ts",
+        "apps/web/src/materials/render.ts"
+      ]
+    }
+  ]
+}

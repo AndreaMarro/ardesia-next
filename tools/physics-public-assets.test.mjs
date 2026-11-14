@@ -47,7 +47,7 @@ test('every relative public page resource and local anchor resolves, and offline
   }
  }
  const exam=json(base+'/exam-manifest.json');
- for(const file of [...htmlFiles,'exam.js','campo.js','demo.js'])assert.ok(exam.offlineFiles.includes(file),file+' missing in offline edition');
+ for(const file of [...htmlFiles,'exam.js','campo.js','demo.js','urti.js'])assert.ok(exam.offlineFiles.includes(file),file+' missing in offline edition');
  for(const entry of exam.files)assert.equal(entry.sha256,hash(base+'/'+entry.file));
  assert.equal(exam.sourceSha256,hash(exam.sourceFile));
 });

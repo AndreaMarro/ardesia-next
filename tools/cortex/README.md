@@ -51,7 +51,7 @@ La prima priorità verificabile è ridurre il contesto da leggere senza perdere 
 | Componente | Stato concreto | Criterio per il passo successivo |
 |---|---|---|
 | Memoria e recupero | Implementati: indice persistente, BM25, hash, budget, invalidazione | Confronto con `rg` su ticket reali, recall dei file necessari e latenza |
-| World model software | Non implementato; il manifest è identità del corpus, non un modello causale | Grafo statico di import/export e contratti, seguito da previsione dell'impatto confrontata con test reali |
+| World model software | Nessun modello causale; [esperimento di import diretti](../../docs/sources/cortex-impact-2026-11-14/REPORT.md) conservato senza promozione nel flusso predefinito | Un consumer concreto che giustifichi latenza e manutenzione oltre `rg`; nessuna selezione automatica dei test |
 | Controllore deterministico | La CLI compie soltanto index/search con limiti; non modifica codice | Wrapper su comandi di verifica esplicitamente consentiti, ricevute per hash e selezione test validata contro regressione completa |
 | Modelli locali | Qwen2.5-coder1.5B via Ollama provato sul Mac M4: nessun beneficio di recupero; escluso dal percorso predefinito | [Protocollo, risultati e limiti](../../docs/sources/cortex-local-2026-11-14/REPORT.md); nuovi casi separati prima di rivalutare |
 | CfC/Liquid, SSM | Non implementati o valutati | Tracce sufficienti di task e risultati; confronto con regole e classificatore semplice su split temporale |

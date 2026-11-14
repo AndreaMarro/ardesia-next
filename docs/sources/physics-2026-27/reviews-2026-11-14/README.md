@@ -24,3 +24,16 @@ Follow-up del coordinatore: nel pacchetto estratto sono stati trovati38link allo
 - `current-snapshot-fast-path.md`: review indipendente della correzione prestazionale senza saltare validazioni. Confronto Core e browser in `../import-performance-2026-11-14/`.
 
 Le prove locali integrate precedenti al commit hanno dato Verify8/8 e12test browser PASS. Il confronto prestazionale browser successivo ha6/6PASS. Sono ricevute intermedie, da non attribuire a unahead futura; la pubblicazione richiede Verify finale. La baseline nativa descritta richiede salvataggio manuale; eventuale autosave successivo necessita propria review ed evidenza.
+
+
+## Quarto incremento
+
+`urti-readable-minification.md` conserva review indipendente di C1, exportHTML e generazione runtime. Il difetto P3 dei titoli lunghi è corretto; includere sempre la sorgente/hash finale citata. `native-autosave.md` conserva i due P1 trovati durante sviluppo e la regressione della prima correzione, poi chiusi. Non sostituisce l'evidenza CUA dell'autore, distinta dai test del reviewer. Il coordinatore ha ricompilato e provato il bundle integrato, con9checknativi e confronto esatto del file dopo autosave/undo/chiusura. La baseline manuale resta recuperabile da7c9c061.
+
+Il checkout integrato di urti/report/autosave ha16browser desktop/mobile PASS e24testNode pubblici; Verify/CI/deploy definitivi rimangono associati al commit pubblicato successivo, non a questa ricevuta intermedia.
+
+
+`content-science.md` e `content-science-sampling.json` documentano79ricalcoli originali,200verifiche esaminate,7teorie approfondite e la precisazione 2D/3D. `catalog-performance.md` verifica l'equivalenza del render e la lettura fresca alclick dopo la riduzione delle copie. L'harnessTSX del reviewer è distinto dai browser reali; dati prestazionali in `../catalog-performance-2026-11-14/`.
+
+
+`native-lifecycle-tests.md` verifica i test permanenti del ciclo NSDocument: Save/Close/Quit/primo gesto e continuazione modale. Sorgenti di prodotto reali, file isolati e processi con timeout; versione finale4/4PASS, due versioni difettose rifiutate rispettivamente0/4 e3/4. Rerun indipendente conserva anche leproveRED e cleanup, senza inputOS o modifiche ad app utente.

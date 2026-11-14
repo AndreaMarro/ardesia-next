@@ -76,3 +76,18 @@ test('both editions validate independently, grade signed numbers, and reject uns
  const signed=b.questions.find(q=>q.id==='physics-2026-original-b-24');
  assert.equal(engine.grade(signed,'−2'),'correct');assert.equal(engine.grade(signed,'2'),'wrong');
 });
+
+
+test('readable learning record binds the edition and escapes answers while preserving every explanation',()=>{
+ const source={exam,sourceFile:'exam-a.json',sourceSha256:'a'.repeat(64)};
+ const answers=Object.fromEntries(exam.questions.map(q=>[q.id,q.type==='choice'?q.correctChoice:q.acceptedAnswers[0]]));
+ const result={examId:exam.id,source:{sha256:source.sourceSha256},mode:'practice',endedAt:'2026-11-14T03:05:00.000Z',...engine.summarize(exam,answers)};
+ const html=engine.reviewDocument(source,result);
+ assert.equal((html.match(/<article>/g)||[]).length,31);assert.ok(html.includes('31 / 31'));assert.ok(html.includes('Tutte le risposte sono corrette'));
+ assert.throws(()=>engine.reviewDocument(source,{...result,examId:'another-edition'}));
+ assert.throws(()=>engine.reviewDocument(source,{...result,source:{sha256:'b'.repeat(64)}}));
+ assert.throws(()=>engine.reviewDocument(source,{...result,items:[...result.items].reverse()}));
+ const question=exam.questions.find(q=>q.type==='completion');answers[question.id]='</p><img src="https://invalid.test/x" onerror="alert(1)">';
+ const escaped=engine.reviewDocument(source,{...result,...engine.summarize(exam,answers)});
+ assert.ok(!escaped.includes('<img'));assert.ok(escaped.includes('&lt;img'));assert.ok(!escaped.includes('<script'));assert.ok(escaped.includes("default-src 'none'"));
+});

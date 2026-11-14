@@ -1,0 +1,81 @@
+{
+  "workload": "Existing C2 catalog start, private answer, reload and resume; desktop Chromium with local PostgreSQL",
+  "design": "Three baseline followed by three candidate runs; shared Mac, not randomized or hardware-isolated",
+  "before": [
+    {
+      "status": "passed",
+      "durationMs": 32489,
+      "startTime": "2026-11-14T03:25:07.783Z"
+    },
+    {
+      "status": "passed",
+      "durationMs": 32524,
+      "startTime": "2026-11-14T03:25:40.757Z"
+    },
+    {
+      "status": "passed",
+      "durationMs": 32326,
+      "startTime": "2026-11-14T03:26:13.671Z"
+    }
+  ],
+  "after": [
+    {
+      "status": "passed",
+      "durationMs": 24546,
+      "startTime": "2026-11-14T03:27:30.167Z"
+    },
+    {
+      "status": "passed",
+      "durationMs": 24047,
+      "startTime": "2026-11-14T03:27:55.114Z"
+    },
+    {
+      "status": "passed",
+      "durationMs": 24024,
+      "startTime": "2026-11-14T03:28:19.554Z"
+    }
+  ],
+  "beforeMedianMs": 32489,
+  "afterMedianMs": 24047,
+  "reductionPercent": 25.984179260672846,
+  "sourceFiles": {
+    "before": "e6e05d0c06915e5cdf8c91893c8c2634dd90e4c7489268ee11938aab5c1570f7",
+    "after": "b2ce48fc265d874370eeee1ae8d6389b4d7f3fc15a6798bb7022cb22c2c91995"
+  },
+  "buildIdentity": {
+    "before": {
+      "commit": "7c9c061f5650d054acc8f4f8f4a53da30812fdcc",
+      "sourceDigest": "3835e1fb8aa2554d1adbd67cedc6319b8674e4ed854082c4f3e751bf19e8113c",
+      "generatedAt": "2026-11-14T03:25:01.967Z",
+      "application": "ardesia-next",
+      "milestone": "M3",
+      "persistence": "remote-postgres-required",
+      "remoteAcceptance": "INCOMPLETE",
+      "thirdPartyExecution": true,
+      "programRuntime": {
+        "abi": "ardesia.program/1",
+        "policy": "ephemeral-explicit-consent-no-io",
+        "engine": "quickjs-emscripten@0.32.0"
+      }
+    },
+    "after": {
+      "commit": "7c9c061f5650d054acc8f4f8f4a53da30812fdcc",
+      "sourceDigest": "4f1900c52369beb3832251608dd5caf945ce20fc5db9695524a3497dc20be864",
+      "generatedAt": "2026-11-14T03:27:24.541Z",
+      "application": "ardesia-next",
+      "milestone": "M3",
+      "persistence": "remote-postgres-required",
+      "remoteAcceptance": "INCOMPLETE",
+      "thirdPartyExecution": true,
+      "programRuntime": {
+        "abi": "ardesia.program/1",
+        "policy": "ephemeral-explicit-consent-no-io",
+        "engine": "quickjs-emscripten@0.32.0"
+      }
+    }
+  },
+  "reportHashes": {
+    "before": "c01c0349371c4d4bed45f4f927a69db146d94278a0c62ed3dcd213d95c53c68d",
+    "after": "b5af42876f2bd7c83c0f5ac200564657bce3f6934e29b80cc617456d92b93a36"
+  }
+}
