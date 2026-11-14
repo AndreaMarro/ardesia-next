@@ -1,0 +1,140 @@
+{
+  "kind": "physics-practice-exam",
+  "status": "DRAFT",
+  "humanApproval": false,
+  "sourceFile": "docs/sources/physics-2026-27/editorial/exam-2026-a.json",
+  "sourceSha256": "0fe70d30a5bbc59ae0201c8307248c59e9c0ce7b29f4d1fe36cbc1bea1576f46",
+  "questionCount": 31,
+  "choice": 21,
+  "completion": 10,
+  "embeddedData": {
+    "format": "inert application/json",
+    "rawBytes": 44459,
+    "gzipBytes": 13418,
+    "sha256": "2ee332cac7081f2f8923e6a416ffbf8f4c2aa0979479ee4297c2a6476fa356bd"
+  },
+  "editionCount": 2,
+  "totalQuestionCount": 62,
+  "editions": [
+    {
+      "label": "A",
+      "file": "simulazione.html",
+      "sourceFile": "docs/sources/physics-2026-27/editorial/exam-2026-a.json",
+      "sourceSha256": "0fe70d30a5bbc59ae0201c8307248c59e9c0ce7b29f4d1fe36cbc1bea1576f46",
+      "embeddedData": {
+        "rawBytes": 44459,
+        "gzipBytes": 13418
+      }
+    },
+    {
+      "label": "B",
+      "file": "simulazione-b.html",
+      "sourceFile": "docs/sources/physics-2026-27/editorial/exam-2026-b.json",
+      "sourceSha256": "e427742505d5c2e3ffb82348f6dd90293db59f758aec10b13c5d298b04d7830f",
+      "embeddedData": {
+        "rawBytes": 54157,
+        "gzipBytes": 16158
+      }
+    }
+  ],
+  "files": [
+    {
+      "file": "simulazione.html",
+      "bytes": 53953,
+      "sha256": "a8eedd1f9c71192fd0fb8ba020d0a57c60e6cfe1720342b1e3b1e81cc34ae7a9"
+    },
+    {
+      "file": "simulazione-b.html",
+      "bytes": 63651,
+      "sha256": "44b05332604e748695f2bffab8643dd987b7d50b2ac783f0b8d638e7777e7ea2"
+    },
+    {
+      "file": "exam.js",
+      "bytes": 19850,
+      "sha256": "935603f9b031b9d5a4e35347506a25ca1decd7e15723a2b1a11e3de7c1a63252"
+    },
+    {
+      "file": "exam.css",
+      "bytes": 9248,
+      "sha256": "9088f5fa7b6254e97bb21a7f5bd00378c6270184b3445a209bd3e2f7676de6a7"
+    },
+    {
+      "file": "ardesia-prova-fisica-offline.zip",
+      "bytes": 3388311,
+      "sha256": "85aa4ff305d5b56cb970aa99bab2f45557573095fa7332871b05df699f2e1fe4"
+    }
+  ],
+  "offlineFiles": [
+    "simulazione.html",
+    "simulazione-b.html",
+    "c1.html",
+    "c2.html",
+    "c3.html",
+    "c4.html",
+    "c5.html",
+    "campo.css",
+    "campo.html",
+    "campo.js",
+    "demo.css",
+    "demo.js",
+    "dipolo-c4-poster.png",
+    "dipolo-c4.mp4",
+    "dipolo-c4.txt",
+    "dipolo-c4.vtt",
+    "exam.css",
+    "exam.js",
+    "index.html",
+    "lessons.css",
+    "quaderno-esperimenti.pdf",
+    "sf-2026-u1-01.html",
+    "sf-2026-u1-02.html",
+    "sf-2026-u1-03.html",
+    "sf-2026-u1-04.html",
+    "sf-2026-u2-01.html",
+    "sf-2026-u2-02.html",
+    "sf-2026-u2-03.html",
+    "sf-2026-u2-04.html",
+    "sf-2026-u2-05.html",
+    "sf-2026-u3-01.html",
+    "sf-2026-u3-02.html",
+    "sf-2026-u3-03.html",
+    "sf-2026-u3-04.html",
+    "sf-2026-u3-05.html",
+    "sf-2026-u4-01.html",
+    "sf-2026-u4-02.html",
+    "sf-2026-u4-03.html",
+    "sf-2026-u4-04.html",
+    "sf-2026-u4-05.html",
+    "sf-2026-u5-01.html",
+    "sf-2026-u5-02.html",
+    "sf-2026-u5-03.html",
+    "sf-2026-u5-04.html",
+    "sf-2026-u5-05.html",
+    "sf-2026-u6-01.html",
+    "sf-2026-u6-02.html",
+    "sf-2026-u6-03.html",
+    "sf-2026-u6-04.html",
+    "sf-2026-u6-05.html",
+    "sf-2026-u6-06.html",
+    "sf-2026-u6-07.html",
+    "sf-2026-u7-01.html",
+    "sf-2026-u7-02.html",
+    "sf-2026-u7-03.html",
+    "sf-2026-u7-04.html",
+    "sf-2026-u7-05.html",
+    "sf-2026-u7-06.html",
+    "sf-2026-u7-07.html",
+    "termodinamica.html",
+    "termodinamica.js",
+    "urti.css",
+    "urti.html",
+    "urti.js",
+    "LEGGIMI.txt"
+  ],
+  "offlineLimits": {
+    "files": 256,
+    "totalBytes": 16777216,
+    "fileBytes": 2097152,
+    "depth": 8
+  }
+}

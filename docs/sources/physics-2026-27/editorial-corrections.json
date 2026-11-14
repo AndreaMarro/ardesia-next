@@ -17,5 +17,43 @@
     "humanScientificReview": "NOT_RUN",
     "exactSymbolicAnswerChanged": false,
     "physicalClarification": "Independent prepared trials permit a different initial charge; voltage is fixed within each trial, not across both preparations."
+  },
+  {
+    "unitId": "sf-2026-u1-04",
+    "date": "2026-11-14",
+    "kind": "formula_scope_clarification",
+    "reason": "The introduction gave AxBx+AyBy without restricting the formula to a plane, while the same lesson includes a three-dimensional dot-product problem.",
+    "change": "State explicitly the xy-plane formula and add AzBz in three dimensions.",
+    "counterexample": {
+      "A": [
+        2,
+        -1,
+        2
+      ],
+      "B": [
+        -1,
+        2,
+        2
+      ],
+      "xyOnly": -4,
+      "threeDimensionalDotProduct": 0
+    },
+    "humanScientificReview": "NOT_RUN",
+    "exactSymbolicAnswerChanged": false
+  },
+  {
+    "unitId": "sf-2026-u7-07",
+    "date": "2026-11-14",
+    "kind": "model_scope_clarification",
+    "reason": "Thin-lens and paraxial assumptions were incorrectly applied to reflection and Snell law as well.",
+    "change": "Le relazioni della lente e dell’ingrandimento qui usate richiedono il modello di lente sottile e raggi vicini all’asse; riflessione e rifrazione sono trattate nel modello dell’ottica geometrica.",
+    "counterexample": {
+      "interface": "water n=4/3 to air n=1",
+      "sinIncidentAngle": 0.9,
+      "snellRequiredSinTransmitted": 1.2,
+      "conclusion": "Total internal reflection at a non-paraxial angle; no thin lens is involved."
+    },
+    "humanScientificReview": "NOT_RUN",
+    "exactSymbolicAnswerChanged": false
   }
 ]

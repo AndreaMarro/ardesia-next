@@ -693,3 +693,52 @@ Correzione delimitata alla capacità del job:30→40minuti, nessun timeout indiv
 ## Fisica — indice derivato delle definizioni durante l’importazione, 13 novembre 2026
 
 Dopo la consegna GitHub `7efaa148` e la CI completa43427821815 passata (690unit,271browser), il mandato diretto prosegue con un miglioramento circoscritto del Core: conserva la mappa delle release già validata all’apertura ed evita una seconda scansione storica per ogni add/replace. Rimangono identici dati, revisioni e protocollo. Benchmark C2 su145comandi e139oggetti: mediana Core/MemoryStorage13,54→12,53secondi,−7,44%; non è una misura HTTP/PostgreSQL/browser. Tre controprove nuove e review indipendente, con Verify sulla head finale prima del push autorizzato. [Implementazione, misure grezze, limiti e rollback](sources/physics-2026-27/import-performance-2026-11-13.md). Nessuna attività Cortex o accesso Mac; main, preview e cursore non aggiornati da questa preparazione.
+
+
+## OPS-20261114 — sessione autonoma locale di cinque ore
+
+Mandato diretto del titolare, allegato letto il 14 novembre: autonomia di sviluppo e recupero, priorità ai cinque minicorsi C1–C5, scadenza assoluta 06:30:26 UTC dopo 18.000 secondi. Per questa sessione sostituisce cadenza, durata, numero e organizzazione degli specialisti delle run orarie. Lavoro isolato da PR53 `8fbebc1`; nessuna modifica ai checkout precedenti o al cursore live revision167 (activeRun nullo). Restano integrità, provenienza, sicurezza, recupero e distinzione fra implementazione, test, revisione umana e pubblicazione. Pubblicazione esterna e operazioni economiche non sono implicite. Il titolare autorizza inoltre liberare spazio: solo cache rigenerabili, preservando sorgenti e prove.
+
+Il titolare richiede successivamente pubblicazioni frequenti su GitHub e deploy Vercel. Sono autorizzati incrementi verificati sulla branch della sessione e Preview protette del progetto esistente, preservando la preview precedente. Per queste anteprime di branch, il mandato corrente consente il deploy senza il passaggio preventivo su main; nessuna promozione produzione, cambio SSO, spesa o approvazione scientifica implicita.
+
+
+### Secondo incremento della sessione — lettura, prova, laboratorio e Cortex
+
+Le38lezioni diventano leggibili da collegamenti diretti, con279problemi/verifiche e soluzioni derivati dai cinque pacchetti, sempreDRAFT. Aggiunti31quesiti originali con105feedback e runtime per pratica libera/50minuti; nuovo laboratorioC4 campo/potenziale3D confallback2D e pacchettoZIP autonomo. Review scientifica AI e tecnica indipendente, conservati fallimentifile:// e cameramobile poi corretti. Hash dei cinque pacchetti, fonti, manifest e test permanenti proteggono corrispondenza e recupero. [Decisione e costi](adr/0025-public-physics-practice.md); [ricevute](sources/physics-2026-27/reviews-2026-11-14/README.md).
+
+Il mandato allegato del14novembre richiede esplicitamente di riprendere Cortex e supera per questa sessione la precedente sospensione. Cortex0.2 migliora selezione dichiarazioni/snippet mantenendo limiti, invalidazione e failclosed;25test e confronto congelato10query. Non sono attestati risparmi economici o equivalenza ai modelli cloud. Prove finali,CI e pubblicazione restano legate allahead esatta e non alle sole ricevute intermedie.
+
+
+### Terzo incremento — seconda prova, video, quaderno e prestazioni
+
+Aggiunta la provaB con31quesiti originali e105feedback:62quesiti totali A/B, ripasso indirizzato alla lezione canonica e pulsante± per tastiera mobile. Controllo indipendente scientifico e tecnico, inclusa correzione del superamento80caratteri via±. Il video C4 di38secondi mostra V=0 con E≠0 nel punto medio di un dipolo, con trascrizione e sorgenti di produzione riproducibili; pacchetto offline contiene entrambe le prove e il video.
+
+Companion macOS AppKit/SwiftUI, senza secondoCore: penna, gomma, pagine, undo/redo, formato locale validato ePDF vettoriale. App reale provata, documento2pagine importato nel Core e annotato con persistenza. Firma locale ad hoc, nonnotarizzato; nessuna attestazione iPad/Pencil o sincronizzazione. La baseline salva manualmente.
+
+La riapertura degli snapshot correnti evita i parser di migrazione obsoleti, mantenendo tutte le validazioni. Core/MemoryStorage C2:−30,72%; test completo browser/server/PostgreSQL locale:36,575→32,472secondi mediani,−11,22%, trecampioni prima/tre dopo. Limiti e dati grezzi nel [rapporto](sources/physics-2026-27/import-performance-2026-11-14/README.md).
+
+Cortex/Qwenlocale realmente provato:nessun nuovo file recuperato, ordinamento e latenza peggiori; resta escluso dal percorso predefinito. [Protocollo congelato e risultato negativo](sources/cortex-local-2026-11-14/REPORT.md), senza claim di token/costi risparmiati. Review e verifiche rimangono distinte da approvazione umana, CI e deployment.
+
+
+### Quarto incremento — trasferimento degli apprendimenti e autosave
+
+Il laboratorio C1 sugli urti distingue quantità di moto firmata ed energia cinetica: previsione, confronto aggancio/elastico, feedback separato e problema di trasferimento. Review indipendente su20.000configurazioni e browser a320/390/1440px; modello permanentesu5.120combinazioni. Il risultato degli esami si esporta anche inHTML autonomo, leggibile senza rete/JavaScript e stampabile dal browser: conserva31quesiti e105feedback, risposte eprovenienza. Input ostili restano testo; difetto di overflow con titoli lunghi trovato e corretto.
+
+Runtime pubblici generati con Terser giàpresente, sorgenti leggibili in tools/physics-runtime; nessuna dipendenza runtime o riclassificazione dei budget. I test confrontano comportamento, offline e identità. Il contattoinformativo disponeanche di alternativaemail, senza invio automatico.
+
+Il companion macOS ora usa autosalvataggio nativo solo dopo la scelta diun file. Review ha individuato perdita delprimo tratto all'uscita e blocchi di chiusura/runloopmodale, corretti mediante lecontinuazioni NSDocument. Annulla/gestocorrente/errori conservati; i limiti dellebozze senza nome e delle modifiche nonscritte rimangono espliciti. Root ha provato la build integrata reale:3tratti salvati→4autosalvati→Annulla→chiusura, file finaleesattamenteuguale alprimo. Nessuna promessa di sincronizzazione, cronologia versioni o recuperouniversale dopo crash.
+
+
+Audit indipendente dei contenuti:79originali ricalcolati,200prompt/risposte di verifica esaminati,7teorie approfondite e integrità279quesiti controllata. Precisata la formula del prodotto scalare nel piano e in3D, propagata in sorgente/C1/lettore; le altre4pack restano identiche. Non si afferma review esaustiva delle altre31teorie o dei290oggetti legacy. Ricevuta `content-science.md`.
+
+Ottimizzazione successiva del catalogo: una copia della proiezione per render invece di15, uno spazio corsi invece di10; handlerfreschi alclick. Test completo C2 locale:32,489→24,047s mediani,−25,98%, trecampioni perversione, tuttiPASS. [Dati e limiti](sources/physics-2026-27/catalog-performance-2026-11-14/README.md).
+
+Cortex: valutato anche un grafo deterministico degli importdiretti. Rileva un consumer prima omesso manualmente, ma il confronto non giustifica promozione: querymediana1,183s contro7,88ms con `rg`, outputpiùgrande e nessun risparmio token dimostrato. [Esperimento e patch non integrata](sources/cortex-impact-2026-11-14/REPORT.md), nessuna modifica del flusso predefinito o selezione automatica dei test.
+
+### Quinto incremento: termodinamica, continuità e quaderno di lavoro
+
+Il laboratorio C3 confronta due percorsi quasistatici isobara/isocora fra gli stessi stati, distinguendo ΔU da Q e W con i segni. Review non autrice con quadratura indipendente su 964 configurazioni, browser offline e controlli mobile. Il quaderno PDF aggiunge cinque schede e due pagine di confronto; 38 ricalcoli indipendenti e tutte le pagine renderizzate e ispezionate. Sono materiali DRAFT, non approvazione scientifica umana.
+
+La prova A/B può essere salvata esplicitamente in un file e ripresa nella stessa edizione. Import limitato a 64 KiB, identità/hash/campi/risposte/tempi validati, scadenza originale conservata; letture asincrone obsolete non sovrascrivono il tentativo. Nessun archivio browser o server. Il file resta modificabile e non certifica la prova. Review indipendente e test permanenti precedono la pubblicazione.
+
+Completata la lettura teorica delle altre 31 lezioni, distinta dall'audit precedente di sette: 80 gruppi di controprove e una correzione di ambito nell'ottica. Snell e riflessione non richiedono l'approssimazione di lente sottile e raggi paraassiali. Cambiati soltanto testo spiegativo, copia corrispondente nel pacchetto C5 e sourceRevision; gli altri quattro pacchetti restano identici. Due titoli del lettore a 320 px e i link secondari sotto 44 px sono stati corretti dopo l'audit reale del percorso offline. Nessuna nuova accettazione M3 o commerciale.

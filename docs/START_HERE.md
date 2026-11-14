@@ -1,5 +1,7 @@
 # Ardesia Next — ingresso unico
 
+> Beta locale del 14 novembre: [esperienze, riproduzione e limiti](handoffs/2026-11-14-physics-beta.md).
+
 > Consegna C1–C5 del 13 novembre: [stato concreto e riproduzione](handoffs/2026-11-13-physics.md).
 
 > Consegna applicativa del 7 novembre: [handoff oggettivo](handoffs/2026-11-07.md). Distingue candidato, main, procedura, preview e accettazione; non modifica il cursore né retrodata le prove.

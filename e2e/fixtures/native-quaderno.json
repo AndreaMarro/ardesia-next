@@ -1,0 +1,11 @@
+{
+  "kind": "native-notebook-pdf-interoperability-fixture",
+  "createdOn": "2026-11-14",
+  "source": "Actual CUA interaction with integrated Ardesia Quaderno macOS bundle: two pages, six graphite strokes and three blue strokes, explicit save and PDF export.",
+  "pdfSha256": "26fab84bc094793efe7a37d271433472fcc6a7334d9f208ee3ba6caf19f60a70",
+  "pdfBytes": 141120,
+  "pageCount": 2,
+  "nativeSourceManifestDigest": "5aeae4084592c69ccc5b2d0008c8a507d1d8e7a891be5caf70a4059b5297eaec",
+  "scope": "Synthetic original strokes, no personal student data. Import preserves PDF material and adds new web ink; native strokes are not converted into editable Core ink.",
+  "humanScientificApproval": false
+}

@@ -57,7 +57,7 @@ def main():
               "limits": ["Five hand-selected queries, not a representative coding evaluation",
                          "No cloud calls, no measured cloud-token savings or defect reduction",
                          "Entire permitted corpus rehashed before each search; chunking/index updates incremental",
-                         "Linux execution is not a Mac mini M4 benchmark",
+                         "Hardware and runtime are the observed environment above; no cross-host performance claim",
                          "Byte budget covers evidence text plus provenance, excludes JSON envelope",
                          "Expected-file hit is localization, not proof that context is sufficient for a correct patch"]}
     Path(args.output).write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")

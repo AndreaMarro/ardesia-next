@@ -1,0 +1,33 @@
+{
+  "file": "Quaderno-degli-esperimenti-C1-C5.pdf",
+  "pages": 7,
+  "sha256": "7d91231930f53ade5ac7b2661bece8605e81b295d68f217c6881d6cd4cc70043",
+  "bytes": 88064,
+  "draft": true,
+  "humanApproval": false,
+  "publicFile": "apps/web/public/fisica/quaderno-esperimenti.pdf",
+  "generatorSha256": "ee911225467adea5c8a7633fc687e34c8318dfbf5276a2a66aa7260edbc3f698",
+  "independentReview": "PASS, 38 numerical checks and all 7 pages inspected; not human approval",
+  "sourceFiles": [
+    {
+      "file": "tools/physics-runtime/urti.js",
+      "sha256": "a3ca0c2cd2c470a41359bba0dd3edc369cff58a63d96d9e965b0c920c3c0c6a6"
+    },
+    {
+      "file": "tools/physics-runtime/termodinamica.js",
+      "sha256": "586cf23027208db22d2ecd179198fbd3ecb0cdd6a0d80541debd8c1cbeb1da03"
+    },
+    {
+      "file": "tools/physics-runtime/campo.js",
+      "sha256": "4b217751ccffd5f419ff75c24b7799d9e55f93686bbba3b0a8f0af413c269183"
+    },
+    {
+      "file": "tools/build-physics-demo.mjs",
+      "sha256": "53616ea8e8274148e5aa41496bdcea498505a919a009d0462e254c6c4fef122b"
+    },
+    {
+      "file": "docs/sources/physics-2026-27/editorial/lab-definitions.json",
+      "sha256": "daca7553da2463ca56791f5f1b2c45dc05940fea7fdaae89bbfdf0ac7ec1832f"
+    }
+  ]
+}

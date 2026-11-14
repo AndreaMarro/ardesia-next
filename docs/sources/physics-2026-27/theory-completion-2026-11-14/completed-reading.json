@@ -1,0 +1,2223 @@
+{
+  "startedUTC": "2026-11-14T03:33:04.833931+00:00",
+  "completedReadingUTC": "2026-11-14T03:39:38.085615+00:00",
+  "sourceSHA256": "e8d7544619576d352c774cc5ec68653fa8095a05e039ccb1b53be8958c59ab2a",
+  "unitCount": 31,
+  "fieldRegionsRead": 279,
+  "priorTheoryLessonsExcluded": [
+    "sf-2026-u1-04",
+    "sf-2026-u2-03",
+    "sf-2026-u3-05",
+    "sf-2026-u4-02",
+    "sf-2026-u5-05",
+    "sf-2026-u6-07",
+    "sf-2026-u7-06"
+  ],
+  "humanApproval": false,
+  "officialSyllabusCertification": false,
+  "units": [
+    {
+      "id": "sf-2026-u1-01",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 21,
+          "readSHA256": "55bbd5e9709aa0dd3aab7809931d6ef90dedb2511dab99f085714eed03ca50fe",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 159,
+          "readSHA256": "312a028f3e5234faa23a090cc852c8ed4d37b71654075879d20c6ad28f83e141",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 71,
+          "readSHA256": "5b3485d18d1cf2ece14552e120cb6c226270442e9aa7d3822acf5f6d171f8085",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 4303,
+          "readSHA256": "2150fce40b8b5522ac22bf09389b8717e68026df6a9fb7b160e2262b987fd6c5",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 199,
+          "readSHA256": "71a43e1f3a562573d13909656037cb3224799f7a46384fbef8f9ff7d4651fa8f",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 451,
+          "readSHA256": "9ec0e4cb6a7b9fd4240cff244f6b1cb30214bda205594bda55454f93d98693d9",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 639,
+          "readSHA256": "2b373855898f3e53829a4ae36a49c575cd1f0e6e92ce99dd89319be88af77da4",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 397,
+          "readSHA256": "0693d4b87544431c033f2ac718c3b0f419ac8b810851ac5c2a1bcd2720880593",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 303,
+          "readSHA256": "0a0c88874b26a2af469bf082d76cb5af0328d4db783d64b9e1925f86815467cd",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati normalizzazione, somma distinta dal prodotto, soglia logaritmica √10, perdita di informazione da arrotondamento prematuro e conteggio adimensionale.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u1-02",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 17,
+          "readSHA256": "0054c2b5941cbe8eed66515bfa5ad31c2053ecfa6db7c0ebbfa92f01012257d2",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 174,
+          "readSHA256": "b0d251d484ed79d34f1e331f9578d84de9752f809621ac131febaa65120d4a56",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 62,
+          "readSHA256": "962d3b8bb056d23271ae89461a643f412e256cbe48df49977efc6b4cb05042f2",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 4471,
+          "readSHA256": "b56d38538aa2759e819b1b79952f119f7ebdbf15f12adf12664d74f3ec675657",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 195,
+          "readSHA256": "6f560045d0d96e6a7771926b1bd5b3284f989281f5971318ebb189ccaec8d8e6",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 553,
+          "readSHA256": "cf671bb14300cfe3eccdb0e4e1fee338c16a438ceb98997fc89ba0c9822ff081",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 706,
+          "readSHA256": "861f36cfae4b8e8d9c59a82dda7aaa72066cd6dc9c382dd7c1df47a6cd48fd6f",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 407,
+          "readSHA256": "41aed6c2cd3d113f8e88c42d87760900e0cb3b070dc00bcb87193447046a0bc0",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 255,
+          "readSHA256": "d48ffc3bd624b706ac6663c4452876103bf1a3c7fe3fa263f4f175895ea6982f",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati prefissi applicati ad aree/volumi, conversione ng→kg, densità invariata sotto suddivisione, media pesata delle densità con volumi additivi, dimensioni pressione/forza.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u1-03",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 13,
+          "readSHA256": "8f862f534558a85c4f76abe067eadea0c43ee9a9c4048c7629bdc8dd9a4040a7",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 149,
+          "readSHA256": "ef33f093d70076e628dea2c2abae70bde1758dad80feb87fa316fbf1bf94eda4",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 62,
+          "readSHA256": "3914fc81707192f5f15daad4408d62c14cee47605da1043df490184c441aaacc",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 4396,
+          "readSHA256": "58335ab8672291c0880745eac7c30cffb334aec151e0c33f8a74f97d4960d6a4",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 176,
+          "readSHA256": "1e0554df905e3469747c1abdc6697525007dd8f291e4a65d17cbe75b7f927ee1",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 492,
+          "readSHA256": "0f03587ef3082598922f1077185df9a2a562d20ba46d6a7a5221d1ea8379f8f4",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 550,
+          "readSHA256": "b200f25953af8a5c6b1c279847e06f9e416ad8018f6134214c0c260a035fc253",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 399,
+          "readSHA256": "4be41da564caf4feb7d83df130453480d0e302c5924446e51cfdd31eab2e2c59",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 260,
+          "readSHA256": "f30ff46633aa24da079c6f3fff7fd80919b4ae641f8335a0a8197e4b960d9e48",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati angolo dalla verticale, segni dei quadranti, ambiguità della sola tangente, tensioni simmetriche e limite delle funi orizzontali.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u2-01",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 10,
+          "readSHA256": "cffe1c959f2102aa2b9fa45176ba5b0db8bbfef34aa8c2b251a03f888011f503",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 179,
+          "readSHA256": "59275fa395ae5bc4bba48f7734ff7e686c4abaec0f12441ae9705f5a61ab9549",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 75,
+          "readSHA256": "d6f00a2b1d27252b5ce2420dbc94da6662a0d3a51ab1f0bf53496a2de4dec944",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 4822,
+          "readSHA256": "4c51a07b0fff488bb661e724972785285252a1be299d9fe1807635e781bab26f",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 161,
+          "readSHA256": "a01442917d7fb104780ae0a87fe83a8ed1964e67687292864ee427b13073e6b9",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 1057,
+          "readSHA256": "e32bae44f9430578868dbd3f94905743a3ad62f99303acf34185d3bc4c50c5e5",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 717,
+          "readSHA256": "c30407b5ed147d206b09f36be9547fe4aaad41d632ab5ca42e3cb9a8594996f7",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 422,
+          "readSHA256": "a71f0b5ff05388f310cc072ccc752ce58ae93290cb1a0a10297e7c7e72cdd08d",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 325,
+          "readSHA256": "3b4eda3fc341caa6120120e1f0aaee4e61ae3de1d63b055ebaad3f769c2f77c4",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati grafici x(t)/v(t), pendenza e area, distanza distinta da spostamento dopo inversione, segmenti di accelerazione e tempo comune nel lancio.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u2-02",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 16,
+          "readSHA256": "b2da7f584e23cd1c26939044728e6ca4dbf3c098b5b88a4d41ac94679ab5619d",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 181,
+          "readSHA256": "39964351c7563759769ff1c09bd570942974421ebcd82be8524e6ddd2c7efa17",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 66,
+          "readSHA256": "66178e3ee11770d05b3c61ab34d811c43961ad053339dec97d8341dcac117681",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 5047,
+          "readSHA256": "863a7da2d289179b8efe219f8320ce1a3f779208dd71e988a7dfbdbcf28758cb",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 178,
+          "readSHA256": "fa5e4f139ae04f598160461715ea80fd72328357fc291eec086454aec823db3f",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 750,
+          "readSHA256": "a5d0fb95f0ee9b1b89935899abbc6d292cb6c27201f15c130d26cbbc4d14508b",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 718,
+          "readSHA256": "6a8cf973448be2c8b555ba6e3cfebfe9d511079795e4e688a17fa5d3182e9291",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 418,
+          "readSHA256": "02cb482fffe6e2e5f45fcc8c3b2dabf55f88bcdce2d20a62b7f80084562579c0",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 344,
+          "readSHA256": "20c88a7ced634563d592ad92ec5ad87253453d440960f84b04585f4b6214129a",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati sistemi/forze esterne, terza legge su corpi diversi, normale dipendente dalla trazione, soglia statica prima del regime dinamico e perdita del contatto per N<0.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u2-04",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 26,
+          "readSHA256": "b871b65f2c0c69de38f2f37bebd0cc48842394ca8e67033054a02ca316178e0c",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 198,
+          "readSHA256": "269fb340f548f4e6d6ab0bfa6fee441ecc81a6e14847dbf08970090b34e4316c",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 45,
+          "readSHA256": "3d1f197eb9430e1675ad86eb8de8e0a6e295859b18bbba5fc0480c739a9bb8f6",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 4797,
+          "readSHA256": "6724e04360649f05633ccb8b20737f34c530e262a797885f9bddd9ac818558a1",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 134,
+          "readSHA256": "1378d1abd2ca103dcd5d4564dff6581bd9954001c8411e5ef4444e8dd0d7bae0",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 539,
+          "readSHA256": "6229a05b5652bf4eac1e623fa960a16acad1140e10688267e1dc491a1603c948",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 670,
+          "readSHA256": "a1208ba45a9c611ff9ec9ab0fe20dc3ff51fee5b88cee24ae577802fe0b7f713",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 416,
+          "readSHA256": "4b3fd063d8b085927a3b95bfad4b3b34043d519d857fafe1d099c19274ab7c3c",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 308,
+          "readSHA256": "4e02d89394e725b160ecec0eb3266c0b82d3b84729ebf9b0c278720e5bbc9cbf",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati impulso con segno, area triangolare, inversione del moto e lavoro negativo pur con impulso positivo; energia interna nella separazione con quantità di moto conservata.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u2-05",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 14,
+          "readSHA256": "2e597c97ed09869585147df3766539f2731db39f41dbfbe78d3fe77634017901",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 166,
+          "readSHA256": "486781a3743fd6cb088932c49959a8597523e216e74b54fc1de719ab3c659b58",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 67,
+          "readSHA256": "871ffadead2701721679c42aa19b7231a3aeddc11f74be610b008d3a26d279f2",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 5239,
+          "readSHA256": "1f8f010eda5164d0e51661784dc38f56137819f61c20626abca473f3b4803003",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 158,
+          "readSHA256": "5dadb28147fd093ef95ea34797807ec9c70f04e765f7dbda915c6aa1ff062f04",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 553,
+          "readSHA256": "52601b516571ade22319f2cb6b5202f42a927961682c1f0302c722e39cb58a2c",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 693,
+          "readSHA256": "439e416c8317f6cdf13485af162a9ec384f28a189df8fe14dd56fca70d089c67",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 397,
+          "readSHA256": "8c068153b81b4d58950e10da474e8db52d474b9cb63bdf3274e0a0ac26cce936",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 346,
+          "readSHA256": "f29f8e8003e0309a63cf47f69b84eb6664de3ec467c5bf743d4e89cef946dcc4",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati braccio perpendicolare, seno nell’inserzione tendinea, tensione e reazione articolare, momento rispetto a due poli, centro di massa equivalente e limiti anatomici.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u3-01",
+      "courseId": "sf-2026-fluidi",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 19,
+          "readSHA256": "6da8179bb8e80b436f2614ed6cfdaa015fc3bf6c9735c1f176e7ce643ada45f5",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 168,
+          "readSHA256": "932423ea350d040de60a388ca3886f9dbe1e5cb20495313a3918198028e16e38",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 56,
+          "readSHA256": "ba1bcda0bca545da5c10f0c2f51369362201da04ed8d6da0da0b3641abc69b77",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 3932,
+          "readSHA256": "48b79f2ab0e31d9dff77f39abb8224d57aea7ed82d0fd2d04e9eaeeb689da975",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 450,
+          "readSHA256": "8fbcd79070ae22725bcdebef8254d4e668450702d054da96618dcba3ff70f2dd",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 2123,
+          "readSHA256": "54bf20b6e4b3b8685ebf97a26784a5fb2ac468d53a82b327a816a941b0a1f2ea",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 1621,
+          "readSHA256": "73fb79e28d40698a860e7cf76b237399b76c9b9993de1d145fa4de4411ca6bb3",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 1670,
+          "readSHA256": "dcb394441b4e028e064cf6070960753f6fb197fce03d476ca3d439b820a49363",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 2117,
+          "readSHA256": "d57ad38cec9707189432a19f3e8f5805606c4f504e7fc556b24485b8b826ee86",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati forza normale, pressione assoluta/relativa e riferimento esterno; vincoli separati F/A e massa/volume. Il trasferimento obliquo rimanda a un originale già auditato: letto per coerenza, non contato come nuovo audit del banco.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u3-02",
+      "courseId": "sf-2026-fluidi",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 11,
+          "readSHA256": "00232bfc3e13f13c89aa1bf360710d7a62dae11c12134db8ca894816bca92bb6",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 177,
+          "readSHA256": "c748ccb777215fba8b0fcd9503931072263f8819edb00401e8238bd92ef7f8a3",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 56,
+          "readSHA256": "11fb6e8209ff0ea047b8f66b0798a09f4edd8b911083b5e4be4ef85af559a90c",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 4184,
+          "readSHA256": "dcf6d619134f06524d9356f1895657f6faeffb9449049a978215c3ac8c228a76",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 145,
+          "readSHA256": "86da3eb18363d4a2f2e6a909896658cffcd1ed05a1c3980d3cf1b9ef3ac477d3",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 1108,
+          "readSHA256": "954f70be85a414eea12307a576011e3280a00999dcda721fba1aa9a6f27b19c8",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 696,
+          "readSHA256": "a2e2f699fb0338926f3739b95026d8ff9c02f1ff032c03506b4706f456355839",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 398,
+          "readSHA256": "82e1ce5ae4fdbcb54608148104cc1fc2d8de89b95e7d44db0d4d146ba4933ede",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 358,
+          "readSHA256": "9fa3367d36e4a2fc5a6542eaf5b6fb99edf20c3779cd6f8c5d0f77d53d84e008",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati segno di Stevino, quote e stratificazione, Pascal per incrementi, spinta dal volume immerso, carico limite, manometro e lavoro ideale della pressa. La spinta indipendente dalla profondità è esplicitamente limitata nel feedback al corpo totalmente immerso.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u3-03",
+      "courseId": "sf-2026-fluidi",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 22,
+          "readSHA256": "45768a046c4d4b365738548647cc5f0fb188e4b5d6342fbfbb68b158ca5248d8",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 171,
+          "readSHA256": "d5c013d6d5d1f6fff028f61bfe283c17e7674fab83df5b1539e4c7ce2d5637f3",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 69,
+          "readSHA256": "7c27efdd8b0034b9b2cca3c21505af0af8426b23c18a584789e0d5a91b6346b7",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 4312,
+          "readSHA256": "bffd0656a0efd3bb7f85d8f92779248945ebb7097edc1a6d41eb8bc10cd28674",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 125,
+          "readSHA256": "106183d5ee9526f0837e3acb5fffa5c1909ca6474699aa633aaa16aca7ee03af",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 635,
+          "readSHA256": "cc90de6f3710148ed2d4ae8d7ed5eb5bccd4566cb57707db03ba37ca7e4cd00d",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 725,
+          "readSHA256": "bb2240f73de516927a3b4bc11aec2c6ab978f931cef33395dc289d3c6fc548d8",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 402,
+          "readSHA256": "5008b616f08f807a48cc41ba8de90350941cd415d414eb4b0b65ad8b5d57e573",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 294,
+          "readSHA256": "fc239a91d63feb6a25a93ac3b5d67b57d2dd94ff598ce6269f33c7c7315baa88",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati portata massica/volumetrica, velocità media, continuità senza accumulo e Bernoulli lungo linea di corrente con ipotesi dichiarate; pressione cinetica/quota e limiti cardiovascolari.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u3-04",
+      "courseId": "sf-2026-fluidi",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 22,
+          "readSHA256": "f51b722114d90727750b5eb6f550642bd4f5d8fd63a3458881ca0d4220819ad1",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 193,
+          "readSHA256": "50b4afb451322118ce9e16240d918184201f4092dbe6bf18340666cfb95b6d69",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 66,
+          "readSHA256": "062fd9f19e6299cba3cf1622229cfa09a9a9a9f1a954b93eef7e90a4ad544e03",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 3967,
+          "readSHA256": "9876e33d01f25110141c7f4ef7ca0d7f2e478a16f64a92a7eb886a1b837e34c5",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 126,
+          "readSHA256": "742ccf9655dbe3985278fc992b28dedfc66364a302e22770a3d5ac7619a14f4f",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 633,
+          "readSHA256": "7a71898734175b5e08ef9e0b58756d08c62a1a53b566d7ecaffbf50bf33adc3a",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 671,
+          "readSHA256": "2fcd7656dd741d5098a041c6dce05b73ebd852f021923ca5f05c396c383d09e1",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 404,
+          "readSHA256": "233498a04791919c7e1c99e920d818be05457b410455630d84e50d2d6c7c682f",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 351,
+          "readSHA256": "6ce67bf8f638abc18ce2d16af72ad4d3a7984be409f9d64c9caef31e4074a97a",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati gradiente spaziale distinto da accelerazione, profilo parabolico/media metà del massimo, dipendenza r⁴, vincolo di pressione o portata, serie/parallelo e potenza ΔpQ.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u5-01",
+      "courseId": "sf-2026-termodinamica",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 18,
+          "readSHA256": "3d1ab2ee88dbef5c2965eaf1413622171b13112962845c29dac9342d327260b9",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 179,
+          "readSHA256": "0f4ec6ce2775b794351c63959ad29171f13ea0d0092b6bb714a4ad78beee0f8d",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 56,
+          "readSHA256": "38a3e6c0f9f796d71d7fa487c9a63699b86aabf1ef260b43d7845eb24899f760",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 3918,
+          "readSHA256": "75037e1cbc38d993a2c5dc51fca98e95defcd7f2c369885aaad5f4e8a4ab3fab",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 82,
+          "readSHA256": "8ab6c299e581dfb2923caad69dea5a457d31f95d41a52a17e5c0b5deb8d4f386",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 506,
+          "readSHA256": "3a71a26336a38cb9b2d16d33c6e0274ecf504684b22869d239af9785da4c2960",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 621,
+          "readSHA256": "5991774f412e532b4ffd4266dd6a8423e07175c9abd5cf4a5047d9069a790e91",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 343,
+          "readSHA256": "f0d23cf80598a265cb3ff7d2cce9b03a61119e2357a69dc74c0868d7f69d36ca",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 335,
+          "readSHA256": "cb0b5857d178f0b96782bbd51e4c598075ff67180d3c9c617e5aeb8605ebd88c",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati confine aperto/chiuso/isolato, stato/percorso, intensive/estensive, temperatura e pressione assolute, rapporti con n,V fissati o variabili.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u5-02",
+      "courseId": "sf-2026-termodinamica",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 21,
+          "readSHA256": "fbccef6d695c815d1173903b8dc823d31701ebc7c7d66941e0a8bf5a5877149a",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 177,
+          "readSHA256": "50b87144b4fa99d6b3e1650b658edd5a0884341125b0563543987bba1b68144a",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 61,
+          "readSHA256": "53807add1dc4d785c56fb3a475306ea5f4fcc2b16acfa047e452e439c4560641",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 4917,
+          "readSHA256": "1f4ef244da2eebd018ac9050d476f867c09e86ee3d39996c4915bffef0e81fe8",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 133,
+          "readSHA256": "4fa832697fa5648a7c0b9c85550922f9e0f9a9e381a7e5b96e1bb78855592670",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 548,
+          "readSHA256": "a7222a87f5668981d17d756826add35f45cbddf28ffc28b041e6651a5b534077",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 759,
+          "readSHA256": "2560d2871d24e2586e405f9265eee4498bce718652baabfb91c7f9c05cd95229",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 358,
+          "readSHA256": "791d7a062246a00ab5c4b764b57f73825458b9650c040fdbba354802c1a4bc86",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 346,
+          "readSHA256": "73fb5750d64d6870b01470e0b5c6300f88bce058a60b9b73a608297f114fd674",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati capacità specifiche/molari e vincoli, verifica di completa fusione prima di calcolare Tf, miscela residua e bilancio termico con capacità pesate.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u5-03",
+      "courseId": "sf-2026-termodinamica",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 19,
+          "readSHA256": "2f72c62b5365c9f2c828a41e213fe0bfe03349aaf8fc93f46b5bb41fa294f2bd",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 189,
+          "readSHA256": "3e5b57f201eac0be443bdd2c86fe7640302cb67f26af88839b9d46c0b24f20d1",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 56,
+          "readSHA256": "5767332e2640d9b25669cd5f4ff10f3d907199879e8b4b981e9502f101fc1a68",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 3423,
+          "readSHA256": "b0fcb33c27b26c4b714b8763a278a0b68cc17251ca9fb51587059443e28f421a",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 112,
+          "readSHA256": "21d85064ecfd54dd52db163c88e5113dfd94bae169a2222d1d951d147487d6ec",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 619,
+          "readSHA256": "13f715463505cab24d122745952c8bff163c571e0380dce5bc88c242ea4ef75e",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 670,
+          "readSHA256": "8f9d6cb2dba81210928a155ba8e29f3b15196facb48f36ec7c1e03db8c6c7804",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 380,
+          "readSHA256": "c800a208652acd93bc03f94f275c9a014cd45280e7c57beb44ca4d8d4ddee2a9",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 335,
+          "readSHA256": "efff7684d834dc377418cd978880fdcbe63f9659f31265de5ce7409a891a5ab1",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati conduzione/convezione/radiazione, modelli stazionari, proprietà k/h distinte, temperatura assoluta alla quarta e differenza emissione/scambio netto.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u5-04",
+      "courseId": "sf-2026-termodinamica",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 32,
+          "readSHA256": "1ebcf89102fccfb994a40b012671bf2d1a737976ca181690bcb6522c5c5aed49",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 178,
+          "readSHA256": "5459ee0224f6b30e4052d93c80d27d19070b49bb316cc3eabdb973f8311ed002",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 51,
+          "readSHA256": "0312b61795dd5f0af2ae7cbbe90076b4cf3b61013219c40ecef8faa92783ad47",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 5065,
+          "readSHA256": "d93a45d75b26d8775c8ddde41a91c215e210218e601e6b273914ee7a067f466a",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 109,
+          "readSHA256": "9bec3dac68b696f51ec6fec7f8e0654766cac1701ddd8c9d5981f0929d4a067c",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 1114,
+          "readSHA256": "038a469c87b55f10102b261692fb5d8af985bf883efbae72b67efdf4e65323ff",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 748,
+          "readSHA256": "fc368210ac65c5dd546f3f979fad1876896ff9109a15d915b405a2e9a68a09ab",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 392,
+          "readSHA256": "ac3b5b8a357cf8188b22d13fcd2c1112125a0c8a67b5ca89c6fe521e136b2e47",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 308,
+          "readSHA256": "dfc7c2b7196cd7dbffabe3f895af405d3c591bb40c90d9ed952d48ded3a6cc0b",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati convenzione Q entrante/W uscente, pressione esterna nel lavoro, reversibile distinto da lento, lavoro aggiuntivo nell’isocora, gas monoatomico e libera espansione.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u6-01",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 14,
+          "readSHA256": "1797ff249ea45bfe7c3bdfee58064cbd1bbd6cdc6d47ca8c6f039534a619337b",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 175,
+          "readSHA256": "8c9a1fb6a3fba2a5821e8c4ff6db1a2bafe13668c59a814274f530304171a32c",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 59,
+          "readSHA256": "e2aa29ce72e01e7a1ab60e6df7f2b5e7e572b0c51dd5e507bed860d418f2894a",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 4527,
+          "readSHA256": "4118a1a0e358e850c90f378d5dadaae5542807e496de4b749798b1c91975fe96",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 117,
+          "readSHA256": "4ad11bee42ea77f813a5dc5f1c99b24592556574863d96198ef3938b1bc0549d",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 504,
+          "readSHA256": "56a135eb20ab8427792796dd4e74402b90d72606971abf8ae0245732e0ebd5c9",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 681,
+          "readSHA256": "c40f0316ca298bb758e3866ddcfc6aad80e6554ccb1e35f7a4c31996e05a5c50",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 388,
+          "readSHA256": "fc705ccbab88bfbe4ea257ab6049afdfaa087a4aea2bbb1ee2ae4cad29f98ad4",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 265,
+          "readSHA256": "b381a598a55920174cb16cefc47807d33f0eb95f4a8c40dfbc7f40660a0a6d06",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati campo vettoriale distinto dalla forza, segno delle sorgenti e della carica di prova, somma dei campi concordi tra cariche opposte e accelerazione solo iniziale in campo non uniforme.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u6-02",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 20,
+          "readSHA256": "6906bc052ece136c07bfbfdd1b6fae759840ab40febcc41238c9433e686dc322",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 207,
+          "readSHA256": "9d602065a526ad0b2b69d11e7fa4854e7de912b1cfa0e15967dcf253ff2dfcb9",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 59,
+          "readSHA256": "d6abc18b0b3571879c7f30406f76e8e3fbfbf39c9e1688d17335c40750d584b2",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 4405,
+          "readSHA256": "122d40430027928f1cbb6a681ea2690ea10417b493f87aa82d458aae1f2c1cfb",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 96,
+          "readSHA256": "b529aab45da473072286f3665f76098149370d56091babc028007c153edcedb9",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 403,
+          "readSHA256": "da0d99b734a1e911b9075dd9906a5e11351a16729bc1f5d072a3fa008d1b3725",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 527,
+          "readSHA256": "42bf3a30971950e0625caa270bc3f28e19db241ca151530a2eca6c98f5dc415d",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 357,
+          "readSHA256": "55c5ed7688a96337f329d49dd3f13f3d99c65d20601a920ea02c61fe5233a370",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 206,
+          "readSHA256": "175228b7316167bafc9e2d39755581d3b48f8f08dbac1e95c3b42a051033c6ff",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati ΔV orientata, ΔU=qΔV, lavoro del campo e lavoro esterno, energia totale con zero convenzionale, velocità da radice di K e ipotesi non relativistica.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u6-03",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 24,
+          "readSHA256": "3ae9184fba99d77bb1494bf1113fc52b3fbd355a4e309df92456f9ba110087f7",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 190,
+          "readSHA256": "3faecf3ba82ca2a68f2bd6f6a4d69eff66dffc0e44f00d5c6811a87ddbd9cfdb",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 68,
+          "readSHA256": "18539353722a3315e04491c0b7361a193cbd1e54c17d99fecb0189b7586f3dd9",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 5552,
+          "readSHA256": "dc236ae79dbe8330aa35cc6e48c222143381629bcee2163008cd79c52be64a39",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 168,
+          "readSHA256": "e579091d5758265f24297da17a327491b702e8c4fe4f7fdc46c2bd65034e9605",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 602,
+          "readSHA256": "b240aa0032acf4aec4383fcada77c801f2ae24886952ce00b5a786ff6b7b1ca6",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 872,
+          "readSHA256": "a56afa9985e0389368293768de5b2ecc213c37c6ae467da7079d61e0e4a1f00a",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 387,
+          "readSHA256": "da2fd2e65a1fe308f8daa620d65fd3b48d9c0df88999d72e63edee2b5f3b25da",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 312,
+          "readSHA256": "e8e30e7b0b84937ae32618a46368fddbb64842ce45b980231163905db850749d",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati campo nullo nel materiale in equilibrio distinto da filo percorso da corrente/cavità carica; ordine messa a terra e rimozione bacchetta; conteggio elettroni e polarizzazione legata.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u6-04",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 19,
+          "readSHA256": "d2e0d3e7dd54a775445a213694f4745e9a08478932f0c22cedc0cf775524a080",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 180,
+          "readSHA256": "df45da152aa9d59841e2a219da54b9f978041b7c6da9109779bc763cad0760e4",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 64,
+          "readSHA256": "68b8e126c2380720b36ebdd4a24ff032328078b0b2acfcb4ac2f9bece992b1a9",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 5091,
+          "readSHA256": "df1f41fa622e4877dad7bdd180f128b817172cbf48e4ff6b7da4f0360290afe8",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 104,
+          "readSHA256": "1eb3ba99fff19d741044e21a394457a626f042537d80d840b9f77a99cd0c524d",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 1013,
+          "readSHA256": "036b043185b486ee68a4cb434f2fac099c9255eeb516b41a29732ac2b115da2f",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 620,
+          "readSHA256": "90bfcd0f1a1fc4375f621416d3a5563d6f22ef0ddb100d0db6499894a5d15c2a",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 381,
+          "readSHA256": "5995c104b3b18ef3a8c4490e372dd61d7b248f369f3117f4665755f2b638b239",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 240,
+          "readSHA256": "b19fca863ff6acdc746671bda91ebbdf50a0b285b2a41ff35cc0db7365826302",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati nodi e topologia, corrente convenzionale, conservazione della carica, potenza passiva, tensione reale dei rami nel circuito misto e doppio controllo energia=Pt=VQ.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u6-05",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 12,
+          "readSHA256": "33f0a56d2af85a73093f0a316aca057e8c944be6ad3ed2fb17e98b022568215e",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 211,
+          "readSHA256": "d0b9cda0d9c6a7177a23695462ac0076f1b6c81e943302fff39c478342784d62",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 67,
+          "readSHA256": "d3158869ad5d2d7c759f9855a517c8ba3efd5b3f6f247924811ffc028d4add30",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 4707,
+          "readSHA256": "af67dedffb16c65274b06f251de991b927fda9ca6a8236bf59d03703465cdcc9",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 141,
+          "readSHA256": "548068a6bf0eb4e21f79e19361faf167908239ec85efae7a4c6783d42c78b70e",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 915,
+          "readSHA256": "0864e64496c00f29cc05c35f6c8feef1bae1dd2a64a15112acca708ce2e19843",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 531,
+          "readSHA256": "ca507a13bc7d864a6a57e3f498a41440b0d28a71caebaf9439cca8a80056bbcc",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 359,
+          "readSHA256": "e980395a749f61f46414b6c5fdba82b981c9f694c9ed2b4ca3269e489e312fd4",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 225,
+          "readSHA256": "d17f06c2732122026847a14a10df7c528d08430f6923fe97058302162f4e3635",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati carica su una armatura, vincoli Q/V, energia del campo e lavoro del generatore nel dielettrico; nodo intermedio neutro per condensatori in serie.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u6-06",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 15,
+          "readSHA256": "2b7e215cb3f5933d5851f9c8925f5eabceff041ea0802945501210fbfe9e09f6",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 169,
+          "readSHA256": "9543c3f9de4648c802d2bc09092037e4cefd26f975708df444c3f4b02bb4d686",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 65,
+          "readSHA256": "165d5ca60b0faed12659416492528839721b27db9605ad1a4a9a6e543899f1b6",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 4734,
+          "readSHA256": "e21c2384d7a97bfc299b1ef417c3ee3cd4a52bb7a19ce93361a11b24837d5a56",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 131,
+          "readSHA256": "4586dd5e337118414dd018f96a9536030ce55ea874ad8834a6e8af95cb2eaa30",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 546,
+          "readSHA256": "00c692a97e09da69409a1442c5d427904eb0d7ee85a1c20f8a3cd39dc578be6a",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 676,
+          "readSHA256": "49806b027c58cebaf1aca2b9db6836385bd7ad41085cd3de9d6af19098fe8446",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 376,
+          "readSHA256": "6e1d5db43951f1e4c466d79af788e1c3a184094de7b093ea51bb9cf7c4b06ca5",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 322,
+          "readSHA256": "a9d4885743fe807351d0092b5aa856c8e3bc53c5c50d69f9150b3e9c43048819",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati orientamento v×B e inversione per elettrone, forza perpendicolare e potenza nulla, raggio non relativistico, energia costante e verso del filo con corrente convenzionale.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u4-01",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 13,
+          "readSHA256": "b0c5979f923af04b54328ed0f77e7e4b37a297dc36bc7d72014550b2f597b645",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 162,
+          "readSHA256": "25da458ca47643847f2c1e1492aaaaec70eeb6679855ee5154b4544963fdad7f",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 35,
+          "readSHA256": "fde4909405118b866e7d6185f22d54e5c02714519dfcb6e97ed0d8ef9be3179b",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 4979,
+          "readSHA256": "b06ed826b9c1a7b7c7849d4bbfe3b61df5cc00958fbbff619637a3e9abf41801",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 119,
+          "readSHA256": "eaeb94a684d62859926debf8e8fb56067c653ca3c4bf13fef7156f4f72a2cf75",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 488,
+          "readSHA256": "f24f801b5c113a71cb5f3bee35b2f42a71db756699efa0dd70eec8e1c1c326b3",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 631,
+          "readSHA256": "eca68cf64a74a4b429d04444d7fae941eef2f63ff3ecdae4476c2fd606115bbe",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 363,
+          "readSHA256": "573d791f9a399406dab884d76df1d2ae7a0cded31150f14c4910f107f77682d8",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 229,
+          "readSHA256": "c70270141b5971953f4d475fdba2cedc74c3ced478d963d03e97c000a9f1d943",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati fase e verso di propagazione, zeri consecutivi separati da mezzo ciclo, coordinate spazio/tempo, velocità della configurazione distinta dalla velocità locale della corda.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u4-03",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 19,
+          "readSHA256": "2dcb070b41b6c8a8cc4c499d085db92a14dcee35ed48a72c5b9aa0baf073187e",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 178,
+          "readSHA256": "9d56c926f812615d1a7d4d89bb97f2b32cfcc989013efc0c3310c2475a86b180",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 58,
+          "readSHA256": "621ced82cbfb6904b2e4130d4ac8635dba468509e22a94d4fb1610df897a008f",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 4857,
+          "readSHA256": "64cf6e2c6045c1f359ce02a2c44b93983841017dbc9c0d3d960f4bfc0d1f9ace",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 117,
+          "readSHA256": "6f8c41242d57accf84ca2e757d5c9eee52080bce2808671b4532f7e071016a87",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 453,
+          "readSHA256": "0230dfff7b7ca86f29c82ee9885c66451471565db2faf518f88b490cf1b98694",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 532,
+          "readSHA256": "d5d43cf70c3ee04982836bb07990256777b982f14032ca9743f6df4709c43129",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 350,
+          "readSHA256": "fbdded3d55d6446f2e6c6e056abe819cacab6293d380413b0e7f7f78deee9177",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 296,
+          "readSHA256": "e88e749e0bedc76f4f4e1d0041457fa114626f608b8a6f01289b00af3a880fda",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati geometria isotropa, frazione intercettata dal sensore piccolo, area proiettata, energia incidente distinta da assorbita e ampiezza 1/r distinta da intensità 1/r².",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u4-04",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 15,
+          "readSHA256": "75bbc5e0b94934fa75028419dcdaf46d9d66462863a6e292bcb23b951f88ac60",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 179,
+          "readSHA256": "2411645c2d5605540980056a8838186eeeb66c24603a5c44f0d4e0805bc844e3",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 50,
+          "readSHA256": "f7814e0202ecd6510d7470cf204fde8872457f0883171c9ac9efbee8be220500",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 5070,
+          "readSHA256": "330c54e2b1cb35244f8cce110e760586439104efe0ebfcbfd44f5d1ebcbdb7f7",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 140,
+          "readSHA256": "759879ba4951b063e783e98ae7ab81ac80112017e40d0c1067416826f8f4c334",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 515,
+          "readSHA256": "0ad93cc853656ed327835dcc602469ccef9487687e9a8f956df1334ede94d91c",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 518,
+          "readSHA256": "1e85db2daf26321f4a9f7013afc2b8ce1ae8e987898517f9e0303171d95f5991",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 367,
+          "readSHA256": "b41ba01def5f2391fd3b8649040052deb924986035d698379510d5b6947260a0",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 287,
+          "readSHA256": "650663af28039ccc794643ac153505690fc2c83e3888cd261a5f02113cee2b08",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati riferimento del logaritmo, somma di intensità incoerenti co-dirette nell’esempio, attenuazione rispetto ai dB e cambio mezzo a frequenza invariata; nessuna conclusione clinica dal livello.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u4-05",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 19,
+          "readSHA256": "2077518d3a0293ddad9b3d4818b37c0c816d614eb03b7a268a912a6ca136e896",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 187,
+          "readSHA256": "2a385fc87080415bb066f2a591a5440dddc446d0f3b0ea236fb660b8ac23e100",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 74,
+          "readSHA256": "a0ea754ccd81cac434c68716904e94c7e0db08d2f668181dc8db0addaa12b1cc",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 5343,
+          "readSHA256": "43f35729065e477dab62d037155696504ec4db6786b3a80557f28632a5aab979",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 133,
+          "readSHA256": "8bdc95561372de5ef0e2395c42c803259bef24f51d18d4277445762916e2fe1d",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 552,
+          "readSHA256": "42e5bb9189d6e3944ae2f46d505b8b0a6a95326d356a45dc818eadf00af7912f",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 784,
+          "readSHA256": "5d38565cddc36f2e4fec4ce30fab6624be987a5abd5a268e4666903919074c2c",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 393,
+          "readSHA256": "e9cc35afd55ea9d1142ecd9caf74fb7b3303f3bf4a2ba1bc3f3ad709d99e759a",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 401,
+          "readSHA256": "a3dc6a4695f72a856e640fe38434ca7c925ce93d86756bd53d437203bc9be191",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati costruzione dei fronti e tempi di arrivo distinti per moto sorgente/ricevitore, riferimento al mezzo e limite subsonico; numeri illustrativi distinti da formula clinica/ecografica.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u7-01",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 27,
+          "readSHA256": "45f57b006abfb2d4a93cce3bb28e27865aeeda59f08287173baa0a614715c1bf",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 174,
+          "readSHA256": "76875c1c345c21ccc73eb613918cdf0c6b2fe76818f42e1c5707f57c9a88a676",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 62,
+          "readSHA256": "e1f98922d2f53d2c9351b3964c6ae8721955df864ab75e99417efc29af53e58a",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 4792,
+          "readSHA256": "72d582e3f50ecda622588cc563e15ebf9a5e68b7d116a9ca7027dd7cdcf7fb10",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 108,
+          "readSHA256": "1039b0f73c4f083afa2dcc107297c616dea2a681d3b07525363bddd380257997",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 473,
+          "readSHA256": "92eba5659570d3806cf174c045e0615896a344f441964378e7e9b8f9c1c1421e",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 541,
+          "readSHA256": "1273675075540dec599f1829322fc9152456a5ce4327df6053ed514c06c8d3bb",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 362,
+          "readSHA256": "8bc8471d32a0976fb56f9620f53aeec9e40c6a90eb5cb348e2867e63eb1f9c72",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 223,
+          "readSHA256": "49d3b730e303068510f552dd0323b5385c9d388998af063bb8c9ff5c85f307c3",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati orientamento E×B, fase, rapporto E0/B0, continuità frequenza all’interfaccia, ritardo non dispersivo, ampiezza di picco/efficace e conversione mm².",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u7-02",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 7,
+          "readSHA256": "9b41e35244b8f54626ce1ceb706b68dc7690419683f77a67bc7ec943578c504a",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 177,
+          "readSHA256": "3f96318e67380a924d2493dac073b690d7f203cde092be793b49db22ef562bcc",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 61,
+          "readSHA256": "c9008cf37aae2c1498850426b6ecb132e816fd8a431fda98d5dca351fe2d4ff5",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 4804,
+          "readSHA256": "050c2014c278c4ae45ab74f996739066a5a005d46b7dd22c9732fc28a921dd90",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 149,
+          "readSHA256": "69aee63cfafc541e030cfdc1719a7c067f5b9071d279424ab7986b00d9c3bd4b",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 547,
+          "readSHA256": "64d3116184715ef24637deaf0a3f1d5cc6fb1e327a364938adcdee17146211e9",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 496,
+          "readSHA256": "576085820969eee522200c1f00a7ec93d7d915e9ed4e0d4b99d3285036534e9c",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 337,
+          "readSHA256": "8b66318c700bece8041be0f208247da9942e6271f394309111ccacae753d5dde",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 232,
+          "readSHA256": "58c45d782b55bff3ec15f57bbebb37d7ad8c4ca9922b05ca69a4f413b887d62e",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati spettro riferito al vuoto, classificazione per frequenza invariata nel mezzo, sovrapposizione X/gamma e origine non confusa con soglia energetica universale.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u7-03",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 6,
+          "readSHA256": "f1b8f78b65c61603c28077300184890d25615d5aa50aceddd5a1b389adbb0dac",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 142,
+          "readSHA256": "e207ede571bd5737271254ba588bfb5b85cda37ac6da48fe7bbd9ddb77a0f164",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 49,
+          "readSHA256": "10a3ffbeeb2b7e4c80f3f8398fe2ac46a6038eb167348887497239593ad1e863",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 4530,
+          "readSHA256": "d02cdabc1c8c6b189c835fa5c22fb5200e98220679c6afab64d8cf03f4c7c66a",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 151,
+          "readSHA256": "73b36d5552f5330b77513129f592e52a48aa43422a240f7e31d0a64e01d749b2",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 474,
+          "readSHA256": "9ad28f4ebf827e8d836b92c1dadc2bc079b0b8780f2c66e549814b9079ec686e",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 520,
+          "readSHA256": "7a76e1afc1b58ee856f4e4df4befcfe8e128d61723d85010a27c8a5a2fb28018",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 346,
+          "readSHA256": "99ea6dafeca3b3c778ed178f8354dc095b14b4d58c09e25cce2f6044a87dbc88",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 225,
+          "readSHA256": "bb549114ef9b71b728219db27073aa5371027cff3029a35c323d1f2ac0e09dbb",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati hf e conversione eV, energia/numero/tasso dei fotoni, impulso e intensità con area, media attesa distinta da conteggio intero.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u7-04",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 12,
+          "readSHA256": "445609512689c6fee745ba104dd497ce6028d1d12b83dc316784a9fd33b1299f",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 180,
+          "readSHA256": "b03735db78865d9c6de0cefeb0b4163622e9adf9a455862e434582ccc241acba",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 80,
+          "readSHA256": "5112984d26cd643d6d7fdd35b8c48336f6f90128428ccb3958df482aa98293b2",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 4685,
+          "readSHA256": "78a0a2b81303ed44ab102f7202dd91c8a5de3a2f73f98679b7dd63ab43dc0bcc",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 113,
+          "readSHA256": "9ecc54d9f9e6a3c3513e51089f95dd0b100aa6b157bd129e3eb80e15feb9963f",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 532,
+          "readSHA256": "d9ac264c6826e4865c28e737ffe271cda45341c5e8004ce7ad51b7804a1c86ac",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 607,
+          "readSHA256": "292ab95878d9d24596cee4d135955ae28eb406a73d3038e47e8d1762d5f779c5",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 381,
+          "readSHA256": "7c96147fc3cce882abc95f88bb36f700e2f78973aea85de31fefc8065086679f",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 263,
+          "readSHA256": "6af8458aea8a2118aa3e1f4e13092668de50a48348ecc74ffff5abb3d90ad716",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati coefficiente positivo e dimensioni, trasmissione moltiplicativa/profondità ottica additiva, ln/log10, dimezzamento e assorbimento distinto da scattering/riflessione.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u7-05",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 13,
+          "readSHA256": "843ea98d84cb1a7da9f5f73e8a1b31977e83d3f6089b3184cf31a6571ad6429d",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 173,
+          "readSHA256": "bedb1f0f87488d8db531e317f1cd51a7c11277f1d344b5bedd33613d83c5d3c5",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 58,
+          "readSHA256": "88195829aba854d664bb7cad09490098db67ac349c6740e62925854acad360dc",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 4965,
+          "readSHA256": "a8003837556469c0db8dea8ff356bfe53d756e85455f2c798c462dbaf94a5a4d",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 141,
+          "readSHA256": "94d747ae0996194636994aef3e8f391228463d5c61be24a2e67f30c7bf0df3c7",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 536,
+          "readSHA256": "3198f6528a494f8f3baf9c7b0bf86a8dcc20f386e09110b0af68dc56bdffa5ec",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 689,
+          "readSHA256": "f5e97a6b807dbe8f0a9ef1f6c5a6b241d381aa2b9929da02c95441f08be0cd0e",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 332,
+          "readSHA256": "06aebde8f525d32a5ea4a633e0624a6f12aa17c53c5cb3c339a5f3af1b86d467",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 286,
+          "readSHA256": "212ae3e114c397789fb8119875c12a56bcfd16d5f81ed0edb85a2512f982176b",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati emivita statistica e assenza di memoria, attività istantanea distinta da conteggio/tasso medio su intervallo, secondi per Bq, A nucleare distinto da attività e conservazione di carica in β−.",
+      "findings": []
+    },
+    {
+      "id": "sf-2026-u7-07",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "fields": {
+        "title": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 17,
+          "readSHA256": "9f8101457fc18e93b4ded5519aedc37590d32dd6d4814bef5812e5e122cb5ca2",
+          "exclusion": null
+        },
+        "objective": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 195,
+          "readSHA256": "6f7b0b99ad31bfb27c8d18ad9007196e67c93f1c81aac37f237c6e6d6e99ff74",
+          "exclusion": null
+        },
+        "prerequisites": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 77,
+          "readSHA256": "526c8091a116cbbcbf3b200b68fca40eba7191b12ab4dc30f80fb0e17c242ca7",
+          "exclusion": null
+        },
+        "explanation": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 5198,
+          "readSHA256": "1cb7b781a0091b61e94bc59aee83c1dbc2a3680b32009a37b45dcdeff229500c",
+          "exclusion": "Footer con elenco obiettivi e rinvio alle verifiche; contenuto scientifico precedente letto integralmente."
+        },
+        "prediction": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 135,
+          "readSHA256": "cfb96c933fc4a07e8bf30fe3ce7f7d1285ef18931f020ba8f04bc0942b134c46",
+          "exclusion": null
+        },
+        "activity": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 1028,
+          "readSHA256": "a6c71a16a77af683b2db00bb95b4376eb5f5fcd061886417a7a4146d51fdb808",
+          "exclusion": null
+        },
+        "referenceFeedback": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 714,
+          "readSHA256": "d9d016d2065793c5d4a46a2c5120d4f9de2a0fb53e83942e4a6c26409163a605",
+          "exclusion": "Domande/risposte degli assessment già coperte dal precedente audit; esempi, attività e trasferimenti precedenti letti integralmente."
+        },
+        "recovery": {
+          "read": true,
+          "readRegion": "full field",
+          "readCharacters": 373,
+          "readSHA256": "55633b2f31d765037bcebe7d43e24c0b448e9bed9d79e6b216cfaf6ecf96d46d",
+          "exclusion": null
+        },
+        "transfer": {
+          "read": true,
+          "readRegion": "substantive lesson content before repeated objective/assessment footer",
+          "readCharacters": 341,
+          "readSHA256": "5574a2daebadcafb3214b0d6a63818baf33ba5421ef82f3f0aad0ba4f9628525",
+          "exclusion": "Ripetizione finale degli assessment già auditati; tutti i nuovi scenari precedenti letti."
+        }
+      },
+      "scientificReviewNote": "Controllati segni di p,q,f e ingrandimento, immagini reali/virtuali, schermo e occhio, Snell e dominio del seno/angolo critico. Unica precisazione segnalata: ipotesi paraassiale/lente sottile impropriamente riferita a tutte le leggi.",
+      "findings": [
+        "TC-01"
+      ]
+    }
+  ]
+}

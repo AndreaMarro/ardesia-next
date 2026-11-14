@@ -1,0 +1,10 @@
+{
+  "frozen_at": "2026-11-14T03:24:52.861140+00:00",
+  "note": "Dev inspected; no further source changes permitted before or after heldout. Tests corrected over-small fixture assumption; implementation unchanged except relative specifier guard before final dev.",
+  "hashes": {
+    "tools/cortex/impact.py": "dfe122289a112a5f883dbe0e55d17f7f0958e04a7d81205fe3b9bde9cf433631",
+    "tools/cortex/extract-imports.mjs": "eee6abfa26747eb954d95c8c61c43ab5a8059929e5263c8f00a203092ae747df",
+    "test_impact.py": "07dd98836ade63ffea32c3afc297a3e9f762f959ce80b44a0c318783d24372bb",
+    "evaluate.py": "fa0dec4164305d908283409e4e35cb32a26d8202ef5662efb3f2dd3527962ece"
+  }
+}

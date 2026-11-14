@@ -1,0 +1,36 @@
+ARDESIA C4 — Il centro di un dipolo
+Bozza didattica (DRAFT), 38 secondi. Video senza audio.
+
+[00:00–00:06]
+V = 0 non significa E = 0.
+Due cariche opposte, q₊ = +1 nC e q₋ = −1 nC, sono ferme nel vuoto.
+P è il punto medio e dista r = 0,80 m da ciascuna carica.
+Il potenziale è riferito all’infinito: V(∞) = 0.
+
+[00:06–00:16]
+Il potenziale è uno scalare: V(P) = V₊ + V₋ = kq₊/r + kq₋/r.
+V₊ ≈ +11,234 V; V₋ ≈ −11,234 V.
+I contributi hanno lo stesso modulo e segno opposto. Si cancellano esattamente per simmetria: V(P) = 0 V.
+
+[00:16–00:24]
+Il campo elettrico è un vettore. Il modulo di ciascun contributo è kq/r², con q = 1 nC: circa 14,043 N/C.
+In P il campo della carica positiva è diretto via da essa, verso destra (+x).
+Il campo della carica negativa è diretto verso essa, ancora verso destra (+x).
+Le frecce dei contributi sono mostrate nella legenda; non rappresentano altri punti di osservazione.
+
+[00:24–00:30]
+Le componenti lungo x si sommano: Eₓ(P) ≈ +28,086 N/C.
+Il campo risultante non è nullo. Nel diagramma la freccia qualitativa ha origine esattamente in P.
+
+[00:30–00:33]
+V somma numeri con segno. E somma vettori.
+
+[00:33–00:38]
+Ora prova il laboratorio: sposta P e osserva come cambiano V ed E.
+
+Dati e convenzioni:
+k = 8,9875517923 × 10⁹ N·m²/C².
+Valori numerici non nulli arrotondati a tre decimali; V(P)=0 è esatto nel modello simmetrico.
+Cariche puntiformi e ferme; sovrapposizione elettrostatica nel vuoto. Non è una simulazione temporale del moto.
+Fonte delle formule: contenuto Ardesia C4, Coulomb e sovrapposizione; V=kq/r e |E|=k|q|/r², con riferimento del potenziale all’infinito.
+La bozza non costituisce una revisione scientifica umana.

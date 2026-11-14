@@ -1,0 +1,227 @@
+diff --git a/tools/cortex/impact.py b/tools/cortex/impact.py
+new file mode 100644
+--- /dev/null
++++ b/tools/cortex/impact.py
+@@ -0,0 +1,123 @@
++#!/usr/bin/env python3
++"""Optional direct import reader. Partial graph, never a test selector or executor."""
++from __future__ import annotations
++import argparse,hashlib,json,posixpath,subprocess,sys,time
++from pathlib import Path,PurePosixPath
++import cortex
++VERSION='0.1.0'
++CODE={'.ts','.tsx','.js','.jsx','.mjs','.mts'}
++HELPER=Path(__file__).with_name('extract-imports.mjs')
++def digest(data):return hashlib.sha256(data).hexdigest()
++def checked(repo,path,sha):
++    if not cortex.permitted(path):raise ValueError('path outside allowlist')
++    data=cortex.read_source(repo,path)
++    if cortex.safe_text(data) is None or digest(data)!=sha:raise ValueError('source changed or excluded: '+path)
++    return data.decode('utf8')
++def resolve_path(base,paths):
++    base=posixpath.normpath(base)
++    if base.startswith('../') or base.startswith('/') or base== '..':return None,'outside'
++    ext=PurePosixPath(base).suffix
++    if ext:
++        candidates=[base]
++        if ext=='.js':candidates += [base[:-3]+'.ts',base[:-3]+'.tsx']
++        if ext=='.mjs':candidates += [base[:-4]+'.mts']
++    else:candidates=[base+ext for ext in sorted(CODE)]+[base+'/index'+ext for ext in sorted(CODE)]
++    found=[p for p in candidates if p in paths]
++    return (found[0],'resolved') if len(found)==1 else (None,'ambiguous' if found else 'missing')
++def packages(texts):
++    out={}
++    for path,text in texts.items():
++        if PurePosixPath(path).name!='package.json':continue
++        try:obj=json.loads(text)
++        except json.JSONDecodeError:continue
++        if not isinstance(obj,dict) or not isinstance(obj.get('name'),str):continue
++        exports=obj.get('exports');entry=exports.get('.') if isinstance(exports,dict) else exports
++        # Only a simple root export is supported. Never fall back to main or execute configuration.
++        name=obj['name'];target=None
++        if isinstance(entry,str) and entry.startswith('./'):
++            norm=posixpath.normpath(posixpath.join(posixpath.dirname(path),entry))
++            directory=posixpath.dirname(path)
++            if not directory or norm.startswith(directory+'/'):target=norm
++        out.setdefault(name,[]).append(target)
++    return out
++
++def build(repo,db,stats,node,typescript):
++    identity=digest((VERSION+'\0'+digest(Path(__file__).read_bytes())+'\0'+digest(HELPER.read_bytes())+'\0'+digest(typescript.read_bytes())).encode())
++    db.execute('CREATE TABLE IF NOT EXISTS impact_cache (id INTEGER PRIMARY KEY CHECK(id=1), manifest TEXT NOT NULL, identity TEXT NOT NULL, payload TEXT NOT NULL)')
++    row=db.execute('SELECT * FROM impact_cache WHERE id=1').fetchone()
++    if row and row['manifest']==stats['manifest_sha256'] and row['identity']==identity:
++        return json.loads(row['payload']),True
++    sources={r['path']:dict(r) for r in db.execute('SELECT * FROM files ORDER BY path')}
++    texts={path:checked(repo,path,row['sha256']) for path,row in sources.items() if PurePosixPath(path).suffix in CODE or PurePosixPath(path).name=='package.json'}
++    inputs=[{'path':path,'text':text} for path,text in texts.items() if PurePosixPath(path).suffix in CODE]
++    process=subprocess.run([str(node),str(HELPER),str(typescript)],input=json.dumps(inputs).encode(),stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=30,check=True)
++    if len(process.stdout)>30_000_000:raise ValueError('parser output budget exceeded')
++    parsed=json.loads(process.stdout);pkgs=packages(texts);edges=[]
++    coverage={'parsed_files':0,'parse_error_files':[],'computed_dynamic_imports':0,'unsupported_commonjs':0,'unresolved':{},'typescript':parsed['typescript']}
++    for file in parsed['files']:
++        if file['parse_errors']:coverage['parse_error_files'].append(file['path'])
++        else:coverage['parsed_files']+=1
++        coverage['computed_dynamic_imports']+=file['computed'];coverage['unsupported_commonjs']+=file['commonjs']
++        for edge in file['edges']:
++            spec=edge['specifier'];base=None;reason='external-or-unsupported'
++            if spec.startswith(('./','../')) or spec in ('.','..'):base=posixpath.join(posixpath.dirname(file['path']),spec)
++            elif spec in pkgs:
++                entries=pkgs[spec]
++                if len(entries)==1 and entries[0] is not None:base=entries[0]
++                else:reason='unsupported-or-duplicate-package'
++            target=None
++            if base is not None:target,reason=resolve_path(base,sources)
++            if target is None:coverage['unresolved'][reason]=coverage['unresolved'].get(reason,0)+1
++            else:edges.append({**edge,'source':file['path'],'target':target,'sha256':sources[file['path']]['sha256']})
++    coverage['resolved_edges']=len(edges)
++    # Re-read the admitted corpus after parsing; reject moving content/HEAD, don't persist a mixed graph.
++    after=cortex.refresh(db,repo)
++    if after['manifest_sha256']!=stats['manifest_sha256'] or after['head']!=stats['head']:raise ValueError('corpus changed while parsing; retry')
++    payload={'coverage':coverage,'edges':edges,'identity':identity}
++    with db:db.execute('INSERT OR REPLACE INTO impact_cache VALUES(1,?,?,?)',(stats['manifest_sha256'],identity,json.dumps(payload)))
++    return payload,False
++
++def query(repo,db,target,symbol,node,typescript,budget=8000):
++    if not 1024<=budget<=64000:raise ValueError('byte budget must be 1024..64000')
++    if symbol is not None and (not symbol or len(symbol)>256 or any(ord(c)<32 for c in symbol)):raise ValueError('invalid symbol')
++    stats=cortex.refresh(db,repo)
++    target_row=db.execute('SELECT * FROM files WHERE path=?',(target,)).fetchone()
++    if not target_row or PurePosixPath(target).suffix not in CODE:raise ValueError('target must be an admitted JS/TS source')
++    checked(repo,target,target_row['sha256'])
++    graph,hit=build(repo,db,stats,node,typescript)
++    selected=[]
++    for edge in graph['edges']:
++        if edge['target']!=target:continue
++        names=[item for item in edge['names'] if item['name']==symbol] if symbol else edge['names']
++        wildcard=any(item['name']=='*' for item in edge['names'])
++        if symbol and not names and not wildcard:continue
++        certainty='named' if symbol and names else 'possible' if symbol else 'module'
++        selected.append((edge,certainty,names if symbol and names else edge['names']))
++    # Every resolved source is tied to the current manifest, including omitted matches.
++    # refresh is not an OS-level snapshot: concurrent writes may still require retry.
++    checked(repo,target,target_row['sha256'])
++    results=[]
++    for edge,certainty,names in sorted(selected,key=lambda e:(e[0]['source'],e[0]['start'],e[0]['kind'])):
++        text=checked(repo,edge['source'],edge['sha256']);lines=text.splitlines(keepends=True)
++        raw=''.join(lines[edge['start']-1:edge['end']]);snippet=raw if len(raw.encode())<=900 else None
++        results.append({**{k:edge[k] for k in ('source','start','end','sha256','kind','specifier')},'match':certainty,'names':names,'excerpt':snippet,'excerpt_omitted':snippet is None})
++    # Verify whole corpus once more, since a changed nonmatching file might add an incoming edge.
++    final=cortex.refresh(db,repo)
++    if (final['manifest_sha256'],final['head'])!=(stats['manifest_sha256'],stats['head']):raise ValueError('corpus changed during query; retry')
++    out={'version':VERSION,'partial':True,'scope':'direct lexical imports/reexports only; not runtime impact or test selection','head':stats['head'],'manifest_sha256':stats['manifest_sha256'],'parser_identity':graph['identity'],'target':target,'target_sha256':target_row['sha256'],'symbol':symbol,'cache_hit':hit,'coverage':graph['coverage'],'total_edges':len(results),'total_consumers':len({e['source'] for e in results}),'omitted_edges':len(results),'results':[]}
++    encode=lambda:json.dumps(out,ensure_ascii=False,separators=(',',':')).encode('utf8')
++    if len(encode())+1>budget:raise ValueError('byte budget too small for provenance and coverage')
++    for result in results:
++        out['results'].append(result);out['omitted_edges']-=1
++        if len(encode())+1>budget:out['results'].pop();out['omitted_edges']+=1;break
++    return out
++
++def main():
++    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--repo',required=True);p.add_argument('--db',required=True);p.add_argument('--target',required=True);p.add_argument('--symbol');p.add_argument('--node',default='node');p.add_argument('--typescript',help='Trusted existing TypeScript lib/typescript.js; defaults to repo/node_modules');p.add_argument('--budget',type=int,default=8000)
++    a=p.parse_args();repo=cortex.repository(a.repo);ts=Path(a.typescript).resolve(strict=True) if a.typescript else repo/'node_modules/typescript/lib/typescript.js'
++    with cortex.connect(a.db,repo) as db:out=query(repo,db,a.target,a.symbol,a.node,ts,a.budget)
++    print(json.dumps(out,ensure_ascii=False,separators=(',',':')))
++if __name__=='__main__':
++    try:main()
++    except (ValueError,OSError,subprocess.SubprocessError,json.JSONDecodeError) as exc:
++        print('impact error: '+str(exc),file=sys.stderr);sys.exit(2)
+diff --git a/tools/cortex/extract-imports.mjs b/tools/cortex/extract-imports.mjs
+new file mode 100644
+--- /dev/null
++++ b/tools/cortex/extract-imports.mjs
+@@ -0,0 +1,40 @@
++// Parse admitted text only. No source evaluation, tsconfig, plugins or resolution.
++import fs from 'node:fs';
++import {createRequire} from 'node:module';
++const require=createRequire(import.meta.url), ts=require(process.argv[2]);
++const input=JSON.parse(fs.readFileSync(0,'utf8'));
++const result={typescript:ts.version,files:[],edge_count:0};
++for(const file of input){
++  const sf=ts.createSourceFile(file.path,file.text,ts.ScriptTarget.Latest,true);
++  const out={path:file.path,edges:[],computed:0,commonjs:0,parse_errors:sf.parseDiagnostics.length};
++  const str=n=>n&&(ts.isStringLiteral(n)||ts.isNoSubstitutionTemplateLiteral(n))?n.text:null;
++  function emit(node,specifier,kind,names){
++    if(specifier===null){out.computed++;return;}
++    if(++result.edge_count>100000)throw Error('edge budget exceeded');
++    out.edges.push({specifier,kind,names,start:sf.getLineAndCharacterOfPosition(node.getStart(sf)).line+1,end:sf.getLineAndCharacterOfPosition(node.getEnd()).line+1});
++  }
++  function visit(n){
++    if(ts.isImportDeclaration(n)){
++      const c=n.importClause,names=[];
++      if(c?.name)names.push({name:'default',local:c.name.text,type_only:!!c.isTypeOnly});
++      if(c?.namedBindings){
++        if(ts.isNamespaceImport(c.namedBindings))names.push({name:'*',local:c.namedBindings.name.text,type_only:!!c.isTypeOnly});
++        else for(const e of c.namedBindings.elements)names.push({name:(e.propertyName??e.name).text,local:e.name.text,type_only:!!c.isTypeOnly||!!e.isTypeOnly});
++      }
++      emit(n,str(n.moduleSpecifier),'import',names);
++    }else if(ts.isExportDeclaration(n)&&n.moduleSpecifier){
++      const names=[];
++      if(!n.exportClause||ts.isNamespaceExport(n.exportClause))names.push({name:'*',local:n.exportClause?.name.text??'*',type_only:!!n.isTypeOnly});
++      else for(const e of n.exportClause.elements)names.push({name:(e.propertyName??e.name).text,local:e.name.text,type_only:!!n.isTypeOnly||!!e.isTypeOnly});
++      emit(n,str(n.moduleSpecifier),'reexport',names);
++    }else if(ts.isCallExpression(n)&&n.expression.kind===ts.SyntaxKind.ImportKeyword){
++      emit(n,str(n.arguments[0]),'dynamic-import',[{name:'*',local:'*',type_only:false}]);
++    }else if(ts.isImportTypeNode(n)){
++      emit(n,ts.isLiteralTypeNode(n.argument)?str(n.argument.literal):null,'import-type',[{name:'*',local:'*',type_only:true}]);
++    }else if(ts.isImportEqualsDeclaration(n)||(ts.isCallExpression(n)&&ts.isIdentifier(n.expression)&&n.expression.text==='require'))out.commonjs++;
++    ts.forEachChild(n,visit);
++  }
++  if(!out.parse_errors)visit(sf);
++  result.files.push(out);
++}
++process.stdout.write(JSON.stringify(result));
+diff --git a/tools/cortex/IMPACT.md b/tools/cortex/IMPACT.md
+new file mode 100644
+--- /dev/null
++++ b/tools/cortex/IMPACT.md
+@@ -0,0 +1,49 @@
++# Experimental direct-import reader (not enabled by default)
++
++`impact.py` answers “which admitted source files directly import/re-export this module?” It can additionally filter on the original named import, preserving aliases. It supplements Cortex 0.2's lexical retrieval; it does not replace `rg`, select tests, execute source, infer runtime reachability, or implement a causal world model.
++
++The 14 November 2026 local experiment found useful path normalization, but no demonstrated general latency or output-size advantage over good `rg` queries. Keep this optional until a real consumer shows enough repeated benefit to justify maintaining another parser/resolver surface.
++
++## Use
++
++From an Ardesia repository with its existing TypeScript 5.9.3 installation:
++
++```sh
++python3 tools/cortex/impact.py --repo "$PWD" --db /tmp/ardesia-impact.sqlite3 \
++  --target packages/contracts/src/index.ts --symbol migrateSnapshotForOpen \
++  --node /path/to/trusted/node24 --budget 8000
++```
++
++The Python CLI imports the adjacent existing `cortex.py`. The Node helper uses the existing trusted `node_modules/typescript/lib/typescript.js`; `--typescript /absolute/path/to/typescript.js` can specify a trusted installation. No installation, network, server, source evaluation, tsconfig loading, module loading from source imports, or automatic action occurs. Node and the TypeScript implementation are trusted tooling, not sandboxed arbitrary inputs.
++
++## Meaning of a result
++
++- `module`: this source lexically imports/re-exports the requested module.
++- `named`: a named/default import or named re-export explicitly names the requested symbol. This does not prove a valid export exists or that the symbol executes.
++- `possible`: namespace imports, star re-exports, literal dynamic imports, and import-type references name the module but do not establish use of the queried symbol. Do not count them as confirmed symbol consumers.
++- Each edge has source path, exact line range, SHA-256, specifier, syntax kind, alias/type-only data, and an exact excerpt if the entire statement fits 900 bytes. A missing excerpt is explicit; no fabricated context or clipped lines.
++- `total_consumers` counts all matched distinct paths, including `possible`; inspect `match` to obtain confirmed named references. A file with several syntactic references can produce several edges.
++- Output includes target hash, working-tree manifest, HEAD, parser identity, coverage, and byte-budget omissions. It is JSON limited to 1,024–64,000 UTF-8 bytes including the trailing newline (default 8,000); if provenance itself cannot fit it fails rather than silently dropping warnings.
++
++The source manifest describes admitted current working-tree bytes, not a claim that those bytes equal HEAD. Independent writes can occur immediately after any check; this is not an atomic OS snapshot.
++
++## Supported subset and omissions
++
++The existing TypeScript AST parses `.ts`, `.tsx`, `.js`, `.jsx`, `.mjs`, `.mts`. It handles static imports, named/star re-exports, literal dynamic `import()`, and literal TypeScript import types. Comments and string contents do not become edges. It preserves type-only declarations and specifiers. TypeScript parse diagnostics omit that whole file and report it in coverage.
++
++Resolution is deliberately partial and uses only Cortex-admitted files:
++
++- relative explicit extensions, extensionless code files, and directory `index` files;
++- `.js` → `.ts`/`.tsx` and `.mjs` → `.mts` substitution;
++- simple workspace package root exports: a string `exports` or string `exports["."]`, constrained to the package directory;
++- exactly one admitted candidate; ambiguity is reported rather than guessed.
++
++Computed dynamic imports, CommonJS `require`/import-equals, external packages, subpath/conditional exports, `tsconfig` aliases, package `main`, query suffixes, JSDoc imports, path case normalization, full TypeScript resolution precedence, and transitive symbol propagation are unsupported. Dotted extensionless names such as `./file.v2` are not expanded. `coverage` counts unresolved edges and unsupported syntax; counts do not enumerate every possible runtime dependency. Zero results never proves no runtime impact. All normal regression coverage remains required.
++
++## Cache and integrity
++
++The optional cache is stored in a separate table in the selected Cortex SQLite DB. Cortex's same tracked-file allowlist, secret-text exclusion, symlink refusal, source-byte caps, HEAD checks, file hashes, and repo binding apply. Graph identity includes this implementation, extractor, and TypeScript implementation hashes. Any admitted file or manifest change rebuilds the derived graph. Deleted/excluded files disappear after refresh. Ambiguous paths and duplicate package names are not resolved.
++
++Source bytes are hash-checked before parsing; a second corpus refresh checks the parse interval. Query sources and target are rechecked, then the whole corpus is refreshed to catch new incoming edges in previously nonmatching files. Changes cause a retry error, never a stale-success response. A node parser process has a 30-second timeout and a 100,000-edge cap. The current whole-corpus verification is intentionally conservative and is much slower than a raw `rg` search.
++
++Do not place an untrusted DB or untrusted Node/TypeScript implementation into the tooling chain. This is source retrieval tooling, not a security sandbox for attacker-controlled tool binaries/cache files.

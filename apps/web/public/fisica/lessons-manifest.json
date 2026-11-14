@@ -1,0 +1,374 @@
+{
+  "format": "ardesia-reading-edition/1",
+  "status": "DRAFT",
+  "humanApproval": false,
+  "pages": [
+    {
+      "file": "sf-2026-u1-01.html",
+      "unitId": "sf-2026-u1-01",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "questions": 5,
+      "sha256": "34c35eea1b34443d471a34c6b9c0114985494fe493c07dd2693f7d866dacdb82",
+      "rawBytes": 18564,
+      "gzipBytes": 6635
+    },
+    {
+      "file": "sf-2026-u1-02.html",
+      "unitId": "sf-2026-u1-02",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "questions": 7,
+      "sha256": "46e1efab3fa0331c0d79320a485220f02e1549ce3c35987cfb5cbfcb2f0a8ead",
+      "rawBytes": 17821,
+      "gzipBytes": 6354
+    },
+    {
+      "file": "sf-2026-u1-03.html",
+      "unitId": "sf-2026-u1-03",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "questions": 5,
+      "sha256": "4e304d37269ac4c41386dbac3532daa28ae00607cf792f3f92e3c283fc39b756",
+      "rawBytes": 16060,
+      "gzipBytes": 5763
+    },
+    {
+      "file": "sf-2026-u1-04.html",
+      "unitId": "sf-2026-u1-04",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "questions": 6,
+      "sha256": "65dd7c8712453cbb234e9a2673ebba853d6c6f37a622ae79bd5071f857e48e2d",
+      "rawBytes": 16401,
+      "gzipBytes": 6016
+    },
+    {
+      "file": "sf-2026-u2-01.html",
+      "unitId": "sf-2026-u2-01",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "questions": 10,
+      "sha256": "b82e2de5d4f50776c2f3c0010bf8bc2141ad9945f2dc4d71999ff80f9ddbe082",
+      "rawBytes": 21747,
+      "gzipBytes": 7032
+    },
+    {
+      "file": "sf-2026-u2-02.html",
+      "unitId": "sf-2026-u2-02",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "questions": 10,
+      "sha256": "5d60717fc58542572a6682dc4c0f1d1abc3553ab3cad6c674e0af42f9b12853b",
+      "rawBytes": 21343,
+      "gzipBytes": 6883
+    },
+    {
+      "file": "sf-2026-u2-03.html",
+      "unitId": "sf-2026-u2-03",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "questions": 7,
+      "sha256": "d2bbd52fd73535143720c536f67bebf958e0854d66fd07d8b65ee0aadd138e02",
+      "rawBytes": 18714,
+      "gzipBytes": 6512
+    },
+    {
+      "file": "sf-2026-u2-04.html",
+      "unitId": "sf-2026-u2-04",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "questions": 6,
+      "sha256": "6c18998567a436b60a70d3801eea5e57fdfec1510cc5ad40c532d220f51a0e23",
+      "rawBytes": 20086,
+      "gzipBytes": 6865
+    },
+    {
+      "file": "sf-2026-u2-05.html",
+      "unitId": "sf-2026-u2-05",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "questions": 7,
+      "sha256": "65ce33ba2d93f08d53226a42ad9fa93444090f25e2be74ca968fc57bf1e46c4d",
+      "rawBytes": 18368,
+      "gzipBytes": 6284
+    },
+    {
+      "file": "sf-2026-u3-01.html",
+      "unitId": "sf-2026-u3-01",
+      "courseId": "sf-2026-fluidi",
+      "questions": 9,
+      "sha256": "604472a04d90c045acb899d3a237a3296dbca108d279b54cd01fa5e6802f10e9",
+      "rawBytes": 31768,
+      "gzipBytes": 10456
+    },
+    {
+      "file": "sf-2026-u3-02.html",
+      "unitId": "sf-2026-u3-02",
+      "courseId": "sf-2026-fluidi",
+      "questions": 11,
+      "sha256": "6958e5248e0d61442c9829ace1c341017c74b9dee473e8260ba524ffa4ab869a",
+      "rawBytes": 28694,
+      "gzipBytes": 9579
+    },
+    {
+      "file": "sf-2026-u3-03.html",
+      "unitId": "sf-2026-u3-03",
+      "courseId": "sf-2026-fluidi",
+      "questions": 10,
+      "sha256": "46c850c3c83b04ce2fa46575803b9451dffb22efa6c72d03a21864458f1fd075",
+      "rawBytes": 25285,
+      "gzipBytes": 8290
+    },
+    {
+      "file": "sf-2026-u3-04.html",
+      "unitId": "sf-2026-u3-04",
+      "courseId": "sf-2026-fluidi",
+      "questions": 10,
+      "sha256": "0a216a12460474aa9a4f86a9a1f46eb733739a86f76732a0bec27a61cdfae59c",
+      "rawBytes": 26533,
+      "gzipBytes": 9207
+    },
+    {
+      "file": "sf-2026-u3-05.html",
+      "unitId": "sf-2026-u3-05",
+      "courseId": "sf-2026-fluidi",
+      "questions": 9,
+      "sha256": "1bf8e317e07a7f070205defc6a40f8a507f1c39dc23e4258fe24f50da0cb8a38",
+      "rawBytes": 24785,
+      "gzipBytes": 8320
+    },
+    {
+      "file": "sf-2026-u5-01.html",
+      "unitId": "sf-2026-u5-01",
+      "courseId": "sf-2026-termodinamica",
+      "questions": 9,
+      "sha256": "f15b6ea094ec1b1d0b64dfc318b7f95686a7089f7ca41007c849d267eadc4e05",
+      "rawBytes": 22357,
+      "gzipBytes": 7881
+    },
+    {
+      "file": "sf-2026-u5-02.html",
+      "unitId": "sf-2026-u5-02",
+      "courseId": "sf-2026-termodinamica",
+      "questions": 12,
+      "sha256": "39a00f3cf723b3b152ddd4e3dfab069e44400d6bef50204ce1019fbba000bb3d",
+      "rawBytes": 28741,
+      "gzipBytes": 9143
+    },
+    {
+      "file": "sf-2026-u5-03.html",
+      "unitId": "sf-2026-u5-03",
+      "courseId": "sf-2026-termodinamica",
+      "questions": 7,
+      "sha256": "ab9b425fd5073406bb79948cc83461e082b05341b4cba14970e59297c5455a2a",
+      "rawBytes": 20283,
+      "gzipBytes": 7444
+    },
+    {
+      "file": "sf-2026-u5-04.html",
+      "unitId": "sf-2026-u5-04",
+      "courseId": "sf-2026-termodinamica",
+      "questions": 13,
+      "sha256": "d4f72f5a36b0311d2f09b9cc586034209abe2e2ad498f3febcd1c231b394441f",
+      "rawBytes": 29366,
+      "gzipBytes": 9391
+    },
+    {
+      "file": "sf-2026-u5-05.html",
+      "unitId": "sf-2026-u5-05",
+      "courseId": "sf-2026-termodinamica",
+      "questions": 12,
+      "sha256": "6aefeceaf4b62416fe6028a6923bfbfcdff13888d456e23af0a73830423252e5",
+      "rawBytes": 28960,
+      "gzipBytes": 9155
+    },
+    {
+      "file": "sf-2026-u6-01.html",
+      "unitId": "sf-2026-u6-01",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "questions": 8,
+      "sha256": "d33d43102bc8a07700d6ac4eb2d901028c3ce004bf36ed22fed885def3f7db9e",
+      "rawBytes": 21108,
+      "gzipBytes": 7073
+    },
+    {
+      "file": "sf-2026-u6-02.html",
+      "unitId": "sf-2026-u6-02",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "questions": 5,
+      "sha256": "0b3c36b74180653ea963153b2c6c44ec4bd7217478559a277dc62622e3f47ed9",
+      "rawBytes": 15840,
+      "gzipBytes": 5798
+    },
+    {
+      "file": "sf-2026-u6-03.html",
+      "unitId": "sf-2026-u6-03",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "questions": 4,
+      "sha256": "d65d59821c61c428fce6e141685329504b069c1570fffe9a7c9cc7682efc81e5",
+      "rawBytes": 20987,
+      "gzipBytes": 7056
+    },
+    {
+      "file": "sf-2026-u6-04.html",
+      "unitId": "sf-2026-u6-04",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "questions": 8,
+      "sha256": "a834ec73f996e2404f5fb77337a9ad3d262e9f60e1203ef0614110d04abf52a9",
+      "rawBytes": 18935,
+      "gzipBytes": 6601
+    },
+    {
+      "file": "sf-2026-u6-05.html",
+      "unitId": "sf-2026-u6-05",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "questions": 6,
+      "sha256": "ab7c840d27949a3f2be7e43cf979ee0f8f2bb066a4aeae0edfa840c532a16694",
+      "rawBytes": 17682,
+      "gzipBytes": 6214
+    },
+    {
+      "file": "sf-2026-u6-06.html",
+      "unitId": "sf-2026-u6-06",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "questions": 6,
+      "sha256": "a420426e39efd9626ad418e675851dcdf9a27970d9699089ba35a737742e8e41",
+      "rawBytes": 17665,
+      "gzipBytes": 6042
+    },
+    {
+      "file": "sf-2026-u6-07.html",
+      "unitId": "sf-2026-u6-07",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "questions": 5,
+      "sha256": "ccc07a8908bfb4b263138fd509fe1bb337f5dea23085038c5eea7288fa2177bd",
+      "rawBytes": 16927,
+      "gzipBytes": 6002
+    },
+    {
+      "file": "sf-2026-u4-01.html",
+      "unitId": "sf-2026-u4-01",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "questions": 11,
+      "sha256": "140bc9bbe1cccda5d1351d0a7b8dce0fdaed912a483a976daa240a33889c40c7",
+      "rawBytes": 20482,
+      "gzipBytes": 6587
+    },
+    {
+      "file": "sf-2026-u4-02.html",
+      "unitId": "sf-2026-u4-02",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "questions": 4,
+      "sha256": "3965f200867d2c4743c9303f07495e5fa91494389c81567fb6c9c84416102988",
+      "rawBytes": 20660,
+      "gzipBytes": 7443
+    },
+    {
+      "file": "sf-2026-u4-03.html",
+      "unitId": "sf-2026-u4-03",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "questions": 5,
+      "sha256": "86d5180d0e72fb7b73f8214e0f8a836d787c32d4d00e260d3a8593d4c2e2b2d5",
+      "rawBytes": 16741,
+      "gzipBytes": 6092
+    },
+    {
+      "file": "sf-2026-u4-04.html",
+      "unitId": "sf-2026-u4-04",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "questions": 4,
+      "sha256": "a44a2d5f65419604c0fdb45e91331a9c02de1324b7ac6cdafac43879866eddcf",
+      "rawBytes": 16670,
+      "gzipBytes": 6044
+    },
+    {
+      "file": "sf-2026-u4-05.html",
+      "unitId": "sf-2026-u4-05",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "questions": 5,
+      "sha256": "088a091e92acc784b7a8b6fb82ddbe13393107b04ff727316829cd5e05cb8956",
+      "rawBytes": 18579,
+      "gzipBytes": 6176
+    },
+    {
+      "file": "sf-2026-u7-01.html",
+      "unitId": "sf-2026-u7-01",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "questions": 7,
+      "sha256": "342e81421dea562848d01dbf147500fee55dd7c8de146a22fea454d6748c5c62",
+      "rawBytes": 20894,
+      "gzipBytes": 7061
+    },
+    {
+      "file": "sf-2026-u7-02.html",
+      "unitId": "sf-2026-u7-02",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "questions": 9,
+      "sha256": "c1625a2e4af902dc00b0165517a7fbf15c44ab0a25620869d18ebd4daf781c9b",
+      "rawBytes": 19804,
+      "gzipBytes": 6264
+    },
+    {
+      "file": "sf-2026-u7-03.html",
+      "unitId": "sf-2026-u7-03",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "questions": 3,
+      "sha256": "70a9c059f696e0dd42aab8ddff60db72b0ec744631217693e68755a3691f23fd",
+      "rawBytes": 15010,
+      "gzipBytes": 5696
+    },
+    {
+      "file": "sf-2026-u7-04.html",
+      "unitId": "sf-2026-u7-04",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "questions": 5,
+      "sha256": "3bafe66cab89c0ad5322bb88871451c859350ace311fe4a1cead3d1591c13407",
+      "rawBytes": 17020,
+      "gzipBytes": 6211
+    },
+    {
+      "file": "sf-2026-u7-05.html",
+      "unitId": "sf-2026-u7-05",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "questions": 7,
+      "sha256": "28fd19decd4e5a821e7c15709be076f21fd1410a2f4ac50ec834e4460e9711f9",
+      "rawBytes": 18322,
+      "gzipBytes": 6540
+    },
+    {
+      "file": "sf-2026-u7-06.html",
+      "unitId": "sf-2026-u7-06",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "questions": 5,
+      "sha256": "3e53ca891d2f6999ad8d7b5761dd8bfa39b33f1a0acc1221c4b85c52c8ae39df",
+      "rawBytes": 18295,
+      "gzipBytes": 6236
+    },
+    {
+      "file": "sf-2026-u7-07.html",
+      "unitId": "sf-2026-u7-07",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "questions": 7,
+      "sha256": "9db3d9c62225f5f3b55d5eebda22149e46625d8a1905ee6377a8a69ff5a41a28",
+      "rawBytes": 19724,
+      "gzipBytes": 6634
+    }
+  ],
+  "sourcePacks": [
+    {
+      "file": "apps/web/src/courses/physics/data/sf-2026-strumenti-meccanica.json",
+      "sha256": "1c68c1e907f4559132381af77bf963e7e78bf2cc1a178105ff8d26148cecc05e"
+    },
+    {
+      "file": "apps/web/src/courses/physics/data/sf-2026-fluidi.json",
+      "sha256": "67917bd5b7d8c29509f94da51166cbcfda1c5156eeb0a392098aa6365944fbe0"
+    },
+    {
+      "file": "apps/web/src/courses/physics/data/sf-2026-termodinamica.json",
+      "sha256": "5db6dc2f7ee716d57600e6d1e049ad0dc4fb1583a27a8bd6c021530f3551c39b"
+    },
+    {
+      "file": "apps/web/src/courses/physics/data/sf-2026-elettricita-magnetismo.json",
+      "sha256": "83251b9773d99225e5e76be01bc8fead2a4c230885d35e813c1e048e01b5e9fb"
+    },
+    {
+      "file": "apps/web/src/courses/physics/data/sf-2026-onde-ottica-radiazioni.json",
+      "sha256": "67b1f6ba70e171893cf45b803a774c52deb7fbb60c6752cae9dcb7f5ba62a8a4"
+    }
+  ],
+  "sourceSha256": "eb83c417aa4cb395156aa751bf2e3d2912d8c8d0c6f2eee30a2e6cefe5dc765b",
+  "totalRawBytes": 787221,
+  "totalGzipBytes": 268980
+}

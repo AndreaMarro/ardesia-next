@@ -1,0 +1,27 @@
+{
+  "node": "v24.22.1",
+  "terser": "5.51.2",
+  "playwright": "1.56.1",
+  "before": {
+    "raw": 18159,
+    "gzip": 7140,
+    "sha256": "c35117991590f8fa28ec8337add368b6ee6efd911b7e35cc57156a292cb79b62"
+  },
+  "after": {
+    "raw": 19850,
+    "gzip": 7706,
+    "sha256": "935603f9b031b9d5a4e35347506a25ca1decd7e15723a2b1a11e3de7c1a63252"
+  },
+  "deltaGzip": 566,
+  "cssBefore": {
+    "raw": 9044,
+    "gzip": 2798,
+    "sha256": "f8b260e8db72e820cf213a78ca2e9c18cdca882cdc4e199834fbd9e8058a3f98"
+  },
+  "cssAfter": {
+    "raw": 9248,
+    "gzip": 2859,
+    "sha256": "9088f5fa7b6254e97bb21a7f5bd00378c6270184b3445a209bd3e2f7676de6a7"
+  },
+  "classification": "All generated JavaScript remains Core. No limits or categories changed. Root must recompute aggregate after C3 integration."
+}

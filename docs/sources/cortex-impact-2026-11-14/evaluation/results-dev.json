@@ -1,0 +1,1038 @@
+{
+  "evaluated_at": "2026-11-14T03:24:18.978954+00:00",
+  "split": "dev",
+  "protocol_sha256": "1a9e60203948c4e33462f961469368c593512a86903fcb04355863020b815fc9",
+  "implementation_sha256": "dfe122289a112a5f883dbe0e55d17f7f0958e04a7d81205fe3b9bde9cf433631",
+  "extractor_sha256": "eee6abfa26747eb954d95c8c61c43ab5a8059929e5263c8f00a203092ae747df",
+  "corpus": {
+    "updated": 0,
+    "unchanged": 720,
+    "removed": 0,
+    "excluded": 0,
+    "files": 720,
+    "source_bytes": 9297935,
+    "head": "8e1f1d9c31d92375a5d05e4f42594548200d4005",
+    "manifest_sha256": "f78fc32f50131c3b96b8ee7c5ba228177c8d6fc79d47074457af65a1bb31045b",
+    "elapsed_ms": 587.432
+  },
+  "coverage": {
+    "parsed_files": 327,
+    "parse_error_files": [],
+    "computed_dynamic_imports": 5,
+    "unsupported_commonjs": 3,
+    "unresolved": {
+      "external-or-unsupported": 519,
+      "missing": 14
+    },
+    "typescript": "5.9.3",
+    "resolved_edges": 861
+  },
+  "results": [
+    {
+      "case": "physics-import",
+      "comparisons": [
+        {
+          "repeat": 0,
+          "impact_ms": 2344.677336513996,
+          "cache_hit": false,
+          "impact_bytes": 4705,
+          "rg_ms": 6.375251337885857,
+          "rg_bytes": 882,
+          "rg_without_target_bytes": 882,
+          "impact_all": {
+            "found": [
+              "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+              "apps/web/src/courses/physics/assessment-separation.test.ts",
+              "apps/web/src/courses/physics/capacitor.test.ts",
+              "apps/web/src/courses/physics/guided-choices.test.ts",
+              "apps/web/src/courses/physics/heat-engine.test.ts",
+              "apps/web/src/courses/physics/interference.test.ts",
+              "apps/web/src/courses/physics/physics.test.ts",
+              "apps/web/src/courses/physics/pressure.test.ts",
+              "apps/web/src/knowledge/graph.test.ts",
+              "tools/build-physics-pack.mjs"
+            ],
+            "false_positive": [
+              "tools/build-physics-pack.mjs"
+            ],
+            "omitted": [],
+            "precision": 0.9,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+              "apps/web/src/courses/physics/assessment-separation.test.ts",
+              "apps/web/src/courses/physics/capacitor.test.ts",
+              "apps/web/src/courses/physics/guided-choices.test.ts",
+              "apps/web/src/courses/physics/heat-engine.test.ts",
+              "apps/web/src/courses/physics/interference.test.ts",
+              "apps/web/src/courses/physics/physics.test.ts",
+              "apps/web/src/courses/physics/pressure.test.ts",
+              "apps/web/src/knowledge/graph.test.ts",
+              "tools/build-physics-pack.mjs"
+            ],
+            "false_positive": [
+              "tools/build-physics-pack.mjs"
+            ],
+            "omitted": [],
+            "precision": 0.9,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+              "apps/web/src/courses/physics/assessment-separation.test.ts",
+              "apps/web/src/courses/physics/capacitor.test.ts",
+              "apps/web/src/courses/physics/guided-choices.test.ts",
+              "apps/web/src/courses/physics/heat-engine.test.ts",
+              "apps/web/src/courses/physics/interference.test.ts",
+              "apps/web/src/courses/physics/physics.test.ts",
+              "apps/web/src/courses/physics/pressure.test.ts",
+              "apps/web/src/knowledge/graph.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+              "apps/web/src/courses/physics/assessment-separation.test.ts",
+              "apps/web/src/courses/physics/capacitor.test.ts",
+              "apps/web/src/courses/physics/guided-choices.test.ts",
+              "apps/web/src/courses/physics/heat-engine.test.ts",
+              "apps/web/src/courses/physics/interference.test.ts",
+              "apps/web/src/courses/physics/physics.test.ts",
+              "apps/web/src/courses/physics/pressure.test.ts",
+              "apps/web/src/knowledge/graph.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 10,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 1,
+          "impact_ms": 1166.9372078031301,
+          "cache_hit": true,
+          "impact_bytes": 4704,
+          "rg_ms": 7.8552886843681335,
+          "rg_bytes": 882,
+          "rg_without_target_bytes": 882,
+          "impact_all": {
+            "found": [
+              "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+              "apps/web/src/courses/physics/assessment-separation.test.ts",
+              "apps/web/src/courses/physics/capacitor.test.ts",
+              "apps/web/src/courses/physics/guided-choices.test.ts",
+              "apps/web/src/courses/physics/heat-engine.test.ts",
+              "apps/web/src/courses/physics/interference.test.ts",
+              "apps/web/src/courses/physics/physics.test.ts",
+              "apps/web/src/courses/physics/pressure.test.ts",
+              "apps/web/src/knowledge/graph.test.ts",
+              "tools/build-physics-pack.mjs"
+            ],
+            "false_positive": [
+              "tools/build-physics-pack.mjs"
+            ],
+            "omitted": [],
+            "precision": 0.9,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+              "apps/web/src/courses/physics/assessment-separation.test.ts",
+              "apps/web/src/courses/physics/capacitor.test.ts",
+              "apps/web/src/courses/physics/guided-choices.test.ts",
+              "apps/web/src/courses/physics/heat-engine.test.ts",
+              "apps/web/src/courses/physics/interference.test.ts",
+              "apps/web/src/courses/physics/physics.test.ts",
+              "apps/web/src/courses/physics/pressure.test.ts",
+              "apps/web/src/knowledge/graph.test.ts",
+              "tools/build-physics-pack.mjs"
+            ],
+            "false_positive": [
+              "tools/build-physics-pack.mjs"
+            ],
+            "omitted": [],
+            "precision": 0.9,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+              "apps/web/src/courses/physics/assessment-separation.test.ts",
+              "apps/web/src/courses/physics/capacitor.test.ts",
+              "apps/web/src/courses/physics/guided-choices.test.ts",
+              "apps/web/src/courses/physics/heat-engine.test.ts",
+              "apps/web/src/courses/physics/interference.test.ts",
+              "apps/web/src/courses/physics/physics.test.ts",
+              "apps/web/src/courses/physics/pressure.test.ts",
+              "apps/web/src/knowledge/graph.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+              "apps/web/src/courses/physics/assessment-separation.test.ts",
+              "apps/web/src/courses/physics/capacitor.test.ts",
+              "apps/web/src/courses/physics/guided-choices.test.ts",
+              "apps/web/src/courses/physics/heat-engine.test.ts",
+              "apps/web/src/courses/physics/interference.test.ts",
+              "apps/web/src/courses/physics/physics.test.ts",
+              "apps/web/src/courses/physics/pressure.test.ts",
+              "apps/web/src/knowledge/graph.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 10,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 2,
+          "impact_ms": 1171.0030399262905,
+          "cache_hit": true,
+          "impact_bytes": 4704,
+          "rg_ms": 6.23033381998539,
+          "rg_bytes": 882,
+          "rg_without_target_bytes": 882,
+          "impact_all": {
+            "found": [
+              "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+              "apps/web/src/courses/physics/assessment-separation.test.ts",
+              "apps/web/src/courses/physics/capacitor.test.ts",
+              "apps/web/src/courses/physics/guided-choices.test.ts",
+              "apps/web/src/courses/physics/heat-engine.test.ts",
+              "apps/web/src/courses/physics/interference.test.ts",
+              "apps/web/src/courses/physics/physics.test.ts",
+              "apps/web/src/courses/physics/pressure.test.ts",
+              "apps/web/src/knowledge/graph.test.ts",
+              "tools/build-physics-pack.mjs"
+            ],
+            "false_positive": [
+              "tools/build-physics-pack.mjs"
+            ],
+            "omitted": [],
+            "precision": 0.9,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+              "apps/web/src/courses/physics/assessment-separation.test.ts",
+              "apps/web/src/courses/physics/capacitor.test.ts",
+              "apps/web/src/courses/physics/guided-choices.test.ts",
+              "apps/web/src/courses/physics/heat-engine.test.ts",
+              "apps/web/src/courses/physics/interference.test.ts",
+              "apps/web/src/courses/physics/physics.test.ts",
+              "apps/web/src/courses/physics/pressure.test.ts",
+              "apps/web/src/knowledge/graph.test.ts",
+              "tools/build-physics-pack.mjs"
+            ],
+            "false_positive": [
+              "tools/build-physics-pack.mjs"
+            ],
+            "omitted": [],
+            "precision": 0.9,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+              "apps/web/src/courses/physics/assessment-separation.test.ts",
+              "apps/web/src/courses/physics/capacitor.test.ts",
+              "apps/web/src/courses/physics/guided-choices.test.ts",
+              "apps/web/src/courses/physics/heat-engine.test.ts",
+              "apps/web/src/courses/physics/interference.test.ts",
+              "apps/web/src/courses/physics/physics.test.ts",
+              "apps/web/src/courses/physics/pressure.test.ts",
+              "apps/web/src/knowledge/graph.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+              "apps/web/src/courses/physics/assessment-separation.test.ts",
+              "apps/web/src/courses/physics/capacitor.test.ts",
+              "apps/web/src/courses/physics/guided-choices.test.ts",
+              "apps/web/src/courses/physics/heat-engine.test.ts",
+              "apps/web/src/courses/physics/interference.test.ts",
+              "apps/web/src/courses/physics/physics.test.ts",
+              "apps/web/src/courses/physics/pressure.test.ts",
+              "apps/web/src/knowledge/graph.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 10,
+          "omitted_by_budget": 0
+        }
+      ]
+    },
+    {
+      "case": "migration-symbol",
+      "comparisons": [
+        {
+          "repeat": 0,
+          "impact_ms": 1250.1276228576899,
+          "cache_hit": true,
+          "impact_bytes": 5486,
+          "rg_ms": 7.949415594339371,
+          "rg_bytes": 2637,
+          "rg_without_target_bytes": 2535,
+          "impact_all": {
+            "found": [
+              "packages/contracts/src/json.test.ts",
+              "packages/core/src/courses.test.ts",
+              "packages/core/src/feedback.test.ts",
+              "packages/core/src/index.ts",
+              "packages/core/src/learning.test.ts",
+              "packages/core/src/materials.test.ts",
+              "packages/remote-client/src/index.ts",
+              "packages/server/src/backup.ts",
+              "packages/server/src/legacy-import.ts",
+              "packages/server/src/store.ts"
+            ],
+            "false_positive": [
+              "packages/remote-client/src/index.ts"
+            ],
+            "omitted": [],
+            "precision": 0.9,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "packages/contracts/src/json.test.ts",
+              "packages/core/src/courses.test.ts",
+              "packages/core/src/feedback.test.ts",
+              "packages/core/src/index.ts",
+              "packages/core/src/learning.test.ts",
+              "packages/core/src/materials.test.ts",
+              "packages/server/src/backup.ts",
+              "packages/server/src/legacy-import.ts",
+              "packages/server/src/store.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "packages/contracts/src/index.ts",
+              "packages/contracts/src/json.test.ts",
+              "packages/core/src/courses.test.ts",
+              "packages/core/src/feedback.test.ts",
+              "packages/core/src/index.ts",
+              "packages/core/src/learning.test.ts",
+              "packages/core/src/materials.test.ts",
+              "packages/server/src/backup.ts",
+              "packages/server/src/legacy-import.ts",
+              "packages/server/src/store.ts"
+            ],
+            "false_positive": [
+              "packages/contracts/src/index.ts"
+            ],
+            "omitted": [],
+            "precision": 0.9,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "packages/contracts/src/json.test.ts",
+              "packages/core/src/courses.test.ts",
+              "packages/core/src/feedback.test.ts",
+              "packages/core/src/index.ts",
+              "packages/core/src/learning.test.ts",
+              "packages/core/src/materials.test.ts",
+              "packages/server/src/backup.ts",
+              "packages/server/src/legacy-import.ts",
+              "packages/server/src/store.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 10,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 1,
+          "impact_ms": 1182.7918756753206,
+          "cache_hit": true,
+          "impact_bytes": 5486,
+          "rg_ms": 7.7781230211257935,
+          "rg_bytes": 2637,
+          "rg_without_target_bytes": 2535,
+          "impact_all": {
+            "found": [
+              "packages/contracts/src/json.test.ts",
+              "packages/core/src/courses.test.ts",
+              "packages/core/src/feedback.test.ts",
+              "packages/core/src/index.ts",
+              "packages/core/src/learning.test.ts",
+              "packages/core/src/materials.test.ts",
+              "packages/remote-client/src/index.ts",
+              "packages/server/src/backup.ts",
+              "packages/server/src/legacy-import.ts",
+              "packages/server/src/store.ts"
+            ],
+            "false_positive": [
+              "packages/remote-client/src/index.ts"
+            ],
+            "omitted": [],
+            "precision": 0.9,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "packages/contracts/src/json.test.ts",
+              "packages/core/src/courses.test.ts",
+              "packages/core/src/feedback.test.ts",
+              "packages/core/src/index.ts",
+              "packages/core/src/learning.test.ts",
+              "packages/core/src/materials.test.ts",
+              "packages/server/src/backup.ts",
+              "packages/server/src/legacy-import.ts",
+              "packages/server/src/store.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "packages/contracts/src/index.ts",
+              "packages/contracts/src/json.test.ts",
+              "packages/core/src/courses.test.ts",
+              "packages/core/src/feedback.test.ts",
+              "packages/core/src/index.ts",
+              "packages/core/src/learning.test.ts",
+              "packages/core/src/materials.test.ts",
+              "packages/server/src/backup.ts",
+              "packages/server/src/legacy-import.ts",
+              "packages/server/src/store.ts"
+            ],
+            "false_positive": [
+              "packages/contracts/src/index.ts"
+            ],
+            "omitted": [],
+            "precision": 0.9,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "packages/contracts/src/json.test.ts",
+              "packages/core/src/courses.test.ts",
+              "packages/core/src/feedback.test.ts",
+              "packages/core/src/index.ts",
+              "packages/core/src/learning.test.ts",
+              "packages/core/src/materials.test.ts",
+              "packages/server/src/backup.ts",
+              "packages/server/src/legacy-import.ts",
+              "packages/server/src/store.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 10,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 2,
+          "impact_ms": 1178.2117076218128,
+          "cache_hit": true,
+          "impact_bytes": 5486,
+          "rg_ms": 6.280373781919479,
+          "rg_bytes": 2637,
+          "rg_without_target_bytes": 2535,
+          "impact_all": {
+            "found": [
+              "packages/contracts/src/json.test.ts",
+              "packages/core/src/courses.test.ts",
+              "packages/core/src/feedback.test.ts",
+              "packages/core/src/index.ts",
+              "packages/core/src/learning.test.ts",
+              "packages/core/src/materials.test.ts",
+              "packages/remote-client/src/index.ts",
+              "packages/server/src/backup.ts",
+              "packages/server/src/legacy-import.ts",
+              "packages/server/src/store.ts"
+            ],
+            "false_positive": [
+              "packages/remote-client/src/index.ts"
+            ],
+            "omitted": [],
+            "precision": 0.9,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "packages/contracts/src/json.test.ts",
+              "packages/core/src/courses.test.ts",
+              "packages/core/src/feedback.test.ts",
+              "packages/core/src/index.ts",
+              "packages/core/src/learning.test.ts",
+              "packages/core/src/materials.test.ts",
+              "packages/server/src/backup.ts",
+              "packages/server/src/legacy-import.ts",
+              "packages/server/src/store.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "packages/contracts/src/index.ts",
+              "packages/contracts/src/json.test.ts",
+              "packages/core/src/courses.test.ts",
+              "packages/core/src/feedback.test.ts",
+              "packages/core/src/index.ts",
+              "packages/core/src/learning.test.ts",
+              "packages/core/src/materials.test.ts",
+              "packages/server/src/backup.ts",
+              "packages/server/src/legacy-import.ts",
+              "packages/server/src/store.ts"
+            ],
+            "false_positive": [
+              "packages/contracts/src/index.ts"
+            ],
+            "omitted": [],
+            "precision": 0.9,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "packages/contracts/src/json.test.ts",
+              "packages/core/src/courses.test.ts",
+              "packages/core/src/feedback.test.ts",
+              "packages/core/src/index.ts",
+              "packages/core/src/learning.test.ts",
+              "packages/core/src/materials.test.ts",
+              "packages/server/src/backup.ts",
+              "packages/server/src/legacy-import.ts",
+              "packages/server/src/store.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 10,
+          "omitted_by_budget": 0
+        }
+      ]
+    },
+    {
+      "case": "learning-evidence",
+      "comparisons": [
+        {
+          "repeat": 0,
+          "impact_ms": 1157.2672482579947,
+          "cache_hit": true,
+          "impact_bytes": 2280,
+          "rg_ms": 7.838165387511253,
+          "rg_bytes": 370,
+          "rg_without_target_bytes": 370,
+          "impact_all": {
+            "found": [
+              "packages/lesson-os/src/index.ts",
+              "packages/lesson-os/src/learning-diary.ts",
+              "packages/lesson-os/src/learning-evidence.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "packages/lesson-os/src/index.ts",
+              "packages/lesson-os/src/learning-diary.ts",
+              "packages/lesson-os/src/learning-evidence.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "packages/lesson-os/src/index.ts",
+              "packages/lesson-os/src/learning-diary.ts",
+              "packages/lesson-os/src/learning-evidence.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "packages/lesson-os/src/index.ts",
+              "packages/lesson-os/src/learning-diary.ts",
+              "packages/lesson-os/src/learning-evidence.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 3,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 1,
+          "impact_ms": 1169.0587904304266,
+          "cache_hit": true,
+          "impact_bytes": 2280,
+          "rg_ms": 6.301291286945343,
+          "rg_bytes": 370,
+          "rg_without_target_bytes": 370,
+          "impact_all": {
+            "found": [
+              "packages/lesson-os/src/index.ts",
+              "packages/lesson-os/src/learning-diary.ts",
+              "packages/lesson-os/src/learning-evidence.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "packages/lesson-os/src/index.ts",
+              "packages/lesson-os/src/learning-diary.ts",
+              "packages/lesson-os/src/learning-evidence.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "packages/lesson-os/src/index.ts",
+              "packages/lesson-os/src/learning-diary.ts",
+              "packages/lesson-os/src/learning-evidence.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "packages/lesson-os/src/index.ts",
+              "packages/lesson-os/src/learning-diary.ts",
+              "packages/lesson-os/src/learning-evidence.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 3,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 2,
+          "impact_ms": 1176.6482926905155,
+          "cache_hit": true,
+          "impact_bytes": 2280,
+          "rg_ms": 6.4338743686676025,
+          "rg_bytes": 370,
+          "rg_without_target_bytes": 370,
+          "impact_all": {
+            "found": [
+              "packages/lesson-os/src/index.ts",
+              "packages/lesson-os/src/learning-diary.ts",
+              "packages/lesson-os/src/learning-evidence.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "packages/lesson-os/src/index.ts",
+              "packages/lesson-os/src/learning-diary.ts",
+              "packages/lesson-os/src/learning-evidence.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "packages/lesson-os/src/index.ts",
+              "packages/lesson-os/src/learning-diary.ts",
+              "packages/lesson-os/src/learning-evidence.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "packages/lesson-os/src/index.ts",
+              "packages/lesson-os/src/learning-diary.ts",
+              "packages/lesson-os/src/learning-evidence.test.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 3,
+          "omitted_by_budget": 0
+        }
+      ]
+    },
+    {
+      "case": "creator-dynamic",
+      "comparisons": [
+        {
+          "repeat": 0,
+          "impact_ms": 1176.1585418134928,
+          "cache_hit": true,
+          "impact_bytes": 1453,
+          "rg_ms": 8.310751989483833,
+          "rg_bytes": 403,
+          "rg_without_target_bytes": 403,
+          "impact_all": {
+            "found": [
+              "apps/web/src/creator/ProgramPreview.tsx"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "apps/web/src/creator/ProgramPreview.tsx"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "apps/web/src/creator/ProgramPreview.tsx"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "apps/web/src/creator/ProgramPreview.tsx"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 1,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 1,
+          "impact_ms": 1156.0666244477034,
+          "cache_hit": true,
+          "impact_bytes": 1453,
+          "rg_ms": 7.7983308583498,
+          "rg_bytes": 403,
+          "rg_without_target_bytes": 403,
+          "impact_all": {
+            "found": [
+              "apps/web/src/creator/ProgramPreview.tsx"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "apps/web/src/creator/ProgramPreview.tsx"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "apps/web/src/creator/ProgramPreview.tsx"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "apps/web/src/creator/ProgramPreview.tsx"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 1,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 2,
+          "impact_ms": 1162.1610391885042,
+          "cache_hit": true,
+          "impact_bytes": 1453,
+          "rg_ms": 7.929500192403793,
+          "rg_bytes": 403,
+          "rg_without_target_bytes": 403,
+          "impact_all": {
+            "found": [
+              "apps/web/src/creator/ProgramPreview.tsx"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "apps/web/src/creator/ProgramPreview.tsx"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "apps/web/src/creator/ProgramPreview.tsx"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "apps/web/src/creator/ProgramPreview.tsx"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 1,
+          "omitted_by_budget": 0
+        }
+      ]
+    },
+    {
+      "case": "render-queue",
+      "comparisons": [
+        {
+          "repeat": 0,
+          "impact_ms": 1171.906165778637,
+          "cache_hit": true,
+          "impact_bytes": 2134,
+          "rg_ms": 6.464499980211258,
+          "rg_bytes": 312,
+          "rg_without_target_bytes": 312,
+          "impact_all": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render-queue.test.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render-queue.test.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render-queue.test.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render-queue.test.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 3,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 1,
+          "impact_ms": 1153.3151231706142,
+          "cache_hit": true,
+          "impact_bytes": 2134,
+          "rg_ms": 6.482580676674843,
+          "rg_bytes": 312,
+          "rg_without_target_bytes": 312,
+          "impact_all": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render-queue.test.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render-queue.test.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render-queue.test.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render-queue.test.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 3,
+          "omitted_by_budget": 0
+        },
+        {
+          "repeat": 2,
+          "impact_ms": 1160.0570846349,
+          "cache_hit": true,
+          "impact_bytes": 2134,
+          "rg_ms": 7.623415440320969,
+          "rg_bytes": 312,
+          "rg_without_target_bytes": 312,
+          "impact_all": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render-queue.test.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "impact_named": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render-queue.test.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render-queue.test.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "rg_without_target": {
+            "found": [
+              "apps/web/src/materials/files.ts",
+              "apps/web/src/materials/render-queue.test.ts",
+              "apps/web/src/materials/render.ts"
+            ],
+            "false_positive": [],
+            "omitted": [],
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "total_edges": 3,
+          "omitted_by_budget": 0
+        }
+      ]
+    }
+  ]
+}

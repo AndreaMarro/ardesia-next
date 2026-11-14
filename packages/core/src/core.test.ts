@@ -119,6 +119,13 @@ describe('Core authority and persistence', () => {
     const mismatch = core.snapshot();
     mismatch.documents[0]!.revision = 2;
     expect(CoreSnapshotSchema.safeParse(mismatch).success).toBe(false);
+    for (const damaged of [missingReceipt, mismatch]) {
+      expect(damaged.schemaVersion).toBe(11);
+      const bytes = JSON.stringify(damaged); let writes = 0;
+      const storage: StorageAdapter = {read: async () => damaged, write: async () => {writes++;}};
+      await expect(createCore(deterministic(storage))).rejects.toMatchObject({code: 'INVALID_SNAPSHOT'});
+      expect(writes).toBe(0); expect(JSON.stringify(damaged)).toBe(bytes);
+    }
   });
 
   it('does not let callers mutate canonical objects, receipts or queued input', async () => {

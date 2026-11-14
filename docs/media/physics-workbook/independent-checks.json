@@ -1,0 +1,237 @@
+{
+  "checks": [
+    {
+      "name": "C1 momentum",
+      "computed": 3,
+      "expected": 3,
+      "passed": true
+    },
+    {
+      "name": "C1 initial K",
+      "computed": 4.5,
+      "expected": 4.5,
+      "passed": true
+    },
+    {
+      "name": "C1 joined v",
+      "computed": 0.75,
+      "expected": 0.75,
+      "passed": true
+    },
+    {
+      "name": "C1 joined K",
+      "computed": 1.125,
+      "expected": 1.125,
+      "passed": true
+    },
+    {
+      "name": "C1 joined loss",
+      "computed": 3.375,
+      "expected": 3.375,
+      "passed": true
+    },
+    {
+      "name": "C1 elastic vA",
+      "computed": -1.5,
+      "expected": -1.5,
+      "passed": true
+    },
+    {
+      "name": "C1 elastic vB",
+      "computed": 1.5,
+      "expected": 1.5,
+      "passed": true
+    },
+    {
+      "name": "C1 elastic p",
+      "computed": 3.0,
+      "expected": 3,
+      "passed": true
+    },
+    {
+      "name": "C1 elastic K",
+      "computed": 4.5,
+      "expected": 4.5,
+      "passed": true
+    },
+    {
+      "name": "C1 transfer v",
+      "computed": 1.0,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "C1 transfer K",
+      "computed": 1.5,
+      "expected": 1.5,
+      "passed": true
+    },
+    {
+      "name": "C1 transfer loss",
+      "computed": 3.0,
+      "expected": 3,
+      "passed": true
+    },
+    {
+      "name": "C2 radius 0.5",
+      "computed": 0.0625,
+      "expected": 0.0625,
+      "passed": true
+    },
+    {
+      "name": "C2 radius 1",
+      "computed": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "C2 radius 1.5",
+      "computed": 5.0625,
+      "expected": 5.0625,
+      "passed": true
+    },
+    {
+      "name": "C2 percentage",
+      "computed": 6.25,
+      "expected": 6.25,
+      "passed": true
+    },
+    {
+      "name": "C2 half flow radius",
+      "computed": 0.8408964152537145,
+      "expected": 0.8408964152537145,
+      "passed": true
+    },
+    {
+      "name": "C2 radius percentage reduction",
+      "computed": 15.91035847462855,
+      "expected": 15.9103584746,
+      "passed": true
+    },
+    {
+      "name": "C3 TiVi",
+      "computed": 2494.34,
+      "expected": 2494.34,
+      "passed": true
+    },
+    {
+      "name": "C3 Tf",
+      "computed": 900.0,
+      "expected": 900,
+      "passed": true
+    },
+    {
+      "name": "C3 dU",
+      "computed": 7483.02,
+      "expected": 7483.02,
+      "passed": true
+    },
+    {
+      "name": "C3 WA",
+      "computed": 1247.17,
+      "expected": 1247.17,
+      "passed": true
+    },
+    {
+      "name": "C3 WB",
+      "computed": 2494.34,
+      "expected": 2494.34,
+      "passed": true
+    },
+    {
+      "name": "C3 QA",
+      "computed": 8730.19,
+      "expected": 8730.19,
+      "passed": true
+    },
+    {
+      "name": "C3 QB",
+      "computed": 9977.36,
+      "expected": 9977.36,
+      "passed": true
+    },
+    {
+      "name": "C3 transfer product",
+      "computed": 2000.0,
+      "expected": 2000.0,
+      "passed": true
+    },
+    {
+      "name": "C3 transfer W=Q",
+      "computed": -2000.0,
+      "expected": -2000,
+      "passed": true
+    },
+    {
+      "name": "C4 center E",
+      "computed": 28.086,
+      "expected": 28.086,
+      "passed": true
+    },
+    {
+      "name": "C4 positive center V",
+      "computed": 22.469,
+      "expected": 22.469,
+      "passed": true
+    },
+    {
+      "name": "C4 off-axis Ey",
+      "computed": 0.0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "C4 off-axis V",
+      "computed": 0.0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "C5 instantaneous 0",
+      "computed": 2.0,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "C5 amplitude 0",
+      "computed": 2.0,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "C5 instantaneous 120",
+      "computed": 0.5000000000000002,
+      "expected": 0.5,
+      "passed": true
+    },
+    {
+      "name": "C5 amplitude 120",
+      "computed": 1.0000000000000002,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "C5 instantaneous 180",
+      "computed": 0.0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "C5 amplitude 180",
+      "computed": 1.2246467991473532e-16,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "C5 unequal opposite amplitude",
+      "computed": 1.0,
+      "expected": 1,
+      "passed": true
+    }
+  ],
+  "passed": 38,
+  "hashes": {
+    "work/lab-workbook/Quaderno-degli-esperimenti-C1-C5.pdf": "7d91231930f53ade5ac7b2661bece8605e81b295d68f217c6881d6cd4cc70043",
+    "work/lab-workbook/build.py": "ee911225467adea5c8a7633fc687e34c8318dfbf5276a2a66aa7260edbc3f698"
+  }
+}
