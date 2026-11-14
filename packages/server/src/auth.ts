@@ -1,6 +1,6 @@
 import {randomBytes, randomUUID, scrypt, timingSafeEqual} from 'node:crypto';
 import type {Pool, PoolClient} from 'pg';
-import {hash, transaction} from './database';
+import {hash, requireCurrentSchema, transaction} from './database';
 import {ServerError, unauthenticated} from './errors';
 import type {Account, Session} from './types';
 
@@ -92,12 +92,14 @@ async function checkLoginRate(pool: Pool, username: string): Promise<void> {
 }
 
 export async function login(pool: Pool, username: string, password: string, lifetimeSeconds: number, oldToken?: string): Promise<Session & {token: string}> {
+  await transaction(pool, requireCurrentSchema);
   await checkLoginRate(pool, username);
   const candidates = await pool.query('SELECT id,username,display_name,role,password_hash,disabled_at FROM ardesia_next.accounts WHERE username = $1', [username]);
   const account = candidates.rows[0];
   const valid = await checkPassword(password, account?.password_hash ?? DUMMY);
   if (!account || !valid || account.disabled_at !== null) throw new ServerError('INVALID_CREDENTIALS', 'The sign-in details are not valid.', 401);
   return transaction(pool, async client => {
+    await requireCurrentSchema(client);
     const checked = await client.query('SELECT id,display_name,role,password_hash,disabled_at FROM ardesia_next.accounts WHERE id = $1 FOR UPDATE', [account.id]);
     const current = checked.rows[0];
     if (!current || current.disabled_at !== null || current.password_hash !== account.password_hash) throw unauthenticated();

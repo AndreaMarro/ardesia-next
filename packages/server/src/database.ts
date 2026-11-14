@@ -1,14 +1,36 @@
 import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
-import {readFile} from 'node:fs/promises';
 import {isIP} from 'node:net';
 import {checkServerIdentity, type ConnectionOptions} from 'node:tls';
 import {Pool, type PoolClient, type PoolConfig} from 'pg';
 import {ServerError} from './errors';
+import {migrations} from './migrations';
 
 export {Pool};
 export type {PoolClient};
 export const hash = (value: string) => createHash('sha256').update(value, 'utf8').digest('hex');
+const migrationLock = 'ardesia-next-migrations';
+
+/** Called inside the request transaction, before confirming any data operation. */
+export async function requireCurrentSchema(client: PoolClient): Promise<void> {
+  const upgradeRequired = () => new ServerError('SERVICE_UPGRADE_REQUIRED',
+    'The service requires a database update before it can accept changes. Saved data has not been modified.', 503);
+  // The operator takes the exclusive form of this same lock. No readiness result
+  // is cached across requests or allowed to outlive the transaction it protects.
+  await client.query('SELECT pg_advisory_xact_lock_shared(hashtextextended($1, 0))', [migrationLock]);
+  let rows: {version: number; digest: string}[];
+  try {
+    rows = (await client.query<{version: number; digest: string}>(
+      'SELECT version,digest FROM ardesia_next.schema_migrations ORDER BY version')).rows;
+  } catch (error) {
+    // Old deployments have no registry read grant; absent metadata is also an
+    // upgrade requirement. Connectivity and other driver errors remain generic.
+    if (['42501', '42P01', '42703'].includes(String((error as {code?: unknown})?.code))) throw upgradeRequired();
+    throw error;
+  }
+  if (rows.length !== migrations.length || rows.some((row, index) =>
+    row.version !== migrations[index]!.version || row.digest !== migrations[index]!.digest)) throw upgradeRequired();
+}
 
 function secureConnection(connectionString: string, configured: PoolConfig['ssl']): {connectionString: string; ssl?: PoolConfig['ssl']} {
   let url: URL;
@@ -65,19 +87,20 @@ export async function transaction<T>(pool: Pool, operation: (client: PoolClient)
 
 /** Operator-only, explicit migration. No request handler calls this function. */
 export async function migrate(pool: Pool): Promise<{version: number; digest: string}> {
-  const migrations = await Promise.all(['001_initial.sql', '002_recordings.sql', '003_learning_feedback.sql', '004_extensions.sql', '005_courses.sql', '006_tutor.sql', '007_materials.sql', '008_tutor_economics.sql', '009_notebooks.sql'].map(async name => {
-    const sql = await readFile(new URL('../migrations/' + name, import.meta.url), 'utf8'); return {sql, digest: hash(sql)};
-  }));
   return transaction(pool, async client => {
-    await client.query("SELECT pg_advisory_xact_lock(hashtextextended('ardesia-next-migrations', 0))");
+    await client.query('SELECT pg_advisory_xact_lock(hashtextextended($1, 0))', [migrationLock]);
     const legacy = await client.query("SELECT to_regclass('public.study_resources') IS NOT NULL OR to_regclass('public.study_principals') IS NOT NULL AS present");
     if (legacy.rows[0]?.present) throw new ServerError('LEGACY_DATABASE_REFUSED', 'Use a dedicated Ardesia Next database; the legacy database was not changed.', 409);
     await client.query('CREATE SCHEMA IF NOT EXISTS ardesia_next');
     await client.query('REVOKE ALL ON SCHEMA ardesia_next FROM PUBLIC');
     await client.query('CREATE TABLE IF NOT EXISTS ardesia_next.schema_migrations (version integer PRIMARY KEY, digest text NOT NULL, applied_at timestamptz NOT NULL DEFAULT now())');
     await client.query('REVOKE ALL ON ardesia_next.schema_migrations FROM PUBLIC');
-    for (const [index, migration] of migrations.entries()) {
-      const version = index + 1;
+    const registered = await client.query<{version: number}>('SELECT version FROM ardesia_next.schema_migrations');
+    if (registered.rows.some(row => row.version < 1 || row.version > migrations.length)) {
+      throw new ServerError('MIGRATION_DRIFT', 'The applied migration registry differs from the reviewed SQL.', 409);
+    }
+    for (const migration of migrations) {
+      const {version} = migration;
       const applied = await client.query('SELECT digest FROM ardesia_next.schema_migrations WHERE version=$1', [version]);
       if (applied.rows[0]) {
         if (applied.rows[0].digest !== migration.digest) throw new ServerError('MIGRATION_DRIFT', 'The applied migration differs from the reviewed SQL.', 409);
