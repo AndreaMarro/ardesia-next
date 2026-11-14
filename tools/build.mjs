@@ -14,6 +14,8 @@ import './build-physics-lessons.mjs';
 import {buildPhysicsField} from './build-physics-field.mjs';
 buildPhysicsField();
 await import('./build-physics-exam.mjs');
+const {writeThermodynamicsManifest}=await import('./build-physics-thermodynamics.mjs');
+writeThermodynamicsManifest();
 await checkPluginBuild();
 const build = {...identity(), application: 'ardesia-next', milestone: 'M3', persistence: 'remote-postgres-required', remoteAcceptance: 'INCOMPLETE', thirdPartyExecution: true, programRuntime: {abi: 'ardesia.program/1', policy: 'ephemeral-explicit-consent-no-io', engine: 'quickjs-emscripten@0.32.0'}};
 if(process.env.VERCEL && build.commit === 'local-uncommitted') throw new Error('Remote build requires a source SHA');

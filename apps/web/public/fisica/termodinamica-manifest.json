@@ -1,0 +1,27 @@
+{
+  "format": "ardesia-thermodynamics-lab/1",
+  "status": "DRAFT",
+  "humanApproval": false,
+  "lesson": "sf-2026-u5-04",
+  "lessonDocumentId": "sf-2026-termodinamica-v1:sf-2026-u5-04",
+  "lessonRevision": 37,
+  "sourcePack": {
+    "file": "apps/web/src/courses/physics/data/sf-2026-termodinamica.json",
+    "sha256": "5db6dc2f7ee716d57600e6d1e049ad0dc4fb1583a27a8bd6c021530f3551c39b"
+  },
+  "model": "Closed monatomic ideal gas, quasistatic p-V boundary work; two rectangular paths between the same endpoints.",
+  "files": [
+    {
+      "file": "termodinamica.html",
+      "rawBytes": 11234,
+      "gzipBytes": 4463,
+      "sha256": "2e768bb0250a8306819bbbed34be7b1400f2db1caa70394d0d4231fbca843d1a"
+    },
+    {
+      "file": "termodinamica.js",
+      "rawBytes": 3466,
+      "gzipBytes": 1747,
+      "sha256": "86183391e8deac4f9bdfbf6dc96d613198bf0faffad0e2fd683a8a9e492362bb"
+    }
+  ]
+}

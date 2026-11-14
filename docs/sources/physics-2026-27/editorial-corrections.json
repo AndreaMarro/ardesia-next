@@ -40,5 +40,20 @@
     },
     "humanScientificReview": "NOT_RUN",
     "exactSymbolicAnswerChanged": false
+  },
+  {
+    "unitId": "sf-2026-u7-07",
+    "date": "2026-11-14",
+    "kind": "model_scope_clarification",
+    "reason": "Thin-lens and paraxial assumptions were incorrectly applied to reflection and Snell law as well.",
+    "change": "Le relazioni della lente e dell’ingrandimento qui usate richiedono il modello di lente sottile e raggi vicini all’asse; riflessione e rifrazione sono trattate nel modello dell’ottica geometrica.",
+    "counterexample": {
+      "interface": "water n=4/3 to air n=1",
+      "sinIncidentAngle": 0.9,
+      "snellRequiredSinTransmitted": 1.2,
+      "conclusion": "Total internal reflection at a non-paraxial angle; no thin lens is involved."
+    },
+    "humanScientificReview": "NOT_RUN",
+    "exactSymbolicAnswerChanged": false
   }
 ]

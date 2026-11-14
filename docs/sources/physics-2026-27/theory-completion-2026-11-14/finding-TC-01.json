@@ -1,0 +1,23 @@
+{
+  "id": "TC-01",
+  "severity": "low: material scope clarification, not a wrong worked numerical result",
+  "status": "reported to root; correction accepted, integration pending",
+  "source": "docs/sources/physics-2026-27/editorial/courses.json",
+  "sourceSHA256": "e8d7544619576d352c774cc5ec68653fa8095a05e039ccb1b53be8958c59ab2a",
+  "unitId": "sf-2026-u7-07",
+  "field": "explanation",
+  "original": "Tutte queste leggi richiedono il modello geometrico, lente sottile e raggi vicini all’asse.",
+  "replacement": "Le relazioni della lente e dell’ingrandimento qui usate richiedono il modello di lente sottile e raggi vicini all’asse; riflessione e rifrazione sono trattate nel modello dell’ottica geometrica.",
+  "reason": "“Tutte queste leggi” includes the reflection law and Snell relation just introduced. Those do not require a thin lens or near-axis rays. The thin-lens conjugate/magnification equations do require the stated paraxial approximation.",
+  "counterexample": {
+    "system": "planar water-air interface, no lens",
+    "n1": 1.3333333333333333,
+    "n2": 1,
+    "sinIncident": 0.9,
+    "incidentDegrees": 64.15806723683288,
+    "snellRequiredTransmittedSine": 1.2,
+    "criticalSine": 0.75,
+    "interpretation": "Snell correctly diagnoses total internal reflection at ~64.16 degrees, outside the paraxial regime; the same lesson already includes this example."
+  },
+  "humanScientificApproval": false
+}

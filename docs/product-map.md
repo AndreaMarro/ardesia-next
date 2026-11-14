@@ -52,6 +52,8 @@ Il monolite modulare possiede una sola web app, un Core autorevole e un Plugin H
 | **17. REA e filiera di riuso** — [§26][legacy-spec], [gate REA][legacy-rea], D57/58 | [Recupero legacy](sources/legacy-review.md), [provenienza molla](sources/m1-ideal-spring.md) e [Studio/Creator](sources/creator-studio-2026-11-07.md): REA6.8 CLI su runtime Excalidraw, package Excalidraw/tldraw e consumer Ardesia, con record/diritti/cap/fallimenti e trasferimenti originali. Non è un runtime REA universale di Next. | Riuso licenziato, osservazione comportamentale autorizzata e adapter; missione collegata a difetto/consumer e ricevuta autentica. | Scegliere solo il donor utile all'incremento. BLOCKED non è PASS; niente inventario infinito, copie proprietarie o strumenti nuovi senza beneficio e diritti verificati. |
 | **18. AI, qualità e sostenibilità** — AI-001–009, NFR-SEC/PRIV/PERF/A11Y/OBS/TEST/DOC, D33–68 | CI, guardie, bundle e prove isolate esistono; nessuna efficacia pedagogica, hardware reale o scala universale attestati. | AI come aiuto/proposta con fonti e limiti; prodotto utile senza provider obbligatorio; accessibilità e costi misurabili. | Inferenza runtime richiede decisione rispetto al vincolo ZERO-LLM storico; sviluppo con agenti non la abilita. Misure dispositivo/rete, review umane e costi reali separati. |
 
+Preparazione della sessione straordinaria del 14 novembre: [beta Fisica C1-C5 e companion macOS](handoffs/2026-11-14-physics-beta.md). Il dossier aggiorna lettura, pratica, laboratori e prove locali senza trasferire accettazione a M3, produzione o distribuzione commerciale.
+
 ## Quattro microcorsi: patrimonio e unità di accettazione
 
 | Corso storico | Sotto-obiettivi editoriali | Stato da preservare |

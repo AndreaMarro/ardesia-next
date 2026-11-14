@@ -1,0 +1,152 @@
+{
+  "node": "v25.9.0",
+  "sha256": {
+    "candidate.patch": "8b7b36a7c063e5d68b5d8ec6e4fb8b755ce08121a8a30d7c0804a65c92e55948",
+    "tools/build-physics-thermodynamics.mjs": "c0ba7b762078aacda852532bae0a8b3ca185da71db1b637ebec9e6fbd6bc582a",
+    "tools/physics-runtime/termodinamica.js": "586cf23027208db22d2ecd179198fbd3ecb0cdd6a0d80541debd8c1cbeb1da03",
+    "apps/web/public/fisica/termodinamica.html": "2e768bb0250a8306819bbbed34be7b1400f2db1caa70394d0d4231fbca843d1a",
+    "apps/web/public/fisica/termodinamica.js": "86183391e8deac4f9bdfbf6dc96d613198bf0faffad0e2fd683a8a9e492362bb",
+    "apps/web/public/fisica/termodinamica-manifest.json": "4b44a192e6d4a1fe9865561bf3ba442144551dca583895dbae399901a38608f1"
+  },
+  "numeric": {
+    "quadratureCases": 964,
+    "counterexamples": [
+      {
+        "name": "same temperature, compression",
+        "v": 0.5,
+        "p": 2,
+        "Vi": 0.02494338785445972,
+        "Vf": 0.01247169392722986,
+        "Tf": 300,
+        "du": 0,
+        "wa": -1247.169392722986,
+        "wb": -2494.338785445972,
+        "qa": -1247.169392722986,
+        "qb": -2494.338785445972,
+        "dw": -1247.169392722986
+      },
+      {
+        "name": "same temperature, expansion",
+        "v": 2,
+        "p": 0.5,
+        "Vi": 0.02494338785445972,
+        "Vf": 0.04988677570891944,
+        "Tf": 300,
+        "du": 0,
+        "wa": 2494.338785445972,
+        "wb": 1247.169392722986,
+        "qa": 2494.338785445972,
+        "qb": 1247.169392722986,
+        "dw": -1247.169392722986
+      },
+      {
+        "name": "compress at lower final pressure",
+        "v": 0.5,
+        "p": 0.5,
+        "Vi": 0.02494338785445972,
+        "Vf": 0.01247169392722986,
+        "Tf": 75,
+        "du": -2806.131133626718,
+        "wa": -1247.169392722986,
+        "wb": -623.584696361493,
+        "qa": -4053.3005263497043,
+        "qb": -3429.715829988211,
+        "dw": 623.584696361493
+      },
+      {
+        "name": "expand at lower final pressure",
+        "v": 2,
+        "p": 0.5,
+        "Vi": 0.02494338785445972,
+        "Vf": 0.04988677570891944,
+        "Tf": 300,
+        "du": 0,
+        "wa": 2494.338785445972,
+        "wb": 1247.169392722986,
+        "qa": 2494.338785445972,
+        "qb": 1247.169392722986,
+        "dw": -1247.169392722986
+      },
+      {
+        "name": "unchanged state",
+        "v": 1,
+        "p": 1,
+        "Vi": 0.02494338785445972,
+        "Vf": 0.02494338785445972,
+        "Tf": 300,
+        "du": 0,
+        "wa": 0,
+        "wb": 0,
+        "qa": 0,
+        "qb": 0,
+        "dw": 0
+      },
+      {
+        "name": "pure isochore",
+        "v": 1,
+        "p": 2,
+        "Vi": 0.02494338785445972,
+        "Vf": 0.02494338785445972,
+        "Tf": 600,
+        "du": 3741.508178168958,
+        "wa": 0,
+        "wb": 0,
+        "qa": 3741.508178168958,
+        "qb": 3741.508178168958,
+        "dw": 0
+      },
+      {
+        "name": "pure isobar",
+        "v": 2,
+        "p": 1,
+        "Vi": 0.02494338785445972,
+        "Vf": 0.04988677570891944,
+        "Tf": 600,
+        "du": 3741.508178168958,
+        "wa": 2494.338785445972,
+        "wb": 2494.338785445972,
+        "qa": 6235.846963614929,
+        "qb": 6235.846963614929,
+        "dw": 0
+      }
+    ],
+    "invalidInputChecks": 18
+  },
+  "browser": [
+    {
+      "width": 320,
+      "passed": true,
+      "network": [
+        "file:///Users/progettibelli/Documents/Codex/2026-11-14/e/work/thermodynamics-lab-candidate/apps/web/public/fisica/termodinamica.html",
+        "file:///Users/progettibelli/Documents/Codex/2026-11-14/e/work/thermodynamics-lab-candidate/apps/web/public/fisica/demo.css",
+        "file:///Users/progettibelli/Documents/Codex/2026-11-14/e/work/thermodynamics-lab-candidate/apps/web/public/fisica/termodinamica.js"
+      ],
+      "errors": [],
+      "keyboard": "ranges Home/End; Tab/Enter submit; full native select keyboard selection not established",
+      "stalePredictionReset": true,
+      "transfer": true,
+      "compressionOrderingBothPressureDirections": true
+    },
+    {
+      "width": 1280,
+      "passed": true,
+      "network": [
+        "file:///Users/progettibelli/Documents/Codex/2026-11-14/e/work/thermodynamics-lab-candidate/apps/web/public/fisica/termodinamica.html",
+        "file:///Users/progettibelli/Documents/Codex/2026-11-14/e/work/thermodynamics-lab-candidate/apps/web/public/fisica/demo.css",
+        "file:///Users/progettibelli/Documents/Codex/2026-11-14/e/work/thermodynamics-lab-candidate/apps/web/public/fisica/termodinamica.js"
+      ],
+      "errors": [],
+      "keyboard": "ranges Home/End; Tab/Enter submit; full native select keyboard selection not established",
+      "stalePredictionReset": true,
+      "transfer": true,
+      "compressionOrderingBothPressureDirections": true
+    },
+    {
+      "width": 320,
+      "javaScript": false,
+      "disabledControls": true,
+      "workedExampleReadable": true
+    }
+  ],
+  "runtimeGzipBytes": 1741
+}

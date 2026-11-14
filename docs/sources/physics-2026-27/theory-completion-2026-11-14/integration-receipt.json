@@ -1,0 +1,18 @@
+{
+  "finding": "TC-01",
+  "integrated": true,
+  "packChanges": [
+    {
+      "file": "apps/web/src/courses/physics/data/sf-2026-onde-ottica-radiazioni.json",
+      "fields": [
+        "/input/units/11/explanation",
+        "/documents/11/objects/3/data/text",
+        "/sourceRevision"
+      ],
+      "beforeSha256": "6281447c78a0b04911059758b1e96b2fc62519c7a10e67bfc9a4e7d34f67a9a3",
+      "afterSha256": "67b1f6ba70e171893cf45b803a774c52deb7fbb60c6752cae9dcb7f5ba62a8a4"
+    }
+  ],
+  "otherPacksByteIdentical": 4,
+  "humanApproval": false
+}

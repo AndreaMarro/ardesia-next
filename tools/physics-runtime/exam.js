@@ -58,6 +58,32 @@
       return source;
     } catch { return null; }
   };
+  // Explicit local resume file; never trusted as an authenticated result.
+  const attempt = (source, session) => ({schemaVersion:1, kind:'ardesia-physics-attempt', examId:source.exam.id,
+    sourceSha256:source.sourceSha256, mode:session.mode, startedAt:session.startedAt, deadline:session.deadline,
+    index:session.index, answers:Object.fromEntries(source.exam.questions.map(q=>[q.id,session.answers[q.id]??''])), flagged:[...session.flagged]});
+  const parseAttempt = (text, source, now) => {
+    try {
+      if (typeof text !== 'string' || text.length > 65536 || new TextEncoder().encode(text).length > 65536) return null;
+      const data=JSON.parse(text), exam=source.exam;
+      if (!data || Object.keys(data).length!==10 || data.schemaVersion!==1 || data.kind!=='ardesia-physics-attempt' ||
+        data.examId!==exam.id || data.sourceSha256!==source.sourceSha256 || !['practice','timed'].includes(data.mode) ||
+        !Number.isSafeInteger(data.startedAt) || data.startedAt<0 || data.startedAt>now ||
+        data.deadline!==(data.mode==='timed'?data.startedAt+3000000:null) ||
+        !Number.isInteger(data.index) || data.index<0 || data.index>=31 ||
+        !data.answers || Array.isArray(data.answers) || Object.keys(data.answers).length!==31 ||
+        !Array.isArray(data.flagged) || data.flagged.length>31 || new Set(data.flagged).size!==data.flagged.length ||
+        data.flagged.some(id=>!exam.questions.some(q=>q.id===id))) return null;
+      const session=createSession(exam,data.mode,data.startedAt);
+      for (const q of exam.questions) {
+        const answer=data.answers[q.id];
+        if (typeof answer!=='string' || answer.length>80 || (q.type==='choice' && answer!=='' && !q.choices.some(c=>c.id===answer))) return null;
+        session.answers[q.id]=answer;
+      }
+      session.index=data.index;session.flagged=new Set(data.flagged);
+      return session;
+    } catch { return null; }
+  };
   // Self-contained, inert learning record: all text is escaped; no scripts, remote URLs or storage.
   const reviewDocument = (source, result) => {
     const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -73,7 +99,7 @@
     }).join('');
     return `<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'"><title>Il mio ripasso · Ardesia Fisica</title><style>body{margin:0;background:#f6f3ea;color:#203c35;font:17px/1.6 system-ui,sans-serif}main{max-width:850px;margin:auto;padding:32px 6vw;overflow-wrap:anywhere}h1,h2{font-family:Georgia,serif;line-height:1.2}h1{font-size:2.6rem}h2{font-size:1.8rem}h3{font-size:1.1rem}article{border-top:1px solid #829388;padding:24px 0}p,li{white-space:pre-line;overflow-wrap:anywhere}li{margin:12px 0}.meta{font-size:.85rem}.notice{border-left:3px solid #b54829;padding-left:16px}code{overflow-wrap:anywhere}@media print{body{background:white;color:black;font-size:11pt}main{padding:0;max-width:none}h2,h3{break-after:avoid}article{break-before:auto}.screen-note{display:none}}</style></head><body><main><p class="meta">ARDESIA NEXT · FISICA · COPIA PERSONALE</p><h1>La prova finisce.<br>Il ripasso resta.</h1><p>Prova: ${escape(exam.title || exam.id)}<br>${result.mode==='timed'?'Prova a tempo':'Allenamento libero'} · conclusa il ${escape(new Date(result.endedAt).toLocaleString('it-IT'))}</p><p><strong>${escape(result.score.toLocaleString('it-IT', {maximumFractionDigits:1}))} / 31 punti grezzi</strong> · ${escape(result.correct)} corrette · ${escape(result.wrong)} da rivedere · ${escape(result.blank)} non risposte.</p><p class="notice">Anteprima DRAFT, revisione scientifica umana pendente. Prova indipendente non ufficiale: il punteggio non certifica competenze e non prevede l’ammissione. Questa copia contiene le tue risposte; condividila solo se lo desideri.</p><p class="screen-note">Questo documento funziona da solo, senza rete o JavaScript. Per ottenere un PDF usa Stampa nel browser e scegli Salva come PDF. Conserva anche il JSON se vuoi mantenere i dati strutturati del tentativo.</p><h2>Da dove ripartire</h2>${pending.length?`<p>Riprendi gli argomenti delle risposte errate o mancanti; i codici identificano le lezioni nell’anteprima completa.</p><ul>${pending.map(text=>`<li>${escape(text)}</li>`).join('')}</ul>`:'<p>Tutte le risposte sono corrette. Prova ora a spiegare i passaggi senza le soluzioni: una singola prova non copre tutto il programma.</p>'}${questions}<footer><h2>Provenienza</h2><p>Sorgente: ${escape(source.sourceFile)}<br>SHA-256: <code>${escape(source.sourceSha256)}</code></p><p>Risultato locale non autenticato. La copia leggibile non è un backup importabile nello spazio Core.</p></footer></main></body></html>`;
   };
-  const engine = Object.freeze({normalize, expired, remaining, grade, summarize, accept, createSession, parseData, reviewDocument});
+  const engine = Object.freeze({normalize, expired, remaining, grade, summarize, accept, createSession, parseData, reviewDocument, attempt, parseAttempt});
   if (typeof module !== 'undefined' && module.exports) module.exports = engine;
   if (typeof document === 'undefined') return;
 
@@ -90,7 +116,7 @@
     $('load-error').hidden = false;
     return;
   }
-  let session = null, tick = null, result = null, lastAnnouncement = null;
+  let session = null, tick = null, result = null, lastAnnouncement = null, loadEpoch = 0;
   const labels = {correct: 'Corretta', wrong: 'Da rivedere', blank: 'Non risposta'};
   const courseNames = {c1: 'Strumenti e meccanica', c2: 'Fluidi', c3: 'Termodinamica', c4: 'Elettricità e magnetismo', c5: 'Onde, ottica e radiazioni'};
   const announce = text => { $('live-status').textContent = text; };
@@ -199,15 +225,21 @@
     $('next').disabled = session.index === exam.questions.length - 1;
     updateProgress(); updateTime();
   }
-  function start(mode) {
-    session = createSession(exam, mode, Date.now());
+  function start(mode, restored) {
+    loadEpoch++;
+    session = restored || createSession(exam, mode, Date.now());
+    mode = session.mode;
     result = null; lastAnnouncement = null;
     $('intro').hidden = true; $('results').hidden = true; $('active-exam').hidden = false;
     $('timer').classList.remove('time-short');
     $('mode-name').textContent = mode === 'timed' ? 'Prova a tempo · 50 minuti' : 'Allenamento · senza timer';
-    renderQuestion(); focusHeading('question-title');
-    clearInterval(tick); tick = setInterval(updateTime, 500);
-    announce(mode === 'timed' ? 'Prova iniziata. Hai cinquanta minuti. Le risposte restano solo in questa pagina.' : 'Allenamento iniziato, senza limite di tempo.');
+    clearInterval(tick);
+    if (!ensureActive()) return;
+    renderQuestion();
+    if (!ensureActive()) return;
+    focusHeading('question-title');
+    tick = setInterval(updateTime, 500);
+    announce('Tentativo aperto. Nessun salvataggio automatico.');
   }
   function requestSubmit() {
     if (!ensureActive()) return;
@@ -290,15 +322,31 @@
       article.append(link); list.append(article);
     });
   }
+  function download(text, type, name) {
+    const url=URL.createObjectURL(new Blob([text],{type}));
+    const a=make('a');a.href=url;a.download=name;
+    document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }
   function downloadResult() {
     if (!result) return;
-    const blob = new Blob([JSON.stringify(result, null, 2) + '\n'], {type: 'application/json'});
-    const url = URL.createObjectURL(blob);
-    const a = make('a'); a.href = url; a.download = `ardesia-${exam.id}-${result.startedAt.slice(0, 10)}.json`;
-    document.body.append(a); a.click(); a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    download(JSON.stringify(result,null,2)+'\n','application/json',`ardesia-${exam.id}-${result.startedAt.slice(0,10)}.json`);
     announce('Risultato esportato in JSON con risposte, provenienza e limiti della prova.');
   }
+  $('save-attempt').addEventListener('click',()=>{
+    if (!ensureActive()) return;
+    download(JSON.stringify(attempt(source,session)),'application/json',`ardesia-tentativo-${exam.id}.json`);
+    announce('File del tentativo scaricato. Salvalo di nuovo dopo altre risposte.');
+  });
+  $('resume-file').disabled=false;
+  $('resume-file').addEventListener('change',async event=>{
+    const file=event.target.files[0], epoch=++loadEpoch;event.target.value='';
+    if (session || !file) return;
+    let restored=null;
+    try { if (file.size<=65536) restored=parseAttempt(await file.text(),source,Date.now()); } catch {}
+    if (epoch!==loadEpoch || session) return;
+    if (!restored) { $('resume-error').textContent='File non valido o di un’altra edizione. Il tentativo non è stato aperto.';return; }
+    $('resume-error').textContent='';start(restored.mode,restored);
+  });
   $('start-practice').disabled = false; $('start-timed').disabled = false;
   $('start-practice').addEventListener('click', () => start('practice'));
   $('start-timed').addEventListener('click', () => start('timed'));
@@ -324,9 +372,7 @@
   $('export-result').addEventListener('click', downloadResult);
   $('export-readable').addEventListener('click', () => {
     if (!result) return;
-    const url = URL.createObjectURL(new Blob([reviewDocument(source, result)], {type:'text/html;charset=utf-8'}));
-    const a=make('a');a.href=url;a.download=`ardesia-ripasso-${exam.id}-${result.startedAt.slice(0,10)}.html`;
-    document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+    download(reviewDocument(source,result),'text/html;charset=utf-8',`ardesia-ripasso-${exam.id}-${result.startedAt.slice(0,10)}.html`);
     announce('Ripasso salvato: apri il file HTML per rileggere tutte le spiegazioni o stamparle in PDF.');
   });
   $('new-attempt').addEventListener('click', () => {

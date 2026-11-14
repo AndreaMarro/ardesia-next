@@ -37,3 +37,8 @@ Il checkout integrato di urti/report/autosave ha16browser desktop/mobile PASS e2
 
 
 `native-lifecycle-tests.md` verifica i test permanenti del ciclo NSDocument: Save/Close/Quit/primo gesto e continuazione modale. Sorgenti di prodotto reali, file isolati e processi con timeout; versione finale4/4PASS, due versioni difettose rifiutate rispettivamente0/4 e3/4. Rerun indipendente conserva anche leproveRED e cleanup, senza inputOS o modifiche ad app utente.
+
+
+## Quinto incremento
+
+`offline-launch.md` documenta il percorso anonimo dallo ZIP, i due overflow a 320 px e i link inferiori a 44 px, poi corretti. La review del nuovo laboratorio è in `../thermodynamics-2026-11-14/review.md`, quella della ripresa esplicita in `../resume-2026-11-14/review.md`. L’audit teorico aggiuntivo e la correzione ottica sono in `../theory-completion-2026-11-14/`; il quaderno di lavoro e la sua revisione in `../../../media/physics-workbook/`. Queste ricevute descrivono i candidati esatti, non anticipano l’esito della CI sul commit integrato.

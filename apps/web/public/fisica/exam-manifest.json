@@ -40,28 +40,28 @@
   "files": [
     {
       "file": "simulazione.html",
-      "bytes": 53247,
-      "sha256": "f2ad0138140c0b87ffa98227d49ee18f6a84799747fb5e5bdb4a7db76cc13507"
+      "bytes": 53953,
+      "sha256": "a8eedd1f9c71192fd0fb8ba020d0a57c60e6cfe1720342b1e3b1e81cc34ae7a9"
     },
     {
       "file": "simulazione-b.html",
-      "bytes": 62945,
-      "sha256": "d98398e21d9519c5efc112763a191b1db25c389946886dfca4eac32666c49c96"
+      "bytes": 63651,
+      "sha256": "44b05332604e748695f2bffab8643dd987b7d50b2ac783f0b8d638e7777e7ea2"
     },
     {
       "file": "exam.js",
-      "bytes": 18159,
-      "sha256": "c35117991590f8fa28ec8337add368b6ee6efd911b7e35cc57156a292cb79b62"
+      "bytes": 19850,
+      "sha256": "935603f9b031b9d5a4e35347506a25ca1decd7e15723a2b1a11e3de7c1a63252"
     },
     {
       "file": "exam.css",
-      "bytes": 9044,
-      "sha256": "f8b260e8db72e820cf213a78ca2e9c18cdca882cdc4e199834fbd9e8058a3f98"
+      "bytes": 9248,
+      "sha256": "9088f5fa7b6254e97bb21a7f5bd00378c6270184b3445a209bd3e2f7676de6a7"
     },
     {
       "file": "ardesia-prova-fisica-offline.zip",
-      "bytes": 3279255,
-      "sha256": "ff881ea88344d7a3ed89c4d85279dcf135725e4e1d980b42b9f50837f5be0d21"
+      "bytes": 3388311,
+      "sha256": "85aa4ff305d5b56cb970aa99bab2f45557573095fa7332871b05df699f2e1fe4"
     }
   ],
   "offlineFiles": [
@@ -85,6 +85,7 @@
     "exam.js",
     "index.html",
     "lessons.css",
+    "quaderno-esperimenti.pdf",
     "sf-2026-u1-01.html",
     "sf-2026-u1-02.html",
     "sf-2026-u1-03.html",
@@ -123,6 +124,8 @@
     "sf-2026-u7-05.html",
     "sf-2026-u7-06.html",
     "sf-2026-u7-07.html",
+    "termodinamica.html",
+    "termodinamica.js",
     "urti.css",
     "urti.html",
     "urti.js",

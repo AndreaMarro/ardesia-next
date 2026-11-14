@@ -66,9 +66,9 @@
     },
     {
       "file": "sf-2026-onde-ottica-radiazioni.json",
-      "bytes": 954220,
-      "gzipBytes": 167631,
-      "sha256": "6281447c78a0b04911059758b1e96b2fc62519c7a10e67bfc9a4e7d34f67a9a3",
+      "bytes": 954459,
+      "gzipBytes": 167689,
+      "sha256": "67b1f6ba70e171893cf45b803a774c52deb7fbb60c6752cae9dcb7f5ba62a8a4",
       "counts": {
         "objectives": 58,
         "practice": 59,
@@ -79,7 +79,7 @@
       "objects": 200
     }
   ],
-  "totalRawBytes": 3775286,
-  "totalGzipBytes": 642798,
+  "totalRawBytes": 3775525,
+  "totalGzipBytes": 642856,
   "note": "Static JSON course materials, fetched only on explicit import; not JavaScript. Full data costs shown separately from measured runtime budgets."
 }

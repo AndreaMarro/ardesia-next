@@ -1,0 +1,44 @@
+{
+  "files": [
+    {
+      "path": "review.md",
+      "bytes": 4263,
+      "sha256": "c8eed79bdcbfd8c697c5b5ad831e48598b87f20316c1ac859046ed80610f5c19"
+    },
+    {
+      "path": "finding-TC-01.json",
+      "bytes": 1434,
+      "sha256": "168b0f6da232850be26633329d84bd389e6b86547012b65bbaa22717ef18a83b"
+    },
+    {
+      "path": "scope.json",
+      "bytes": 29410,
+      "sha256": "ac945651163764a1dd4d53941be2b7bd992c4824a72525d70ab4dc8c7cd4f715"
+    },
+    {
+      "path": "completed-reading.json",
+      "bytes": 96770,
+      "sha256": "a73c64954f7f5b61a3172dfce9e4440c71c9c94c2ce2e8357f6aeed83b993481"
+    },
+    {
+      "path": "numerical-checks.json",
+      "bytes": 39024,
+      "sha256": "3ea166e4d42e49ccc4e01302569d98af04981620a2916e87a6cb4712cede7967"
+    },
+    {
+      "path": "verify.py",
+      "bytes": 18389,
+      "sha256": "65cbc8d084292f715af1c6e10e324ca5f5b0e875996eca75ee23a1ba59daa87b"
+    },
+    {
+      "path": "integrity.json",
+      "bytes": 232,
+      "sha256": "2c18599c70f38b51a297b52c39a35c30297e7c16454dea7e4d60e67d312fb26c"
+    },
+    {
+      "path": "courses-snapshot.json",
+      "bytes": 420050,
+      "sha256": "e8d7544619576d352c774cc5ec68653fa8095a05e039ccb1b53be8958c59ab2a"
+    }
+  ]
+}

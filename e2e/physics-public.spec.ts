@@ -131,6 +131,68 @@ test('the collision lab separates signed momentum from kinetic energy and clears
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
 });
 
+test('a saved practice resumes exact answers and flags only in its matching edition',async({page})=>{
+ await page.goto('/fisica/simulazione-b.html');await page.locator('#start-practice').click();
+ await page.locator('input[name=answer][value=C]').check();await page.locator('#flag-question').click();
+ await page.locator('#next').click();
+ let pending=page.waitForEvent('download');await page.locator('#save-attempt').click();
+ const bytes=readFileSync((await (await pending).path())!);
+ const saved=JSON.parse(bytes.toString());
+ const reopened=await page.context().newPage();
+ await reopened.goto('/fisica/simulazione.html');
+ await reopened.locator('#resume-file').setInputFiles({name:'tentativo.json',mimeType:'application/json',buffer:bytes});
+ await expect(reopened.locator('#resume-error')).toContainText('un’altra edizione');
+ await expect(reopened.locator('#start-practice')).toBeEnabled();
+ await reopened.goto('/fisica/simulazione-b.html');
+ await reopened.locator('#resume-file').setInputFiles({name:'tentativo.json',mimeType:'application/json',buffer:bytes});
+ await expect(reopened.locator('#question-title')).toHaveText(/^2\./);
+ await expect(reopened.locator('#answered-count')).toHaveText('1 / 31 risposte');
+ await expect(reopened.locator('#flag-count')).toHaveText('1 da rivedere');
+ pending=reopened.waitForEvent('download');await reopened.locator('#save-attempt').click();
+ expect(JSON.parse(readFileSync((await (await pending).path())!).toString())).toEqual(saved);
+ await reopened.close();
+});
+
+test('an imported expired timed attempt submits immediately with its original deadline',async({page})=>{
+ const now=new Date('2026-11-14T12:00:00Z');await page.clock.install({time:now});
+ await page.goto('/fisica/simulazione.html');await page.locator('#start-timed').click();
+ await page.locator('input[name=answer][value=A]').check();
+ let pending=page.waitForEvent('download');await page.locator('#save-attempt').click();
+ const saved=JSON.parse(readFileSync((await (await pending).path())!).toString());
+ saved.startedAt=now.getTime()-3000000;saved.deadline=now.getTime();
+ const reopened=await page.context().newPage();await reopened.clock.install({time:now});
+ await reopened.goto('/fisica/simulazione.html');
+ await reopened.locator('#resume-file').setInputFiles({name:'scaduto.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(saved))});
+ await expect(reopened.locator('#active-exam')).toBeHidden();
+ await expect(reopened.locator('#result-heading')).toContainText('Tempo concluso');
+ pending=reopened.waitForEvent('download');await reopened.locator('#export-result').click();
+ const result=JSON.parse(readFileSync((await (await pending).path())!).toString());
+ expect(result.reason).toBe('timeout');expect(result.deadline).toBe(now.toISOString());
+ expect(result.elapsedSeconds).toBe(3000);expect(result.items[0].answer).toBe('A');
+ await reopened.close();
+});
+
+test('the thermodynamics lab keeps state energy invariant while signed work changes by path',async({page})=>{
+ await page.goto('/fisica/c3.html');await page.getByRole('link',{name:'Prova il laboratorio di termodinamica →',exact:true}).click();
+ await expect(page.locator('#results')).toBeHidden();
+ await page.locator('#energy').selectOption('different');await page.locator('#work').selectOption('a');
+ await page.getByRole('button',{name:'Confronta la previsione',exact:true}).click();
+ await expect(page.locator('#energy-feedback')).toContainText('rivedi');
+ await expect(page.locator('#work-feedback')).toContainText('rivedi');
+ await expect(page.locator('[data-value=du]').first()).toHaveText('4.676,89');
+ await page.getByRole('button',{name:'Compressione',exact:true}).click();
+ await expect(page.locator('#results')).toBeHidden();await expect(page.locator('#energy')).toHaveValue('');
+ await page.locator('#energy').selectOption('same');await page.locator('#work').selectOption('a');
+ await page.getByRole('button',{name:'Confronta la previsione',exact:true}).click();
+ await expect(page.locator('#work-feedback')).toContainText('corretta');
+ await expect(page.locator('[data-value=du]').first()).toHaveText('0');
+ await expect(page.locator('[data-value=wb]')).toHaveText('-2.494,34');
+ await page.locator('#transfer-answer').selectOption('negative');
+ await page.getByRole('button',{name:'Verifica il ragionamento',exact:true}).click();
+ await expect(page.locator('#transfer-feedback')).toContainText('Corretto.');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+});
+
 test('the downloaded ZIP contains complete lessons and starts its interactive experiences offline',async({page,browser})=>{
  await page.goto('/fisica/simulazione.html');
  const pending=page.waitForEvent('download');await page.locator('a[download]').click();
@@ -170,6 +232,10 @@ test('the downloaded ZIP contains complete lessons and starts its interactive ex
   await offlinePage.locator('[name=momentum][value=positive]').check();await offlinePage.locator('[name=energy][value=less]').check();
   await offlinePage.getByRole('button',{name:'Metti alla prova la previsione',exact:true}).click();
   await expect(offlinePage.locator('[data-value=loss]')).toHaveText('3,375');
+  await offlinePage.goto(pathToFileURL(resolve(folder,'termodinamica.html')).href);
+  await offlinePage.locator('#energy').selectOption('same');await offlinePage.locator('#work').selectOption('b');
+  await offlinePage.getByRole('button',{name:'Confronta la previsione',exact:true}).click();
+  await expect(offlinePage.locator('#work-feedback')).toContainText('corretta');
   await offlinePage.goto(pathToFileURL(resolve(folder,'sf-2026-u1-01.html')).href);
   await expect(offlinePage.locator('#teoria')).toBeVisible();
   await expect(offlinePage.getByText('Per salvare il lavoro nello spazio Ardesia',{exact:false})).toBeVisible();

@@ -341,9 +341,9 @@
       "unitId": "sf-2026-u7-07",
       "courseId": "sf-2026-onde-ottica-radiazioni",
       "questions": 7,
-      "sha256": "a59058f1b28c8ea88ad884a201a65ed95b700b5387937116801426e7580122dd",
-      "rawBytes": 19617,
-      "gzipBytes": 6613
+      "sha256": "9db3d9c62225f5f3b55d5eebda22149e46625d8a1905ee6377a8a69ff5a41a28",
+      "rawBytes": 19724,
+      "gzipBytes": 6634
     }
   ],
   "sourcePacks": [
@@ -365,10 +365,10 @@
     },
     {
       "file": "apps/web/src/courses/physics/data/sf-2026-onde-ottica-radiazioni.json",
-      "sha256": "6281447c78a0b04911059758b1e96b2fc62519c7a10e67bfc9a4e7d34f67a9a3"
+      "sha256": "67b1f6ba70e171893cf45b803a774c52deb7fbb60c6752cae9dcb7f5ba62a8a4"
     }
   ],
-  "sourceSha256": "e8d7544619576d352c774cc5ec68653fa8095a05e039ccb1b53be8958c59ab2a",
-  "totalRawBytes": 787114,
-  "totalGzipBytes": 268959
+  "sourceSha256": "eb83c417aa4cb395156aa751bf2e3d2912d8c8d0c6f2eee30a2e6cefe5dc765b",
+  "totalRawBytes": 787221,
+  "totalGzipBytes": 268980
 }

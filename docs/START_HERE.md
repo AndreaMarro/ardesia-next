@@ -1,6 +1,6 @@
 # Ardesia Next — ingresso unico
 
-> Beta locale del14novembre: [esperienze, riproduzione e limiti](handoffs/2026-11-14-physics-beta.md).
+> Beta locale del 14 novembre: [esperienze, riproduzione e limiti](handoffs/2026-11-14-physics-beta.md).
 
 > Consegna C1–C5 del 13 novembre: [stato concreto e riproduzione](handoffs/2026-11-13-physics.md).
 

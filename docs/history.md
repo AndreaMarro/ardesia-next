@@ -734,3 +734,11 @@ Audit indipendente dei contenuti:79originali ricalcolati,200prompt/risposte di v
 Ottimizzazione successiva del catalogo: una copia della proiezione per render invece di15, uno spazio corsi invece di10; handlerfreschi alclick. Test completo C2 locale:32,489→24,047s mediani,−25,98%, trecampioni perversione, tuttiPASS. [Dati e limiti](sources/physics-2026-27/catalog-performance-2026-11-14/README.md).
 
 Cortex: valutato anche un grafo deterministico degli importdiretti. Rileva un consumer prima omesso manualmente, ma il confronto non giustifica promozione: querymediana1,183s contro7,88ms con `rg`, outputpiùgrande e nessun risparmio token dimostrato. [Esperimento e patch non integrata](sources/cortex-impact-2026-11-14/REPORT.md), nessuna modifica del flusso predefinito o selezione automatica dei test.
+
+### Quinto incremento: termodinamica, continuità e quaderno di lavoro
+
+Il laboratorio C3 confronta due percorsi quasistatici isobara/isocora fra gli stessi stati, distinguendo ΔU da Q e W con i segni. Review non autrice con quadratura indipendente su 964 configurazioni, browser offline e controlli mobile. Il quaderno PDF aggiunge cinque schede e due pagine di confronto; 38 ricalcoli indipendenti e tutte le pagine renderizzate e ispezionate. Sono materiali DRAFT, non approvazione scientifica umana.
+
+La prova A/B può essere salvata esplicitamente in un file e ripresa nella stessa edizione. Import limitato a 64 KiB, identità/hash/campi/risposte/tempi validati, scadenza originale conservata; letture asincrone obsolete non sovrascrivono il tentativo. Nessun archivio browser o server. Il file resta modificabile e non certifica la prova. Review indipendente e test permanenti precedono la pubblicazione.
+
+Completata la lettura teorica delle altre 31 lezioni, distinta dall'audit precedente di sette: 80 gruppi di controprove e una correzione di ambito nell'ottica. Snell e riflessione non richiedono l'approssimazione di lente sottile e raggi paraassiali. Cambiati soltanto testo spiegativo, copia corrispondente nel pacchetto C5 e sourceRevision; gli altri quattro pacchetti restano identici. Due titoli del lettore a 320 px e i link secondari sotto 44 px sono stati corretti dopo l'audit reale del percorso offline. Nessuna nuova accettazione M3 o commerciale.
