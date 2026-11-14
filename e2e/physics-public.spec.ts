@@ -84,17 +84,17 @@ test('the downloaded ZIP contains complete lessons and starts its interactive ex
    return errors;
   },{files:Object.keys(archive),pages:Object.fromEntries(Object.entries(archive).filter(([name])=>name.endsWith('.html')).map(([name,bytes])=>[name,Buffer.from(bytes).toString()]))});
   expect(broken).toEqual([]);
-  const page=await context.newPage();const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(pathToFileURL(resolve(folder,'simulazione.html')).href);
-  await page.locator('#start-practice').click();await expect(page.locator('#question-title')).toBeVisible();
-  await page.goto(pathToFileURL(resolve(folder,'campo.html')).href);
-  await expect(page.locator('input[type=range]').first()).toBeEnabled();
-  await expect(page.locator('#field-strength')).toContainText('28,086');
-  await page.locator('#charge').fill('2');await page.locator('#charge').dispatchEvent('input');
-  await expect(page.locator('#field-strength')).toContainText('56,172');
-  await page.goto(pathToFileURL(resolve(folder,'sf-2026-u1-01.html')).href);
-  await expect(page.locator('#teoria')).toBeVisible();
-  await expect(page.getByText('Per salvare il lavoro nello spazio Ardesia',{exact:false})).toBeVisible();
+  const offlinePage=await context.newPage();const errors:string[]=[];offlinePage.on('pageerror',e=>errors.push(e.message));
+  await offlinePage.goto(pathToFileURL(resolve(folder,'simulazione.html')).href);
+  await offlinePage.locator('#start-practice').click();await expect(offlinePage.locator('#question-title')).toBeVisible();
+  await offlinePage.goto(pathToFileURL(resolve(folder,'campo.html')).href);
+  await expect(offlinePage.locator('input[type=range]').first()).toBeEnabled();
+  await expect(offlinePage.locator('#field-strength')).toContainText('28,086');
+  await offlinePage.locator('#charge').fill('2');await offlinePage.locator('#charge').dispatchEvent('input');
+  await expect(offlinePage.locator('#field-strength')).toContainText('56,172');
+  await offlinePage.goto(pathToFileURL(resolve(folder,'sf-2026-u1-01.html')).href);
+  await expect(offlinePage.locator('#teoria')).toBeVisible();
+  await expect(offlinePage.getByText('Per salvare il lavoro nello spazio Ardesia',{exact:false})).toBeVisible();
   expect(errors).toEqual([]);
  }finally{await context.close();rmSync(folder,{recursive:true,force:true});}
 });
