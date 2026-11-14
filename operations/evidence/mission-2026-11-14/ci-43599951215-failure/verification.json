@@ -1,0 +1,33 @@
+{
+  "commit": "0fcbd9d6239ee3253f36001a437fa8dc0fa8a8b0",
+  "sourceDigest": "1958abd9b5587a8871bac9bb2ee5573023278aa1d12de8cfa1c72a7eb114e2b1",
+  "generatedAt": "2026-11-14T13:29:17.767Z",
+  "checks": [
+    {
+      "name": "config-source",
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "types",
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "boundaries",
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "release-evidence",
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "name": "unit",
+      "exitCode": 1,
+      "passed": false
+    }
+  ],
+  "passed": false
+}

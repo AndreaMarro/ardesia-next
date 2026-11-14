@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "kind": "ardesia-independent-protected-preview-observation",
+  "observedDate": "2026-11-14",
+  "observationWindowUTC": {
+    "start": "13:32",
+    "end": "13:35",
+    "precision": "minute"
+  },
+  "observer": "independent deployment_access agent",
+  "scope": "Read-only provider metadata, anonymous HTTP without redirects, and SQL SELECT as existing runtime role.",
+  "deployment": {
+    "provider": "Vercel",
+    "teamId": "team_23uD0RgdInaTaOPEL0EGltup",
+    "projectId": "prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd",
+    "id": "dpl_AWqtg2fbfPcc7kMrCsZJW6zSgp57",
+    "url": "https://ardesia-next-nr9wdtwij-andreas-projects-6d4e9791.vercel.app",
+    "gitRef": "preview/m3",
+    "commit": "64c847d068ba78e02be5aabd36a9facef80aa85b",
+    "state": "READY",
+    "target": null,
+    "projectProtection": {
+      "ssoEnabled": true,
+      "ssoDeploymentType": "all"
+    }
+  },
+  "stableAlias": {
+    "url": "https://ardesia-next-staging.vercel.app",
+    "expectedPreviousDeploymentId": "dpl_AzHJWRxYa6f5EcmsNcXrfLA5EYup",
+    "observedDeploymentId": "dpl_AzHJWRxYa6f5EcmsNcXrfLA5EYup",
+    "unchanged": true,
+    "accessExceptionCount": 0
+  },
+  "anonymousHttp": [
+    {
+      "origin": "https://ardesia-next-nr9wdtwij-andreas-projects-6d4e9791.vercel.app",
+      "path": "/",
+      "status": 302,
+      "redirectFollowed": false,
+      "redirectOrigin": "https://vercel.com",
+      "redirectPath": "/sso-api",
+      "destinationOrigin": "https://ardesia-next-nr9wdtwij-andreas-projects-6d4e9791.vercel.app"
+    },
+    {
+      "origin": "https://ardesia-next-staging.vercel.app",
+      "path": "/",
+      "status": 302,
+      "redirectFollowed": false,
+      "redirectOrigin": "https://vercel.com",
+      "redirectPath": "/sso-api",
+      "destinationOrigin": "https://ardesia-next-staging.vercel.app"
+    },
+    {
+      "origin": "https://ardesia-next-nr9wdtwij-andreas-projects-6d4e9791.vercel.app",
+      "path": "/api/m3",
+      "status": 401,
+      "redirectFollowed": false,
+      "bodyRead": false
+    },
+    {
+      "origin": "https://ardesia-next-nr9wdtwij-andreas-projects-6d4e9791.vercel.app",
+      "path": "/build-info.json",
+      "status": 401,
+      "redirectFollowed": false,
+      "bodyRead": false
+    }
+  ],
+  "database": {
+    "provider": "Neon",
+    "projectId": "royal-bar-31252959",
+    "branchId": "br-broad-mud-bajjd3j7",
+    "databaseName": "ardesia_next_m3",
+    "connectedRole": "ardesia_next_m3_app",
+    "queryOperations": [
+      "SELECT"
+    ],
+    "migrationCount": 10,
+    "migrationVersions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "migrationDigestsMatchCanonicalSql": true,
+    "canonicalComparison": "SHA-256 of the ten canonical packages/server/migrations/*.sql files in the integration checkout; no DB secret or user payload was read.",
+    "workspaceCount": 9,
+    "snapshotVersions": [
+      {
+        "schemaVersion": 4,
+        "count": 9
+      }
+    ],
+    "privileges": {
+      "readMigrationVersion": true,
+      "readMigrationDigest": true,
+      "readMigrationAppliedAt": false,
+      "insertMigrationRegistry": false,
+      "updateMigrationRegistry": false,
+      "deleteMigrationRegistry": false,
+      "insertAccounts": false,
+      "updateAllAccountFields": false,
+      "changePassword": false,
+      "changeRole": false,
+      "disableAccount": false,
+      "updateLoginTimestamp": true,
+      "selectWorkspaces": true,
+      "insertWorkspaces": true,
+      "updateWorkspaces": true,
+      "superuser": false,
+      "createRole": false,
+      "createDatabase": false,
+      "bypassRls": false
+    }
+  },
+  "limitations": [
+    "READY is a provider build/deployment observation; authenticated application health and a user journey were not verified.",
+    "Anonymous /api/m3 and /build-info.json returned 401; their bodies were not read, and the deployed sourceDigest was not observed.",
+    "No authorized SSO/OIDC session or application password was available to this agent.",
+    "Current Vercel environment variables and their values were not read; effective runtime-to-database binding and application Origin binding remain unqualified.",
+    "Canonical staging still points to the previous deployment; this receipt does not claim promotion of the new candidate.",
+    "The independent DB check verifies migration metadata, snapshot versions/counts and permissions; it does not independently repeat the root agent's seven before/after data fingerprints.",
+    "No login, credential change, bypass/access link, migration, write query, alias change or remote mutation was performed by this observer.",
+    "An initial aggregate used the noncanonical snapshot key version; it was discarded and the reported snapshot counts were obtained with the schemaVersion key used by the canonical SQL."
+  ]
+}

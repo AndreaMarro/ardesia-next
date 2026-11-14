@@ -1,0 +1,1448 @@
+{
+  "commit": "64c847d068ba78e02be5aabd36a9facef80aa85b",
+  "sourceDigest": "1958abd9b5587a8871bac9bb2ee5573023278aa1d12de8cfa1c72a7eb114e2b1",
+  "generatedAt": "2026-11-14T13:04:31.550Z",
+  "metric": "core-and-optional-runtimes-v3",
+  "initialJavaScriptGzipBytes": 223387,
+  "coreGzipBytes": 343560,
+  "optionalGzipBytes": 292544,
+  "optionalRawBytes": 704722,
+  "pdfGzipBytes": 2590788,
+  "pdfRawBytes": 5178516,
+  "allJavaScriptGzipBytes": 1084348,
+  "allWasmGzipBytes": 601224,
+  "allRawBytes": 7009007,
+  "allGzipBytes": 3226892,
+  "limits": {
+    "coreGzipBytes": 344064,
+    "initialJavaScriptGzipBytes": 245760,
+    "optionalGzipBytes": 327680,
+    "optionalRawBytes": 1048576,
+    "pdfGzipBytes": 3145728,
+    "pdfRawBytes": 6291456
+  },
+  "deferredJavaScriptGzipBytes": 860961,
+  "previous320KiBCoreComparison": {
+    "bytes": 343560,
+    "limit": 327680,
+    "passed": false
+  },
+  "previous312KiBCoreComparison": {
+    "bytes": 343560,
+    "limit": 319488,
+    "passed": false
+  },
+  "previous304KiBCoreComparison": {
+    "bytes": 343560,
+    "limit": 311296,
+    "passed": false
+  },
+  "previous272KiBCoreComparison": {
+    "bytes": 343560,
+    "limit": 278528,
+    "passed": false
+  },
+  "previousCoreComparison": {
+    "metric": "all-non-program-assets-gzip",
+    "bytes": 2934348,
+    "limit": 245760,
+    "passed": false
+  },
+  "legacyComparison": {
+    "metric": "all-javascript-gzip-bytes",
+    "bytes": 1084348,
+    "limit": 245760,
+    "passed": false
+  },
+  "loadingMetric": "Static module graph; runtime network deferral is tested separately. No existing asset is reclassified as optional. All JS and WASM raw/gzip costs are retained.",
+  "files": [
+    {
+      "file": "assets/ExtensionView-BHHEKODF.js",
+      "rawBytes": 23226,
+      "gzipBytes": 9021,
+      "initial": true
+    },
+    {
+      "file": "assets/HandoutView-C7my-yc6.js",
+      "rawBytes": 32556,
+      "gzipBytes": 11996,
+      "initial": false
+    },
+    {
+      "file": "assets/InkConflictRecovery-BFGAwtPK.js",
+      "rawBytes": 3939,
+      "gzipBytes": 1691,
+      "initial": false
+    },
+    {
+      "file": "assets/KnowledgeStudio-ekm-mCpC.js",
+      "rawBytes": 10877,
+      "gzipBytes": 3889,
+      "initial": false
+    },
+    {
+      "file": "assets/MathFormula-CeFadPGR.js",
+      "rawBytes": 11650,
+      "gzipBytes": 5046,
+      "initial": true
+    },
+    {
+      "file": "assets/PhysicsCatalog-COrnlarD.js",
+      "rawBytes": 8525,
+      "gzipBytes": 3453,
+      "initial": false
+    },
+    {
+      "file": "assets/PhysicsWorkbench-CV2c_imG.js",
+      "rawBytes": 22514,
+      "gzipBytes": 9077,
+      "initial": false
+    },
+    {
+      "file": "assets/ProgramSurface-i75qziH4.js",
+      "rawBytes": 11140,
+      "gzipBytes": 4556,
+      "initial": false
+    },
+    {
+      "file": "assets/TutorStudio-Dw6Al7TU.js",
+      "rawBytes": 35833,
+      "gzipBytes": 11178,
+      "initial": false
+    },
+    {
+      "file": "assets/board-geometry-y6mnw6f8.js",
+      "rawBytes": 2448,
+      "gzipBytes": 1138,
+      "initial": true
+    },
+    {
+      "file": "assets/browser-C_qs0HFi.js",
+      "rawBytes": 5043,
+      "gzipBytes": 2323,
+      "initial": false
+    },
+    {
+      "file": "assets/foundation-2k3D678D.js",
+      "rawBytes": 218678,
+      "gzipBytes": 63889,
+      "initial": true
+    },
+    {
+      "file": "assets/index-c6M1IFKw.js",
+      "rawBytes": 224713,
+      "gzipBytes": 68233,
+      "initial": true
+    },
+    {
+      "file": "assets/math-dJ2525rv.js",
+      "rawBytes": 264230,
+      "gzipBytes": 76060,
+      "initial": true
+    },
+    {
+      "file": "assets/pdf-engine-CT8MaRfQ.js",
+      "rawBytes": 496645,
+      "gzipBytes": 150122,
+      "initial": false
+    },
+    {
+      "file": "assets/pdf.worker.min-B5Yc7dP4.mjs",
+      "rawBytes": 1327591,
+      "gzipBytes": 396859,
+      "initial": false
+    },
+    {
+      "file": "assets/program-example-CMvJDRrl.js",
+      "rawBytes": 1920,
+      "gzipBytes": 966,
+      "initial": false
+    },
+    {
+      "file": "fisica/campo.js",
+      "rawBytes": 14555,
+      "gzipBytes": 6333,
+      "initial": false
+    },
+    {
+      "file": "fisica/demo.js",
+      "rawBytes": 495,
+      "gzipBytes": 335,
+      "initial": false
+    },
+    {
+      "file": "fisica/exam.js",
+      "rawBytes": 19850,
+      "gzipBytes": 7706,
+      "initial": false
+    },
+    {
+      "file": "fisica/termodinamica.js",
+      "rawBytes": 3466,
+      "gzipBytes": 1747,
+      "initial": false
+    },
+    {
+      "file": "fisica/urti.js",
+      "rawBytes": 3497,
+      "gzipBytes": 1751,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/78-EUC-H.bcmap",
+      "rawBytes": 2404,
+      "gzipBytes": 2123,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/78-EUC-V.bcmap",
+      "rawBytes": 173,
+      "gzipBytes": 164,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/78-H.bcmap",
+      "rawBytes": 2379,
+      "gzipBytes": 2059,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/78-RKSJ-H.bcmap",
+      "rawBytes": 2398,
+      "gzipBytes": 2089,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/78-RKSJ-V.bcmap",
+      "rawBytes": 173,
+      "gzipBytes": 166,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/78-V.bcmap",
+      "rawBytes": 169,
+      "gzipBytes": 159,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/78ms-RKSJ-H.bcmap",
+      "rawBytes": 2651,
+      "gzipBytes": 2320,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/78ms-RKSJ-V.bcmap",
+      "rawBytes": 290,
+      "gzipBytes": 287,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/83pv-RKSJ-H.bcmap",
+      "rawBytes": 905,
+      "gzipBytes": 820,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/90ms-RKSJ-H.bcmap",
+      "rawBytes": 721,
+      "gzipBytes": 691,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/90ms-RKSJ-V.bcmap",
+      "rawBytes": 290,
+      "gzipBytes": 287,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/90msp-RKSJ-H.bcmap",
+      "rawBytes": 715,
+      "gzipBytes": 677,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/90msp-RKSJ-V.bcmap",
+      "rawBytes": 291,
+      "gzipBytes": 288,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/90pv-RKSJ-H.bcmap",
+      "rawBytes": 982,
+      "gzipBytes": 903,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/90pv-RKSJ-V.bcmap",
+      "rawBytes": 260,
+      "gzipBytes": 251,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Add-H.bcmap",
+      "rawBytes": 2419,
+      "gzipBytes": 2106,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Add-RKSJ-H.bcmap",
+      "rawBytes": 2413,
+      "gzipBytes": 2111,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Add-RKSJ-V.bcmap",
+      "rawBytes": 287,
+      "gzipBytes": 278,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Add-V.bcmap",
+      "rawBytes": 282,
+      "gzipBytes": 267,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-CNS1-0.bcmap",
+      "rawBytes": 317,
+      "gzipBytes": 268,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-CNS1-1.bcmap",
+      "rawBytes": 371,
+      "gzipBytes": 305,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-CNS1-2.bcmap",
+      "rawBytes": 376,
+      "gzipBytes": 308,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-CNS1-3.bcmap",
+      "rawBytes": 401,
+      "gzipBytes": 319,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-CNS1-4.bcmap",
+      "rawBytes": 405,
+      "gzipBytes": 321,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-CNS1-5.bcmap",
+      "rawBytes": 406,
+      "gzipBytes": 322,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-CNS1-6.bcmap",
+      "rawBytes": 406,
+      "gzipBytes": 320,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-CNS1-UCS2.bcmap",
+      "rawBytes": 41193,
+      "gzipBytes": 35663,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-GB1-0.bcmap",
+      "rawBytes": 217,
+      "gzipBytes": 208,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-GB1-1.bcmap",
+      "rawBytes": 250,
+      "gzipBytes": 227,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-GB1-2.bcmap",
+      "rawBytes": 465,
+      "gzipBytes": 339,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-GB1-3.bcmap",
+      "rawBytes": 470,
+      "gzipBytes": 340,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-GB1-4.bcmap",
+      "rawBytes": 601,
+      "gzipBytes": 389,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-GB1-5.bcmap",
+      "rawBytes": 625,
+      "gzipBytes": 397,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-GB1-UCS2.bcmap",
+      "rawBytes": 33974,
+      "gzipBytes": 29044,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-Japan1-0.bcmap",
+      "rawBytes": 225,
+      "gzipBytes": 212,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-Japan1-1.bcmap",
+      "rawBytes": 226,
+      "gzipBytes": 212,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-Japan1-2.bcmap",
+      "rawBytes": 233,
+      "gzipBytes": 217,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-Japan1-3.bcmap",
+      "rawBytes": 242,
+      "gzipBytes": 222,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-Japan1-4.bcmap",
+      "rawBytes": 337,
+      "gzipBytes": 279,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-Japan1-5.bcmap",
+      "rawBytes": 430,
+      "gzipBytes": 329,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-Japan1-6.bcmap",
+      "rawBytes": 485,
+      "gzipBytes": 347,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-Japan1-UCS2.bcmap",
+      "rawBytes": 40951,
+      "gzipBytes": 31896,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-Korea1-0.bcmap",
+      "rawBytes": 241,
+      "gzipBytes": 222,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-Korea1-1.bcmap",
+      "rawBytes": 386,
+      "gzipBytes": 313,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-Korea1-2.bcmap",
+      "rawBytes": 391,
+      "gzipBytes": 314,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Adobe-Korea1-UCS2.bcmap",
+      "rawBytes": 23293,
+      "gzipBytes": 18900,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/B5-H.bcmap",
+      "rawBytes": 1086,
+      "gzipBytes": 976,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/B5-V.bcmap",
+      "rawBytes": 142,
+      "gzipBytes": 157,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/B5pc-H.bcmap",
+      "rawBytes": 1099,
+      "gzipBytes": 989,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/B5pc-V.bcmap",
+      "rawBytes": 144,
+      "gzipBytes": 159,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/CNS-EUC-H.bcmap",
+      "rawBytes": 1780,
+      "gzipBytes": 960,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/CNS-EUC-V.bcmap",
+      "rawBytes": 1920,
+      "gzipBytes": 1011,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/CNS1-H.bcmap",
+      "rawBytes": 706,
+      "gzipBytes": 612,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/CNS1-V.bcmap",
+      "rawBytes": 143,
+      "gzipBytes": 158,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/CNS2-H.bcmap",
+      "rawBytes": 504,
+      "gzipBytes": 398,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/CNS2-V.bcmap",
+      "rawBytes": 93,
+      "gzipBytes": 108,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/ETHK-B5-H.bcmap",
+      "rawBytes": 4426,
+      "gzipBytes": 3758,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/ETHK-B5-V.bcmap",
+      "rawBytes": 158,
+      "gzipBytes": 174,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/ETen-B5-H.bcmap",
+      "rawBytes": 1125,
+      "gzipBytes": 1011,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/ETen-B5-V.bcmap",
+      "rawBytes": 158,
+      "gzipBytes": 174,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/ETenms-B5-H.bcmap",
+      "rawBytes": 101,
+      "gzipBytes": 116,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/ETenms-B5-V.bcmap",
+      "rawBytes": 172,
+      "gzipBytes": 188,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/EUC-H.bcmap",
+      "rawBytes": 578,
+      "gzipBytes": 496,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/EUC-V.bcmap",
+      "rawBytes": 170,
+      "gzipBytes": 161,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Ext-H.bcmap",
+      "rawBytes": 2536,
+      "gzipBytes": 2200,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Ext-RKSJ-H.bcmap",
+      "rawBytes": 2542,
+      "gzipBytes": 2219,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Ext-RKSJ-V.bcmap",
+      "rawBytes": 218,
+      "gzipBytes": 214,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Ext-V.bcmap",
+      "rawBytes": 215,
+      "gzipBytes": 208,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/GB-EUC-H.bcmap",
+      "rawBytes": 549,
+      "gzipBytes": 453,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/GB-EUC-V.bcmap",
+      "rawBytes": 179,
+      "gzipBytes": 190,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/GB-H.bcmap",
+      "rawBytes": 528,
+      "gzipBytes": 435,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/GB-V.bcmap",
+      "rawBytes": 175,
+      "gzipBytes": 184,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/GBK-EUC-H.bcmap",
+      "rawBytes": 14692,
+      "gzipBytes": 12314,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/GBK-EUC-V.bcmap",
+      "rawBytes": 180,
+      "gzipBytes": 196,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/GBK2K-H.bcmap",
+      "rawBytes": 19662,
+      "gzipBytes": 14829,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/GBK2K-V.bcmap",
+      "rawBytes": 219,
+      "gzipBytes": 227,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/GBKp-EUC-H.bcmap",
+      "rawBytes": 14686,
+      "gzipBytes": 12308,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/GBKp-EUC-V.bcmap",
+      "rawBytes": 181,
+      "gzipBytes": 197,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/GBT-EUC-H.bcmap",
+      "rawBytes": 7290,
+      "gzipBytes": 6223,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/GBT-EUC-V.bcmap",
+      "rawBytes": 180,
+      "gzipBytes": 191,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/GBT-H.bcmap",
+      "rawBytes": 7269,
+      "gzipBytes": 6171,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/GBT-V.bcmap",
+      "rawBytes": 176,
+      "gzipBytes": 186,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/GBTpc-EUC-H.bcmap",
+      "rawBytes": 7298,
+      "gzipBytes": 6232,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/GBTpc-EUC-V.bcmap",
+      "rawBytes": 182,
+      "gzipBytes": 193,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/GBpc-EUC-H.bcmap",
+      "rawBytes": 557,
+      "gzipBytes": 462,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/GBpc-EUC-V.bcmap",
+      "rawBytes": 181,
+      "gzipBytes": 192,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/H.bcmap",
+      "rawBytes": 553,
+      "gzipBytes": 472,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/HKdla-B5-H.bcmap",
+      "rawBytes": 2654,
+      "gzipBytes": 2525,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/HKdla-B5-V.bcmap",
+      "rawBytes": 148,
+      "gzipBytes": 163,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/HKdlb-B5-H.bcmap",
+      "rawBytes": 2414,
+      "gzipBytes": 2296,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/HKdlb-B5-V.bcmap",
+      "rawBytes": 148,
+      "gzipBytes": 163,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/HKgccs-B5-H.bcmap",
+      "rawBytes": 2292,
+      "gzipBytes": 1992,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/HKgccs-B5-V.bcmap",
+      "rawBytes": 149,
+      "gzipBytes": 164,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/HKm314-B5-H.bcmap",
+      "rawBytes": 1772,
+      "gzipBytes": 1667,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/HKm314-B5-V.bcmap",
+      "rawBytes": 149,
+      "gzipBytes": 164,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/HKm471-B5-H.bcmap",
+      "rawBytes": 2171,
+      "gzipBytes": 2040,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/HKm471-B5-V.bcmap",
+      "rawBytes": 149,
+      "gzipBytes": 164,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/HKscs-B5-H.bcmap",
+      "rawBytes": 4437,
+      "gzipBytes": 3766,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/HKscs-B5-V.bcmap",
+      "rawBytes": 159,
+      "gzipBytes": 175,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Hankaku.bcmap",
+      "rawBytes": 132,
+      "gzipBytes": 147,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Hiragana.bcmap",
+      "rawBytes": 124,
+      "gzipBytes": 139,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/KSC-EUC-H.bcmap",
+      "rawBytes": 1848,
+      "gzipBytes": 1585,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/KSC-EUC-V.bcmap",
+      "rawBytes": 164,
+      "gzipBytes": 181,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/KSC-H.bcmap",
+      "rawBytes": 1831,
+      "gzipBytes": 1550,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/KSC-Johab-H.bcmap",
+      "rawBytes": 16791,
+      "gzipBytes": 13178,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/KSC-Johab-V.bcmap",
+      "rawBytes": 166,
+      "gzipBytes": 183,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/KSC-V.bcmap",
+      "rawBytes": 160,
+      "gzipBytes": 177,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/KSCms-UHC-H.bcmap",
+      "rawBytes": 2787,
+      "gzipBytes": 2355,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/KSCms-UHC-HW-H.bcmap",
+      "rawBytes": 2789,
+      "gzipBytes": 2359,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/KSCms-UHC-HW-V.bcmap",
+      "rawBytes": 169,
+      "gzipBytes": 186,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/KSCms-UHC-V.bcmap",
+      "rawBytes": 166,
+      "gzipBytes": 183,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/KSCpc-EUC-H.bcmap",
+      "rawBytes": 2024,
+      "gzipBytes": 1757,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/KSCpc-EUC-V.bcmap",
+      "rawBytes": 166,
+      "gzipBytes": 183,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Katakana.bcmap",
+      "rawBytes": 100,
+      "gzipBytes": 115,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/LICENSE",
+      "rawBytes": 2080,
+      "gzipBytes": 861,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/NWP-H.bcmap",
+      "rawBytes": 2765,
+      "gzipBytes": 2371,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/NWP-V.bcmap",
+      "rawBytes": 252,
+      "gzipBytes": 240,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/RKSJ-H.bcmap",
+      "rawBytes": 534,
+      "gzipBytes": 521,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/RKSJ-V.bcmap",
+      "rawBytes": 170,
+      "gzipBytes": 163,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/Roman.bcmap",
+      "rawBytes": 96,
+      "gzipBytes": 111,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniCNS-UCS2-H.bcmap",
+      "rawBytes": 48280,
+      "gzipBytes": 41501,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniCNS-UCS2-V.bcmap",
+      "rawBytes": 156,
+      "gzipBytes": 171,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniCNS-UTF16-H.bcmap",
+      "rawBytes": 50419,
+      "gzipBytes": 44165,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniCNS-UTF16-V.bcmap",
+      "rawBytes": 156,
+      "gzipBytes": 171,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniCNS-UTF32-H.bcmap",
+      "rawBytes": 52679,
+      "gzipBytes": 44450,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniCNS-UTF32-V.bcmap",
+      "rawBytes": 160,
+      "gzipBytes": 175,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniCNS-UTF8-H.bcmap",
+      "rawBytes": 53629,
+      "gzipBytes": 46633,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniCNS-UTF8-V.bcmap",
+      "rawBytes": 157,
+      "gzipBytes": 173,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniGB-UCS2-H.bcmap",
+      "rawBytes": 43366,
+      "gzipBytes": 37098,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniGB-UCS2-V.bcmap",
+      "rawBytes": 193,
+      "gzipBytes": 209,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniGB-UTF16-H.bcmap",
+      "rawBytes": 44086,
+      "gzipBytes": 37668,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniGB-UTF16-V.bcmap",
+      "rawBytes": 178,
+      "gzipBytes": 194,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniGB-UTF32-H.bcmap",
+      "rawBytes": 45738,
+      "gzipBytes": 38155,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniGB-UTF32-V.bcmap",
+      "rawBytes": 182,
+      "gzipBytes": 198,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniGB-UTF8-H.bcmap",
+      "rawBytes": 46837,
+      "gzipBytes": 39677,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniGB-UTF8-V.bcmap",
+      "rawBytes": 181,
+      "gzipBytes": 198,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJIS-UCS2-H.bcmap",
+      "rawBytes": 25439,
+      "gzipBytes": 21222,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJIS-UCS2-HW-H.bcmap",
+      "rawBytes": 119,
+      "gzipBytes": 134,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJIS-UCS2-HW-V.bcmap",
+      "rawBytes": 680,
+      "gzipBytes": 581,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJIS-UCS2-V.bcmap",
+      "rawBytes": 664,
+      "gzipBytes": 568,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJIS-UTF16-H.bcmap",
+      "rawBytes": 39443,
+      "gzipBytes": 33482,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJIS-UTF16-V.bcmap",
+      "rawBytes": 643,
+      "gzipBytes": 574,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJIS-UTF32-H.bcmap",
+      "rawBytes": 40539,
+      "gzipBytes": 33706,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJIS-UTF32-V.bcmap",
+      "rawBytes": 677,
+      "gzipBytes": 587,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJIS-UTF8-H.bcmap",
+      "rawBytes": 41695,
+      "gzipBytes": 35315,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJIS-UTF8-V.bcmap",
+      "rawBytes": 678,
+      "gzipBytes": 624,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJIS2004-UTF16-H.bcmap",
+      "rawBytes": 39534,
+      "gzipBytes": 33662,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJIS2004-UTF16-V.bcmap",
+      "rawBytes": 647,
+      "gzipBytes": 577,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJIS2004-UTF32-H.bcmap",
+      "rawBytes": 40630,
+      "gzipBytes": 33862,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJIS2004-UTF32-V.bcmap",
+      "rawBytes": 681,
+      "gzipBytes": 590,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJIS2004-UTF8-H.bcmap",
+      "rawBytes": 41779,
+      "gzipBytes": 35494,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJIS2004-UTF8-V.bcmap",
+      "rawBytes": 682,
+      "gzipBytes": 629,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJISPro-UCS2-HW-V.bcmap",
+      "rawBytes": 705,
+      "gzipBytes": 598,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJISPro-UCS2-V.bcmap",
+      "rawBytes": 689,
+      "gzipBytes": 584,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJISPro-UTF8-V.bcmap",
+      "rawBytes": 726,
+      "gzipBytes": 640,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJISX0213-UTF32-H.bcmap",
+      "rawBytes": 40517,
+      "gzipBytes": 33690,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJISX0213-UTF32-V.bcmap",
+      "rawBytes": 684,
+      "gzipBytes": 593,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJISX02132004-UTF32-H.bcmap",
+      "rawBytes": 40608,
+      "gzipBytes": 33841,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniJISX02132004-UTF32-V.bcmap",
+      "rawBytes": 688,
+      "gzipBytes": 597,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniKS-UCS2-H.bcmap",
+      "rawBytes": 25783,
+      "gzipBytes": 22111,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniKS-UCS2-V.bcmap",
+      "rawBytes": 178,
+      "gzipBytes": 195,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniKS-UTF16-H.bcmap",
+      "rawBytes": 26327,
+      "gzipBytes": 21059,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniKS-UTF16-V.bcmap",
+      "rawBytes": 164,
+      "gzipBytes": 180,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniKS-UTF32-H.bcmap",
+      "rawBytes": 26451,
+      "gzipBytes": 21104,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniKS-UTF32-V.bcmap",
+      "rawBytes": 168,
+      "gzipBytes": 184,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniKS-UTF8-H.bcmap",
+      "rawBytes": 27790,
+      "gzipBytes": 22399,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/UniKS-UTF8-V.bcmap",
+      "rawBytes": 169,
+      "gzipBytes": 186,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/V.bcmap",
+      "rawBytes": 166,
+      "gzipBytes": 156,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/cmaps/WP-Symbol.bcmap",
+      "rawBytes": 179,
+      "gzipBytes": 191,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/standard_fonts/FoxitDingbats.pfb",
+      "rawBytes": 29513,
+      "gzipBytes": 27222,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/standard_fonts/FoxitFixed.pfb",
+      "rawBytes": 17597,
+      "gzipBytes": 15726,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/standard_fonts/FoxitFixedBold.pfb",
+      "rawBytes": 18055,
+      "gzipBytes": 16186,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/standard_fonts/FoxitFixedBoldItalic.pfb",
+      "rawBytes": 19151,
+      "gzipBytes": 17049,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/standard_fonts/FoxitFixedItalic.pfb",
+      "rawBytes": 18746,
+      "gzipBytes": 16629,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/standard_fonts/FoxitSerif.pfb",
+      "rawBytes": 19469,
+      "gzipBytes": 17678,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/standard_fonts/FoxitSerifBold.pfb",
+      "rawBytes": 19395,
+      "gzipBytes": 17398,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/standard_fonts/FoxitSerifBoldItalic.pfb",
+      "rawBytes": 20733,
+      "gzipBytes": 18801,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/standard_fonts/FoxitSerifItalic.pfb",
+      "rawBytes": 21227,
+      "gzipBytes": 19198,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/standard_fonts/FoxitSymbol.pfb",
+      "rawBytes": 16729,
+      "gzipBytes": 15022,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/standard_fonts/LICENSE_FOXIT",
+      "rawBytes": 1553,
+      "gzipBytes": 825,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/standard_fonts/LICENSE_LIBERATION",
+      "rawBytes": 22154,
+      "gzipBytes": 8199,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/standard_fonts/LiberationSans-Bold.ttf",
+      "rawBytes": 137052,
+      "gzipBytes": 85765,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/standard_fonts/LiberationSans-BoldItalic.ttf",
+      "rawBytes": 135124,
+      "gzipBytes": 83813,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/standard_fonts/LiberationSans-Italic.ttf",
+      "rawBytes": 162036,
+      "gzipBytes": 99009,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/standard_fonts/LiberationSans-Regular.ttf",
+      "rawBytes": 139512,
+      "gzipBytes": 90438,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/wasm/LICENSE_JBIG2",
+      "rawBytes": 12862,
+      "gzipBytes": 4602,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/wasm/LICENSE_OPENJPEG",
+      "rawBytes": 2112,
+      "gzipBytes": 1072,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/wasm/LICENSE_PDFJS_JBIG2",
+      "rawBytes": 555,
+      "gzipBytes": 375,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/wasm/LICENSE_PDFJS_OPENJPEG",
+      "rawBytes": 1285,
+      "gzipBytes": 702,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/wasm/LICENSE_PDFJS_QCMS",
+      "rawBytes": 1036,
+      "gzipBytes": 626,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/wasm/LICENSE_PDFJS_QUICKJS",
+      "rawBytes": 1075,
+      "gzipBytes": 656,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/wasm/LICENSE_QCMS",
+      "rawBytes": 1121,
+      "gzipBytes": 684,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/wasm/LICENSE_QUICKJS",
+      "rawBytes": 1130,
+      "gzipBytes": 689,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/wasm/jbig2.wasm",
+      "rawBytes": 103671,
+      "gzipBytes": 41220,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/wasm/jbig2_nowasm_fallback.js",
+      "rawBytes": 132439,
+      "gzipBytes": 41910,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/wasm/openjpeg.wasm",
+      "rawBytes": 220817,
+      "gzipBytes": 71220,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/wasm/openjpeg_nowasm_fallback.js",
+      "rawBytes": 338458,
+      "gzipBytes": 90380,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/wasm/qcms_bg.wasm",
+      "rawBytes": 96589,
+      "gzipBytes": 35849,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/wasm/quickjs-eval.js",
+      "rawBytes": 6232,
+      "gzipBytes": 3016,
+      "initial": false
+    },
+    {
+      "file": "pdf-runtime/wasm/quickjs-eval.wasm",
+      "rawBytes": 469105,
+      "gzipBytes": 218892,
+      "initial": false
+    },
+    {
+      "file": "plugins/ideal-spring/1.0.0/plugin.js",
+      "rawBytes": 173,
+      "gzipBytes": 174,
+      "initial": false
+    },
+    {
+      "file": "plugins/poiseuille/1.0.0/plugin.js",
+      "rawBytes": 173,
+      "gzipBytes": 174,
+      "initial": false
+    },
+    {
+      "file": "plugins/shared/ba4b63b0618f56201e42768492af6eeac8b8dbf7a6509c6f465bbd5c8a4a440a.js",
+      "rawBytes": 191934,
+      "gzipBytes": 44901,
+      "initial": false
+    },
+    {
+      "file": "program-runtime/emscripten-module-uFzwHH0Y.wasm",
+      "rawBytes": 503134,
+      "gzipBytes": 234043,
+      "initial": false
+    },
+    {
+      "file": "program-runtime/emscripten-module.browser-CWXg-YmW.js",
+      "rawBytes": 9129,
+      "gzipBytes": 4159,
+      "initial": false
+    },
+    {
+      "file": "program-runtime/ffi-C3fJrDLQ.js",
+      "rawBytes": 6322,
+      "gzipBytes": 1001,
+      "initial": false
+    },
+    {
+      "file": "program-runtime/module-ES6BEMUI-CI3RSTOp.js",
+      "rawBytes": 176,
+      "gzipBytes": 143,
+      "initial": false
+    },
+    {
+      "file": "program-runtime/worker.js",
+      "rawBytes": 172901,
+      "gzipBytes": 47676,
+      "initial": false
+    },
+    {
+      "file": "sw.js",
+      "rawBytes": 27394,
+      "gzipBytes": 13445,
+      "initial": false
+    }
+  ],
+  "physicalPerformanceTest": "NOT_RUN",
+  "passed": true
+}

@@ -1,0 +1,311 @@
+{
+  "kind": "ardesia-mission-observation",
+  "acceptanceEvidence": false,
+  "date": "2026-11-14",
+  "mandate": "Explicit owner extraordinary Ardesia product development, consolidation and protected delivery; excludes Cortex and local model research.",
+  "repository": "AndreaMarro/ardesia-next",
+  "source": {
+    "branch": "work/mission-20261114",
+    "headSha": "64c847d068ba78e02be5aabd36a9facef80aa85b",
+    "localCommit": "0990a2684f882a1cd9e5a6be02c9935f7cb6d771",
+    "tree": "34ab0949d40699bbff704ad65c6536ff990fa0be",
+    "sourceDigest": "1958abd9b5587a8871bac9bb2ee5573023278aa1d12de8cfa1c72a7eb114e2b1",
+    "sameTreeVerified": true
+  },
+  "integration": {
+    "prs": [
+      50,
+      51,
+      52,
+      53,
+      54,
+      55
+    ],
+    "mainBefore55": "fd437dbce846a00e87296639189706de8406a544",
+    "originalMainCi": {
+      "runId": 43595915646,
+      "result": "PASS"
+    },
+    "pr55": {
+      "number": 55,
+      "state": "MERGED",
+      "head": "64c847d068ba78e02be5aabd36a9facef80aa85b",
+      "mergeCommit": "0fcbd9d6239ee3253f36001a437fa8dc0fa8a8b0",
+      "ciRunId": 43597742073,
+      "artifactId": 14115467951,
+      "artifactSha256": "7db1d49a1499560b997bde79fe60c159acbbded91b2a64f38fa0941f8875d77c",
+      "verify": 8,
+      "unit": 706,
+      "browser": {
+        "total": 299,
+        "desktop": 150,
+        "mobile": 149,
+        "skipped": 0,
+        "flaky": 0,
+        "unexpected": 0,
+        "retry": 0
+      },
+      "server": 5,
+      "mcp": 16
+    },
+    "mainAfter55": "0fcbd9d6239ee3253f36001a437fa8dc0fa8a8b0",
+    "mainCiAfter55": {
+      "runId": 43599951215,
+      "result": "FAIL",
+      "artifactId": 14116485298,
+      "artifactSha256": "0a8fec0a8737f417c2b16cc9ff38a0207299d1e69b33e366570402d0a9c34674",
+      "assertionsPassed": 706,
+      "unhandledErrors": 1,
+      "cause": "SQLSTATE57P01: forced cleanup raced with actual pg-pool client shutdown in the isolated readiness fixture.",
+      "rerun": false
+    }
+  },
+  "changes": [
+    "Runtime requires exact canonical migration registry1–10 before readiness/login/data; no runtime DDL or silent migrations; logout revocation remains available.",
+    "Italian schema upgrade state and recovery-preserving local export.",
+    "Mobile destination rail uses nonshrinking54px controls and horizontal scrolling, first/last reachable.",
+    "Build/preflight use shared exact QuickJS policy; legitimate Creator capability accepted with no weakening of identity, protection, Origin or error sanitation."
+  ],
+  "localVerification": {
+    "commit": "0990a2684f882a1cd9e5a6be02c9935f7cb6d771",
+    "verify": 8,
+    "unit": 706,
+    "serverRuntime": 5,
+    "mcpRuntime": 16,
+    "preflightContract": 20,
+    "targetedBrowser": 10,
+    "browserLimit": "Desktop/mobile Chromium emulation, not physical devices.503 transport injected only in unavailable-state UI check.",
+    "coreGzipBytes": 343560,
+    "coreLimitBytes": 344064,
+    "initialJavaScriptGzipBytes": 223387,
+    "allGzipBytes": 3226892,
+    "pdfGzipBytes": 2590788
+  },
+  "independentReview": {
+    "context": "Separate pr_chain_review agent; raw source/diff, immutable Git blobs and recomputed identity. No source blocker; not human scientific or editorial approval.",
+    "reviewedSha": "64c847d068ba78e02be5aabd36a9facef80aa85b"
+  },
+  "database": {
+    "project": "royal-bar-31252959",
+    "database": "ardesia_next_m3",
+    "liveBranch": "br-broad-mud-bajjd3j7",
+    "backupBranch": "br-cool-mode-ba064ruw",
+    "qualificationBranch": "br-noisy-surf-bavgwbsg",
+    "payloadSha256": "c96a316766a3179d5afc5a35a9867565d6b54ebe21b3b8444cec6390cf41e8d9",
+    "canonicalStatements": 44,
+    "qualification": "PASS",
+    "qualificationPreservesAllSevenExistingTableFingerprints": true,
+    "qualificationWorkspaceCount": 9,
+    "qualificationSnapshotVersion": "4",
+    "liveUpgrade": "APPLIED_VERIFIED",
+    "livePreservedAllSevenTableFingerprints": true,
+    "livePreservedCounts": [
+      {
+        "table": "workspaces",
+        "count": 9
+      },
+      {
+        "table": "accounts",
+        "count": 3
+      },
+      {
+        "table": "owner_bindings",
+        "count": 9
+      },
+      {
+        "table": "creation_receipts",
+        "count": 9
+      },
+      {
+        "table": "sessions",
+        "count": 56
+      },
+      {
+        "table": "login_limits",
+        "count": 4
+      },
+      {
+        "table": "import_archives",
+        "count": 0
+      }
+    ],
+    "registryVersions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "runtimePrivileges": {
+      "runtime_role": "ardesia_next_m3_app",
+      "database_name": "ardesia_next_m3",
+      "migration_count": 10,
+      "workspaces": 9,
+      "preserved_v4_workspaces": 9,
+      "read_version": true,
+      "read_digest": true,
+      "read_applied_at": false,
+      "insert_migration": false,
+      "update_account": false,
+      "create_schema_object": false
+    },
+    "backupMeaning": "Neon copy-on-write branch backup, verified via child; not an application portable backup/restore acceptance."
+  },
+  "access": {
+    "canonicalUrl": "https://ardesia-next-staging.vercel.app",
+    "canonicalDeploymentBefore": "dpl_AzHJWRxYa6f5EcmsNcXrfLA5EYup",
+    "canonicalSourceBefore": "90adcf473a5145b8651c26fd5127d4b67c37cc4e",
+    "availableRoles": [
+      "teacher",
+      "student"
+    ],
+    "signUp": "NOT_IMPLEMENTED",
+    "passwordReset": "Operator flow required; no self-service route.",
+    "blockers": [
+      "No authenticated Vercel browser/short-lived project OIDC in this host",
+      "Existing application QA credentials are only in the authorized Mac private channel",
+      "No connected native device"
+    ]
+  },
+  "offline": {
+    "name": "Ardesia-Fisica-2026-11-14-DRAFT.zip",
+    "sha256": "85aa4ff305d5b56cb970aa99bab2f45557573095fa7332871b05df699f2e1fe4",
+    "status": "DRAFT; humanApproval=false",
+    "fileSchemeProbe": {
+      "passed": true,
+      "checks": 4,
+      "completedAt": "2026-11-14T13:23:01.210Z",
+      "browser": "Chromium141.0.7390.37,Playwright1194,Linux1440x1000",
+      "network": false,
+      "httpServer": false,
+      "scope": [
+        "Index/course/lesson",
+        "Real JSON attempt download",
+        "Empty-context same-edition restore",
+        "Thermodynamics lab parameter interaction"
+      ],
+      "initialFailure": "Test harness targeted a hidden link in a closed details section; recorded and corrected by opening the observed UI control; no product change.",
+      "limits": [
+        "No human science approval",
+        "Practice mode only",
+        "No application authentication or cloud synchronization",
+        "No physical devices"
+      ]
+    }
+  },
+  "limits": [
+    "Physical Mac/iPad/Pencil/iPhone/Windows/Android not run this session",
+    "WebKit launch blocked by missing dependencies; dependency index download rejected by automatic approval review; no bypass or substitute download",
+    "Remote authenticated application continuity and current-candidate12-counterproof acceptance not obtained",
+    "No commercial release, scientific human approval, payment processing or third-party marketplace acceptance",
+    "Native macOS companion has existing historical M4 evidence; this Linux session cannot rebuild/retest it",
+    "Backup is a Neon branch-copy qualified through a child; not a portable application exportBackup/restoreBackup proof"
+  ],
+  "nextAction": "Preserve original CI43601139187 on c7f1f2a; after exact artifact verification, integrate PR56 normally and update protected preview if appropriate. Current preview64 is technically verified and protected, but authenticated continuity and canonical alias promotion still require the existing authorized Mac credential channel.",
+  "deployment": {
+    "id": "dpl_AWqtg2fbfPcc7kMrCsZJW6zSgp57",
+    "url": "https://ardesia-next-nr9wdtwij-andreas-projects-6d4e9791.vercel.app",
+    "target": null,
+    "environment": "protected standard Preview",
+    "providerState": "READY",
+    "sourceSha": "64c847d068ba78e02be5aabd36a9facef80aa85b",
+    "branch": "preview/m3",
+    "canonicalAliasPromoted": false,
+    "buildInfoHttp": "BLOCKED_BY_SSO",
+    "applicationHealthHttp": "BLOCKED_BY_SSO",
+    "authenticatedE2E": "NOT_RUN_CREDENTIALS_UNAVAILABLE",
+    "anonymous": {
+      "root": 302,
+      "api": 401,
+      "buildInfo": 401,
+      "redirectOrigin": "https://vercel.com",
+      "redirectPath": "/sso-api",
+      "redirectFollowed": false
+    },
+    "ssoDeploymentType": "all"
+  },
+  "cleanupCandidate": {
+    "pr": 56,
+    "headSha": "c7f1f2a34141990ddd880bd6d4d1da2c124551db",
+    "tree": "267dad7567aa8edf5d03f145fee8311af701c49d",
+    "sourceDigest": "9b1c81331ffe6bb4bb4dbec4bfe42d856ab892125af8715f5082019b71f04cc1",
+    "files": [
+      "packages/server/src/schema-readiness.integration.test.ts",
+      "docs/history.md"
+    ],
+    "runtimeCodeChanged": false,
+    "localReadiness": 8,
+    "typecheck": "PASS",
+    "independentSourceReview": "PASS",
+    "ciRunId": 43601139187,
+    "ci": "PENDING"
+  },
+  "recordedAt": "2026-11-14 13:46:48 UTC",
+  "phase": "WAITING_CI_FOR_PR56",
+  "originalReports": {
+    "directory": "operations/evidence/mission-2026-11-14",
+    "ciReportsPreservedByteForByte": 9,
+    "failedCiReportsPreservedByteForByte": 3,
+    "ciOriginalInventory": {
+      "verification.json": {
+        "chars": 1072,
+        "bytes": 1072,
+        "sha256": "ec261d749c73181ba06db77447c45d1760c2e75bc6f845624343dddc83c70350",
+        "gitBlob": "de3372186ec6979f0eaa7bf366a0795582bc2136"
+      },
+      "unit.json": {
+        "chars": 296557,
+        "bytes": 296615,
+        "sha256": "f683f40b944972267c7739aaebe77c9d50a14384dad45668e65857c6a7420b95",
+        "gitBlob": "5cf80f4ae5117b3fe3a1e6e26fd6894e5d411d91"
+      },
+      "e2e.json": {
+        "chars": 517897,
+        "bytes": 517993,
+        "sha256": "22c86513132996a7b19fde4d856469d94a655077b40f47db92db13f152af96dd",
+        "gitBlob": "d7ef73e143214b1a5a319aec008e366111bdbb8e"
+      },
+      "browser-evidence.json": {
+        "chars": 4704,
+        "bytes": 4704,
+        "sha256": "cd7992afd0d85a966cc8d3bbf0acc1135ff5a4dea13253da34b05e7cd99084c1",
+        "gitBlob": "31050a766cbf51d11844fff62881139684713c61"
+      },
+      "budget.json": {
+        "chars": 33539,
+        "bytes": 33539,
+        "sha256": "adc3b70ceac78e81fb3b04b39eb8388887c3b27056207adc125580429a44c8de",
+        "gitBlob": "37c0ccdd878098ceb4a971300883557840f9f33a"
+      },
+      "server-runtime.json": {
+        "chars": 929,
+        "bytes": 929,
+        "sha256": "61552b6ac0986c63f367f9d1a642486be91a52695bc87fca5877f7c299f50288",
+        "gitBlob": "27e7dc32ba068b7bd4c5cc23b1f700f8009b1275"
+      },
+      "mcp-runtime.json": {
+        "chars": 2880,
+        "bytes": 2880,
+        "sha256": "541447fd663e2cdd4c890446d9ecdf2f980372558a5cf6813110fd7735fbfff7",
+        "gitBlob": "68f77c5cd7598a4de4de35df695bb287c2842754"
+      },
+      "m4-preparation.json": {
+        "chars": 208202,
+        "bytes": 208202,
+        "sha256": "470790e7ea5d165982b153e9adb796a199e01bd5549bf6a63b5b0994152e1062",
+        "gitBlob": "00216b9e48a13b1f0f63eec6b6cc1849510035cb"
+      },
+      "status.json": {
+        "chars": 16292,
+        "bytes": 16292,
+        "sha256": "320b70b43add7610504c7ae5618b03966c43725ea53de06041aa3d8df0284e55",
+        "gitBlob": "b389bd970ed9e559a686a49e9e402aea16b8950d"
+      }
+    }
+  }
+}

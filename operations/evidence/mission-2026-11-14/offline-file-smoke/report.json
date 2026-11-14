@@ -1,0 +1,147 @@
+{
+  "kind": "ardesia-offline-file-scheme-smoke",
+  "startedAt": "2026-11-14T13:22:59.395Z",
+  "archive": {
+    "archive": "/workspace/scratch/712dbd53ffc0/deliverables/Ardesia-Fisica-2026-11-14-DRAFT.zip",
+    "sha256": "85aa4ff305d5b56cb970aa99bab2f45557573095fa7332871b05df699f2e1fe4",
+    "bytes": 3388311,
+    "files": 65,
+    "extracted": "/workspace/scratch/712dbd53ffc0/offline-file-smoke-20261114/extracted"
+  },
+  "environment": {
+    "platform": "linux",
+    "node": "v24.22.1",
+    "browser": "Chromium pinned",
+    "executable": "/home/agent/.cache/ms-playwright/chromium-1194/chrome-linux/chrome",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "scheme": "file:",
+    "httpServer": false,
+    "networkEnabled": false,
+    "version": "141.0.7390.37"
+  },
+  "checks": [
+    {
+      "name": "index_to_course_to_lesson",
+      "passed": true,
+      "course": "Strumenti e meccanica",
+      "lesson": "Notazione scientifica",
+      "lessonLinkCount": 9,
+      "lessonTextCharacters": 8346,
+      "url": "file:///workspace/scratch/712dbd53ffc0/offline-file-smoke-20261114/extracted/sf-2026-u1-01.html"
+    },
+    {
+      "name": "practice_answer_and_real_json_download",
+      "passed": true,
+      "downloadName": "ardesia-tentativo-physics-2026-original-a.json",
+      "downloadPath": "/workspace/scratch/712dbd53ffc0/offline-file-smoke-20261114/saved-attempt.json",
+      "bytes": 1285,
+      "savedQuestion": "1. Una formula da controllare",
+      "selected": "A",
+      "answeredCount": "1 / 31 risposte",
+      "dataKeys": [
+        "schemaVersion",
+        "kind",
+        "examId",
+        "sourceSha256",
+        "mode",
+        "startedAt",
+        "deadline",
+        "index",
+        "answers",
+        "flagged"
+      ]
+    },
+    {
+      "name": "new_context_reimports_same_edition",
+      "passed": true,
+      "freshCookies": 0,
+      "freshStorageOrigins": 0,
+      "restoredPosition": "2. Il ritorno non annulla il percorso",
+      "restoredQuestion": "1. Una formula da controllare",
+      "restoredAnswer": "A",
+      "flagRestored": true,
+      "answerCount": "1 / 31 risposte",
+      "resultScore": "1",
+      "reviewDetailsCount": 52
+    },
+    {
+      "name": "thermodynamics_lab_prediction_and_parameter_change",
+      "passed": true,
+      "initialState": "F: V = 37,42 L; p = 150 kPa; T = 675 K.",
+      "balances": {
+        "qa": "5.924,05",
+        "qb": "6.547,64",
+        "du": "4.676,89",
+        "feedback": "ΔU: previsione corretta."
+      },
+      "changedState": "F: V = 12,47 L; p = 200 kPa; T = 300 K.",
+      "previousFeedbackCleared": true,
+      "transferFeedback": "Corretto. ΔU = 0 perché p_f V_f = p_i V_i. W_B = 200 000 × (0,010 − 0,020) = −2000 J. Q_B = ΔU + W_B = −2000 J: il gas cede calore."
+    }
+  ],
+  "errors": [],
+  "resourceFailures": [],
+  "consoleErrors": [],
+  "networkAttempts": [],
+  "initialRun": {
+    "report": "report-initial.json",
+    "failure": "Harness attempted a lesson link in a closed details section; repeat opens the observed Notazione scientifica summary through UI."
+  },
+  "limits": [
+    "Desktop Chromium on Linux only; no Safari, physical iPad/Pencil or mobile hardware.",
+    "No application login, cloud persistence, synchronization or full Ardesia workspace tested.",
+    "Practice mode only; timer expiry, all questions and scientific correctness are not qualified.",
+    "Attempt recovery is explicit local file export/import, not automatic save."
+  ],
+  "passed": true,
+  "savedAttempt": {
+    "schemaVersion": 1,
+    "kind": "ardesia-physics-attempt",
+    "examId": "physics-2026-original-a",
+    "sourceSha256": "0fe70d30a5bbc59ae0201c8307248c59e9c0ce7b29f4d1fe36cbc1bea1576f46",
+    "mode": "practice",
+    "startedAt": 1794662580216,
+    "deadline": null,
+    "index": 1,
+    "answers": {
+      "physics-2026-original-a-01": "A",
+      "physics-2026-original-a-02": "",
+      "physics-2026-original-a-03": "",
+      "physics-2026-original-a-04": "",
+      "physics-2026-original-a-05": "",
+      "physics-2026-original-a-06": "",
+      "physics-2026-original-a-07": "",
+      "physics-2026-original-a-08": "",
+      "physics-2026-original-a-09": "",
+      "physics-2026-original-a-10": "",
+      "physics-2026-original-a-11": "",
+      "physics-2026-original-a-12": "",
+      "physics-2026-original-a-13": "",
+      "physics-2026-original-a-14": "",
+      "physics-2026-original-a-15": "",
+      "physics-2026-original-a-16": "",
+      "physics-2026-original-a-17": "",
+      "physics-2026-original-a-18": "",
+      "physics-2026-original-a-19": "",
+      "physics-2026-original-a-20": "",
+      "physics-2026-original-a-21": "",
+      "physics-2026-original-a-22": "",
+      "physics-2026-original-a-23": "",
+      "physics-2026-original-a-24": "",
+      "physics-2026-original-a-25": "",
+      "physics-2026-original-a-26": "",
+      "physics-2026-original-a-27": "",
+      "physics-2026-original-a-28": "",
+      "physics-2026-original-a-29": "",
+      "physics-2026-original-a-30": "",
+      "physics-2026-original-a-31": ""
+    },
+    "flagged": [
+      "physics-2026-original-a-01"
+    ]
+  },
+  "completedAt": "2026-11-14T13:23:01.210Z"
+}

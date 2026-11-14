@@ -3,17 +3,10 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 171,
-  "updatedAt": "2026-11-14T13:27:09.535Z",
+  "revision": 172,
+  "updatedAt": "2026-11-14T13:46:48.872Z",
   "procedureRef": "e83c98098bb4da0324a97460776b1898b5a05ee5",
-  "activeRun": {
-    "runId": "mission-20261114-release",
-    "actor": "codex",
-    "startedAt": "2026-11-14T13:27:02.000Z",
-    "claimedAt": "2026-11-14T13:27:09.535Z",
-    "writeUntil": "2026-11-14T14:12:02.000Z",
-    "closeBy": "2026-11-14T14:22:02.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "mission-20261114-product-delivery",
     "taskId": "M5-PRODUCT",
@@ -24,10 +17,10 @@
     "expiresAt": "2026-11-15T12:24:00.000Z",
     "source": {
       "baseSha": "f7adf5db02913e25fbab0b1da071f650b4f78676",
-      "headSha": "64c847d068ba78e02be5aabd36a9facef80aa85b",
-      "sourceDigest": "1958abd9b5587a8871bac9bb2ee5573023278aa1d12de8cfa1c72a7eb114e2b1",
+      "headSha": "c7f1f2a34141990ddd880bd6d4d1da2c124551db",
+      "sourceDigest": "9b1c81331ffe6bb4bb4dbec4bfe42d856ab892125af8715f5082019b71f04cc1",
       "branch": "work/mission-20261114",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/55"
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/56"
     },
     "goal": "Accettazione prodotto e percorso di rilascio stabile",
     "allowedPaths": [
@@ -47,55 +40,93 @@
       {
         "kind": "ci",
         "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/43597742073",
-        "headSha": "64c847d068ba78e02be5aabd36a9facef80aa85b",
-        "sourceDigest": "1958abd9b5587a8871bac9bb2ee5573023278aa1d12de8cfa1c72a7eb114e2b1",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/43601139187",
+        "headSha": "c7f1f2a34141990ddd880bd6d4d1da2c124551db",
+        "sourceDigest": "9b1c81331ffe6bb4bb4dbec4bfe42d856ab892125af8715f5082019b71f04cc1",
         "result": "PENDING",
-        "scope": "Original full CI for PR55 published source; do not rerun or infer PASS from local tests.",
+        "scope": "Original full CI for PR56 fixture-shutdown correction; do not rerun or infer PASS from PR55.",
         "access": "metadata",
         "artifactDigest": null
       },
       {
         "kind": "check",
-        "name": "local-final-tree",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/55",
-        "headSha": "0990a2684f882a1cd9e5a6be02c9935f7cb6d771",
-        "sourceDigest": "1958abd9b5587a8871bac9bb2ee5573023278aa1d12de8cfa1c72a7eb114e2b1",
+        "name": "local-fixture-shutdown",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/56",
+        "headSha": "c7f1f2a34141990ddd880bd6d4d1da2c124551db",
+        "sourceDigest": "9b1c81331ffe6bb4bb4dbec4bfe42d856ab892125af8715f5082019b71f04cc1",
         "result": "PASS",
-        "scope": "Locally executed Verify8/8,706unit,20preflight,10browser,server5,MCP16; EXACT same Git tree34ab0949 as remote64c847d. Browser desktop/mobile emulation, no remote/hardware acceptance.",
-        "access": "artifact",
+        "scope": "8 real isolated PostgreSQL readiness cases, including held-connection refusal and later cleanup; typecheck PASS. Tested bytes equal local366fa8a/remote c7f1f2a tree267dad. Runtime/SQL unchanged.",
+        "access": "metadata",
         "artifactDigest": null
       },
       {
-        "kind": "observation",
-        "name": "neon-clone-upgrade",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/55",
+        "kind": "review",
+        "name": "independent-raw-source",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/56",
+        "headSha": "c7f1f2a34141990ddd880bd6d4d1da2c124551db",
+        "sourceDigest": "9b1c81331ffe6bb4bb4dbec4bfe42d856ab892125af8715f5082019b71f04cc1",
+        "result": "PASS",
+        "scope": "Separate pr_chain_review context inspected original57P01 log and pg-pool implementation,raw2-file diff and immutable Git blobs; recomputed sourceDigest. No blocker; not human acceptance.",
+        "access": "metadata",
+        "artifactDigest": null
+      },
+      {
+        "kind": "ci",
+        "name": "verify-original-pr55",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/43597742073",
         "headSha": "64c847d068ba78e02be5aabd36a9facef80aa85b",
         "sourceDigest": "1958abd9b5587a8871bac9bb2ee5573023278aa1d12de8cfa1c72a7eb114e2b1",
         "result": "PASS",
-        "scope": "Reviewed canonical44statement migration2–10 applied ONLY to Neon child br-noisy-surf-bavgwbsg of no-compute backup br-cool-mode-ba064ruw. Seven table fingerprints/counts preserved,9workspace snapshot4; runtime metadata only2columns; live DB/alias unchanged.",
-        "access": "metadata",
-        "artifactDigest": "c96a316766a3179d5afc5a35a9867565d6b54ebe21b3b8444cec6390cf41e8d9"
+        "scope": "Original artifact14115467951:8Verify,706unit,299browser150desktop149mobile,0skip/flaky/unexpected/retry,5server16MCP.9original reports archived byte-for-byte.",
+        "access": "artifact",
+        "artifactDigest": "7db1d49a1499560b997bde79fe60c159acbbded91b2a64f38fa0941f8875d77c"
+      },
+      {
+        "kind": "ci",
+        "name": "main-shutdown-failure",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/43599951215",
+        "headSha": "0fcbd9d6239ee3253f36001a437fa8dc0fa8a8b0",
+        "sourceDigest": "1958abd9b5587a8871bac9bb2ee5573023278aa1d12de8cfa1c72a7eb114e2b1",
+        "result": "FAIL",
+        "scope": "706 assertions passed but process exited1 for uncaught57P01 in forced fixture cleanup. Failure retained,no rerun. PR56 fixes fixture/history and awaits its own CI.",
+        "access": "artifact",
+        "artifactDigest": "0a8fec0a8737f417c2b16cc9ff38a0207299d1e69b33e366570402d0a9c34674"
+      },
+      {
+        "kind": "observation",
+        "name": "protected-preview-and-live-schema",
+        "reference": "operations/evidence/mission-2026-11-14/deployment-independent-observation.json",
+        "headSha": "64c847d068ba78e02be5aabd36a9facef80aa85b",
+        "sourceDigest": "1958abd9b5587a8871bac9bb2ee5573023278aa1d12de8cfa1c72a7eb114e2b1",
+        "result": "PASS",
+        "scope": "READY Preview dpl_AWqtg2fbfPcc7kMrCsZJW6zSgp57,SHA64,targetnull,SSOall;anonymous root302,API/build-info401;old alias preserved. LiveNeon1–10,9snapshot4 and restricted privileges independently read. Authenticated health/binding/continuity NOT_RUN.",
+        "access": "artifact",
+        "artifactDigest": "d55dfa9e38326a16740091c12f54ba4d74a0f59d720b6086b0ba91162c69ae55"
       }
     ],
     "blockers": [
       "REMOTE_APPLICATION_CREDENTIALS_UNAVAILABLE",
       "BROWSER_VERCEL_LOGIN_REQUIRED"
     ],
-    "nextAction": "Preserve this same increment while original CI43597742073 runs. PR50–54 are merged; mainfd437db CI43595915646 PASS. After original PR55 exact-source artifact/review, integrate normally, apply the independently reviewed canonical migration to guarded live Neon state and create an existing-project protected Preview from preview/m3. Preserve prior staging alias until authenticated continuity is available. No new source work while waiting, no Cortex, no M5/human/commercial acceptance. Implementation run is released within its original budget; a subsequent delivery run must claim anew at its actual start, without takeover or timer renewal.",
-    "review": null
+    "nextAction": "Wait for original CI43601139187 on PR56 c7f1f2a/digest9b1c8133; inspect original artifact before normal merge. PR50–55 integrated. Preview64 READY with SSO/all; canonical alias still90adcf. Live migration1–10 ALREADY APPLIED;7old table fingerprints and9snapshot4 preserved: do not reapply guarded migration/reset data. After CI, take a truthful new delivery-phase claim before writes, integrate56 and qualify protected candidate. Existing Mac private credential channel is needed for authenticated health/origin/binding and continuity; no bypass,new account or alias promotion without proof. Current phase is released during original CI; no timer renewal or takeover.",
+    "review": {
+      "authorContextId": "root",
+      "reviewerContextId": "pr_chain_review",
+      "sourceSha": "c7f1f2a34141990ddd880bd6d4d1da2c124551db",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/56"
+    }
   },
   "lastRun": {
-    "runId": "mission-20261114-integration",
+    "runId": "mission-20261114-release",
     "actor": "codex",
-    "startedAt": "2026-11-14T12:24:00.000Z",
-    "claimedAt": "2026-11-14T12:34:04.340Z",
-    "writeUntil": "2026-11-14T13:09:00.000Z",
-    "closeBy": "2026-11-14T13:19:00.000Z",
+    "startedAt": "2026-11-14T13:27:02.000Z",
+    "claimedAt": "2026-11-14T13:27:09.535Z",
+    "writeUntil": "2026-11-14T14:12:02.000Z",
+    "closeBy": "2026-11-14T14:22:02.000Z",
     "packetId": "mission-20261114-product-delivery",
-    "finishedAt": "2026-11-14T13:07:42.278Z",
+    "finishedAt": "2026-11-14T13:46:48.872Z",
     "outcome": "WAITING_CI",
     "late": false,
-    "summary": "Source phase delivered PR50–54 into main plus reviewed PR55; original final CI pending. Local final Verify/browser passed. Neon backup and isolated upgrade qualification preserve all seven tables; live DB and alias unchanged. Release original claim within budget; same increment continues only after original CI and new truthful delivery-phase claim."
+    "summary": "PR55 merged; live schema1–10 applied with7old table fingerprints and9snapshot4 preserved; Preview64 READY,SSO/alias unchanged. Main CI failed on forced fixture cleanup despite706 assertions; independently diagnosed and repaired in reviewed PR56,8focused tests/typecheck PASS,new full CI pending. Preserve both outcomes and release this phase within its unchanged budget."
   }
 }
