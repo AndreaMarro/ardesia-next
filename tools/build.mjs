@@ -1,6 +1,7 @@
 import {cpSync, mkdirSync, writeFileSync} from 'node:fs';
 import {spawnSync} from 'node:child_process';
 import {identity} from './evidence.mjs';
+import {buildPolicy} from './build-policy.mjs';
 import {checkPluginBuild} from './build-plugin.mjs';
 import {buildServer} from './build-server.mjs';
 import {verifyServerBundle} from './server-bundle.test.mjs';
@@ -17,7 +18,7 @@ await import('./build-physics-exam.mjs');
 const {writeThermodynamicsManifest}=await import('./build-physics-thermodynamics.mjs');
 writeThermodynamicsManifest();
 await checkPluginBuild();
-const build = {...identity(), application: 'ardesia-next', milestone: 'M3', persistence: 'remote-postgres-required', remoteAcceptance: 'INCOMPLETE', thirdPartyExecution: true, programRuntime: {abi: 'ardesia.program/1', policy: 'ephemeral-explicit-consent-no-io', engine: 'quickjs-emscripten@0.32.0'}};
+const build = {...identity(), ...buildPolicy, remoteAcceptance: 'INCOMPLETE'};
 if(process.env.VERCEL && build.commit === 'local-uncommitted') throw new Error('Remote build requires a source SHA');
 mkdirSync('apps/web/public', {recursive: true});
 writeFileSync('apps/web/public/build-info.json', JSON.stringify(build, null, 2) + '\n');

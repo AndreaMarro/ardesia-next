@@ -6,7 +6,18 @@ const origin = 'https://ardesia-next-staging.vercel.app';
 const expected = {commit: 'a'.repeat(40), sourceDigest: 'b'.repeat(64)};
 const token = 'private-platform-token-fixture-never-log';
 const env = {ARDESIA_E2E_MODE: 'remote', ARDESIA_E2E_BASE_URL: origin, VERCEL_OIDC_TOKEN: token};
-const build = {...expected, application: 'ardesia-next', milestone: 'M3', persistence: 'remote-postgres-required', thirdPartyExecution: false};
+const build = {...expected, application: 'ardesia-next', milestone: 'M3', persistence: 'remote-postgres-required', thirdPartyExecution: true,
+  programRuntime: {abi: 'ardesia.program/1', policy: 'ephemeral-explicit-consent-no-io', engine: 'quickjs-emscripten@0.32.0'}};
+const invalidPolicies = [
+  {thirdPartyExecution: false}, {thirdPartyExecution: undefined}, {thirdPartyExecution: 'true'},
+  {programRuntime: undefined}, {programRuntime: null}, {programRuntime: []},
+  ...[
+    {abi: undefined}, {abi: 'ardesia.program/2'},
+    {policy: undefined}, {policy: 'ephemeral-no-io'}, {policy: 'ephemeral-explicit-consent'},
+    {engine: undefined}, {engine: 'quickjs-emscripten@0.31.0'},
+    {network: true},
+  ].map(change => ({programRuntime: {...build.programRuntime, ...change}})),
+];
 const json = (body, status = 200, headers = {}) => new Response(JSON.stringify(body), {status, headers: {'Content-Type': 'application/json; charset=utf-8', ...headers}});
 const responses = () => [
   new Response(null, {status: 302, headers: {Location: `https://vercel.com/sso-api?url=${encodeURIComponent(origin + '/')}&nonce=private-nonce-fixture`}}),
@@ -97,6 +108,17 @@ test('SHA or digest mismatch stops before session probes or browser fixture writ
   }
 });
 
+test('only the exact consent-gated no-I/O program runtime is accepted before health or session probes', async () => {
+  for (const change of invalidPolicies) {
+    const sequence = responses(); sequence[1] = json({...build, ...change});
+    const {report, requests} = await run(sequence);
+    assert.equal(report.failureCode, 'INVALID_BUILD_IDENTITY');
+    assert.equal(report.buildIdentityMatched, false);
+    assert.equal(requests.length, 2);
+    assert.equal(report.passed, false);
+  }
+});
+
 test('a platform environment mismatch is reported without retaining provider bodies or credentials', async () => {
   const sequence = responses();
   sequence[1] = new Response(`provider diagnostic ${token}`, {status: 403,
@@ -166,10 +188,14 @@ test('request exceptions cannot copy secrets, URLs or driver errors into the rep
 });
 
 test('a changed identity during preflight blocks the browser phase', async () => {
-  const sequence = responses(); sequence[5] = json({...build, commit: 'c'.repeat(40)});
-  const {report} = await run(sequence);
-  assert.equal(report.failureCode, 'BUILD_IDENTITY_CHANGED');
-  assert.equal(report.passed, false);
+  for (const change of [{commit: 'c'.repeat(40)}, {sourceDigest: 'c'.repeat(64)},
+    {application: 'another-app'}, {milestone: 'M2'}, {persistence: 'local'}, ...invalidPolicies]) {
+    const sequence = responses(); sequence[5] = json({...build, ...change});
+    const {report, requests} = await run(sequence);
+    assert.equal(report.failureCode, 'BUILD_IDENTITY_CHANGED');
+    assert.equal(requests.length, 6);
+    assert.equal(report.passed, false);
+  }
 });
 
 test('the request timeout also bounds a response that never finishes its JSON body', async () => {

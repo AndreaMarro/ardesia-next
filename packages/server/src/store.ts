@@ -9,7 +9,7 @@ import {
 } from '@ardesia/contracts';
 import {createCore, type CoreService, type PluginPolicy, type StorageAdapter} from '@ardesia/core';
 import {authenticate, login} from './auth';
-import {createDatabasePool, hash, transaction} from './database';
+import {createDatabasePool, hash, requireCurrentSchema, transaction} from './database';
 import {canonical, ServerError, unavailable} from './errors';
 import type {AuthenticatedRequest, ApiRequest} from './requests';
 import type {Account, WorkspaceProjection, WorkspaceSummary} from './types';
@@ -153,7 +153,13 @@ export function createPostgresStore(options: StoreOptions) {
   return {
     pool,
     sessionLifetimeSeconds: lifetime,
-    async health() { await pool.query('SELECT id FROM ardesia_next.workspaces LIMIT 1'); return {configured: true as const, authority: 'postgres' as const}; },
+    async health() {
+      return transaction(pool, async client => {
+        await requireCurrentSchema(client);
+        await client.query('SELECT id FROM ardesia_next.workspaces LIMIT 1');
+        return {configured: true as const, authority: 'postgres' as const};
+      });
+    },
     async login(input: Extract<ApiRequest, {action: 'login'}>, oldToken?: string) {
       return login(pool, input.username, input.password, lifetime, oldToken);
     },
@@ -162,11 +168,14 @@ export function createPostgresStore(options: StoreOptions) {
       return transaction(pool, async client => {
         const session = await authenticate(client, token, expectedAccountId, input.action === 'logout');
         const {account} = session;
-        if (input.action === 'session') return session;
+        // Revocation uses only the original authenticated session contract. An
+        // upgrade must never trap an existing user in an unrevoked session.
         if (input.action === 'logout') {
           await client.query('UPDATE ardesia_next.sessions SET revoked_at=now() WHERE token_hash=$1', [hash(token!)]);
           return {signedOut: true};
         }
+        await requireCurrentSchema(client);
+        if (input.action === 'session') return session;
         if (input.action === 'create-workspace' || input.action === 'import-local') return createWorkspace(client, account, input);
         if (input.action === 'list-workspaces') {
           const rows = await client.query<WorkspaceRow>(`SELECT id,title,revision,owner_account_id FROM ardesia_next.workspaces

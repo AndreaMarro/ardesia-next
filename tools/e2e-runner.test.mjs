@@ -90,6 +90,7 @@ function networkFixture(directory, mismatch = false) {
   writeFileSync(path, `
     import {writeFileSync} from 'node:fs';
     import {identity} from ${JSON.stringify(new URL('./evidence.mjs', import.meta.url).href)};
+    import {buildPolicy} from ${JSON.stringify(new URL('./build-policy.mjs', import.meta.url).href)};
     const source = identity(), requests = [];
     globalThis.fetch = async (url, options) => {
       requests.push({path:new URL(url).pathname, method:options.method, action:options.body ? JSON.parse(options.body).action : null});
@@ -98,7 +99,7 @@ function networkFixture(directory, mismatch = false) {
       if (new URL(url).pathname === '/') return new Response(null, {status:403});
       if (new URL(url).pathname === '/build-info.json') return new Response(JSON.stringify({
         ...source, ${mismatch ? "commit:'c'.repeat(40)," : ''}
-        application:'ardesia-next', milestone:'M3', persistence:'remote-postgres-required', thirdPartyExecution:false
+        ...buildPolicy
       }), {headers});
       if (options.method === 'GET') return new Response(JSON.stringify({ok:true,result:{configured:true,authority:'postgres'}}), {headers});
       const own = options.headers.Origin === 'https://ardesia-next-staging.vercel.app';
