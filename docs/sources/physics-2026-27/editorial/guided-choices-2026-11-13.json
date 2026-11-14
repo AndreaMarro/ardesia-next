@@ -1,0 +1,402 @@
+{
+  "format": "ardesia-guided-choices-review/1",
+  "sourceBase": "70af28ce5f59365fd540bafbb58ab3ce6849d680",
+  "status": "DRAFT",
+  "humanApproval": false,
+  "newQuestions": 10,
+  "alternatives": 50,
+  "numericalChecks": 53,
+  "authorSources": [
+    {
+      "group": "a",
+      "problemsSha256": "c3caae40ead4076e3261b988effb80f0eeb7556487310b10c588cc14a5c6a06b",
+      "checksSha256": "dc86589cac579387d2ed04d8f5d7d60f1640f4edf387c4151841ec69d0ce4a5f"
+    },
+    {
+      "group": "b",
+      "problemsSha256": "d4645a877ea70a8c95158efc80a14305609124d6fa7cdd18ac16f14d0bf34c48",
+      "checksSha256": "5a410e4557d867646156040a7a03a0b8b70dfd57f05228ac84a8bfd3559735e9"
+    }
+  ],
+  "problems": [
+    {
+      "problemId": "quiz-20261113-u1-01-a",
+      "sha256": "c19bd7df2e3fae1d02f351aa06d7aee1888d515c38b7258c5cb6d8c52108036b",
+      "numericalChecks": [
+        {
+          "problemId": "quiz-20261113-u1-01-a",
+          "expression": "(4.8e6-4.2e6)*0.15/60",
+          "expected": 1500,
+          "tolerance": 1e-09
+        },
+        {
+          "problemId": "quiz-20261113-u1-01-a",
+          "expression": "4.8e6*0.15/60",
+          "expected": 12000,
+          "tolerance": 1e-09
+        },
+        {
+          "problemId": "quiz-20261113-u1-01-a",
+          "expression": "4.2e6*0.15/60",
+          "expected": 10500,
+          "tolerance": 1e-09
+        },
+        {
+          "problemId": "quiz-20261113-u1-01-a",
+          "expression": "(4.8e6+4.2e6)*0.15/60",
+          "expected": 22500,
+          "tolerance": 1e-09
+        },
+        {
+          "problemId": "quiz-20261113-u1-01-a",
+          "expression": "(4.8e6-4.2e6)*0.15",
+          "expected": 90000,
+          "tolerance": 1e-09
+        },
+        {
+          "problemId": "quiz-20261113-u1-01-a",
+          "expression": "(4.8e6-4.2e6)/4.8e6",
+          "expected": 0.125,
+          "tolerance": 1e-12
+        }
+      ]
+    },
+    {
+      "problemId": "quiz-20261113-u2-04-a",
+      "sha256": "7f0376dbb196438017458f0b196e178f46f7365b4a3a6ce89e66eb71a5440d0e",
+      "numericalChecks": [
+        {
+          "problemId": "quiz-20261113-u2-04-a",
+          "expression": "2*3+1*(-4)",
+          "expected": 2,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u2-04-a",
+          "expression": "(2+1)*1-(2*3+1*(-4))",
+          "expected": 1,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u2-04-a",
+          "expression": "(2*3+1*(-4))/(2+1)",
+          "expected": 0.6666666666666666,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u2-04-a",
+          "expression": "0.5*2*3**2+0.5*1*4**2",
+          "expected": 17,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u2-04-a",
+          "expression": "0.5*3*1**2",
+          "expected": 1.5,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u2-04-a",
+          "expression": "1.5-17",
+          "expected": -15.5,
+          "tolerance": 1e-12
+        }
+      ]
+    },
+    {
+      "problemId": "quiz-20261113-u3-02-a",
+      "sha256": "b54a3091e134f9216bcbe23d198e1d756eb145bf5a3ea70ec3f730b9fed38257",
+      "numericalChecks": [
+        {
+          "problemId": "quiz-20261113-u3-02-a",
+          "expression": "0.30/1000",
+          "expected": 0.0003,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u3-02-a",
+          "expression": "0.30/3000",
+          "expected": 0.0001,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u3-02-a",
+          "expression": "(0.30/3000-0.30/1000)/0.020",
+          "expected": -0.01,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u3-02-a",
+          "expression": "(0.30/1000)/0.020",
+          "expected": 0.015,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u3-02-a",
+          "expression": "(0.30/3000)/0.020",
+          "expected": 0.005,
+          "tolerance": 1e-12
+        }
+      ]
+    },
+    {
+      "problemId": "quiz-20261113-u3-04-a",
+      "sha256": "ee81b86a1e2b48ddffd16fcb5fb144d522a1f5d54491d4bb0031b4d9614a13fc",
+      "numericalChecks": [
+        {
+          "problemId": "quiz-20261113-u3-04-a",
+          "expression": "0.06/(1-0.5**2)",
+          "expected": 0.08,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u3-04-a",
+          "expression": "0.06/(1-0.5**2)/2",
+          "expected": 0.04,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u3-04-a",
+          "expression": "(1e-3)**2*0.04*1e6",
+          "expected": 0.04,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u3-04-a",
+          "expression": "3.141592653589793*(1e-3)**2*0.04*1e6",
+          "expected": 0.12566370614359174,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u3-04-a",
+          "expression": "0.04/0.06",
+          "expected": 0.6666666666666666,
+          "tolerance": 1e-12
+        }
+      ]
+    },
+    {
+      "problemId": "quiz-20261113-u5-02-a",
+      "sha256": "5e040751ff83af72249a5e722ee2d3cb3b96611cbb2f78632d78e4bdd083a777",
+      "numericalChecks": [
+        {
+          "problemId": "quiz-20261113-u5-02-a",
+          "expression": "(100*80+200*20)/(100+200)",
+          "expected": 40,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u5-02-a",
+          "expression": "(200*40+200*20)/400",
+          "expected": 30,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u5-02-a",
+          "expression": "(100*80+200*20+200*20)/500",
+          "expected": 32,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u5-02-a",
+          "expression": "100*(80-20)",
+          "expected": 6000,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u5-02-a",
+          "expression": "100*(40-20)",
+          "expected": 2000,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u5-02-a",
+          "expression": "(6000-2000)/400+20",
+          "expected": 30,
+          "tolerance": 1e-12
+        }
+      ]
+    },
+    {
+      "problemId": "quiz-20261113-u5-04-a",
+      "sha256": "9606a035c112d0dbc439626571cff32dd485e82202533ca4de004e9469128a07",
+      "numericalChecks": [
+        {
+          "problemId": "quiz-20261113-u5-04-a",
+          "expression": "100e3*(3e-3-1e-3)",
+          "expected": 200,
+          "tolerance": 1e-10
+        },
+        {
+          "problemId": "quiz-20261113-u5-04-a",
+          "expression": "((300e3+100e3)/2)*(1e-3-3e-3)",
+          "expected": -400,
+          "tolerance": 1e-10
+        },
+        {
+          "problemId": "quiz-20261113-u5-04-a",
+          "expression": "200+0-400",
+          "expected": -200,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u5-04-a",
+          "expression": "0.5*(3e-3-1e-3)*(300e3-100e3)",
+          "expected": 200,
+          "tolerance": 1e-10
+        },
+        {
+          "problemId": "quiz-20261113-u5-04-a",
+          "expression": "1e3*1e-3",
+          "expected": 1,
+          "tolerance": 1e-12
+        }
+      ]
+    },
+    {
+      "problemId": "quiz-20261113-u6-01-a",
+      "sha256": "178c5d1fe88a9d9c7d360d7a9ec509b76f9108444b10c5f6748e2967b544d4bf",
+      "numericalChecks": [
+        {
+          "problemId": "quiz-20261113-u6-01-a",
+          "expression": "(-2e-9)*2000",
+          "expected": -4e-06,
+          "tolerance": 1e-17
+        },
+        {
+          "problemId": "quiz-20261113-u6-01-a",
+          "expression": "(-2e-9)*2000/1e-6",
+          "expected": -4,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u6-01-a",
+          "expression": "2+(-4)*1",
+          "expected": -2,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u6-01-a",
+          "expression": "2*1+0.5*(-4)*1**2",
+          "expected": 0,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u6-01-a",
+          "expression": "-2/(-4)",
+          "expected": 0.5,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u6-01-a",
+          "expression": "2*.5+0.5*(-4)*.5**2",
+          "expected": 0.5,
+          "tolerance": 1e-12
+        }
+      ]
+    },
+    {
+      "problemId": "quiz-20261113-u6-03-a",
+      "sha256": "ba2de2e9597e31a000fa80b6b8d30dd999f3b0cec8a56c9139f7e594e2389df3",
+      "numericalChecks": [
+        {
+          "problemId": "quiz-20261113-u6-03-a",
+          "expression": "3e-9+(-3e-9)",
+          "expected": 0,
+          "tolerance": 1e-20
+        },
+        {
+          "problemId": "quiz-20261113-u6-03-a",
+          "expression": "(-3e-9)+3e-9",
+          "expected": 0,
+          "tolerance": 1e-20
+        },
+        {
+          "problemId": "quiz-20261113-u6-03-a",
+          "expression": "3e-9+(-3e-9)+3e-9",
+          "expected": 3e-09,
+          "tolerance": 1e-20
+        },
+        {
+          "problemId": "quiz-20261113-u6-03-a",
+          "expression": "3e-9+3e-9",
+          "expected": 6e-09,
+          "tolerance": 1e-20
+        }
+      ]
+    },
+    {
+      "problemId": "quiz-20261113-u4-02-a",
+      "sha256": "51fccc5636c884ff61755ce7a18a3bb0833a8f9ec8f89f1f0fbc4db0f45fb696",
+      "numericalChecks": [
+        {
+          "problemId": "quiz-20261113-u4-02-a",
+          "expression": "(-3)+(-3)",
+          "expected": -6,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u4-02-a",
+          "expression": "2*3",
+          "expected": 6,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u4-02-a",
+          "expression": "3*0-3*0",
+          "expected": 0,
+          "tolerance": 0
+        },
+        {
+          "problemId": "quiz-20261113-u4-02-a",
+          "expression": "-2*3e-3",
+          "expected": -0.006,
+          "tolerance": 1e-14
+        }
+      ]
+    },
+    {
+      "problemId": "quiz-20261113-u7-01-a",
+      "sha256": "1be7f3a5f05b0f75fd6faa8a6e4a1f896354ac9be4207bfe424889f7b951f0f6",
+      "numericalChecks": [
+        {
+          "problemId": "quiz-20261113-u7-01-a",
+          "expression": "(30*(2**.5))/((2**.5)*1e-7)",
+          "expected": 300000000.0,
+          "tolerance": 1e-06
+        },
+        {
+          "problemId": "quiz-20261113-u7-01-a",
+          "expression": "((2**.5)*1e-7)/(2**.5)",
+          "expected": 1e-07,
+          "tolerance": 1e-18
+        },
+        {
+          "problemId": "quiz-20261113-u7-01-a",
+          "expression": "8.85e-12*3e8*30**2",
+          "expected": 2.3895,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u7-01-a",
+          "expression": ".5*8.85e-12*3e8*(30*(2**.5))**2",
+          "expected": 2.3895,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u7-01-a",
+          "expression": ".5*8.85e-12*3e8*30**2",
+          "expected": 1.19475,
+          "tolerance": 1e-12
+        },
+        {
+          "problemId": "quiz-20261113-u7-01-a",
+          "expression": "8.85e-12*3e8*(30*(2**.5))**2",
+          "expected": 4.779,
+          "tolerance": 1e-12
+        }
+      ]
+    }
+  ],
+  "limits": "Arithmetic and independent AI scientific review; human approval remains pending. Choice comparison is transient, after Core help; no automatic grade or mastery."
+}

@@ -1,0 +1,579 @@
+{
+  "sourceSha256": "70fe2450d66d69c8154fdfa2f59640f8c8fa8c490680f4b152e35fc2245fd4ae",
+  "baseCommit": "18c6ad1f1d8b101f64f253d6915ec192587d39d1",
+  "review": "Independent technical/scientific review by a different author; no human approval",
+  "status": "DRAFT",
+  "unitCount": 6,
+  "additionCharacters": 21542,
+  "numericalChecks": 59,
+  "arithmeticFailures": [],
+  "P1P2findings": [],
+  "records": [
+    {
+      "unitId": "sf-2026-u7-02",
+      "additionCharacters": 3292,
+      "combinedCharactersAtBase": 5153,
+      "exactAssessmentPromptCopies": [],
+      "exactOriginalProblemPromptCopies": [],
+      "checks": [
+        {
+          "label": "microonde: lunghezza nel vuoto in m",
+          "expression": "3e8 / 2.4e9",
+          "expected": 0.125,
+          "tolerance": 1e-12,
+          "actual": 0.125,
+          "passed": true
+        },
+        {
+          "label": "infrarosso: frequenza in Hz",
+          "expression": "3e8 / 1.55e-6",
+          "expected": 193548387096774.2,
+          "tolerance": 0.1,
+          "actual": 193548387096774.2,
+          "passed": true
+        },
+        {
+          "label": "visibile: frequenza in Hz",
+          "expression": "3e8 / 480e-9",
+          "expected": 625000000000000,
+          "tolerance": 0.1,
+          "actual": 625000000000000.0,
+          "passed": true
+        },
+        {
+          "label": "UV: frequenza in Hz",
+          "expression": "3e8 / 240e-9",
+          "expected": 1250000000000000,
+          "tolerance": 1,
+          "actual": 1250000000000000.0,
+          "passed": true
+        },
+        {
+          "label": "velocità di fase nella lastra in m/s",
+          "expression": "3e8 / 1.5",
+          "expected": 200000000,
+          "tolerance": 1e-06,
+          "actual": 200000000.0,
+          "passed": true
+        },
+        {
+          "label": "lunghezza interna in m",
+          "expression": "(3e8 / 1.5) / (3e8 / 480e-9)",
+          "expected": 3.2e-07,
+          "tolerance": 1e-18,
+          "actual": 3.2e-07,
+          "passed": true
+        },
+        {
+          "label": "controllo interno lambda per f in m/s",
+          "expression": "320e-9 * 6.25e14",
+          "expected": 200000000,
+          "tolerance": 1e-06,
+          "actual": 200000000.0,
+          "passed": true
+        },
+        {
+          "label": "controllo indipendente indice",
+          "expression": "480 / 320",
+          "expected": 1.5,
+          "tolerance": 1e-12,
+          "actual": 1.5,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "unitId": "sf-2026-u7-03",
+      "additionCharacters": 3440,
+      "combinedCharactersAtBase": 4755,
+      "exactAssessmentPromptCopies": [],
+      "exactOriginalProblemPromptCopies": [],
+      "checks": [
+        {
+          "label": "energia per fotone in J",
+          "expression": "6.626e-34 * 3e8 / 660e-9",
+          "expected": 3.0118181818181815e-19,
+          "tolerance": 1e-30,
+          "actual": 3.0118181818181815e-19,
+          "passed": true
+        },
+        {
+          "label": "energia per fotone in eV",
+          "expression": "(6.626e-34 * 3e8 / 660e-9) / 1.602e-19",
+          "expected": 1.8800363182385653,
+          "tolerance": 1e-12,
+          "actual": 1.8800363182385653,
+          "passed": true
+        },
+        {
+          "label": "energia impulso in J",
+          "expression": "0.60e-3 * 2e-3",
+          "expected": 1.2e-06,
+          "tolerance": 1e-17,
+          "actual": 1.2e-06,
+          "passed": true
+        },
+        {
+          "label": "numero medio di fotoni",
+          "expression": "(0.60e-3 * 2e-3) / (6.626e-34 * 3e8 / 660e-9)",
+          "expected": 3984304255961.3647,
+          "tolerance": 0.02,
+          "actual": 3984304255961.3647,
+          "passed": true
+        },
+        {
+          "label": "flusso durante impulso in s^-1",
+          "expression": "0.60e-3 / (6.626e-34 * 3e8 / 660e-9)",
+          "expected": 1992152127980682.2,
+          "tolerance": 4,
+          "actual": 1992152127980682.2,
+          "passed": true
+        },
+        {
+          "label": "intensità in W/m²",
+          "expression": "0.60e-3 / 3e-6",
+          "expected": 200,
+          "tolerance": 1e-10,
+          "actual": 199.99999999999997,
+          "passed": true
+        },
+        {
+          "label": "energia per area in J/m²",
+          "expression": "0.60e-3 * 2e-3 / 3e-6",
+          "expected": 0.4,
+          "tolerance": 1e-12,
+          "actual": 0.39999999999999997,
+          "passed": true
+        },
+        {
+          "label": "controllo spaziale energia in J",
+          "expression": "200 * 3e-6 * 2e-3",
+          "expected": 1.2e-06,
+          "tolerance": 1e-17,
+          "actual": 1.2000000000000002e-06,
+          "passed": true
+        },
+        {
+          "label": "sezione dimezzata: intensità in W/m²",
+          "expression": "0.60e-3 / 1.5e-6",
+          "expected": 400,
+          "tolerance": 1e-10,
+          "actual": 399.99999999999994,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "unitId": "sf-2026-u7-04",
+      "additionCharacters": 3560,
+      "combinedCharactersAtBase": 4944,
+      "exactAssessmentPromptCopies": [],
+      "exactOriginalProblemPromptCopies": [],
+      "checks": [
+        {
+          "label": "trasmissione osservata",
+          "expression": "6 / 24",
+          "expected": 0.25,
+          "tolerance": 1e-12,
+          "actual": 0.25,
+          "passed": true
+        },
+        {
+          "label": "coefficiente in cm^-1",
+          "expression": "1.3862943611198906 / 0.8",
+          "expected": 1.732867951399863,
+          "tolerance": 1e-12,
+          "actual": 1.732867951399863,
+          "passed": true
+        },
+        {
+          "label": "coefficiente in m^-1",
+          "expression": "1.3862943611198906 / 0.008",
+          "expected": 173.2867951399863,
+          "tolerance": 1e-10,
+          "actual": 173.2867951399863,
+          "passed": true
+        },
+        {
+          "label": "spessore dimezzamento in cm",
+          "expression": "0.6931471805599453 / (1.3862943611198906 / 0.8)",
+          "expected": 0.4,
+          "tolerance": 1e-12,
+          "actual": 0.4,
+          "passed": true
+        },
+        {
+          "label": "previsione trasmissione a 1,20 cm",
+          "expression": "0.25 ** (1.2 / 0.8)",
+          "expected": 0.125,
+          "tolerance": 1e-12,
+          "actual": 0.12500000000000003,
+          "passed": true
+        },
+        {
+          "label": "previsione intensità a 1,20 cm in W/m²",
+          "expression": "24 / (2 ** 3)",
+          "expected": 3,
+          "tolerance": 1e-12,
+          "actual": 3.0,
+          "passed": true
+        },
+        {
+          "label": "assorbanza decimale",
+          "expression": "1.3862943611198906 / 2.302585092994046",
+          "expected": 0.6020599913279623,
+          "tolerance": 1e-12,
+          "actual": 0.6020599913279623,
+          "passed": true
+        },
+        {
+          "label": "potenza incidente in W",
+          "expression": "24 * 4e-4",
+          "expected": 0.0096,
+          "tolerance": 1e-14,
+          "actual": 0.009600000000000001,
+          "passed": true
+        },
+        {
+          "label": "potenza trasmessa in W",
+          "expression": "6 * 4e-4",
+          "expected": 0.0024,
+          "tolerance": 1e-14,
+          "actual": 0.0024000000000000002,
+          "passed": true
+        },
+        {
+          "label": "potenza assorbita in W con ipotesi esplicite",
+          "expression": "(24 - 6) * 4e-4",
+          "expected": 0.0072,
+          "tolerance": 1e-14,
+          "actual": 0.007200000000000001,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "unitId": "sf-2026-u7-05",
+      "additionCharacters": 3701,
+      "combinedCharactersAtBase": 5295,
+      "exactAssessmentPromptCopies": [],
+      "exactOriginalProblemPromptCopies": [],
+      "checks": [
+        {
+          "label": "numero di emivite",
+          "expression": "(7.5 * 60) / (3 * 60)",
+          "expected": 2.5,
+          "tolerance": 1e-12,
+          "actual": 2.5,
+          "passed": true
+        },
+        {
+          "label": "nuclei medi a 450 s",
+          "expression": "96000 / (2 ** 2.5)",
+          "expected": 16970.562748477143,
+          "tolerance": 1e-08,
+          "actual": 16970.56274847714,
+          "passed": true
+        },
+        {
+          "label": "costante decadimento in s^-1",
+          "expression": "0.6931471805599453 / 180",
+          "expected": 0.003850817669777474,
+          "tolerance": 1e-15,
+          "actual": 0.003850817669777474,
+          "passed": true
+        },
+        {
+          "label": "attività iniziale in Bq",
+          "expression": "96000 * 0.6931471805599453 / 180",
+          "expected": 369.67849629863747,
+          "tolerance": 1e-09,
+          "actual": 369.6784962986375,
+          "passed": true
+        },
+        {
+          "label": "attività a 450 s in Bq",
+          "expression": "(96000 / (2 ** 2.5)) * 0.6931471805599453 / 180",
+          "expected": 65.35054289790315,
+          "tolerance": 1e-09,
+          "actual": 65.35054289790314,
+          "passed": true
+        },
+        {
+          "label": "nuclei medi a 630 s",
+          "expression": "96000 / (2 ** 3.5)",
+          "expected": 8485.281374238572,
+          "tolerance": 1e-08,
+          "actual": 8485.28137423857,
+          "passed": true
+        },
+        {
+          "label": "decadimenti medi nei successivi 180 s",
+          "expression": "96000 / (2 ** 2.5) - 96000 / (2 ** 3.5)",
+          "expected": 8485.281374238572,
+          "tolerance": 1e-08,
+          "actual": 8485.28137423857,
+          "passed": true
+        },
+        {
+          "label": "tasso medio nell’intervallo in s^-1",
+          "expression": "(96000 / (2 ** 2.5) - 96000 / (2 ** 3.5)) / 180",
+          "expected": 47.14045207910318,
+          "tolerance": 1e-10,
+          "actual": 47.14045207910316,
+          "passed": true
+        },
+        {
+          "label": "approssimazione costante da non usare come esatta",
+          "expression": "(96000 / (2 ** 2.5)) * 0.6931471805599453",
+          "expected": 11763.097721622567,
+          "tolerance": 1e-08,
+          "actual": 11763.097721622566,
+          "passed": true
+        },
+        {
+          "label": "controllo con radice quadrata",
+          "expression": "24000 / (2 ** 0.5)",
+          "expected": 16970.562748477143,
+          "tolerance": 1e-08,
+          "actual": 16970.56274847714,
+          "passed": true
+        },
+        {
+          "label": "attività a fine intervallo in Bq",
+          "expression": "(96000 / (2 ** 2.5)) * 0.6931471805599453 / 360",
+          "expected": 32.67527144895158,
+          "tolerance": 1e-09,
+          "actual": 32.67527144895157,
+          "passed": true
+        },
+        {
+          "label": "conservazione carica nel beta meno del carbonio14",
+          "expression": "7 - 1",
+          "expected": 6,
+          "tolerance": 0,
+          "actual": 6,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "unitId": "sf-2026-u7-06",
+      "additionCharacters": 3804,
+      "combinedCharactersAtBase": 5655,
+      "exactAssessmentPromptCopies": [],
+      "exactOriginalProblemPromptCopies": [],
+      "checks": [
+        {
+          "label": "energia del fotone in eV",
+          "expression": "1240 / 124",
+          "expected": 10,
+          "tolerance": 1e-12,
+          "actual": 10.0,
+          "passed": true
+        },
+        {
+          "label": "energia cinetica canale A in eV",
+          "expression": "10 - 7.5",
+          "expected": 2.5,
+          "tolerance": 1e-12,
+          "actual": 2.5,
+          "passed": true
+        },
+        {
+          "label": "energia cinetica in J",
+          "expression": "2.5 * 1.6e-19",
+          "expected": 4e-19,
+          "tolerance": 1e-30,
+          "actual": 4e-19,
+          "passed": true
+        },
+        {
+          "label": "velocità elettrone in m/s",
+          "expression": "(2 * 2.5 * 1.6e-19 / 9.1e-31) ** 0.5",
+          "expected": 937614.4618769909,
+          "tolerance": 1e-06,
+          "actual": 937614.4618769909,
+          "passed": true
+        },
+        {
+          "label": "rapporto velocità elettrone su c",
+          "expression": "((2 * 2.5 * 1.6e-19 / 9.1e-31) ** 0.5) / 3e8",
+          "expected": 0.0031253815395899695,
+          "tolerance": 1e-14,
+          "actual": 0.0031253815395899695,
+          "passed": true
+        },
+        {
+          "label": "lunghezza soglia specie A in nm",
+          "expression": "1240 / 7.5",
+          "expected": 165.33333333333334,
+          "tolerance": 1e-10,
+          "actual": 165.33333333333334,
+          "passed": true
+        },
+        {
+          "label": "lunghezza soglia specie B in nm",
+          "expression": "1240 / 12",
+          "expected": 103.33333333333333,
+          "tolerance": 1e-10,
+          "actual": 103.33333333333333,
+          "passed": true
+        },
+        {
+          "label": "bilancio energetico singolo evento in eV",
+          "expression": "7.5 + 2.5",
+          "expected": 10,
+          "tolerance": 1e-12,
+          "actual": 10.0,
+          "passed": true
+        },
+        {
+          "label": "controllo cinetico con velocità calcolata in J",
+          "expression": "0.5 * 9.1e-31 * 937614.4618769909 ** 2",
+          "expected": 4e-19,
+          "tolerance": 1e-30,
+          "actual": 4.0000000000000004e-19,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "unitId": "sf-2026-u7-07",
+      "additionCharacters": 3745,
+      "combinedCharactersAtBase": 5521,
+      "exactAssessmentPromptCopies": [],
+      "exactOriginalProblemPromptCopies": [],
+      "checks": [
+        {
+          "label": "posizione immagine virtuale in cm",
+          "expression": "1 / (1 / 18 - 1 / 12)",
+          "expected": -36,
+          "tolerance": 1e-10,
+          "actual": -36.0,
+          "passed": true
+        },
+        {
+          "label": "ingrandimento virtuale",
+          "expression": "-(-36) / 12",
+          "expected": 3,
+          "tolerance": 1e-12,
+          "actual": 3.0,
+          "passed": true
+        },
+        {
+          "label": "altezza immagine virtuale in mm",
+          "expression": "3 * 4",
+          "expected": 12,
+          "tolerance": 1e-12,
+          "actual": 12,
+          "passed": true
+        },
+        {
+          "label": "controllo vergente in cm^-1",
+          "expression": "1 / 12 + 1 / (-36)",
+          "expected": 0.05555555555555555,
+          "tolerance": 1e-14,
+          "actual": 0.05555555555555555,
+          "passed": true
+        },
+        {
+          "label": "controllo errore di segno in cm^-1",
+          "expression": "1 / 12 + 1 / 36",
+          "expected": 0.1111111111111111,
+          "tolerance": 1e-14,
+          "actual": 0.1111111111111111,
+          "passed": true
+        },
+        {
+          "label": "nuova immagine reale in cm",
+          "expression": "18 * 27 / (27 - 18)",
+          "expected": 54,
+          "tolerance": 1e-12,
+          "actual": 54.0,
+          "passed": true
+        },
+        {
+          "label": "nuovo ingrandimento",
+          "expression": "-54 / 27",
+          "expected": -2,
+          "tolerance": 1e-12,
+          "actual": -2.0,
+          "passed": true
+        },
+        {
+          "label": "altezza immagine reale in mm",
+          "expression": "-2 * 4",
+          "expected": -8,
+          "tolerance": 1e-12,
+          "actual": -8,
+          "passed": true
+        },
+        {
+          "label": "Snell acqua aria: seno rifratto",
+          "expression": "(4 / 3) * 0.45",
+          "expected": 0.6,
+          "tolerance": 1e-12,
+          "actual": 0.6,
+          "passed": true
+        },
+        {
+          "label": "Snell oltre il dominio propagante",
+          "expression": "(4 / 3) * 0.90",
+          "expected": 1.2,
+          "tolerance": 1e-12,
+          "actual": 1.2,
+          "passed": true
+        },
+        {
+          "label": "seno angolo critico",
+          "expression": "1 / (4 / 3)",
+          "expected": 0.75,
+          "tolerance": 1e-12,
+          "actual": 0.75,
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "independentRecalculations": {
+    "U7-02": {
+      "frequency_visible_Hz": 625000000000000.0,
+      "lambda_material_nm": 320.0,
+      "spectral_identity_lambda0_nm": 480.0
+    },
+    "U7-03": {
+      "photon_energy_J": 3.0118181818181815e-19,
+      "N_from_area_fluence": 3984304255961.365,
+      "photon_rate_s_1": 1992152127980682.5
+    },
+    "U7-04": {
+      "mu_cm_1": 1.732867951399863,
+      "half_thickness_cm": 0.4,
+      "I_at_1_2cm": 3.000000000000001,
+      "absorbance_decadic": 0.6020599913279624,
+      "absorbed_W": 0.007200000000000001
+    },
+    "U7-05": {
+      "N450_from_exp": 16970.562748477143,
+      "activity_Bq": 65.35054289790314,
+      "events450to630": 8485.281374238572
+    },
+    "U7-06": {
+      "electron_speed_m_s": 937614.4618769909,
+      "ionization_limit_A_nm": 165.33333333333334,
+      "ionization_limit_B_nm": 103.33333333333333
+    },
+    "U7-07": {
+      "q_cm": -36.0,
+      "magnification": 3.0,
+      "snell_refracted_angle_deg": 36.86989764584402,
+      "critical_angle_deg": 48.590377890729144
+    }
+  },
+  "limitations": [
+    "Arithmetic and scientific reading are not a human didactic validation.",
+    "Exact-prompt screening does not prove semantic independence.",
+    "No new external clinical or experimental claims assessed."
+  ]
+}

@@ -1,10 +1,9 @@
-import {newQuickJSWASMModuleFromVariant,newVariant} from 'quickjs-emscripten-core';
-import variant from '@jitl/quickjs-wasmfile-release-sync';
 import wasmUrl from '@jitl/quickjs-wasmfile-release-sync/wasm?url';
 import {executeProgram} from './program-engine';
+import {createProgramModule} from './program-module';
 import type {ProgramBody,ProgramEvent,ProgramResult} from '@ardesia/contracts';
 
-let engine:ReturnType<typeof newQuickJSWASMModuleFromVariant>|undefined;
+let engine:ReturnType<typeof createProgramModule>|undefined;
 const endpoint=globalThis as unknown as {onmessage:((event:MessageEvent)=>void)|null;postMessage:(message:unknown)=>void};
 let sessionNonce:string|undefined,ready=false;
 endpoint.onmessage=async message=>{
@@ -12,7 +11,7 @@ endpoint.onmessage=async message=>{
   if(kind==='initialize'){
     if(sessionNonce!==undefined||typeof nonce!=='string')return;
     sessionNonce=nonce;
-    try {engine=newQuickJSWASMModuleFromVariant(newVariant(variant,{wasmLocation:wasmUrl}));await engine;ready=true;endpoint.postMessage({kind:'ready',nonce});}
+    try {engine=createProgramModule(wasmUrl);await engine;ready=true;endpoint.postMessage({kind:'ready',nonce});}
     catch {endpoint.postMessage({kind:'initialization-error',nonce});}
     return;
   }

@@ -791,7 +791,9 @@
     "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
     "legacyLessonCanonicalSha256": "424ddfbb0efce154eb6bc4961df00598d16dde855769510a803fdbec8bbc768f",
     "experimentId": "investigation-u5-05",
-    "labIds": [],
+    "labIds": [
+      "physics-heat-engine"
+    ],
     "exerciseIds": [
       "u5-carnot-efficiency-01",
       "u5-carnot-efficiency-03",
@@ -995,7 +997,9 @@
     "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
     "legacyLessonCanonicalSha256": "a76e6b1b2317ca8229460d67d73ce80febcdeb73db4e362dde052e1af8c550f0",
     "experimentId": "investigation-u6-05",
-    "labIds": [],
+    "labIds": [
+      "physics-capacitor-constraints"
+    ],
     "exerciseIds": [
       "u6-capacitor-charge-01",
       "u6-capacitor-charge-09",
@@ -1156,7 +1160,9 @@
     "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
     "legacyLessonCanonicalSha256": "f45ac1ace4e73a4154c1d3ef49b8adbfb5851c0d89330a49fde123a8f44aadb1",
     "experimentId": "investigation-u4-02",
-    "labIds": [],
+    "labIds": [
+      "physics-interference"
+    ],
     "exerciseIds": [
       "u4-coherent-constructive-01",
       "u4-coherent-constructive-06",

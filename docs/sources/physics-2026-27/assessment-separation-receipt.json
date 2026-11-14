@@ -1,0 +1,198 @@
+{
+  "source": "ad2a39632cae532563988b0747c621a4cd776ba55d74da93d7e45d91623ac103",
+  "result": "c952882be767920d70874aa294489ef1f10e199b9aefda3aa263cc7e51bf7e57",
+  "count": 200,
+  "units": [
+    {
+      "unitId": "sf-2026-u1-01",
+      "questionsMoved": 3,
+      "preservedTheoryAndExampleSha256": "faa092e9ab7dd09d0f1fff18855bbc572ddcd0ac26f3ede07b6fd194cc1d411d"
+    },
+    {
+      "unitId": "sf-2026-u1-02",
+      "questionsMoved": 6,
+      "preservedTheoryAndExampleSha256": "24d6651254f599dc6ce996e5f44390955d6e037f98b338af8b0156fa8f861223"
+    },
+    {
+      "unitId": "sf-2026-u1-03",
+      "questionsMoved": 4,
+      "preservedTheoryAndExampleSha256": "39b9f2a4f0f844007ed362677a069225423d87b101111a922172403b41eb9d8a"
+    },
+    {
+      "unitId": "sf-2026-u1-04",
+      "questionsMoved": 5,
+      "preservedTheoryAndExampleSha256": "410b40c7e245c24491f6de18fdb34164cf6a0a94896d991ef816b021b51cbb67"
+    },
+    {
+      "unitId": "sf-2026-u2-01",
+      "questionsMoved": 9,
+      "preservedTheoryAndExampleSha256": "d29e2ca33d188acfa173e937942daa22e7b95c9f6f18811e58b9b72b436cf043"
+    },
+    {
+      "unitId": "sf-2026-u2-02",
+      "questionsMoved": 9,
+      "preservedTheoryAndExampleSha256": "7a229c31c444115dfbefdcfe0c80394ac6759d1ba5957542510ecd477ef4f068"
+    },
+    {
+      "unitId": "sf-2026-u2-03",
+      "questionsMoved": 6,
+      "preservedTheoryAndExampleSha256": "a0e9e096725684ee6f193605ad7cc0777b2335e8b9ebe01081ecf33427d523ea"
+    },
+    {
+      "unitId": "sf-2026-u2-04",
+      "questionsMoved": 4,
+      "preservedTheoryAndExampleSha256": "76429f45b3b921e609b12f9570e8726ba8f4ea736dd8ca157ab98c32d96cfb9f"
+    },
+    {
+      "unitId": "sf-2026-u2-05",
+      "questionsMoved": 6,
+      "preservedTheoryAndExampleSha256": "33cfabd265a09e4fcab49382540ffdac2ebbdc5afdedbe5ebe7f6f6e91c6fd96"
+    },
+    {
+      "unitId": "sf-2026-u3-01",
+      "questionsMoved": 4,
+      "preservedTheoryAndExampleSha256": "48b79f2ab0e31d9dff77f39abb8224d57aea7ed82d0fd2d04e9eaeeb689da975"
+    },
+    {
+      "unitId": "sf-2026-u3-02",
+      "questionsMoved": 6,
+      "preservedTheoryAndExampleSha256": "dcf6d619134f06524d9356f1895657f6faeffb9449049a978215c3ac8c228a76"
+    },
+    {
+      "unitId": "sf-2026-u3-03",
+      "questionsMoved": 6,
+      "preservedTheoryAndExampleSha256": "bffd0656a0efd3bb7f85d8f92779248945ebb7097edc1a6d41eb8bc10cd28674"
+    },
+    {
+      "unitId": "sf-2026-u3-04",
+      "questionsMoved": 5,
+      "preservedTheoryAndExampleSha256": "9876e33d01f25110141c7f4ef7ca0d7f2e478a16f64a92a7eb886a1b837e34c5"
+    },
+    {
+      "unitId": "sf-2026-u3-05",
+      "questionsMoved": 5,
+      "preservedTheoryAndExampleSha256": "764e6c6eefd46fed5116c663d5e6fbe217e2c0eb01fc69b9f4a0d30777d57eb7"
+    },
+    {
+      "unitId": "sf-2026-u5-01",
+      "questionsMoved": 5,
+      "preservedTheoryAndExampleSha256": "75037e1cbc38d993a2c5dc51fca98e95defcd7f2c369885aaad5f4e8a4ab3fab"
+    },
+    {
+      "unitId": "sf-2026-u5-02",
+      "questionsMoved": 7,
+      "preservedTheoryAndExampleSha256": "1f4ef244da2eebd018ac9050d476f867c09e86ee3d39996c4915bffef0e81fe8"
+    },
+    {
+      "unitId": "sf-2026-u5-03",
+      "questionsMoved": 3,
+      "preservedTheoryAndExampleSha256": "b0fcb33c27b26c4b714b8763a278a0b68cc17251ca9fb51587059443e28f421a"
+    },
+    {
+      "unitId": "sf-2026-u5-04",
+      "questionsMoved": 8,
+      "preservedTheoryAndExampleSha256": "d93a45d75b26d8775c8ddde41a91c215e210218e601e6b273914ee7a067f466a"
+    },
+    {
+      "unitId": "sf-2026-u5-05",
+      "questionsMoved": 8,
+      "preservedTheoryAndExampleSha256": "c50041869d3874a7f5b1b1f16f369bf80b3acf12126e98781b168009df30acd9"
+    },
+    {
+      "unitId": "sf-2026-u6-01",
+      "questionsMoved": 6,
+      "preservedTheoryAndExampleSha256": "8deeef7d79d54f4b862928087e2604bcad6420341671030d07da1a66d459c1ea"
+    },
+    {
+      "unitId": "sf-2026-u6-02",
+      "questionsMoved": 4,
+      "preservedTheoryAndExampleSha256": "b666302ea4b2e9c363aa725a5a891f37592d0427929f6c14e4fc4d17e2d744ea"
+    },
+    {
+      "unitId": "sf-2026-u6-03",
+      "questionsMoved": 2,
+      "preservedTheoryAndExampleSha256": "6f369329527eb652ec3c3754a59f462b0aab5c3ad8abada0a3569a45eeb2af4c"
+    },
+    {
+      "unitId": "sf-2026-u6-04",
+      "questionsMoved": 7,
+      "preservedTheoryAndExampleSha256": "1b28823834a11e4e11419914db9a1e81a6fa1d35f590b11d1275078e72c6b2bb"
+    },
+    {
+      "unitId": "sf-2026-u6-05",
+      "questionsMoved": 5,
+      "preservedTheoryAndExampleSha256": "e48d77f47779de12d02bbb16b8a32f0e95679a8cda1ecaaeca58ea6d2c7c41d1"
+    },
+    {
+      "unitId": "sf-2026-u6-06",
+      "questionsMoved": 5,
+      "preservedTheoryAndExampleSha256": "209477ef5ae15bc97acc1319ac80f17316f55fd7015d49f4a9f57144a8394a79"
+    },
+    {
+      "unitId": "sf-2026-u6-07",
+      "questionsMoved": 4,
+      "preservedTheoryAndExampleSha256": "5a9068c352efb80bb987db356561151330ac7940c824765ba3196d0e9ce4c792"
+    },
+    {
+      "unitId": "sf-2026-u4-01",
+      "questionsMoved": 10,
+      "preservedTheoryAndExampleSha256": "8692dddc3a344c27f3048444007fb6729ea5d15f024bbb87d0566f26380f4563"
+    },
+    {
+      "unitId": "sf-2026-u4-02",
+      "questionsMoved": 2,
+      "preservedTheoryAndExampleSha256": "0c4178b84174ed185ff227b11217ed771c21e5686908deb10e06e82077defb04"
+    },
+    {
+      "unitId": "sf-2026-u4-03",
+      "questionsMoved": 4,
+      "preservedTheoryAndExampleSha256": "7b1b9430af5e62ab245f2c558fe817beb7aa43ecfc8760459540abe5b3775592"
+    },
+    {
+      "unitId": "sf-2026-u4-04",
+      "questionsMoved": 3,
+      "preservedTheoryAndExampleSha256": "9ca9328c945ff6774e55a2500e2b11b9d2803690753e53f74c7cfb0a6ec284ec"
+    },
+    {
+      "unitId": "sf-2026-u4-05",
+      "questionsMoved": 4,
+      "preservedTheoryAndExampleSha256": "e201d8b6fdf21e26ea0d74b401a123102b0983bcaa0b77b92f9e9ca413113c09"
+    },
+    {
+      "unitId": "sf-2026-u7-01",
+      "questionsMoved": 5,
+      "preservedTheoryAndExampleSha256": "ee38d594bc625b84f56b742cbdaefafa562204ff328fb3c3380a6602c80ea597"
+    },
+    {
+      "unitId": "sf-2026-u7-02",
+      "questionsMoved": 8,
+      "preservedTheoryAndExampleSha256": "a17754218899d7d3bc8b277bee8521b711bbb1be1a11d5f72f7e20c29a084645"
+    },
+    {
+      "unitId": "sf-2026-u7-03",
+      "questionsMoved": 2,
+      "preservedTheoryAndExampleSha256": "0e9a2b26e81f3a6ec99a4b5dabd043b17504d8a24a6d948f6288688eee12c269"
+    },
+    {
+      "unitId": "sf-2026-u7-04",
+      "questionsMoved": 4,
+      "preservedTheoryAndExampleSha256": "945874e89c280f57c57df0c1543fa1f7d20b9656be6bc47f5531c510e03457ef"
+    },
+    {
+      "unitId": "sf-2026-u7-05",
+      "questionsMoved": 6,
+      "preservedTheoryAndExampleSha256": "13be39d00461571dae0a6f4978e770e715f3a86555a28df4358450bb8f28529d"
+    },
+    {
+      "unitId": "sf-2026-u7-06",
+      "questionsMoved": 4,
+      "preservedTheoryAndExampleSha256": "ae55a8cd1f1262c0ffd0b87078f814b46fcbc5b4aad3deb15a7dd38e41440b75"
+    },
+    {
+      "unitId": "sf-2026-u7-07",
+      "questionsMoved": 6,
+      "preservedTheoryAndExampleSha256": "6fa3f2751e6d3b7f3c6fd5a8c7b297208d6e9ed147c92fbe573b166c0001715e"
+    }
+  ],
+  "claim": "Exact text duplication removed from explanation; no claim of semantic independence or scientific acceptance."
+}

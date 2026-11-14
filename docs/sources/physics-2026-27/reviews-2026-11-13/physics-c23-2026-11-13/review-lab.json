@@ -1,0 +1,40 @@
+{
+  "review": "Independent technical/scientific check; no browser run",
+  "candidateSha256": "64a1ef7eae68128025fa4563ee31d811e9b3b277c3528bf79a828e89badf6093",
+  "canonicalMatchesCandidate": true,
+  "definitionsFileSha256": "daca7553da2463ca56791f5f1b2c45dc05940fea7fdaae89bbfdf0ac7ec1832f",
+  "heatEngineTestSha256": "cfaaddb083657a4129c598dbe45f7deefec150808551bf873a67293b89f8f06f",
+  "e2eSha256": "5af434cd98d24040cc2c3c1f73357b00c660dd9cf37324ef34dd3b3f58f88c67",
+  "checkedStates": 288,
+  "classifications": {
+    "compatible": 129,
+    "reversible": 42,
+    "rejected": 117
+  },
+  "maxEntropyRoundingError": 4.3956043954684887e-7,
+  "initialOutputs": {
+    "work": 270,
+    "coldHeat": 630,
+    "energyResidual": 0,
+    "carnot": 40,
+    "hotEntropy": -1.8,
+    "coldEntropy": 2.1,
+    "totalEntropy": 0.3,
+    "diagnosis": "Bilanci compatibili: variazione totale di entropia positiva."
+  },
+  "labels": {
+    "hotEntropy": "Variazione di entropia del caldo",
+    "coldEntropy": "Variazione di entropia del freddo",
+    "totalEntropy": "Variazione totale di entropia per ciclo"
+  },
+  "mappingReviewed": [
+    "U5-05.02",
+    "U5-05.04",
+    "U5-05.05",
+    "U5-05.06",
+    "U5-05.08"
+  ],
+  "P1P2findings": [],
+  "status": "DRAFT",
+  "humanApproval": false
+}

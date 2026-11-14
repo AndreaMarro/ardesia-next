@@ -1,0 +1,206 @@
+{
+  "format": "ardesia-architecture-review/1",
+  "createdAt": "2026-11-13T13:44:16.463624+00:00",
+  "observedHead": "7efaa14844fd835b37c51eb6a153bc5a53a05595",
+  "scope": "Read-only proposal review, no source mutations or tests/services",
+  "verdict": "Prefer measured derived per-Core extension release index; defer seeded create-document pending explicit history/version compatibility work",
+  "files": [
+    {
+      "path": "apps/web/src/courses/physics/import.ts",
+      "sha256": "84d819566bbea4a899770b013850fc64edba33ca850afcc12faa6814eb7a5ad6",
+      "bytes": 4414,
+      "hashBasis": "git blob at observedHead"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "789f4fbb35d99f631bfbd38d3ddbfe275e3722e0887fae6c97371de1c484459c",
+      "bytes": 56020,
+      "hashBasis": "git blob at observedHead"
+    },
+    {
+      "path": "packages/contracts/src/document-history.ts",
+      "sha256": "b29b77cb6e52e638470ab7f13c7df584e38fba8c70d53d72e8813d08cc0b0faa",
+      "bytes": 4717,
+      "hashBasis": "git blob at observedHead"
+    },
+    {
+      "path": "packages/contracts/src/extensions.ts",
+      "sha256": "468bc67e763461e682402830efbd77d2c601437f45615a6ba96accb1a3f0102d",
+      "bytes": 10672,
+      "hashBasis": "git blob at observedHead"
+    },
+    {
+      "path": "packages/core/src/index.ts",
+      "sha256": "4bec8ec237d84e852d485f3b43cae3e3af007dfea115c8ed3a6f72a7779e3771",
+      "bytes": 35744,
+      "workingCopyHashAtReceiptCreation": "641070e486f0ae92d2f7afa21da6956e5e9752a5f82b4cf5f45073ff752f0471",
+      "hashBasis": "git blob at observedHead"
+    },
+    {
+      "path": "packages/core/src/extensions.ts",
+      "sha256": "3f28c416d6ee3352addb9f52b4414d9b7bcc566ea42b1c771e926ad6494462de",
+      "bytes": 2850,
+      "workingCopyHashAtReceiptCreation": "c120a22e5b75e05dc381efa023bffd6dc1f308b8f338f7875c17b4d93f33fc6a",
+      "hashBasis": "git blob at observedHead"
+    },
+    {
+      "path": "packages/core/src/extensions.test.ts",
+      "sha256": "bc6e95fd252353f6b9354e94757b35cf6100f36a1144a69a1d5a71b55289c42c",
+      "bytes": 12161,
+      "workingCopyHashAtReceiptCreation": "64721a9a56da7bca6c005931c0b320740d17fc759c72902317b7b604e91846eb",
+      "hashBasis": "git blob at observedHead"
+    },
+    {
+      "path": "packages/core/src/plugin-commands.ts",
+      "sha256": "1f6b8e5460c5d416c8ea9b44eab3cde587e7944fe2c70891decf95cb13787571",
+      "bytes": 11386,
+      "hashBasis": "git blob at observedHead"
+    },
+    {
+      "path": "packages/server/src/store.ts",
+      "sha256": "b29ef8d33fb4d5e056931f09c1ca97a461e5dccb74661aca32e0fa7edf841949",
+      "bytes": 17881,
+      "hashBasis": "git blob at observedHead"
+    },
+    {
+      "path": "packages/server/src/materials.ts",
+      "sha256": "32cd83c42423d196ce9f2df6247478fba98812529d05ed013cacaaacb8654abf",
+      "bytes": 6322,
+      "hashBasis": "git blob at observedHead"
+    },
+    {
+      "path": "packages/server/src/requests.ts",
+      "sha256": "d4d828b4e3aa8216cd45724f2ade54e9f0a8749af1fedd88f2536bc182c57b9d",
+      "bytes": 3853,
+      "hashBasis": "git blob at observedHead"
+    },
+    {
+      "path": "packages/server/src/handler.ts",
+      "sha256": "88f9a1449c5f70b21d6045f945ac4ab9237b23fbbdd467c877f524115d71d8e2",
+      "bytes": 6489,
+      "hashBasis": "git blob at observedHead"
+    },
+    {
+      "path": "packages/remote-client/src/index.ts",
+      "sha256": "4d539316f7f1b3b0711f56c2a9349650cbab491f312cd10ef1f6a58bf1454816",
+      "bytes": 95501,
+      "hashBasis": "git blob at observedHead"
+    }
+  ],
+  "physicsPacks": [
+    {
+      "path": "apps/web/src/courses/physics/data/sf-2026-elettricita-magnetismo.json",
+      "sha256": "d8d305d087bc0f9c967e140574a002b9d049eb12cf0a9afa76c3add7faa3d2a5",
+      "documents": 7,
+      "objects": 131,
+      "types": {
+        "source": 16,
+        "note": 22,
+        "extension": 93
+      },
+      "currentCommands": 139,
+      "proposedSeedCommands": 8,
+      "maximumDocumentCompactUTF8Bytes": 97944
+    },
+    {
+      "path": "apps/web/src/courses/physics/data/sf-2026-fluidi.json",
+      "sha256": "22227927f54bcf37382d02d18506fde7ad012827932c5b7fbb067cf603ba27e1",
+      "documents": 5,
+      "objects": 139,
+      "types": {
+        "source": 12,
+        "note": 16,
+        "extension": 111
+      },
+      "currentCommands": 145,
+      "proposedSeedCommands": 6,
+      "maximumDocumentCompactUTF8Bytes": 172884
+    },
+    {
+      "path": "apps/web/src/courses/physics/data/sf-2026-onde-ottica-radiazioni.json",
+      "sha256": "86cdfefb0d37850f17d42ee0fc9d3b70724b4bda29b608b09c4eb2ca4dc7875f",
+      "documents": 12,
+      "objects": 200,
+      "types": {
+        "source": 26,
+        "note": 37,
+        "extension": 137
+      },
+      "currentCommands": 213,
+      "proposedSeedCommands": 13,
+      "maximumDocumentCompactUTF8Bytes": 104345
+    },
+    {
+      "path": "apps/web/src/courses/physics/data/sf-2026-strumenti-meccanica.json",
+      "sha256": "023238c72b89e3cfdb529a3c80b4d969d271fd52cb15aea5ed7cd0d52eb66d35",
+      "documents": 9,
+      "objects": 175,
+      "types": {
+        "source": 20,
+        "note": 28,
+        "extension": 127
+      },
+      "currentCommands": 185,
+      "proposedSeedCommands": 10,
+      "maximumDocumentCompactUTF8Bytes": 111242
+    },
+    {
+      "path": "apps/web/src/courses/physics/data/sf-2026-termodinamica.json",
+      "sha256": "629da237ba9c059add7d23c7815d9b9a24184309f775351b595d02cd683b0cd5",
+      "documents": 5,
+      "objects": 150,
+      "types": {
+        "source": 12,
+        "note": 16,
+        "extension": 122
+      },
+      "currentCommands": 156,
+      "proposedSeedCommands": 6,
+      "maximumDocumentCompactUTF8Bytes": 170893
+    }
+  ],
+  "seedProposalRisks": [
+    {
+      "severity": "P1",
+      "id": "seed-replay-format",
+      "summary": "Revision1 replay empty and historical reader compatibility"
+    },
+    {
+      "severity": "P1",
+      "id": "seed-specialized-validation",
+      "summary": "Lab/extension/material authority checks live only in add/replace paths"
+    },
+    {
+      "severity": "P1",
+      "id": "seed-v1-resume",
+      "summary": "Existing deterministic create IDs/fingerprints and pinned N+1 revisions cannot be rewritten"
+    },
+    {
+      "severity": "P2",
+      "id": "seed-history-readers",
+      "summary": "Exact revision, provenance and release scans do not enumerate seed objects"
+    },
+    {
+      "severity": "P2",
+      "id": "seed-budget-recovery",
+      "summary": "max200 is not byte budget; atomically preserve unknown outcome retry"
+    }
+  ],
+  "candidateImplementationFindings": null,
+  "testsRun": [],
+  "benchmarkRun": false,
+  "indexConditions": [
+    "Validate every distinct payload at open",
+    "Rehash each new definition",
+    "Private per-Core map",
+    "Update only after successful commit in queue",
+    "Retain deleted historical releases"
+  ],
+  "limits": [
+    "Proposal evaluation only; no implementation approval",
+    "Server recreates Core per request; cache does not remove initial scan",
+    "No PostgreSQL/browser/device/scientific validation performed",
+    "Root began changing candidate files during receipt writing; review hashes are bound to the observedHead blobs. Candidate diff is not included in this proposal review."
+  ],
+  "markdownSHA256": "2df9ab1c32bc924d0312c020d6c4a235ec5379555476fcaac8ae87fb6cf10fc6"
+}

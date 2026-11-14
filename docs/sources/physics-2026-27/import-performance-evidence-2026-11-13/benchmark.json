@@ -1,0 +1,98 @@
+{
+  "format": "ardesia-physics-import-benchmark/1",
+  "measuredAt": "2026-11-13T13:46:11.452Z",
+  "scope": "Core reopen + command per request, MemoryStorage; no HTTP, PostgreSQL or browser. No end-to-end speed claim.",
+  "environment": {
+    "node": "v24.22.1",
+    "platform": "linux",
+    "arch": "x64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor"
+  },
+  "fixture": {
+    "path": "apps/web/src/courses/physics/data/sf-2026-fluidi.json",
+    "sha256": "22227927f54bcf37382d02d18506fde7ad012827932c5b7fbb067cf603ba27e1",
+    "commands": 145,
+    "objects": 139
+  },
+  "modules": {
+    "baseline": "4929fa675ddaa2f47e49604d8e66d6edea91d64025dd7e3ee1ba5fec4576b977",
+    "candidate": "25ecb164b34aa11b324ebf9df37141f32f83d98c0a6891816a228f4a0c472914"
+  },
+  "sourceFiles": {
+    "packages/core/src/index.ts": "641070e486f0ae92d2f7afa21da6956e5e9752a5f82b4cf5f45073ff752f0471",
+    "packages/core/src/extensions.ts": "c120a22e5b75e05dc381efa023bffd6dc1f308b8f338f7875c17b4d93f33fc6a",
+    "tools/benchmark-physics-import.mjs": "be17a8b5523eaf28e143ef1f3c15f4c56900771435f4ba955b8d06370ec53152"
+  },
+  "samples": [
+    {
+      "implementation": "baseline",
+      "warmup": true,
+      "openMs": 9045.728074000008,
+      "executeMs": 5300.933005999998,
+      "totalMs": 14348.330025,
+      "snapshotSha256": "6646dbe3590f9c96adc419c8c6ac70c1346b30735235c81372b1c2b76c839bdf"
+    },
+    {
+      "implementation": "candidate",
+      "warmup": true,
+      "openMs": 9626.794541999992,
+      "executeMs": 4067.6417329999695,
+      "totalMs": 13695.983935000002,
+      "snapshotSha256": "6646dbe3590f9c96adc419c8c6ac70c1346b30735235c81372b1c2b76c839bdf"
+    },
+    {
+      "implementation": "baseline",
+      "warmup": false,
+      "openMs": 8593.087528000011,
+      "executeMs": 4908.017139000029,
+      "totalMs": 13502.227205000003,
+      "snapshotSha256": "6646dbe3590f9c96adc419c8c6ac70c1346b30735235c81372b1c2b76c839bdf"
+    },
+    {
+      "implementation": "candidate",
+      "warmup": false,
+      "openMs": 8523.365632999965,
+      "executeMs": 4006.7651099999857,
+      "totalMs": 12531.185303999999,
+      "snapshotSha256": "6646dbe3590f9c96adc419c8c6ac70c1346b30735235c81372b1c2b76c839bdf"
+    },
+    {
+      "implementation": "candidate",
+      "warmup": false,
+      "openMs": 9392.994708000042,
+      "executeMs": 3985.57023199994,
+      "totalMs": 13379.860710999994,
+      "snapshotSha256": "6646dbe3590f9c96adc419c8c6ac70c1346b30735235c81372b1c2b76c839bdf"
+    },
+    {
+      "implementation": "baseline",
+      "warmup": false,
+      "openMs": 8611.904054999992,
+      "executeMs": 4925.753817999997,
+      "totalMs": 13538.852358000004,
+      "snapshotSha256": "6646dbe3590f9c96adc419c8c6ac70c1346b30735235c81372b1c2b76c839bdf"
+    },
+    {
+      "implementation": "baseline",
+      "warmup": false,
+      "openMs": 8683.83531599988,
+      "executeMs": 5004.709267000071,
+      "totalMs": 13689.686838999987,
+      "snapshotSha256": "6646dbe3590f9c96adc419c8c6ac70c1346b30735235c81372b1c2b76c839bdf"
+    },
+    {
+      "implementation": "candidate",
+      "warmup": false,
+      "openMs": 8654.068463999967,
+      "executeMs": 3681.479131999906,
+      "totalMs": 12336.56163099999,
+      "snapshotSha256": "6646dbe3590f9c96adc419c8c6ac70c1346b30735235c81372b1c2b76c839bdf"
+    }
+  ],
+  "medianMs": {
+    "baseline": 13538.852358000004,
+    "candidate": 12531.185303999999
+  },
+  "reductionPercent": 7.442780431862694,
+  "identicalSnapshotSha256": "6646dbe3590f9c96adc419c8c6ac70c1346b30735235c81372b1c2b76c839bdf"
+}

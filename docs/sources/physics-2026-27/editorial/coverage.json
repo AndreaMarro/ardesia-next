@@ -3240,7 +3240,9 @@
     "unitId": "sf-2026-u5-05",
     "explanationLocator": "Punti da saper spiegare: U5-05.02",
     "experimentId": "investigation-u5-05",
-    "labIds": [],
+    "labIds": [
+      "physics-heat-engine"
+    ],
     "exerciseIds": [
       "u5-carnot-efficiency-01",
       "u5-carnot-efficiency-03",
@@ -3316,7 +3318,9 @@
     "unitId": "sf-2026-u5-05",
     "explanationLocator": "Punti da saper spiegare: U5-05.04",
     "experimentId": "investigation-u5-05",
-    "labIds": [],
+    "labIds": [
+      "physics-heat-engine"
+    ],
     "exerciseIds": [
       "u5-carnot-efficiency-01",
       "u5-carnot-efficiency-03",
@@ -3354,7 +3358,9 @@
     "unitId": "sf-2026-u5-05",
     "explanationLocator": "Punti da saper spiegare: U5-05.05",
     "experimentId": "investigation-u5-05",
-    "labIds": [],
+    "labIds": [
+      "physics-heat-engine"
+    ],
     "exerciseIds": [
       "u5-carnot-efficiency-01",
       "u5-carnot-efficiency-03",
@@ -3392,7 +3398,9 @@
     "unitId": "sf-2026-u5-05",
     "explanationLocator": "Punti da saper spiegare: U5-05.06",
     "experimentId": "investigation-u5-05",
-    "labIds": [],
+    "labIds": [
+      "physics-heat-engine"
+    ],
     "exerciseIds": [
       "u5-carnot-efficiency-01",
       "u5-carnot-efficiency-03",
@@ -3468,7 +3476,9 @@
     "unitId": "sf-2026-u5-05",
     "explanationLocator": "Punti da saper spiegare: U5-05.08",
     "experimentId": "investigation-u5-05",
-    "labIds": [],
+    "labIds": [
+      "physics-heat-engine"
+    ],
     "exerciseIds": [
       "u5-carnot-efficiency-01",
       "u5-carnot-efficiency-03",
@@ -4064,7 +4074,9 @@
     "unitId": "sf-2026-u6-05",
     "explanationLocator": "Punti da saper spiegare: U6-05.01",
     "experimentId": "investigation-u6-05",
-    "labIds": [],
+    "labIds": [
+      "physics-capacitor-constraints"
+    ],
     "exerciseIds": [
       "u6-capacitor-charge-01",
       "u6-capacitor-charge-09",
@@ -4126,7 +4138,9 @@
     "unitId": "sf-2026-u6-05",
     "explanationLocator": "Punti da saper spiegare: U6-05.03",
     "experimentId": "investigation-u6-05",
-    "labIds": [],
+    "labIds": [
+      "physics-capacitor-constraints"
+    ],
     "exerciseIds": [
       "u6-capacitor-charge-01",
       "u6-capacitor-charge-09",
@@ -4157,7 +4171,9 @@
     "unitId": "sf-2026-u6-05",
     "explanationLocator": "Punti da saper spiegare: U6-05.04",
     "experimentId": "investigation-u6-05",
-    "labIds": [],
+    "labIds": [
+      "physics-capacitor-constraints"
+    ],
     "exerciseIds": [
       "u6-capacitor-charge-01",
       "u6-capacitor-charge-09",
@@ -4766,7 +4782,9 @@
     "unitId": "sf-2026-u4-02",
     "explanationLocator": "Punti da saper spiegare: U4-02.01",
     "experimentId": "investigation-u4-02",
-    "labIds": [],
+    "labIds": [
+      "physics-interference"
+    ],
     "exerciseIds": [
       "u4-coherent-constructive-01",
       "u4-coherent-constructive-06",
@@ -4791,7 +4809,9 @@
     "unitId": "sf-2026-u4-02",
     "explanationLocator": "Punti da saper spiegare: U4-02.02",
     "experimentId": "investigation-u4-02",
-    "labIds": [],
+    "labIds": [
+      "physics-interference"
+    ],
     "exerciseIds": [
       "u4-coherent-constructive-01",
       "u4-coherent-constructive-06",

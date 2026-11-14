@@ -1,0 +1,953 @@
+{
+  "status": "DRAFT",
+  "review": "Independent agent scientific review; no human approval",
+  "sourceSha256": "d7378d34a778af556ae0d96b4d6b98c047f68a95f6db3f60f243342e095f2e97",
+  "checksSha256": "94707bdc30235098f660a68adb0df757aa7154f7efebb401b1629cb6c3571d23",
+  "problemCount": 15,
+  "numericalCheckCount": 74,
+  "arithmeticFailures": [],
+  "P1P2scientificFindings": [],
+  "mappingNotes": [
+    "Resolved on final source: U5-05-b now maps only U5-05.07. Static counting does not directly test irreversibility (.02) or establish a dynamical law (.08); their former mapping was removed by the author. Other new problems directly train .02 and .08."
+  ],
+  "records": [
+    {
+      "problemId": "original-20261113-u5-01-a",
+      "objectiveIds": [
+        "U5-01.01",
+        "U5-01.02",
+        "U5-01.04",
+        "U5-01.05"
+      ],
+      "level": "facile",
+      "fullPromptCopiedFromAssessment": [],
+      "identicalOriginalPrompt": [],
+      "scientificFinding": "No concrete P1/P2 found in scientific calculations; mapping qualifications in Markdown report"
+    },
+    {
+      "problemId": "original-20261113-u5-01-b",
+      "objectiveIds": [
+        "U5-01.01",
+        "U5-01.02",
+        "U5-01.03",
+        "U5-01.05"
+      ],
+      "level": "medio",
+      "fullPromptCopiedFromAssessment": [],
+      "identicalOriginalPrompt": [],
+      "scientificFinding": "No concrete P1/P2 found in scientific calculations; mapping qualifications in Markdown report"
+    },
+    {
+      "problemId": "original-20261113-u5-01-c",
+      "objectiveIds": [
+        "U5-01.02",
+        "U5-01.03",
+        "U5-01.05"
+      ],
+      "level": "difficile",
+      "fullPromptCopiedFromAssessment": [],
+      "identicalOriginalPrompt": [],
+      "scientificFinding": "No concrete P1/P2 found in scientific calculations; mapping qualifications in Markdown report"
+    },
+    {
+      "problemId": "original-20261113-u5-02-a",
+      "objectiveIds": [
+        "U5-02.01",
+        "U5-02.02",
+        "U5-02.03",
+        "U5-02.07"
+      ],
+      "level": "facile",
+      "fullPromptCopiedFromAssessment": [],
+      "identicalOriginalPrompt": [],
+      "scientificFinding": "No concrete P1/P2 found in scientific calculations; mapping qualifications in Markdown report"
+    },
+    {
+      "problemId": "original-20261113-u5-02-b",
+      "objectiveIds": [
+        "U5-02.01",
+        "U5-02.04"
+      ],
+      "level": "medio",
+      "fullPromptCopiedFromAssessment": [],
+      "identicalOriginalPrompt": [],
+      "scientificFinding": "No concrete P1/P2 found in scientific calculations; mapping qualifications in Markdown report"
+    },
+    {
+      "problemId": "original-20261113-u5-02-c",
+      "objectiveIds": [
+        "U5-02.02",
+        "U5-02.05",
+        "U5-02.06",
+        "U5-02.07"
+      ],
+      "level": "difficile",
+      "fullPromptCopiedFromAssessment": [],
+      "identicalOriginalPrompt": [],
+      "scientificFinding": "No concrete P1/P2 found in scientific calculations; mapping qualifications in Markdown report"
+    },
+    {
+      "problemId": "original-20261113-u5-03-a",
+      "objectiveIds": [
+        "U5-03.01"
+      ],
+      "level": "facile",
+      "fullPromptCopiedFromAssessment": [],
+      "identicalOriginalPrompt": [],
+      "scientificFinding": "No concrete P1/P2 found in scientific calculations; mapping qualifications in Markdown report"
+    },
+    {
+      "problemId": "original-20261113-u5-03-b",
+      "objectiveIds": [
+        "U5-03.02",
+        "U5-03.03"
+      ],
+      "level": "medio",
+      "fullPromptCopiedFromAssessment": [],
+      "identicalOriginalPrompt": [],
+      "scientificFinding": "No concrete P1/P2 found in scientific calculations; mapping qualifications in Markdown report"
+    },
+    {
+      "problemId": "original-20261113-u5-03-c",
+      "objectiveIds": [
+        "U5-03.01",
+        "U5-03.03"
+      ],
+      "level": "difficile",
+      "fullPromptCopiedFromAssessment": [],
+      "identicalOriginalPrompt": [],
+      "scientificFinding": "No concrete P1/P2 found in scientific calculations; mapping qualifications in Markdown report"
+    },
+    {
+      "problemId": "original-20261113-u5-04-a",
+      "objectiveIds": [
+        "U5-04.01",
+        "U5-04.02",
+        "U5-04.03",
+        "U5-04.06",
+        "U5-04.08"
+      ],
+      "level": "facile",
+      "fullPromptCopiedFromAssessment": [],
+      "identicalOriginalPrompt": [],
+      "scientificFinding": "No concrete P1/P2 found in scientific calculations; mapping qualifications in Markdown report"
+    },
+    {
+      "problemId": "original-20261113-u5-04-b",
+      "objectiveIds": [
+        "U5-04.01",
+        "U5-04.02",
+        "U5-04.03",
+        "U5-04.04",
+        "U5-04.05"
+      ],
+      "level": "medio",
+      "fullPromptCopiedFromAssessment": [],
+      "identicalOriginalPrompt": [],
+      "scientificFinding": "No concrete P1/P2 found in scientific calculations; mapping qualifications in Markdown report"
+    },
+    {
+      "problemId": "original-20261113-u5-04-c",
+      "objectiveIds": [
+        "U5-04.01",
+        "U5-04.03",
+        "U5-04.04",
+        "U5-04.06",
+        "U5-04.08"
+      ],
+      "level": "difficile",
+      "fullPromptCopiedFromAssessment": [],
+      "identicalOriginalPrompt": [],
+      "scientificFinding": "No concrete P1/P2 found in scientific calculations; mapping qualifications in Markdown report"
+    },
+    {
+      "problemId": "original-20261113-u5-05-a",
+      "objectiveIds": [
+        "U5-05.01",
+        "U5-05.03",
+        "U5-05.04"
+      ],
+      "level": "facile",
+      "fullPromptCopiedFromAssessment": [],
+      "identicalOriginalPrompt": [],
+      "scientificFinding": "No concrete P1/P2 found in scientific calculations; mapping qualifications in Markdown report"
+    },
+    {
+      "problemId": "original-20261113-u5-05-b",
+      "objectiveIds": [
+        "U5-05.07"
+      ],
+      "level": "medio",
+      "fullPromptCopiedFromAssessment": [],
+      "identicalOriginalPrompt": [],
+      "scientificFinding": "No concrete P1/P2 found in scientific calculations; mapping qualifications in Markdown report"
+    },
+    {
+      "problemId": "original-20261113-u5-05-c",
+      "objectiveIds": [
+        "U5-05.02",
+        "U5-05.06",
+        "U5-05.08"
+      ],
+      "level": "difficile",
+      "fullPromptCopiedFromAssessment": [],
+      "identicalOriginalPrompt": [],
+      "scientificFinding": "No concrete P1/P2 found in scientific calculations; mapping qualifications in Markdown report"
+    }
+  ],
+  "numericResults": [
+    {
+      "problemId": "original-20261113-u5-01-a",
+      "label": "area in m²",
+      "expression": "50*10**-4",
+      "expected": 0.005,
+      "tolerance": 1e-12,
+      "actual": 0.005,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-01-a",
+      "label": "sovrapressione in Pa",
+      "expression": "5*10/.005",
+      "expected": 10000,
+      "tolerance": 1e-09,
+      "actual": 10000.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-01-a",
+      "label": "pressione assoluta in Pa",
+      "expression": "100000+5*10/.005",
+      "expected": 110000,
+      "tolerance": 1e-09,
+      "actual": 110000.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-01-a",
+      "label": "volume in m³",
+      "expression": ".4*8.31*(26.85+273.15)/110000",
+      "expected": 0.009065454545454547,
+      "tolerance": 1e-14,
+      "actual": 0.009065454545454547,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-01-a",
+      "label": "controllo pV in J",
+      "expression": "110000*.009065454545454547",
+      "expected": 997.2,
+      "tolerance": 1e-09,
+      "actual": 997.2000000000002,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-01-b",
+      "label": "pressione comune in kPa",
+      "expression": "(240*3+60*6)/(3+6)",
+      "expected": 120,
+      "tolerance": 1e-12,
+      "actual": 120.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-01-b",
+      "label": "rapporto quantità A",
+      "expression": "120/240",
+      "expected": 0.5,
+      "tolerance": 1e-12,
+      "actual": 0.5,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-01-b",
+      "label": "rapporto quantità B",
+      "expression": "120/60",
+      "expected": 2,
+      "tolerance": 1e-12,
+      "actual": 2.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-01-b",
+      "label": "controllo pV totale in J",
+      "expression": "120*(3+6)",
+      "expected": 1080,
+      "tolerance": 1e-09,
+      "actual": 1080,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-01-b",
+      "label": "previsione errata media semplice in J",
+      "expression": "((240+60)/2)*(3+6)",
+      "expected": 1350,
+      "tolerance": 1e-09,
+      "actual": 1350.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-01-c",
+      "label": "C in kPa L",
+      "expression": "(260-140)/(1/1-1/2)",
+      "expected": 240,
+      "tolerance": 1e-12,
+      "actual": 240.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-01-c",
+      "label": "offset in kPa",
+      "expression": "260-240/1",
+      "expected": 20,
+      "tolerance": 1e-12,
+      "actual": 20.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-01-c",
+      "label": "terzo punto predetto in kPa",
+      "expression": "240/4+20",
+      "expected": 80,
+      "tolerance": 1e-12,
+      "actual": 80.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-01-c",
+      "label": "moli",
+      "expression": "240/(8.31*300)",
+      "expected": 0.09626955475330927,
+      "tolerance": 1e-13,
+      "actual": 0.09626955475330927,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-01-c",
+      "label": "prodotto corretto terzo stato in J",
+      "expression": "(80-20)*4",
+      "expected": 240,
+      "tolerance": 1e-12,
+      "actual": 240,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-02-a",
+      "label": "capacità calorimetro J/K",
+      "expression": "360/3",
+      "expected": 120,
+      "tolerance": 1e-12,
+      "actual": 120.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-02-a",
+      "label": "capacità campione J/K",
+      "expression": "900/3-360/3",
+      "expected": 180,
+      "tolerance": 1e-12,
+      "actual": 180.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-02-a",
+      "label": "calore specifico J/(kg K)",
+      "expression": "(900/3-360/3)/.2",
+      "expected": 900,
+      "tolerance": 1e-12,
+      "actual": 900.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-02-a",
+      "label": "calore al campione J",
+      "expression": "180*3",
+      "expected": 540,
+      "tolerance": 1e-12,
+      "actual": 540,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-02-a",
+      "label": "stima errata J/(kg K)",
+      "expression": "900/(.2*3)",
+      "expected": 1500,
+      "tolerance": 1e-12,
+      "actual": 1499.9999999999998,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-02-b",
+      "label": "aumento isocoro K",
+      "expression": "300/(.5*1.5*8.31)",
+      "expected": 48.13477737665463,
+      "tolerance": 1e-10,
+      "actual": 48.13477737665463,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-02-b",
+      "label": "aumento isobaro K",
+      "expression": "300/(.5*2.5*8.31)",
+      "expected": 28.880866425992778,
+      "tolerance": 1e-10,
+      "actual": 28.880866425992778,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-02-b",
+      "label": "rapporto aumenti",
+      "expression": "(300/(.5*1.5*8.31))/(300/(.5*2.5*8.31))",
+      "expected": 1.6666666666666667,
+      "tolerance": 1e-12,
+      "actual": 1.6666666666666667,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-02-b",
+      "label": "lavoro isobaro J",
+      "expression": ".5*8.31*(300/(.5*2.5*8.31))",
+      "expected": 120,
+      "tolerance": 1e-10,
+      "actual": 120.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-02-b",
+      "label": "energia interna isobara J",
+      "expression": "300-120",
+      "expected": 180,
+      "tolerance": 1e-12,
+      "actual": 180,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-02-c",
+      "label": "energia per portare parte fredda a 100 °C J",
+      "expression": "(.1*4200+42)*(100-20)",
+      "expected": 36960,
+      "tolerance": 1e-09,
+      "actual": 36960.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-02-c",
+      "label": "calore latente ceduto J",
+      "expression": ".01*2.26e6",
+      "expected": 22600,
+      "tolerance": 1e-09,
+      "actual": 22600.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-02-c",
+      "label": "temperatura finale °C",
+      "expression": "(.01*2.26e6+.01*4200*100+(.1*4200+42)*20)/((.1+.01)*4200+42)",
+      "expected": 71.5079365079365,
+      "tolerance": 1e-10,
+      "actual": 71.5079365079365,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-02-c",
+      "label": "raffreddamento condensato J",
+      "expression": ".01*4200*(100-36040/504)",
+      "expected": 1196.6666666666667,
+      "tolerance": 1e-08,
+      "actual": 1196.6666666666667,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-02-c",
+      "label": "calore ricevuto parte fredda J",
+      "expression": "462*(36040/504-20)",
+      "expected": 23796.666666666668,
+      "tolerance": 1e-08,
+      "actual": 23796.666666666664,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-03-a",
+      "label": "potenza A W",
+      "expression": ".5*.02*10/.01",
+      "expected": 10,
+      "tolerance": 1e-12,
+      "actual": 10.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-03-a",
+      "label": "potenza B W",
+      "expression": "2*.01*10/.02",
+      "expected": 10,
+      "tolerance": 1e-12,
+      "actual": 10.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-03-a",
+      "label": "energia totale J",
+      "expression": "(.5*.02*10/.01+2*.01*10/.02)*60",
+      "expected": 1200,
+      "tolerance": 1e-09,
+      "actual": 1200.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-03-a",
+      "label": "conduttanza totale W/K",
+      "expression": ".5*.02/.01+2*.01/.02",
+      "expected": 2,
+      "tolerance": 1e-12,
+      "actual": 2.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-03-b",
+      "label": "convezione iniziale W",
+      "expression": "5*.02*(400-300)",
+      "expected": 10,
+      "tolerance": 1e-12,
+      "actual": 10.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-03-b",
+      "label": "radiazione netta iniziale W",
+      "expression": ".5*5.67e-8*.02*(400**4-300**4)",
+      "expected": 9.9225,
+      "tolerance": 1e-10,
+      "actual": 9.9225,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-03-b",
+      "label": "pendenza iniziale K/s",
+      "expression": "-(10+9.9225)/200",
+      "expected": -0.0996125,
+      "tolerance": 1e-12,
+      "actual": -0.09961249999999999,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-03-b",
+      "label": "calo tangente in 60 s K",
+      "expression": "(10+9.9225)/200*60",
+      "expected": 5.97675,
+      "tolerance": 1e-10,
+      "actual": 5.976749999999999,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-03-b",
+      "label": "radiazione netta equilibrio W",
+      "expression": ".5*5.67e-8*.02*(300**4-300**4)",
+      "expected": 0,
+      "tolerance": 0,
+      "actual": 0.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-03-c",
+      "label": "coefficiente radiazione a 400 K W",
+      "expression": "5.67e-8*.02*(400**4-300**4)",
+      "expected": 19.845,
+      "tolerance": 1e-10,
+      "actual": 19.845,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-03-c",
+      "label": "coefficiente radiazione a 500 K W",
+      "expression": "5.67e-8*.02*(500**4-300**4)",
+      "expected": 61.6896,
+      "tolerance": 1e-10,
+      "actual": 61.6896,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-03-c",
+      "label": "emissività inferita",
+      "expression": "(40.8448-2*14.9225)/(61.6896-2*19.845)",
+      "expected": 0.5,
+      "tolerance": 1e-12,
+      "actual": 0.5,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-03-c",
+      "label": "conduttanza inferita W/K",
+      "expression": "(14.9225-19.845*.5)/100",
+      "expected": 0.05,
+      "tolerance": 1e-12,
+      "actual": 0.05,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-03-c",
+      "label": "potenza prevista a 350 K W",
+      "expression": ".05*(350-300)+.5*5.67e-8*.02*(350**4-300**4)",
+      "expected": 6.4158437500000005,
+      "tolerance": 1e-10,
+      "actual": 6.4158437500000005,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-04-a",
+      "label": "lavoro totale fatto dal gas J",
+      "expression": "-80",
+      "expected": -80,
+      "tolerance": 0,
+      "actual": -80,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-04-a",
+      "label": "energia interna J",
+      "expression": "0-(-80)",
+      "expected": 80,
+      "tolerance": 0,
+      "actual": 80,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-04-a",
+      "label": "temperatura finale K",
+      "expression": "280+80/10",
+      "expected": 288,
+      "tolerance": 1e-12,
+      "actual": 288.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-04-a",
+      "label": "potenza entrante W",
+      "expression": "80/10",
+      "expected": 8,
+      "tolerance": 1e-12,
+      "actual": 8.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-04-b",
+      "label": "volume finale L",
+      "expression": "300*1/100",
+      "expected": 3,
+      "tolerance": 1e-12,
+      "actual": 3.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-04-b",
+      "label": "lavoro irreversibile J",
+      "expression": "100*(3-1)",
+      "expected": 200,
+      "tolerance": 1e-12,
+      "actual": 200,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-04-b",
+      "label": "lavoro reversibile J",
+      "expression": "300*1.0986122886681098",
+      "expected": 329.58368660043294,
+      "tolerance": 1e-09,
+      "actual": 329.58368660043294,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-04-b",
+      "label": "differenza lavori J",
+      "expression": "300*1.0986122886681098-200",
+      "expected": 129.58368660043294,
+      "tolerance": 1e-09,
+      "actual": 129.58368660043294,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-04-b",
+      "label": "errato uso pressione iniziale J",
+      "expression": "300*(3-1)",
+      "expected": 600,
+      "tolerance": 1e-12,
+      "actual": 600,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-04-c",
+      "label": "rapporto temperature adiabatico",
+      "expression": "8**(2/3)",
+      "expected": 4,
+      "tolerance": 1e-12,
+      "actual": 3.9999999999999996,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-04-c",
+      "label": "temperatura B K",
+      "expression": "300*8**(2/3)",
+      "expected": 1200,
+      "tolerance": 1e-09,
+      "actual": 1199.9999999999998,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-04-c",
+      "label": "lavoro adiabatico J",
+      "expression": "-.1*1.5*8.31*(1200-300)",
+      "expected": -1121.85,
+      "tolerance": 1e-08,
+      "actual": -1121.8500000000001,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-04-c",
+      "label": "calore isocoro J",
+      "expression": ".1*1.5*8.31*(300-1200)",
+      "expected": -1121.85,
+      "tolerance": 1e-08,
+      "actual": -1121.8500000000001,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-04-c",
+      "label": "pressione A Pa",
+      "expression": ".1*8.31*300/.008",
+      "expected": 31162.5,
+      "tolerance": 1e-08,
+      "actual": 31162.5,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-04-c",
+      "label": "pressione C Pa",
+      "expression": ".1*8.31*300/.001",
+      "expected": 249300,
+      "tolerance": 1e-08,
+      "actual": 249300.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-05-a",
+      "label": "calore al caldo J",
+      "expression": "240+60",
+      "expected": 300,
+      "tolerance": 0,
+      "actual": 300,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-05-a",
+      "label": "COP",
+      "expression": "240/60",
+      "expected": 4,
+      "tolerance": 1e-12,
+      "actual": 4.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-05-a",
+      "label": "bilancio ciclico J",
+      "expression": "(240-300)-(-60)",
+      "expected": 0,
+      "tolerance": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-05-b",
+      "label": "microstati totali",
+      "expression": "2**4",
+      "expected": 16,
+      "tolerance": 0,
+      "actual": 16,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-05-b",
+      "label": "probabilità due a sinistra",
+      "expression": "6/16",
+      "expected": 0.375,
+      "tolerance": 1e-12,
+      "actual": 0.375,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-05-b",
+      "label": "probabilità tutte a sinistra",
+      "expression": "1/16",
+      "expected": 0.0625,
+      "tolerance": 1e-12,
+      "actual": 0.0625,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-05-b",
+      "label": "rapporto probabilità",
+      "expression": "(6/16)/(1/16)",
+      "expected": 6,
+      "tolerance": 1e-12,
+      "actual": 6.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-05-b",
+      "label": "differenza entropie J/K",
+      "expression": "1.380649e-23*1.791759469228055",
+      "expected": 2.4737909194302452e-23,
+      "tolerance": 1e-34,
+      "actual": 2.4737909194302452e-23,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-05-c",
+      "label": "temperatura finale K",
+      "expression": "(200*400+100*250)/(200+100)",
+      "expected": 350,
+      "tolerance": 1e-12,
+      "actual": 350.0,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-05-c",
+      "label": "calore ceduto A J",
+      "expression": "200*(400-350)",
+      "expected": 10000,
+      "tolerance": 1e-09,
+      "actual": 10000,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-05-c",
+      "label": "calore ricevuto B J",
+      "expression": "100*(350-250)",
+      "expected": 10000,
+      "tolerance": 1e-09,
+      "actual": 10000,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-05-c",
+      "label": "entropia A J/K",
+      "expression": "200*(-0.13353139262452263)",
+      "expected": -26.706278524904526,
+      "tolerance": 1e-09,
+      "actual": -26.706278524904526,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-05-c",
+      "label": "entropia B J/K",
+      "expression": "100*0.3364722366212129",
+      "expected": 33.64722366212129,
+      "tolerance": 1e-09,
+      "actual": 33.64722366212129,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-05-c",
+      "label": "entropia totale J/K",
+      "expression": "200*(-0.13353139262452263)+100*0.3364722366212129",
+      "expected": 6.940945137216765,
+      "tolerance": 1e-09,
+      "actual": 6.940945137216765,
+      "passed": true
+    },
+    {
+      "problemId": "original-20261113-u5-05-c",
+      "label": "falsa somma Qreale/Tf J/K",
+      "expression": "-10000/350+10000/350",
+      "expected": 0,
+      "tolerance": 1e-12,
+      "actual": 0.0,
+      "passed": true
+    }
+  ],
+  "independentRecalculations": {
+    "U5-01-a": {
+      "absolutePressurePa": 110000.0,
+      "volumeLitres": 9.065454545454546
+    },
+    "U5-01-b": {
+      "n_initial_total": 0.4332129963898917,
+      "pressureFinalKPa": 120.0
+    },
+    "U5-01-c": {
+      "offsetKPa": 20,
+      "n": 0.09626955475330927
+    },
+    "U5-02-a": {
+      "cSampleJkgK": 900.0
+    },
+    "U5-02-b": {
+      "deltaTV": 48.13477737665463,
+      "deltaTP": 28.880866425992778,
+      "workP": 120.0
+    },
+    "U5-02-c": {
+      "tf": 71.5079365079365,
+      "energyForColdTo100": 36960.0
+    },
+    "U5-03-a": {
+      "equivalentConductanceW_K": 2.0,
+      "energy60J": 1200.0
+    },
+    "U5-03-b": {
+      "initialPowerW": 19.9225,
+      "dPowerdTK": 0.245152
+    },
+    "U5-03-c": {
+      "epsilon": 0.5,
+      "power350W": 6.4158437500000005
+    },
+    "U5-04-a": {
+      "deltaU_J": 80,
+      "deltaT_K": 8.0
+    },
+    "U5-04-b": {
+      "wIrrevJ": 200,
+      "wRevJ": 329.58368660043294,
+      "differenceJ": 129.58368660043294
+    },
+    "U5-04-c": {
+      "TB_K": 1200.0000000000002,
+      "pressureRatioCA": 8,
+      "deltaUAB_J": 1121.8500000000001
+    },
+    "U5-05-a": {
+      "heatHotJ": 300,
+      "COP": 4.0
+    },
+    "U5-05-b": {
+      "enumeratedMacrostateCounts": {
+        "0": 1,
+        "1": 4,
+        "2": 6,
+        "3": 4,
+        "4": 1
+      },
+      "deltaS": 2.4737909194302452e-23
+    },
+    "U5-05-c": {
+      "tf_K": 350.0,
+      "dSA": -26.706278524904526,
+      "dSB": 33.64722366212129,
+      "dSTotal": 6.940945137216765
+    }
+  },
+  "limits": [
+    "No full semantic-independence or psychometric claim.",
+    "Read all 15 new problems, five preexisting original problems and 31 relevant final assessments.",
+    "No shared source mutations; no external publication."
+  ],
+  "integration": {
+    "baselineOriginalsPreserved": 39,
+    "baselineOriginalsTotal": 39,
+    "sharedOriginalsTotal": 69,
+    "exactC2Matches": 15,
+    "exactC3Matches": 15,
+    "demoUnitProblemMatch": true,
+    "demoBuilderSha256": "2ec21f050a0f354ddcb27521cbe6f4ee360e5034b2c9b0ad1b305faf4cfe0cf9",
+    "browserRunByReviewer": false
+  }
+}

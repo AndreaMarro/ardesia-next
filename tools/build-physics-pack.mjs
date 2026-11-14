@@ -25,6 +25,8 @@ const fields=['questionId','prompt','solution','level','kind','objectives','sour
 const definition={format:'ardesia-extension/1',typeId:'ardesia.curriculum.question',version:1,name:'Domanda ragionata',description:'Un quesito con provenienza e soluzione commentata, riutilizzabile come oggetto del Creator. Bozza; revisione umana pendente.',license:'Patrimonio originale Ardesia; tutti i diritti riservati',renderer:COMPOSITION_RENDERER,
  body:{fields:fields.map(key=>({key,label:key,kind:'text',initial:''})),nodes:[{id:'prompt',kind:'value',props:{label:'Domanda',expression:'prompt'}},{id:'solution',kind:'value',props:{label:'Soluzione di riferimento',expression:'solution'}},{id:'source',kind:'value',props:{label:'Provenienza',expression:'source'}}]},fallback:'Domanda ragionata; consulta i campi prompt, solution e source nella definizione portabile.'};
 const definitionDigest=await extensionDefinitionDigest(definition),catalog=[],sizes=[],distributedCoverage=[];
+const choiceDefinition=ExtensionDefinitionSchema.parse(read('choice-question-definition'));
+const choiceDefinitionDigest=await extensionDefinitionDigest(choiceDefinition);
 for(const course of courses){
  const courseId=course.id+'-v1',docs=[];let practice=0,final=0,originalCount=0;const labSet=new Set();
  for(const unit of course.input.units){
@@ -44,10 +46,13 @@ for(const course of courses){
    labSet.add(id);add('extension',authored?.title??builtin.title,authored?.data??await physicsLabData(id),'lab'+i,{origin:'authored',sources:provenance.sources});
   }
   function question(q,kind){
-   const selected=kind==='assessment',original=kind==='original',options=selected||original?'':q.options.map(o=>o.id+') '+o.text).join('\n');
+   const selected=kind==='assessment',original=kind==='original',choice=q.choices!==undefined||q.correctChoice!==undefined;
+   if(choice&&(!original||!Array.isArray(q.choices)||q.choices.length!==5||q.choices.some((o,i)=>o.id!=='ABCDE'[i]||typeof o.text!=='string'||!o.text.trim()||typeof o.feedback!=='string'||!o.feedback.trim())||!q.choices.some(o=>o.id===q.correctChoice)||new Set(q.choices.map(o=>o.text.trim().toLowerCase())).size!==5))throw Error('Invalid guided alternatives: '+q.id);
+   const options=choice?q.choices.map(o=>o.id+') '+o.text).join('\n'):selected||original?'':q.options.map(o=>o.id+') '+o.text).join('\n');
    const state={questionId:q.id,prompt:q.prompt+(options?'\n\n'+options:''),solution:selected?(q.answer===q.feedback?q.answer:q.answer+'\n\n'+q.feedback):q.solution,level:selected?'Verifica per obiettivo':original?q.level:q.difficulty.level,kind,
     objectives:selected?q.objectiveId:original?q.objectiveIds.join(', '):map.familyId+' · pratica della famiglia',source:JSON.stringify(selected?q.source:original?(q.source??{origin:'authored',revision:'original-2026-11-07',noveltyNote:q.noveltyNote,comparison:'Confronto contro259selezionati e4klegacy: non certificazione di unicità semantica'}):q.provenance,null,2)+'\nDRAFT · revisione umana NOT_RUN. Controlli numerici non equivalgono a validazione didattica.'};
-   add('extension',selected?q.objectiveId+' · '+rows.find(r=>r.objectiveId===q.objectiveId).label:q.title,{definition,definitionDigest,state},q.id,original?{origin:'authored',sources:provenance.sources.slice(0,1)}:provenance);
+   const data=choice?ExtensionDataSchema.parse({definition:choiceDefinition,definitionDigest:choiceDefinitionDigest,state:{...state,...Object.fromEntries(q.choices.map(o=>['feedback'+o.id,o.feedback])),correct:'ABCDE'.indexOf(q.correctChoice)+1,choice:0}}):{definition,definitionDigest,state};
+   add('extension',selected?q.objectiveId+' · '+rows.find(r=>r.objectiveId===q.objectiveId).label:q.title,data,q.id,original?{origin:'authored',sources:provenance.sources.slice(0,1)}:provenance);
   }
   for(const id of map.exerciseIds){const q=bank.find(q=>q.id===id);if(!q)throw Error(id);question(q,'practice');practice++;}
   for(const q of originals.filter(q=>q.unitId===unit.id)){question(q,'original');originalCount++;}

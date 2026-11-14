@@ -1,0 +1,209 @@
+{
+  "format": "ardesia-extension/1",
+  "typeId": "ardesia.curriculum.choice-question",
+  "version": 1,
+  "name": "Confronto guidato delle alternative",
+  "description": "Domanda originale a cinque alternative con feedback specifico. Usa il renderer dichiarativo esistente; le scelte di prova non sono voti o evidenze di padronanza. DRAFT, revisione scientifica umana pendente.",
+  "license": "Patrimonio originale Ardesia; tutti i diritti riservati",
+  "renderer": "ardesia.composition/1",
+  "body": {
+    "fields": [
+      {
+        "key": "questionId",
+        "label": "questionId",
+        "kind": "text",
+        "initial": ""
+      },
+      {
+        "key": "prompt",
+        "label": "prompt",
+        "kind": "text",
+        "initial": ""
+      },
+      {
+        "key": "solution",
+        "label": "solution",
+        "kind": "text",
+        "initial": ""
+      },
+      {
+        "key": "level",
+        "label": "level",
+        "kind": "text",
+        "initial": ""
+      },
+      {
+        "key": "kind",
+        "label": "kind",
+        "kind": "text",
+        "initial": ""
+      },
+      {
+        "key": "objectives",
+        "label": "objectives",
+        "kind": "text",
+        "initial": ""
+      },
+      {
+        "key": "source",
+        "label": "source",
+        "kind": "text",
+        "initial": ""
+      },
+      {
+        "key": "feedbackA",
+        "label": "feedbackA",
+        "kind": "text",
+        "initial": ""
+      },
+      {
+        "key": "feedbackB",
+        "label": "feedbackB",
+        "kind": "text",
+        "initial": ""
+      },
+      {
+        "key": "feedbackC",
+        "label": "feedbackC",
+        "kind": "text",
+        "initial": ""
+      },
+      {
+        "key": "feedbackD",
+        "label": "feedbackD",
+        "kind": "text",
+        "initial": ""
+      },
+      {
+        "key": "feedbackE",
+        "label": "feedbackE",
+        "kind": "text",
+        "initial": ""
+      },
+      {
+        "key": "correct",
+        "label": "Alternativa corretta dell’autore",
+        "kind": "number",
+        "initial": 1,
+        "min": 1,
+        "max": 5,
+        "step": 1
+      },
+      {
+        "key": "choice",
+        "label": "Scelta corrente",
+        "kind": "number",
+        "initial": 0,
+        "min": 0,
+        "max": 10,
+        "step": 1
+      }
+    ],
+    "nodes": [
+      {
+        "id": "question",
+        "kind": "value",
+        "props": {
+          "label": "Domanda e alternative",
+          "expression": "prompt"
+        }
+      },
+      {
+        "id": "currentChoice",
+        "kind": "value",
+        "props": {
+          "label": "La tua scelta",
+          "expression": "if(choice == 0, \"Nessuna: scegli una delle cinque alternative\", if(choice == 1 || choice == 6, \"A\", if(choice == 2 || choice == 7, \"B\", if(choice == 3 || choice == 8, \"C\", if(choice == 4 || choice == 9, \"D\", \"E\")))))"
+        }
+      },
+      {
+        "id": "choices",
+        "kind": "group",
+        "props": {
+          "layout": "columns"
+        },
+        "children": [
+          {
+            "id": "chooseA",
+            "kind": "action",
+            "props": {
+              "label": "Scegli A",
+              "field": "choice",
+              "expression": "1"
+            }
+          },
+          {
+            "id": "chooseB",
+            "kind": "action",
+            "props": {
+              "label": "Scegli B",
+              "field": "choice",
+              "expression": "2"
+            }
+          },
+          {
+            "id": "chooseC",
+            "kind": "action",
+            "props": {
+              "label": "Scegli C",
+              "field": "choice",
+              "expression": "3"
+            }
+          },
+          {
+            "id": "chooseD",
+            "kind": "action",
+            "props": {
+              "label": "Scegli D",
+              "field": "choice",
+              "expression": "4"
+            }
+          },
+          {
+            "id": "chooseE",
+            "kind": "action",
+            "props": {
+              "label": "Scegli E",
+              "field": "choice",
+              "expression": "5"
+            }
+          }
+        ]
+      },
+      {
+        "id": "check",
+        "kind": "action",
+        "props": {
+          "label": "Confronta la scelta",
+          "field": "choice",
+          "expression": "if(choice > 0 && choice <= 5, choice + 5, choice)"
+        }
+      },
+      {
+        "id": "judgment",
+        "kind": "value",
+        "props": {
+          "label": "Esito del confronto",
+          "expression": "if(choice > 5, if(choice == correct + 5, \"Risposta corretta\", \"Risposta da rivedere\"), \"Scegli un’alternativa e premi Confronta la scelta\")"
+        }
+      },
+      {
+        "id": "feedback",
+        "kind": "value",
+        "props": {
+          "label": "Perché questa alternativa",
+          "expression": "if(choice > 5, if(choice == 6, feedbackA, if(choice == 7, feedbackB, if(choice == 8, feedbackC, if(choice == 9, feedbackD, feedbackE)))), \"Il feedback compare soltanto dopo il confronto della scelta corrente.\")"
+        }
+      },
+      {
+        "id": "reasoning",
+        "kind": "value",
+        "props": {
+          "label": "Ragionamento completo",
+          "expression": "if(choice > 5, solution, \"Prima del confronto, prova a spiegare i passaggi con parole tue.\")"
+        }
+      }
+    ]
+  },
+  "fallback": "Leggi prompt per domanda e alternative A–E; solution conserva lo svolgimento. feedbackA–feedbackE spiegano ciascuna alternativa. correct indica la soluzione dell’autore; choice è soltanto un valore di prova: 0 nessuna scelta, 1–5 scelta da confrontare, 6–10 scelta confrontata. DRAFT."
+}

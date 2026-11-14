@@ -1,5 +1,7 @@
 # Ardesia Next
 
+> Consegna C1–C5 del 13 novembre: [funzionalità, demo, prove e riproduzione](docs/handoffs/2026-11-13-physics.md).
+
 > Continuazione del nucleo: [cinque corsi, continuità, conoscenza e MCP](docs/handoffs/core-continuity-2026-11-07.md).
 
 > Consegna applicativa precedente del 7 novembre: [handoff oggettivo](docs/handoffs/2026-11-07.md). Distingue candidato, main, procedura, preview e accettazione; non modifica il cursore né retrodata le prove.
@@ -75,7 +77,7 @@ npm run status
 
 Usare un operatore di test con `CREATEDB` e `CREATEROLE`. Le suite limitano il reset a database loopback con suffisso `_test` o `_browser`, e le richieste applicative usano un login PostgreSQL senza privilegi amministrativi. Le credenziali sintetiche vengono generate dal runner; le tracce browser che potrebbero registrarle sono disattivate.
 
-`verify` conserva gli otto controlli esistenti, inclusi ricostruzione identica del plugin firmato e budget di **311.296 byte gzip per il nucleo complessivo**, **245.760 per il JavaScript iniziale** e **327.680 gzip / 1.048.576 raw per il runtime opzionale**, incluso WASM; il PDF differito comprende anche worker/font/CMap e mantiene i propri limiti. Il vecchio limite Core278.528 è superato e il confronto rimane visibile nel report ([motivazione misurata](docs/adr/0021-core-continuity.md)). Il report conserva il costo totale, il confronto con la precedente soglia su tutto il JavaScript e il grafo iniziale/differito; nessun asset preesistente è riclassificato. [Decisione](docs/adr/0017-programmable-creator.md). Desktop e mobile sono emulazioni Chromium: non certificano dispositivi fisici.
+`verify` conserva gli otto controlli esistenti, inclusi ricostruzione identica del plugin firmato e budget di **327.680 byte gzip per il nucleo complessivo**, **245.760 per il JavaScript iniziale** e **327.680 gzip / 1.048.576 raw per il runtime opzionale**, incluso WASM; il PDF differito comprende anche worker/font/CMap e mantiene i propri limiti. Il vecchio limite Core278.528 è superato e il confronto rimane visibile nel report ([continuità](docs/adr/0021-core-continuity.md), [policy corrente: export completo](docs/adr/0023-complete-handout.md)). Il report conserva il costo totale, il confronto con la precedente soglia su tutto il JavaScript e il grafo iniziale/differito; nessun asset preesistente è riclassificato. [Decisione](docs/adr/0017-programmable-creator.md). Desktop e mobile sono emulazioni Chromium: non certificano dispositivi fisici.
 
 La prova M3 richiede inoltre un report browser remoto, il database realmente remoto e configurato, tre identità applicative, sessioni indipendenti, controprove di sicurezza/recupero, CI e preview protetta sulla stessa SHA e impronta dei sorgenti. Un record mancante, obsoleto o riferito a un'altra build non produce `ACCEPTED`.
 

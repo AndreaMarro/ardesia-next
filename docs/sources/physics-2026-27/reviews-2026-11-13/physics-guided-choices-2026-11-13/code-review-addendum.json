@@ -1,0 +1,85 @@
+{
+  "review": "independent read-only import-path addendum",
+  "baseCommit": "24fc875e8d05eddcdc3240f4d1fbf5641073bd0f",
+  "verifiedCommit": "dd98a8c366a46e493ae4a8ba9de7d7b4311d1006",
+  "reviewedAtUTC": "2026-11-13T10:58:35.117832+00:00",
+  "P1P2openFindings": [],
+  "diffFiles": [
+    "apps/web/src/courses/physics/guided-choices.test.ts",
+    "docs/sources/physics-2026-27/guided-choices-2026-11-13.md"
+  ],
+  "priorReviewedFilesCount": 20,
+  "priorReviewedFilesUnchanged": [
+    "apps/web/src/courses/physics/CourseMaterials.tsx",
+    "apps/web/src/courses/courses.css",
+    "tools/build-physics-pack.mjs",
+    "docs/sources/physics-2026-27/editorial/choice-question-definition.json",
+    "apps/web/src/courses/physics/physics.test.ts",
+    "e2e/physics-courses.spec.ts",
+    "apps/web/src/courses/CourseStudio.tsx",
+    "apps/web/src/components/ObjectContent.tsx",
+    "apps/web/src/creator/ExtensionView.tsx",
+    "apps/web/src/courses/physics/import.ts",
+    "packages/contracts/src/extensions.ts",
+    "packages/remote-client/src/index.ts",
+    "docs/sources/physics-2026-27/editorial/original-problems.json",
+    "docs/sources/physics-2026-27/distributed-assets.json",
+    "apps/web/src/courses/physics/data/sf-2026-elettricita-magnetismo.json",
+    "apps/web/src/courses/physics/data/sf-2026-fluidi.json",
+    "apps/web/src/courses/physics/data/sf-2026-onde-ottica-radiazioni.json",
+    "apps/web/src/courses/physics/data/sf-2026-strumenti-meccanica.json",
+    "apps/web/src/courses/physics/data/sf-2026-termodinamica.json"
+  ],
+  "priorReviewedFilesChanged": [
+    "apps/web/src/courses/physics/guided-choices.test.ts"
+  ],
+  "fileHashesAtVerifiedCommit": {
+    "apps/web/src/courses/physics/CourseMaterials.tsx": "1633e80cfd1126f022f191524dbf4491fbdb14a586980c260290b70b04c7a9e0",
+    "apps/web/src/courses/courses.css": "ecdeec039436bc5bd836bd2c3d236abfc55e51991293fb000d70dd43eebb605c",
+    "tools/build-physics-pack.mjs": "5e6b4fad3ad3e7b34019e3b8bd299a30927f910150fc09f449958b436961706d",
+    "docs/sources/physics-2026-27/editorial/choice-question-definition.json": "72fc74b83ac6521b32ed4eddf9efa9242282a56b53831a103aa28213149d5bac",
+    "apps/web/src/courses/physics/guided-choices.test.ts": "6539006647c99ebd5127df8e058c12347e03d2e88ea2720623e00166909d97b0",
+    "apps/web/src/courses/physics/physics.test.ts": "25152ec55bfbdb03c1fda51b1dc74472e528c22b547a662b93cb88c927bf5b71",
+    "e2e/physics-courses.spec.ts": "148fb1118ac92b915a257931802598a11ce576ea4c0b547acfb8e6ba9854d914",
+    "apps/web/src/courses/CourseStudio.tsx": "b7999d66e066d7f25a516b5efa59cbb04d616661b90b7f2ae4408892b52df40b",
+    "apps/web/src/components/ObjectContent.tsx": "f73caa6d239ba1b221e8a3a55ea214711424cf195e5276febf1aa01cf41ba303",
+    "apps/web/src/creator/ExtensionView.tsx": "0a8ebe2b05e2e293270aadc897178534ba54b78bd9305ffd689f58a91e35cc26",
+    "apps/web/src/courses/physics/import.ts": "84d819566bbea4a899770b013850fc64edba33ca850afcc12faa6814eb7a5ad6",
+    "packages/contracts/src/extensions.ts": "468bc67e763461e682402830efbd77d2c601437f45615a6ba96accb1a3f0102d",
+    "packages/remote-client/src/index.ts": "4d539316f7f1b3b0711f56c2a9349650cbab491f312cd10ef1f6a58bf1454816",
+    "docs/sources/physics-2026-27/editorial/original-problems.json": "24e31e684bcce5902ed529da8789f3e782ea460e8a4d38ab4eeda2343bb756f2",
+    "docs/sources/physics-2026-27/distributed-assets.json": "e049554eb0339fad66ca0bec59404fbd7fb07c6085c42a007706c269a1f1004d",
+    "apps/web/src/courses/physics/data/sf-2026-elettricita-magnetismo.json": "d8d305d087bc0f9c967e140574a002b9d049eb12cf0a9afa76c3add7faa3d2a5",
+    "apps/web/src/courses/physics/data/sf-2026-fluidi.json": "22227927f54bcf37382d02d18506fde7ad012827932c5b7fbb067cf603ba27e1",
+    "apps/web/src/courses/physics/data/sf-2026-onde-ottica-radiazioni.json": "86cdfefb0d37850f17d42ee0fc9d3b70724b4bda29b608b09c4eb2ca4dc7875f",
+    "apps/web/src/courses/physics/data/sf-2026-strumenti-meccanica.json": "023238c72b89e3cfdb529a3c80b4d969d271fd52cb15aea5ed7cd0d52eb66d35",
+    "apps/web/src/courses/physics/data/sf-2026-termodinamica.json": "629da237ba9c059add7d23c7815d9b9a24184309f775351b595d02cd683b0cd5",
+    "docs/sources/physics-2026-27/guided-choices-2026-11-13.md": "c73824ad174df351bb2a53130b211263f60114a6786006b640d094898d4a1eaa",
+    "packages/plugin-host/src/index.ts": "4600925aebf419c411799dc532ffa4b18fc0b8f8bed2b67caf5b18f831c4c6a0",
+    "packages/plugin-host/src/composition.ts": "2597cdd118ad126b95ef96f318e94195a3ccf9ca282e21c3a93ec4bf7f4b5fa4",
+    "packages/plugin-host/package.json": "30ce6b3772d770a87f207ad2d4fd11d81bc6f256ad01014aa5931ba496ab07a0",
+    "tools/check-boundaries.mjs": "a938dcf8c6a9eee5cf0a0eee5994f48e360bf80e3d5f33c841f6df924a9d83ca"
+  },
+  "originalArtifactHashes": {
+    "artifacts/physics-guided-choices-2026-11-13/initial-boundary-24fc875/verification.json": "fdb69c81ae0115f5f998751c88943afd2c7fbe4f770d8cc00e86f9f4663ff9b7",
+    "artifacts/physics-guided-choices-2026-11-13/initial-boundary-24fc875/verify.log": "2cb0558919de08eec38a2a1e08d1b47a4b96c354c41ff2e428644417351ec6f1"
+  },
+  "sameCompileExpressionImplementation": true,
+  "rootExportEvidence": "packages/plugin-host/src/index.ts:1 directly re-exports compileExpression from './composition'; package '.' resolves to src/index.ts and '/composition' resolves to src/composition.ts",
+  "boundaryPolicyUnchanged": true,
+  "runtimeUnchanged": true,
+  "testAssertionsAndTimeoutsUnchanged": true,
+  "originalVerify": {
+    "commit": "24fc875e8d05eddcdc3240f4d1fbf5641073bd0f",
+    "config-source": true,
+    "types": true,
+    "boundaries": false,
+    "passed": false
+  },
+  "testExecutedByReviewer": false,
+  "sharedFilesModifiedByReviewer": false,
+  "limits": [
+    "Static binding/import-policy verification; no new Verify or Vitest run by reviewer.",
+    "Original failure remains recorded; final Verify and E2E require their actual reports."
+  ]
+}

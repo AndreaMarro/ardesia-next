@@ -1,0 +1,13 @@
+{
+  "format": "ardesia-physics-benchmark-baseline-receipt/1",
+  "recordedAt": "2026-11-13T13:50:34.730295+00:00",
+  "baseCommit": "7efaa14844fd835b37c51eb6a153bc5a53a05595",
+  "moduleSha256": "4929fa675ddaa2f47e49604d8e66d6edea91d64025dd7e3ee1ba5fec4576b977",
+  "sourceFiles": {
+    "packages/core/src/index.ts": "4bec8ec237d84e852d485f3b43cae3e3af007dfea115c8ed3a6f72a7779e3771",
+    "packages/core/src/extensions.ts": "3f28c416d6ee3352addb9f52b4414d9b7bcc566ea42b1c771e926ad6494462de",
+    "package-lock.json": "cdbe2f1ee934132f1d1667a316ed00d2a0dac3e5b77b2e3f9509e31c20e4c20a"
+  },
+  "provenance": "Root observed clean HEAD7efaa148, compiled packages/core/src/index.ts before first source edit using Vite configFile:false/publicDir:false/SSR node/noExternal:true/target:es2023/minify:false/codeSplitting:false. Receipt written after the experiment from that observed command and preserved module, not an independently signed capture.",
+  "node": "v24.22.1"
+}

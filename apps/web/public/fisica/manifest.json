@@ -1,0 +1,71 @@
+{
+  "kind": "physics-demo",
+  "status": "DRAFT",
+  "humanApproval": false,
+  "sourceFiles": [
+    {
+      "file": "docs/sources/physics-2026-27/editorial/courses.json",
+      "sha256": "7527c62544a8d92da376a166ad951a58ae4bc95056c603718c52c7980cd7d341"
+    },
+    {
+      "file": "docs/sources/physics-2026-27/editorial/original-problems.json",
+      "sha256": "24e31e684bcce5902ed529da8789f3e782ea460e8a4d38ab4eeda2343bb756f2"
+    },
+    {
+      "file": "docs/sources/physics-2026-27/editorial/lab-definitions.json",
+      "sha256": "daca7553da2463ca56791f5f1b2c45dc05940fea7fdaae89bbfdf0ac7ec1832f"
+    }
+  ],
+  "pages": [
+    {
+      "file": "c1.html",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "unitId": "sf-2026-u2-03",
+      "problemId": "original-20261107-u2-03",
+      "quizId": "quiz-20261113-u2-04-a",
+      "quizUnitId": "sf-2026-u2-04",
+      "status": "DRAFT",
+      "humanApproval": false
+    },
+    {
+      "file": "c2.html",
+      "courseId": "sf-2026-fluidi",
+      "unitId": "sf-2026-u3-04",
+      "problemId": "original-20261113-u3-04-b",
+      "quizId": "quiz-20261113-u3-04-a",
+      "quizUnitId": "sf-2026-u3-04",
+      "status": "DRAFT",
+      "humanApproval": false
+    },
+    {
+      "file": "c3.html",
+      "courseId": "sf-2026-termodinamica",
+      "unitId": "sf-2026-u5-02",
+      "problemId": "original-20261113-u5-02-a",
+      "quizId": "quiz-20261113-u5-02-a",
+      "quizUnitId": "sf-2026-u5-02",
+      "status": "DRAFT",
+      "humanApproval": false
+    },
+    {
+      "file": "c4.html",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "unitId": "sf-2026-u6-04",
+      "problemId": "original-20261107-u6-04",
+      "quizId": "quiz-20261113-u6-01-a",
+      "quizUnitId": "sf-2026-u6-01",
+      "status": "DRAFT",
+      "humanApproval": false
+    },
+    {
+      "file": "c5.html",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "unitId": "sf-2026-u7-07",
+      "problemId": "original-20261107-u7-07",
+      "quizId": "quiz-20261113-u4-02-a",
+      "quizUnitId": "sf-2026-u4-02",
+      "status": "DRAFT",
+      "humanApproval": false
+    }
+  ]
+}

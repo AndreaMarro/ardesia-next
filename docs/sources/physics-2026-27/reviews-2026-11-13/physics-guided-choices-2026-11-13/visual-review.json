@@ -1,0 +1,10 @@
+{
+  "commit": "dd98a8c366a46e493ae4a8ba9de7d7b4311d1006",
+  "sourceDigest": "3066281e00d3f2944d01b3907cf3e1c6d8711ff12eb6a954f2c234cc8c0e1154",
+  "screenshotsViewed": [
+    "desktop-chromium/guided-choice-feedback.png",
+    "mobile-chromium/guided-choice-feedback.png"
+  ],
+  "observed": "Question, alternatives, selection, controls, specific feedback and full solution readable; mobile controls wrap into two columns. Browser assertions detect no horizontal page overflow.",
+  "limits": "Visual inspection by integrator; Chromium mobile emulation, no physical device or full accessibility audit."
+}

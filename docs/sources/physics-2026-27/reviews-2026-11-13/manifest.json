@@ -1,0 +1,277 @@
+{
+  "kind": "preserved-physics-review-and-evidence-index",
+  "date": "2026-11-13",
+  "humanApproval": false,
+  "files": [
+    {
+      "file": "physics-attempt-review-2026-11-13/browser-evidence.json",
+      "originalArtifact": "artifacts/physics-attempt-review-2026-11-13/browser-evidence.json",
+      "sha256": "8b40b6125363a9376e666afb8f46d916ddf515547f97eb3a4cf3ef52c368047d"
+    },
+    {
+      "file": "physics-attempt-review-2026-11-13/independent-review.json",
+      "originalArtifact": "artifacts/physics-attempt-review-2026-11-13/independent-review.json",
+      "sha256": "5ca705a1e26abdef876d0fc9b4fda586c69c33ae0befdb3f4d70d60ed86e15f0"
+    },
+    {
+      "file": "physics-attempt-review-2026-11-13/independent-review.md",
+      "originalArtifact": "artifacts/physics-attempt-review-2026-11-13/independent-review.md",
+      "sha256": "df351d81c25b8317140c86ddcc3d8b843802b5e6a23facba0e30899192677046"
+    },
+    {
+      "file": "physics-attempt-review-2026-11-13/verification.json",
+      "originalArtifact": "artifacts/physics-attempt-review-2026-11-13/verification.json",
+      "sha256": "5fadb931be201b639af499619ec9fec6eb8c7ce6475a8575457a783d939b6534"
+    },
+    {
+      "file": "physics-c23-2026-11-13/browser-evidence.json",
+      "originalArtifact": "artifacts/physics-c23-2026-11-13/browser-evidence.json",
+      "sha256": "8401fe0cb34d95fb122433139b550242597b37263670b9db365f52025e20b072"
+    },
+    {
+      "file": "physics-c23-2026-11-13/review-c2.json",
+      "originalArtifact": "artifacts/physics-c23-2026-11-13/review-c2.json",
+      "sha256": "ec2bc3b0f6fa9e75efe8c65d037d7aa682a75905c94eb0d21f5c0352ce89ef65"
+    },
+    {
+      "file": "physics-c23-2026-11-13/review-c2.md",
+      "originalArtifact": "artifacts/physics-c23-2026-11-13/review-c2.md",
+      "sha256": "2eb6f7b25f1350c022dcf5b3337bac95845f1da8cd5ea6b76cafe5a489f09af2"
+    },
+    {
+      "file": "physics-c23-2026-11-13/review-c3.json",
+      "originalArtifact": "artifacts/physics-c23-2026-11-13/review-c3.json",
+      "sha256": "127404199ca96fa7c18156f7a8111e50b6806bba9ccc5165d3163d2cf795b4a6"
+    },
+    {
+      "file": "physics-c23-2026-11-13/review-c3.md",
+      "originalArtifact": "artifacts/physics-c23-2026-11-13/review-c3.md",
+      "sha256": "c53d712b117e10bde77cb7da3fea138e508158841a591167d184a24396c03217"
+    },
+    {
+      "file": "physics-c23-2026-11-13/review-e2e-addendum.json",
+      "originalArtifact": "artifacts/physics-c23-2026-11-13/review-e2e-addendum.json",
+      "sha256": "ed1332b68898d0c949a34bc027ab16f6b5a4a6a66a76cc5ed185412cbac091d3"
+    },
+    {
+      "file": "physics-c23-2026-11-13/review-e2e-addendum.md",
+      "originalArtifact": "artifacts/physics-c23-2026-11-13/review-e2e-addendum.md",
+      "sha256": "93e3eb37cb37f9667214afe629bc902fbf2cc01cc1aa31d7c4cd5192d4a7c518"
+    },
+    {
+      "file": "physics-c23-2026-11-13/review-lab.json",
+      "originalArtifact": "artifacts/physics-c23-2026-11-13/review-lab.json",
+      "sha256": "49fc57cd515fccb798765ab715c19bf6aed1e416d4ee4dd770f656cdea287fe2"
+    },
+    {
+      "file": "physics-c23-2026-11-13/review-lab.md",
+      "originalArtifact": "artifacts/physics-c23-2026-11-13/review-lab.md",
+      "sha256": "8ca5b5bb435247b023eebe39cbfef97f75f0d0763b282db02fb97bd4fe2e6f74"
+    },
+    {
+      "file": "physics-c23-2026-11-13/verification.json",
+      "originalArtifact": "artifacts/physics-c23-2026-11-13/verification.json",
+      "sha256": "de54a0acd39430873e304fc404c2b97371a6ace909b232bfc84ccbdf5bdde4b0"
+    },
+    {
+      "file": "physics-c5-2026-11-13/ardesia-c5-demo-review-checks.json",
+      "originalArtifact": "artifacts/physics-c5-2026-11-13/ardesia-c5-demo-review-checks.json",
+      "sha256": "7953e095a7f315bd1a74faaf9e07070e61384e586b8db2a9db498d00ec6edf85"
+    },
+    {
+      "file": "physics-c5-2026-11-13/ardesia-c5-demo-review.md",
+      "originalArtifact": "artifacts/physics-c5-2026-11-13/ardesia-c5-demo-review.md",
+      "sha256": "4cda44ae1ac41a8ec2a255f4e64a64e9fac5a00e25164aa9d0603e8b22cf6cf1"
+    },
+    {
+      "file": "physics-c5-2026-11-13/ardesia-c5-review-radiation.json",
+      "originalArtifact": "artifacts/physics-c5-2026-11-13/ardesia-c5-review-radiation.json",
+      "sha256": "2779b24788e76cae0dad258f11f88b48aed1dd9704222bcb7e316b51f1164cb6"
+    },
+    {
+      "file": "physics-c5-2026-11-13/ardesia-c5-review-radiation.md",
+      "originalArtifact": "artifacts/physics-c5-2026-11-13/ardesia-c5-review-radiation.md",
+      "sha256": "e5cf239450ebdc6174a950de3060590df20f71c26672c66ef4b46d51cc7a7373"
+    },
+    {
+      "file": "physics-c5-2026-11-13/ardesia-c5-review-wave.json",
+      "originalArtifact": "artifacts/physics-c5-2026-11-13/ardesia-c5-review-wave.json",
+      "sha256": "6bf55e179a0ea82023f570abdf5603f6b5dba10474ddec61f4c93eb7e55f47aa"
+    },
+    {
+      "file": "physics-c5-2026-11-13/ardesia-c5-review-wave.md",
+      "originalArtifact": "artifacts/physics-c5-2026-11-13/ardesia-c5-review-wave.md",
+      "sha256": "c97b2b7609ebb2b8a1ed9bc50fa4a4ea2bd780f082a9f721920edb9bdff15768"
+    },
+    {
+      "file": "physics-c5-2026-11-13/browser-evidence.json",
+      "originalArtifact": "artifacts/physics-c5-2026-11-13/browser-evidence.json",
+      "sha256": "82d20629ab1cf1972d88fe6ba2be6738da42bdc8fec22af551ffa021c0d7f939"
+    },
+    {
+      "file": "physics-c5-2026-11-13/interference-review-checks.json",
+      "originalArtifact": "artifacts/physics-c5-2026-11-13/interference-review-checks.json",
+      "sha256": "a78dd36ca71049de063401b32d34c73964ddd7e1c3c7981c4c50fd602c0c7c8b"
+    },
+    {
+      "file": "physics-c5-2026-11-13/interference-review.md",
+      "originalArtifact": "artifacts/physics-c5-2026-11-13/interference-review.md",
+      "sha256": "c718aec069c7cafaf9d11b199cf489d0bb99ddb6a0cc36dd4c3bc9cabe65a951"
+    },
+    {
+      "file": "physics-c5-2026-11-13/verification.json",
+      "originalArtifact": "artifacts/physics-c5-2026-11-13/verification.json",
+      "sha256": "92a8aa656123a504fa0841acc6b4876234087572d36cc7b9bcda17df0b098167"
+    },
+    {
+      "file": "physics-demo-guided-2026-11-13/independent-review.json",
+      "originalArtifact": "artifacts/physics-demo-guided-2026-11-13/independent-review.json",
+      "sha256": "dd36d3db35d3e11cd74a195faed8a5e4c4ffd81d3c3546e551aced3b6afaa928"
+    },
+    {
+      "file": "physics-demo-guided-2026-11-13/independent-review.md",
+      "originalArtifact": "artifacts/physics-demo-guided-2026-11-13/independent-review.md",
+      "sha256": "946f6dcd890915f4e27882e753b78d783501e9327012321a338e859c66736775"
+    },
+    {
+      "file": "physics-demo-guided-2026-11-13/review-binding.json",
+      "originalArtifact": "artifacts/physics-demo-guided-2026-11-13/review-binding.json",
+      "sha256": "d33ec92c4448e3ffeccd4b4ef0ad3b546fedd43d9b5af3f1b81eaf42da4c13ca"
+    },
+    {
+      "file": "physics-demo-guided-2026-11-13/verification.json",
+      "originalArtifact": "artifacts/physics-demo-guided-2026-11-13/verification.json",
+      "sha256": "1d2d8c2ce761a0d6590412d7e2741fb7b1b54f3d89f455cdd04361a4111b5162"
+    },
+    {
+      "file": "physics-depth-2026-11-13/ardesia-depth-review-c1-final.json",
+      "originalArtifact": "artifacts/physics-depth-2026-11-13/ardesia-depth-review-c1-final.json",
+      "sha256": "0cdc7140d31df28b5b53588496e582b8150517e9c2603cbf7f7ac25d38fd4f42"
+    },
+    {
+      "file": "physics-depth-2026-11-13/ardesia-depth-review-c1.md",
+      "originalArtifact": "artifacts/physics-depth-2026-11-13/ardesia-depth-review-c1.md",
+      "sha256": "d5356f21a69173cf5ab09fe52095222868b2c9f03fb87eb6be003686b3416525"
+    },
+    {
+      "file": "physics-depth-2026-11-13/ardesia-depth-review-c4.json",
+      "originalArtifact": "artifacts/physics-depth-2026-11-13/ardesia-depth-review-c4.json",
+      "sha256": "da2e1573e4d2a021949092334cb95b1b1c397a17db640e5c794faca5ed321153"
+    },
+    {
+      "file": "physics-depth-2026-11-13/ardesia-depth-review-c4.md",
+      "originalArtifact": "artifacts/physics-depth-2026-11-13/ardesia-depth-review-c4.md",
+      "sha256": "d47f7e020c548a93cc2128c39d74c1ef1893aeb99599d1bc7a4a7e0e22f06631"
+    },
+    {
+      "file": "physics-depth-2026-11-13/ardesia-native-allocation-review.md",
+      "originalArtifact": "artifacts/physics-depth-2026-11-13/ardesia-native-allocation-review.md",
+      "sha256": "49e2ea0fe5fce22fdb3a26203f246d70496c2997cf6ae2000587d41f61a247de"
+    },
+    {
+      "file": "physics-depth-2026-11-13/ardesia-wasm-cap-review.md",
+      "originalArtifact": "artifacts/physics-depth-2026-11-13/ardesia-wasm-cap-review.md",
+      "sha256": "1a388bfb9be206b33487a49dc118a422fd4705b5d64d45263ce095e77dcadcfb"
+    },
+    {
+      "file": "physics-depth-2026-11-13/browser-evidence.json",
+      "originalArtifact": "artifacts/physics-depth-2026-11-13/browser-evidence.json",
+      "sha256": "8946203676dcfc84a0740b3a906af7d2c87a3fdedeb98538d46ffba70030ba39"
+    },
+    {
+      "file": "physics-depth-2026-11-13/verification.json",
+      "originalArtifact": "artifacts/physics-depth-2026-11-13/verification.json",
+      "sha256": "933ace1b92ac344bd1fa0cd93dc80d859043c803bfb4bc53fa2cd14ef043c5ab"
+    },
+    {
+      "file": "physics-guided-choices-2026-11-13/ardesia-choice-review-a.json",
+      "originalArtifact": "artifacts/physics-guided-choices-2026-11-13/ardesia-choice-review-a.json",
+      "sha256": "6a478056380cc63839170d7cf2a5c5331d9a67632897c703804995455c0087c3"
+    },
+    {
+      "file": "physics-guided-choices-2026-11-13/ardesia-choice-review-a.md",
+      "originalArtifact": "artifacts/physics-guided-choices-2026-11-13/ardesia-choice-review-a.md",
+      "sha256": "a38e3bc4289cf203935c399a5c2ac625dbbae639caedfa0c0f55e8eaa9df2552"
+    },
+    {
+      "file": "physics-guided-choices-2026-11-13/ardesia-choice-review-b.json",
+      "originalArtifact": "artifacts/physics-guided-choices-2026-11-13/ardesia-choice-review-b.json",
+      "sha256": "e07372dab3ea088215a7a2d986e0fb53679695e660cf14b9be0eb51769a0df0c"
+    },
+    {
+      "file": "physics-guided-choices-2026-11-13/ardesia-choice-review-b.md",
+      "originalArtifact": "artifacts/physics-guided-choices-2026-11-13/ardesia-choice-review-b.md",
+      "sha256": "e43bb0f2e71d5519da172576b3871dbde14703b8a01e39b87383413ea700a379"
+    },
+    {
+      "file": "physics-guided-choices-2026-11-13/browser-evidence.json",
+      "originalArtifact": "artifacts/physics-guided-choices-2026-11-13/browser-evidence.json",
+      "sha256": "4d64dfea367ebfa2969ff53959cd5161b3445bcc45f3de1a6c7a406b4ca81dd1"
+    },
+    {
+      "file": "physics-guided-choices-2026-11-13/code-review-addendum.json",
+      "originalArtifact": "artifacts/physics-guided-choices-2026-11-13/code-review-addendum.json",
+      "sha256": "cc204a8759b217bffc8c3a1569cdab4afc3c8468d22e68a28a347b4618b7dfdb"
+    },
+    {
+      "file": "physics-guided-choices-2026-11-13/code-review-addendum.md",
+      "originalArtifact": "artifacts/physics-guided-choices-2026-11-13/code-review-addendum.md",
+      "sha256": "c1fa0c3be95724e70a43cd4329604955f371d5dc1725e005fe67289027276b68"
+    },
+    {
+      "file": "physics-guided-choices-2026-11-13/code-review.json",
+      "originalArtifact": "artifacts/physics-guided-choices-2026-11-13/code-review.json",
+      "sha256": "6376c4fa28471977e884a632c1f56ea914f5b37865b64a6bcc2f2fcc2f3969b0"
+    },
+    {
+      "file": "physics-guided-choices-2026-11-13/code-review.md",
+      "originalArtifact": "artifacts/physics-guided-choices-2026-11-13/code-review.md",
+      "sha256": "c35ce5b0b009aeb35a1ee045a9ee4cae447f61e08dd54bff828a001fe066a596"
+    },
+    {
+      "file": "physics-guided-choices-2026-11-13/review-binding.json",
+      "originalArtifact": "artifacts/physics-guided-choices-2026-11-13/review-binding.json",
+      "sha256": "1db87291f3a9afcee781ed1b0d482e2d38389d4b9b7ee920068069fe2a26681a"
+    },
+    {
+      "file": "physics-guided-choices-2026-11-13/verification.json",
+      "originalArtifact": "artifacts/physics-guided-choices-2026-11-13/verification.json",
+      "sha256": "ad3972bd057a342c32c9685abb8c7083b9dcaa3ffe77174b4c4d8b9491067401"
+    },
+    {
+      "file": "physics-guided-choices-2026-11-13/visual-review.json",
+      "originalArtifact": "artifacts/physics-guided-choices-2026-11-13/visual-review.json",
+      "sha256": "759b660aefb3f3a7b18c83651d25c5d435038be4e9debaca832ac1587b617491"
+    },
+    {
+      "file": "physics-practice-navigation-2026-11-13/browser-evidence.json",
+      "originalArtifact": "artifacts/physics-practice-navigation-2026-11-13/browser-evidence.json",
+      "sha256": "2d9167a4958da6d17647144da21306a116868e16baa5d6694a7f55baaa401e9c"
+    },
+    {
+      "file": "physics-practice-navigation-2026-11-13/independent-review-addendum.json",
+      "originalArtifact": "artifacts/physics-practice-navigation-2026-11-13/independent-review-addendum.json",
+      "sha256": "67754da58457059278527ef5b1be567bff5d0df41a7ee7390620734bf78265cb"
+    },
+    {
+      "file": "physics-practice-navigation-2026-11-13/independent-review-addendum.md",
+      "originalArtifact": "artifacts/physics-practice-navigation-2026-11-13/independent-review-addendum.md",
+      "sha256": "22ac3715007ce96ab5759c4731961137ef93eea75c88ad622f350ebaec9da566"
+    },
+    {
+      "file": "physics-practice-navigation-2026-11-13/independent-review.json",
+      "originalArtifact": "artifacts/physics-practice-navigation-2026-11-13/independent-review.json",
+      "sha256": "f8ac8ff2943ade5eafc082af62ba287f12c7e42e3e917b8b02cd3b9a58c5d9b0"
+    },
+    {
+      "file": "physics-practice-navigation-2026-11-13/independent-review.md",
+      "originalArtifact": "artifacts/physics-practice-navigation-2026-11-13/independent-review.md",
+      "sha256": "2bd63f09e01b6ec218c807fa5f906e52697abf48cdc461e3bf1a451e82fb348d"
+    },
+    {
+      "file": "physics-practice-navigation-2026-11-13/verification.json",
+      "originalArtifact": "artifacts/physics-practice-navigation-2026-11-13/verification.json",
+      "sha256": "86f53ac23575542800687ab9602ae2598da603bc8dbdcc7df195718584266ae2"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "commit": "18c6ad1f1d8b101f64f253d6915ec192587d39d1",
+  "sourceDigest": "c3135177c26fad0e65d5cb183fb380cd34bbc80adb9eb9c91cfc31bddf0054cc",
+  "generatedAt": "2026-11-13T08:18:43.674Z",
+  "passed": true,
+  "m1Passed": false,
+  "m1Flows": [],
+  "m2Passed": false,
+  "m2Flows": [],
+  "m3Passed": false,
+  "m3Flows": [],
+  "reportDigest": "bd569a037d85c63a8d445e15597d1e8fc77eb8de7111649f31f1619d83b5fc49",
+  "stats": {
+    "startTime": "2026-11-13T08:18:44.524Z",
+    "duration": 246713.521,
+    "expected": 28,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "physicalDevices": "NOT_RUN"
+}

@@ -9,3 +9,4 @@ playwright-report/
 apps/web/public/build-info.json
 *.tsbuildinfo
 .DS_Store
+__pycache__/

@@ -4,7 +4,7 @@ import {readdirSync, readFileSync} from 'node:fs';
 import {join, relative} from 'node:path';
 
 export const root = process.cwd();
-const ignore = new Set(['node_modules', '.git', '.vercel', 'dist', 'artifacts', 'test-results', 'playwright-report']);
+const ignore = new Set(['node_modules', '.git', '.vercel', 'dist', 'artifacts', 'test-results', 'playwright-report', '__pycache__']);
 export function files(dir = root) {
   return readdirSync(dir, {withFileTypes: true}).flatMap(entry => {
     if(ignore.has(entry.name) || entry.name.startsWith('.env') || entry.name === 'build-info.json') return [];

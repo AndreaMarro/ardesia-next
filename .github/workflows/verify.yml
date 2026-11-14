@@ -13,7 +13,9 @@ jobs:
   verify:
     # Pin the OS supported by the pinned Playwright browser, not a moving runner alias.
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    # Run 43422371824 reached 224/271 passing browser cases before the 30m job limit.
+    # Keep the full sequential suite and individual test limits/retries unchanged.
+    timeout-minutes: 40
     services:
       postgres:
         image: postgres:18

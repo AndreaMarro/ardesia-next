@@ -1,0 +1,397 @@
+{
+  "reviewer": "/root/curriculum",
+  "authorOfC4OrLab": false,
+  "humanApproval": false,
+  "unitsReviewed": 7,
+  "numericalChecks": 54,
+  "supplementsSha256": "a16d08cba67b76d05c60748f48a76f013e5617907f05407f415ee1b66ca377a6",
+  "labFileSha256": "c414df4bc4f229bd5fa0b4bf823cc19cb017de4a478dd72d82dd39a31c6a8f30",
+  "labCanonicalSha256": "47e6916dc0e90bd8f3406dcc4938d92ee166b9d182cf5bc7f4b517153118a7dc",
+  "context": "Due copie dello stesso condensatore partono da C₀ e V₀. Si inserisce completamente lo stesso dielettrico: C = κ C₀. Una copia resta collegata a un generatore ideale a V₀; l’altra viene scollegata prima dell’inserimento, perciò conserva la carica libera sulle armature. Confronta due esperimenti con lo stesso stato iniziale: gli stati finali differiscono per il vincolo. Non sono due fasi successive dello stesso circuito.",
+  "runtimeTests": "capacitor.test.ts independently run:3/3PASS Node24.22.1",
+  "checks": [
+    {
+      "unitId": "sf-2026-u6-01",
+      "label": "campo sorgente positiva, N/C",
+      "actual": 3599.999999999999,
+      "expected": 3600,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-01",
+      "label": "campo sorgente negativa, modulo N/C",
+      "actual": 224.99999999999994,
+      "expected": 225,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-01",
+      "label": "campo totale componente x, N/C",
+      "actual": 3825,
+      "expected": 3825,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-01",
+      "label": "forza iniziale componente x, N",
+      "actual": -7.650000000000001e-06,
+      "expected": -7.65e-06,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-01",
+      "label": "accelerazione iniziale componente x, m/s2",
+      "actual": -2.55,
+      "expected": -2.55,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-01",
+      "label": "rapporto dei campi",
+      "actual": 16.0,
+      "expected": 16,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-02",
+      "label": "differenza di potenziale B-A, V",
+      "actual": 45,
+      "expected": 45,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-02",
+      "label": "variazione energia potenziale, J",
+      "actual": -1.8000000000000002e-07,
+      "expected": -1.8e-07,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-02",
+      "label": "energia cinetica finale, J",
+      "actual": 2.4e-07,
+      "expected": 2.4e-07,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-02",
+      "label": "rapporto velocita finali",
+      "actual": 2.0,
+      "expected": 2,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-02",
+      "label": "velocita finale, m/s",
+      "actual": 489.8979485566356,
+      "expected": 489.89794855663564,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-02",
+      "label": "energia totale iniziale, J",
+      "actual": -6.000000000000002e-08,
+      "expected": -6e-08,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-02",
+      "label": "energia totale finale, J",
+      "actual": -6.000000000000006e-08,
+      "expected": -6e-08,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-03",
+      "label": "numero netto elettroni rimossi",
+      "actual": 40000000000.0,
+      "expected": 40000000000.0,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-03",
+      "label": "carica positiva ricostruita, C",
+      "actual": 6.399999999999999e-09,
+      "expected": 6.4e-09,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-03",
+      "label": "bilancio sfera e terra, C",
+      "actual": 0.0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-04",
+      "label": "parallelo, ohm",
+      "actual": 20.0,
+      "expected": 20,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-04",
+      "label": "corrente totale, A",
+      "actual": 0.5,
+      "expected": 0.5,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-04",
+      "label": "tensione parallelo, V",
+      "actual": 10.0,
+      "expected": 10,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-04",
+      "label": "corrente primo ramo, A",
+      "actual": 0.3333333333333333,
+      "expected": 0.3333333333333333,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-04",
+      "label": "corrente secondo ramo, A",
+      "actual": 0.16666666666666666,
+      "expected": 0.16666666666666666,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-04",
+      "label": "corrente nodo, A",
+      "actual": 0.5,
+      "expected": 0.5,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-04",
+      "label": "potenza totale dissipata, W",
+      "actual": 7.500000000000001,
+      "expected": 7.5,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-04",
+      "label": "energia dissipata, J",
+      "actual": 337.5,
+      "expected": 337.5,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-04",
+      "label": "carica trasferita, C",
+      "actual": 22.5,
+      "expected": 22.5,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-04",
+      "label": "energia generatore via VQ, J",
+      "actual": 337.5,
+      "expected": 337.5,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-05",
+      "label": "carica iniziale, C",
+      "actual": 4.8e-07,
+      "expected": 4.8e-07,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-05",
+      "label": "energia iniziale, J",
+      "actual": 1.92e-05,
+      "expected": 1.92e-05,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-05",
+      "label": "capacita finale, F",
+      "actual": 2.4e-08,
+      "expected": 2.4e-08,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-05",
+      "label": "tensione isolato, V",
+      "actual": 20.0,
+      "expected": 20,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-05",
+      "label": "energia isolato, J",
+      "actual": 4.799999999999999e-06,
+      "expected": 4.8e-06,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-05",
+      "label": "carica con generatore, C",
+      "actual": 1.92e-06,
+      "expected": 1.92e-06,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-05",
+      "label": "energia con generatore, J",
+      "actual": 7.68e-05,
+      "expected": 7.68e-05,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-05",
+      "label": "lavoro generatore, J",
+      "actual": 0.00011519999999999998,
+      "expected": 0.0001152,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-05",
+      "label": "bilancio lavoro meccanico reversibile, J",
+      "actual": 5.76e-05,
+      "expected": 5.76e-05,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-05",
+      "label": "capacita serie, F",
+      "actual": 4e-09,
+      "expected": 4e-09,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-05",
+      "label": "carica serie, C",
+      "actual": 3.6000000000000005e-07,
+      "expected": 3.6e-07,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-05",
+      "label": "somma tensioni serie, V",
+      "actual": 90.0,
+      "expected": 90,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-06",
+      "label": "forza Lorentz modulo, N",
+      "actual": 1.28e-14,
+      "expected": 1.28e-14,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-06",
+      "label": "raggio elettrone, m",
+      "actual": 0.0011375,
+      "expected": 0.0011375,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-06",
+      "label": "energia cinetica, J",
+      "actual": 7.28e-18,
+      "expected": 7.28e-18,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-06",
+      "label": "controprova centripeta, N",
+      "actual": 1.28e-14,
+      "expected": 1.28e-14,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-06",
+      "label": "raggio campo dimezzato, m",
+      "actual": 0.002275,
+      "expected": 0.002275,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-06",
+      "label": "forza sul filo, N",
+      "actual": 0.0007199999999999999,
+      "expected": 0.00072,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-07",
+      "label": "area SI, m2",
+      "actual": 0.0025,
+      "expected": 0.0025,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-07",
+      "label": "flusso iniziale per spira, Wb",
+      "actual": 0.000625,
+      "expected": 0.000625,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-07",
+      "label": "flusso finale per spira, Wb",
+      "actual": 0.000125,
+      "expected": 0.000125,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-07",
+      "label": "variazione flusso per spira, Wb",
+      "actual": -0.0005,
+      "expected": -0.0005,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-07",
+      "label": "fem media firmata, V",
+      "actual": 1.0,
+      "expected": 1,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-07",
+      "label": "corrente resistiva, A",
+      "actual": 0.125,
+      "expected": 0.125,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-07",
+      "label": "potenza dissipata, W",
+      "actual": 0.125,
+      "expected": 0.125,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-07",
+      "label": "energia dissipata, J",
+      "actual": 0.005,
+      "expected": 0.005,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-07",
+      "label": "carica trasferita, C",
+      "actual": 0.005,
+      "expected": 0.005,
+      "pass": true
+    },
+    {
+      "unitId": "sf-2026-u6-07",
+      "label": "energia da fem e carica, J",
+      "actual": 0.005,
+      "expected": 0.005,
+      "pass": true
+    }
+  ],
+  "limitations": [
+    "No human scientific approval",
+    "No physical capacitor validation",
+    "No claim of full end-to-end browser/runtime verification from these tests"
+  ]
+}

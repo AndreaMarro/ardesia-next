@@ -301,7 +301,7 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
   const parsed = CoreSnapshotSchema.safeParse(raw === null ? emptySnapshot(options.workspaceId) : migrateSnapshotForOpen(raw));
   if (!parsed.success) throw new CoreError('INVALID_SNAPSHOT', 'The saved workspace is invalid or incompatible. Existing data was not replaced.');
   let state = structuredClone(parsed.data);
-  await validateExtensionDefinitions(state);
+  const extensionReleases = await validateExtensionDefinitions(state);
   await validateCourseHistory(state);
   await validateTutorHistory(state);
   await validateNotebookHistory(state);
@@ -381,7 +381,7 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
           await validateLabUse(next, actor, command.object.data, options.pluginPolicy);
         }
         if ((command.kind === 'add-object' || command.kind === 'replace-object') && command.object.type === 'extension') {
-          await validateExtensionUse(state, command.object.data);
+          await validateExtensionUse(extensionReleases, command.object.data);
         }
         const eventId = newEventId(next);
         const event: CoreEvent = {
@@ -405,6 +405,12 @@ export async function createCore(options: CoreOptions): Promise<CoreService> {
         next.events.push(event);
         next.receipts.push(receipt);
         await commit(next);
+        // Reserve a release only after durable commit. Removed instances still
+        // retain their release identity in history, so entries are never evicted.
+        if ((command.kind === 'add-object' || command.kind === 'replace-object') && command.object.type === 'extension') {
+          const data = command.object.data;
+          extensionReleases.set(`${data.definition.typeId}@${data.definition.version}`, data.definitionDigest);
+        }
         return structuredClone(receipt);
       });
       queue = operation.catch(() => undefined);

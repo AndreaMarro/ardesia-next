@@ -154,6 +154,29 @@
     "humanApproval": false
   },
   {
+    "id": "original-20261113-u3-01-a",
+    "unitId": "sf-2026-u3-01",
+    "objectiveIds": [
+      "U3-01.01",
+      "U3-01.03"
+    ],
+    "title": "La bilancia pesa anche il recipiente",
+    "prompt": "Un recipiente asciutto ha massa 42 g. Contenente 80 mL di un liquido omogeneo, la bilancia indica 110 g. Una seconda prova, nello stesso recipiente vuoto e asciutto, usa 40 mL dello stesso liquido alla stessa temperatura e dà 76 g. Trascuriamo evaporazione e incertezze strumentali. Procedi in tre passi: ricava le masse nette, calcola le due densità in kg/m³ e ricostruisci la seconda lettura usando la densità della prima prova. Il dimezzamento del volume dimezza la densità? La sola densità misurata dimostra che il campione è un fluido anziché un solido?",
+    "solution": "1. La massa del campione si ottiene sottraendo la tara: m₁=110−42=68 g=0,068 kg; m₂=76−42=34 g=0,034 kg. Le indicazioni della bilancia sono masse complessive, non masse dei soli liquidi.\n2. Poiché 1 mL=10⁻⁶ m³, V₁=8,0·10⁻⁵ m³ e V₂=4,0·10⁻⁵ m³. Si trova ρ₁=0,068/(8,0·10⁻⁵)=850 kg/m³ e ρ₂=0,034/(4,0·10⁻⁵)=850 kg/m³. Dimezzano massa e volume, mentre il loro rapporto resta uguale.\n3. Controllo indipendente: la densità ricavata nella prima prova prevede, per 40 mL, una massa di liquido 850·4,0·10⁻⁵=0,034 kg=34 g. Aggiungendo la tara si ritrovano 76 g.\nDiagnosi dell’errore: 110/80=1,375 g/mL attribuisce al liquido anche la massa del recipiente. Inoltre il rapporto fra le letture totali 76/110 non deve essere 1/2, perché la tara non è stata dimezzata.\nLa densità da sola non distingue un fluido da un solido: materiali con comportamenti meccanici diversi possono avere la stessa densità. Occorrerebbe osservare, per esempio, la risposta a uno sforzo tangenziale mantenuto. La conclusione qui verificata è la compatibilità delle due prove con un campione omogeneo di densità costante.",
+    "level": "facile",
+    "noveltyNote": "Guida alla tara e a una previsione indipendente su una seconda pesata; distingue densità intensiva, massa complessiva e classificazione meccanica, senza ripetere il pistone delle prove esistenti.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985eb0fb0ce648e0eec6b9fc4026870e4b32e",
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confrontato con le cinque lezioni C2, i relativi assessment e i sei problemi originali presenti alla base; nessuna rivendicazione di confronto integrale col patrimonio legacy",
+      "humanApproval": false
+    }
+  },
+  {
     "id": "original-20261107-u3-01",
     "unitId": "sf-2026-u3-01",
     "objectiveIds": [
@@ -170,6 +193,119 @@
     "humanApproval": false
   },
   {
+    "id": "original-U3-01-pro-transfer-v1",
+    "unitId": "sf-2026-u3-01",
+    "objectiveIds": [
+      "U3-01.02",
+      "U3-01.03",
+      "U3-01.04"
+    ],
+    "title": "Pressione nel pistone: forza obliqua e vincolo inverso",
+    "prompt": "Prova nuova: forza obliqua, riferimento e vincolo inverso\nUn cilindro orizzontale contiene un liquido omogeneo. Il pistone ideale, guidato e senza attrito, ha area 2,4 cm² ed è in equilibrio. Una forza esterna di 36 N lo preme verso il liquido formando 60° con la normale alla faccia; la guida sostiene la componente laterale. Usa cos 60°=1/2. La pressione esterna è 98 kPa. Un campione dello stesso liquido ha massa 46,8 g e volume 52 mL.\n\n1. Disegna il bilancio lungo la normale e calcola pressione relativa e assoluta nel liquido. Spiega perché 36 N diviso l’area non è la differenza di pressione corretta.\n2. Calcola la densità in kg/m³. Unendo un altro campione identico alla stessa temperatura, quali sono massa, volume e densità complessivi? Trascuriamo variazioni di volume e densità nelle condizioni dichiarate.\n3. Un secondo pistone ha area 4,8 cm². Pressione esterna, modulo della forza e angolo restano quelli iniziali. Calcola la nuova pressione relativa e quella assoluta. È corretto dire che entrambe si dimezzano? Motiva senza affidarti soltanto ai numeri.\n4. Sul secondo pistone vogliamo invece ottenere una pressione assoluta di 198 kPa, mantenendo pressione esterna e angolo. Quale modulo deve avere la forza applicata? Dichiara il nuovo vincolo prima di calcolare.",
+    "solution": "Confronto della prova nuova\n1. La forza normale è F_n=36·cos 60°=18 N; l’area è 2,4·10⁻⁴ m². Dal bilancio (p_ass−p_ext)A=F_n segue p_rel=18/(2,4·10⁻⁴)=75000 Pa=75 kPa e p_ass=98+75=173 kPa. Usare 36/A attribuirebbe al liquido anche la componente sostenuta dalla guida. Controllo: (173000−98000)·2,4·10⁻⁴=18 N.\n2. m=0,0468 kg e V=52·10⁻⁶ m³; ρ=m/V=900 kg/m³=0,9 g/mL. Unendo due copie del campione ottieni 93,6 g e 104 mL, quindi la stessa densità. Il controllo 900·52·10⁻⁶=0,0468 kg ricostruisce la massa iniziale.\n3. Sul secondo pistone A=4,8·10⁻⁴ m² e la componente normale resta 18 N. La pressione relativa diventa 37500 Pa=37,5 kPa; quella assoluta è 98+37,5=135,5 kPa. Si dimezza la differenza rispetto all’esterno; il riferimento esterno di 98 kPa rimane uguale. Perciò la pressione assoluta non si dimezza.\n4. Ora è fissata la pressione assoluta richiesta: prima ricava la differenza 198−98=100 kPa. Occorrono F_n=100000·4,8·10⁻⁴=48 N. Poiché F_n=F·1/2, il modulo applicato è F=96 N. Controllo inverso: 98000+(96·1/2)/(4,8·10⁻⁴)=198000 Pa.\n\nCriterio di confronto del ragionamento\nUna risposta completa indica normale e angolo, converte l’area e il volume, distingue pressione relativa e assoluta, riconosce il vincolo cambiato e ricostruisce almeno uno dei dati iniziali. Un numero giusto da solo non mostra tutti questi passaggi. Il confronto è materiale di studio consultabile, non un voto automatico.",
+    "level": "medio",
+    "noveltyNote": "La prova introduce una forza obliqua e la reazione laterale della guida, distingue il riferimento esterno durante la variazione dell’area e cambia il vincolo per ricavare la forza necessaria. Include un controllo separato sulla densità. La novità è relativa all’attività e all’esempio di questa unità.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "chat-pro-pressure-2026-11-08",
+      "attribution": "Risultato del lavoro di una chat Pro",
+      "comparison": "Applicazione nuova rispetto all’attività e all’esempio di questa unità; confronto sistematico col patrimonio legacy non eseguito",
+      "humanApproval": false
+    }
+  },
+  {
+    "id": "original-20261113-u3-01-b",
+    "unitId": "sf-2026-u3-01",
+    "objectiveIds": [
+      "U3-01.02"
+    ],
+    "title": "Una piastra, due camere e una forza risultante",
+    "prompt": "Una piastra rigida piana chiude due camere indipendenti separate da una parete: sulla prima porzione, di area 4,0 cm², la pressione interna uniforme è 103 kPa; sulla seconda, di area 8,0 cm², è 99 kPa. Sull’intera faccia opposta agisce l’ambiente a 100 kPa. Trascuriamo peso, attrito e forze lungo la normale diverse dalle pressioni e dai vincoli. Prendi positivo il verso dalle camere all’esterno. Calcola la forza netta su ciascuna porzione, la risultante sulla piastra e la pressione relativa uniforme equivalente sull’area totale. Il risultato coincide con la media aritmetica delle due pressioni relative?",
+    "solution": "Le due camere sono indipendenti: non stiamo assegnando pressioni diverse allo stesso liquido connesso e in quiete alla stessa quota. Su ogni porzione bisogna sottrarre la pressione che agisce sulla faccia opposta.\n1. Le differenze sono Δp₁=+3 kPa e Δp₂=−1 kPa. Convertiamo A₁=4,0·10⁻⁴ m² e A₂=8,0·10⁻⁴ m².\n2. F₁=3000·4,0·10⁻⁴=+1,2 N; F₂=−1000·8,0·10⁻⁴=−0,8 N. La risultante è +0,4 N, verso l’esterno. Per tenere la piastra in equilibrio il vincolo deve fornire −0,4 N lungo la normale.\n3. La pressione relativa equivalente è F_tot/(A₁+A₂)=0,4/0,0012≈333 Pa=0,333 kPa. È una media pesata per le aree: [3·4+(−1)·8]/12=1/3 kPa.\nControllo indipendente: le forze interne complessive valgono 103000·0,0004+99000·0,0008=120,4 N; quella esterna vale 100000·0,0012=120 N. La loro differenza restituisce 0,4 N.\nDiagnosi dell’errore: la media non pesata [3+(−1)]/2=1 kPa darebbe 1,2 N, perché tratta come uguali superfici che non lo sono. Una pressione relativa negativa nella seconda camera non significa pressione assoluta negativa: lì il valore assoluto resta 99 kPa. La risultante calcolata non determina da sola l’eventuale momento sulla piastra, che dipende dalla disposizione geometrica delle porzioni.",
+    "level": "medio",
+    "noveltyNote": "Somma di forze con segno su aree disuguali e media di pressione pesata; introduce un confine a due camere anziché cambiare i numeri del singolo pistone.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985eb0fb0ce648e0eec6b9fc4026870e4b32e",
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confrontato con le cinque lezioni C2, i relativi assessment e i sei problemi originali presenti alla base; nessuna rivendicazione di confronto integrale col patrimonio legacy",
+      "humanApproval": false
+    }
+  },
+  {
+    "id": "original-20261113-u3-01-c",
+    "unitId": "sf-2026-u3-01",
+    "objectiveIds": [
+      "U3-01.03",
+      "U3-01.04"
+    ],
+    "title": "Mescolare conserva la massa, non impone il volume",
+    "prompt": "Due liquidi miscibili A e B sono caratterizzati alla stessa temperatura: 100 mL di A hanno massa 80 g e 100 mL di B hanno massa 120 g. Si uniscono esattamente queste quantità in un recipiente chiuso, senza perdite di materia. Dopo il mescolamento e il ritorno alla temperatura iniziale, il campione omogeneo occupa 192 mL. Calcola le densità iniziali e quella finale. Valuta la previsione «la densità finale è la media aritmetica delle due densità». Individua quale ipotesi supplementare renderebbe corretta tale media in questa prova e quantifica la differenza percentuale fra la densità effettiva e quella prevista dalla media. Durante il mescolamento e dopo il riposo stai studiando la stessa condizione di moto?",
+    "solution": "1. Le densità iniziali sono 80/100=0,80 g/mL=800 kg/m³ e 120/100=1,20 g/mL=1200 kg/m³. La massa totale si conserva: m=200 g=0,200 kg.\n2. Il volume finale è un dato misurato, 192 mL=1,92·10⁻⁴ m³. Quindi ρ_finale=0,200/(1,92·10⁻⁴)≈1041,67 kg/m³. Controllo inverso: 1041,67·1,92·10⁻⁴≈0,200 kg.\n3. La media aritmetica darebbe 1000 kg/m³. Con volumi iniziali uguali questa sarebbe corretta se i volumi fossero additivi: allora V_finale=200 mL e ρ=(ρ_A V+ρ_B V)/(2V). Il campione assegnato mostra invece una contrazione di 8 mL, pari al 4% del volume additivo. La massa non è diminuita con il volume.\n4. L’aumento relativo di densità rispetto alla previsione è (1041,6667−1000)/1000≈0,041667, cioè 4,17%. Non è esattamente il 4%: la densità dipende dall’inverso del volume. Il controllo tramite rapporti dà ρ_finale/ρ_media=200/192=25/24.\nDiagnosi dell’errore: sommare automaticamente i volumi confonde una proprietà possibile della miscela con la conservazione della massa. I dati non autorizzano a usare la densità media aritmetica per qualunque miscela, specialmente con quantità iniziali diverse.\nDurante il mescolamento il fluido è in moto e può dissipare energia; dopo il riposo può essere studiato in statica. La formula ρ=m/V definisce la densità media in entrambi i casi, ma non sostituisce il bilancio dinamico né permette di ricavare una pressione senza ulteriori dati. L’esempio descrive la miscela ipotetica assegnata, non una proprietà universale di due liquidi reali.",
+    "level": "difficile",
+    "noveltyNote": "Mette alla prova l’ipotesi di additività del volume, conservando la massa; il confronto fra percentuali inverse e condizioni di moto richiede scegliere il modello, non applicare un solo rapporto dato.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985eb0fb0ce648e0eec6b9fc4026870e4b32e",
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confrontato con le cinque lezioni C2, i relativi assessment e i sei problemi originali presenti alla base; nessuna rivendicazione di confronto integrale col patrimonio legacy",
+      "humanApproval": false
+    }
+  },
+  {
+    "id": "original-20261113-u3-02-a",
+    "unitId": "sf-2026-u3-02",
+    "objectiveIds": [
+      "U3-02.01"
+    ],
+    "title": "Due strati, una pressione al fondo",
+    "prompt": "Un recipiente largo contiene due liquidi immiscibili in quiete: sotto, acqua di densità 1000 kg/m³ alta 30 cm; sopra, olio di densità 900 kg/m³ alto 20 cm. Sulla superficie libera agisce una pressione assoluta di 98 kPa. Usa g=10 m/s² e trascura gli effetti capillari sulle superfici considerate. Calcola prima la pressione assoluta all’interfaccia e poi quella al fondo, indicando anche la differenza fondo–superficie. Un sensore al fondo viene spostato orizzontalmente senza cambiare quota: deve cambiare lettura?",
+    "solution": "Percorriamo il liquido dall’alto verso il basso: ogni tratto aggiunge il peso per unità di area della propria colonna.\n1. Nell’olio Δp_olio=900·10·0,20=1800 Pa=1,8 kPa. All’interfaccia p=98+1,8=99,8 kPa. Per l’interfaccia piana nel modello, la pressione è continua passando dall’olio all’acqua.\n2. Nell’acqua si aggiungono Δp_acqua=1000·10·0,30=3000 Pa=3,0 kPa. Al fondo p=102,8 kPa assoluti; la differenza rispetto alla superficie è 4,8 kPa.\n3. Il controllo per unità di area usa direttamente la massa delle colonne: ρ_olio h_olio+ρ_acqua h_acqua=180+300=480 kg/m². Il suo peso è 480·10=4800 N/m², cioè la differenza appena trovata.\nAlla stessa quota dello stesso strato connesso in quiete la pressione è uguale: lo spostamento orizzontale non cambia la lettura. La forma laterale del recipiente non entra nel calcolo.\nDiagnosi dell’errore: usare 1000 kg/m³ per tutti i 50 cm darebbe 5000 Pa, sovrastimando il contributo dell’olio. Una media di densità può essere usata soltanto se pesata sugli spessori: (900·0,20+1000·0,30)/0,50=960 kg/m³; con questa media motivata si ritrovano 4800 Pa, non con una media aritmetica scelta a caso.",
+    "level": "facile",
+    "noveltyNote": "Percorso idrostatico a due densità con controllo tramite massa per area; differente dalle prove esistenti a un solo liquido o sul blocco immerso.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985eb0fb0ce648e0eec6b9fc4026870e4b32e",
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confrontato con le cinque lezioni C2, i relativi assessment e i sei problemi originali presenti alla base; nessuna rivendicazione di confronto integrale col patrimonio legacy",
+      "humanApproval": false
+    }
+  },
+  {
+    "id": "original-20261113-u3-02-b",
+    "unitId": "sf-2026-u3-02",
+    "objectiveIds": [
+      "U3-02.01",
+      "U3-02.02"
+    ],
+    "title": "La pressa ha i pistoni a quote diverse",
+    "prompt": "Una pressa ideale contiene olio incomprimibile di densità 800 kg/m³. Il pistone piccolo ha area 2,0 cm²; quello grande 35 cm² ed è inizialmente 0,50 m più alto. Il grande sostiene un carico verticale di 350 N. Le facce esterne dei due pistoni sono alla stessa pressione atmosferica; peso dei pistoni e attriti sono trascurabili. Usa g=10 m/s². Quale forza verso il basso serve sul pistone piccolo per l’equilibrio iniziale? Si trasferiscono poi lentamente 0,70 mL d’olio dal cilindro piccolo al grande: trova gli spostamenti e la nuova forza di equilibrio, tenendo conto del cambiamento di dislivello.",
+    "solution": "1. Al pistone grande la pressione relativa necessaria è p_G=350/(35·10⁻⁴)=100000 Pa. Scendendo di 0,50 m fino al piccolo, la pressione aumenta di 800·10·0,50=4000 Pa: p_P=104000 Pa. La forza iniziale è F_P=p_P A_P=104000·2·10⁻⁴=20,8 N.\n2. Il volume trasferito è ΔV=0,70·10⁻⁶ m³. Il piccolo scende di s_P=ΔV/A_P=0,0035 m=3,5 mm; il grande sale di s_G=ΔV/A_G=0,00020 m=0,20 mm. Si verifica A_P s_P=A_G s_G=ΔV.\n3. Il dislivello cresce di entrambi gli spostamenti: Δz_nuova=0,50+0,0035+0,00020=0,5037 m. Il carico e l’area del grande non cambiano, quindi p_G resta 100000 Pa. La nuova forza è [100000+800·10·0,5037]·0,0002=20,80592 N, circa 20,81 N.\nControllo indipendente: l’aumento di forza deve essere soltanto ρg A_P(s_P+s_G)=0,00592 N; aggiunto a 20,8 N ricostruisce il risultato. Le molte cifre servono a seguire il piccolo cambiamento del modello, non esprimono precisione sperimentale.\nDiagnosi dell’errore: F_P/A_P=F_G/A_G senza termine di quota darebbe 20 N e ometterebbe il peso della colonna. Pascal trasmette incrementi di pressione, non elimina Stevino. Il guadagno di forza non crea lavoro: il pistone piccolo percorre una distanza maggiore e, in questa geometria, viene anche modificata l’energia gravitazionale dell’olio. Le posizioni sono confrontate in stati di equilibrio, con moto intermedio tanto lento da trascurare inerzia e dissipazione.",
+    "level": "medio",
+    "noveltyNote": "Combina Pascal e Stevino quando i pistoni non sono alla stessa quota; il trasferimento di volume modifica il dislivello e quindi la forza, a differenza della pressa a rapporto costante già presente.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985eb0fb0ce648e0eec6b9fc4026870e4b32e",
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confrontato con le cinque lezioni C2, i relativi assessment e i sei problemi originali presenti alla base; nessuna rivendicazione di confronto integrale col patrimonio legacy",
+      "humanApproval": false
+    }
+  },
+  {
     "id": "original-20261107-u3-02",
     "unitId": "sf-2026-u3-02",
     "objectiveIds": [
@@ -183,6 +319,78 @@
     "noveltyNote": "Lo stesso blocco immerso produce due letture diverse senza cambiare Archimede; il compito è seguire le reazioni e scegliere il confine del sistema, non solo sottrarre la spinta al peso.",
     "status": "DRAFT",
     "humanApproval": false
+  },
+  {
+    "id": "original-20261113-u3-02-c",
+    "unitId": "sf-2026-u3-02",
+    "objectiveIds": [
+      "U3-02.01",
+      "U3-02.05",
+      "U3-02.06"
+    ],
+    "title": "Due colonne non bastano a conoscere due pressioni",
+    "prompt": "In una simulazione due colonne verticali sono esposte inferiormente allo stesso ambiente, di pressione p_ext ignota. Gli spazi superiori sono collegati a una medesima camera gassosa di pressione p_g ignota e non necessariamente trascurabile. La prima colonna contiene un liquido di densità 13600 kg/m³ e presenta dislivello verticale 0,700 m; la seconda contiene un liquido di densità 850 kg/m³ e presenta dislivello 11,20 m. I gas hanno densità trascurabile e g=10 m/s². Entrambe le colonne sono in equilibrio, senza effetti capillari. Quale differenza di pressione misurano? È possibile ricavare separatamente p_ext e p_g dai due dati? Mostra due coppie compatibili. Infine un sensore indipendente misura p_g=4,8 kPa assoluti: determina p_ext e l’errore che avrebbe commesso chi avesse supposto il vuoto in alto.",
+    "solution": "Per ciascuna colonna l’equilibrio impone p_ext−p_g=ρgh, con h verticale.\n1. La prima dà 13600·10·0,700=95200 Pa; la seconda 850·10·11,20=95200 Pa. Le due letture concordano su Δp=95,2 kPa.\n2. Non sono due equazioni indipendenti per le pressioni assolute: entrambe dicono p_ext=p_g+95,2 kPa. Per esempio (p_g,p_ext)=(0;95,2) kPa e (4,8;100,0) kPa soddisfano entrambe le colonne. La prima coppia rappresenta il limite ideale del vuoto superiore, non un’ipotesi dimostrata dai dati.\n3. Il sensore indipendente seleziona la seconda coppia: p_ext=4,8+95,2=100,0 kPa. Assumere p_g=0 avrebbe fatto sottostimare la pressione esterna di 4,8 kPa, cioè del 4,8% rispetto a 100 kPa.\nControllo indipendente: il rapporto delle altezze previsto è l’inverso del rapporto delle densità. Infatti 11,20/0,700=16 e 13600/850=16. Questo controlla la coerenza idrostatica, ma non aggiunge una misura dello zero assoluto di pressione.\nDiagnosi dell’errore: contare il numero di strumenti non basta a contare le informazioni indipendenti. La formula barometrica p_ext≈ρgh richiede che la pressione superiore sia trascurabile; quando manca tale ipotesi, lo strumento misura una differenza come un manometro. Le colonne sono qui un modello numerico: non è richiesto costruirle o maneggiare i liquidi rappresentati.",
+    "level": "difficile",
+    "noveltyNote": "Problema di identificabilità: due colonne di densità diversa misurano la stessa combinazione delle incognite; una misura assoluta aggiuntiva rende determinato il modello.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985eb0fb0ce648e0eec6b9fc4026870e4b32e",
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confrontato con le cinque lezioni C2, i relativi assessment e i sei problemi originali presenti alla base; nessuna rivendicazione di confronto integrale col patrimonio legacy",
+      "humanApproval": false
+    }
+  },
+  {
+    "id": "original-20261113-u3-03-a",
+    "unitId": "sf-2026-u3-03",
+    "objectiveIds": [
+      "U3-03.01",
+      "U3-03.02",
+      "U3-03.04"
+    ],
+    "title": "Il serbatoio che accumula senza perdere massa",
+    "prompt": "Un piccolo serbatoio contiene un liquido incomprimibile di densità costante e riceve continuamente 1,20 L/min e scarica da due uscite, rispettivamente 0,70 L/min e 0,30 L/min. Queste portate restano costanti per 90 s; il serbatoio ha spazio sufficiente e non trabocca. Il tubo d’ingresso ha sezione 0,50 cm² e la sua velocità media è uniforme nel tempo. Calcola l’aumento di volume contenuto, la velocità media all’ingresso e quale portata dovrebbe avere la seconda uscita per mantenere costante il volume, lasciando immutati ingresso e prima uscita. Il bilancio attuale viola la conservazione della massa?",
+    "solution": "1. Le uscite sommano 1,00 L/min, mentre entra 1,20 L/min. La differenza 0,20 L/min si accumula nel serbatoio. In 90 s=1,5 min l’aumento è ΔV=0,20·1,5=0,30 L=3,0·10⁻⁴ m³.\n2. All’ingresso Q=1,20·10⁻³/60=2,0·10⁻⁵ m³/s e A=0,50·10⁻⁴=5,0·10⁻⁵ m². La velocità media è Q/A=0,40 m/s.\n3. Per non accumulare deve valere Q_in=Q_1+Q_2: la seconda uscita deve portare 1,20−0,70=0,50 L/min.\nControllo sui volumi dell’intervallo: entrano 1,80 L, escono 1,05+0,45=1,50 L, restano 0,30 L. Per densità costante, moltiplicare tutti questi volumi per la stessa densità chiude anche il bilancio della massa.\nDiagnosi dell’errore: imporre subito Q_in=Q_out cancellerebbe il termine di accumulo e contraddirebbe i dati. La conservazione della massa non richiede sempre portate entranti e uscenti uguali: richiede che la differenza sia la variazione della massa contenuta. Portate costanti nei tubi non rendono stazionario l’intero serbatoio, perché il livello e la quantità di liquido contenuta cambiano nel tempo.",
+    "level": "facile",
+    "noveltyNote": "Bilancio con accumulo misurabile, distinto dalla biforcazione stazionaria delle prove esistenti; separa portate costanti dal sistema globalmente stazionario.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985eb0fb0ce648e0eec6b9fc4026870e4b32e",
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confrontato con le cinque lezioni C2, i relativi assessment e i sei problemi originali presenti alla base; nessuna rivendicazione di confronto integrale col patrimonio legacy",
+      "humanApproval": false
+    }
+  },
+  {
+    "id": "original-20261113-u3-03-b",
+    "unitId": "sf-2026-u3-03",
+    "objectiveIds": [
+      "U3-03.04",
+      "U3-03.05",
+      "U3-03.06"
+    ],
+    "title": "La sezione si allarga ma la pressione diminuisce",
+    "prompt": "Un condotto ideale sale mentre si allarga. Per un fluido incomprimibile di densità 1000 kg/m³, in moto stazionario, la prima sezione è 2,0 cm² e la velocità è 3,0 m/s; la seconda sezione è 6,0 cm² e si trova 0,60 m più in alto. Fra le sezioni non ci sono pompe, diramazioni o perdite; applica Bernoulli lungo la stessa linea di corrente con velocità uniformi nelle sezioni. Usa g=10 m/s². Trova portata, velocità finale e p₂−p₁. Determina anche quale dislivello renderebbe uguali le pressioni. Valuta la frase «una dilatazione fa sempre aumentare la pressione».",
+    "solution": "1. Continuità: Q=A₁v₁=2,0·10⁻⁴·3,0=6,0·10⁻⁴ m³/s=0,60 L/s. Nella seconda sezione v₂=Q/A₂=1,0 m/s.\n2. Isolando la differenza di pressione in Bernoulli si trova p₂−p₁=ρ(v₁²−v₂²)/2−ρg(z₂−z₁). Il rallentamento contribuirebbe +1000(9−1)/2=+4000 Pa; la salita contribuisce −1000·10·0,60=−6000 Pa. Il totale è −2000 Pa: la pressione statica diminuisce di 2,0 kPa.\n3. Per pressioni uguali i due contributi devono compensarsi: Δz=(v₁²−v₂²)/(2g)=8/20=0,40 m. Una salita minore di 0,40 m darebbe recupero di pressione; una maggiore, calo di pressione, nelle stesse ipotesi.\nControllo del bilancio per unità di volume: la variazione dei tre termini è −2000 Pa per la pressione, −4000 Pa per quello cinetico e +6000 Pa per quello gravitazionale. La somma è zero.\nDiagnosi dell’errore: usare soltanto il diametro cancella senza motivo il termine di quota. Il confronto «dilatazione → pressione maggiore» vale qui a pari quota, non per ogni percorso. Si tratta di un condotto ideale; trasferire la conclusione a una dilatazione vascolare reale richiederebbe anche pareti, viscosità, pulsazioni e geometria, e non costituisce una diagnosi.",
+    "level": "medio",
+    "noveltyNote": "La competizione fra recupero cinetico e salita produce un controesempio quantitativo alla regola sul solo diametro; ricerca anche il confine fra i due comportamenti.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985eb0fb0ce648e0eec6b9fc4026870e4b32e",
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confrontato con le cinque lezioni C2, i relativi assessment e i sei problemi originali presenti alla base; nessuna rivendicazione di confronto integrale col patrimonio legacy",
+      "humanApproval": false
+    }
   },
   {
     "id": "original-20261107-u3-03",
@@ -201,6 +409,77 @@
     "humanApproval": false
   },
   {
+    "id": "original-20261113-u3-03-c",
+    "unitId": "sf-2026-u3-03",
+    "objectiveIds": [
+      "U3-03.01",
+      "U3-03.02",
+      "U3-03.03",
+      "U3-03.05"
+    ],
+    "title": "Una media stabile non rende stazionario il moto",
+    "prompt": "In un modello unidimensionale la velocità, uniforme sulla sezione A=2,0 cm², alterna periodicamente 0,20 m/s per un secondo e 0,80 m/s per il secondo seguente. Il ciclo si ripete senza interruzione. Il fluido ha densità 1000 kg/m³. Calcola il volume che attraversa la sezione in 4 s, la portata media e la media temporale del termine cinetico ρv²/2. Confrontala con il valore ottenuto inserendo la velocità media nella stessa espressione. Il ripetersi della stessa portata media su ogni ciclo permette di dichiarare il moto istantaneo stazionario o turbolento? Si può applicare automaticamente Bernoulli stazionario usando le medie? Il problema richiede solo i bilanci assegnati, non di modellare i transitori ideali fra i due valori.",
+    "solution": "1. Nei 4 s il valore 0,20 m/s dura complessivamente 2 s e quello 0,80 m/s altri 2 s. Il volume è A(0,20·2+0,80·2)=2,0·10⁻⁴·2=4,0·10⁻⁴ m³=0,40 L. La portata media è 1,0·10⁻⁴ m³/s=0,10 L/s.\n2. La velocità media temporale è (0,20+0,80)/2=0,50 m/s; il controllo A·v_media restituisce la portata media, perché la relazione Q=Av è lineare a sezione fissa.\n3. La media del quadrato è (0,20²+0,80²)/2=(0,04+0,64)/2=0,34 m²/s². Pertanto la media temporale del termine ρv²/2 è 1000·0,34/2=170 Pa. Inserire invece v_media nella formula dà 1000·0,50²/2=125 Pa. La differenza è 45 Pa.\nControllo indipendente: gli scarti dalla media sono −0,30 e +0,30 m/s; il loro quadrato medio è 0,09 m²/s². La differenza deve essere ρ·0,09/2=45 Pa, come trovato. Non è una perdita di pressione misurata: è la differenza fra due operazioni di media.\nDiagnosi dell’errore: la media del quadrato non è il quadrato della media. Il campo istantaneo cambia nel tempo, quindi non è rigorosamente stazionario, pur ripetendo le stesse medie per ciclo. La pulsazione prescritta non dimostra turbolenza: un moto può oscillare regolarmente senza rimescolamento turbolento; per distinguere i regimi servono altre osservazioni. Bernoulli stazionario non si applica automaticamente alle medie di un flusso variabile: le ipotesi e i termini non stazionari vanno valutati. Qui non sono fornite pressioni da ricostruire.",
+    "level": "difficile",
+    "noveltyNote": "Confronta media di una grandezza lineare e di una quadratica, separando pulsazione, stazionarietà e turbolenza; non ripete il confronto di perdite fra i rami del problema preesistente.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985eb0fb0ce648e0eec6b9fc4026870e4b32e",
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confrontato con le cinque lezioni C2, i relativi assessment e i sei problemi originali presenti alla base; nessuna rivendicazione di confronto integrale col patrimonio legacy",
+      "humanApproval": false
+    }
+  },
+  {
+    "id": "original-20261113-u3-04-a",
+    "unitId": "sf-2026-u3-04",
+    "objectiveIds": [
+      "U3-04.01",
+      "U3-04.03"
+    ],
+    "title": "La viscosità fra due piastre",
+    "prompt": "Un liquido newtoniano riempie lo spazio di spessore d=0,60 mm fra due piastre parallele. Quella inferiore è ferma; quella superiore si muove a U=0,12 m/s. L’area a contatto è S=50 cm² e la viscosità dinamica è η=0,0040 Pa·s. Assumi regime laminare stazionario, aderenza alle piastre, assenza di gradiente di pressione e bordi trascurabili. È fornito il profilo lineare u(s)=Us/d, con s misurato dalla piastra ferma. Calcola il gradiente, il modulo dello sforzo tangenziale τ=ηU/d, la forza necessaria a mantenere il moto e la potenza meccanica. Alla parete ferma la velocità nulla significa sforzo nullo?",
+    "solution": "1. Convertiamo d=6,0·10⁻⁴ m e S=50·10⁻⁴=0,0050 m². Il gradiente è U/d=0,12/0,00060=200 s⁻¹, costante nello spazio fra le piastre.\n2. Lo sforzo tangenziale ha modulo τ=0,0040·200=0,80 Pa. La forza di trascinamento del liquido sulla piastra mobile si oppone al moto: per mantenerla a velocità costante serve una forza esterna di uguale modulo F=τS=0,80·0,0050=0,0040 N.\n3. La potenza fornita è P=FU=0,0040·0,12=4,8·10⁻⁴ W. In questo moto stazionario senza altri trasferimenti meccanici, tale potenza viene dissipata dalla viscosità.\nControllo: τ ha unità (Pa·s)·s⁻¹=Pa; τS dà newton e FU dà watt. Raddoppiando U a d e η fissati, F raddoppierebbe ma la potenza quadruplicherebbe, perché cresce anche la velocità a cui la forza compie lavoro.\nDiagnosi dell’errore: usare τ=ηu senza dividere per una distanza dà unità errate e confonde velocità con gradiente. Sulla piastra inferiore u=0 per aderenza, ma il gradiente è ancora 200 s⁻¹ e lo sforzo ha modulo 0,80 Pa. La piastra ferma subisce una forza ma, essendo immobile, non riceve potenza tramite il proprio spostamento. Questo è un flusso fra piastre, non il profilo parabolico di Poiseuille in un tubo.",
+    "level": "facile",
+    "noveltyNote": "Applica la viscosità in geometria piana con profilo fornito; distingue velocità nulla, gradiente non nullo e potenza, anziché variare soltanto il raggio di un tubo.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985eb0fb0ce648e0eec6b9fc4026870e4b32e",
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confrontato con le cinque lezioni C2, i relativi assessment e i sei problemi originali presenti alla base; nessuna rivendicazione di confronto integrale col patrimonio legacy",
+      "humanApproval": false
+    }
+  },
+  {
+    "id": "original-20261113-u3-04-b",
+    "unitId": "sf-2026-u3-04",
+    "objectiveIds": [
+      "U3-04.01",
+      "U3-04.04"
+    ],
+    "title": "Misurare una viscosità con due raccolte",
+    "prompt": "Lo stesso capillare rigido circolare viene usato a temperatura controllata con due liquidi newtoniani. Per entrambi il moto è stazionario, laminare completamente sviluppato, senza slittamento; il capillare è orizzontale, i terminali sono alla stessa quota e la geometria non cambia. Il liquido di riferimento ha η_r=1,20 mPa·s: a Δp_r=1,50 kPa si raccolgono 3,00 mL in 20,0 s. Del liquido ignoto si raccolgono 2,50 mL in 50,0 s a Δp_i=1,00 kPa. Ricava le portate e la viscosità ignota tramite il rapporto delle leggi di Poiseuille, senza conoscere raggio e lunghezza. Prevedi quanto tempo servirebbe per raccogliere 3,00 mL del liquido ignoto alla pressione della prima prova.",
+    "solution": "1. La prima portata è Q_r=3,00/20,0=0,150 mL/s=1,50·10⁻⁷ m³/s; la seconda Q_i=2,50/50,0=0,0500 mL/s=5,00·10⁻⁸ m³/s.\n2. Per lo stesso tubo Q=(πr⁴/8L)Δp/η. Il fattore geometrico si elimina nel rapporto: η_i/η_r=(Δp_i/Δp_r)(Q_r/Q_i)=(1,00/1,50)(0,150/0,0500)=2. Quindi η_i=2,40 mPa·s=0,00240 Pa·s.\n3. Riportando il liquido ignoto a 1,50 kPa, senza cambiarne viscosità o regime, la portata cresce di 1,50: Q_i,nuova=0,0750 mL/s. Il tempo richiesto per 3,00 mL è 3,00/0,0750=40,0 s.\nControllo indipendente: a uguale pressione il liquido ignoto, con viscosità doppia, deve avere metà della portata del riferimento, quindi 0,150/2=0,0750 mL/s. Anche la quantità Δp/(ηQ) deve essere uguale nelle due prove perché dipende soltanto dalla geometria.\nDiagnosi dell’errore: confrontare i soli volumi 3,00 e 2,50 mL ignora sia le durate sia le pressioni diverse. La portata inferiore non dimostra da sola viscosità maggiore se non sono noti gli altri vincoli. Il confronto è valido nel modello dichiarato; eventuali bolle, variazioni di raggio, temperatura o comportamento non newtoniano richiederebbero una verifica aggiuntiva, non un cambiamento arbitrario della densità nella formula.",
+    "level": "medio",
+    "noveltyNote": "Inferenza di viscosità cancellando una geometria ignota, con tempi e pressioni diversi e previsione su una nuova raccolta; differente dalla diagnosi di guasti in rete già presente.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985eb0fb0ce648e0eec6b9fc4026870e4b32e",
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confrontato con le cinque lezioni C2, i relativi assessment e i sei problemi originali presenti alla base; nessuna rivendicazione di confronto integrale col patrimonio legacy",
+      "humanApproval": false
+    }
+  },
+  {
     "id": "original-20261107-u3-04",
     "unitId": "sf-2026-u3-04",
     "objectiveIds": [
@@ -215,6 +494,52 @@
     "noveltyNote": "Due modifiche fisiche differenti generano la stessa resistenza equivalente e la stessa risposta globale; la domanda richiede una prova discriminante realmente informativa.",
     "status": "DRAFT",
     "humanApproval": false
+  },
+  {
+    "id": "original-20261113-u3-04-c",
+    "unitId": "sf-2026-u3-04",
+    "objectiveIds": [
+      "U3-04.01",
+      "U3-04.04",
+      "U3-04.05"
+    ],
+    "title": "Chiudere un ramo può accelerare quello rimasto",
+    "prompt": "Una pompa mantiene 14 kPa fra l’inizio e la fine di una rete idraulica lineare. Prima delle diramazioni c’è un tratto comune R₀=3 kPa·s/L; seguono due rami in parallelo R₁=6 e R₂=12 kPa·s/L, che si ricongiungono all’uscita. Valgono le ipotesi di Poiseuille nei tratti, tutti alla stessa quota, e le perdite dei raccordi sono trascurabili. Calcola portata totale, differenza di pressione sui rami, portate dei singoli rami e potenza totale dissipata. Si chiude poi soltanto R₂ mantenendo i 14 kPa della pompa. La portata in R₁ resta uguale, cresce o diminuisce? Spiega perché non basta citare la regola dei rami a pressione imposta.",
+    "solution": "1. L’equivalente del parallelo è R_p=R₁R₂/(R₁+R₂)=6·12/18=4 kPa·s/L. Il tratto comune è in serie: R_tot=3+4=7 kPa·s/L e Q_tot=14/7=2 L/s.\n2. Nel tratto comune cadono R₀Q_tot=6 kPa. Ai rami restano Δp_p=14−6=8 kPa. Le portate sono Q₁=8/6=4/3 L/s e Q₂=8/12=2/3 L/s; la somma restituisce 2 L/s.\n3. La potenza è Δp_tot Q_tot=14000 Pa·0,002 m³/s=28 W. Controllo energetico: il tratto comune dissipa 6 kPa·2 L/s=12 W e il parallelo 8 kPa·2 L/s=16 W; la somma è 28 W. In queste unità 1 kPa·L/s=1 W.\n4. Chiuso R₂, restano R₀ e R₁ in serie: R_nuova=9 kPa·s/L. La portata unica è Q_nuova=14/9≈1,556 L/s. È inferiore alla portata totale iniziale, ma superiore ai 4/3≈1,333 L/s che passavano inizialmente in R₁. Il rapporto in quel ramo è (14/9)/(4/3)=7/6, aumento del 16,7%.\n5. La differenza di pressione su R₁ diventa 6·14/9=28/3≈9,333 kPa. Il tratto comune, attraversato da meno portata totale, assorbe meno caduta: 3·14/9=14/3≈4,667 kPa. Le due cadute sommano ancora 14 kPa.\nDiagnosi dell’errore: la pompa fissa la pressione sull’intera rete, non direttamente sui due rami. Il tratto comune rende variabile la pressione disponibile al parallelo. La regola «chiudere un ramo non cambia l’altro a Δp fissata» richiede che sia fissata proprio la Δp dei rami. Qui cambiano le pressioni interne, senza violare né continuità né linearità.",
+    "level": "difficile",
+    "noveltyNote": "Rete con resistenza comune in serie al parallelo: la chiusura riduce il totale ma aumenta la portata nel ramo superstite, distinguendo la pressione imposta dalla pompa da quella effettiva sui rami.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985eb0fb0ce648e0eec6b9fc4026870e4b32e",
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confrontato con le cinque lezioni C2, i relativi assessment e i sei problemi originali presenti alla base; nessuna rivendicazione di confronto integrale col patrimonio legacy",
+      "humanApproval": false
+    }
+  },
+  {
+    "id": "original-20261113-u3-05-a",
+    "unitId": "sf-2026-u3-05",
+    "objectiveIds": [
+      "U3-05.01"
+    ],
+    "title": "Creare superficie con una pellicola",
+    "prompt": "Una pellicola saponosa piana ha due facce, ciascuna con tensione superficiale costante γ=0,030 N/m. Un lato mobile rettilineo è lungo 4,0 cm e viene spostato lentamente di 1,5 cm, aumentando l’area della pellicola senza cambiarne la lunghezza. Trascuriamo peso, attrito e differenze di pressione. È fornita la forza resistente F=2γl. Calcola la forza esterna necessaria, il lavoro compiuto e l’aumento totale di area delle due superfici. Controlla il lavoro usando γ come energia per area. Che errore introduce contare una sola faccia?",
+    "solution": "1. l=0,040 m e s=0,015 m. La forza esterna di equilibrio, opposta alla trazione della pellicola, ha modulo F=2·0,030·0,040=0,0024 N.\n2. Essendo costante la forza nel modello, il lavoro è W=Fs=0,0024·0,015=3,6·10⁻⁵ J.\n3. Ogni faccia aumenta la propria area di ls=0,040·0,015=6,0·10⁻⁴ m². Le due facce insieme aumentano di ΔS=1,2·10⁻³ m². Il controllo energetico dà γΔS=0,030·0,0012=3,6·10⁻⁵ J, uguale al lavoro meccanico.\nDiagnosi dell’errore: γl e γls descrivono qui soltanto una delle due interfacce e darebbero metà dei valori corretti. Il fattore due non dipende dal fatto che il filo abbia due estremi: conta le due superfici della pellicola. Una singola interfaccia richiederebbe un conteggio diverso.\nIl lavoro calcolato è quello reversibile di creazione delle superfici nelle condizioni di tensione costante. La relazione fra le unità è esplicita: 1 J = 1 N·m, quindi 1 N/m = 1 J/m². Un moto rapido con dissipazione richiederebbe valutare altro lavoro, non cambierebbe il numero delle interfacce.",
+    "level": "facile",
+    "noveltyNote": "Confronto fra forza sul bordo e lavoro di creazione di due superfici; diverso dai problemi esistenti che confrontano pressioni di goccia e bolla.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985eb0fb0ce648e0eec6b9fc4026870e4b32e",
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confrontato con le cinque lezioni C2, i relativi assessment e i sei problemi originali presenti alla base; nessuna rivendicazione di confronto integrale col patrimonio legacy",
+      "humanApproval": false
+    }
   },
   {
     "id": "original-20261107-u3-05",
@@ -232,6 +557,55 @@
     "noveltyNote": "Usa due osservazioni di segno opposto per respingere un’interpretazione fisica del parametro e costruire una coppia di esperimenti controllati; l’approfondimento quantitativo è esplicitamente fornito.",
     "status": "DRAFT",
     "humanApproval": false
+  },
+  {
+    "id": "original-20261113-u3-05-b",
+    "unitId": "sf-2026-u3-05",
+    "objectiveIds": [
+      "U3-05.01",
+      "U3-05.02",
+      "U3-05.04",
+      "U3-05.05"
+    ],
+    "title": "Otto gocce diventano una: volume e superficie",
+    "prompt": "Otto gocce identiche dello stesso liquido, ciascuna di raggio r=0,10 mm, si uniscono in una sola goccia. Assumiamo volume totale conservato, forma sferica prima e dopo, gravità trascurabile per la forma e tensione superficiale costante γ=0,050 N/m. Ogni goccia ha una sola interfaccia con il gas. Sono fornite V=4πr³/3, S=4πr², energia superficiale γS e, come approfondimento, Δp=2γ/r. Ricava il raggio finale, il rapporto fra area finale e area iniziale complessiva, la diminuzione di energia superficiale e i salti di pressione prima e dopo. Puoi stabilire da questi dati come si distribuisce l’energia liberata? Usa π≈3,14159 per il valore numerico.",
+    "solution": "1. Conservare il volume significa R³=8r³, dunque R=2r=0,20 mm=2,0·10⁻⁴ m. Non R=8r: la dipendenza è cubica.\n2. Prima l’area totale è S_i=8·4πr²=32πr²; dopo S_f=4π(2r)²=16πr². Il rapporto S_f/S_i è 1/2. Con r=10⁻⁴ m, la diminuzione è S_i−S_f=16π·10⁻⁸ m²≈5,027·10⁻⁷ m².\n3. La diminuzione dell’energia superficiale è γ(S_i−S_f)=0,050·16π·10⁻⁸≈2,513·10⁻⁸ J. Il segno di E_f−E_i è negativo: la goccia unica ha meno energia superficiale nelle condizioni dichiarate.\n4. La legge fornita dà Δp_i=2·0,050/10⁻⁴=1000 Pa in ciascuna goccia iniziale e Δp_f=2·0,050/(2·10⁻⁴)=500 Pa nella finale. Sono differenze fra interno ed esterno, non pressioni assolute da sommare fra le otto gocce.\nControllo indipendente: il volume di una sfera di raggio doppio è otto volte quello iniziale, mentre la sua area è quattro volte quella di una goccia; confrontandola con le otto aree iniziali, la superficie complessiva si dimezza.\nDiagnosi dell’errore: la conservazione del volume non impone la conservazione dell’area. Neppure l’energia totale è scomparsa: la riduzione della componente superficiale può alimentare moto, dissipazione e scambi con l’ambiente. I dati non ne specificano la ripartizione né il transitorio della coalescenza. La legge di Laplace è fornita per interpretare il confronto qualitativo, non come requisito aggiuntivo da memorizzare.",
+    "level": "medio",
+    "noveltyNote": "Coalescenza a volume conservato: richiede distinguere le potenze geometriche e il bilancio di energia superficiale, non confronta soltanto raggi già assegnati.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985eb0fb0ce648e0eec6b9fc4026870e4b32e",
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confrontato con le cinque lezioni C2, i relativi assessment e i sei problemi originali presenti alla base; nessuna rivendicazione di confronto integrale col patrimonio legacy",
+      "humanApproval": false
+    }
+  },
+  {
+    "id": "original-20261113-u3-05-c",
+    "unitId": "sf-2026-u3-05",
+    "objectiveIds": [
+      "U3-05.01",
+      "U3-05.03",
+      "U3-05.04"
+    ],
+    "title": "Il capillare finisce prima dell’equilibrio",
+    "prompt": "Due capillari verticali dello stesso materiale pescano nello stesso grande serbatoio aperto. I raggi interni sono r_A=0,25 mm e r_B=0,50 mm; entrambi terminano 20 mm sopra il livello del serbatoio. Un liquido bagnante ha densità 1000 kg/m³ e angolo di contatto θ=0° nelle pareti interne. Nel tubo B il menisco raggiunge un equilibrio a 16 mm; nel tubo A arriva al bordo a 20 mm e la prova viene interrotta, senza attribuire a quel livello un equilibrio capillare. Usa g=10 m/s² e la legge fornita h_eq=2γ cosθ/(ρgr), valida per un menisco interno in equilibrio e un tubo sufficientemente lungo. Ricava γ da B, prevedi il livello di equilibrio di A se il tubo fosse più lungo e valuta la stima di γ ricavata erroneamente dai 20 mm osservati in A. La prova dimostra che la tensione cambia con il raggio?",
+    "solution": "1. Nel tubo B le condizioni della legge sono soddisfatte: γ=h_Bρgr_B/2=0,016·1000·10·0,00050/2=0,040 N/m. L’angolo zero dà cosθ=1.\n2. A pari liquido e parete, h è inversamente proporzionale al raggio. Un tubo A sufficientemente lungo avrebbe h_A=16·(0,50/0,25)=32 mm. Il suo bordo a 20 mm viene quindi raggiunto prima di questo livello previsto.\n3. Sostituire 20 mm nella formula di equilibrio darebbe γ_errata=0,020·1000·10·0,00025/2=0,025 N/m. Il valore è il 62,5% di quello ricavato da B, ma il confronto non misura una variazione di tensione: usa come equilibrio una lettura arrestata dal limite geometrico.\nControllo indipendente: usando γ=0,040 N/m nel tubo A, la legge dà 2·0,040/(1000·10·0,00025)=0,032 m; nel tubo B restituisce 0,016 m. La stessa tensione descrive i dati compatibili con il modello.\nDiagnosi dell’errore: un’altezza osservata non è automaticamente un’altezza di equilibrio. Qui manca nel tubo corto lo spazio necessario per osservare il menisco interno al livello previsto. La verifica corretta consiste nel ripetere A con un tratto superiore sufficientemente lungo e le stesse condizioni di bagnabilità, attendendo l’equilibrio.\nIl comportamento al bordo richiede ulteriori condizioni su forma del menisco, contatto e geometria esterna: la formula di risalita interna non consente di prevedere da sola gocciolamento continuo o pompaggio gratuito. Il limite della prova non autorizza né γ dipendente dal raggio né una macchina che produca lavoro indefinitamente. Il confronto resta un approfondimento quantitativo con legge fornita.",
+    "level": "difficile",
+    "noveltyNote": "Riconosce una misura interrotta dal limite geometrico e separa dato osservato da equilibrio del modello; differente dal problema esistente di segno del menisco e rivestimenti.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985eb0fb0ce648e0eec6b9fc4026870e4b32e",
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confrontato con le cinque lezioni C2, i relativi assessment e i sei problemi originali presenti alla base; nessuna rivendicazione di confronto integrale col patrimonio legacy",
+      "humanApproval": false
+    }
   },
   {
     "id": "original-20261107-u4-01",
@@ -317,6 +691,31 @@
     "humanApproval": false
   },
   {
+    "id": "original-20261113-u5-01-a",
+    "unitId": "sf-2026-u5-01",
+    "objectiveIds": [
+      "U5-01.01",
+      "U5-01.02",
+      "U5-01.04",
+      "U5-01.05"
+    ],
+    "title": "Il peso sul pistone fissa una pressione assoluta",
+    "prompt": "Un cilindro contiene 0,40 mol di gas ideale in equilibrio a 26,85 °C. Il pistone, senza attrito, ha area 50,0 cm²; su di esso agisce un carico totale di 5,0 kg, comprensivo del pistone. All’esterno p_atm=100 kPa; usa g=10 m/s² e R=8,31 J/(mol K). Procedi così: converti temperatura e area, trova la sovrapressione dovuta al carico, ricava la pressione assoluta e quindi il volume. Il gas non può uscire, ma le pareti consentono scambi termici: è chiuso oppure isolato?",
+    "solution": "1. T=26,85+273,15=300,00 K e S=50,0·10⁻⁴=0,00500 m². La forza del carico è mg=50 N.\n2. L’equilibrio del pistone impone pS=p_atm S+mg. La sovrapressione è 50/0,00500=10 000 Pa, quindi p=110 000 Pa assoluti.\n3. V=nRT/p=0,40·8,31·300/110000≈0,009065 m³=9,07 L. Controllo: pV≈997,2 J e nRT=997,2 J.\n4. Il sistema gas è chiuso perché non scambia materia, ma non isolato: può scambiare calore e lavoro con l’ambiente. L’equilibrio istantaneo non impedisce successivi scambi.\nDiagnosi dell’errore: usare soltanto 10 kPa nell’equazione di stato ignora la pressione atmosferica; usare 26,85 al posto di 300 confonde Celsius e kelvin. Il peso determina una forza, non direttamente una pressione senza l’area.",
+    "level": "facile",
+    "noveltyNote": "Combina un confine meccanico a carico assegnato con conversione termometrica e scelta del sistema; non ripete il riscaldamento isocoro o il problema della fuga con manometro.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985e",
+      "contextPath": "docs/sources/physics-2026-27/editorial/courses.json",
+      "license": "Testo originale Ardesia; DRAFT, nessuna approvazione umana.",
+      "notes": ""
+    }
+  },
+  {
     "id": "original-20261107-u5-01",
     "unitId": "sf-2026-u5-01",
     "objectiveIds": [
@@ -332,6 +731,103 @@
     "noveltyNote": "Separa due errori di inferenza, pressione relativa e temperatura variabile, poi usa una prova a temperatura ripristinata per stimare un bilancio di materia.",
     "status": "DRAFT",
     "humanApproval": false
+  },
+  {
+    "id": "original-20261113-u5-01-b",
+    "unitId": "sf-2026-u5-01",
+    "objectiveIds": [
+      "U5-01.01",
+      "U5-01.02",
+      "U5-01.03",
+      "U5-01.05"
+    ],
+    "title": "Aprire una valvola cambia i sottosistemi",
+    "prompt": "Due recipienti rigidi contengono lo stesso gas ideale e sono collegati da una valvola di volume trascurabile. A ha volume 3,0 L e pressione assoluta 240 kPa; B ha volume 6,0 L e pressione assoluta 60 kPa. Entrambi iniziano a 300 K e, dopo l’apertura, raggiungono un equilibrio comune a 300 K grazie a un bagno termico. Non ci sono perdite verso l’esterno. Trova la pressione finale conservando la quantità totale di gas. Ricava anche il rapporto fra quantità finale e iniziale in ciascun recipiente. Spiega perché il complesso A+B è chiuso mentre ciascuno dei due sottosistemi scambia materia durante il processo.",
+    "solution": "1. All’inizio n_A RT=p_A V_A=720 J e n_B RT=p_B V_B=360 J: ricordiamo che 1 kPa·L=1 J. La somma vale 1080 J. A temperatura finale uguale, n_tot RT mantiene lo stesso valore.\n2. Il volume totale è 9,0 L: p_f=1080/9=120 kPa assoluti. La pressione finale è unica, ma la quantità di gas non si divide in parti uguali: a p e T comuni è proporzionale al volume.\n3. Nel recipiente A, n_A,f/n_A,i=p_f/p_A,i=120/240=1/2. In B il rapporto è 120/60=2. A perde metà dei suoi 720/(RT) mol equivalenti e B acquista 360/(RT): il trasferimento si chiude.\n4. Il confine esterno non lascia passare gas, quindi A+B è chiuso; i confini dei due recipienti includono invece la valvola e consentono materia. Il bagno può scambiare energia: chiuso non significa isolato.\nDiagnosi dell’errore: la media aritmetica delle pressioni, 150 kPa, darebbe p_f V_tot=1350 J e non conserverebbe n alla stessa T. Occorre pesare con i volumi, non contare i recipienti.",
+    "level": "medio",
+    "noveltyNote": "Problema di conservazione della materia fra sottosistemi con capacità volumetriche diverse; l’incognita nasce dalla connessione, non da una semplice variazione di temperatura.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985e",
+      "contextPath": "docs/sources/physics-2026-27/editorial/courses.json",
+      "license": "Testo originale Ardesia; DRAFT, nessuna approvazione umana.",
+      "notes": ""
+    }
+  },
+  {
+    "id": "original-20261113-u5-01-c",
+    "unitId": "sf-2026-u5-01",
+    "objectiveIds": [
+      "U5-01.02",
+      "U5-01.03",
+      "U5-01.05"
+    ],
+    "title": "Un offset dello strumento o un gas non ideale?",
+    "prompt": "Una quantità fissa di gas viene mantenuta a 300 K e misurata in tre stati di equilibrio. A V=1,0 L, 2,0 L e 4,0 L lo strumento riporta rispettivamente p_letta=260, 140 e 80 kPa. Si propone il modello p_letta=C/V+b, con C costante in kPa·L e offset strumentale b in kPa; la pressione fisica sarebbe p=p_letta−b. Ricava C e b dai primi due stati, usa il terzo come controllo e trova n con R=8,31 J/(mol K). Queste tre misure dimostrano che l’offset è la causa, escludendo ogni comportamento non ideale? Indica un controllo aggiuntivo pertinente.",
+    "solution": "1. Dai primi due punti: 260=C/1+b e 140=C/2+b. Sottraendo, 120=C/2: C=240 kPa·L=240 J e b=20 kPa.\n2. Al volume di 4 L il modello prevede 240/4+20=80 kPa, in accordo con il dato non usato per stimare i parametri. Le pressioni corrette sono 240, 120 e 60 kPa; i prodotti pV sono tutti 240 J.\n3. Nel modello ideale C=nRT: n=240/(8,31·300)≈0,09627 mol. Il rapporto è energia divisa per energia per mole.\n4. La coerenza di tre punti rende il modello compatibile, non identifica da sola la causa. Uno scarto della legge ideale, un errore nei volumi o una combinazione di effetti potrebbero produrre dati simili. Una taratura indipendente dello strumento contro pressioni di riferimento note, nell’intervallo usato, controlla direttamente l’ipotesi b=20 kPa.\nDiagnosi dell’errore: i prodotti grezzi 260, 280 e 320 kPa·L non dimostrano da soli che n cambi o che il gas sia non ideale. Prima bisogna distinguere osservazione e modello di misura. Il terzo punto verifica una previsione: non è una prova universale su tutti i volumi.",
+    "level": "difficile",
+    "noveltyNote": "Inferenza di due parametri, previsione su un terzo stato e limite di identificabilità: distinto dal confronto già esistente fra raffreddamento e perdita di gas.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985e",
+      "contextPath": "docs/sources/physics-2026-27/editorial/courses.json",
+      "license": "Testo originale Ardesia; DRAFT, nessuna approvazione umana.",
+      "notes": ""
+    }
+  },
+  {
+    "id": "original-20261113-u5-02-a",
+    "unitId": "sf-2026-u5-02",
+    "objectiveIds": [
+      "U5-02.01",
+      "U5-02.02",
+      "U5-02.03",
+      "U5-02.07"
+    ],
+    "title": "Prima si misura il recipiente, poi il campione",
+    "prompt": "Un calorimetro vuoto assorbe 360 J di calore e aumenta di 3,0 K. Una seconda prova, nello stesso intervallo di temperatura, contiene un campione solido di massa 0,200 kg: calorimetro e campione assorbono complessivamente 900 J e aumentano insieme di 3,0 K. Trascuriamo perdite, accessori e cambiamenti di fase; le capacità sono costanti. Determina nell’ordine capacità del calorimetro, capacità del complesso, capacità del campione e suo calore specifico. Quale valore errato si otterrebbe ignorando il recipiente?",
+    "solution": "1. Nella calibrazione C_cal=Q/ΔT=360/3=120 J/K.\n2. Nella seconda prova C_tot=900/3=300 J/K. Recipiente e campione raggiungono la stessa variazione di temperatura, quindi le capacità si sommano: C_camp=300−120=180 J/K.\n3. Il calore specifico è c=C_camp/m=180/0,200=900 J/(kg K). È una proprietà riferita alla fase e all’intervallo considerati, non l’energia assorbita.\n4. Controllo del bilancio: il recipiente riceve 120·3=360 J e il campione 180·3=540 J; la somma è 900 J.\nDiagnosi dell’errore: assegnare tutti i 900 J al campione darebbe c_errato=900/(0,200·3)=1500 J/(kg K). La sovrastima non deriva da un materiale insolito: è energia assorbita dal recipiente ma attribuita al campione. Le temperature assolute non sono necessarie per questa differenza ΔT.",
+    "level": "facile",
+    "noveltyNote": "Calibrazione e sottrazione di una capacità parassita, invece di una media termica o di una sostituzione diretta con capacità già nota.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985e",
+      "contextPath": "docs/sources/physics-2026-27/editorial/courses.json",
+      "license": "Testo originale Ardesia; DRAFT, nessuna approvazione umana.",
+      "notes": ""
+    }
+  },
+  {
+    "id": "original-20261113-u5-02-b",
+    "unitId": "sf-2026-u5-02",
+    "objectiveIds": [
+      "U5-02.01",
+      "U5-02.04"
+    ],
+    "title": "Uguale calore, vincoli diversi",
+    "prompt": "Due campioni separati contengono ciascuno 0,50 mol dello stesso gas ideale monoatomico a 300 K. Entrambi ricevono 300 J di calore. Il primo è in un recipiente rigido; il secondo si espande quasistaticamente a pressione costante. Non vi sono altri modi di lavoro. Usa R=8,31 J/(mol K), C_V,m=3R/2 e C_P,m=5R/2. Trova le due temperature finali, il loro rapporto fra aumenti di temperatura e il lavoro del secondo campione. Spiega dove vanno i 300 J in ciascun caso.",
+    "solution": "1. Per il campione rigido Q=nC_V,mΔT: ΔT_V=300/(0,50·1,5·8,31)≈48,13 K, quindi T_V≈348,13 K. Il lavoro di espansione è nullo e tutti i 300 J aumentano U.\n2. A pressione costante Q=nC_P,mΔT: ΔT_P=300/(0,50·2,5·8,31)≈28,88 K, quindi T_P≈328,88 K. Il rapporto ΔT_V/ΔT_P=5/3 deriva dai vincoli, non da una diversa quantità di gas.\n3. Il secondo campione compie W=nRΔT_P=120 J; la sua energia interna cresce di nC_V,mΔT_P=180 J. Controllo: 180+120=300 J.\nDiagnosi dell’errore: usare C_V in entrambi i casi elimina il costo energetico dell’espansione isobara. Il calore specifico di un gas va associato alle condizioni del processo. I valori 3R/2 e 5R/2 qui forniti valgono per il monoatomico classico del modello, non per ogni gas.",
+    "level": "medio",
+    "noveltyNote": "Confronto a uguale energia fornita, con ripartizione fra lavoro e accumulo: non replica l’esempio già svolto che assegna direttamente ΔT a un solo processo isobaro.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985e",
+      "contextPath": "docs/sources/physics-2026-27/editorial/courses.json",
+      "license": "Testo originale Ardesia; DRAFT, nessuna approvazione umana.",
+      "notes": ""
+    }
   },
   {
     "id": "original-20261107-u5-02",
@@ -352,6 +848,76 @@
     "humanApproval": false
   },
   {
+    "id": "original-20261113-u5-02-c",
+    "unitId": "sf-2026-u5-02",
+    "objectiveIds": [
+      "U5-02.02",
+      "U5-02.05",
+      "U5-02.06",
+      "U5-02.07"
+    ],
+    "title": "Condensazione: il calore latente entra prima del raffreddamento",
+    "prompt": "Nel modello calorimetrico a pressione atmosferica, 0,0100 kg di vapore d’acqua saturo a 100 °C sono messi in contatto con 0,100 kg d’acqua a 20,0 °C e con un recipiente di capacità 42 J/K inizialmente a 20,0 °C. Il complesso non scambia calore con l’esterno né perde massa; un confine mobile ideale mantiene la pressione ordinaria. Usa il bilancio calorimetrico a pressione costante, c_acqua=4200 J/(kg K) e L_v=2,26·10⁶ J/kg. Trascuriamo capacità degli accessori ed evaporazione finale. Verifica prima se può condensare tutto il vapore, poi trova T_f includendo il raffreddamento del condensato. Perché non basta considerare il vapore come 10 g di acqua calda fin dall’inizio?",
+    "solution": "1. Acqua fredda e recipiente richiederebbero (0,100·4200+42)(100−20)=36 960 J per arrivare a 100 °C. La condensazione completa fornisce 0,0100·2,26·10⁶=22 600 J: non basta a portare il resto a 100 °C. È quindi coerente cercare un equilibrio tutto liquido sotto 100 °C nel modello assegnato.\n2. Il condensato cede anche 0,0100·4200(100−T_f)=42(100−T_f) J raffreddandosi. Il lato freddo assorbe 462(T_f−20) J. Il bilancio è 22600+42(100−T_f)=462(T_f−20).\n3. Si ottiene 504T_f=36040, dunque T_f≈71,51 °C. Il risultato è fra 20 e 100 °C e conferma il regime ipotizzato. La massa liquida finale è 0,110 kg.\n4. Controllo: i contributi caldi sono circa 22 600+1196,67=23 796,67 J; il lato freddo riceve 462·51,50794≈23 796,67 J. L_v è il calore latente alla pressione assegnata: il lavoro di variazione del volume è già coerente con questo bilancio a pressione costante, non va sottratto una seconda volta.\nDiagnosi dell’errore: trattare il vapore come acqua liquida iniziale cancella 22 600 J di transizione; trascurare il recipiente attribuisce all’acqua energia che riscalda anche le pareti. La soluzione descrive il modello senza evaporazione residua dichiarato, non un apparato reale completo.",
+    "level": "difficile",
+    "noveltyNote": "Usa condensazione, capacità del recipiente e controllo di regime; diverso dal precedente problema acqua/ghiaccio con fusione incompleta.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985e",
+      "contextPath": "docs/sources/physics-2026-27/editorial/courses.json",
+      "license": "Testo originale Ardesia; DRAFT, nessuna approvazione umana.",
+      "notes": "Calorimetria a pressione costante: bilancio delle entalpie equivalente alla somma dei calori dei sottosistemi; confine mobile, nessuna perdita di massa. Vapore iniziale saturo; modello didattico trascura evaporazione residua e capacità degli accessori."
+    }
+  },
+  {
+    "id": "original-20261113-u5-03-a",
+    "unitId": "sf-2026-u5-03",
+    "objectiveIds": [
+      "U5-03.01"
+    ],
+    "title": "Due finestre termiche in parallelo",
+    "prompt": "Due inserti separati collegano gli stessi termostati, con differenza di temperatura 10 K fra le facce di ciascun inserto. A ha k_A=0,50 W/(m K), area 0,020 m² e spessore 0,010 m; B ha k_B=2,0 W/(m K), area 0,010 m² e spessore 0,020 m. Il regime è stazionario, le perdite laterali sono trascurabili e i due cammini sono in parallelo. Calcola la potenza in ciascuno e l’energia totale trasferita in 60 s. B trasmette necessariamente quattro volte più energia perché k_B=4k_A?",
+    "solution": "1. Per ciascun cammino usiamo P=kSΔT/L, con la propria area e il proprio spessore. P_A=0,50·0,020·10/0,010=10 W; P_B=2,0·0,010·10/0,020=10 W.\n2. I due cammini ricevono la stessa differenza di temperatura e trasferiscono contemporaneamente energia: P_tot=P_A+P_B=20 W. In 60 s E=20·60=1200 J, metà attraverso ciascun inserto.\n3. Controllo mediante conduttanze: k_A S_A/L_A=k_B S_B/L_B=1 W/K; insieme 2 W/K, da cui ancora 20 W.\nDiagnosi dell’errore: il solo rapporto delle conducibilità non confronta dispositivi con geometrie diverse. Inoltre non si sommano gli spessori come se gli inserti fossero in serie: un flusso può attraversare A senza attraversare B.",
+    "level": "facile",
+    "noveltyNote": "Confronta cammini paralleli con compensazione fra proprietà e geometria; non è la parete in serie con convezione del problema precedente.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985e",
+      "contextPath": "docs/sources/physics-2026-27/editorial/courses.json",
+      "license": "Testo originale Ardesia; DRAFT, nessuna approvazione umana.",
+      "notes": ""
+    }
+  },
+  {
+    "id": "original-20261113-u5-03-b",
+    "unitId": "sf-2026-u5-03",
+    "objectiveIds": [
+      "U5-03.02",
+      "U5-03.03"
+    ],
+    "title": "La velocità iniziale di raffreddamento non è costante",
+    "prompt": "Un piccolo corpo uniforme ha capacità termica C=200 J/K, temperatura iniziale 400 K e superficie 0,020 m². Aria e grande ambiente radiativo sono a 300 K. Assumi h=5,0 W/(m² K), emissività ε=0,50 e σ=5,67·10⁻⁸ W/(m² K⁴). Sono forniti P_conv=hS(T−T_aria), P_rad=εσS(T⁴−T_amb⁴) e C dT/dt=−(P_conv+P_rad); trascuriamo altri canali e fonti. Trova le due potenze iniziali e la pendenza iniziale di T(t). È giustificato moltiplicare quella pendenza per un minuto come previsione esatta?",
+    "solution": "1. All’inizio P_conv=5,0·0,020·(400−300)=10,0 W. Per la radiazione bisogna usare separatamente le temperature assolute: P_rad=0,50·5,67·10⁻⁸·0,020·(400⁴−300⁴)=9,9225 W.\n2. La potenza totale ceduta iniziale è 19,9225 W. Quindi (dT/dt)_0=−19,9225/200=−0,0996125 K/s, circa −0,100 K/s. Il segno indica raffreddamento; W diviso J/K dà K/s.\n3. Con T decrescente diminuiscono sia T−300 sia T⁴−300⁴: la pendenza non rimane costante. L’estrapolazione iniziale su 60 s darebbe un calo di circa 5,98 K, ma non è la soluzione esatta. In questo modello la tangente iniziale prevede un raffreddamento eccessivo rispetto all’evoluzione che rallenta.\n4. Controllo limite: a T=300 K entrambi i flussi netti si annullano e la pendenza diventa zero, pur restando emissione e assorbimento radiativi non nulli.\nDiagnosi dell’errore: sostituire (400−300)⁴ a 400⁴−300⁴ altera il modello; sommare i coefficienti h ed εσ prima dei rispettivi fattori non rispetta neppure le unità.",
+    "level": "medio",
+    "noveltyNote": "Bilancio transitorio con canali simultanei e critica dell’estrapolazione: distinto dal caso stazionario a una sola lastra.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985e",
+      "contextPath": "docs/sources/physics-2026-27/editorial/courses.json",
+      "license": "Testo originale Ardesia; DRAFT, nessuna approvazione umana.",
+      "notes": ""
+    }
+  },
+  {
     "id": "original-20261107-u5-03",
     "unitId": "sf-2026-u5-03",
     "objectiveIds": [
@@ -366,6 +932,81 @@
     "noveltyNote": "Confronta un intervento sul materiale con il limite imposto dal confine convettivo e verifica le temperature intermedie. Le leggi quantitative supplementari sono fornite nel testo.",
     "status": "DRAFT",
     "humanApproval": false
+  },
+  {
+    "id": "original-20261113-u5-03-c",
+    "unitId": "sf-2026-u5-03",
+    "objectiveIds": [
+      "U5-03.01",
+      "U5-03.03"
+    ],
+    "title": "Nel vuoto rimangono sostegni e radiazione",
+    "prompt": "Un corpo viene mantenuto in due stati stazionari dentro una camera evacuata, circondata da pareti a 300 K. I gas residui non trasferiscono energia apprezzabile. La superficie è S=0,020 m²; i sostegni hanno conduttanza totale ignota G in W/K, mentre la superficie del corpo ha emissività ignota ε. Assumiamo G ed ε costanti. Il modello fornito è P=G(T−300)+εσS(T⁴−300⁴), con σ=5,67·10⁻⁸ W/(m² K⁴). Per T=400 K occorrono 14,9225 W; per T=500 K occorrono 40,8448 W. Ricava G ed ε, controllane l’ammissibilità fisica e prevedi la potenza a 350 K. Una terza misura compatibile dimostrerebbe che ogni perdita sia stata identificata?",
+    "solution": "1. Il vuoto rende trascurabile il canale attraverso il gas, ma non elimina né i sostegni solidi né l’irraggiamento. A 400 K il coefficiente di ε è σS(400⁴−300⁴)=19,845 W; a 500 K è 61,6896 W.\n2. Le equazioni sono 100G+19,845ε=14,9225 e 200G+61,6896ε=40,8448, tutte in watt. Sottraendo due volte la prima dalla seconda: 21,9996ε=10,9998, quindi ε=0,50.\n3. G=(14,9225−19,845·0,50)/100=0,0500 W/K. Entrambi i parametri sono fisicamente ammissibili nel modello passivo: G≥0 e 0≤ε≤1.\n4. A 350 K P=0,0500·50+0,50·5,67·10⁻⁸·0,020·(350⁴−300⁴)=6,41584375 W, circa 6,42 W. Si distinguono 2,50 W conduttivi e circa 3,916 W radiativi.\n5. La terza misura controlla una previsione non usata nella stima. Un accordo rafforza il modello, ma non dimostra che G ed ε siano costanti a tutte le temperature o che non esistano piccoli canali trascurati.\nDiagnosi dell’errore: attribuire tutta la potenza alla radiazione perché la camera è vuota ignora il ponte termico dei sostegni. Una sola misura lascerebbe infinite coppie G, ε compatibili; la dipendenza diversa da T permette qui di separarli.",
+    "level": "difficile",
+    "noveltyNote": "Problema inverso a due parametri con previsione su un terzo stato; la scelta del modello distingue vuoto, conduzione nei sostegni e legge radiativa.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985e",
+      "contextPath": "docs/sources/physics-2026-27/editorial/courses.json",
+      "license": "Testo originale Ardesia; DRAFT, nessuna approvazione umana.",
+      "notes": ""
+    }
+  },
+  {
+    "id": "original-20261113-u5-04-a",
+    "unitId": "sf-2026-u5-04",
+    "objectiveIds": [
+      "U5-04.01",
+      "U5-04.02",
+      "U5-04.03",
+      "U5-04.06",
+      "U5-04.08"
+    ],
+    "title": "Un recipiente rigido può ricevere lavoro",
+    "prompt": "Un gas ideale chiuso in un recipiente rigido e adiabatico è inizialmente a 280 K. Un agitatore, azionato da un albero che attraversa il confine, trasferisce al gas 80 J di lavoro in 10 s. Dopo l’arresto il gas torna uniforme e non resta energia cinetica macroscopica. La capacità totale nC_V,m è 10 J/K. Con Q entrante e W compiuto dal gas positivi, trova Q, lavoro di espansione, lavoro totale W, ΔU e temperatura finale. Calcola anche la potenza media meccanica entrante.",
+    "solution": "1. Adiabatico implica Q=0. Rigido implica soltanto W_pV=0: l’albero costituisce un altro canale di lavoro.\n2. L’ambiente compie 80 J sul gas, perciò nella convenzione scelta W=−80 J. Il primo principio dà ΔU=Q−W=+80 J.\n3. Per il gas ideale ΔU=nC_V,mΔT: ΔT=80/10=8 K e T_f=288 K. La potenza media meccanica entrante è 80/10=8 W.\n4. Il controllo energetico richiede che, una volta cessata l’agitazione macroscopica, gli 80 J restino come incremento di energia interna nel modello isolato termicamente. Il processo dissipativo non è reso reversibile dalla sola assenza di scambio termico.\nDiagnosi dell’errore: porre W_totale=0 perché ΔV=0 eliminerebbe un trasferimento esplicitamente presente. Chiamare gli 80 J “calore” sarebbe altrettanto improprio: attraversano il confine come lavoro meccanico.",
+    "level": "facile",
+    "noveltyNote": "Isocora con lavoro diverso da p,V: mette alla prova il confine del sistema e non replica la compressione adiabatica già verificata.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985e",
+      "contextPath": "docs/sources/physics-2026-27/editorial/courses.json",
+      "license": "Testo originale Ardesia; DRAFT, nessuna approvazione umana.",
+      "notes": ""
+    }
+  },
+  {
+    "id": "original-20261113-u5-04-b",
+    "unitId": "sf-2026-u5-04",
+    "objectiveIds": [
+      "U5-04.01",
+      "U5-04.02",
+      "U5-04.03",
+      "U5-04.04",
+      "U5-04.05"
+    ],
+    "title": "La stessa temperatura finale non fissa il lavoro",
+    "prompt": "Un gas ideale chiuso inizia a p_i=300 kPa, V_i=1,0 L e T_i=300 K. Si espande irreversibilmente contro pressione esterna costante 100 kPa, fino a un equilibrio finale con p_f=100 kPa e T_f=300 K. Il solo lavoro è p,V e non restano energie macroscopiche. Trova V_f, W e Q senza inventare una curva interna di equilibrio. Confronta poi con un’espansione isoterma reversibile fra gli stessi stati, per cui è fornita W_rev=nRT ln(V_f/V_i). Usa ln3≈1,098612289. Il minore calore assorbito nel processo irreversibile contraddice la natura di funzione di stato di U?",
+    "solution": "1. Negli estremi n e T sono uguali: p_iV_i=p_fV_f=300 J. Perciò V_f=3,0 L. La temperatura intermedia del processo irreversibile non è stata assegnata.\n2. W=p_ext(V_f−V_i)=100 kPa·2,0 L=200 J. Poiché il gas ideale torna alla stessa T, ΔU=0 e Q=W=200 J.\n3. Nel percorso reversibile di confronto, nRT=p_iV_i=300 J: W_rev=300 ln3≈329,584 J e Q_rev=W_rev. La differenza è circa 129,584 J sia nel lavoro sia nel calore.\n4. Il controllo del primo principio dà ΔU=Q−W=0 per entrambi. L’energia interna dipende dagli estremi, ma i due trasferimenti possono cambiare insieme senza alterare la loro differenza.\nDiagnosi dell’errore: usare p_iΔV darebbe 600 J, come se la pressione esterna fosse 300 kPa durante tutto il processo; integrare nRT/V nel caso irreversibile imporrebbe invece un percorso reversibile che non è quello dato. Non è corretto chiamare tutto il processo isoterma soltanto perché le temperature iniziale e finale coincidono.",
+    "level": "medio",
+    "noveltyNote": "Confronta pressione esterna assegnata e stati isoterma senza presumere un percorso interno; diverso dai due cammini rettangolari quasistatici già presenti.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985e",
+      "contextPath": "docs/sources/physics-2026-27/editorial/courses.json",
+      "license": "Testo originale Ardesia; DRAFT, nessuna approvazione umana.",
+      "notes": "ln3=1,0986122886681098 ricalcolato con Python math.log(3); nel prompt arrotondato a 1,098612289. Pressione esterna costante e soli estremi a 300 K; nessuna pretesa di equilibrio interno durante l’espansione irreversibile."
+    }
   },
   {
     "id": "original-20261107-u5-04",
@@ -386,6 +1027,78 @@
     "humanApproval": false
   },
   {
+    "id": "original-20261113-u5-04-c",
+    "unitId": "sf-2026-u5-04",
+    "objectiveIds": [
+      "U5-04.01",
+      "U5-04.03",
+      "U5-04.04",
+      "U5-04.06",
+      "U5-04.08"
+    ],
+    "title": "Tornare alla temperatura iniziale non chiude un ciclo",
+    "prompt": "0,100 mol di gas ideale monoatomico iniziano a T_A=300 K e V_A=8,0 L. Una compressione adiabatica reversibile porta a V_B=1,0 L. Poi, bloccato il volume, si raffredda il gas fino a T_C=300 K. Usa R=8,31 J/(mol K), γ=5/3, C_V,m=3R/2 e la relazione fornita TV^(γ−1)=costante nel primo tratto. Trova T_B, lavoro A→B, calore B→C e bilanci complessivi. Calcola p_A e p_C e decidi se A→B→C è un ciclo. Il secondo tratto è necessariamente reversibile?",
+    "solution": "1. Nell’adiabatica reversibile T_B/T_A=(V_A/V_B)^(γ−1)=8^(2/3)=4. Dunque T_B=1200 K. La capacità totale nC_V,m=0,100·1,5·8,31=1,2465 J/K.\n2. ΔU_AB=1,2465·(1200−300)=1121,85 J. Poiché Q_AB=0, il lavoro fatto dal gas è W_AB=−1121,85 J: la compressione riceve lavoro.\n3. Nell’isocora B→C non vi è lavoro p,V; Q_BC=ΔU_BC=1,2465·(300−1200)=−1121,85 J. Il gas cede calore.\n4. Complessivamente ΔU_AC=0, W_tot=−1121,85 J e Q_tot=−1121,85 J. Il bilancio Q_tot−W_tot=0 è corretto, ma non dimostra che il percorso sia ciclico.\n5. p_A=nRT_A/V_A=31 162,5 Pa; p_C=nRT_C/V_C=249 300 Pa, otto volte maggiore. Le temperature e le energie interne coincidono, i volumi e le pressioni no: C non è A.\nDiagnosi dell’errore: scambiare una sola funzione di stato tornata al valore iniziale per l’intero stato. Inoltre “isocoro” non significa “reversibile”: nel raffreddamento servono informazioni sulle differenze di temperatura e sulle dissipazioni. La legge TV^(γ−1) non si estende al secondo tratto né a un’adiabatica irreversibile.",
+    "level": "difficile",
+    "noveltyNote": "Percorso composto che riporta U e T ai valori iniziali senza chiudere lo stato: controllo contro un falso ciclo, non variante dei cammini rettangolari.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985e",
+      "contextPath": "docs/sources/physics-2026-27/editorial/courses.json",
+      "license": "Testo originale Ardesia; DRAFT, nessuna approvazione umana.",
+      "notes": ""
+    }
+  },
+  {
+    "id": "original-20261113-u5-05-a",
+    "unitId": "sf-2026-u5-05",
+    "objectiveIds": [
+      "U5-05.01",
+      "U5-05.03",
+      "U5-05.04"
+    ],
+    "title": "Un frigorifero non ha un rendimento del quattrocento per cento",
+    "prompt": "Un frigorifero ideale come schema di bilancio torna allo stato iniziale dopo ogni ciclo. Per ciclo sottrae 240 J al vano freddo e riceve 60 J di lavoro dall’esterno; gli altri scambi sono soltanto calore ceduto all’ambiente caldo. Calcola quel calore. È fornito il coefficiente di prestazione frigorifera COP=Q_freddo/W_entrante: trovalo e spiega perché un valore maggiore di uno non è un rendimento di motore maggiore del 100%. Quale “altro effetto” permette il trasferimento freddo→caldo senza contraddire Clausius?",
+    "solution": "1. Sul ciclo ΔU=0. Entrano nel frigorifero 240 J come calore e 60 J come lavoro; devono uscire Q_caldo=240+60=300 J come calore. Nella convenzione Q entrante, W fatto dal sistema: Q_net=240−300=−60 J e W=−60 J, quindi Q_net−W=0.\n2. COP=240/60=4, adimensionale. Il numeratore non è lavoro prodotto: è energia prelevata da un altro corpo. I 60 J di lavoro permettono di spostare 240 J già presenti nel vano freddo, mentre il caldo riceve anche l’energia del lavoro.\n3. L’effetto ulteriore è proprio il consumo di lavoro. Eliminandolo e mantenendo come unico risultato lo stesso trasferimento dal freddo al caldo si contraddirebbe l’enunciato di Clausius.\nDiagnosi dell’errore: confrontare COP con η=W_uscente/Q_assorbito di un motore scambia due rapporti fisicamente diversi. Questo bilancio energetico non basta a stabilire la realizzabilità del COP per qualsiasi coppia di temperature, che non è stata assegnata.",
+    "level": "facile",
+    "noveltyNote": "Frigorifero e distinzione COP/rendimento; non duplica il laboratorio del motore fra due serbatoi né il precedente controllo di Carnot.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985e",
+      "contextPath": "docs/sources/physics-2026-27/editorial/courses.json",
+      "license": "Testo originale Ardesia; DRAFT, nessuna approvazione umana.",
+      "notes": ""
+    }
+  },
+  {
+    "id": "original-20261113-u5-05-b",
+    "unitId": "sf-2026-u5-05",
+    "objectiveIds": [
+      "U5-05.07"
+    ],
+    "title": "Contare microstati prima di parlare di disordine",
+    "prompt": "In un modello statistico didattico quattro particelle etichettate possono trovarsi ciascuna nella metà sinistra L o destra R di un recipiente. Le 16 assegnazioni L/R sono equiprobabili; trascuriamo ogni altra differenza di microstato. Confronta il macrostato “due particelle a sinistra” con “tutte a sinistra”: elenca o conta le rispettive molteplicità e probabilità. Usa S_macro=k_B lnΩ, k_B=1,380649·10⁻²³ J/K e ln6≈1,791759469 per trovare la differenza di entropia fra questi macrostati. La probabilità maggiore garantisce che a ogni osservazione il sistema sia esattamente diviso a metà?",
+    "solution": "1. Ogni particella ha due scelte: 2⁴=16 assegnazioni. Per due particelle a sinistra si scelgono le coppie 12, 13, 14, 23, 24 o 34: Ω_2=6. Per tutte a sinistra c’è una sola assegnazione: Ω_4=1.\n2. Le probabilità sono 6/16=3/8=37,5% e 1/16=6,25%. Il primo macrostato è sei volte più probabile del secondo, ma non ha probabilità uno.\n3. La differenza è S_2−S_4=k_B ln(6/1)≈2,47379·10⁻²³ J/K. Il logaritmo agisce su una molteplicità adimensionale; l’unità viene da k_B. Qui S_4=0 appartiene alla convenzione del modello semplificato: non dichiara nulla sull’entropia assoluta di un gas reale a temperatura finita.\n4. Microstati equiprobabili non significano macrostati equiprobabili: ogni macrostato raggruppa un numero diverso di assegnazioni. Per sole quattro particelle fluttuazioni lontane dalla divisione a metà sono frequenti; un andamento macroscopico tipico non è un divieto assoluto di fluttuazione in questo piccolo modello.\nDiagnosi dell’errore: contare soltanto cinque valori possibili del numero a sinistra e assegnare a ciascuno probabilità 1/5 ignora la diversa molteplicità. L’immagine “più ordinata” non sostituisce il conteggio definito dai vincoli.",
+    "level": "medio",
+    "noveltyNote": "Conteggio esplicito di microstati, probabilità dei macrostati e fluttuazioni finite; diverso dalla sola enunciazione della relazione statistica dell’assessment.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985e",
+      "contextPath": "docs/sources/physics-2026-27/editorial/courses.json",
+      "license": "Testo originale Ardesia; DRAFT, nessuna approvazione umana.",
+      "notes": "Modello combinatorio di quattro particelle etichettate, non conteggio quantistico di particelle identiche. ln6=1,791759469228055 da Python math.log(6); entropie relative di macrostato nel modello ridotto, nessuna affermazione sull’entropia assoluta reale."
+    }
+  },
+  {
     "id": "original-20261107-u5-05",
     "unitId": "sf-2026-u5-05",
     "objectiveIds": [
@@ -403,6 +1116,30 @@
     "noveltyNote": "La contraddizione emerge soltanto confrontando tre controlli diversi; il problema distingue bilancio ammissibile, limite reversibile e prova di una realizzazione.",
     "status": "DRAFT",
     "humanApproval": false
+  },
+  {
+    "id": "original-20261113-u5-05-c",
+    "unitId": "sf-2026-u5-05",
+    "objectiveIds": [
+      "U5-05.02",
+      "U5-05.06",
+      "U5-05.08"
+    ],
+    "title": "Due corpi finiti non sono due termostati",
+    "prompt": "Due corpi senza transizioni, con capacità termiche costanti C_A=200 J/K e C_B=100 J/K, sono inizialmente a 400 K e 250 K. Vengono messi in contatto in un involucro isolato di capacità trascurabile; non si compie lavoro. Trova T_f e il calore trasferito. Per ciascun corpo è fornita ΔS=C ln(T_f/T_i), ottenuta da un percorso reversibile di riferimento. Calcola le due variazioni e la somma usando ln(350/400)≈−0,133531393 e ln(350/250)≈0,336472237. Valuta il tentativo di usare per entrambi ΔS=Q_reale/T_f e concludere che il processo sia reversibile.",
+    "solution": "1. Il bilancio energetico è 200(T_f−400)+100(T_f−250)=0. Ne segue T_f=350 K, fra le due temperature iniziali. A cede 200·50=10 000 J e B riceve 100·100=10 000 J.\n2. Le temperature dei corpi variano: non sono serbatoi a T costante. Per A, ΔS_A=200 ln(350/400)≈−26,7063 J/K; per B, ΔS_B=100 ln(350/250)≈+33,6472 J/K.\n3. ΔS_tot≈+6,94095 J/K. Il corpo caldo diminuisce la propria entropia, ma l’insieme isolato la aumenta: il trasferimento attraverso una differenza finita di temperatura è irreversibile.\n4. Il metodo proposto darebbe −10000/350+10000/350=0 soltanto perché impone arbitrariamente lo stesso denominatore costante. Q/T vale nella forma semplice per un trasferimento reversibile isotermo appropriato, non per il calore reale di questi corpi che cambiano temperatura. La funzione di stato si valuta lungo il percorso di riferimento, non rendendo reversibile a posteriori il processo reale.\nDiagnosi dell’errore: energia ceduta uguale a energia ricevuta implica conservazione dell’energia, non cancellazione delle variazioni di entropia. Il controllo indipendente è il segno positivo della somma per il complesso isolato; una somma negativa contraddirebbe le ipotesi del problema.",
+    "level": "difficile",
+    "noveltyNote": "Equilibrio di corpi finiti con temperature variabili e integrazione entropica fornita; distinto dal trasferimento fra termostati e dal laboratorio di motore.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "c23-progressive-2026-11-13",
+      "baseCommit": "dc2985e",
+      "contextPath": "docs/sources/physics-2026-27/editorial/courses.json",
+      "license": "Testo originale Ardesia; DRAFT, nessuna approvazione umana.",
+      "notes": "Capacità positive costanti, corpi uniformi agli estremi, nessuna fase o lavoro; il percorso reale può non essere uniforme durante il transitorio. Costanti ricalcolate con math.log(350/400)=-0,13353139262452263 e math.log(350/250)=0,3364722366212129. Formula entropica fornita nel prompt come approfondimento guidato."
+    }
   },
   {
     "id": "original-20261107-u6-01",
@@ -634,26 +1371,524 @@
     "humanApproval": false
   },
   {
-    "id": "original-U3-01-pro-transfer-v1",
-    "unitId": "sf-2026-u3-01",
-    "objectiveIds": [
-      "U3-01.02",
-      "U3-01.03",
-      "U3-01.04"
-    ],
-    "title": "Pressione nel pistone: forza obliqua e vincolo inverso",
-    "prompt": "Prova nuova: forza obliqua, riferimento e vincolo inverso\nUn cilindro orizzontale contiene un liquido omogeneo. Il pistone ideale, guidato e senza attrito, ha area 2,4 cm² ed è in equilibrio. Una forza esterna di 36 N lo preme verso il liquido formando 60° con la normale alla faccia; la guida sostiene la componente laterale. Usa cos 60°=1/2. La pressione esterna è 98 kPa. Un campione dello stesso liquido ha massa 46,8 g e volume 52 mL.\n\n1. Disegna il bilancio lungo la normale e calcola pressione relativa e assoluta nel liquido. Spiega perché 36 N diviso l’area non è la differenza di pressione corretta.\n2. Calcola la densità in kg/m³. Unendo un altro campione identico alla stessa temperatura, quali sono massa, volume e densità complessivi? Trascuriamo variazioni di volume e densità nelle condizioni dichiarate.\n3. Un secondo pistone ha area 4,8 cm². Pressione esterna, modulo della forza e angolo restano quelli iniziali. Calcola la nuova pressione relativa e quella assoluta. È corretto dire che entrambe si dimezzano? Motiva senza affidarti soltanto ai numeri.\n4. Sul secondo pistone vogliamo invece ottenere una pressione assoluta di 198 kPa, mantenendo pressione esterna e angolo. Quale modulo deve avere la forza applicata? Dichiara il nuovo vincolo prima di calcolare.",
-    "solution": "Confronto della prova nuova\n1. La forza normale è F_n=36·cos 60°=18 N; l’area è 2,4·10⁻⁴ m². Dal bilancio (p_ass−p_ext)A=F_n segue p_rel=18/(2,4·10⁻⁴)=75000 Pa=75 kPa e p_ass=98+75=173 kPa. Usare 36/A attribuirebbe al liquido anche la componente sostenuta dalla guida. Controllo: (173000−98000)·2,4·10⁻⁴=18 N.\n2. m=0,0468 kg e V=52·10⁻⁶ m³; ρ=m/V=900 kg/m³=0,9 g/mL. Unendo due copie del campione ottieni 93,6 g e 104 mL, quindi la stessa densità. Il controllo 900·52·10⁻⁶=0,0468 kg ricostruisce la massa iniziale.\n3. Sul secondo pistone A=4,8·10⁻⁴ m² e la componente normale resta 18 N. La pressione relativa diventa 37500 Pa=37,5 kPa; quella assoluta è 98+37,5=135,5 kPa. Si dimezza la differenza rispetto all’esterno; il riferimento esterno di 98 kPa rimane uguale. Perciò la pressione assoluta non si dimezza.\n4. Ora è fissata la pressione assoluta richiesta: prima ricava la differenza 198−98=100 kPa. Occorrono F_n=100000·4,8·10⁻⁴=48 N. Poiché F_n=F·1/2, il modulo applicato è F=96 N. Controllo inverso: 98000+(96·1/2)/(4,8·10⁻⁴)=198000 Pa.\n\nCriterio di confronto del ragionamento\nUna risposta completa indica normale e angolo, converte l’area e il volume, distingue pressione relativa e assoluta, riconosce il vincolo cambiato e ricostruisce almeno uno dei dati iniziali. Un numero giusto da solo non mostra tutti questi passaggi. Il confronto è materiale di studio consultabile, non un voto automatico.",
+    "id": "quiz-20261113-u1-01-a",
+    "unitId": "sf-2026-u1-01",
+    "title": "Il conteggio utile richiede di sottrarre il fondo",
+    "prompt": "Un contatore didattico registra, nelle stesse condizioni, un tasso totale di 4,8·10⁶ conteggi/min e un tasso di fondo di 4,2·10⁶ conteggi/min. Per questo modello considera i tassi costanti e i valori esatti, senza fluttuazioni statistiche; il contributo utile è il totale meno il fondo. Quanti conteggi utili corrispondono a un intervallo di 0,15 s, e qual è l’ordine di grandezza di questo numero? Definisci l’ordine di grandezza come la potenza di dieci più vicina sulla scala logaritmica: la soglia fra 10ⁿ e 10ⁿ⁺¹ è √10·10ⁿ, con √10≈3,162.",
     "level": "medio",
-    "noveltyNote": "La prova introduce una forza obliqua e la reazione laterale della guida, distingue il riferimento esterno durante la variazione dell’area e cambia il vincolo per ricavare la forza necessaria. Include un controllo separato sulla densità. La novità è relativa all’attività e all’esempio di questa unità.",
+    "objectiveIds": [
+      "U1-01.01",
+      "U1-01.02",
+      "U1-01.03"
+    ],
+    "solution": "1. Si sottraggono tassi riferiti allo stesso intervallo unitario: (4,8−4,2)·10⁶=0,6·10⁶=6,0·10⁵ conteggi/min. Il fondo è già incluso nel totale: non va sommato.\n2. L’intervallo è 0,15/60=0,0025 min=2,5·10⁻³ min. Il prodotto è N=(6,0·10⁵)(2,5·10⁻³)=15·10²=1,5·10³ conteggi. Le unità minuto si cancellano: tasso per tempo restituisce un numero di conteggi, non un nuovo tasso.\n3. Il coefficiente normalizzato 1,5 è inferiore a √10: l’ordine di grandezza richiesto è 10³. Non si arrotonda separatamente il tasso totale prima di togliere il fondo.\n4. Controllo indipendente: in 0,15 s i conteggi totali sono 12000 e quelli di fondo 10500; la differenza è 1500. Il contributo utile è un ottavo del totale, coerentemente con (4,8−4,2)/4,8=1/8. La precisione qui deriva dalle ipotesi del modello; non è una stima dell’incertezza di una misura reale.",
+    "noveltyNote": "Sottrazione di un fondo prima dell’integrazione temporale e doppio controllo del conteggio. È diverso dal rapporto di tempi della banca e dall’emettitore intermittente: qui non vi è duty cycle e il nodo è il contributo utile fra due tassi vicini.",
     "status": "DRAFT",
     "humanApproval": false,
     "source": {
       "origin": "authored",
-      "revision": "chat-pro-pressure-2026-11-08",
-      "attribution": "Risultato del lavoro di una chat Pro",
-      "comparison": "Applicazione nuova rispetto all’attività e all’esempio di questa unità; confronto sistematico col patrimonio legacy non eseguito",
-      "humanApproval": false
-    }
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce5f59365fd540bafbb58ab3ce6849d680",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confronto con obiettivi, originali, verifiche finali e famiglie selezionate della stessa unità; non è un confronto esaustivo con tutto il patrimonio legacy"
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "1,2·10⁴ conteggi; ordine 10⁴.",
+        "feedback": "Hai integrato il tasso totale senza sottrarre il fondo. 4,8·10⁶·0,15/60=12000 è il conteggio lordo, non quello utile."
+      },
+      {
+        "id": "B",
+        "text": "2,25·10⁴ conteggi; ordine 10⁴.",
+        "feedback": "Questo valore nasce sommando totale e fondo. Il fondo è già compreso nella lettura totale; il segnale utile richiede una sottrazione fra tassi con le stesse unità."
+      },
+      {
+        "id": "C",
+        "text": "1,5·10³ conteggi; ordine 10³.",
+        "feedback": "La sottrazione dà 6·10⁵ conteggi/min; moltiplicando per 2,5·10⁻³ min si ottengono 1500 conteggi. Il coefficiente 1,5 è sotto la soglia √10."
+      },
+      {
+        "id": "D",
+        "text": "9,0·10⁴ conteggi; ordine 10⁵.",
+        "feedback": "Hai moltiplicato il tasso espresso per minuto per il numero di secondi, senza dividere per 60. Il risultato è sessanta volte troppo grande."
+      },
+      {
+        "id": "E",
+        "text": "1,5·10³ conteggi; ordine 10⁴.",
+        "feedback": "Il conteggio è giusto, ma non l’ordine di grandezza secondo la convenzione dichiarata: 1,5<√10, quindi si sceglie 10³, non 10⁴."
+      }
+    ],
+    "correctChoice": "C"
+  },
+  {
+    "id": "quiz-20261113-u2-04-a",
+    "unitId": "sf-2026-u2-04",
+    "title": "Le velocità misurate rivelano un impulso esterno",
+    "prompt": "Due carrelli si urtano lungo un asse e restano uniti. Immediatamente prima dell’urto il carrello A ha massa 2,0 kg e velocità +3,0 m/s; B ha massa 1,0 kg e velocità −4,0 m/s. Subito dopo, il complesso di massa 3,0 kg ha velocità misurata +1,0 m/s. Considera esatti questi dati nello stesso riferimento inerziale, senza perdita di massa. Non è stato stabilito se l’impulso esterno orizzontale sia trascurabile. Quale conclusione è necessaria per il sistema formato dai due carrelli durante l’urto?",
+    "level": "medio",
+    "objectiveIds": [
+      "U2-04.01",
+      "U2-04.02",
+      "U2-04.03",
+      "U2-04.04"
+    ],
+    "solution": "1. La quantità di moto va sommata con i segni: p_i=(2,0)(+3,0)+(1,0)(−4,0)=+2,0 kg·m/s. Dopo l’urto p_f=(3,0)(+1,0)=+3,0 kg·m/s.\n2. Il teorema dell’impulso per entrambi i carrelli dà J_ext=p_f−p_i=+1,0 kg·m/s=+1,0 N·s. Le forze interne di contatto non possono produrre questa variazione della quantità di moto totale. I dati richiedono quindi un impulso esterno non nullo verso il verso positivo.\n3. Controllo: se il sistema avesse impulso esterno nullo, la velocità comune sarebbe 2/3 m/s, diversa dal valore assegnato. Non è lecito imporre la conservazione della quantità di moto solo perché i carrelli restano uniti.\n4. Le energie cinetiche sono K_i=17 J e K_f=1,5 J. La loro differenza −15,5 J non rende impossibile l’urto. Senza conoscere il lavoro esterno non si può attribuire tutta la diminuzione a dissipazione interna: un impulso fissa una variazione di quantità di moto, non da solo il lavoro.",
+    "noveltyNote": "Il quiz usa due velocità iniziali opposte e una velocità finale misurata per diagnosticare il confine del sistema e un impulso esterno necessario. Non ripete il segnale triangolare del respingente né l’urto con bersaglio fermo della banca.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce5f59365fd540bafbb58ab3ce6849d680",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confronto con obiettivi, originali, verifiche finali e famiglie selezionate della stessa unità; non è un confronto esaustivo con tutto il patrimonio legacy"
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "È necessario un impulso esterno orizzontale di +1,0 N·s.",
+        "feedback": "La differenza p_f−p_i è +3−(+2)=+1 kg·m/s. Per il sistema dei due carrelli è l’impulso esterno, perché le forze interne non cambiano la quantità di moto totale."
+      },
+      {
+        "id": "B",
+        "text": "L’impulso esterno è nullo: basta che i carrelli restino attaccati.",
+        "feedback": "Restare uniti descrive l’urto, non l’isolamento. Con impulso esterno nullo la velocità comune sarebbe +2/3 m/s, incompatibile con il dato +1,0 m/s."
+      },
+      {
+        "id": "C",
+        "text": "È necessario un impulso esterno orizzontale di −1,0 N·s.",
+        "feedback": "Hai invertito la differenza. L’impulso è quantità di moto finale meno iniziale: +3−(+2), non +2−(+3)."
+      },
+      {
+        "id": "D",
+        "text": "È necessario un impulso esterno orizzontale di +3,0 N·s.",
+        "feedback": "+3 kg·m/s è la quantità di moto finale. L’impulso coincide con essa soltanto se quella iniziale è nulla; qui p_i=+2 kg·m/s."
+      },
+      {
+        "id": "E",
+        "text": "I dati sono impossibili perché l’energia cinetica diminuisce.",
+        "feedback": "Un urto in cui i corpi restano uniti può ridurre l’energia cinetica. Il bilancio richiede l’impulso esterno indicato; non richiede la conservazione separata dell’energia cinetica."
+      }
+    ],
+    "correctChoice": "A"
+  },
+  {
+    "id": "quiz-20261113-u3-02-a",
+    "unitId": "sf-2026-u3-02",
+    "title": "Spostare un carico dal galleggiante al fondo",
+    "prompt": "In un recipiente con pareti verticali e area interna orizzontale A=0,020 m² galleggia liberamente una piccola zattera rigida impermeabile. Sulla zattera, fuori dall’acqua, si trova un blocchetto di massa 0,30 kg e densità 3000 kg/m³. Si sposta soltanto il blocchetto e lo si lascia sul fondo, completamente immerso. Confronta i due stati di quiete. L’acqua ha densità costante 1000 kg/m³; non esce acqua, zattera e blocchetto non assorbono liquido, la zattera continua a galleggiare senza toccare fondo o pareti. Trascura tensione superficiale, volume degli strumenti e variazioni termiche. Come cambia il livello dell’acqua?",
+    "level": "difficile",
+    "objectiveIds": [
+      "U3-02.03",
+      "U3-02.04"
+    ],
+    "solution": "1. Quando il blocchetto è sulla zattera, il suo peso richiede un volume aggiuntivo di acqua spostata V_prima=m/ρ_acqua=0,30/1000=3,0·10⁻⁴ m³. Il volume spostato per sostenere la sola zattera è uguale nei due stati e si elimina nel confronto.\n2. Sul fondo il blocchetto occupa nell’acqua soltanto il proprio volume geometrico V_dopo=m/ρ_blocco=0,30/3000=1,0·10⁻⁴ m³. Non galleggia: parte del suo peso è sostenuta dal fondo.\n3. La variazione del volume totale occupato sotto il livello è ΔV=V_dopo−V_prima=−2,0·10⁻⁴ m³. Per pareti verticali Δh=ΔV/A=−0,010 m=−1,0 cm: il livello si abbassa.\n4. Controllo dimensionale: m³/m²=m. Controllo fisico: per un carico più denso dell’acqua m/ρ_blocco è minore di m/ρ_acqua; il segno deve essere negativo. La massa totale presente nel recipiente non cambia, ma il volume di acqua spostata non dipende dalla sola massa quando una parte è sostenuta dal fondo.",
+    "noveltyNote": "Confronta due modi di sostenere lo stesso carico e la variazione di livello dell’intero recipiente. Distingue sostegno idrostatico e sostegno del fondo; non è un nuovo valore del carico massimo, del pescaggio o della tensione del filo dei problemi già presenti.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce5f59365fd540bafbb58ab3ce6849d680",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confronto con obiettivi, originali, verifiche finali e famiglie selezionate della stessa unità; non è un confronto esaustivo con tutto il patrimonio legacy"
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "Il livello non cambia.",
+        "feedback": "La massa totale resta uguale, ma dopo lo spostamento il fondo sostiene parte del peso del blocchetto. Il suo volume immerso è geometrico, non più il volume necessario a sostenerne tutto il peso."
+      },
+      {
+        "id": "B",
+        "text": "Il livello si alza di 1,0 cm.",
+        "feedback": "Il modulo della differenza è corretto, ma il segno è invertito: passando al fondo il carico sposta 100 mL anziché i 300 mL aggiuntivi richiesti sulla zattera."
+      },
+      {
+        "id": "C",
+        "text": "Il livello si abbassa di 1,5 cm.",
+        "feedback": "Hai tolto i 300 mL iniziali senza aggiungere i 100 mL occupati dal blocchetto sul fondo. La variazione netta è −200 mL."
+      },
+      {
+        "id": "D",
+        "text": "Il livello si abbassa di 1,0 cm.",
+        "feedback": "Il carico richiede prima 300 mL di acqua spostata, poi occupa 100 mL. La diminuzione di 2·10⁻⁴ m³ divisa per 0,020 m² dà −0,010 m."
+      },
+      {
+        "id": "E",
+        "text": "Il livello si alza di 0,5 cm.",
+        "feedback": "Hai contato soltanto i 100 mL del blocchetto immerso, dimenticando che la zattera scaricata emerge e smette di spostare i 300 mL dovuti al carico."
+      }
+    ],
+    "correctChoice": "D"
+  },
+  {
+    "id": "quiz-20261113-u3-04-a",
+    "unitId": "sf-2026-u3-04",
+    "title": "Una velocità fuori asse non è la velocità media",
+    "prompt": "Un liquido newtoniano incomprimibile scorre in un tubo rigido circolare di raggio interno R=1,0 mm. Il flusso è stazionario, laminare e completamente sviluppato, con parete ferma e aderenza. Il profilo è u(s)=u_max[1−(s/R)²], dove s è la distanza dall’asse; per questo profilo la velocità media sulla sezione è u_max/2. Una sonda ideale, che non altera il moto, misura u=6,0 cm/s nel punto s=R/2. Qual è la portata volumetrica Q? Le risposte sono espresse in mL/s e possono conservare il fattore π.",
+    "level": "medio",
+    "objectiveIds": [
+      "U3-04.02"
+    ],
+    "solution": "1. La posizione della sonda conta: a s=R/2, il profilo fornisce u=(1−1/4)u_max=3u_max/4. Quindi u_max=6,0/(3/4)=8,0 cm/s.\n2. La media sulla sezione è u_media=u_max/2=4,0 cm/s=0,040 m/s. Non coincide né con i 6,0 cm/s locali né con il massimo sull’asse.\n3. L’area è πR²=π(10⁻³ m)²=π·10⁻⁶ m². La portata è Q=A u_media=4,0π·10⁻⁸ m³/s=0,040π mL/s, circa 0,126 mL/s, usando 1 m³=10⁶ mL.\n4. Controllo dimensionale: m²·m/s=m³/s. Inoltre Q/A deve risultare minore della velocità locale misurata in R/2, perché in questo profilo 1/2<3/4. Un valore Q=A·6,0 cm/s tratterebbe tutta la sezione come se scorresse alla velocità della sonda; non sarebbe una media pesata sull’area.",
+    "noveltyNote": "Ricostruisce massimo e media da una misura fuori asse prima di determinare la portata. I casi selezionati trattano asse/parete o Q=A u_max; qui il dato iniziale è una velocità locale intermedia, non uno dei due estremi.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce5f59365fd540bafbb58ab3ce6849d680",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confronto con obiettivi, originali, verifiche finali e famiglie selezionate della stessa unità; non è un confronto esaustivo con tutto il patrimonio legacy"
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "Q=0,060π mL/s.",
+        "feedback": "Hai usato direttamente la velocità locale della sonda come media. A R/2 la velocità vale 3/4 del massimo, mentre la media vale 1/2 del massimo."
+      },
+      {
+        "id": "B",
+        "text": "Q=0,080π mL/s.",
+        "feedback": "Hai trovato correttamente u_max=8,0 cm/s, ma poi l’hai usata sull’intera sezione. La velocità media del profilo assegnato è la metà."
+      },
+      {
+        "id": "C",
+        "text": "Q=0,030π mL/s.",
+        "feedback": "Hai dimezzato i 6,0 cm/s come se la sonda fosse sull’asse. Prima devi ricavare il massimo dal fattore 3/4 previsto nella posizione R/2."
+      },
+      {
+        "id": "D",
+        "text": "Q=4,0π mL/s.",
+        "feedback": "Il risultato è cento volte troppo grande: 4,0 cm/s sono 0,040 m/s, non 4,0 m/s. Le unità della velocità devono essere coerenti con il raggio in metri."
+      },
+      {
+        "id": "E",
+        "text": "Q=0,040π mL/s.",
+        "feedback": "Dalla misura ricavi u_max=8,0 cm/s e u_media=4,0 cm/s. Il prodotto per π(1,0 mm)² dà 0,040π mL/s."
+      }
+    ],
+    "correctChoice": "E"
+  },
+  {
+    "id": "quiz-20261113-u5-02-a",
+    "unitId": "sf-2026-u5-02",
+    "title": "Togliere il blocco cambia il bilancio della seconda miscela",
+    "prompt": "Due porzioni d’acqua hanno ciascuna capacità termica costante 200 J/K e temperatura iniziale 20 °C. Un blocco solido ha capacità 100 J/K e temperatura iniziale 80 °C. Confronta due esperimenti con questi stessi dati iniziali. Nell’esperimento A il blocco viene prima messo a contatto soltanto con la prima porzione d’acqua; raggiunto l’equilibrio, si estrae il blocco e si aggiunge la seconda porzione alla prima. Nell’esperimento B si mettono subito a contatto blocco e tutte e due le porzioni d’acqua. Recipienti e strumenti hanno capacità trascurabile, i complessi sono termicamente isolati durante ogni scambio, non vi sono cambiamenti di fase; l’estrazione non scambia calore apprezzabile e non porta via acqua. Trascura lavoro e variazioni di energia cinetica o potenziale nel bilancio termico. Qual è la coppia delle temperature finali dell’acqua (T_A, T_B)?",
+    "level": "medio",
+    "objectiveIds": [
+      "U5-02.01",
+      "U5-02.02",
+      "U5-02.07"
+    ],
+    "solution": "1. Nella prima fase di A il bilancio è 100(T₁−80)+200(T₁−20)=0, da cui T₁=40 °C. Il blocco ha ceduto 4000 J e la prima acqua li ha ricevuti: i segni sono opposti.\n2. Estratto il blocco, rimangono due porzioni con uguale capacità, una a 40 °C e l’altra a 20 °C. La loro temperatura finale è T_A=(200·40+200·20)/400=30 °C. Non si può includere il blocco nel bilancio della seconda fase, perché non è più a contatto col sistema considerato.\n3. In B tutti i corpi partecipano fino alla fine: T_B=(100·80+200·20+200·20)/500=32 °C. Le capacità pesano le temperature; il numero di corpi non determina i pesi.\n4. Controllo indipendente rispetto a 20 °C: inizialmente il blocco ha 100·60=6000 J di energia termica in eccesso nel modello a capacità costante. In A si estrae a 40 °C, portando via 100·20=2000 J rispetto allo stesso riferimento. I 4000 J rimasti scaldano la capacità 400 J/K di 10 K. In B i 6000 J scaldano la capacità totale 500 J/K di 12 K. La differenza non viola il bilancio energetico: è cambiato il confine dei corpi che restano nel recipiente.",
+    "noveltyNote": "Confronta un contatto sequenziale con rimozione di un corpo e un contatto simultaneo. La differenza fra i risultati dipende dall’energia trasportata dal corpo rimosso; non è una permutazione dei dati della miscela a due corpi o della calibrazione del calorimetro.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce5f59365fd540bafbb58ab3ce6849d680",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confronto con obiettivi, originali, verifiche finali e famiglie selezionate della stessa unità; non è un confronto esaustivo con tutto il patrimonio legacy"
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "(T_A,T_B)=(32 °C,32 °C).",
+        "feedback": "Questa coppia applica a entrambi i casi il bilancio di tre corpi sempre presenti. In A il blocco esce a 40 °C e porta con sé energia; la seconda fase contiene soltanto le due acque."
+      },
+      {
+        "id": "B",
+        "text": "(T_A,T_B)=(30 °C,32 °C).",
+        "feedback": "In A il primo equilibrio è a 40 °C, poi due capacità uguali a 40 e 20 °C portano a 30 °C. In B la media pesata con capacità 100, 200 e 200 J/K dà 32 °C."
+      },
+      {
+        "id": "C",
+        "text": "(T_A,T_B)=(40 °C,32 °C).",
+        "feedback": "40 °C è il risultato della prima fase di A, prima di aggiungere la seconda acqua. L’aggiunta della porzione fredda abbassa ulteriormente la temperatura."
+      },
+      {
+        "id": "D",
+        "text": "(T_A,T_B)=(30 °C,50 °C).",
+        "feedback": "Il primo risultato è giusto. Per B non si può fare (80+20)/2: il blocco ha capacità 100 J/K, mentre tutta l’acqua ha capacità 400 J/K. L’equilibrio è molto più vicino a 20 °C."
+      },
+      {
+        "id": "E",
+        "text": "(T_A,T_B)=(35 °C,40 °C).",
+        "feedback": "Questi valori derivano da medie aritmetiche delle temperature: prima (80+20)/2, poi la media con 20; in B la media di tre temperature. Le medie vanno invece pesate con le capacità, che non sono tutte uguali."
+      }
+    ],
+    "correctChoice": "B"
+  },
+  {
+    "id": "quiz-20261113-u5-04-a",
+    "unitId": "sf-2026-u5-04",
+    "title": "Il verso del ciclo determina il segno del lavoro",
+    "prompt": "Una quantità fissa di gas ideale percorre quasistaticamente il ciclo A→B→C→A nel piano (V,p). Gli stati sono A: V=1,0 L, p=100 kPa; B: V=3,0 L, p=100 kPa; C: V=3,0 L, p=300 kPa. Il tratto C→A è il segmento rettilineo che unisce i due stati nel diagramma. L’unico lavoro è quello di volume; non cambiano complessivamente energie cinetiche o potenziali macroscopiche. Usa Q positivo se ricevuto dal gas e W positivo se compiuto dal gas, quindi ΔU=Q−W. Quale coppia (W_ciclo,Q_ciclo) è corretta?",
+    "level": "medio",
+    "objectiveIds": [
+      "U5-04.01",
+      "U5-04.02",
+      "U5-04.03",
+      "U5-04.06",
+      "U5-04.07"
+    ],
+    "solution": "1. Lungo A→B l’espansione è isobara: W_AB=100 kPa·(3−1) L=+200 J. Si usa 1 kPa·L=1000 Pa·10⁻³ m³=1 J.\n2. B→C è isocoro: dV=0 e W_BC=0, anche se pressione e temperatura cambiano.\n3. C→A è una compressione lungo un segmento rettilineo. La pressione media rispetto al volume è (300+100)/2=200 kPa; il volume varia di −2 L. Quindi W_CA=−400 J. Il lavoro totale è +200+0−400=−200 J.\n4. Sul ciclo il gas torna allo stesso stato, perciò ΔU_ciclo=0. Il primo principio impone Q_ciclo=W_ciclo=−200 J. Il gas riceve complessivamente 200 J di lavoro e cede 200 J di calore: non fornisce lavoro netto come motore.\n5. Controllo geometrico: il modulo dell’area triangolare è (1/2)(2 L)(200 kPa)=200 J. La compressione avviene a pressioni maggiori dell’espansione, quindi il lavoro fatto dal gas è negativo. Tornare allo stato iniziale azzera la variazione di energia interna, non i trasferimenti netti di calore e lavoro.",
+    "noveltyNote": "Il ciclo triangolare include una compressione a pressione variabile e richiede di ricostruire il segno dell’area orientata. Non replica i due cammini rettangolari fra stati assegnati né il lavoro di una singola isobara presente in banca.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce5f59365fd540bafbb58ab3ce6849d680",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "attribution": "Testo originale composto da agente AI; revisione indipendente pendente",
+      "comparison": "Confronto con obiettivi, originali, verifiche finali e famiglie selezionate della stessa unità; non è un confronto esaustivo con tutto il patrimonio legacy"
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "(+200 J,+200 J).",
+        "feedback": "L’area ha questo modulo, ma il verso è invertito: la compressione avviene mediamente a pressione più alta dell’espansione. Il lavoro netto del gas è negativo."
+      },
+      {
+        "id": "B",
+        "text": "(0 J,0 J).",
+        "feedback": "Il ritorno allo stato iniziale impone ΔU=0. Calore e lavoro non sono funzioni di stato: possono avere valori netti non nulli e uguali fra loro sul ciclo."
+      },
+      {
+        "id": "C",
+        "text": "(−200 J,−200 J).",
+        "feedback": "Il lavoro è +200 J nell’espansione, zero nell’isocora e −400 J nella compressione. Sul ciclo ΔU=0, quindi anche il calore netto è −200 J."
+      },
+      {
+        "id": "D",
+        "text": "(−400 J,−400 J).",
+        "feedback": "Hai conservato soltanto il lavoro della compressione C→A. Devi sommare anche i +200 J forniti dal gas durante A→B."
+      },
+      {
+        "id": "E",
+        "text": "(−200 J,+200 J).",
+        "feedback": "Il lavoro è corretto, ma il segno del calore viola il primo principio: con ΔU=0 e convenzione ΔU=Q−W occorre Q=W, non Q=−W."
+      }
+    ],
+    "correctChoice": "C"
+  },
+  {
+    "id": "quiz-20261113-u6-01-a",
+    "unitId": "sf-2026-u6-01",
+    "title": "Tornare al punto iniziale non significa fermarsi",
+    "prompt": "Una piccola particella di carica q=−2,0 nC e massa m=1,0·10⁻⁶ kg si trova a x=0 con velocità iniziale vₓ=+2,0 m/s. Per tutto il moto considerato agisce soltanto un campo elettrico uniforme e costante Eₓ=+2000 N/C, esteso a tutta la traiettoria. Trascuriamo gravità, attrito, radiazione e perturbazione delle sorgenti. Quali sono lo spostamento Δx e la componente della velocità dopo 1,0 s?",
+    "level": "medio",
+    "objectiveIds": [
+      "U6-01.06"
+    ],
+    "solution": "1. Il campo è diretto verso +x, ma q è negativa: Fₓ=qEₓ=(−2,0·10⁻⁹)·2000=−4,0·10⁻⁶ N. L’accelerazione costante è aₓ=Fₓ/m=−4,0 m/s².\n2. Dopo 1,0 s, vₓ=v₀ₓ+aₓt=2,0−4,0=−2,0 m/s. Il segno negativo non indica velocità nulla: la particella si muove verso −x.\n3. Lo spostamento è Δx=v₀ₓt+aₓt²/2=2,0−2,0=0 m. La posizione iniziale viene raggiunta con velocità opposta a quella iniziale. È coerente l’alternativa C.\n4. Controllo indipendente: la particella si ferma soltanto a t=−v₀ₓ/aₓ=0,50 s, quando x=0,50 m. Nel mezzo secondo successivo torna da x=0,50 a x=0 accelerando verso sinistra. La simmetria del moto restituisce lo stesso modulo finale della velocità.\nLa forza non si inverte quando cambia il verso del moto: dipende da q ed E, qui costanti. I primi 0,50 s diminuiscono l’energia cinetica; i successivi la riportano al valore iniziale. Spostamento totale nullo e velocità finale nulla sono condizioni diverse.",
+    "noveltyNote": "Combina frenata, inversione del moto e ritorno alla posizione iniziale in campo uniforme: non è un cambio numerico del campo fra due cariche, del moto da fermo o della sola accelerazione presente nelle fonti.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce",
+      "contextPath": "docs/sources/physics-2026-27/editorial",
+      "attribution": "Testo originale composto con assistenza AI; revisione scientifica umana pendente.",
+      "notes": "Moto classico unidimensionale; campo uniforme esteso alla traiettoria, nessuna forza ulteriore. Mapping limitato al moto in campo uniforme. Feedback guidato, nessuna valutazione di competenza."
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "Δx=+2,0 m; vₓ=+2,0 m/s.",
+        "feedback": "Questa coppia descrive il moto uniforme senza forza. Qui qE è diverso da zero: anche se il campo non cambia nel tempo, produce accelerazione. Scrivi prima Fₓ=qEₓ, mantenendo il segno negativo della carica."
+      },
+      {
+        "id": "B",
+        "text": "Δx=0 m; vₓ=0 m/s.",
+        "feedback": "Hai identificato il ritorno alla posizione iniziale con l’arresto. L’arresto avviene a 0,50 s e a x=0,50 m; a 1,0 s la particella attraversa x=0 con velocità −2,0 m/s. Posizione e velocità sono dati indipendenti dello stato di moto."
+      },
+      {
+        "id": "C",
+        "text": "Δx=0 m; vₓ=−2,0 m/s.",
+        "feedback": "Il risultato rispetta entrambi i controlli: aₓ=−4,0 m/s², quindi vₓ(1 s)=−2,0 m/s, mentre i contributi +2,0 m e −2,0 m allo spostamento si cancellano. La particella è tornata al punto iniziale dopo aver invertito il moto."
+      },
+      {
+        "id": "D",
+        "text": "Δx=−2,0 m; vₓ=−2,0 m/s.",
+        "feedback": "La velocità finale è coerente, ma lo spostamento −2,0 m contiene soltanto aₓt²/2. Manca il contributo v₀ₓt=+2,0 m: la particella non parte da ferma."
+      },
+      {
+        "id": "E",
+        "text": "Δx=+4,0 m; vₓ=+6,0 m/s.",
+        "feedback": "Questi valori derivano da aₓ=+4,0 m/s², come per una carica positiva. Per la carica negativa assegnata la forza è opposta al campo. Il verso iniziale della velocità non decide il segno dell’accelerazione."
+      }
+    ],
+    "correctChoice": "C"
+  },
+  {
+    "id": "quiz-20261113-u6-03-a",
+    "unitId": "sf-2026-u6-03",
+    "title": "La carica nella cavità ridistribuisce quella del metallo",
+    "prompt": "Un guscio metallico chiuso, inizialmente neutro e isolato da terra, contiene una cavità. Dentro la cavità è mantenuta una carica puntiforme +3,0 nC, senza contatto con il metallo e mediante un supporto ideale che non trasferisce carica. Non vi sono altre cariche nella cavità; il metallo ha raggiunto l’equilibrio elettrostatico. Si ricorda una conseguenza di Gauss: una superficie chiusa interamente nello spessore del metallo, che racchiude la cavità, racchiude carica totale nulla perché lì E=0. Quale descrizione delle cariche totali sulle due superfici e del campo è coerente?",
+    "level": "medio",
+    "objectiveIds": [
+      "U6-03.01"
+    ],
+    "solution": "1. La carica puntiforme resta separata dal guscio: non ha consegnato al metallo i suoi +3,0 nC. Il guscio isolato conserva quindi carica totale zero.\n2. Una superficie gaussiana nel metallo circonda la carica puntiforme e tutta la faccia interna della cavità. La condizione fornita impone +3,0 nC+Q_interna=0, dunque Q_interna=−3,0 nC.\n3. La neutralità del metallo richiede Q_interna+Q_esterna=0: Q_esterna=+3,0 nC. Non è necessario che queste cariche siano distribuite uniformemente; i totali non dipendono da quella uniformità.\n4. Nel materiale metallico E=0 per equilibrio. La cavità, invece, contiene una carica: non si può estendere E=0 a tutta la cavità. Il campo deve avere flusso non nullo attraverso una piccola superficie che circondi soltanto la carica interna. È coerente l’alternativa A.\nControlli: la somma delle due cariche superficiali è zero; includendo anche la carica nella cavità, la carica totale del sistema è +3,0 nC. Nessuna carica è stata creata e nessun elettrone deve attraversare la cavità o passare a terra. Questo è un conduttore con cariche mobili, non una conduzione libera attraverso un dielettrico.",
+    "noveltyNote": "Usa una cavità chiusa con carica interna e due superfici, anziché la bacchetta esterna, il contatto fra sfere o la sequenza di messa a terra già presente. La conseguenza di Gauss necessaria è fornita nel prompt.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce",
+      "contextPath": "docs/sources/physics-2026-27/editorial",
+      "attribution": "Testo originale composto con assistenza AI; revisione scientifica umana pendente.",
+      "notes": "Guscio conduttore chiuso e isolato, nessuna carica trasferita per contatto o terra, equilibrio nel materiale; carica interna non a contatto. La conseguenza di Gauss è richiamata come supporto al ragionamento di induzione. Non si afferma uniformità delle densità superficiali né campo non nullo in ogni punto della cavità."
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "Superficie interna −3,0 nC; esterna +3,0 nC; E=0 nel metallo, ma non in tutta la cavità.",
+        "feedback": "Le due condizioni sono diverse e compatibili: Gauss impone −3,0 nC sulla faccia interna; la neutralità del guscio impone +3,0 nC su quella esterna. E=0 riguarda il materiale conduttore. La carica presente nella cavità impedisce che il campo sia nullo ovunque anche lì."
+      },
+      {
+        "id": "B",
+        "text": "Entrambe le superfici hanno carica totale zero; E=0 sia nel metallo sia in tutta la cavità.",
+        "feedback": "Neutro non significa privo di separazione di carica. Se la faccia interna avesse carica zero, la superficie gaussiana nel metallo racchiuderebbe +3,0 nC, in contrasto con il campo nullo. La schermatura da sorgenti esterne non elimina la sorgente collocata nella cavità."
+      },
+      {
+        "id": "C",
+        "text": "Superficie interna +3,0 nC; esterna −3,0 nC; E=0 nel metallo.",
+        "feedback": "La somma delle cariche del guscio è zero, ma il segno interno è invertito: carica puntiforme e faccia interna darebbero insieme +6,0 nC. Il flusso attraverso la superficie nel metallo non potrebbe allora essere nullo. Neutralità totale da sola non basta."
+      },
+      {
+        "id": "D",
+        "text": "Superficie interna −3,0 nC; esterna zero; E=0 nel metallo.",
+        "feedback": "Il totale interno è corretto per Gauss, ma il guscio acquisterebbe −3,0 nC netti senza contatto o messa a terra. Gli elettroni che si accumulano sulla faccia interna provengono dal metallo stesso: altrove rimane un eccesso positivo uguale."
+      },
+      {
+        "id": "E",
+        "text": "Superficie interna −3,0 nC; esterna +3,0 nC; E è necessariamente diverso da zero nel materiale metallico.",
+        "feedback": "Le cariche totali sono coerenti, ma il campo indicato contraddice l’equilibrio elettrostatico del conduttore. Un campo residuo nel materiale metterebbe in moto le cariche libere. La presenza di campo nella cavità non richiede campo nello spessore del metallo."
+      }
+    ],
+    "correctChoice": "A"
+  },
+  {
+    "id": "quiz-20261113-u4-02-a",
+    "unitId": "sf-2026-u4-02",
+    "title": "Una corda diritta in un istante può già essere in moto",
+    "prompt": "Su una corda nel regime lineare si sovrappongono due onde armoniche trasversali che viaggiano in versi opposti: y₁(x,t)=A sin(kx−ωt) e y₂(x,t)=−A sin(kx+ωt). L’ampiezza è A=3,0 mm, k=2π/λ e ω=2π/T, con λ e T positivi. A t=0 la somma degli spostamenti è nulla in ogni punto. Quali sono lo spostamento risultante del punto x=0 a t=T/4 e l’interpretazione corretta di quel profilo iniziale nullo? Le formule descrivono l’intero intervallo considerato, senza smorzamento.",
+    "level": "medio",
+    "objectiveIds": [
+      "U4-02.01",
+      "U4-02.02"
+    ],
+    "solution": "1. Il principio di sovrapposizione si applica allo stesso punto e allo stesso istante. A x=0 e t=T/4 il termine ωt vale π/2.\n2. La prima onda dà y₁=A sin(−π/2)=−A. La seconda dà y₂=−A sin(+π/2)=−A. Il segno esterno nella seconda formula è essenziale: i due contributi sono entrambi negativi.\n3. La somma è −2A=−6,0 mm. L’alternativa D associa questo valore alla corretta interpretazione: la cancellazione del profilo iniziale è istantanea, non permanente.\n4. Controllo sull’intera funzione: sin(kx−ωt)−sin(kx+ωt)=−2 cos(kx) sin(ωt), quindi y=−2A cos(kx) sin(ωt). In x=0 il punto oscilla con ampiezza 2A: non è un nodo. All’istante iniziale passa per l’equilibrio.\nNon si crea energia nel passaggio da un profilo diritto a uno deformato. Già a t=0 la velocità locale può essere non nulla: in x=0 vale −2Aω. L’energia cinetica non si ricava dal solo spostamento di quell’istante. Le onde restano descritte dalle espressioni assegnate: non si annientano per sempre quando le ordinate si cancellano.",
+    "noveltyNote": "Confronta la cancellazione istantanea di un profilo completo con l’evoluzione di due onde contropropaganti. È diverso dalla somma di onde concordi, dall’inversione di fase di una sola onda e dalla ricostruzione delle ampiezze da massimo/minimo.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce",
+      "contextPath": "docs/sources/physics-2026-27/editorial",
+      "attribution": "Testo originale composto con assistenza AI; revisione scientifica umana pendente.",
+      "notes": "Onde scalari trasversali, stessa frequenza e ampiezza, versi opposti, corda lineare senza smorzamento. Identità trigonometrica e valori sin(±π/2) esplicitati nella soluzione; checks aritmetici verificano i coefficienti, non fingono una verifica dinamica sperimentale. Velocità iniziale −2Aω citata come controllo concettuale."
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "0 mm; x=0 è un nodo permanente perché il profilo iniziale era nullo.",
+        "feedback": "Un nodo deve avere spostamento nullo a ogni istante. Qui y(0,t)=−2A sin(ωt): vale zero a t=0 ma −2A a t=T/4. Osservare una sola fotografia della corda non basta a riconoscere i nodi."
+      },
+      {
+        "id": "B",
+        "text": "−3,0 mm; dopo la cancellazione iniziale rimane soltanto la prima onda.",
+        "feedback": "La cancellazione non elimina uno dei contributi. Le due espressioni restano valide e, nell’istante richiesto, valgono entrambe −3,0 mm. Conservare una sola onda viola il modello di sovrapposizione assegnato."
+      },
+      {
+        "id": "C",
+        "text": "+6,0 mm; i due contributi sono entrambi positivi nell’istante richiesto.",
+        "feedback": "Hai perso un segno temporale o il segno esterno della seconda onda. In x=0: sin(−π/2)=−1 e −sin(+π/2)=−1. La somma ha modulo 6,0 mm ma verso negativo rispetto all’asse degli spostamenti."
+      },
+      {
+        "id": "D",
+        "text": "−6,0 mm; il profilo nullo a t=0 descrive una cancellazione istantanea, non una quiete permanente.",
+        "feedback": "Entrambe le ordinate valgono −A, dunque la somma è −2A. Il punto x=0 attraversa lo zero iniziale con velocità non nulla e un quarto di periodo dopo raggiunge −6,0 mm. Zero spostamento non significa zero energia del sistema."
+      },
+      {
+        "id": "E",
+        "text": "−6,0 mm; dal profilo iniziale nullo è stata creata energia meccanica.",
+        "feedback": "Lo spostamento è corretto, ma l’inferenza energetica no. Il profilo iniziale non specifica velocità nulle; qui la corda è già in moto. In un sistema ondulatorio conservativo energia cinetica ed energia associata alla deformazione possono scambiarsi senza produzione di energia."
+      }
+    ],
+    "correctChoice": "D"
+  },
+  {
+    "id": "quiz-20261113-u7-01-a",
+    "unitId": "sf-2026-u7-01",
+    "title": "Confrontare un valore efficace con un picco altera il rapporto",
+    "prompt": "Una singola onda elettromagnetica piana armonica, polarizzata linearmente, si propaga nel vuoto. Due strumenti correttamente calibrati riportano per la stessa onda E_eff=30,0 V/m (valore efficace del campo elettrico) e B₀=√2·10⁻⁷ T (ampiezza di picco del campo magnetico). Sono fornite E₀=√2 E_eff, E₀/B₀=c e I_media=ε₀cE₀²/2, con c≈3,00·10⁸ m/s ed ε₀≈8,85·10⁻¹² F/m. Quale interpretazione della velocità e dell’intensità media è coerente con entrambe le letture?",
+    "level": "medio",
+    "objectiveIds": [
+      "U7-01.03",
+      "U7-01.04",
+      "U7-01.05"
+    ],
+    "solution": "1. Le letture usano convenzioni diverse: E_eff è efficace, mentre B₀ è di picco. Prima di confrontarle occorre scegliere lo stesso tipo di ampiezza.\n2. E₀=30,0√2 V/m. Quindi E₀/B₀=(30,0√2)/(√2·10⁻⁷)=3,00·10⁸ m/s=c. Il rapporto E_eff/B₀=c/√2 mescola efficace e picco e non è la velocità dell’onda.\n3. Inserendo E₀²=2E_eff² nell’espressione fornita, I_media=ε₀cE_eff². Si ottiene 8,85·10⁻¹²·3,00·10⁸·30,0²=2,3895 W/m²≈2,39 W/m². L’alternativa B è coerente.\n4. Controllo indipendente: B_eff=B₀/√2=10⁻⁷ T, dunque E_eff/B_eff=30,0/10⁻⁷=c. Il rapporto torna c sia usando due picchi sia usando due valori efficaci.\nIl fattore 1/2 della formula con ampiezza di picco è già incluso quando si passa al quadrato del valore efficace. Usarlo una seconda volta dimezza l’intensità. I dati non indicano un diverso mezzo di propagazione o una diversa velocità nel vuoto: indicano soltanto due convenzioni di misura.",
+    "noveltyNote": "Diagnosi di una falsa incompatibilità fra due strumenti che riportano picco ed efficace: distinto dall’animazione con verso E×B errato, dal passaggio di mezzo e dal semplice calcolo diretto di intensità da un picco.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "guided-choice-2026-11-13",
+      "baseCommit": "70af28ce",
+      "contextPath": "docs/sources/physics-2026-27/editorial",
+      "attribution": "Testo originale composto con assistenza AI; revisione scientifica umana pendente.",
+      "notes": "Onda piana armonica singola, polarizzazione lineare, vuoto. E_eff efficace e B₀ picco espliciti; relazione intensità fornita per il modello appropriato. c ed ε₀ approssimati dichiarati, nessuna deduzione sulla frequenza non fornita."
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "Velocità c/√2 e intensità circa 1,19 W/m².",
+        "feedback": "Il rapporto E_eff/B₀ mescola efficace e picco, quindi non misura la velocità. Inoltre 1,19 W/m² conserva impropriamente il fattore 1/2 dopo aver usato il campo efficace. Converti entrambe le ampiezze alla stessa convenzione prima del confronto."
+      },
+      {
+        "id": "B",
+        "text": "Velocità c e intensità circa 2,39 W/m²; le letture sono compatibili.",
+        "feedback": "E₀=30√2 V/m e B₀=√2·10⁻⁷ T danno E₀/B₀=c. Per l’intensità si può usare direttamente ε₀cE_eff²: il fattore 1/2 è già compensato dal passaggio da picco a valore efficace."
+      },
+      {
+        "id": "C",
+        "text": "Velocità c e intensità circa 1,19 W/m².",
+        "feedback": "La velocità è corretta, ma l’intensità è dimezzata. Nella formula con 1/2 compare E₀, non E_eff. Sostituendo E₀²=2E_eff² quel 1/2 si cancella."
+      },
+      {
+        "id": "D",
+        "text": "Le letture sono incompatibili con il vuoto, perché E_eff/B₀ è diverso da c.",
+        "feedback": "La relazione E/B=c richiede ampiezze confrontabili. Usando E₀/B₀ oppure E_eff/B_eff si ottiene c. La differenza del rapporto misto è prevista dalle definizioni degli strumenti, senza richiedere un errore di calibrazione."
+      },
+      {
+        "id": "E",
+        "text": "Velocità √2c e intensità circa 4,78 W/m².",
+        "feedback": "Nessuno dei due risultati segue dalle conversioni assegnate. Per passare da efficace a picco si moltiplica per √2, non per 2; inoltre usare E₀ nella formula ε₀cE_eff² conta due volte la conversione energetica. Il confronto omogeneo dei campi restituisce c."
+      }
+    ],
+    "correctChoice": "B"
   }
 ]

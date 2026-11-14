@@ -1,0 +1,25 @@
+# Revisione indipendente della demo con cinque quiz
+
+Esito: nessun difetto P1/P2 individuato nel delta letto. La ricevuta riguarda il codice scritto dal root e la corrispondenza dei testi, non una nuova approvazione scientifica dei tre quiz del gruppo A di cui sono autore. I record scientifici restano DRAFT con approvazione umana pendente e con la precedente revisione incrociata.
+
+Base e HEAD osservata: `dd98a8c366a46e493ae4a8ba9de7d7b4311d1006`; alla prima osservazione il candidato era il working tree modificato. Tutti i 17 SHA256 sono stati poi confrontati anche con il commit `e2f9236b1eb2106ab4980768be8f24fee2dd5f48` e coincidono; il working tree risulta pulito. `observedHead` è conservato come dato storico e `verifiedCommit` identifica la ricevuta finale.
+
+## Evidenze eseguite
+
+Ho confrontato con un parser HTML indipendente tutte le cinque pagine con `original-problems.json`, `courses.json` e il manifest: cinque titoli, unità e prompt, venticinque alternative e feedback, cinque soluzioni complete ed esiti coincidono con la fonte. Le venticinque alternative e le cinque soluzioni partono chiuse; i sommari non contengono esiti, attributi o stili riservati alla scelta corretta. L'unità del quiz è dichiarata anche quando differisce dalla lezione dimostrativa.
+
+Le sezioni delle lezioni preesistenti, dei problemi svolti, dei programmi e delle offerte sono conservate byte per byte rispetto alla base in ciascuna pagina; anche il testo dei footer è identico. Tutti e tre gli hash delle fonti nel manifest corrispondono. Il diff delle fonti editoriali, dei pacchetti generati, degli ambiti server/remote-client/auth, dello script Poiseuille e del generatore del laboratorio di interferenza è vuoto.
+
+Nel generatore, prompt, alternative, feedback, soluzione, titolo e unità attraversano l'escape HTML; l'identificatore del gruppo è sottoposto a escape e `data-choice` deriva dalla validazione rigorosa A–E. Nessuno script, form, input o event handler è inserito nel nuovo quiz. Ogni alternativa usa lo stesso stile e un `summary` nativo, con focus visibile e target minimo definito dal CSS. Il confronto è l'apertura esplicita del feedback; lo svolgimento è un controllo distinto. Non vengono introdotte scritture Core, memorie browser, invii o logica di valutazione. Il collegamento iniziale raggiunge il quiz; i contatti precedenti rimangono invariati. L’intestazione usa ora il collegamento relativo all’indice «Esplora i percorsi →» al posto di «Accedi al tuo spazio →» verso `/`, che da file offline avrebbe aperto la radice del filesystem. Non cambia alcun codice di autenticazione.
+
+## Prove lette e limiti
+
+Ho letto la prova browser estesa: cinque quiz per cinque alternative su 390, 820 e 1440 px; controllo dei testi esatti, stato chiuso iniziale, Enter e chiusura, una sola alternativa aperta in Chromium, soluzione separata, target di almeno 44 px, overflow, localStorage/sessionStorage, cookie, richieste esterne/API ed errori nelle sessioni principali. Tutti i quiz vengono ripetuti con JavaScript disabilitato. Nel delta finale è inoltre presente un contesto `offline: true`, senza JavaScript, a 390 px: apre via `file://` i cinque HTML distribuiti, verifica venticinque feedback e il ritorno all’indice relativo, e richiede zero tentativi di rete HTTP(S). Lo storage su origine file non viene letto, per la sua semantica non uniforme; il controllo dello storage rimane attivo per tutti i quiz su HTTP. Rimangono i controlli dei due laboratori e l'ispezione del collegamento WhatsApp senza invio.
+
+Non ho eseguito il browser o il generatore: le asserzioni lette non sono un PASS runtime. Nel contesto senza JavaScript il helper controlla lo storage ma non aggiunge separatamente listener di rete/errori o un controllo dei cookie; questi sono presenti nei tre viewport principali. Non sono attestati Safari/Firefox, touch fisico/iPad, screen reader, accessibilità integrale o una prova browser esplicitamente offline. Il CSS e i controlli nativi sono compatibili con lo scopo previsto, senza trasformare questa lettura in un collaudo di tutti i dispositivi.
+
+La documentazione `guided-demo.md` esplicita il fallback di `details[name]`: nei browser che non supportano l'esclusione possono restare aperti più feedback. L'affermazione offline è limitata ai file statici già disponibili, non a installazione, precaching o autenticazione offline. Risposte e soluzioni sono nel sorgente HTML: nessuna segretezza d'esame viene attestata. La demo è distinta dal widget autenticato e dal tracciamento degli aiuti nel Core. Nessuna pubblicazione, prenotazione, vendita, contatto inviato o approvazione umana è stata effettuata in questa revisione.
+
+## Ricevuta
+
+SHA256 e risultati per pagina: `/tmp/ardesia-demo-guided-review.json`. Le sole scritture del revisore sono i due reperti in `/tmp`; nessuna sorgente condivisa modificata. Il test offline, il collegamento relativo su tutte e sei le pagine e la documentazione aggiornata sono stati riletti nella revisione finale. Non sono emersi ulteriori P1/P2.

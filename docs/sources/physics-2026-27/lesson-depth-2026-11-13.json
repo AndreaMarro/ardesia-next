@@ -1,0 +1,1067 @@
+{
+  "kind": "physics-lesson-depth",
+  "date": "2026-11-13",
+  "baselineCommit": "22e06d9936008fc4e4bd1d4d64ba402d74cd2b5a",
+  "status": "DRAFT",
+  "humanApproval": false,
+  "units": [
+    {
+      "unitId": "sf-2026-u1-01",
+      "baselineExplanationSha256": "fc5e524669af55fe1b26eaa4f3e365496d5f1ccf47e9ec4cbe3efc104710a00c",
+      "additionSha256": "6bcc1a2919c67d41dcc18f98e824d50ee3c8735ec2d1d7c025b2923433414c74",
+      "explanationSha256": "d3c4a97e41fca3d184ccd99eaaf875369ed88c2fafae49401cf1defbacdb9db2",
+      "addedCharacters": 3004,
+      "finalCharacters": 4552,
+      "numericalChecks": [
+        {
+          "label": "massa netta in grammi",
+          "expression": "2.34e-3-2.09e-3",
+          "expected": 0.00025,
+          "tolerance": 1e-18,
+          "actual": 0.0002500000000000002,
+          "passed": true
+        },
+        {
+          "label": "numero granuli",
+          "expression": "(2.34e-3-2.09e-3)/5e-8",
+          "expected": 5000,
+          "tolerance": 1e-09,
+          "actual": 5000.000000000005,
+          "passed": true
+        },
+        {
+          "label": "ricostruzione massa lorda",
+          "expression": "5000*5e-8+2.09e-3",
+          "expected": 0.00234,
+          "tolerance": 1e-18,
+          "actual": 0.00234,
+          "passed": true
+        }
+      ],
+      "scopeNotes": "Testo originale DRAFT. Sottrazione con stessa scala e rapporto; nessuna propagazione quantitativa delle incertezze richiesta. Numeri diversi dalle verifiche finali."
+    },
+    {
+      "unitId": "sf-2026-u1-02",
+      "baselineExplanationSha256": "1197b76e0c29162ed75bca294e9d473e8186758ce9e5863837403c2024d88bd4",
+      "additionSha256": "aaae6694069c9eca7718ba0885cd5c261ebfaf19b13bf5bcb95062d7d35ba0f4",
+      "explanationSha256": "96562a087159e0cf6d35218956051fde4dce1289b5e73f8831218698b8bd1174",
+      "addedCharacters": 3149,
+      "finalCharacters": 4777,
+      "numericalChecks": [
+        {
+          "label": "volume µm³",
+          "expression": "60*40*25",
+          "expected": 60000,
+          "tolerance": 0,
+          "actual": 60000,
+          "passed": true
+        },
+        {
+          "label": "volume m³",
+          "expression": "60e-6*40e-6*25e-6",
+          "expected": 6e-14,
+          "tolerance": 1e-27,
+          "actual": 6.000000000000001e-14,
+          "passed": true
+        },
+        {
+          "label": "massa kg",
+          "expression": "66*1e-12",
+          "expected": 6.6e-11,
+          "tolerance": 1e-24,
+          "actual": 6.6e-11,
+          "passed": true
+        },
+        {
+          "label": "densità SI",
+          "expression": "66e-12/(60e-6*40e-6*25e-6)",
+          "expected": 1100,
+          "tolerance": 1e-09,
+          "actual": 1100.0,
+          "passed": true
+        },
+        {
+          "label": "densità g/cm³",
+          "expression": "6.6e-8/6e-8",
+          "expected": 1.1,
+          "tolerance": 1e-14,
+          "actual": 1.1,
+          "passed": true
+        }
+      ],
+      "scopeNotes": "Testo originale DRAFT. Geometria sintetica e densità omogenea, non modello clinico. Uso esplicito di volumi additivi soltanto quando dichiarato."
+    },
+    {
+      "unitId": "sf-2026-u1-03",
+      "baselineExplanationSha256": "f494af1371314deddc2f4e2362c9485efb14ba4b3c03bfa9131638780d15ea2d",
+      "additionSha256": "4db88ea66cef3f90933458828c806e613a5f6946e127114c761324931507386e",
+      "explanationSha256": "208f0c8373b0a81f0e82fd23575c41b13c164f14bc0c53cc6b12f60c93860434",
+      "addedCharacters": 3309,
+      "finalCharacters": 4649,
+      "numericalChecks": [
+        {
+          "label": "componente orizzontale N",
+          "expression": "-20*0.5",
+          "expected": -10,
+          "tolerance": 0,
+          "actual": -10.0,
+          "passed": true
+        },
+        {
+          "label": "componente verticale N",
+          "expression": "20*(3**0.5)/2",
+          "expected": 17.32050807568877,
+          "tolerance": 1e-12,
+          "actual": 17.32050807568877,
+          "passed": true
+        },
+        {
+          "label": "modulo N",
+          "expression": "((-10)**2+(20*(3**0.5)/2)**2)**0.5",
+          "expected": 20,
+          "tolerance": 1e-12,
+          "actual": 20.0,
+          "passed": true
+        },
+        {
+          "label": "tensione per fune N",
+          "expression": "15/(2*(3**0.5)/2)",
+          "expected": 8.660254037844387,
+          "tolerance": 1e-12,
+          "actual": 8.660254037844387,
+          "passed": true
+        },
+        {
+          "label": "somma verticale N",
+          "expression": "2*(5*(3**0.5))*((3**0.5)/2)",
+          "expected": 15,
+          "tolerance": 1e-12,
+          "actual": 14.999999999999998,
+          "passed": true
+        }
+      ],
+      "scopeNotes": "Testo originale DRAFT. Funi ideali in equilibrio; trigonometria applicata a componenti con angolo dalla verticale. Nessuna domanda finale copiata."
+    },
+    {
+      "unitId": "sf-2026-u1-04",
+      "baselineExplanationSha256": "4e4842b3a00de1a22c0b1638b4bd991d18b6a9fc7bda52393a2fcf51cde1ca11",
+      "additionSha256": "a64a12d48fd7ee723ed59b0f67e21450b20709cd883b2ac613e543889eb5fc5f",
+      "explanationSha256": "b1eb58fb24ef6f2ae2a41597807c305b03f0265fdc0d296adab27a6eb7306686",
+      "addedCharacters": 3315,
+      "finalCharacters": 5047,
+      "numericalChecks": [
+        {
+          "label": "spostamento risultante mm",
+          "expression": "(5**2+3**2)**0.5",
+          "expected": 5.830951894845301,
+          "tolerance": 1e-12,
+          "actual": 5.830951894845301,
+          "passed": true
+        },
+        {
+          "label": "cammino mm",
+          "expression": "40**0.5+26**0.5",
+          "expected": 11.423574833929164,
+          "tolerance": 1e-12,
+          "actual": 11.423574833929543,
+          "passed": true
+        },
+        {
+          "label": "prodotto scalare mm²",
+          "expression": "6*(-1)+(-2)*5",
+          "expected": -16,
+          "tolerance": 0,
+          "actual": -16,
+          "passed": true
+        },
+        {
+          "label": "prodotto vettoriale mm²",
+          "expression": "6*5-(-2)*(-1)",
+          "expected": 28,
+          "tolerance": 0,
+          "actual": 28,
+          "passed": true
+        },
+        {
+          "label": "identità geometrica",
+          "expression": "(-16)**2+28**2-40*26",
+          "expected": 0,
+          "tolerance": 0,
+          "actual": 0,
+          "passed": true
+        },
+        {
+          "label": "lavoro J",
+          "expression": "1.2*.003-.4*.004",
+          "expected": 0.002,
+          "tolerance": 1e-15,
+          "actual": 0.002,
+          "passed": true
+        },
+        {
+          "label": "momento N m",
+          "expression": ".03*(-.4)-.04*1.2",
+          "expected": -0.06,
+          "tolerance": 1e-15,
+          "actual": -0.06,
+          "passed": true
+        }
+      ],
+      "scopeNotes": "Testo originale DRAFT. Segmenti rettilinei, assi fissi, forza costante. Prodotti geometrici separati da interpretazione energetica/rotazionale."
+    },
+    {
+      "unitId": "sf-2026-u2-01",
+      "baselineExplanationSha256": "f673ab85c9e99eba2000212c4a6ec1ec59cc5192e6509adcfc12190afe27ada6",
+      "additionSha256": "22a8b488637010384862c1b6401aa48132f2b48b3ec56f7b91e77471ebf4e7bd",
+      "explanationSha256": "b685c3eeaa5619fba2acd257448011c4b130b0d61e527e861d728e0445fb5f71",
+      "addedCharacters": 3412,
+      "finalCharacters": 5309,
+      "numericalChecks": [
+        {
+          "label": "velocità dopo accelerazione",
+          "expression": ".5+1.5*2",
+          "expected": 3.5,
+          "tolerance": 0,
+          "actual": 3.5,
+          "passed": true
+        },
+        {
+          "label": "primo tratto m",
+          "expression": ".5*2+.5*1.5*2**2",
+          "expected": 4,
+          "tolerance": 0,
+          "actual": 4.0,
+          "passed": true
+        },
+        {
+          "label": "tempo frenata s",
+          "expression": "(0-3.5)/(-1.75)",
+          "expected": 2,
+          "tolerance": 0,
+          "actual": 2.0,
+          "passed": true
+        },
+        {
+          "label": "spazio totale m",
+          "expression": "4+3.5*3+3.5*2/2",
+          "expected": 18,
+          "tolerance": 0,
+          "actual": 18.0,
+          "passed": true
+        },
+        {
+          "label": "velocità media m/s",
+          "expression": "18/7",
+          "expected": 2.5714285714285716,
+          "tolerance": 1e-14,
+          "actual": 2.5714285714285716,
+          "passed": true
+        },
+        {
+          "label": "identità frenata",
+          "expression": "0-3.5**2-2*(-1.75)*3.5",
+          "expected": 0,
+          "tolerance": 0,
+          "actual": 0.0,
+          "passed": true
+        },
+        {
+          "label": "quota massima m",
+          "expression": "4*.4-5*.4**2",
+          "expected": 0.8,
+          "tolerance": 1e-14,
+          "actual": 0.7999999999999999,
+          "passed": true
+        },
+        {
+          "label": "gittata m",
+          "expression": "3*(2*4/10)",
+          "expected": 2.4,
+          "tolerance": 1e-14,
+          "actual": 2.4000000000000004,
+          "passed": true
+        }
+      ],
+      "scopeNotes": "Testo originale DRAFT. Accelerazioni a tratti, lancio senza aria con gravità locale costante; esempi distinti dai prompt finali. Non impiegare formule valide su un tratto oltre il suo termine."
+    },
+    {
+      "unitId": "sf-2026-u2-02",
+      "baselineExplanationSha256": "8d9e4a9e40d36265304637c787e88669fdf74b6b216b79b4dbdf8965454a11a2",
+      "additionSha256": "cefe57e3e854c8ad0a0db235fdf659e3ae764a179c6e910c69514c9022ae9ce4",
+      "explanationSha256": "efc29d3dc3a05f5275f52bcc4a508fdfb264d29f7cbf0f55c0ae2fff14da08ff",
+      "addedCharacters": 3545,
+      "finalCharacters": 5473,
+      "numericalChecks": [
+        {
+          "label": "componente orizzontale N",
+          "expression": "20*(3**.5)/2",
+          "expected": 17.32050807568877,
+          "tolerance": 1e-12,
+          "actual": 17.32050807568877,
+          "passed": true
+        },
+        {
+          "label": "normale N",
+          "expression": "4*10-20*.5",
+          "expected": 30,
+          "tolerance": 0,
+          "actual": 30.0,
+          "passed": true
+        },
+        {
+          "label": "limite attrito statico N",
+          "expression": ".4*30",
+          "expected": 12,
+          "tolerance": 1e-14,
+          "actual": 12.0,
+          "passed": true
+        },
+        {
+          "label": "attrito dinamico N",
+          "expression": ".25*30",
+          "expected": 7.5,
+          "tolerance": 0,
+          "actual": 7.5,
+          "passed": true
+        },
+        {
+          "label": "accelerazione orizzontale m/s²",
+          "expression": "(10*(3**.5)-7.5)/4",
+          "expected": 2.455127018922193,
+          "tolerance": 1e-12,
+          "actual": 2.4551270189221928,
+          "passed": true
+        },
+        {
+          "label": "ricostruzione risultante N",
+          "expression": "4*((10*(3**.5)-7.5)/4)+7.5",
+          "expected": 17.32050807568877,
+          "tolerance": 1e-12,
+          "actual": 17.32050807568877,
+          "passed": true
+        }
+      ],
+      "scopeNotes": "Testo originale DRAFT. Piano e fune ideali, blocco rigido, attrito di Coulomb con coefficienti assegnati, forza costante. Verifica esplicita della transizione statico/dinamico e del contatto."
+    },
+    {
+      "unitId": "sf-2026-u2-03",
+      "baselineExplanationSha256": "49133ccdbd860fe008162970d5f3840cdf258826e8164fafb37f9b2d048c066f",
+      "additionSha256": "80d0e8f00e3ac33a708f1a0e980d00e16e608d1ee1204659686b40631cff724d",
+      "explanationSha256": "3c58d64f4aae454279623358801364e9f48438f9a42753c4cefdf9f2f82cb967",
+      "addedCharacters": 3545,
+      "finalCharacters": 5250,
+      "numericalChecks": [
+        {
+          "label": "energia elastica iniziale J",
+          "expression": ".5*200*.1**2",
+          "expected": 1,
+          "tolerance": 1e-14,
+          "actual": 1.0000000000000002,
+          "passed": true
+        },
+        {
+          "label": "forza attrito N",
+          "expression": ".2*.5*10",
+          "expected": 1,
+          "tolerance": 1e-14,
+          "actual": 1.0,
+          "passed": true
+        },
+        {
+          "label": "energia cinetica finale J",
+          "expression": ".5*200*.1**2-(.2*.5*10)*.3",
+          "expected": 0.7,
+          "tolerance": 1e-14,
+          "actual": 0.7000000000000002,
+          "passed": true
+        },
+        {
+          "label": "velocità finale m/s",
+          "expression": "(2*.7/.5)**.5",
+          "expected": 1.6733200530681511,
+          "tolerance": 1e-12,
+          "actual": 1.6733200530681511,
+          "passed": true
+        },
+        {
+          "label": "controllo due tappe J",
+          "expression": "(1-.1)-.2",
+          "expected": 0.7,
+          "tolerance": 1e-14,
+          "actual": 0.7,
+          "passed": true
+        },
+        {
+          "label": "velocità senza attrito m/s",
+          "expression": "(2*1/.5)**.5",
+          "expected": 2,
+          "tolerance": 0,
+          "actual": 2.0,
+          "passed": true
+        },
+        {
+          "label": "spazio arresto m",
+          "expression": "1/(.2*.5*10)",
+          "expected": 1,
+          "tolerance": 1e-14,
+          "actual": 1.0,
+          "passed": true
+        }
+      ],
+      "scopeNotes": "Testo originale DRAFT. Molla a contatto unilaterale, moto orizzontale, attrito dinamico costante; soglia statica dichiarata superata. Non pretende inferenza termica o clinica."
+    },
+    {
+      "unitId": "sf-2026-u2-04",
+      "baselineExplanationSha256": "f9008b6b5aed6f1e78432e6f22136f82d981cf84da11ce92db5712043693ed88",
+      "additionSha256": "2e08392340c5d378c78fc6c90d9be20a9ade6938dfcbdb3a8719b8df1c28396e",
+      "explanationSha256": "930811bce84c5a40756ed7a960061d8fa1a317d17cd286d5a5861be6611f527c",
+      "addedCharacters": 3437,
+      "finalCharacters": 5075,
+      "numericalChecks": [
+        {
+          "label": "impulso triangolare N s",
+          "expression": ".5*.060*120",
+          "expected": 3.6,
+          "tolerance": 1e-14,
+          "actual": 3.5999999999999996,
+          "passed": true
+        },
+        {
+          "label": "quantità moto finale kg m/s",
+          "expression": ".60*(-4)+.5*.060*120",
+          "expected": 1.2,
+          "tolerance": 1e-14,
+          "actual": 1.1999999999999997,
+          "passed": true
+        },
+        {
+          "label": "velocità finale m/s",
+          "expression": "(.60*(-4)+.5*.060*120)/.60",
+          "expected": 2,
+          "tolerance": 1e-14,
+          "actual": 1.9999999999999996,
+          "passed": true
+        },
+        {
+          "label": "forza media N",
+          "expression": "3.6/.060",
+          "expected": 60,
+          "tolerance": 1e-12,
+          "actual": 60.00000000000001,
+          "passed": true
+        },
+        {
+          "label": "lavoro totale J",
+          "expression": ".5*.6*2**2-.5*.6*4**2",
+          "expected": -3.6,
+          "tolerance": 1e-14,
+          "actual": -3.5999999999999996,
+          "passed": true
+        },
+        {
+          "label": "picco allungando impulso N",
+          "expression": "2*3.6/.120",
+          "expected": 60,
+          "tolerance": 1e-12,
+          "actual": 60.00000000000001,
+          "passed": true
+        },
+        {
+          "label": "seconda velocità separazione m/s",
+          "expression": "(1-.4*(-2))/.6",
+          "expected": 3,
+          "tolerance": 1e-14,
+          "actual": 3.0,
+          "passed": true
+        },
+        {
+          "label": "aumento K separazione J",
+          "expression": ".5*.4*2**2+.5*.6*3**2-.5*(.4+.6)*1**2",
+          "expected": 3,
+          "tolerance": 1e-14,
+          "actual": 3.0,
+          "passed": true
+        }
+      ],
+      "scopeNotes": "Testo originale DRAFT. Impulso di una risultante con forma temporale dichiarata; separazione con energia interna. Nessuna inferenza sanitaria dal picco di forza."
+    },
+    {
+      "unitId": "sf-2026-u2-05",
+      "baselineExplanationSha256": "b791140f96444948f3cd7e700d96793198b214432bda3d85b1a291cbbee48a14",
+      "additionSha256": "6a47e0c90a29ffc2241849588a475dc7b2b1bf8b06b93d328acf222efa2255be",
+      "explanationSha256": "54a8d9d014c53d205cf0441eae19c858f278863e64a21773484a773024cb60c6",
+      "addedCharacters": 3836,
+      "finalCharacters": 5588,
+      "numericalChecks": [
+        {
+          "label": "momento pesi N m",
+          "expression": "20*.15+30*.35",
+          "expected": 13.5,
+          "tolerance": 1e-14,
+          "actual": 13.5,
+          "passed": true
+        },
+        {
+          "label": "braccio tendine m",
+          "expression": ".05*.5",
+          "expected": 0.025,
+          "tolerance": 1e-15,
+          "actual": 0.025,
+          "passed": true
+        },
+        {
+          "label": "tensione N",
+          "expression": "(20*.15+30*.35)/(.05*.5)",
+          "expected": 540,
+          "tolerance": 1e-12,
+          "actual": 540.0,
+          "passed": true
+        },
+        {
+          "label": "reazione verticale N",
+          "expression": "20+30-540*.5",
+          "expected": -220,
+          "tolerance": 0,
+          "actual": -220.0,
+          "passed": true
+        },
+        {
+          "label": "reazione orizzontale N",
+          "expression": "540*(3**.5)/2",
+          "expected": 467.6537180435969,
+          "tolerance": 1e-10,
+          "actual": 467.6537180435968,
+          "passed": true
+        },
+        {
+          "label": "momenti rispetto mano N m",
+          "expression": "(-.35)*(-220)+(-.30)*270+(-.20)*(-20)",
+          "expected": 0,
+          "tolerance": 1e-12,
+          "actual": 0.0,
+          "passed": true
+        },
+        {
+          "label": "centro peso equivalente m",
+          "expression": "(20*.15+30*.35)/(20+30)",
+          "expected": 0.27,
+          "tolerance": 1e-15,
+          "actual": 0.27,
+          "passed": true
+        }
+      ],
+      "scopeNotes": "Testo originale DRAFT. Barra rigida e forze coplanari, gravità uniforme, tendine singolo idealizzato. Angolo e direzione del tendine espliciti. Nessuna validazione biomeccanica o clinica."
+    },
+    {
+      "unitId": "sf-2026-u6-01",
+      "baselineExplanationSha256": "cdb887440f12ca0a143ba0dd01448f8f21d8032119c8461ccd25e437cf93655d",
+      "additionSha256": "aa107e94a9aa477f27ddd5cfa223726581c1088cd9708e7b6978e0624a52bf48",
+      "explanationSha256": "1e15ce3e0356d0acf9c91868300c7007f7f88ffeced8c0fb5052dd93db9b2e18",
+      "addedCharacters": 3217,
+      "finalCharacters": 4859,
+      "numericalChecks": [
+        {
+          "label": "campo sorgente positiva, N/C",
+          "expression": "9e9*4e-9/(0.1**2)",
+          "expected": 3600,
+          "tolerance": 1e-09,
+          "actual": 3599.999999999999,
+          "passed": true
+        },
+        {
+          "label": "campo sorgente negativa, modulo N/C",
+          "expression": "9e9*1e-9/(0.2**2)",
+          "expected": 225,
+          "tolerance": 1e-10,
+          "actual": 224.99999999999994,
+          "passed": true
+        },
+        {
+          "label": "campo totale componente x, N/C",
+          "expression": "3600+225",
+          "expected": 3825,
+          "tolerance": 1e-10,
+          "actual": 3825,
+          "passed": true
+        },
+        {
+          "label": "forza iniziale componente x, N",
+          "expression": "(-2e-9)*3825",
+          "expected": -7.65e-06,
+          "tolerance": 1e-16,
+          "actual": -7.650000000000001e-06,
+          "passed": true
+        },
+        {
+          "label": "accelerazione iniziale componente x, m/s2",
+          "expression": "(-7.65e-6)/(3e-6)",
+          "expected": -2.55,
+          "tolerance": 1e-12,
+          "actual": -2.55,
+          "passed": true
+        },
+        {
+          "label": "rapporto dei campi",
+          "expression": "3600/225",
+          "expected": 16,
+          "tolerance": 1e-12,
+          "actual": 16.0,
+          "passed": true
+        }
+      ],
+      "scopeNotes": "DRAFT originale. Elettrostatica nel vuoto; sorgenti fisse; accelerazione solo iniziale nel campo non uniforme. Nessun esperimento fisico o validazione umana dichiarati."
+    },
+    {
+      "unitId": "sf-2026-u6-02",
+      "baselineExplanationSha256": "41753a889abf2d21ba2612be479a526ccc220a838e1b0c962abd0c792993c5ff",
+      "additionSha256": "3a6a43bf89d460ec734913791f4e4952bdef973c2db9f149a5e1f39e5da0e30d",
+      "explanationSha256": "5a241a13ab32da6db720bea143e5e6240e98b5b1978baf798cd472daf8086f76",
+      "addedCharacters": 3248,
+      "finalCharacters": 4698,
+      "numericalChecks": [
+        {
+          "label": "differenza di potenziale B-A, V",
+          "expression": "75-30",
+          "expected": 45,
+          "tolerance": 1e-12,
+          "actual": 45,
+          "passed": true
+        },
+        {
+          "label": "variazione energia potenziale, J",
+          "expression": "(-4e-9)*(75-30)",
+          "expected": -1.8e-07,
+          "tolerance": 1e-18,
+          "actual": -1.8000000000000002e-07,
+          "passed": true
+        },
+        {
+          "label": "energia cinetica finale, J",
+          "expression": "60e-9-(-180e-9)",
+          "expected": 2.4e-07,
+          "tolerance": 1e-18,
+          "actual": 2.4e-07,
+          "passed": true
+        },
+        {
+          "label": "rapporto velocita finali",
+          "expression": "(240/60)**0.5",
+          "expected": 2,
+          "tolerance": 1e-12,
+          "actual": 2.0,
+          "passed": true
+        },
+        {
+          "label": "velocita finale, m/s",
+          "expression": "(2*240e-9/(2e-12))**0.5",
+          "expected": 489.89794855663564,
+          "tolerance": 1e-09,
+          "actual": 489.8979485566356,
+          "passed": true
+        },
+        {
+          "label": "energia totale iniziale, J",
+          "expression": "60e-9+(-4e-9)*30",
+          "expected": -6e-08,
+          "tolerance": 1e-18,
+          "actual": -6.000000000000002e-08,
+          "passed": true
+        },
+        {
+          "label": "energia totale finale, J",
+          "expression": "240e-9+(-4e-9)*75",
+          "expected": -6e-08,
+          "tolerance": 1e-18,
+          "actual": -6.000000000000006e-08,
+          "passed": true
+        }
+      ],
+      "scopeNotes": "DRAFT originale. Unità SI e riferimenti dichiarati; accessibilità del percorso assunta, non dedotta dai soli potenziali. Scenario quasistatico distinto dal moto libero. Nessuna validazione umana dichiarata."
+    },
+    {
+      "unitId": "sf-2026-u6-03",
+      "baselineExplanationSha256": "5a978827e4b7c8683d86fdf43a6fcccfaaa59c26a1a3fd2c520fbc0122cb0d12",
+      "additionSha256": "01bdf79ae71707040f64fe88aa15f71d8f44aa30241d1827f5ee4d16335ebf30",
+      "explanationSha256": "347164affebe7e77be396bc9147982724d642e47b86ba553c7ea6e18a37389e7",
+      "addedCharacters": 4061,
+      "finalCharacters": 5782,
+      "numericalChecks": [
+        {
+          "label": "numero netto elettroni rimossi",
+          "expression": "6.4e-9/(1.6e-19)",
+          "expected": 40000000000.0,
+          "tolerance": 0.001,
+          "actual": 40000000000.0,
+          "passed": true
+        },
+        {
+          "label": "carica positiva ricostruita, C",
+          "expression": "4e10*1.6e-19",
+          "expected": 6.4e-09,
+          "tolerance": 1e-20,
+          "actual": 6.399999999999999e-09,
+          "passed": true
+        },
+        {
+          "label": "bilancio sfera e terra, C",
+          "expression": "6.4e-9+(-6.4e-9)",
+          "expected": 0,
+          "tolerance": 1e-20,
+          "actual": 0.0,
+          "passed": true
+        }
+      ],
+      "scopeNotes": "DRAFT originale. La carica finale è dato assegnato, non predizione quantitativa della geometria di induzione. Conteggio con e arrotondato dichiarato. Polarizzazione descritta nel modello ideale di lastra uniforme; nessuna generalizzazione a conduzione o breakdown."
+    },
+    {
+      "unitId": "sf-2026-u6-04",
+      "baselineExplanationSha256": "6a246c08b091a1df6022fc418a20072578ef999d4f373915d5a50133661021bd",
+      "additionSha256": "1792a6807e3552058978c5ea9de3ffb98526b48a781a77644285702a1a174392",
+      "explanationSha256": "7259831d2dee3e3660a53c5ad671a8ace6b674fb918e88ddbeaaadaa1b237cf4",
+      "addedCharacters": 3520,
+      "finalCharacters": 5407,
+      "numericalChecks": [
+        {
+          "label": "parallelo, ohm",
+          "expression": "1/(1/30+1/60)",
+          "expected": 20,
+          "tolerance": 1e-12,
+          "actual": 20.0,
+          "passed": true
+        },
+        {
+          "label": "corrente totale, A",
+          "expression": "15/(10+20)",
+          "expected": 0.5,
+          "tolerance": 1e-12,
+          "actual": 0.5,
+          "passed": true
+        },
+        {
+          "label": "tensione parallelo, V",
+          "expression": "15-0.5*10",
+          "expected": 10,
+          "tolerance": 1e-12,
+          "actual": 10.0,
+          "passed": true
+        },
+        {
+          "label": "corrente primo ramo, A",
+          "expression": "10/30",
+          "expected": 0.3333333333333333,
+          "tolerance": 1e-12,
+          "actual": 0.3333333333333333,
+          "passed": true
+        },
+        {
+          "label": "corrente secondo ramo, A",
+          "expression": "10/60",
+          "expected": 0.16666666666666666,
+          "tolerance": 1e-12,
+          "actual": 0.16666666666666666,
+          "passed": true
+        },
+        {
+          "label": "corrente nodo, A",
+          "expression": "10/30+10/60",
+          "expected": 0.5,
+          "tolerance": 1e-12,
+          "actual": 0.5,
+          "passed": true
+        },
+        {
+          "label": "potenza totale dissipata, W",
+          "expression": "0.5**2*10+10**2/30+10**2/60",
+          "expected": 7.5,
+          "tolerance": 1e-12,
+          "actual": 7.500000000000001,
+          "passed": true
+        },
+        {
+          "label": "energia dissipata, J",
+          "expression": "7.5*45",
+          "expected": 337.5,
+          "tolerance": 1e-10,
+          "actual": 337.5,
+          "passed": true
+        },
+        {
+          "label": "carica trasferita, C",
+          "expression": "0.5*45",
+          "expected": 22.5,
+          "tolerance": 1e-12,
+          "actual": 22.5,
+          "passed": true
+        },
+        {
+          "label": "energia generatore via VQ, J",
+          "expression": "15*22.5",
+          "expected": 337.5,
+          "tolerance": 1e-10,
+          "actual": 337.5,
+          "passed": true
+        }
+      ],
+      "scopeNotes": "DRAFT originale. Circuito ideale in regime stazionario; nessuna resistenza interna, variazione termica o transitorio. Valori esatti nel modello, arrotondamenti solo illustrativi nelle potenze dei rami."
+    },
+    {
+      "unitId": "sf-2026-u6-05",
+      "baselineExplanationSha256": "e4c3a088a3a8de8cea76607c0496c1598488a7f91f1a7c550bd479d1f79a6f64",
+      "additionSha256": "0b0326a741fb69b8fbd9f156ec50a46859e1b07fed06e52075f84af762fa14be",
+      "explanationSha256": "b47e7d8fc23a1123bb8b7b4e0ce637f58ac5e69b353c2b6cb879c3b61d28ba5a",
+      "addedCharacters": 3529,
+      "finalCharacters": 4996,
+      "numericalChecks": [
+        {
+          "label": "carica iniziale, C",
+          "expression": "6e-9*80",
+          "expected": 4.8e-07,
+          "tolerance": 1e-18,
+          "actual": 4.8e-07,
+          "passed": true
+        },
+        {
+          "label": "energia iniziale, J",
+          "expression": "6e-9*80**2/2",
+          "expected": 1.92e-05,
+          "tolerance": 1e-16,
+          "actual": 1.92e-05,
+          "passed": true
+        },
+        {
+          "label": "capacita finale, F",
+          "expression": "4*6e-9",
+          "expected": 2.4e-08,
+          "tolerance": 1e-20,
+          "actual": 2.4e-08,
+          "passed": true
+        },
+        {
+          "label": "tensione isolato, V",
+          "expression": "480e-9/(24e-9)",
+          "expected": 20,
+          "tolerance": 1e-12,
+          "actual": 20.0,
+          "passed": true
+        },
+        {
+          "label": "energia isolato, J",
+          "expression": "(480e-9)**2/(2*24e-9)",
+          "expected": 4.8e-06,
+          "tolerance": 1e-16,
+          "actual": 4.799999999999999e-06,
+          "passed": true
+        },
+        {
+          "label": "carica con generatore, C",
+          "expression": "24e-9*80",
+          "expected": 1.92e-06,
+          "tolerance": 1e-18,
+          "actual": 1.92e-06,
+          "passed": true
+        },
+        {
+          "label": "energia con generatore, J",
+          "expression": "24e-9*80**2/2",
+          "expected": 7.68e-05,
+          "tolerance": 1e-16,
+          "actual": 7.68e-05,
+          "passed": true
+        },
+        {
+          "label": "lavoro generatore, J",
+          "expression": "80*(1920e-9-480e-9)",
+          "expected": 0.0001152,
+          "tolerance": 1e-16,
+          "actual": 0.00011519999999999998,
+          "passed": true
+        },
+        {
+          "label": "bilancio lavoro meccanico reversibile, J",
+          "expression": "115.2e-6-(76.8e-6-19.2e-6)",
+          "expected": 5.76e-05,
+          "tolerance": 1e-16,
+          "actual": 5.76e-05,
+          "passed": true
+        },
+        {
+          "label": "capacita serie, F",
+          "expression": "1/(1/(6e-9)+1/(12e-9))",
+          "expected": 4e-09,
+          "tolerance": 1e-20,
+          "actual": 4e-09,
+          "passed": true
+        },
+        {
+          "label": "carica serie, C",
+          "expression": "4e-9*90",
+          "expected": 3.6e-07,
+          "tolerance": 1e-18,
+          "actual": 3.6000000000000005e-07,
+          "passed": true
+        },
+        {
+          "label": "somma tensioni serie, V",
+          "expression": "360e-9/(6e-9)+360e-9/(12e-9)",
+          "expected": 90,
+          "tolerance": 1e-12,
+          "actual": 90.0,
+          "passed": true
+        }
+      ],
+      "scopeNotes": "DRAFT originale. Bilancio meccanico del dielettrico è approfondimento esplicito nel modello lineare quasistatico reversibile; perdite reali non stimate. Nessun transitorio RC. Serie: condensatori inizialmente scarichi, nodo centrale isolato e neutro."
+    },
+    {
+      "unitId": "sf-2026-u6-06",
+      "baselineExplanationSha256": "f94f1e513e78d133cd16a67d89fb51ae50da4f8133f8491c6772b77b065f1895",
+      "additionSha256": "71afd63b0e868f9f0e2fc8b0930cc6920c60b190c9d68555a3d7f5cd1ba18e5d",
+      "explanationSha256": "78a6e15eef4ed0ae64611d8d089738f22df6e0fde670ab1addcd0b8630fe35d6",
+      "addedCharacters": 3486,
+      "finalCharacters": 5037,
+      "numericalChecks": [
+        {
+          "label": "forza Lorentz modulo, N",
+          "expression": "1.6e-19*4e6*0.02",
+          "expected": 1.28e-14,
+          "tolerance": 1e-26,
+          "actual": 1.28e-14,
+          "passed": true
+        },
+        {
+          "label": "raggio elettrone, m",
+          "expression": "9.1e-31*4e6/(1.6e-19*0.02)",
+          "expected": 0.0011375,
+          "tolerance": 1e-15,
+          "actual": 0.0011375,
+          "passed": true
+        },
+        {
+          "label": "energia cinetica, J",
+          "expression": "9.1e-31*(4e6)**2/2",
+          "expected": 7.28e-18,
+          "tolerance": 1e-29,
+          "actual": 7.28e-18,
+          "passed": true
+        },
+        {
+          "label": "controprova centripeta, N",
+          "expression": "9.1e-31*(4e6)**2/(1.1375e-3)",
+          "expected": 1.28e-14,
+          "tolerance": 1e-26,
+          "actual": 1.28e-14,
+          "passed": true
+        },
+        {
+          "label": "raggio campo dimezzato, m",
+          "expression": "9.1e-31*4e6/(1.6e-19*0.01)",
+          "expected": 0.002275,
+          "tolerance": 1e-15,
+          "actual": 0.002275,
+          "passed": true
+        },
+        {
+          "label": "forza sul filo, N",
+          "expression": "0.3*0.12*0.02",
+          "expected": 0.00072,
+          "tolerance": 1e-15,
+          "actual": 0.0007199999999999999,
+          "passed": true
+        }
+      ],
+      "scopeNotes": "DRAFT originale. Elettrone non relativistico in B statico uniforme, v perpendicolare a B; assenza di altre forze e perdite dichiarata. Il secondo esempio sul filo è un sistema differente. Nessuna applicazione clinica o sicurezza strumentale dedotta."
+    },
+    {
+      "unitId": "sf-2026-u6-07",
+      "baselineExplanationSha256": "41eef917d3819d79b4c52b77e123067664279e460a273deea0ee0be84008fb5a",
+      "additionSha256": "9e08766ebe3517a8f42922bceed02e670628cb5d69a728a7ca99ede541014b41",
+      "explanationSha256": "da5121ff5c8bceccb3ed098ec04110f70a75da40883c0426ec1b0a44aad1576b",
+      "addedCharacters": 3561,
+      "finalCharacters": 5097,
+      "numericalChecks": [
+        {
+          "label": "area SI, m2",
+          "expression": "25*1e-4",
+          "expected": 0.0025,
+          "tolerance": 1e-15,
+          "actual": 0.0025,
+          "passed": true
+        },
+        {
+          "label": "flusso iniziale per spira, Wb",
+          "expression": "0.5*0.0025*0.5",
+          "expected": 0.000625,
+          "tolerance": 1e-16,
+          "actual": 0.000625,
+          "passed": true
+        },
+        {
+          "label": "flusso finale per spira, Wb",
+          "expression": "0.1*0.0025*0.5",
+          "expected": 0.000125,
+          "tolerance": 1e-16,
+          "actual": 0.000125,
+          "passed": true
+        },
+        {
+          "label": "variazione flusso per spira, Wb",
+          "expression": "1.25e-4-6.25e-4",
+          "expected": -0.0005,
+          "tolerance": 1e-16,
+          "actual": -0.0005,
+          "passed": true
+        },
+        {
+          "label": "fem media firmata, V",
+          "expression": "-80*(-5e-4)/0.04",
+          "expected": 1,
+          "tolerance": 1e-12,
+          "actual": 1.0,
+          "passed": true
+        },
+        {
+          "label": "corrente resistiva, A",
+          "expression": "1/8",
+          "expected": 0.125,
+          "tolerance": 1e-12,
+          "actual": 0.125,
+          "passed": true
+        },
+        {
+          "label": "potenza dissipata, W",
+          "expression": "0.125**2*8",
+          "expected": 0.125,
+          "tolerance": 1e-12,
+          "actual": 0.125,
+          "passed": true
+        },
+        {
+          "label": "energia dissipata, J",
+          "expression": "0.125**2*8*0.04",
+          "expected": 0.005,
+          "tolerance": 1e-15,
+          "actual": 0.005,
+          "passed": true
+        },
+        {
+          "label": "carica trasferita, C",
+          "expression": "0.125*0.04",
+          "expected": 0.005,
+          "tolerance": 1e-15,
+          "actual": 0.005,
+          "passed": true
+        },
+        {
+          "label": "energia da fem e carica, J",
+          "expression": "1*(0.125*0.04)",
+          "expected": 0.005,
+          "tolerance": 1e-15,
+          "actual": 0.005,
+          "passed": true
+        }
+      ],
+      "scopeNotes": "DRAFT originale. B lineare nel tempo, bobina fissa, angolo60° rispetto alla normale. Modello resistivo con autoinduzione trascurata dichiarato; fem media e istantanea distinte. Convenzione di verso esplicita, energia del sistema generatore non stimata oltre al bilancio."
+    }
+  ],
+  "limits": "Arithmetic and independent AI review do not certify scientific completeness or human approval.",
+  "numericChecks": 110
+}
