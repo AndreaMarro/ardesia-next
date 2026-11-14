@@ -1555,7 +1555,7 @@
     "explanationLocator": "Punti da saper spiegare: U3-01.02",
     "experimentId": "investigation-u3-01",
     "labIds": [
-      "physics-hydrostatic"
+      "physics-pressure"
     ],
     "exerciseIds": [
       "u3-couette-force-03",
@@ -1584,9 +1584,7 @@
     "unitId": "sf-2026-u3-01",
     "explanationLocator": "Punti da saper spiegare: U3-01.03",
     "experimentId": "investigation-u3-01",
-    "labIds": [
-      "physics-hydrostatic"
-    ],
+    "labIds": [],
     "exerciseIds": [
       "u3-couette-force-03",
       "u3-couette-force-09",
@@ -1614,7 +1612,9 @@
     "unitId": "sf-2026-u3-01",
     "explanationLocator": "Punti da saper spiegare: U3-01.04",
     "experimentId": "investigation-u3-01",
-    "labIds": [],
+    "labIds": [
+      "physics-pressure"
+    ],
     "exerciseIds": [
       "u3-couette-force-03",
       "u3-couette-force-09",

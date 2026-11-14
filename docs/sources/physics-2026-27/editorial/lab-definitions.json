@@ -1,0 +1,34 @@
+[
+  {
+    "id": "physics-pressure",
+    "definition": {
+      "format": "ardesia-extension/1",
+      "typeId": "ardesia.physics.pressure",
+      "version": 1,
+      "name": "Pressione nel pistone",
+      "description": "Pistone ideale in equilibrio: forza normale, area e pressione esterna. Risultato del lavoro di una chat Pro. DRAFT; revisione scientifica umana non eseguita.",
+      "license": "Modello originale Ardesia; tutti i diritti riservati. Risultato del lavoro di una chat Pro.",
+      "renderer": "ardesia.composition/1",
+      "body": {
+        "fields": [
+          {"key": "force", "label": "Forza normale", "kind": "number", "initial": 60, "min": 0, "max": 120, "step": 1, "unit": "N"},
+          {"key": "area", "label": "Area del pistone", "kind": "number", "initial": 20, "min": 1, "max": 100, "step": 1, "unit": "cm²"},
+          {"key": "external", "label": "Pressione esterna", "kind": "number", "initial": 100, "min": 0, "max": 120, "step": 1, "unit": "kPa"}
+        ],
+        "nodes": [
+          {"id": "context", "kind": "text", "props": {"text": "Prevedi prima di variare un controllo. Il pistone orizzontale è in equilibrio; la forza normale preme verso il liquido. La pressione interna è uniforme nel modello. Δp = F_n/A e p_ass = p_ext + Δp."}},
+          {"id": "forceInput", "kind": "input", "props": {"field": "force", "appearance": "slider"}},
+          {"id": "areaInput", "kind": "input", "props": {"field": "area", "appearance": "slider"}},
+          {"id": "externalInput", "kind": "input", "props": {"field": "external", "appearance": "slider"}},
+          {"id": "areaSI", "kind": "value", "props": {"label": "Area in unità SI", "expression": "area / 10000", "unit": "m²"}},
+          {"id": "relative", "kind": "value", "props": {"label": "Pressione relativa all’esterno", "expression": "10 * force / area", "unit": "kPa"}},
+          {"id": "absolute", "kind": "value", "props": {"label": "Pressione assoluta", "expression": "external + 10 * force / area", "unit": "kPa"}},
+          {"id": "pressureByArea", "kind": "plot", "props": {"label": "Δp in kPa al variare dell’area in cm², a forza fissata", "expression": "10 * force / a", "variable": "a", "min": 1, "max": 100, "unit": "cm²"}},
+          {"id": "limits", "kind": "text", "props": {"text": "Limiti: pistone guidato senza attrito, peso senza componente lungo l’asse, forza normale compressiva, equilibrio e pressione uniforme. La guida sostiene eventuali componenti laterali. Il modello non descrive moto, attrito, variazioni idrostatiche, densità o deformabilità del recipiente. Per una forza obliqua, calcola prima la componente normale; il controllo non rappresenta il modulo obliquo."}},
+          {"id": "credit", "kind": "text", "props": {"text": "Risultato del lavoro di una chat Pro · DRAFT · revisione umana non eseguita."}}
+        ]
+      },
+      "fallback": "Pressione nel pistone: area in m² = area in cm² / 10000; differenza di pressione in kPa = 10 × forza normale in N / area in cm²; pressione assoluta = pressione esterna + differenza. Pistone ideale in equilibrio, forza compressiva. Risultato del lavoro di una chat Pro. DRAFT."
+    }
+  }
+]

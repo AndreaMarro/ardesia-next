@@ -5,7 +5,7 @@
     "units": 38,
     "objectives": 200,
     "bankSelected": 259,
-    "originalProblems": 38
+    "originalProblems": 39
   },
   "files": [
     {
@@ -24,17 +24,17 @@
     },
     {
       "file": "sf-2026-fluidi.json",
-      "bytes": 603080,
-      "gzipBytes": 93317,
-      "sha256": "3d9d17ac11c5edb1eec82b33c822562abac7acd3588c53bbbe5bcc81e489d9cb",
+      "bytes": 621514,
+      "gzipBytes": 98872,
+      "sha256": "d773595ac10891d3151efa80e1a92c9bfed506714a2391a3cc7d7b5f5084c488",
       "counts": {
         "objectives": 26,
         "practice": 58,
-        "originals": 5,
+        "originals": 6,
         "assessments": 26,
-        "labs": 3
+        "labs": 4
       },
-      "objects": 121
+      "objects": 122
     },
     {
       "file": "sf-2026-termodinamica.json",
@@ -79,7 +79,7 @@
       "objects": 197
     }
   ],
-  "totalRawBytes": 3319746,
-  "totalGzipBytes": 510428,
+  "totalRawBytes": 3338180,
+  "totalGzipBytes": 515983,
   "note": "Static JSON course materials, fetched only on explicit import; not JavaScript. Full data costs shown separately from measured runtime budgets."
 }

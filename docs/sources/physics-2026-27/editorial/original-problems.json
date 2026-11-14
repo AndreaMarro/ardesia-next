@@ -632,5 +632,28 @@
     "noveltyNote": "Un dato privo del segno ammette due configurazioni da ricostruire; la verifica sperimentale e il passaggio attraverso il fuoco impediscono una falsa interpolazione geometrica.",
     "status": "DRAFT",
     "humanApproval": false
+  },
+  {
+    "id": "original-U3-01-pro-transfer-v1",
+    "unitId": "sf-2026-u3-01",
+    "objectiveIds": [
+      "U3-01.02",
+      "U3-01.03",
+      "U3-01.04"
+    ],
+    "title": "Pressione nel pistone: forza obliqua e vincolo inverso",
+    "prompt": "Prova nuova: forza obliqua, riferimento e vincolo inverso\nUn cilindro orizzontale contiene un liquido omogeneo. Il pistone ideale, guidato e senza attrito, ha area 2,4 cm² ed è in equilibrio. Una forza esterna di 36 N lo preme verso il liquido formando 60° con la normale alla faccia; la guida sostiene la componente laterale. Usa cos 60°=1/2. La pressione esterna è 98 kPa. Un campione dello stesso liquido ha massa 46,8 g e volume 52 mL.\n\n1. Disegna il bilancio lungo la normale e calcola pressione relativa e assoluta nel liquido. Spiega perché 36 N diviso l’area non è la differenza di pressione corretta.\n2. Calcola la densità in kg/m³. Unendo un altro campione identico alla stessa temperatura, quali sono massa, volume e densità complessivi? Trascuriamo variazioni di volume e densità nelle condizioni dichiarate.\n3. Un secondo pistone ha area 4,8 cm². Pressione esterna, modulo della forza e angolo restano quelli iniziali. Calcola la nuova pressione relativa e quella assoluta. È corretto dire che entrambe si dimezzano? Motiva senza affidarti soltanto ai numeri.\n4. Sul secondo pistone vogliamo invece ottenere una pressione assoluta di 198 kPa, mantenendo pressione esterna e angolo. Quale modulo deve avere la forza applicata? Dichiara il nuovo vincolo prima di calcolare.",
+    "solution": "Confronto della prova nuova\n1. La forza normale è F_n=36·cos 60°=18 N; l’area è 2,4·10⁻⁴ m². Dal bilancio (p_ass−p_ext)A=F_n segue p_rel=18/(2,4·10⁻⁴)=75000 Pa=75 kPa e p_ass=98+75=173 kPa. Usare 36/A attribuirebbe al liquido anche la componente sostenuta dalla guida. Controllo: (173000−98000)·2,4·10⁻⁴=18 N.\n2. m=0,0468 kg e V=52·10⁻⁶ m³; ρ=m/V=900 kg/m³=0,9 g/mL. Unendo due copie del campione ottieni 93,6 g e 104 mL, quindi la stessa densità. Il controllo 900·52·10⁻⁶=0,0468 kg ricostruisce la massa iniziale.\n3. Sul secondo pistone A=4,8·10⁻⁴ m² e la componente normale resta 18 N. La pressione relativa diventa 37500 Pa=37,5 kPa; quella assoluta è 98+37,5=135,5 kPa. Si dimezza la differenza rispetto all’esterno; il riferimento esterno di 98 kPa rimane uguale. Perciò la pressione assoluta non si dimezza.\n4. Ora è fissata la pressione assoluta richiesta: prima ricava la differenza 198−98=100 kPa. Occorrono F_n=100000·4,8·10⁻⁴=48 N. Poiché F_n=F·1/2, il modulo applicato è F=96 N. Controllo inverso: 98000+(96·1/2)/(4,8·10⁻⁴)=198000 Pa.\n\nCriterio di confronto del ragionamento\nUna risposta completa indica normale e angolo, converte l’area e il volume, distingue pressione relativa e assoluta, riconosce il vincolo cambiato e ricostruisce almeno uno dei dati iniziali. Un numero giusto da solo non mostra tutti questi passaggi. Il confronto è materiale di studio consultabile, non un voto automatico.",
+    "level": "medio",
+    "noveltyNote": "La prova introduce una forza obliqua e la reazione laterale della guida, distingue il riferimento esterno durante la variazione dell’area e cambia il vincolo per ricavare la forza necessaria. Include un controllo separato sulla densità. La novità è relativa all’attività e all’esempio di questa unità.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "source": {
+      "origin": "authored",
+      "revision": "chat-pro-pressure-2026-11-08",
+      "attribution": "Risultato del lavoro di una chat Pro",
+      "comparison": "Applicazione nuova rispetto all’attività e all’esempio di questa unità; confronto sistematico col patrimonio legacy non eseguito",
+      "humanApproval": false
+    }
   }
 ]

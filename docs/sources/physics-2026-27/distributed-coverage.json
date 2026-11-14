@@ -2508,7 +2508,7 @@
     "complete": false,
     "lesson": {
       "documentId": "sf-2026-fluidi-v1:sf-2026-u3-01",
-      "revision": 19
+      "revision": 20
     },
     "practiceObjectIds": [
       "sf-2026-fluidi-v1:sf-2026-u3-01:u3-couette-force-03",
@@ -2533,7 +2533,7 @@
     "explanationLocator": "Punti da saper spiegare: U3-01.02",
     "experimentId": "investigation-u3-01",
     "labIds": [
-      "physics-hydrostatic"
+      "physics-pressure"
     ],
     "exerciseIds": [
       "u3-couette-force-03",
@@ -2554,7 +2554,7 @@
     "complete": false,
     "lesson": {
       "documentId": "sf-2026-fluidi-v1:sf-2026-u3-01",
-      "revision": 19
+      "revision": 20
     },
     "practiceObjectIds": [
       "sf-2026-fluidi-v1:sf-2026-u3-01:u3-couette-force-03",
@@ -2566,7 +2566,8 @@
       "sf-2026-fluidi-v1:sf-2026-u3-01:u3-pressure-area-03"
     ],
     "originalProblemObjectIds": [
-      "sf-2026-fluidi-v1:sf-2026-u3-01:original-20261107-u3-01"
+      "sf-2026-fluidi-v1:sf-2026-u3-01:original-20261107-u3-01",
+      "sf-2026-fluidi-v1:sf-2026-u3-01:original-U3-01-pro-transfer-v1"
     ],
     "assessmentObjectId": "sf-2026-fluidi-v1:sf-2026-u3-01:final-U3-01.02",
     "labObjectIds": [
@@ -2582,9 +2583,7 @@
     "unitId": "sf-2026-u3-01",
     "explanationLocator": "Punti da saper spiegare: U3-01.03",
     "experimentId": "investigation-u3-01",
-    "labIds": [
-      "physics-hydrostatic"
-    ],
+    "labIds": [],
     "exerciseIds": [
       "u3-couette-force-03",
       "u3-couette-force-09",
@@ -2604,7 +2603,7 @@
     "complete": false,
     "lesson": {
       "documentId": "sf-2026-fluidi-v1:sf-2026-u3-01",
-      "revision": 19
+      "revision": 20
     },
     "practiceObjectIds": [
       "sf-2026-fluidi-v1:sf-2026-u3-01:u3-couette-force-03",
@@ -2616,12 +2615,11 @@
       "sf-2026-fluidi-v1:sf-2026-u3-01:u3-pressure-area-03"
     ],
     "originalProblemObjectIds": [
-      "sf-2026-fluidi-v1:sf-2026-u3-01:original-20261107-u3-01"
+      "sf-2026-fluidi-v1:sf-2026-u3-01:original-20261107-u3-01",
+      "sf-2026-fluidi-v1:sf-2026-u3-01:original-U3-01-pro-transfer-v1"
     ],
     "assessmentObjectId": "sf-2026-fluidi-v1:sf-2026-u3-01:final-U3-01.03",
-    "labObjectIds": [
-      "sf-2026-fluidi-v1:sf-2026-u3-01:lab0"
-    ]
+    "labObjectIds": []
   },
   {
     "objectiveId": "U3-01.04",
@@ -2632,7 +2630,9 @@
     "unitId": "sf-2026-u3-01",
     "explanationLocator": "Punti da saper spiegare: U3-01.04",
     "experimentId": "investigation-u3-01",
-    "labIds": [],
+    "labIds": [
+      "physics-pressure"
+    ],
     "exerciseIds": [
       "u3-couette-force-03",
       "u3-couette-force-09",
@@ -2652,7 +2652,7 @@
     "complete": false,
     "lesson": {
       "documentId": "sf-2026-fluidi-v1:sf-2026-u3-01",
-      "revision": 19
+      "revision": 20
     },
     "practiceObjectIds": [
       "sf-2026-fluidi-v1:sf-2026-u3-01:u3-couette-force-03",
@@ -2664,10 +2664,13 @@
       "sf-2026-fluidi-v1:sf-2026-u3-01:u3-pressure-area-03"
     ],
     "originalProblemObjectIds": [
-      "sf-2026-fluidi-v1:sf-2026-u3-01:original-20261107-u3-01"
+      "sf-2026-fluidi-v1:sf-2026-u3-01:original-20261107-u3-01",
+      "sf-2026-fluidi-v1:sf-2026-u3-01:original-U3-01-pro-transfer-v1"
     ],
     "assessmentObjectId": "sf-2026-fluidi-v1:sf-2026-u3-01:final-U3-01.04",
-    "labObjectIds": []
+    "labObjectIds": [
+      "sf-2026-fluidi-v1:sf-2026-u3-01:lab0"
+    ]
   },
   {
     "objectiveId": "U3-02.01",
