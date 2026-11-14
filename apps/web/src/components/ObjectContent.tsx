@@ -7,10 +7,10 @@ import type {EducationalObject,InkObject} from '@ardesia/contracts';
 import {MathFormula} from './MathFormula';
 import {LabContent} from './LabContent';
 
-export const ObjectContent = memo(function ObjectContent({object, links = false,annotations=[]}: {object: EducationalObject; links?: boolean;annotations?:InkObject[]}) {
+export const ObjectContent = memo(function ObjectContent({object, links = false,experiments=links,annotations=[]}: {object: EducationalObject; links?: boolean;experiments?:boolean;annotations?:InkObject[]}) {
   switch(object.type) {
     case 'material': return annotations.length?<AnnotatedMaterial object={object} annotations={annotations}/>:<MaterialView data={object.data}/>;
-    case 'extension': return links ? <ExtensionExperiment key={object.id+':'+object.revision} data={object.data}/> : <ExtensionView data={object.data}/>;
+    case 'extension': return experiments ? <ExtensionExperiment key={object.id+':'+object.revision} data={object.data}/> : <ExtensionView data={object.data}/>;
     case 'lab': return <LabContent object={object} compact={!links}/>;
     case 'note': return <p className="note-text">{object.data.text || 'Scrivi una nota dal pannello dell’oggetto.'}</p>;
     case 'formula': return <><MathFormula latex={object.data.latex}/><p className="formula-description">{object.data.description}</p></>;

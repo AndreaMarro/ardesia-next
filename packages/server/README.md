@@ -195,3 +195,12 @@ Course actions `course-command` and `read-course-lesson` use the same authentica
 ## Material originals (SQL007, backupv4)
 
 Authenticated `prepare-material`, `put-material-part`, `finish-material`, `read-material` and `read-material-part` share the workspace transaction/lock. Owners upload; assigned readers need a current referenced page, course readers an exact authorized edition/unit. Revocation is checked on every read. Original and chunk SHA256, header/MIME, immutability and quota are checked; header validation is not full sanitization. Bytes are separate from snapshot9/events in the same PostgreSQL authority. Backupv4 validates bytes plus current/historical references before empty-target restore, with explicit v2/v3 compatibility. [ADR0020](../../docs/adr/0020-original-materials.md) lists caps, retained originals and rollback limitations.
+
+
+## Tutor economics (SQL008, snapshot10)
+
+The eighth checked migration expands the workspace CHECK to4–10 without rewriting stored rows, events or receipts. Contracts0.11.0 add optional incurred direct costs and preparation minutes to appointments. Snapshot9 opens as10 in memory only; the next mutation persists10. Historical command fingerprints remain unchanged. Older strict readers do not understand new economics records; roll back only to a compatible build or an explicit verified reverse migration. [Decision and golden fixture](../../docs/adr/0021-core-continuity.md).
+
+## Canonical notebooks (SQL009, snapshot11)
+
+The ninth registered migration expands the snapshot CHECK to4–11 without rewriting data. `notebook-command` derives its actor from the verified owner session and commits catalog/document/events/composite receipt in one existing workspace transaction. Assigned readers cannot inspect or change the owner's catalog. Backup v4 accepts11; restore still refuses nonempty targets. Historical snapshots normalize without a write. After new notebook writes, use a compatible reader or an explicit verified reverse migration, never remove history to downgrade. [ADR0022](../../docs/adr/0022-canonical-notebooks.md) describes CAS, quotas and client/offline compatibility.

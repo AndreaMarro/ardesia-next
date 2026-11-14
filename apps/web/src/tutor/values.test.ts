@@ -1,6 +1,6 @@
 import {describe,it,expect} from 'vitest';
 import type {TutorRecord} from '@ardesia/contracts';
-import {money,readMoney,localInstant,totals,calendarFile} from './values';
+import {money,readMoney,localInstant,totals,calendarFile,appointmentEconomicsInput,moneyInput,inputOf} from './values';
 describe('tutor exact display and interchange',()=>{
   it('keeps currencies and integer minor units exact, including totals beyond Number safe integers',()=>{
     expect(readMoney('12,01','EUR')).toBe(1201);expect(readMoney('12.001','KWD')).toBe(12001);expect(readMoney('12','JPY')).toBe(12);
@@ -32,4 +32,18 @@ describe('tutor exact display and interchange',()=>{
     const result=calendarFile([record]);expect(result).toContain('DTSTART:20261106T090000Z\r\n');expect(result).toContain('STATUS:CANCELLED');expect(result).toContain('SEQUENCE:2');expect(result).not.toContain('PRIVATE');expect(result).toContain('È\\, una\\; lezione\\n');
     for(const line of result.split('\r\n'))expect(new TextEncoder().encode(line).length).toBeLessThanOrEqual(75);
   });
+});
+
+
+it('round-trips optional appointment economics editor fields without materializing absent defaults',()=>{
+  expect(appointmentEconomicsInput('','','EUR')).toEqual({});
+  expect(appointmentEconomicsInput('0','0','EUR')).toEqual({directCostMinor:0,preparationMinutes:0});
+  for(const [currency,minor] of [['EUR',451],['JPY',451],['KWD',451]] as const){
+    const record:TutorRecord={kind:'appointment',id:'appointment',ownerId:'teacher',revision:1,createdAt:'2026-01-01T00:00:00.000Z',updatedAt:'2026-01-01T00:00:00.000Z',title:'Lezione',notes:'',custom:[],startAt:'2026-01-01T09:00:00.000Z',endAt:'2026-01-01T10:00:00.000Z',timeZone:'UTC',status:'completed',currency,participants:[{contactId:'ada',attended:true,packageId:null,chargeMinor:1000}],groupId:null,requestId:null,lesson:null,directCostMinor:minor,preparationMinutes:17};
+    const seed=inputOf(record);if(seed.kind!=='appointment')throw Error('Appointment required');
+    const fields=appointmentEconomicsInput(moneyInput(seed.directCostMinor!,currency),String(seed.preparationMinutes),currency);
+    expect({...seed,...fields}).toEqual(seed);expect(fields).toEqual({directCostMinor:minor,preparationMinutes:17});
+  }
+  for(const value of ['-1','2.5','1e3','44641','Infinity'])expect(()=>appointmentEconomicsInput('',value,'EUR')).toThrow();
+  expect(()=>appointmentEconomicsInput('1.001','','EUR')).toThrow();
 });

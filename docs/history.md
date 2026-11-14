@@ -599,3 +599,38 @@ PDF/PNG/JPEG/WebP: originale immutabile SHA256/chunk, pagina Core e ink ancorato
 REA reale sul lifecycle PDF.js, navigazione/import immagini e consumer; donor licenziati, nessun trapianto sorgente. Bundle compatibile scelto dopo incompatibilità reale del moderno. La review non autrice ha fatto correggere teardown, concorrenza decoder, raster da metadata, upload non riprendibile, copia senza nuovi byte, focus/connessioni e bozza bloccante. Fallimenti/riesami e prove esatte sono conservati.
 
 Il programma originale del6novembre ha SHA2562de0ad702c65eccb43cc9b156fc9cc44fcc45902cf934d8873d34d2404fcbb9f. Nessuna chat Ardesia aggiornata quel giorno è stata individuata fra100metadati disponibili: nessuna conversazione inventata. Native/Pencil, collaborazione, ricostruzione AI, Knowledge/MCP universale e marketplace commerciale restano aperti.
+
+
+## Mandato diretto7novembre2026 — nucleo e cinque microcorsi
+
+Fonte: testo integrale allegato alla chat di continuazione, letto dal coordinatore; conferma successiva del titolare «Procedi con il Mac disponibile». Si riparte dalla PR50/a4835aa, verificando handoff e CI, recuperando il legacy in sola lettura e usando cinque microcorsi di Fisica per provare scrittura, audio/MCP, Creator, conoscenza e gestionale. Parallelismo utile autorizzato, con unico writer e due specialisti transitori al massimo. Il nuovo mandato non autorizza nuovi provider/spesa, accettazione didattica inventata o modifiche di scheduler; preparazione su branch isolato, sorgenti e handoff GitHub sono autorizzati. Nessun vecchio blocco M3/M4 viene riapplicato come patch o scambiato per l’obiettivo corrente.
+
+Mac mini M4 disponibile; solo Command Line Tools, senza Xcode/iOS SDK. La scelta del titolare consente di proseguire con prove sul Mac; iPad/Pencil fisici restano NOT_RUN. L’implementazione e i risultati sono nel [piano/handoff di continuità](handoffs/core-continuity-2026-11-07.md). Questa registrazione conserva la decisione una sola volta, non promuove il prodotto a completo né modifica coda/cursore.
+
+
+## PRODUCT-20261108-21 — perfezionamento del prodotto e iPad simulato
+
+Fonte: nuovo mandato integrale «ARDESIA — Mandato di perfezionamento, ingegnerizzazione e realizzazione», allegato letto dal coordinatore (SHA256 `cd19845fb3a88dddcea657c239ceaa687eedf7dfc5cf5a181a7ad6a0ee7a9a0e`). Estende il mandato diretto precedente: migliorare anche le funzioni già esistenti; scrittura immersiva con oltre90% di area utile; taccuini persistenti con quaderni/sezioni/pagine; lezione→LaTeX/TikZ/PDF verificato visivamente; LessonOS fondato su baseline interpretabili e confronti scientifici; cinque corsi approfonditi e migliaia di problemi realmente distinti. Ogni ricerca REA deve condurre a una decisione o a un miglioramento concreto. Parallelismo già autorizzato, un writer e al massimo due specialisti attivi.
+
+Per questa fase il titolare richiede soltanto iPad simulato: questo supera esclusivamente l'obbligo operativo di hardware fisico nelle priorità del piano precedente, senza trasformare PointerEvents simulati in prove Pencil/Safari o latenza reale. Restano autorità Core, versioni, provenienza, privacy, revisione didattica e limiti di pubblicazione. Il piano/handoff esistente è aggiornato; nessun secondo backlog, ritorno ai vecchi blocchi M3/M4, cambiamento di cursore/coda/scheduler o nuova spesa.
+
+Nel delta locale, Creator protegge sostituzioni e import tardivi; ricerca UI/MCP comprende il contenuto dei tipi aperti, con backlink e mappa percorribili fino all'oggetto esatto; la scrittura nasconde i controlli senza cambiare camera o smontare audio. Review indipendente ha trovato e fatto correggere movimento da tastiera durante tratto, focus offline nascosto, indicatore microfono e perdita di Escape. La controprova finale focus ha fallito2/2 prima della correzione; la successiva suite mirata immersione/audio/Knowledge ha superato16/16. Le misure e gli altri tentativi sono descritti nell'handoff, senza anticipare Verify/CI della futura head.
+
+## PRODUCT-20261108-22 — quaderni nel Core e area di scrittura misurata
+
+Il medesimo mandato produce il verticale di quaderni/sezioni/pagine canoniche: catalogo owner-scoped, creazione documento/pagina con ricevuta composita atomica, ordine e archivio, formati, PDF originale e riapertura offline. Contratti0.12/snapshot11/SQL009/offlinev2; [ADR0022](adr/0022-canonical-notebooks.md) documenta compatibilità e rollback. Nessun secondo Core o contenuto duplicato. Il controllo dei ref del gesto blocca anche il refocus fuori pagina, difetto riprodotto e corretto dopo review non autrice.
+
+L’area del canvas non è l’area scrivibile della carta. Il foglio intero iniziale copre28,7–36,5% nei formati osservati; “Avvicina il foglio” porta la carta a99,998% senza refit implicito all’ingresso. UI/gesture sono prove Chromium sul Mac, non Pencil. Policy Core esplicitamente304→312KiB per il nuovo verticale, con vecchio confronto fallito conservato e nessuna riclassificazione; iniziale e runtime opzionali invariati. Schemi inutilizzati rimossi dal worker, digest limitati a64eventi per finestra senza ridurre le verifiche. Prove, fallimenti, misure e prossimo passo nell’unico [piano/handoff](handoffs/core-continuity-2026-11-07.md); nessun merge/deploy o modifica del coordinamento ricorrente.
+
+
+## PRODUCT-20261108-23 — dispensa con originali e compilazione verificabile
+
+Prosecuzione del mandato diretto: [ADR0023](adr/0023-complete-handout.md) estende la dispensa senza migrazione dati. Piano/copy/source separati, originali preservati, annotazioni nella stessa geometria, ZIP verificabile, compilazione locale del solo TeX rigenerato e rendering di tutte le pagine. REA/prototipo precedente riusati; fflate0.8.2 MIT per ZIP, PDF.js e geometria già presenti. Nessuna esecuzione dei programmi per esportare.
+
+La review non autrice ha fatto correggere acquisizione fuori coda, diniego dopo decode, moltiplicazione della geometria, stato Creator e teardown dei discendenti. Browser e controprova unitaria hanno riprodotto il roundtrip TeX dipendente dall’ordine delle chiavi; serializzazione canonica applicata. Log RED/GREEN, limiti e PDF sintetici sono nell’handoff e nella consegna. Costo Core ridotto329780→326825byte con ZIP streaming; policy esplicitamente312→320KiB, vecchio FAIL conservato, iniziale e runtime opzionali invariati. Non equivale a ricostruzione didattica, ASR, accettazione scientifica o hardware fisico; nessun merge/deploy/cursore/scheduler modificato.
+
+## PRODUCT-20261108-24 — prove e prossimi passi LessonOS
+
+Prosecuzione dello stesso mandato, senza nuova decisione richiesta al titolare. [ADR0024](adr/0024-learning-evidence.md) rende visibili richieste, correzioni in attesa e rettifiche con collegamenti alle prove originali; proiezione pura dal lavoro autorizzato, nessuna migrazione o stima automatica. La ricerca cognitiva/REA e il confronto sintetico già raccolti sono riusati e delimitati: non trasformano i giudizi sui tentativi in competenze o prove di efficacia.
+
+Il riesame didattico non autore ha fatto correggere indicazioni libere che selezionavano implicitamente un oggetto, rettifiche conclusive lasciate aperte, classificazione degli aiuti e collisioni delle fonti fra lezioni. La guardia limitata alla revisione riproduce la fonte errata in2browser; la stessa controprova passa dopo il controllo dell’identità completa. La suite mirata feedback/offline conclude28/28; sono risultati intermedi, non sostituti dei gate sulla sorgente finale. La shell compatta gli stessi digest SHA-256 senza duplicare l’elenco dei percorsi: Core rientra nel limite320KiB invariato, tutti gli asset restano verificati e conteggiati. Nessuna modifica a main, cursore, coda o scheduler.

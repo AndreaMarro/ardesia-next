@@ -6,7 +6,7 @@ import {checkServerIdentity} from 'node:tls';
 import {Client, type PoolConfig} from 'pg';
 import {createDatabasePool, hash} from './database';
 import {canonical} from './errors';
-import {MaterialManifestSchema, materialPage, CoreSnapshotSchema, extensionDefinitionDigest, type ExtensionDefinition, type CoreSnapshot, type PluginRelease, type JsonValue} from '@ardesia/contracts';
+import {MaterialManifestSchema, materialPage, CoreSnapshotSchema, extensionDefinitionDigest, type NotebookCommand, type ExtensionDefinition, type CoreSnapshot, type PluginRelease, type JsonValue} from '@ardesia/contracts';
 import {createCore, MemoryStorage} from '@ardesia/core';
 import {idealSpringInitialState} from '@ardesia/ideal-spring';
 import {localBrowserAccounts} from '../../../tools/e2e-accounts.mjs';
@@ -49,6 +49,11 @@ async function workspace(title = 'Synthetic M3') {
 }
 async function command(identity: Identity, workspaceId: string, command: unknown, action = 'command') {
   return request({action, workspaceId, command}, identity);
+}
+function notebook(expectedRevision = 0): Extract<NotebookCommand, {kind: 'create-notebook'}> {
+  return {kind: 'create-notebook', commandId: randomUUID(), expectedRevision, notebookId: randomUUID(), title: 'Private notebook',
+    sectionId: randomUUID(), sectionTitle: 'Private section', firstPage: {pageId: randomUUID(), documentId: randomUUID(), title: 'Shared page',
+      layout: {format: 'a4', orientation: 'portrait', background: 'grid', paper: 'ivory'}}};
 }
 async function lesson(workspaceId: string) {
   const documentId = randomUUID();
@@ -288,6 +293,40 @@ describe('M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL)', () => {
     expect(conflict.body.error?.code).toBe('IDEMPOTENCY_CONFLICT');
   });
 
+  it('commits notebook creation once, serializes concurrent organization and keeps catalog identity private', async () => {
+    const w = await workspace(), first = notebook(), second = notebook(1);
+    const created = await command(teacher, w.workspaceId, first, 'notebook-command');
+    expect(created.status).toBe(200); expect(created.body.result.receipt.relatedEventIds).toHaveLength(1);
+    const row = async () => (await admin.query('SELECT snapshot,revision FROM ardesia_next.workspaces WHERE id=$1', [w.workspaceId])).rows[0];
+    const original = await row(); expect(original.snapshot.events).toHaveLength(2); expect(original.snapshot.receipts).toHaveLength(1);
+    expect(original.snapshot.documents).toHaveLength(1); expect(original.snapshot.notebookLibraries).toHaveLength(1);
+    expect((await command(teacher, w.workspaceId, first, 'notebook-command')).body.result.receipt).toEqual(created.body.result.receipt);
+    expect(await row()).toEqual(original);
+    expect((await command(teacher, w.workspaceId, second, 'notebook-command')).status).toBe(200);
+    const updates = await Promise.all([
+      command(teacher, w.workspaceId, {kind: 'move-notebook', commandId: randomUUID(), expectedRevision: 2, notebookId: second.notebookId, beforeId: first.notebookId}, 'notebook-command'),
+      command(teacher, w.workspaceId, {kind: 'move-notebook', commandId: randomUUID(), expectedRevision: 2, notebookId: first.notebookId, beforeId: null}, 'notebook-command'),
+    ]);
+    expect(updates.map(result => result.status).sort()).toEqual([200, 409]);
+    expect(updates.find(result => result.status === 409)!.body.error!.code).toBe('REVISION_CONFLICT');
+    expect((await row()).snapshot.documents).toEqual([...original.snapshot.documents, (await row()).snapshot.documents[1]]);
+    await assign(w.workspaceId, first.firstPage.documentId, studentA.id);
+    const assigned = await request({action: 'open-workspace', workspaceId: w.workspaceId}, studentA);
+    expect(assigned.status).toBe(200); expect(assigned.body.result.notebookSpace).toEqual({revision: 0, notebooks: []});
+    expect(JSON.stringify(assigned.body)).not.toContain(first.title); expect(JSON.stringify(assigned.body)).not.toContain(first.sectionTitle);
+    expect(JSON.stringify(assigned.body)).not.toContain(first.notebookId); expect(JSON.stringify(assigned.body)).not.toContain(second.firstPage.documentId);
+    const before = await row();
+    expect((await command(studentA, w.workspaceId, notebook(), 'notebook-command')).status).toBe(403);
+    expect((await command(outsider, w.workspaceId, notebook(), 'notebook-command')).status).toBe(404);
+    expect(await row()).toEqual(before);
+    // The owner role is independent of teaching: a student can author a private notebook.
+    const personal = await request({action: 'create-workspace', commandId: randomUUID(), title: 'Student notebook'}, studentA);
+    expect(personal.status).toBe(200);
+    const own = await command(studentA, personal.body.result.workspaceId, notebook(), 'notebook-command');
+    expect(own.status).toBe(200); expect(own.body.result.receipt.notebookOwnerId).toBe(studentA.id);
+    expect(own.body.result.projection.notebookSpace.notebooks).toHaveLength(1);
+  });
+
   it('rolls back the entire snapshot, receipt and event when storage rejects the update', async () => {
     const w = await workspace(), doc = await lesson(w.workspaceId);
     const before = (await admin.query('SELECT snapshot,revision FROM ardesia_next.workspaces WHERE id=$1', [w.workspaceId])).rows[0];
@@ -296,6 +335,9 @@ describe('M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL)', () => {
     try {
       const result = await command(teacher, w.workspaceId, {kind: 'rename-document', commandId: randomUUID(), documentId: doc, expectedRevision: 1, title: 'never committed'});
       expect(result.status).toBe(503); expect(JSON.stringify(result.body)).not.toContain('synthetic write failure');
+      expect((await admin.query('SELECT snapshot,revision FROM ardesia_next.workspaces WHERE id=$1', [w.workspaceId])).rows[0]).toEqual(before);
+      const composite = await command(teacher, w.workspaceId, notebook(), 'notebook-command');
+      expect(composite.status).toBe(503);
       expect((await admin.query('SELECT snapshot,revision FROM ardesia_next.workspaces WHERE id=$1', [w.workspaceId])).rows[0]).toEqual(before);
     } finally {
       await admin.query('DROP TRIGGER synthetic_failure ON ardesia_next.workspaces');
@@ -415,7 +457,7 @@ describe('M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL)', () => {
   it('serializes competing tutor bookings and payments, retains v7 bytes on reads and excludes students', async () => {
     const w = await workspace('Tutor private'), doc = await lesson(w.workspaceId);
     const row = (await admin.query('SELECT snapshot,revision FROM ardesia_next.workspaces WHERE id=$1',[w.workspaceId])).rows[0];
-    const {tutorRecords: _tutor, ...old} = row.snapshot;
+    const {notebookLibraries: _notebooks, tutorRecords: _tutor, ...old} = row.snapshot;
     const legacy = {...old,schemaVersion:7};
     await admin.query('UPDATE ardesia_next.workspaces SET snapshot=$1::jsonb WHERE id=$2',[JSON.stringify(legacy),w.workspaceId]);
     expect((await request({action:'open-workspace',workspaceId:w.workspaceId},teacher)).status).toBe(200);
@@ -436,7 +478,7 @@ describe('M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL)', () => {
     expect((await command(studentA,w.workspaceId,cash,'tutor-command')).status).toBe(403);
     expect((await command(outsider,w.workspaceId,cash,'tutor-command')).status).toBe(404);
     const stored=(await admin.query('SELECT snapshot FROM ardesia_next.workspaces WHERE id=$1',[w.workspaceId])).rows[0].snapshot;
-    expect(stored.schemaVersion).toBe(9);expect(stored.events.slice(0,old.events.length)).toEqual(old.events);
+    expect(stored.schemaVersion).toBe(11);expect(stored.events.slice(0,old.events.length)).toEqual(old.events);
     const reopened=(await request({action:'open-workspace',workspaceId:w.workspaceId},teacher)).body.result;
     expect(reopened.tutorSpace.records.filter((r:any)=>r.kind==='payment')).toHaveLength(1);
   });
@@ -472,7 +514,7 @@ describe('M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL)', () => {
     expect((await command(secondSession, w.workspaceId, review, 'learning-command')).status).toBe(404);
     expect((await request({action: 'open-workspace', workspaceId: w.workspaceId}, studentA)).body.result.learnerWork[0].feedback).toHaveLength(1);
     const stored = (await admin.query('SELECT snapshot FROM ardesia_next.workspaces WHERE id=$1', [w.workspaceId])).rows[0].snapshot;
-    expect(stored.schemaVersion).toBe(9); expect(stored.events.slice(0, old.events.length)).toEqual(old.events);
+    expect(stored.schemaVersion).toBe(11); expect(stored.events.slice(0, old.events.length)).toEqual(old.events);
     expect(stored.receipts.slice(0, old.receipts.length)).toEqual(old.receipts);
   });
 
@@ -708,6 +750,8 @@ describe('M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL)', () => {
 
   it('backs up and restores synthetic data into an empty database without passwords, sessions or overwrites', async () => {
     const fixture = await workspace('Backup restore fixture'), documentId = await lesson(fixture.workspaceId);
+    const notebookFixture = await workspace('Notebook backup fixture'), book = notebook();
+    expect((await command(teacher, notebookFixture.workspaceId, book, 'notebook-command')).status).toBe(200);
     await assign(fixture.workspaceId, documentId, studentA.id);
     expect((await command(studentA, fixture.workspaceId, {kind: 'save-learner-note', commandId: randomUUID(), documentId,
       expectedRevision: 0, text: 'Synthetic restore evidence'}, 'learning-command')).status).toBe(200);
@@ -754,6 +798,11 @@ describe('M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL)', () => {
       const result = await restoreBackup(restorePool, historical); expect(result.workspaces).toBe(backup.data.workspaces.length);
       const restored = await exportBackup(restorePool);
       expect(restored.data.workspaces).toEqual(backup.data.workspaces); expect(restored.data.imports).toEqual(backup.data.imports);
+      const notebookRow = restored.data.workspaces.find(row => row.id === notebookFixture.workspaceId)!;
+      const notebookCore = await createCore({storage: new MemoryStorage(notebookRow.snapshot)});
+      expect(notebookCore.getNotebookSpace({actorId: teacher.id, role: 'teacher'}).notebooks[0]!.id).toBe(book.notebookId);
+      const retry = await notebookCore.executeNotebook({actorId: teacher.id, role: 'teacher'}, book);
+      expect(retry).toEqual(notebookRow.snapshot.receipts[0]); expect(notebookCore.snapshot()).toEqual(notebookRow.snapshot);
       expect(restored.data.creationReceipts).toEqual(backup.data.creationReceipts);
       expect(restored.data.accounts).toEqual(backup.data.accounts);
       expect(restored.data.materials).toEqual(backup.data.materials); expect(restored.data.materialParts).toEqual(backup.data.materialParts);
@@ -874,6 +923,6 @@ describe('M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL)', () => {
 
 // Model historical envelopes with exactly their old fields, not a relabelled v7 snapshot.
 function preCourse<T extends object>(snapshot: T) {
-  const {tutorRecords: _t, courses: _c, courseEditions: _e, courseDeliveries: _d, courseWork: _w, ...legacy} = snapshot as T & {tutorRecords?: unknown; courses?: unknown; courseEditions?: unknown; courseDeliveries?: unknown; courseWork?: unknown};
+  const {notebookLibraries: _notebooks, tutorRecords: _t, courses: _c, courseEditions: _e, courseDeliveries: _d, courseWork: _w, ...legacy} = snapshot as T & {notebookLibraries?: unknown; tutorRecords?: unknown; courses?: unknown; courseEditions?: unknown; courseDeliveries?: unknown; courseWork?: unknown};
   return legacy;
 }

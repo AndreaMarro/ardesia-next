@@ -16,6 +16,13 @@ async function add(page: Page, name: string, flow = false) {
   await card.getByRole('button', {name: flow ? 'Aggiungi Poiseuille a portata imposta' : name === 'Molla ideale' ? 'Aggiungi molla alla lezione' : 'Aggiungi Flusso di Poiseuille alla lezione', exact: true}).click();
   await expect(page.getByRole('complementary', {name: 'Proprietà del laboratorio'})).toHaveAttribute('data-plugin-status', 'ready');
 }
+// The spatial notebook may contain overlapping objects. Select through the
+// accessible object list without moving them or bypassing pointer hit testing.
+async function selectObject(page: Page, title: string) {
+  await page.getByRole('button', {name: 'Oggetti', exact: true}).click();
+  await page.getByRole('region', {name: 'Fonti e oggetti', exact: true})
+    .getByRole('button', {name: 'Seleziona ' + title, exact: true}).click();
+}
 async function labs(page: Page) {
   return (await storedWorkspace(page)).documents.flatMap(document => document.objects).filter((object): object is LabObject => object.type === 'lab');
 }
@@ -31,7 +38,7 @@ for (const flow of [false, true]) {
     expect(initial).toHaveLength(2); expect(spring.id).not.toBe(fluid.id);
     expect(fluid.data.state.value).toMatchObject(flow ? {flowRateM3PerS: Math.PI * 1e-7} : {pressureDropPa: 800});
     await page.getByRole('button', {name: 'Taccuino', exact: true}).click();
-    await page.getByRole('button', {name: 'Modifica Flusso di Poiseuille', exact: true}).click();
+    await selectObject(page, 'Flusso di Poiseuille');
     const inspector = page.getByRole('complementary', {name: 'Proprietà del laboratorio'});
     await expect(inspector).toHaveAttribute('data-plugin-status', 'ready');
     // Arbitrary valid SI values must save even when another numeric parameter is not a step multiple.
@@ -56,7 +63,7 @@ for (const flow of [false, true]) {
     await expect(inspector).toHaveAttribute('data-plugin-status', 'ready');
     await page.reload();
     await page.getByRole('button', {name: 'Taccuino', exact: true}).click();
-    await page.getByRole('button', {name: 'Modifica Flusso di Poiseuille', exact: true}).click();
+    await selectObject(page, 'Flusso di Poiseuille');
     await expect(inspector).toHaveAttribute('data-plugin-status', 'ready');
     await expect(inspector.getByLabel('Viscosità dinamica (Pa·s)', {exact: true})).toHaveValue('0.0015');
     expect((await labs(page)).find(object => object.id === fluid.id)).toEqual(saved);
@@ -67,12 +74,12 @@ for (const flow of [false, true]) {
     await page.getByRole('button', {name: 'Revoca Flusso di Poiseuille', exact: true}).click();
     await page.getByRole('button', {name: 'Chiudi finestra', exact: true}).click();
     await page.getByRole('button', {name: 'Taccuino', exact: true}).click();
-    await page.getByRole('button', {name: 'Modifica Flusso di Poiseuille', exact: true}).click();
+    await selectObject(page, 'Flusso di Poiseuille');
     await expect(inspector).toHaveAttribute('data-plugin-status', 'error');
     await expect(inspector.getByRole('button', {name: 'Salva laboratorio', exact: true})).toBeDisabled();
     expect((await labs(page)).find(object => object.id === fluid.id)).toEqual(saved);
     await page.getByRole('button', {name: 'Chiudi proprietà', exact: true}).click();
-    await page.getByRole('button', {name: 'Modifica Molla ideale', exact: true}).click();
+    await selectObject(page, 'Molla ideale');
     await expect(inspector).toHaveAttribute('data-plugin-status', 'ready');
     await expect(inspector.getByLabel('Massa (kg)', {exact: true})).toHaveValue('1');
     expect((await labs(page)).find(object => object.id === spring.id)).toEqual(spring);

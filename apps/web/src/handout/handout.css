@@ -26,3 +26,9 @@
   .handout-paper .math{overflow:visible}.handout-paper .katex{font-size:1em}.handout-object{margin:20pt 0;break-inside:auto}.handout-formula,.handout-ink{break-inside:avoid}.handout-ink-svg{height:50mm}
   .handout-small{font-size:8pt}.handout-scope,.handout-source,.handout-citation{font-size:9pt}.handout-data{font-size:8pt;background:white;padding:0}
 }
+
+.handout-plate{display:block;width:100%;height:auto;max-height:680px;overflow:hidden;margin:16px 0;background:white}.handout-material{break-inside:avoid}.handout-conversions{font:13px/1.6 system-ui,sans-serif;border-top:1px solid #d8dfda;padding-top:20px}.handout-conversions li{margin:8px 0}
+@media print{.handout-plate{max-height:180mm}.handout-conversions{font-size:9pt}}
+
+.handout-plate{max-width:100%}
+@media print{.handout-citation{break-inside:avoid}}

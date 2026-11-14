@@ -107,7 +107,7 @@ describe('lesson feedback and correction continuity', () => {
     const {core, attempt, receipt} = await fixture();
     const old = {...preCourse(core.snapshot()), schemaVersion: 4}; const storage = new Storage(old);
     const reopened = await createCore({storage});
-    expect(reopened.snapshot()).toEqual({...old, schemaVersion: 9, tutorRecords: [], courses: [], courseEditions: [], courseDeliveries: [], courseWork: []}); expect(await storage.read()).toEqual(old); expect(storage.writes).toBe(0);
+    expect(reopened.snapshot()).toEqual({...old, schemaVersion: 11, notebookLibraries: [], tutorRecords: [], courses: [], courseEditions: [], courseDeliveries: [], courseWork: []}); expect(await storage.read()).toEqual(old); expect(storage.writes).toBe(0);
     expect(await reopened.executeLearning(learner, attempt)).toEqual(receipt); expect(storage.writes).toBe(0);
     await share(core); await core.executeLearning(teacher, feedback(core));
     const forged = {...preCourse(core.snapshot()), schemaVersion: 4};
@@ -118,6 +118,6 @@ describe('lesson feedback and correction continuity', () => {
 
 // Model historical envelopes with exactly their old fields, not a relabelled v7 snapshot.
 function preCourse<T extends object>(snapshot: T) {
-  const {tutorRecords: _t, courses: _c, courseEditions: _e, courseDeliveries: _d, courseWork: _w, ...legacy} = snapshot as T & {tutorRecords?: unknown; courses?: unknown; courseEditions?: unknown; courseDeliveries?: unknown; courseWork?: unknown};
+  const {notebookLibraries: _notebooks, tutorRecords: _t, courses: _c, courseEditions: _e, courseDeliveries: _d, courseWork: _w, ...legacy} = snapshot as T & {notebookLibraries?: unknown; tutorRecords?: unknown; courses?: unknown; courseEditions?: unknown; courseDeliveries?: unknown; courseWork?: unknown};
   return legacy;
 }

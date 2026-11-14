@@ -208,7 +208,7 @@ describe('Lossless M0 snapshot migration on open', () => {
       ...(schemaVersion>=3?{installations:current.installations}:{}),...(schemaVersion>=4?{assignments:[],learnerWork:[]}:{} )};
     const bytes=JSON.stringify(raw),legacyStorage=new ObservedStorage(raw);
     const reopened=await createCore(options(legacyStorage));
-    expect(reopened.snapshot().schemaVersion).toBe(9);
+    expect(reopened.snapshot().schemaVersion).toBe(11);
     expect(reopened.snapshot().documents).toEqual(current.documents);
     expect(reopened.snapshot().events).toEqual(current.events);
     expect(reopened.snapshot().receipts).toEqual(current.receipts);
@@ -226,7 +226,7 @@ describe('Lossless M0 snapshot migration on open', () => {
     const raw = await legacySnapshot();
     const storage = new ObservedStorage(raw);
     const core = await createCore(options(storage, 'migration-event'));
-    expect(core.snapshot()).toEqual({...raw, schemaVersion: 9, tutorRecords: [], installations: [], assignments: [], learnerWork: [], courses: [], courseEditions: [], courseDeliveries: [], courseWork: []});
+    expect(core.snapshot()).toEqual({...raw, schemaVersion: 11, notebookLibraries: [], tutorRecords: [], installations: [], assignments: [], learnerWork: [], courses: [], courseEditions: [], courseDeliveries: [], courseWork: []});
     expect(CoreSnapshotSchema.safeParse(core.snapshot()).success).toBe(true);
     expect(storage.writes).toBe(0);
     expect(await storage.read()).toEqual(raw);
@@ -235,7 +235,7 @@ describe('Lossless M0 snapshot migration on open', () => {
     expect(await storage.read()).toEqual(raw);
     await core.execute(teacher, add(labInput(), 2));
     expect(storage.writes).toBe(1);
-    expect((await storage.read() as CoreSnapshot).schemaVersion).toBe(9);
+    expect((await storage.read() as CoreSnapshot).schemaVersion).toBe(11);
     expect(core.snapshot().events.slice(0, 2)).toEqual(raw.events);
     expect(core.snapshot().receipts.slice(0, 2)).toEqual(raw.receipts);
     expect(core.snapshot().documents[0]!.objects[0]).toEqual(raw.documents[0]!.objects[0]);
@@ -259,6 +259,6 @@ describe('Lossless M0 snapshot migration on open', () => {
 
 // Model historical envelopes with exactly their old fields, not a relabelled v7 snapshot.
 function preCourse<T extends object>(snapshot: T) {
-  const {tutorRecords: _t, courses: _c, courseEditions: _e, courseDeliveries: _d, courseWork: _w, ...legacy} = snapshot as T & {tutorRecords?: unknown; courses?: unknown; courseEditions?: unknown; courseDeliveries?: unknown; courseWork?: unknown};
+  const {notebookLibraries: _notebooks, tutorRecords: _t, courses: _c, courseEditions: _e, courseDeliveries: _d, courseWork: _w, ...legacy} = snapshot as T & {notebookLibraries?: unknown; tutorRecords?: unknown; courses?: unknown; courseEditions?: unknown; courseDeliveries?: unknown; courseWork?: unknown};
   return legacy;
 }

@@ -104,27 +104,32 @@ describe('P0 recovery storage failures preserve the write barrier', () => {
     expect(server.snapshot().receipts).toHaveLength(3);
   });
 
-  it('uses an empty memory override after cleanup fails so a confirmed command is not resurrected at the next login', async () => {
+  it('retains the exact acknowledged request when cleanup fails, then verifies its receipt after login', async () => {
     const {client, server, storage, sent, values} = await fixture();
+    const remove = storage.remove;
     storage.remove = () => {throw new Error('Synthetic recovery cleanup failure.');};
-    await client.edit(teacher, lesson, ink('first'));
+    await expect(client.edit(teacher, lesson, ink('first'))).rejects.toMatchObject({code: 'RECOVERY_CLEANUP_FAILURE'});
 
     expect(sent).toHaveLength(1);
     expect(server.getDocument(teacher, lesson).objects.map(object => object.id)).toEqual(['first']);
-    expect(client.state.pending).toEqual([]);
-    // The durable bytes are deliberately stale. The same client must remember
-    // that its positive receipt already removed this command from recovery.
+    expect(client.state.pending).toHaveLength(1);
+    const original = structuredClone(client.state.pending[0]!);
+    // No local ACK marker deletes the only surviving envelope after a restart.
     expect(JSON.parse(values.get(account.id)!)).toHaveLength(1);
-    expect(client.state.recovery).toBe('memory');
-    expect(JSON.parse(client.exportPendingRecovery()!)).toEqual([]);
+    expect(JSON.parse(client.exportPendingRecovery()!)).toHaveLength(1);
 
     await client.logout();
     await client.login('synthetic', 'synthetic-password');
     await client.openWorkspace(workspace);
-    expect(client.state.pending).toEqual([]);
-    expect(client.state.recovery).toBe('memory');
-    expect(JSON.parse(client.exportPendingRecovery()!)).toEqual([]);
+    expect(client.state.pending).toHaveLength(1);
+    expect(client.state.pending[0]?.request).toEqual(original.request);
     expect(sent).toHaveLength(1);
+    expect(server.snapshot().events).toHaveLength(2);
+    expect(server.snapshot().receipts).toHaveLength(2);
+    storage.remove = remove;
+    await client.retryPending(original.commandId);
+    expect(sent[1]?.body).toEqual(sent[0]?.body);
+    expect(client.state.pending).toEqual([]);
     expect(server.snapshot().events).toHaveLength(2);
     expect(server.snapshot().receipts).toHaveLength(2);
   });

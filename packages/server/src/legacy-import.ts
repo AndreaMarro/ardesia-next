@@ -14,7 +14,7 @@ export function parseLegacyImport(text: string) {
   if (!parsed.success) throw new CoreError('INVALID_SNAPSHOT', 'The source violates version, revision, identity or ledger integrity.');
   const snapshot = parsed.data;
   // Valid v1–v3 have no learning streams. Migration only adds empty collections and a version tag.
-  const {tutorRecords: _tutor, courses: _courses, courseEditions: _editions, courseDeliveries: _deliveries, courseWork: _work, ...legacy} = snapshot;
+  const {notebookLibraries: _notebooks, tutorRecords: _tutor, courses: _courses, courseEditions: _editions, courseDeliveries: _deliveries, courseWork: _work, ...legacy} = snapshot;
   const semanticDigest = hash(canonical({...legacy, schemaVersion: 4}));
   return {snapshot, semanticDigest, sourceVersion: Number(raw.schemaVersion), sourceWorkspaceId: snapshot.workspaceId};
 }

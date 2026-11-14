@@ -4,7 +4,7 @@ import {Dialog} from '../components/Dialog';
 import {MaterialView,useMaterials} from './MaterialView';
 import {inspectMaterial,selectedPages} from './files';
 
-export function MaterialImport({documentId,origin,onClose,onAdd}:{origin:{x:number;y:number};documentId:string;onClose:()=>void;onAdd:(objects:NewEducationalObject[])=>Promise<boolean>}){
+export function MaterialImport({documentId,origin,onClose,onAdd,pageFrame}:{pageFrame?:{width:number;height:number};origin:{x:number;y:number};documentId:string;onClose:()=>void;onAdd:(objects:NewEducationalObject[])=>Promise<boolean>}){
   const scope=useMaterials(),[file,setFile]=useState<File|null>(null),[manifest,setManifest]=useState<MaterialManifest|null>(null);
   const [page,setPage]=useState(1),[range,setRange]=useState('1'),[license,setLicense]=useState('Uso personale · diritti da verificare');
   const [busy,setBusy]=useState(false),[error,setError]=useState(''),[progress,setProgress]=useState(''),[objects,setObjects]=useState<NewEducationalObject[]|null>(null);
@@ -21,8 +21,9 @@ export function MaterialImport({documentId,origin,onClose,onAdd}:{origin:{x:numb
     if(!manifest||!file||!scope)return;setBusy(true);setError('');
     try{
       const pages=selectedPages(range,manifest.pages.length);
+      if(pageFrame&&!objects&&pages.length!==1)throw Error('Scegli una sola pagina del PDF per questo foglio. L’originale completo resta conservato.');
       const candidate=MaterialManifestSchema.parse({...manifest,license});
-      const selection=objects??pages.map((page,i):NewEducationalObject=>{const data=materialPage(candidate,page),width=Math.min(560,data.pageWidth),height=width*data.pageHeight/data.pageWidth;
+      const selection=objects??pages.map((page,i):NewEducationalObject=>{const data=materialPage(candidate,page),width=Math.min(560,data.pageWidth,...(pageFrame?[pageFrame.width-80,(pageFrame.height-120)*data.pageWidth/data.pageHeight]:[])),height=width*data.pageHeight/data.pageWidth;
         if(height>10000)throw Error('Pagina troppo alta: scegli un formato più compatto.');
         return {id:crypto.randomUUID(),type:'material',title:candidate.name+(candidate.pages.length>1?` · p. ${page}`:''),x:origin.x+i*600,y:origin.y,width,height,data,provenance:{origin:'imported',sources:[]}};});
       if(!objects){setObjects(selection);setManifest(candidate);}
@@ -38,7 +39,7 @@ export function MaterialImport({documentId,origin,onClose,onAdd}:{origin:{x:numb
     <label className="material-drop"><strong>Scegli PDF o immagine</strong><span>PDF, PNG, JPEG, WebP · fino a 32 MiB</span><input type="file" aria-label="File da importare" accept="application/pdf,image/png,image/jpeg,image/webp" disabled={busy||recovering||!!objects} onChange={e=>{const next=e.target.files?.[0];if(next)void choose(next);}}/></label>
     {manifest&&<div className="material-preview"><div className="material-preview-paper"><MaterialView data={materialPage(manifest,page)} blob={file!}/></div><div className="material-options">
       <p className="material-filename">{manifest.name}</p><p className="hint">{manifest.pages.length} {manifest.pages.length===1?'pagina':'pagine'} · {(manifest.bytes/1024/1024).toFixed(2)} MiB</p>
-      {manifest.pages.length>1&&<><div className="material-pagination" role="group" aria-label="Anteprima delle pagine"><button className="secondary-button" disabled={page===1} onClick={()=>setPage(p=>p-1)} aria-label="Pagina precedente">←</button><span>{page} / {manifest.pages.length}</span><button className="secondary-button" disabled={page===manifest.pages.length} onClick={()=>setPage(p=>p+1)} aria-label="Pagina successiva">→</button></div><label>Pagine sulla lavagna<input aria-label="Pagine da importare" value={range} disabled={busy||recovering||!!objects} onChange={e=>setRange(e.target.value)}/></label><p className="hint">Per esempio 1-3, 5. L’originale completo viene conservato.</p></>}
+      {manifest.pages.length>1&&<><div className="material-pagination" role="group" aria-label="Anteprima delle pagine"><button className="secondary-button" disabled={page===1} onClick={()=>setPage(p=>p-1)} aria-label="Pagina precedente">←</button><span>{page} / {manifest.pages.length}</span><button className="secondary-button" disabled={page===manifest.pages.length} onClick={()=>setPage(p=>p+1)} aria-label="Pagina successiva">→</button></div><label>{pageFrame?'Pagina del PDF da aggiungere':'Pagine sulla lavagna'}<input aria-label="Pagine da importare" value={range} disabled={busy||recovering||!!objects} onChange={e=>setRange(e.target.value)}/></label><p className="hint">{pageFrame?'Per esempio 2. Il foglio accoglie una pagina; l’originale completo viene conservato.':'Per esempio 1-3, 5. L’originale completo viene conservato.'}</p></>}
       <label>Licenza o diritti<input aria-label="Diritti del materiale" value={license} maxLength={300} disabled={busy||recovering||!!objects} onChange={e=>setLicense(e.target.value)}/></label>
       <p className="hint">Ogni pagina mantiene la sua identità. La penna segue la pagina quando la sposti.</p>
     </div></div>}
@@ -50,6 +51,6 @@ export function MaterialImport({documentId,origin,onClose,onAdd}:{origin:{x:numb
         <button className="secondary-button" onClick={()=>{setBusy(true);void scope!.access().clearDraft!(documentId,manifest!.assetId).then(()=>{setFile(null);setManifest(null);setObjects(null);setError('');setAbandon(false);}).catch(()=>setError('Bozza non rimossa. Puoi riprovare.')).finally(()=>setBusy(false));}}>Abbandona bozza</button>
       </>:<button className="secondary-button" onClick={()=>setAbandon(true)}>Abbandona questa importazione</button>}
     </section>}
-    <div className="material-import-actions"><button className="secondary-button" disabled={busy} onClick={onClose}>Chiudi</button><button className="primary-button" disabled={!manifest||busy||recovering||!license.trim()} onClick={()=>void save()}>{busy?'Importazione…':objects?'Riprova importazione':'Aggiungi alla lavagna'}</button></div>
+    <div className="material-import-actions"><button className="secondary-button" disabled={busy} onClick={onClose}>Chiudi</button><button className="primary-button" disabled={!manifest||busy||recovering||!license.trim()} onClick={()=>void save()}>{busy?'Importazione…':objects?'Riprova importazione':pageFrame?'Aggiungi alla pagina':'Aggiungi alla lavagna'}</button></div>
   </Dialog>;
 }

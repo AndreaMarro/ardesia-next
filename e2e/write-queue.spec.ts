@@ -194,6 +194,101 @@ test.describe('[M3 queue] acknowledgement and explicit recovery', () => {
     } finally {held.release();}
   });
 
+  test('three conflicted strokes are previewed and explicitly recovered against PostgreSQL without changing their content', async ({page}, testInfo) => {
+    const before = await personalProjection(page), document = documentOf(before, page), selected = selectedWorkspace(page);
+    const held = await holdFirstInk(page, 'conflict');
+    const errors: string[] = []; page.on('pageerror', error => errors.push(error.message));
+    try {
+      await drawPair(page, held); await drawStroke(page, 340);
+      await expect.poll(async () => (await recovery(page)).length).toBe(3);
+      const originals = await recovery(page), first = originals[0]!.request;
+      if (first.action !== 'command' || first.command.kind !== 'add-object') throw Error('Expected ink');
+      await api(page.context().request, {action: 'command', workspaceId: selected.workspaceId, command: {
+        kind: 'add-object', commandId: randomUUID(), documentId: document.id, expectedRevision: document.revision,
+        object: {...first.command.object, id: randomUUID(), title: 'Tratto del writer concorrente', x: first.command.object.x - 30},
+      }}, selected.account.id);
+      held.release();
+      await expect.poll(() => held.attempts[0]?.errorCode).toBe('REVISION_CONFLICT');
+      if (testInfo.project.name === 'mobile-chromium') await page.setViewportSize({width: 820, height: 1180});
+      await recoveryPanel(page).getByRole('button', {name: 'Anteprima recupero tratti', exact: true}).click();
+      const dialog = page.getByRole('dialog', {name: 'Recupera i tuoi tratti', exact: true});
+      await expect(dialog.getByRole('button', {name: 'Conferma recupero di 3 tratti', exact: true})).toBeEnabled();
+      await expect(dialog.getByRole('img', {name: 'Anteprima dei tratti sulla lezione aggiornata'})).toBeVisible();
+      expect(held.attempts).toHaveLength(1); expect(inksOf(await personalProjection(page), page)).toHaveLength(1);
+      await page.screenshot({path: testInfo.outputPath('ink-recovery-preview.png'), fullPage: false});
+
+      // Changing the document after preview invalidates this concrete decision.
+      const current = documentOf(await personalProjection(page), page);
+      await api(page.context().request, {action: 'command', workspaceId: selected.workspaceId, command: {
+        kind: 'rename-document', commandId: randomUUID(), documentId: document.id, expectedRevision: current.revision, title: 'Lezione aggiornata durante l’anteprima',
+      }}, selected.account.id);
+      await dialog.getByRole('button', {name: 'Conferma recupero di 3 tratti', exact: true}).click();
+      await expect(dialog.getByRole('alert')).toContainText('nuova anteprima');
+      expect(held.attempts).toHaveLength(1);
+      await dialog.getByRole('button', {name: 'Rileggi e prepara anteprima', exact: true}).click();
+      await expect(dialog).toContainText('Lezione aggiornata durante l’anteprima');
+      await dialog.getByRole('button', {name: 'Conferma recupero di 3 tratti', exact: true}).click();
+      await expect(dialog).toHaveCount(0); await expect(recoveryPanel(page)).toHaveCount(0);
+      const after = await personalProjection(page);
+      expect(inksOf(after, page)).toHaveLength(4); expect(held.attempts).toHaveLength(4);
+      for (const [index, attempt] of held.attempts.slice(1).entries()) {
+        const original = originals[index]!.request;
+        if (original.action !== 'command' || original.command.kind !== 'add-object') throw Error('Expected ink');
+        expect(attempt.request.command.object).toEqual(original.command.object);
+        expect(attempt.request.command.commandId).not.toBe(original.command.commandId);
+        expect(attempt.request.command.expectedRevision).toBe(document.revision + 2 + index);
+        expect(after.events.filter(event => event.id === attempt.receipt!.eventId)).toHaveLength(1);
+      }
+      expect(after.events).toHaveLength(before.events.length + 5); expect(await recovery(page)).toEqual([]);
+      await page.reload(); await expect(page.getByRole('button', {name: 'Apri Annotazione a penna', exact: true})).toHaveCount(3);
+      expect(inksOf(await personalProjection(page), page)).toHaveLength(4); expect(errors).toEqual([]);
+    } finally {held.release();}
+  });
+
+  test('a replacement committed before response loss reopens with its original and retries the same replacement receipt', async ({page}) => {
+    const before = await personalProjection(page), selected = selectedWorkspace(page), document = documentOf(before, page);
+    const held = await holdFirstInk(page, 'conflict');
+    try {
+      const originals = await drawPair(page, held);
+      await api(page.context().request, {action: 'command', workspaceId: selected.workspaceId, command: {
+        kind: 'rename-document', commandId: randomUUID(), documentId: document.id, expectedRevision: document.revision, title: 'Lezione concorrente',
+      }}, selected.account.id);
+      held.release(); await expect.poll(() => held.attempts[0]?.errorCode).toBe('REVISION_CONFLICT');
+      const replacements: {request: InkRequest; receipt: CommandReceipt}[] = [];
+      await page.route('**/api/m3', async route => {
+        const request = inkRequest(route.request());
+        if (!request) {await continueRouteWithAccess(route); return;}
+        const response = await fetchRouteWithAccess(route);
+        try {
+          const body = await readApiJson(response); expect(body.ok).toBe(true);
+          replacements.push({request, receipt: body.result.receipt});
+          if (replacements.length === 1) await route.abort('failed'); else await route.fulfill({response});
+        } finally {await response.dispose();}
+      });
+      await recoveryPanel(page).getByRole('button', {name: 'Anteprima recupero tratti', exact: true}).click();
+      const dialog = page.getByRole('dialog', {name: 'Recupera i tuoi tratti', exact: true});
+      await dialog.getByRole('button', {name: 'Conferma recupero di 2 tratti', exact: true}).click();
+      await expect(dialog.getByRole('alert')).toContainText('non confermata');
+      expect(replacements).toHaveLength(1); expect(inksOf(await personalProjection(page), page)).toHaveLength(1);
+      const retained = await recovery(page);
+      expect(retained.map(entry => entry.request)).toEqual(originals.map(entry => entry.request));
+      expect(retained[0]?.reconciliation?.attempts[0]?.commandId).toBe(replacements[0]!.request.command.commandId);
+      await page.reload();
+      await recoveryPanel(page).getByRole('button', {name: 'Verifica e ritenta', exact: true}).click();
+      await expect(recoveryPanel(page).locator('code')).toHaveText([originals[1]!.commandId]);
+      expect(replacements).toHaveLength(2); expect(replacements[1]).toEqual(replacements[0]);
+      await recoveryPanel(page).getByRole('button', {name: 'Anteprima recupero tratti', exact: true}).click();
+      await page.getByRole('dialog').getByRole('button', {name: 'Conferma recupero di 1 tratto', exact: true}).click();
+      await expect(page.getByRole('dialog')).toHaveCount(0); await expect(recoveryPanel(page)).toHaveCount(0);
+      const after = await personalProjection(page);
+      expect(inksOf(after, page)).toHaveLength(2); expect(after.events).toHaveLength(before.events.length + 3);
+      expect(replacements).toHaveLength(3); expect(await recovery(page)).toEqual([]);
+      const last = originals[1]!.request;
+      if (last.action !== 'command' || last.command.kind !== 'add-object') throw Error('Expected original ink');
+      expect(replacements[2]!.request.command.object).toEqual(last.command.object);
+    } finally {held.release();}
+  });
+
   test('a committed response loss requires the identical retry and an explicit separate resume of the unsent stroke', async ({page}) => {
     const before = await personalProjection(page), selected = selectedWorkspace(page);
     const held = await holdFirstInk(page, 'lose-response');
@@ -251,54 +346,35 @@ test.describe('[M3 queue] acknowledgement and explicit recovery', () => {
     } finally {held.release();}
   });
 
-  test('two already open tabs preserve separate recovery intents when one tab discards its conflicted write', async ({page, context}) => {
+  test('already open tabs share the pending barrier and discarding an unsent stroke preserves the peer receipt', async ({page, context}) => {
     const before = await personalProjection(page), peer = await context.newPage();
     await peer.goto('/');
     await expect(peer.getByRole('heading', {name: 'Oscillazioni: osserva, misura, spiega', exact: true})).toBeVisible();
-    const lost = await holdFirstInk(page, 'lose-response'), stale = await holdFirstInk(peer, 'conflict');
+    const lost = await holdFirstInk(peer, 'lose-response');
+    const ownAttempts: InkRequest[] = [];
+    page.on('request', request => {const body = inkRequest(request); if (body) ownAttempts.push(body);});
     try {
-      // Capture B's original revision before A commits. Both clients were opened
-      // before either intent existed, so neither may overwrite the other's row.
-      await peer.getByRole('button', {name: 'Penna', exact: true}).click();
-      await drawStroke(peer, 170);
-      await expect.poll(stale.waiting).toBe(true);
-      await page.getByRole('button', {name: 'Penna', exact: true}).click();
-      await drawStroke(page, 0);
+      await peer.getByRole('button', {name: 'Penna', exact: true}).click(); await drawStroke(peer, 170);
       await expect.poll(lost.waiting).toBe(true);
-      const lostId = lost.attempts[0]!.request.command.commandId, staleId = stale.attempts[0]!.request.command.commandId;
-      expect(lostId).not.toBe(staleId);
-      await expect.poll(async () => (await recovery(page)).map(entry => entry.commandId).sort()).toEqual([lostId, staleId].sort());
-      const originalReceipt = lost.attempts[0]!.receipt!;
-      expect(originalReceipt.commandId).toBe(lostId);
-      lost.release(); stale.release();
-      await expect.poll(() => stale.attempts[0]?.errorCode).toBe('REVISION_CONFLICT');
+      const lostId = lost.attempts[0]!.request.command.commandId, originalReceipt = lost.attempts[0]!.receipt!;
+      await page.getByRole('button', {name: 'Penna', exact: true}).click(); await drawStroke(page, 0);
+      await expect.poll(async () => (await recovery(page)).length).toBe(2);
+      const originals = await recovery(page), own = originals.find(entry => entry.commandId !== lostId)!;
+      expect(own.edit?.predecessorId).toBe(lostId); expect(own.status).toBe('blocked'); expect(ownAttempts).toEqual([]);
+      lost.release();
       await expect.poll(async () => (await recovery(page)).find(entry => entry.commandId === lostId)?.status).toBe('uncertain');
-      await expect.poll(async () => (await recovery(page)).find(entry => entry.commandId === staleId)?.status).toBe('conflict');
-      const records = await recovery(page);
-      expect(records.find(entry => entry.commandId === lostId)?.request).toEqual(lost.attempts[0]!.request);
-      expect(records.find(entry => entry.commandId === staleId)?.request).toEqual(stale.attempts[0]!.request);
-      const committed = await personalProjection(page);
-      expect(inksOf(committed, page)).toHaveLength(1);
+      const committed = await personalProjection(page); expect(inksOf(committed, page)).toHaveLength(1);
       expect(committed.events).toHaveLength(before.events.length + 1);
-
-      await recoveryPanel(peer).getByRole('button', {name: 'Scarta comando in attesa', exact: true}).click();
+      const row = recoveryPanel(page).locator('code').filter({hasText: own.commandId}).locator('..');
+      await row.getByRole('button', {name: 'Scarta comando in attesa', exact: true}).click();
+      await expect.poll(async () => (await recovery(page)).map(entry => entry.commandId)).toEqual([lostId]);
+      await page.reload(); await expect(recoveryPanel(page).locator('code')).toHaveText([lostId]);
+      expect(await personalProjection(page)).toEqual(committed);
+      await recoveryPanel(peer).locator('code').filter({hasText: lostId}).locator('..').getByRole('button', {name: 'Verifica e ritenta', exact: true}).click();
       await expect(recoveryPanel(peer)).toHaveCount(0);
-      expect((await recovery(page)).map(entry => entry.commandId)).toEqual([lostId]);
-      await page.reload();
-      await expect(recoveryPanel(page).locator('code')).toHaveText([lostId]);
-      await expectUnconfirmed(page);
-      expect(await personalProjection(page)).toEqual(committed);
-      expect(lost.attempts).toHaveLength(1);
-      expect(stale.attempts).toHaveLength(1);
-
-      await recoveryPanel(page).getByRole('button', {name: 'Verifica e ritenta', exact: true}).click();
-      await expect(recoveryPanel(page)).toHaveCount(0);
-      expect(lost.attempts).toHaveLength(2);
-      expect(lost.attempts[1]!.request).toEqual(lost.attempts[0]!.request);
+      expect(lost.attempts).toHaveLength(2); expect(lost.attempts[1]!.request).toEqual(lost.attempts[0]!.request);
       expect(lost.attempts[1]!.receipt).toEqual(originalReceipt);
-      expect(await personalProjection(page)).toEqual(committed);
-      expect(await recovery(page)).toEqual([]);
-      expect(stale.attempts).toHaveLength(1);
-    } finally {lost.release(); stale.release(); await peer.close();}
+      expect(await personalProjection(page)).toEqual(committed); expect(await recovery(page)).toEqual([]); expect(ownAttempts).toEqual([]);
+    } finally {lost.release(); await peer.close();}
   });
 });

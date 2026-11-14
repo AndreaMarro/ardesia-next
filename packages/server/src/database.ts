@@ -64,8 +64,8 @@ export async function transaction<T>(pool: Pool, operation: (client: PoolClient)
 }
 
 /** Operator-only, explicit migration. No request handler calls this function. */
-export async function migrate(pool: Pool): Promise<{version: 7; digest: string}> {
-  const migrations = await Promise.all(['001_initial.sql', '002_recordings.sql', '003_learning_feedback.sql', '004_extensions.sql', '005_courses.sql', '006_tutor.sql', '007_materials.sql'].map(async name => {
+export async function migrate(pool: Pool): Promise<{version: number; digest: string}> {
+  const migrations = await Promise.all(['001_initial.sql', '002_recordings.sql', '003_learning_feedback.sql', '004_extensions.sql', '005_courses.sql', '006_tutor.sql', '007_materials.sql', '008_tutor_economics.sql', '009_notebooks.sql'].map(async name => {
     const sql = await readFile(new URL('../migrations/' + name, import.meta.url), 'utf8'); return {sql, digest: hash(sql)};
   }));
   return transaction(pool, async client => {
@@ -86,6 +86,6 @@ export async function migrate(pool: Pool): Promise<{version: 7; digest: string}>
         await client.query('INSERT INTO ardesia_next.schema_migrations(version,digest) VALUES ($1,$2)', [version, migration.digest]);
       }
     }
-    return {version: 7, digest: migrations[6]!.digest};
+    return {version: migrations.length, digest: migrations.at(-1)!.digest};
   });
 }

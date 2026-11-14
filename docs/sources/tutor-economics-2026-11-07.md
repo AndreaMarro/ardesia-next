@@ -1,0 +1,21 @@
+# Economia tutor: costi, tempo e ricavi maturati
+
+La scheda appuntamento può conservare `directCostMinor` e `preparationMinutes`, entrambi opzionali. Sono costi diretti **già sostenuti** nella valuta della scheda e minuti di preparazione **già svolti**, non preventivi. Core li salva tramite `save-tutor-record` nelle stesse transazioni, revisioni, ricevute e storia. Restano validi i controlli di titolarità, rettifica motivata, idempotenza e ripristino. Non esiste un secondo libro contabile.
+
+La proiezione LessonOS `projectTutorEconomics` legge le schede autorizzate correnti:
+
+- Compensi singoli: solo appuntamenti `completed`, incluse eventuali assenze addebitate già ammesse da Core. Gli addebiti per annullamento rimangono nei compensi da ricevere, ma non nei ricavi delle lezioni svolte.
+- Pacchetti: prezzo proporzionato ai minuti effettivamente consumati da presenze in lezioni completate. Prenotazione, assenza e annullamento non consumano minuti. Arrotondamento cumulativo per pacchetto, in ordine data/ID stabile: la somma delle quote coincide col prezzo quando tutti i minuti sono consumati. Le quote espongono ID/revisione della scheda pacchetto corrente; rettificare il contratto ricostruisce il risultato.
+- Costi e preparazione: una volta per appuntamento, anche programmato/annullato se già sostenuti. Durata di insegnamento: una volta per appuntamento completato, anche per un gruppo. Campo assente interpretato come zero **solo nella proiezione**, con conteggio dei dati non indicati visibile.
+- Margine operativo = ricavi maturati − costi diretti registrati. Ricavo/ora e margine/ora dividono per minuti di lezione + preparazione e restituiscono indisponibile quando il denominatore è zero. Non includono imposte, contributi o costi generali: non sono risultati fiscali.
+- Incassi registrati/void restano separati da maturazione e addebiti. Ogni valuta è separata; nessuna conversione. Gli importi aggregati usano BigInt per evitare perdita di precisione e sono derivati, mai serializzati negli snapshot.
+
+## Compatibilità e rollback
+
+Nessun `.default(0)` nei nuovi campi: materializzarlo alla lettura cambierebbe il comando storico e il fingerprint della sua ricevuta. Il reader nuovo apre dati v9 precedenti senza cambiare record, eventi o ricevute; non richiede trasformazione dei dati esistenti. Il test golden `packages/core/src/fixtures/tutor-v9.json` è stato generato con Core/contratti **a4835aa**, prima della modifica, SHA-256 `ebdc025da605a2560e8a4c7a4e827e8d74a3407396720df2a710f9009565f035`. I fingerprint storici rimangono `46c909bd…` e `f60aaf59…`, compreso il retry esatto.
+
+Il migratore rifiuta campi economics in snapshot etichettati 1–9 e preserva quei byte; un autentico v8 continua a migrare soltanto in memoria. Integrazione adottata: contratti 0.11.0, SnapshotVersion10. La migrazione9→10 cambia solo l’envelope in memoria; SQL008 estende il CHECK delle workspace a4–10 senza riscrivere record, eventi o ricevute. Il prossimo comando persistito usa v10. Il vecchio reader non interpreta i nuovi campi. Questa compatibilità è di lettura del passato, non una promessa di downgrade: il vecchio reader strict non sa leggere record con i nuovi campi. Dopo averli scritti, rollback solo a una build compatibile, oppure export e migrazione inversa esplicita che conservi storia e ricevute; mai eliminazione manuale di proprietà dal database.
+
+## Prove
+
+Test numerici: gruppo misto singolo/pacchetto, incassi anticipati, presenza/assenza, cancellato e programmato con costi già sostenuti, tre quote con arrotondamento non uniforme e somma esatta, multivaluta, denominatore zero/margine negativo, valori oltre Number.MAX_SAFE_INTEGER, fonte pacchetto mancante/incoerente, correzione di revisione. Core: v9 golden, v8 autentico/maletichettato, fingerprint/retry immutati, salvataggio/ripresa costi e rigetto atomico dei valori invalidi. Editor: parsing opzionale e precisione EUR/JPY/KWD; il test browser predisposto copre salva→riapri→rettifica→reload→Conti e storia esatta, ed è stato eseguito dal coordinatore su Chromium desktop/mobile e PostgreSQL locale nella suite mirata (20 PASS; 6 fallimenti di locator in altri flussi). La successiva verifica completa è riportata nell’handoff, senza attribuirla alla consegna isolata dello specialista. Nessun dato reale o pagamento eseguito.

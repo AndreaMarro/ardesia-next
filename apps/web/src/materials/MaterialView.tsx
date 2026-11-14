@@ -1,4 +1,4 @@
-import {renderMaterialInTurn,materialRasterSize} from './render-queue';
+import {renderMaterial} from './render';
 import {inkPath} from '../components/board-geometry';
 import type {MaterialObject,InkObject} from '@ardesia/contracts';
 import {createContext, useContext, useEffect, useMemo, useRef, useState, type ReactNode} from 'react';
@@ -28,28 +28,13 @@ export function MaterialView({data,blob}:{data:MaterialData;blob?:Blob}){
   useEffect(()=>{const observer=new IntersectionObserver(entries=>setVisible(entries.some(e=>e.isIntersecting)),{rootMargin:'200px'});observer.observe(container.current!);return()=>observer.disconnect();},[]);
   useEffect(()=>{
     if(!visible){if(canvas.current){canvas.current.width=1;canvas.current.height=1;}return;}
-    let disposed=false,task:ReturnType<typeof import('./pdf-engine')['openPdf']>|undefined,render:import('pdfjs-dist').RenderTask|undefined;
-    const controller=new AbortController();let timer:ReturnType<typeof setTimeout>|undefined;
-    const stop=()=>{render?.cancel();void task?.destroy().catch(()=>undefined);};
-    setState('Caricamento del materiale…');setText('');
-    void renderMaterialInTurn(async()=>{
-      try{
-        const original=blob??await scope?.load(data);if(!original)throw Error('Materiale non disponibile in questa copia.');if(disposed)return;
-        const target=document.createElement('canvas');
-        if(data.mimeType==='application/pdf'){
-          const {openPdf}=await import('./pdf-engine');const bytes=await original.arrayBuffer();if(disposed)return;
-          task=openPdf(new Uint8Array(bytes));timer=setTimeout(stop,20_000);
-          const pdf=await task.promise;if(disposed)return;const page=await pdf.getPage(data.page);if(disposed)return;
-          const base=page.getViewport({scale:1}),size=materialRasterSize(base.width,base.height),viewport=page.getViewport({scale:size.scale});
-          target.width=size.width;target.height=size.height;render=page.render({canvas:target,viewport});await render.promise;
-          const content=await page.getTextContent();if(!disposed)setText(content.items.flatMap(item=>'str'in item?[item.str]:[]).join(' ').slice(0,100000));
-        }else{
-          const bitmap=await createImageBitmap(original);try{if(disposed)return;if(bitmap.width*bitmap.height>40_000_000)throw Error('Image too large');const size=materialRasterSize(bitmap.width,bitmap.height);target.width=size.width;target.height=size.height;target.getContext('2d')!.drawImage(bitmap,0,0,target.width,target.height);}finally{bitmap.close();}
-        }
-        if(!disposed){const current=canvas.current!;current.width=target.width;current.height=target.height;current.getContext('2d')!.drawImage(target,0,0);setState('');}
-      }finally{clearTimeout(timer);await task?.destroy().catch(()=>undefined);}
-    },controller.signal).catch(()=>{if(!disposed)setState('Materiale non disponibile. Verifica la connessione e riprova.');});
-    return()=>{disposed=true;controller.abort();clearTimeout(timer);stop();};
+    let disposed=false;
+    const controller=new AbortController();setState('Caricamento del materiale…');setText('');
+    void (async()=>{
+      const raster=await renderMaterial(async()=>{const original=blob??await scope?.load(data);if(!original)throw Error('Materiale non disponibile in questa copia.');return original;},data,controller.signal);
+      if(!disposed){const current=canvas.current!;current.width=raster.width;current.height=raster.height;current.getContext('2d')!.drawImage(raster.canvas,0,0);setText(raster.text);setState('');}
+    })().catch(()=>{if(!disposed)setState('Materiale non disponibile. Verifica la connessione e riprova.');});
+    return()=>{disposed=true;controller.abort();};
   },[scope,data.assetId,data.sha256,data.page,blob,retry,visible]);
   return <div ref={container} className="material-view" style={{aspectRatio:`${data.pageWidth} / ${data.pageHeight}`}} data-material-state={!visible?'offscreen':state?'loading-or-error':'ready'}>
     <canvas ref={canvas} role="img" aria-label={`${data.name} · pagina ${data.page} di ${data.pageCount}`} hidden={!!state||!visible}/><span className="material-accessible-text">{text}</span>

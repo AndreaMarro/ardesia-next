@@ -1,0 +1,1526 @@
+[
+  {
+    "unitId": "sf-2026-u1-01",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "familyId": "U1-01",
+    "syllabusUnitId": "U1",
+    "objectiveIds": [
+      "U1-01.01",
+      "U1-01.02",
+      "U1-01.03"
+    ],
+    "sourcePages": [
+      2
+    ],
+    "legacyLessonId": "ds-2026-u1-01",
+    "legacyCourseId": "sf-strumenti-meccanica-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "3c125b289269c3b76fb3a355c61f2d88ee50ef39724793758a5fa71eb9a5f348",
+    "experimentId": "investigation-u1-01",
+    "labIds": [],
+    "exerciseIds": [
+      "u1-scientific-scale-03",
+      "u1-scientific-scale-08",
+      "u1-scientific-scale-09",
+      "u1-scientific-scale-13"
+    ],
+    "finalAssessmentIds": [
+      "final-U1-01.01",
+      "final-U1-01.02",
+      "final-U1-01.03"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u1-02",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "familyId": "U1-02",
+    "syllabusUnitId": "U1",
+    "objectiveIds": [
+      "U1-02.01",
+      "U1-02.02",
+      "U1-02.03",
+      "U1-02.04",
+      "U1-02.05",
+      "U1-02.06"
+    ],
+    "sourcePages": [
+      2
+    ],
+    "legacyLessonId": "ds-2026-u1-02",
+    "legacyCourseId": "sf-strumenti-meccanica-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "e0c6d4a6f1578d79411e6350b7cdda1f97462b551be4f52c17e4d96e31cef0c9",
+    "experimentId": "investigation-u1-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u1-area-conversion-01",
+      "u1-area-conversion-02",
+      "u1-area-conversion-09",
+      "u1-area-conversion-13",
+      "u1-scalar-product-03",
+      "u1-volume-conversion-03",
+      "u2-uniform-position-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U1-02.01",
+      "final-U1-02.02",
+      "final-U1-02.03",
+      "final-U1-02.04",
+      "final-U1-02.05",
+      "final-U1-02.06"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u1-03",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "familyId": "U1-03",
+    "syllabusUnitId": "U1",
+    "objectiveIds": [
+      "U1-03.01",
+      "U1-03.02",
+      "U1-03.03",
+      "U1-03.04"
+    ],
+    "sourcePages": [
+      2
+    ],
+    "legacyLessonId": "ds-2026-u1-03",
+    "legacyCourseId": "sf-strumenti-meccanica-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "40837302f7c9603160ff5e31f99a92b721749ed02452437f8f8621663bab0c73",
+    "experimentId": "investigation-u1-03",
+    "labIds": [
+      "physics-vectors-3d"
+    ],
+    "exerciseIds": [
+      "u1-vector-angle-ratio-03",
+      "u1-vector-angle-ratio-09",
+      "u1-vector-angle-ratio-13"
+    ],
+    "finalAssessmentIds": [
+      "final-U1-03.01",
+      "final-U1-03.02",
+      "final-U1-03.03",
+      "final-U1-03.04"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u1-04",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "familyId": "U1-04",
+    "syllabusUnitId": "U1",
+    "objectiveIds": [
+      "U1-04.01",
+      "U1-04.02",
+      "U1-04.03",
+      "U1-04.04",
+      "U1-04.05"
+    ],
+    "sourcePages": [
+      2
+    ],
+    "legacyLessonId": "ds-2026-u1-04",
+    "legacyCourseId": "sf-strumenti-meccanica-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "3a89bdf5e5b8a98f489b5e9a95f62fe86b4e120c062e23f73f182a20d08a84c5",
+    "experimentId": "investigation-u1-04",
+    "labIds": [
+      "physics-vectors-3d"
+    ],
+    "exerciseIds": [
+      "u1-scalar-product-03",
+      "u1-scalar-product-09",
+      "u1-scalar-product-13",
+      "u1-vector-product-01",
+      "u1-vector-projection-03",
+      "u1-vector-sum-01"
+    ],
+    "finalAssessmentIds": [
+      "final-U1-04.01",
+      "final-U1-04.02",
+      "final-U1-04.03",
+      "final-U1-04.04",
+      "final-U1-04.05"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u2-01",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "familyId": "U2-01",
+    "syllabusUnitId": "U2",
+    "objectiveIds": [
+      "U2-01.01",
+      "U2-01.02",
+      "U2-01.03",
+      "U2-01.04",
+      "U2-01.05",
+      "U2-01.06",
+      "U2-01.07",
+      "U2-01.08",
+      "U2-01.09"
+    ],
+    "sourcePages": [
+      2
+    ],
+    "legacyLessonId": "ds-2026-u2-01",
+    "legacyCourseId": "sf-strumenti-meccanica-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "78709aec08d88c4e58c3f68fc19115f1be90d58b563abf5d0707a55a5fa76630",
+    "experimentId": "investigation-u2-01",
+    "labIds": [
+      "physics-projectile"
+    ],
+    "exerciseIds": [
+      "u2-centripetal-acceleration-03",
+      "u2-centripetal-acceleration-09",
+      "u2-centripetal-acceleration-13",
+      "u2-freefall-time-03",
+      "u2-mean-acceleration-01",
+      "u2-mean-velocity-03",
+      "u2-projectile-range-01",
+      "u2-rest-accelerated-distance-03",
+      "u2-uniform-displacement-01",
+      "u2-uniform-position-01"
+    ],
+    "finalAssessmentIds": [
+      "final-U2-01.01",
+      "final-U2-01.02",
+      "final-U2-01.03",
+      "final-U2-01.04",
+      "final-U2-01.05",
+      "final-U2-01.06",
+      "final-U2-01.07",
+      "final-U2-01.08",
+      "final-U2-01.09"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u2-02",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "familyId": "U2-02",
+    "syllabusUnitId": "U2",
+    "objectiveIds": [
+      "U2-02.01",
+      "U2-02.02",
+      "U2-02.03",
+      "U2-02.04",
+      "U2-02.05",
+      "U2-02.06",
+      "U2-02.07",
+      "U2-02.08",
+      "U2-02.09"
+    ],
+    "sourcePages": [
+      2
+    ],
+    "legacyLessonId": "ds-2026-u2-02",
+    "legacyCourseId": "sf-strumenti-meccanica-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "b42c2b7de491e835a98060a0982e4015f6ee6493828715baaab9e8b6f3a0a889",
+    "experimentId": "investigation-u2-02",
+    "labIds": [
+      "physics-oscillator"
+    ],
+    "exerciseIds": [
+      "u2-atwood-03",
+      "u2-atwood-09",
+      "u2-atwood-13",
+      "u2-gravity-ratio-01",
+      "u2-hooke-force-01",
+      "u2-incline-normal-01",
+      "u2-opposed-force-acceleration-01",
+      "u2-opposed-force-acceleration-03",
+      "u2-static-threshold-03",
+      "u2-uniform-displacement-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U2-02.01",
+      "final-U2-02.02",
+      "final-U2-02.03",
+      "final-U2-02.04",
+      "final-U2-02.05",
+      "final-U2-02.06",
+      "final-U2-02.07",
+      "final-U2-02.08",
+      "final-U2-02.09"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u2-03",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "familyId": "U2-03",
+    "syllabusUnitId": "U2",
+    "objectiveIds": [
+      "U2-03.01",
+      "U2-03.02",
+      "U2-03.03",
+      "U2-03.04",
+      "U2-03.05",
+      "U2-03.06"
+    ],
+    "sourcePages": [
+      2,
+      3
+    ],
+    "legacyLessonId": "ds-2026-u2-03",
+    "legacyCourseId": "sf-strumenti-meccanica-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "09e18fe5c154041eebaff189ef2179ddaf420ca760a83862034f963cff3247f7",
+    "experimentId": "investigation-u2-03",
+    "labIds": [
+      "physics-energy"
+    ],
+    "exerciseIds": [
+      "u2-gravitational-energy-01",
+      "u2-gravitational-energy-03",
+      "u2-gravitational-energy-09",
+      "u2-gravitational-energy-13",
+      "u2-kinetic-work-difference-03",
+      "u2-mechanical-power-03",
+      "u2-oblique-work-01",
+      "u2-spring-energy-01",
+      "u2-spring-launch-01"
+    ],
+    "finalAssessmentIds": [
+      "final-U2-03.01",
+      "final-U2-03.02",
+      "final-U2-03.03",
+      "final-U2-03.04",
+      "final-U2-03.05",
+      "final-U2-03.06"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u2-04",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "familyId": "U2-04",
+    "syllabusUnitId": "U2",
+    "objectiveIds": [
+      "U2-04.01",
+      "U2-04.02",
+      "U2-04.03",
+      "U2-04.04"
+    ],
+    "sourcePages": [
+      3
+    ],
+    "legacyLessonId": "ds-2026-u2-04",
+    "legacyCourseId": "sf-strumenti-meccanica-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "0c642ab5fa443ecc1baae8654e163db7b3a0b382d9a2e918db63fad8d8267144",
+    "experimentId": "investigation-u2-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-impulse-03",
+      "u2-impulse-09",
+      "u2-impulse-13",
+      "u2-inelastic-rest-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U2-04.01",
+      "final-U2-04.02",
+      "final-U2-04.03",
+      "final-U2-04.04"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u2-05",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "familyId": "U2-05",
+    "syllabusUnitId": "U2",
+    "objectiveIds": [
+      "U2-05.01",
+      "U2-05.02",
+      "U2-05.03",
+      "U2-05.04",
+      "U2-05.05",
+      "U2-05.06"
+    ],
+    "sourcePages": [
+      3
+    ],
+    "legacyLessonId": "ds-2026-u2-05",
+    "legacyCourseId": "sf-strumenti-meccanica-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "3931b54e4a03da0164779b57172b536b6beb49cbf9f69133b466371f63c1ff88",
+    "experimentId": "investigation-u2-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-biceps-lever-01",
+      "u2-biceps-lever-09",
+      "u2-biceps-lever-13",
+      "u2-center-mass-weighted-03",
+      "u2-lever-equilibrium-03",
+      "u2-torque-perpendicular-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U2-05.01",
+      "final-U2-05.02",
+      "final-U2-05.03",
+      "final-U2-05.04",
+      "final-U2-05.05",
+      "final-U2-05.06"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u3-01",
+    "courseId": "sf-2026-fluidi",
+    "familyId": "U3-01",
+    "syllabusUnitId": "U3",
+    "objectiveIds": [
+      "U3-01.01",
+      "U3-01.02",
+      "U3-01.03",
+      "U3-01.04"
+    ],
+    "sourcePages": [
+      3
+    ],
+    "legacyLessonId": "ds-2026-u3-01",
+    "legacyCourseId": "sf-fluidi-termodinamica-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "4da43865633287612c9243f3854812cbb2be6f83a708c2ae32730aad96dbe239",
+    "experimentId": "investigation-u3-01",
+    "labIds": [
+      "physics-hydrostatic"
+    ],
+    "exerciseIds": [
+      "u3-couette-force-03",
+      "u3-couette-force-09",
+      "u3-couette-force-13",
+      "u3-density-01",
+      "u3-density-05",
+      "u3-pressure-area-01",
+      "u3-pressure-area-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U3-01.01",
+      "final-U3-01.02",
+      "final-U3-01.03",
+      "final-U3-01.04"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u3-02",
+    "courseId": "sf-2026-fluidi",
+    "familyId": "U3-02",
+    "syllabusUnitId": "U3",
+    "objectiveIds": [
+      "U3-02.01",
+      "U3-02.02",
+      "U3-02.03",
+      "U3-02.04",
+      "U3-02.05",
+      "U3-02.06"
+    ],
+    "sourcePages": [
+      3
+    ],
+    "legacyLessonId": "ds-2026-u3-02",
+    "legacyCourseId": "sf-fluidi-termodinamica-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "d6b9b53ee420ec8064eb72aa3315542fabeadc211e31e98f672db11322bd389b",
+    "experimentId": "investigation-u3-02",
+    "labIds": [
+      "physics-hydrostatic"
+    ],
+    "exerciseIds": [
+      "u3-apparent-weight-01",
+      "u3-apparent-weight-09",
+      "u3-apparent-weight-13",
+      "u3-archimedes-force-03",
+      "u3-differential-manometer-01",
+      "u3-floating-fraction-03",
+      "u3-hydraulic-force-03",
+      "u3-hydraulic-stroke-01",
+      "u3-hydrostatic-weighing-01",
+      "u3-layered-liquids-01",
+      "u3-loaded-raft-depth-01",
+      "u3-maximum-payload-01",
+      "u3-stevino-absolute-01",
+      "u3-stevino-gauge-03",
+      "u3-torricelli-flow-01",
+      "u3-torricelli-speed-01",
+      "u3-two-liquid-floating-01"
+    ],
+    "finalAssessmentIds": [
+      "final-U3-02.01",
+      "final-U3-02.02",
+      "final-U3-02.03",
+      "final-U3-02.04",
+      "final-U3-02.05",
+      "final-U3-02.06"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u3-03",
+    "courseId": "sf-2026-fluidi",
+    "familyId": "U3-03",
+    "syllabusUnitId": "U3",
+    "objectiveIds": [
+      "U3-03.01",
+      "U3-03.02",
+      "U3-03.03",
+      "U3-03.04",
+      "U3-03.05",
+      "U3-03.06"
+    ],
+    "sourcePages": [
+      3
+    ],
+    "legacyLessonId": "ds-2026-u3-03",
+    "legacyCourseId": "sf-fluidi-termodinamica-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "7bf8cdc9ac7b1882567e3a94b74ab124703203f0417ef00d27c94cabedfce350",
+    "experimentId": "investigation-u3-03",
+    "labIds": [
+      "physics-continuity"
+    ],
+    "exerciseIds": [
+      "u3-bernoulli-height-speed-01",
+      "u3-bernoulli-height-speed-09",
+      "u3-bernoulli-height-speed-13",
+      "u3-bernoulli-horizontal-01",
+      "u3-bernoulli-horizontal-04",
+      "u3-constriction-velocity-01",
+      "u3-junction-balance-01",
+      "u3-mass-flow-01",
+      "u3-parabolic-profile-03",
+      "u3-poiseuille-flow-03",
+      "u3-pressure-gradient-fixed-speed-03",
+      "u3-transport-time-01",
+      "u3-venturi-area-ratio-01",
+      "u3-venturi-area-ratio-03",
+      "u3-volume-flow-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U3-03.01",
+      "final-U3-03.02",
+      "final-U3-03.03",
+      "final-U3-03.04",
+      "final-U3-03.05",
+      "final-U3-03.06"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u3-04",
+    "courseId": "sf-2026-fluidi",
+    "familyId": "U3-04",
+    "syllabusUnitId": "U3",
+    "objectiveIds": [
+      "U3-04.01",
+      "U3-04.02",
+      "U3-04.03",
+      "U3-04.04",
+      "U3-04.05"
+    ],
+    "sourcePages": [
+      3
+    ],
+    "legacyLessonId": "ds-2026-u3-04",
+    "legacyCourseId": "sf-fluidi-termodinamica-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "51cc002ad717778dda807f75da3c8da805977818aaa7f27e5930b90c54c3def5",
+    "experimentId": "investigation-u3-04",
+    "labIds": [
+      "physics-poiseuille"
+    ],
+    "exerciseIds": [
+      "u3-couette-force-01",
+      "u3-couette-force-09",
+      "u3-couette-force-13",
+      "u3-hydraulic-parallel-06",
+      "u3-hydraulic-series-06",
+      "u3-network-stages-01",
+      "u3-parabolic-profile-03",
+      "u3-poiseuille-flow-08",
+      "u3-pressure-gradient-fixed-speed-01",
+      "u3-viscous-dissipation-01",
+      "u3-volume-flow-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U3-04.01",
+      "final-U3-04.02",
+      "final-U3-04.03",
+      "final-U3-04.04",
+      "final-U3-04.05"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u3-05",
+    "courseId": "sf-2026-fluidi",
+    "familyId": "U3-05",
+    "syllabusUnitId": "U3",
+    "objectiveIds": [
+      "U3-05.01",
+      "U3-05.02",
+      "U3-05.03",
+      "U3-05.04",
+      "U3-05.05"
+    ],
+    "sourcePages": [
+      3
+    ],
+    "legacyLessonId": "ds-2026-u3-05",
+    "legacyCourseId": "sf-fluidi-termodinamica-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "78a7eb12461b24a9f0331fe438b77ea006678622269994e792042fd30b75c684",
+    "experimentId": "investigation-u3-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u3-capillary-rise-01",
+      "u3-capillary-rise-07",
+      "u3-droplet-fragmentation-01",
+      "u3-laplace-droplet-03",
+      "u3-soap-film-force-01",
+      "u3-soap-film-force-09",
+      "u3-soap-film-force-13",
+      "u3-surface-work-01"
+    ],
+    "finalAssessmentIds": [
+      "final-U3-05.01",
+      "final-U3-05.02",
+      "final-U3-05.03",
+      "final-U3-05.04",
+      "final-U3-05.05"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u5-01",
+    "courseId": "sf-2026-termodinamica",
+    "familyId": "U5-01",
+    "syllabusUnitId": "U5",
+    "objectiveIds": [
+      "U5-01.01",
+      "U5-01.02",
+      "U5-01.03",
+      "U5-01.04",
+      "U5-01.05"
+    ],
+    "sourcePages": [
+      4
+    ],
+    "legacyLessonId": "ds-2026-u5-01",
+    "legacyCourseId": "sf-fluidi-termodinamica-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "523bb270cbfbbfd8b07620dfe6cd499e561e45a18cb108dc066e8a4fe6a06e23",
+    "experimentId": "investigation-u5-01",
+    "labIds": [
+      "physics-ideal-gas"
+    ],
+    "exerciseIds": [
+      "u5-gas-density-01",
+      "u5-gas-density-09",
+      "u5-gas-density-13",
+      "u5-ideal-expansion-entropy-03",
+      "u5-ideal-gas-pressure-01",
+      "u5-ideal-gas-pressure-03",
+      "u5-isothermal-chambers-06",
+      "u5-sensible-heat-03",
+      "u5-temperature-difference-01",
+      "u5-temperature-difference-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U5-01.01",
+      "final-U5-01.02",
+      "final-U5-01.03",
+      "final-U5-01.04",
+      "final-U5-01.05"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u5-02",
+    "courseId": "sf-2026-termodinamica",
+    "familyId": "U5-02",
+    "syllabusUnitId": "U5",
+    "objectiveIds": [
+      "U5-02.01",
+      "U5-02.02",
+      "U5-02.03",
+      "U5-02.04",
+      "U5-02.05",
+      "U5-02.06",
+      "U5-02.07"
+    ],
+    "sourcePages": [
+      4
+    ],
+    "legacyLessonId": "ds-2026-u5-02",
+    "legacyCourseId": "sf-fluidi-termodinamica-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "a6bc281be94769f967a4a476d170baaa41bfe25c8daff780517c878854128d87",
+    "experimentId": "investigation-u5-02",
+    "labIds": [
+      "physics-calorimetry"
+    ],
+    "exerciseIds": [
+      "u5-calorimeter-capacity-01",
+      "u5-calorimeter-capacity-09",
+      "u5-calorimeter-capacity-13",
+      "u5-first-law-expansion-03",
+      "u5-freezing-time-01",
+      "u5-ice-final-temperature-01",
+      "u5-isobaric-monatomic-heat-01",
+      "u5-isobaric-monatomic-heat-03",
+      "u5-isochoric-heat-01",
+      "u5-latent-heat-03",
+      "u5-sensible-heat-01",
+      "u5-subzero-ice-melting-01",
+      "u5-two-body-calorimetry-01",
+      "u5-two-body-calorimetry-03",
+      "u5-warm-water-and-ice-01"
+    ],
+    "finalAssessmentIds": [
+      "final-U5-02.01",
+      "final-U5-02.02",
+      "final-U5-02.03",
+      "final-U5-02.04",
+      "final-U5-02.05",
+      "final-U5-02.06",
+      "final-U5-02.07"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u5-03",
+    "courseId": "sf-2026-termodinamica",
+    "familyId": "U5-03",
+    "syllabusUnitId": "U5",
+    "objectiveIds": [
+      "U5-03.01",
+      "U5-03.02",
+      "U5-03.03"
+    ],
+    "sourcePages": [
+      4
+    ],
+    "legacyLessonId": "ds-2026-u5-03",
+    "legacyCourseId": "sf-fluidi-termodinamica-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "022705c322e9d1fed7a28905c070f8870380bae432a0358f376835d3ac76b1ef",
+    "experimentId": "investigation-u5-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-composite-wall-series-01",
+      "u5-composite-wall-series-09",
+      "u5-composite-wall-series-13",
+      "u5-convective-loss-01",
+      "u5-emitted-blackbody-power-01",
+      "u5-interface-temperature-01",
+      "u5-net-blackbody-exchange-03",
+      "u5-parallel-heat-losses-01",
+      "u5-plane-conduction-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U5-03.01",
+      "final-U5-03.02",
+      "final-U5-03.03"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u5-04",
+    "courseId": "sf-2026-termodinamica",
+    "familyId": "U5-04",
+    "syllabusUnitId": "U5",
+    "objectiveIds": [
+      "U5-04.01",
+      "U5-04.02",
+      "U5-04.03",
+      "U5-04.04",
+      "U5-04.05",
+      "U5-04.06",
+      "U5-04.07",
+      "U5-04.08"
+    ],
+    "sourcePages": [
+      4
+    ],
+    "legacyLessonId": "ds-2026-u5-04",
+    "legacyCourseId": "sf-fluidi-termodinamica-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "4b2a07dd015929374f639177aa861b163ca6007c49ba0f3cb469007adf0d0e42",
+    "experimentId": "investigation-u5-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-adiabatic-monatomic-01",
+      "u5-compression-heating-01",
+      "u5-compression-heating-09",
+      "u5-compression-heating-13",
+      "u5-first-law-expansion-01",
+      "u5-first-law-expansion-03",
+      "u5-free-expansion-pressure-03",
+      "u5-ideal-expansion-entropy-16",
+      "u5-isobaric-monatomic-heat-03",
+      "u5-isobaric-work-03",
+      "u5-isochoric-heat-01",
+      "u5-isochoric-heat-03",
+      "u5-isothermal-work-01",
+      "u5-isothermal-work-16",
+      "u5-reversible-isothermal-entropy-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U5-04.01",
+      "final-U5-04.02",
+      "final-U5-04.03",
+      "final-U5-04.04",
+      "final-U5-04.05",
+      "final-U5-04.06",
+      "final-U5-04.07",
+      "final-U5-04.08"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u5-05",
+    "courseId": "sf-2026-termodinamica",
+    "familyId": "U5-05",
+    "syllabusUnitId": "U5",
+    "objectiveIds": [
+      "U5-05.01",
+      "U5-05.02",
+      "U5-05.03",
+      "U5-05.04",
+      "U5-05.05",
+      "U5-05.06",
+      "U5-05.07",
+      "U5-05.08"
+    ],
+    "sourcePages": [
+      4
+    ],
+    "legacyLessonId": "ds-2026-u5-05",
+    "legacyCourseId": "sf-fluidi-termodinamica-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "424ddfbb0efce154eb6bc4961df00598d16dde855769510a803fdbec8bbc768f",
+    "experimentId": "investigation-u5-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-carnot-efficiency-01",
+      "u5-carnot-efficiency-03",
+      "u5-carnot-efficiency-09",
+      "u5-carnot-efficiency-13",
+      "u5-carnot-work-temperature-gap-01",
+      "u5-cyclic-work-01",
+      "u5-engine-average-power-01",
+      "u5-engine-efficiency-01",
+      "u5-engine-efficiency-03",
+      "u5-entropy-hot-cold-03",
+      "u5-free-expansion-pressure-03",
+      "u5-ideal-expansion-entropy-03",
+      "u5-ideal-expansion-entropy-16",
+      "u5-isothermal-work-16",
+      "u5-refrigerator-cop-01",
+      "u5-reversible-isothermal-entropy-03",
+      "u5-statistical-entropy-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U5-05.01",
+      "final-U5-05.02",
+      "final-U5-05.03",
+      "final-U5-05.04",
+      "final-U5-05.05",
+      "final-U5-05.06",
+      "final-U5-05.07",
+      "final-U5-05.08"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u6-01",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "familyId": "U6-01",
+    "syllabusUnitId": "U6",
+    "objectiveIds": [
+      "U6-01.01",
+      "U6-01.02",
+      "U6-01.03",
+      "U6-01.04",
+      "U6-01.05",
+      "U6-01.06"
+    ],
+    "sourcePages": [
+      4
+    ],
+    "legacyLessonId": "ds-2026-u6-01",
+    "legacyCourseId": "sf-elettricita-magnetismo-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "b20eb3c04f468af75989ea514b6896072f3b400ff6b155ac659512622c7f46b1",
+    "experimentId": "investigation-u6-01",
+    "labIds": [
+      "physics-coulomb"
+    ],
+    "exerciseIds": [
+      "u6-capacitor-charge-09",
+      "u6-capacitor-charge-13",
+      "u6-charge-accelerating-voltage-01",
+      "u6-coulomb-force-01",
+      "u6-midpoint-electric-field-01",
+      "u6-parallel-capacitors-06",
+      "u6-plane-capacitance-08",
+      "u6-point-electric-field-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U6-01.01",
+      "final-U6-01.02",
+      "final-U6-01.03",
+      "final-U6-01.04",
+      "final-U6-01.05",
+      "final-U6-01.06"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u6-02",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "familyId": "U6-02",
+    "syllabusUnitId": "U6",
+    "objectiveIds": [
+      "U6-02.01",
+      "U6-02.02",
+      "U6-02.03",
+      "U6-02.04"
+    ],
+    "sourcePages": [
+      4
+    ],
+    "legacyLessonId": "ds-2026-u6-02",
+    "legacyCourseId": "sf-elettricita-magnetismo-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "58941a30fe78b79c5a577a30ac1fb314717f7b0b3590002a1147a7c8ae317982",
+    "experimentId": "investigation-u6-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-accelerated-magnetic-radius-09",
+      "u6-accelerated-magnetic-radius-13",
+      "u6-point-electric-potential-08",
+      "u6-symmetric-electric-potential-06",
+      "u6-work-potential-difference-08"
+    ],
+    "finalAssessmentIds": [
+      "final-U6-02.01",
+      "final-U6-02.02",
+      "final-U6-02.03",
+      "final-U6-02.04"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u6-03",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "familyId": "U6-03",
+    "syllabusUnitId": "U6",
+    "objectiveIds": [
+      "U6-03.01",
+      "U6-03.02"
+    ],
+    "sourcePages": [
+      4
+    ],
+    "legacyLessonId": "ds-2026-u6-03",
+    "legacyCourseId": "sf-elettricita-magnetismo-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "affe4a5c9fda9e2f3b96e755751b71ea807c5c6323757e38dbe1869d4ce4ac0e",
+    "experimentId": "investigation-u6-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-capacitor-energy-03",
+      "u6-capacitor-energy-09",
+      "u6-capacitor-energy-13",
+      "u6-force-uniform-electric-field-03",
+      "u6-plane-capacitance-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U6-03.01",
+      "final-U6-03.02"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u6-04",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "familyId": "U6-04",
+    "syllabusUnitId": "U6",
+    "objectiveIds": [
+      "U6-04.01",
+      "U6-04.02",
+      "U6-04.03",
+      "U6-04.04",
+      "U6-04.05",
+      "U6-04.06",
+      "U6-04.07"
+    ],
+    "sourcePages": [
+      4
+    ],
+    "legacyLessonId": "ds-2026-u6-04",
+    "legacyCourseId": "sf-elettricita-magnetismo-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "7bf73ca49feaabb6f38863e71503e4ae7bdfccd55c5195638b98357bb1d13a2d",
+    "experimentId": "investigation-u6-04",
+    "labIds": [
+      "physics-circuit"
+    ],
+    "exerciseIds": [
+      "u6-connected-plate-separation-charge-09",
+      "u6-connected-plate-separation-charge-13",
+      "u6-current-charge-time-01",
+      "u6-dielectric-connected-charge-03",
+      "u6-joule-power-08",
+      "u6-ohmic-current-01",
+      "u6-two-parallel-resistors-06",
+      "u6-two-series-resistors-06",
+      "u6-wire-stretched-fixed-volume-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U6-04.01",
+      "final-U6-04.02",
+      "final-U6-04.03",
+      "final-U6-04.04",
+      "final-U6-04.05",
+      "final-U6-04.06",
+      "final-U6-04.07"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u6-05",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "familyId": "U6-05",
+    "syllabusUnitId": "U6",
+    "objectiveIds": [
+      "U6-05.01",
+      "U6-05.02",
+      "U6-05.03",
+      "U6-05.04",
+      "U6-05.05"
+    ],
+    "sourcePages": [
+      4
+    ],
+    "legacyLessonId": "ds-2026-u6-05",
+    "legacyCourseId": "sf-elettricita-magnetismo-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "a76e6b1b2317ca8229460d67d73ce80febcdeb73db4e362dde052e1af8c550f0",
+    "experimentId": "investigation-u6-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-capacitor-charge-01",
+      "u6-capacitor-charge-09",
+      "u6-capacitor-charge-13",
+      "u6-capacitor-energy-01",
+      "u6-dielectric-connected-charge-03",
+      "u6-dielectric-isolated-voltage-03",
+      "u6-parallel-capacitors-06",
+      "u6-plane-capacitance-08",
+      "u6-series-capacitors-03",
+      "u6-series-capacitors-06"
+    ],
+    "finalAssessmentIds": [
+      "final-U6-05.01",
+      "final-U6-05.02",
+      "final-U6-05.03",
+      "final-U6-05.04",
+      "final-U6-05.05"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u6-06",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "familyId": "U6-06",
+    "syllabusUnitId": "U6",
+    "objectiveIds": [
+      "U6-06.01",
+      "U6-06.02",
+      "U6-06.03",
+      "U6-06.04",
+      "U6-06.05"
+    ],
+    "sourcePages": [
+      5
+    ],
+    "legacyLessonId": "ds-2026-u6-06",
+    "legacyCourseId": "sf-elettricita-magnetismo-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "0b5d7b5b983cdbde038905b55b3d79b29cf149f3d94023b66fe658ac000c49bd",
+    "experimentId": "investigation-u6-06",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-accelerated-magnetic-radius-09",
+      "u6-accelerated-magnetic-radius-13",
+      "u6-current-charge-time-03",
+      "u6-force-current-wire-01",
+      "u6-lorentz-force-03",
+      "u6-magnetic-circle-radius-03",
+      "u6-magnetic-orbit-period-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U6-06.01",
+      "final-U6-06.02",
+      "final-U6-06.03",
+      "final-U6-06.04",
+      "final-U6-06.05"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u6-07",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "familyId": "U6-07",
+    "syllabusUnitId": "U6",
+    "objectiveIds": [
+      "U6-07.01",
+      "U6-07.02",
+      "U6-07.03",
+      "U6-07.04"
+    ],
+    "sourcePages": [
+      5
+    ],
+    "legacyLessonId": "ds-2026-u6-07",
+    "legacyCourseId": "sf-elettricita-magnetismo-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "aeb23b67fc1e5feb03afa6dd9a982acc9b9f1b4838d6490950a262bddd35b10d",
+    "experimentId": "investigation-u6-07",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-faraday-average-emf-03",
+      "u6-faraday-average-emf-09",
+      "u6-faraday-average-emf-13",
+      "u6-magnetic-flux-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U6-07.01",
+      "final-U6-07.02",
+      "final-U6-07.03",
+      "final-U6-07.04"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u4-01",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "familyId": "U4-01",
+    "syllabusUnitId": "U4",
+    "objectiveIds": [
+      "U4-01.01",
+      "U4-01.02",
+      "U4-01.03",
+      "U4-01.04",
+      "U4-01.05",
+      "U4-01.06",
+      "U4-01.07",
+      "U4-01.08",
+      "U4-01.09",
+      "U4-01.10"
+    ],
+    "sourcePages": [
+      3
+    ],
+    "legacyLessonId": "ds-2026-u4-01",
+    "legacyCourseId": "sf-onde-ottica-radiazioni-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "b2c9b1748891bd00e7dd0a3a55a901a90768bc4be715e50d831bd1f917fe128d",
+    "experimentId": "investigation-u4-01",
+    "labIds": [
+      "physics-oscillator",
+      "physics-wave"
+    ],
+    "exerciseIds": [
+      "u4-echo-ranging-03",
+      "u4-echo-ranging-09",
+      "u4-echo-ranging-13",
+      "u4-oscillator-energy-01",
+      "u4-wave-displacement-projection-01",
+      "u4-wave-phase-space-01",
+      "u4-wave-phase-time-03",
+      "u4-wave-wavelength-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U4-01.01",
+      "final-U4-01.02",
+      "final-U4-01.03",
+      "final-U4-01.04",
+      "final-U4-01.05",
+      "final-U4-01.06",
+      "final-U4-01.07",
+      "final-U4-01.08",
+      "final-U4-01.09",
+      "final-U4-01.10"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u4-02",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "familyId": "U4-02",
+    "syllabusUnitId": "U4",
+    "objectiveIds": [
+      "U4-02.01",
+      "U4-02.02"
+    ],
+    "sourcePages": [
+      3
+    ],
+    "legacyLessonId": "ds-2026-u4-02",
+    "legacyCourseId": "sf-onde-ottica-radiazioni-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "f45ac1ace4e73a4154c1d3ef49b8adbfb5851c0d89330a49fde123a8f44aadb1",
+    "experimentId": "investigation-u4-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-coherent-constructive-01",
+      "u4-coherent-constructive-06",
+      "u4-coherent-constructive-09",
+      "u4-coherent-constructive-13"
+    ],
+    "finalAssessmentIds": [
+      "final-U4-02.01",
+      "final-U4-02.02"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u4-03",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "familyId": "U4-03",
+    "syllabusUnitId": "U4",
+    "objectiveIds": [
+      "U4-03.01",
+      "U4-03.02",
+      "U4-03.03",
+      "U4-03.04"
+    ],
+    "sourcePages": [
+      3
+    ],
+    "legacyLessonId": "ds-2026-u4-03",
+    "legacyCourseId": "sf-onde-ottica-radiazioni-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "7a71145d8899734b708d4169bab0dbfcd7f0759f70064197c2c0617a52aa9513",
+    "experimentId": "investigation-u4-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-oscillator-energy-01",
+      "u4-oscillator-energy-09",
+      "u4-oscillator-energy-13",
+      "u4-spherical-intensity-01"
+    ],
+    "finalAssessmentIds": [
+      "final-U4-03.01",
+      "final-U4-03.02",
+      "final-U4-03.03",
+      "final-U4-03.04"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u4-04",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "familyId": "U4-04",
+    "syllabusUnitId": "U4",
+    "objectiveIds": [
+      "U4-04.01",
+      "U4-04.02",
+      "U4-04.03"
+    ],
+    "sourcePages": [
+      4
+    ],
+    "legacyLessonId": "ds-2026-u4-04",
+    "legacyCourseId": "sf-onde-ottica-radiazioni-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "acfd7ad7a8d14c3428a284d5d9b589e15357da0062b5274ed92d6c5c6693fd3c",
+    "experimentId": "investigation-u4-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-echo-ranging-09",
+      "u4-echo-ranging-13",
+      "u4-sound-decibel-03",
+      "u4-sound-decibel-08",
+      "u4-spherical-intensity-03",
+      "u4-wave-energy-through-area-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U4-04.01",
+      "final-U4-04.02",
+      "final-U4-04.03"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u4-05",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "familyId": "U4-05",
+    "syllabusUnitId": "U4",
+    "objectiveIds": [
+      "U4-05.01",
+      "U4-05.02",
+      "U4-05.03",
+      "U4-05.04"
+    ],
+    "sourcePages": [
+      4
+    ],
+    "legacyLessonId": "ds-2026-u4-05",
+    "legacyCourseId": "sf-onde-ottica-radiazioni-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "e08ff2025a3f08992011e3e52c9ff78181496b6d1d25e083c1e81f0252009764",
+    "experimentId": "investigation-u4-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-beats-envelope-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U4-05.01",
+      "final-U4-05.02",
+      "final-U4-05.03",
+      "final-U4-05.04"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u7-01",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "familyId": "U7-01",
+    "syllabusUnitId": "U7",
+    "objectiveIds": [
+      "U7-01.01",
+      "U7-01.02",
+      "U7-01.03",
+      "U7-01.04",
+      "U7-01.05"
+    ],
+    "sourcePages": [
+      5
+    ],
+    "legacyLessonId": "ds-2026-u7-01",
+    "legacyCourseId": "sf-onde-ottica-radiazioni-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "9807a105639eb0ca7e02012fb1f96e87a66d67bd2820e567365b757db127216c",
+    "experimentId": "investigation-u7-01",
+    "labIds": [
+      "physics-em-wave-3d"
+    ],
+    "exerciseIds": [
+      "u7-absorbed-radiant-power-09",
+      "u7-absorbed-radiant-power-13",
+      "u7-em-wave-field-power-03",
+      "u7-wavelength-in-medium-03",
+      "u7-wavelength-in-medium-04"
+    ],
+    "finalAssessmentIds": [
+      "final-U7-01.01",
+      "final-U7-01.02",
+      "final-U7-01.03",
+      "final-U7-01.04",
+      "final-U7-01.05"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u7-02",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "familyId": "U7-02",
+    "syllabusUnitId": "U7",
+    "objectiveIds": [
+      "U7-02.01",
+      "U7-02.02",
+      "U7-02.03",
+      "U7-02.04",
+      "U7-02.05",
+      "U7-02.06",
+      "U7-02.07",
+      "U7-02.08"
+    ],
+    "sourcePages": [
+      5
+    ],
+    "legacyLessonId": "ds-2026-u7-02",
+    "legacyCourseId": "sf-onde-ottica-radiazioni-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "57038f8e0e9ad4c77574bdde3fa5a88fa420b50c5e0aa7d7da4bf6767e138f4d",
+    "experimentId": "investigation-u7-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-photon-packet-frequency-03",
+      "u7-photon-packet-frequency-09",
+      "u7-photon-packet-frequency-13"
+    ],
+    "finalAssessmentIds": [
+      "final-U7-02.01",
+      "final-U7-02.02",
+      "final-U7-02.03",
+      "final-U7-02.04",
+      "final-U7-02.05",
+      "final-U7-02.06",
+      "final-U7-02.07",
+      "final-U7-02.08"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u7-03",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "familyId": "U7-03",
+    "syllabusUnitId": "U7",
+    "objectiveIds": [
+      "U7-03.01",
+      "U7-03.02"
+    ],
+    "sourcePages": [
+      5
+    ],
+    "legacyLessonId": "ds-2026-u7-03",
+    "legacyCourseId": "sf-onde-ottica-radiazioni-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "fc0007341b55bfd5e470d9ec7c2aefccee782db28ef54e3ec8ff2e91d1953c3f",
+    "experimentId": "investigation-u7-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-photon-packet-frequency-01",
+      "u7-photon-packet-frequency-09",
+      "u7-photon-packet-frequency-13"
+    ],
+    "finalAssessmentIds": [
+      "final-U7-03.01",
+      "final-U7-03.02"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u7-04",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "familyId": "U7-04",
+    "syllabusUnitId": "U7",
+    "objectiveIds": [
+      "U7-04.01",
+      "U7-04.02",
+      "U7-04.03",
+      "U7-04.04"
+    ],
+    "sourcePages": [
+      5
+    ],
+    "legacyLessonId": "ds-2026-u7-04",
+    "legacyCourseId": "sf-onde-ottica-radiazioni-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "450640ffff312653d38310bd13f8cef3ca504165b5d871d0d5a6ef05c8dcddeb",
+    "experimentId": "investigation-u7-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-absorbed-radiant-power-09",
+      "u7-absorbed-radiant-power-13",
+      "u7-beer-transmitted-intensity-16",
+      "u7-infer-attenuation-coefficient-16"
+    ],
+    "finalAssessmentIds": [
+      "final-U7-04.01",
+      "final-U7-04.02",
+      "final-U7-04.03",
+      "final-U7-04.04"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u7-05",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "familyId": "U7-05",
+    "syllabusUnitId": "U7",
+    "objectiveIds": [
+      "U7-05.01",
+      "U7-05.02",
+      "U7-05.03",
+      "U7-05.04",
+      "U7-05.05",
+      "U7-05.06"
+    ],
+    "sourcePages": [
+      5
+    ],
+    "legacyLessonId": "ds-2026-u7-05",
+    "legacyCourseId": "sf-onde-ottica-radiazioni-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "f68f37800b83f554832c1a84dee20ca8bb7fa95bdfbf371d39b10f4b972ba2b8",
+    "experimentId": "investigation-u7-05",
+    "labIds": [
+      "physics-decay"
+    ],
+    "exerciseIds": [
+      "u7-alpha-mass-number-03",
+      "u7-alpha-mass-number-09",
+      "u7-alpha-mass-number-13",
+      "u7-beta-minus-atomic-number-03",
+      "u7-gamma-transition-energy-03",
+      "u7-radioactive-activity-01",
+      "u7-radioactive-activity-03",
+      "u7-radioactive-survivors-03",
+      "u7-radioactive-survivors-16"
+    ],
+    "finalAssessmentIds": [
+      "final-U7-05.01",
+      "final-U7-05.02",
+      "final-U7-05.03",
+      "final-U7-05.04",
+      "final-U7-05.05",
+      "final-U7-05.06"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u7-06",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "familyId": "U7-06",
+    "syllabusUnitId": "U7",
+    "objectiveIds": [
+      "U7-06.01",
+      "U7-06.02",
+      "U7-06.03",
+      "U7-06.04"
+    ],
+    "sourcePages": [
+      5
+    ],
+    "legacyLessonId": "ds-2026-u7-06",
+    "legacyCourseId": "sf-onde-ottica-radiazioni-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "0f58242f419f036a8f7ed7db2d8b86da450a7a1156c0c0f6598628d75f9e6f7e",
+    "experimentId": "investigation-u7-06",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-photon-packet-frequency-09",
+      "u7-photon-packet-frequency-13",
+      "u7-photon-rate-power-03"
+    ],
+    "finalAssessmentIds": [
+      "final-U7-06.01",
+      "final-U7-06.02",
+      "final-U7-06.03",
+      "final-U7-06.04"
+    ]
+  },
+  {
+    "unitId": "sf-2026-u7-07",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "familyId": "U7-07",
+    "syllabusUnitId": "U7",
+    "objectiveIds": [
+      "U7-07.01",
+      "U7-07.02",
+      "U7-07.03",
+      "U7-07.04",
+      "U7-07.05",
+      "U7-07.06"
+    ],
+    "sourcePages": [
+      5
+    ],
+    "legacyLessonId": "ds-2026-u7-07",
+    "legacyCourseId": "sf-onde-ottica-radiazioni-v1",
+    "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "legacyLessonCanonicalSha256": "e125512a1c1878ca5c6ce96cd1e0e0180bd8e67034ef5e48ba09e1a85328b242",
+    "experimentId": "investigation-u7-07",
+    "labIds": [
+      "physics-refraction"
+    ],
+    "exerciseIds": [
+      "u7-critical-angle-sine-03",
+      "u7-critical-angle-sine-09",
+      "u7-critical-angle-sine-13",
+      "u7-lens-magnification-03",
+      "u7-plane-mirror-ray-direction-03",
+      "u7-snell-refracted-sine-06",
+      "u7-thin-lens-real-image-03",
+      "u7-wavelength-in-medium-03",
+      "u7-wavelength-in-medium-04"
+    ],
+    "finalAssessmentIds": [
+      "final-U7-07.01",
+      "final-U7-07.02",
+      "final-U7-07.03",
+      "final-U7-07.04",
+      "final-U7-07.05",
+      "final-U7-07.06"
+    ]
+  }
+]

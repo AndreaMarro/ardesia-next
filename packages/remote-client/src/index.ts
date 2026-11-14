@@ -1,9 +1,13 @@
+import {browserInkDraftStorage, type InkDraftAccess, type InkDraft, type InkDraftStorage} from './ink-drafts';
+export {browserInkDraftStorage, parseInkDraft, type InkDraft, type InkDraftAccess, type InkDraftStorage} from './ink-drafts';
 import {materialAccess} from './materials';
 import type {MaterialAccess} from './materials';
 export {type MaterialAccess} from './materials';
 import {recordingAccess} from './recordings';
 export {sha256, type RecordingAccess} from './recordings';
 import {
+  NotebookSpaceSchema, NotebookCommandSchema, NotebookReceiptSchema, notebookPages, notebookNewDocument,
+  type NotebookSpace, type NotebookCommand, type NotebookReceipt,
   WorkspaceAccessSchema, ownsWorkspace, type WorkspaceAccess,
   TutorSpaceSchema, TutorCommandSchema, TutorReceiptSchema, tutorTarget, type TutorSpace, type TutorCommand, type TutorReceipt,
   CourseSpaceSchema, CourseCommandSchema, CourseReceiptSchema, courseTarget,
@@ -19,7 +23,7 @@ import {
 } from '@ardesia/contracts';
 import type {CoreService} from '@ardesia/core';
 import {browserOfflineStore, OfflineError, parseOfflineSnapshot, type OfflineStore, type OfflineSnapshot} from './offline';
-export {browserOfflineStore, OfflineError, parseOfflineSnapshot, type OfflineStore, type OfflineSnapshot} from './offline';
+export {browserOfflineStore, OfflineError, parseOfflineSnapshot, type OfflineStore, type OfflineSnapshot, type LegacyOfflineSnapshot} from './offline';
 
 export interface RemoteAccount {id: string; role: Actor['role']; displayName: string}
 export interface RemoteSession {account: RemoteAccount; expiresAt: string}
@@ -27,6 +31,7 @@ export interface WorkspaceSummary {workspaceId: string; title: string; workspace
 export interface WorkspaceProjection {
   workspaceId: string; title: string; workspaceRevision: number; actor: Actor; access?: WorkspaceAccess;
   tutorSpace?: TutorSpace;
+  notebookSpace?: NotebookSpace;
   courseSpace?: CourseSpace;
   documents: LessonDocument[]; assignedDocuments: LessonDocument[];
   installations: PluginInstallation[]; events: CoreEvent[]; assignments: LessonAssignment[];
@@ -37,6 +42,7 @@ export interface PersonalExport {
   exportedAt: string; projection: WorkspaceProjection;
 }
 type CommandRequest =
+  | {action: 'notebook-command'; workspaceId: string; command: NotebookCommand}
   | {action: 'command'; workspaceId: string; command: CoreCommand}
   | {action: 'plugin-command'; workspaceId: string; command: PluginCommand}
   | {action: 'tutor-command'; workspaceId: string; command: TutorCommand}
@@ -50,12 +56,18 @@ export interface EditIntent {
   actor: Actor; base?: EducationalObject; predecessorId: string | null;
 }
 export interface RemoteIssue {code: string; message: string}
+export interface InkRecoveryAttempt {commandId: string; expectedRevision: number; createdAt: string}
+export interface InkReconciliation {
+  /** Stable logical recovery identity; the original request remains byte-for-byte unchanged. */
+  recoveryId: string; originalOutcome: 'not-sent' | 'revision-conflict'; attempts: InkRecoveryAttempt[];
+}
 export interface PendingCommand {
-  version: 1 | 2; accountId: string; commandId: string; workspaceId: string | null;
+  version: 1 | 2 | 3; accountId: string; commandId: string; workspaceId: string | null;
   actorId: string | null;
   request: PendingRequest; createdAt: string;
   status: 'queued' | 'blocked' | 'pending' | 'uncertain' | 'conflict' | 'rejected'; error: RemoteIssue | null;
   edit?: EditIntent;
+  reconciliation?: InkReconciliation;
 }
 export interface PendingStorage {
   read(accountId: string, capture?: boolean): string | null;
@@ -63,6 +75,8 @@ export interface PendingStorage {
   remove(accountId: string): void;
   /** Remember a validated, normalized read without changing durable bytes. */
   baseline?(accountId: string, value: string): void;
+  /** Origin-wide locks. A memory-only mutex must not advertise this capability. */
+  coordinate?<T>(scope: string, mode: 'shared' | 'exclusive', operation: () => Promise<T>): Promise<T>;
 }
 export interface RemoteState {
   status: 'signed-out' | 'offline' | 'loading' | 'confirmed' | 'pending' | 'uncertain' | 'conflict' | 'error';
@@ -75,12 +89,20 @@ export interface RemoteClientOptions {
   fetch?: typeof globalThis.fetch; endpoint?: string; timeoutMs?: number;
   pendingStorage?: PendingStorage; clock?: () => string; id?: () => string;
   offlineStore?: OfflineStore;
+  inkDraftStorage?: InkDraftStorage;
 }
 export class RemoteError extends Error {
   constructor(readonly code: string, message: string, readonly outcome: 'rejected' | 'unknown' = 'rejected', readonly status = 0) {
     super(message); this.name = 'RemoteError';
   }
 }
+export type {InkRecoveryPreview} from './ink-reconciliation';
+function transmittedRequest(entry: PendingCommand): PendingRequest {
+  const attempt = entry.reconciliation?.attempts.at(-1);
+  return attempt && entry.request.action === 'command' && entry.request.command.kind === 'add-object'
+    ? {...entry.request, command: {...entry.request.command, commandId: attempt.commandId, expectedRevision: attempt.expectedRevision}} : entry.request;
+}
+const attemptIdentity = (entry: PendingCommand) => canonicalJson([entry.request, entry.reconciliation ?? null]);
 const record = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value);
 const isId = (value: unknown): value is string => typeof value === 'string' && /^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,199}$/.test(value);
 const isRevision = (value: unknown): value is number => Number.isSafeInteger(value) && Number(value) >= 0;
@@ -110,6 +132,7 @@ function parseProjection(value: unknown, account: RemoteAccount): WorkspaceProje
       workspaceId: value.workspaceId, title: value.title, workspaceRevision: value.workspaceRevision, actor: ActorSchema.parse(value.actor),
       ...(value.access === undefined ? {} : {access: WorkspaceAccessSchema.parse(value.access)}),
       ...(value.tutorSpace === undefined ? {} : {tutorSpace: TutorSpaceSchema.parse(value.tutorSpace)}),
+      ...(value.notebookSpace === undefined ? {} : {notebookSpace: NotebookSpaceSchema.parse(value.notebookSpace)}),
       ...(value.courseSpace === undefined ? {} : {courseSpace: CourseSpaceSchema.parse(value.courseSpace)}),
       documents: array(value.documents, LessonDocumentSchema), assignedDocuments: array(value.assignedDocuments, LessonDocumentSchema),
       installations: array(value.installations, PluginInstallationSchema), events: array(value.events, CoreEventSchema),
@@ -122,6 +145,8 @@ function parseProjection(value: unknown, account: RemoteAccount): WorkspaceProje
     if (projection.actor.role !== account.role || (!owner && (account.role !== 'student' || projection.actor.actorId !== account.id))) return invalid();
     const coreActorId = projection.actor.actorId;
     const owned = new Set(projection.documents.map(document => document.id));
+    if (projection.notebookSpace && (!owner && (projection.notebookSpace.revision !== 0 || projection.notebookSpace.notebooks.length > 0)
+      || notebookPages(projection.notebookSpace).some(({page}) => !owned.has(page.documentId)))) return invalid();
     const assigned = new Set(projection.assignments.filter(assignment => assignment.status === 'active' && assignment.studentId === account.id).map(assignment => assignment.documentId));
     if (projection.documents.some(document => document.ownerId !== coreActorId)
       || projection.installations.some(installation => installation.ownerId !== coreActorId)
@@ -154,7 +179,8 @@ function parseProjection(value: unknown, account: RemoteAccount): WorkspaceProje
 }
 function parseRequest(value: unknown): PendingRequest {
   if (!record(value)) return fail('INVALID_RECOVERY', 'Recupero non valido. I dati originali sono conservati.');
-  if (['command', 'plugin-command', 'learning-command', 'course-command', 'tutor-command'].includes(String(value.action)) && isId(value.workspaceId)) {
+  if (['command', 'plugin-command', 'learning-command', 'course-command', 'tutor-command', 'notebook-command'].includes(String(value.action)) && isId(value.workspaceId)) {
+    if (value.action === 'notebook-command') return {action: value.action, workspaceId: value.workspaceId, command: NotebookCommandSchema.parse(value.command)};
     if (value.action === 'tutor-command') return {action: value.action, workspaceId: value.workspaceId, command: TutorCommandSchema.parse(value.command)};
     if (value.action === 'course-command') return {action: value.action, workspaceId: value.workspaceId, command: CourseCommandSchema.parse(value.command)};
     if (value.action === 'command') return {action: value.action, workspaceId: value.workspaceId, command: CoreCommandSchema.parse(value.command)};
@@ -172,9 +198,10 @@ function parseRequest(value: unknown): PendingRequest {
 // Recovery validation has one external failure mode; original bytes are preserved.
 function corruptRecovery(): never {throw Error('Invalid recovery');}
 /** Stores recovery requests only, never credentials or a second confirmed workspace. */
-export function browserPendingStorage(storage: Pick<Storage, 'getItem' | 'setItem' | 'removeItem' | 'key' | 'length'>, prefix = 'ardesia-next.pending.v1.'): PendingStorage {
+export function browserPendingStorage(storage: Pick<Storage, 'getItem' | 'setItem' | 'removeItem' | 'key' | 'length'>, prefix = 'ardesia-next.pending.v1.', locks: Pick<LockManager, 'request'> | null | undefined = typeof navigator === 'undefined' ? undefined : navigator.locks): PendingStorage {
   const key = (accountId: string) => prefix + encodeURIComponent(accountId);
   const snapshots = new Map<string, Map<string, string>>(), observed = new Map<string, Map<string, string>>();
+  const durable = new Map<string, Map<string, string>>();
   const entries = (raw: string): Map<string, string> => {
     const values: unknown = JSON.parse(raw);
     if (!Array.isArray(values)) corruptRecovery();
@@ -189,23 +216,47 @@ export function browserPendingStorage(storage: Pick<Storage, 'getItem' | 'setIte
     if (!before || before === 'null') return;
     const prior = JSON.parse(before) as PendingCommand, next = JSON.parse(after) as PendingCommand;
     if (prior.accountId !== next.accountId || prior.actorId !== next.actorId
-      || canonicalJson(prior.request) !== canonicalJson(next.request)) corruptRecovery();
+      || canonicalJson(prior.request) !== canonicalJson(next.request)
+      || prior.reconciliation && (!next.reconciliation || canonicalJson(prior.reconciliation.attempts) !== canonicalJson(next.reconciliation.attempts.slice(0, prior.reconciliation.attempts.length)))) corruptRecovery();
   }
   function write(id: string, raw: string) {
     const accountKey = key(id), next = entries(raw), previous = snapshots.get(id) ?? new Map<string, string>();
-    const old = entries(storage.getItem(accountKey) ?? '[]');
+    const old = entries(storage.getItem(accountKey) ?? '[]'), known = durable.get(id) ?? new Map<string, string>();
+    const actual = (commandId: string) => storage.getItem(accountKey + '/' + encodeURIComponent(commandId)) ?? old.get(commandId) ?? null;
+    const check = (commandId: string) => {
+      if (actual(commandId) !== (known.get(commandId) ?? null)) throw new RemoteError('RECOVERY_CHANGED', 'Recupero cambiato. Rileggi prima di proseguire.');
+    };
+    // Compare every changed row before the first write. Origin-wide queue locks
+    // make this read/check/write atomic with other clients of this protocol.
+    for (const [commandId, value] of next) if (previous.get(commandId) !== value) check(commandId);
+    for (const commandId of previous.keys()) if (!next.has(commandId)) check(commandId);
+    const retained = new Set(old.keys());
+    for (let index = 0; index < storage.length; index++) {
+      const path = storage.key(index);
+      if (path?.startsWith(accountKey + '/')) {
+        const commandId = decodeURIComponent(path.slice(accountKey.length + 1));
+        if (storage.getItem(path) === 'null') retained.delete(commandId); else retained.add(commandId);
+      }
+    }
+    for (const commandId of previous.keys()) if (!next.has(commandId)) retained.delete(commandId);
+    for (const commandId of next.keys()) retained.add(commandId);
+    if (retained.size > 500) throw new RemoteError('RECOVERY_LIMIT', 'Il recupero condiviso contiene già 500 modifiche. Esporta le modifiche in memoria prima di proseguire.');
+    snapshots.set(id, previous); durable.set(id, known);
     // Each command has its own atomic localStorage value. Never rewrite the
     // legacy array, a shared index, or an ID created by another open tab.
     for (const [commandId, value] of next) if (previous.get(commandId) !== value) {
       const path = accountKey + '/' + encodeURIComponent(commandId);
       unchanged(old.get(commandId), value); unchanged(storage.getItem(path), value);
       storage.setItem(path, value);
+      known.set(commandId, value); previous.set(commandId, value);
     }
     for (const commandId of previous.keys()) if (!next.has(commandId)) {
       const path = accountKey + '/' + encodeURIComponent(commandId);
       if (old.has(commandId)) storage.setItem(path, 'null'); else storage.removeItem(path);
+      if (old.has(commandId)) known.set(commandId, 'null'); else known.delete(commandId);
+      previous.delete(commandId);
     }
-    snapshots.set(id, next);
+    snapshots.set(id, next); durable.set(id, known);
   }
   return {
     read(id, capture = true) {
@@ -227,6 +278,11 @@ export function browserPendingStorage(storage: Pick<Storage, 'getItem' | 'setIte
             values.set(commandId, raw);
           }
         }
+        if (capture) {
+          const bytes = new Map(values);
+          for (const [path, raw] of rows) if (path !== accountKey && raw === 'null') bytes.set(decodeURIComponent(path.slice(accountKey.length + 1)), raw);
+          durable.set(id, bytes);
+        }
         return values.size ? '[' + [...values.values()].join(',') + ']' : null;
       } catch {
         // Keep every original byte exportable, including corrupt individual rows.
@@ -235,6 +291,7 @@ export function browserPendingStorage(storage: Pick<Storage, 'getItem' | 'setIte
     },
     write,
     baseline(id, raw) {snapshots.set(id, entries(raw));},
+    ...(locks ? {coordinate: async <T>(scope: string, mode: 'shared' | 'exclusive', operation: () => Promise<T>): Promise<T> => await locks.request('ardesia:pending:' + prefix + scope, {mode}, operation)} : {}),
     remove(id) {
       if (snapshots.has(id)) write(id, '[]');
       else for (const [path, raw] of observed.get(id) ?? []) if (storage.getItem(path) === raw) storage.removeItem(path);
@@ -248,6 +305,8 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
   if (!Number.isInteger(timeoutMs) || timeoutMs < 10 || timeoutMs > 120_000) throw Error('Invalid timeout.');
   const clock = options.clock ?? (() => new Date().toISOString()), id = options.id ?? (() => crypto.randomUUID());
   let storage = options.pendingStorage;
+  let inkDraftStorage = options.inkDraftStorage;
+  if (!inkDraftStorage && typeof window !== 'undefined') {try {inkDraftStorage = browserInkDraftStorage(window.localStorage);} catch { /* Drawing reports unavailable checkpoint storage. */ }}
   if (!storage && typeof window !== 'undefined') {
     // Access may be denied by the browser. Keep explicit in-memory recovery in that case.
     try {storage = browserPendingStorage(window.localStorage);} catch { /* Transport remains usable. */ }
@@ -291,7 +350,9 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
         changed = true;
         entry.status = 'blocked'; entry.error = {code: 'SESSION_CHANGED', message: 'Non inviata: sessione cambiata. Riprendi esplicitamente.'};
       }
-      if (changed) try {saveRecovery();} catch { /* Existing durable bytes remain recoverable and never auto-resume. */ }
+      // Queued bytes restore as blocked. Do not write outside the recovery locks
+      // while an older request is finishing or another tab is reconciling.
+      if (changed && memoryRecovery.has(recoveryAccount()!.id)) rememberRecovery();
     }
     epoch++; selection++; reconnecting = null; session = null; projection = null; offline = null; offlineAvailable = false; offlineSavedAt = null;
     pending = new Map(); loading = false; recoveryBlocked = false; emit();
@@ -309,8 +370,8 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
     return cacheWrites;
   }
   function snapshotFor(owner: RemoteAccount, source: WorkspaceProjection): OfflineSnapshot {
-    return parseOfflineSnapshot({format: 'ardesia-own-lessons-v1', account: owner, workspaceId: source.workspaceId,
-      title: source.title, workspaceRevision: source.workspaceRevision, actor: source.actor, documents: source.documents, savedAt: clock()});
+    return parseOfflineSnapshot({format: 'ardesia-own-lessons-v2', account: owner, workspaceId: source.workspaceId,
+      title: source.title, workspaceRevision: source.workspaceRevision, actor: source.actor, documents: source.documents, savedAt: clock(), notebookSpace: source.notebookSpace ?? null});
   }
   function updateOfflineCopy(source: WorkspaceProjection, enable = false) {
     if (!cache || !localGeneration || !session || !ownsWorkspace(source)) return;
@@ -370,17 +431,24 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
       }
       else if (values.length) memoryRecovery.set(accountId, JSON.stringify(values)); else memoryRecovery.delete(accountId);
     }
-    catch {rememberRecovery(); throw new RemoteError('RECOVERY_STORAGE_FAILURE', 'Copia di recupero in memoria. Esportala prima di chiudere. Nessun nuovo invio.');}
+    catch (error) {
+      if (error instanceof RemoteError && error.code === 'RECOVERY_CHANGED') throw error;
+      rememberRecovery(); throw new RemoteError('RECOVERY_STORAGE_FAILURE', 'Copia di recupero in memoria. Esportala prima di chiudere. Nessun nuovo invio.');
+    }
   }
-  function loadRecovery() {
+  function loadRecovery(synchronize = false) {
     const owner = recoveryAccount(); if (!owner) return;
     try {
-      const raw = memoryRecovery.get(owner.id) ?? storage?.read(owner.id) ?? null; if (raw === null) return;
+      // A failed durable write remains an explicit local barrier. Never replace
+      // its unsaved bytes with a shorter disk copy during a routine reread.
+      if (synchronize && memoryRecovery.has(owner.id)) return;
+      const raw = memoryRecovery.get(owner.id) ?? storage?.read(owner.id) ?? null;
+      if (raw === null) {if (synchronize) pending.clear(); storage?.baseline?.(owner.id, '[]'); return;}
       const parsed: unknown = JSON.parse(raw);
       if (!Array.isArray(parsed) || parsed.length > 500) corruptRecovery();
       const restored = new Map<string, PendingCommand>();
       for (const item of parsed) {
-        if (!record(item) || (item.version !== 1 && item.version !== 2) || item.accountId !== owner.id || !isId(item.commandId)
+        if (!record(item) || (item.version !== 1 && item.version !== 2 && item.version !== 3) || item.accountId !== owner.id || !isId(item.commandId)
           || typeof item.createdAt !== 'string' || !Number.isFinite(Date.parse(item.createdAt)) || restored.has(item.commandId)) corruptRecovery();
         const request = parseRequest(item.request);
         const commandId = 'command' in request ? request.command.commandId : request.commandId;
@@ -389,7 +457,7 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
           || ('command' in request ? !isId(item.actorId) : item.actorId !== null)
           || (request.action === 'import-local' && request.expectedAccountId !== owner.id)) corruptRecovery();
         let edit: EditIntent | undefined;
-        if (item.version === 2) {
+        if (item.version === 2 || item.version === 3) {
           if (request.action !== 'command' || !record(item.edit)
             || (item.edit.predecessorId !== null && (!isId(item.edit.predecessorId) || item.edit.predecessorId === commandId))
             || !['queued', 'blocked', 'pending', 'uncertain', 'conflict', 'rejected'].includes(String(item.status))) corruptRecovery();
@@ -398,11 +466,41 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
           edit = {actor, predecessorId: item.edit.predecessorId as string | null,
             ...(item.edit.base === undefined ? {} : {base: EducationalObjectSchema.parse(item.edit.base)})};
         }
-        const unsent = item.version === 2 && (item.status === 'queued' || item.status === 'blocked');
-        restored.set(commandId, {version: item.version, accountId: owner.id, commandId, workspaceId, actorId: item.actorId as string | null, request,
-          createdAt: item.createdAt, ...(edit ? {edit} : {}), status: unsent ? 'blocked' : 'uncertain', error: unsent
+        let reconciliation: InkReconciliation | undefined;
+        if (item.version === 3) {
+          const value = item.reconciliation;
+          if (request.action !== 'command' || request.command.kind !== 'add-object' || request.command.object.type !== 'ink'
+            || !record(value) || value.recoveryId !== commandId || !['not-sent', 'revision-conflict'].includes(String(value.originalOutcome))
+            || !Array.isArray(value.attempts) || !value.attempts.length || value.attempts.length > 16) corruptRecovery();
+          const ids = new Set([commandId]); let revision = request.command.expectedRevision;
+          const attempts: InkRecoveryAttempt[] = [];
+          for (const attempt of value.attempts) {
+            if (!record(attempt) || !isId(attempt.commandId) || ids.has(attempt.commandId)
+              || !isRevision(attempt.expectedRevision) || attempt.expectedRevision <= revision
+              || typeof attempt.createdAt !== 'string' || !Number.isFinite(Date.parse(attempt.createdAt))) corruptRecovery();
+            ids.add(attempt.commandId); revision = attempt.expectedRevision;
+            attempts.push({commandId: attempt.commandId, expectedRevision: attempt.expectedRevision, createdAt: attempt.createdAt});
+          }
+          reconciliation = {recoveryId: commandId, originalOutcome: value.originalOutcome as InkReconciliation['originalOutcome'], attempts};
+        } else if (item.reconciliation !== undefined) corruptRecovery();
+        const unsent = item.version !== 1 && (item.status === 'queued' || item.status === 'blocked');
+        const entry: PendingCommand = {version: item.version, accountId: owner.id, commandId, workspaceId, actorId: item.actorId as string | null, request,
+          createdAt: item.createdAt, ...(edit ? {edit} : {}), ...(reconciliation ? {reconciliation} : {}), status: unsent ? 'blocked' : 'uncertain', error: unsent
             ? {code: 'RECOVERED_EDIT', message: 'Non inviata. Risolvi la richiesta precedente, poi riprendi.'}
-            : {code: 'RECOVERED_REQUEST', message: 'Verifica l’esito con lo stesso comando.'}});
+            : {code: 'RECOVERED_REQUEST', message: 'Verifica l’esito con lo stesso comando.'}};
+        const previous = synchronize ? pending.get(commandId) : undefined;
+        if (previous && attemptIdentity(previous) === attemptIdentity(entry)) {
+          // Preserve locally established outcome knowledge across routine reads;
+          // dependency releases from another tab are nevertheless authoritative.
+          if (!unsent && item.status !== previous.status) {
+            previous.status = 'uncertain'; previous.error = {code: 'RECOVERED_REQUEST', message: 'Un’altra scheda ha tentato questa modifica. Verifica lo stesso comando.'};
+          }
+          previous.edit = edit; restored.set(commandId, previous);
+        } else restored.set(commandId, entry);
+      }
+      const attemptIds = new Set(restored.keys());
+      for (const entry of restored.values()) for (const attempt of entry.reconciliation?.attempts ?? []) {
+        if (attemptIds.has(attempt.commandId)) corruptRecovery(); attemptIds.add(attempt.commandId);
       }
       const ordered = new Map<string, PendingCommand>(), visiting = new Set<string>();
       function visit(entry: PendingCommand) {
@@ -420,6 +518,22 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
       if (!memoryRecovery.has(owner.id)) storage?.baseline?.(owner.id, JSON.stringify([...ordered.values()]));
       pending = ordered;
     } catch {recoveryBlocked = true; lastError = {code: 'INVALID_RECOVERY', message: 'Recupero non valido. I dati originali sono conservati.'};}
+  }
+  function coordinate<T>(workspaceId: string | null, suffix: string, mode: 'shared' | 'exclusive', operation: () => Promise<T>): Promise<T> {
+    const owner = recoveryAccount(), expected = epoch;
+    if (!owner) return Promise.reject(new RemoteError('UNAUTHENTICATED', 'Apri il tuo spazio.'));
+    const run = async () => {requireEpoch(expected); return operation();};
+    return storage?.coordinate ? storage.coordinate(JSON.stringify([owner.id, workspaceId, suffix]), mode, run) : run();
+  }
+  function recoveryQueue<T>(workspaceId: string | null, operation: () => T | Promise<T>): Promise<T> {
+    // Rows and the 500-intent quota are account-wide even when HTTP authoring
+    // proceeds independently in different workspaces. This lock is only held
+    // for the short durable read/check/write, never for a network response.
+    return coordinate(null, 'queue', 'exclusive', async () => {
+      if (storage?.coordinate) loadRecovery(true);
+      if (recoveryBlocked) return fail('INVALID_RECOVERY', 'Esporta il recupero originale prima di proseguire.');
+      return operation();
+    });
   }
   async function request(body: Record<string, unknown>, expectedAccount?: string): Promise<unknown> {
     const controller = new AbortController(), timer = setTimeout(() => controller.abort(), timeoutMs);
@@ -514,157 +628,250 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
     });
     authQueue = operation.catch(() => undefined); return operation;
   }
-  async function send(entry: PendingCommand): Promise<unknown> {
-    const key = entry.accountId + ':' + entry.commandId, running = active.get(key); if (running) return running;
-    const expected = epoch, selected = selection;
-    const unsent = entry.version === 2 && (entry.status === 'queued' || entry.status === 'blocked');
-    const operation = Promise.resolve().then(async () => {
-      let dispatched = false;
+  async function send(original: PendingCommand, workspaceLockHeld = false): Promise<unknown> {
+    // Only publish an active promise AFTER acquiring its workspace lock. An
+    // exclusive recovery must never await a shared request queued behind itself.
+    if (!workspaceLockHeld) {
+      const captured = clone(original);
+      return coordinate(captured.workspaceId, 'workspace', 'shared', () => send(captured, true));
+    }
+    const outgoing = transmittedRequest(original), attemptId = 'command' in outgoing ? outgoing.command.commandId : outgoing.commandId;
+    const key = original.accountId + ':' + original.commandId + '/' + attemptId, running = active.get(key); if (running) return running;
+    const expected = epoch, selected = selection, identity = attemptIdentity(original);
+    const run = () => coordinate(original.workspaceId, 'intent:' + original.commandId, 'exclusive', async () => {
+      let entry = original, body = transmittedRequest(original), unsent = false, dispatched = false;
+      const transmittedId = 'command' in body ? body.command.commandId : body.commandId;
       try {
-        requireEpoch(expected); if (account().id !== entry.accountId) return fail('SESSION_CHANGED', 'Comando di un altro account.');
-        if (pending.get(entry.commandId) !== entry) return fail('EDIT_BLOCKED', 'Modifica non più in attesa.');
-        if (unsent) {
-          if (selected !== selection || loading || current().workspaceId !== entry.workspaceId) return fail('WORKSPACE_CHANGED', 'Non inviata: spazio cambiato.');
-          if (!entry.edit || entry.request.action !== 'command') return fail('INVALID_RECOVERY', 'Intento non valido.');
-          requireActor(entry.edit.actor);
-          if (entry.edit.predecessorId) return fail('EDIT_BLOCKED', 'Non inviata: manca la conferma della modifica precedente.');
-          const document = ownedDocument(entry.edit.actor, entry.request.command.documentId);
-          if (entry.edit.base && canonicalJson(entry.edit.base) !== canonicalJson(document.objects.find(object => object.id === entry.edit!.base!.id))) {
-            throw new CoreError('REVISION_CONFLICT', 'Il contenuto salvato è cambiato. La bozza resta intatta: ripristina per aggiornarla.');
+        await recoveryQueue(original.workspaceId, () => {
+          requireEpoch(expected); if (account().id !== entry.accountId) return fail('SESSION_CHANGED', 'Comando di un altro account.');
+          const fresh = pending.get(entry.commandId);
+          if (!fresh || attemptIdentity(fresh) !== identity) return fail('RECOVERY_CHANGED', 'Recupero cambiato. Rileggi prima di proseguire.');
+          entry = fresh; body = transmittedRequest(entry);
+          unsent = entry.version !== 1 && (entry.status === 'queued' || entry.status === 'blocked');
+          if (unsent) {
+            if (selected !== selection || loading || current().workspaceId !== entry.workspaceId) return fail('WORKSPACE_CHANGED', 'Non inviata: spazio cambiato.');
+            if (!entry.edit || body.action !== 'command') return fail('INVALID_RECOVERY', 'Intento non valido.');
+            requireActor(entry.edit.actor);
+            if (entry.edit.predecessorId) return fail('EDIT_BLOCKED', 'Non inviata: manca la conferma della modifica precedente.');
+            const document = ownedDocument(entry.edit.actor, body.command.documentId);
+            if (entry.edit.base && canonicalJson(entry.edit.base) !== canonicalJson(document.objects.find(object => object.id === entry.edit!.base!.id))) {
+              throw new CoreError('REVISION_CONFLICT', 'Il contenuto salvato è cambiato. La bozza resta intatta: ripristina per aggiornarla.');
+            }
+            if (document.revision !== body.command.expectedRevision) return fail('REVISION_CONFLICT', 'Non inviata: revisione cambiata. Bozza conservata.');
           }
-          if (document.revision !== entry.request.command.expectedRevision) return fail('REVISION_CONFLICT', 'Non inviata: revisione cambiata. Bozza conservata.');
-        }
-        entry.status = 'pending'; entry.error = null; saveRecovery(); lastError = null; emit();
+          entry.status = 'pending'; entry.error = null; saveRecovery(); lastError = null; emit();
+        });
         requireEpoch(expected);
         if (unsent && selected !== selection) return fail('WORKSPACE_CHANGED', 'Non inviata: spazio cambiato.');
         dispatched = true;
-        const raw = await request(entry.request, entry.accountId); requireEpoch(expected);
+        const raw = await request(body, entry.accountId); requireEpoch(expected);
         let result: unknown;
-        if ('command' in entry.request) {
+        if ('command' in body) {
           if (!record(raw)) return invalid();
           try {
-            result = entry.request.action === 'command' ? CommandReceiptSchema.parse(raw.receipt)
-              : entry.request.action === 'plugin-command' ? PluginReceiptSchema.parse(raw.receipt)
-              : entry.request.action === 'tutor-command' ? TutorReceiptSchema.parse(raw.receipt)
-              : entry.request.action === 'course-command' ? CourseReceiptSchema.parse(raw.receipt) : LearningReceiptSchema.parse(raw.receipt);
+            result = body.action === 'command' ? CommandReceiptSchema.parse(raw.receipt)
+              : body.action === 'notebook-command' ? NotebookReceiptSchema.parse(raw.receipt)
+              : body.action === 'plugin-command' ? PluginReceiptSchema.parse(raw.receipt)
+              : body.action === 'tutor-command' ? TutorReceiptSchema.parse(raw.receipt)
+              : body.action === 'course-command' ? CourseReceiptSchema.parse(raw.receipt) : LearningReceiptSchema.parse(raw.receipt);
           } catch {return invalid();}
-          const receipt = result as CommandReceipt | PluginReceipt | LearningReceipt | CourseReceipt | TutorReceipt;
-          if (receipt.commandId !== entry.commandId || receipt.actorId !== entry.actorId) return invalid();
-          if (entry.request.action === 'command' && (!('documentId' in receipt) || receipt.documentId !== entry.request.command.documentId
-            || receipt.documentRevision !== entry.request.command.expectedRevision + 1)) return invalid();
-          if (entry.request.action === 'tutor-command') {
+          const receipt = result as WorkspaceReceipt;
+          if (receipt.commandId !== transmittedId || receipt.actorId !== entry.actorId) return invalid();
+          if (body.action === 'command' && (!('documentId' in receipt) || receipt.documentId !== body.command.documentId
+            || receipt.documentRevision !== body.command.expectedRevision + 1)) return invalid();
+          if (body.action === 'tutor-command') {
             if (selected !== selection) throw new RemoteError('WORKSPACE_CHANGED', 'Accesso cambiato durante la richiesta. Recupera la stessa modifica.', 'unknown');
-            const target = tutorTarget(entry.request.command);
+            const target = tutorTarget(body.command);
             if (!('tutorEntity' in receipt) || receipt.tutorEntity !== target.tutorEntity || receipt.entityId !== target.entityId
-              || receipt.entityRevision !== entry.request.command.expectedRevision + 1) return invalid();
+              || receipt.entityRevision !== body.command.expectedRevision + 1) return invalid();
           }
-          if (entry.request.action === 'course-command') {
+          if (body.action === 'course-command') {
             if (selected !== selection) throw new RemoteError('WORKSPACE_CHANGED', 'Accesso cambiato durante la richiesta. Recupera la stessa modifica.', 'unknown');
-            const target = courseTarget(entry.request.command);
+            const target = courseTarget(body.command);
             if (!('courseEntity' in receipt) || receipt.courseEntity !== target.courseEntity || receipt.entityId !== target.entityId
-              || receipt.entityRevision !== entry.request.command.expectedRevision + 1) return invalid();
+              || receipt.entityRevision !== body.command.expectedRevision + 1) return invalid();
           }
           const next = parseProjection(raw.projection, account());
           if (next.actor.actorId !== entry.actorId) return invalid();
+          if (body.action === 'notebook-command') {
+            const created = notebookNewDocument(body.command);
+            if (!('notebookOwnerId' in receipt) || receipt.notebookOwnerId !== entry.actorId
+              || receipt.notebookRevision !== body.command.expectedRevision + 1 || !next.notebookSpace
+              || next.notebookSpace.revision < receipt.notebookRevision || receipt.relatedEventIds.length !== (created ? 1 : 0)) return invalid();
+            if (created && !next.events.some(event => event.id === receipt.relatedEventIds[0] && event.type === 'create-document'
+              && event.documentId === created.documentId && event.documentRevision === 1 && event.actorId === entry.actorId
+              && record(event.payload) && event.payload.title === created.title)) return invalid();
+            if (selected !== selection) throw new RemoteError('WORKSPACE_CHANGED', 'Spazio cambiato. Recupera la stessa modifica.', 'unknown');
+          }
           // The receipt remains valid after navigation or a refused evidence read,
           // but its earlier full projection must not restore invalidated grants.
-          if (selected === selection) accept(next, expected, entry.request.workspaceId);
+          if (selected === selection) accept(next, expected, body.workspaceId);
         } else result = accept(raw, expected, undefined, selected === selection);
-        // Keep the original command until its authorized offline copy is durable.
-        // A cold restart can then recover even when IndexedDB rejects this save.
-        try {await cacheWrites;} catch (error) {
+        // Keep the logical intent, original and current attempt until both the
+        // positive server receipt and the authorized offline copy are durable.
+        try {await cacheWrites;} catch {
           requireEpoch(expected);
           throw new RemoteError('OFFLINE_COPY_UNCONFIRMED', 'Il server ha confermato, ma la copia offline non è aggiornata. Il comando resta recuperabile.', 'unknown');
         }
         requireEpoch(expected);
-        // Only a positive receipt releases a dependency. A discarded, rejected or
-        // uncertain predecessor never authorizes an automatic successor.
-        for (const successor of pending.values()) if (successor.edit?.predecessorId === entry.commandId) successor.edit.predecessorId = null;
-        pending.delete(entry.commandId);
-        try {saveRecovery();} catch {lastError = {code: 'RECOVERY_CLEANUP_FAILURE', message: 'Salvataggio confermato. Copia locale del comando non rimossa.'};}
-        emit();
-        if ('command' in entry.request) for (const listener of receiptListeners) {
-          try {listener(clone(entry.request), clone(result as WorkspaceReceipt));} catch { /* A UI observer cannot change an acknowledged transaction. */ }
+        await recoveryQueue(entry.workspaceId, () => {
+          const fresh = pending.get(entry.commandId);
+          if (!fresh || attemptIdentity(fresh) !== identity) return fail('RECOVERY_CHANGED', 'Recupero cambiato. Rileggi prima di proseguire.');
+          // Successor releases must be durable BEFORE deleting their receipt's
+          // recoverable envelope. A crash can retry this exact attempt safely.
+          let released = false;
+          for (const successor of pending.values()) if (successor.edit?.predecessorId === entry.commandId) {successor.edit.predecessorId = null; released = true;}
+          try {if (released) saveRecovery();} catch {
+            throw new RemoteError('RECOVERY_CLEANUP_FAILURE', 'Salvato sul server. Verifica lo stesso tentativo per completare il recupero locale.', 'unknown');
+          }
+          const before = new Map(pending); pending.delete(entry.commandId);
+          try {saveRecovery();} catch {
+            pending = before; rememberRecovery();
+            throw new RemoteError('RECOVERY_CLEANUP_FAILURE', 'Salvato sul server. Verifica lo stesso tentativo per completare il recupero locale.', 'unknown');
+          }
+          emit();
+        });
+        if ('command' in body) for (const listener of receiptListeners) {
+          try {listener(clone(body), clone(result as WorkspaceReceipt));} catch { /* Observers cannot change an acknowledged transaction. */ }
         }
         return result;
       } catch (error) {
         if (epoch === expected) {
-          invalidateDeniedLearningRead(entry.request, error);
-          entry.error = issue(error); entry.status = unsent && !dispatched ? 'blocked' : error instanceof RemoteError && error.outcome === 'unknown' ? 'uncertain'
-            : ['REVISION_CONFLICT', 'IDEMPOTENCY_CONFLICT'].includes(entry.error.code) ? 'conflict' : 'rejected';
-          try {saveRecovery();} catch { /* Preserve the already stored immutable pending request. */ }
+          invalidateDeniedLearningRead(body, error);
+          try {await recoveryQueue(entry.workspaceId, () => {
+            const fresh = pending.get(entry.commandId);
+            if (!fresh || attemptIdentity(fresh) !== identity) return;
+            fresh.error = issue(error); fresh.status = unsent && !dispatched ? 'blocked' : error instanceof RemoteError && error.outcome === 'unknown' ? 'uncertain'
+              : ['REVISION_CONFLICT', 'IDEMPOTENCY_CONFLICT'].includes(fresh.error.code) ? 'conflict' : 'rejected';
+            saveRecovery();
+          });} catch { /* Original bytes remain recoverable. A failed barrier never sends. */ }
           handleFailure(error, expected);
         }
         throw error;
-      } finally {active.delete(key);}
+      }
     });
+    const operation = Promise.resolve().then(run)
+      .finally(() => active.delete(key));
     active.set(key, operation); return operation;
   }
-  function mutate(input: PendingRequest): Promise<unknown> {
-    const owner = account(); if (recoveryBlocked) return Promise.reject(new RemoteError('INVALID_RECOVERY', 'Conserva una copia, poi rimuovi il recupero non valido.'));
-    const body = clone(parseRequest(input));
+  async function mutate(input: PendingRequest): Promise<unknown> {
+    const owner = account(), body = clone(parseRequest(input)), expected = epoch, selected = selection;
     const commandId = 'command' in body ? body.command.commandId : body.commandId, workspaceId = 'workspaceId' in body ? body.workspaceId : null;
-    if (body.action === 'import-local' && body.expectedAccountId !== owner.id) return Promise.reject(new RemoteError('SESSION_CHANGED', 'Conferma l’account destinatario dell’importazione.'));
-    const existing = pending.get(commandId);
-    if (existing) {
-      if (JSON.stringify(existing.request) !== JSON.stringify(body)) return Promise.reject(new RemoteError('IDEMPOTENCY_CONFLICT', 'ID già usato per un altro comando.'));
-      if (existing.status === 'queued' || existing.status === 'blocked') return Promise.reject(new RemoteError('EDIT_NOT_SENT', 'Riprendi esplicitamente la modifica non inviata.'));
-      return send(existing);
-    }
-    if ([...pending.values()].some(item => item.workspaceId === workspaceId)) return Promise.reject(new RemoteError('PENDING_COMMAND', 'Recupera o scarta la modifica precedente prima di proseguire.'));
-    const entry: PendingCommand = {version: 1, accountId: owner.id, commandId, workspaceId,
-      actorId: 'command' in body ? current().actor.actorId : null, request: body, createdAt: clock(), status: 'pending', error: null};
-    pending.set(commandId, entry);
-    try {saveRecovery();} catch (error) {pending.delete(commandId); rememberRecovery(); lastError = issue(error); emit(); return Promise.reject(error);}
-    return send(entry);
+    const actorId = 'command' in body ? current().actor.actorId : null;
+    return coordinate(workspaceId, 'workspace', 'shared', async () => {
+      const entry = await recoveryQueue(workspaceId, () => {
+        requireEpoch(expected);
+        if (workspaceId !== null && selection !== selected) return fail('WORKSPACE_CHANGED', 'Non inviata: spazio cambiato.');
+        if (body.action === 'import-local' && body.expectedAccountId !== owner.id) return fail('SESSION_CHANGED', 'Conferma l’account destinatario dell’importazione.');
+        const existing = pending.get(commandId);
+        if (existing) {
+          if (canonicalJson(existing.request) !== canonicalJson(body) || existing.reconciliation) return fail('IDEMPOTENCY_CONFLICT', 'ID già usato per un altro comando o recupero.');
+          if (existing.status === 'queued' || existing.status === 'blocked') return fail('EDIT_NOT_SENT', 'Riprendi esplicitamente la modifica non inviata.');
+          return existing;
+        }
+        if (pending.size >= 500) return fail('RECOVERY_LIMIT', 'Recupera o esporta le modifiche in attesa prima di aggiungerne altre.');
+        if ([...pending.values()].some(item => item.workspaceId === workspaceId)) return fail('PENDING_COMMAND', 'Recupera o scarta la modifica precedente prima di proseguire.');
+        const entry: PendingCommand = {version: 1, accountId: owner.id, commandId, workspaceId,
+          actorId, request: body, createdAt: clock(), status: 'pending', error: null};
+        pending.set(commandId, entry);
+        try {saveRecovery();} catch (error) {pending.delete(commandId); rememberRecovery(); lastError = issue(error); emit(); throw error;}
+        return entry;
+      });
+      requireEpoch(expected);
+      if (workspaceId !== null && selection !== selected) return fail('WORKSPACE_CHANGED', 'Non inviata: spazio cambiato.');
+      return send(entry, true);
+    });
   }
   async function edit(actor: Actor, documentId: string, input: EditCommand, base?: EducationalObject): Promise<void> {
     const owner = account(), workspace = current(), expected = epoch, selected = selection;
-    if (recoveryBlocked) return fail('INVALID_RECOVERY', 'Conserva una copia, poi rimuovi il recupero non valido.');
-    if (pending.size >= 500) return fail('RECOVERY_LIMIT', 'Recupera o esporta le modifiche in attesa prima di aggiungerne altre.');
-    // Capture the identity, payload, draft and ID before any asynchronous boundary.
     const captured = clone({actor: ActorSchema.parse(actor), input, base, commandId: id()});
     const document = workspace.documents.find(item => item.id === documentId);
     if (!document) throw new CoreError('NOT_FOUND', 'Document unavailable.');
-    const sequence = [...pending.values()].filter(item => item.workspaceId === workspace.workspaceId);
-    const predecessor = sequence.at(-1), previous = predecessor && scheduled.get(predecessor);
-    const lastDocumentEdit = sequence.findLast(item => item.request.action === 'command' && item.request.command.documentId === documentId);
-    // Reserve the successor's CAS revision from this sequence, never from a
-    // later refresh. Dispatch still requires its predecessor's positive receipt.
-    const expectedRevision = lastDocumentEdit?.request.action === 'command'
-      ? lastDocumentEdit.request.command.expectedRevision + 1 : document.revision;
-    const request = freeze(parseRequest({action: 'command', workspaceId: workspace.workspaceId,
-      command: {...captured.input, commandId: captured.commandId, documentId, expectedRevision}}));
-    if (pending.has(captured.commandId)) return fail('IDEMPOTENCY_CONFLICT', 'ID del comando già in attesa.');
-    const automatic = !predecessor || !!previous && (predecessor.status === 'queued' || predecessor.status === 'pending');
-    const entry: PendingCommand = {version: 2, accountId: owner.id, actorId: captured.actor.actorId,
-      commandId: captured.commandId, workspaceId: workspace.workspaceId, request, createdAt: clock(),
-      status: automatic ? 'queued' : 'blocked', error: null,
-      edit: {actor: freeze(captured.actor), ...(captured.base ? {base: freeze(captured.base)} : {}), predecessorId: predecessor?.commandId ?? null}};
-    pending.set(entry.commandId, entry);
-    try {saveRecovery();} catch (error) {
-      // A storage failure must not remove the unsent intent or its barrier. The
-      // existing memory fallback also survives account changes in this client.
-      entry.status = 'blocked'; entry.error = issue(error); lastError = entry.error; rememberRecovery(); emit(); throw error;
-    }
-    emit();
-    const blocked = () => fail('EDIT_BLOCKED', 'Non inviata. Risolvi la richiesta precedente, poi riprendi.');
-    const operation = (previous ?? Promise.resolve()).then(async () => {
-      requireEpoch(expected);
-      if (!automatic) return blocked();
-      if (selection !== selected || current().workspaceId !== entry.workspaceId) return fail('WORKSPACE_CHANGED', 'Non inviata: spazio cambiato.');
-      await send(entry);
-    }, blocked).catch(error => {
-      if (epoch === expected && pending.get(entry.commandId) === entry && (entry.status === 'queued' || entry.status === 'blocked')) {
-        entry.status = 'blocked'; entry.error = issue(error); lastError = entry.error;
-        try {saveRecovery();} catch { /* Original unsent bytes are retained; never dispatch after a failed barrier. */ }
+    return coordinate(workspace.workspaceId, 'workspace', 'shared', async () => {
+      const {operation} = await recoveryQueue(workspace.workspaceId, () => {
+        requireEpoch(expected);
+        if (selection !== selected) return fail('WORKSPACE_CHANGED', 'Non inviata: spazio cambiato.');
+        if (pending.size >= 500) return fail('RECOVERY_LIMIT', 'Recupera o esporta le modifiche in attesa prima di aggiungerne altre.');
+        const sequence = [...pending.values()].filter(item => item.workspaceId === workspace.workspaceId);
+        const predecessor = sequence.at(-1), previous = predecessor && scheduled.get(predecessor);
+        const lastDocumentEdit = sequence.findLast(item => item.request.action === 'command' && item.request.command.documentId === documentId);
+        const lastRequest = lastDocumentEdit && transmittedRequest(lastDocumentEdit);
+        const expectedRevision = lastRequest?.action === 'command' ? lastRequest.command.expectedRevision + 1 : document.revision;
+        const request = freeze(parseRequest({action: 'command', workspaceId: workspace.workspaceId,
+          command: {...captured.input, commandId: captured.commandId, documentId, expectedRevision}}));
+        if (pending.has(captured.commandId)) return fail('IDEMPOTENCY_CONFLICT', 'ID del comando già in attesa.');
+        const automatic = !predecessor || !!previous && (predecessor.status === 'queued' || predecessor.status === 'pending');
+        const entry: PendingCommand = {version: 2, accountId: owner.id, actorId: captured.actor.actorId,
+          commandId: captured.commandId, workspaceId: workspace.workspaceId, request, createdAt: clock(),
+          status: automatic ? 'queued' : 'blocked', error: null,
+          edit: {actor: freeze(captured.actor), ...(captured.base ? {base: freeze(captured.base)} : {}), predecessorId: predecessor?.commandId ?? null}};
+        pending.set(entry.commandId, entry);
+        try {saveRecovery();} catch (error) {
+          entry.status = 'blocked'; entry.error = issue(error); lastError = entry.error; rememberRecovery(); emit(); throw error;
+        }
         emit();
-      }
-      throw error;
+        const blocked = () => fail('EDIT_BLOCKED', 'Non inviata. Risolvi la richiesta precedente, poi riprendi.');
+        const operation = (previous ?? Promise.resolve()).then(async () => {
+          requireEpoch(expected);
+          if (!automatic) return blocked();
+          if (selection !== selected || current().workspaceId !== entry.workspaceId) return fail('WORKSPACE_CHANGED', 'Non inviata: spazio cambiato.');
+          await send(entry, true);
+        }, blocked).catch(async error => {
+          if (epoch === expected) await recoveryQueue(entry.workspaceId, () => {
+            if (pending.get(entry.commandId) === entry && (entry.status === 'queued' || entry.status === 'blocked')) {
+              entry.status = 'blocked'; entry.error = issue(error); lastError = entry.error;
+              try {saveRecovery();} catch { /* Preserve bytes; never dispatch after a failed barrier. */ }
+              emit();
+            }
+          }).catch(() => undefined);
+          throw error;
+        });
+        scheduled.set(entry, operation);
+        void operation.then(() => scheduled.delete(entry), () => scheduled.delete(entry));
+        return {operation};
+      });
+      return operation;
     });
-    scheduled.set(entry, operation);
-    void operation.then(() => scheduled.delete(entry), () => scheduled.delete(entry));
-    return operation;
+  }
+  async function queueOfflineInkEdit(documentId: string, input: Extract<EditCommand, {kind: 'add-object' | 'remove-object'}>) {
+    const source = offline, expected = epoch;
+    if (!source) return fail('OFFLINE_UNAVAILABLE', 'Apri prima la copia offline.');
+    const captured = clone(input);
+    if (reconnecting === expected) return fail('OFFLINE_TRANSITION', 'Attendi la riconnessione prima di scrivere.');
+    const operation = localInkWrites.catch(() => undefined).then(() => coordinate(source.workspaceId, 'workspace', 'shared', async () => {
+      try {await checkLocalGate(source.account.id, true); requireEpoch(expected);} catch (error) {handleFailure(error, expected); throw error;}
+      return recoveryQueue(source.workspaceId, () => {
+      if (pending.size >= 500) return fail('RECOVERY_LIMIT', 'Esporta o riconcilia le modifiche prima di proseguire.');
+      const document = source.documents.find(d => d.id === documentId);
+      if (!document) return fail('OFFLINE_UNAVAILABLE', 'Puoi modificare i tratti nelle lezioni personali disponibili offline.');
+      const sequence = [...pending.values()].filter(entry => entry.workspaceId === source.workspaceId);
+      if (captured.kind === 'add-object' && captured.object.type !== 'ink') return fail('OFFLINE_UNAVAILABLE', 'Solo i tratti a penna sono modificabili offline.');
+      if (captured.kind === 'remove-object') {
+        let target: NewEducationalObject | undefined = document.objects.find(o => o.id === captured.objectId);
+        for (const entry of sequence) if (entry.request.action === 'command' && entry.request.command.documentId === documentId) {
+          const command = entry.request.command;
+          if (command.kind === 'add-object' && command.object.id === captured.objectId) target = command.object;
+          if (command.kind === 'remove-object' && command.objectId === captured.objectId) target = undefined;
+        }
+        if (target?.type !== 'ink') return fail('OFFLINE_UNAVAILABLE', 'La gomma cancella soltanto tratti ancora presenti.');
+      }
+      const predecessor = sequence.at(-1);
+      const last = sequence.findLast(entry => entry.request.action === 'command' && entry.request.command.documentId === documentId);
+      const lastRequest = last && transmittedRequest(last);
+      const commandId = id(), expectedRevision = lastRequest?.action === 'command' ? lastRequest.command.expectedRevision + 1 : document.revision;
+      const request = freeze(parseRequest({action: 'command', workspaceId: source.workspaceId,
+        command: {...captured, commandId, documentId, expectedRevision}}));
+      if (pending.has(commandId)) return fail('IDEMPOTENCY_CONFLICT', 'ID già presente nel recupero.');
+      const entry: PendingCommand = {version: 2, accountId: source.account.id, actorId: source.actor.actorId, workspaceId: source.workspaceId,
+        commandId, request, createdAt: clock(), status: 'blocked', error: {code: 'OFFLINE_QUEUED', message: 'Conservata sul dispositivo, non inviata.'},
+        edit: {actor: freeze(clone(source.actor)), predecessorId: predecessor?.commandId ?? null}};
+      pending.set(commandId, entry);
+      try {saveRecovery(); lastError = null; emit();}
+      catch (error) {entry.error = issue(error); lastError = entry.error; rememberRecovery(); emit(); throw error;}
+      return {kind: 'queued' as const, commandId, recovery: state.recovery};
+      });
+    }));
+    localInkWrites = operation; return operation;
   }
   async function read(body: Record<string, unknown>): Promise<unknown> {
     const expected = epoch, owner = account();
@@ -698,6 +905,15 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
     if (actor.role === 'teacher' && !work?.evidenceShared) throw new CoreError('NOT_FOUND', 'Learner work unavailable.'); return work;
   }
   const core: CoreService = {
+    executeNotebook(actor, command) {
+      requireActor(actor); if (!current().notebookSpace) return Promise.reject(new RemoteError('UNSUPPORTED_FEATURE', 'Quaderni non disponibili su questo server.'));
+      return mutate({action: 'notebook-command', workspaceId: current().workspaceId, command}) as Promise<NotebookReceipt>;
+    },
+    getNotebookSpace(actor) {
+      requireActor(actor); const space = current().notebookSpace;
+      if (!space) return fail('UNSUPPORTED_FEATURE', 'Quaderni non disponibili su questo server.');
+      return clone(space);
+    },
     executeTutor(actor, command) {requireActor(actor); return mutate({action: 'tutor-command', workspaceId: current().workspaceId, command}) as Promise<TutorReceipt>;},
     getTutorSpace(actor) {requireActor(actor); return clone(current().tutorSpace ?? {records: [], history: []});},
     executeCourse(actor, command) {requireActor(actor); return mutate({action: 'course-command', workspaceId: current().workspaceId, command}) as Promise<CourseReceipt>;},
@@ -784,6 +1000,51 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
     invalidate(); offline = found.snapshot; localGeneration = found.gate.generation;
     offlineAvailable = true; offlineSavedAt = offline.savedAt; lastError = null; loadRecovery(); emit(); return clone(offline);
   }
+  function inkRecoveryContext() {
+    const owner = account(), source = current(), expected = epoch, chosen = selection;
+    if (!storage?.coordinate || memoryRecovery.has(owner.id)) return fail('RECOVERY_UNAVAILABLE', 'Recupero sul dispositivo non disponibile. Esporta i tratti prima di chiudere.');
+    return {owner, source, expected, chosen};
+  }
+  async function inkProposal({owner, source, expected, chosen}: ReturnType<typeof inkRecoveryContext>) {
+    const fresh = await read({action: 'open-workspace', workspaceId: source.workspaceId}); requireEpoch(expected);
+    if (chosen !== selection) return fail('WORKSPACE_CHANGED', 'Lo spazio è cambiato.');
+    accept(fresh, expected, source.workspaceId);
+    return recoveryQueue(source.workspaceId, async () => {
+      const {inkRecoveryPreview} = await import('./ink-reconciliation');
+      const preview = await inkRecoveryPreview(owner, current(), [...pending.values()]);
+      emit(); return preview;
+    });
+  }
+  async function prepareInkRecovery() {
+    const context = inkRecoveryContext();
+    return coordinate(context.source.workspaceId, 'workspace', 'exclusive', () => inkProposal(context));
+  }
+  async function confirmInkRecovery(token: string): Promise<void> {
+    const context = inkRecoveryContext(), {source, expected, chosen} = context;
+    return coordinate(source.workspaceId, 'workspace', 'exclusive', async () => {
+      const preview = await inkProposal(context);
+      if (preview.token !== token) return fail('RECOVERY_PREVIEW_STALE', 'La lezione o i tratti sono cambiati. Apri una nuova anteprima prima di confermare.');
+      for (const approved of preview.entries) {
+        requireEpoch(expected);
+        if (chosen !== selection) return fail('WORKSPACE_CHANGED', 'Lo spazio è cambiato. Il resto rimane da recuperare.');
+        const entry = await recoveryQueue(source.workspaceId, () => {
+          const entry = pending.get(approved.recoveryId);
+          if (!entry || !entry.edit || entry.edit.predecessorId) return fail('RECOVERY_CHANGED', 'Recupero cambiato. Rileggi prima di proseguire.');
+          const commandId = id();
+          if (!isId(commandId) || [...pending.values()].some(value => value.commandId === commandId || value.reconciliation?.attempts.some(attempt => attempt.commandId === commandId))) return fail('IDEMPOTENCY_CONFLICT', 'Identità del tentativo già utilizzata.');
+          entry.reconciliation = {...(entry.reconciliation ?? {recoveryId: entry.commandId, originalOutcome: entry.status === 'blocked' ? 'not-sent' as const : 'revision-conflict' as const}),
+            attempts: [...(entry.reconciliation?.attempts ?? []), {commandId, expectedRevision: approved.expectedRevision, createdAt: clock()}]};
+          entry.version = 3; entry.status = 'blocked'; entry.error = null;
+          // One atomic row contains both the original and the effective attempt.
+          // No HTTP occurs unless this envelope was durably written.
+          try {saveRecovery();} catch (error) {entry.error = issue(error); lastError = entry.error; rememberRecovery(); emit(); throw error;}
+          emit(); return entry;
+        });
+        await send(entry, true);
+      }
+      lastError = null; emit();
+    });
+  }
   cache?.subscribe?.(() => {
     const expected = epoch, generation = localGeneration;
     if (!generation || !recoveryAccount()) return;
@@ -835,6 +1096,8 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
       });
     },
     edit,
+    prepareInkRecovery,
+    confirmInkRecovery,
     offlineMaterials(): MaterialAccess {
       const copy=offline,expected=epoch,generation=localGeneration;
       if(!copy||!generation||!cache?.getMaterial)return fail('OFFLINE_UNAVAILABLE','Materiali non disponibili in questa copia.');
@@ -880,33 +1143,52 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
         throw error;
       } finally {if (reconnecting === expected) reconnecting = null;}
     },
-    async queueOfflineInk(documentId: string, object: Extract<NewEducationalObject, {type: 'ink'}>) {
-      const source = offline, expected = epoch;
-      if (!source) return fail('OFFLINE_UNAVAILABLE', 'Apri prima la copia offline.');
-      const captured = clone(object);
-      if (reconnecting === expected) return fail('OFFLINE_TRANSITION', 'Attendi la riconnessione prima di scrivere.');
-      const operation = localInkWrites.catch(() => undefined).then(async () => {
-        try {await checkLocalGate(source.account.id, true); requireEpoch(expected);} catch (error) {handleFailure(error, expected); throw error;}
-        if (recoveryBlocked) return fail('INVALID_RECOVERY', 'Esporta e controlla il recupero originale.');
-        if (pending.size >= 500) return fail('RECOVERY_LIMIT', 'Esporta o riconcilia le modifiche prima di proseguire.');
-        const document = source.documents.find(d => d.id === documentId);
-        if (!document || captured.type !== 'ink') return fail('OFFLINE_UNAVAILABLE', 'Puoi scrivere nelle lezioni personali disponibili offline.');
-        const sequence = [...pending.values()].filter(entry => entry.workspaceId === source.workspaceId);
-        const predecessor = sequence.at(-1);
-        const last = sequence.findLast(entry => entry.request.action === 'command' && entry.request.command.documentId === documentId);
-        const commandId = id(), expectedRevision = last?.request.action === 'command' ? last.request.command.expectedRevision + 1 : document.revision;
-        const request = freeze(parseRequest({action: 'command', workspaceId: source.workspaceId,
-          command: {kind: 'add-object', commandId, documentId, expectedRevision, object: captured}}));
-        if (pending.has(commandId)) return fail('IDEMPOTENCY_CONFLICT', 'ID già presente nel recupero.');
-        const entry: PendingCommand = {version: 2, accountId: source.account.id, actorId: source.actor.actorId, workspaceId: source.workspaceId,
-          commandId, request, createdAt: clock(), status: 'blocked', error: {code: 'OFFLINE_QUEUED', message: 'Conservata sul dispositivo, non inviata.'},
-          edit: {actor: freeze(clone(source.actor)), predecessorId: predecessor?.commandId ?? null}};
-        pending.set(commandId, entry);
-        try {saveRecovery(); lastError = null; emit();}
-        catch (error) {entry.error = issue(error); lastError = entry.error; rememberRecovery(); emit(); throw error;}
-        return {kind: 'queued' as const, commandId, recovery: state.recovery};
-      });
-      localInkWrites = operation; return operation;
+    queueOfflineInk(documentId: string, object: Extract<NewEducationalObject, {type: 'ink'}>) {
+      return queueOfflineInkEdit(documentId, {kind: 'add-object', object});
+    },
+    queueOfflineEraseInk(documentId: string, objectId: string) {
+      return queueOfflineInkEdit(documentId, {kind: 'remove-object', objectId});
+    },
+    inkRecovery(documentId: string): InkDraftAccess {
+      const owner = recoveryAccount(), source = offline ?? projection, expected = epoch;
+      if (!owner || !source || !source.documents.some(d => d.id === documentId)
+        || !offline && !ownsWorkspace(source)) return fail('OFFLINE_UNAVAILABLE', 'Recupero penna disponibile nelle tue lezioni personali.');
+      const scope = {accountId: owner.id, workspaceId: source.workspaceId, documentId};
+      const authorize = () => {
+        requireEpoch(expected);
+        const active = offline ?? projection;
+        if (recoveryAccount()?.id !== owner.id || active?.workspaceId !== scope.workspaceId || !active.documents.some(d => d.id === documentId)) return fail('SESSION_CHANGED', 'Lo spazio della bozza è cambiato.');
+        if (!inkDraftStorage) return fail('RECOVERY_STORAGE_FAILURE', 'Il browser non può conservare il tratto in corso. Termina il tratto ed esporta prima di chiudere.');
+        return active.documents.find(d => d.id === documentId)!;
+      };
+      const retained = (draft: InkDraft) => {
+          const document = authorize();
+            const same = (object: NewEducationalObject) => object.id === draft.object.id && object.type === 'ink'
+              && ['x', 'y', 'width', 'height', 'title', 'data'].every(key => canonicalJson(object[key as keyof typeof object]) === canonicalJson(draft.object[key as keyof typeof draft.object]));
+            // Clear a checkpoint only after exact confirmed data or durable immutable recovery exists.
+            return document.objects.some(same) || state.recovery === 'durable' && [...pending.values()].some(entry => entry.workspaceId === scope.workspaceId && entry.request.action === 'command'
+              && entry.request.command.documentId === documentId && entry.request.command.kind === 'add-object' && same(entry.request.command.object));
+      };
+      return {
+        read() {authorize(); return inkDraftStorage!.read(scope).filter(draft => !retained(draft));},
+        recover(objectId, apply) {authorize(); return inkDraftStorage!.recover(scope, objectId, async draft => {
+          if (retained(draft)) return true;
+          const confirmed = await apply(draft); authorize(); return confirmed || retained(draft);
+        });},
+        release(objectId) {
+          try {
+            authorize();const draft=inkDraftStorage!.read(scope,objectId)[0];
+            // Transfer is complete even after a lost HTTP response if the exact
+            // immutable pending command is durable. Remove before unlocking so
+            // a stale second tab cannot create another command for this ID.
+            if(draft&&retained(draft))inkDraftStorage!.remove(scope,objectId);
+          } catch { /* Revocation/corruption preserves bytes; releasing needs no authority. */ }
+          finally {inkDraftStorage?.release(scope,objectId);}
+        },
+        write(draft) {authorize(); inkDraftStorage!.write(scope, draft);},
+        remove(objectId) {authorize(); inkDraftStorage!.remove(scope, objectId);},
+        exportRaw() {authorize(); return inkDraftStorage!.exportRaw(scope);},
+      };
     },
     get state(): RemoteState {return state;},
     get account(): RemoteAccount | null {return clone(session?.account ?? null);},
@@ -957,16 +1239,21 @@ export function createRemoteClient(options: RemoteClientOptions = {}) {
     },
     async resumePending(commandId: string): Promise<void> {
       account(); const entry = pending.get(commandId);
-      if (!entry || entry.version !== 2 || entry.status !== 'blocked') return fail('EDIT_NOT_BLOCKED', 'Nessuna modifica non inviata da riprendere.');
+      if (!entry || entry.version === 1 || entry.status !== 'blocked') return fail('EDIT_NOT_BLOCKED', 'Nessuna modifica non inviata da riprendere.');
       if (scheduled.has(entry)) return fail('REQUEST_IN_FLIGHT', 'Attendi l’arresto della sequenza.');
       await send(entry);
     },
-    discardPending(commandId: string) {
+    async discardPending(commandId: string) {
       account(); const previous = pending.get(commandId); if (!previous) return;
-      if (active.has(previous.accountId + ':' + previous.commandId) || scheduled.has(previous)) return fail('REQUEST_IN_FLIGHT', 'Attendi l’esito del tentativo in corso.');
-      const entries = new Map(pending);
-      pending.delete(commandId); try {saveRecovery();} catch (error) {pending = entries; rememberRecovery(); emit(); throw error;}
-      lastError = null; emit();
+      if ([...active.keys()].some(key => key.startsWith(previous.accountId + ':' + previous.commandId + '/')) || scheduled.has(previous)) return fail('REQUEST_IN_FLIGHT', 'Attendi l’esito del tentativo in corso.');
+      const identity = attemptIdentity(previous);
+      await coordinate(previous.workspaceId, 'workspace', 'shared', () => coordinate(previous.workspaceId, 'intent:' + commandId, 'exclusive', () => recoveryQueue(previous.workspaceId, () => {
+        const current = pending.get(commandId);
+        if (!current || attemptIdentity(current) !== identity) return fail('RECOVERY_CHANGED', 'Recupero cambiato. Rileggi prima di proseguire.');
+        const entries = new Map(pending);
+        pending.delete(commandId); try {saveRecovery();} catch (error) {pending = entries; rememberRecovery(); emit(); throw error;}
+        lastError = null; emit();
+      })));
     },
     exportPendingRecovery(): string | null {const owner = recoveryAccount(); if (!owner) return fail('UNAUTHENTICATED', 'Apri il tuo spazio.'); return memoryRecovery.get(owner.id) ?? storage?.read(owner.id, false) ?? null;},
     discardInvalidRecovery() {

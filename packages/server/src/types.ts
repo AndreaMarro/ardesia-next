@@ -1,5 +1,5 @@
 import type {
-  TutorSpace, CourseSpace, Actor, CoreEvent, LessonDocument, PluginInstallation, LessonAssignment,
+  NotebookSpace, TutorSpace, CourseSpace, Actor, CoreEvent, LessonDocument, PluginInstallation, LessonAssignment,
   LearnerWork, LearningEvent, AssignedLabAccess, WorkspaceAccess,
 } from '@ardesia/contracts';
 
@@ -9,6 +9,7 @@ export interface WorkspaceSummary { workspaceId: string; title: string; workspac
 /** This is a permission-filtered view. It is deliberately not a CoreSnapshot. */
 export interface WorkspaceProjection extends WorkspaceSummary {
   actor: Actor;
+  notebookSpace: NotebookSpace;
   tutorSpace: TutorSpace;
   courseSpace: CourseSpace;
   documents: LessonDocument[];

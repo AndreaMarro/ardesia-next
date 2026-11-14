@@ -1,0 +1,28 @@
+{
+  "base": "a4835aad79a15c13a14c10c5aa51cfda98c546b3",
+  "scopeNote": "Frozen sources inspected; App.tsx and RemoteWorkspace.tsx were inspected initially but subsequent Knowledge routing is excluded from this receipt.",
+  "files": {
+    "packages/mcp-core/src/adapter.ts": "7a84f278afff91b44afaa7ab5bfcb3cbb3aa8fc2345b0141fbb2079d8f2545f0",
+    "packages/mcp-core/src/index.ts": "83c93e855ea13d7606e467c666992393ad6e96d4904957f43ea92f2f4681e5b0",
+    "packages/mcp-core/src/adapter.test.ts": "3ae055361edd7b9d0b5b3ecde761d86f9894f477fd61fa6900a5bb64dc6101a1",
+    "packages/server/src/recordings.ts": "1ad8de76d2037fb6913ec5c893540904f3c3aee6df68b397dba6ddd933a07629",
+    "packages/server/src/requests.ts": "86f30a522988ebcd20b83165616cd6866caede694743703bc644a04470f0fee7",
+    "tools/mcp-runtime.test.mjs": "3887425d88f2f4f33e97bb9c658d09c643603f75e762983025d07d8463b6d9ad",
+    "packages/remote-client/src/index.ts": "aa48267ea8e4c84b39412644cc5da8fb77983d2be24c84e7a297843927e2e3b2",
+    "packages/remote-client/src/ink-drafts.ts": "5d3c75b6b7171947c35344f6f82da7a04be63304723bf25ae6789655f9b4942b",
+    "packages/remote-client/src/ink-drafts.test.ts": "a6b5a8db8f2146fe2e185aeae0ecba74aa84dbae6ce59e589f366b6ca7481792",
+    "apps/web/src/OfflineWorkspace.tsx": "61962d42127a0fb424de672a6df4f690282f233ffd2f5de0bc2ae7fc7ec39295",
+    "apps/web/src/workspace.ts": "59aeb02b064e635d610886127143b5b02a34dae43db560e0f24375e6f3ba7a63",
+    "apps/web/src/components/Board.tsx": "a57b8525280b41b5c337f4bd75575afda18b62f1ca161b4042f512ffff673484",
+    "apps/web/src/components/board-geometry.ts": "d9ac9acfa6628efc41b9de11ac470a750a8c55e84894e1b856fd067f9dee3d7a",
+    "apps/web/src/components/board-geometry.test.ts": "32a0cbcb62e1a231027e0ed305b7c6db076060ee84a10fde4fcffb556c2cfa9c",
+    "apps/web/src/offline-client.test.ts": "9070865d23179d732fc2e9ea1731a3fcb6ef00b3a178b7beea92055ff2bed5eb",
+    "apps/web/src/styles.css": "f2cdc96ca95ad1a3ba88a919e6ed9aae6ce6e0de68afdf9ff7424205982aef6a",
+    "e2e/ink-continuity.spec.ts": "4f9a468882fd5409c372caf45b79c85633755c862da9a65dd48478e01055069c",
+    "apps/web/src/creator/Creator.tsx": "19d49cf9fe412c5de2bb0d483c6ee5d8fa79dd95ad4c8bfe248507214616cf2d",
+    "apps/web/src/science/PhysicsWorkbench.tsx": "fa37ba277ad6ceb72b2536fbbc232a7a2503c9aa8e604c0b4eb1c25f1ab9c7f1",
+    "apps/web/src/science/labs.test.ts": "54d4cf8257e20b710a44e986bdfba8d5d25db0149d0119a50fd602252edfc943",
+    "apps/web/src/science/labs.ts": "ffc5f96692d5da75dece635d15a2c4ef2d8fc4343792c04d916fe2f46099d4e3",
+    "apps/web/src/science/science.css": "788b9ef6a48b831438c7b25326b39b18ce06e7ff888665b50a5f0c640cf6a631"
+  }
+}

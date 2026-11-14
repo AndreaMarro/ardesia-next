@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "validatedWith": "Public CourseInputSchema from /Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/packages/contracts/src/courses.ts",
+  "courseCount": 5,
+  "unitCount": 38,
+  "objectiveCount": 200,
+  "finalAssessmentCount": 200,
+  "experimentCount": 38,
+  "selectedExerciseCount": 259,
+  "crossReferences": "PASS",
+  "defaultNoExtensions": true,
+  "optInIncludesExtensions": true,
+  "negativeCases": [
+    {
+      "name": "duplicate course identity",
+      "result": "PASS"
+    },
+    {
+      "name": "missing objective",
+      "result": "PASS"
+    },
+    {
+      "name": "human approval accidentally enabled",
+      "result": "PASS"
+    },
+    {
+      "name": "unknown course input property",
+      "result": "PASS"
+    },
+    {
+      "name": "dangling exercise",
+      "result": "PASS"
+    },
+    {
+      "name": "wrong final objective",
+      "result": "PASS"
+    },
+    {
+      "name": "duplicate unit in CourseInput",
+      "result": "PASS"
+    },
+    {
+      "name": "false completed coverage",
+      "result": "PASS"
+    },
+    {
+      "name": "missing MCQ answer option",
+      "result": "PASS"
+    }
+  ],
+  "scientificReview": "NOT_CERTIFIED_BY_SCHEMA_CHECK",
+  "humanApproval": false,
+  "limits": [
+    "Checks validate shape, declared identities and referential integrity, not scientific truth.",
+    "Lab IDs are only declared integration targets; no runtime existence or behavior is asserted."
+  ]
+}

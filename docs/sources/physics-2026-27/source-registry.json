@@ -1,0 +1,110 @@
+{
+  "checkedOn": "2026-11-07",
+  "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+  "officialSyllabus": {
+    "title": "MUR · Syllabus Fisica · semestre aperto 2026/2027",
+    "url": "https://www.mur.gov.it/sites/default/files/2026-06/Syllabus_FISICA_%20finale%202026.pdf",
+    "currentContentAccess": "Official PDF text read with the web tool: 5 pages, 187 lines, all U1–U7.",
+    "directDownload": "HTTP 403 with Python; current official PDF bytes were not obtained.",
+    "universityMirror": "https://medicina.unicz.it/insegnamento/485/39599",
+    "mirrorFile": "source-checks/unicz-2026.pdf",
+    "mirrorBytes": 306024,
+    "mirrorSha256": "2650dee32028c3414d67952c4be63db511fa184b10395b921caa9b76adb4c60f",
+    "byteEqualityWithMur": "Previously recorded true on 2026-10-28; not independently repeated for official bytes on 2026-11-07.",
+    "corroboration": "https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2026/568106",
+    "reuse": "Source of curricular scope; no commercial manual text reproduced."
+  },
+  "examRules": {
+    "url": "https://www.uniroma1.it/it/pagina/semestre-aperto-2026-2027-guida-alla-frequenza-dei-corsi",
+    "currentPageRead": true,
+    "year": "2026/2027",
+    "questions": 31,
+    "multipleChoice": 21,
+    "completion": 10,
+    "minutes": 50,
+    "score": {
+      "correct": 1,
+      "wrong": -0.1,
+      "blank": 0
+    },
+    "examDates": [
+      "2026-12-10",
+      "2027-01-11"
+    ],
+    "note": "These institutional rules are not implemented or validated by this data-only package."
+  },
+  "historicalExamEvidence": {
+    "file": "sources/packs/semestre-filtro-2026-27/sources/exams-2025-blueprint.json",
+    "count": 2,
+    "questionsEach": 31,
+    "currentPdfReview": "NOT_RUN",
+    "status": "Inherited analysis of privately hosted 2025 papers; not represented as official MUR answer keys."
+  },
+  "privateManuals": [
+    {
+      "title": "Valdes · Fisica generale con applicazioni alla medicina",
+      "pagesInInheritedRegistry": 429
+    },
+    {
+      "title": "Ragozzino/Velotta · Manuale di fisica generale per il semestre filtro",
+      "pagesInInheritedRegistry": 576
+    },
+    {
+      "title": "Scannicchio · Manuale di fisica generale e biomedica per il semestre filtro",
+      "pagesInInheritedRegistry": 768
+    },
+    {
+      "title": "FisicaTB.pdf",
+      "pagesInInheritedRegistry": 133
+    }
+  ],
+  "privateManualAccess": "No matching source files found in scoped Documents/Downloads/Desktop filename search; older registry reports index and selected-page review only. Not freshly read or reproduced.",
+  "testbustesExerciseBook": "Inherited source records report unavailable; not consulted.",
+  "legacyCorpus": {
+    "repository": "AndreaMarro/ardesia",
+    "sha": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+    "courses": 4,
+    "familyLessons": 38,
+    "historicalDemoLessons": 5,
+    "editorialObjectives": 200,
+    "bankQuestions": 4000,
+    "bankShards": 27,
+    "bankShardBytes": 53236609,
+    "sha256Checks": "All 27 match inherited manifest; receipt source-checks/bank-shards.json.",
+    "courseReconciliation": "Split U3 fluids from U5 thermodynamics, retaining every family/subtarget/final identity.",
+    "reuse": "User-owned Ardesia material reused for the same product; this audit does not invent or grant an open-source license."
+  },
+  "rea": {
+    "version": "6.8",
+    "mode": "Static analysis of copied fluid-thermo/models.ts only",
+    "evidenceId": "ev_5fef67a9604addb9f94c0ef3234c6aaac7e5b6acd3a0bbef98da18df9752c00d",
+    "artifactHash": "015668519ad5b7b999b16f4575e77f1e7debb7a956a42599edf09d7472b28406",
+    "resultFile": "rea-fluid-models.json",
+    "limits": "Truncated semantic budgets; no dependency closure, execution or scientific certification.",
+    "lessonsAdopted": [
+      "Declare fixed-Q versus fixed-pressure constraints.",
+      "Use SI parameters and explicit model domains.",
+      "Return linked measures and curves without a second persistence path."
+    ],
+    "copiedSoftwareCode": false
+  },
+  "quantitativeExtensions": {
+    "laplace": "Official demand is qualitative; provided equations are clearly labeled extension.",
+    "doppler": "Official demand is qualitative; no quantitative Doppler requirement added.",
+    "excludedAsMandatory": [
+      "Gauss law",
+      "quantitative Biot-Savart",
+      "RC transients",
+      "elasticity",
+      "rotational inertia/rolling",
+      "real-gas equations"
+    ]
+  },
+  "acceptance": {
+    "editorialDraft": true,
+    "humanScientificReview": "NOT_RUN",
+    "learnerCalibration": "NOT_RUN",
+    "realIpadPencilValidation": "NOT_RUN",
+    "softwareRuntimeValidation": "NOT_RUN_BY_THIS_CONTENT_AUDIT"
+  }
+}

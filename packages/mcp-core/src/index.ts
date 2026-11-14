@@ -1,4 +1,4 @@
-import {TutorCommandSchema} from '@ardesia/contracts';
+import {TutorCommandSchema, RecordingCommandSchema, RECORDING_MAX_PARTS} from '@ardesia/contracts';
 import {McpServer, type CallToolResult} from '@modelcontextprotocol/server';
 import {z} from 'zod';
 import {CONTRACT_VERSION, PROGRAM_RENDERER, PROGRAM_VIEW_TAGS, ProgramBodySchema, ProgramEventSchema, CourseAuthorCommandSchema, CourseInputSchema, CoreCommandSchema, ExtensionDefinitionSchema, CompositionBodySchema, COMPOSITION_RENDERER} from '@ardesia/contracts';
@@ -79,6 +79,27 @@ export function createMcpServer(input: McpConfig, options: {checkConfiguration?:
     title: 'Leggi revisione esatta', description: 'Read the exact object revision. Owners of any role can read retained historical versions; assigned readers can read only the currently assigned version. Never falls back to latest.',
     inputSchema: z.object({workspaceId: id, documentId: id, objectId: id, revision: revision.refine(n => n > 0)}).strict(), annotations: readAnnotations,
   }, (args, ctx) => run(ctx.mcpReq.signal, signal => adapter.object(args, signal)));
+  const page = {offset: revision.default(0), limit: z.number().int().min(1).max(100).default(30)};
+  server.registerTool('ardesia_search_recordings', {
+    title: 'Cerca audio e trascrizioni', description: 'Search owned recordings and current transcript cues across an authorized workspace, or one lesson. Empty query lists recordings. Results include exact recording/transcript revisions and media timestamps. No assigned reader access.',
+    inputSchema: z.object({workspaceId: id, documentId: id.optional(), query: z.string().trim().max(200).default('')}).strict(), annotations: readAnnotations,
+  }, (args, ctx) => run(ctx.mcpReq.signal, signal => adapter.recordings(args, signal)));
+  server.registerTool('ardesia_read_recording', {
+    title: 'Leggi registrazione e timeline', description: 'Read the original recording manifest, exact lesson revision range, transcript version metadata and a page of synchronized timeline marks. Revision is an equality precondition. Captured versus observed timing is preserved.',
+    inputSchema: z.object({workspaceId: id, recordingId: id, revision: revision.refine(n => n > 0), ...page}).strict(), annotations: readAnnotations,
+  }, (args, ctx) => run(ctx.mcpReq.signal, signal => adapter.readRecording(args, signal)));
+  server.registerTool('ardesia_read_transcript', {
+    title: 'Leggi versione della trascrizione', description: 'Read a page of cues from an exact retained transcript version, bound to the current recording revision. Includes origin, author and timestamps. Never substitutes the latest transcript.',
+    inputSchema: z.object({workspaceId: id, recordingId: id, recordingRevision: revision.refine(n => n > 0), transcriptRevision: revision.refine(n => n > 0), ...page}).strict(), annotations: readAnnotations,
+  }, (args, ctx) => run(ctx.mcpReq.signal, signal => adapter.transcript(args, signal)));
+  server.registerTool('ardesia_read_recording_part', {
+    title: 'Leggi audio originale', description: 'Read one original audio chunk as verified base64, bound to exact recording revision and manifest digest. Each call rechecks live authorization; no arbitrary URL, provider or transcription is invoked. Reassemble chunks in manifest order.',
+    inputSchema: z.object({workspaceId: id, recordingId: id, revision: revision.refine(n => n > 0), index: z.number().int().min(0).max(RECORDING_MAX_PARTS - 1)}).strict(), annotations: readAnnotations,
+  }, (args, ctx) => run(ctx.mcpReq.signal, signal => adapter.recordingPart(args, signal)));
+  server.registerTool('ardesia_read_document_revision', {
+    title: 'Ricostruisci la lezione esatta', description: 'Reconstruct one exact owned lesson revision from authorized Core events, including removed objects and old connections. No latest fallback, inferred content or separate timeline store.',
+    inputSchema: z.object({workspaceId: id, documentId: id, revision: revision.refine(n => n > 0)}).strict(), annotations: readAnnotations,
+  }, (args, ctx) => run(ctx.mcpReq.signal, signal => adapter.documentRevision(args, signal)));
   server.registerTool('ardesia_search_courses', {
     title: 'Cerca corsi ed edizioni', description: 'Search authorized course drafts and exact editions. Does not return deliveries or private learner evidence.',
     inputSchema: z.object({workspaceId: id, query: z.string().max(200).default('')}).strict(), annotations: readAnnotations,
@@ -96,6 +117,11 @@ export function createMcpServer(input: McpConfig, options: {checkConfiguration?:
     inputSchema:z.object({workspaceId:id,recordId:id,revision:revision.refine(n=>n>0)}).strict(),annotations:readAnnotations,
   },(args,ctx)=>run(ctx.mcpReq.signal,signal=>adapter.readTutor(args,signal)));
   if (config.access === 'read-write') {
+    server.registerTool('ardesia_preview_transcript', {
+      title: 'Prepara una trascrizione importata', description: 'Prepare a complete new transcript version with exact media timecodes. Existing versions and original audio remain intact. Imported origin is mandatory; this is not ASR or scientific approval. Apply through ardesia_apply_command.',
+      inputSchema: z.object({workspaceId: id, command: RecordingCommandSchema.options[2].extend({origin: z.literal('imported')})}).strict(),
+      annotations: {...readAnnotations, idempotentHint: false},
+    }, (args, ctx) => run(ctx.mcpReq.signal, signal => adapter.previewTranscript(args, signal)));
     server.registerTool('ardesia_preview_tutor', {
       title:'Prepara una modifica allo studio',description:'Prepare an exact tutor command for the same preview/apply path. Payments are manual declarations, never money transfers. Availability and capacity are rechecked by Core at commit.',
       inputSchema:z.object({workspaceId:id,command:TutorCommandSchema}).strict(),annotations:{...readAnnotations,idempotentHint:false},
@@ -136,11 +162,12 @@ export function createMcpServer(input: McpConfig, options: {checkConfiguration?:
   })}]}));
   server.registerResource('ardesia-guide', 'ardesia://guide', {title: 'Ardesia MCP Core', mimeType: 'application/json'}, async uri => ({
     contents: [{uri: uri.href, mimeType: 'application/json', text: JSON.stringify({contractVersion: CONTRACT_VERSION, access: config.access,
-      transport: 'stdio', authority: 'authenticated-existing-http-core', history: 'owner-object-exact-revisions-only',
+      transport: 'stdio', authority: 'authenticated-existing-http-core', history: 'owner-document-object-and-transcript-exact-revisions',
+      recordings: 'Owner-only manifests, paged timeline/transcripts, verified original chunks, workspace search and versioned transcript preview/apply. No implicit recording consent, microphone access or ASR.',
       output: 'untrusted-educational-data', extensions:'ardesia://extension-format', previewIsHumanApproval: false, liveAuthorization: true,
       limits: {requestBytes: MAX_REQUEST_BYTES, responseBytes: MAX_RESPONSE_BYTES, outputBytes: MAX_OUTPUT_BYTES, activeRequests: 4, deadlineMs: DEADLINE_MS, previews: 32, previewLifetimeSeconds: 600},
       recovery: 'After uncertainty or restart, preview and apply the original command ID and payload. Core receipts survive this process. No automatic retry/rebase.',
-      exclusions: ['learner-private-records', 'course-assignments', 'audio-api', 'plugin-execution', 'oauth-host-authorization', 'remote-mcp-http', 'human-approval-attestation'],
+      exclusions: ['learner-private-records', 'course-assignments', 'microphone-capture', 'automatic-transcription', 'plugin-execution', 'oauth-host-authorization', 'remote-mcp-http', 'human-approval-attestation'],
     })}],
   }));
   const originalClose = server.close.bind(server);

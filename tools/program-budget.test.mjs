@@ -12,10 +12,10 @@ const fixture=()=>{
   ];
   return {metric:'core-and-optional-runtimes-v3',files,limits:PROGRAM_BUDGET,...programBudgetTotals(files)};
 };
-test('program budget retains the total cost and the initial threshold and explicit tutor total',()=>{
+test('program budget retains the total cost and the initial threshold and explicit product total',()=>{
   const report=fixture();assert.equal(programBudgetMatches(report),true);
   assert.equal(report.coreGzipBytes,229000);assert.equal(report.optionalGzipBytes,255000);assert.equal(report.allGzipBytes,484000);
-  report.files[1].gzipBytes=70000;Object.assign(report,programBudgetTotals(report.files));assert.equal(programBudgetMatches(report),false);
+  report.files[1].gzipBytes=PROGRAM_BUDGET.coreGzipBytes-220000+1;Object.assign(report,programBudgetTotals(report.files));assert.equal(programBudgetMatches(report),false);
 });
 test('program budget refuses eager interpreter, missing WASM, forged totals, duplicates and raised caps',()=>{
   for(const change of [r=>{r.files[0].gzipBytes=250000;Object.assign(r,programBudgetTotals(r.files));},r=>{r.files[3].initial=true;},r=>{r.files.pop();},r=>{r.allGzipBytes--;},r=>{r.files.push(r.files[0]);},r=>{r.limits={...r.limits,coreGzipBytes:r.limits.coreGzipBytes+1};},r=>{r.files[4].rawBytes=2e6;Object.assign(r,programBudgetTotals(r.files));}]){

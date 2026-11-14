@@ -7,9 +7,9 @@ import {AudioCapture, browserTakeStore, finalizeTake, type CaptureStatus, type L
 
 const stamp = (ms: number) => `${Math.floor(ms / 60000)}:${String(Math.floor(ms / 1000) % 60).padStart(2, '0')}`;
 function download(blob: Blob, filename: string) {const url = URL.createObjectURL(blob), a = document.createElement('a'); a.href = url; a.download = filename; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);}
-export function AudioSession({access, document: lesson, events, bridge, onBusy, onReplay, inkActive, canReplay, replayBlocked}: {
+export function AudioSession({access, document: lesson, events, bridge, onBusy, onCaptureStatus, onReplay, inkActive, canReplay, replayBlocked}: {
   access: () => RecordingAccess; document: LessonDocument; events: CoreEvent[]; bridge: MutableRefObject<AudioCapture | null>;
-  onBusy: (busy: boolean) => void; onReplay: (document: LessonDocument | null) => boolean; inkActive: boolean; canReplay: () => boolean; replayBlocked: boolean;
+  onBusy: (busy: boolean) => void; onCaptureStatus?: (status: CaptureStatus) => void; onReplay: (document: LessonDocument | null) => boolean; inkActive: boolean; canReplay: () => boolean; replayBlocked: boolean;
 }) {
   const api = useMemo(access, [access]), store = useMemo(browserTakeStore, []);
   const [open, setOpen] = useState(false), [consent, setConsent] = useState(false), [status, setStatus] = useState<CaptureStatus>('idle');
@@ -35,12 +35,13 @@ export function AudioSession({access, document: lesson, events, bridge, onBusy, 
   }
   useEffect(() => {
     mounted.current = true;
-    return () => {mounted.current = false; operation.current++; bridge.current?.cancelPermission(); bridge.current = null; cancelAnimationFrame(frame.current); onBusy(false); onReplay(null);};
+    return () => {mounted.current = false; operation.current++; bridge.current?.cancelPermission(); bridge.current = null; cancelAnimationFrame(frame.current); onBusy(false); onCaptureStatus?.('idle'); onReplay(null);};
   }, []);
   useEffect(() => {if (open) void perform(reload);}, [open]);
   useEffect(() => {if (selected) panel.current?.scrollTo({top: 0});}, [selected?.summary.recordingId]);
   useEffect(() => {bridge.current?.observe(events);}, [lesson.revision]);
   useEffect(() => {onBusy(status !== 'idle' || busy || text.length > 0);}, [status, busy, text]);
+  useEffect(() => {onCaptureStatus?.(status);}, [status, onCaptureStatus]);
   useEffect(() => {
     if (status === 'idle' && open) void store.list(api.accountId, api.workspaceId, lesson.id).then(takes => {if (mounted.current) setLocal(takes);});
     const unload = (event: BeforeUnloadEvent) => {event.preventDefault();};

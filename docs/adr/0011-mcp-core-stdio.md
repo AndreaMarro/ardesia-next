@@ -18,7 +18,7 @@ Documentazione primaria letta: [SDK TypeScript](https://github.com/modelcontextp
 
 ## Confini e compromessi
 
-Ogni lettura passa dal server. L'adapter restituisce documenti autorizzati, oggetti e metadati; esclude lavoro privato studenti, consensi e learning events dalla propria superficie. Il docente consulta versioni storiche degli oggetti nel proprio documento; lo studente solo la versione assegnata corrente. Non vengono promesse versioni storiche di documenti interi, ricerca trascrizioni o API di corsi non ancora presenti.
+Ogni lettura passa dal server. L'adapter restituisce documenti autorizzati, oggetti e metadati; esclude lavoro privato studenti, consensi e learning events dalla propria superficie. Un proprietario, anche studente, consulta le revisioni storiche dei propri documenti; negli spazi assegnati legge soltanto la versione corrente autorizzata. La continuazione del 7 novembre aggiunge revisioni storiche di documenti posseduti, ricerca/lettura delle registrazioni e trascrizioni con revisioni esplicite e le API dei corsi descritte nel README. Non offre ASR, host cloud/OAuth o accesso a lavoro privato degli studenti.
 
 Configurazione verificata a inizio richiesta, immediatamente prima di inviare un comando e prima di pubblicare un risultato. Cancellazione, revoca e EOF chiudono il trasporto locale; un comando già inviato può essere committato. File di sessione0600, no symlink/file speciali, lettura limitata anche se il file cresce. Solo endpoint fisso da config privata, niente redirect/proxy da ambiente o URL fornito dall'agente. Il token resta una sessione applicativa ordinaria: OAuth delegato, autenticazione di host cloud e scoping server dedicato sono un incremento futuro, non simulati con header del chiamante.
 
@@ -26,7 +26,7 @@ La ricerca scorre la proiezione corrente dello spazio. Limiti di memoria/tempo e
 
 ## Prove e rollback
 
-Unit su file/trasporto/permessi/storia/envelope e interruzione del prompt. Test artefatto in directory temporanea senza sorgenti o node_modules: client SDK→stdio→HTTP→Core/PostgreSQL limitato. Fault injection dopo commit, riavvio processo, retry identico, conflitto da modifica web, record studenti esclusi, revoca assegnazione/sessione/config in volo, cancellazione ed EOF. Test browser esistente resta richiesto perché lockfile/build sono parte della sorgente. Nessuna soglia di budget viene alzata.
+Unit su file/trasporto/permessi/storia/envelope e interruzione del prompt. Test artefatto in directory temporanea senza sorgenti o node_modules: client SDK→stdio→HTTP→Core/PostgreSQL limitato. Fault injection dopo commit, riavvio processo, retry identico, conflitto da modifica web, record studenti esclusi, revoca assegnazione/sessione/config in volo, cancellazione ed EOF. Test browser esistente resta richiesto perché lockfile/build sono parte della sorgente. L’adapter resta fuori dal browser. Le soglie della prima consegna sono storiche; la policy misurata del successivo incremento applicativo è documentata in ADR0021.
 
 Review indipendente in sola lettura, correzioni del root e report con identità esatta. Il primo tentativo del collector MCP ha fallito per un nome errato del comando fixture `save-learner-notes`: il contratto reale è `save-learner-note`/`text`; fallimento conservato, nessun cambiamento del Core per farlo passare.
 

@@ -1,0 +1,636 @@
+[
+  {
+    "id": "original-20261107-u1-01",
+    "unitId": "sf-2026-u1-01",
+    "objectiveIds": [
+      "U1-01.01",
+      "U1-01.02",
+      "U1-01.03"
+    ],
+    "title": "La potenza che compare solo durante gli impulsi",
+    "prompt": "Un emettitore di un banco didattico eroga 2,5 mW soltanto durante impulsi di 12 µs, uno ogni 3 ms. Una prova di 30 s contiene esattamente 10.000 impulsi completi; fra impulsi la potenza è nulla. Il registro riporta «energia = 75 mJ», ottenuta moltiplicando 2,5 mW per 30 s. Ricostruisci energia per impulso, energia totale e potenza media. Individua il fattore dell’errore e proponi un controllo indipendente del risultato usando la frazione di tempo acceso.",
+    "solution": "1. I tempi sono 12·10⁻⁶ s e 3·10⁻³ s, mentre la potenza durante l’impulso è 2,5·10⁻³ W. L’energia di un impulso è il prodotto: 3,0·10⁻⁸ J.\n2. In 10⁴ impulsi l’energia è 3,0·10⁻⁴ J = 0,30 mJ. La potenza media è E/30 s = 1,0·10⁻⁵ W = 10 µW.\n3. Il dispositivo resta acceso per 12·10⁻⁶/(3·10⁻³)=4·10⁻³ del tempo, cioè lo 0,4%. Moltiplicando la potenza durante l’impulso per questa frazione si ritrovano 10 µW; in totale è acceso per 0,12 s.\n4. Il registro tratta ogni intervallo fra impulsi come se fosse acceso: 75/0,30=250 volte l’energia corretta. Il problema è quale intervallo moltiplicare per la potenza, non la sola conversione del prefisso milli.",
+    "level": "medio",
+    "noveltyNote": "Combina la lettura di un segnale intermittente e due controlli indipendenti del bilancio; il dato errato nasce dalla confusione fra potenza istantanea e media, non da una sostituzione numerica isolata.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u1-02",
+    "unitId": "sf-2026-u1-02",
+    "objectiveIds": [
+      "U1-02.01",
+      "U1-02.02",
+      "U1-02.03",
+      "U1-02.04",
+      "U1-02.05"
+    ],
+    "title": "Tarare una pompa senza assumere che un grammo sia un millilitro",
+    "prompt": "Una pompa da banco per un circuito dimostrativo trasferisce una soluzione omogenea di densità 1,50 g/mL. Il recipiente di partenza perde 45,0 g in 15,0 min. Il display della pompa indica 2,00 mL/min; un software esporta invece «2,00·10⁻³ m³/min». Un tecnico assume inoltre 1 g = 1 mL e conclude che la pompa eroga 3,00 mL/min. Determina quali letture sono compatibili con la pesata, la portata in m³/s e l’errore relativo della stima del tecnico. Spiega che cosa misura direttamente la bilancia. Non si tratta di una prescrizione o taratura clinica.",
+    "solution": "La bilancia misura una perdita di massa, non direttamente il volume. Il volume trasferito è 45,0/1,50=30,0 mL; in 15,0 min corrisponde a 2,00 mL/min, quindi il display è compatibile.\nUn millilitro è 10⁻⁶ m³: la registrazione corretta sarebbe 2,00·10⁻⁶ m³/min, cioè (2/60)·10⁻⁶ = 3,33·10⁻⁸ m³/s. L’esportazione è mille volte troppo grande.\nAssumere la densità dell’acqua al posto di quella assegnata dà 45 mL e 3 mL/min, una sovrastima (3−2)/2=50%. La massa trasferita è estensiva; la densità della soluzione omogenea, nelle stesse condizioni, non cambia prelevandone una parte. Il controllo dimensionale V=m/ρ elimina g e lascia mL, rendendo visibile il dato che il tecnico ha omesso.",
+    "level": "medio",
+    "noveltyNote": "Incrocia tre registrazioni incompatibili e distingue errore di unità da errore di modello sulla densità; non replica il precedente semplice calcolo della densità di un campione.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u1-03",
+    "unitId": "sf-2026-u1-03",
+    "objectiveIds": [
+      "U1-03.01",
+      "U1-03.02",
+      "U1-03.03",
+      "U1-03.04"
+    ],
+    "title": "Il sensore che non distingue sopra e sotto",
+    "prompt": "Un attuatore esercita una forza nel piano di modulo 10 N. Il solo sensore orizzontale legge Fx=−6 N. Uno studente scrive «sinθ=0,8, quindi la direzione è determinata», con θ misurato da +x fra 0° e 360°. Trova tutte le componenti Fy compatibili e i segni di seno e tangente nei casi ammessi. Quale singola informazione aggiuntiva permette di scegliere il caso? Un secondo sensore segnala infine Fy>0: determina le componenti e verifica il modulo. Non occorre calcolare l’angolo con una calcolatrice.",
+    "solution": "Da Fx=F cosθ si ricava cosθ=−3/5. Pitagora impone Fy²=10²−6²=64 N², dunque Fy=+8 N oppure −8 N: il modulo non determina il segno.\nNel secondo quadrante sinθ=+4/5 e tanθ=(4/5)/(−3/5)=−4/3. Nel terzo quadrante sinθ=−4/5 e tanθ=+4/3. Entrambi hanno la stessa proiezione orizzontale. L’affermazione iniziale ha scelto senza motivo il seno positivo.\nBasta conoscere il segno della componente verticale, oppure se la freccia punta sopra o sotto l’asse x. Con Fy>0 la forza è (−6,+8) N. Il controllo √(36+64)=10 N verifica il modulo, mentre la scelta del quadrante verifica l’informazione geometrica che il solo calcolo della radice non contiene.",
+    "level": "medio",
+    "noveltyNote": "Il risultato richiesto è prima un insieme di direzioni compatibili, poi una misura minima che lo restringe. Una radice numerica corretta ma con segno non giustificato viene individuata come errore logico.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u1-04",
+    "unitId": "sf-2026-u1-04",
+    "objectiveIds": [
+      "U1-04.01",
+      "U1-04.02",
+      "U1-04.03",
+      "U1-04.04",
+      "U1-04.05"
+    ],
+    "title": "Verificare una ricostruzione tridimensionale",
+    "prompt": "Un sistema di ricostruzione fornisce due spostamenti A=(2,−1,2) m e B=(−1,2,2) m. L’algoritmo li dichiara «paralleli perché hanno la stessa componente z» e assegna al percorso di ritorno C=(−1,−1,−4) m. Verifica separatamente parallelismo, ortogonalità e chiusura del percorso A→B→C. Calcola A×B e controlla che sia perpendicolare a entrambi. Se un operatore scambia l’ordine di A e B, quali risultati cambiano e quali no?",
+    "solution": "A·B=2(−1)+(−1)2+2·2=0 m²: i vettori sono ortogonali, non paralleli. Entrambi hanno modulo 3 m, ma uguaglianza del modulo o di una componente non impone la direzione.\nA+B=(1,1,4) m e A+B+C=0: il ritorno proposto chiude il percorso. C ha modulo √18 m, diverso dalla somma dei moduli dei due tratti; il cammino non coincide con lo spostamento risultante.\nA×B=(−6,−6,3) m². Il suo prodotto scalare con A vale −12+6+6=0 e con B vale 6−12+6=0. Il modulo è 9 m², coerente con |A||B| sin90°.\nScambiando A e B la somma, la chiusura e il prodotto scalare restano uguali. Il prodotto vettoriale diventa (6,6,−3) m²: questo controllo distingue un errore di orientamento da un errore sulle lunghezze.",
+    "level": "medio",
+    "noveltyNote": "Controlla contemporaneamente una classificazione geometrica falsa, la chiusura di un percorso e l’orientazione del prodotto vettoriale; le verifiche si vincolano reciprocamente.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u2-01",
+    "unitId": "sf-2026-u2-01",
+    "objectiveIds": [
+      "U2-01.01",
+      "U2-01.02",
+      "U2-01.03",
+      "U2-01.04",
+      "U2-01.05",
+      "U2-01.06"
+    ],
+    "title": "Tre fotogrammi non determinano una legge oraria",
+    "prompt": "Tre fotogrammi mostrano x(0)=0 m, x(1 s)=1 m, x(2 s)=0 m. Modello A: x=2t−t², con x in m e t in s. Modello B: x=t per 0≤t≤1 e x=2−t per 1≤t≤2, nelle stesse unità. Un software conclude «velocità media nulla: oggetto sempre fermo» e sceglie A come unica interpolazione. Valuta entrambe le conclusioni. Calcola spostamento e cammino nei due modelli e proponi un quarto istante di osservazione che li distingua. Che cosa accade alla velocità al punto di inversione nel modello B ideale?",
+    "solution": "Entrambi i modelli attraversano i tre dati, quindi i fotogrammi non rendono unica la legge oraria. Lo spostamento è 0−0=0 m e la velocità media su 2 s è zero, ma ciascun modello va da 0 a 1 m e torna: il cammino è 2 m.\nNel modello A v=2−2t e a=−2 m/s². La velocità si annulla a t=1 s e cambia segno con continuità. Nel modello B v=+1 m/s prima di 1 s e −1 m/s dopo; la velocità all’istante del salto non è definita dalla derivata. La sua inversione istantanea è un’idealizzazione che non descrive una forza finita.\nUn fotogramma a t=0,5 s darebbe x_A=1−0,25=0,75 m e x_B=0,50 m. Se la risoluzione permette di distinguerli, questo dato discrimina i due modelli. Non dimostrerebbe comunque che uno di essi sia l’unica traiettoria possibile fra tutti i modelli immaginabili.",
+    "level": "difficile",
+    "noveltyNote": "Costruisce due modelli fisicamente diversi che condividono i dati e richiede di progettare un campionamento discriminante; non chiede soltanto posizione o velocità da una legge già scelta.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u2-02",
+    "unitId": "sf-2026-u2-02",
+    "objectiveIds": [
+      "U2-02.02",
+      "U2-02.04",
+      "U2-02.06",
+      "U2-02.07"
+    ],
+    "title": "Lo stesso tiro può tenere fermo o accelerare",
+    "prompt": "Un blocco di 2 kg su un piano orizzontale, con g=10 m/s², comincia a scivolare quando una trazione orizzontale lentamente aumentata raggiunge 7 N. Una volta in moto, servono 5 N per mantenerne la velocità costante. Assumi il modello di attrito radente con coefficienti costanti. Si aggiunge ora una spinta verticale verso il basso di 10 N e si applica una trazione orizzontale di 8 N. Prevedi separatamente il caso in cui il blocco parta fermo e quello in cui stia già scivolando nel verso della trazione. Spiega perché usare sempre f=μsN produce una risposta sbagliata.",
+    "solution": "Nella prima prova N=mg=20 N. La soglia statica dà μs=7/20=0,35; il moto uniforme dà μd=5/20=0,25.\nCon la spinta aggiunta la normale diventa 30 N: la soglia statica è 10,5 N e l’attrito dinamico vale 7,5 N. Se il blocco è fermo, 8 N non superano la soglia: l’attrito statico si adatta a 8 N e la risultante orizzontale resta nulla.\nSe scivola già nel verso della trazione, l’attrito è 7,5 N opposto al moto; la risultante è +0,5 N e a=0,5/2=0,25 m/s². Non basta conoscere la forza esterna: serve anche sapere in quale regime si trova il contatto.\nLa formula μsN fornisce il massimo attrito statico, non il valore obbligatorio. Inserire 10,5 N nel caso fermo inventerebbe una risultante verso sinistra senza che il corpo abbia iniziato a muoversi.",
+    "level": "difficile",
+    "noveltyNote": "Ricava due coefficienti da prove diverse e mostra risposte differenti alla stessa forza dopo una modifica della normale; la storia del moto è un dato necessario.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u2-03",
+    "unitId": "sf-2026-u2-03",
+    "objectiveIds": [
+      "U2-03.03",
+      "U2-03.04",
+      "U2-03.05",
+      "U2-03.06"
+    ],
+    "title": "Perdita fissa oppure percentuale di energia?",
+    "prompt": "Un carrello di 1 kg parte da fermo e scende su una pista, poi attraversa sempre lo stesso tratto dissipativo orizzontale. Usa g=10 m/s². Da altezza 0,20 m esce dal tratto con v=√2 m/s; da 0,40 m esce con v=√6 m/s. Due modelli propongono: A, perdita di 1 J a ogni attraversamento completo; B, perdita del 50% dell’energia meccanica disponibile all’ingresso. Scegli il modello compatibile con entrambi i dati. Che cosa prevede per altezza 0,10 m? Per 0,05 m è accettabile scrivere un’energia cinetica finale negativa? Specifica quale informazione manca per trovare il punto d’arresto.",
+    "solution": "Le energie disponibili sono mgh=2 J e 4 J. Le energie cinetiche misurate all’uscita sono mv²/2=1 J e 3 J. Le perdite risultano quindi 1 J in entrambe le prove: A è compatibile. B concorda con la prima ma prevederebbe 2 J, non 3 J, all’uscita della seconda.\nDa 0,10 m l’energia in ingresso è 1 J: prolungando A fino alla soglia, il carrello arriverebbe alla fine del tratto con velocità nulla. È una previsione al limite del modello da controllare.\nDa 0,05 m entrano soltanto 0,5 J. L’espressione 0,5−1=−0,5 J non descrive una velocità reale: segnala che non può completare l’attraversamento nelle ipotesi di A. Il carrello si arresta prima, e il modello «1 J per tratto completo» non assegna la perdita in funzione della posizione. Per localizzare l’arresto serve la forza dissipativa lungo il percorso, o una misura equivalente del lavoro accumulato.",
+    "level": "difficile",
+    "noveltyNote": "Usa due esperimenti per distinguere una perdita assoluta da una relativa e riconosce dove il modello non consente più una previsione, anziché accettare una radice non fisica.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u2-04",
+    "unitId": "sf-2026-u2-04",
+    "objectiveIds": [
+      "U2-04.01",
+      "U2-04.02",
+      "U2-04.03"
+    ],
+    "title": "La forma del segnale di forza conta",
+    "prompt": "Un carrello di massa 0,50 kg arriva a un respingente con v=+2 m/s ed esce con v=−1 m/s. Le altre forze orizzontali sono trascurabili nell’urto. Il sensore registra una forza negativa che cresce linearmente da 0 a −100 N e poi torna linearmente a 0 in 0,030 s complessivi: un triangolo. Un tecnico sostituisce il segnale con −100 N per tutti i 0,030 s. Confronta le due ricostruzioni con la variazione di quantità di moto. Se si volesse la stessa variazione di velocità con un impulso triangolare lungo il doppio, quale picco servirebbe? Qual è il sistema per cui non è lecito dire che la quantità di moto si conserva?",
+    "solution": "La variazione misurata è Δp=0,50(−1−2)=−1,50 kg m/s. L’area del triangolo vale −(100·0,030)/2=−1,50 N s: coincide con il bilancio del carrello.\nIl rettangolo del tecnico darebbe −3,00 N s. Partendo da p_i=1,00 kg m/s, porterebbe a p_f=−2,00 kg m/s e v_f=−4,00 m/s, incompatibile con la velocità osservata. Il picco non è la forza media: qui la media è −50 N.\nPer la stessa area in 0,060 s, il modulo del picco deve essere 2·1,50/0,060=50 N. Allungare il contatto a picco invariato raddoppierebbe invece l’impulso.\nIl solo carrello non è isolato: il respingente gli esercita l’impulso esterno. La conservazione della quantità di moto riguarda un sistema più ampio che includa il respingente e ciò a cui è fissato, con impulsi esterni trascurabili.",
+    "level": "medio",
+    "noveltyNote": "Confronta una misura temporale e una misura cinematica indipendenti e progetta un impulso equivalente; la diagnosi riguarda l’area del segnale, non solo i suoi dati numerici.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u2-05",
+    "unitId": "sf-2026-u2-05",
+    "objectiveIds": [
+      "U2-05.01",
+      "U2-05.04",
+      "U2-05.05"
+    ],
+    "title": "Ricostruire la posizione di un carico dalle reazioni",
+    "prompt": "Una piattaforma rigida orizzontale lunga 1,00 m, di peso trascurabile, poggia su due sensori agli estremi. Un unico carico fermo produce letture verticali di 30 N a sinistra e 50 N a destra. Trova peso e posizione del carico misurata da sinistra. Si aggiungono 20 N a 0,25 m dall’estremo sinistro. Prevedi le nuove letture e la posizione del centro di massa dei due carichi. Un algoritmo usa la media semplice delle due posizioni: individua perché fallisce e verifica il tuo risultato con il momento rispetto all’estremo destro.",
+    "solution": "Il bilancio verticale dà peso 30+50=80 N. Prendendo i momenti a sinistra: 50·1=80x, perciò x=0,625 m.\nCon il secondo carico, il peso totale è 100 N e il momento dei carichi a sinistra è 80·0,625+20·0,25=55 N m. Il sensore destro deve leggere 55 N, quello sinistro 45 N.\nIl centro di massa è x_CM=(80·0,625+20·0,25)/100=0,55 m: a g uniforme si possono usare i pesi come fattori proporzionali alle masse. La media semplice 0,4375 m attribuirebbe lo stesso peso statistico a carichi fisici diversi.\nRispetto all’estremo destro i carichi producono 80·0,375+20·0,75=45 N m, bilanciati da 45 N applicati a distanza 1 m. Questa seconda scelta del fulcro controlla la lettura sinistra senza ripetere la stessa equazione.",
+    "level": "medio",
+    "noveltyNote": "Passa da due reazioni misurate a una posizione ignota e poi verifica una modifica del carico con due fulcri; diagnostica una media delle posizioni non pesata.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u3-01",
+    "unitId": "sf-2026-u3-01",
+    "objectiveIds": [
+      "U3-01.02",
+      "U3-01.03",
+      "U3-01.04"
+    ],
+    "title": "Il sensore assoluto e il carico sul pistone",
+    "prompt": "Una camera didattica mantiene una pressione interna assoluta di 120 kPa. Un pistone di area 2,0 cm² separa la camera dall’ambiente a 100 kPa; attrito e peso del pistone sono trascurabili. Il software moltiplica 120 kPa per l’area e indica una forza netta di 24 N. Calcola la forza netta effettiva. L’ambiente scende poi a 80 kPa mentre la regolazione mantiene 120 kPa assoluti all’interno: come cambiano forza e pressione relativa? Un campione del liquido ha massa 100 g e volume 80 mL. Calcolane la densità e spiega se questo dato può cambiare la forza già determinata, a pressioni locali fissate.",
+    "solution": "L’area è 2·10⁻⁴ m². La camera esercita 24 N verso l’esterno, ma l’ambiente ne esercita 20 in verso opposto: la forza netta è (120−100)·10³·2·10⁻⁴=4 N. Il software ha calcolato una sola delle due forze.\nCon ambiente a 80 kPa la pressione relativa è 40 kPa e la forza netta diventa 8 N. La pressione assoluta interna non è cambiata: è cambiata la condizione sull’altra faccia.\nLa densità è 100/80=1,25 g/mL=1250 kg/m³. Questo dato può essere necessario per collegare pressioni a quote o dinamica del liquido, ma non modifica F_net=(p_in−p_out)A quando entrambe le pressioni locali sono già fissate. Densità, pressione e forza sono grandezze diverse; non si può sostituire la densità alla pressione nella formula del sensore.",
+    "level": "medio",
+    "noveltyNote": "Riconcilia un sensore assoluto con un carico meccanico e una variazione ambientale, distinguendo inoltre un dato pertinente a un altro modello da quelli che determinano direttamente la forza.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u3-02",
+    "unitId": "sf-2026-u3-02",
+    "objectiveIds": [
+      "U3-02.03",
+      "U3-02.04"
+    ],
+    "title": "Un corpo immerso e due confini del sistema",
+    "prompt": "Un recipiente con acqua legge 20 N su una bilancia. Un blocco di massa 1 kg e volume 4·10⁻⁴ m³ è tenuto completamente immerso da un filo fissato al soffitto, senza toccare fondo o pareti e senza trabocco. Usa ρ_acqua=1000 kg/m³ e g=10 m/s². Calcola tensione del filo e nuova lettura della bilancia. Ora il filo viene sostenuto da un telaio appoggiato sulla stessa bilancia, con peso del telaio già azzerato: quale lettura si ottiene? Lo studente sostiene che la bilancia debba sempre aggiungere «il peso apparente» del blocco. Verifica la tesi con i diagrammi di forza e indica che cosa cambia fra le due prove.",
+    "solution": "La spinta vale ρgV=4 N. Sul blocco fermo agiscono il peso 10 N verso il basso e tensione più spinta verso l’alto: T=6 N.\nCon il filo al soffitto, il blocco spinge l’acqua verso il basso di 4 N, reazione alla spinta che riceve. La bilancia passa quindi da 20 a 24 N, mentre il soffitto sostiene i restanti 6 N. Non si aggiunge T alla lettura del recipiente.\nCon il telaio sulla stessa bilancia, anche i 6 N trasmessi dal filo vengono scaricati sulla bilancia. Essa legge 20+4+6=30 N. Per il sistema recipiente+acqua+blocco+telaio, tensione e spinta sono forze interne e l’intero peso aggiunto è 10 N.\nIl blocco e la sua immersione non cambiano: cambia dove si chiude il percorso delle forze. «Peso apparente» può indicare la tensione misurata dal filo, ma non è una regola universale per la lettura di qualunque bilancia.",
+    "level": "difficile",
+    "noveltyNote": "Lo stesso blocco immerso produce due letture diverse senza cambiare Archimede; il compito è seguire le reazioni e scegliere il confine del sistema, non solo sottrarre la spinta al peso.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u3-03",
+    "unitId": "sf-2026-u3-03",
+    "objectiveIds": [
+      "U3-03.01",
+      "U3-03.04",
+      "U3-03.05"
+    ],
+    "title": "Continuità rispettata, Bernoulli non ovunque",
+    "prompt": "Acqua di densità 1000 kg/m³ attraversa un circuito orizzontale stazionario con una biforcazione. All’ingresso A=3 cm², v=2 m/s e pressione relativa 12 kPa. Nel ramo 1 A₁=1 cm², v₁=3 m/s e p₁=9,5 kPa; nel ramo 2 A₂=2 cm² e p₂=12,5 kPa. Non ci sono accumuli, pompe o scambi di quota fra i punti. Trova la velocità nel ramo 2. Confronta le pressioni misurate con Bernoulli ideale lungo ciascun percorso e stima l’eventuale perdita di pressione equivalente. È corretto concludere che «poiché la massa si conserva, l’energia meccanica non si dissipa»? Usa velocità medie nel modello unidimensionale dichiarato.",
+    "solution": "La portata entrante è 3·10⁻⁴·2=6·10⁻⁴ m³/s. Il ramo 1 porta 3·10⁻⁴ m³/s, quindi il ramo 2 porta gli altri 3·10⁻⁴; v₂=3·10⁻⁴/(2·10⁻⁴)=1,5 m/s.\nBernoulli senza perdite darebbe p_out=p_in+ρ(v_in²−v_out²)/2. Per il ramo 1: 12000+500(4−9)=9500 Pa, in accordo con la misura.\nPer il ramo 2 il valore ideale è 12000+500(4−2,25)=12875 Pa. La misura è 12500 Pa: la perdita equivalente è 375 Pa nel modello adottato. Il valore positivo corrisponde a una diminuzione dell’energia meccanica per unità di volume.\nLa continuità vincola le portate e resta valida anche con viscosità. Non impone la conservazione della somma p+ρv²/2. Il confronto non identifica dove avvenga la perdita né ne prova una causa unica: può soltanto verificare la compatibilità dei dati con il modello ideale dichiarato.",
+    "level": "difficile",
+    "noveltyNote": "Un set di dati rispetta la continuità ma richiede una perdita in un solo ramo; ricostruzione della velocità e verifica dell’energia rispondono a controlli distinti.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u3-04",
+    "unitId": "sf-2026-u3-04",
+    "objectiveIds": [
+      "U3-04.01",
+      "U3-04.04",
+      "U3-04.05"
+    ],
+    "title": "Due guasti indistinguibili dalla sola portata totale",
+    "prompt": "Due capillari identici in parallelo trasportano inizialmente 8 mL/s complessivi a differenza di pressione fissata: 4 mL/s ciascuno. Si osservano poi 6 mL/s totali. Ipotesi A: un solo capillare ha raggio ridotto a r/⁴√2, con viscosità invariata. Ipotesi B: entrambi i capillari restano geometricamente invariati, ma la viscosità cresce a 4η/3. Assumi Poiseuille e regime laminare in tutte le prove. Verifica se il dato totale distingue A da B; proponi una misura locale che lo faccia. In ciascuna ipotesi, di quale fattore occorrerebbe aumentare Δp per recuperare 8 mL/s? Spiega perché questa seconda prova da sola può ancora non risolvere l’ambiguità.",
+    "solution": "Per Poiseuille R∝η/r⁴. In A, il raggio indicato raddoppia la resistenza di un ramo: le portate diventano 4 e 2 mL/s, totale 6. In B, ciascuna resistenza cresce di 4/3 e ogni portata diventa 4·3/4=3 mL/s: di nuovo totale 6.\nUna misura separata delle portate distingue la coppia (4,2) dalla coppia (3,3). Il solo dato totale non identifica il meccanismo della variazione.\nIndicando con R la resistenza originaria di ciascun capillare, all’inizio R_eq=R/2. In A, R e 2R in parallelo danno 2R/3. In B, due resistenze 4R/3 in parallelo danno ancora 2R/3. In entrambi i casi la resistenza equivalente è aumentata di 4/3: per recuperare la portata iniziale serve Δp nuova=(4/3)Δp iniziale.\nLa risposta totale a una variazione di pressione resta identica perché la rete equivalente è la stessa. Occorre osservare l’interno della rete; il modello non permette di diagnosticare un restringimento dalla sola portata globale.",
+    "level": "difficile",
+    "noveltyNote": "Due modifiche fisiche differenti generano la stessa resistenza equivalente e la stessa risposta globale; la domanda richiede una prova discriminante realmente informativa.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u3-05",
+    "unitId": "sf-2026-u3-05",
+    "objectiveIds": [
+      "U3-05.01",
+      "U3-05.03",
+      "U3-05.04",
+      "U3-05.05"
+    ],
+    "title": "Una discesa capillare non significa tensione negativa",
+    "prompt": "In due capillari cilindrici di uguale raggio 0,50 mm, lo stesso liquido (ρ=1000 kg/m³, γ=0,025 N/m) sale di 5,0 mm nel tubo A e scende di 5,0 mm rispetto al livello esterno nel tubo B. Le pareti hanno rivestimenti diversi. Per questo approfondimento quantitativo è fornita la legge h=2γ cosθ/(ρgr), con h positivo verso l’alto, θ angolo di contatto interno al liquido e g=10 m/s². Ricava cosθ nei due casi e valuta l’ipotesi «in B la tensione superficiale è negativa». Prevedi il risultato dimezzando il raggio senza cambiare rivestimento o liquido. Quale confronto tiene separato l’effetto della geometria da quello della bagnabilità?",
+    "solution": "Il coefficiente 2γ/(ρgr) vale 0,050/(1000·10·0,00050)=0,010 m. Quindi h=+0,005 m dà cosθ_A=+0,5, mentre h=−0,005 m dà cosθ_B=−0,5: rispettivamente θ_A=60° e θ_B=120° nel modello.\nLa tensione superficiale rimane positiva e uguale. Il segno di h dipende dal coseno dell’angolo di contatto, cioè dalla bagnabilità delle pareti; attribuirlo a γ negativa confonde parametri diversi.\nDimezzando r a rivestimento fissato, il modulo di h raddoppia: +10 mm in A e −10 mm in B. Per isolare l’effetto geometrico si confrontano raggi diversi con lo stesso rivestimento; per isolare la bagnabilità si confrontano rivestimenti diversi allo stesso raggio.\nLa richiesta ufficiale è qualitativa: questa legge è fornita per leggere segni e vincoli, non presentata come formula aggiuntiva da memorizzare. Il modello trascura variazioni dell’angolo di contatto e altre correzioni dei capillari reali.",
+    "level": "medio",
+    "noveltyNote": "Usa due osservazioni di segno opposto per respingere un’interpretazione fisica del parametro e costruire una coppia di esperimenti controllati; l’approfondimento quantitativo è esplicitamente fornito.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u4-01",
+    "unitId": "sf-2026-u4-01",
+    "objectiveIds": [
+      "U4-01.03",
+      "U4-01.04",
+      "U4-01.05",
+      "U4-01.06",
+      "U4-01.07",
+      "U4-01.08",
+      "U4-01.09"
+    ],
+    "title": "Seguire una cresta e un punto del mezzo",
+    "prompt": "Una stessa cresta, seguita senza ambiguità, passa da x=0,30 m a x=0,50 m in 0,050 s su una corda. La distanza fra creste consecutive è 0,80 m e l’ampiezza 0,020 m. Ricava v, f, T, k e ω. Scegli fra y=A cos[k(x−0,30)−ωt] e y=A cos[k(x−0,30)+ωt], con t=0 nella prima immagine. Per il punto fisso x=0,30 m trova lo spostamento a t=0,050 s e il verso della sua velocità in quell’istante. Spiega perché lo spostamento della cresta non è lo spostamento dello stesso pezzetto di corda.",
+    "solution": "La cresta viaggia verso +x con v=0,20/0,050=4 m/s. Dalla lunghezza d’onda 0,80 m si ottengono f=v/λ=5 Hz, T=0,20 s, k=2π/λ=2,5π rad/m e ω=2πf=10π rad/s.\nA fase costante, il segno meno dà x=0,30+(ω/k)t per la cresta iniziale: è il modello compatibile. Il segno più la farebbe avanzare verso −x.\nNel punto x=0,30 m, a 0,050 s la fase è −π/2 e y=0. La velocità locale è ∂y/∂t=Aω sin[k(x−0,30)−ωt], dunque −0,20π m/s: il punto sta scendendo. A t=0 era al massimo spostamento e aveva velocità locale nulla.\nLa cresta è una configurazione di fase che si propaga; i punti della corda oscillano trasversalmente. Il fatto che la cresta avanzi di 0,20 m non implica un trasporto longitudinale di ciascun punto della corda di quella distanza.",
+    "level": "difficile",
+    "noveltyNote": "Collega due istantanee spaziali a una legge firmata e a una previsione locale temporale; distingue il moto della fase dalla velocità della materia.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u4-02",
+    "unitId": "sf-2026-u4-02",
+    "objectiveIds": [
+      "U4-02.01",
+      "U4-02.02"
+    ],
+    "title": "Ricostruire due ampiezze da massimo e minimo",
+    "prompt": "Due onde coerenti della stessa frequenza e polarizzazione arrivano in un punto. Variando lentamente solo lo sfasamento, l’intensità misurata va da 1 a 25 unità. Si scelgono unità di ampiezza tali che I=a² per una sola onda; le due ampiezze positive a e b restano fisse. Determina a e b, assumendo a≥b, e le intensità delle onde isolate. Quale intensità media si avrebbe se la fase relativa esplorasse uniformemente tutti gli angoli? Uno studente interpreta il minimo come «25−1=24 unità di energia distrutte»: individua i due errori e proponi una misura che controlli la ricostruzione.",
+    "solution": "In fase I_max=(a+b)²=25, quindi a+b=5. In opposizione I_min=(a−b)²=1 e, poiché a≥b, a−b=1. Sommando e sottraendo: a=3, b=2. Le intensità isolate sono 9 e 4.\nCon fase uniformemente variabile, il termine di interferenza 2ab cosφ ha media nulla: l’intensità media è 9+4=13. Non è il massimo 25 e non si ottiene facendo la differenza delle due intensità isolate, che darebbe 5 invece del minimo 1.\nLa differenza 24 ha unità di intensità, non di energia senza area e durata. Inoltre una riduzione locale per interferenza non dimostra la distruzione dell’energia totale del campo: il confronto deve considerare l’intera distribuzione e le sorgenti.\nSpegnendo una sorgente alla volta senza alterare la rimanente si dovrebbero misurare 9 e 4; poi la variazione controllata della fase dovrebbe riprodurre 1 e 25. Questo controllo separa un cambiamento di fase da un cambiamento delle ampiezze.",
+    "level": "difficile",
+    "noveltyNote": "Le ampiezze non sono dati: vengono ricostruite da due estremi e verificate con misure isolate. Si distingue inoltre l’interferenza stabile dalla media su fasi casuali.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u4-03",
+    "unitId": "sf-2026-u4-03",
+    "objectiveIds": [
+      "U4-03.02",
+      "U4-03.03",
+      "U4-03.04"
+    ],
+    "title": "Una luce di fondo può nascondere l’inverso del quadrato",
+    "prompt": "Un rivelatore orientato perpendicolarmente alla propagazione misura 13 W/m² a 1 m e 4 W/m² a 2 m da una sorgente isotropa, in campo lontano e senza assorbimento. Si sospetta un fondo uniforme B, indipendente dalla sorgente, e si propone I_tot(r)=C/r²+B. Ricava C e B, prevedi la lettura a 3 m e la potenza della sorgente. Confronta con la previsione ottenuta dividendo semplicemente 13 per 4. Quale misura aggiuntiva distingue l’ipotesi di fondo da una deviazione dalla legge geometrica, e quale conclusione non autorizzano due soli dati?",
+    "solution": "Alle distanze date: C+B=13 e C/4+B=4, con r espresso in metri. Sottraendo si trova 3C/4=9, quindi C=12 W e B=1 W/m². A 3 m il modello prevede 12/9+1=7/3 W/m², circa 2,33.\nPer la componente isotropa della sorgente C=P/(4π), dunque P=48π W. Il fondo non va sommato come se fosse potenza della sorgente distribuita sulle stesse sfere.\nDividere la prima lettura totale per 4 darebbe 3,25 W/m² a 2 m, non 4: anche il fondo verrebbe erroneamente attenuato con la distanza. Sottraendo prima 1 W/m² si ottengono invece 12 e 3, nel rapporto corretto.\nSpegnere o schermare la sorgente senza cambiare il fondo dovrebbe lasciare 1 W/m² a ogni posizione. Una terza distanza controlla la previsione del modello. Due punti determinano C e B ma non provano che fondo costante e isotropia siano l’unica spiegazione possibile.",
+    "level": "difficile",
+    "noveltyNote": "Il termine aggiuntivo rappresenta un campo fisico verificabile spegnendo la sorgente; l’inferenza richiede una prova di controllo e non si conclude con la sola taratura algebrica.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u4-04",
+    "unitId": "sf-2026-u4-04",
+    "objectiveIds": [
+      "U4-04.02",
+      "U4-04.03"
+    ],
+    "title": "Media dei decibel o media dell’energia?",
+    "prompt": "In una simulazione, un punto riceve per 10 s un suono di livello 60 dB e per i successivi 20 s un suono di livello 30 dB, con lo stesso riferimento I₀. Non occorre riprodurre suoni reali. Si vuole un’intensità costante che trasferisca la stessa energia attraverso la stessa area in 30 s. Uno studente calcola la media temporale dei livelli e ottiene 40 dB. Determina invece l’intensità equivalente e il suo livello; puoi usare log₁₀(3,34)≈0,524. Di quale fattore la stima dello studente sottovaluta l’energia? Uguale energia fisica garantisce uguale percezione sonora?",
+    "solution": "I due livelli corrispondono a I₁=10⁶ I₀ e I₂=10³ I₀. L’energia per unità di area è I₀(10·10⁶+20·10³)=10.020.000 I₀ s.\nDividendo per 30 s si trova I_eq=334.000 I₀=3,34·10⁵ I₀. Il livello è 10 log₁₀(3,34·10⁵)=10(0,524+5)≈55,24 dB.\nUn livello costante di 40 dB corrisponde soltanto a 10⁴ I₀. Il rapporto delle energie nei 30 s è quindi 334.000/10.000=33,4. La media dei logaritmi non conserva l’integrale dell’intensità; prima si torna alle grandezze lineari, poi si media nel tempo.\nL’equivalenza calcolata riguarda energia per area e durata. Non garantisce la stessa sensazione: contano anche frequenze, distribuzione temporale e caratteristiche dell’ascoltatore. Non è una valutazione clinica o una misura di sicurezza acustica.",
+    "level": "difficile",
+    "noveltyNote": "Richiede di scegliere la grandezza da mediare in base a un vincolo energetico, quantifica l’errore di mediare i decibel e separa il risultato fisico dalla percezione.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u4-05",
+    "unitId": "sf-2026-u4-05",
+    "objectiveIds": [
+      "U4-05.01",
+      "U4-05.02",
+      "U4-05.03",
+      "U4-05.04"
+    ],
+    "title": "Due microfoni distinguono il movimento dal cambio di nota?",
+    "prompt": "Una sorgente sonora su un carrello emette stabilmente 440 Hz, verificati da un sensore solidale alla sorgente. Nell’aria ferma si muove lungo la linea fra due microfoni fermi, verso A e lontano da B. Registrazioni riferite allo stesso intervallo di emissione, dopo correzione dei ritardi di propagazione, mostrano circa 489 Hz in A e 400 Hz in B. Valuta la spiegazione «la sorgente ha semplicemente alzato la nota». Prevedi che cosa cambia se aumenta solo la potenza emessa a velocità e frequenza emessa invariate. In una seconda prova con sorgente e microfoni tutti fermi, A e B rilevano entrambi 450 Hz: quale spiegazione diventa compatibile? Spiega perché da questi soli confronti qualitativi non stai misurando la velocità del carrello.",
+    "solution": "Il moto indicato comprime la spaziatura dei fronti davanti alla sorgente e la dilata dietro: 489>440 in A e 400<440 in B sono qualitativamente coerenti. Un semplice aumento della frequenza emessa da una sorgente ferma porterebbe invece entrambi i microfoni verso la nuova frequenza, non uno sopra e l’altro sotto lo stesso valore verificato alla sorgente.\nAumentare soltanto la potenza può aumentare l’intensità ricevuta, ma non elimina la differenza di frequenza dovuta al moto nelle ipotesi lineari considerate. Intensità e frequenza sono osservabili differenti.\nCon tutti i dispositivi fermi, la coppia 450/450 è compatibile con una sorgente che emette 450 Hz, oppure con un errore comune di misura: occorre verificare di nuovo la sorgente e gli strumenti. Non è evidenza di avvicinamento a un microfono e allontanamento dall’altro.\nIl confronto ha selezionato o escluso spiegazioni qualitative. Per ricavare una velocità servirebbero un modello quantitativo, la velocità del suono e le geometrie pertinenti; qui non si introduce una formula Doppler aggiuntiva come requisito del syllabus.",
+    "level": "medio",
+    "noveltyNote": "Usa due osservatori e una misura solidale alla sorgente per controllare un confondimento, mantenendo il perimetro qualitativo richiesto dal syllabus.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u5-01",
+    "unitId": "sf-2026-u5-01",
+    "objectiveIds": [
+      "U5-01.01",
+      "U5-01.02",
+      "U5-01.04",
+      "U5-01.05"
+    ],
+    "title": "Un calo di pressione non dimostra una perdita di gas",
+    "prompt": "Un recipiente rigido contiene un gas ideale uniforme. La pressione esterna è sempre 100 kPa. Inizialmente il manometro relativo legge 20 kPa a 300 K. Dopo un raffreddamento legge 8 kPa a 270 K. Un operatore conclude che sia sfuggito il 60% del gas confrontando le letture del manometro. Verifica la conclusione. Dopo un’ulteriore fase, riportando il recipiente a 300 K, il manometro legge 10 kPa: quale rapporto fra quantità di gas finale e iniziale è ora compatibile con i dati? Distingui ciò che queste misure mostrano da ciò che non dicono sul momento o sulla causa dell’eventuale perdita.",
+    "solution": "Nell’equazione pV=nRT serve la pressione assoluta: inizialmente 120 kPa, dopo il raffreddamento 108 kPa. A V fisso, n₂/n₁=(p₂/p₁)(T₁/T₂)=(108/120)(300/270)=1. I primi due stati sono compatibili con la stessa quantità di gas; il calo è spiegato dal raffreddamento.\nIl rapporto 8/20=0,4 usa pressioni relative e non è un rapporto di quantità di gas. Anche confrontare soltanto 108/120 trascurerebbe la temperatura.\nNello stato finale a 300 K la pressione assoluta è 110 kPa: n_f/n_i=110/120=11/12. Nelle ipotesi di volume invariato, gas ideale uniforme e strumenti corretti, manca 1/12, circa l’8,33%, della quantità iniziale.\nLe misure di stato non localizzano una fuga né ne stabiliscono il momento. I primi due stati non escludono scambi compensati fra loro; dicono soltanto che il bilancio netto di materia fra quei due stati è nullo nel modello. Per attribuire una causa servono controlli sul recipiente e sulla misura.",
+    "level": "medio",
+    "noveltyNote": "Separa due errori di inferenza, pressione relativa e temperatura variabile, poi usa una prova a temperatura ripristinata per stimare un bilancio di materia.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u5-02",
+    "unitId": "sf-2026-u5-02",
+    "objectiveIds": [
+      "U5-02.02",
+      "U5-02.03",
+      "U5-02.05",
+      "U5-02.06",
+      "U5-02.07"
+    ],
+    "title": "Prima decidere la fase, poi cercare la temperatura",
+    "prompt": "In un recipiente isolato di capacità termica trascurabile si uniscono 0,100 kg d’acqua a 30 °C e 0,050 kg di ghiaccio a 0 °C, alla pressione ordinaria. Usa c_acqua=4200 J/(kg K) e L_f=334000 J/kg. Un foglio di calcolo ignora la fusione e assegna 20 °C alla miscela. Trova invece fase, temperatura e massa di ghiaccio residua all’equilibrio. Si forniscono poi esattamente 5360 J, senza perdite: determina il nuovo stato finale, dividendo esplicitamente l’energia fra fusione e riscaldamento. Quale prova numerica permette di scegliere il ramo corretto del calcolo prima di risolvere per T?",
+    "solution": "Raffreddando l’acqua fino a 0 °C si liberano 0,100·4200·30=12600 J. Per fondere tutto il ghiaccio servirebbero 0,050·334000=16700 J: l’energia non basta. È questo confronto, non una media di temperature, a scegliere il ramo fisico.\nAll’equilibrio coesistono acqua e ghiaccio a 0 °C. Fonde 12600/334000≈0,0377246 kg e restano circa 0,0122754 kg di ghiaccio. La massa totale è sempre 0,150 kg.\nPer fondere il residuo occorrono 16700−12600=4100 J. Dei 5360 J successivi rimangono quindi 1260 J, che riscaldano 0,150 kg d’acqua: ΔT=1260/(0,150·4200)=2,00 K. Il secondo stato finale è tutta acqua a 2,00 °C.\nLa temperatura 20 °C iniziale del foglio di calcolo non è compatibile con il bilancio: avrebbe scaldato acqua ottenuta dal ghiaccio senza pagare l’energia di fusione. Un valore algebrico fra le temperature di partenza non è sufficiente a renderlo fisicamente ammissibile.",
+    "level": "difficile",
+    "noveltyNote": "Il primo equilibrio contiene ghiaccio residuo e il secondo attraversa la soglia di fusione. Il ragionamento consiste nella scelta e successione dei regimi, non nella sola sostituzione in una media termica.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u5-03",
+    "unitId": "sf-2026-u5-03",
+    "objectiveIds": [
+      "U5-03.01",
+      "U5-03.02",
+      "U5-03.03"
+    ],
+    "title": "Una parete dieci volte più conduttiva non dà dieci volte il flusso",
+    "prompt": "Una lastra di area A=0,10 m² e spessore L=0,020 m è a contatto perfetto con un termostato a 40 °C; la faccia esterna scambia per convezione con aria a 20 °C. Il coefficiente convettivo è h=5 W/(m² K), l’irraggiamento è trascurato e il regime è stazionario. Per questo approfondimento sono fornite R_cond=L/(kA), R_conv=1/(hA), P=ΔT/(R_cond+R_conv). Si sostituisce k=0,20 W/(m K) con k=2,0, mantenendo tutto il resto. Calcola le potenze e le temperature delle facce esterne prima e dopo. Valuta la promessa «conducibilità dieci volte maggiore, potenza dieci volte maggiore» e identifica il limite anche con k arbitrariamente grande.",
+    "solution": "La resistenza convettiva resta 1/(5·0,10)=2 K/W. La lastra iniziale ha R_cond=0,020/(0,20·0,10)=1 K/W: P₁=20/(1+2)=20/3 W, circa 6,67.\nLa nuova lastra ha R_cond=0,10 K/W: P₂=20/(0,10+2)=200/21 W, circa 9,52. Il rapporto P₂/P₁=10/7≈1,43, non 10.\nLa temperatura esterna soddisfa T_s−20=P R_conv. Prima è 20+40/3≈33,33 °C; dopo 20+400/21≈39,05 °C. Entrambe restano fra aria e termostato e restituiscono lo stesso flusso conduttivo della faccia interna.\nAnche facendo tendere k all’infinito, la resistenza della lastra tende a zero ma resta quella dell’aria: P massimo nel modello è 20/2=10 W. La promessa ignora il passaggio che limita lo scambio. Se l’irraggiamento non fosse trascurabile occorrerebbe aggiungerne il bilancio: non è automaticamente incluso nel coefficiente dato.",
+    "level": "difficile",
+    "noveltyNote": "Confronta un intervento sul materiale con il limite imposto dal confine convettivo e verifica le temperature intermedie. Le leggi quantitative supplementari sono fornite nel testo.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u5-04",
+    "unitId": "sf-2026-u5-04",
+    "objectiveIds": [
+      "U5-04.01",
+      "U5-04.02",
+      "U5-04.03",
+      "U5-04.06",
+      "U5-04.07"
+    ],
+    "title": "Stessi stati, calori diversi: due cammini rettangolari",
+    "prompt": "Una quantità fissa di gas ideale monoatomico passa da p_i=100 kPa, V_i=1,0 L a p_f=200 kPa, V_f=2,0 L. Percorso A: prima riscaldamento isocoro fino a 200 kPa, poi espansione isobara fino a 2,0 L. Percorso B: prima espansione isobara a 100 kPa fino a 2,0 L, poi riscaldamento isocoro. Le trasformazioni sono quasistatiche e si considera soltanto lavoro p,V. Usa U=(3/2)pV e ΔU=Q−W, con W fatto dal gas. Calcola W, ΔU e Q per ciascun percorso. Percorrendo A in avanti e B al contrario si ottiene un ciclo: ricavane lavoro e calore netti e valuta l’affermazione «uguale temperatura finale significa uguale calore assorbito».",
+    "solution": "Un prodotto kPa·L vale un joule. Quindi p_iV_i=100 J e p_fV_f=400 J: ΔU=(3/2)(400−100)=450 J per entrambi i percorsi.\nIn A l’isocora non compie lavoro; l’espansione successiva dà W_A=200 kPa·(2−1)L=200 J. Perciò Q_A=ΔU+W_A=650 J.\nIn B l’espansione avviene a 100 kPa: W_B=100 J e Q_B=550 J. Gli estremi fissano la variazione dell’energia interna, non il lavoro né il calore singolarmente.\nSul ciclo A seguito dal percorso B inverso, ΔU=0, W_net=200−100=100 J e Q_net=650−550=100 J. L’area rettangolare nel diagramma p,V fornisce lo stesso lavoro netto. Il gas ritorna allo stato iniziale pur avendo trasformato 100 J netti di calore in lavoro; ciò non basta da solo a descrivere i serbatoi e verificare il secondo principio.",
+    "level": "difficile",
+    "noveltyNote": "Lo stesso bilancio di stato viene confrontato su due cammini e poi usato al contrario per chiudere un ciclo; il controllo geometrico dell’area è indipendente dalla prima legge.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u5-05",
+    "unitId": "sf-2026-u5-05",
+    "objectiveIds": [
+      "U5-05.01",
+      "U5-05.02",
+      "U5-05.04",
+      "U5-05.05",
+      "U5-05.06",
+      "U5-05.08"
+    ],
+    "title": "Un motore che conserva energia ma non può funzionare",
+    "prompt": "Un progetto dichiara un motore ciclico fra due soli termostati a 500 K e 300 K. Per ciclo assorbirebbe 1000 J dal caldo, cederebbe 400 J al freddo e fornirebbe 600 J di lavoro. Verifica separatamente bilancio energetico, limite di Carnot e variazione di entropia dei serbatoi. Mantenendo 1000 J assorbiti, qual è il minimo calore ceduto compatibile con il secondo principio? Una seconda scheda propone invece 650 J ceduti e 350 J di lavoro: quali controlli supera e perché ciò non prova ancora che il dispositivo progettato esista o raggiunga quelle prestazioni?",
+    "solution": "Il primo progetto chiude il bilancio energetico: 1000−400=600 J. Ma η=0,60 supera η_C=1−300/500=0,40.\nIl gas torna allo stesso stato, dunque la sua variazione di entropia sul ciclo è nulla. Per i due serbatoi ΔS=−1000/500+400/300=−2/3 J/K, incompatibile con l’insieme isolato formato da macchina e serbatoi. Conservare energia è necessario ma non sufficiente.\nImponendo −1000/500+Q_c/300≥0 si ottiene Q_c≥600 J. Il lavoro massimo è quindi 400 J, nel limite reversibile; non si può riparare la dichiarazione mantenendo contemporaneamente tutti e tre i trasferimenti originari.\nLa seconda scheda ha 1000−650=350 J, η=0,35<0,40 e ΔS=−2+650/300=1/6 J/K>0. Supera questi controlli necessari. Essi non descrivono però il ciclo reale, le perdite o la fattibilità costruttiva: ammissibilità dei bilanci non equivale a prestazione dimostrata.",
+    "level": "difficile",
+    "noveltyNote": "La contraddizione emerge soltanto confrontando tre controlli diversi; il problema distingue bilancio ammissibile, limite reversibile e prova di una realizzazione.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u6-01",
+    "unitId": "sf-2026-u6-01",
+    "objectiveIds": [
+      "U6-01.03",
+      "U6-01.04",
+      "U6-01.05"
+    ],
+    "title": "Lo zero del campo cambia regione quando cambia un segno",
+    "prompt": "Due cariche puntiformi sono sull’asse x: +q in x=0 e +4q in x=3 m, con q>0. Trova tutti i punti finiti dell’asse, diversi dalle posizioni delle cariche, in cui il campo totale è nullo. Si sostituisce poi +4q con −4q, senza cambiare le posizioni: ripeti il ragionamento per regioni. Uno studente uguaglia soltanto i moduli dei campi e conserva x=1 m anche nel secondo caso. Mostra l’errore con i versi delle due frecce e verifica la soluzione ammessa con le distanze reali dalle cariche.",
+    "solution": "Con due cariche positive i campi hanno lo stesso verso nelle regioni esterne e non possono annullarsi. Fra le cariche sono opposti. Uguagliando i moduli: q/x²=4q/(3−x)². Con 0<x<3, le distanze sono positive e 3−x=2x: x=1 m. Le distanze 1 e 2 m danno contributi uguali e opposti.\nCon +q e −4q, fra le cariche i due campi puntano entrambi verso destra: x=1 m non è più uno zero, pur soddisfacendo l’uguaglianza dei moduli. A sinistra di entrambe, i campi sono opposti e le distanze sono −x e 3−x. La condizione 3−x=2(−x) dà x=−3 m.\nIn x=−3 m, i moduli sono kq/9 e 4kq/36, uguali, con versi opposti. A destra di x=3 la carica di modulo maggiore è anche più vicina: non può essere compensata dall’altra. Lo zero trovato è l’unico finito sull’asse per la seconda configurazione. Uguagliare moduli senza controllare i versi introduce una soluzione fisicamente falsa.",
+    "level": "difficile",
+    "noveltyNote": "Le stesse distanze risolvono un’uguaglianza algebrica ma non sempre una somma vettoriale nulla; il cambio di segno impone una nuova selezione delle regioni fisiche.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u6-02",
+    "unitId": "sf-2026-u6-02",
+    "objectiveIds": [
+      "U6-02.01",
+      "U6-02.02",
+      "U6-02.03",
+      "U6-02.04"
+    ],
+    "title": "Un giro di potenziali impossibile e una particella senza energia sufficiente",
+    "prompt": "In un campo elettrostatico, tre misure riportano V_B−V_A=+4 V, V_C−V_B=−7 V e V_A−V_C=+5 V. Controlla se possono essere tutte esatte e spiega se i dati, da soli, individuano quale strumento sbaglia. Fidandoti delle prime due, correggi la terza. Una carica −2 µC parte da A con energia cinetica 4 µJ e subisce soltanto la forza elettrica: trova la variazione di energia potenziale per arrivare a C e valuta se può arrivarvi. Quale caduta di potenziale rispetto ad A esaurirebbe esattamente l’energia cinetica? Non è data la forma spaziale di V.",
+    "solution": "Le differenze su un giro chiuso devono telescopicamente sommare a zero. I valori dichiarati danno 4−7+5=2 V, quindi almeno una misura è incompatibile; senza un riferimento indipendente non si può stabilire quale sia sbagliata.\nCon le prime due corrette, V_C−V_A=−3 V e V_A−V_C=+3 V. Per q=−2 µC, ΔU=q(V_C−V_A)=+6 µJ. La sola forza elettrica darebbe K_C=4−6=−2 µJ: impossibile. C non è energeticamente accessibile da quella condizione iniziale.\nL’arresto energetico avviene quando ΔU=4 µJ: (−2 µC)ΔV=4 µJ, dunque ΔV=−2 V. Lungo un percorso che scenda a potenziali più bassi la carica negativa perde energia cinetica e raggiunge quel limite prima di C. Il dato individua un valore del potenziale, non una posizione o un tempo: per questi servirebbe V nello spazio e la geometria del moto.",
+    "level": "difficile",
+    "noveltyNote": "Controlla dati sovrabbondanti prima di usarli e distingue un calcolo di energia formalmente eseguibile da uno stato finale accessibile.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u6-03",
+    "unitId": "sf-2026-u6-03",
+    "objectiveIds": [
+      "U6-03.01",
+      "U6-03.02"
+    ],
+    "title": "Separare due conduttori polarizzati senza creare carica",
+    "prompt": "Due sfere conduttrici identiche A e B, inizialmente neutre e isolate dall’esterno, si toccano. Si avvicina una bacchetta positiva ad A senza contatto, poi si separano le sfere mentre la bacchetta resta vicina; infine si allontana la bacchetta. La carica misurata di A è −6 nC. Prevedi quella di B e spiega il percorso delle cariche. Che cosa accade riavvicinando fino al contatto le due sfere lontano dalla bacchetta? Confronta con due corpi dielettrici ideali inizialmente neutri, privi di cariche mobili, senza trasferimento di carica né polarizzazione permanente. L’attrazione di un oggetto neutro basta a dimostrare una carica netta negativa?",
+    "solution": "La bacchetta attrae elettroni verso la sfera A attraverso il contatto; la zona B rimane in difetto di elettroni. La carica complessiva A+B resta zero, perché non vi è scambio con la bacchetta o l’esterno. Separando le sfere si interrompe il passaggio: se A porta −6 nC, B porta +6 nC.\nAllontanare la bacchetta redistribuisce la carica sulle superfici, ma non ne cambia i totali. Riportando le sfere identiche a contatto, lontano da campi esterni, la carica totale nulla si ridistribuisce fino a lasciare entrambe neutre.\nNei dielettrici ideali descritti si spostano o orientano localmente cariche legate; non passa una carica netta da un corpo all’altro. Dopo la rimozione del campo, nell’ipotesi senza polarizzazione permanente, ciascun corpo torna non polarizzato e resta neutro.\nUn corpo neutro può essere attratto per polarizzazione. L’attrazione da sola non determina né carica netta né segno; per inferire il segno occorre un confronto adatto, per esempio una repulsione con un riferimento di segno noto, entro condizioni controllate.",
+    "level": "medio",
+    "noveltyNote": "Segue una sequenza di operazioni che cambia la possibilità di trasferimento di carica e confronta un conduttore con un dielettrico; la misura finale controlla la conservazione dell’intero sistema.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u6-04",
+    "unitId": "sf-2026-u6-04",
+    "objectiveIds": [
+      "U6-04.03",
+      "U6-04.04",
+      "U6-04.06",
+      "U6-04.07"
+    ],
+    "title": "Il componente superstite può scaldare di più",
+    "prompt": "Un generatore ideale da 12 V alimenta un resistore da 2 Ω in serie con un parallelo da 6 Ω e 3 Ω. Calcola corrente totale, tensione del parallelo e potenza sul resistore da 6 Ω. Dopo un guasto, il generatore misura ancora 12 V, la corrente totale è 1,5 A e la tensione ai capi del parallelo è 9 V. Supponi che si sia aperto esattamente uno dei due rami paralleli e che le altre resistenze siano invariate. Identifica il ramo aperto e la nuova potenza sul 6 Ω. Valuta l’affermazione «se la potenza totale scende, ogni resistore dissipa meno». Il circuito è soltanto un modello su carta.",
+    "solution": "All’inizio 6 Ω in parallelo con 3 Ω danno 2 Ω. La resistenza totale è 4 Ω, quindi I_tot=12/4=3 A. Sul resistore in serie cadono 6 V e sul parallelo restano 6 V. Il ramo da 6 Ω porta 1 A e dissipa 6²/6=6 W.\nSe si apre il ramo da 3 Ω, restano 2+6=8 Ω: I_tot=1,5 A e la caduta sul 6 Ω è 9 V, esattamente le misure. Aprire invece il 6 Ω darebbe 2+3=5 Ω, corrente 2,4 A e tensione del parallelo 7,2 V: ipotesi esclusa.\nIl 6 Ω rimasto dissipa ora 9²/6=13,5 W, più del doppio di prima. La potenza totale del generatore passa però da 12·3=36 W a 12·1,5=18 W.\nIl ramo aperto modifica la divisione di tensione: diminuisce la caduta sul resistore in serie e aumenta quella sul ramo superstite. Un bilancio globale più piccolo non impone una diminuzione su ogni singolo componente.",
+    "level": "difficile",
+    "noveltyNote": "Diagnostica un guasto tramite due misure e verifica una conseguenza locale contraria all’intuizione basata sulla sola potenza totale.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u6-05",
+    "unitId": "sf-2026-u6-05",
+    "objectiveIds": [
+      "U6-05.01",
+      "U6-05.02",
+      "U6-05.03",
+      "U6-05.04"
+    ],
+    "title": "Dove va l’energia quando entra il dielettrico?",
+    "prompt": "Un condensatore ideale di capacità 2 µF è caricato a 10 V. Un dielettrico lineare riempie poi completamente lo spazio fra le armature e triplica la capacità, senza perdite. Confronta due prove: A, generatore scollegato prima dell’inserimento; B, generatore ideale da 10 V sempre collegato. L’inserimento è quasistatico e un dispositivo esterno può ricevere lavoro meccanico, senza accumulo finale di energia cinetica. Trova Q, V e U prima e dopo in ogni prova. In B usa il lavoro del generatore W_gen=VΔQ per verificare la tesi «tutta l’energia fornita dal generatore resta immagazzinata». Ricava il lavoro meccanico ricevibile dal dispositivo esterno in entrambe le prove.",
+    "solution": "Inizialmente Q=CV=20 µC e U=CV²/2=100 µJ. La capacità finale è 6 µF.\nIn A la carica resta 20 µC: V_f=20/6=10/3 V e U_f=Q²/(2C_f)=100/3 µJ. Il campo perde 200/3 µJ, circa 66,7 µJ. Senza scambi elettrici col generatore, perdite o accumulo cinetico, questa è l’energia trasferibile come lavoro al dispositivo che controlla l’inserimento.\nIn B la tensione resta 10 V: Q_f=60 µC e U_f=300 µJ. Il generatore trasferisce W_gen=10 V·(60−20) µC=400 µJ, mentre il condensatore aumenta la propria energia soltanto di 200 µJ.\nIl bilancio W_gen=ΔU+W_meccanico dà W_meccanico=200 µJ. Il campo può attrarre il dielettrico mentre il generatore fornisce energia: non è corretto identificare l’energia della batteria con la sola variazione di CV²/2. Il segno del lavoro è qui positivo quando viene ricevuto dal dispositivo esterno.",
+    "level": "difficile",
+    "noveltyNote": "Confronta i vincoli Q e V ma aggiunge il bilancio esplicito dell’energia del generatore e del lavoro meccanico, evitando di fermarsi alla variazione della capacità.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u6-06",
+    "unitId": "sf-2026-u6-06",
+    "objectiveIds": [
+      "U6-06.03",
+      "U6-06.05"
+    ],
+    "title": "Il raggio dell’orbita non misura la massa da solo",
+    "prompt": "Due particelle non relativistiche hanno lo stesso modulo di carica e la stessa energia cinetica, ma masse ignote. Entrano con velocità lungo +x in un campo uniforme lungo +z, perpendicolare al moto; non agiscono altre forze. La particella 1 curva inizialmente verso −y, la 2 verso +y, e r₂=2r₁. Determina i segni delle cariche, il rapporto delle masse e quello delle velocità. Uno studente usa r=mv/(|q|B) e conclude m₂=2m₁: quale vincolo ha assunto senza averlo? Prima del magnete entrambe percorrono un tratto rettilineo di lunghezza L alla propria velocità: quale rapporto dei tempi offre un controllo indipendente?",
+    "solution": "Con v lungo +x e B lungo +z, v×B punta verso −y. La particella 1 è quindi positiva e la 2 negativa; il segno cambia il verso della curvatura, non il raggio espresso con |q|.\nA energia cinetica K uguale, v=√(2K/m). Sostituendo in r=mv/(|q|B) si ottiene r²=2mK/(q²B²). Quindi m₂/m₁=(r₂/r₁)²=4, e v₂/v₁=√(m₁/m₂)=1/2.\nLo studente ha tenuto uguale la velocità, ma il testo tiene uguale K: con masse diverse sono condizioni diverse. Se le velocità fossero uguali il rapporto di massa sarebbe effettivamente 2, ma non in questa preparazione.\nSul tratto rettilineo t=L/v, quindi t₂/t₁=2. Il campo magnetico successivo non compie lavoro: ciascuna particella conserva il proprio modulo della velocità nell’orbita, senza che questo renda uguali i moduli delle due particelle.",
+    "level": "difficile",
+    "noveltyNote": "Richiede di collegare la preparazione energetica al raggio, risolvere il segno vettoriale e progettare un controllo temporale indipendente; distingue esplicitamente due vincoli spesso confusi.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u6-07",
+    "unitId": "sf-2026-u6-07",
+    "objectiveIds": [
+      "U6-07.01",
+      "U6-07.02",
+      "U6-07.03",
+      "U6-07.04"
+    ],
+    "title": "Tensione media nulla, calore non nullo",
+    "prompt": "Una bobina ferma di 10 spire, area 0,020 m² per spira e resistenza totale 2 Ω è attraversata da un campo uniforme concorde alla normale scelta. B cresce linearmente da 0,10 T a 0,30 T in 0,20 s e poi scende linearmente a 0,10 T nei successivi 0,20 s. Trascura l’autoinduttanza e ogni variazione della resistenza. Trova f.e.m. e corrente in ciascun intervallo, la f.e.m. media sui 0,40 s e l’energia dissipata. Un’analisi conclude «il flusso finale coincide con quello iniziale, dunque non può esserci riscaldamento»: spiega quale passaggio non è valido e da dove proviene l’energia.",
+    "solution": "Nel primo tratto dB/dt=(0,30−0,10)/0,20=+1 T/s; ε=−NA dB/dt=−0,20 V. Con il verso positivo di percorrenza associato alla normale, I=ε/R=−0,10 A. Nel secondo tratto i segni si invertono: ε=+0,20 V e I=+0,10 A. Le correnti producono campi che si oppongono rispettivamente all’aumento e alla diminuzione del flusso esterno.\nI due contributi alla media temporale si cancellano: ε_media=0. Ma la potenza Joule è I²R=0,020 W in entrambi i tratti, sempre positiva. In 0,40 s si dissipano 0,008 J=8 mJ.\nÈ nullo l’integrale della f.e.m. sul ciclo, non l’integrale del suo quadrato diviso R. Il flusso può tornare al valore iniziale dopo aver variato nel tempo. L’energia viene dal dispositivo esterno che genera e varia il campo, il cui lavoro deve includere la reazione della corrente indotta.",
+    "level": "difficile",
+    "noveltyNote": "La chiusura del ciclo del flusso viene confrontata con la dissipazione, che dipende dal quadrato della corrente; è necessario interpretare l’intero segnale temporale.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u7-01",
+    "unitId": "sf-2026-u7-01",
+    "objectiveIds": [
+      "U7-01.01",
+      "U7-01.02",
+      "U7-01.03",
+      "U7-01.04",
+      "U7-01.05"
+    ],
+    "title": "Un’animazione elettromagnetica con due incoerenze",
+    "prompt": "Un’animazione dichiara un’onda piana che nel vuoto si propaga lungo +x, con E lungo +y e B lungo −z. La luce ha lunghezza d’onda nel vuoto 600 nm; entrando normalmente in un mezzo trasparente stazionario la lunghezza d’onda diventa 400 nm. L’animazione aumenta anche la frequenza di un fattore 3/2. Usa c=3·10⁸ m/s. Individua e correggi le due incoerenze, calcola frequenza, indice e velocità nel mezzo. Infine si raddoppia l’ampiezza di E restando nello stesso mezzo lineare alla stessa frequenza: quale variazione d’intensità si prevede? È la stessa conclusione se si confrontano ampiezze in mezzi differenti senza altre informazioni?",
+    "solution": "La direzione del trasporto di energia è E×B. Con +y e −z il prodotto punta verso −x, non +x. Per mantenere la propagazione dichiarata e E lungo +y, B deve puntare lungo +z.\nLa frequenza nel vuoto è f=c/λ₀=3·10⁸/(600·10⁻⁹)=5·10¹⁴ Hz. All’interfaccia stazionaria la frequenza resta questa: cambiano velocità e lunghezza d’onda. Nel mezzo v=fλ=2·10⁸ m/s e n=c/v=1,5. L’aumento della frequenza mostrato dall’animazione confonde la riduzione di λ con un cambio della sorgente.\nA mezzo e frequenza fissati, I è proporzionale al quadrato dell’ampiezza: raddoppiare E dà 4I. Il coefficiente di proporzionalità dipende però dal mezzo; per confrontare ampiezze attraverso mezzi differenti servono le relative proprietà e le condizioni di trasmissione. La regola del quadrato non autorizza a ignorare quei cambiamenti.",
+    "level": "medio",
+    "noveltyNote": "Una stessa rappresentazione viene controllata mediante orientazione vettoriale, continuità temporale e vincolo sul mezzo; il risultato non è una sola conversione λ↔f.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u7-02",
+    "unitId": "sf-2026-u7-02",
+    "objectiveIds": [
+      "U7-02.01",
+      "U7-02.03",
+      "U7-02.06",
+      "U7-02.07",
+      "U7-02.08"
+    ],
+    "title": "Spettri identici possono avere etichette diverse",
+    "prompt": "Quattro sorgenti emettono nel vuoto: A a λ=3 m, B a λ=3 µm, C e D entrambe a λ=0,010 nm. Per C è documentato frenamento di elettroni; per D una transizione nucleare. Usa c=3·10⁸ m/s. Ordina le frequenze e calcolale; identifica radio, infrarosso, X e gamma nei casi descritti. Uno schedario distingue X e gamma soltanto con un’unica soglia universale di frequenza e assegna a D velocità maggiore di C: valuta entrambe le regole. Se si cancellasse la descrizione dell’origine, quali informazioni resterebbero determinabili e quale etichetta non sarebbe univoca?",
+    "solution": "A ha f=3·10⁸/3=10⁸ Hz; B ha f=3·10⁸/(3·10⁻⁶)=10¹⁴ Hz. Per C e D, 0,010 nm=10⁻¹¹ m: f=3·10¹⁹ Hz. Quindi f_A<f_B<f_C=f_D. A è nel dominio radio, B nell’infrarosso.\nNel contesto fornito C è radiazione X da frenamento, D gamma da transizione nucleare. Gli intervalli energetici X e gamma possono sovrapporsi: una soglia numerica universale non sostituisce l’informazione sull’origine.\nTutte e quattro le radiazioni propagano alla stessa velocità c nel vuoto. C e D hanno anche la stessa energia per fotone, perché hanno la stessa frequenza; il diverso nome non introduce un’altra velocità o energia.\nSenza l’origine resterebbero noti frequenza, lunghezza d’onda, velocità e parità delle energie dei fotoni C/D. Non si potrebbe scegliere univocamente fra X e gamma usando soltanto quel dato spettrale. Il catalogo deve conservare la provenienza fisica della radiazione.",
+    "level": "medio",
+    "noveltyNote": "Il problema è classificare dati incompleti e riconoscere un’informazione di provenienza necessaria; due sorgenti con lo stesso spettro impediscono l’uso di una soglia come scorciatoia.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u7-03",
+    "unitId": "sf-2026-u7-03",
+    "objectiveIds": [
+      "U7-03.01",
+      "U7-03.02"
+    ],
+    "title": "Metà della potenza non significa metà dei fotoni",
+    "prompt": "Un fascio contiene due componenti monocromatiche: fotoni di energia 2·10⁻¹⁹ J e fotoni di energia 4·10⁻¹⁹ J. La potenza totale è 4,0 mW, divisa in parti uguali fra le componenti. Calcola i due flussi di fotoni, quello totale e l’energia media per fotone del fascio. Uno studente usa la media aritmetica delle due energie: quando sarebbe corretta? Un filtro ideale lascia passare soltanto la componente più energetica: quali frazioni della potenza e del numero di fotoni vengono trasmesse, e cambia l’energia dei singoli fotoni trasmessi?",
+    "solution": "Ogni componente porta 2,0·10⁻³ W. I flussi sono Ṅ₁=P₁/E₁=10¹⁶ fotoni/s e Ṅ₂=P₂/E₂=5·10¹⁵ fotoni/s. Il totale è 1,5·10¹⁶ fotoni/s: a uguale potenza, la componente meno energetica contiene il doppio dei fotoni.\nL’energia media per fotone si ottiene dividendo la potenza totale per il flusso totale: 4·10⁻³/(1,5·10¹⁶)=(8/3)·10⁻¹⁹ J, circa 2,67·10⁻¹⁹ J. La media semplice 3·10⁻¹⁹ J sarebbe appropriata per uguale numero di fotoni, non per uguali potenze.\nIl filtro trasmette 2 mW, cioè metà della potenza, ma solo 5·10¹⁵/(1,5·10¹⁶)=1/3 dei fotoni. Ciascun fotone trasmesso mantiene energia 4·10⁻¹⁹ J nel modello del filtro selettivo: rimuovere una popolazione non divide l’energia dei fotoni rimasti.",
+    "level": "medio",
+    "noveltyNote": "Richiede di costruire i pesi corretti di una media e di verificare due diverse frazioni trasmesse da un filtro; equal power e equal count portano a risultati differenti.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u7-04",
+    "unitId": "sf-2026-u7-04",
+    "objectiveIds": [
+      "U7-04.01",
+      "U7-04.02",
+      "U7-04.03",
+      "U7-04.04"
+    ],
+    "title": "Perché un fascio misto non ha sempre un solo coefficiente",
+    "prompt": "Un fascio ha due componenti che inizialmente contribuiscono ciascuna a metà dell’intensità. Nel materiale omogeneo, ogni centimetro trasmette 1/4 della componente a energia minore e 1/2 di quella a energia maggiore; ciascuna segue separatamente Lambert-Beer, senza conversione fra componenti. Calcola la trasmissione totale dopo 1 cm e dopo 2 cm, e la frazione dell’intensità trasmessa dovuta alla componente più energetica. Un modello ricava un unico coefficiente dal primo centimetro e prevede il secondo elevando al quadrato la prima trasmissione: confronta la previsione con il risultato. Quale ipotesi del modello a un solo coefficiente manca?",
+    "solution": "Dopo 1 cm i contributi, rispetto all’intensità iniziale totale, sono (1/2)(1/4)=1/8 e (1/2)(1/2)=1/4. La trasmissione totale è 3/8. La componente più energetica costituisce (1/4)/(3/8)=2/3 dell’intensità trasmessa.\nDopo 2 cm i contributi sono (1/2)(1/4)²=1/32 e (1/2)(1/2)²=1/8. Il totale è 5/32 e la frazione più energetica è (1/8)/(5/32)=4/5.\nIl coefficiente unico ricavato a 1 cm prevederebbe (3/8)²=9/64. Il risultato corretto è 5/32=10/64: il modello sottostima la trasmissione di 1/64 dell’intensità iniziale, cioè del 10% rispetto al valore corretto.\nOgni componente conserva il proprio coefficiente; è la composizione del fascio a cambiare. La somma di due esponenziali con coefficienti diversi non è in generale un unico esponenziale. L’omogeneità del materiale non rende automaticamente monocromatico il fascio: qui il fascio trasmesso si arricchisce della componente meno attenuata.",
+    "level": "difficile",
+    "noveltyNote": "Confronta composizione spettrale e previsione su uno spessore non usato per la stima. È distinto dalla media areale fra due cammini già presente nel patrimonio: qui cambiano le popolazioni spettrali lungo lo stesso cammino.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u7-05",
+    "unitId": "sf-2026-u7-05",
+    "objectiveIds": [
+      "U7-05.02",
+      "U7-05.03",
+      "U7-05.04"
+    ],
+    "title": "Contare decadimenti senza scambiare il fondo per attività",
+    "prompt": "Un rivelatore registra tassi medi di 880 conteggi/min inizialmente, 280 dopo 6 h e 130 dopo 12 h. Il modello proposto è una sola specie che decade esponenzialmente più un fondo costante; le finestre di conteggio sono brevi rispetto all’emivita. Ricava il fattore di decadimento in 6 h, il fondo e l’emivita senza sottrarre un fondo inventato. Se l’efficienza costante per i decadimenti della sorgente è 50%, trova l’attività iniziale in Bq. Quale misura separata controlla l’ipotesi del fondo? Tre tassi medi coerenti provano da soli l’assenza di altre specie o di deriva strumentale?",
+    "solution": "Scriviamo i tre tassi come S+B, rS+B e r²S+B, dove r è il fattore in 6 h. Le differenze sono 880−280=600 e 280−130=150 conteggi/min; il loro rapporto elimina fondo e scala: r=150/600=1/4.\nDa (1−r)S=600 si ottiene S=800 conteggi/min e B=80 conteggi/min. Le componenti della sorgente sono quindi 800, 200 e 50, che ricostruiscono tutti i dati. Un fattore 1/4 equivale a due emivite in 6 h: T₁/₂=3 h.\nI conteggi non sono direttamente becquerel. Con efficienza 0,50, A₀=800/(60·0,50)=80/3 Bq, circa 26,7 decadimenti/s. Non si converte anche il fondo in attività della sorgente.\nUna misura con la sorgente rimossa o schermata in modo appropriato al modello dovrebbe restituire il fondo di 80 conteggi/min. Più tempi e controlli strumentali servono a discriminare altre spiegazioni: tre medie compatibili non certificano un’unica specie né eliminano incertezza e deriva.",
+    "level": "difficile",
+    "noveltyNote": "Separa fondo, decadimento ed efficienza di rivelazione mediante differenze fra dati; non assume che il tasso di conteggi sia già attività o che un adattamento certifichi il modello.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u7-06",
+    "unitId": "sf-2026-u7-06",
+    "objectiveIds": [
+      "U7-06.01",
+      "U7-06.02",
+      "U7-06.04"
+    ],
+    "title": "Un fascio più potente può lasciare invariato il tasso di ionizzazione",
+    "prompt": "Un modello atomico a singolo fotone, in condizioni stazionarie e senza saturazione, ha soglia di ionizzazione 10 eV. Arrivano 10⁶ fotoni/s da 8 eV e 10⁶ fotoni/s da 15 eV. Per la componente da 15 eV la probabilità di assorbimento ionizzante è 0,20; per quella da 8 eV è nulla nel modello. Ogni assorbimento da 15 eV produce un elettrone, e si trascura il rinculo: l’energia eccedente la soglia diventa energia cinetica. Trova il tasso medio di ionizzazione e la potenza cinetica degli elettroni, usando 1 eV=1,60·10⁻¹⁹ J. Poi raddoppia soltanto il flusso da 8 eV: come cambiano potenza incidente e tasso di ionizzazione? Che cosa cambierebbe per una specie con soglia 18 eV? Il modello non descrive effetti multifotonici o rischio biologico.",
+    "solution": "Ionizza soltanto la componente da 15 eV: il tasso medio è 0,20·10⁶=2·10⁵ ionizzazioni/s. Ogni elettrone riceve 15−10=5 eV, quindi la potenza cinetica è 2·10⁵·5=10⁶ eV/s=1,60·10⁻¹³ W.\nLa potenza incidente iniziale è (8+15)·10⁶ eV/s=23·10⁶ eV/s=3,68·10⁻¹² W. Raddoppiando il solo flusso da 8 eV diventa (16+15)·10⁶=31·10⁶ eV/s=4,96·10⁻¹² W.\nIl tasso di ionizzazione rimane 2·10⁵/s, perché il flusso e la probabilità di assorbimento della componente sopra soglia non sono cambiati. Maggiore potenza totale non implica automaticamente maggiore energia per fotone o maggiore ionizzazione in questo modello.\nCon soglia 18 eV, nessuna delle due componenti può ionizzare per assorbimento di un solo fotone: il tasso previsto è zero. Questo non significa assenza di qualsiasi interazione o effetto; stabilisce soltanto l’insufficienza energetica per il processo specificato.",
+    "level": "medio",
+    "noveltyNote": "Introduce una probabilità di assorbimento dichiarata e chiude il bilancio dell’energia degli elettroni, distinguendo tre dati che una semplice classificazione ionizzante/non ionizzante non determina.",
+    "status": "DRAFT",
+    "humanApproval": false
+  },
+  {
+    "id": "original-20261107-u7-07",
+    "unitId": "sf-2026-u7-07",
+    "objectiveIds": [
+      "U7-07.05",
+      "U7-07.06"
+    ],
+    "title": "Lo stesso ingrandimento può nascondere due immagini diverse",
+    "prompt": "Una lente sottile convergente ha f=10 cm. Un oggetto reale forma un’immagine con modulo dell’ingrandimento |m|=2, ma il rapporto non registra orientazione né natura dell’immagine. Usa 1/f=1/p+1/q, con p>0 per l’oggetto reale, q>0 per immagine reale, e m=−q/p. Trova tutte le coppie (p,q) compatibili. Proponi una prova con uno schermo che distingua i casi e spiega cosa accade spostando l’oggetto dalla posizione del caso reale a quella del caso virtuale. È corretto interpolare linearmente la posizione dell’immagine fra i due risultati?",
+    "solution": "Se l’immagine è reale e invertita, m=−2 e q=2p. Allora 1/10=1/p+1/(2p)=3/(2p): p=15 cm, q=30 cm.\nSe è virtuale e diritta, m=+2 e q=−2p. Si ha 1/10=1/p−1/(2p)=1/(2p): p=5 cm, q=−10 cm. Entrambi i casi hanno |m|=2; registrare soltanto il modulo ha perso un’informazione decisiva.\nUno schermo posto sul lato emergente a 30 cm può intercettare l’immagine reale del primo caso. La seconda non si forma su uno schermo con la sola lente: i raggi emergenti divergono e i loro prolungamenti si incontrano sul lato dell’oggetto.\nSpostando l’oggetto da 15 a 5 cm si attraversa p=f=10 cm. La distanza q=fp/(p−f) diverge vicino al fuoco e cambia segno: non passa linearmente da +30 a −10 cm attraverso posizioni finite. La costruzione dei raggi e il denominatore della formula danno lo stesso avvertimento sul limite del modello.",
+    "level": "difficile",
+    "noveltyNote": "Un dato privo del segno ammette due configurazioni da ricostruire; la verifica sperimentale e il passaggio attraverso il fuoco impediscono una falsa interpolazione geometrica.",
+    "status": "DRAFT",
+    "humanApproval": false
+  }
+]

@@ -39,6 +39,24 @@ async function authenticate(storage: ReturnType<typeof browserPendingStorage>) {
 }
 
 describe('per-command browser recovery compatibility and isolation', () => {
+  it('rejects stale metadata updates and deletion after an envelope changes in another tab', () => {
+    const web = new WebStorage(), a = browserPendingStorage(web), b = browserPendingStorage(web);
+    const original = entry('same-intent'); a.write(owner, JSON.stringify([original]));
+    b.baseline!(owner, b.read(owner)!);
+    const changed = {...original, status: 'pending' as const};
+    b.write(owner, JSON.stringify([changed]));
+    expect(() => a.write(owner, JSON.stringify([{...original, error: {code: 'STALE', message: 'Old tab'}}]))).toThrow(/Recupero cambiato/);
+    expect(() => a.remove(owner)).toThrow(/Recupero cambiato/);
+    expect(JSON.parse(web.getItem(rowKey(original.commandId))!)).toEqual(changed);
+  });
+
+  it('counts unseen durable rows before persisting memory recovery into a full account', () => {
+    const web = new WebStorage(), stale = browserPendingStorage(web); stale.read(owner);
+    for (let index = 0; index < 500; index++) web.setItem(rowKey('foreign-' + index), JSON.stringify(entry('foreign-' + index)));
+    expect(() => stale.write(owner, JSON.stringify([entry('memory-only')]))).toThrow(/500/);
+    expect(web.values.size).toBe(500); expect(web.getItem(rowKey('memory-only'))).toBeNull();
+  });
+
   it('cleans observed legacy IDs with tombstones while preserving original legacy bytes and later legacy writes', () => {
     const web = new WebStorage(), storage = browserPendingStorage(web);
     const old = entry('legacy-command');

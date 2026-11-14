@@ -1,0 +1,21 @@
+[
+  {
+    "questionId": "u6-connected-plate-separation-charge-09",
+    "date": "2026-11-07",
+    "kind": "symbol_display_repair",
+    "reason": "The source renderer inserted the entire definition s=d/d₀ inside products and denominators, producing false chained equalities.",
+    "change": "Use s as the symbol in displayed expressions and define it separately.",
+    "humanScientificReview": "NOT_RUN",
+    "exactSymbolicAnswerChanged": false
+  },
+  {
+    "questionId": "u6-connected-plate-separation-charge-13",
+    "date": "2026-11-07",
+    "kind": "symbol_display_repair",
+    "reason": "The source renderer inserted the entire definition s=d/d₀ inside products and denominators, producing false chained equalities.",
+    "change": "Use s as the symbol in displayed expressions and define it separately.",
+    "humanScientificReview": "NOT_RUN",
+    "exactSymbolicAnswerChanged": false,
+    "physicalClarification": "Independent prepared trials permit a different initial charge; voltage is fixed within each trial, not across both preparations."
+  }
+]

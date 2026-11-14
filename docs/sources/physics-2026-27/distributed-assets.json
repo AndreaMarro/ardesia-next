@@ -1,0 +1,85 @@
+{
+  "format": "ardesia-physics-assets/1",
+  "counts": {
+    "courses": 5,
+    "units": 38,
+    "objectives": 200,
+    "bankSelected": 259,
+    "originalProblems": 38
+  },
+  "files": [
+    {
+      "file": "sf-2026-strumenti-meccanica.json",
+      "bytes": 701361,
+      "gzipBytes": 104964,
+      "sha256": "291d8b01a65e4a845555542456fd729a4c6abce3bc56cd654c90c772cd0d3fa8",
+      "counts": {
+        "objectives": 52,
+        "practice": 59,
+        "originals": 9,
+        "assessments": 52,
+        "labs": 4
+      },
+      "objects": 173
+    },
+    {
+      "file": "sf-2026-fluidi.json",
+      "bytes": 603080,
+      "gzipBytes": 93317,
+      "sha256": "3d9d17ac11c5edb1eec82b33c822562abac7acd3588c53bbbe5bcc81e489d9cb",
+      "counts": {
+        "objectives": 26,
+        "practice": 58,
+        "originals": 5,
+        "assessments": 26,
+        "labs": 3
+      },
+      "objects": 121
+    },
+    {
+      "file": "sf-2026-termodinamica.json",
+      "bytes": 680288,
+      "gzipBytes": 104081,
+      "sha256": "9878b83f74d95dafff121b728309b137eb9fd665f81913459ea08957112b4230",
+      "counts": {
+        "objectives": 31,
+        "practice": 66,
+        "originals": 5,
+        "assessments": 31,
+        "labs": 2
+      },
+      "objects": 132
+    },
+    {
+      "file": "sf-2026-elettricita-magnetismo.json",
+      "bytes": 527844,
+      "gzipBytes": 83933,
+      "sha256": "16b92b14ded0767e8bf514283d3fa67c25ab03d2d31f843863d57eeff6a86555",
+      "counts": {
+        "objectives": 33,
+        "practice": 48,
+        "originals": 7,
+        "assessments": 33,
+        "labs": 2
+      },
+      "objects": 128
+    },
+    {
+      "file": "sf-2026-onde-ottica-radiazioni.json",
+      "bytes": 807173,
+      "gzipBytes": 124133,
+      "sha256": "89300528266d629c8cf73e6c8a1fabbc052490e2fa5fb6220479e21c98890aa9",
+      "counts": {
+        "objectives": 58,
+        "practice": 59,
+        "originals": 12,
+        "assessments": 58,
+        "labs": 5
+      },
+      "objects": 197
+    }
+  ],
+  "totalRawBytes": 3319746,
+  "totalGzipBytes": 510428,
+  "note": "Static JSON course materials, fetched only on explicit import; not JavaScript. Full data costs shown separately from measured runtime budgets."
+}

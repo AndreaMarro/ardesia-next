@@ -1,0 +1,3802 @@
+[
+  {
+    "id": "final-U1-01.01",
+    "unitId": "sf-2026-u1-01",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U1-01.01",
+    "prompt": "Normalizza 0,00072 usando una sola cifra non nulla prima della virgola.",
+    "answer": "7,2·10^-4.",
+    "feedback": "7,2·10^-4.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U1-01.01",
+      "canonicalSha256": "cee3e3c75c1fa03f01a0320143cb7b7a9cae538559409fac70bde918b3e36e15"
+    }
+  },
+  {
+    "id": "final-U1-01.02",
+    "unitId": "sf-2026-u1-01",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U1-01.02",
+    "prompt": "Calcola (8·10^5)/(2·10^2).",
+    "answer": "4·10^3; nel rapporto gli esponenti si sottraggono.",
+    "feedback": "4·10^3; nel rapporto gli esponenti si sottraggono.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U1-01.02",
+      "canonicalSha256": "ea2156ab0341a151f14d877b019e3c4fdf6e72a21ba659fa36b29395164bce8e"
+    }
+  },
+  {
+    "id": "final-U1-01.03",
+    "unitId": "sf-2026-u1-01",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U1-01.03",
+    "prompt": "Determina l’ordine di grandezza di 4,8·10^3 scegliendo la potenza di 10 più vicina sulla scala logaritmica: la soglia fra 10^n e 10^(n+1) è √10·10^n.",
+    "answer": "10^4, poiché 4,8>√10≈3,162. È una convenzione dichiarata per l’ordine di grandezza; arrotondare a una cifra significativa darebbe invece 5·10^3.",
+    "feedback": "10^4, poiché 4,8>√10≈3,162. È una convenzione dichiarata per l’ordine di grandezza; arrotondare a una cifra significativa darebbe invece 5·10^3.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U1-01.03",
+      "canonicalSha256": "b072b70d35a4451ecd131f0c7945144cd3d675d517f90685acf1126e16f59ba6"
+    }
+  },
+  {
+    "id": "final-U1-02.01",
+    "unitId": "sf-2026-u1-02",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U1-02.01",
+    "prompt": "Una formula somma una velocità e un’accelerazione senza un fattore temporale. È dimensionalmente omogenea?",
+    "answer": "No: L/T e L/T² non sono dimensioni sommabili.",
+    "feedback": "No: L/T e L/T² non sono dimensioni sommabili.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U1-02.01",
+      "canonicalSha256": "6ca631fd3bd611cbca71f67332f4d833c2f6aaa67c919aed2405d828f3dd9cf6"
+    }
+  },
+  {
+    "id": "final-U1-02.02",
+    "unitId": "sf-2026-u1-02",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U1-02.02",
+    "prompt": "Quali unità SI hanno massa, tempo e lunghezza?",
+    "answer": "kg, s, m rispettivamente.",
+    "feedback": "kg, s, m rispettivamente.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U1-02.02",
+      "canonicalSha256": "dfdda5a62ffca1e4bc809b713b8af9421efcd2a387f12e8fb24355041d9e7d00"
+    }
+  },
+  {
+    "id": "final-U1-02.03",
+    "unitId": "sf-2026-u1-02",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U1-02.03",
+    "prompt": "Converti 250 mL in m³.",
+    "answer": "2,5·10^-4 m³; 1 mL=10^-6 m³.",
+    "feedback": "2,5·10^-4 m³; 1 mL=10^-6 m³.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U1-02.03",
+      "canonicalSha256": "e7f462e9c404c2412e60388f9317fa1547c068f0b7cdb0d495b7d35d02ed521c"
+    }
+  },
+  {
+    "id": "final-U1-02.04",
+    "unitId": "sf-2026-u1-02",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U1-02.04",
+    "prompt": "Un adulto ha altezza circa 2 m: una stima di 2·10^3 m è compatibile con la scala dichiarata?",
+    "answer": "No: è mille volte maggiore e corrisponde a 2 km.",
+    "feedback": "No: è mille volte maggiore e corrisponde a 2 km.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U1-02.04",
+      "canonicalSha256": "28741efe26d87d16cf850bb9c51fd9cd853442122a30b80a5a880c79b6333aa1"
+    }
+  },
+  {
+    "id": "final-U1-02.05",
+    "unitId": "sf-2026-u1-02",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U1-02.05",
+    "prompt": "Triplicando un campione omogeneo alla stessa temperatura quali cambiano fra massa e temperatura?",
+    "answer": "La massa triplica, la temperatura resta invariata nel modello; massa estensiva, T intensiva.",
+    "feedback": "La massa triplica, la temperatura resta invariata nel modello; massa estensiva, T intensiva.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U1-02.05",
+      "canonicalSha256": "780f1655a61d3d9ce70429996350e91bf2ed026d79295640e6311b8d4e6aa592"
+    }
+  },
+  {
+    "id": "final-U1-02.06",
+    "unitId": "sf-2026-u1-02",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U1-02.06",
+    "prompt": "Un valore di energia negativo rende l’energia una grandezza vettoriale?",
+    "answer": "No: lo scalare può avere segno; un vettore richiede anche direzione e verso.",
+    "feedback": "No: lo scalare può avere segno; un vettore richiede anche direzione e verso.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U1-02.06",
+      "canonicalSha256": "d9c30f47b5fa78bb2e97ff000dd50a5f1349106b2592d4687831d5ed5a58ecce"
+    }
+  },
+  {
+    "id": "final-U1-03.01",
+    "unitId": "sf-2026-u1-03",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U1-03.01",
+    "prompt": "Un triangolo rettangolo ha cateto opposto 3 e ipotenusa 5. Quanto vale il seno dell’angolo considerato?",
+    "answer": "3/5; rapporto adimensionale.",
+    "feedback": "3/5; rapporto adimensionale.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U1-03.01",
+      "canonicalSha256": "f81bd4bfab859d3702a828f663c4c74ce0794374719801a44551db2a553d0597"
+    }
+  },
+  {
+    "id": "final-U1-03.02",
+    "unitId": "sf-2026-u1-03",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U1-03.02",
+    "prompt": "Un triangolo rettangolo ha ipotenusa 5 e cateto adiacente 4 rispetto all’angolo considerato. Quanto vale il coseno?",
+    "answer": "4/5, rapporto fra cateto adiacente e ipotenusa.",
+    "feedback": "4/5, rapporto fra cateto adiacente e ipotenusa.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U1-03.02",
+      "canonicalSha256": "17a98fa3dfe68983ed8f5b82466ad44f742510fba1ef405313e45846b9bdea41"
+    }
+  },
+  {
+    "id": "final-U1-03.03",
+    "unitId": "sf-2026-u1-03",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U1-03.03",
+    "prompt": "Quanto vale la tangente nell’angolo con seno 3/5 e coseno 4/5?",
+    "answer": "3/4; tangente=seno/coseno.",
+    "feedback": "3/4; tangente=seno/coseno.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U1-03.03",
+      "canonicalSha256": "49e45e3f262180bf680df9df56ae300ae0f56d89f1bc01354031dfa5455ebeda"
+    }
+  },
+  {
+    "id": "final-U1-03.04",
+    "unitId": "sf-2026-u1-03",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U1-03.04",
+    "prompt": "Un vettore di modulo 7 N è a 90° da +x. Quali componenti?",
+    "answer": "Fx=0 N, Fy=7 N; l’angolo è rispetto all’asse x positivo.",
+    "feedback": "Fx=0 N, Fy=7 N; l’angolo è rispetto all’asse x positivo.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U1-03.04",
+      "canonicalSha256": "d99284f37105480a605cd6363533c5a65d16adf89910b5922c538f7c0090b9d5"
+    }
+  },
+  {
+    "id": "final-U1-04.01",
+    "unitId": "sf-2026-u1-04",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U1-04.01",
+    "prompt": "Un vettore ha componenti(−5,12)m. Qual è il modulo?",
+    "answer": "13 m; il segno di una componente non rende negativo il modulo.",
+    "feedback": "13 m; il segno di una componente non rende negativo il modulo.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U1-04.01",
+      "canonicalSha256": "79b32fedb922dd75f88c11bd8d16a4741c5a9742c348127f7da9d5b7b18aca71"
+    }
+  },
+  {
+    "id": "final-U1-04.02",
+    "unitId": "sf-2026-u1-04",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U1-04.02",
+    "prompt": "Somma(1,2)N e(4,−5)N.",
+    "answer": "(5,−3)N.",
+    "feedback": "(5,−3)N.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U1-04.02",
+      "canonicalSha256": "5dce77dbbc3dd6adb04fc206215b9d2b8959d17ac85abfe5621599f220ff819c"
+    }
+  },
+  {
+    "id": "final-U1-04.03",
+    "unitId": "sf-2026-u1-04",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U1-04.03",
+    "prompt": "Calcola(7,1)m−(2,−3)m.",
+    "answer": "(5,4)m.",
+    "feedback": "(5,4)m.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U1-04.03",
+      "canonicalSha256": "87ed68c21bc655e3a63571561ae7a25547ffdd931f52ffb66ebb87257b294f46"
+    }
+  },
+  {
+    "id": "final-U1-04.04",
+    "unitId": "sf-2026-u1-04",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U1-04.04",
+    "prompt": "Calcola il prodotto scalare di(2,1)m e(−1,2)m.",
+    "answer": "0 m²: i vettori sono ortogonali.",
+    "feedback": "0 m²: i vettori sono ortogonali.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U1-04.04",
+      "canonicalSha256": "59e5cf2b1bb5fdbd6f82ced807335e234fc70638ec5d5ce3addece1c09f375d2"
+    }
+  },
+  {
+    "id": "final-U1-04.05",
+    "unitId": "sf-2026-u1-04",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U1-04.05",
+    "prompt": "Calcola la componentez di(1,0,0)N×(0,3,0)N.",
+    "answer": "+3 N²; scambiando l’ordine sarebbe −3 N².",
+    "feedback": "+3 N²; scambiando l’ordine sarebbe −3 N².",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U1-04.05",
+      "canonicalSha256": "9355600aceaa6beb5bfb5a60cc5954ff7741cb30d61cf6e97a7bae807e92248b"
+    }
+  },
+  {
+    "id": "final-U2-01.01",
+    "unitId": "sf-2026-u2-01",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-01.01",
+    "prompt": "Da x=−2 m a x=5 m, qual è lo spostamento? Coincide necessariamente col cammino?",
+    "answer": "+7 m; il cammino può essere maggiore se vi sono inversioni.",
+    "feedback": "+7 m; il cammino può essere maggiore se vi sono inversioni.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-01.01",
+      "canonicalSha256": "591fb26014672f5a6d6b84f9a33245242299c3a51603af907c7caf9db01bcfd6"
+    }
+  },
+  {
+    "id": "final-U2-01.02",
+    "unitId": "sf-2026-u2-01",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-01.02",
+    "prompt": "Due corpi seguono lo stesso cerchio ma con tempi diversi. Hanno necessariamente la stessa legge oraria?",
+    "answer": "No: la traiettoria è geometrica; la legge oraria specifica posizione e tempo.",
+    "feedback": "No: la traiettoria è geometrica; la legge oraria specifica posizione e tempo.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-01.02",
+      "canonicalSha256": "5b0170c31062a6cb647ef350b3be137370d3a3378eefa9ff4498d5bf0cbb48c8"
+    }
+  },
+  {
+    "id": "final-U2-01.03",
+    "unitId": "sf-2026-u2-01",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-01.03",
+    "prompt": "Un corpo compie spostamento 12 m in 4 s e termina con velocità 1 m/s. Qual è la velocità media e coincide con quella finale?",
+    "answer": "3 m/s; non coincide in questo caso.",
+    "feedback": "3 m/s; non coincide in questo caso.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-01.03",
+      "canonicalSha256": "d7d912601bdc11f481e3c45fb92ceee80fc1805cc02f015d8b6768a6c4d38df8"
+    }
+  },
+  {
+    "id": "final-U2-01.04",
+    "unitId": "sf-2026-u2-01",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-01.04",
+    "prompt": "La velocità passa da −1 a 5 m/s in 3 s. Qual è l’accelerazione media? Quando coincide con quella istantanea in tutto l’intervallo?",
+    "answer": "2 m/s²; se l’accelerazione è costante.",
+    "feedback": "2 m/s²; se l’accelerazione è costante.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-01.04",
+      "canonicalSha256": "99f4e2c14d491a8dd0bb149689258b6f5db28481071df8c14fabb747776665dd"
+    }
+  },
+  {
+    "id": "final-U2-01.05",
+    "unitId": "sf-2026-u2-01",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-01.05",
+    "prompt": "MRU: x0=−3 m, v=2 m/s, t=5 s. Trova x.",
+    "answer": "7 m.",
+    "feedback": "7 m.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-01.05",
+      "canonicalSha256": "cee04ac525142c96f092e65c86defd6987bad0ae7b62a6a4fc52444b1812f4bc"
+    }
+  },
+  {
+    "id": "final-U2-01.06",
+    "unitId": "sf-2026-u2-01",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-01.06",
+    "prompt": "Moto a costante: x0=1 m, v0=1 m/s, a=2 m/s², t=2 s. Trova x e v.",
+    "answer": "x=7 m; v=5 m/s.",
+    "feedback": "x=7 m; v=5 m/s.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-01.06",
+      "canonicalSha256": "e6e905b7d049729e47275a747416271384863ea0d3e2dec5fd4fecb180326bf1"
+    }
+  },
+  {
+    "id": "final-U2-01.07",
+    "unitId": "sf-2026-u2-01",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-01.07",
+    "prompt": "Due masse diverse cadono nel vuoto dalla stessa quota e da ferme. Quale arriva prima nel modello localegcostante?",
+    "answer": "Arrivano insieme: l’accelerazione ideale è g per entrambe.",
+    "feedback": "Arrivano insieme: l’accelerazione ideale è g per entrambe.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-01.07",
+      "canonicalSha256": "56c5ea07abf8f400f9bb67a685482d92148c7a79c7f5e1d3574c26aee82fe4d1"
+    }
+  },
+  {
+    "id": "final-U2-01.08",
+    "unitId": "sf-2026-u2-01",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-01.08",
+    "prompt": "Un proiettile ha velocità iniziale(8,6)m/s, g=10 m/s² e torna alla quota iniziale. Quali tempo di volo e gittata, senza aria?",
+    "answer": "1,2 s e 9,6 m; il tempo verticale è 2·6/10.",
+    "feedback": "1,2 s e 9,6 m; il tempo verticale è 2·6/10.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-01.08",
+      "canonicalSha256": "64065066cafadcb0ca2c8f660102ec72f62860fc656c3d2753df2e0384953136"
+    }
+  },
+  {
+    "id": "final-U2-01.09",
+    "unitId": "sf-2026-u2-01",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-01.09",
+    "prompt": "Moto circolare uniforme: r=0,5 m, v=2 m/s. Quali modulo e direzione di a?",
+    "answer": "8 m/s² verso il centro, non tangente.",
+    "feedback": "8 m/s² verso il centro, non tangente.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-01.09",
+      "canonicalSha256": "844427c1e5bf0b27b4255c0426bd55f8e5f5be625a8e9bce04ccb61011457c17"
+    }
+  },
+  {
+    "id": "final-U2-02.01",
+    "unitId": "sf-2026-u2-02",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-02.01",
+    "prompt": "Un corpo isolato ha velocità iniziale non nulla in un riferimento inerziale. Deve fermarsi secondo il primo principio?",
+    "answer": "No: mantiene velocità vettoriale costante.",
+    "feedback": "No: mantiene velocità vettoriale costante.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-02.01",
+      "canonicalSha256": "ac0980bd339afd3e85913b170ae02cce1cdbe2ab7c8dff28dda1c89a66a9f2b5"
+    }
+  },
+  {
+    "id": "final-U2-02.02",
+    "unitId": "sf-2026-u2-02",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-02.02",
+    "prompt": "Su 3 kg agisce risultante(9,0)N. Qual è l’accelerazione?",
+    "answer": "(3,0)m/s².",
+    "feedback": "(3,0)m/s².",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-02.02",
+      "canonicalSha256": "434d340693bdc05b24ea67e49294a4e41ed492109f8c16e94c95049fbb49781c"
+    }
+  },
+  {
+    "id": "final-U2-02.03",
+    "unitId": "sf-2026-u2-02",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-02.03",
+    "prompt": "Un dito spinge un tavolo. La reazione del tavolo annulla la forza sul tavolo nel suo diagramma?",
+    "answer": "No: la reazione agisce sul dito, un altro corpo.",
+    "feedback": "No: la reazione agisce sul dito, un altro corpo.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-02.03",
+      "canonicalSha256": "8087d2a2a9a990e910d8da9460bdedc20c97a6797a530ce809044d2db13e4516"
+    }
+  },
+  {
+    "id": "final-U2-02.04",
+    "unitId": "sf-2026-u2-02",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-02.04",
+    "prompt": "Risultante nulla implica corpo fermo?",
+    "answer": "No: implica accelerazione nulla, compatibile con velocità costante non nulla.",
+    "feedback": "No: implica accelerazione nulla, compatibile con velocità costante non nulla.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-02.04",
+      "canonicalSha256": "a656ee47e1b5220ff1b29ca6a8a943651c42deda85961d582b99eeeff61276e5"
+    }
+  },
+  {
+    "id": "final-U2-02.05",
+    "unitId": "sf-2026-u2-02",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-02.05",
+    "prompt": "Con g=9,8 m/s² qual è il peso di 0,5 kg? Se la distanza da una massa puntiforme raddoppia come varia l’attrazione?",
+    "answer": "4,9 N; l’attrazione gravitazionale puntiforme diventa 1/4.",
+    "feedback": "4,9 N; l’attrazione gravitazionale puntiforme diventa 1/4.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-02.05",
+      "canonicalSha256": "f224f8b196b6874d50fbebcc1216f9e3fdb560bb43e06528f8431ea770d22ba2"
+    }
+  },
+  {
+    "id": "final-U2-02.06",
+    "unitId": "sf-2026-u2-02",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-02.06",
+    "prompt": "Un blocco di peso 10 N è su piano orizzontale e riceve spinta verticale verso il basso di 4 N. Qual è la normale in equilibrio?",
+    "answer": "14 N; normale non sempre uguale al solo peso.",
+    "feedback": "14 N; normale non sempre uguale al solo peso.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-02.06",
+      "canonicalSha256": "078298e784c62bc201db7bf852263899a01c75aeeceebba173b75890bcf493c3"
+    }
+  },
+  {
+    "id": "final-U2-02.07",
+    "unitId": "sf-2026-u2-02",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-02.07",
+    "prompt": "Un blocco con N=10 N e μs=0,5 è tirato con 2 N ma resta fermo. Qual è l’attrito statico? Se scivola con μd=0,3 quale attrito dinamico?",
+    "answer": "2 N nel primo caso; 3 N nel secondo modello.",
+    "feedback": "2 N nel primo caso; 3 N nel secondo modello.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-02.07",
+      "canonicalSha256": "37ebc3e01f626cfcd73c38fc59732a2c06944a6ca825ede44d23e882da9b9387"
+    }
+  },
+  {
+    "id": "final-U2-02.08",
+    "unitId": "sf-2026-u2-02",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-02.08",
+    "prompt": "Una massa 1 kg è sospesa in equilibrio a un filo ideale, g=10 m/s². Qual è la tensione e su quale direzione agisce?",
+    "answer": "10 N lungo il filo verso il punto di sospensione sul corpo.",
+    "feedback": "10 N lungo il filo verso il punto di sospensione sul corpo.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-02.08",
+      "canonicalSha256": "36f58b7d97563de1a495111bad51cfef434a47c2693cb5190ec436f2588c7997"
+    }
+  },
+  {
+    "id": "final-U2-02.09",
+    "unitId": "sf-2026-u2-02",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-02.09",
+    "prompt": "Molla ideale: k=50 N/m, x=0,04 m. Qual è la forza di richiamo con asse positivo nell’allungamento?",
+    "answer": "−2 N; modulo 2 N.",
+    "feedback": "−2 N; modulo 2 N.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-02.09",
+      "canonicalSha256": "ac4e5bf106f63c73c142a0854a169734b1e0219d4c9d341de88281815abd5920"
+    }
+  },
+  {
+    "id": "final-U2-03.01",
+    "unitId": "sf-2026-u2-03",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-03.01",
+    "prompt": "Forza 5 N e spostamento 2 m sono perpendicolari. Qual è il lavoro di quella forza?",
+    "answer": "0 J; il prodotto scalare è nullo.",
+    "feedback": "0 J; il prodotto scalare è nullo.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-03.01",
+      "canonicalSha256": "be8241cd34ae7dcd40f3f2beeb7b9e882e8565479350812347a0971657e33674"
+    }
+  },
+  {
+    "id": "final-U2-03.02",
+    "unitId": "sf-2026-u2-03",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-03.02",
+    "prompt": "Un motore trasferisce 90 J in 3 s. Qual è la potenza media?",
+    "answer": "30 W.",
+    "feedback": "30 W.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-03.02",
+      "canonicalSha256": "b58e3417f0bd24d4fb53c8d9a3f8f48fff046b3ff3affca5341e7db9c2d8b0b2"
+    }
+  },
+  {
+    "id": "final-U2-03.03",
+    "unitId": "sf-2026-u2-03",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-03.03",
+    "prompt": "Il lavoro totale su un corpo è −6 J e K iniziale=10 J. Trova K finale.",
+    "answer": "4 J.",
+    "feedback": "4 J.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-03.03",
+      "canonicalSha256": "15cce0725a232d1994112d6ea2cf430b911f26f1fa341041fd89237e53e48478"
+    }
+  },
+  {
+    "id": "final-U2-03.04",
+    "unitId": "sf-2026-u2-03",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-03.04",
+    "prompt": "Una forza conservativa ha lavoro nullo su un percorso chiuso. Vale anche per attrito radente che dissipa energia?",
+    "answer": "No: l’attrito compie lavoro negativo lungo il percorso e non ammette lo stesso potenziale.",
+    "feedback": "No: l’attrito compie lavoro negativo lungo il percorso e non ammette lo stesso potenziale.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-03.04",
+      "canonicalSha256": "7c9c68c3acdd3198d80b625b16c258728528655b320edb6ef9dc562be4182388"
+    }
+  },
+  {
+    "id": "final-U2-03.05",
+    "unitId": "sf-2026-u2-03",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-03.05",
+    "prompt": "Con m=1 kg, g=10 m/s² e innalzamento 2 m, quanto cresce Ug? Con k=40 N/m e x=0,1 m, quanto vale Ue rispetto a x=0?",
+    "answer": "20 J; 0,2 J.",
+    "feedback": "20 J; 0,2 J.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-03.05",
+      "canonicalSha256": "368fa555ccb983d400427bcce923e065f548b0032a0ba691176da9ea4a3686d5"
+    }
+  },
+  {
+    "id": "final-U2-03.06",
+    "unitId": "sf-2026-u2-03",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-03.06",
+    "prompt": "Un sistema ideale passa da K=3 J, U=9 J a U=5 J senza lavori non conservativi. Trova K finale.",
+    "answer": "7 J; l’energia meccanica totale resta 12 J.",
+    "feedback": "7 J; l’energia meccanica totale resta 12 J.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-03.06",
+      "canonicalSha256": "7762753f4cc831cc936f511041ca75162d353937877e49b3df029f0aa2dce352"
+    }
+  },
+  {
+    "id": "final-U2-04.01",
+    "unitId": "sf-2026-u2-04",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-04.01",
+    "prompt": "Massa 0,4 kg a velocità −3 m/s. Quanto vale la quantità di moto lungo l’asse?",
+    "answer": "−1,2 kg m/s.",
+    "feedback": "−1,2 kg m/s.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-04.01",
+      "canonicalSha256": "61d51045211f65a28152dd0898ec8186741f4c40d0f65f651171cf2ba307087f"
+    }
+  },
+  {
+    "id": "final-U2-04.02",
+    "unitId": "sf-2026-u2-04",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-04.02",
+    "prompt": "Una forza risultante costante −6 N dura 0,2 s. Qual è l’impulso?",
+    "answer": "−1,2 N s.",
+    "feedback": "−1,2 N s.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-04.02",
+      "canonicalSha256": "2546b63a78f1f36924ab1177454e79927bc44e0a3f3869011842ab416d19a659"
+    }
+  },
+  {
+    "id": "final-U2-04.03",
+    "unitId": "sf-2026-u2-04",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-04.03",
+    "prompt": "Quale condizione esterna permette di conservare la quantità di moto totale durante un urto?",
+    "answer": "Impulso esterno totale nullo o trascurabile nell’intervallo, con sistema esplicitato.",
+    "feedback": "Impulso esterno totale nullo o trascurabile nell’intervallo, con sistema esplicitato.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-04.03",
+      "canonicalSha256": "3fd778460375d380e3508e1a2f9fc5208f8d73e9af05d6955d2945a1df7b9cf2"
+    }
+  },
+  {
+    "id": "final-U2-04.04",
+    "unitId": "sf-2026-u2-04",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-04.04",
+    "prompt": "Due masse uguali, una a 4 m/s e una ferma, restano unite dopo urto con impulso esterno nullo. Qual è vf? L’energia cinetica si conserva?",
+    "answer": "2 m/s; non si conserva K, parte diventa energia interna.",
+    "feedback": "2 m/s; non si conserva K, parte diventa energia interna.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-04.04",
+      "canonicalSha256": "f13330b0572a5897815987736f096061bddfd52b8830f4552c1f119a427041f2"
+    }
+  },
+  {
+    "id": "final-U2-05.01",
+    "unitId": "sf-2026-u2-05",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-05.01",
+    "prompt": "Masse 2 kg a x=1 m e 2 kg a x=5 m: quale centro di massa?",
+    "answer": "xCM=3 m.",
+    "feedback": "xCM=3 m.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-05.01",
+      "canonicalSha256": "8e6d50e813eb893676cb672dbc97c1c67be2bbfa61a6357eea4ce73cd0e27118"
+    }
+  },
+  {
+    "id": "final-U2-05.02",
+    "unitId": "sf-2026-u2-05",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-05.02",
+    "prompt": "Se la risultante esterna su un sistema di massa 5 kg è 10 N, quale accelerazione del centro di massa?",
+    "answer": "2 m/s² nella direzione della risultante.",
+    "feedback": "2 m/s² nella direzione della risultante.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-05.02",
+      "canonicalSha256": "841b8dd7529074462548c8fa04bdb28276f4e0a4dac4aeee6e8863e2c284f86c"
+    }
+  },
+  {
+    "id": "final-U2-05.03",
+    "unitId": "sf-2026-u2-05",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-05.03",
+    "prompt": "Un corpo rigido deve restare immobile?",
+    "answer": "No: rigidità idealizza distanze interne costanti; può traslare e ruotare.",
+    "feedback": "No: rigidità idealizza distanze interne costanti; può traslare e ruotare.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-05.03",
+      "canonicalSha256": "84871895af54ede08b0cd0f73ecec9df86833445917bb2e6097d627b49602b0b"
+    }
+  },
+  {
+    "id": "final-U2-05.04",
+    "unitId": "sf-2026-u2-05",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-05.04",
+    "prompt": "Forza 8 N con braccio perpendicolare 0,25 m: quale modulo del momento?",
+    "answer": "2 N m.",
+    "feedback": "2 N m.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-05.04",
+      "canonicalSha256": "53cb4061a3635cd09d53782956b161aa54f819debec88dd73b0320fdb76a8858"
+    }
+  },
+  {
+    "id": "final-U2-05.05",
+    "unitId": "sf-2026-u2-05",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-05.05",
+    "prompt": "Un corpo ha risultante nulla ma momento totale 3 N m. È in equilibrio statico?",
+    "answer": "No: manca il bilancio rotazionale.",
+    "feedback": "No: manca il bilancio rotazionale.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-05.05",
+      "canonicalSha256": "7cd910c178edacbe318ec1ef93becd5f6d2e3387cc377aae9fde8cf1eeaffaee"
+    }
+  },
+  {
+    "id": "final-U2-05.06",
+    "unitId": "sf-2026-u2-05",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "objectiveId": "U2-05.06",
+    "prompt": "Un muscolo ha braccio 0,04 m e deve bilanciare un momento di 8 N m. Quale forza perpendicolare?",
+    "answer": "200 N; un piccolo braccio richiede forza elevata.",
+    "feedback": "200 N; un piccolo braccio richiede forza elevata.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-strumenti-meccanica-v1.json",
+      "recordId": "final-U2-05.06",
+      "canonicalSha256": "1bb86648727b05b141c87902dd16670bb1346b6d1274a195f777e4d80256185e"
+    }
+  },
+  {
+    "id": "final-U3-01.01",
+    "unitId": "sf-2026-u3-01",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-01.01",
+    "prompt": "Quale differenza c’è fra la risposta statica di un fluido e quella di un solido a uno sforzo tangenziale?",
+    "answer": "Il fluido non sostiene uno sforzo di taglio statico senza deformazione continua, il solido può sostenerlo.",
+    "feedback": "Il fluido non sostiene uno sforzo di taglio statico senza deformazione continua, il solido può sostenerlo.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-01.01",
+      "canonicalSha256": "ad4e69587a55982578b6b9c212828b4912ceb19176ff445380536174df792d37"
+    }
+  },
+  {
+    "id": "final-U3-01.02",
+    "unitId": "sf-2026-u3-01",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-01.02",
+    "prompt": "Una forza normale di 16 N è distribuita uniformemente su 0,004 m². Qual è la pressione media?",
+    "answer": "4000 Pa.",
+    "feedback": "4000 Pa.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-01.02",
+      "canonicalSha256": "4762d3b82eed456cba383d3034b00613930ea3e7ceed72b522e867bd1d49ad43"
+    }
+  },
+  {
+    "id": "final-U3-01.03",
+    "unitId": "sf-2026-u3-01",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-01.03",
+    "prompt": "Un campione omogeneo ha massa 1,5 kg e volume 0,002 m³. Qual è la densità?",
+    "answer": "750 kg/m³.",
+    "feedback": "750 kg/m³.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-01.03",
+      "canonicalSha256": "445c20ac41c8f53836b936c4d63bb5b2a3b8ac0265c4993179e06503c6bbacfc"
+    }
+  },
+  {
+    "id": "final-U3-01.04",
+    "unitId": "sf-2026-u3-01",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-01.04",
+    "prompt": "La relazione p=p₀+ρgh descrive automaticamente la pressione in un tubo con flusso veloce e dissipativo? Motiva.",
+    "answer": "No: è una relazione idrostatica; il moto richiede considerare energia e perdite appropriate.",
+    "feedback": "No: è una relazione idrostatica; il moto richiede considerare energia e perdite appropriate.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-01.04",
+      "canonicalSha256": "c1df74dbd2e68e5a72dac96530e3fdee8f19d9416a3352ce2e1c88ac7f47005d"
+    }
+  },
+  {
+    "id": "final-U3-02.01",
+    "unitId": "sf-2026-u3-02",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-02.01",
+    "prompt": "Olio in quiete: ρ=800 kg/m³, g=10 m/s², profondità 0,5 m. Qual è l’incremento di pressione rispetto alla superficie?",
+    "answer": "4000 Pa, da aggiungere alla pressione sulla superficie.",
+    "feedback": "4000 Pa, da aggiungere alla pressione sulla superficie.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-02.01",
+      "canonicalSha256": "0f874b213ebb4cb30621251d8b0b96bd9acdf7c3fa302600ec77ad4df1a74976"
+    }
+  },
+  {
+    "id": "final-U3-02.02",
+    "unitId": "sf-2026-u3-02",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-02.02",
+    "prompt": "Un incremento di pressione di 2000 Pa raggiunge un pistone di area 0,01 m². Qual è l’aumento ideale di forza?",
+    "answer": "20 N, per Pascal e F=ΔpA.",
+    "feedback": "20 N, per Pascal e F=ΔpA.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-02.02",
+      "canonicalSha256": "ffd96f437373d2fbfec711fdb3a6c6fe13310034f581902d9a728512e033946e"
+    }
+  },
+  {
+    "id": "final-U3-02.03",
+    "unitId": "sf-2026-u3-02",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-02.03",
+    "prompt": "Un corpo sposta un volume di liquido di 0,002 m³. La densità del liquido è 900 kg/m³ e g=10 m/s². Trova modulo e verso della spinta.",
+    "answer": "18 N verso l’alto.",
+    "feedback": "18 N verso l’alto.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-02.03",
+      "canonicalSha256": "538813e05f5a15cb9d38ee9a4def531d0c508a022af193b79d64dbe0d83e5ffc"
+    }
+  },
+  {
+    "id": "final-U3-02.04",
+    "unitId": "sf-2026-u3-02",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-02.04",
+    "prompt": "Un corpo omogeneo di densità 750 kg/m³ galleggia liberamente in un liquido di densità 1000 kg/m³. Quale frazione del volume è immersa?",
+    "answer": "0,75=75%.",
+    "feedback": "0,75=75%.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-02.04",
+      "canonicalSha256": "e7d47aa74cfdacfc92a332e77b9093b02978d164495da52487d93de3939cd50e"
+    }
+  },
+  {
+    "id": "final-U3-02.05",
+    "unitId": "sf-2026-u3-02",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-02.05",
+    "prompt": "Perché un barometro ideale può misurare la pressione atmosferica mediante l’altezza di una colonna di liquido?",
+    "answer": "La differenza di pressione fra atmosfera e spazio superiore quasi vuoto equilibra ρgh.",
+    "feedback": "La differenza di pressione fra atmosfera e spazio superiore quasi vuoto equilibra ρgh.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-02.05",
+      "canonicalSha256": "f7cf2556f0212e0463b9008239aab340aa71cda32a3ea5bd9b2f9b427ab5d3ef"
+    }
+  },
+  {
+    "id": "final-U3-02.06",
+    "unitId": "sf-2026-u3-02",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-02.06",
+    "prompt": "Un manometro contiene liquido di densità 1000 kg/m³. Il dislivello verticale fra i menischi è 0,03 m; le densità dei gas sono trascurabili e g=10 m/s². Qual è il modulo della differenza di pressione?",
+    "answer": "300 Pa; conta il dislivello verticale.",
+    "feedback": "300 Pa; conta il dislivello verticale.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-02.06",
+      "canonicalSha256": "cbc36ee251bad829e1818995f78701b8e88839db9f1cb451f6bf5bb08e3fb9bb"
+    }
+  },
+  {
+    "id": "final-U3-03.01",
+    "unitId": "sf-2026-u3-03",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-03.01",
+    "prompt": "In 2 s attraversano una sezione del tubo 6 L di liquido. Qual è la portata volumetrica media?",
+    "answer": "3 L/s=0,003 m³/s.",
+    "feedback": "3 L/s=0,003 m³/s.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-03.01",
+      "canonicalSha256": "e592703c582786eaadbae04d400163be3cf95ba858555c98aa219fe54b197b78"
+    }
+  },
+  {
+    "id": "final-U3-03.02",
+    "unitId": "sf-2026-u3-03",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-03.02",
+    "prompt": "Un flusso statisticamente stazionario è necessariamente privo di fluttuazioni turbolente istantanee? Distingui le due descrizioni.",
+    "answer": "No: possono essere stazionarie le medie mentre i valori istantanei fluttuano; un campo istantaneo rigorosamente stazionario invece non cambia nel tempo.",
+    "feedback": "No: possono essere stazionarie le medie mentre i valori istantanei fluttuano; un campo istantaneo rigorosamente stazionario invece non cambia nel tempo.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-03.02",
+      "canonicalSha256": "dbe192dfe8e9b6a4f3311a7e2d34549e0dc5598239e417e6b765bfc648e4f88c"
+    }
+  },
+  {
+    "id": "final-U3-03.03",
+    "unitId": "sf-2026-u3-03",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-03.03",
+    "prompt": "Quale organizzazione del moto caratterizza un flusso laminare? Può presentare velocità diverse fra parete e asse?",
+    "answer": "Strati ordinati senza rimescolamento turbolento; possono avere velocità diverse fra parete e asse.",
+    "feedback": "Strati ordinati senza rimescolamento turbolento; possono avere velocità diverse fra parete e asse.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-03.03",
+      "canonicalSha256": "44fbb034649be2e1451ed082297f3397a198fd323f0cb2f5728b98b044fe2359"
+    }
+  },
+  {
+    "id": "final-U3-03.04",
+    "unitId": "sf-2026-u3-03",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-03.04",
+    "prompt": "Un fluido incomprimibile scorre senza accumulo né diramazioni: A₁=6 cm², v₁=2 m/s, A₂=3 cm². Trova v₂.",
+    "answer": "4 m/s; portata conservata.",
+    "feedback": "4 m/s; portata conservata.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-03.04",
+      "canonicalSha256": "da9fb3752cfeabc0e89f2573e3a3821ff8377cce1bc1dcb95e8f48f4dd556c95"
+    }
+  },
+  {
+    "id": "final-U3-03.05",
+    "unitId": "sf-2026-u3-03",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-03.05",
+    "prompt": "Lungo la stessa linea di corrente di un flusso ideale stazionario orizzontale, ρ=1000 kg/m³ e la velocità passa da 2 a 3 m/s. Trova p₂−p₁.",
+    "answer": "−2500 Pa da Bernoulli.",
+    "feedback": "−2500 Pa da Bernoulli.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-03.05",
+      "canonicalSha256": "b15af7bf0308d5b675a79c91f53034a29ef950f80dfdd5b1e36f93e2a42a6b1c"
+    }
+  },
+  {
+    "id": "final-U3-03.06",
+    "unitId": "sf-2026-u3-03",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-03.06",
+    "prompt": "Confronta restringimento e dilatazione di un vaso ideale alla stessa quota e portata. Come cambiano velocità e pressione statica? Dichiara un limite dell’applicazione al sangue reale.",
+    "answer": "Nel restringimento velocità maggiore e pressione minore; nella dilatazione l’opposto, senza estendere questo a una diagnosi reale.",
+    "feedback": "Nel restringimento velocità maggiore e pressione minore; nella dilatazione l’opposto, senza estendere questo a una diagnosi reale.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-03.06",
+      "canonicalSha256": "7ce625b6a1b1d9f0a129ef78b21142176ad405d34d068ba76530c51652592378"
+    }
+  },
+  {
+    "id": "final-U3-04.01",
+    "unitId": "sf-2026-u3-04",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-04.01",
+    "prompt": "Perché un fluido reale può richiedere una differenza di pressione per mantenere una portata costante in un tubo orizzontale?",
+    "answer": "La viscosità dissipa energia meccanica; non basta Bernoulli senza perdite.",
+    "feedback": "La viscosità dissipa energia meccanica; non basta Bernoulli senza perdite.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-04.01",
+      "canonicalSha256": "ad2aec0c982cdf1adefc923a28afe940a5f3324b05d69cddd1670ed452cad57a"
+    }
+  },
+  {
+    "id": "final-U3-04.02",
+    "unitId": "sf-2026-u3-04",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-04.02",
+    "prompt": "Nel profilo parabolico laminare sviluppato di un tubo circolare, con aderenza alla parete, qual è il rapporto fra velocità massima e media?",
+    "answer": "2, con aderenza alla parete e ipotesi di Poiseuille.",
+    "feedback": "2, con aderenza alla parete e ipotesi di Poiseuille.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-04.02",
+      "canonicalSha256": "6d0610bf60d05d5ce31a569ee853a6a029aa0e9fedc31908e15d9b5919f15fa1"
+    }
+  },
+  {
+    "id": "final-U3-04.03",
+    "unitId": "sf-2026-u3-04",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-04.03",
+    "prompt": "Che cosa misura il gradiente di velocità fra strati vicini e come si collega alla viscosità newtoniana?",
+    "answer": "La variazione della velocità per distanza trasversale; nel fluido newtoniano collega sforzo tangenziale e viscosità.",
+    "feedback": "La variazione della velocità per distanza trasversale; nel fluido newtoniano collega sforzo tangenziale e viscosità.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-04.03",
+      "canonicalSha256": "bbc26e61f3f694a1d269636e2da014565e54ed79d977bfa1154ff9e0fa28e239"
+    }
+  },
+  {
+    "id": "final-U3-04.04",
+    "unitId": "sf-2026-u3-04",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-04.04",
+    "prompt": "Nel modello di Poiseuille, Δp, L e η sono fissati e il raggio aumenta di un fattore 3. Qual è Q₂/Q₁?",
+    "answer": "81, poiché Q∝r^4.",
+    "feedback": "81, poiché Q∝r^4.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-04.04",
+      "canonicalSha256": "102bcbc2d094173a241c18349add6be7eead08b0dc21ce6b418e837e3a1c7066"
+    }
+  },
+  {
+    "id": "final-U3-04.05",
+    "unitId": "sf-2026-u3-04",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-04.05",
+    "prompt": "Due resistenze idrauliche lineari valgono R e 3R. Trova la resistenza equivalente prima in serie e poi in parallelo.",
+    "answer": "4R in serie; 3R/4 in parallelo, nel modello lineare.",
+    "feedback": "4R in serie; 3R/4 in parallelo, nel modello lineare.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-04.05",
+      "canonicalSha256": "4aa672e59c9768b6078b1a244dc26b6b3d043ddae84a4f96787b9bb09ef407dd"
+    }
+  },
+  {
+    "id": "final-U3-05.01",
+    "unitId": "sf-2026-u3-05",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-05.01",
+    "prompt": "Quali sono due unità equivalenti della tensione superficiale? Collega ciascuna al suo significato fisico.",
+    "answer": "N/m come forza per lunghezza e J/m² come lavoro reversibile per area creata, nelle condizioni dichiarate.",
+    "feedback": "N/m come forza per lunghezza e J/m² come lavoro reversibile per area creata, nelle condizioni dichiarate.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-05.01",
+      "canonicalSha256": "8d8cabb4cb5bdb17e3e028e13f200e69ffff552095765b94ecd78efe7953befb"
+    }
+  },
+  {
+    "id": "final-U3-05.02",
+    "unitId": "sf-2026-u3-05",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-05.02",
+    "prompt": "A tensione superficiale costante, perché gli effetti superficiali sono più importanti rispetto al peso per gocce geometricamente simili più piccole?",
+    "answer": "Il rapporto superficie/volume cresce riducendo la dimensione; il peso scala col volume.",
+    "feedback": "Il rapporto superficie/volume cresce riducendo la dimensione; il peso scala col volume.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-05.02",
+      "canonicalSha256": "6ea7d7a4b40b68e04e4eaf4b0cd5fdf13f7f9b7230235c8de784b881795a7a70"
+    }
+  },
+  {
+    "id": "final-U3-05.03",
+    "unitId": "sf-2026-u3-05",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-05.03",
+    "prompt": "Un liquido sale in ogni capillare indipendentemente dalla parete? Spiega il ruolo della bagnabilità.",
+    "answer": "No: dipende anche dalla bagnabilità; un menisco non bagnante può produrre depressione.",
+    "feedback": "No: dipende anche dalla bagnabilità; un menisco non bagnante può produrre depressione.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-05.03",
+      "canonicalSha256": "741bdae3ed0b7e88d2f60b8f741b6a30f6389fcb7830b1c8d25ccc300e92d2a7"
+    }
+  },
+  {
+    "id": "final-U3-05.04",
+    "unitId": "sf-2026-u3-05",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-05.04",
+    "prompt": "Un’interfaccia piana in equilibrio semplice presenta un salto di pressione dovuto alla sola curvatura? Distingui salto e pressione assoluta.",
+    "answer": "No: la curvatura è nulla; non ne segue che la pressione assoluta sia zero.",
+    "feedback": "No: la curvatura è nulla; non ne segue che la pressione assoluta sia zero.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-05.04",
+      "canonicalSha256": "254c4d8da5461636d158008283586cfb4ae56d951ddf453efb30b7db22b26909"
+    }
+  },
+  {
+    "id": "final-U3-05.05",
+    "unitId": "sf-2026-u3-05",
+    "courseId": "sf-2026-fluidi",
+    "objectiveId": "U3-05.05",
+    "prompt": "Due gocce sferiche dello stesso liquido, alla stessa tensione superficiale, hanno raggi 3 mm e 6 mm. Quale presenta maggiore sovrapressione interna? Motiva qualitativamente.",
+    "answer": "Quella da 3 mm, con curvatura maggiore.",
+    "feedback": "Quella da 3 mm, con curvatura maggiore.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U3-05.05",
+      "canonicalSha256": "98acd1c5f442c089496d209febf36caeb4e0a4f9106a4bd23f19d6d0671094e1"
+    }
+  },
+  {
+    "id": "final-U5-01.01",
+    "unitId": "sf-2026-u5-01",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-01.01",
+    "prompt": "Scegli come oggetto di analisi il gas dentro un cilindro. Definisci sistema, ambiente e confine, distinguendo chiuso e isolato.",
+    "answer": "Il gas è il sistema; il resto è ambiente e il confine lo separa. Chiuso: niente scambio di materia; isolato: niente scambio di materia né energia.",
+    "feedback": "Il gas è il sistema; il resto è ambiente e il confine lo separa. Chiuso: niente scambio di materia; isolato: niente scambio di materia né energia.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-01.01",
+      "canonicalSha256": "fe3fff07b10e3c41c8573f694de646658832fded8379f4d5db36a23ebdfe2e72"
+    }
+  },
+  {
+    "id": "final-U5-01.02",
+    "unitId": "sf-2026-u5-01",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-01.02",
+    "prompt": "Quali variabili p, V e T descrivono un gas uniforme in equilibrio e quali sono le loro unità SI? Quale ulteriore quantità occorre nell’equazione di stato?",
+    "answer": "p in Pa, V in m³, T in K, insieme alla quantità di sostanza.",
+    "feedback": "p in Pa, V in m³, T in K, insieme alla quantità di sostanza.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-01.02",
+      "canonicalSha256": "7fbaf0d5ca9c82af2336e3790743290d5868db71bb9c068e1d6d83fe41beb0fa"
+    }
+  },
+  {
+    "id": "final-U5-01.03",
+    "unitId": "sf-2026-u5-01",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-01.03",
+    "prompt": "Il calore scambiato è una funzione di stato come l’energia interna? Spiega la distinzione.",
+    "answer": "No: Q dipende dal percorso; U è funzione di stato.",
+    "feedback": "No: Q dipende dal percorso; U è funzione di stato.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-01.03",
+      "canonicalSha256": "247b5954168fe71ed9be2799422faf9359e271e6c379d83556394fd42ce686e1"
+    }
+  },
+  {
+    "id": "final-U5-01.04",
+    "unitId": "sf-2026-u5-01",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-01.04",
+    "prompt": "Converti −20 °C in kelvin e spiega se una differenza di 20 °C equivale a una differenza di 20 K.",
+    "answer": "253,15 K. Gli intervalli di 20 °C e 20 K hanno uguale ampiezza; gli zeri delle scale sono diversi.",
+    "feedback": "253,15 K. Gli intervalli di 20 °C e 20 K hanno uguale ampiezza; gli zeri delle scale sono diversi.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-01.04",
+      "canonicalSha256": "d95e5b7a20ebee7472129805d6be2f7948c381d22a40881889244dd1647b5ff0"
+    }
+  },
+  {
+    "id": "final-U5-01.05",
+    "unitId": "sf-2026-u5-01",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-01.05",
+    "prompt": "Gas ideale in equilibrio: n=2 mol, T=250 K, p assoluta=100000 Pa. Con R=8,31446261815324 J/(mol K), trova V in m³.",
+    "answer": "0,0415723130907662 m³; usa pressione assoluta e kelvin.",
+    "feedback": "0,0415723130907662 m³; usa pressione assoluta e kelvin.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-01.05",
+      "canonicalSha256": "c842bc4142ffb352dfbc212759a2293df04aa415351e587ee2924c28a8138380"
+    }
+  },
+  {
+    "id": "final-U5-02.01",
+    "unitId": "sf-2026-u5-02",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-02.01",
+    "prompt": "È corretto chiamare l’energia interna di un corpo «calore contenuto»? Definisci il calore come trasferimento.",
+    "answer": "No: calore è energia trasferita per differenza di temperatura.",
+    "feedback": "No: calore è energia trasferita per differenza di temperatura.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-02.01",
+      "canonicalSha256": "788d7720b87e783d7e1072177f54d0861a186c9659642f2fc5fba211d488208b"
+    }
+  },
+  {
+    "id": "final-U5-02.02",
+    "unitId": "sf-2026-u5-02",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-02.02",
+    "prompt": "Un corpo di capacità termica costante 40 J/K assorbe 120 J, senza transizioni e nelle condizioni a cui si riferisce la capacità. Quanto aumenta T?",
+    "answer": "3 K.",
+    "feedback": "3 K.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-02.02",
+      "canonicalSha256": "9c304a6a49b3cea574897ad2d630b2054a39ab84db7bb73e89a7274577d03ae7"
+    }
+  },
+  {
+    "id": "final-U5-02.03",
+    "unitId": "sf-2026-u5-02",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-02.03",
+    "prompt": "Un campione ha massa 0,5 kg e calore specifico 800 J/(kg K). Qual è la sua capacità termica totale?",
+    "answer": "400 J/K.",
+    "feedback": "400 J/K.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-02.03",
+      "canonicalSha256": "16812f0ae9d7ff96271211f978769b1209f0bc26d18df1ed0c59f14458dc29d8"
+    }
+  },
+  {
+    "id": "final-U5-02.04",
+    "unitId": "sf-2026-u5-02",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-02.04",
+    "prompt": "Per un gas ideale, quanto vale C_P, m−C_V, m fra capacità molari? Perché quella a pressione costante è maggiore?",
+    "answer": "C_P, m−C_V, m=R; a pressione costante parte del calore alimenta il lavoro di espansione.",
+    "feedback": "C_P, m−C_V, m=R; a pressione costante parte del calore alimenta il lavoro di espansione.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-02.04",
+      "canonicalSha256": "37306a9b56d2ffe77f0c4425ea2eb25df6393e3f1450ff52b28578df82bff3ac"
+    }
+  },
+  {
+    "id": "final-U5-02.05",
+    "unitId": "sf-2026-u5-02",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-02.05",
+    "prompt": "Durante la fusione di una sostanza pura a pressione fissata, con due fasi in equilibrio, aggiungere calore fa necessariamente aumentare T?",
+    "answer": "No: può cambiare la frazione di fase a temperatura costante.",
+    "feedback": "No: può cambiare la frazione di fase a temperatura costante.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-02.05",
+      "canonicalSha256": "27563cb113d9cd02fade11efea4c355197b83d1ae59fa9f863d8b0511946422c"
+    }
+  },
+  {
+    "id": "final-U5-02.06",
+    "unitId": "sf-2026-u5-02",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-02.06",
+    "prompt": "Un processo assorbe calore latente specifico L=2·10⁵ J/kg. Quanta energia richiede la trasformazione di 0,03 kg già alla temperatura di transizione?",
+    "answer": "6000 J; la legge e il segno del processo vanno dichiarati.",
+    "feedback": "6000 J; la legge e il segno del processo vanno dichiarati.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-02.06",
+      "canonicalSha256": "bf1fc535099079fb8852bac3a33bea89e32aba67f3c96945a635a988aba766f6"
+    }
+  },
+  {
+    "id": "final-U5-02.07",
+    "unitId": "sf-2026-u5-02",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-02.07",
+    "prompt": "Due corpi isolati dall’esterno scambiano soltanto calore. Il primo riceve Q₁=+70 J. Quanto vale Q₂ se il recipiente ha capacità trascurabile?",
+    "answer": "−70 J; somma dei calori uguale zero.",
+    "feedback": "−70 J; somma dei calori uguale zero.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-02.07",
+      "canonicalSha256": "95e97b8e4b4048f8f2b26a17d38a018b98262fd31eb08d61ad8cdb6a613efc5a"
+    }
+  },
+  {
+    "id": "final-U5-03.01",
+    "unitId": "sf-2026-u5-03",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-03.01",
+    "prompt": "Una sbarra metallica ferma trasferisce energia dal capo caldo al freddo, senza moto macroscopico di materiale. Quale meccanismo è coinvolto?",
+    "answer": "Conduzione.",
+    "feedback": "Conduzione.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-03.01",
+      "canonicalSha256": "e3815d241ca2fbcf62b82a4ed2464428ca6991c80255881c3052735d3e52559a"
+    }
+  },
+  {
+    "id": "final-U5-03.02",
+    "unitId": "sf-2026-u5-03",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-03.02",
+    "prompt": "Un liquido riscaldato si mette in circolazione per differenze di densità in un campo gravitazionale. Quale meccanismo di trasporto è coinvolto?",
+    "answer": "Convezione naturale.",
+    "feedback": "Convezione naturale.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-03.02",
+      "canonicalSha256": "b1baecbe1bf12e521af3abfe86f084eaa99a0c34a0d238cefe93a4bbae61b14c"
+    }
+  },
+  {
+    "id": "final-U5-03.03",
+    "unitId": "sf-2026-u5-03",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-03.03",
+    "prompt": "Un corpo e il grande ambiente che lo circonda sono alla stessa temperatura assoluta positiva, in equilibrio radiativo. Il corpo emette? Qual è lo scambio netto?",
+    "answer": "Sì, emettono entrambe; lo scambio netto è zero.",
+    "feedback": "Sì, emettono entrambe; lo scambio netto è zero.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-03.03",
+      "canonicalSha256": "e882dbe6aff593cd44a45f1c673552b9a0b766a7691b07db2da810eeda53d85e"
+    }
+  },
+  {
+    "id": "final-U5-04.01",
+    "unitId": "sf-2026-u5-04",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-04.01",
+    "prompt": "Il gas percorre un ciclo termodinamico. Quanto vale ΔU sul ciclo e quale proprietà giustifica la risposta?",
+    "answer": "0, perché l’energia interna è funzione di stato.",
+    "feedback": "0, perché l’energia interna è funzione di stato.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-04.01",
+      "canonicalSha256": "aea4cf4dc7c1fa5a31e6bba0af798ccb6a1dd2b3593505bdbab025eb3e377332"
+    }
+  },
+  {
+    "id": "final-U5-04.02",
+    "unitId": "sf-2026-u5-04",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-04.02",
+    "prompt": "Un gas riceve Q=+90 J e compie W=+40 J sull’ambiente. Dichiara la convenzione e calcola ΔU, trascurando variazioni energetiche macroscopiche.",
+    "answer": "Q entrante, W fatto dal gas: ΔU=Q−W=+50 J.",
+    "feedback": "Q entrante, W fatto dal gas: ΔU=Q−W=+50 J.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-04.02",
+      "canonicalSha256": "d00b7fb42efaf6204f983f034f598accb9a2dc3828fa4ca63cc50dd17a4b4728"
+    }
+  },
+  {
+    "id": "final-U5-04.03",
+    "unitId": "sf-2026-u5-04",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-04.03",
+    "prompt": "La relazione ΔU=Q−W ammette scomparsa di energia? Spiega quali contributi vengono bilanciati attraverso il confine del sistema.",
+    "answer": "No: esprime il bilancio fra energia interna e trasferimenti attraverso il confine.",
+    "feedback": "No: esprime il bilancio fra energia interna e trasferimenti attraverso il confine.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-04.03",
+      "canonicalSha256": "4436ca7e6c3de715dadcd4d9f26d445308f024e8fef2b1ca3dfdda8de3305edd"
+    }
+  },
+  {
+    "id": "final-U5-04.04",
+    "unitId": "sf-2026-u5-04",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-04.04",
+    "prompt": "Un processo con attrito può essere invertito ripristinando esattamente sistema e ambiente, senza altri effetti? Motiva.",
+    "answer": "No: è irreversibile; invertire solo il moto non annulla la produzione di entropia.",
+    "feedback": "No: è irreversibile; invertire solo il moto non annulla la produzione di entropia.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-04.04",
+      "canonicalSha256": "d75b8d10d64bfe57dccee728263ac7383a9934b93aca2c8ec0027aee754bafae"
+    }
+  },
+  {
+    "id": "final-U5-04.05",
+    "unitId": "sf-2026-u5-04",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-04.05",
+    "prompt": "Per un gas ideale in una trasformazione isoterma, ΔU=0 impone Q=0? Collega calore e lavoro nella convenzione del corso.",
+    "answer": "No: Q=W; calore e lavoro possono essere entrambi non nulli.",
+    "feedback": "No: Q=W; calore e lavoro possono essere entrambi non nulli.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-04.05",
+      "canonicalSha256": "2a24f69f9f75e3a2ea60c09536e8b1bae4b89fc5037e73a517c406c195755085"
+    }
+  },
+  {
+    "id": "final-U5-04.06",
+    "unitId": "sf-2026-u5-04",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-04.06",
+    "prompt": "In una trasformazione isocora, quale valore ha il lavoro di espansione p, V? Quale vincolo lo determina?",
+    "answer": "0 J perché ΔV=0.",
+    "feedback": "0 J perché ΔV=0.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-04.06",
+      "canonicalSha256": "7fcd6af3d11550e7d4edfca0026fdffce745cf9c543e3ee761676d025d9936d3"
+    }
+  },
+  {
+    "id": "final-U5-04.07",
+    "unitId": "sf-2026-u5-04",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-04.07",
+    "prompt": "Un gas si espande quasistaticamente contro pressione costante 2·10⁵ Pa, aumentando il volume di 0,001 m³. Qual è il lavoro fatto dal gas?",
+    "answer": "+200 J.",
+    "feedback": "+200 J.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-04.07",
+      "canonicalSha256": "46825392d85eeb4cfd94f95dfdb3f13da8b393487d40b7c86e76cd8c3bcbf4c4"
+    }
+  },
+  {
+    "id": "final-U5-04.08",
+    "unitId": "sf-2026-u5-04",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-04.08",
+    "prompt": "Un gas viene compresso adiabaticamente: l’ambiente compie 60 J sul gas. Trova Q, W fatto dal gas e ΔU.",
+    "answer": "Q=0; W fatto dal gas=−60 J; ΔU=+60 J.",
+    "feedback": "Q=0; W fatto dal gas=−60 J; ΔU=+60 J.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-04.08",
+      "canonicalSha256": "a5b5c69dd539640d85c6c912cdf58be12ef38a20f3ac6b13808b00ab07b5066c"
+    }
+  },
+  {
+    "id": "final-U5-05.01",
+    "unitId": "sf-2026-u5-05",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-05.01",
+    "prompt": "Un motore ciclico preleva calore da un solo termostato e lo converte tutto in lavoro senza altri effetti. Quale enunciato lo esclude?",
+    "answer": "Secondo principio, enunciato di Kelvin-Planck; Clausius esclude trasferimento spontaneo freddo→caldo senza altri effetti.",
+    "feedback": "Secondo principio, enunciato di Kelvin-Planck; Clausius esclude trasferimento spontaneo freddo→caldo senza altri effetti.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-05.01",
+      "canonicalSha256": "f48c2bd6250935a72fbc65d07ca2d734aef8567ef7da08d72ae50350e8ead586"
+    }
+  },
+  {
+    "id": "final-U5-05.02",
+    "unitId": "sf-2026-u5-05",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-05.02",
+    "prompt": "Un processo può conservare energia ed essere comunque irreversibile? Spiega quale controllo ulteriore manca al solo bilancio energetico.",
+    "answer": "Sì: conservazione energetica non impone reversibilità né entropia totale costante.",
+    "feedback": "Sì: conservazione energetica non impone reversibilità né entropia totale costante.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-05.02",
+      "canonicalSha256": "bb7bfb8538a63bc38b64c6568480889c7f1d0f804c13a1fe84d6ebffce4d5f09"
+    }
+  },
+  {
+    "id": "final-U5-05.03",
+    "unitId": "sf-2026-u5-05",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-05.03",
+    "prompt": "Che cosa definisce un ciclo termodinamico e quanto varia una funzione di stato al suo termine?",
+    "answer": "Ritorno allo stato iniziale; variazione netta della funzione di stato zero.",
+    "feedback": "Ritorno allo stato iniziale; variazione netta della funzione di stato zero.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-05.03",
+      "canonicalSha256": "60243b02b44a0e71c82da29cdc8f8faf297207f0b9553b39837e159a7c02ab44"
+    }
+  },
+  {
+    "id": "final-U5-05.04",
+    "unitId": "sf-2026-u5-05",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-05.04",
+    "prompt": "Una macchina ciclica riceve 1000 J e cede 700 J. Calcola lavoro netto e rendimento.",
+    "answer": "0,3=30%; W=300 J.",
+    "feedback": "0,3=30%; W=300 J.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-05.04",
+      "canonicalSha256": "5cc13faa05ebb6a4ff9340e22e82059eefadf25ca6af6e1e834bd7484c855d19"
+    }
+  },
+  {
+    "id": "final-U5-05.05",
+    "unitId": "sf-2026-u5-05",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-05.05",
+    "prompt": "Qual è il rendimento massimo di un motore che opera fra serbatoi a 500 K e 400 K? Dichiara quando il limite può essere uguagliato.",
+    "answer": "η_C=1−400/500=0,20=20%; uguaglianza soltanto nel limite reversibile fra gli stessi serbatoi.",
+    "feedback": "η_C=1−400/500=0,20=20%; uguaglianza soltanto nel limite reversibile fra gli stessi serbatoi.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-05.05",
+      "canonicalSha256": "24cbab47319bb1056c337d830fc35b19e3018610b6f9c17e667127d09f30c8a2"
+    }
+  },
+  {
+    "id": "final-U5-05.06",
+    "unitId": "sf-2026-u5-05",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-05.06",
+    "prompt": "L’entropia di un sottosistema diminuisce mentre cede energia all’ambiente. Questo viola necessariamente il secondo principio? Quale complesso occorre esaminare?",
+    "answer": "No: si deve valutare ΔS totale di sistema e ambiente; deve essere non negativa per l’universo isolato.",
+    "feedback": "No: si deve valutare ΔS totale di sistema e ambiente; deve essere non negativa per l’universo isolato.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-05.06",
+      "canonicalSha256": "79a0c6cff4dc746c7c7571dedbac0e93ce2a1ed7b55792c86d42d9223704f653"
+    }
+  },
+  {
+    "id": "final-U5-05.07",
+    "unitId": "sf-2026-u5-05",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-05.07",
+    "prompt": "Nell’interpretazione statistica con microstati equiprobabili, come cambia S aumentando la molteplicità Ω compatibile con il macrostato? Spiega il ruolo del logaritmo.",
+    "answer": "S aumenta con lnΩ; S=k_B lnΩ nel modello equiprobabile. Il logaritmo rende additive le entropie quando le molteplicità di sistemi indipendenti si moltiplicano.",
+    "feedback": "S aumenta con lnΩ; S=k_B lnΩ nel modello equiprobabile. Il logaritmo rende additive le entropie quando le molteplicità di sistemi indipendenti si moltiplicano.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-05.07",
+      "canonicalSha256": "1c4ea98faa480a8e68709b8a3d801854cc8b3c1d822661e4426f97c897d5d7ea"
+    }
+  },
+  {
+    "id": "final-U5-05.08",
+    "unitId": "sf-2026-u5-05",
+    "courseId": "sf-2026-termodinamica",
+    "objectiveId": "U5-05.08",
+    "prompt": "Si trasferiscono spontaneamente 100 J da un termostato a 500 K a uno a 250 K. Trova le due variazioni di entropia e la loro somma.",
+    "answer": "Serbatoio caldo: −100/500=−0,2 J/K; freddo: +100/250=+0,4 J/K; somma: +0,2 J/K.",
+    "feedback": "Serbatoio caldo: −100/500=−0,2 J/K; freddo: +100/250=+0,4 J/K; somma: +0,2 J/K.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "VALIDATED_TECHNICALLY",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-fluidi-termodinamica-v1.json",
+      "recordId": "final-U5-05.08",
+      "canonicalSha256": "21900c1ec803d411f526e24b9c1893baed3d0b5592c876e1264030a125a2cc33"
+    }
+  },
+  {
+    "id": "final-U6-01.01",
+    "unitId": "sf-2026-u6-01",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-01.01",
+    "prompt": "Qual è l’unità SI della carica e quale segno assegna il verso convenzionale del campo?",
+    "answer": "Coulomb; il campo è definito tramite forza su carica di prova positiva.",
+    "feedback": "Coulomb; il campo è definito tramite forza su carica di prova positiva.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-01.01",
+      "canonicalSha256": "216d1286593490786f30b8a504d681d327de1ffd25224508a1fa0bde060692de"
+    }
+  },
+  {
+    "id": "final-U6-01.02",
+    "unitId": "sf-2026-u6-01",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-01.02",
+    "prompt": "Due corpi isolati si scambiano elettroni: deve conservarsi la carica di ciascuno o quella totale?",
+    "answer": "Quella totale; le cariche dei singoli corpi possono cambiare.",
+    "feedback": "Quella totale; le cariche dei singoli corpi possono cambiare.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-01.02",
+      "canonicalSha256": "8f87d6e0339632fe5d6cf25dbac0f1ef2528ba7bd1a2da24488d7aecdba63875"
+    }
+  },
+  {
+    "id": "final-U6-01.03",
+    "unitId": "sf-2026-u6-01",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-01.03",
+    "prompt": "Per cariche puntiformi uguali a distanza tripla, quale rapporto della forza di Coulomb rispetto a prima?",
+    "answer": "1/9, a cariche fissate.",
+    "feedback": "1/9, a cariche fissate.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-01.03",
+      "canonicalSha256": "8f0c2adf5ef6a1fb0cbf2a974e8dfa81e9289f5c8ee7e7210304176d8eacaa3f"
+    }
+  },
+  {
+    "id": "final-U6-01.04",
+    "unitId": "sf-2026-u6-01",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-01.04",
+    "prompt": "Le linee di campo sono necessariamente le traiettorie di una carica lanciata con velocità iniziale qualsiasi?",
+    "answer": "No: indicano il vettore campo locale, non vincolano una traiettoria arbitraria.",
+    "feedback": "No: indicano il vettore campo locale, non vincolano una traiettoria arbitraria.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-01.04",
+      "canonicalSha256": "4d69fea96c7d1c85f767e593b09ea9c9b327b4abe110de937e7a47567fc54135"
+    }
+  },
+  {
+    "id": "final-U6-01.05",
+    "unitId": "sf-2026-u6-01",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-01.05",
+    "prompt": "Due cariche positive uguali generano campi opposti al punto medio. Quale campo totale e quale regola si usa?",
+    "answer": "Campo nullo; somma vettoriale per sovrapposizione.",
+    "feedback": "Campo nullo; somma vettoriale per sovrapposizione.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-01.05",
+      "canonicalSha256": "320fb6784336f067f77ccbc453d2fa39237569a61d8ef89c737937595a652049"
+    }
+  },
+  {
+    "id": "final-U6-01.06",
+    "unitId": "sf-2026-u6-01",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-01.06",
+    "prompt": "Carica +0,002 C, massa 0,01 kg, in E=50 N/C uniforme, unica forza. Quale accelerazione?",
+    "answer": "10 m/s² lungo E, da a=qE/m.",
+    "feedback": "10 m/s² lungo E, da a=qE/m.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-01.06",
+      "canonicalSha256": "ffa6080b232292a9c074a21d9320d3ccad0c5735f4d9ab918f9b1c32de956580"
+    }
+  },
+  {
+    "id": "final-U6-02.01",
+    "unitId": "sf-2026-u6-02",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-02.01",
+    "prompt": "Il potenziale sceltozero in un punto impone energia potenziale nulla per qualunque riferimento?",
+    "answer": "No: lo zero è convenzionale; le differenze hanno significato dinamico.",
+    "feedback": "No: lo zero è convenzionale; le differenze hanno significato dinamico.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-02.01",
+      "canonicalSha256": "67babe4684200559505417e19f2503d2a3a6313bf63d913f72661208aef9e2cf"
+    }
+  },
+  {
+    "id": "final-U6-02.02",
+    "unitId": "sf-2026-u6-02",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-02.02",
+    "prompt": "Quale unità ha V=U/q e quale grandezza fisica esprime?",
+    "answer": "Volt=J/C; energia potenziale per unità di carica di prova.",
+    "feedback": "Volt=J/C; energia potenziale per unità di carica di prova.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-02.02",
+      "canonicalSha256": "0ea2e67e799e12a3d65cc992a3765f706f649a7625054b5a832afc378ba2a855"
+    }
+  },
+  {
+    "id": "final-U6-02.03",
+    "unitId": "sf-2026-u6-02",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-02.03",
+    "prompt": "Una carica +3 C passa da 2 V a 7 V. Quale ΔU?",
+    "answer": "+15 J, da q ΔV.",
+    "feedback": "+15 J, da q ΔV.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-02.03",
+      "canonicalSha256": "23bf7b20bff068011df6d4d59888ea80988f4d4fafc0e939f046fc0fca7518f2"
+    }
+  },
+  {
+    "id": "final-U6-02.04",
+    "unitId": "sf-2026-u6-02",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-02.04",
+    "prompt": "Se solo la forza elettrica compie lavoro e ΔU=−0,4 J, quale ΔK?",
+    "answer": "+0,4 J per conservazione energetica.",
+    "feedback": "+0,4 J per conservazione energetica.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-02.04",
+      "canonicalSha256": "622d77bc9f672bf5617d251e38450332ef7ec34ae8e75bf418fcfb84d92c18b4"
+    }
+  },
+  {
+    "id": "final-U6-03.01",
+    "unitId": "sf-2026-u6-03",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-03.01",
+    "prompt": "Una sfera conduttrice neutra isolata, senza contatto, si polarizza per induzione. Deve acquisire carica netta?",
+    "answer": "No: può separare cariche mantenendo totalezero.",
+    "feedback": "No: può separare cariche mantenendo totalezero.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-03.01",
+      "canonicalSha256": "c8925ed88f82c870a266151d786cde7215c0100ccda3aa3c7033e781599fd0bf"
+    }
+  },
+  {
+    "id": "final-U6-03.02",
+    "unitId": "sf-2026-u6-03",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-03.02",
+    "prompt": "Un dielettrico polarizzato richiede movimento libero di tutte le cariche attraverso l’intero materiale?",
+    "answer": "No: orientazione o spostamenti locali di cariche legate possono produrre polarizzazione.",
+    "feedback": "No: orientazione o spostamenti locali di cariche legate possono produrre polarizzazione.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-03.02",
+      "canonicalSha256": "d2450966f92ed1f0faee4d9742fd0d044c9841c133a6467b560ab64a14415fa6"
+    }
+  },
+  {
+    "id": "final-U6-04.01",
+    "unitId": "sf-2026-u6-04",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-04.01",
+    "prompt": "Che cosa significa DC nel modello elementare e quale grandezza non cambia segno periodicamente?",
+    "answer": "Corrente continua; il flusso di carica mantiene direzione nel modello stazionario.",
+    "feedback": "Corrente continua; il flusso di carica mantiene direzione nel modello stazionario.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-04.01",
+      "canonicalSha256": "1970c9a905a4043abfbb5134e07c93db655c714b0514a147d96220c5ecaa19cd"
+    }
+  },
+  {
+    "id": "final-U6-04.02",
+    "unitId": "sf-2026-u6-04",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-04.02",
+    "prompt": "In 0,5 s passano 0,2 C. Quale corrente media?",
+    "answer": "0,4 A.",
+    "feedback": "0,4 A.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-04.02",
+      "canonicalSha256": "317a881b2d4a1227ef312ab9b980696aac18d58e807edc566feb78c1f539c625"
+    }
+  },
+  {
+    "id": "final-U6-04.03",
+    "unitId": "sf-2026-u6-04",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-04.03",
+    "prompt": "Un generatore ideale di tensione 12 V mantiene che cosa se cambia il carico?",
+    "answer": "La differenza di potenziale 12 V; la corrente dipende dal carico ideale.",
+    "feedback": "La differenza di potenziale 12 V; la corrente dipende dal carico ideale.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-04.03",
+      "canonicalSha256": "cf035ce5067297e1363f2fdf334d67497baaea45bda7a1bb9d4c10c775a5f8ed"
+    }
+  },
+  {
+    "id": "final-U6-04.04",
+    "unitId": "sf-2026-u6-04",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-04.04",
+    "prompt": "Resistore ohmico 15 Ω a 3 V: quale I?",
+    "answer": "0,2 A.",
+    "feedback": "0,2 A.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-04.04",
+      "canonicalSha256": "eeec2b26eddfb73d7c98912674c3b421addd05695b27d937609619cf888ea9b7"
+    }
+  },
+  {
+    "id": "final-U6-04.05",
+    "unitId": "sf-2026-u6-04",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-04.05",
+    "prompt": "Un filo triplica L a ρ e A fisse. Come varia R?",
+    "answer": "Triplica, da R=ρL/A.",
+    "feedback": "Triplica, da R=ρL/A.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-04.05",
+      "canonicalSha256": "db6309769756b70b391e3bbf6168fd89c3527a6b58f33e59b2cf2962aa4e6bbc"
+    }
+  },
+  {
+    "id": "final-U6-04.06",
+    "unitId": "sf-2026-u6-04",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-04.06",
+    "prompt": "Resistore 8 Ω percorso da 0,5 A per 4 s: quali P ed energia dissipata?",
+    "answer": "2 W e 8 J; P=I²R, energia=Pt.",
+    "feedback": "2 W e 8 J; P=I²R, energia=Pt.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-04.06",
+      "canonicalSha256": "04888dc8db811dc7bb364760c02746ac82e7274a6946a69d568bfc8f5f49eb5f"
+    }
+  },
+  {
+    "id": "final-U6-04.07",
+    "unitId": "sf-2026-u6-04",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-04.07",
+    "prompt": "Resistori 6 Ω e 3 Ω in serie e parallelo: quali Req?",
+    "answer": "9 Ω in serie; 2 Ω in parallelo.",
+    "feedback": "9 Ω in serie; 2 Ω in parallelo.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-04.07",
+      "canonicalSha256": "424cd132a6e63fee38b1426e3808a8b912a6717833b076a016a5add74c808dfc"
+    }
+  },
+  {
+    "id": "final-U6-05.01",
+    "unitId": "sf-2026-u6-05",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-05.01",
+    "prompt": "Un condensatore ha Q=24 µC a 6 V. Quale C?",
+    "answer": "4 µF.",
+    "feedback": "4 µF.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-05.01",
+      "canonicalSha256": "f500c9b1bd726e0b4c968925eb4f4c90af307d9c68c2825f4c82aa185f0a3ea5"
+    }
+  },
+  {
+    "id": "final-U6-05.02",
+    "unitId": "sf-2026-u6-05",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-05.02",
+    "prompt": "Un condensatore piano ideale raddoppia l’area e la distanza tra armature. Come varia C a ε fissa?",
+    "answer": "Resta uguale, poiché C=εA/d.",
+    "feedback": "Resta uguale, poiché C=εA/d.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-05.02",
+      "canonicalSha256": "04a453d407a38f0be34c6d5adae457bb67f53e15c320d939dc2658c84876a395"
+    }
+  },
+  {
+    "id": "final-U6-05.03",
+    "unitId": "sf-2026-u6-05",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-05.03",
+    "prompt": "Inserendo dielettrico con costante relativa 3 in geometria fissa, come varia C nel modello ideale?",
+    "answer": "Triplica.",
+    "feedback": "Triplica.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-05.03",
+      "canonicalSha256": "98e3de2e4150f22ce19a0c4bbefdc148bb84584f46c80b5d82520b98e56c0e0d"
+    }
+  },
+  {
+    "id": "final-U6-05.04",
+    "unitId": "sf-2026-u6-05",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-05.04",
+    "prompt": "Un condensatore 2 µF a 20 V immagazzina quale energia?",
+    "answer": "400 µJ, da CV²/2.",
+    "feedback": "400 µJ, da CV²/2.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-05.04",
+      "canonicalSha256": "70c3b0b6b66e49a351e929ef5ad205625cb72df29b4ad0d21f0104a199f30379"
+    }
+  },
+  {
+    "id": "final-U6-05.05",
+    "unitId": "sf-2026-u6-05",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-05.05",
+    "prompt": "Capacità 4 µF e 4 µF in serie e parallelo: quali Ceq?",
+    "answer": "2 µF in serie; 8 µF in parallelo.",
+    "feedback": "2 µF in serie; 8 µF in parallelo.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-05.05",
+      "canonicalSha256": "3b5b3521d684cffb1df11bb8e37725c6927f2db83c1cbe34e42171776898b42d"
+    }
+  },
+  {
+    "id": "final-U6-06.01",
+    "unitId": "sf-2026-u6-06",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-06.01",
+    "prompt": "Quale osservazione dell’esperimento di Oersted collega corrente e magnetismo?",
+    "answer": "Una corrente devia un ago magnetico vicino, mostrando un campo associato al filo.",
+    "feedback": "Una corrente devia un ago magnetico vicino, mostrando un campo associato al filo.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-06.01",
+      "canonicalSha256": "baac602495345f7eec9e47fe72288c5f1f384b585cb06bbd73ec53dc4924b73f"
+    }
+  },
+  {
+    "id": "final-U6-06.02",
+    "unitId": "sf-2026-u6-06",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-06.02",
+    "prompt": "Invertire la corrente in un filo inverte il verso del campo magnetico circolare intorno ad esso?",
+    "answer": "Sì, con geometria invariata, secondo la mano destra.",
+    "feedback": "Sì, con geometria invariata, secondo la mano destra.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-06.02",
+      "canonicalSha256": "4ceec2cb2d57401d115674fd5ae5bbb54aad60cf53b3a8e5f8d36211fe7f7d34"
+    }
+  },
+  {
+    "id": "final-U6-06.03",
+    "unitId": "sf-2026-u6-06",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-06.03",
+    "prompt": "Una carica si muove parallela a un campo magnetico uniforme. Quale forza magnetica?",
+    "answer": "Zero, poiché v×B=0.",
+    "feedback": "Zero, poiché v×B=0.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-06.03",
+      "canonicalSha256": "4086077e722f19059f3c34da3c94821b95f813991f3f32d294a8ec83dfa5cf4b"
+    }
+  },
+  {
+    "id": "final-U6-06.04",
+    "unitId": "sf-2026-u6-06",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-06.04",
+    "prompt": "Filo lungo 0,5 m, corrente 2 A, perpendicolare a B=0,4 T. Quale forza?",
+    "answer": "0,4 N; il verso è quello di L×B per corrente convenzionale.",
+    "feedback": "0,4 N; il verso è quello di L×B per corrente convenzionale.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-06.04",
+      "canonicalSha256": "ce4504d37b758ba0d43828509cad0f0a11fda9856150a77b9633253bded1481a"
+    }
+  },
+  {
+    "id": "final-U6-06.05",
+    "unitId": "sf-2026-u6-06",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-06.05",
+    "prompt": "Se la carica ha velocità perpendicolare a B e nessun’altra forza, che cosa resta costante e com’è la traiettoria non relativistica?",
+    "answer": "Modulo della velocità e K costanti; traiettoria circolare con r=mv/(|q|B).",
+    "feedback": "Modulo della velocità e K costanti; traiettoria circolare con r=mv/(|q|B).",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-06.05",
+      "canonicalSha256": "620f4515438d38589a610274379aa9c3e25c3574ac9303e5c34801476c39b4e7"
+    }
+  },
+  {
+    "id": "final-U6-07.01",
+    "unitId": "sf-2026-u6-07",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-07.01",
+    "prompt": "Campo B parallelo al piano di una superficie: qual è il flusso uniforme attraverso essa?",
+    "answer": "Zero, perché B è perpendicolare alla normale e cos 90°=0.",
+    "feedback": "Zero, perché B è perpendicolare alla normale e cos 90°=0.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-07.01",
+      "canonicalSha256": "4844adb25b8b3cb10f0e3837ff957cdfdd85d2b8ad48547890831f8db756c83e"
+    }
+  },
+  {
+    "id": "final-U6-07.02",
+    "unitId": "sf-2026-u6-07",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-07.02",
+    "prompt": "Perché una bobina ferma in campo uniforme costante non ha necessariamente fem indotta?",
+    "answer": "Il flusso concatenato non varia nel tempo; il suo valore non nullo non basta.",
+    "feedback": "Il flusso concatenato non varia nel tempo; il suo valore non nullo non basta.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-07.02",
+      "canonicalSha256": "625492812d973238e2781f46f948381e492de0eced749c02d00cee5e77475803"
+    }
+  },
+  {
+    "id": "final-U6-07.03",
+    "unitId": "sf-2026-u6-07",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-07.03",
+    "prompt": "Una bobina 20 spire vede per spira ΔΦ=0,003 Wb in 0,1 s. Quale modulo della fem media?",
+    "answer": "0,6 V.",
+    "feedback": "0,6 V.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-07.03",
+      "canonicalSha256": "ff87e09125b97342922d5edeeff9c55336ab1a2e6f7d0d6e2a42d2f418140c23"
+    }
+  },
+  {
+    "id": "final-U6-07.04",
+    "unitId": "sf-2026-u6-07",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "objectiveId": "U6-07.04",
+    "prompt": "Un flusso uscente dal foglio cresce. Quale verso deve avere il campo indotto e la corrente vista frontalmente?",
+    "answer": "Campo entrante e corrente oraria, per opporsi all’aumento del flusso.",
+    "feedback": "Campo entrante e corrente oraria, per opporsi all’aumento del flusso.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-elettricita-magnetismo-v1.json",
+      "recordId": "final-U6-07.04",
+      "canonicalSha256": "42f01866cbeab5218c33d4604b96ced81c89d253192176228d2d580b0f4f6dc5"
+    }
+  },
+  {
+    "id": "final-U4-01.01",
+    "unitId": "sf-2026-u4-01",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-01.01",
+    "prompt": "Un’onda sonora può propagarsi nel vuoto del modello classico elementare?",
+    "answer": "No: è meccanica e richiede mezzo materiale.",
+    "feedback": "No: è meccanica e richiede mezzo materiale.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-01.01",
+      "canonicalSha256": "ee39fba4c89bede8dd1f3a07ff8630e1f86c1b7ed0ea14043253381efd4f2cd4"
+    }
+  },
+  {
+    "id": "final-U4-01.02",
+    "unitId": "sf-2026-u4-01",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-01.02",
+    "prompt": "Una cresta attraversa una corda: gli elementi della corda devono viaggiare con essa fino all’estremo?",
+    "answer": "No: oscillano localmente mentre perturbazione ed energia si propagano.",
+    "feedback": "No: oscillano localmente mentre perturbazione ed energia si propagano.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-01.02",
+      "canonicalSha256": "18eeb2083d868aac5e3756275c594bb71e20e314b5adb56c59e5ec5a8b320763"
+    }
+  },
+  {
+    "id": "final-U4-01.03",
+    "unitId": "sf-2026-u4-01",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-01.03",
+    "prompt": "Per un oscillatore armonico l’intervallo positivo minimo per tornare allo stesso stato di posizione e velocità è 0,2 s. Che cosa rappresenta?",
+    "answer": "Il periodo T=0,2 s; la condizione di minimo esclude multipli interi del periodo.",
+    "feedback": "Il periodo T=0,2 s; la condizione di minimo esclude multipli interi del periodo.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-01.03",
+      "canonicalSha256": "a0d52fbdfef0d7562e6cef5310dadbde809a6c282d3eae3b767588a5527599af"
+    }
+  },
+  {
+    "id": "final-U4-01.04",
+    "unitId": "sf-2026-u4-01",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-01.04",
+    "prompt": "Un oscillatore compie 15 cicli in 3 s. Qual è f?",
+    "answer": "5 Hz.",
+    "feedback": "5 Hz.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-01.04",
+      "canonicalSha256": "12bbbf94a4978b0c356f4d82f7193b08f8de36789f66340483d7f69d609fce91"
+    }
+  },
+  {
+    "id": "final-U4-01.05",
+    "unitId": "sf-2026-u4-01",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-01.05",
+    "prompt": "Se f=8 Hz, quanto vale T?",
+    "answer": "0,125 s.",
+    "feedback": "0,125 s.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-01.05",
+      "canonicalSha256": "8b8f9fc8fec8c975bfceb468df7d1f91ea2f07a186064eb27878938ba07e6aa3"
+    }
+  },
+  {
+    "id": "final-U4-01.06",
+    "unitId": "sf-2026-u4-01",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-01.06",
+    "prompt": "Per f=3 Hz quale pulsazione?",
+    "answer": "6πrad/s, poichéω=2πf.",
+    "feedback": "6πrad/s, poichéω=2πf.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-01.06",
+      "canonicalSha256": "38c300da14225c40b9a64789721647c55a132d5c27334e350b83d58e3422b13b"
+    }
+  },
+  {
+    "id": "final-U4-01.07",
+    "unitId": "sf-2026-u4-01",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-01.07",
+    "prompt": "Come si riconosce λ su un profilo spaziale sinusoidale a tempo fisso?",
+    "answer": "Distanza fra due punti consecutivi in fase, per esempio due creste.",
+    "feedback": "Distanza fra due punti consecutivi in fase, per esempio due creste.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-01.07",
+      "canonicalSha256": "7a487febdfc46f3e9a045ee0c49fda7254e2ec45ae6074e5e159fa554c0bde10"
+    }
+  },
+  {
+    "id": "final-U4-01.08",
+    "unitId": "sf-2026-u4-01",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-01.08",
+    "prompt": "Con λ=0,4 m e f=5 Hz quale velocità di propagazione?",
+    "answer": "2 m/s.",
+    "feedback": "2 m/s.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-01.08",
+      "canonicalSha256": "a009e2d9866b3ce9d609f3cc10de30b67563da9f667bfcef48551d4c731ec9b4"
+    }
+  },
+  {
+    "id": "final-U4-01.09",
+    "unitId": "sf-2026-u4-01",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-01.09",
+    "prompt": "La forma sin(kx−ωt) conk, ω positivi viaggia verso quale direzione? Perché?",
+    "answer": "+x; a fase costantex=(ω/k)t+costante cresce nel tempo.",
+    "feedback": "+x; a fase costantex=(ω/k)t+costante cresce nel tempo.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-01.09",
+      "canonicalSha256": "4a9efe88cd8e5e62c25b9d1f8a5374de2a4193695eeff00d463a1e2ac4475241"
+    }
+  },
+  {
+    "id": "final-U4-01.10",
+    "unitId": "sf-2026-u4-01",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-01.10",
+    "prompt": "In un’onda trasversale lo spostamento locale è parallelo o perpendicolare alla propagazione? E in una longitudinale?",
+    "answer": "Perpendicolare nella trasversale, parallelo nella longitudinale.",
+    "feedback": "Perpendicolare nella trasversale, parallelo nella longitudinale.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-01.10",
+      "canonicalSha256": "a6f2ca463ac75ded5383568121f1d60184b8bfbe9ee7c6757277655d6a13dce7"
+    }
+  },
+  {
+    "id": "final-U4-02.01",
+    "unitId": "sf-2026-u4-02",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-02.01",
+    "prompt": "Due spostamenti istantanei −2 mm e+5 mm nello stesso punto di un mezzo lineare danno quale risultante?",
+    "answer": "+3 mm; la somma è algebrica.",
+    "feedback": "+3 mm; la somma è algebrica.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-02.01",
+      "canonicalSha256": "12bfed78c1fbf28805dfb90f44f939113bf40f6d5979799805b925cdc26c5a38"
+    }
+  },
+  {
+    "id": "final-U4-02.02",
+    "unitId": "sf-2026-u4-02",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-02.02",
+    "prompt": "Due onde uguali possono annullare lo spostamento localmente senza distruggere l’energia di tutto il campo?",
+    "answer": "Sì: l’interferenza distruttiva locale è compatibile con ridistribuzione energetica e nodi.",
+    "feedback": "Sì: l’interferenza distruttiva locale è compatibile con ridistribuzione energetica e nodi.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-02.02",
+      "canonicalSha256": "a9956439867d61844975d0c30f2def27ec516d1ebf5d99b4e750659b59db0c1c"
+    }
+  },
+  {
+    "id": "final-U4-03.01",
+    "unitId": "sf-2026-u4-03",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-03.01",
+    "prompt": "Una sorgente trasferisce 0,8 J in un impulso. Qual è l’energia dell’impulso e si può dedurre la potenza senza durata?",
+    "answer": "0,8 J; no, serve l’intervallo temporale.",
+    "feedback": "0,8 J; no, serve l’intervallo temporale.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-03.01",
+      "canonicalSha256": "e410ab49ee1c43344ca0ef1e4f79a073687f7ee3ae0252cbce3e60b2af9dfa61"
+    }
+  },
+  {
+    "id": "final-U4-03.02",
+    "unitId": "sf-2026-u4-03",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-03.02",
+    "prompt": "Un’onda trasferisce 0,8 J in 0,2 s. Quale potenza media?",
+    "answer": "4 W.",
+    "feedback": "4 W.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-03.02",
+      "canonicalSha256": "293c79e370457c9edb377016acb6b35c0edb310b8d43707071bdbc612b5ba785"
+    }
+  },
+  {
+    "id": "final-U4-03.03",
+    "unitId": "sf-2026-u4-03",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-03.03",
+    "prompt": "Potenza 10 W attraversa uniformemente area 5 m² perpendicolare. Quale intensità?",
+    "answer": "2 W/m².",
+    "feedback": "2 W/m².",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-03.03",
+      "canonicalSha256": "be2eec51a84079bf7dc87160fc704ab9699b50291ee42940fe69e48402ca817a"
+    }
+  },
+  {
+    "id": "final-U4-03.04",
+    "unitId": "sf-2026-u4-03",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-03.04",
+    "prompt": "Per sorgente isotropa senza assorbimento, I=18 W/m² a 1 m. Quanto vale a 3 m?",
+    "answer": "2 W/m²; area sferica cresce di 9.",
+    "feedback": "2 W/m²; area sferica cresce di 9.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-03.04",
+      "canonicalSha256": "7b79897710df9ca37040cdebfa4baca9f921fb30253029bb9e2fe9621c3cef30"
+    }
+  },
+  {
+    "id": "final-U4-04.01",
+    "unitId": "sf-2026-u4-04",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-04.01",
+    "prompt": "Il passaggio del suono da aria ad acqua permette di mantenere sempre la stessa velocità?",
+    "answer": "No: la velocità dipende dalle proprietà del mezzo; la frequenza di una sorgente invariata resta la stessa all’interfaccia stazionaria.",
+    "feedback": "No: la velocità dipende dalle proprietà del mezzo; la frequenza di una sorgente invariata resta la stessa all’interfaccia stazionaria.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-04.01",
+      "canonicalSha256": "7746b3f753afdb73f7829e76154eced10dc36969c2596e69bd7ea4c9b09da155"
+    }
+  },
+  {
+    "id": "final-U4-04.02",
+    "unitId": "sf-2026-u4-04",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-04.02",
+    "prompt": "Due suoni con stessa intensità ma frequenze diverse sono necessariamente percepiti come ugualmente forti?",
+    "answer": "No: la percezione dipende anche dalla frequenza e dall’ascoltatore.",
+    "feedback": "No: la percezione dipende anche dalla frequenza e dall’ascoltatore.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-04.02",
+      "canonicalSha256": "f735409bd80be9b648d069ada56496bf9ac37917d6174b6a407f9cbc7148f7e8"
+    }
+  },
+  {
+    "id": "final-U4-04.03",
+    "unitId": "sf-2026-u4-04",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-04.03",
+    "prompt": "Con I/I0=10^7, quale livello di intensità?",
+    "answer": "70 dB.",
+    "feedback": "70 dB.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-04.03",
+      "canonicalSha256": "978f641dc1b1d08dce59e9acb8051928448187f2fa15b3a71706e024f46dac4f"
+    }
+  },
+  {
+    "id": "final-U4-05.01",
+    "unitId": "sf-2026-u4-05",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-05.01",
+    "prompt": "Nel regime subsonico usuale, un osservatore va incontro alla sorgente sonora: la frequenza ricevuta aumenta o diminuisce?",
+    "answer": "Aumenta.",
+    "feedback": "Aumenta.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-05.01",
+      "canonicalSha256": "17e69917bece8189dd04e73c4414b87e9c0998a4eb9ab0798e8281a263e740ba"
+    }
+  },
+  {
+    "id": "final-U4-05.02",
+    "unitId": "sf-2026-u4-05",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-05.02",
+    "prompt": "Una sorgente sonora si allontana dall’osservatore fermo: il periodo fra fronti ricevuti cresce o diminuisce?",
+    "answer": "Cresce; la frequenza ricevuta diminuisce.",
+    "feedback": "Cresce; la frequenza ricevuta diminuisce.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-05.02",
+      "canonicalSha256": "145469403082e51b4410f2e389397a16ae264d141c11838fa6be5e1bec7306de"
+    }
+  },
+  {
+    "id": "final-U4-05.03",
+    "unitId": "sf-2026-u4-05",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-05.03",
+    "prompt": "Muovere sorgente o osservatore ha lo stesso meccanismo geometrico rispetto ai fronti nel mezzo?",
+    "answer": "No: la sorgente modifica la spaziatura dei fronti, l’osservatore ne modifica il ritmo di incontro.",
+    "feedback": "No: la sorgente modifica la spaziatura dei fronti, l’osservatore ne modifica il ritmo di incontro.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-05.03",
+      "canonicalSha256": "b336edfa915a2b1ff89b5d4bdb0e2637a222ab31c12cac621e773756038531d1"
+    }
+  },
+  {
+    "id": "final-U4-05.04",
+    "unitId": "sf-2026-u4-05",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U4-05.04",
+    "prompt": "Il Doppler è un cambiamento necessario della frequenza emessa dalla sorgente?",
+    "answer": "No: può cambiare solo quella ricevuta a frequenza emessa invariata.",
+    "feedback": "No: può cambiare solo quella ricevuta a frequenza emessa invariata.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U4-05.04",
+      "canonicalSha256": "63691320d9542ba556ca8eea2c80e9db2fb256722488bcb7506e95fc1de428ab"
+    }
+  },
+  {
+    "id": "final-U7-01.01",
+    "unitId": "sf-2026-u7-01",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-01.01",
+    "prompt": "In un’onda EM piana nel vuoto, E e B sono paralleli fra loro?",
+    "answer": "No: sono perpendicolari fra loro e alla direzione di propagazione.",
+    "feedback": "No: sono perpendicolari fra loro e alla direzione di propagazione.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-01.01",
+      "canonicalSha256": "bb34ca73b0e949af12d727df9b92548b725e44cd7fb7648d00706a0f218a4b4a"
+    }
+  },
+  {
+    "id": "final-U7-01.02",
+    "unitId": "sf-2026-u7-01",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-01.02",
+    "prompt": "Se la frequenza di un’onda EM nel vuoto triplica, come cambia λ?",
+    "answer": "Si riduce a 1/3, poiché c=λf.",
+    "feedback": "Si riduce a 1/3, poiché c=λf.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-01.02",
+      "canonicalSha256": "47ef24dd178468bbe751dd024faf9cfb5928ab9a6062d73bf4896008a0f45250"
+    }
+  },
+  {
+    "id": "final-U7-01.03",
+    "unitId": "sf-2026-u7-01",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-01.03",
+    "prompt": "La velocità della luce in un mezzo con indice 2 è quale frazione dic nel modello indicato?",
+    "answer": "c/2.",
+    "feedback": "c/2.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-01.03",
+      "canonicalSha256": "abaaf2720b63939276a356bb529ec417866d7deac38c14cfe1727aa4e889caa2"
+    }
+  },
+  {
+    "id": "final-U7-01.04",
+    "unitId": "sf-2026-u7-01",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-01.04",
+    "prompt": "Raddoppiare l’ampiezza del campo elettrico in un’onda EM cambia necessariamente la frequenza?",
+    "answer": "No: sono parametri distinti.",
+    "feedback": "No: sono parametri distinti.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-01.04",
+      "canonicalSha256": "108f5cc10344c5e7a157cbb097691443b8343460b543c9712259f22be1bdf50b"
+    }
+  },
+  {
+    "id": "final-U7-01.05",
+    "unitId": "sf-2026-u7-01",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-01.05",
+    "prompt": "Nello stesso mezzo lineare a frequenza fissata, triplicare l’ampiezza comporta quale intensità?",
+    "answer": "Nove volte l’intensità.",
+    "feedback": "Nove volte l’intensità.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-01.05",
+      "canonicalSha256": "dde96793fedbf64138c07c63d23a1e8404e6b8cfd95e8dce0cffd602a8c3dfa3"
+    }
+  },
+  {
+    "id": "final-U7-02.01",
+    "unitId": "sf-2026-u7-02",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-02.01",
+    "prompt": "Fra onde radio e luce visibile, quali hanno frequenza minore nel vuoto?",
+    "answer": "Le onde radio.",
+    "feedback": "Le onde radio.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-02.01",
+      "canonicalSha256": "50d3079bbcc2dfdce22146c247956e74c1d602e12e4449b53697cc4b3fd60f94"
+    }
+  },
+  {
+    "id": "final-U7-02.02",
+    "unitId": "sf-2026-u7-02",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-02.02",
+    "prompt": "Le microonde si collocano tra radio e quale altra regione a frequenze crescenti?",
+    "answer": "Infrarosso.",
+    "feedback": "Infrarosso.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-02.02",
+      "canonicalSha256": "8923a683e56a756773cce96eebc6ba302b333cc755ffc1932258e74a41c7d627"
+    }
+  },
+  {
+    "id": "final-U7-02.03",
+    "unitId": "sf-2026-u7-02",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-02.03",
+    "prompt": "Fra infrarosso e ultravioletto quale regione si trova?",
+    "answer": "Visibile.",
+    "feedback": "Visibile.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-02.03",
+      "canonicalSha256": "6ba876f1e78f17f5b4b9a58b6e14bf0cf39afe19d7f2e26e810149cf3b969265"
+    }
+  },
+  {
+    "id": "final-U7-02.04",
+    "unitId": "sf-2026-u7-02",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-02.04",
+    "prompt": "Nel visibile, il violetto ha λ maggiore o minore del rosso nel vuoto?",
+    "answer": "Minore.",
+    "feedback": "Minore.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-02.04",
+      "canonicalSha256": "f9d252f2ee06f0f95ac8390ce7eabf8459eff7a7f6033e9180d4678627994753"
+    }
+  },
+  {
+    "id": "final-U7-02.05",
+    "unitId": "sf-2026-u7-02",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-02.05",
+    "prompt": "L’ultravioletto ha frequenze maggiori o minori del visibile?",
+    "answer": "Maggiori nel consueto ordinamento spettrale.",
+    "feedback": "Maggiori nel consueto ordinamento spettrale.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-02.05",
+      "canonicalSha256": "86cb536c827535ff552677a0db7c2e59d7f398875cbe4917718fadfa9afbb425"
+    }
+  },
+  {
+    "id": "final-U7-02.06",
+    "unitId": "sf-2026-u7-02",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-02.06",
+    "prompt": "Fra raggi X e microonde, quali hanno fotoni più energetici nel consueto spettro?",
+    "answer": "Raggi X, per frequenza maggiore.",
+    "feedback": "Raggi X, per frequenza maggiore.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-02.06",
+      "canonicalSha256": "3bb6fa73468aaa51860b697ce5b5bd817435ca329ea59d0cce5f5c69c70912a8"
+    }
+  },
+  {
+    "id": "final-U7-02.07",
+    "unitId": "sf-2026-u7-02",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-02.07",
+    "prompt": "Confronta raggiγ e luce visibile nel consueto spettro per frequenza e lunghezza d’onda nel vuoto. Perché la distinzione X/γ non è soltanto una soglia energetica universale?",
+    "answer": "Iγ hanno frequenza tipicamente maggiore e lunghezza d’onda minore del visibile. La distinzione X/γ riguarda anche l’origine: elettronica o frenamento per X, transizioni nucleari per γ; gli intervalli energetici possono sovrapporsi.",
+    "feedback": "Iγ hanno frequenza tipicamente maggiore e lunghezza d’onda minore del visibile. La distinzione X/γ riguarda anche l’origine: elettronica o frenamento per X, transizioni nucleari per γ; gli intervalli energetici possono sovrapporsi.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-02.07",
+      "canonicalSha256": "ccdc421751ce361001586fca9b2dd59c1674736554346e9cf94f7d3889a37455"
+    }
+  },
+  {
+    "id": "final-U7-02.08",
+    "unitId": "sf-2026-u7-02",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-02.08",
+    "prompt": "Se la frequenza aumenta in vuoto, cosa accade a λ? Elenca l’ordine delle regioni a frequenza crescente.",
+    "answer": "λ diminuisce: radio, microonde, infrarosso, visibile, ultravioletto, X, gamma, con confini convenzionali e possibili sovrapposizioni X/γ.",
+    "feedback": "λ diminuisce: radio, microonde, infrarosso, visibile, ultravioletto, X, gamma, con confini convenzionali e possibili sovrapposizioni X/γ.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-02.08",
+      "canonicalSha256": "3965ccd41bb48b2830d6633efa3d485b3c9aa84a3f6c7a2c89881d1709ae47da"
+    }
+  },
+  {
+    "id": "final-U7-03.01",
+    "unitId": "sf-2026-u7-03",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-03.01",
+    "prompt": "Un fotone rappresenta un quanto di quale grandezza legata alla radiazione?",
+    "answer": "Energia scambiata dalla radiazione, con E=hf; non una quantità di carica elettrica.",
+    "feedback": "Energia scambiata dalla radiazione, con E=hf; non una quantità di carica elettrica.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-03.01",
+      "canonicalSha256": "f46766ac0a8cb92aaa87f660950b287213309e04cd43e926b73e42a07dee2ef1"
+    }
+  },
+  {
+    "id": "final-U7-03.02",
+    "unitId": "sf-2026-u7-03",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-03.02",
+    "prompt": "Se la frequenza passa da f a 4f, come varia l’energia per fotone?",
+    "answer": "Quadruplica, da E=hf.",
+    "feedback": "Quadruplica, da E=hf.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-03.02",
+      "canonicalSha256": "f108d57f266e210462087449dbe829720781128b260999923fa0094a0b81895b"
+    }
+  },
+  {
+    "id": "final-U7-04.01",
+    "unitId": "sf-2026-u7-04",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-04.01",
+    "prompt": "Per Lambert-Beer con μ>0, come varia l’intensità al crescere del cammino in un mezzo omogeneo?",
+    "answer": "Decresce esponenzialmente: I=I0 exp(−μx).",
+    "feedback": "Decresce esponenzialmente: I=I0 exp(−μx).",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-04.01",
+      "canonicalSha256": "2156613e4b59fdeb00e38a4ffb467d382f5cec83716698d0ba65f67bee763fe0"
+    }
+  },
+  {
+    "id": "final-U7-04.02",
+    "unitId": "sf-2026-u7-04",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-04.02",
+    "prompt": "Quale unità deve avere μ se x è in cm?",
+    "answer": "cm^-1, così μx è adimensionale.",
+    "feedback": "cm^-1, così μx è adimensionale.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-04.02",
+      "canonicalSha256": "470ce3294d0342ec2d5e94109e06c4256464506e3233c7918cd9e1ec3e8533d2"
+    }
+  },
+  {
+    "id": "final-U7-04.03",
+    "unitId": "sf-2026-u7-04",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-04.03",
+    "prompt": "Due strati della stessa sostanza hanno spessori 2 cm e 3 cm. Quale cammino totale e come si combinano le trasmissioni?",
+    "answer": "5 cm; le trasmissioni si moltiplicano.",
+    "feedback": "5 cm; le trasmissioni si moltiplicano.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-04.03",
+      "canonicalSha256": "73036fab4513f9fc7de7e2c65bacdfeb6c8decbc17cc4d9f7fdc75a872a7c31f"
+    }
+  },
+  {
+    "id": "final-U7-04.04",
+    "unitId": "sf-2026-u7-04",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-04.04",
+    "prompt": "Un campione trasmette 20% della luce incidente. Quale rapporto I/I0 e quale attenuazione percentuale?",
+    "answer": "0,2; attenuazione 80% nel modello senza altri canali separati.",
+    "feedback": "0,2; attenuazione 80% nel modello senza altri canali separati.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-04.04",
+      "canonicalSha256": "24288b8b2fcdd426bb46451b6ebf7c51a4948c1d78c640d4bd404aac72d139d7"
+    }
+  },
+  {
+    "id": "final-U7-05.01",
+    "unitId": "sf-2026-u7-05",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-05.01",
+    "prompt": "Due isotopi del medesimo elemento hanno quale numero uguale e quale diverso?",
+    "answer": "Uguale numero di protoni Z; diverso numero di neutroni, quindi diverso numero di massa.",
+    "feedback": "Uguale numero di protoni Z; diverso numero di neutroni, quindi diverso numero di massa.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-05.01",
+      "canonicalSha256": "3f1fa21473b1a49e99efdd92baab790f2e66def628b6203abd2bc6e573e3db0b"
+    }
+  },
+  {
+    "id": "final-U7-05.02",
+    "unitId": "sf-2026-u7-05",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-05.02",
+    "prompt": "Un campione registra in media 300 decadimenti/s. Quale attività?",
+    "answer": "300 Bq; non una dose assorbita.",
+    "feedback": "300 Bq; non una dose assorbita.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-05.02",
+      "canonicalSha256": "bc401d44f623e4aaaf62e28bb6d175f27b5bb30c5e7d29b619636349d01396c9"
+    }
+  },
+  {
+    "id": "final-U7-05.03",
+    "unitId": "sf-2026-u7-05",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-05.03",
+    "prompt": "Nella legge N=N0 exp(−λt), quali unità ha λ e quale segno fisico?",
+    "answer": "s^-1 se t in s; λ>0 per decadimento spontaneo del modello.",
+    "feedback": "s^-1 se t in s; λ>0 per decadimento spontaneo del modello.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-05.03",
+      "canonicalSha256": "a331557c85541ac9bd8a407d424dbed010bf66d79d2e904ac318cf6d2c3a4e87"
+    }
+  },
+  {
+    "id": "final-U7-05.04",
+    "unitId": "sf-2026-u7-05",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-05.04",
+    "prompt": "Campione iniziale 640 Bq, T1/2=3 h. Quale attività dopo 12 h?",
+    "answer": "40 Bq, dopo 4 emivite.",
+    "feedback": "40 Bq, dopo 4 emivite.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-05.04",
+      "canonicalSha256": "82230ba757ada904c513a3fe22a37e9c75918bb3567166525f10abdbb9e2774e"
+    }
+  },
+  {
+    "id": "final-U7-05.05",
+    "unitId": "sf-2026-u7-05",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-05.05",
+    "prompt": "Indica le variazioni di A e Z per α, β− eγ.",
+    "answer": "α: A−4, Z−2; β−: A invariata, Z+1; γ: A e Z invariati.",
+    "feedback": "α: A−4, Z−2; β−: A invariata, Z+1; γ: A e Z invariati.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-05.05",
+      "canonicalSha256": "a5a8de51f5b850a5a4d9b111914f8102d7358414d2f914dbcf2d6698416371a7"
+    }
+  },
+  {
+    "id": "final-U7-05.06",
+    "unitId": "sf-2026-u7-05",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-05.06",
+    "prompt": "Un nucleo con A=40, Z=19 subisceβ+. Quali A e Z finali?",
+    "answer": "A=40, Z=18, con gli altri prodotti del decadimento.",
+    "feedback": "A=40, Z=18, con gli altri prodotti del decadimento.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-05.06",
+      "canonicalSha256": "8d73d9dd7386b1005b0dee0954f3bd5ab831401718d5b2c76754454aea11479d"
+    }
+  },
+  {
+    "id": "final-U7-06.01",
+    "unitId": "sf-2026-u7-06",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-06.01",
+    "prompt": "Una soglia di ionizzazione è identica per tutte le specie atomiche?",
+    "answer": "No: dipende dal sistema e dallo stato considerato.",
+    "feedback": "No: dipende dal sistema e dallo stato considerato.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-06.01",
+      "canonicalSha256": "b9c507bbfa9c53632e010caac3e20156963501cc71c0a82dc1e7e5121833e870"
+    }
+  },
+  {
+    "id": "final-U7-06.02",
+    "unitId": "sf-2026-u7-06",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-06.02",
+    "prompt": "Un fotone da 11 eV incontra soglia 8 eV: è energeticamente sufficiente nel modello a singolo fotone? Uno da 6 eV?",
+    "answer": "11 eV sì,6 eV no; essere sopra soglia non implica assorbimento certo.",
+    "feedback": "11 eV sì,6 eV no; essere sopra soglia non implica assorbimento certo.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-06.02",
+      "canonicalSha256": "9cb4f8473b7b227b3818212d8b578aafa0f0128ca48e5de4200539ca28fb3bc0"
+    }
+  },
+  {
+    "id": "final-U7-06.03",
+    "unitId": "sf-2026-u7-06",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-06.03",
+    "prompt": "Indica esempi usuali di EM non ionizzanti e ionizzanti per singolo fotone.",
+    "answer": "Radio, microonde, infrarosso non ionizzanti; raggi X eγ tipicamente ionizzanti, con soglia del sistema esplicita.",
+    "feedback": "Radio, microonde, infrarosso non ionizzanti; raggi X eγ tipicamente ionizzanti, con soglia del sistema esplicita.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-06.03",
+      "canonicalSha256": "afbdec6967a40c7814612ae70ac3cec1a8751a9fa473de2b337abf0e60165b7d"
+    }
+  },
+  {
+    "id": "final-U7-06.04",
+    "unitId": "sf-2026-u7-06",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-06.04",
+    "prompt": "Un fascio raddoppia intensità a frequenza fissa. Cambia l’energia del singolo fotone o il flusso energetico?",
+    "answer": "Cambia il flusso energetico; E=hf del singolo fotone resta uguale.",
+    "feedback": "Cambia il flusso energetico; E=hf del singolo fotone resta uguale.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-06.04",
+      "canonicalSha256": "141d908acb05b7fb9a9bd977c00f2b69b85c42766f680bf99324c0430454becc"
+    }
+  },
+  {
+    "id": "final-U7-07.01",
+    "unitId": "sf-2026-u7-07",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-07.01",
+    "prompt": "Un raggio arriva a 40° dalla normale e si riflette specularmente. Quale angolo riflesso dalla normale?",
+    "answer": "40°.",
+    "feedback": "40°.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-07.01",
+      "canonicalSha256": "86f47b5f7ca23c688565a941db6ecc6b5570f4494d488ab15be03e3828f7ff81"
+    }
+  },
+  {
+    "id": "final-U7-07.02",
+    "unitId": "sf-2026-u7-07",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-07.02",
+    "prompt": "Passando da indice 1 a indice 1,3, un raggio obliquo si avvicina o allontana dalla normale?",
+    "answer": "Si avvicina, nel regime trasmesso usuale.",
+    "feedback": "Si avvicina, nel regime trasmesso usuale.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-07.02",
+      "canonicalSha256": "406835939ad618d8fc9b676c3ffb54a04fb321344403b8c11984814722834ec9"
+    }
+  },
+  {
+    "id": "final-U7-07.03",
+    "unitId": "sf-2026-u7-07",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-07.03",
+    "prompt": "Un mezzo ha velocitàc/1,25. Qual è l’indice?",
+    "answer": "1,25, adimensionale.",
+    "feedback": "1,25, adimensionale.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-07.03",
+      "canonicalSha256": "11d2a72675604fb9cd1abc0c848443922496b6cf49ba4abf5497eabe3c0a38b8"
+    }
+  },
+  {
+    "id": "final-U7-07.04",
+    "unitId": "sf-2026-u7-07",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-07.04",
+    "prompt": "Da n1=1, n2=2, sin θ1=0,6. Quanto vale sin θ2?",
+    "answer": "0,3 da Snell.",
+    "feedback": "0,3 da Snell.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-07.04",
+      "canonicalSha256": "bc47626a228b63b5a261acf005361d46ee60e7070170f7ec0a020e0e09e6cb6e"
+    }
+  },
+  {
+    "id": "final-U7-07.05",
+    "unitId": "sf-2026-u7-07",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-07.05",
+    "prompt": "Lente convergente sottile: f=12 cm, p=24 cm. Quali q e ingrandimento?",
+    "answer": "q=24 cm, m=−1; immagine reale e capovolta.",
+    "feedback": "q=24 cm, m=−1; immagine reale e capovolta.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-07.05",
+      "canonicalSha256": "8a9cf7ae28dddcd683bcbd241f591735a1626135b54459612eb6e410db358a16"
+    }
+  },
+  {
+    "id": "final-U7-07.06",
+    "unitId": "sf-2026-u7-07",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "objectiveId": "U7-07.06",
+    "prompt": "Una lente convergente ha oggetto reale dentro il fuoco. Quale natura e orientazione dell’immagine nel modello paraxiale?",
+    "answer": "Virtuale, diritta e ingrandita; per p=f l’immagine non è a distanza finita.",
+    "feedback": "Virtuale, diritta e ingrandita; per p=f l’immagine non è a distanza finita.",
+    "hint": "Identifica sistema, modello, unità e quantità mantenute costanti prima di rispondere.",
+    "status": "DRAFT",
+    "humanApproval": false,
+    "inheritedScientificStatus": "AI_CHECKED",
+    "source": {
+      "commit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+      "path": "packages/engine/lessonos/study/content/sf-onde-ottica-radiazioni-v1.json",
+      "recordId": "final-U7-07.06",
+      "canonicalSha256": "e3a76410c9b90dbf86d5d0c5da48362c7c93e216801af893091a2577a90b1e9a"
+    }
+  }
+]

@@ -1,0 +1,155 @@
+{
+  "status": "PASS",
+  "displayOnly": true,
+  "samples": [
+    {
+      "source": "2km",
+      "display": "2 km",
+      "expected": "2 km",
+      "charactersPreserved": true,
+      "idempotent": true,
+      "expectedDisplay": true
+    },
+    {
+      "source": "scala logaritmica:fra10^n e10^(n+1)",
+      "display": "scala logaritmica: fra 10^n e 10^(n+1)",
+      "expected": "scala logaritmica: fra 10^n e 10^(n+1)",
+      "charactersPreserved": true,
+      "idempotent": true,
+      "expectedDisplay": true
+    },
+    {
+      "source": "250mL",
+      "display": "250 mL",
+      "expected": "250 mL",
+      "charactersPreserved": true,
+      "idempotent": true,
+      "expectedDisplay": true
+    },
+    {
+      "source": "0,3mm",
+      "display": "0,3 mm",
+      "expected": "0,3 mm",
+      "charactersPreserved": true,
+      "idempotent": true,
+      "expectedDisplay": true
+    },
+    {
+      "source": "1,2 g/cm³",
+      "display": "1,2 g/cm³",
+      "expected": "1,2 g/cm³",
+      "charactersPreserved": true,
+      "idempotent": true,
+      "expectedDisplay": true
+    },
+    {
+      "source": "log10(I/I0)",
+      "display": "log10(I/I0)",
+      "expected": "log10(I/I0)",
+      "charactersPreserved": true,
+      "idempotent": true,
+      "expectedDisplay": true
+    },
+    {
+      "source": "I=I0exp(−μx)",
+      "display": "I=I0 exp(−μx)",
+      "expected": "I=I0 exp(−μx)",
+      "charactersPreserved": true,
+      "idempotent": true,
+      "expectedDisplay": true
+    },
+    {
+      "source": "V=RI",
+      "display": "V=RI",
+      "expected": "V=RI",
+      "charactersPreserved": true,
+      "idempotent": true,
+      "expectedDisplay": true
+    },
+    {
+      "source": "Q₀ = Q·s",
+      "display": "Q₀ = Q·s",
+      "expected": "Q₀ = Q·s",
+      "charactersPreserved": true,
+      "idempotent": true,
+      "expectedDisplay": true
+    },
+    {
+      "source": "1eV=1,602176634·10^-19J",
+      "display": "1 eV=1,602176634·10^-19 J",
+      "expected": "1 eV=1,602176634·10^-19 J",
+      "charactersPreserved": true,
+      "idempotent": true,
+      "expectedDisplay": true
+    },
+    {
+      "source": "conI0=10^-12W/m²",
+      "display": "con I0=10^-12 W/m²",
+      "expected": "con I0=10^-12 W/m²",
+      "charactersPreserved": true,
+      "idempotent": true,
+      "expectedDisplay": true
+    },
+    {
+      "source": "Un fotone da11eV",
+      "display": "Un fotone da 11 eV",
+      "expected": "Un fotone da 11 eV",
+      "charactersPreserved": true,
+      "idempotent": true,
+      "expectedDisplay": true
+    },
+    {
+      "source": "da+x",
+      "display": "da +x",
+      "expected": "da +x",
+      "charactersPreserved": true,
+      "idempotent": true,
+      "expectedDisplay": true
+    },
+    {
+      "source": "a90°",
+      "display": "a 90°",
+      "expected": "a 90°",
+      "charactersPreserved": true,
+      "idempotent": true,
+      "expectedDisplay": true
+    },
+    {
+      "source": "2·10^-3 m",
+      "display": "2·10^-3 m",
+      "expected": "2·10^-3 m",
+      "charactersPreserved": true,
+      "idempotent": true,
+      "expectedDisplay": true
+    },
+    {
+      "source": "lavoro fatto dal gas",
+      "display": "lavoro fatto dal gas",
+      "expected": "lavoro fatto dal gas",
+      "charactersPreserved": true,
+      "idempotent": true,
+      "expectedDisplay": true
+    },
+    {
+      "source": "n1sinθ1=n2sinθ2",
+      "display": "n1 sin θ1=n2 sin θ2",
+      "expected": "n1 sin θ1=n2 sin θ2",
+      "charactersPreserved": true,
+      "idempotent": true,
+      "expectedDisplay": true
+    },
+    {
+      "source": "x0=1m",
+      "display": "x0=1 m",
+      "expected": "x0=1 m",
+      "charactersPreserved": true,
+      "idempotent": true,
+      "expectedDisplay": true
+    }
+  ],
+  "objectiveQuestionAnswerPairs": 200,
+  "duplicatedFinalAnswerBlocks": [],
+  "nonIdempotentCourseFields": [],
+  "courseFileSha256": "da4b771fcd2859e85adcfa9080c00673c2fc15dcae208ce36d460dc58d2228f1",
+  "limitations": "Editorial formatting does not certify scientific truth. Machine answer.exact/accepted and IDs remain unchanged."
+}

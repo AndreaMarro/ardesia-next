@@ -1,5 +1,7 @@
 # ADR 0014 — Dispensa dalla lezione salvata
 
+> Esteso da [ADR0023](0023-complete-handout.md): il documento sorgente conserva l’ordine originale, il piano deriva l’ordine di lettura; materiali, ZIP e builder locale sono ora implementati. I limiti sotto descrivono la prima versione.
+
 Preparazione locale isolata del mandato diretto del 7 novembre 2026: lezione → dispensa leggibile → stampa/PDF → sorgente LaTeX/TikZ modificabile. Consumer di portabilità della mappa prodotto; non chiude il roundtrip di `PORTABILITY-RECOVERY`. La coda e il cursore condivisi non cambiano. Le chat e le analisi REA già lette restano attribuite nelle fonti del precedente incremento.
 
 ## Un documento, più uscite

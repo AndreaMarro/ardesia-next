@@ -1,15 +1,18 @@
 import type {MaterialDraft} from './materials';
-import {MaterialStateSchema,MaterialManifestSchema,NewObjectSchema,canonicalJson,type MaterialState} from '@ardesia/contracts';
+import {MaterialStateSchema,MaterialManifestSchema,NewObjectSchema,canonicalJson,NotebookSpaceSchema,notebookPages,type NotebookSpace,type MaterialState} from '@ardesia/contracts';
 import {sha256} from './recordings';
 import {ActorSchema, LessonDocumentSchema, type Actor, type LessonDocument} from '@ardesia/contracts';
 
 /** A local reading copy. It never supplies a server identity or a permission. */
 export interface OfflineSnapshot {
-  format: 'ardesia-own-lessons-v1';
+  format: 'ardesia-own-lessons-v2';
   account: {id: string; role: Actor['role']; displayName: string};
   workspaceId: string; title: string; workspaceRevision: number; actor: Actor;
   documents: LessonDocument[]; savedAt: string;
+  /** null means not prepared/unknown, never an authoritative empty catalog. */
+  notebookSpace: NotebookSpace | null;
 }
+export type LegacyOfflineSnapshot = Omit<OfflineSnapshot, 'format' | 'notebookSpace'> & {format: 'ardesia-own-lessons-v1'};
 export interface OfflineGate {
   generation: string; accountId: string | null; role: 'teacher' | 'student' | null; signedOut: boolean; workspaceId: string | null;
 }
@@ -22,7 +25,7 @@ export interface OfflineStore {
   gate(): Promise<OfflineGate>;
   close(expectedGeneration?: string): Promise<OfflineGate>;
   confirm(generation: string, accountId: string, role: 'teacher' | 'student', explicitLogin: boolean): Promise<OfflineGate>;
-  save(generation: string, snapshot: OfflineSnapshot, enable?: boolean): Promise<boolean>;
+  save(generation: string, snapshot: OfflineSnapshot | LegacyOfflineSnapshot, enable?: boolean): Promise<boolean>;
   load(): Promise<{gate: OfflineGate; snapshot: OfflineSnapshot} | null>;
   subscribe?(listener: () => void): () => void;
 }
@@ -35,16 +38,19 @@ const invalid = (): never => {throw new OfflineError('INVALID_OFFLINE_COPY', 'Co
 const changed = (): never => {throw new OfflineError('SESSION_CHANGED', 'Accesso locale chiuso o cambiato in un’altra scheda.');};
 export function parseOfflineSnapshot(value: unknown): OfflineSnapshot {
   try {
-    if (!object(value) || value.format !== 'ardesia-own-lessons-v1' || !object(value.account)
+    if (!object(value) || !['ardesia-own-lessons-v1', 'ardesia-own-lessons-v2'].includes(String(value.format)) || !object(value.account)
       || !id(value.account.id) || !['teacher','student'].includes(String(value.account.role)) || typeof value.account.displayName !== 'string'
       || !id(value.workspaceId) || typeof value.title !== 'string' || !Number.isSafeInteger(value.workspaceRevision) || Number(value.workspaceRevision) < 0
       || typeof value.savedAt !== 'string' || !Number.isFinite(Date.parse(value.savedAt)) || !Array.isArray(value.documents)) return invalid();
     const actor = ActorSchema.parse(value.actor), documents = value.documents.map(item => LessonDocumentSchema.parse(item));
+    if (value.format === 'ardesia-own-lessons-v1' && 'notebookSpace' in value) return invalid();
+    const notebookSpace = value.format === 'ardesia-own-lessons-v1' || value.notebookSpace === null ? null : NotebookSpaceSchema.parse(value.notebookSpace);
     if (actor.role !== value.account.role || documents.some(d => d.ownerId !== actor.actorId)
-      || new Set(documents.map(d => d.id)).size !== documents.length) return invalid();
+      || new Set(documents.map(d => d.id)).size !== documents.length || documents.length > 500
+      || notebookSpace && notebookPages(notebookSpace).some(({page}) => !documents.some(document => document.id === page.documentId))) return invalid();
     // Select fields explicitly; never restore extra projection fields as authority.
-    return {format: 'ardesia-own-lessons-v1', account: {id: value.account.id, role: actor.role, displayName: value.account.displayName},
-      workspaceId: value.workspaceId, title: value.title, workspaceRevision: value.workspaceRevision as number, actor, documents, savedAt: value.savedAt};
+    return {format: 'ardesia-own-lessons-v2', account: {id: value.account.id, role: actor.role, displayName: value.account.displayName},
+      workspaceId: value.workspaceId, title: value.title, workspaceRevision: value.workspaceRevision as number, actor, documents, savedAt: value.savedAt, notebookSpace};
   } catch {return invalid();}
 }
 function parseGate(value: unknown): OfflineGate {
@@ -153,11 +159,16 @@ export function browserOfflineStore(factory: IDBFactory, name = 'ardesia-next.of
           try {
             const old = previous.result === undefined ? null : parseOfflineSnapshot(previous.result);
             if (old && (old.account.id !== snapshot.account.id || old.workspaceId !== snapshot.workspaceId || old.actor.actorId !== snapshot.actor.actorId)) return invalid();
+            if (old?.notebookSpace && !snapshot.notebookSpace) return invalid();
             if (!old || snapshot.workspaceRevision > old.workspaceRevision) store.put(snapshot, key);
             // A same-revision result may only refresh the timestamp, never the data.
             else if (snapshot.workspaceRevision === old.workspaceRevision) {
-              if (JSON.stringify({...old, savedAt: ''}) !== JSON.stringify({...snapshot, savedAt: ''})) return invalid();
-              if (snapshot.savedAt > old.savedAt) store.put(snapshot, key);
+              // A trusted read may enrich a legacy copy with the previously
+              // unknown catalog at the same workspace revision. Never drop one.
+              const upgrading = old.notebookSpace === null && snapshot.notebookSpace !== null;
+              if (canonicalJson({...old, savedAt: '', ...(upgrading ? {notebookSpace: snapshot.notebookSpace} : {})})
+                !== canonicalJson({...snapshot, savedAt: ''})) return invalid();
+              if (upgrading || snapshot.savedAt > old.savedAt) store.put(snapshot, key);
             }
             if (enable) store.put({...gate, workspaceId: snapshot.workspaceId}, 'gate');
             done(true);

@@ -107,3 +107,23 @@ test('tutor exports structural edits and rejects a package overbooking without l
   expect((await personalProjection(page)).tutorSpace!.records.filter(r=>r.kind==='appointment')).toEqual([]);
   await noOverflow(page);
 });
+
+test('appointment costs and preparation round-trip through Core history and the economic projection',async({page})=>{
+  await seed(page,'ada',person);
+  const input:TutorInput={kind:'appointment',title:'Il costo di una lezione',notes:'',custom:[],startAt:'2026-01-02T09:00:00.000Z',endAt:'2026-01-02T10:00:00.000Z',timeZone:'UTC',status:'completed',currency:'EUR',participants:[{contactId:'ada',attended:true,packageId:null,chargeMinor:3000}],groupId:null,requestId:null,lesson:null};
+  await seed(page,'economic-session',input);await page.goto('/#tutor');
+  await page.getByLabel('Cerca nello studio',{exact:true}).fill('Il costo');await page.getByRole('button',{name:/Il costo di una lezione/}).click();await page.getByRole('button',{name:'Modifica scheda',exact:true}).click();
+  await expect(page.getByLabel('Costi diretti sostenuti',{exact:true})).toHaveValue('');await expect(page.getByLabel('Minuti di preparazione svolti',{exact:true})).toHaveValue('');
+  await page.getByLabel('Costi diretti sostenuti',{exact:true}).fill('7.50');await page.getByLabel('Minuti di preparazione svolti',{exact:true}).fill('30');
+  await page.getByLabel('Motivo della modifica',{exact:true}).fill('Costo del materiale e preparazione effettiva');await save(page,2);await close(page);
+  await page.getByLabel('Cerca nello studio',{exact:true}).fill('Il costo');await page.getByRole('button',{name:/Il costo di una lezione/}).click();await page.getByRole('button',{name:'Modifica scheda',exact:true}).click();
+  await expect(page.getByLabel('Costi diretti sostenuti',{exact:true})).toHaveValue('7.50');await expect(page.getByLabel('Minuti di preparazione svolti',{exact:true})).toHaveValue('30');
+  await page.getByLabel('Minuti di preparazione svolti',{exact:true}).fill('45');await page.getByLabel('Motivo della modifica',{exact:true}).fill('Incluso il tempo della dispensa');await save(page,3);await page.reload();
+  const space=(await personalProjection(page)).tutorSpace!;
+  expect(space.records.find(r=>r.id==='economic-session')).toMatchObject({revision:3,directCostMinor:750,preparationMinutes:45});
+  const history=space.history.filter(e=>e.entityId==='economic-session');expect(history).toHaveLength(3);
+  expect(history[0]!.payload.value).not.toHaveProperty('directCostMinor');expect(history[1]!.payload.value).toMatchObject({directCostMinor:750,preparationMinutes:30});
+  await nav(page,'Conti').click();const economic=page.getByRole('article',{name:'Risultato economico EUR'});
+  await expect(economic).toContainText('30,00');await expect(economic).toContainText('7,50');await expect(economic).toContainText('22,50');
+  await expect(economic).toContainText('105');await expect(economic).toContainText('17,14');await expect(economic).toContainText('12,86');await noOverflow(page);
+});

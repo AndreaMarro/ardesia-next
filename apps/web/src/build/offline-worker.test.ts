@@ -8,13 +8,12 @@ function worker(failInstall = false, wrongBytes = false, evicted = false) {
   let complete = !evicted;
   const source = readFileSync('apps/web/offline-worker.js', 'utf8')
     .replace('__ARDESIA_CACHE_NAME__', JSON.stringify('ardesia-shell-new'))
-    .replace('__ARDESIA_SHELL_PATHS__', JSON.stringify(['/', '/assets/current.js', '/build-info.json']))
-    .replace('__ARDESIA_SHELL_DIGESTS__', JSON.stringify(Object.fromEntries(['/', '/assets/current.js', '/build-info.json'].map(path => [path, createHash('sha256').update(wrongBytes ? 'expected bytes' : 'cached').digest('hex')]))));
+    .replace('__ARDESIA_SHELL_DIGESTS__', JSON.stringify(Object.fromEntries(['/', '/assets/current.js', '/build-info.json'].map(path => [path, createHash('sha256').update(wrongBytes ? 'expected bytes' : 'cached').digest('base64')]))));
   runInNewContext(source, {
     self: {location: {origin: 'https://ardesia.test'}, clients: {claim: async () => undefined}, addEventListener: (name: string, fn: (event: any) => void) => events.set(name, fn)},
     caches: {keys: async () => ['ardesia-shell-previous', 'unrelated-cache'], delete: async (name: string) => {deleted.push(name);},
       open: async () => ({addAll: async (requests: Request[]) => {if (failInstall) throw Error('Interrupted installation'); complete = true; cached.push(...requests.map(request => request.url));}, match: async () => complete ? new Response('cached') : undefined})},
-    crypto: webcrypto, Request: class extends Request {constructor(path: string, options: RequestInit) {super(new URL(path, 'https://ardesia.test'), options);}}, URL, fetch: async () => new Response('network'),
+    crypto: webcrypto, btoa, Request: class extends Request {constructor(path: string, options: RequestInit) {super(new URL(path, 'https://ardesia.test'), options);}}, URL, fetch: async () => new Response('network'),
   });
   return {events, deleted, cached};
 }

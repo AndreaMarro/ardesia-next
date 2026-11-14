@@ -1,6 +1,7 @@
-import type {InkObject} from '@ardesia/contracts';
+import type {EducationalObject} from '@ardesia/contracts';
+import {CourseMaterials,courseQuestion} from './physics/CourseMaterials';
 import {MaterialProvider} from '../materials/MaterialView';
-import {useEffect, useRef, useState} from 'react';
+import {lazy,Suspense,useEffect, useRef, useState} from 'react';
 import {ownsWorkspace,canonicalJson, CourseInputSchema, type Course, type CourseCommand, type CourseInput, type LessonDocument} from '@ardesia/contracts';
 import type {RemoteClient} from '@ardesia/remote-client';
 import {Dialog} from '../components/Dialog';
@@ -9,6 +10,7 @@ import {ArrowUpRight, LibraryBig, Plus, Save, Share2, Trash2} from '../component
 import {blankUnit, springCourse, phaseLabels, helpLabels} from './content';
 import './courses.css';
 
+const PhysicsCatalog=lazy(()=>import('./physics/PhysicsCatalog'));
 type Draft = {id: string; revision: number; input: CourseInput; original: string};
 type Stage = keyof typeof phaseLabels;
 const inputOf = (course: Course): CourseInput => ({title: course.title, description: course.description, license: course.license,
@@ -26,8 +28,9 @@ export function CourseStudio({client, onClose}: {client: RemoteClient; onClose: 
   const [answerContext, setAnswerContext] = useState<{deliveryId: string; editionId: string; unitId: string; unitRevision: number; stage: Stage} | null>(null);
   const [busy, setBusy] = useState(false), [error, setError] = useState(''), [message, setMessage] = useState('');
   const [leave, setLeave] = useState<(() => void) | null>(null), [recipient, setRecipient] = useState('');
-  const [material, setMaterial] = useState<LessonDocument | null>(null);
+  const [material, setMaterial] = useState<LessonDocument | null>(null),[materialBusy,setMaterialBusy]=useState(false);
   const [hiddenHelp, setHiddenHelp] = useState<string[]>([]);
+  const [questionContext,setQuestionContext]=useState<{object:EducationalObject;unitId:string;unitRevision:number;lessonRevision:number}|null>(null),[openSolutions,setOpenSolutions]=useState<string[]>([]);
   const [revoking, setRevoking] = useState<string | null>(null);
   const lock = useRef(false), materialRead = useRef(0);
   const routeRef = useRef(''), draftRef = useRef(draft); draftRef.current = draft;
@@ -46,6 +49,9 @@ export function CourseStudio({client, onClose}: {client: RemoteClient; onClose: 
   const pinned = answer.trim() && answerContext?.deliveryId === deliveryId ? answerContext : null;
   const stage = pinned?.stage ?? work?.currentStage ?? 'prediction';
   const unit = pack?.course.units.find(value => value.id === (pinned?.unitId ?? work?.currentUnitId)) ?? pack?.course.units[0];
+  const selectedQuestion=questionContext&&questionContext.unitId===unit?.id&&questionContext.unitRevision===unit.revision&&questionContext.lessonRevision===unit.lesson?.revision?questionContext.object:null;
+  const answerPrefix=selectedQuestion?`[Domanda ${courseQuestion(selectedQuestion)!.questionId} · oggetto ${selectedQuestion.id} r${selectedQuestion.revision} · lezione r${unit!.lesson!.revision}]\n`:'';
+  const answerLimit=10000-answerPrefix.length;
   const positionPending = client.state.pending.some(value => value.request.action === 'course-command'
     && value.request.command.kind === 'set-course-position' && value.request.command.deliveryId === deliveryId);
   const positionChanged = !!pinned && !!work && (pinned.stage !== work.currentStage || pinned.unitId !== work.currentUnitId);
@@ -56,7 +62,7 @@ export function CourseStudio({client, onClose}: {client: RemoteClient; onClose: 
     const guard = (event: BeforeUnloadEvent) => {event.preventDefault(); event.returnValue = '';};
     window.addEventListener('beforeunload', guard); return () => window.removeEventListener('beforeunload', guard);
   }, [dirty, answer, busy]);
-  useEffect(() => {materialRead.current++; setMaterial(null);}, [editionId, deliveryId, unit?.id, invalidDelivery]);
+  useEffect(() => {materialRead.current++; setMaterial(null);setMaterialBusy(false);setQuestionContext(null);setOpenSolutions([]);}, [editionId, deliveryId, unit?.id, invalidDelivery]);
   async function run(command: CourseCommand, done?: () => void) {
     if (lock.current) return;
     lock.current = true; setBusy(true); setError(''); setMessage('');
@@ -112,10 +118,11 @@ export function CourseStudio({client, onClose}: {client: RemoteClient; onClose: 
     void run({...command, deliveryId: delivery.id, expectedRevision: work?.revision ?? 0, commandId: crypto.randomUUID()} as CourseCommand, done);
   }
   async function openMaterial() {
-    if (!pack || !unit) return;
-    const read = ++materialRead.current; setError('');
+    if (!pack || !unit || blocked || materialBusy) return;
+    const read = ++materialRead.current; setError('');setMaterialBusy(true);
     try {const value = await client.core.readCourseLesson(actor, pack.edition.id, unit.id); if (read === materialRead.current) setMaterial(value);}
     catch (reason) {if (read === materialRead.current) setError(reason instanceof Error ? reason.message : 'Materiale non disponibile.');}
+    finally {if(read===materialRead.current)setMaterialBusy(false);}
   }
   const editorUnit = draft?.input.units[unitIndex];
   const phaseFields = {objective: 'Obiettivo', prerequisites: 'Prerequisiti', explanation: 'Spiegazione', prediction: 'Previsione iniziale', activity: 'Attività', referenceFeedback: 'Feedback di riferimento', recovery: 'Recupero', transfer: 'Transfer'} as const;
@@ -128,6 +135,7 @@ export function CourseStudio({client, onClose}: {client: RemoteClient; onClose: 
     {!draft && !pack && !deliveryId && <main className="course-library">
       <div className="course-intro"><div><span className="eyebrow">Uno spazio per imparare</span><h1>Un’idea diventa<br/>un percorso.</h1><p>Metti in relazione spiegazioni, esperimenti e domande. Ritrova ogni risposta, con il tempo e gli aiuti che hai scelto.</p></div>
         {canAuthor && <div className="course-intro-actions"><button className="primary-button" onClick={() => edit()}><Plus size={18}/>Crea un corso</button><button className="text-button" onClick={() => edit(undefined, true)}>Parti da una molla <ArrowUpRight size={16}/></button></div>}</div>
+      {canAuthor && <Suspense fallback={<p>Apertura dei percorsi di Fisica…</p>}><PhysicsCatalog client={client} onBusy={setBusy} onImported={course=>{const input=inputOf(course);setDraft({id:course.id,revision:course.revision,input,original:canonicalJson(input)});setUnitIndex(0);setMessage('Corso e lezioni salvati nel tuo spazio. Puoi modificarli o fissare un’edizione.');}}/></Suspense>}
       {canAuthor && <section aria-label="Corsi in preparazione"><div className="course-section-title"><h2>Il tuo laboratorio di corsi</h2><span>{space.courses.length} bozze</span></div>
         {!space.courses.length && <p className="course-empty">Il prossimo percorso parte da te. Puoi scriverlo da zero, in qualunque disciplina.</p>}
         <div className="course-grid">{space.courses.map(course => <article className="course-card" key={course.id}><span className="course-tag">Bozza · r{course.revision}</span><h3>{course.title}</h3><p>{course.description || 'Una nuova idea da sviluppare.'}</p><footer><span>{course.units.length} {course.units.length === 1 ? 'unità' : 'unità'}</span><button className="text-button" onClick={() => edit(course)}>Continua a creare <ArrowUpRight size={16}/></button></footer></article>)}</div></section>}
@@ -180,14 +188,14 @@ export function CourseStudio({client, onClose}: {client: RemoteClient; onClose: 
         {delivery?.learnerId !== delivery?.ownerId && <button className="secondary-button" disabled={blocked} onClick={() => workCommand({kind: 'share-course-work', shared: !work?.shared})}>{work?.shared ? 'Rendi private le risposte' : 'Condividi le risposte col docente'}</button>}
       </aside>
       <article className="course-study-page"><span className="course-tag">Bozza · unità r{unit.revision}</span><h1>{unit.title}</h1><p className="course-lead">{unit.objective}</p><div className="course-prerequisites"><span className="eyebrow">Prima di cominciare</span><p>{unit.prerequisites}</p></div>
-        <nav className="course-phases" aria-label="Fasi dell’attività">{Object.entries(phaseLabels).map(([key, label]) => <button key={key} aria-pressed={stage === key} disabled={blocked} onClick={() => navigate(() => workCommand({kind: 'set-course-position', unitId: unit.id, stage: key}))}>{label}</button>)}</nav>
+        <nav className="course-phases" aria-label="Fasi dell’attività">{Object.entries(phaseLabels).map(([key, label]) => <button key={key} aria-pressed={stage === key} disabled={blocked} onClick={() => navigate(() => {setQuestionContext(null);workCommand({kind: 'set-course-position', unitId: unit.id, stage: key});})}>{label}</button>)}</nav>
         {positionChanged && <p role="status" className="hint">La posizione salvata è cambiata in un’altra sessione. La risposta aperta resta collegata a questa domanda.</p>}
-        <section className="course-question"><span className="eyebrow">{phaseLabels[stage]}</span><p>{unit[stage]}</p><label>Il tuo ragionamento<textarea rows={6} maxLength={10000} value={answer} disabled={busy || positionPending} onChange={e => {setAnswerContext({deliveryId: deliveryId!, editionId: pack.edition.id, unitId: unit.id, unitRevision: unit.revision, stage}); setAnswer(e.target.value);}} placeholder="Scrivi la tua idea, i passaggi e le domande che restano…"/></label><div className="course-answer-actions"><span className="hint">{work?.shared ? 'Visibile al docente' : 'Privato'} · nessun voto automatico</span><button className="primary-button" disabled={blocked || !answer.trim()} onClick={() => workCommand({kind: 'record-course-attempt', unitId: unit.id, stage, attemptId: crypto.randomUUID(), answer}, () => setAnswer(value => value === answer ? '' : value))}><Save size={17}/>Salva risposta</button></div></section>
+        <section className="course-question"><span className="eyebrow">{phaseLabels[stage]}</span><p className="course-rich-text">{unit[stage]}</p>{selectedQuestion&&<div className="course-selected-question"><strong>{selectedQuestion.title}</strong><p className="course-rich-text">{courseQuestion(selectedQuestion)?.prompt}</p><button className="text-button" disabled={blocked} onClick={()=>navigate(()=>{setQuestionContext(null);setAnswer('');})}>Torna alla domanda dell’attività</button></div>}<label>Il tuo ragionamento<textarea rows={6} maxLength={answerLimit} value={answer} disabled={busy || positionPending} onChange={e => {setAnswerContext({deliveryId: deliveryId!, editionId: pack.edition.id, unitId: unit.id, unitRevision: unit.revision, stage}); setAnswer(e.target.value);}} placeholder="Scrivi la tua idea, i passaggi e le domande che restano…"/></label><div className="course-answer-actions"><span className="hint">{work?.shared ? 'Visibile al docente' : 'Privato'} · nessun voto automatico</span><button className="primary-button" disabled={blocked || !answer.trim() || answer.length>answerLimit} onClick={() => workCommand({kind: 'record-course-attempt', unitId: unit.id, stage, attemptId: crypto.randomUUID(), answer:answerPrefix+answer}, () => setAnswer(value => value === answer ? '' : value))}><Save size={17}/>Salva risposta</button></div></section>
         <section className="course-study-help" aria-label="Strumenti per capire">{Object.entries(helpLabels).map(([key, label]) => {
           const viewed = work?.help.some(value => value.unitId === unit.id && value.kind === key);
-          return <div className="course-help" key={key}><button className="text-button" disabled={blocked && !viewed} aria-expanded={!!viewed && !hiddenHelp.includes(key)} onClick={() => {if (!viewed) workCommand({kind: 'view-course-help', unitId: unit.id, help: key}); else setHiddenHelp(keys => keys.includes(key) ? keys.filter(k => k !== key) : [...keys, key]);}}>{viewed && !hiddenHelp.includes(key) ? '−' : '+'} {label}</button>{viewed && !hiddenHelp.includes(key) && <p>{unit[key as keyof typeof helpLabels]}</p>}</div>;
+          return <div className="course-help" key={key}><button className="text-button" disabled={blocked && !viewed} aria-expanded={!!viewed && !hiddenHelp.includes(key)} onClick={() => {if (!viewed) workCommand({kind: 'view-course-help', unitId: unit.id, help: key}); else setHiddenHelp(keys => keys.includes(key) ? keys.filter(k => k !== key) : [...keys, key]);}}>{viewed && !hiddenHelp.includes(key) ? '−' : '+'} {label}</button>{viewed && !hiddenHelp.includes(key) && <p className="course-rich-text">{unit[key as keyof typeof helpLabels]}</p>}</div>;
         })}</section>
-        {unit.lesson && <section className="course-materials"><h2>La lezione accanto</h2><p className="hint">Revisione {unit.lesson.revision} conservata in questa edizione.</p><button className="secondary-button" onClick={() => void openMaterial()}>Apri materiali della lezione</button>{material && <MaterialProvider access={client.materials} course={{editionId:pack.edition.id,unitId:unit.id}}>{material.objects.filter(o=>o.type!=='ink'||!o.data.anchor).map(object => <section key={object.id} className="course-material"><h3>{object.title}</h3>{object.type === 'lab' ? <p>Laboratorio {object.data.pluginId} · versione {object.data.pluginVersion}. Esecuzione non abilitata dal collegamento al corso.</p> : <ObjectContent object={object} links annotations={material.objects.filter((o):o is InkObject=>o.type==='ink'&&o.data.anchor?.objectId===object.id)}/>}</section>)}</MaterialProvider>}</section>}
+        {unit.lesson && <section className="course-materials"><h2>La lezione accanto</h2><p className="hint">Revisione {unit.lesson.revision} conservata in questa edizione.</p><button className="secondary-button" disabled={blocked||materialBusy} aria-busy={materialBusy} onClick={() => void openMaterial()}>{materialBusy?'Apertura materiali…':'Apri materiali della lezione'}</button>{material && <MaterialProvider access={client.materials} course={{editionId:pack.edition.id,unitId:unit.id}}><CourseMaterials document={material} blocked={blocked} openSolutions={openSolutions} onReveal={id=>{const reveal=()=>setOpenSolutions(ids=>ids.includes(id)?ids:[...ids,id]);if(work?.help.some(h=>h.unitId===unit.id&&h.kind==='referenceFeedback'))reveal();else workCommand({kind:'view-course-help',unitId:unit.id,help:'referenceFeedback'},reveal);}} onQuestion={object=>navigate(()=>workCommand({kind:'set-course-position',unitId:unit.id,stage:courseQuestion(object)?.kind==='assessment'?'transfer':'activity'},()=>{setAnswer('');setQuestionContext({object,unitId:unit.id,unitRevision:unit.revision,lessonRevision:unit.lesson!.revision});setAnswerContext(null);window.document.querySelector('.course-question')?.scrollIntoView({behavior:'smooth',block:'start'});} ))}/></MaterialProvider>}</section>}
         {!!unit.sources.length && <section className="course-sources"><h2>Da dove partiamo</h2>{unit.sources.map((source, i) => <p key={i}><a href={source.url} target="_blank" rel="noreferrer">{source.title}</a><small>{source.revision} · {source.license}</small></p>)}</section>}
         <section className="course-attempts"><h2>Il filo dei tuoi tentativi</h2>{work?.attempts.filter(value => value.unitId === unit.id).map((value, index) => <article key={value.id}><span className="eyebrow">{String(index + 1).padStart(2, '0')} · {phaseLabels[value.stage]}</span><p>{value.answer}</p><small>{new Date(value.createdAt).toLocaleString('it-IT')} · {value.helpUsed.length ? value.helpUsed.map(help => helpLabels[help]).join(', ') : 'Nessun aiuto consultato nel percorso prima della risposta'}</small></article>)}{!work?.attempts.some(value => value.unitId === unit.id) && <p className="hint">La prima risposta non deve essere perfetta. Serve a capire da dove partire.</p>}</section>
       </article>

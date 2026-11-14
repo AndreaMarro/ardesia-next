@@ -63,6 +63,13 @@
 .icon-button {min-width:44px;}
 .dialog {border-radius:16px;border-color:var(--line);box-shadow:0 24px 80px #172b212b;}
 .dialog::backdrop {background:#1b2a2452;backdrop-filter:blur(3px);}
+.ink-recovery-dialog {width:min(740px,calc(100vw - 32px));max-height:calc(100dvh - 32px);padding:24px;border:1px solid var(--line);border-radius:20px;color:var(--ink);background:var(--paper,#fffdf8);box-shadow:0 24px 80px #172b2138;overflow:auto;}
+.ink-recovery-dialog::backdrop {background:#172b2166;backdrop-filter:blur(4px);}
+.ink-recovery-heading {display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
+.ink-recovery-heading h2 {margin:0;}.ink-recovery-dialog p {line-height:1.6;}
+.ink-recovery-dialog label {display:grid;gap:8px;}.ink-recovery-dialog select {min-height:44px;max-width:100%;}
+.ink-recovery-preview {display:block;width:100%;height:clamp(180px,32vh,340px);margin:16px 0;border:1px solid var(--line);border-radius:12px;background:#fff;}
+.ink-recovery-actions {display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;margin-top:20px;}
 @container(max-width:1050px){.app-shell .board-navigation{top:20px;bottom:auto;}}
 @media(max-width:1180px){
  .app-shell .app-header {gap:16px;padding:0 18px;}
@@ -114,3 +121,22 @@
  .app-shell.is-replaying .studio-header .audio-panel {top:auto;bottom:106px;height:280px;max-height:280px;}
  .app-shell.is-replaying .studio-header .audio-heading>.secondary-button {top:auto;bottom:330px;right:22px;}
 }
+
+/* Writing takes the viewport; controls fade in place while a gesture is active.
+   No Fullscreen API, permission, canvas remount or automatic fit is required. */
+.app-shell .board-region.writing-immersive,.offline-main .board-region.writing-immersive{position:fixed;inset:0;width:100%;height:100dvh;min-height:0;max-height:none;border:0;border-radius:0;z-index:16;background:var(--bg);}
+.app-shell:has(.writing-immersive)>.studio-header,.app-shell:has(.writing-immersive)>.studio-rail,.app-shell:has(.writing-immersive)>.app-footer,.app-shell:has(.writing-immersive)>.inspector,.app-shell:has(.writing-immersive) .lesson-header,.app-shell:has(.writing-immersive) .object-strip{visibility:hidden;pointer-events:none;}
+.app-shell:has(.writing-immersive)~.remote-status{visibility:hidden;}
+.app-shell:has(.writing-immersive)>.skip-link,.offline-workspace:has(.writing-immersive)>.offline-heading,.offline-main:has(.writing-immersive)>.offline-notice,.offline-main:has(.writing-immersive)>.offline-selector,.offline-main:has(.writing-immersive)>.offline-footnote{visibility:hidden;pointer-events:none;}
+.app-shell:has(.writing-immersive) .error-banner,.offline-main:has(.writing-immersive)>.error-banner{position:fixed;top:72px;left:20px;right:20px;z-index:20;}
+.writing-immersive [data-writing-control]{transition:opacity 120ms ease,visibility 120ms ease;}
+.writing-immersive.ink-active [data-writing-control],.writing-immersive.writing-tools-closed .board-toolbar{opacity:0;visibility:hidden;pointer-events:none;}
+.writing-exit,.writing-toggle{position:absolute;top:max(12px,env(safe-area-inset-top));height:44px;min-width:44px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);box-shadow:0 2px 8px #25362c0b;z-index:7;}
+.writing-exit{left:max(12px,env(safe-area-inset-left));display:grid;place-items:center;}
+.writing-toggle{right:max(12px,env(safe-area-inset-right));padding:0 12px;font-size:12px;}
+.writing-status{position:absolute;left:50%;top:max(24px,env(safe-area-inset-top));transform:translateX(-50%);max-width:calc(100% - 220px);font-size:11px;color:var(--muted);text-align:center;pointer-events:none;}
+.app-shell .writing-immersive .board-toolbar,.writing-immersive .board-toolbar{bottom:max(16px,env(safe-area-inset-bottom));padding:6px;gap:2px;max-width:calc(100% - 24px);border-radius:16px;}
+.app-shell .writing-immersive .pen-options,.writing-immersive .pen-options{top:auto;left:50%;bottom:max(84px,calc(env(safe-area-inset-bottom) + 68px));transform:translateX(-50%);max-width:calc(100% - 24px);flex-wrap:wrap;z-index:7;}
+.writing-immersive .canvas-empty{pointer-events:none;}
+.writing-immersive .canvas-empty button{display:none;}
+@media(prefers-reduced-motion:reduce){.writing-immersive [data-writing-control]{transition:none;}}

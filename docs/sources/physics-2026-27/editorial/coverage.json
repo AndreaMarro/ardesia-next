@@ -1,0 +1,6027 @@
+[
+  {
+    "objectiveId": "U1-01.01",
+    "label": "potenze di dieci",
+    "familyId": "U1-01",
+    "syllabusUnitId": "U1",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u1-01",
+    "explanationLocator": "Punti da saper spiegare: U1-01.01",
+    "experimentId": "investigation-u1-01",
+    "labIds": [],
+    "exerciseIds": [
+      "u1-scientific-scale-03",
+      "u1-scientific-scale-08",
+      "u1-scientific-scale-09",
+      "u1-scientific-scale-13"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U1-01.01",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U1-01.02",
+    "label": "operazioni",
+    "familyId": "U1-01",
+    "syllabusUnitId": "U1",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u1-01",
+    "explanationLocator": "Punti da saper spiegare: U1-01.02",
+    "experimentId": "investigation-u1-01",
+    "labIds": [],
+    "exerciseIds": [
+      "u1-scientific-scale-03",
+      "u1-scientific-scale-08",
+      "u1-scientific-scale-09",
+      "u1-scientific-scale-13"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U1-01.02",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U1-01.03",
+    "label": "ordine di grandezza",
+    "familyId": "U1-01",
+    "syllabusUnitId": "U1",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u1-01",
+    "explanationLocator": "Punti da saper spiegare: U1-01.03",
+    "experimentId": "investigation-u1-01",
+    "labIds": [],
+    "exerciseIds": [
+      "u1-scientific-scale-03",
+      "u1-scientific-scale-08",
+      "u1-scientific-scale-09",
+      "u1-scientific-scale-13"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U1-01.03",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U1-02.01",
+    "label": "dimensioni",
+    "familyId": "U1-02",
+    "syllabusUnitId": "U1",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u1-02",
+    "explanationLocator": "Punti da saper spiegare: U1-02.01",
+    "experimentId": "investigation-u1-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u1-area-conversion-01",
+      "u1-area-conversion-02",
+      "u1-area-conversion-09",
+      "u1-area-conversion-13",
+      "u1-scalar-product-03",
+      "u1-volume-conversion-03",
+      "u2-uniform-position-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U1-02.01",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U1-02.02",
+    "label": "SI",
+    "familyId": "U1-02",
+    "syllabusUnitId": "U1",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u1-02",
+    "explanationLocator": "Punti da saper spiegare: U1-02.02",
+    "experimentId": "investigation-u1-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u1-area-conversion-01",
+      "u1-area-conversion-02",
+      "u1-area-conversion-09",
+      "u1-area-conversion-13",
+      "u1-scalar-product-03",
+      "u1-volume-conversion-03",
+      "u2-uniform-position-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U1-02.02",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U1-02.03",
+    "label": "conversioni",
+    "familyId": "U1-02",
+    "syllabusUnitId": "U1",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u1-02",
+    "explanationLocator": "Punti da saper spiegare: U1-02.03",
+    "experimentId": "investigation-u1-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u1-area-conversion-01",
+      "u1-area-conversion-02",
+      "u1-area-conversion-09",
+      "u1-area-conversion-13",
+      "u1-scalar-product-03",
+      "u1-volume-conversion-03",
+      "u2-uniform-position-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U1-02.03",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U1-02.04",
+    "label": "stime",
+    "familyId": "U1-02",
+    "syllabusUnitId": "U1",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u1-02",
+    "explanationLocator": "Punti da saper spiegare: U1-02.04",
+    "experimentId": "investigation-u1-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u1-area-conversion-01",
+      "u1-area-conversion-02",
+      "u1-area-conversion-09",
+      "u1-area-conversion-13",
+      "u1-scalar-product-03",
+      "u1-volume-conversion-03",
+      "u2-uniform-position-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U1-02.04",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U1-02.05",
+    "label": "estensive e intensive",
+    "familyId": "U1-02",
+    "syllabusUnitId": "U1",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u1-02",
+    "explanationLocator": "Punti da saper spiegare: U1-02.05",
+    "experimentId": "investigation-u1-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u1-area-conversion-01",
+      "u1-area-conversion-02",
+      "u1-area-conversion-09",
+      "u1-area-conversion-13",
+      "u1-scalar-product-03",
+      "u1-volume-conversion-03",
+      "u2-uniform-position-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U1-02.05",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U1-02.06",
+    "label": "scalari e vettori",
+    "familyId": "U1-02",
+    "syllabusUnitId": "U1",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u1-02",
+    "explanationLocator": "Punti da saper spiegare: U1-02.06",
+    "experimentId": "investigation-u1-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u1-area-conversion-01",
+      "u1-area-conversion-02",
+      "u1-area-conversion-09",
+      "u1-area-conversion-13",
+      "u1-scalar-product-03",
+      "u1-volume-conversion-03",
+      "u2-uniform-position-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U1-02.06",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U1-03.01",
+    "label": "seno",
+    "familyId": "U1-03",
+    "syllabusUnitId": "U1",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u1-03",
+    "explanationLocator": "Punti da saper spiegare: U1-03.01",
+    "experimentId": "investigation-u1-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u1-vector-angle-ratio-03",
+      "u1-vector-angle-ratio-09",
+      "u1-vector-angle-ratio-13"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U1-03.01",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U1-03.02",
+    "label": "coseno",
+    "familyId": "U1-03",
+    "syllabusUnitId": "U1",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u1-03",
+    "explanationLocator": "Punti da saper spiegare: U1-03.02",
+    "experimentId": "investigation-u1-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u1-vector-angle-ratio-03",
+      "u1-vector-angle-ratio-09",
+      "u1-vector-angle-ratio-13"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U1-03.02",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U1-03.03",
+    "label": "tangente",
+    "familyId": "U1-03",
+    "syllabusUnitId": "U1",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u1-03",
+    "explanationLocator": "Punti da saper spiegare: U1-03.03",
+    "experimentId": "investigation-u1-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u1-vector-angle-ratio-03",
+      "u1-vector-angle-ratio-09",
+      "u1-vector-angle-ratio-13"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U1-03.03",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U1-03.04",
+    "label": "angoli e componenti",
+    "familyId": "U1-03",
+    "syllabusUnitId": "U1",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u1-03",
+    "explanationLocator": "Punti da saper spiegare: U1-03.04",
+    "experimentId": "investigation-u1-03",
+    "labIds": [
+      "physics-vectors-3d"
+    ],
+    "exerciseIds": [
+      "u1-vector-angle-ratio-03",
+      "u1-vector-angle-ratio-09",
+      "u1-vector-angle-ratio-13"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U1-03.04",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U1-04.01",
+    "label": "componenti",
+    "familyId": "U1-04",
+    "syllabusUnitId": "U1",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u1-04",
+    "explanationLocator": "Punti da saper spiegare: U1-04.01",
+    "experimentId": "investigation-u1-04",
+    "labIds": [
+      "physics-vectors-3d"
+    ],
+    "exerciseIds": [
+      "u1-scalar-product-03",
+      "u1-scalar-product-09",
+      "u1-scalar-product-13",
+      "u1-vector-product-01",
+      "u1-vector-projection-03",
+      "u1-vector-sum-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U1-04.01",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U1-04.02",
+    "label": "somma",
+    "familyId": "U1-04",
+    "syllabusUnitId": "U1",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u1-04",
+    "explanationLocator": "Punti da saper spiegare: U1-04.02",
+    "experimentId": "investigation-u1-04",
+    "labIds": [
+      "physics-vectors-3d"
+    ],
+    "exerciseIds": [
+      "u1-scalar-product-03",
+      "u1-scalar-product-09",
+      "u1-scalar-product-13",
+      "u1-vector-product-01",
+      "u1-vector-projection-03",
+      "u1-vector-sum-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U1-04.02",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U1-04.03",
+    "label": "differenza",
+    "familyId": "U1-04",
+    "syllabusUnitId": "U1",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u1-04",
+    "explanationLocator": "Punti da saper spiegare: U1-04.03",
+    "experimentId": "investigation-u1-04",
+    "labIds": [
+      "physics-vectors-3d"
+    ],
+    "exerciseIds": [
+      "u1-scalar-product-03",
+      "u1-scalar-product-09",
+      "u1-scalar-product-13",
+      "u1-vector-product-01",
+      "u1-vector-projection-03",
+      "u1-vector-sum-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U1-04.03",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U1-04.04",
+    "label": "prodotto scalare",
+    "familyId": "U1-04",
+    "syllabusUnitId": "U1",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u1-04",
+    "explanationLocator": "Punti da saper spiegare: U1-04.04",
+    "experimentId": "investigation-u1-04",
+    "labIds": [
+      "physics-vectors-3d"
+    ],
+    "exerciseIds": [
+      "u1-scalar-product-03",
+      "u1-scalar-product-09",
+      "u1-scalar-product-13",
+      "u1-vector-product-01",
+      "u1-vector-projection-03",
+      "u1-vector-sum-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U1-04.04",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U1-04.05",
+    "label": "prodotto vettoriale",
+    "familyId": "U1-04",
+    "syllabusUnitId": "U1",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u1-04",
+    "explanationLocator": "Punti da saper spiegare: U1-04.05",
+    "experimentId": "investigation-u1-04",
+    "labIds": [
+      "physics-vectors-3d"
+    ],
+    "exerciseIds": [
+      "u1-scalar-product-03",
+      "u1-scalar-product-09",
+      "u1-scalar-product-13",
+      "u1-vector-product-01",
+      "u1-vector-projection-03",
+      "u1-vector-sum-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U1-04.05",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-01.01",
+    "label": "posizione e spostamento",
+    "familyId": "U2-01",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-01",
+    "explanationLocator": "Punti da saper spiegare: U2-01.01",
+    "experimentId": "investigation-u2-01",
+    "labIds": [
+      "physics-projectile"
+    ],
+    "exerciseIds": [
+      "u2-centripetal-acceleration-03",
+      "u2-centripetal-acceleration-09",
+      "u2-centripetal-acceleration-13",
+      "u2-freefall-time-03",
+      "u2-mean-acceleration-01",
+      "u2-mean-velocity-03",
+      "u2-projectile-range-01",
+      "u2-rest-accelerated-distance-03",
+      "u2-uniform-displacement-01",
+      "u2-uniform-position-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-01.01",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-01.02",
+    "label": "traiettoria e legge oraria",
+    "familyId": "U2-01",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-01",
+    "explanationLocator": "Punti da saper spiegare: U2-01.02",
+    "experimentId": "investigation-u2-01",
+    "labIds": [
+      "physics-projectile"
+    ],
+    "exerciseIds": [
+      "u2-centripetal-acceleration-03",
+      "u2-centripetal-acceleration-09",
+      "u2-centripetal-acceleration-13",
+      "u2-freefall-time-03",
+      "u2-mean-acceleration-01",
+      "u2-mean-velocity-03",
+      "u2-projectile-range-01",
+      "u2-rest-accelerated-distance-03",
+      "u2-uniform-displacement-01",
+      "u2-uniform-position-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-01.02",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-01.03",
+    "label": "velocità media e istantanea",
+    "familyId": "U2-01",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-01",
+    "explanationLocator": "Punti da saper spiegare: U2-01.03",
+    "experimentId": "investigation-u2-01",
+    "labIds": [
+      "physics-projectile"
+    ],
+    "exerciseIds": [
+      "u2-centripetal-acceleration-03",
+      "u2-centripetal-acceleration-09",
+      "u2-centripetal-acceleration-13",
+      "u2-freefall-time-03",
+      "u2-mean-acceleration-01",
+      "u2-mean-velocity-03",
+      "u2-projectile-range-01",
+      "u2-rest-accelerated-distance-03",
+      "u2-uniform-displacement-01",
+      "u2-uniform-position-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-01.03",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-01.04",
+    "label": "accelerazione media e istantanea",
+    "familyId": "U2-01",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-01",
+    "explanationLocator": "Punti da saper spiegare: U2-01.04",
+    "experimentId": "investigation-u2-01",
+    "labIds": [
+      "physics-projectile"
+    ],
+    "exerciseIds": [
+      "u2-centripetal-acceleration-03",
+      "u2-centripetal-acceleration-09",
+      "u2-centripetal-acceleration-13",
+      "u2-freefall-time-03",
+      "u2-mean-acceleration-01",
+      "u2-mean-velocity-03",
+      "u2-projectile-range-01",
+      "u2-rest-accelerated-distance-03",
+      "u2-uniform-displacement-01",
+      "u2-uniform-position-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-01.04",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-01.05",
+    "label": "MRU",
+    "familyId": "U2-01",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-01",
+    "explanationLocator": "Punti da saper spiegare: U2-01.05",
+    "experimentId": "investigation-u2-01",
+    "labIds": [
+      "physics-projectile"
+    ],
+    "exerciseIds": [
+      "u2-centripetal-acceleration-03",
+      "u2-centripetal-acceleration-09",
+      "u2-centripetal-acceleration-13",
+      "u2-freefall-time-03",
+      "u2-mean-acceleration-01",
+      "u2-mean-velocity-03",
+      "u2-projectile-range-01",
+      "u2-rest-accelerated-distance-03",
+      "u2-uniform-displacement-01",
+      "u2-uniform-position-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-01.05",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-01.06",
+    "label": "moto uniformemente accelerato",
+    "familyId": "U2-01",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-01",
+    "explanationLocator": "Punti da saper spiegare: U2-01.06",
+    "experimentId": "investigation-u2-01",
+    "labIds": [
+      "physics-projectile"
+    ],
+    "exerciseIds": [
+      "u2-centripetal-acceleration-03",
+      "u2-centripetal-acceleration-09",
+      "u2-centripetal-acceleration-13",
+      "u2-freefall-time-03",
+      "u2-mean-acceleration-01",
+      "u2-mean-velocity-03",
+      "u2-projectile-range-01",
+      "u2-rest-accelerated-distance-03",
+      "u2-uniform-displacement-01",
+      "u2-uniform-position-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-01.06",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-01.07",
+    "label": "caduta libera",
+    "familyId": "U2-01",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-01",
+    "explanationLocator": "Punti da saper spiegare: U2-01.07",
+    "experimentId": "investigation-u2-01",
+    "labIds": [
+      "physics-projectile"
+    ],
+    "exerciseIds": [
+      "u2-centripetal-acceleration-03",
+      "u2-centripetal-acceleration-09",
+      "u2-centripetal-acceleration-13",
+      "u2-freefall-time-03",
+      "u2-mean-acceleration-01",
+      "u2-mean-velocity-03",
+      "u2-projectile-range-01",
+      "u2-rest-accelerated-distance-03",
+      "u2-uniform-displacement-01",
+      "u2-uniform-position-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-01.07",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-01.08",
+    "label": "lancio parabolico",
+    "familyId": "U2-01",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-01",
+    "explanationLocator": "Punti da saper spiegare: U2-01.08",
+    "experimentId": "investigation-u2-01",
+    "labIds": [
+      "physics-projectile"
+    ],
+    "exerciseIds": [
+      "u2-centripetal-acceleration-03",
+      "u2-centripetal-acceleration-09",
+      "u2-centripetal-acceleration-13",
+      "u2-freefall-time-03",
+      "u2-mean-acceleration-01",
+      "u2-mean-velocity-03",
+      "u2-projectile-range-01",
+      "u2-rest-accelerated-distance-03",
+      "u2-uniform-displacement-01",
+      "u2-uniform-position-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-01.08",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-01.09",
+    "label": "moto circolare e accelerazione centripeta",
+    "familyId": "U2-01",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-01",
+    "explanationLocator": "Punti da saper spiegare: U2-01.09",
+    "experimentId": "investigation-u2-01",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-centripetal-acceleration-03",
+      "u2-centripetal-acceleration-09",
+      "u2-centripetal-acceleration-13",
+      "u2-freefall-time-03",
+      "u2-mean-acceleration-01",
+      "u2-mean-velocity-03",
+      "u2-projectile-range-01",
+      "u2-rest-accelerated-distance-03",
+      "u2-uniform-displacement-01",
+      "u2-uniform-position-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-01.09",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-02.01",
+    "label": "inerzia",
+    "familyId": "U2-02",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-02",
+    "explanationLocator": "Punti da saper spiegare: U2-02.01",
+    "experimentId": "investigation-u2-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-atwood-03",
+      "u2-atwood-09",
+      "u2-atwood-13",
+      "u2-gravity-ratio-01",
+      "u2-hooke-force-01",
+      "u2-incline-normal-01",
+      "u2-opposed-force-acceleration-01",
+      "u2-opposed-force-acceleration-03",
+      "u2-static-threshold-03",
+      "u2-uniform-displacement-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-02.01",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-02.02",
+    "label": "risultante e accelerazione",
+    "familyId": "U2-02",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-02",
+    "explanationLocator": "Punti da saper spiegare: U2-02.02",
+    "experimentId": "investigation-u2-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-atwood-03",
+      "u2-atwood-09",
+      "u2-atwood-13",
+      "u2-gravity-ratio-01",
+      "u2-hooke-force-01",
+      "u2-incline-normal-01",
+      "u2-opposed-force-acceleration-01",
+      "u2-opposed-force-acceleration-03",
+      "u2-static-threshold-03",
+      "u2-uniform-displacement-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-02.02",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-02.03",
+    "label": "azione e reazione",
+    "familyId": "U2-02",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-02",
+    "explanationLocator": "Punti da saper spiegare: U2-02.03",
+    "experimentId": "investigation-u2-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-atwood-03",
+      "u2-atwood-09",
+      "u2-atwood-13",
+      "u2-gravity-ratio-01",
+      "u2-hooke-force-01",
+      "u2-incline-normal-01",
+      "u2-opposed-force-acceleration-01",
+      "u2-opposed-force-acceleration-03",
+      "u2-static-threshold-03",
+      "u2-uniform-displacement-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-02.03",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-02.04",
+    "label": "equilibrio traslazionale",
+    "familyId": "U2-02",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-02",
+    "explanationLocator": "Punti da saper spiegare: U2-02.04",
+    "experimentId": "investigation-u2-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-atwood-03",
+      "u2-atwood-09",
+      "u2-atwood-13",
+      "u2-gravity-ratio-01",
+      "u2-hooke-force-01",
+      "u2-incline-normal-01",
+      "u2-opposed-force-acceleration-01",
+      "u2-opposed-force-acceleration-03",
+      "u2-static-threshold-03",
+      "u2-uniform-displacement-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-02.04",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-02.05",
+    "label": "peso e gravitazione",
+    "familyId": "U2-02",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-02",
+    "explanationLocator": "Punti da saper spiegare: U2-02.05",
+    "experimentId": "investigation-u2-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-atwood-03",
+      "u2-atwood-09",
+      "u2-atwood-13",
+      "u2-gravity-ratio-01",
+      "u2-hooke-force-01",
+      "u2-incline-normal-01",
+      "u2-opposed-force-acceleration-01",
+      "u2-opposed-force-acceleration-03",
+      "u2-static-threshold-03",
+      "u2-uniform-displacement-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-02.05",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-02.06",
+    "label": "contatto e normale",
+    "familyId": "U2-02",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-02",
+    "explanationLocator": "Punti da saper spiegare: U2-02.06",
+    "experimentId": "investigation-u2-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-atwood-03",
+      "u2-atwood-09",
+      "u2-atwood-13",
+      "u2-gravity-ratio-01",
+      "u2-hooke-force-01",
+      "u2-incline-normal-01",
+      "u2-opposed-force-acceleration-01",
+      "u2-opposed-force-acceleration-03",
+      "u2-static-threshold-03",
+      "u2-uniform-displacement-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-02.06",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-02.07",
+    "label": "attrito statico e dinamico",
+    "familyId": "U2-02",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-02",
+    "explanationLocator": "Punti da saper spiegare: U2-02.07",
+    "experimentId": "investigation-u2-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-atwood-03",
+      "u2-atwood-09",
+      "u2-atwood-13",
+      "u2-gravity-ratio-01",
+      "u2-hooke-force-01",
+      "u2-incline-normal-01",
+      "u2-opposed-force-acceleration-01",
+      "u2-opposed-force-acceleration-03",
+      "u2-static-threshold-03",
+      "u2-uniform-displacement-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-02.07",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-02.08",
+    "label": "tensione",
+    "familyId": "U2-02",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-02",
+    "explanationLocator": "Punti da saper spiegare: U2-02.08",
+    "experimentId": "investigation-u2-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-atwood-03",
+      "u2-atwood-09",
+      "u2-atwood-13",
+      "u2-gravity-ratio-01",
+      "u2-hooke-force-01",
+      "u2-incline-normal-01",
+      "u2-opposed-force-acceleration-01",
+      "u2-opposed-force-acceleration-03",
+      "u2-static-threshold-03",
+      "u2-uniform-displacement-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-02.08",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-02.09",
+    "label": "Hooke",
+    "familyId": "U2-02",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-02",
+    "explanationLocator": "Punti da saper spiegare: U2-02.09",
+    "experimentId": "investigation-u2-02",
+    "labIds": [
+      "physics-oscillator"
+    ],
+    "exerciseIds": [
+      "u2-atwood-03",
+      "u2-atwood-09",
+      "u2-atwood-13",
+      "u2-gravity-ratio-01",
+      "u2-hooke-force-01",
+      "u2-incline-normal-01",
+      "u2-opposed-force-acceleration-01",
+      "u2-opposed-force-acceleration-03",
+      "u2-static-threshold-03",
+      "u2-uniform-displacement-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-02.09",
+    "sourcePages": [
+      2
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-03.01",
+    "label": "lavoro",
+    "familyId": "U2-03",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-03",
+    "explanationLocator": "Punti da saper spiegare: U2-03.01",
+    "experimentId": "investigation-u2-03",
+    "labIds": [
+      "physics-energy"
+    ],
+    "exerciseIds": [
+      "u2-gravitational-energy-01",
+      "u2-gravitational-energy-03",
+      "u2-gravitational-energy-09",
+      "u2-gravitational-energy-13",
+      "u2-kinetic-work-difference-03",
+      "u2-mechanical-power-03",
+      "u2-oblique-work-01",
+      "u2-spring-energy-01",
+      "u2-spring-launch-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-03.01",
+    "sourcePages": [
+      2,
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-03.02",
+    "label": "potenza",
+    "familyId": "U2-03",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-03",
+    "explanationLocator": "Punti da saper spiegare: U2-03.02",
+    "experimentId": "investigation-u2-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-gravitational-energy-01",
+      "u2-gravitational-energy-03",
+      "u2-gravitational-energy-09",
+      "u2-gravitational-energy-13",
+      "u2-kinetic-work-difference-03",
+      "u2-mechanical-power-03",
+      "u2-oblique-work-01",
+      "u2-spring-energy-01",
+      "u2-spring-launch-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-03.02",
+    "sourcePages": [
+      2,
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-03.03",
+    "label": "teorema energia cinetica",
+    "familyId": "U2-03",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-03",
+    "explanationLocator": "Punti da saper spiegare: U2-03.03",
+    "experimentId": "investigation-u2-03",
+    "labIds": [
+      "physics-energy"
+    ],
+    "exerciseIds": [
+      "u2-gravitational-energy-01",
+      "u2-gravitational-energy-03",
+      "u2-gravitational-energy-09",
+      "u2-gravitational-energy-13",
+      "u2-kinetic-work-difference-03",
+      "u2-mechanical-power-03",
+      "u2-oblique-work-01",
+      "u2-spring-energy-01",
+      "u2-spring-launch-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-03.03",
+    "sourcePages": [
+      2,
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-03.04",
+    "label": "forze conservative e dissipative",
+    "familyId": "U2-03",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-03",
+    "explanationLocator": "Punti da saper spiegare: U2-03.04",
+    "experimentId": "investigation-u2-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-gravitational-energy-01",
+      "u2-gravitational-energy-03",
+      "u2-gravitational-energy-09",
+      "u2-gravitational-energy-13",
+      "u2-kinetic-work-difference-03",
+      "u2-mechanical-power-03",
+      "u2-oblique-work-01",
+      "u2-spring-energy-01",
+      "u2-spring-launch-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-03.04",
+    "sourcePages": [
+      2,
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-03.05",
+    "label": "energia potenziale gravitazionale ed elastica",
+    "familyId": "U2-03",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-03",
+    "explanationLocator": "Punti da saper spiegare: U2-03.05",
+    "experimentId": "investigation-u2-03",
+    "labIds": [
+      "physics-energy"
+    ],
+    "exerciseIds": [
+      "u2-gravitational-energy-01",
+      "u2-gravitational-energy-03",
+      "u2-gravitational-energy-09",
+      "u2-gravitational-energy-13",
+      "u2-kinetic-work-difference-03",
+      "u2-mechanical-power-03",
+      "u2-oblique-work-01",
+      "u2-spring-energy-01",
+      "u2-spring-launch-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-03.05",
+    "sourcePages": [
+      2,
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-03.06",
+    "label": "conservazione energia meccanica",
+    "familyId": "U2-03",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-03",
+    "explanationLocator": "Punti da saper spiegare: U2-03.06",
+    "experimentId": "investigation-u2-03",
+    "labIds": [
+      "physics-energy"
+    ],
+    "exerciseIds": [
+      "u2-gravitational-energy-01",
+      "u2-gravitational-energy-03",
+      "u2-gravitational-energy-09",
+      "u2-gravitational-energy-13",
+      "u2-kinetic-work-difference-03",
+      "u2-mechanical-power-03",
+      "u2-oblique-work-01",
+      "u2-spring-energy-01",
+      "u2-spring-launch-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-03.06",
+    "sourcePages": [
+      2,
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-04.01",
+    "label": "quantità di moto",
+    "familyId": "U2-04",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-04",
+    "explanationLocator": "Punti da saper spiegare: U2-04.01",
+    "experimentId": "investigation-u2-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-impulse-03",
+      "u2-impulse-09",
+      "u2-impulse-13",
+      "u2-inelastic-rest-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-04.01",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-04.02",
+    "label": "impulso",
+    "familyId": "U2-04",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-04",
+    "explanationLocator": "Punti da saper spiegare: U2-04.02",
+    "experimentId": "investigation-u2-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-impulse-03",
+      "u2-impulse-09",
+      "u2-impulse-13",
+      "u2-inelastic-rest-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-04.02",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-04.03",
+    "label": "sistema isolato",
+    "familyId": "U2-04",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-04",
+    "explanationLocator": "Punti da saper spiegare: U2-04.03",
+    "experimentId": "investigation-u2-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-impulse-03",
+      "u2-impulse-09",
+      "u2-impulse-13",
+      "u2-inelastic-rest-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-04.03",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-04.04",
+    "label": "conservazione negli urti",
+    "familyId": "U2-04",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-04",
+    "explanationLocator": "Punti da saper spiegare: U2-04.04",
+    "experimentId": "investigation-u2-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-impulse-03",
+      "u2-impulse-09",
+      "u2-impulse-13",
+      "u2-inelastic-rest-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-04.04",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-05.01",
+    "label": "centro di massa",
+    "familyId": "U2-05",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-05",
+    "explanationLocator": "Punti da saper spiegare: U2-05.01",
+    "experimentId": "investigation-u2-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-biceps-lever-01",
+      "u2-biceps-lever-09",
+      "u2-biceps-lever-13",
+      "u2-center-mass-weighted-03",
+      "u2-lever-equilibrium-03",
+      "u2-torque-perpendicular-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-05.01",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-05.02",
+    "label": "moto del centro di massa",
+    "familyId": "U2-05",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-05",
+    "explanationLocator": "Punti da saper spiegare: U2-05.02",
+    "experimentId": "investigation-u2-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-biceps-lever-01",
+      "u2-biceps-lever-09",
+      "u2-biceps-lever-13",
+      "u2-center-mass-weighted-03",
+      "u2-lever-equilibrium-03",
+      "u2-torque-perpendicular-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-05.02",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-05.03",
+    "label": "corpo rigido",
+    "familyId": "U2-05",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-05",
+    "explanationLocator": "Punti da saper spiegare: U2-05.03",
+    "experimentId": "investigation-u2-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-biceps-lever-01",
+      "u2-biceps-lever-09",
+      "u2-biceps-lever-13",
+      "u2-center-mass-weighted-03",
+      "u2-lever-equilibrium-03",
+      "u2-torque-perpendicular-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-05.03",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-05.04",
+    "label": "momento torcente",
+    "familyId": "U2-05",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-05",
+    "explanationLocator": "Punti da saper spiegare: U2-05.04",
+    "experimentId": "investigation-u2-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-biceps-lever-01",
+      "u2-biceps-lever-09",
+      "u2-biceps-lever-13",
+      "u2-center-mass-weighted-03",
+      "u2-lever-equilibrium-03",
+      "u2-torque-perpendicular-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-05.04",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-05.05",
+    "label": "equilibrio rotazionale",
+    "familyId": "U2-05",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-05",
+    "explanationLocator": "Punti da saper spiegare: U2-05.05",
+    "experimentId": "investigation-u2-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-biceps-lever-01",
+      "u2-biceps-lever-09",
+      "u2-biceps-lever-13",
+      "u2-center-mass-weighted-03",
+      "u2-lever-equilibrium-03",
+      "u2-torque-perpendicular-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-05.05",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U2-05.06",
+    "label": "leve nel corpo umano",
+    "familyId": "U2-05",
+    "syllabusUnitId": "U2",
+    "courseId": "sf-2026-strumenti-meccanica",
+    "unitId": "sf-2026-u2-05",
+    "explanationLocator": "Punti da saper spiegare: U2-05.06",
+    "experimentId": "investigation-u2-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u2-biceps-lever-01",
+      "u2-biceps-lever-09",
+      "u2-biceps-lever-13",
+      "u2-center-mass-weighted-03",
+      "u2-lever-equilibrium-03",
+      "u2-torque-perpendicular-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U2-05.06",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-01.01",
+    "label": "fluido e solido",
+    "familyId": "U3-01",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-01",
+    "explanationLocator": "Punti da saper spiegare: U3-01.01",
+    "experimentId": "investigation-u3-01",
+    "labIds": [],
+    "exerciseIds": [
+      "u3-couette-force-03",
+      "u3-couette-force-09",
+      "u3-couette-force-13",
+      "u3-density-01",
+      "u3-density-05",
+      "u3-pressure-area-01",
+      "u3-pressure-area-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-01.01",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-01.02",
+    "label": "pressione",
+    "familyId": "U3-01",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-01",
+    "explanationLocator": "Punti da saper spiegare: U3-01.02",
+    "experimentId": "investigation-u3-01",
+    "labIds": [
+      "physics-hydrostatic"
+    ],
+    "exerciseIds": [
+      "u3-couette-force-03",
+      "u3-couette-force-09",
+      "u3-couette-force-13",
+      "u3-density-01",
+      "u3-density-05",
+      "u3-pressure-area-01",
+      "u3-pressure-area-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-01.02",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-01.03",
+    "label": "densità",
+    "familyId": "U3-01",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-01",
+    "explanationLocator": "Punti da saper spiegare: U3-01.03",
+    "experimentId": "investigation-u3-01",
+    "labIds": [
+      "physics-hydrostatic"
+    ],
+    "exerciseIds": [
+      "u3-couette-force-03",
+      "u3-couette-force-09",
+      "u3-couette-force-13",
+      "u3-density-01",
+      "u3-density-05",
+      "u3-pressure-area-01",
+      "u3-pressure-area-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-01.03",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-01.04",
+    "label": "statica e dinamica",
+    "familyId": "U3-01",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-01",
+    "explanationLocator": "Punti da saper spiegare: U3-01.04",
+    "experimentId": "investigation-u3-01",
+    "labIds": [],
+    "exerciseIds": [
+      "u3-couette-force-03",
+      "u3-couette-force-09",
+      "u3-couette-force-13",
+      "u3-density-01",
+      "u3-density-05",
+      "u3-pressure-area-01",
+      "u3-pressure-area-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-01.04",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-02.01",
+    "label": "Stevino",
+    "familyId": "U3-02",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-02",
+    "explanationLocator": "Punti da saper spiegare: U3-02.01",
+    "experimentId": "investigation-u3-02",
+    "labIds": [
+      "physics-hydrostatic"
+    ],
+    "exerciseIds": [
+      "u3-apparent-weight-01",
+      "u3-apparent-weight-09",
+      "u3-apparent-weight-13",
+      "u3-archimedes-force-03",
+      "u3-differential-manometer-01",
+      "u3-floating-fraction-03",
+      "u3-hydraulic-force-03",
+      "u3-hydraulic-stroke-01",
+      "u3-hydrostatic-weighing-01",
+      "u3-layered-liquids-01",
+      "u3-loaded-raft-depth-01",
+      "u3-maximum-payload-01",
+      "u3-stevino-absolute-01",
+      "u3-stevino-gauge-03",
+      "u3-torricelli-flow-01",
+      "u3-torricelli-speed-01",
+      "u3-two-liquid-floating-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-02.01",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-02.02",
+    "label": "Pascal",
+    "familyId": "U3-02",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-02",
+    "explanationLocator": "Punti da saper spiegare: U3-02.02",
+    "experimentId": "investigation-u3-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u3-apparent-weight-01",
+      "u3-apparent-weight-09",
+      "u3-apparent-weight-13",
+      "u3-archimedes-force-03",
+      "u3-differential-manometer-01",
+      "u3-floating-fraction-03",
+      "u3-hydraulic-force-03",
+      "u3-hydraulic-stroke-01",
+      "u3-hydrostatic-weighing-01",
+      "u3-layered-liquids-01",
+      "u3-loaded-raft-depth-01",
+      "u3-maximum-payload-01",
+      "u3-stevino-absolute-01",
+      "u3-stevino-gauge-03",
+      "u3-torricelli-flow-01",
+      "u3-torricelli-speed-01",
+      "u3-two-liquid-floating-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-02.02",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-02.03",
+    "label": "Archimede",
+    "familyId": "U3-02",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-02",
+    "explanationLocator": "Punti da saper spiegare: U3-02.03",
+    "experimentId": "investigation-u3-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u3-apparent-weight-01",
+      "u3-apparent-weight-09",
+      "u3-apparent-weight-13",
+      "u3-archimedes-force-03",
+      "u3-differential-manometer-01",
+      "u3-floating-fraction-03",
+      "u3-hydraulic-force-03",
+      "u3-hydraulic-stroke-01",
+      "u3-hydrostatic-weighing-01",
+      "u3-layered-liquids-01",
+      "u3-loaded-raft-depth-01",
+      "u3-maximum-payload-01",
+      "u3-stevino-absolute-01",
+      "u3-stevino-gauge-03",
+      "u3-torricelli-flow-01",
+      "u3-torricelli-speed-01",
+      "u3-two-liquid-floating-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-02.03",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-02.04",
+    "label": "galleggiamento",
+    "familyId": "U3-02",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-02",
+    "explanationLocator": "Punti da saper spiegare: U3-02.04",
+    "experimentId": "investigation-u3-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u3-apparent-weight-01",
+      "u3-apparent-weight-09",
+      "u3-apparent-weight-13",
+      "u3-archimedes-force-03",
+      "u3-differential-manometer-01",
+      "u3-floating-fraction-03",
+      "u3-hydraulic-force-03",
+      "u3-hydraulic-stroke-01",
+      "u3-hydrostatic-weighing-01",
+      "u3-layered-liquids-01",
+      "u3-loaded-raft-depth-01",
+      "u3-maximum-payload-01",
+      "u3-stevino-absolute-01",
+      "u3-stevino-gauge-03",
+      "u3-torricelli-flow-01",
+      "u3-torricelli-speed-01",
+      "u3-two-liquid-floating-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-02.04",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-02.05",
+    "label": "Torricelli",
+    "familyId": "U3-02",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-02",
+    "explanationLocator": "Punti da saper spiegare: U3-02.05",
+    "experimentId": "investigation-u3-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u3-apparent-weight-01",
+      "u3-apparent-weight-09",
+      "u3-apparent-weight-13",
+      "u3-archimedes-force-03",
+      "u3-differential-manometer-01",
+      "u3-floating-fraction-03",
+      "u3-hydraulic-force-03",
+      "u3-hydraulic-stroke-01",
+      "u3-hydrostatic-weighing-01",
+      "u3-layered-liquids-01",
+      "u3-loaded-raft-depth-01",
+      "u3-maximum-payload-01",
+      "u3-stevino-absolute-01",
+      "u3-stevino-gauge-03",
+      "u3-torricelli-flow-01",
+      "u3-torricelli-speed-01",
+      "u3-two-liquid-floating-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-02.05",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-02.06",
+    "label": "manometro",
+    "familyId": "U3-02",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-02",
+    "explanationLocator": "Punti da saper spiegare: U3-02.06",
+    "experimentId": "investigation-u3-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u3-apparent-weight-01",
+      "u3-apparent-weight-09",
+      "u3-apparent-weight-13",
+      "u3-archimedes-force-03",
+      "u3-differential-manometer-01",
+      "u3-floating-fraction-03",
+      "u3-hydraulic-force-03",
+      "u3-hydraulic-stroke-01",
+      "u3-hydrostatic-weighing-01",
+      "u3-layered-liquids-01",
+      "u3-loaded-raft-depth-01",
+      "u3-maximum-payload-01",
+      "u3-stevino-absolute-01",
+      "u3-stevino-gauge-03",
+      "u3-torricelli-flow-01",
+      "u3-torricelli-speed-01",
+      "u3-two-liquid-floating-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-02.06",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-03.01",
+    "label": "flusso e portata",
+    "familyId": "U3-03",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-03",
+    "explanationLocator": "Punti da saper spiegare: U3-03.01",
+    "experimentId": "investigation-u3-03",
+    "labIds": [
+      "physics-continuity"
+    ],
+    "exerciseIds": [
+      "u3-bernoulli-height-speed-01",
+      "u3-bernoulli-height-speed-09",
+      "u3-bernoulli-height-speed-13",
+      "u3-bernoulli-horizontal-01",
+      "u3-bernoulli-horizontal-04",
+      "u3-constriction-velocity-01",
+      "u3-junction-balance-01",
+      "u3-mass-flow-01",
+      "u3-parabolic-profile-03",
+      "u3-poiseuille-flow-03",
+      "u3-pressure-gradient-fixed-speed-03",
+      "u3-transport-time-01",
+      "u3-venturi-area-ratio-01",
+      "u3-venturi-area-ratio-03",
+      "u3-volume-flow-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-03.01",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-03.02",
+    "label": "stazionario e turbolento",
+    "familyId": "U3-03",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-03",
+    "explanationLocator": "Punti da saper spiegare: U3-03.02",
+    "experimentId": "investigation-u3-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u3-bernoulli-height-speed-01",
+      "u3-bernoulli-height-speed-09",
+      "u3-bernoulli-height-speed-13",
+      "u3-bernoulli-horizontal-01",
+      "u3-bernoulli-horizontal-04",
+      "u3-constriction-velocity-01",
+      "u3-junction-balance-01",
+      "u3-mass-flow-01",
+      "u3-parabolic-profile-03",
+      "u3-poiseuille-flow-03",
+      "u3-pressure-gradient-fixed-speed-03",
+      "u3-transport-time-01",
+      "u3-venturi-area-ratio-01",
+      "u3-venturi-area-ratio-03",
+      "u3-volume-flow-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-03.02",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-03.03",
+    "label": "laminare",
+    "familyId": "U3-03",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-03",
+    "explanationLocator": "Punti da saper spiegare: U3-03.03",
+    "experimentId": "investigation-u3-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u3-bernoulli-height-speed-01",
+      "u3-bernoulli-height-speed-09",
+      "u3-bernoulli-height-speed-13",
+      "u3-bernoulli-horizontal-01",
+      "u3-bernoulli-horizontal-04",
+      "u3-constriction-velocity-01",
+      "u3-junction-balance-01",
+      "u3-mass-flow-01",
+      "u3-parabolic-profile-03",
+      "u3-poiseuille-flow-03",
+      "u3-pressure-gradient-fixed-speed-03",
+      "u3-transport-time-01",
+      "u3-venturi-area-ratio-01",
+      "u3-venturi-area-ratio-03",
+      "u3-volume-flow-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-03.03",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-03.04",
+    "label": "conservazione massa",
+    "familyId": "U3-03",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-03",
+    "explanationLocator": "Punti da saper spiegare: U3-03.04",
+    "experimentId": "investigation-u3-03",
+    "labIds": [
+      "physics-continuity"
+    ],
+    "exerciseIds": [
+      "u3-bernoulli-height-speed-01",
+      "u3-bernoulli-height-speed-09",
+      "u3-bernoulli-height-speed-13",
+      "u3-bernoulli-horizontal-01",
+      "u3-bernoulli-horizontal-04",
+      "u3-constriction-velocity-01",
+      "u3-junction-balance-01",
+      "u3-mass-flow-01",
+      "u3-parabolic-profile-03",
+      "u3-poiseuille-flow-03",
+      "u3-pressure-gradient-fixed-speed-03",
+      "u3-transport-time-01",
+      "u3-venturi-area-ratio-01",
+      "u3-venturi-area-ratio-03",
+      "u3-volume-flow-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-03.04",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-03.05",
+    "label": "Bernoulli",
+    "familyId": "U3-03",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-03",
+    "explanationLocator": "Punti da saper spiegare: U3-03.05",
+    "experimentId": "investigation-u3-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u3-bernoulli-height-speed-01",
+      "u3-bernoulli-height-speed-09",
+      "u3-bernoulli-height-speed-13",
+      "u3-bernoulli-horizontal-01",
+      "u3-bernoulli-horizontal-04",
+      "u3-constriction-velocity-01",
+      "u3-junction-balance-01",
+      "u3-mass-flow-01",
+      "u3-parabolic-profile-03",
+      "u3-poiseuille-flow-03",
+      "u3-pressure-gradient-fixed-speed-03",
+      "u3-transport-time-01",
+      "u3-venturi-area-ratio-01",
+      "u3-venturi-area-ratio-03",
+      "u3-volume-flow-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-03.05",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-03.06",
+    "label": "stenosi e aneurisma",
+    "familyId": "U3-03",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-03",
+    "explanationLocator": "Punti da saper spiegare: U3-03.06",
+    "experimentId": "investigation-u3-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u3-bernoulli-height-speed-01",
+      "u3-bernoulli-height-speed-09",
+      "u3-bernoulli-height-speed-13",
+      "u3-bernoulli-horizontal-01",
+      "u3-bernoulli-horizontal-04",
+      "u3-constriction-velocity-01",
+      "u3-junction-balance-01",
+      "u3-mass-flow-01",
+      "u3-parabolic-profile-03",
+      "u3-poiseuille-flow-03",
+      "u3-pressure-gradient-fixed-speed-03",
+      "u3-transport-time-01",
+      "u3-venturi-area-ratio-01",
+      "u3-venturi-area-ratio-03",
+      "u3-volume-flow-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-03.06",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-04.01",
+    "label": "fluidi reali",
+    "familyId": "U3-04",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-04",
+    "explanationLocator": "Punti da saper spiegare: U3-04.01",
+    "experimentId": "investigation-u3-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u3-couette-force-01",
+      "u3-couette-force-09",
+      "u3-couette-force-13",
+      "u3-hydraulic-parallel-06",
+      "u3-hydraulic-series-06",
+      "u3-network-stages-01",
+      "u3-parabolic-profile-03",
+      "u3-poiseuille-flow-08",
+      "u3-pressure-gradient-fixed-speed-01",
+      "u3-viscous-dissipation-01",
+      "u3-volume-flow-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-04.01",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-04.02",
+    "label": "profilo parabolico",
+    "familyId": "U3-04",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-04",
+    "explanationLocator": "Punti da saper spiegare: U3-04.02",
+    "experimentId": "investigation-u3-04",
+    "labIds": [
+      "physics-poiseuille"
+    ],
+    "exerciseIds": [
+      "u3-couette-force-01",
+      "u3-couette-force-09",
+      "u3-couette-force-13",
+      "u3-hydraulic-parallel-06",
+      "u3-hydraulic-series-06",
+      "u3-network-stages-01",
+      "u3-parabolic-profile-03",
+      "u3-poiseuille-flow-08",
+      "u3-pressure-gradient-fixed-speed-01",
+      "u3-viscous-dissipation-01",
+      "u3-volume-flow-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-04.02",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-04.03",
+    "label": "gradiente velocità",
+    "familyId": "U3-04",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-04",
+    "explanationLocator": "Punti da saper spiegare: U3-04.03",
+    "experimentId": "investigation-u3-04",
+    "labIds": [
+      "physics-poiseuille"
+    ],
+    "exerciseIds": [
+      "u3-couette-force-01",
+      "u3-couette-force-09",
+      "u3-couette-force-13",
+      "u3-hydraulic-parallel-06",
+      "u3-hydraulic-series-06",
+      "u3-network-stages-01",
+      "u3-parabolic-profile-03",
+      "u3-poiseuille-flow-08",
+      "u3-pressure-gradient-fixed-speed-01",
+      "u3-viscous-dissipation-01",
+      "u3-volume-flow-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-04.03",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-04.04",
+    "label": "Poiseuille",
+    "familyId": "U3-04",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-04",
+    "explanationLocator": "Punti da saper spiegare: U3-04.04",
+    "experimentId": "investigation-u3-04",
+    "labIds": [
+      "physics-poiseuille"
+    ],
+    "exerciseIds": [
+      "u3-couette-force-01",
+      "u3-couette-force-09",
+      "u3-couette-force-13",
+      "u3-hydraulic-parallel-06",
+      "u3-hydraulic-series-06",
+      "u3-network-stages-01",
+      "u3-parabolic-profile-03",
+      "u3-poiseuille-flow-08",
+      "u3-pressure-gradient-fixed-speed-01",
+      "u3-viscous-dissipation-01",
+      "u3-volume-flow-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-04.04",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-04.05",
+    "label": "resistenze idrauliche serie e parallelo",
+    "familyId": "U3-04",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-04",
+    "explanationLocator": "Punti da saper spiegare: U3-04.05",
+    "experimentId": "investigation-u3-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u3-couette-force-01",
+      "u3-couette-force-09",
+      "u3-couette-force-13",
+      "u3-hydraulic-parallel-06",
+      "u3-hydraulic-series-06",
+      "u3-network-stages-01",
+      "u3-parabolic-profile-03",
+      "u3-poiseuille-flow-08",
+      "u3-pressure-gradient-fixed-speed-01",
+      "u3-viscous-dissipation-01",
+      "u3-volume-flow-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-04.05",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-05.01",
+    "label": "tensione superficiale",
+    "familyId": "U3-05",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-05",
+    "explanationLocator": "Punti da saper spiegare: U3-05.01",
+    "experimentId": "investigation-u3-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u3-capillary-rise-01",
+      "u3-capillary-rise-07",
+      "u3-droplet-fragmentation-01",
+      "u3-laplace-droplet-03",
+      "u3-soap-film-force-01",
+      "u3-soap-film-force-09",
+      "u3-soap-film-force-13",
+      "u3-surface-work-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-05.01",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-05.02",
+    "label": "piccole gocce",
+    "familyId": "U3-05",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-05",
+    "explanationLocator": "Punti da saper spiegare: U3-05.02",
+    "experimentId": "investigation-u3-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u3-capillary-rise-01",
+      "u3-capillary-rise-07",
+      "u3-droplet-fragmentation-01",
+      "u3-laplace-droplet-03",
+      "u3-soap-film-force-01",
+      "u3-soap-film-force-09",
+      "u3-soap-film-force-13",
+      "u3-surface-work-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-05.02",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-05.03",
+    "label": "capillarità",
+    "familyId": "U3-05",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-05",
+    "explanationLocator": "Punti da saper spiegare: U3-05.03",
+    "experimentId": "investigation-u3-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u3-capillary-rise-01",
+      "u3-capillary-rise-07",
+      "u3-droplet-fragmentation-01",
+      "u3-laplace-droplet-03",
+      "u3-soap-film-force-01",
+      "u3-soap-film-force-09",
+      "u3-soap-film-force-13",
+      "u3-surface-work-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-05.03",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-05.04",
+    "label": "interfacce piane e curve",
+    "familyId": "U3-05",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-05",
+    "explanationLocator": "Punti da saper spiegare: U3-05.04",
+    "experimentId": "investigation-u3-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u3-capillary-rise-01",
+      "u3-capillary-rise-07",
+      "u3-droplet-fragmentation-01",
+      "u3-laplace-droplet-03",
+      "u3-soap-film-force-01",
+      "u3-soap-film-force-09",
+      "u3-soap-film-force-13",
+      "u3-surface-work-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-05.04",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U3-05.05",
+    "label": "Laplace qualitativa",
+    "familyId": "U3-05",
+    "syllabusUnitId": "U3",
+    "courseId": "sf-2026-fluidi",
+    "unitId": "sf-2026-u3-05",
+    "explanationLocator": "Punti da saper spiegare: U3-05.05",
+    "experimentId": "investigation-u3-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u3-capillary-rise-01",
+      "u3-capillary-rise-07",
+      "u3-droplet-fragmentation-01",
+      "u3-laplace-droplet-03",
+      "u3-soap-film-force-01",
+      "u3-soap-film-force-09",
+      "u3-soap-film-force-13",
+      "u3-surface-work-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U3-05.05",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-01.01",
+    "label": "sistema e ambiente",
+    "familyId": "U5-01",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-01",
+    "explanationLocator": "Punti da saper spiegare: U5-01.01",
+    "experimentId": "investigation-u5-01",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-gas-density-01",
+      "u5-gas-density-09",
+      "u5-gas-density-13",
+      "u5-ideal-expansion-entropy-03",
+      "u5-ideal-gas-pressure-01",
+      "u5-ideal-gas-pressure-03",
+      "u5-isothermal-chambers-06",
+      "u5-sensible-heat-03",
+      "u5-temperature-difference-01",
+      "u5-temperature-difference-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-01.01",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-01.02",
+    "label": "pressione volume temperatura",
+    "familyId": "U5-01",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-01",
+    "explanationLocator": "Punti da saper spiegare: U5-01.02",
+    "experimentId": "investigation-u5-01",
+    "labIds": [
+      "physics-ideal-gas"
+    ],
+    "exerciseIds": [
+      "u5-gas-density-01",
+      "u5-gas-density-09",
+      "u5-gas-density-13",
+      "u5-ideal-expansion-entropy-03",
+      "u5-ideal-gas-pressure-01",
+      "u5-ideal-gas-pressure-03",
+      "u5-isothermal-chambers-06",
+      "u5-sensible-heat-03",
+      "u5-temperature-difference-01",
+      "u5-temperature-difference-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-01.02",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-01.03",
+    "label": "stato e funzioni stato",
+    "familyId": "U5-01",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-01",
+    "explanationLocator": "Punti da saper spiegare: U5-01.03",
+    "experimentId": "investigation-u5-01",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-gas-density-01",
+      "u5-gas-density-09",
+      "u5-gas-density-13",
+      "u5-ideal-expansion-entropy-03",
+      "u5-ideal-gas-pressure-01",
+      "u5-ideal-gas-pressure-03",
+      "u5-isothermal-chambers-06",
+      "u5-sensible-heat-03",
+      "u5-temperature-difference-01",
+      "u5-temperature-difference-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-01.03",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-01.04",
+    "label": "scale termometriche",
+    "familyId": "U5-01",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-01",
+    "explanationLocator": "Punti da saper spiegare: U5-01.04",
+    "experimentId": "investigation-u5-01",
+    "labIds": [
+      "physics-ideal-gas"
+    ],
+    "exerciseIds": [
+      "u5-gas-density-01",
+      "u5-gas-density-09",
+      "u5-gas-density-13",
+      "u5-ideal-expansion-entropy-03",
+      "u5-ideal-gas-pressure-01",
+      "u5-ideal-gas-pressure-03",
+      "u5-isothermal-chambers-06",
+      "u5-sensible-heat-03",
+      "u5-temperature-difference-01",
+      "u5-temperature-difference-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-01.04",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-01.05",
+    "label": "gas ideale",
+    "familyId": "U5-01",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-01",
+    "explanationLocator": "Punti da saper spiegare: U5-01.05",
+    "experimentId": "investigation-u5-01",
+    "labIds": [
+      "physics-ideal-gas"
+    ],
+    "exerciseIds": [
+      "u5-gas-density-01",
+      "u5-gas-density-09",
+      "u5-gas-density-13",
+      "u5-ideal-expansion-entropy-03",
+      "u5-ideal-gas-pressure-01",
+      "u5-ideal-gas-pressure-03",
+      "u5-isothermal-chambers-06",
+      "u5-sensible-heat-03",
+      "u5-temperature-difference-01",
+      "u5-temperature-difference-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-01.05",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-02.01",
+    "label": "calore come trasferimento",
+    "familyId": "U5-02",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-02",
+    "explanationLocator": "Punti da saper spiegare: U5-02.01",
+    "experimentId": "investigation-u5-02",
+    "labIds": [
+      "physics-calorimetry"
+    ],
+    "exerciseIds": [
+      "u5-calorimeter-capacity-01",
+      "u5-calorimeter-capacity-09",
+      "u5-calorimeter-capacity-13",
+      "u5-first-law-expansion-03",
+      "u5-freezing-time-01",
+      "u5-ice-final-temperature-01",
+      "u5-isobaric-monatomic-heat-01",
+      "u5-isobaric-monatomic-heat-03",
+      "u5-isochoric-heat-01",
+      "u5-latent-heat-03",
+      "u5-sensible-heat-01",
+      "u5-subzero-ice-melting-01",
+      "u5-two-body-calorimetry-01",
+      "u5-two-body-calorimetry-03",
+      "u5-warm-water-and-ice-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-02.01",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-02.02",
+    "label": "capacità termica",
+    "familyId": "U5-02",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-02",
+    "explanationLocator": "Punti da saper spiegare: U5-02.02",
+    "experimentId": "investigation-u5-02",
+    "labIds": [
+      "physics-calorimetry"
+    ],
+    "exerciseIds": [
+      "u5-calorimeter-capacity-01",
+      "u5-calorimeter-capacity-09",
+      "u5-calorimeter-capacity-13",
+      "u5-first-law-expansion-03",
+      "u5-freezing-time-01",
+      "u5-ice-final-temperature-01",
+      "u5-isobaric-monatomic-heat-01",
+      "u5-isobaric-monatomic-heat-03",
+      "u5-isochoric-heat-01",
+      "u5-latent-heat-03",
+      "u5-sensible-heat-01",
+      "u5-subzero-ice-melting-01",
+      "u5-two-body-calorimetry-01",
+      "u5-two-body-calorimetry-03",
+      "u5-warm-water-and-ice-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-02.02",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-02.03",
+    "label": "calore specifico",
+    "familyId": "U5-02",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-02",
+    "explanationLocator": "Punti da saper spiegare: U5-02.03",
+    "experimentId": "investigation-u5-02",
+    "labIds": [
+      "physics-calorimetry"
+    ],
+    "exerciseIds": [
+      "u5-calorimeter-capacity-01",
+      "u5-calorimeter-capacity-09",
+      "u5-calorimeter-capacity-13",
+      "u5-first-law-expansion-03",
+      "u5-freezing-time-01",
+      "u5-ice-final-temperature-01",
+      "u5-isobaric-monatomic-heat-01",
+      "u5-isobaric-monatomic-heat-03",
+      "u5-isochoric-heat-01",
+      "u5-latent-heat-03",
+      "u5-sensible-heat-01",
+      "u5-subzero-ice-melting-01",
+      "u5-two-body-calorimetry-01",
+      "u5-two-body-calorimetry-03",
+      "u5-warm-water-and-ice-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-02.03",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-02.04",
+    "label": "gas ideali",
+    "familyId": "U5-02",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-02",
+    "explanationLocator": "Punti da saper spiegare: U5-02.04",
+    "experimentId": "investigation-u5-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-calorimeter-capacity-01",
+      "u5-calorimeter-capacity-09",
+      "u5-calorimeter-capacity-13",
+      "u5-first-law-expansion-03",
+      "u5-freezing-time-01",
+      "u5-ice-final-temperature-01",
+      "u5-isobaric-monatomic-heat-01",
+      "u5-isobaric-monatomic-heat-03",
+      "u5-isochoric-heat-01",
+      "u5-latent-heat-03",
+      "u5-sensible-heat-01",
+      "u5-subzero-ice-melting-01",
+      "u5-two-body-calorimetry-01",
+      "u5-two-body-calorimetry-03",
+      "u5-warm-water-and-ice-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-02.04",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-02.05",
+    "label": "fusione evaporazione condensazione",
+    "familyId": "U5-02",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-02",
+    "explanationLocator": "Punti da saper spiegare: U5-02.05",
+    "experimentId": "investigation-u5-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-calorimeter-capacity-01",
+      "u5-calorimeter-capacity-09",
+      "u5-calorimeter-capacity-13",
+      "u5-first-law-expansion-03",
+      "u5-freezing-time-01",
+      "u5-ice-final-temperature-01",
+      "u5-isobaric-monatomic-heat-01",
+      "u5-isobaric-monatomic-heat-03",
+      "u5-isochoric-heat-01",
+      "u5-latent-heat-03",
+      "u5-sensible-heat-01",
+      "u5-subzero-ice-melting-01",
+      "u5-two-body-calorimetry-01",
+      "u5-two-body-calorimetry-03",
+      "u5-warm-water-and-ice-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-02.05",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-02.06",
+    "label": "calore latente",
+    "familyId": "U5-02",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-02",
+    "explanationLocator": "Punti da saper spiegare: U5-02.06",
+    "experimentId": "investigation-u5-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-calorimeter-capacity-01",
+      "u5-calorimeter-capacity-09",
+      "u5-calorimeter-capacity-13",
+      "u5-first-law-expansion-03",
+      "u5-freezing-time-01",
+      "u5-ice-final-temperature-01",
+      "u5-isobaric-monatomic-heat-01",
+      "u5-isobaric-monatomic-heat-03",
+      "u5-isochoric-heat-01",
+      "u5-latent-heat-03",
+      "u5-sensible-heat-01",
+      "u5-subzero-ice-melting-01",
+      "u5-two-body-calorimetry-01",
+      "u5-two-body-calorimetry-03",
+      "u5-warm-water-and-ice-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-02.06",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-02.07",
+    "label": "calorimetria",
+    "familyId": "U5-02",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-02",
+    "explanationLocator": "Punti da saper spiegare: U5-02.07",
+    "experimentId": "investigation-u5-02",
+    "labIds": [
+      "physics-calorimetry"
+    ],
+    "exerciseIds": [
+      "u5-calorimeter-capacity-01",
+      "u5-calorimeter-capacity-09",
+      "u5-calorimeter-capacity-13",
+      "u5-first-law-expansion-03",
+      "u5-freezing-time-01",
+      "u5-ice-final-temperature-01",
+      "u5-isobaric-monatomic-heat-01",
+      "u5-isobaric-monatomic-heat-03",
+      "u5-isochoric-heat-01",
+      "u5-latent-heat-03",
+      "u5-sensible-heat-01",
+      "u5-subzero-ice-melting-01",
+      "u5-two-body-calorimetry-01",
+      "u5-two-body-calorimetry-03",
+      "u5-warm-water-and-ice-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-02.07",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-03.01",
+    "label": "conduzione",
+    "familyId": "U5-03",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-03",
+    "explanationLocator": "Punti da saper spiegare: U5-03.01",
+    "experimentId": "investigation-u5-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-composite-wall-series-01",
+      "u5-composite-wall-series-09",
+      "u5-composite-wall-series-13",
+      "u5-convective-loss-01",
+      "u5-emitted-blackbody-power-01",
+      "u5-interface-temperature-01",
+      "u5-net-blackbody-exchange-03",
+      "u5-parallel-heat-losses-01",
+      "u5-plane-conduction-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-03.01",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-03.02",
+    "label": "convezione",
+    "familyId": "U5-03",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-03",
+    "explanationLocator": "Punti da saper spiegare: U5-03.02",
+    "experimentId": "investigation-u5-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-composite-wall-series-01",
+      "u5-composite-wall-series-09",
+      "u5-composite-wall-series-13",
+      "u5-convective-loss-01",
+      "u5-emitted-blackbody-power-01",
+      "u5-interface-temperature-01",
+      "u5-net-blackbody-exchange-03",
+      "u5-parallel-heat-losses-01",
+      "u5-plane-conduction-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-03.02",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-03.03",
+    "label": "irraggiamento",
+    "familyId": "U5-03",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-03",
+    "explanationLocator": "Punti da saper spiegare: U5-03.03",
+    "experimentId": "investigation-u5-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-composite-wall-series-01",
+      "u5-composite-wall-series-09",
+      "u5-composite-wall-series-13",
+      "u5-convective-loss-01",
+      "u5-emitted-blackbody-power-01",
+      "u5-interface-temperature-01",
+      "u5-net-blackbody-exchange-03",
+      "u5-parallel-heat-losses-01",
+      "u5-plane-conduction-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-03.03",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-04.01",
+    "label": "energia interna",
+    "familyId": "U5-04",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-04",
+    "explanationLocator": "Punti da saper spiegare: U5-04.01",
+    "experimentId": "investigation-u5-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-adiabatic-monatomic-01",
+      "u5-compression-heating-01",
+      "u5-compression-heating-09",
+      "u5-compression-heating-13",
+      "u5-first-law-expansion-01",
+      "u5-first-law-expansion-03",
+      "u5-free-expansion-pressure-03",
+      "u5-ideal-expansion-entropy-16",
+      "u5-isobaric-monatomic-heat-03",
+      "u5-isobaric-work-03",
+      "u5-isochoric-heat-01",
+      "u5-isochoric-heat-03",
+      "u5-isothermal-work-01",
+      "u5-isothermal-work-16",
+      "u5-reversible-isothermal-entropy-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-04.01",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-04.02",
+    "label": "calore e lavoro",
+    "familyId": "U5-04",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-04",
+    "explanationLocator": "Punti da saper spiegare: U5-04.02",
+    "experimentId": "investigation-u5-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-adiabatic-monatomic-01",
+      "u5-compression-heating-01",
+      "u5-compression-heating-09",
+      "u5-compression-heating-13",
+      "u5-first-law-expansion-01",
+      "u5-first-law-expansion-03",
+      "u5-free-expansion-pressure-03",
+      "u5-ideal-expansion-entropy-16",
+      "u5-isobaric-monatomic-heat-03",
+      "u5-isobaric-work-03",
+      "u5-isochoric-heat-01",
+      "u5-isochoric-heat-03",
+      "u5-isothermal-work-01",
+      "u5-isothermal-work-16",
+      "u5-reversible-isothermal-entropy-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-04.02",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-04.03",
+    "label": "primo principio",
+    "familyId": "U5-04",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-04",
+    "explanationLocator": "Punti da saper spiegare: U5-04.03",
+    "experimentId": "investigation-u5-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-adiabatic-monatomic-01",
+      "u5-compression-heating-01",
+      "u5-compression-heating-09",
+      "u5-compression-heating-13",
+      "u5-first-law-expansion-01",
+      "u5-first-law-expansion-03",
+      "u5-free-expansion-pressure-03",
+      "u5-ideal-expansion-entropy-16",
+      "u5-isobaric-monatomic-heat-03",
+      "u5-isobaric-work-03",
+      "u5-isochoric-heat-01",
+      "u5-isochoric-heat-03",
+      "u5-isothermal-work-01",
+      "u5-isothermal-work-16",
+      "u5-reversible-isothermal-entropy-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-04.03",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-04.04",
+    "label": "reversibilità",
+    "familyId": "U5-04",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-04",
+    "explanationLocator": "Punti da saper spiegare: U5-04.04",
+    "experimentId": "investigation-u5-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-adiabatic-monatomic-01",
+      "u5-compression-heating-01",
+      "u5-compression-heating-09",
+      "u5-compression-heating-13",
+      "u5-first-law-expansion-01",
+      "u5-first-law-expansion-03",
+      "u5-free-expansion-pressure-03",
+      "u5-ideal-expansion-entropy-16",
+      "u5-isobaric-monatomic-heat-03",
+      "u5-isobaric-work-03",
+      "u5-isochoric-heat-01",
+      "u5-isochoric-heat-03",
+      "u5-isothermal-work-01",
+      "u5-isothermal-work-16",
+      "u5-reversible-isothermal-entropy-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-04.04",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-04.05",
+    "label": "isoterma",
+    "familyId": "U5-04",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-04",
+    "explanationLocator": "Punti da saper spiegare: U5-04.05",
+    "experimentId": "investigation-u5-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-adiabatic-monatomic-01",
+      "u5-compression-heating-01",
+      "u5-compression-heating-09",
+      "u5-compression-heating-13",
+      "u5-first-law-expansion-01",
+      "u5-first-law-expansion-03",
+      "u5-free-expansion-pressure-03",
+      "u5-ideal-expansion-entropy-16",
+      "u5-isobaric-monatomic-heat-03",
+      "u5-isobaric-work-03",
+      "u5-isochoric-heat-01",
+      "u5-isochoric-heat-03",
+      "u5-isothermal-work-01",
+      "u5-isothermal-work-16",
+      "u5-reversible-isothermal-entropy-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-04.05",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-04.06",
+    "label": "isocora",
+    "familyId": "U5-04",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-04",
+    "explanationLocator": "Punti da saper spiegare: U5-04.06",
+    "experimentId": "investigation-u5-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-adiabatic-monatomic-01",
+      "u5-compression-heating-01",
+      "u5-compression-heating-09",
+      "u5-compression-heating-13",
+      "u5-first-law-expansion-01",
+      "u5-first-law-expansion-03",
+      "u5-free-expansion-pressure-03",
+      "u5-ideal-expansion-entropy-16",
+      "u5-isobaric-monatomic-heat-03",
+      "u5-isobaric-work-03",
+      "u5-isochoric-heat-01",
+      "u5-isochoric-heat-03",
+      "u5-isothermal-work-01",
+      "u5-isothermal-work-16",
+      "u5-reversible-isothermal-entropy-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-04.06",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-04.07",
+    "label": "isobara",
+    "familyId": "U5-04",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-04",
+    "explanationLocator": "Punti da saper spiegare: U5-04.07",
+    "experimentId": "investigation-u5-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-adiabatic-monatomic-01",
+      "u5-compression-heating-01",
+      "u5-compression-heating-09",
+      "u5-compression-heating-13",
+      "u5-first-law-expansion-01",
+      "u5-first-law-expansion-03",
+      "u5-free-expansion-pressure-03",
+      "u5-ideal-expansion-entropy-16",
+      "u5-isobaric-monatomic-heat-03",
+      "u5-isobaric-work-03",
+      "u5-isochoric-heat-01",
+      "u5-isochoric-heat-03",
+      "u5-isothermal-work-01",
+      "u5-isothermal-work-16",
+      "u5-reversible-isothermal-entropy-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-04.07",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-04.08",
+    "label": "adiabatica",
+    "familyId": "U5-04",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-04",
+    "explanationLocator": "Punti da saper spiegare: U5-04.08",
+    "experimentId": "investigation-u5-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-adiabatic-monatomic-01",
+      "u5-compression-heating-01",
+      "u5-compression-heating-09",
+      "u5-compression-heating-13",
+      "u5-first-law-expansion-01",
+      "u5-first-law-expansion-03",
+      "u5-free-expansion-pressure-03",
+      "u5-ideal-expansion-entropy-16",
+      "u5-isobaric-monatomic-heat-03",
+      "u5-isobaric-work-03",
+      "u5-isochoric-heat-01",
+      "u5-isochoric-heat-03",
+      "u5-isothermal-work-01",
+      "u5-isothermal-work-16",
+      "u5-reversible-isothermal-entropy-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-04.08",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-05.01",
+    "label": "Kelvin-Planck e Clausius",
+    "familyId": "U5-05",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-05",
+    "explanationLocator": "Punti da saper spiegare: U5-05.01",
+    "experimentId": "investigation-u5-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-carnot-efficiency-01",
+      "u5-carnot-efficiency-03",
+      "u5-carnot-efficiency-09",
+      "u5-carnot-efficiency-13",
+      "u5-carnot-work-temperature-gap-01",
+      "u5-cyclic-work-01",
+      "u5-engine-average-power-01",
+      "u5-engine-efficiency-01",
+      "u5-engine-efficiency-03",
+      "u5-entropy-hot-cold-03",
+      "u5-free-expansion-pressure-03",
+      "u5-ideal-expansion-entropy-03",
+      "u5-ideal-expansion-entropy-16",
+      "u5-isothermal-work-16",
+      "u5-refrigerator-cop-01",
+      "u5-reversible-isothermal-entropy-03",
+      "u5-statistical-entropy-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-05.01",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-05.02",
+    "label": "irreversibilità",
+    "familyId": "U5-05",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-05",
+    "explanationLocator": "Punti da saper spiegare: U5-05.02",
+    "experimentId": "investigation-u5-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-carnot-efficiency-01",
+      "u5-carnot-efficiency-03",
+      "u5-carnot-efficiency-09",
+      "u5-carnot-efficiency-13",
+      "u5-carnot-work-temperature-gap-01",
+      "u5-cyclic-work-01",
+      "u5-engine-average-power-01",
+      "u5-engine-efficiency-01",
+      "u5-engine-efficiency-03",
+      "u5-entropy-hot-cold-03",
+      "u5-free-expansion-pressure-03",
+      "u5-ideal-expansion-entropy-03",
+      "u5-ideal-expansion-entropy-16",
+      "u5-isothermal-work-16",
+      "u5-refrigerator-cop-01",
+      "u5-reversible-isothermal-entropy-03",
+      "u5-statistical-entropy-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-05.02",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-05.03",
+    "label": "ciclo",
+    "familyId": "U5-05",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-05",
+    "explanationLocator": "Punti da saper spiegare: U5-05.03",
+    "experimentId": "investigation-u5-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-carnot-efficiency-01",
+      "u5-carnot-efficiency-03",
+      "u5-carnot-efficiency-09",
+      "u5-carnot-efficiency-13",
+      "u5-carnot-work-temperature-gap-01",
+      "u5-cyclic-work-01",
+      "u5-engine-average-power-01",
+      "u5-engine-efficiency-01",
+      "u5-engine-efficiency-03",
+      "u5-entropy-hot-cold-03",
+      "u5-free-expansion-pressure-03",
+      "u5-ideal-expansion-entropy-03",
+      "u5-ideal-expansion-entropy-16",
+      "u5-isothermal-work-16",
+      "u5-refrigerator-cop-01",
+      "u5-reversible-isothermal-entropy-03",
+      "u5-statistical-entropy-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-05.03",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-05.04",
+    "label": "macchina termica e rendimento",
+    "familyId": "U5-05",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-05",
+    "explanationLocator": "Punti da saper spiegare: U5-05.04",
+    "experimentId": "investigation-u5-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-carnot-efficiency-01",
+      "u5-carnot-efficiency-03",
+      "u5-carnot-efficiency-09",
+      "u5-carnot-efficiency-13",
+      "u5-carnot-work-temperature-gap-01",
+      "u5-cyclic-work-01",
+      "u5-engine-average-power-01",
+      "u5-engine-efficiency-01",
+      "u5-engine-efficiency-03",
+      "u5-entropy-hot-cold-03",
+      "u5-free-expansion-pressure-03",
+      "u5-ideal-expansion-entropy-03",
+      "u5-ideal-expansion-entropy-16",
+      "u5-isothermal-work-16",
+      "u5-refrigerator-cop-01",
+      "u5-reversible-isothermal-entropy-03",
+      "u5-statistical-entropy-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-05.04",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-05.05",
+    "label": "Carnot",
+    "familyId": "U5-05",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-05",
+    "explanationLocator": "Punti da saper spiegare: U5-05.05",
+    "experimentId": "investigation-u5-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-carnot-efficiency-01",
+      "u5-carnot-efficiency-03",
+      "u5-carnot-efficiency-09",
+      "u5-carnot-efficiency-13",
+      "u5-carnot-work-temperature-gap-01",
+      "u5-cyclic-work-01",
+      "u5-engine-average-power-01",
+      "u5-engine-efficiency-01",
+      "u5-engine-efficiency-03",
+      "u5-entropy-hot-cold-03",
+      "u5-free-expansion-pressure-03",
+      "u5-ideal-expansion-entropy-03",
+      "u5-ideal-expansion-entropy-16",
+      "u5-isothermal-work-16",
+      "u5-refrigerator-cop-01",
+      "u5-reversible-isothermal-entropy-03",
+      "u5-statistical-entropy-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-05.05",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-05.06",
+    "label": "entropia funzione stato",
+    "familyId": "U5-05",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-05",
+    "explanationLocator": "Punti da saper spiegare: U5-05.06",
+    "experimentId": "investigation-u5-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-carnot-efficiency-01",
+      "u5-carnot-efficiency-03",
+      "u5-carnot-efficiency-09",
+      "u5-carnot-efficiency-13",
+      "u5-carnot-work-temperature-gap-01",
+      "u5-cyclic-work-01",
+      "u5-engine-average-power-01",
+      "u5-engine-efficiency-01",
+      "u5-engine-efficiency-03",
+      "u5-entropy-hot-cold-03",
+      "u5-free-expansion-pressure-03",
+      "u5-ideal-expansion-entropy-03",
+      "u5-ideal-expansion-entropy-16",
+      "u5-isothermal-work-16",
+      "u5-refrigerator-cop-01",
+      "u5-reversible-isothermal-entropy-03",
+      "u5-statistical-entropy-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-05.06",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-05.07",
+    "label": "interpretazione statistica",
+    "familyId": "U5-05",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-05",
+    "explanationLocator": "Punti da saper spiegare: U5-05.07",
+    "experimentId": "investigation-u5-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-carnot-efficiency-01",
+      "u5-carnot-efficiency-03",
+      "u5-carnot-efficiency-09",
+      "u5-carnot-efficiency-13",
+      "u5-carnot-work-temperature-gap-01",
+      "u5-cyclic-work-01",
+      "u5-engine-average-power-01",
+      "u5-engine-efficiency-01",
+      "u5-engine-efficiency-03",
+      "u5-entropy-hot-cold-03",
+      "u5-free-expansion-pressure-03",
+      "u5-ideal-expansion-entropy-03",
+      "u5-ideal-expansion-entropy-16",
+      "u5-isothermal-work-16",
+      "u5-refrigerator-cop-01",
+      "u5-reversible-isothermal-entropy-03",
+      "u5-statistical-entropy-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-05.07",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U5-05.08",
+    "label": "direzione processi",
+    "familyId": "U5-05",
+    "syllabusUnitId": "U5",
+    "courseId": "sf-2026-termodinamica",
+    "unitId": "sf-2026-u5-05",
+    "explanationLocator": "Punti da saper spiegare: U5-05.08",
+    "experimentId": "investigation-u5-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u5-carnot-efficiency-01",
+      "u5-carnot-efficiency-03",
+      "u5-carnot-efficiency-09",
+      "u5-carnot-efficiency-13",
+      "u5-carnot-work-temperature-gap-01",
+      "u5-cyclic-work-01",
+      "u5-engine-average-power-01",
+      "u5-engine-efficiency-01",
+      "u5-engine-efficiency-03",
+      "u5-entropy-hot-cold-03",
+      "u5-free-expansion-pressure-03",
+      "u5-ideal-expansion-entropy-03",
+      "u5-ideal-expansion-entropy-16",
+      "u5-isothermal-work-16",
+      "u5-refrigerator-cop-01",
+      "u5-reversible-isothermal-entropy-03",
+      "u5-statistical-entropy-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U5-05.08",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-01.01",
+    "label": "carica e unità",
+    "familyId": "U6-01",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-01",
+    "explanationLocator": "Punti da saper spiegare: U6-01.01",
+    "experimentId": "investigation-u6-01",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-capacitor-charge-09",
+      "u6-capacitor-charge-13",
+      "u6-charge-accelerating-voltage-01",
+      "u6-coulomb-force-01",
+      "u6-midpoint-electric-field-01",
+      "u6-parallel-capacitors-06",
+      "u6-plane-capacitance-08",
+      "u6-point-electric-field-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-01.01",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-01.02",
+    "label": "conservazione",
+    "familyId": "U6-01",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-01",
+    "explanationLocator": "Punti da saper spiegare: U6-01.02",
+    "experimentId": "investigation-u6-01",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-capacitor-charge-09",
+      "u6-capacitor-charge-13",
+      "u6-charge-accelerating-voltage-01",
+      "u6-coulomb-force-01",
+      "u6-midpoint-electric-field-01",
+      "u6-parallel-capacitors-06",
+      "u6-plane-capacitance-08",
+      "u6-point-electric-field-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-01.02",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-01.03",
+    "label": "Coulomb",
+    "familyId": "U6-01",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-01",
+    "explanationLocator": "Punti da saper spiegare: U6-01.03",
+    "experimentId": "investigation-u6-01",
+    "labIds": [
+      "physics-coulomb"
+    ],
+    "exerciseIds": [
+      "u6-capacitor-charge-09",
+      "u6-capacitor-charge-13",
+      "u6-charge-accelerating-voltage-01",
+      "u6-coulomb-force-01",
+      "u6-midpoint-electric-field-01",
+      "u6-parallel-capacitors-06",
+      "u6-plane-capacitance-08",
+      "u6-point-electric-field-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-01.03",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-01.04",
+    "label": "campo e linee",
+    "familyId": "U6-01",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-01",
+    "explanationLocator": "Punti da saper spiegare: U6-01.04",
+    "experimentId": "investigation-u6-01",
+    "labIds": [
+      "physics-coulomb"
+    ],
+    "exerciseIds": [
+      "u6-capacitor-charge-09",
+      "u6-capacitor-charge-13",
+      "u6-charge-accelerating-voltage-01",
+      "u6-coulomb-force-01",
+      "u6-midpoint-electric-field-01",
+      "u6-parallel-capacitors-06",
+      "u6-plane-capacitance-08",
+      "u6-point-electric-field-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-01.04",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-01.05",
+    "label": "sovrapposizione cariche",
+    "familyId": "U6-01",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-01",
+    "explanationLocator": "Punti da saper spiegare: U6-01.05",
+    "experimentId": "investigation-u6-01",
+    "labIds": [
+      "physics-coulomb"
+    ],
+    "exerciseIds": [
+      "u6-capacitor-charge-09",
+      "u6-capacitor-charge-13",
+      "u6-charge-accelerating-voltage-01",
+      "u6-coulomb-force-01",
+      "u6-midpoint-electric-field-01",
+      "u6-parallel-capacitors-06",
+      "u6-plane-capacitance-08",
+      "u6-point-electric-field-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-01.05",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-01.06",
+    "label": "moto in campo uniforme",
+    "familyId": "U6-01",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-01",
+    "explanationLocator": "Punti da saper spiegare: U6-01.06",
+    "experimentId": "investigation-u6-01",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-capacitor-charge-09",
+      "u6-capacitor-charge-13",
+      "u6-charge-accelerating-voltage-01",
+      "u6-coulomb-force-01",
+      "u6-midpoint-electric-field-01",
+      "u6-parallel-capacitors-06",
+      "u6-plane-capacitance-08",
+      "u6-point-electric-field-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-01.06",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-02.01",
+    "label": "energia potenziale",
+    "familyId": "U6-02",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-02",
+    "explanationLocator": "Punti da saper spiegare: U6-02.01",
+    "experimentId": "investigation-u6-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-accelerated-magnetic-radius-09",
+      "u6-accelerated-magnetic-radius-13",
+      "u6-point-electric-potential-08",
+      "u6-symmetric-electric-potential-06",
+      "u6-work-potential-difference-08"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-02.01",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-02.02",
+    "label": "potenziale",
+    "familyId": "U6-02",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-02",
+    "explanationLocator": "Punti da saper spiegare: U6-02.02",
+    "experimentId": "investigation-u6-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-accelerated-magnetic-radius-09",
+      "u6-accelerated-magnetic-radius-13",
+      "u6-point-electric-potential-08",
+      "u6-symmetric-electric-potential-06",
+      "u6-work-potential-difference-08"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-02.02",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-02.03",
+    "label": "differenza potenziale",
+    "familyId": "U6-02",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-02",
+    "explanationLocator": "Punti da saper spiegare: U6-02.03",
+    "experimentId": "investigation-u6-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-accelerated-magnetic-radius-09",
+      "u6-accelerated-magnetic-radius-13",
+      "u6-point-electric-potential-08",
+      "u6-symmetric-electric-potential-06",
+      "u6-work-potential-difference-08"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-02.03",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-02.04",
+    "label": "conservazione energia carica",
+    "familyId": "U6-02",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-02",
+    "explanationLocator": "Punti da saper spiegare: U6-02.04",
+    "experimentId": "investigation-u6-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-accelerated-magnetic-radius-09",
+      "u6-accelerated-magnetic-radius-13",
+      "u6-point-electric-potential-08",
+      "u6-symmetric-electric-potential-06",
+      "u6-work-potential-difference-08"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-02.04",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-03.01",
+    "label": "induzione elettrostatica",
+    "familyId": "U6-03",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-03",
+    "explanationLocator": "Punti da saper spiegare: U6-03.01",
+    "experimentId": "investigation-u6-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-capacitor-energy-03",
+      "u6-capacitor-energy-09",
+      "u6-capacitor-energy-13",
+      "u6-force-uniform-electric-field-03",
+      "u6-plane-capacitance-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-03.01",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-03.02",
+    "label": "polarizzazione",
+    "familyId": "U6-03",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-03",
+    "explanationLocator": "Punti da saper spiegare: U6-03.02",
+    "experimentId": "investigation-u6-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-capacitor-energy-03",
+      "u6-capacitor-energy-09",
+      "u6-capacitor-energy-13",
+      "u6-force-uniform-electric-field-03",
+      "u6-plane-capacitance-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-03.02",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-04.01",
+    "label": "DC",
+    "familyId": "U6-04",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-04",
+    "explanationLocator": "Punti da saper spiegare: U6-04.01",
+    "experimentId": "investigation-u6-04",
+    "labIds": [
+      "physics-circuit"
+    ],
+    "exerciseIds": [
+      "u6-connected-plate-separation-charge-09",
+      "u6-connected-plate-separation-charge-13",
+      "u6-current-charge-time-01",
+      "u6-dielectric-connected-charge-03",
+      "u6-joule-power-08",
+      "u6-ohmic-current-01",
+      "u6-two-parallel-resistors-06",
+      "u6-two-series-resistors-06",
+      "u6-wire-stretched-fixed-volume-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-04.01",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-04.02",
+    "label": "intensità",
+    "familyId": "U6-04",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-04",
+    "explanationLocator": "Punti da saper spiegare: U6-04.02",
+    "experimentId": "investigation-u6-04",
+    "labIds": [
+      "physics-circuit"
+    ],
+    "exerciseIds": [
+      "u6-connected-plate-separation-charge-09",
+      "u6-connected-plate-separation-charge-13",
+      "u6-current-charge-time-01",
+      "u6-dielectric-connected-charge-03",
+      "u6-joule-power-08",
+      "u6-ohmic-current-01",
+      "u6-two-parallel-resistors-06",
+      "u6-two-series-resistors-06",
+      "u6-wire-stretched-fixed-volume-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-04.02",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-04.03",
+    "label": "generatore ideale",
+    "familyId": "U6-04",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-04",
+    "explanationLocator": "Punti da saper spiegare: U6-04.03",
+    "experimentId": "investigation-u6-04",
+    "labIds": [
+      "physics-circuit"
+    ],
+    "exerciseIds": [
+      "u6-connected-plate-separation-charge-09",
+      "u6-connected-plate-separation-charge-13",
+      "u6-current-charge-time-01",
+      "u6-dielectric-connected-charge-03",
+      "u6-joule-power-08",
+      "u6-ohmic-current-01",
+      "u6-two-parallel-resistors-06",
+      "u6-two-series-resistors-06",
+      "u6-wire-stretched-fixed-volume-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-04.03",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-04.04",
+    "label": "Ohm",
+    "familyId": "U6-04",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-04",
+    "explanationLocator": "Punti da saper spiegare: U6-04.04",
+    "experimentId": "investigation-u6-04",
+    "labIds": [
+      "physics-circuit"
+    ],
+    "exerciseIds": [
+      "u6-connected-plate-separation-charge-09",
+      "u6-connected-plate-separation-charge-13",
+      "u6-current-charge-time-01",
+      "u6-dielectric-connected-charge-03",
+      "u6-joule-power-08",
+      "u6-ohmic-current-01",
+      "u6-two-parallel-resistors-06",
+      "u6-two-series-resistors-06",
+      "u6-wire-stretched-fixed-volume-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-04.04",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-04.05",
+    "label": "resistività",
+    "familyId": "U6-04",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-04",
+    "explanationLocator": "Punti da saper spiegare: U6-04.05",
+    "experimentId": "investigation-u6-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-connected-plate-separation-charge-09",
+      "u6-connected-plate-separation-charge-13",
+      "u6-current-charge-time-01",
+      "u6-dielectric-connected-charge-03",
+      "u6-joule-power-08",
+      "u6-ohmic-current-01",
+      "u6-two-parallel-resistors-06",
+      "u6-two-series-resistors-06",
+      "u6-wire-stretched-fixed-volume-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-04.05",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-04.06",
+    "label": "Joule",
+    "familyId": "U6-04",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-04",
+    "explanationLocator": "Punti da saper spiegare: U6-04.06",
+    "experimentId": "investigation-u6-04",
+    "labIds": [
+      "physics-circuit"
+    ],
+    "exerciseIds": [
+      "u6-connected-plate-separation-charge-09",
+      "u6-connected-plate-separation-charge-13",
+      "u6-current-charge-time-01",
+      "u6-dielectric-connected-charge-03",
+      "u6-joule-power-08",
+      "u6-ohmic-current-01",
+      "u6-two-parallel-resistors-06",
+      "u6-two-series-resistors-06",
+      "u6-wire-stretched-fixed-volume-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-04.06",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-04.07",
+    "label": "serie e parallelo",
+    "familyId": "U6-04",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-04",
+    "explanationLocator": "Punti da saper spiegare: U6-04.07",
+    "experimentId": "investigation-u6-04",
+    "labIds": [
+      "physics-circuit"
+    ],
+    "exerciseIds": [
+      "u6-connected-plate-separation-charge-09",
+      "u6-connected-plate-separation-charge-13",
+      "u6-current-charge-time-01",
+      "u6-dielectric-connected-charge-03",
+      "u6-joule-power-08",
+      "u6-ohmic-current-01",
+      "u6-two-parallel-resistors-06",
+      "u6-two-series-resistors-06",
+      "u6-wire-stretched-fixed-volume-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-04.07",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-05.01",
+    "label": "capacità",
+    "familyId": "U6-05",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-05",
+    "explanationLocator": "Punti da saper spiegare: U6-05.01",
+    "experimentId": "investigation-u6-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-capacitor-charge-01",
+      "u6-capacitor-charge-09",
+      "u6-capacitor-charge-13",
+      "u6-capacitor-energy-01",
+      "u6-dielectric-connected-charge-03",
+      "u6-dielectric-isolated-voltage-03",
+      "u6-parallel-capacitors-06",
+      "u6-plane-capacitance-08",
+      "u6-series-capacitors-03",
+      "u6-series-capacitors-06"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-05.01",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-05.02",
+    "label": "condensatore piano",
+    "familyId": "U6-05",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-05",
+    "explanationLocator": "Punti da saper spiegare: U6-05.02",
+    "experimentId": "investigation-u6-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-capacitor-charge-01",
+      "u6-capacitor-charge-09",
+      "u6-capacitor-charge-13",
+      "u6-capacitor-energy-01",
+      "u6-dielectric-connected-charge-03",
+      "u6-dielectric-isolated-voltage-03",
+      "u6-parallel-capacitors-06",
+      "u6-plane-capacitance-08",
+      "u6-series-capacitors-03",
+      "u6-series-capacitors-06"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-05.02",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-05.03",
+    "label": "dielettrico",
+    "familyId": "U6-05",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-05",
+    "explanationLocator": "Punti da saper spiegare: U6-05.03",
+    "experimentId": "investigation-u6-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-capacitor-charge-01",
+      "u6-capacitor-charge-09",
+      "u6-capacitor-charge-13",
+      "u6-capacitor-energy-01",
+      "u6-dielectric-connected-charge-03",
+      "u6-dielectric-isolated-voltage-03",
+      "u6-parallel-capacitors-06",
+      "u6-plane-capacitance-08",
+      "u6-series-capacitors-03",
+      "u6-series-capacitors-06"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-05.03",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-05.04",
+    "label": "energia",
+    "familyId": "U6-05",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-05",
+    "explanationLocator": "Punti da saper spiegare: U6-05.04",
+    "experimentId": "investigation-u6-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-capacitor-charge-01",
+      "u6-capacitor-charge-09",
+      "u6-capacitor-charge-13",
+      "u6-capacitor-energy-01",
+      "u6-dielectric-connected-charge-03",
+      "u6-dielectric-isolated-voltage-03",
+      "u6-parallel-capacitors-06",
+      "u6-plane-capacitance-08",
+      "u6-series-capacitors-03",
+      "u6-series-capacitors-06"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-05.04",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-05.05",
+    "label": "serie e parallelo",
+    "familyId": "U6-05",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-05",
+    "explanationLocator": "Punti da saper spiegare: U6-05.05",
+    "experimentId": "investigation-u6-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-capacitor-charge-01",
+      "u6-capacitor-charge-09",
+      "u6-capacitor-charge-13",
+      "u6-capacitor-energy-01",
+      "u6-dielectric-connected-charge-03",
+      "u6-dielectric-isolated-voltage-03",
+      "u6-parallel-capacitors-06",
+      "u6-plane-capacitance-08",
+      "u6-series-capacitors-03",
+      "u6-series-capacitors-06"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-05.05",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-06.01",
+    "label": "Oersted",
+    "familyId": "U6-06",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-06",
+    "explanationLocator": "Punti da saper spiegare: U6-06.01",
+    "experimentId": "investigation-u6-06",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-accelerated-magnetic-radius-09",
+      "u6-accelerated-magnetic-radius-13",
+      "u6-current-charge-time-03",
+      "u6-force-current-wire-01",
+      "u6-lorentz-force-03",
+      "u6-magnetic-circle-radius-03",
+      "u6-magnetic-orbit-period-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-06.01",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-06.02",
+    "label": "campo da correnti",
+    "familyId": "U6-06",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-06",
+    "explanationLocator": "Punti da saper spiegare: U6-06.02",
+    "experimentId": "investigation-u6-06",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-accelerated-magnetic-radius-09",
+      "u6-accelerated-magnetic-radius-13",
+      "u6-current-charge-time-03",
+      "u6-force-current-wire-01",
+      "u6-lorentz-force-03",
+      "u6-magnetic-circle-radius-03",
+      "u6-magnetic-orbit-period-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-06.02",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-06.03",
+    "label": "Lorentz su carica",
+    "familyId": "U6-06",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-06",
+    "explanationLocator": "Punti da saper spiegare: U6-06.03",
+    "experimentId": "investigation-u6-06",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-accelerated-magnetic-radius-09",
+      "u6-accelerated-magnetic-radius-13",
+      "u6-current-charge-time-03",
+      "u6-force-current-wire-01",
+      "u6-lorentz-force-03",
+      "u6-magnetic-circle-radius-03",
+      "u6-magnetic-orbit-period-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-06.03",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-06.04",
+    "label": "forza su filo",
+    "familyId": "U6-06",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-06",
+    "explanationLocator": "Punti da saper spiegare: U6-06.04",
+    "experimentId": "investigation-u6-06",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-accelerated-magnetic-radius-09",
+      "u6-accelerated-magnetic-radius-13",
+      "u6-current-charge-time-03",
+      "u6-force-current-wire-01",
+      "u6-lorentz-force-03",
+      "u6-magnetic-circle-radius-03",
+      "u6-magnetic-orbit-period-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-06.04",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-06.05",
+    "label": "moto circolare carica",
+    "familyId": "U6-06",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-06",
+    "explanationLocator": "Punti da saper spiegare: U6-06.05",
+    "experimentId": "investigation-u6-06",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-accelerated-magnetic-radius-09",
+      "u6-accelerated-magnetic-radius-13",
+      "u6-current-charge-time-03",
+      "u6-force-current-wire-01",
+      "u6-lorentz-force-03",
+      "u6-magnetic-circle-radius-03",
+      "u6-magnetic-orbit-period-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-06.05",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-07.01",
+    "label": "flusso",
+    "familyId": "U6-07",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-07",
+    "explanationLocator": "Punti da saper spiegare: U6-07.01",
+    "experimentId": "investigation-u6-07",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-faraday-average-emf-03",
+      "u6-faraday-average-emf-09",
+      "u6-faraday-average-emf-13",
+      "u6-magnetic-flux-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-07.01",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-07.02",
+    "label": "fem indotta",
+    "familyId": "U6-07",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-07",
+    "explanationLocator": "Punti da saper spiegare: U6-07.02",
+    "experimentId": "investigation-u6-07",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-faraday-average-emf-03",
+      "u6-faraday-average-emf-09",
+      "u6-faraday-average-emf-13",
+      "u6-magnetic-flux-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-07.02",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-07.03",
+    "label": "Faraday-Neumann-Lenz",
+    "familyId": "U6-07",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-07",
+    "explanationLocator": "Punti da saper spiegare: U6-07.03",
+    "experimentId": "investigation-u6-07",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-faraday-average-emf-03",
+      "u6-faraday-average-emf-09",
+      "u6-faraday-average-emf-13",
+      "u6-magnetic-flux-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-07.03",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U6-07.04",
+    "label": "verso corrente",
+    "familyId": "U6-07",
+    "syllabusUnitId": "U6",
+    "courseId": "sf-2026-elettricita-magnetismo",
+    "unitId": "sf-2026-u6-07",
+    "explanationLocator": "Punti da saper spiegare: U6-07.04",
+    "experimentId": "investigation-u6-07",
+    "labIds": [],
+    "exerciseIds": [
+      "u6-faraday-average-emf-03",
+      "u6-faraday-average-emf-09",
+      "u6-faraday-average-emf-13",
+      "u6-magnetic-flux-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U6-07.04",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-01.01",
+    "label": "mezzo materiale",
+    "familyId": "U4-01",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-01",
+    "explanationLocator": "Punti da saper spiegare: U4-01.01",
+    "experimentId": "investigation-u4-01",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-echo-ranging-03",
+      "u4-echo-ranging-09",
+      "u4-echo-ranging-13",
+      "u4-oscillator-energy-01",
+      "u4-wave-displacement-projection-01",
+      "u4-wave-phase-space-01",
+      "u4-wave-phase-time-03",
+      "u4-wave-wavelength-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-01.01",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-01.02",
+    "label": "propagazione energia",
+    "familyId": "U4-01",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-01",
+    "explanationLocator": "Punti da saper spiegare: U4-01.02",
+    "experimentId": "investigation-u4-01",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-echo-ranging-03",
+      "u4-echo-ranging-09",
+      "u4-echo-ranging-13",
+      "u4-oscillator-energy-01",
+      "u4-wave-displacement-projection-01",
+      "u4-wave-phase-space-01",
+      "u4-wave-phase-time-03",
+      "u4-wave-wavelength-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-01.02",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-01.03",
+    "label": "oscillatore armonico",
+    "familyId": "U4-01",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-01",
+    "explanationLocator": "Punti da saper spiegare: U4-01.03",
+    "experimentId": "investigation-u4-01",
+    "labIds": [
+      "physics-oscillator"
+    ],
+    "exerciseIds": [
+      "u4-echo-ranging-03",
+      "u4-echo-ranging-09",
+      "u4-echo-ranging-13",
+      "u4-oscillator-energy-01",
+      "u4-wave-displacement-projection-01",
+      "u4-wave-phase-space-01",
+      "u4-wave-phase-time-03",
+      "u4-wave-wavelength-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-01.03",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-01.04",
+    "label": "frequenza",
+    "familyId": "U4-01",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-01",
+    "explanationLocator": "Punti da saper spiegare: U4-01.04",
+    "experimentId": "investigation-u4-01",
+    "labIds": [
+      "physics-oscillator",
+      "physics-wave"
+    ],
+    "exerciseIds": [
+      "u4-echo-ranging-03",
+      "u4-echo-ranging-09",
+      "u4-echo-ranging-13",
+      "u4-oscillator-energy-01",
+      "u4-wave-displacement-projection-01",
+      "u4-wave-phase-space-01",
+      "u4-wave-phase-time-03",
+      "u4-wave-wavelength-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-01.04",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-01.05",
+    "label": "periodo",
+    "familyId": "U4-01",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-01",
+    "explanationLocator": "Punti da saper spiegare: U4-01.05",
+    "experimentId": "investigation-u4-01",
+    "labIds": [
+      "physics-oscillator",
+      "physics-wave"
+    ],
+    "exerciseIds": [
+      "u4-echo-ranging-03",
+      "u4-echo-ranging-09",
+      "u4-echo-ranging-13",
+      "u4-oscillator-energy-01",
+      "u4-wave-displacement-projection-01",
+      "u4-wave-phase-space-01",
+      "u4-wave-phase-time-03",
+      "u4-wave-wavelength-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-01.05",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-01.06",
+    "label": "pulsazione",
+    "familyId": "U4-01",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-01",
+    "explanationLocator": "Punti da saper spiegare: U4-01.06",
+    "experimentId": "investigation-u4-01",
+    "labIds": [
+      "physics-oscillator",
+      "physics-wave"
+    ],
+    "exerciseIds": [
+      "u4-echo-ranging-03",
+      "u4-echo-ranging-09",
+      "u4-echo-ranging-13",
+      "u4-oscillator-energy-01",
+      "u4-wave-displacement-projection-01",
+      "u4-wave-phase-space-01",
+      "u4-wave-phase-time-03",
+      "u4-wave-wavelength-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-01.06",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-01.07",
+    "label": "lunghezza onda",
+    "familyId": "U4-01",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-01",
+    "explanationLocator": "Punti da saper spiegare: U4-01.07",
+    "experimentId": "investigation-u4-01",
+    "labIds": [
+      "physics-wave"
+    ],
+    "exerciseIds": [
+      "u4-echo-ranging-03",
+      "u4-echo-ranging-09",
+      "u4-echo-ranging-13",
+      "u4-oscillator-energy-01",
+      "u4-wave-displacement-projection-01",
+      "u4-wave-phase-space-01",
+      "u4-wave-phase-time-03",
+      "u4-wave-wavelength-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-01.07",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-01.08",
+    "label": "velocità",
+    "familyId": "U4-01",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-01",
+    "explanationLocator": "Punti da saper spiegare: U4-01.08",
+    "experimentId": "investigation-u4-01",
+    "labIds": [
+      "physics-wave"
+    ],
+    "exerciseIds": [
+      "u4-echo-ranging-03",
+      "u4-echo-ranging-09",
+      "u4-echo-ranging-13",
+      "u4-oscillator-energy-01",
+      "u4-wave-displacement-projection-01",
+      "u4-wave-phase-space-01",
+      "u4-wave-phase-time-03",
+      "u4-wave-wavelength-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-01.08",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-01.09",
+    "label": "legge onda",
+    "familyId": "U4-01",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-01",
+    "explanationLocator": "Punti da saper spiegare: U4-01.09",
+    "experimentId": "investigation-u4-01",
+    "labIds": [
+      "physics-wave"
+    ],
+    "exerciseIds": [
+      "u4-echo-ranging-03",
+      "u4-echo-ranging-09",
+      "u4-echo-ranging-13",
+      "u4-oscillator-energy-01",
+      "u4-wave-displacement-projection-01",
+      "u4-wave-phase-space-01",
+      "u4-wave-phase-time-03",
+      "u4-wave-wavelength-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-01.09",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-01.10",
+    "label": "trasversale e longitudinale",
+    "familyId": "U4-01",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-01",
+    "explanationLocator": "Punti da saper spiegare: U4-01.10",
+    "experimentId": "investigation-u4-01",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-echo-ranging-03",
+      "u4-echo-ranging-09",
+      "u4-echo-ranging-13",
+      "u4-oscillator-energy-01",
+      "u4-wave-displacement-projection-01",
+      "u4-wave-phase-space-01",
+      "u4-wave-phase-time-03",
+      "u4-wave-wavelength-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-01.10",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-02.01",
+    "label": "principio sovrapposizione",
+    "familyId": "U4-02",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-02",
+    "explanationLocator": "Punti da saper spiegare: U4-02.01",
+    "experimentId": "investigation-u4-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-coherent-constructive-01",
+      "u4-coherent-constructive-06",
+      "u4-coherent-constructive-09",
+      "u4-coherent-constructive-13"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-02.01",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-02.02",
+    "label": "interferenza costruttiva e distruttiva",
+    "familyId": "U4-02",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-02",
+    "explanationLocator": "Punti da saper spiegare: U4-02.02",
+    "experimentId": "investigation-u4-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-coherent-constructive-01",
+      "u4-coherent-constructive-06",
+      "u4-coherent-constructive-09",
+      "u4-coherent-constructive-13"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-02.02",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-03.01",
+    "label": "energia onda",
+    "familyId": "U4-03",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-03",
+    "explanationLocator": "Punti da saper spiegare: U4-03.01",
+    "experimentId": "investigation-u4-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-oscillator-energy-01",
+      "u4-oscillator-energy-09",
+      "u4-oscillator-energy-13",
+      "u4-spherical-intensity-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-03.01",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-03.02",
+    "label": "potenza",
+    "familyId": "U4-03",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-03",
+    "explanationLocator": "Punti da saper spiegare: U4-03.02",
+    "experimentId": "investigation-u4-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-oscillator-energy-01",
+      "u4-oscillator-energy-09",
+      "u4-oscillator-energy-13",
+      "u4-spherical-intensity-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-03.02",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-03.03",
+    "label": "intensità",
+    "familyId": "U4-03",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-03",
+    "explanationLocator": "Punti da saper spiegare: U4-03.03",
+    "experimentId": "investigation-u4-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-oscillator-energy-01",
+      "u4-oscillator-energy-09",
+      "u4-oscillator-energy-13",
+      "u4-spherical-intensity-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-03.03",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-03.04",
+    "label": "inverso quadrato distanza",
+    "familyId": "U4-03",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-03",
+    "explanationLocator": "Punti da saper spiegare: U4-03.04",
+    "experimentId": "investigation-u4-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-oscillator-energy-01",
+      "u4-oscillator-energy-09",
+      "u4-oscillator-energy-13",
+      "u4-spherical-intensity-01"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-03.04",
+    "sourcePages": [
+      3
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-04.01",
+    "label": "mezzi e velocità suono",
+    "familyId": "U4-04",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-04",
+    "explanationLocator": "Punti da saper spiegare: U4-04.01",
+    "experimentId": "investigation-u4-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-echo-ranging-09",
+      "u4-echo-ranging-13",
+      "u4-sound-decibel-03",
+      "u4-sound-decibel-08",
+      "u4-spherical-intensity-03",
+      "u4-wave-energy-through-area-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-04.01",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-04.02",
+    "label": "intensità fisica e percezione",
+    "familyId": "U4-04",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-04",
+    "explanationLocator": "Punti da saper spiegare: U4-04.02",
+    "experimentId": "investigation-u4-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-echo-ranging-09",
+      "u4-echo-ranging-13",
+      "u4-sound-decibel-03",
+      "u4-sound-decibel-08",
+      "u4-spherical-intensity-03",
+      "u4-wave-energy-through-area-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-04.02",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-04.03",
+    "label": "decibel",
+    "familyId": "U4-04",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-04",
+    "explanationLocator": "Punti da saper spiegare: U4-04.03",
+    "experimentId": "investigation-u4-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-echo-ranging-09",
+      "u4-echo-ranging-13",
+      "u4-sound-decibel-03",
+      "u4-sound-decibel-08",
+      "u4-spherical-intensity-03",
+      "u4-wave-energy-through-area-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-04.03",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-05.01",
+    "label": "avvicinamento",
+    "familyId": "U4-05",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-05",
+    "explanationLocator": "Punti da saper spiegare: U4-05.01",
+    "experimentId": "investigation-u4-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-beats-envelope-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-05.01",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-05.02",
+    "label": "allontanamento",
+    "familyId": "U4-05",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-05",
+    "explanationLocator": "Punti da saper spiegare: U4-05.02",
+    "experimentId": "investigation-u4-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-beats-envelope-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-05.02",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-05.03",
+    "label": "sorgente e osservatore",
+    "familyId": "U4-05",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-05",
+    "explanationLocator": "Punti da saper spiegare: U4-05.03",
+    "experimentId": "investigation-u4-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-beats-envelope-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-05.03",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U4-05.04",
+    "label": "frequenza ricevuta",
+    "familyId": "U4-05",
+    "syllabusUnitId": "U4",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u4-05",
+    "explanationLocator": "Punti da saper spiegare: U4-05.04",
+    "experimentId": "investigation-u4-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u4-beats-envelope-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U4-05.04",
+    "sourcePages": [
+      4
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-01.01",
+    "label": "campi elettrico e magnetico perpendicolari",
+    "familyId": "U7-01",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-01",
+    "explanationLocator": "Punti da saper spiegare: U7-01.01",
+    "experimentId": "investigation-u7-01",
+    "labIds": [
+      "physics-em-wave-3d"
+    ],
+    "exerciseIds": [
+      "u7-absorbed-radiant-power-09",
+      "u7-absorbed-radiant-power-13",
+      "u7-em-wave-field-power-03",
+      "u7-wavelength-in-medium-03",
+      "u7-wavelength-in-medium-04"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-01.01",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-01.02",
+    "label": "frequenza e lunghezza",
+    "familyId": "U7-01",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-01",
+    "explanationLocator": "Punti da saper spiegare: U7-01.02",
+    "experimentId": "investigation-u7-01",
+    "labIds": [
+      "physics-em-wave-3d"
+    ],
+    "exerciseIds": [
+      "u7-absorbed-radiant-power-09",
+      "u7-absorbed-radiant-power-13",
+      "u7-em-wave-field-power-03",
+      "u7-wavelength-in-medium-03",
+      "u7-wavelength-in-medium-04"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-01.02",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-01.03",
+    "label": "velocità",
+    "familyId": "U7-01",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-01",
+    "explanationLocator": "Punti da saper spiegare: U7-01.03",
+    "experimentId": "investigation-u7-01",
+    "labIds": [
+      "physics-em-wave-3d"
+    ],
+    "exerciseIds": [
+      "u7-absorbed-radiant-power-09",
+      "u7-absorbed-radiant-power-13",
+      "u7-em-wave-field-power-03",
+      "u7-wavelength-in-medium-03",
+      "u7-wavelength-in-medium-04"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-01.03",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-01.04",
+    "label": "ampiezza",
+    "familyId": "U7-01",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-01",
+    "explanationLocator": "Punti da saper spiegare: U7-01.04",
+    "experimentId": "investigation-u7-01",
+    "labIds": [
+      "physics-em-wave-3d"
+    ],
+    "exerciseIds": [
+      "u7-absorbed-radiant-power-09",
+      "u7-absorbed-radiant-power-13",
+      "u7-em-wave-field-power-03",
+      "u7-wavelength-in-medium-03",
+      "u7-wavelength-in-medium-04"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-01.04",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-01.05",
+    "label": "intensità",
+    "familyId": "U7-01",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-01",
+    "explanationLocator": "Punti da saper spiegare: U7-01.05",
+    "experimentId": "investigation-u7-01",
+    "labIds": [
+      "physics-em-wave-3d"
+    ],
+    "exerciseIds": [
+      "u7-absorbed-radiant-power-09",
+      "u7-absorbed-radiant-power-13",
+      "u7-em-wave-field-power-03",
+      "u7-wavelength-in-medium-03",
+      "u7-wavelength-in-medium-04"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-01.05",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-02.01",
+    "label": "radio",
+    "familyId": "U7-02",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-02",
+    "explanationLocator": "Punti da saper spiegare: U7-02.01",
+    "experimentId": "investigation-u7-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-photon-packet-frequency-03",
+      "u7-photon-packet-frequency-09",
+      "u7-photon-packet-frequency-13"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-02.01",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-02.02",
+    "label": "microonde",
+    "familyId": "U7-02",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-02",
+    "explanationLocator": "Punti da saper spiegare: U7-02.02",
+    "experimentId": "investigation-u7-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-photon-packet-frequency-03",
+      "u7-photon-packet-frequency-09",
+      "u7-photon-packet-frequency-13"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-02.02",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-02.03",
+    "label": "infrarosso",
+    "familyId": "U7-02",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-02",
+    "explanationLocator": "Punti da saper spiegare: U7-02.03",
+    "experimentId": "investigation-u7-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-photon-packet-frequency-03",
+      "u7-photon-packet-frequency-09",
+      "u7-photon-packet-frequency-13"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-02.03",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-02.04",
+    "label": "visibile",
+    "familyId": "U7-02",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-02",
+    "explanationLocator": "Punti da saper spiegare: U7-02.04",
+    "experimentId": "investigation-u7-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-photon-packet-frequency-03",
+      "u7-photon-packet-frequency-09",
+      "u7-photon-packet-frequency-13"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-02.04",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-02.05",
+    "label": "ultravioletto",
+    "familyId": "U7-02",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-02",
+    "explanationLocator": "Punti da saper spiegare: U7-02.05",
+    "experimentId": "investigation-u7-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-photon-packet-frequency-03",
+      "u7-photon-packet-frequency-09",
+      "u7-photon-packet-frequency-13"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-02.05",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-02.06",
+    "label": "raggi X",
+    "familyId": "U7-02",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-02",
+    "explanationLocator": "Punti da saper spiegare: U7-02.06",
+    "experimentId": "investigation-u7-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-photon-packet-frequency-03",
+      "u7-photon-packet-frequency-09",
+      "u7-photon-packet-frequency-13"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-02.06",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-02.07",
+    "label": "gamma",
+    "familyId": "U7-02",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-02",
+    "explanationLocator": "Punti da saper spiegare: U7-02.07",
+    "experimentId": "investigation-u7-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-photon-packet-frequency-03",
+      "u7-photon-packet-frequency-09",
+      "u7-photon-packet-frequency-13"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-02.07",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-02.08",
+    "label": "ordine frequenza e lunghezza",
+    "familyId": "U7-02",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-02",
+    "explanationLocator": "Punti da saper spiegare: U7-02.08",
+    "experimentId": "investigation-u7-02",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-photon-packet-frequency-03",
+      "u7-photon-packet-frequency-09",
+      "u7-photon-packet-frequency-13"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-02.08",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-03.01",
+    "label": "quantizzazione",
+    "familyId": "U7-03",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-03",
+    "explanationLocator": "Punti da saper spiegare: U7-03.01",
+    "experimentId": "investigation-u7-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-photon-packet-frequency-01",
+      "u7-photon-packet-frequency-09",
+      "u7-photon-packet-frequency-13"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-03.01",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-03.02",
+    "label": "energia e frequenza",
+    "familyId": "U7-03",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-03",
+    "explanationLocator": "Punti da saper spiegare: U7-03.02",
+    "experimentId": "investigation-u7-03",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-photon-packet-frequency-01",
+      "u7-photon-packet-frequency-09",
+      "u7-photon-packet-frequency-13"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-03.02",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-04.01",
+    "label": "Lambert-Beer",
+    "familyId": "U7-04",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-04",
+    "explanationLocator": "Punti da saper spiegare: U7-04.01",
+    "experimentId": "investigation-u7-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-absorbed-radiant-power-09",
+      "u7-absorbed-radiant-power-13",
+      "u7-beer-transmitted-intensity-16",
+      "u7-infer-attenuation-coefficient-16"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-04.01",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-04.02",
+    "label": "coefficiente",
+    "familyId": "U7-04",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-04",
+    "explanationLocator": "Punti da saper spiegare: U7-04.02",
+    "experimentId": "investigation-u7-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-absorbed-radiant-power-09",
+      "u7-absorbed-radiant-power-13",
+      "u7-beer-transmitted-intensity-16",
+      "u7-infer-attenuation-coefficient-16"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-04.02",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-04.03",
+    "label": "cammino",
+    "familyId": "U7-04",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-04",
+    "explanationLocator": "Punti da saper spiegare: U7-04.03",
+    "experimentId": "investigation-u7-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-absorbed-radiant-power-09",
+      "u7-absorbed-radiant-power-13",
+      "u7-beer-transmitted-intensity-16",
+      "u7-infer-attenuation-coefficient-16"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-04.03",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-04.04",
+    "label": "trasmissione",
+    "familyId": "U7-04",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-04",
+    "explanationLocator": "Punti da saper spiegare: U7-04.04",
+    "experimentId": "investigation-u7-04",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-absorbed-radiant-power-09",
+      "u7-absorbed-radiant-power-13",
+      "u7-beer-transmitted-intensity-16",
+      "u7-infer-attenuation-coefficient-16"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-04.04",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-05.01",
+    "label": "nuclei instabili e isotopi",
+    "familyId": "U7-05",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-05",
+    "explanationLocator": "Punti da saper spiegare: U7-05.01",
+    "experimentId": "investigation-u7-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-alpha-mass-number-03",
+      "u7-alpha-mass-number-09",
+      "u7-alpha-mass-number-13",
+      "u7-beta-minus-atomic-number-03",
+      "u7-gamma-transition-energy-03",
+      "u7-radioactive-activity-01",
+      "u7-radioactive-activity-03",
+      "u7-radioactive-survivors-03",
+      "u7-radioactive-survivors-16"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-05.01",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-05.02",
+    "label": "attività",
+    "familyId": "U7-05",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-05",
+    "explanationLocator": "Punti da saper spiegare: U7-05.02",
+    "experimentId": "investigation-u7-05",
+    "labIds": [
+      "physics-decay"
+    ],
+    "exerciseIds": [
+      "u7-alpha-mass-number-03",
+      "u7-alpha-mass-number-09",
+      "u7-alpha-mass-number-13",
+      "u7-beta-minus-atomic-number-03",
+      "u7-gamma-transition-energy-03",
+      "u7-radioactive-activity-01",
+      "u7-radioactive-activity-03",
+      "u7-radioactive-survivors-03",
+      "u7-radioactive-survivors-16"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-05.02",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-05.03",
+    "label": "decadimento",
+    "familyId": "U7-05",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-05",
+    "explanationLocator": "Punti da saper spiegare: U7-05.03",
+    "experimentId": "investigation-u7-05",
+    "labIds": [
+      "physics-decay"
+    ],
+    "exerciseIds": [
+      "u7-alpha-mass-number-03",
+      "u7-alpha-mass-number-09",
+      "u7-alpha-mass-number-13",
+      "u7-beta-minus-atomic-number-03",
+      "u7-gamma-transition-energy-03",
+      "u7-radioactive-activity-01",
+      "u7-radioactive-activity-03",
+      "u7-radioactive-survivors-03",
+      "u7-radioactive-survivors-16"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-05.03",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-05.04",
+    "label": "emivita",
+    "familyId": "U7-05",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-05",
+    "explanationLocator": "Punti da saper spiegare: U7-05.04",
+    "experimentId": "investigation-u7-05",
+    "labIds": [
+      "physics-decay"
+    ],
+    "exerciseIds": [
+      "u7-alpha-mass-number-03",
+      "u7-alpha-mass-number-09",
+      "u7-alpha-mass-number-13",
+      "u7-beta-minus-atomic-number-03",
+      "u7-gamma-transition-energy-03",
+      "u7-radioactive-activity-01",
+      "u7-radioactive-activity-03",
+      "u7-radioactive-survivors-03",
+      "u7-radioactive-survivors-16"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-05.04",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-05.05",
+    "label": "alfa beta gamma",
+    "familyId": "U7-05",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-05",
+    "explanationLocator": "Punti da saper spiegare: U7-05.05",
+    "experimentId": "investigation-u7-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-alpha-mass-number-03",
+      "u7-alpha-mass-number-09",
+      "u7-alpha-mass-number-13",
+      "u7-beta-minus-atomic-number-03",
+      "u7-gamma-transition-energy-03",
+      "u7-radioactive-activity-01",
+      "u7-radioactive-activity-03",
+      "u7-radioactive-survivors-03",
+      "u7-radioactive-survivors-16"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-05.05",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-05.06",
+    "label": "trasformazioni nucleari",
+    "familyId": "U7-05",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-05",
+    "explanationLocator": "Punti da saper spiegare: U7-05.06",
+    "experimentId": "investigation-u7-05",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-alpha-mass-number-03",
+      "u7-alpha-mass-number-09",
+      "u7-alpha-mass-number-13",
+      "u7-beta-minus-atomic-number-03",
+      "u7-gamma-transition-energy-03",
+      "u7-radioactive-activity-01",
+      "u7-radioactive-activity-03",
+      "u7-radioactive-survivors-03",
+      "u7-radioactive-survivors-16"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-05.06",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-06.01",
+    "label": "soglia atomica",
+    "familyId": "U7-06",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-06",
+    "explanationLocator": "Punti da saper spiegare: U7-06.01",
+    "experimentId": "investigation-u7-06",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-photon-packet-frequency-09",
+      "u7-photon-packet-frequency-13",
+      "u7-photon-rate-power-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-06.01",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-06.02",
+    "label": "ionizzanti e non ionizzanti",
+    "familyId": "U7-06",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-06",
+    "explanationLocator": "Punti da saper spiegare: U7-06.02",
+    "experimentId": "investigation-u7-06",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-photon-packet-frequency-09",
+      "u7-photon-packet-frequency-13",
+      "u7-photon-rate-power-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-06.02",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-06.03",
+    "label": "esempi",
+    "familyId": "U7-06",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-06",
+    "explanationLocator": "Punti da saper spiegare: U7-06.03",
+    "experimentId": "investigation-u7-06",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-photon-packet-frequency-09",
+      "u7-photon-packet-frequency-13",
+      "u7-photon-rate-power-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-06.03",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-06.04",
+    "label": "energia singolo fotone e intensità",
+    "familyId": "U7-06",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-06",
+    "explanationLocator": "Punti da saper spiegare: U7-06.04",
+    "experimentId": "investigation-u7-06",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-photon-packet-frequency-09",
+      "u7-photon-packet-frequency-13",
+      "u7-photon-rate-power-03"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-06.04",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-07.01",
+    "label": "riflessione",
+    "familyId": "U7-07",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-07",
+    "explanationLocator": "Punti da saper spiegare: U7-07.01",
+    "experimentId": "investigation-u7-07",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-critical-angle-sine-03",
+      "u7-critical-angle-sine-09",
+      "u7-critical-angle-sine-13",
+      "u7-lens-magnification-03",
+      "u7-plane-mirror-ray-direction-03",
+      "u7-snell-refracted-sine-06",
+      "u7-thin-lens-real-image-03",
+      "u7-wavelength-in-medium-03",
+      "u7-wavelength-in-medium-04"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-07.01",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-07.02",
+    "label": "rifrazione",
+    "familyId": "U7-07",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-07",
+    "explanationLocator": "Punti da saper spiegare: U7-07.02",
+    "experimentId": "investigation-u7-07",
+    "labIds": [
+      "physics-refraction"
+    ],
+    "exerciseIds": [
+      "u7-critical-angle-sine-03",
+      "u7-critical-angle-sine-09",
+      "u7-critical-angle-sine-13",
+      "u7-lens-magnification-03",
+      "u7-plane-mirror-ray-direction-03",
+      "u7-snell-refracted-sine-06",
+      "u7-thin-lens-real-image-03",
+      "u7-wavelength-in-medium-03",
+      "u7-wavelength-in-medium-04"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-07.02",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-07.03",
+    "label": "indice",
+    "familyId": "U7-07",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-07",
+    "explanationLocator": "Punti da saper spiegare: U7-07.03",
+    "experimentId": "investigation-u7-07",
+    "labIds": [
+      "physics-refraction"
+    ],
+    "exerciseIds": [
+      "u7-critical-angle-sine-03",
+      "u7-critical-angle-sine-09",
+      "u7-critical-angle-sine-13",
+      "u7-lens-magnification-03",
+      "u7-plane-mirror-ray-direction-03",
+      "u7-snell-refracted-sine-06",
+      "u7-thin-lens-real-image-03",
+      "u7-wavelength-in-medium-03",
+      "u7-wavelength-in-medium-04"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-07.03",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-07.04",
+    "label": "Snell",
+    "familyId": "U7-07",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-07",
+    "explanationLocator": "Punti da saper spiegare: U7-07.04",
+    "experimentId": "investigation-u7-07",
+    "labIds": [
+      "physics-refraction"
+    ],
+    "exerciseIds": [
+      "u7-critical-angle-sine-03",
+      "u7-critical-angle-sine-09",
+      "u7-critical-angle-sine-13",
+      "u7-lens-magnification-03",
+      "u7-plane-mirror-ray-direction-03",
+      "u7-snell-refracted-sine-06",
+      "u7-thin-lens-real-image-03",
+      "u7-wavelength-in-medium-03",
+      "u7-wavelength-in-medium-04"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-07.04",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-07.05",
+    "label": "lenti convergenti sottili",
+    "familyId": "U7-07",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-07",
+    "explanationLocator": "Punti da saper spiegare: U7-07.05",
+    "experimentId": "investigation-u7-07",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-critical-angle-sine-03",
+      "u7-critical-angle-sine-09",
+      "u7-critical-angle-sine-13",
+      "u7-lens-magnification-03",
+      "u7-plane-mirror-ray-direction-03",
+      "u7-snell-refracted-sine-06",
+      "u7-thin-lens-real-image-03",
+      "u7-wavelength-in-medium-03",
+      "u7-wavelength-in-medium-04"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-07.05",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  },
+  {
+    "objectiveId": "U7-07.06",
+    "label": "immagini e punti coniugati",
+    "familyId": "U7-07",
+    "syllabusUnitId": "U7",
+    "courseId": "sf-2026-onde-ottica-radiazioni",
+    "unitId": "sf-2026-u7-07",
+    "explanationLocator": "Punti da saper spiegare: U7-07.06",
+    "experimentId": "investigation-u7-07",
+    "labIds": [],
+    "exerciseIds": [
+      "u7-critical-angle-sine-03",
+      "u7-critical-angle-sine-09",
+      "u7-critical-angle-sine-13",
+      "u7-lens-magnification-03",
+      "u7-plane-mirror-ray-direction-03",
+      "u7-snell-refracted-sine-06",
+      "u7-thin-lens-real-image-03",
+      "u7-wavelength-in-medium-03",
+      "u7-wavelength-in-medium-04"
+    ],
+    "exerciseMapping": "family-level practice; exact individual target verified by finalAssessmentId",
+    "finalAssessmentId": "final-U7-07.06",
+    "sourcePages": [
+      5
+    ],
+    "coverage": "AUTHORED_AND_LINKED",
+    "scientificAcceptance": "HUMAN_REVIEW_PENDING",
+    "complete": false
+  }
+]

@@ -1,0 +1,288 @@
+{
+  "kind": "ardesia-synthetic-ink-workload-v1",
+  "completed": true,
+  "stage": "complete",
+  "failure": null,
+  "startedAt": "2026-11-07T21:58:58.410Z",
+  "finishedAt": "2026-11-07T21:59:29.336Z",
+  "elapsedMs": 30925.448375000004,
+  "sourceBuild": {
+    "commit": "a4835aad79a15c13a14c10c5aa51cfda98c546b3",
+    "sourceDigest": "49b1c64fb7152f55e77a0e5018ce5f2c9713fe03585b83ac3fe40e2a379f9488",
+    "generatedAt": "2026-11-07T21:58:14.049Z",
+    "application": "ardesia-next",
+    "milestone": "M3",
+    "persistence": "remote-postgres-required",
+    "remoteAcceptance": "INCOMPLETE",
+    "thirdPartyExecution": true,
+    "programRuntime": {
+      "abi": "ardesia.program/1",
+      "policy": "ephemeral-explicit-consent-no-io",
+      "engine": "quickjs-emscripten@0.32.0"
+    }
+  },
+  "environment": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "osRelease": "24.6.0",
+    "node": "v24.22.1",
+    "cpuModel": "Apple M4",
+    "logicalCpus": 10,
+    "totalMemoryBytes": 17179869184,
+    "browser": "chromium",
+    "browserVersion": "141.0.7390.37",
+    "project": "desktop-chromium",
+    "viewport": {
+      "width": 1440,
+      "height": 960
+    },
+    "isMobileEmulation": false
+  },
+  "scope": {
+    "accountId": "teacher-m3-desktop",
+    "workspaceId": "70f880f2-1e35-417f-8722-5b805d2134cf",
+    "documentId": "1b20cfb5-3c21-4886-a638-e366bf426771"
+  },
+  "workload": {
+    "planned": {
+      "onlineStrokes": 100,
+      "offlineStrokes": 20,
+      "samplesPerStroke": 96,
+      "pointerEvents": 11520
+    },
+    "observed": {
+      "strokes": 120,
+      "samples": 11520,
+      "commandAttempts": 120,
+      "positiveReceipts": 120,
+      "maximumPendingObservedAtGestureBoundary": 20
+    },
+    "existingLimits": {
+      "objectsPerDocument": 2000,
+      "pendingCommands": 500,
+      "modified": false
+    },
+    "schedule": "Each stroke is 96 synchronous synthetic PointerEvents, followed by one requestAnimationFrame yield. Online requests may queue. Offline resumption is one explicit UI click per command."
+  },
+  "measurements": {
+    "synchronousDispatchMs": {
+      "all": {
+        "n": 11520,
+        "min": 0,
+        "p50": 0,
+        "p95": 0,
+        "p99": 0.20000076293945312,
+        "max": 1.5,
+        "mean": 0.006102429661485884
+      },
+      "pointerdown": {
+        "n": 120,
+        "min": 0,
+        "p50": 0.10000038146972656,
+        "p95": 0.20000076293945312,
+        "p99": 0.2999992370605469,
+        "max": 0.6999988555908203,
+        "mean": 0.11249996821085612
+      },
+      "pointermove": {
+        "n": 11280,
+        "min": 0,
+        "p50": 0,
+        "p95": 0,
+        "p99": 0.10000038146972656,
+        "max": 0.20000076293945312,
+        "mean": 0.0014804953378988496
+      },
+      "pointerup": {
+        "n": 120,
+        "min": 0,
+        "p50": 0.3000011444091797,
+        "p95": 0.5,
+        "p99": 1.1000003814697266,
+        "max": 1.5,
+        "mean": 0.3341667175292969
+      }
+    },
+    "synchronousDispatchByPhaseMs": {
+      "online": {
+        "n": 9600,
+        "min": 0,
+        "p50": 0,
+        "p95": 0,
+        "p99": 0.20000076293945312,
+        "max": 1.5,
+        "mean": 0.006489582856496175
+      },
+      "offline": {
+        "n": 1920,
+        "min": 0,
+        "p50": 0,
+        "p95": 0,
+        "p99": 0.10000038146972656,
+        "max": 0.20000076293945312,
+        "mean": 0.004166663686434428
+      }
+    },
+    "onlinePointerUpToPositiveReceiptBodyMs": {
+      "n": 100,
+      "min": 11.3291015625,
+      "p50": 144.127685546875,
+      "p95": 1337.802978515625,
+      "p99": 1388.8427734375,
+      "max": 1390.7158203125,
+      "mean": 447.17258544921873
+    },
+    "offlineExplicitClickToPositiveReceiptBodyMs": {
+      "n": 20,
+      "min": 166.87890625,
+      "p50": 187.888916015625,
+      "p95": 214.587890625,
+      "p99": 229.26708984375,
+      "max": 229.26708984375,
+      "mean": 191.945556640625
+    },
+    "requestToPositiveReceiptBodyMs": {
+      "n": 120,
+      "min": 6.996,
+      "p50": 104.669,
+      "p95": 179.122,
+      "p99": 198.32,
+      "max": 212.465,
+      "mean": 101.55733333333329
+    },
+    "offlinePageReopenMs": 215.7898329999989,
+    "finalOnlineReloadUiMs": 393.75829100000556,
+    "storage": [
+      {
+        "stage": "prepared-before-writing",
+        "values": {
+          "appLocalStorageBytes": 0,
+          "pendingBytes": 0,
+          "pendingRows": 0,
+          "draftBytes": 0,
+          "draftRows": 0,
+          "snapshotBytes": 2574,
+          "gateBytes": 180,
+          "revision": 6,
+          "inkCount": 0,
+          "measuredSerializedBytes": 2754
+        }
+      },
+      {
+        "stage": "100-online-confirmed",
+        "values": {
+          "appLocalStorageBytes": 0,
+          "pendingBytes": 0,
+          "pendingRows": 0,
+          "draftBytes": 0,
+          "draftRows": 0,
+          "snapshotBytes": 346471,
+          "gateBytes": 180,
+          "revision": 106,
+          "inkCount": 100,
+          "measuredSerializedBytes": 346651
+        }
+      },
+      {
+        "stage": "20-offline-durable-before-close",
+        "values": {
+          "appLocalStorageBytes": 81772,
+          "pendingBytes": 81772,
+          "pendingRows": 20,
+          "draftBytes": 0,
+          "draftRows": 0,
+          "snapshotBytes": 346471,
+          "gateBytes": 180,
+          "revision": 106,
+          "inkCount": 100,
+          "measuredSerializedBytes": 428423
+        }
+      },
+      {
+        "stage": "offline-reopened",
+        "values": {
+          "appLocalStorageBytes": 81772,
+          "pendingBytes": 81772,
+          "pendingRows": 20,
+          "draftBytes": 0,
+          "draftRows": 0,
+          "snapshotBytes": 346471,
+          "gateBytes": 180,
+          "revision": 106,
+          "inkCount": 100,
+          "measuredSerializedBytes": 428423
+        }
+      },
+      {
+        "stage": "reconnected-before-explicit-confirmation",
+        "values": {
+          "appLocalStorageBytes": 81772,
+          "pendingBytes": 81772,
+          "pendingRows": 20,
+          "draftBytes": 0,
+          "draftRows": 0,
+          "snapshotBytes": 346471,
+          "gateBytes": 180,
+          "revision": 106,
+          "inkCount": 100,
+          "measuredSerializedBytes": 428423
+        }
+      },
+      {
+        "stage": "120-confirmed",
+        "values": {
+          "appLocalStorageBytes": 0,
+          "pendingBytes": 0,
+          "pendingRows": 0,
+          "draftBytes": 0,
+          "draftRows": 0,
+          "snapshotBytes": 415717,
+          "gateBytes": 180,
+          "revision": 126,
+          "inkCount": 120,
+          "measuredSerializedBytes": 415897
+        }
+      },
+      {
+        "stage": "final-reload",
+        "values": {
+          "appLocalStorageBytes": 0,
+          "pendingBytes": 0,
+          "pendingRows": 0,
+          "draftBytes": 0,
+          "draftRows": 0,
+          "snapshotBytes": 415717,
+          "gateBytes": 180,
+          "revision": 126,
+          "inkCount": 120,
+          "measuredSerializedBytes": 415897
+        }
+      }
+    ]
+  },
+  "definitions": {
+    "input": "performance.now around dispatchEvent; synchronous listeners and synchronous work only. Excludes event construction, observer inspection, asynchronous work, paint, hardware, and OS input delivery.",
+    "receipt": "Browser network responseEnd for a real positive receipt minus pointerup dispatch start (online) or the explicit DOM click (offline). Includes queue/server/response transfer; excludes later client JSON validation, offline-copy persistence, and paint. Completion and exact Core data are independently asserted.",
+    "reopen": "Host monotonic elapsed time from context.newPage, after closing the original page, through offline shell visibility, 20 pending SVGs, and immutable recovery equality. Same BrowserContext, cookies, service worker, localStorage, and IndexedDB; no process or device restart.",
+    "storage": "UTF-8 key plus stored-string bytes for app localStorage; UTF-8 JSON key plus JSON value bytes for selected IndexedDB snapshot and gate. pending/draft are subsets of appLocalStorageBytes, not additional totals. Excludes CacheStorage, other IndexedDB stores, media, browser overhead, filesystem allocation, and quota usage.",
+    "precision": "Exact checkpoint-to-command-to-Core data and identity equality. Input screen deltas use 1e-9 decimal precision to allow only floating-point coordinate normalization at 100% zoom. Pressure values are binary fractions; pointerup retains the preceding pressure.",
+    "timingAcceptance": "No arbitrary speed threshold. The 240-second test timeout only bounds execution."
+  },
+  "limitations": [
+    "Synthetic input on the reported host; not handwriting or real Apple Pencil.",
+    "Desktop Chromium is the prescribed Mac run; not iPad, Safari, touch hardware, or native app validation.",
+    "A bounded accelerated workload, not a lesson duration or educational acceptance.",
+    "No pressure/tilt hardware quality, frame-rate, ink-to-photon, battery, thermal, long-session, or storage-limit qualification."
+  ],
+  "integrity": {
+    "initialRevision": 6,
+    "finalRevision": 126,
+    "offlineImmutableRecoverySha256": "ac49535363f5f9032b2a6c92c98d12f5b40ca9e1b46aac6d28e28acbeb679529",
+    "finalDocumentSha256": "bdc49d8ff68a0b8cd43f7bc75319f56c38c6880840d83bea285e201d2998e184",
+    "pageErrors": [],
+    "unexpectedCommands": []
+  },
+  "originalReportSha256": "c23aa5fae7f969816daa1410b47495b98f915b9cb9169376aea6136808f9b24c",
+  "originalReportBytes": 3249431,
+  "note": "Raw samples and receipts are preserved in the local delivery package; this checked-in summary does not replace the original report."
+}

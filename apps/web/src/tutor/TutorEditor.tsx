@@ -1,6 +1,6 @@
 import {useState,type FormEvent} from 'react';
 import {TutorInputSchema,type TutorInput,type TutorRecord,type LessonDocument} from '@ardesia/contracts';
-import {localDate,localInstant,utcOffset,moneyInput,readMoney} from './values';
+import {localDate,localInstant,utcOffset,moneyInput,readMoney,appointmentEconomicsInput} from './values';
 
 export function DateField({name,label,value,required=true}:{name:string;label:string;value:string;required?:boolean}){
   const [local,setLocal]=useState(value?localDate(value):''),[offset,setOffset]=useState(value?utcOffset(value):'');
@@ -31,7 +31,7 @@ export function TutorEditor({seed,records,documents,busy,blocked,dirty,revision,
       if(seed.kind==='appointment'){
         input={...common,kind:seed.kind,startAt:localInstant(text('start'),text('startOffset')),endAt:localInstant(text('end'),text('endOffset')),
           timeZone:Intl.DateTimeFormat().resolvedOptions().timeZone,status,currency,groupId:group||null,requestId:text('request')||null,
-          lesson,
+          lesson,...appointmentEconomicsInput(text('directCost'),text('preparationMinutes'),currency),
           participants:people.map(contactId=>({contactId,attended:status==='completed'&&data.has(`attended:${contactId}`),packageId:packages[contactId]||null,chargeMinor:packages[contactId]?0:readMoney(text(`charge:${contactId}`),currency)}))};
       }
       const parsed=TutorInputSchema.safeParse(input);
@@ -60,6 +60,9 @@ export function TutorEditor({seed,records,documents,busy,blocked,dirty,revision,
           {status==='completed'&&<label className="tutor-check"><input name={`attended:${id}`} type="checkbox" defaultChecked={original?.attended??false}/>Presente · {name(id)}</label>}
         </section>;})}
         <p className="hint">Il pacchetto riserva minuti in agenda e li consuma con la presenza. Il compenso singolo matura solo dopo il consuntivo; su un annullamento indica esplicitamente l’eventuale addebito.</p>
+        <div className="tutor-form-pair"><label>Costi diretti sostenuti · {currency}<input name="directCost" aria-label="Costi diretti sostenuti" inputMode="decimal" placeholder="Non indicati" defaultValue={seed.directCostMinor===undefined?'':moneyInput(seed.directCostMinor,seed.currency)}/></label>
+          <label>Minuti di preparazione svolti<input name="preparationMinutes" aria-label="Minuti di preparazione svolti" type="number" min="0" max="44640" step="1" placeholder="Non indicati" defaultValue={seed.preparationMinutes??''}/></label></div>
+        <p className="hint">Inserisci solo costi e preparazione già sostenuti, anche se la lezione è ancora in programma o è annullata. Sono conteggiati una volta per appuntamento. Cambiare valuta non converte gli importi.</p>
         <div className="tutor-form-pair"><label>Richiesta collegata<select aria-label="Richiesta collegata" name="request" defaultValue={seed.requestId??''}><option value="">Nessuna richiesta</option>{records.filter(r=>r.kind==='request').map(r=><option key={r.id} value={r.id}>{r.title}</option>)}</select></label>
           <label>Lezione collegata<select aria-label="Lezione collegata" name="lesson" value={lesson?.documentId??''} onChange={e=>{const document=documents.find(d=>d.id===e.target.value);setLesson(document?{documentId:document.id,revision:document.revision}:null);}}><option value="">Nessuna lezione</option>{documents.map(doc=><option key={doc.id} value={doc.id}>{doc.title} · r{lesson?.documentId===doc.id?lesson.revision:doc.revision}</option>)}</select></label></div>
         <p className="hint">Il collegamento conserva la revisione scelta. Condividi i materiali dalla lavagna quando vuoi assegnarli allo studente.</p>

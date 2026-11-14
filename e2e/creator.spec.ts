@@ -75,6 +75,73 @@ test('Creator keeps unapplied JSON across close/reopen and protects it with the 
   await closeDraft(page);expect(await extensions(page)).toHaveLength(0);
 });
 
+for(const action of ['program','empty','import'] as const)test(`Creator ${action} replacement preserves the complete draft until explicitly confirmed`,async({page})=>{
+  const dialog=await open(page);
+  await dialog.getByLabel('Nome del tipo',{exact:true}).fill('Composizione da conservare');
+  await dialog.locator('.creator-preview').getByRole('spinbutton',{name:'Lunghezza valore',exact:true}).fill('2.5');
+  await dialog.getByText('Formato aperto',{exact:true}).click();
+  const json=dialog.getByLabel('Definizione JSON',{exact:true});await expect(json).toHaveValue(/Composizione da conservare/);
+  const raw=(await json.inputValue()).replace('Composizione da conservare','JSON ancora da applicare');
+  await json.fill(raw);
+  const definition:ExtensionDefinition={...JSON.parse(raw),typeId:'personal.import-'+randomUUID(),name:'Oggetto importato'};
+  const payload={definition,definitionDigest:await extensionDefinitionDigest(definition),state:{L:2}};
+  const request=async()=>action==='import'
+    ?dialog.getByLabel('Importa definizione',{exact:true}).setInputFiles({name:'replacement.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(payload))})
+    :dialog.getByRole('button',{name:action==='program'?'Crea un programma':'Parti da zero',exact:true}).click();
+  await request();
+  const guard=page.getByRole('alertdialog',{name:'Sostituisci la composizione',exact:true});
+  await expect(guard).toBeVisible();await expect(dialog.getByRole('button',{name:'Aggiungi alla lezione',exact:true})).toBeDisabled();
+  await guard.getByRole('button',{name:'Conserva la composizione',exact:true}).click();
+  await expect(json).toHaveValue(raw);await expect(dialog.getByLabel('Nome del tipo',{exact:true})).toHaveValue('Composizione da conservare');
+  await expect(dialog.locator('.creator-preview').getByRole('spinbutton',{name:'Lunghezza valore',exact:true})).toHaveValue('2.5');
+  await request();await guard.getByRole('button',{name:'Sostituisci la composizione',exact:true}).click();
+  const name=action==='program'?'Il mio atelier':action==='import'?'Oggetto importato':'Composizione da conservare';
+  await expect(dialog.getByLabel('Nome del tipo',{exact:true})).toHaveValue(name);
+  expect(JSON.parse(await json.inputValue()).name).toBe(name);
+  await dialog.getByRole('button',{name:'Aggiungi alla lezione',exact:true}).click();await expect(dialog).toHaveCount(0);
+  const saved=(await extensions(page))[0]!;expect(saved.data.definition.name).toBe(name);
+  if(action==='empty'){expect(saved.data.definition.body).toEqual({fields:[],nodes:[]});expect(saved.data.state).toEqual({});expect(saved.data.definition.typeId).toBe(JSON.parse(raw).typeId);}
+  if(action==='import'){expect(saved.data).toMatchObject(payload);expect(saved.provenance.origin).toBe('imported');}
+  if(action==='program'){expect(saved.data.definition.renderer).toBe('ardesia.program/1');expect(saved.data.state).toEqual({draft:'',ideas:[],next:1});}
+});
+
+test('a delayed Creator import protects newer edits and cannot replace a newly opened editor',async({page})=>{
+  await page.evaluate(()=>{
+    const read=File.prototype.text;
+    const digest=crypto.subtle.digest.bind(crypto.subtle);
+    Object.assign(window,{creatorImportDigests:0});
+    crypto.subtle.digest=async(...args:Parameters<typeof digest>)=>{const result=await digest(...args);(window as unknown as {creatorImportDigests:number}).creatorImportDigests++;return result;};
+    File.prototype.text=async function(){
+      if(this.name==='delayed.json')await new Promise<void>(resolve=>{Object.assign(window,{releaseCreatorImport:resolve});});
+      return read.call(this);
+    };
+  });
+  const dialog=await open(page);await dialog.getByText('Formato aperto',{exact:true}).click();
+  const definition:ExtensionDefinition={...JSON.parse(await dialog.getByLabel('Definizione JSON',{exact:true}).inputValue()),name:'Importazione tardiva'};
+  const upload={name:'delayed.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({definition,definitionDigest:await extensionDefinitionDigest(definition),state:{L:3}}))};
+  const release=async()=>{
+    const count=await page.evaluate(()=>{const test=window as unknown as {releaseCreatorImport:()=>void;creatorImportDigests:number};test.releaseCreatorImport();return test.creatorImportDigests;});
+    await expect.poll(()=>page.evaluate(()=>(window as unknown as {creatorImportDigests:number}).creatorImportDigests)).toBe(count+1);
+  };
+  await dialog.getByLabel('Importa definizione',{exact:true}).setInputFiles(upload);
+  await dialog.getByLabel('Nome del tipo',{exact:true}).fill('Modificata durante la lettura');await release();
+  const guard=page.getByRole('alertdialog',{name:'Sostituisci la composizione',exact:true});await expect(guard).toBeVisible();
+  await guard.getByRole('button',{name:'Conserva la composizione',exact:true}).click();
+  await expect(dialog.getByLabel('Nome del tipo',{exact:true})).toHaveValue('Modificata durante la lettura');
+  // Same mounted editor: the later request must win even if A finishes last.
+  await dialog.getByLabel('Importa definizione',{exact:true}).setInputFiles(upload);
+  const later={...definition,name:'Importazione più recente'};
+  await dialog.getByLabel('Importa definizione',{exact:true}).setInputFiles({name:'latest.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({definition:later,definitionDigest:await extensionDefinitionDigest(later),state:{L:2}}))});
+  await expect(guard).toContainText('Importazione più recente');await guard.getByRole('button',{name:'Sostituisci la composizione',exact:true}).click();
+  await release();await expect(guard).toHaveCount(0);await expect(dialog.getByLabel('Nome del tipo',{exact:true})).toHaveValue('Importazione più recente');
+  await dialog.getByLabel('Importa definizione',{exact:true}).setInputFiles(upload);
+  await closeDraft(page);await open(page);await dialog.getByLabel('Nome del tipo',{exact:true}).fill('Editor successivo');
+  await release();
+  await expect(guard).toHaveCount(0);await expect(dialog.getByLabel('Nome del tipo',{exact:true})).toHaveValue('Editor successivo');
+  await dialog.getByRole('button',{name:'Aggiungi alla lezione',exact:true}).click();await expect(dialog).toHaveCount(0);
+  expect((await extensions(page))[0]!.data.definition.name).toBe('Editor successivo');
+});
+
 test('Creator rename updates scene expressions without changing literal text and exports exact source lineage for reimport',async({page},info)=>{
   const source=(await personalProjection(page)).documents[0]!.objects.find(o=>o.type==='source')!;
   const definition:ExtensionDefinition={format:'ardesia-extension/1',typeId:'personal.motion-'+randomUUID(),version:1,name:'Macchina di eventi',description:'Definizione sintetica',license:'CC-BY-4.0',renderer:'ardesia.composition/1',fallback:'Scena con un punto controllabile.',body:{fields:[{key:'L',kind:'number',initial:20,label:'Posizione',min:0,max:100}],nodes:[{id:'control',kind:'input',props:{field:'L',appearance:'slider'}},{id:'literal',kind:'value',props:{label:'Testo letterale',expression:'"L"'}},{id:'scene',kind:'scene',props:{label:'Punto mobile',width:200,height:100},children:[{id:'dot',kind:'shape',props:{shape:'circle',x:'L+1e1',y:'50',width:'10',height:'10',color:'#235e50'}}]}]}};

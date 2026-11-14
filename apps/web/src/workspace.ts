@@ -29,3 +29,12 @@ export function pendingObjectsForDocument(pending: readonly import('@ardesia/rem
       ? [request.command.object] : [];
   });
 }
+
+/** A visual erasure remains a pending command until Core acknowledges it. */
+export function pendingRemovalsForDocument(pending: readonly import('@ardesia/remote-client').PendingCommand[], workspaceId: string, documentId: string): string[] {
+  return pending.flatMap(entry => {
+    const request=entry.request;
+    return entry.workspaceId===workspaceId&&request.action==='command'&&request.workspaceId===workspaceId&&request.command.documentId===documentId&&request.command.kind==='remove-object'
+      ? [request.command.objectId] : [];
+  });
+}

@@ -1,0 +1,773 @@
+{
+  "status": "PASS",
+  "scope": "New original investigations and transfer applications only; independently transcribed arithmetic.",
+  "checkCount": 94,
+  "numericFamilies": 36,
+  "qualitativeOnlyTransferFamilies": [
+    "U4-05",
+    "U6-03",
+    "U6-07"
+  ],
+  "humanScientificReview": "NOT_RUN",
+  "empiricalLearnerCalibration": "NOT_RUN",
+  "limitations": [
+    "Mathematical checks do not certify every word, physics domain or learner outcome.",
+    "Qualitative physical reasoning was reviewed by the authoring agent, not an independent human.",
+    "No physical, native-device or laboratory runtime tests are included."
+  ],
+  "authoringFileSha256": "45d2eee963bfd01ca86a56d92593e739445c92aa4d69adea2309a24c7e59dde0",
+  "checks": [
+    {
+      "familyId": "U1-01",
+      "label": "sum m",
+      "actual": "19/50000",
+      "expected": "19/50000",
+      "independentlyRecomputedFormula": "3e-4 + 8e-5",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-01",
+      "label": "product m²",
+      "actual": "3/125000000",
+      "expected": "3/125000000",
+      "independentlyRecomputedFormula": "3e-4 * 8e-5",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-01",
+      "label": "sample count",
+      "actual": "600",
+      "expected": "600",
+      "independentlyRecomputedFormula": "rate * duration",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-01",
+      "label": "bytes",
+      "actual": "2400",
+      "expected": "2400",
+      "independentlyRecomputedFormula": "count * bytes per sample",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-02",
+      "label": "cube volume m³",
+      "actual": "1/125000",
+      "expected": "1/125000",
+      "independentlyRecomputedFormula": "(2 cm)^3",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-02",
+      "label": "density kg/m³",
+      "actual": "1200",
+      "expected": "1200",
+      "independentlyRecomputedFormula": "mass / volume in SI",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-03",
+      "label": "Fx N",
+      "actual": "5.000000000000001",
+      "expected": "5",
+      "independentlyRecomputedFormula": "F cos(theta)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-03",
+      "label": "Fy N",
+      "actual": "8.660254037844386",
+      "expected": "8.660254037844386",
+      "independentlyRecomputedFormula": "F sin(theta)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-04",
+      "label": "sum modulus at 0",
+      "actual": "7.0",
+      "expected": "7",
+      "independentlyRecomputedFormula": "cosine rule",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-04",
+      "label": "sum modulus at 3.141592653589793",
+      "actual": "1.0",
+      "expected": "1",
+      "independentlyRecomputedFormula": "cosine rule",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-04",
+      "label": "sum modulus at 1.5707963267948966",
+      "actual": "5.0",
+      "expected": "5",
+      "independentlyRecomputedFormula": "cosine rule",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-04",
+      "label": "work J",
+      "actual": "5",
+      "expected": "5",
+      "independentlyRecomputedFormula": "Fx sx + Fy sy",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-01",
+      "label": "displacement m",
+      "actual": "8",
+      "expected": "8",
+      "independentlyRecomputedFormula": "x(4)-x(0)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-01",
+      "label": "distance m",
+      "actual": "10",
+      "expected": "10",
+      "independentlyRecomputedFormula": "sum absolute interval changes; reversal at t=3",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-01",
+      "label": "braking time s",
+      "actual": "2",
+      "expected": "2",
+      "independentlyRecomputedFormula": "(0-v0)/a",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-01",
+      "label": "braking distance m",
+      "actual": "4",
+      "expected": "4",
+      "independentlyRecomputedFormula": "v0²/(2 |a|)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-02",
+      "label": "spring displacement m",
+      "actual": "1/50",
+      "expected": "1/50",
+      "independentlyRecomputedFormula": "F/k, original k",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-02",
+      "label": "stiffer spring m",
+      "actual": "1/100",
+      "expected": "1/100",
+      "independentlyRecomputedFormula": "F/(2k)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-02",
+      "label": "scale a=2",
+      "actual": "720",
+      "expected": "720",
+      "independentlyRecomputedFormula": "N=m(g+a)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-02",
+      "label": "scale a=-2",
+      "actual": "480",
+      "expected": "480",
+      "independentlyRecomputedFormula": "N=m(g+a)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-03",
+      "label": "initial potential J",
+      "actual": "4",
+      "expected": "4",
+      "independentlyRecomputedFormula": "mgh",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-03",
+      "label": "lossless speed m/s",
+      "actual": "4.0",
+      "expected": "4",
+      "independentlyRecomputedFormula": "sqrt(2K/m)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-03",
+      "label": "dissipative speed m/s",
+      "actual": "3.4641016151377544",
+      "expected": "3.4641016151377544",
+      "independentlyRecomputedFormula": "sqrt(2(K-1)/m)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-03",
+      "label": "useful work J",
+      "actual": "600",
+      "expected": "600",
+      "independentlyRecomputedFormula": "mgh",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-03",
+      "label": "power fast W",
+      "actual": "100",
+      "expected": "100",
+      "independentlyRecomputedFormula": "W/duration",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-03",
+      "label": "power slow W",
+      "actual": "60",
+      "expected": "60",
+      "independentlyRecomputedFormula": "W/duration",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-03",
+      "label": "input energy J",
+      "actual": "1000",
+      "expected": "1000",
+      "independentlyRecomputedFormula": "useful energy / efficiency",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-04",
+      "label": "common speed m/s",
+      "actual": "1",
+      "expected": "1",
+      "independentlyRecomputedFormula": "momentum / total mass",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-04",
+      "label": "kinetic loss J",
+      "actual": "6",
+      "expected": "6",
+      "independentlyRecomputedFormula": "initial K - final K",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-04",
+      "label": "rebound impulse kg m/s",
+      "actual": "-8/5",
+      "expected": "-8/5",
+      "independentlyRecomputedFormula": "m(vf-vi), signed",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-04",
+      "label": "mean force N",
+      "actual": "-40",
+      "expected": "-40",
+      "independentlyRecomputedFormula": "impulse / contact duration",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-05",
+      "label": "muscle force N",
+      "actual": "180",
+      "expected": "180",
+      "independentlyRecomputedFormula": "load * load arm / muscle arm",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-01",
+      "label": "pressure area=2 cm²",
+      "actual": "60000",
+      "expected": "60000",
+      "independentlyRecomputedFormula": "F/A after area conversion",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-01",
+      "label": "pressure area=4 cm²",
+      "actual": "30000",
+      "expected": "30000",
+      "independentlyRecomputedFormula": "F/A after area conversion",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-01",
+      "label": "piston area cm²",
+      "actual": "6",
+      "expected": "6",
+      "independentlyRecomputedFormula": "F/p converted to cm²",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-02",
+      "label": "hydrostatic pressure Pa",
+      "actual": "2000",
+      "expected": "2000",
+      "independentlyRecomputedFormula": "rho g h",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-02",
+      "label": "input press force N",
+      "actual": "100",
+      "expected": "100",
+      "independentlyRecomputedFormula": "output force / area ratio",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-03",
+      "label": "constricted speed m/s",
+      "actual": "2",
+      "expected": "2",
+      "independentlyRecomputedFormula": "A1 v1/A2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-03",
+      "label": "pressure difference Pa",
+      "actual": "-1500",
+      "expected": "-1500",
+      "independentlyRecomputedFormula": "rho/2 * (v1²-v2²)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-03",
+      "label": "dilated kinetic term ratio",
+      "actual": "1/9",
+      "expected": "1/9",
+      "independentlyRecomputedFormula": "(v2/v1)^2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-04",
+      "label": "resistance ratio half-radius",
+      "actual": "16",
+      "expected": "16",
+      "independentlyRecomputedFormula": "r^-4",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-04",
+      "label": "parallel to series flow ratio",
+      "actual": "4",
+      "expected": "4",
+      "independentlyRecomputedFormula": "(Delta p / (R/2)) / (Delta p/(2R))",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-05",
+      "label": "small/large drop pressure ratio",
+      "actual": "3",
+      "expected": "3",
+      "independentlyRecomputedFormula": "(2 gamma/r)/(2 gamma/(3r)), provided law",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-01",
+      "label": "investigation wavelength m",
+      "actual": "3",
+      "expected": "3",
+      "independentlyRecomputedFormula": "v/f",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-01",
+      "label": "doubled-frequency wavelength m",
+      "actual": "3/2",
+      "expected": "3/2",
+      "independentlyRecomputedFormula": "v/(2f) at fixed speed",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-01",
+      "label": "speed",
+      "actual": "4",
+      "expected": "4",
+      "independentlyRecomputedFormula": "distance/time; cycles/time; reciprocal; v/f",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-01",
+      "label": "frequency",
+      "actual": "2",
+      "expected": "2",
+      "independentlyRecomputedFormula": "distance/time; cycles/time; reciprocal; v/f",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-01",
+      "label": "period",
+      "actual": "1/2",
+      "expected": "1/2",
+      "independentlyRecomputedFormula": "distance/time; cycles/time; reciprocal; v/f",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-01",
+      "label": "wavelength",
+      "actual": "2",
+      "expected": "2",
+      "independentlyRecomputedFormula": "distance/time; cycles/time; reciprocal; v/f",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-02",
+      "label": "in-phase amplitude",
+      "actual": "4",
+      "expected": "4",
+      "independentlyRecomputedFormula": "A1 + A2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-02",
+      "label": "opposed amplitude",
+      "actual": "2",
+      "expected": "2",
+      "independentlyRecomputedFormula": "abs(A1-A2)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-03",
+      "label": "sensor energy J",
+      "actual": "1/100",
+      "expected": "1/100",
+      "independentlyRecomputedFormula": "I A duration, normal incidence",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-04",
+      "label": "intensity ratio",
+      "actual": "100",
+      "expected": "100",
+      "independentlyRecomputedFormula": "10^(Delta level/10)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-04",
+      "label": "amplitude ratio",
+      "actual": "10.0",
+      "expected": "10",
+      "independentlyRecomputedFormula": "sqrt(intensity ratio), same impedance",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-01",
+      "label": "Celsius-to-Kelvin pressure ratio",
+      "actual": "6263/5863",
+      "expected": "1.068224458468361",
+      "independentlyRecomputedFormula": "313.15/293.15; same n,V",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-01",
+      "label": "transfer pressure ratio",
+      "actual": "3",
+      "expected": "3",
+      "independentlyRecomputedFormula": "(T2/T1)(V1/V2)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-02",
+      "label": "final temperature °C",
+      "actual": "40",
+      "expected": "40",
+      "independentlyRecomputedFormula": "capacity-weighted mean, no phase transition",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-02",
+      "label": "heat gained J",
+      "actual": "4000",
+      "expected": "4000",
+      "independentlyRecomputedFormula": "C1(Tf-T1)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-02",
+      "label": "heat lost J",
+      "actual": "-4000",
+      "expected": "-4000",
+      "independentlyRecomputedFormula": "C2(Tf-T2)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-03",
+      "label": "thin/thick heat ratio",
+      "actual": "2",
+      "expected": "2",
+      "independentlyRecomputedFormula": "conductance inverse thickness",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-04",
+      "label": "internal energy J",
+      "actual": "320",
+      "expected": "320",
+      "independentlyRecomputedFormula": "Q-W_by",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-04",
+      "label": "alternative path heat J",
+      "actual": "580",
+      "expected": "580",
+      "independentlyRecomputedFormula": "same Delta U + new W_by",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-05",
+      "label": "cycle work J",
+      "actual": "400",
+      "expected": "400",
+      "independentlyRecomputedFormula": "Qh-Qc",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-05",
+      "label": "Carnot efficiency",
+      "actual": "2/5",
+      "expected": "2/5",
+      "independentlyRecomputedFormula": "1-Tc/Th",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-05",
+      "label": "reservoir entropy J/K",
+      "actual": "2/15",
+      "expected": "2/15",
+      "independentlyRecomputedFormula": "Q/Tc-Q/Th",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-05",
+      "label": "max engine work J",
+      "actual": "400",
+      "expected": "400",
+      "independentlyRecomputedFormula": "Qh(1-Tc/Th)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-01",
+      "label": "force x N",
+      "actual": "-3/5000",
+      "expected": "-3/5000",
+      "independentlyRecomputedFormula": "qE",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-02",
+      "label": "potential-energy change J",
+      "actual": "-9/500000",
+      "expected": "-9/500000",
+      "independentlyRecomputedFormula": "q(Vf-Vi)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-04",
+      "label": "series resistance ohm",
+      "actual": "9",
+      "expected": "9",
+      "independentlyRecomputedFormula": "R1+R2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-04",
+      "label": "parallel resistance ohm",
+      "actual": "2",
+      "expected": "2",
+      "independentlyRecomputedFormula": "1/(1/R1+1/R2)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-04",
+      "label": "parallel total power W",
+      "actual": "18",
+      "expected": "18",
+      "independentlyRecomputedFormula": "V²/Req",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-04",
+      "label": "resistor voltage V",
+      "actual": "4",
+      "expected": "4",
+      "independentlyRecomputedFormula": "RI",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-04",
+      "label": "resistor power W",
+      "actual": "2",
+      "expected": "2",
+      "independentlyRecomputedFormula": "I²R",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-04",
+      "label": "resistor energy J",
+      "actual": "40",
+      "expected": "40",
+      "independentlyRecomputedFormula": "P duration",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-05",
+      "label": "capacitor charge C",
+      "actual": "1/25000",
+      "expected": "1/25000",
+      "independentlyRecomputedFormula": "CV",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-05",
+      "label": "capacitor energy J",
+      "actual": "1/5000",
+      "expected": "1/5000",
+      "independentlyRecomputedFormula": "CV²/2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-05",
+      "label": "isolated final voltage V",
+      "actual": "5",
+      "expected": "5",
+      "independentlyRecomputedFormula": "Q/C_new",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-06",
+      "label": "radius ratio",
+      "actual": "2/3",
+      "expected": "2/3",
+      "independentlyRecomputedFormula": "v_ratio/B_ratio at fixed perpendicular mass/charge",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-07",
+      "label": "emf V",
+      "actual": "-2",
+      "expected": "-2",
+      "independentlyRecomputedFormula": "-Delta flux / duration; one turn",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-01",
+      "label": "medium wavelength nm",
+      "actual": "400",
+      "expected": "400",
+      "independentlyRecomputedFormula": "lambda0/n, fixed frequency",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-01",
+      "label": "medium speed m/s",
+      "actual": "200000000",
+      "expected": "200000000",
+      "independentlyRecomputedFormula": "c/n",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-01",
+      "label": "frequency Hz",
+      "actual": "500000000000000",
+      "expected": "500000000000000",
+      "independentlyRecomputedFormula": "c/lambda0",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-02",
+      "label": "spectral wavelength/energy ratio",
+      "actual": "1000000",
+      "expected": "1000000",
+      "independentlyRecomputedFormula": "f2/f1",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-03",
+      "label": "photon-beam power W",
+      "actual": "3/5000",
+      "expected": "3/5000",
+      "independentlyRecomputedFormula": "photon rate * photon energy",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-03",
+      "label": "emitted energy J",
+      "actual": "3/1000",
+      "expected": "3/1000",
+      "independentlyRecomputedFormula": "power * duration",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-04",
+      "label": "transmission",
+      "actual": "1/8",
+      "expected": "1/8",
+      "independentlyRecomputedFormula": "2^(-thickness/half-layer)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-04",
+      "label": "sixteenth-thickness cm",
+      "actual": "8",
+      "expected": "8",
+      "independentlyRecomputedFormula": "four half-layers",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-05",
+      "label": "expected activity Bq",
+      "actual": "100",
+      "expected": "100",
+      "independentlyRecomputedFormula": "A0 2^(-time/half-life)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-06",
+      "label": "low/high photon-flux ratio",
+      "actual": "3",
+      "expected": "3",
+      "independentlyRecomputedFormula": "inverse photon energy at equal power",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-07",
+      "label": "image distance do=30",
+      "actual": "15",
+      "expected": "15",
+      "independentlyRecomputedFormula": "1/(1/f-1/do)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-07",
+      "label": "magnification do=30",
+      "actual": "-1/2",
+      "expected": "-1/2",
+      "independentlyRecomputedFormula": "-di/do",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-07",
+      "label": "image distance do=5",
+      "actual": "-10",
+      "expected": "-10",
+      "independentlyRecomputedFormula": "1/(1/f-1/do)",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-07",
+      "label": "magnification do=5",
+      "actual": "2",
+      "expected": "2",
+      "independentlyRecomputedFormula": "-di/do",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-07",
+      "label": "transfer image distance cm",
+      "actual": "24",
+      "expected": "24",
+      "independentlyRecomputedFormula": "thin lens inverse distances",
+      "result": "PASS"
+    }
+  ]
+}

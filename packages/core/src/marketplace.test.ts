@@ -218,7 +218,7 @@ describe('Core authorized release transitions', () => {
       const event=snapshot.events.find(e=>e.type==='plugin-release-changed')!;
       const objects=(event.payload as unknown as {objects:Record<string,unknown>[]}).objects;
       objects[0]![slot]={...original,id:'only-in-transition',type:'extension',data:{definition,definitionDigest,state:{}}} satisfies ExtensionObject;
-      expect(CoreSnapshotSchema.safeParse({...snapshot,courses:[],courseEditions:[],courseDeliveries:[],courseWork:[],tutorRecords:[],schemaVersion:9}).success).toBe(true);
+      expect(CoreSnapshotSchema.safeParse({...snapshot,courses:[],courseEditions:[],courseDeliveries:[],courseWork:[],tutorRecords:[],notebookLibraries:[],schemaVersion:11}).success).toBe(true);
       const storage=new ObservedStorage(snapshot);
       await expect(createCore({...options(storage),pluginPolicy:policy.policy})).rejects.toMatchObject({code:'INVALID_SNAPSHOT'});
       expect(storage.writes).toBe(0);expect(await storage.read()).toEqual(snapshot);
@@ -398,7 +398,7 @@ describe('M1 to M2 migration preserves saved data without implied authority', ()
     const storage = new ObservedStorage(raw);
     const policy = policyFixture();
     const core = await createCore({...options(storage, 'migration'), pluginPolicy: policy.policy});
-    expect(core.snapshot()).toEqual({...raw, schemaVersion: 9, tutorRecords: [], installations: [], assignments: [], learnerWork: [], courses: [], courseEditions: [], courseDeliveries: [], courseWork: []});
+    expect(core.snapshot()).toEqual({...raw, schemaVersion: 11, notebookLibraries: [], tutorRecords: [], installations: [], assignments: [], learnerWork: [], courses: [], courseEditions: [], courseDeliveries: [], courseWork: []});
     expect(await storage.read()).toEqual(raw);
     expect(storage.writes).toBe(0);
     const savedLab = core.getDocument(actor, 'lesson-1').objects[0] as LabObject;
@@ -406,7 +406,7 @@ describe('M1 to M2 migration preserves saved data without implied authority', ()
     expect(await storage.read()).toEqual(raw);
     await ready(core);
     expect(core.getDocument(actor, 'lesson-1').objects[0]).toEqual(savedLab);
-    expect((await storage.read() as CoreSnapshot).schemaVersion).toBe(9);
+    expect((await storage.read() as CoreSnapshot).schemaVersion).toBe(11);
     expect(core.snapshot().events.slice(0, raw.events.length)).toEqual(raw.events);
   });
 
@@ -434,6 +434,6 @@ describe('M1 to M2 migration preserves saved data without implied authority', ()
 
 // Model historical envelopes with exactly their old fields, not a relabelled v7 snapshot.
 function preCourse<T extends object>(snapshot: T) {
-  const {tutorRecords: _t, courses: _c, courseEditions: _e, courseDeliveries: _d, courseWork: _w, ...legacy} = snapshot as T & {tutorRecords?: unknown; courses?: unknown; courseEditions?: unknown; courseDeliveries?: unknown; courseWork?: unknown};
+  const {notebookLibraries: _notebooks, tutorRecords: _t, courses: _c, courseEditions: _e, courseDeliveries: _d, courseWork: _w, ...legacy} = snapshot as T & {notebookLibraries?: unknown; tutorRecords?: unknown; courses?: unknown; courseEditions?: unknown; courseDeliveries?: unknown; courseWork?: unknown};
   return legacy;
 }

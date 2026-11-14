@@ -1,0 +1,1165 @@
+{
+  "status": "PASS",
+  "records": 38,
+  "families": 38,
+  "numericChecks": 142,
+  "levels": {
+    "medio": 15,
+    "difficile": 23
+  },
+  "distinctObjectiveIds": 140,
+  "schemaAndReferences": "PASS",
+  "maxPromptCharacters": 741,
+  "maxSolutionCharacters": 1092,
+  "fileSha256": "9f1f9be214ffe10a5fd242fa9e9f99a7989d10330265826de2352bd52eaca5fa",
+  "humanScientificReview": "NOT_RUN",
+  "studentCalibration": "NOT_RUN",
+  "semanticUniqueness": "NOT_CERTIFIED",
+  "scopeNotes": {
+    "original-20261107-u3-05": "Quantitative capillarity is an explicitly provided-law extension.",
+    "original-20261107-u5-03": "Quantitative composite heat-transfer laws are provided in the prompt."
+  },
+  "limits": [
+    "Literal arithmetic recomputation checks the stated numbers, not every physical premise.",
+    "Qualitative arguments and domains have an authoring-agent review only.",
+    "Doppler received-frequency data were internally checked quantitatively, but the learner problem remains qualitative."
+  ],
+  "checks": [
+    {
+      "familyId": "U1-01",
+      "claim": "impulse energy J",
+      "independentFormula": "power * on-time",
+      "actual": "3/100000000",
+      "expected": "3/100000000",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-01",
+      "claim": "total energy J",
+      "independentFormula": "energy per pulse * number",
+      "actual": "3/10000",
+      "expected": "3/10000",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-01",
+      "claim": "mean power W",
+      "independentFormula": "total energy / duration",
+      "actual": "1/100000",
+      "expected": "1/100000",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-01",
+      "claim": "overstatement factor",
+      "independentFormula": "wrong / correct energy",
+      "actual": "250",
+      "expected": "250",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-02",
+      "claim": "volume mL",
+      "independentFormula": "mass / density",
+      "actual": "30",
+      "expected": "30",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-02",
+      "claim": "SI volume flow",
+      "independentFormula": "mL/min to m³/s",
+      "actual": "1/30000000",
+      "expected": "1/30000000",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-02",
+      "claim": "wrong density relative error",
+      "independentFormula": "(wrong-correct)/correct",
+      "actual": "1/2",
+      "expected": "1/2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-03",
+      "claim": "vertical magnitude N",
+      "independentFormula": "Pythagoras",
+      "actual": "8.0",
+      "expected": "8",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-03",
+      "claim": "second-quadrant tangent",
+      "independentFormula": "Fy/Fx",
+      "actual": "-4/3",
+      "expected": "-4/3",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-03",
+      "claim": "norm N",
+      "independentFormula": "hypot(Fx,Fy)",
+      "actual": "10.0",
+      "expected": "10",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-04",
+      "claim": "dot",
+      "independentFormula": "dot(A,B)",
+      "actual": "0",
+      "expected": "0",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-04",
+      "claim": "closed path norm squared",
+      "independentFormula": "norm²(A+B+C)",
+      "actual": "0",
+      "expected": "0",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-04",
+      "claim": "cross norm",
+      "independentFormula": "norm(A×B)",
+      "actual": "9.0",
+      "expected": "9",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-04",
+      "claim": "cross x",
+      "independentFormula": "determinant(A,B)",
+      "actual": "-6",
+      "expected": "-6",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-04",
+      "claim": "cross y",
+      "independentFormula": "determinant(A,B)",
+      "actual": "-6",
+      "expected": "-6",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U1-04",
+      "claim": "cross z",
+      "independentFormula": "determinant(A,B)",
+      "actual": "3",
+      "expected": "3",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-01",
+      "claim": "fourth observation A m",
+      "independentFormula": "xA(0.5)",
+      "actual": "3/4",
+      "expected": "3/4",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-01",
+      "claim": "fourth observation B m",
+      "independentFormula": "xB(0.5)=t",
+      "actual": "1/2",
+      "expected": "1/2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-01",
+      "claim": "total path m",
+      "independentFormula": "sum absolute changes on monotone segments",
+      "actual": "2",
+      "expected": "2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-02",
+      "claim": "static coefficient",
+      "independentFormula": "threshold/(mg)",
+      "actual": "7/20",
+      "expected": "7/20",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-02",
+      "claim": "dynamic coefficient",
+      "independentFormula": "steady force/(mg)",
+      "actual": "1/4",
+      "expected": "1/4",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-02",
+      "claim": "new static limit N",
+      "independentFormula": "mu_s * new N",
+      "actual": "21/2",
+      "expected": "21/2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-02",
+      "claim": "sliding acceleration",
+      "independentFormula": "(applied-dynamic friction)/m",
+      "actual": "1/4",
+      "expected": "1/4",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-03",
+      "claim": "loss for h=1/5",
+      "independentFormula": "mgh-mv²/2",
+      "actual": "1",
+      "expected": "1",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-03",
+      "claim": "loss for h=2/5",
+      "independentFormula": "mgh-mv²/2",
+      "actual": "1",
+      "expected": "1",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-03",
+      "claim": "threshold height m",
+      "independentFormula": "loss/(mg)",
+      "actual": "1/10",
+      "expected": "1/10",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-03",
+      "claim": "below-threshold formal energy J",
+      "independentFormula": "mgh-loss; negative marks model domain failure",
+      "actual": "-1/2",
+      "expected": "-1/2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-04",
+      "claim": "momentum change",
+      "independentFormula": "m(vf-vi)",
+      "actual": "-3/2",
+      "expected": "-3/2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-04",
+      "claim": "triangular impulse",
+      "independentFormula": "triangle area",
+      "actual": "-3/2",
+      "expected": "-3/2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-04",
+      "claim": "rectangle final speed",
+      "independentFormula": "(initial momentum+rectangle impulse)/m",
+      "actual": "-4",
+      "expected": "-4",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-04",
+      "claim": "longer triangle peak",
+      "independentFormula": "2 |impulse| / duration",
+      "actual": "50",
+      "expected": "50",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-05",
+      "claim": "first load position",
+      "independentFormula": "right reaction * span / weight",
+      "actual": "5/8",
+      "expected": "5/8",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-05",
+      "claim": "new right reaction",
+      "independentFormula": "sum moments / span",
+      "actual": "55",
+      "expected": "55",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-05",
+      "claim": "new left reaction",
+      "independentFormula": "total load-right reaction",
+      "actual": "45",
+      "expected": "45",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U2-05",
+      "claim": "center of mass m",
+      "independentFormula": "weighted position / total weight",
+      "actual": "11/20",
+      "expected": "11/20",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-01",
+      "claim": "initial net force N",
+      "independentFormula": "pressure difference * area",
+      "actual": "4",
+      "expected": "4",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-01",
+      "claim": "final net force N",
+      "independentFormula": "new pressure difference * area",
+      "actual": "8",
+      "expected": "8",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-01",
+      "claim": "density kg/m³",
+      "independentFormula": "SI mass / SI volume",
+      "actual": "1250",
+      "expected": "1250",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-02",
+      "claim": "buoyancy N",
+      "independentFormula": "rho g displaced volume",
+      "actual": "4",
+      "expected": "4",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-02",
+      "claim": "tension N",
+      "independentFormula": "weight-buoyancy",
+      "actual": "6",
+      "expected": "6",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-02",
+      "claim": "ceiling-supported scale N",
+      "independentFormula": "initial scale + reaction on water",
+      "actual": "24",
+      "expected": "24",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-02",
+      "claim": "scale-supported stand N",
+      "independentFormula": "water reaction + stand reaction",
+      "actual": "30",
+      "expected": "30",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-03",
+      "claim": "branch2 speed",
+      "independentFormula": "(Qin-Q1)/A2",
+      "actual": "3/2",
+      "expected": "3/2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-03",
+      "claim": "branch1 ideal pressure Pa",
+      "independentFormula": "Bernoulli horizontal",
+      "actual": "9500",
+      "expected": "9500",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-03",
+      "claim": "branch2 pressure loss Pa",
+      "independentFormula": "ideal pressure-measured",
+      "actual": "375",
+      "expected": "375",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-04",
+      "claim": "hypothesis A total flow",
+      "independentFormula": "unchanged branch + doubled resistance branch",
+      "actual": "6",
+      "expected": "6",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-04",
+      "claim": "hypothesis B total flow",
+      "independentFormula": "both branch conductances reduced",
+      "actual": "6",
+      "expected": "6",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-04",
+      "claim": "equivalent R relative to original branch",
+      "independentFormula": "parallel R and 2R",
+      "actual": "2/3",
+      "expected": "2/3",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-04",
+      "claim": "pressure restoration ratio",
+      "independentFormula": "new network resistance / original",
+      "actual": "4/3",
+      "expected": "4/3",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-05",
+      "claim": "height prefactor m",
+      "independentFormula": "2gamma/(rho g r)",
+      "actual": "1/100",
+      "expected": "1/100",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-05",
+      "claim": "cosine A",
+      "independentFormula": "hA/prefactor",
+      "actual": "1/2",
+      "expected": "1/2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-05",
+      "claim": "cosine B",
+      "independentFormula": "hB/prefactor",
+      "actual": "-1/2",
+      "expected": "-1/2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U3-05",
+      "claim": "half-radius absolute height",
+      "independentFormula": "height inversely proportional to radius",
+      "actual": "1/100",
+      "expected": "1/100",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-01",
+      "claim": "wave speed",
+      "independentFormula": "tracked crest distance/time",
+      "actual": "4",
+      "expected": "4",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-01",
+      "claim": "frequency",
+      "independentFormula": "speed/wavelength",
+      "actual": "5",
+      "expected": "5",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-01",
+      "claim": "period",
+      "independentFormula": "reciprocal frequency",
+      "actual": "1/5",
+      "expected": "1/5",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-01",
+      "claim": "local displacement at quarter period",
+      "independentFormula": "A cos(-omega t)",
+      "actual": "1.2246467991473532e-18",
+      "expected": "0",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-01",
+      "claim": "local velocity at quarter period",
+      "independentFormula": "A omega sin(phase)",
+      "actual": "-0.6283185307179586",
+      "expected": "-0.6283185307179586",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-02",
+      "claim": "first amplitude",
+      "independentFormula": "(sqrt Imax+sqrt Imin)/2",
+      "actual": "3.0",
+      "expected": "3",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-02",
+      "claim": "second amplitude",
+      "independentFormula": "(sqrt Imax-sqrt Imin)/2",
+      "actual": "2.0",
+      "expected": "2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-02",
+      "claim": "phase-average intensity",
+      "independentFormula": "sum isolated intensities",
+      "actual": "13.0",
+      "expected": "13",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-03",
+      "claim": "source factor W",
+      "independentFormula": "difference removes background",
+      "actual": "12",
+      "expected": "12",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-03",
+      "claim": "background",
+      "independentFormula": "near measurement-source factor",
+      "actual": "1",
+      "expected": "1",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-03",
+      "claim": "third intensity",
+      "independentFormula": "C/r²+B at r=3",
+      "actual": "7/3",
+      "expected": "7/3",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-03",
+      "claim": "source power W",
+      "independentFormula": "4pi C",
+      "actual": "150.79644737231007",
+      "expected": "150.79644737231007",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-04",
+      "claim": "equivalent intensity ratio",
+      "independentFormula": "time-weighted linear intensities",
+      "actual": "334000",
+      "expected": "334000",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-04",
+      "claim": "relative energy error factor",
+      "independentFormula": "correct / 40dB intensity",
+      "actual": "167/5",
+      "expected": "167/5",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-04",
+      "claim": "level dB rounded to two decimals",
+      "independentFormula": "10log10(Ieq/I0), rounded as in the solution",
+      "actual": "55.24",
+      "expected": "55.24",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-05",
+      "claim": "receding frequency Hz",
+      "independentFormula": "classical source u/c=0.1, observer at rest",
+      "actual": "400",
+      "expected": "400",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U4-05",
+      "claim": "approaching frequency rounds to quoted 489 Hz",
+      "independentFormula": "same source speed, opposite receiver",
+      "actual": "489",
+      "expected": "489",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-01",
+      "claim": "gas amount ratio cooled state",
+      "independentFormula": "absolute pressure ratio * inverse T ratio",
+      "actual": "1",
+      "expected": "1",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-01",
+      "claim": "final amount ratio",
+      "independentFormula": "same V,T: absolute pressure ratio",
+      "actual": "11/12",
+      "expected": "11/12",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-01",
+      "claim": "missing fraction",
+      "independentFormula": "one minus amount ratio",
+      "actual": "1/12",
+      "expected": "1/12",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-02",
+      "claim": "cooling energy J",
+      "independentFormula": "mwater c deltaT",
+      "actual": "12600",
+      "expected": "12600",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-02",
+      "claim": "whole fusion demand J",
+      "independentFormula": "mice L",
+      "actual": "16700",
+      "expected": "16700",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-02",
+      "claim": "residual ice kg",
+      "independentFormula": "initial ice - available/L",
+      "actual": "41/3340",
+      "expected": "41/3340",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-02",
+      "claim": "remaining latent demand J",
+      "independentFormula": "residual ice * L",
+      "actual": "4100",
+      "expected": "4100",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-02",
+      "claim": "second final temperature",
+      "independentFormula": "remaining heat / total water capacity",
+      "actual": "2",
+      "expected": "2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-03",
+      "claim": "first heat flow W",
+      "independentFormula": "20/(Rcond+Rconv)",
+      "actual": "20/3",
+      "expected": "20/3",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-03",
+      "claim": "second heat flow W",
+      "independentFormula": "new conductivity, same boundary",
+      "actual": "200/21",
+      "expected": "200/21",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-03",
+      "claim": "improvement factor",
+      "independentFormula": "P2/P1",
+      "actual": "10/7",
+      "expected": "10/7",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-03",
+      "claim": "first outer surface temperature",
+      "independentFormula": "air T + P Rconv",
+      "actual": "100/3",
+      "expected": "100/3",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-03",
+      "claim": "second outer surface temperature",
+      "independentFormula": "air T + P Rconv",
+      "actual": "820/21",
+      "expected": "820/21",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-04",
+      "claim": "internal energy change J",
+      "independentFormula": "3/2 delta(pV)",
+      "actual": "450",
+      "expected": "450",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-04",
+      "claim": "path A heat J",
+      "independentFormula": "delta U+high-pressure work",
+      "actual": "650",
+      "expected": "650",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-04",
+      "claim": "path B heat J",
+      "independentFormula": "delta U+low-pressure work",
+      "actual": "550",
+      "expected": "550",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-04",
+      "claim": "cycle work J",
+      "independentFormula": "area between paths",
+      "actual": "100",
+      "expected": "100",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-05",
+      "claim": "impossible reservoir entropy",
+      "independentFormula": "Qc/Tc-Qh/Th",
+      "actual": "-2/3",
+      "expected": "-2/3",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-05",
+      "claim": "minimum heat rejection",
+      "independentFormula": "Qh Tc/Th",
+      "actual": "600",
+      "expected": "600",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U5-05",
+      "claim": "repaired entropy",
+      "independentFormula": "second proposed budget",
+      "actual": "1/6",
+      "expected": "1/6",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-01",
+      "claim": "same-sign equal field magnitudes",
+      "independentFormula": "x=1: distances 1 and 2",
+      "actual": "0",
+      "expected": "0",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-01",
+      "claim": "opposite-sign equal external magnitudes",
+      "independentFormula": "x=-3: distances 3 and 6",
+      "actual": "0",
+      "expected": "0",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-02",
+      "claim": "measured loop mismatch V",
+      "independentFormula": "sum signed potential differences",
+      "actual": "2",
+      "expected": "2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-02",
+      "claim": "potential energy increase microJ",
+      "independentFormula": "q delta V in microC and V",
+      "actual": "6",
+      "expected": "6",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-02",
+      "claim": "formal inaccessible final kinetic microJ",
+      "independentFormula": "Ki-deltaU",
+      "actual": "-2",
+      "expected": "-2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-02",
+      "claim": "stopping potential difference V",
+      "independentFormula": "Ki/q",
+      "actual": "-2",
+      "expected": "-2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-03",
+      "claim": "isolated total charge nC",
+      "independentFormula": "charge conservation across separated conductors",
+      "actual": "0",
+      "expected": "0",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-03",
+      "claim": "recontact equal-sphere charge nC",
+      "independentFormula": "zero total redistributed without external field",
+      "actual": "0",
+      "expected": "0",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-04",
+      "claim": "initial total current A",
+      "independentFormula": "V/(series R+parallel R)",
+      "actual": "3",
+      "expected": "3",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-04",
+      "claim": "initial local power W",
+      "independentFormula": "parallel voltage²/6",
+      "actual": "6",
+      "expected": "6",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-04",
+      "claim": "open 3ohm current A",
+      "independentFormula": "source/(2+6)",
+      "actual": "3/2",
+      "expected": "3/2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-04",
+      "claim": "open 6ohm current A",
+      "independentFormula": "source/(2+3), excluded by observation",
+      "actual": "12/5",
+      "expected": "12/5",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-04",
+      "claim": "surviving local power W",
+      "independentFormula": "measured branch voltage²/6",
+      "actual": "27/2",
+      "expected": "27/2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-05",
+      "claim": "initial stored microJ",
+      "independentFormula": "C V²/2",
+      "actual": "100",
+      "expected": "100",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-05",
+      "claim": "isolated final V",
+      "independentFormula": "Q/Cnew",
+      "actual": "10/3",
+      "expected": "10/3",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-05",
+      "claim": "isolated mechanical microJ",
+      "independentFormula": "initial U-final U",
+      "actual": "200/3",
+      "expected": "200/3",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-05",
+      "claim": "generator work microJ",
+      "independentFormula": "V deltaQ",
+      "actual": "400",
+      "expected": "400",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-05",
+      "claim": "connected mechanical microJ",
+      "independentFormula": "generator work-storage increase",
+      "actual": "200",
+      "expected": "200",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-06",
+      "claim": "mass ratio equal K",
+      "independentFormula": "r² proportional m",
+      "actual": "4",
+      "expected": "4",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-06",
+      "claim": "speed ratio equal K",
+      "independentFormula": "sqrt(m1/m2)",
+      "actual": "0.5",
+      "expected": "1/2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-06",
+      "claim": "flight time ratio",
+      "independentFormula": "inverse speed ratio at same length",
+      "actual": "2.0",
+      "expected": "2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-07",
+      "claim": "first emf V",
+      "independentFormula": "-N A deltaB/dt",
+      "actual": "-1/5",
+      "expected": "-1/5",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-07",
+      "claim": "first current A",
+      "independentFormula": "emf/R with negligible inductance",
+      "actual": "-1/10",
+      "expected": "-1/10",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U6-07",
+      "claim": "full-cycle heat J",
+      "independentFormula": "I²R total duration",
+      "actual": "1/125",
+      "expected": "1/125",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-01",
+      "claim": "frequency Hz",
+      "independentFormula": "c/lambda0",
+      "actual": "500000000000000",
+      "expected": "500000000000000",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-01",
+      "claim": "medium speed m/s",
+      "independentFormula": "unchanged f * new lambda",
+      "actual": "200000000",
+      "expected": "200000000",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-01",
+      "claim": "refractive index",
+      "independentFormula": "c/v",
+      "actual": "3/2",
+      "expected": "3/2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-02",
+      "claim": "radio frequency",
+      "independentFormula": "c/lambda in SI",
+      "actual": "100000000",
+      "expected": "100000000",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-02",
+      "claim": "infrared frequency",
+      "independentFormula": "c/lambda in SI",
+      "actual": "100000000000000",
+      "expected": "100000000000000",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-02",
+      "claim": "X and gamma frequency",
+      "independentFormula": "c/lambda in SI",
+      "actual": "30000000000000000000",
+      "expected": "30000000000000000000",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-03",
+      "claim": "lower-energy photon rate",
+      "independentFormula": "component power / photon energy",
+      "actual": "10000000000000000",
+      "expected": "10000000000000000",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-03",
+      "claim": "higher-energy photon rate",
+      "independentFormula": "component power / photon energy",
+      "actual": "5000000000000000",
+      "expected": "5000000000000000",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-03",
+      "claim": "mean photon energy J",
+      "independentFormula": "total power / total photon rate",
+      "actual": "1/3750000000000000000",
+      "expected": "1/3750000000000000000",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-03",
+      "claim": "filter photon fraction",
+      "independentFormula": "selected count / total count",
+      "actual": "1/3",
+      "expected": "1/3",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-04",
+      "claim": "first transmission",
+      "independentFormula": "sum separately attenuated initial components",
+      "actual": "3/8",
+      "expected": "3/8",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-04",
+      "claim": "second transmission",
+      "independentFormula": "sum squared component transmissions",
+      "actual": "5/32",
+      "expected": "5/32",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-04",
+      "claim": "high-energy fraction after first",
+      "independentFormula": "component / transmitted total",
+      "actual": "2/3",
+      "expected": "2/3",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-04",
+      "claim": "high-energy fraction after second",
+      "independentFormula": "component / transmitted total",
+      "actual": "4/5",
+      "expected": "4/5",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-04",
+      "claim": "relative underprediction",
+      "independentFormula": "(true-single-coefficient)/true",
+      "actual": "1/10",
+      "expected": "1/10",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-05",
+      "claim": "six-hour survival factor",
+      "independentFormula": "successive count differences ratio",
+      "actual": "1/4",
+      "expected": "1/4",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-05",
+      "claim": "initial source count rate cpm",
+      "independentFormula": "difference/(1-r)",
+      "actual": "800",
+      "expected": "800",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-05",
+      "claim": "background cpm",
+      "independentFormula": "initial observed-source",
+      "actual": "80",
+      "expected": "80",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-05",
+      "claim": "half-life hours",
+      "independentFormula": "delta t log(1/2)/log(r)",
+      "actual": "3.0",
+      "expected": "3",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-05",
+      "claim": "initial Bq",
+      "independentFormula": "source cpm/(60 efficiency)",
+      "actual": "80/3",
+      "expected": "80/3",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-06",
+      "claim": "ionization rate per second",
+      "independentFormula": "above-threshold photon flux * ionizing absorption probability",
+      "actual": "200000",
+      "expected": "200000",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-06",
+      "claim": "electron kinetic power W",
+      "independentFormula": "rate * excess energy * J/eV",
+      "actual": "1/6250000000000",
+      "expected": "1/6250000000000",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-06",
+      "claim": "initial incident power W",
+      "independentFormula": "sum spectral powers",
+      "actual": "23/6250000000000",
+      "expected": "23/6250000000000",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-06",
+      "claim": "new incident power W",
+      "independentFormula": "double low-energy count only",
+      "actual": "31/6250000000000",
+      "expected": "31/6250000000000",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-07",
+      "claim": "lens inverse distances p=15",
+      "independentFormula": "1/p+1/q=1/f",
+      "actual": "1/10",
+      "expected": "1/10",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-07",
+      "claim": "signed magnification p=15",
+      "independentFormula": "-q/p",
+      "actual": "-2",
+      "expected": "-2",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-07",
+      "claim": "lens inverse distances p=5",
+      "independentFormula": "1/p+1/q=1/f",
+      "actual": "1/10",
+      "expected": "1/10",
+      "result": "PASS"
+    },
+    {
+      "familyId": "U7-07",
+      "claim": "signed magnification p=5",
+      "independentFormula": "-q/p",
+      "actual": "2",
+      "expected": "2",
+      "result": "PASS"
+    }
+  ]
+}

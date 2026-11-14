@@ -91,7 +91,7 @@ describe('browser recovery shared by already-open tabs', () => {
         tabA.edit(teacher, lesson, ink('A-first')),
         tabA.edit(teacher, lesson, ink('A-second')),
       ]);
-      originals = structuredClone(tabA.state.pending);
+      originals = structuredClone(tabA.state.pending.filter(entry => entry.workspaceId === workspace));
       expect(originals.map(entry => entry.status)).toEqual(['uncertain', 'blocked']);
     } finally {replyB.release();}
     expect((await resultB)[0]?.status).toBe('fulfilled');

@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "ardesia-physics-five-2026",
+  "academicYear": "2026/2027",
+  "createdOn": "2026-11-07",
+  "status": "DRAFT",
+  "humanApproval": false,
+  "legacyCommit": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+  "reconciliation": {
+    "from": 4,
+    "to": 5,
+    "decision": "Split the historical fluids/thermodynamics course into U3 and U5; retain all original objective IDs.",
+    "counts": {
+      "courses": 5,
+      "units": 38,
+      "editorialSubtargets": 200,
+      "officialSyllabusUnits": 7,
+      "bankTopics": 147,
+      "selectedExistingBankQuestions": 259,
+      "originalGuidedInvestigations": 38,
+      "objectiveFinalChecks": 200,
+      "originalTransferActivities": 38,
+      "optionalVideoReferences": 5,
+      "selectedCoreQuestions": 255,
+      "selectedProvidedLawExtensions": 4,
+      "correctedInheritedDisplayRecords": 2
+    }
+  },
+  "limits": [
+    "Authored coverage is not human scientific approval or learner calibration.",
+    "Lab IDs identify integration targets and require runtime checks by the integrator.",
+    "Family exercise mapping is broader than exact per-objective final-check mapping.",
+    "Source bank question variation includes shared models and reasoning templates; no semantic uniqueness certification.",
+    "Texts from private commercial manuals are not reproduced.",
+    "38 authored transfers are already embedded in the courses and are not counted as 38 semantically unique new bank questions.",
+    "Five optional videos have index/excerpt identity checks only; full viewing and playback were not possible.",
+    "Two inherited capacitor questions have traceable display repairs; one also clarifies independent preparation trials."
+  ],
+  "files": {
+    "assessments.json": {
+      "sha256": "43069e16472f620bad88d7a1b0478cf3fa8e7001e75144150f91444ca03288b5",
+      "bytes": 179982
+    },
+    "bank/index.json": {
+      "sha256": "760c96f01d11622b2ee7c302d0bd5ae83a2422e27d65c166ef203d43f6dd3bc2",
+      "bytes": 1708
+    },
+    "bank/sf-2026-elettricita-magnetismo.json": {
+      "sha256": "a67607bc64aa6a65a76285214be682a7ab7aaedfbbbb49c2ee9fbc7246e6fdd9",
+      "bytes": 354187
+    },
+    "bank/sf-2026-fluidi.json": {
+      "sha256": "66cd744cd03cb88cec718c8753c73335c8b6bea5badb63939abbfde0698b3319",
+      "bytes": 496237
+    },
+    "bank/sf-2026-onde-ottica-radiazioni.json": {
+      "sha256": "1c75a8eda16de1a3c3b895153b13585513eead07a2ab3779b58bc2d33c32c00f",
+      "bytes": 419434
+    },
+    "bank/sf-2026-strumenti-meccanica.json": {
+      "sha256": "be3a98b032b57f3a5492c050b3e4020f6d37d1e9eae65970349f74faac5de037",
+      "bytes": 488711
+    },
+    "bank/sf-2026-termodinamica.json": {
+      "sha256": "55b57d4e1d2827423238451ee58e74241a23173158deb41bf8c75a7375ad3492",
+      "bytes": 536674
+    },
+    "bank-selection.json": {
+      "sha256": "fdd548b9e404d40613560e150959198d4477fef8fbf1e5ec24e4116d4eab46f4",
+      "bytes": 2295231
+    },
+    "courses.json": {
+      "sha256": "da4b771fcd2859e85adcfa9080c00673c2fc15dcae208ce36d460dc58d2228f1",
+      "bytes": 307719
+    },
+    "coverage.json": {
+      "sha256": "018e320595808d61f8982ccbfef93565e47486e576dd8d850c749a330587c13e",
+      "bytes": 189258
+    },
+    "editorial-corrections.json": {
+      "sha256": "9fca645a09894c686973df25740e24d921950be3230defd6d9228ef62ae18cc9",
+      "bytes": 1060
+    },
+    "experiments.json": {
+      "sha256": "d4e5ea407affb066008850ce3c9f5bec3f411d19459002ed3429130394d1e8f5",
+      "bytes": 50897
+    },
+    "media-resources.json": {
+      "sha256": "3293e69ff32d4bffa442a9f52cfccf89a7078741c59b143192c0cc58af42d47a",
+      "bytes": 6913
+    },
+    "source-registry.json": {
+      "sha256": "4cd13cba2663b8972f7ebea8172b47b9230442307c142e379477fe565ceb1e6a",
+      "bytes": 4728
+    },
+    "topic-coverage.json": {
+      "sha256": "5b8193abe11dad2d89e203b689439e471e451d3152f06d6f5b437167577a8db4",
+      "bytes": 67058
+    },
+    "transfer-applications.json": {
+      "sha256": "91cd81485dfe25943fd3e1c57bafb446664c0d69bb9a0b4405735bfd2a1e8bd1",
+      "bytes": 51515
+    },
+    "units.json": {
+      "sha256": "2b603a2ec056acdbaf048043b5b7537751146591e4ef1107ee2873e0c96aa7ba",
+      "bytes": 40974
+    }
+  }
+}

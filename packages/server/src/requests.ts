@@ -1,5 +1,5 @@
 import {z} from 'zod';
-import {MaterialManifestSchema, TutorCommandSchema, CourseCommandSchema, CoreCommandSchema, PluginCommandSchema, LearningCommandSchema, RecordingCommandSchema, RECORDING_PART_BYTES, RECORDING_MAX_PARTS} from '@ardesia/contracts';
+import {MaterialManifestSchema, NotebookCommandSchema, TutorCommandSchema, CourseCommandSchema, CoreCommandSchema, PluginCommandSchema, LearningCommandSchema, RecordingCommandSchema, RECORDING_PART_BYTES, RECORDING_MAX_PARTS} from '@ardesia/contracts';
 
 const id = z.string().min(1).max(200).regex(/^[A-Za-z0-9][A-Za-z0-9._:-]*$/);
 const title = z.string().trim().min(1).max(240);
@@ -16,6 +16,7 @@ export const RequestSchema = z.discriminatedUnion('action', [
   z.object({action: z.literal('create-workspace'), title, commandId: id}).strict(),
   z.object({action: z.literal('open-workspace'), workspaceId: id}).strict(),
   z.object({action: z.literal('command'), workspaceId: id, command: CoreCommandSchema}).strict(),
+  z.object({action: z.literal('notebook-command'), workspaceId: id, command: NotebookCommandSchema}).strict(),
   z.object({action: z.literal('plugin-command'), workspaceId: id, command: PluginCommandSchema}).strict(),
   z.object({action: z.literal('tutor-command'), workspaceId: id, command: TutorCommandSchema}).strict(),
   z.object({action: z.literal('course-command'), workspaceId: id, command: CourseCommandSchema}).strict(),
@@ -24,8 +25,8 @@ export const RequestSchema = z.discriminatedUnion('action', [
   z.object({action: z.literal('read-attempt-source'), workspaceId: id, documentId: id, attemptId: id, studentId: id.optional()}).strict(),
   z.object({action: z.literal('import-local'), expectedAccountId: id, commandId: id, title, snapshotText: z.string().min(1).max(2_000_000)}).strict(),
   z.object({action: z.literal('export-personal'), workspaceId: id}).strict(),
-  z.object({action: z.literal('search-recordings'), workspaceId: id, documentId: id, query: z.string().trim().min(1).max(200)}).strict(),
-  z.object({action: z.literal('list-recordings'), workspaceId: id, documentId: id}).strict(),
+  z.object({action: z.literal('search-recordings'), workspaceId: id, documentId: id.optional(), query: z.string().trim().min(1).max(200)}).strict(),
+  z.object({action: z.literal('list-recordings'), workspaceId: id, documentId: id.optional()}).strict(),
   z.object({action: z.literal('read-recording'), workspaceId: id, recordingId: id}).strict(),
   z.object({action: z.literal('recording-command'), workspaceId: id, command: RecordingCommandSchema}).strict(),
   z.object({action: z.literal('put-recording-part'), workspaceId: id, recordingId: id,

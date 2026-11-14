@@ -45,13 +45,13 @@ describe('versioned user-created types on the existing Core authority',()=>{
     expect(ProgramBodySchema.safeParse(opaque.definition.body).success).toBe(false);
     await core.execute(owner,{kind:'add-object',commandId:'opaque',documentId:'lesson',expectedRevision:1,object:object(opaque)});
     const before=await storage.read(),reopened=await createCore({storage});
-    expect(await storage.read()).toEqual(before);expect(reopened.snapshot().schemaVersion).toBe(9);
+    expect(await storage.read()).toEqual(before);expect(reopened.snapshot().schemaVersion).toBe(11);
     expect(reopened.getDocument(owner,'lesson').objects[0]).toMatchObject({data:opaque});
     await reopened.execute(owner,{kind:'remove-object',commandId:'remove-opaque',documentId:'lesson',expectedRevision:2,objectId:'object'});
     expect((await createCore({storage})).getObjectRevision(owner,'lesson','object',1)).toMatchObject({data:opaque});
   });
   it('opens v5 with zero writes and preserves legacy receipts; refuses a disguised new object or corrupted hash',async()=>{
-    const old={...preCourse(emptySnapshot()),schemaVersion:5};const storage=new MemoryStorage(old);const core=await createCore({storage});expect(core.snapshot().schemaVersion).toBe(9);expect(await storage.read()).toEqual(old);
+    const old={...preCourse(emptySnapshot()),schemaVersion:5};const storage=new MemoryStorage(old);const core=await createCore({storage});expect(core.snapshot().schemaVersion).toBe(11);expect(await storage.read()).toEqual(old);
     const live=await fixture(),first=await data();await live.core.execute(owner,{kind:'add-object',commandId:'add',documentId:'lesson',expectedRevision:1,object:object(first)});
     const snapshot=live.core.snapshot();await expect(createCore({storage:new MemoryStorage({...snapshot,schemaVersion:5})})).rejects.toMatchObject({code:'INVALID_SNAPSHOT'});
     const corrupt=structuredClone(snapshot);const o=corrupt.documents[0]!.objects[0]!;if(o.type==='extension')o.data.definition.name='Tampered';
@@ -104,6 +104,6 @@ describe('versioned user-created types on the existing Core authority',()=>{
 
 // Model historical envelopes with exactly their old fields, not a relabelled v7 snapshot.
 function preCourse<T extends object>(snapshot: T) {
-  const {tutorRecords: _t, courses: _c, courseEditions: _e, courseDeliveries: _d, courseWork: _w, ...legacy} = snapshot as T & {tutorRecords?: unknown; courses?: unknown; courseEditions?: unknown; courseDeliveries?: unknown; courseWork?: unknown};
+  const {notebookLibraries: _notebooks, tutorRecords: _t, courses: _c, courseEditions: _e, courseDeliveries: _d, courseWork: _w, ...legacy} = snapshot as T & {notebookLibraries?: unknown; tutorRecords?: unknown; courses?: unknown; courseEditions?: unknown; courseDeliveries?: unknown; courseWork?: unknown};
   return legacy;
 }
