@@ -12,7 +12,10 @@ export default defineConfig({
     terserOptions: {ecma: 2022, safari10: false, compress: {passes: 3, reduce_funcs: false, sequences: false, join_vars: false}, format: {comments: false, ascii_only: true}},
     rolldownOptions: {output: {
       charset: 'ascii', minify: {compress: {target: 'es2022'}, mangle: true},
-      codeSplitting: {groups: [{name: 'math', test: /node_modules[\\/]katex[\\/]/}]},
+      codeSplitting: {groups: [
+        {name: 'math', test: /node_modules[\\/]katex[\\/]/, priority: 10},
+        {name: 'foundation', test: /packages[\\/](?:contracts|remote-client)[\\/]|node_modules[\\/](?:preact|zod)[\\/]/},
+      ]},
     }},
     sourcemap: false, chunkSizeWarningLimit: 450,
   },

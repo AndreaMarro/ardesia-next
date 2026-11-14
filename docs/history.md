@@ -693,3 +693,10 @@ Correzione delimitata alla capacità del job:30→40minuti, nessun timeout indiv
 ## Fisica — indice derivato delle definizioni durante l’importazione, 13 novembre 2026
 
 Dopo la consegna GitHub `7efaa148` e la CI completa43427821815 passata (690unit,271browser), il mandato diretto prosegue con un miglioramento circoscritto del Core: conserva la mappa delle release già validata all’apertura ed evita una seconda scansione storica per ogni add/replace. Rimangono identici dati, revisioni e protocollo. Benchmark C2 su145comandi e139oggetti: mediana Core/MemoryStorage13,54→12,53secondi,−7,44%; non è una misura HTTP/PostgreSQL/browser. Tre controprove nuove e review indipendente, con Verify sulla head finale prima del push autorizzato. [Implementazione, misure grezze, limiti e rollback](sources/physics-2026-27/import-performance-2026-11-13.md). Nessuna attività Cortex o accesso Mac; main, preview e cursore non aggiornati da questa preparazione.
+
+
+## OPS-20261114 — sessione autonoma locale di cinque ore
+
+Mandato diretto del titolare, allegato letto il 14 novembre: autonomia di sviluppo e recupero, priorità ai cinque minicorsi C1–C5, scadenza assoluta 06:30:26 UTC dopo 18.000 secondi. Per questa sessione sostituisce cadenza, durata, numero e organizzazione degli specialisti delle run orarie. Lavoro isolato da PR53 `8fbebc1`; nessuna modifica ai checkout precedenti o al cursore live revision167 (activeRun nullo). Restano integrità, provenienza, sicurezza, recupero e distinzione fra implementazione, test, revisione umana e pubblicazione. Pubblicazione esterna e operazioni economiche non sono implicite. Il titolare autorizza inoltre liberare spazio: solo cache rigenerabili, preservando sorgenti e prove.
+
+Il titolare richiede successivamente pubblicazioni frequenti su GitHub e deploy Vercel. Sono autorizzati incrementi verificati sulla branch della sessione e Preview protette del progetto esistente, preservando la preview precedente. Per queste anteprime di branch, il mandato corrente consente il deploy senza il passaggio preventivo su main; nessuna promozione produzione, cambio SSO, spesa o approvazione scientifica implicita.
