@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "kind": "ardesia-final-independent-protected-preview-observation",
+  "observedFromUTC": "2026-11-14 14:46:17 UTC",
+  "observedThroughUTC": "2026-11-14T14:47:01.362Z",
+  "observer": "deployment_access independent agent",
+  "expectedCommit": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
+  "scope": "Fresh read-only observations of this final deployment, project protection, stable alias, anonymous HTTP, and existing Neon database aggregates. No state is inherited from an earlier deployment.",
+  "deployment": {
+    "provider": "Vercel",
+    "teamId": "team_23uD0RgdInaTaOPEL0EGltup",
+    "projectId": "prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd",
+    "id": "dpl_A54WGJbaDfHZgfRozEvC5Gmo6yVN",
+    "url": "https://ardesia-next-evgd1l5pq-andreas-projects-6d4e9791.vercel.app",
+    "observedCommit": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
+    "commitMatchesExpected": true,
+    "gitRef": "preview/m3",
+    "state": "READY",
+    "target": null,
+    "observedReady": true,
+    "expectedRefAndPreviewTarget": true,
+    "projectProtection": {
+      "ssoEnabled": true,
+      "ssoDeploymentType": "all"
+    }
+  },
+  "stableAlias": {
+    "url": "https://ardesia-next-staging.vercel.app",
+    "projectId": "prj_GGKjCPG4cdgaQDQQMJoFvsy2ffSd",
+    "expectedPreviousDeploymentId": "dpl_AzHJWRxYa6f5EcmsNcXrfLA5EYup",
+    "observedDeploymentId": "dpl_AzHJWRxYa6f5EcmsNcXrfLA5EYup",
+    "unchanged": true,
+    "accessExceptionCount": 0
+  },
+  "anonymousHttp": [
+    {
+      "origin": "https://ardesia-next-evgd1l5pq-andreas-projects-6d4e9791.vercel.app",
+      "path": "/",
+      "method": "GET",
+      "anonymous": true,
+      "observedAt": "2026-11-14T14:46:54.866Z",
+      "status": 302,
+      "redirectFollowed": false,
+      "bodyRead": false,
+      "redirectOrigin": "https://vercel.com",
+      "redirectPath": "/sso-api",
+      "destinationOrigin": "https://ardesia-next-evgd1l5pq-andreas-projects-6d4e9791.vercel.app"
+    },
+    {
+      "origin": "https://ardesia-next-evgd1l5pq-andreas-projects-6d4e9791.vercel.app",
+      "path": "/api/m3",
+      "method": "GET",
+      "anonymous": true,
+      "observedAt": "2026-11-14T14:46:54.884Z",
+      "status": 401,
+      "redirectFollowed": false,
+      "bodyRead": false
+    },
+    {
+      "origin": "https://ardesia-next-evgd1l5pq-andreas-projects-6d4e9791.vercel.app",
+      "path": "/build-info.json",
+      "method": "GET",
+      "anonymous": true,
+      "observedAt": "2026-11-14T14:46:54.886Z",
+      "status": 401,
+      "redirectFollowed": false,
+      "bodyRead": false
+    },
+    {
+      "origin": "https://ardesia-next-staging.vercel.app",
+      "path": "/",
+      "method": "GET",
+      "anonymous": true,
+      "observedAt": "2026-11-14T14:46:54.887Z",
+      "status": 302,
+      "redirectFollowed": false,
+      "bodyRead": false,
+      "redirectOrigin": "https://vercel.com",
+      "redirectPath": "/sso-api",
+      "destinationOrigin": "https://ardesia-next-staging.vercel.app"
+    }
+  ],
+  "database": {
+    "provider": "Neon",
+    "projectId": "royal-bar-31252959",
+    "branchId": "br-broad-mud-bajjd3j7",
+    "databaseName": "ardesia_next_m3",
+    "connectedRole": "ardesia_next_m3_app",
+    "queryType": "SELECT only",
+    "canonicalCommit": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
+    "checkoutHead": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
+    "canonicalSource": "git show af4352e0bd810bcb1f0d2e9158d52553826971e5:packages/server/migrations/<file>.sql",
+    "migrationCount": 10,
+    "migrationVersions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "registryDigests": [
+      {
+        "digest": "5d5b50de6debe5d08658f110030672bb4cbe7666e5be559d63aa003f6862b25c",
+        "version": 1
+      },
+      {
+        "digest": "29d5452d2c77f96ed910ad35e8f9ed0841731b6cb6c5197b40ceb9028b1d25d0",
+        "version": 2
+      },
+      {
+        "digest": "6ab3542e171f82151980e6597b3fe82251d715bcd4b6b5a1d047f8dcadc41a75",
+        "version": 3
+      },
+      {
+        "digest": "4d65075ec977c1b9baae276a375bebf43c2efe561a41efda0f0807a3c67b1f5b",
+        "version": 4
+      },
+      {
+        "digest": "a364d2fbc93740931787e6ecf4a09af039a800e33bdf9898946a25fae3831e63",
+        "version": 5
+      },
+      {
+        "digest": "493b5334db979405265fe8e11df465d1cf5ed8b4119baec4b951155b489c1a93",
+        "version": 6
+      },
+      {
+        "digest": "accf5631eb1d3746f87df7097f138c47c1793809d9ef7b031dba48e1f4fcd04c",
+        "version": 7
+      },
+      {
+        "digest": "5083c8a924c9515c24c27bd3c876d61cd9a505d4411cab3d76dfa39eaac285eb",
+        "version": 8
+      },
+      {
+        "digest": "2748f6fa3d3d09586417de25986f963a880507c67afbcac04e103d9908545671",
+        "version": 9
+      },
+      {
+        "digest": "1f664711aec30209b2d6a389abd7424ff57457e612a0e2b842fdbf8f752631ba",
+        "version": 10
+      }
+    ],
+    "migrationDigestsMatchExactCommit": true,
+    "workspaceCount": 9,
+    "snapshotVersions": [
+      {
+        "schemaVersion": 4,
+        "count": 9
+      }
+    ],
+    "qaAccountMetadata": [
+      {
+        "role": "student",
+        "disabled": false,
+        "username": "m3qa20261030.student-a"
+      },
+      {
+        "role": "student",
+        "disabled": false,
+        "username": "m3qa20261030.student-b"
+      },
+      {
+        "role": "teacher",
+        "disabled": false,
+        "username": "m3qa20261030.teacher"
+      }
+    ],
+    "qaAccountQueryScope": "Only existing usernames beginning m3qa20261030.; no password, password hash, session token or account payload read.",
+    "privileges": {
+      "readMigrationVersion": true,
+      "readMigrationDigest": true,
+      "readMigrationAppliedAt": false,
+      "insertMigrationRegistry": false,
+      "updateMigrationRegistry": false,
+      "deleteMigrationRegistry": false,
+      "insertAccounts": false,
+      "changePassword": false,
+      "changeRole": false,
+      "disableAccount": false,
+      "updateLoginTimestamp": true,
+      "selectWorkspaces": true,
+      "insertWorkspaces": true,
+      "updateWorkspaces": true,
+      "superuser": false,
+      "createRole": false,
+      "createDatabase": false,
+      "bypassRls": false
+    }
+  },
+  "applicationQualification": {
+    "runtimeBuildInfo": "NOT_RUN",
+    "authenticatedHealth": "NOT_RUN",
+    "applicationLogin": "NOT_RUN",
+    "effectiveVercelDatabaseBinding": "NOT_RUN",
+    "effectiveApplicationOriginBinding": "NOT_RUN",
+    "remoteEndToEndAcceptance": "NOT_EVALUATED",
+    "reason": "Anonymous /api/m3 and /build-info.json returned 401; response bodies were not read. No authorized SSO/OIDC session or application credential was available to this observer."
+  },
+  "operations": {
+    "remoteMutationsPerformed": false,
+    "applicationLoginPerformed": false,
+    "environmentVariablesRead": false,
+    "secretValuesRead": false,
+    "accessLinkOrBypassCreated": false,
+    "redirectsFollowed": false,
+    "responseBodiesRead": false
+  },
+  "limitations": [
+    "Provider READY and protection do not prove authenticated application access, saving, reopening, or a user journey.",
+    "The runtime sourceDigest was not read; the exact deployed Git commit was observed in Vercel metadata.",
+    "The stable staging alias remains on its previous deployment; this receipt does not claim stable promotion of this candidate.",
+    "Direct read-only Neon access does not establish the new Vercel runtime's actual database connection or Origin setting.",
+    "Enabled QA account metadata does not demonstrate possession of passwords or successful current login.",
+    "Migration verification compares the registry with canonical SQL digests; it is not exhaustive introspection of every physical schema object.",
+    "This check did not repeat the root agent's seven pre/post-migration table fingerprints or qualify an application backup/restore."
+  ]
+}

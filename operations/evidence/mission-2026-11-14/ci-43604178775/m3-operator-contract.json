@@ -1,0 +1,91 @@
+{
+  "commit": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
+  "sourceDigest": "9b1c81331ffe6bb4bb4dbec4bfe42d856ab892125af8715f5082019b71f04cc1",
+  "generatedAt": "2026-11-14T14:20:26.695Z",
+  "kind": "ardesia-local-operator-producer-test",
+  "startedAt": "2026-11-14T14:20:26.695Z",
+  "completedAt": "2026-11-14T14:20:28.004Z",
+  "passed": true,
+  "checks": {
+    "backupRestore": {
+      "sourceDatabaseHash": "108bc572835c20e05587162bf6bcb19821eec4274d2d2f75dc0a199e4a700def",
+      "restoreDatabaseHash": "36cc3f9bdf075ec4984ee254427802d8ab1f7241f2ba7c2cef5cdef75a0a6e91",
+      "syntheticOnly": true,
+      "recordCount": 1,
+      "beforeDigest": "c9882bc5834c6aac90a59b6dd107cf0c11524f5a3eeab67bd4654e0b03aee61c",
+      "restoredDigest": "c9882bc5834c6aac90a59b6dd107cf0c11524f5a3eeab67bd4654e0b03aee61c",
+      "executionScope": "existing-isolated-restore",
+      "sourceWrites": false,
+      "observedAt": "2026-11-14T14:20:27.455Z",
+      "passed": true,
+      "artifactDigest": "e0f5639608a8aa052c9945bae407709b64ebde00de7ec92fb183f34efbbaf0a2"
+    },
+    "expired": {
+      "responseStatus": 401,
+      "code": "UNAUTHENTICATED",
+      "executionScope": "isolated-session-in-restore",
+      "observedAt": "2026-11-14T14:20:27.698Z",
+      "passed": true,
+      "artifactDigest": "2535728761008f3e8535081549886dcc812530dad1cf6d32ffb5e1b3fb392888"
+    },
+    "outage": {
+      "failedStatus": 503,
+      "recoveredStatus": 200,
+      "localFallbackUsed": false,
+      "beforeStateDigest": "c9882bc5834c6aac90a59b6dd107cf0c11524f5a3eeab67bd4654e0b03aee61c",
+      "afterStateDigest": "c9882bc5834c6aac90a59b6dd107cf0c11524f5a3eeab67bd4654e0b03aee61c",
+      "executionScope": "isolated-handler-connection-failure",
+      "observedAt": "2026-11-14T14:20:27.705Z",
+      "passed": true,
+      "artifactDigest": "53686bc900e7f1eef884e58d926f367abf4e89c685cf7d58b89f16cfffb951d9"
+    },
+    "import": {
+      "versions": [
+        {
+          "version": 1,
+          "sourceBytesDigest": "8168b69e74fba0ea7edb3b0fe22c9f21027533f3e3d35dc2e86a06ed0793e71a",
+          "archivedBytesDigest": "8168b69e74fba0ea7edb3b0fe22c9f21027533f3e3d35dc2e86a06ed0793e71a",
+          "beforeReceiptsDigest": "dcb1cbb3a93c3d9dd3174f95dc7b3369f83853cf43951e0d36960766eec3d43e",
+          "afterReceiptsDigest": "dcb1cbb3a93c3d9dd3174f95dc7b3369f83853cf43951e0d36960766eec3d43e",
+          "beforeRevision": 1,
+          "afterRevision": 1,
+          "consentReset": true,
+          "duplicateStatus": 409,
+          "ownershipMismatchStatus": 409
+        },
+        {
+          "version": 2,
+          "sourceBytesDigest": "e2682038bf394723d9a0433343f833e02c31a9877f50966a1f2c444043b34e64",
+          "archivedBytesDigest": "e2682038bf394723d9a0433343f833e02c31a9877f50966a1f2c444043b34e64",
+          "beforeReceiptsDigest": "b52e2fa42dcb8dc9c6932db3b868b0090f1512ab9fc0ea6b3d46143f20578bfd",
+          "afterReceiptsDigest": "b52e2fa42dcb8dc9c6932db3b868b0090f1512ab9fc0ea6b3d46143f20578bfd",
+          "beforeRevision": 1,
+          "afterRevision": 1,
+          "consentReset": true,
+          "duplicateStatus": 409,
+          "ownershipMismatchStatus": 409
+        },
+        {
+          "version": 3,
+          "sourceBytesDigest": "82f5bfbd85ddcca812ea6e64a1110f5a470cbc97cdb6331cdd10e9b7f81df36b",
+          "archivedBytesDigest": "82f5bfbd85ddcca812ea6e64a1110f5a470cbc97cdb6331cdd10e9b7f81df36b",
+          "beforeReceiptsDigest": "86c4a6fb368c453bc8807fd93973c38f593b9aed196caa0d3cafc0dc7c92d850",
+          "afterReceiptsDigest": "86c4a6fb368c453bc8807fd93973c38f593b9aed196caa0d3cafc0dc7c92d850",
+          "beforeRevision": 1,
+          "afterRevision": 1,
+          "consentReset": true,
+          "duplicateStatus": 409,
+          "ownershipMismatchStatus": 409
+        }
+      ],
+      "executionScope": "isolated-restore-real-import-handler",
+      "sourceData": "authored-synthetic-legacy-bytes",
+      "receiptScope": "original-history-prefix",
+      "observedAt": "2026-11-14T14:20:28.000Z",
+      "passed": true,
+      "artifactDigest": "9d094ef697df7c298b099a4113560743ddb8ffb695682ff4f33b33dccd9ade7a"
+    }
+  },
+  "m3Acceptance": "NOT_EVALUATED",
+  "executionScope": "two-disposable-loopback-ci-databases"
+}

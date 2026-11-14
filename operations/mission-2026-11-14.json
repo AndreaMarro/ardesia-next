@@ -97,10 +97,45 @@
     "mainAfter56": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
     "mainCiAfter56": {
       "runId": 43604178775,
-      "headSha": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
       "event": "push",
       "attempt": 1,
-      "result": "PENDING"
+      "headSha": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
+      "sourceDigest": "9b1c81331ffe6bb4bb4dbec4bfe42d856ab892125af8715f5082019b71f04cc1",
+      "result": "PASS",
+      "artifactId": 14117773054,
+      "artifactBytes": 107257459,
+      "artifactSha256": "c2232b2e96f7703a0f167499af810006f29b4e7df2e23209defcab0fe1c53f99",
+      "originalReports": 13,
+      "verify": 8,
+      "unit": 707,
+      "unitFiles": 74,
+      "browser": {
+        "total": 299,
+        "desktop": 150,
+        "mobile": 149,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0,
+        "globalErrors": 0,
+        "retry": 0,
+        "durationMs": 1113342.134
+      },
+      "server": 5,
+      "mcp": 16,
+      "budget": {
+        "initialJavaScriptGzipBytes": 223387,
+        "coreGzipBytes": 343561,
+        "coreLimitBytes": 344064,
+        "coreHeadroomBytes": 503,
+        "pdfGzipBytes": 2590788,
+        "allGzipBytes": 3226893,
+        "allJavaScriptGzipBytes": 1084349
+      },
+      "unitReportDigest": "b24a0d29b63bdad2a4f759cdb326cc50e5c26d9b7c49cb3ca67958c76b8715e0",
+      "m3ReportDigest": "5d9599e90740a026b2094b4b41a0954112b9689ca97e2c0aaf5bcbf6e49cf364",
+      "m4PreparationDigest": "7d46a03872060a023466cd4a976b95597db65bf0cd2fbb7e3ed2220002f7253b",
+      "rootReadOriginalReports": true,
+      "independentReadOriginalReports": true
     }
   },
   "changes": [
@@ -126,8 +161,11 @@
     "pdfGzipBytes": 2590788
   },
   "independentReview": {
-    "context": "Separate pr_chain_review agent; raw source/diff, immutable Git blobs and recomputed identity. No source blocker; not human scientific or editorial approval.",
-    "reviewedSha": "64c847d068ba78e02be5aabd36a9facef80aa85b"
+    "context": "Separate pr_chain_review context inspected source/diffs and original CI artifacts; deployment_access separately observed provider/anonymous HTTP/Neon. Technical review, not human acceptance.",
+    "sourceReviewed": "c7f1f2a34141990ddd880bd6d4d1da2c124551db",
+    "mergeTreeReviewed": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
+    "mainOriginalCiReviewed": 43604178775,
+    "sourceBlockersObserved": 0
   },
   "database": {
     "project": "royal-bar-31252959",
@@ -198,7 +236,13 @@
       "update_account": false,
       "create_schema_object": false
     },
-    "backupMeaning": "Neon copy-on-write branch backup, verified via child; not an application portable backup/restore acceptance."
+    "backupMeaning": "Neon copy-on-write branch backup, verified via child; not an application portable backup/restore acceptance.",
+    "finalIndependentObservation": {
+      "path": "operations/evidence/mission-2026-11-14/deployment-final-independent-observation.json",
+      "sha256": "fb8645a82de49feffc91f1ec937b755ab9e18ba620932997d96f5259a21ab242",
+      "observedFromUTC": "2026-11-14 14:46:17 UTC",
+      "observedThroughUTC": "2026-11-14T14:47:01.362Z"
+    }
   },
   "access": {
     "canonicalUrl": "https://ardesia-next-staging.vercel.app",
@@ -214,6 +258,31 @@
       "No authenticated Vercel browser/short-lived project OIDC in this host",
       "Existing application QA credentials are only in the authorized Mac private channel",
       "No connected native device"
+    ],
+    "nativeInventoryLastCheckedAt": "2026-11-14T14:32:26.000Z",
+    "connectedNativeDevices": 0,
+    "nativeBundleSearch": {
+      "scope": "Two bounded Library metadata query attempts; one successful and one invalid-argument query",
+      "result": "No compiled bundle identified in the successful query; not proof of absence",
+      "mutations": false
+    },
+    "finalNativeInventoryObservedAt": "2026-11-14T14:45:58.000Z",
+    "qaAccounts": [
+      {
+        "role": "student",
+        "disabled": false,
+        "username": "m3qa20261030.student-a"
+      },
+      {
+        "role": "student",
+        "disabled": false,
+        "username": "m3qa20261030.student-b"
+      },
+      {
+        "role": "teacher",
+        "disabled": false,
+        "username": "m3qa20261030.teacher"
+      }
     ]
   },
   "offline": {
@@ -250,28 +319,71 @@
     "Native macOS companion has existing historical M4 evidence; this Linux session cannot rebuild/retest it",
     "Backup is a Neon branch-copy qualified through a child; not a portable application exportBackup/restoreBackup proof"
   ],
-  "nextAction": "Observe original automatic main CI43604178775 on af4352e without rerun; inspect its artifact, then deploy exact main to protected Preview if PASS. Live SQL1–10 already applied: do not rerun migration. Preserve stable alias until authorized credentials enable controlled switch and immediate smoke.",
+  "nextAction": "Open the existing authorized Ardesia/Vercel context on the owner's Mac or connect that device. Verify the documented private channel without exposing secrets. With exact checkout af4352e and credentials available, perform prerequisite identity/protection/authorized health/data-compatibility checks, controlled stable-alias switch and immediate canonical-Origin preflight/login/continuity smoke in new synthetic workspaces; check an authorized distinct empty restore target before application restore. Stable alias still90adcf. SQL1–10 ALREADY APPLIED: do not rerun migration, reset data, recreate accounts or bypass SSO. Current claim closes BLOCKED on remote access, not complete M5.",
   "deployment": {
-    "id": "dpl_AWqtg2fbfPcc7kMrCsZJW6zSgp57",
-    "url": "https://ardesia-next-nr9wdtwij-andreas-projects-6d4e9791.vercel.app",
-    "target": null,
-    "environment": "protected standard Preview",
-    "providerState": "READY",
-    "sourceSha": "64c847d068ba78e02be5aabd36a9facef80aa85b",
-    "branch": "preview/m3",
-    "canonicalAliasPromoted": false,
-    "buildInfoHttp": "BLOCKED_BY_SSO",
-    "applicationHealthHttp": "BLOCKED_BY_SSO",
-    "authenticatedE2E": "NOT_RUN_CREDENTIALS_UNAVAILABLE",
-    "anonymous": {
-      "root": 302,
-      "api": 401,
-      "buildInfo": 401,
-      "redirectOrigin": "https://vercel.com",
-      "redirectPath": "/sso-api",
-      "redirectFollowed": false
+    "id": "dpl_A54WGJbaDfHZgfRozEvC5Gmo6yVN",
+    "url": "https://ardesia-next-evgd1l5pq-andreas-projects-6d4e9791.vercel.app",
+    "sourceSha": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
+    "gitRef": "preview/m3",
+    "providerTarget": null,
+    "readyState": "READY",
+    "protection": {
+      "ssoEnabled": true,
+      "deploymentType": "all"
     },
-    "ssoDeploymentType": "all"
+    "canonicalAlias": "https://ardesia-next-staging.vercel.app",
+    "canonicalAliasDeploymentId": "dpl_AzHJWRxYa6f5EcmsNcXrfLA5EYup",
+    "canonicalAliasSourceSha": "90adcf473a5145b8651c26fd5127d4b67c37cc4e",
+    "canonicalAliasChanged": false,
+    "anonymousHttp": [
+      {
+        "url": "https://ardesia-next-evgd1l5pq-andreas-projects-6d4e9791.vercel.app/",
+        "observedAt": "2026-11-14T14:45:55.031Z",
+        "status": 302,
+        "redirectFollowed": false,
+        "redirectOrigin": "https://vercel.com",
+        "redirectPath": "/sso-api",
+        "bodyRead": false
+      },
+      {
+        "url": "https://ardesia-next-staging.vercel.app/",
+        "observedAt": "2026-11-14T14:45:55.046Z",
+        "status": 302,
+        "redirectFollowed": false,
+        "redirectOrigin": "https://vercel.com",
+        "redirectPath": "/sso-api",
+        "bodyRead": false
+      },
+      {
+        "url": "https://ardesia-next-evgd1l5pq-andreas-projects-6d4e9791.vercel.app/api/m3",
+        "observedAt": "2026-11-14T14:45:55.047Z",
+        "status": 401,
+        "redirectFollowed": false,
+        "redirectOrigin": null,
+        "redirectPath": null,
+        "bodyRead": false
+      },
+      {
+        "url": "https://ardesia-next-evgd1l5pq-andreas-projects-6d4e9791.vercel.app/build-info.json",
+        "observedAt": "2026-11-14T14:45:55.048Z",
+        "status": 401,
+        "redirectFollowed": false,
+        "redirectOrigin": null,
+        "redirectPath": null,
+        "bodyRead": false
+      }
+    ],
+    "authenticatedBuildInfo": "NOT_RUN",
+    "runtimeSourceDigest": "NOT_OBSERVED",
+    "effectiveDatabaseBinding": "NOT_RUN",
+    "effectiveOriginBinding": "NOT_RUN",
+    "applicationLogin": "NOT_RUN",
+    "independentObservation": {
+      "path": "operations/evidence/mission-2026-11-14/deployment-final-independent-observation.json",
+      "sha256": "fb8645a82de49feffc91f1ec937b755ab9e18ba620932997d96f5259a21ab242",
+      "observedFromUTC": "2026-11-14 14:46:17 UTC",
+      "observedThroughUTC": "2026-11-14T14:47:01.362Z"
+    }
   },
   "cleanupCandidate": {
     "pr": 56,
@@ -291,8 +403,8 @@
     "state": "MERGED",
     "mergeCommit": "af4352e0bd810bcb1f0d2e9158d52553826971e5"
   },
-  "recordedAt": "2026-11-14T14:20:42.000Z",
-  "phase": "MAIN_CI_PENDING_AFTER_NORMAL_MERGE",
+  "recordedAt": "2026-11-14T14:53:24.143Z",
+  "phase": "DELIVERED_PROTECTED_PREVIEW_REMOTE_ACCEPTANCE_BLOCKED",
   "originalReports": {
     "directory": "operations/evidence/mission-2026-11-14",
     "ciReportsPreservedByteForByte": 9,
@@ -418,7 +530,128 @@
         "gitBlob": "237532eaa195f11444adbe808b047af993c3cb57"
       }
     ],
-    "pr56ReportsPreservedByteForByte": 9
+    "pr56ReportsPreservedByteForByte": 13,
+    "pr56AdditionalOriginalInventory": [
+      {
+        "name": "benchmark.json",
+        "bytes": 5216,
+        "sha256": "1958448c4907e6e1c4b41d6c511eb23a6aa0c296a9fa9c1fb256ed773c7ec172",
+        "gitBlob": "35b4429e028033d6bd1fe98746997f7bff695326"
+      },
+      {
+        "name": "bundle-transport.json",
+        "bytes": 897,
+        "sha256": "a3682e7093ed927c1efcd0305c32f52f13dff40c50c81a5eeb8bb21ae913459f",
+        "gitBlob": "7492b127331f22207bf1e6a1a0a666153363ccd0"
+      },
+      {
+        "name": "m3-operator-contract.json",
+        "bytes": 4217,
+        "sha256": "81b20e87b9cbfdb86df0d7ec695ce2e3c5dbf02dc011d9f97e0ac5705f8edebd",
+        "gitBlob": "4b49ee1245634fc149c0359945d478de59a85c3a"
+      },
+      {
+        "name": "program-runtime-build.json",
+        "bytes": 816,
+        "sha256": "31e7ea1485e247c603d954d72a2675de4d883686faf22eb8f750bef951f77807",
+        "gitBlob": "b055ee75d934f79f3c637f6230975629443ff8ed"
+      }
+    ],
+    "finalMainOriginalInventory": [
+      {
+        "name": "benchmark.json",
+        "chars": 5211,
+        "bytes": 5211,
+        "sha256": "cab7f327f17d6b2e65f9f9eb6f50f0464804777427d68575aacfe13bdcbc024e",
+        "gitBlob": "eab60e38979ed794e91589f6e0aad0e8363585ea"
+      },
+      {
+        "name": "browser-evidence.json",
+        "chars": 4704,
+        "bytes": 4704,
+        "sha256": "1016ffca32615b53f3ac7a3e602b245ebed2fd7680deda030c4d8c3c5c7b18f7",
+        "gitBlob": "8fe30575ffdf507ba9e334d220b04358646d2265"
+      },
+      {
+        "name": "budget.json",
+        "chars": 33539,
+        "bytes": 33539,
+        "sha256": "99c693bfcd8c5a2dcfbfdc6d758fcdba1a1e4e74a32675b1ee3f943ec5c93124",
+        "gitBlob": "71856da628359df4fc5c9423a29d2076482441af"
+      },
+      {
+        "name": "bundle-transport.json",
+        "chars": 897,
+        "bytes": 897,
+        "sha256": "a3682e7093ed927c1efcd0305c32f52f13dff40c50c81a5eeb8bb21ae913459f",
+        "gitBlob": "7492b127331f22207bf1e6a1a0a666153363ccd0"
+      },
+      {
+        "name": "e2e.json",
+        "chars": 363274,
+        "bytes": 363286,
+        "sha256": "df3352e8f0979521ba37f4194562cc112ecb39c2edb415b88961eff58c04e14c",
+        "gitBlob": "452f838b05353618f815f7c81c5ac20bfaf0ec8a"
+      },
+      {
+        "name": "m3-operator-contract.json",
+        "chars": 4217,
+        "bytes": 4217,
+        "sha256": "84b24f293b9a8f8a4963f9e8bcdf350d7aa27298fa2a13fd77e9b31b9d923852",
+        "gitBlob": "7217d4d32d5fb73530e341eccf558ef7f04c2e34"
+      },
+      {
+        "name": "m4-preparation.json",
+        "chars": 208202,
+        "bytes": 208202,
+        "sha256": "11f1b02877b581fc067ff4af94fc5b467793b0cde9d6afe111c8444220206b0b",
+        "gitBlob": "77697b34cb0a91fefcb61b055e3ad7e5fc782b37"
+      },
+      {
+        "name": "mcp-runtime.json",
+        "chars": 2880,
+        "bytes": 2880,
+        "sha256": "475af5cd9c52f6fe97a55ae90460fb2fb35057bdad3cd2ab0fe349addd69d5da",
+        "gitBlob": "28f422bb15579e4d5a7aa903d47f7531aab59db4"
+      },
+      {
+        "name": "program-runtime-build.json",
+        "chars": 816,
+        "bytes": 816,
+        "sha256": "31e7ea1485e247c603d954d72a2675de4d883686faf22eb8f750bef951f77807",
+        "gitBlob": "b055ee75d934f79f3c637f6230975629443ff8ed"
+      },
+      {
+        "name": "server-runtime.json",
+        "chars": 929,
+        "bytes": 929,
+        "sha256": "b95bbcc39f83987cebca1a9a62aecf2ae0e5619786cdde0a55c35cf1e46af1fd",
+        "gitBlob": "1378681bd00d22fd21818642796a8241e1947fa7"
+      },
+      {
+        "name": "status.json",
+        "chars": 16292,
+        "bytes": 16292,
+        "sha256": "d3fe074240d1bf235f32084bb018636630e286d9f5339e124280a6f823e0858d",
+        "gitBlob": "89d38ede75c31d4107e6c9d084e5e3b1dbbe1681"
+      },
+      {
+        "name": "unit.json",
+        "chars": 296877,
+        "bytes": 296935,
+        "sha256": "b24a0d29b63bdad2a4f759cdb326cc50e5c26d9b7c49cb3ca67958c76b8715e0",
+        "gitBlob": "673f2d7d2a2e5ebbccd8bdfbd82ba6e4108a4d1f"
+      },
+      {
+        "name": "verification.json",
+        "chars": 1072,
+        "bytes": 1072,
+        "sha256": "9cdba73a6ca20a4c1f0519205b5728026565ac88cb76ac699f8d79bd75d6ed97",
+        "gitBlob": "63b2e98b7349ae800758822538bc6235ed9240e9"
+      }
+    ],
+    "finalMainReportsPreservedByteForByte": 13,
+    "fullCiZipRetention": "GitHub artifact14117773054 expires2026-12-14T14:39:53Z; original JSON reports are additionally preserved in Git. Full ZIP copies and rendered browser artifacts remain in the execution workspace and GitHub Actions, not claimed as permanent Git files."
   },
   "previousRuntimeSource": {
     "branch": "work/mission-20261114",
@@ -449,5 +682,112 @@
     "scienceStatus": "HUMAN_REVIEW_PENDING",
     "opticsFindingTC01Integrated": true
   },
-  "aliasSequence": "Verify identity/protection/authorized health and data compatibility; controlled switch to stable Origin when credentials and immediate smoke are available; then authenticated smoke and acceptance or compatible rollback. No current switch is authorized by an unavailable test capability."
+  "aliasSequence": "Verify identity/protection/authorized health and data compatibility; controlled switch to stable Origin when credentials and immediate smoke are available; then authenticated smoke and acceptance or compatible rollback. No current switch is authorized by an unavailable test capability.",
+  "procedureObservation": {
+    "command": "cycle.mjs budget",
+    "result": "REFUSED_OLD_QUEUE_ELIGIBILITY",
+    "message": "Deferred or done work cannot be selected.",
+    "effect": "No preview ref update or deployment occurred in that call.",
+    "authority": "Direct 14 November extraordinary owner mandate explicitly authorizes consolidation, verified integration and protected deployment; recorded in docs/history.md OPS-20261114-PRODUCT-DELIVERY. Recurring queue/procedure and product acceptance gates are not altered.",
+    "budget": "Active claim173 retains actual start14:18:02, writeUntil15:03:02, closeBy15:13:02; no reset or extension."
+  },
+  "finalVerification": {
+    "runId": 43604178775,
+    "event": "push",
+    "attempt": 1,
+    "headSha": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
+    "sourceDigest": "9b1c81331ffe6bb4bb4dbec4bfe42d856ab892125af8715f5082019b71f04cc1",
+    "result": "PASS",
+    "artifactId": 14117773054,
+    "artifactBytes": 107257459,
+    "artifactSha256": "c2232b2e96f7703a0f167499af810006f29b4e7df2e23209defcab0fe1c53f99",
+    "originalReports": 13,
+    "verify": 8,
+    "unit": 707,
+    "unitFiles": 74,
+    "browser": {
+      "total": 299,
+      "desktop": 150,
+      "mobile": 149,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "globalErrors": 0,
+      "retry": 0,
+      "durationMs": 1113342.134
+    },
+    "server": 5,
+    "mcp": 16,
+    "budget": {
+      "initialJavaScriptGzipBytes": 223387,
+      "coreGzipBytes": 343561,
+      "coreLimitBytes": 344064,
+      "coreHeadroomBytes": 503,
+      "pdfGzipBytes": 2590788,
+      "allGzipBytes": 3226893,
+      "allJavaScriptGzipBytes": 1084349
+    },
+    "unitReportDigest": "b24a0d29b63bdad2a4f759cdb326cc50e5c26d9b7c49cb3ca67958c76b8715e0",
+    "m3ReportDigest": "5d9599e90740a026b2094b4b41a0954112b9689ca97e2c0aaf5bcbf6e49cf364",
+    "m4PreparationDigest": "7d46a03872060a023466cd4a976b95597db65bf0cd2fbb7e3ed2220002f7253b",
+    "rootReadOriginalReports": true,
+    "independentReadOriginalReports": true
+  },
+  "previousDeployment": {
+    "id": "dpl_AWqtg2fbfPcc7kMrCsZJW6zSgp57",
+    "url": "https://ardesia-next-nr9wdtwij-andreas-projects-6d4e9791.vercel.app",
+    "target": null,
+    "environment": "protected standard Preview",
+    "providerState": "READY",
+    "sourceSha": "64c847d068ba78e02be5aabd36a9facef80aa85b",
+    "branch": "preview/m3",
+    "canonicalAliasPromoted": false,
+    "buildInfoHttp": "BLOCKED_BY_SSO",
+    "applicationHealthHttp": "BLOCKED_BY_SSO",
+    "authenticatedE2E": "NOT_RUN_CREDENTIALS_UNAVAILABLE",
+    "anonymous": {
+      "root": 302,
+      "api": 401,
+      "buildInfo": 401,
+      "redirectOrigin": "https://vercel.com",
+      "redirectPath": "/sso-api",
+      "redirectFollowed": false
+    },
+    "ssoDeploymentType": "all"
+  },
+  "productAssessment": {
+    "path": "operations/mission-2026-11-14.md",
+    "scope": "Owner-requested 18-area comparison; engineering assessment, not a replacement acceptance engine or queue",
+    "currentProductAcceptance": "NOT_COMPLETE",
+    "physicalDevices": "NOT_RUN"
+  },
+  "cursorClosure": {
+    "revision": 174,
+    "activeRun": null,
+    "lastRun": {
+      "runId": "mission-20261114-final-delivery",
+      "actor": "codex",
+      "startedAt": "2026-11-14T14:18:02.000Z",
+      "claimedAt": "2026-11-14T14:18:07.257Z",
+      "writeUntil": "2026-11-14T15:03:02.000Z",
+      "closeBy": "2026-11-14T15:13:02.000Z",
+      "packetId": "mission-20261114-product-delivery",
+      "finishedAt": "2026-11-14T14:53:24.143Z",
+      "outcome": "BLOCKED",
+      "late": false,
+      "summary": "PR50-56 integrated; exact main af4352 passed original CI707unit299browser and independent artifact review. Protected Previewaf4352 READY with SSO/all; stable alias preserved. Live SQL1-10 already applied with existing data preserved. Original reports, offline deliverable and18-area assessment retained. Remote authenticated use remains blocked on the existing private Mac credential channel; no M5 acceptance asserted."
+    }
+  },
+  "codeConservation": {
+    "repository": "AndreaMarro/ardesia-next",
+    "main": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
+    "workBranch": "work/mission-20261114",
+    "workHead": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
+    "previewBranch": "preview/m3",
+    "previewHead": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
+    "localDeliveredBranch": "work/mission-delivered-20261114",
+    "localHead": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
+    "applicationDiffRemainingLocal": false,
+    "localOnly": "Toolchains, browser caches, temporary PostgreSQL fixtures, full CI ZIP copies, screenshots and intermediate analysis; critical original reports are additionally committed on ops/dual-run-state."
+  }
 }

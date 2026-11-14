@@ -1,0 +1,202 @@
+{
+  "commit": "c7f1f2a34141990ddd880bd6d4d1da2c124551db",
+  "sourceDigest": "9b1c81331ffe6bb4bb4dbec4bfe42d856ab892125af8715f5082019b71f04cc1",
+  "generatedAt": "2026-11-14T13:45:24.212Z",
+  "kind": "ardesia-postgres-benchmark",
+  "environment": "isolated-loopback-ci",
+  "measuredBoundary": "authenticated PostgresStore command/read including Core validation and authorized projections; HTTP, TLS and browser rendering excluded",
+  "percentileMethod": "nearest-rank; bounded smoke workload, not a capacity or production latency estimate",
+  "profiles": {
+    "strokeScale": {
+      "assignedStudents": 1,
+      "strokes": [
+        8,
+        32,
+        128
+      ]
+    },
+    "studentScale": {
+      "inkStrokes": 128,
+      "assignedStudents": [
+        1,
+        8,
+        24
+      ]
+    }
+  },
+  "sizes": [
+    {
+      "inkStrokes": 8,
+      "pointsPerStroke": 32,
+      "assignedStudents": 1,
+      "documentEvents": 21,
+      "snapshotEvents": 23,
+      "snapshotJsonBytes": 40670,
+      "reopen": {
+        "samples": 12,
+        "p50Ms": 8.094161000000895,
+        "p95Ms": 10.641595999999481,
+        "maxMs": 10.641595999999481
+      },
+      "lessonOsProjection": {
+        "samples": 12,
+        "p50Ms": 0.024855999999999767,
+        "p95Ms": 0.2740029999986291,
+        "maxMs": 0.2740029999986291
+      },
+      "command": {
+        "samples": 12,
+        "p50Ms": 14.12652799999887,
+        "p95Ms": 17.85559699999976,
+        "maxMs": 17.85559699999976
+      }
+    },
+    {
+      "inkStrokes": 32,
+      "pointsPerStroke": 32,
+      "assignedStudents": 1,
+      "documentEvents": 45,
+      "snapshotEvents": 47,
+      "snapshotJsonBytes": 129102,
+      "reopen": {
+        "samples": 12,
+        "p50Ms": 15.311266999997315,
+        "p95Ms": 18.87357399999928,
+        "maxMs": 18.87357399999928
+      },
+      "lessonOsProjection": {
+        "samples": 12,
+        "p50Ms": 0.02929500000027474,
+        "p95Ms": 0.0887769999972079,
+        "maxMs": 0.0887769999972079
+      },
+      "command": {
+        "samples": 12,
+        "p50Ms": 28.822369999998045,
+        "p95Ms": 31.88937800000167,
+        "maxMs": 31.88937800000167
+      }
+    },
+    {
+      "inkStrokes": 128,
+      "pointsPerStroke": 32,
+      "assignedStudents": 1,
+      "documentEvents": 141,
+      "snapshotEvents": 143,
+      "snapshotJsonBytes": 482831,
+      "reopen": {
+        "samples": 12,
+        "p50Ms": 47.41674200000125,
+        "p95Ms": 51.757487000002584,
+        "maxMs": 51.757487000002584
+      },
+      "lessonOsProjection": {
+        "samples": 12,
+        "p50Ms": 0.056565999999293126,
+        "p95Ms": 0.09859399999913876,
+        "maxMs": 0.09859399999913876
+      },
+      "command": {
+        "samples": 12,
+        "p50Ms": 100.25049500000023,
+        "p95Ms": 121.37768900000083,
+        "maxMs": 121.37768900000083
+      }
+    },
+    {
+      "inkStrokes": 128,
+      "pointsPerStroke": 32,
+      "assignedStudents": 8,
+      "documentEvents": 141,
+      "snapshotEvents": 157,
+      "snapshotJsonBytes": 502025,
+      "reopen": {
+        "samples": 12,
+        "p50Ms": 50.35548600000038,
+        "p95Ms": 55.385921999994025,
+        "maxMs": 55.385921999994025
+      },
+      "lessonOsProjection": {
+        "samples": 12,
+        "p50Ms": 0.04830999999830965,
+        "p95Ms": 0.06912000000011176,
+        "maxMs": 0.06912000000011176
+      },
+      "command": {
+        "samples": 12,
+        "p50Ms": 102.602304,
+        "p95Ms": 114.33144399999583,
+        "maxMs": 114.33144399999583
+      }
+    },
+    {
+      "inkStrokes": 128,
+      "pointsPerStroke": 32,
+      "assignedStudents": 24,
+      "documentEvents": 141,
+      "snapshotEvents": 189,
+      "snapshotJsonBytes": 545897,
+      "reopen": {
+        "samples": 12,
+        "p50Ms": 53.137768000000506,
+        "p95Ms": 78.46938899999805,
+        "maxMs": 78.46938899999805
+      },
+      "lessonOsProjection": {
+        "samples": 12,
+        "p50Ms": 0.055594999997993,
+        "p95Ms": 0.09802299999864772,
+        "maxMs": 0.09802299999864772
+      },
+      "command": {
+        "samples": 12,
+        "p50Ms": 107.79971800000203,
+        "p95Ms": 112.55061099999875,
+        "maxMs": 112.55061099999875
+      }
+    }
+  ],
+  "concurrency": {
+    "sameWorkspace": {
+      "parallelCommands": 8,
+      "rounds": 4,
+      "successful": 4,
+      "conflicts": 28,
+      "commits": {
+        "samples": 4,
+        "p50Ms": 10.823036000001593,
+        "p95Ms": 13.057371999995667,
+        "maxMs": 13.057371999995667
+      },
+      "refusals": {
+        "samples": 28,
+        "p50Ms": 29.256390000002284,
+        "p95Ms": 42.88419900000008,
+        "maxMs": 42.950582999998005
+      }
+    },
+    "independentWorkspaces": {
+      "parallelCommands": 8,
+      "rounds": 4,
+      "successful": 32,
+      "conflicts": 0,
+      "commits": {
+        "samples": 32,
+        "p50Ms": 33.24831900000572,
+        "p95Ms": 53.42391900000075,
+        "maxMs": 54.205206999999064
+      },
+      "refusals": null
+    }
+  },
+  "passed": true,
+  "monitoring": {
+    "sampleIntervalMs": 5,
+    "samples": 3064,
+    "maxDatabaseConnections": 5,
+    "maxLockWaiters": 4,
+    "maxPoolConnections": 5,
+    "maxPoolWaiters": 3,
+    "missedSamples": 783
+  }
+}
