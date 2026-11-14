@@ -1,0 +1,109 @@
+{
+  "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "sourceDigest": "ab181bddd390c15fe74a1a09f29d0dc3c3208e4936d540943779a5cbdc576e8a",
+  "generatedAt": "2026-11-07T15:50:48.541Z",
+  "metric": "core-and-optional-program-runtime-v1",
+  "coreGzipBytes": 245372,
+  "optionalGzipBytes": 290773,
+  "optionalRawBytes": 698191,
+  "allJavaScriptGzipBytes": 302102,
+  "allWasmGzipBytes": 234043,
+  "allRawBytes": 1558328,
+  "allGzipBytes": 536145,
+  "limits": {
+    "coreGzipBytes": 245760,
+    "optionalGzipBytes": 327680,
+    "optionalRawBytes": 1048576
+  },
+  "initialJavaScriptGzipBytes": 194995,
+  "deferredJavaScriptGzipBytes": 107107,
+  "legacyComparison": {
+    "metric": "all-javascript-gzip-bytes",
+    "bytes": 302102,
+    "limit": 245760,
+    "passed": false
+  },
+  "loadingMetric": "Static module graph; runtime network deferral is tested separately. No existing asset is reclassified as optional. All JS and WASM raw/gzip costs are retained.",
+  "files": [
+    {
+      "file": "assets/ProgramSurface-C6UTSL8u.js",
+      "rawBytes": 10518,
+      "gzipBytes": 4383,
+      "initial": false
+    },
+    {
+      "file": "assets/index-BQMjbO9V.js",
+      "rawBytes": 390719,
+      "gzipBytes": 118935,
+      "initial": true
+    },
+    {
+      "file": "assets/math-dJ2525rv.js",
+      "rawBytes": 264230,
+      "gzipBytes": 76060,
+      "initial": true
+    },
+    {
+      "file": "assets/program-example-6w9-eIST.js",
+      "rawBytes": 1915,
+      "gzipBytes": 965,
+      "initial": false
+    },
+    {
+      "file": "plugins/ideal-spring/1.0.0/plugin.js",
+      "rawBytes": 173,
+      "gzipBytes": 174,
+      "initial": false
+    },
+    {
+      "file": "plugins/poiseuille/1.0.0/plugin.js",
+      "rawBytes": 173,
+      "gzipBytes": 174,
+      "initial": false
+    },
+    {
+      "file": "plugins/shared/ba4b63b0618f56201e42768492af6eeac8b8dbf7a6509c6f465bbd5c8a4a440a.js",
+      "rawBytes": 191934,
+      "gzipBytes": 44901,
+      "initial": false
+    },
+    {
+      "file": "program-runtime/emscripten-module-uFzwHH0Y.wasm",
+      "rawBytes": 503134,
+      "gzipBytes": 234043,
+      "initial": false
+    },
+    {
+      "file": "program-runtime/emscripten-module.browser-CWXg-YmW.js",
+      "rawBytes": 9129,
+      "gzipBytes": 4159,
+      "initial": false
+    },
+    {
+      "file": "program-runtime/ffi-C3fJrDLQ.js",
+      "rawBytes": 6322,
+      "gzipBytes": 1001,
+      "initial": false
+    },
+    {
+      "file": "program-runtime/module-ES6BEMUI-CI3RSTOp.js",
+      "rawBytes": 176,
+      "gzipBytes": 143,
+      "initial": false
+    },
+    {
+      "file": "program-runtime/worker.js",
+      "rawBytes": 166997,
+      "gzipBytes": 46079,
+      "initial": false
+    },
+    {
+      "file": "sw.js",
+      "rawBytes": 12908,
+      "gzipBytes": 5128,
+      "initial": false
+    }
+  ],
+  "physicalPerformanceTest": "NOT_RUN",
+  "passed": true
+}

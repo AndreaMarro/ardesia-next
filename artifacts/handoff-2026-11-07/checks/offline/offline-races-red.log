@@ -1,0 +1,83 @@
+
+> ardesia-next@0.1.0 test
+> vitest run apps/web/src/offline-client.test.ts
+
+
+ RUN  v5.0.5 /Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next
+
+ ❯ apps/web/src/offline-client.test.ts (15 tests | 3 failed) 380ms
+   ❯ own lessons offline with original Core recovery (15)
+     × an ACK during offline loading keeps its command until the updated copy is durable 130ms
+     × first availability includes a confirmation received while the first snapshot is being saved 108ms
+     × failed snapshot persistence retains the acknowledged command across cold boot for an identical retry 9ms
+     ✓ cold-opens without a session, keeps pressure/IDs through another cold-open, and confirms only through real Core receipts 6ms
+     ✓ a lost real commit is recovered identically before its offline successor is released 4ms
+     ✓ an actual competing revision preserves unsent drafts without sending or rebasing 2ms
+     ✓ persists logout while disconnected, rejects stale cache writes and ink, but retains account-scoped recovery 2ms
+     ✓ account B with the same lesson ID cannot read or dispatch account A pending 1ms
+     ✓ a verified role change for the same ID invalidates the old teacher cache 1ms
+     ✓ observed authorization failure prevents stale fallback; corruption is not overwritten 2ms
+     ✓ concurrent cache writes never regress revision and contain no revocable projection fields 2ms
+     ✓ failed durable pending storage reports memory, preserves/export drafts and never sends 1ms
+     ✓ a delayed workspace gate cannot replace the newer selection or its availability 53ms
+     ✓ superseded reconnect cannot close a newer login 55ms
+     ✓ unreadable optional storage permits explicit online login but never restores an unverified automatic session 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/web/src/offline-client.test.ts > own lessons offline with original Core recovery > an ACK during offline loading keeps its command until the updated copy is durable
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ apps/web/src/offline-client.test.ts:44:33
+     42|     const visible = c.offline?.documents[0]?.objects.some(o => o.id ==…
+     43|     delay = false; saveHeld.release(); await edit; await opening;
+     44|     expect(retained || visible).toBe(true);
+       |                                 ^
+     45|     expect(c.offline?.documents[0]?.objects.map(o => o.id)).toContain(…
+     46|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  apps/web/src/offline-client.test.ts > own lessons offline with original Core recovery > first availability includes a confirmation received while the first snapshot is being saved
+AssertionError: expected [] to include 'ack-during-enable'
+ ❯ apps/web/src/offline-client.test.ts:57:61
+     55|     await vi.waitFor(() => expect(c.projection?.workspaceRevision).toB…
+     56|     await edit; await preparing; await c.openOffline();
+     57|     expect(c.offline?.documents[0]?.objects.map(o => o.id)).toContain(…
+       |                                                             ^
+     58|   });
+     59|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  apps/web/src/offline-client.test.ts > own lessons offline with original Core recovery > failed snapshot persistence retains the acknowledged command across cold boot for an identical retry
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ apps/web/src/offline-client.test.ts:69:29
+     67|     await c.edit(teacher, lesson, ink('ack-not-cached')).catch(() => u…
+     68|     expect(f.server.getDocument(teacher, lesson).objects.map(o => o.id…
+     69|     expect(c.state.pending).toHaveLength(1);
+       |                             ^
+     70|     await expect(c.openOffline()).rejects.toBeDefined();
+     71|     f.network.online = false; const cold = f.newClient(store); await e…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 12 passed (15)
+   Start at  09:38:08
+   Duration  530ms (tests 80%, import 11%, transform 9%)
+

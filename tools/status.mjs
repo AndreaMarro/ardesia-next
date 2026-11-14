@@ -1,3 +1,4 @@
+import {programBudgetMatches} from './program-budget.mjs';
 import {readFileSync, existsSync, mkdirSync, writeFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
@@ -131,12 +132,15 @@ export function m4LocalConsumerMatches(evidence, current) {
     if (!m4SignedBoundaryMatches(evidence, current) || !m3LocalEvidenceMatches(evidence, current)
       || !m1BrowserMatches(evidence.browser, current) || !m2BrowserMatches(evidence.browser, current)) return false;
     const b = evidence.budget;
-    if (!matchesCurrent(b, current) || b.metric !== 'all-javascript-gzip-bytes' || b.passed !== true || b.limit !== 245760
+    const legacyBudget = b?.metric === 'all-javascript-gzip-bytes';
+    if (!matchesCurrent(b, current) || b.passed !== true || !(legacyBudget ? b.limit === 245760 : programBudgetMatches(b))
+      || legacyBudget && (b.limit !== 245760
       || !positiveInteger(b.bytes) || b.bytes > b.limit || !Array.isArray(b.files) || !b.files.length
       || new Set(b.files.map(f => f.file)).size !== b.files.length
       || b.files.some(f => typeof f.file !== 'string' || !f.file.endsWith('.js') || !positiveInteger(f.gzipBytes) || typeof f.initial !== 'boolean')
       || b.files.reduce((sum, f) => sum + f.gzipBytes, 0) !== b.bytes
-      || !['ideal-spring', 'poiseuille'].every(id => b.files.some(f => f.file === `plugins/${id}/1.0.0/plugin.js`))) return false;
+      )) return false;
+    if (!['ideal-spring', 'poiseuille'].every(id => b.files.some(f => f.file === `plugins/${id}/1.0.0/plugin.js`))) return false;
     const t = evidence.transport;
     if (!isRecord(t) || t.kind !== 'lossless-worker-byte-transport' || !digest(t.container?.sha256)
       || t.container.path !== `/plugins/shared/${t.container.sha256}.js` || !positiveInteger(t.container.bytes)
@@ -451,7 +455,7 @@ function runStatus() {
       infrastructure: environment,
       acceptanceRequires: 'Distinct application identities, independent sessions, authorization, recovery and remote database observations on the same protected deployment SHA/digest'
     },
-    limits: [...(acceptedM3 ? [] : ['Remote M3 acceptance incomplete; local PostgreSQL and browser tests do not establish remote continuity']), 'Only pinned first-party plugin execution; no third-party sandbox', 'No update or rollback release currently authorized in the shipped catalog', 'Physical pen/touch and human UX acceptance NOT_RUN', 'No public application deployment'],
+    limits: [...(acceptedM3 ? [] : ['Remote M3 acceptance incomplete; local PostgreSQL and browser tests do not establish remote continuity']), 'Pinned first-party releases plus user-consented QuickJS programs with bounded passive views; independent engine security audit NOT_RUN', 'No update or rollback release currently authorized in the shipped catalog', 'Physical pen/touch and human UX acceptance NOT_RUN', 'No public application deployment'],
     acceptedProductCriteria: 0, preservedProductCriteria: 68
   };
   mkdirSync('artifacts', {recursive: true});

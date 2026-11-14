@@ -1,23 +1,26 @@
+import {MaterialDetails} from '../materials/MaterialView';
+import {ExtensionView} from '../creator/ExtensionView';
 import {useEffect, useLayoutEffect, useState} from 'react';
 import {X, Link2, Trash2, SquareFunction, Type, SquarePen, FlaskConical} from './Icons';
-import {canonicalJson, toObjectInput, type EducationalObject, type NewEducationalObject} from '@ardesia/contracts';
+import {PROGRAM_RENDERER, canonicalJson, toObjectInput, type EducationalObject, type NewEducationalObject} from '@ardesia/contracts';
 import {draftConflictMessage, removedDraftMessage, type SaveObject} from '../workspace';
 import {MathFormula} from './MathFormula';
 import {LabInspector} from './LabInspector';
-const labels = {note: 'Nota testuale', formula: 'Formula', source: 'Fonte', ink: 'Annotazione', lab: 'Laboratorio'};
-const icons = {note: Type, formula: SquareFunction, source: Link2, ink: SquarePen, lab: FlaskConical};
-type Props = {object: EducationalObject; missing?: boolean; onClose: () => void; onDirtyChange: (dirty: boolean) => void; onSave: SaveObject; onRemove: (id: string) => Promise<boolean>};
+const labels = {material: 'Materiale originale',note: 'Nota testuale', formula: 'Formula', source: 'Fonte', ink: 'Annotazione', lab: 'Laboratorio', extension: 'Oggetto componibile'};
+const icons = {material: Link2,note: Type, formula: SquareFunction, source: Link2, ink: SquarePen, lab: FlaskConical, extension: SquarePen};
+type Props = {object: EducationalObject; missing?: boolean; onClose: () => void; onDirtyChange: (dirty: boolean) => void; onSave: SaveObject; onRemove: (id: string) => Promise<boolean>; onHandout?:()=>void; onDefinition?:()=>void};
 
 export function Inspector(props: Props) {
   return props.object.type === 'lab' ? <LabInspector {...props} object={props.object}/> : <StandardInspector {...props}/>;
 }
-function StandardInspector({object, missing = false, onClose, onDirtyChange, onSave, onRemove}: Props) {
+function StandardInspector({object, missing = false, onClose, onDirtyChange, onSave, onRemove, onHandout, onDefinition}: Props) {
   const [base, setBase] = useState(object);
   const [draft, setDraft] = useState<NewEducationalObject>(() => toObjectInput(object));
   const [dirty, setDirty] = useState(false);
   const [saving, setSaving] = useState(false);
   const Icon = icons[draft.type];
   const objectKey = canonicalJson(object), conflict = missing || (dirty && objectKey !== canonicalJson(base));
+  const locked = saving || conflict;
   function restore(confirmed = object) {setBase(confirmed); setDraft(toObjectInput(confirmed)); setDirty(false);}
   // A dirty draft keeps its original base; successful saves adopt their explicit confirmation.
   useLayoutEffect(() => {if (!dirty) restore(object);}, [objectKey]);
@@ -54,10 +57,18 @@ function StandardInspector({object, missing = false, onClose, onDirtyChange, onS
         <label>Licenza o diritti<input disabled={saving} aria-label="Licenza fonte" required maxLength={300} value={draft.data.license} onChange={e => change({...draft, data:{...draft.data,license:e.target.value}})}/></label>
         <a className="source-open" href={object.type === 'source' ? object.data.url : '#'} target="_blank" rel="noreferrer">Apri la fonte <Link2 size={15}/></a>
       </>}
+      {draft.type === 'extension' && <>
+        <p className="hint">{draft.data.definition.typeId} · versione {draft.data.definition.version}. I valori salvati fanno parte di questa lezione.</p>
+        <fieldset disabled={locked} className="extension-controls" aria-busy={saving}><ExtensionView data={draft.data} onChange={locked&&draft.data.definition.renderer===PROGRAM_RENDERER?undefined:state=>{if(!locked)change({...draft,data:{...draft.data,state}});}}/></fieldset>
+        {draft.data.lineage?.length&&<details><summary>Attribuzioni di origine</summary><p className="hint">Riferimenti importati, non autenticazione dell’autore.</p>{draft.data.lineage.map((entry,i)=><p className="hint" key={i}>{entry.typeId} · v{entry.version} · {entry.definitionLicense}{entry.objectId&&<> · oggetto {entry.objectId} r{entry.objectRevision} · {entry.createdBy}</>}. {entry.sources.map(s=>s.title+' / '+s.license).join('; ')}{entry.missingSources.length?' · Alcune fonti non disponibili':''}</p>)}</details>}
+        {onDefinition&&<button className="secondary-button" type="button" disabled={saving} onClick={onDefinition}>Modifica struttura</button>}
+      </>}
+      {draft.type === 'material' && <MaterialDetails data={draft.data}/>}
       {draft.type === 'ink' && <p className="hint">Il tratto è un oggetto della stessa lezione. Puoi rinominarlo o rimuoverlo.</p>}
       <button className="primary-button" type="submit" disabled={!dirty || saving || conflict}>{saving ? 'Salvataggio…' : 'Salva modifiche'}</button>
       {dirty && !missing && <button className="text-button" type="button" disabled={saving} onClick={() => restore()}>Ripristina versione salvata</button>}
     </form>
+    {onHandout&&<button type="button" className="secondary-button" disabled={saving} onClick={onHandout}>Dispensa della lezione</button>}
     <div className="privacy-note"><p>La bozza è privata fino all’assegnazione.</p></div>
     <div className="provenance-summary"><span>Provenienza</span><p>{object.provenance.origin === 'authored' ? 'Oggetto creato nello spazio personale.' : 'Oggetto importato.'}</p>{object.provenance.sources.length > 0 && <p>{object.provenance.sources.length} fonte collegata con revisione esatta.</p>}</div>
     <button className="text-button danger" disabled={saving || missing} onClick={async () => {if(await onRemove(object.id)) onClose();}}><Trash2 size={16}/> Rimuovi oggetto</button>

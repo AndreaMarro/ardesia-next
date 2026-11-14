@@ -90,6 +90,6 @@ export async function fixture(hooks: TransportHooks = {}) {
     return core.execute(teacher, {...ink(id), commandId: id, documentId: lesson,
       expectedRevision: core.getDocument(teacher, lesson).revision} as CoreCommand);
   }
-  return {client, server, sent, receipts, storage, values, hooks, open, projection, external, addWorkspace,
+  return {client, server, sent, receipts, storage, values, hooks, open, projection, external, addWorkspace, fetcher,
     setAccount(next: RemoteAccount | null) {activeAccount = next;}};
 }

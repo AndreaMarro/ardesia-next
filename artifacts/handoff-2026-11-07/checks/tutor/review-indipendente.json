@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-review-delivery-wrapper",
+  "sourceDigest": "097a685d9d53c9ef56f9454e72d142b32df793216a5dd950719c27d31bc0e87e",
+  "verdict": "FAVORABLE_NO_P1_P2_FOUND",
+  "originalVerdict": "FAVOREVOLE_INCREMENTO_LOCALE_TUTOR",
+  "reviewer": "/root/board_review",
+  "originalGeneratedAt": "2026-11-07T16:37:03.439Z",
+  "generatedAt": "2026-11-07T16:38:20.824Z",
+  "statementVerbatim": "**Esito: favorevole all’incremento locale Tutor.** Nessun rilievo confermato aperto e nessun requisito residuo per questa review locale. Non è accettazione del prodotto completo o del deployment.",
+  "scope": "Incremento locale Tutor; nessuna accettazione dell’intero prodotto o del deployment.",
+  "independence": {
+    "separateAgentContext": true,
+    "readOnly": true,
+    "humanReview": false,
+    "testsExecutedByReviewer": false,
+    "testsAndREACapturesExecutedBy": "root"
+  },
+  "method": {
+    "sourceReview": true,
+    "artifactReadback": true,
+    "independentDigestAndSizeRecalculation": true,
+    "testsExecutedByReviewer": false,
+    "servicesStartedByReviewer": false,
+    "sourceModifiedByReviewer": false,
+    "remoteMutation": false
+  },
+  "confirmedOpenFindings": [],
+  "remainingLocalReviewRequirements": [],
+  "remainingAcceptanceRequirements": [
+    "Accettazione del prodotto completo e deployment sulla sorgente finale restano fuori dal parere locale.",
+    "Migrazione preview e relativi confronti di dati non sono attestati da questa review; usare evidenze specifiche se richiesti dal gate di rilascio.",
+    "Verifiche fisiche iPad/Apple Pencil, Safari, app native e carichi produttivi restano aperte."
+  ],
+  "originals": [
+    {
+      "file": "review-original.json",
+      "sha256": "24913cb98a276506d935680cf3592503d4d50cdf0ae4e110461e8778bc3e4dcf",
+      "bytes": 14424
+    },
+    {
+      "file": "review-original.md",
+      "sha256": "5fff17c68ff7c622f72cf57473d8421acd1a7c9696e8f3e2d3b71439114dba21",
+      "bytes": 3589
+    }
+  ],
+  "mappingNote": "Il codice inglese sintetizza il parere originale favorevole locale e l’assenza di rilievi confermati aperti. Non costituisce un ulteriore giudizio né accettazione umana, del prodotto completo o del deployment."
+}

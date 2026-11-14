@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-29",
+  "observedAt": "2026-11-07",
   "packages": [
     {
       "name": "react",
@@ -9,7 +9,8 @@
         "type": "git",
         "url": "https://github.com/react/react.git",
         "directory": "packages/react"
-      }
+      },
+      "usage": "development-only; independent SSR/reference tests"
     },
     {
       "name": "react-dom",
@@ -19,7 +20,8 @@
         "type": "git",
         "url": "https://github.com/react/react.git",
         "directory": "packages/react-dom"
-      }
+      },
+      "usage": "development-only; independent SSR/reference tests"
     },
     {
       "name": "vite",
@@ -29,16 +31,6 @@
         "type": "git",
         "url": "git+https://github.com/vitejs/vite.git",
         "directory": "packages/vite"
-      }
-    },
-    {
-      "name": "@vitejs/plugin-react",
-      "version": "6.1.2",
-      "license": "MIT",
-      "repository": {
-        "type": "git",
-        "url": "git+https://github.com/vitejs/vite-plugin-react.git",
-        "directory": "packages/plugin-react"
       }
     },
     {
@@ -76,7 +68,8 @@
         "type": "git",
         "url": "https://github.com/lucide-icons/lucide.git",
         "directory": "packages/lucide-react"
-      }
+      },
+      "usage": "development-only; independent SSR/reference tests"
     },
     {
       "name": "vitest",
@@ -122,6 +115,105 @@
       "version": "5.51.2",
       "license": "BSD-2-Clause",
       "repository": "https://github.com/terser/terser"
+    },
+    {
+      "name": "preact",
+      "version": "11.2.0",
+      "license": "MIT",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/preactjs/preact.git"
+      }
+    },
+    {
+      "name": "preact-render-to-string",
+      "version": "6.8.2",
+      "license": "MIT",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/preactjs/preact-render-to-string"
+      },
+      "usage": "development-only; independent SSR/reference tests"
+    },
+    {
+      "name": "fake-indexeddb",
+      "version": "6.2.7",
+      "license": "Apache-2.0",
+      "repository": {
+        "type": "git",
+        "url": "git://github.com/dumbmatter/fakeIndexedDB.git"
+      },
+      "usage": "development-only; IndexedDB transaction counterproofs"
+    },
+    {
+      "name": "@modelcontextprotocol/server",
+      "version": "2.4.0",
+      "license": "Apache-2.0",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/modelcontextprotocol/typescript-sdk.git"
+      },
+      "usage": "standalone MCP CLI only; excluded from browser and HTTP function"
+    },
+    {
+      "name": "@modelcontextprotocol/core",
+      "version": "2.4.0",
+      "license": "Apache-2.0",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/modelcontextprotocol/typescript-sdk.git"
+      },
+      "usage": "standalone MCP CLI only; excluded from browser and HTTP function"
+    },
+    {
+      "name": "@modelcontextprotocol/client",
+      "version": "2.4.0",
+      "license": "Apache-2.0",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/modelcontextprotocol/typescript-sdk.git"
+      },
+      "usage": "development-only; official external MCP acceptance client"
+    },
+    {
+      "name": "quickjs-emscripten-core",
+      "version": "0.32.0",
+      "license": "MIT",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/justjake/quickjs-emscripten"
+      },
+      "usage": "optional isolated program Worker only; no implicit guest native functions; licenses include QuickJS"
+    },
+    {
+      "name": "@jitl/quickjs-wasmfile-release-sync",
+      "version": "0.32.0",
+      "license": "MIT",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/justjake/quickjs-emscripten"
+      },
+      "usage": "optional isolated program Worker only; no implicit guest native functions; licenses include QuickJS"
+    },
+    {
+      "name": "@jitl/quickjs-ffi-types",
+      "version": "0.32.0",
+      "license": "MIT",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/justjake/quickjs-emscripten"
+      },
+      "usage": "optional isolated program Worker only; no implicit guest native functions; licenses include QuickJS"
+    },
+    {
+      "name": "pdfjs-dist",
+      "version": "6.5.438",
+      "license": "Apache-2.0",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/mozilla/pdf.js"
+      },
+      "usage": "Lazy official legacy engine/worker; bundled core-js 3.51.0 MIT; resource notices preserved under pdf-runtime."
     }
   ]
 }

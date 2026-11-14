@@ -1,0 +1,29 @@
+{
+  "files": [
+    {
+      "file": "emscripten-module-uFzwHH0Y.wasm",
+      "bytes": 503134,
+      "sha256": "105c3bed22d457e43e3d1c3c1c6959fda62a8fe06f0fc8a985303c3a2be72232"
+    },
+    {
+      "file": "emscripten-module.browser-CWXg-YmW.js",
+      "bytes": 9129,
+      "sha256": "4f2eda636055a7e5f26942743ca58d1939dec3cac0a78fa68a6852f910fd4652"
+    },
+    {
+      "file": "ffi-C3fJrDLQ.js",
+      "bytes": 6322,
+      "sha256": "673df9b780af0563d0c14f0c6a166c1616a9e436c0244ea73a768282014ff866"
+    },
+    {
+      "file": "module-ES6BEMUI-CI3RSTOp.js",
+      "bytes": 176,
+      "sha256": "0109e4d6381b4b867a88cf1258016ef24ddb0c5e72930daf5ea45223738ee694"
+    },
+    {
+      "file": "worker.js",
+      "bytes": 166997,
+      "sha256": "0cd42b9ff0cdc0466318d040fbad5eb551bd38a2c41f4f48c90efb50d7845e93"
+    }
+  ]
+}

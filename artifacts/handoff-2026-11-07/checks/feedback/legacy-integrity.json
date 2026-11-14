@@ -1,0 +1,37 @@
+{
+  "reference": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+  "generatedAt": "2026-11-07T11:50:53.426407+00:00",
+  "scope": "six selected local reference files compared with original inspection; legacy remote not modified",
+  "files": [
+    {
+      "file": "services/study-mcp/README.md",
+      "sha256": "8aa94121e028e56b8ef436c7ac052733bca49279ba5b1a9075617620822e0890",
+      "unchanged": true
+    },
+    {
+      "file": "apps/studio/src/store/SessionAudioRecorder.ts",
+      "sha256": "b4698d1532208c2755514555f199eef149dae045379c17e9b5de95b6737e07b1",
+      "unchanged": true
+    },
+    {
+      "file": "apps/studio/src/store/ReplayEngine.ts",
+      "sha256": "8f4ad5a93608bb9f9bb4a6b0d46b261ab3e14fd03d96f2ca12ceb7e797e30f6f",
+      "unchanged": true
+    },
+    {
+      "file": "apps/studio/src/store/AudioRecorder.ts",
+      "sha256": "6534bc53e1acbc00c7c25dea545d52f942cbff19dbfc4cfa999f82c310d269cd",
+      "unchanged": true
+    },
+    {
+      "file": "docs/product/ARDESIA_specifiche_integrali_ricostruite_2026-10-28.md",
+      "sha256": "6d446bb433c35878b3540d89431955ab86664409f9705d167922ecc9077836bc",
+      "unchanged": true
+    },
+    {
+      "file": "docs/ardesia-v4/specs/14_REA_GATE_E_RICEVUTE.md",
+      "sha256": "ab69507fd68514caf01c4281d760e74797a47ec05c399bba956757152716ecff",
+      "unchanged": true
+    }
+  ]
+}

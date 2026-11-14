@@ -45,3 +45,47 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+Preact 11.2.0 — browser UI runtime
+
+The MIT License (MIT)
+
+Copyright (c) 2015-present Jason Miller
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+PDF.js 6.5.438 — Mozilla Foundation, Apache-2.0
+https://github.com/mozilla/pdf.js/tree/0a4153349dc473ba950fc17941c5ca7eda43c1de
+Official compatible engine/worker; no viewer or scripting-manager integration.
+Full license: /licenses/pdfjs/LICENSE
+Bundled core-js 3.51.0 polyfills, MIT: /licenses/pdfjs/LICENSE_CORE_JS
+Resource notices distributed unmodified with the same package:
+/pdf-runtime/cmaps/LICENSE
+/pdf-runtime/standard_fonts/LICENSE_FOXIT
+/pdf-runtime/standard_fonts/LICENSE_LIBERATION
+/pdf-runtime/wasm/LICENSE_JBIG2
+/pdf-runtime/wasm/LICENSE_PDFJS_JBIG2
+/pdf-runtime/wasm/LICENSE_OPENJPEG
+/pdf-runtime/wasm/LICENSE_PDFJS_OPENJPEG
+/pdf-runtime/wasm/LICENSE_QCMS
+/pdf-runtime/wasm/LICENSE_PDFJS_QCMS
+/pdf-runtime/wasm/LICENSE_QUICKJS
+/pdf-runtime/wasm/LICENSE_PDFJS_QUICKJS

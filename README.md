@@ -1,12 +1,15 @@
 # Ardesia Next
 
+> Consegna applicativa del 7 novembre: [handoff oggettivo](docs/handoffs/2026-11-07.md). Distingue candidato, main, procedura, preview e accettazione; non modifica il cursore né retrodata le prove.
+
+
 Una sola applicazione, un solo Core e un solo Plugin Host. Rilascio applicativo limitato a preview Vercel protette. Il mandato del 29 ottobre autorizza la pubblicazione dei sorgenti su GitHub; la visibilità effettiva e gli eventuali passaggi di accesso ancora richiesti sono registrati in `operations/m3-environment.json`.
 
 **Riprendere il lavoro:** [ingresso operativo](docs/START_HERE.md), [coda e blocchi](operations/coordination.json), [manuale agenti e procedure](docs/operations.md), [mappa del prodotto](docs/product-map.md), [storico](docs/history.md). Repository osservata pubblica il 31 ottobre; i record infrastrutturali datati conservano la storia. `node tools/check-operations.mjs --brief` genera un handoff breve senza accettare milestone.
 
 ## Stato M3
 
-Il codice introduce autenticazione applicativa, autorizzazioni server, persistenza PostgreSQL, assegnazioni e lavoro personale degli studenti. Il browser riceve proiezioni autorizzate e conserva soltanto navigazione e comandi ancora da confermare. Il plugin Molla ideale conserva il bundle firmato e il modello scientifico M1/M2.
+Il codice introduce autenticazione applicativa, autorizzazioni server, persistenza PostgreSQL, assegnazioni e lavoro personale degli studenti. Il browser riceve proiezioni autorizzate e conserva navigazione, comandi da confermare e, su scelta esplicita, una copia ridotta delle lezioni personali per la scrittura offline. Il plugin Molla ideale conserva il bundle firmato e il modello scientifico M1/M2.
 
 **M3 rimane incompleto finché il percorso remoto non supera il gate.** Le prove con PostgreSQL locale non dimostrano continuità attraverso un servizio remoto. [L'osservazione del 30 ottobre](operations/m3-environment.json) registra Neon già configurato e tre account sintetici; non ripetere il provisioning da un vecchio handoff. Il runner completo esiste in `tools/m3-acceptance.mjs`. Nell'ultimo handoff del 31 ottobre restano non disponibili/verificati il canale OIDC del runner, le credenziali QA e il restore remoto sicuro. [Issue M3](https://github.com/AndreaMarro/ardesia-next/issues/19) e [ingresso corrente](docs/START_HERE.md) distinguono questa disponibilità dall'esistenza del servizio. Main e staging rimangono congelati, su revisioni differenti finché il percorso protetto del runbook consente il riallineamento.
 
@@ -25,9 +28,23 @@ Aprire `http://127.0.0.1:4173`. L'API usa `ARDESIA_DATABASE_URL`, con credenzial
 
 Per una build completa: `npm run build`, poi `npm run preview`. Le migrazioni e gli account non vengono creati durante una richiesta HTTP. [Server: provisioning, API, backup e ripristino](packages/server/README.md).
 
-## Percorso docente e studenti
+## Continuità offline locale
 
-Il docente accede, crea uno spazio e una lezione, inserisce oggetti e attiva la Molla ideale attraverso verifica, installazione e consenso. **Assegna** autorizza un identificativo studente già esistente. Il docente può revocare l'accesso e consultare soltanto le evidenze che lo studente ha esplicitamente condiviso.
+Nella build compilata: **Impostazioni → Rendi disponibile offline → Usa copia offline**. Scrivi a penna, chiudi e riapri la stessa origin senza rete; i tratti restano da confermare. **Ricollegati al server**, poi riprendi esplicitamente le modifiche. La rete assente non chiude un editor con una bozza; il cambio di modalità verifica le modifiche non salvate. Copia e tratti sono esportabili dalla vista offline.
+
+Sono incluse solo le lezioni possedute dall’account nello spazio preparato, con note e formule consultabili. Moduli, assegnazioni e dati degli studenti richiedono accesso online. [Contratto, prove richieste e limiti](docs/adr/0010-own-lessons-offline.md). Questa preparazione locale non certifica Safari, Apple Pencil o sincronizzazione concorrente fra dispositivi.
+
+## Studio e Creator locale
+
+La lavagna mantiene strumenti contestuali, inquadratura e un dock dedicato alla scrittura. **Crea → Crea un oggetto** apre composizione, anteprima e proprietà: inventa un tipo, combina controlli, risultati, grafici e scene, provalo e salvalo nella lezione. **Modifica struttura** produce una nuova versione; import/export conserva definizione, licenza e provenienza. Lo stesso formato è creabile tramite MCP. [Contratto aperto, migrazione e limiti](docs/adr/0015-open-creator-studio.md) · [Fonti e analisi REA](docs/sources/creator-studio-2026-11-07.md). Non è ancora esecuzione universale di codice terzo o publishing commerciale.
+
+## MCP Core locale
+
+Il [nuovo adapter stdio](packages/mcp-core/README.md) permette a un client MCP di cercare lezioni autorizzate, leggere revisioni esatte e, con scrittura esplicitamente abilitata, preparare/applicare gli stessi comandi del Core. Sessione privata, scope degli spazi, provenienza, DRAFT e ricevute restano verificati. `npm run build:mcp` produce il CLI autonomo; la guida include configurazione, revoca e recupero dopo risposta incerta. Nessuna inferenza AI o distribuzione remota richiesta. Questo percorso locale non certifica ancora host ChatGPT/Claude/Gemini o MCP cloud.
+
+## Creazione personale e percorso didattico
+
+Ogni account, anche studente, crea spazi e lezioni propri attraverso **Account e spazi**. La Home distingue i progetti personali dagli spazi condivisi. Lavagna, Creator, moduli con consenso, audio, corsi personali, copia offline e MCP usano la proprietà dello spazio e conservano il ruolo autentico. Il docente accede, crea uno spazio e una lezione, inserisce oggetti e attiva la Molla ideale attraverso verifica, installazione e consenso. **Assegna** autorizza un identificativo studente già esistente. Il docente può revocare l'accesso e consultare soltanto le evidenze che lo studente ha esplicitamente condiviso.
 
 Lo studente accede con il proprio account, apre la lezione assegnata e concede le capacità richieste dal laboratorio. Note, tentativi e parametri appartengono al suo lavoro personale; gli ID della lezione, dell'oggetto e dell'istanza scientifica restano stabili. Un secondo login indipendente recupera il lavoro dal server. Le richieste dirette con ID conosciuti applicano le stesse autorizzazioni.
 
@@ -56,7 +73,7 @@ npm run status
 
 Usare un operatore di test con `CREATEDB` e `CREATEROLE`. Le suite limitano il reset a database loopback con suffisso `_test` o `_browser`, e le richieste applicative usano un login PostgreSQL senza privilegi amministrativi. Le credenziali sintetiche vengono generate dal runner; le tracce browser che potrebbero registrarle sono disattivate.
 
-`verify` conserva gli otto controlli esistenti, inclusi ricostruzione identica del plugin firmato e budget di **245.760 byte gzip per tutto il JavaScript distribuito**. Il report separa il grafo del caricamento iniziale dal codice differito, contando entrambi nel limite. Desktop e mobile sono emulazioni Chromium: non certificano dispositivi fisici.
+`verify` conserva gli otto controlli esistenti, inclusi ricostruzione identica del plugin firmato e budget di **245.760 byte gzip per il nucleo** e **327.680 gzip / 1.048.576 raw per il nuovo runtime opzionale**, incluso WASM. Il report conserva il costo totale, il confronto con la precedente soglia su tutto il JavaScript e il grafo iniziale/differito; nessun asset preesistente è riclassificato. [Decisione](docs/adr/0017-programmable-creator.md). Desktop e mobile sono emulazioni Chromium: non certificano dispositivi fisici.
 
 La prova M3 richiede inoltre un report browser remoto, il database realmente remoto e configurato, tre identità applicative, sessioni indipendenti, controprove di sicurezza/recupero, CI e preview protetta sulla stessa SHA e impronta dei sorgenti. Un record mancante, obsoleto o riferito a un'altra build non produce `ACCEPTED`.
 
@@ -81,3 +98,18 @@ La pubblicazione autorizzata del sorgente non introduce una licenza di riuso né
 ## Procedure ricorrenti Pro e Codex
 
 Il [protocollo a due ruoli](docs/recurring-work.md) include i [prompt Pro](docs/prompts/pro-cycle.md) e [Codex GPT-6.1 Sol Max](docs/prompts/codex-cycle.md), il passaggio di consegne verificato e il budget operativo. Preparazione non equivale ad attivazione: nessuna attività viene creata o modificata da questi file.
+
+
+## Audio personale e replay — preparazione locale
+
+Nella lezione, **Audio e replay** registra la spiegazione insieme ai tratti, conserva frammenti locali e carica esplicitamente sullo stesso PostgreSQL. Riapri per ascoltare, cercare nelle trascrizioni manuali/importate e tornare alla revisione e al tempo esatti. [Uso, privacy, migrazione002, recovery e limiti](docs/adr/0012-personal-recordings.md). Nessun provider AI o test fisico implicito; i report di ogni candidato restano distinti.
+
+## Corsi e studio personale
+
+**Corsi** apre il laboratorio dei percorsi: crea una bozza da zero o parti dall’unità originale sulla molla, salva e fissa un’edizione. Puoi assegnarla a un account studente oppure iniziare il tuo studio personale. Risposte, aiuti e fase corrente si ritrovano alla riapertura; gli aiuti non cancellano il testo aperto. Le risposte restano private finché non vengono condivise. La revoca toglie il materiale e conserva le proprie risposte esportabili.
+
+Le lezioni collegate sono fissate a una revisione esatta, senza assegnare automaticamente la lezione o eseguire lab. Lo stesso authoring passa dal MCP Core. Contenuti sempre DRAFT, senza voti automatici; corsi offline e marketplace commerciale restano da completare. [Identità, migrazione e limiti](docs/adr/0016-versioned-courses.md) · [Patrimonio e REA](docs/sources/courses-2026-11-07.md).
+
+## Programmi inventati dagli utenti
+
+Creator aggiunge **Crea un programma**: codice, anteprima con avvio esplicito, stato salvabile, nuove versioni e file portabile. Il codice puro gira in QuickJS isolato e restituisce una vista HTML/SVG verificata; il Core conserva identità, licenze e storia. Lo stesso artefatto si crea via MCP, senza avvio implicito. [Guida e ABI](docs/programs.md) · [Scelta e limiti](docs/adr/0017-programmable-creator.md).

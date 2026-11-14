@@ -1,0 +1,118 @@
+{
+  "generatedAt": "2026-11-07T09:30:47.302Z",
+  "origin": "http://127.0.0.1:4180",
+  "build": {
+    "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+    "sourceDigest": "6286f01654705b255cad2412bd3f6bb591e2e35ebe33104941ba405819d72c7e",
+    "generatedAt": "2026-11-07T09:29:14.543Z",
+    "application": "ardesia-mcp-core",
+    "sdk": "2.4.0",
+    "transport": "stdio",
+    "artifactSha256": "201f1f6dd7e975c7630b030cba2d8c869fc22dfcb49b726f226f152409d97640"
+  },
+  "workspaceId": "2e517233-c717-4d89-9a6c-e5a8869db00c",
+  "documentId": "58f464ca-8f4f-4722-bcef-8654bdb977f8",
+  "revision": 6,
+  "objectCount": 4,
+  "connections": 1,
+  "sourcePins": [
+    {
+      "objectId": "cdfa9f91-d3dd-455a-b3a7-a20a3b719af4",
+      "revision": 1,
+      "sources": [
+        {
+          "sourceId": "465783bc-25e6-49d7-8a39-6e3d389e3b01",
+          "revision": 1,
+          "locator": "Equazioni e rappresentazione"
+        }
+      ]
+    },
+    {
+      "objectId": "d72ed4ba-44a3-4c0f-ad42-c0d63cb4afff",
+      "revision": 1,
+      "sources": [
+        {
+          "sourceId": "465783bc-25e6-49d7-8a39-6e3d389e3b01",
+          "revision": 1,
+          "locator": "Equazioni e rappresentazione"
+        }
+      ]
+    },
+    {
+      "objectId": "88f9ab1e-3e8e-4975-a55e-0467c0d9ddfb",
+      "revision": 1,
+      "sources": [
+        {
+          "sourceId": "465783bc-25e6-49d7-8a39-6e3d389e3b01",
+          "revision": 1,
+          "locator": "Equazioni e rappresentazione"
+        }
+      ]
+    }
+  ],
+  "receipts": [
+    {
+      "commandId": "377b7933-bed2-4462-a362-e8b06d3c3c3d",
+      "actorId": "ardesia-local-author",
+      "fingerprint": "f84c80bef9b029a4072d5d6c068e1eb4441633b29e794960551eb35124c5e7d0",
+      "documentId": "58f464ca-8f4f-4722-bcef-8654bdb977f8",
+      "documentRevision": 1,
+      "eventId": "aab8f4f4-d0ba-40a7-bf7c-6da891c0a830"
+    },
+    {
+      "commandId": "f398ba91-25b7-4b18-8435-68528f5c176f",
+      "actorId": "ardesia-local-author",
+      "fingerprint": "366fd16ca3ec586dc101c95abb95eeb836966559f9c6cf1bb06cdda5f1e306ee",
+      "documentId": "58f464ca-8f4f-4722-bcef-8654bdb977f8",
+      "documentRevision": 2,
+      "eventId": "b9719c4b-343d-4166-bd29-7aa7c18364b7"
+    },
+    {
+      "commandId": "0231ff6d-fa84-4f64-b6d1-9a5f5d93a64b",
+      "actorId": "ardesia-local-author",
+      "fingerprint": "4aa0c4649fdef1584f77bedb19004b150e478ef2409efd2b5f3358f7c76b5add",
+      "documentId": "58f464ca-8f4f-4722-bcef-8654bdb977f8",
+      "documentRevision": 3,
+      "eventId": "2d3f0b8e-4c3a-4824-a8c1-2c0ebdecd8bc"
+    },
+    {
+      "commandId": "991ee0d6-2bee-4b01-938c-9c51766d924b",
+      "actorId": "ardesia-local-author",
+      "fingerprint": "44cde2dd69e807f6bb47a550cc7bf9318a5c6a5d51380f57c510b22f05653f43",
+      "documentId": "58f464ca-8f4f-4722-bcef-8654bdb977f8",
+      "documentRevision": 4,
+      "eventId": "4fc4dc42-e2bf-44e1-8dbd-46c241299c0b"
+    },
+    {
+      "commandId": "0b820293-cc17-47d4-b120-c1859287cb21",
+      "actorId": "ardesia-local-author",
+      "fingerprint": "afe8cd05a270334859a3b8b4e07eeaaf49119ef86b9e9a429142477f19be5c6b",
+      "documentId": "58f464ca-8f4f-4722-bcef-8654bdb977f8",
+      "documentRevision": 5,
+      "eventId": "28a378de-56cf-4da9-822d-484c42e88783"
+    },
+    {
+      "commandId": "62bfb610-2c59-4dfb-a4ae-f0c7c64c7857",
+      "actorId": "ardesia-local-author",
+      "fingerprint": "a1a6a0d1f63a111187cd22abfefdacaf29fbd2f2ae1d27230c4897c12773d45c",
+      "documentId": "58f464ca-8f4f-4722-bcef-8654bdb977f8",
+      "documentRevision": 6,
+      "eventId": "6e18adac-40e0-4ea5-9fbc-be0ae8145d2b"
+    }
+  ],
+  "searchFoundExercise": true,
+  "data": "original educational draft; synthetic local preview account",
+  "aiInference": false,
+  "uiRoundTrip": {
+    "observedAt": "2026-11-07T09:34:12.443Z",
+    "browser": "Codex IAB on Mac; no physical iPad",
+    "loadedUiSourceDigest": "6286f01654705b255cad2412bd3f6bb591e2e35ebe33104941ba405819d72c7e",
+    "documentRevision": 7,
+    "objectId": "cdfa9f91-d3dd-455a-b3a7-a20a3b719af4",
+    "objectRevision": 2,
+    "title": "Prima di calcolare · la tua previsione",
+    "previousRevisionStillReadable": 1,
+    "provenancePreserved": true,
+    "screenshot": "../../ardesia-mcp-lavagna.jpg"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "kind": "ardesia-local-delivery",
+  "status": "VERIFIED_LOCAL_INCREMENT",
+  "increment": "personal-creation",
+  "baseCommit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "sourceDigest": "81eec80ac69a13a6a13064fca63e780330a6e12de5e6881393c8d142f38b79dd",
+  "generatedAt": "2026-11-07T17:33:34.195Z",
+  "branch": "codex/lavagna-continuity-20261107",
+  "uncommitted": true,
+  "remotePublished": false,
+  "verification": {
+    "checks": 8,
+    "unitPassed": 545,
+    "browserPassed": 181,
+    "browserFailed": 0,
+    "browserFlaky": 0,
+    "browserSkipped": 0,
+    "serverChecks": 5,
+    "mcpChecks": 14
+  },
+  "budget": {
+    "metric": "core-and-optional-program-runtime-v2",
+    "initialJavaScriptGzipBytes": 198358,
+    "coreGzipBytes": 258760,
+    "optionalGzipBytes": 291667,
+    "allGzipBytes": 550427,
+    "limits": {
+      "coreGzipBytes": 278528,
+      "initialJavaScriptGzipBytes": 245760,
+      "optionalGzipBytes": 327680,
+      "optionalRawBytes": 1048576
+    },
+    "previousCoreComparison": {
+      "metric": "all-non-program-assets-gzip",
+      "bytes": 258760,
+      "limit": 245760,
+      "passed": false
+    },
+    "legacyComparison": {
+      "metric": "all-javascript-gzip-bytes",
+      "bytes": 316384,
+      "limit": 245760,
+      "passed": false
+    }
+  },
+  "canonicalProductStatus": {
+    "productAcceptance": "NOT_COMPLETE",
+    "deployment": "NOT_VERIFIED_FOR_CURRENT_COMMIT"
+  },
+  "preview": "http://127.0.0.1:4180/",
+  "reports": "personal/",
+  "review": {
+    "sourceDigest": "81eec80ac69a13a6a13064fca63e780330a6e12de5e6881393c8d142f38b79dd",
+    "reviewer": "/root/board_review",
+    "verdict": "FAVORABLE_LOCAL_INCREMENT_ONLY",
+    "method": "Independent agent context, read-only static review and inspection of root-produced evidence; not human review or reviewer-executed tests.",
+    "openFindings": [],
+    "original": "review/final-review.json",
+    "originalSha256": "c184a7358ce4ba49503a5a12b4522dab86f72942677617aeebc0a52255a45d97"
+  },
+  "rea": {
+    "version": "6.8.0",
+    "report": "../rea-evidence/personal/README.md",
+    "consumerSteps": 60,
+    "sourceAssociation": "Separate build-info and served asset hashes; REA has no intrinsic source identity"
+  },
+  "patch": {
+    "path": "../ardesia-next.patch",
+    "sha256": "7b32f39a4b0acc89f62be1ee7f67f9235a0a2ec2c5d61ba1d67ca48d6eda5d0e",
+    "bytes": 1371553,
+    "reverseApplyCheck": "PASS"
+  },
+  "limits": {
+    "nativeApps": "NOT_BUILT",
+    "iPadApplePencilSafari": "NOT_RUN",
+    "mobile": "VIEWPORT_EMULATION_ONLY",
+    "anonymousCreation": "NOT_IMPLEMENTED",
+    "generalOfflineSync": "NOT_IMPLEMENTED",
+    "simultaneousCollaboration": "NOT_VERIFIED",
+    "commercialPublishing": "NOT_IMPLEMENTED",
+    "commercialAIHosts": "NOT_RUN",
+    "lockRace": "Concurrent result checked; both lock orders not forced",
+    "fullEcosystem": "IN_PROGRESS"
+  },
+  "previousDelivery": "tutor/esito-consegna.json"
+}

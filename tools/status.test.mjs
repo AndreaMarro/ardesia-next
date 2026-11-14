@@ -1,4 +1,6 @@
 import './m3-evidence.test.mjs';
+import './contracts-runtime.test.mjs';
+import './program-budget.test.mjs';
 import './m3-transition.test.mjs';
 import './m4-preparation.test.mjs';
 import './qa-database.test.mjs';

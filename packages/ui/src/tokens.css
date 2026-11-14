@@ -1,7 +1,7 @@
 :root {
-  --bg: #f5f7fa; --surface: #ffffff; --ink: #192a3e; --muted: #5e6d7f;
-  --primary: #203e62; --primary-hover: #142c49; --selected: #eaf2fa;
-  --line: #dce3ea; --sage: #638575; --note: #f2e9ce; --error: #973b3b;
+  --bg: #f8f9f7; --surface: #ffffff; --ink: #252d2b; --muted: #66736c;
+  --primary: #235e50; --primary-hover: #19483d; --selected: #e5f0e9;
+  --line: #d6dcd7; --sage: #698a74; --note: #e6eddf; --error: #973b3b;
   --radius: 12px; --radius-sm: 7px; --shadow: 0 4px 18px #172c4010;
   --font-ui: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-reading: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
@@ -16,7 +16,7 @@ button, input, textarea, select {font: inherit;}
 button {cursor: pointer;}
 button:disabled {cursor: not-allowed; opacity: .5;}
 button, input, textarea, select {border-radius: var(--radius-sm);}
-:focus-visible {outline: 3px solid #426ca4; outline-offset: 3px;}
+:focus-visible {outline: 3px solid #397c68; outline-offset: 3px;}
 a {color: var(--primary); text-underline-offset: 3px;}
 button, a, input, select {touch-action: manipulation;}
 button {min-height: 44px;}

@@ -146,6 +146,8 @@ test('[M3] teacher and two students preserve private laboratory work across inde
     await studentPage.getByLabel('Note personali', {exact: true}).fill('Appunti privati dello studente A: il periodo cresce con la radice della massa.');
     await studentPage.getByRole('button', {name: 'Salva note personali', exact: true}).click();
     await studentPage.getByLabel('Risposta del tentativo', {exact: true}).fill('Con massa 4 kg e rigidità 32 N/m il periodo è circa 2,22 s.');
+    await inspector.getByRole('button', {name: 'Chiudi proprietà', exact: true}).click();
+    await expect(studentPage.getByRole('button', {name: 'Salva tentativo sull’oggetto selezionato', exact: true})).toBeEnabled();
     await studentPage.getByRole('button', {name: 'Salva tentativo sull’oggetto selezionato', exact: true}).click();
     await expect.poll(async () => personalWork(await personalProjection(studentPage), lesson.id).attempts.length).toBe(1);
     expect((await storedWorkspace(page)).learnerWork).toEqual([]);

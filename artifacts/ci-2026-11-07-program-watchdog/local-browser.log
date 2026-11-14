@@ -1,0 +1,32 @@
+
+> ardesia-next@0.1.0 test:e2e
+> node tools/e2e.mjs e2e/programs.spec.ts
+
+[2m[WebServer] [22m(node:92941) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22mWebSocket server error: Port 24678 is already in use
+
+Running 12 tests using 1 worker
+
+(node:92967) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:92967) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [desktop-chromium] › e2e/programs.spec.ts:68:1 › programmable Creator requires consent, saves real state, reopens and versions source with portable export (1.7s)
+  ✓   2 [desktop-chromium] › e2e/programs.spec.ts:164:1 › hostile programs stop without freezing chrome, leaking authority or replacing the last valid draft (4.5s)
+  ✓   3 [desktop-chromium] › e2e/programs.spec.ts:218:1 › program save recovers its original acknowledgement and concurrent edits stop execution without rebasing the draft (1.5s)
+  ✓   4 [desktop-chromium] › e2e/programs.spec.ts:304:1 › assigned programs need separate execution consent, keep experiments private and stop on observed revocation (1.3s)
+  ✓   5 [desktop-chromium] › e2e/programs.spec.ts:381:1 › execution consent and experimental state stay within their exact lesson even when object IDs match (1.2s)
+  ✓   6 [desktop-chromium] › e2e/programs.spec.ts:455:1 › hidden-before-mount and unavailable Workers keep the editor usable without starting computation (872ms)
+(node:92988) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:92988) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   7 [mobile-chromium] › e2e/programs.spec.ts:68:1 › programmable Creator requires consent, saves real state, reopens and versions source with portable export (1.9s)
+  ✓   8 [mobile-chromium] › e2e/programs.spec.ts:164:1 › hostile programs stop without freezing chrome, leaking authority or replacing the last valid draft (4.6s)
+  ✓   9 [mobile-chromium] › e2e/programs.spec.ts:218:1 › program save recovers its original acknowledgement and concurrent edits stop execution without rebasing the draft (1.5s)
+  ✓  10 [mobile-chromium] › e2e/programs.spec.ts:304:1 › assigned programs need separate execution consent, keep experiments private and stop on observed revocation (1.4s)
+  ✓  11 [mobile-chromium] › e2e/programs.spec.ts:381:1 › execution consent and experimental state stay within their exact lesson even when object IDs match (1.3s)
+  ✓  12 [mobile-chromium] › e2e/programs.spec.ts:455:1 › hidden-before-mount and unavailable Workers keep the editor usable without starting computation (1.1s)
+
+  12 passed (25.6s)

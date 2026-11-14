@@ -24,7 +24,10 @@ export function assignedDocument(state: CoreSnapshot, actor: Actor, documentId: 
 
 /** Call before idempotency lookup too, so revocation cannot leak prior private results. */
 export function authorizeLearningCommand(state: CoreSnapshot, actor: Actor, command: LearningCommand): void {
-  if (command.kind === 'assign-lesson' || command.kind === 'revoke-assignment') {
+  if (command.kind === 'review-learner-attempt') {
+    if (actor.role !== 'teacher') throw new CoreError('FORBIDDEN', 'Only the teacher owner may review shared evidence.');
+    readableLearnerWork(state, actor, command.documentId, command.studentId);
+  } else if (command.kind === 'assign-lesson' || command.kind === 'revoke-assignment') {
     if (actor.role !== 'teacher') throw new CoreError('FORBIDDEN', 'Only the teacher owner may assign a lesson.');
     if (!state.documents.some(document => document.id === command.documentId && document.ownerId === actor.actorId)) throw unavailable();
     if (command.studentId === actor.actorId) throw new CoreError('INVALID_ACTOR', 'A teacher cannot assign a lesson to their own teacher identity.');
@@ -98,6 +101,23 @@ export async function applyLearningCommand(state: CoreSnapshot, actor: Actor, co
     return {studentId: command.studentId, stream: 'assignment', revision: assignment.revision, payload: payload({previous, assignment})};
   }
 
+  if (command.kind === 'review-learner-attempt') {
+    const work = readableLearnerWork(state, actor, command.documentId, command.studentId)!;
+    if (command.expectedRevision !== work.revision) throw new CoreError('REVISION_CONFLICT', 'The shared work changed. Read the current evidence before reviewing.');
+    if (!work.attempts.some(attempt => attempt.id === command.attemptId)) throw unavailable();
+    const feedback = work.feedback ?? [];
+    if (feedback.some(entry => entry.id === command.feedbackId)) throw new CoreError('ALREADY_EXISTS', 'Feedback identities cannot be reused.');
+    const latest = feedback.filter(entry => entry.attemptId === command.attemptId).at(-1);
+    if (command.supersedesFeedbackId !== latest?.id) throw new CoreError('REVISION_CONFLICT', 'An amendment must reference the exact latest feedback.');
+    if (command.outcome !== 'demonstrated' && !command.nextStep) throw new CoreError('INVALID_COMMAND', 'Specify a next step when the evidence needs further work.');
+    const previous = structuredClone(work);
+    work.feedback = [...feedback, {id: command.feedbackId, attemptId: command.attemptId, authorId: actor.actorId, createdAt: at,
+      outcome: command.outcome, comment: command.comment, nextStep: command.nextStep,
+      ...(command.supersedesFeedbackId ? {supersedesFeedbackId: command.supersedesFeedbackId} : {})}];
+    work.revision++; work.updatedAt = at;
+    return {studentId: command.studentId, stream: 'learner-work', revision: work.revision, payload: payload({previous, work})};
+  }
+
   const document = assignedDocument(state, actor, command.documentId);
   const current = state.learnerWork.find(entry => entry.documentId === command.documentId && entry.studentId === actor.actorId);
   if ((current?.revision ?? 0) !== command.expectedRevision) throw new CoreError('REVISION_CONFLICT', 'Your work changed in another session. Reload before retrying.');
@@ -151,7 +171,16 @@ export async function applyLearningCommand(state: CoreSnapshot, actor: Actor, co
       const object = document.objects.find(object => object.id === command.objectId);
       if (!object) throw unavailable();
       if (work.attempts.some(entry => entry.id === command.attemptId)) throw new CoreError('ALREADY_EXISTS', 'Attempt identities cannot be reused.');
-      work.attempts.push({id: command.attemptId, objectId: object.id, sourceObjectRevision: object.revision, answer: command.answer, createdAt: at});
+      if (command.replyToFeedbackId) {
+        const feedback = work.feedback?.find(entry => entry.id === command.replyToFeedbackId);
+        const prior = work.attempts.find(entry => entry.id === feedback?.attemptId);
+        if (!feedback || !prior || prior.objectId !== object.id) throw new CoreError('INVALID_REFERENCE', 'A correction must answer feedback on this object in your own work.');
+        if (work.feedback?.filter(entry => entry.attemptId === prior.id).at(-1)?.id !== feedback.id) {
+          throw new CoreError('REVISION_CONFLICT', 'The teacher amended this feedback. Read it before saving your correction.');
+        }
+      }
+      work.attempts.push({id: command.attemptId, objectId: object.id, sourceObjectRevision: object.revision, answer: command.answer, createdAt: at,
+        ...(command.replyToFeedbackId ? {replyToFeedbackId: command.replyToFeedbackId} : {})});
       break;
     }
     case 'share-learner-evidence':

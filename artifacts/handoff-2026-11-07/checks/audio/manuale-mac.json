@@ -1,0 +1,87 @@
+{
+  "kind": "ardesia-audio-manual-mac-observation",
+  "generatedAt": "2026-11-07T10:44:14.441298+00:00",
+  "operator": "/root",
+  "origin": "http://127.0.0.1:4180",
+  "title": "Ardesia Next · Il mio spazio",
+  "build": {
+    "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+    "sourceDigest": "eed657f78653ed3a4f0cc9a0e4ec3c8ce7f5b1abf2628720ac6985cf0dabea8b",
+    "generatedAt": "2026-11-07T10:42:16.219Z",
+    "application": "ardesia-next",
+    "milestone": "M3",
+    "persistence": "remote-postgres-required",
+    "remoteAcceptance": "INCOMPLETE",
+    "thirdPartyExecution": false
+  },
+  "observedModule": "/assets/index-CL4shGbF.js",
+  "environment": {
+    "machine": "Mac",
+    "browser": "Codex in-app browser",
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "nativeApplication": false,
+    "Safari": false,
+    "iPad": false
+  },
+  "fixture": "anteprima-audio.json",
+  "physicalMicrophone": false,
+  "humanListeningQuality": "NOT_RUN",
+  "aiInference": false,
+  "observations": [
+    {
+      "action": "Search quadruplica in lesson archive",
+      "result": "one result at16000ms"
+    },
+    {
+      "action": "Open result",
+      "result": "historical revision4, complete stroke, editing disabled, player immediately visible"
+    },
+    {
+      "action": "Fit all",
+      "result": "board and player visible side by side; board832×400px in1280×720 viewport"
+    },
+    {
+      "action": "Press native media play control",
+      "result": {
+        "paused": false,
+        "currentTime": 16.088644,
+        "readyState": 4,
+        "mediaError": null
+      }
+    },
+    {
+      "action": "Home on replay range",
+      "result": "time0, revision3, stroke absent"
+    },
+    {
+      "action": "Return to current board",
+      "result": "revision4, drawing tools enabled, no draft changes"
+    },
+    {
+      "action": "Read browser warnings and errors",
+      "result": []
+    },
+    {
+      "action": "Update earlier offline shell",
+      "result": "reload then close/reopen app tab activated new build; no data/cache removal"
+    }
+  ],
+  "checks": {
+    "pageIdentity": "PASS",
+    "meaningfulContent": "PASS",
+    "frameworkOverlay": "ABSENT",
+    "console": "PASS",
+    "interaction": "PASS",
+    "screenshot": "OBSERVED_IN_CUA_TOOL_OUTPUT"
+  },
+  "screenshotFile": null,
+  "limits": [
+    "No microphone permission requested or real audio captured",
+    "Voice fixture synthesized locally; transcript timecodes approximate",
+    "No iPad, Apple Pencil, Safari, suspension or long-session drift measurement",
+    "CUA screenshots shown in tool outputs; saved PNGs in this directory belong to automated Chromium tests"
+  ]
+}

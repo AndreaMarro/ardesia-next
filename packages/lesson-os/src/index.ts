@@ -1,4 +1,7 @@
 import { CoreError, LessonDocumentSchema, type CoreEvent, type LessonDocument } from '@ardesia/contracts';
+export {projectDocumentRevision, projectRecordingFrame, createRecordingReplay} from './replay';
+export {projectLearningDiary} from './learning-diary';
+export {projectHandout, type Handout} from './handout';
 
 export type ContinuityProjection = Readonly<{
   documentId: string;

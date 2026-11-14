@@ -18,9 +18,18 @@ export function projectCredentials(env, mode, project, kind) {
 }
 
 export function localBrowserAccounts(env) {
-  return Object.keys(projects).flatMap(project => accounts.map(([kind, id, displayName, role]) => ({
+  return Object.keys(projects).flatMap(project => [...accounts.map(([kind, id, displayName, role]) => ({
     id: `${id}-${projects[project]}`, displayName, role, ...projectCredentials(env, 'local', project, kind),
-  })));
+  })), {id:`personal-student-m3-${projects[project]}`,displayName:'Studente creativo M3',role:'student',...personalBrowserCredentials(env,'local',project)}]);
+}
+
+// Dedicated local authoring fixtures do not consume the fresh-session QA login budget.
+export function personalBrowserCredentials(env, mode, project) {
+  if (mode !== 'local') throw Error('Personal authoring fixtures require local mode.');
+  const value = projectCredentials(env, mode, project, 'STUDENT_A');
+  const username = value.username + '-personal';
+  if (!/^[a-z0-9][a-z0-9._-]{2,63}$/.test(username)) throw Error('Invalid scoped synthetic username.');
+  return {...value,username};
 }
 
 export function projectCredentialEnvironment(env, mode, project) {

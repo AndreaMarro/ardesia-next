@@ -1,0 +1,39 @@
+{
+  "kind": "delivery-integrity",
+  "checkedAt": "2026-11-07T16:39:02.502Z",
+  "passed": true,
+  "sourceDigest": "097a685d9d53c9ef56f9454e72d142b32df793216a5dd950719c27d31bc0e87e",
+  "manifestFilesChecked": 192,
+  "sourceFilesChecked": 402,
+  "patch": {
+    "sha256": "5af20e20939aa5035106f9418c0d165623859ff8629723abbfec7c73f44b99c2",
+    "bytes": 1280934,
+    "matchesReviewedCandidate": true,
+    "reverseApplyCheck": "PASS"
+  },
+  "preview": {
+    "url": "http://127.0.0.1:4180/",
+    "httpStatus": 200,
+    "buildInfoSha256": "5def3214d984345a8dadc440dcd6007e7e0419d99097d211c7c56b0d2aa639bd",
+    "sourceDigest": "097a685d9d53c9ef56f9454e72d142b32df793216a5dd950719c27d31bc0e87e",
+    "assets": [
+      {
+        "path": "assets/math-dJ2525rv.js",
+        "sha256": "42e68eaa75d48cf22e6f51cc59c15f43c4cb9f3a37ac7491283dfb182ea030a1",
+        "bytes": 264230
+      },
+      {
+        "path": "assets/index-CpGX9Z8r.js",
+        "sha256": "7e59b2fe8e38648eb45f243677936fbc51945b0a578d58c1ac722b42289d74f1",
+        "bytes": 399140
+      },
+      {
+        "path": "assets/TutorStudio-C-2CNueT.js",
+        "sha256": "fff90a5c09a6d98b2817f6c89fbf71057927f89e0f8f70630006debf5a5c17d7",
+        "bytes": 31373
+      }
+    ]
+  },
+  "stagedContent": false,
+  "scope": "Controllo di integrità della consegna e identità HTTP della preview; non un nuovo test funzionale o un’accettazione del prodotto completo."
+}

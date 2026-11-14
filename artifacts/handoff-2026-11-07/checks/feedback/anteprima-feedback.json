@@ -1,0 +1,152 @@
+{
+  "kind": "synthetic-learning-continuity-fixture",
+  "generatedAt": "2026-11-07T11:41:29.391Z",
+  "origin": "http://127.0.0.1:4180",
+  "build": {
+    "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+    "sourceDigest": "d8ec9098f2ead778f3d0e0e052a6821998ed98437a13a8df525da71165577cb7",
+    "generatedAt": "2026-11-07T11:40:00.255Z",
+    "application": "ardesia-next",
+    "milestone": "M3",
+    "persistence": "remote-postgres-required",
+    "remoteAcceptance": "INCOMPLETE",
+    "thirdPartyExecution": false
+  },
+  "workspaceId": "2e517233-c717-4d89-9a6c-e5a8869db00c",
+  "documentId": "preview-feedback-20261107",
+  "studentId": "ardesia-local-learner",
+  "objectId": "preview-feedback-question",
+  "commands": [
+    {
+      "kind": "command",
+      "command": {
+        "kind": "create-document",
+        "expectedRevision": 0,
+        "title": "Il pendolo · tentativo e correzione",
+        "commandId": "e5232c83-be7d-4bd7-80a3-f6bab5a7d6b2",
+        "documentId": "preview-feedback-20261107"
+      }
+    },
+    {
+      "kind": "command",
+      "command": {
+        "kind": "add-object",
+        "expectedRevision": 1,
+        "object": {
+          "id": "preview-feedback-question",
+          "type": "note",
+          "title": "Prevedi, poi verifica",
+          "x": 70,
+          "y": 100,
+          "width": 330,
+          "height": 240,
+          "data": {
+            "text": "Un pendolo oscilla con piccoli angoli, in gravità costante. Se quadruplichi la lunghezza L, come cambia il periodo T? Giustifica il rapporto.\n\nPercorso sintetico per il collaudo: risposta, feedback docente, correzione e revisione esatta. Nessuna valutazione di uno studente reale."
+          }
+        },
+        "commandId": "8cae0410-f465-43cb-9ddd-aa183bb023b8",
+        "documentId": "preview-feedback-20261107"
+      }
+    },
+    {
+      "kind": "command",
+      "command": {
+        "kind": "add-object",
+        "expectedRevision": 2,
+        "object": {
+          "id": "preview-feedback-formula",
+          "type": "formula",
+          "title": "Modello del pendolo semplice",
+          "x": 460,
+          "y": 120,
+          "width": 330,
+          "height": 210,
+          "data": {
+            "latex": "T = 2\\pi\\sqrt{\\frac{L}{g}}",
+            "description": "Piccole oscillazioni · massa puntiforme · filo inestensibile · attriti trascurati · g costante. T in s, L in m, g in m/s²."
+          }
+        },
+        "commandId": "8516a899-9128-4b41-8585-686a76c96221",
+        "documentId": "preview-feedback-20261107"
+      }
+    },
+    {
+      "kind": "learning-command",
+      "command": {
+        "kind": "assign-lesson",
+        "expectedRevision": 0,
+        "studentId": "ardesia-local-learner",
+        "commandId": "bb4e5068-c08b-448f-9af9-0c8743946d3d",
+        "documentId": "preview-feedback-20261107"
+      }
+    },
+    {
+      "kind": "learning-command",
+      "command": {
+        "kind": "record-learner-attempt",
+        "expectedRevision": 0,
+        "expectedDocumentRevision": 3,
+        "objectId": "preview-feedback-question",
+        "attemptId": "preview-attempt-1",
+        "answer": "Se la lunghezza quadruplica, anche il periodo quadruplica.",
+        "commandId": "57bb6422-2a33-402a-a7c4-974baa291133",
+        "documentId": "preview-feedback-20261107"
+      }
+    },
+    {
+      "kind": "learning-command",
+      "command": {
+        "kind": "share-learner-evidence",
+        "expectedRevision": 1,
+        "shared": true,
+        "commandId": "cfe5a9fd-e3d9-4d27-b476-7d7a50d80a70",
+        "documentId": "preview-feedback-20261107"
+      }
+    },
+    {
+      "kind": "learning-command",
+      "command": {
+        "kind": "review-learner-attempt",
+        "expectedRevision": 2,
+        "studentId": "ardesia-local-learner",
+        "attemptId": "preview-attempt-1",
+        "feedbackId": "preview-feedback-1",
+        "outcome": "revise",
+        "comment": "La lunghezza compare sotto radice: la dipendenza non è lineare.",
+        "nextStep": "Scrivi il rapporto T(4L)/T(L), mantenendo costante g.",
+        "commandId": "933639f5-4bf6-449d-b3c7-d34cbf270e3c",
+        "documentId": "preview-feedback-20261107"
+      }
+    },
+    {
+      "kind": "learning-command",
+      "command": {
+        "kind": "record-learner-attempt",
+        "expectedRevision": 3,
+        "expectedDocumentRevision": 3,
+        "objectId": "preview-feedback-question",
+        "attemptId": "preview-attempt-2",
+        "replyToFeedbackId": "preview-feedback-1",
+        "answer": "T(4L)/T(L) = √4 = 2: il periodo raddoppia, per piccoli angoli e g costante.",
+        "commandId": "baff1510-0dae-4430-8d1b-454090387b75",
+        "documentId": "preview-feedback-20261107"
+      }
+    },
+    {
+      "kind": "learning-command",
+      "command": {
+        "kind": "review-learner-attempt",
+        "expectedRevision": 4,
+        "studentId": "ardesia-local-learner",
+        "attemptId": "preview-attempt-2",
+        "feedbackId": "preview-feedback-2",
+        "outcome": "demonstrated",
+        "comment": "Il rapporto e le ipotesi del modello sono corretti in questo tentativo.",
+        "nextStep": "",
+        "commandId": "7ed6fd74-c472-46c2-afe2-8fa3e8d2392a",
+        "documentId": "preview-feedback-20261107"
+      }
+    }
+  ],
+  "realBrowserObservation": "PENDING"
+}

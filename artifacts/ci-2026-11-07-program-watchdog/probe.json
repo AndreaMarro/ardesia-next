@@ -1,0 +1,34 @@
+[
+  {
+    "interruptions": 1,
+    "evalMs": 1213.517208,
+    "contextDisposeMs": 0.03745800000001509,
+    "runtimeDisposeMs": 0.22662499999978536,
+    "error": "Il programma ha un errore o ha superato il tempo, la memoria o lo stack disponibili.",
+    "totalMs": 1216.35075
+  },
+  {
+    "interruptions": 1,
+    "evalMs": 1166.622834,
+    "contextDisposeMs": 0.016708999999991647,
+    "runtimeDisposeMs": 0.06158400000003894,
+    "error": "Il programma ha un errore o ha superato il tempo, la memoria o lo stack disponibili.",
+    "totalMs": 1167.787291
+  },
+  {
+    "interruptions": 1,
+    "evalMs": 1067.1111660000001,
+    "contextDisposeMs": 0.007999999999810825,
+    "runtimeDisposeMs": 0.06850000000031287,
+    "error": "Il programma ha un errore o ha superato il tempo, la memoria o lo stack disponibili.",
+    "totalMs": 1067.6687499999998
+  },
+  {
+    "interruptions": 1,
+    "evalMs": 1055.7523339999998,
+    "contextDisposeMs": 0.019792000000052212,
+    "runtimeDisposeMs": 0.06658299999980954,
+    "error": "Il programma ha un errore o ha superato il tempo, la memoria o lo stack disponibili.",
+    "totalMs": 1056.1739580000003
+  }
+]

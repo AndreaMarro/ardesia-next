@@ -1,0 +1,107 @@
+
+> ardesia-next@0.1.0 test
+> vitest run apps/web/src/offline-client.test.ts
+
+
+ RUN  v5.0.5 /Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next
+
+ ❯ apps/web/src/offline-client.test.ts (20 tests | 2 failed) 510ms
+   ❯ own lessons offline with original Core recovery (20)
+     ✓ an ACK during offline loading keeps its command until the updated copy is durable 128ms
+     ✓ first availability includes a confirmation received while the first snapshot is being saved 108ms
+     ✓ failed snapshot persistence retains the acknowledged command across cold boot for an identical retry 11ms
+     ✓ cold-opens without a session, keeps pressure/IDs through another cold-open, and confirms only through real Core receipts 5ms
+     ✓ a lost real commit is recovered identically before its offline successor is released 4ms
+     ✓ an actual competing revision preserves unsent drafts without sending or rebasing 2ms
+     ✓ persists logout while disconnected, rejects stale cache writes and ink, but retains account-scoped recovery 4ms
+     ✓ account B with the same lesson ID cannot read or dispatch account A pending 2ms
+     ✓ a verified role change for the same ID invalidates the old teacher cache 2ms
+     ✓ observed authorization failure prevents stale fallback; corruption is not overwritten 4ms
+     ✓ concurrent cache writes never regress revision and contain no revocable projection fields 1ms
+     ✓ failed durable pending storage reports memory, preserves/export drafts and never sends 2ms
+     ✓ a delayed workspace gate cannot replace the newer selection or its availability 55ms
+     ✓ superseded reconnect cannot close a newer login 55ms
+     ✓ unreadable optional storage permits explicit online login but never restores an unverified automatic session 1ms
+     ✓ a cold FORBIDDEN response closes the active cached workspace before it can be reopened 3ms
+     ✓ a cold NOT_FOUND response closes the active cached workspace before it can be reopened 3ms
+     ✓ logout still closes the remote session and reports an unpersisted local close 2ms
+     × logout between the final copy check and open publication cannot reopen local data 61ms
+     × logout between the final copy check and prepare publication cannot reopen local data 56ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/web/src/offline-client.test.ts > own lessons offline with original Core recovery > logout between the final copy check and open publication cannot reopen local data
+AssertionError: expected { …(8) } to match object { code: 'SESSION_CHANGED' }
+(13 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "code": "SESSION_CHANGED",
++   "account": {
++     "displayName": "Docente sintetico",
++     "id": "teacher-a",
++     "role": "teacher",
++   },
++   "actor": {
++     "actorId": "teacher-a",
++     "role": "teacher",
++   },
++   "documents": [
++     {
++       "connections": [],
++       "createdAt": "2026-11-07T08:43:34.440Z",
++       "id": "lesson-queue",
++       "objects": [],
++       "ownerId": "teacher-a",
++       "revision": 1,
++       "status": "draft",
++       "title": "Coda sintetica",
++       "updatedAt": "2026-11-07T08:43:34.440Z",
++     },
++   ],
++   "format": "ardesia-own-lessons-v1",
++   "savedAt": "2026-11-07T08:43:34.441Z",
++   "title": "Spazio sintetico",
++   "workspaceId": "workspace-a",
++   "workspaceRevision": 1,
+  }
+
+ ❯ apps/web/src/offline-client.test.ts:247:27
+    245|     // This reaction runs after the helper's check but before its call…
+    246|     const logout = held.then(() => c.logout()); release(snapshot);
+    247|     expect(await opening).toMatchObject({code: 'SESSION_CHANGED'}); aw…
+       |                           ^
+    248|     expect(c.offline).toBeNull(); expect(c.state.offlineAvailable).toB…
+    249|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  apps/web/src/offline-client.test.ts > own lessons offline with original Core recovery > logout between the final copy check and prepare publication cannot reopen local data
+AssertionError: expected undefined to match object { code: 'SESSION_CHANGED' }
+
+- Expected:
+{
+  "code": "SESSION_CHANGED",
+}
+
++ Received:
+undefined
+
+ ❯ apps/web/src/offline-client.test.ts:247:27
+    245|     // This reaction runs after the helper's check but before its call…
+    246|     const logout = held.then(() => c.logout()); release(snapshot);
+    247|     expect(await opening).toMatchObject({code: 'SESSION_CHANGED'}); aw…
+       |                           ^
+    248|     expect(c.offline).toBeNull(); expect(c.state.offlineAvailable).toB…
+    249|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 18 passed (20)
+   Start at  09:43:33
+   Duration  634ms (tests 89%, import 7%, transform 4%)
+

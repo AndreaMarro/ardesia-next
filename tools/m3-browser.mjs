@@ -25,12 +25,7 @@ export async function collectBrowserAcceptance({browser, current, deployment, or
     need(result.status === 200 && result.body.ok === true);
     return result.body.result;
   }
-  async function fresh(name, kind, accountName) {
-    const context = await browser.newContext({baseURL: origin, serviceWorkers: 'block', storageState: {cookies: [], origins: []}});
-    contexts.push(context); need((await context.cookies()).length === 0);
-    await installContextAccess(context);
-    const page = await context.newPage();
-    await page.goto('/');
+  async function signIn(page, kind) {
     const password = page.getByLabel('Password', {exact: true});
     try {
       await expect(password).toHaveAttribute('type', 'password');
@@ -42,6 +37,14 @@ export async function collectBrowserAcceptance({browser, current, deployment, or
       await password.fill('', {timeout: 500}).catch(() => undefined);
       throw Error('QA_LOGIN_FAILED');
     }
+  }
+  async function fresh(name, kind, accountName) {
+    const context = await browser.newContext({baseURL: origin, serviceWorkers: 'block', storageState: {cookies: [], origins: []}});
+    contexts.push(context); need((await context.cookies()).length === 0);
+    await installContextAccess(context);
+    const page = await context.newPage();
+    await page.goto('/');
+    await signIn(page, kind);
     const {account} = await api(context, {action: 'session'});
     const session = (await context.cookies()).find(c => ['__Host-ardesia_session', 'ardesia_dev_session'].includes(c.name));
     need(session && account.role === (accountName === 'teacher' ? 'teacher' : 'student'));
@@ -209,6 +212,12 @@ export async function collectBrowserAcceptance({browser, current, deployment, or
     const afterSwitch = await projection(b); need(afterSwitch.learnerWork.length === 0);
     need(switched.status === 409 && switched.body.error?.code === 'SESSION_CHANGED' && beforeSwitch.workspaceRevision === afterSwitch.workspaceRevision);
     await open({...a2, account: b.account});
+    // Changing a server cookie cannot reopen a different local identity. The UI
+    // must refuse A's gate, hide A's data and require a fresh explicit login as B.
+    await expect(a2.page.getByLabel('Nome utente', {exact: true})).toBeVisible();
+    await expect(a2.page.getByLabel('Note personali', {exact: true})).toHaveCount(0);
+    need(!(await a2.page.locator('body').textContent()).includes(savedWork.notes));
+    await signIn(a2.page, 'STUDENT_B');
     await expect(a2.page.getByLabel('Note personali', {exact: true})).toHaveValue('');
     need(!(await a2.page.locator('body').textContent()).includes(savedWork.notes));
     checks.accountSwitch = proof({responseStatus: switched.status, code: switched.body.error?.code, fromAccountHash: accounts.studentA.idHash,

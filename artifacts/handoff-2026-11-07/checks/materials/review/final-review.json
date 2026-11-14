@@ -1,0 +1,575 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-materials-final-review",
+  "reviewer": "/root/board_review",
+  "author": "/root",
+  "generatedAt": "2026-11-07T18:41:45.928621+00:00",
+  "verdict": "PASS_BOUNDED_LOCAL_MATERIALS_INCREMENT",
+  "finalPass": true,
+  "reviewedFrozenCandidate": {
+    "sourceDigest": "290f597d24ea4ef92769faab9b309069ed9e50dd2fd9f8b778c460e186b12c82",
+    "files": 429,
+    "baseHeadFromParentAndReports": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+    "digestIndependentlyConfirmed": true,
+    "sourceFrozenAtFinalCheck": true,
+    "status": "REVIEWED_EXACT_BYTES",
+    "publicationCommit": "NOT_YET_OBSERVED",
+    "qualification": "Base HEAD is not the commit containing the uncommitted candidate. The review covers the exact sourceDigest; remote publication/CI require their own exact identity."
+  },
+  "baseline": {
+    "sourceDigest": "81eec80ac69a13a6a13064fca63e780330a6e12de5e6881393c8d142f38b79dd",
+    "files": 408,
+    "independentlyConfirmed": true
+  },
+  "findings": [
+    {
+      "id": "MATERIAL-01",
+      "priority": "P2",
+      "status": "CLOSED_STATIC_WITH_RUNTIME_SMOKE",
+      "evidence": "MaterialView.tsx:40 checks disposed after both lazy import and original.arrayBuffer; :50 destroys the task in finally; cleanup aborts queue signal and cancels render/task.",
+      "acceptanceEvidence": "Post-arrayBuffer disposed check and finally cleanup verified. PDF navigation/import/reopen pass. No dedicated injected delayed-Blob lifecycle test claimed."
+    },
+    {
+      "id": "MATERIAL-02",
+      "priority": "P2",
+      "status": "CLOSED",
+      "evidence": "Manifest, original Blob and stable page objects are persisted before upload. IndexedDB account/generation checks and exact manifest/object CAS prevent replacing an existing intent. Reopen restores the draft; App add skips only already present identical objects; draft clears after onAdd confirms.",
+      "acceptanceEvidence": "Draft durability/CAS/account-gate unit passes; lost-response E2E restores the same assetId and page IDs, one final object, and clears the draft only on completion."
+    },
+    {
+      "id": "MATERIAL-03",
+      "priority": "P1",
+      "status": "CLOSED_BOUNDED_IMPLEMENTATION",
+      "evidence": "Board culls material and ink objects. MaterialView uses IntersectionObserver and resets offscreen canvas to 1x1. A shared serial promise queue covers render and inspection decoders; PDF task is destroyed after each render.",
+      "acceptanceEvidence": "All inspection/render paths use one shared serial decoder queue, offscreen culling/IntersectionObserver and cleanup. Unit proves one active job and queued cancellation. No large-corpus memory or frame-time certification claimed."
+    },
+    {
+      "id": "MATERIAL-04",
+      "priority": "P2",
+      "status": "CLOSED_BOUNDED_IMPLEMENTATION",
+      "evidence": "materialRasterSize receives decoded PDF viewport or bitmap dimensions, validates finite positive geometry and caps actual target width/height to 1600/2000 before assigning the canvas.",
+      "acceptanceEvidence": "Real decoded geometry flows into materialRasterSize before canvas allocation. Numeric adversarial geometry unit passes. No dedicated giant real PDF mismatch corpus claimed."
+    },
+    {
+      "id": "MATERIAL-05",
+      "priority": "P2",
+      "status": "CLOSED",
+      "evidence": "updateOfflineCopy enumerates material references across every snapshot document, verifies/downloads/persists originals first, and only then saves the snapshot and offlineSavedAt. Failures retain rejection for offline transitions and ACK cleanup.",
+      "acceptanceEvidence": "Storage-failure unit preserves previous snapshot and blocks incomplete offline transition; successful recovery cold-downloads exact bytes. Both browser profiles cold-open a material added to an unopened lesson after offline preparation."
+    },
+    {
+      "id": "MATERIAL-06",
+      "priority": "P2",
+      "status": "CLOSED",
+      "evidence": "Board focus and connection endpoints resolve materialPosition. Focus records selection only after the object exists. Derived reading/course views render anchored annotations as page-relative SVG overlay.",
+      "acceptanceEvidence": "Both browser profiles move the page +5010, select ink into viewport and assert resolved connection endpoint. Ink samples/anchor identity remain unchanged; REA additionally observes moved annotated-page reading."
+    },
+    {
+      "id": "MATERIAL-07",
+      "priority": "P2",
+      "status": "CLOSED",
+      "title": "A permanently refused durable draft blocked later imports in the lesson",
+      "trigger": "saveDraft succeeds, prepare-material permanently fails for quota; loaded objects disable file/range/license and the only old clear path depended on successful onAdd.",
+      "fixEvidence": "MaterialImport.tsx:46-51 now exposes an explicit abandon step and download of retained original; clearMaterialDraft only deletes the matching asset intent. The UI explains existing pages, pending commands and server originals remain.",
+      "runtimeAcceptance": "Pending final evidence. Source test exercises synthetic prepare refusal, exact retained-file download, abandon and enabled picker after reload; it does not yet reopen before abandon or complete a replacement import.",
+      "acceptanceEvidence": "Both profiles reject prepare, reload retained draft, download exact original, explicitly abandon, reopen unlocked picker and successfully import a replacement."
+    },
+    {
+      "id": "MATERIAL-08",
+      "priority": "P2",
+      "title": "Viewport resize consumes focus again and cancels explicit panning",
+      "location": {
+        "path": "apps/web/src/components/Board.tsx",
+        "start": 32,
+        "end": 43
+      },
+      "status": "CLOSED_RED_GREEN",
+      "trigger": "Close the inspector for a selected long note, then immediately PageDown. A late width/height measurement changes the selection+viewport key and recenters the selected note after the deliberate pan.",
+      "failureEvidence": {
+        "sourceDigest": "77ba75ec9645ab459bb92ca01554311839e2fa32b75db47233e8dc06dab6f1e1",
+        "log": "work/materials-browser-final.log",
+        "rawSha256": "42a0615f399270951d6640636942d9e6ed75dd2015a884fd251b342b5ac07b40",
+        "summarySha256": "30144813ecdc570daefc9b440aad24e17ad472f5682a0af130be742f3a42230d",
+        "counts": {
+          "passed": 190,
+          "failed": 1
+        },
+        "scenario": "desktop-chromium::new cards reserve their position until acknowledgement and avoid the rendered tail of long notes",
+        "actual": "formula.y=362, required > note.y+note.height=517",
+        "rawPath": "work/materials-full-first/e2e.json",
+        "summaryPath": "work/materials-full-first/browser-evidence.json"
+      },
+      "fixObserved": "Root removed size from consumed focus key, resets it for null selection and still waits for the requested object before marking it consumed. document.objects/size remain dependencies. Existing test assertions unchanged.",
+      "required": "Satisfied by exact-source Verify and full browser run on290f597d…. Original failure retained.",
+      "acceptanceEvidence": "The retained full run on77ba75ec… has190PASS/1FAIL. Selection-only focus consumption fixes the resize/pan regression; unchanged spatial-board assertions now pass desktop/mobile in191 first-attempt PASS on290f597d…."
+    }
+  ],
+  "openImplementationFindings": [],
+  "pendingGate": null,
+  "priorFrozenVerification": {
+    "verifyChecks": 8,
+    "unitTests": 552,
+    "unitSkipped": 0,
+    "unitFailed": 0,
+    "unitParsedDigestIndependentlyConfirmed": true,
+    "serverChecks": 5,
+    "mcpChecks": 15,
+    "browserPassed": 190,
+    "browserFailed": 1,
+    "browserSkipped": 0,
+    "browserFlaky": 0,
+    "publishedCommitVerified": false,
+    "sourceDigest": "77ba75ec9645ab459bb92ca01554311839e2fa32b75db47233e8dc06dab6f1e1"
+  },
+  "budgetAudit": {
+    "sourceDigest": "290f597d24ea4ef92769faab9b309069ed9e50dd2fd9f8b778c460e186b12c82",
+    "policy": "core-and-optional-runtimes-v3",
+    "assetsEnumerated": 216,
+    "missingAssets": 0,
+    "sizeMismatchesUsingNodeGzip": 0,
+    "initialJavaScriptGzipBytes": 206117,
+    "coreGzipBytes": 276431,
+    "optionalProgramGzipBytes": 292123,
+    "pdfGzipBytes": 2590788,
+    "pdfRawBytes": 5178516,
+    "allGzipBytes": 3159342,
+    "historicalNonProgramGzipBytes": 2867219,
+    "historicalNonProgram240KiBPassed": false,
+    "legacyAllJavaScriptGzipBytes": 1016798,
+    "legacy240KiBPassed": false,
+    "observationFromFollowup": "MATERIAL-BUDGET-01 corrected: faithful Core+PDF comparison now retained.",
+    "measurementLimit": "Distribution bytes, not physical-device latency or decoder corpus memory certification.",
+    "gatePassed": true,
+    "limits": {
+      "coreGzipBytes": 278528,
+      "initialJavaScriptGzipBytes": 245760,
+      "optionalGzipBytes": 327680,
+      "optionalRawBytes": 1048576,
+      "pdfGzipBytes": 3145728,
+      "pdfRawBytes": 6291456
+    },
+    "auditToolchain": "Read-only recomputation with Node v22.22.3 zlib1.3.1-e00f703 matches all216 reported raw/gzip sizes; product Verify used Node24.22.1."
+  },
+  "reaAudit": {
+    "donorBlobsIndependentlyVerified": 15,
+    "inlineExtractSha256Verified": true,
+    "auxiliaryPdfFilesComparedToInstalledPackage": 200,
+    "auxiliaryPdfDifferences": 0,
+    "desktopEvidenceId": "ev_9d371ad72b73c4c653af0bff9a958d1a2466372b67b1c88b4cac868dbc4e98d7",
+    "mobileEvidenceId": "ev_599a64d3221c8a4f24aac583ddba6ea5620ae1c204adafbe3ac6beda43d290c4",
+    "completedStepsEach": 21,
+    "retainedEventsEach": 98,
+    "sourceAssociation": "New REA captures repeated on290f597d…. Root HTTP build-info and served-asset observations reused; seven recorded asset hashes independently match current local dist. REA itself reports artifact identity unavailable.",
+    "sourceDigestAtCapture": "290f597d24ea4ef92769faab9b309069ed9e50dd2fd9f8b778c460e186b12c82",
+    "first401": "Observed at scenario step 0 before login, consistent with anonymous session discovery. Not a console-zero claim.",
+    "limits": [
+      "Download is cancelled by REA; actual exact bytes/upload/drawing are covered separately by Playwright.",
+      "Originals and annotations are seeded; REA moves a page and navigates views, it does not establish new drawn ink.",
+      "Browser reports Chromium156.0.8078.80 and unknown host platform/architecture. Local Chrome path supports root Mac description, not physical mobile/Safari/Pencil acceptance.",
+      "Attempts 01 and 02 retained with failed/cancelled steps, not merged into success."
+    ],
+    "postconditionsReusedFromRoot": [
+      {
+        "mode": "desktop",
+        "documentId": "a19db31c-ae2f-481c-8cea-420c2226a25e",
+        "revision": 8,
+        "pageX": 10,
+        "anchorX": 0,
+        "annotation": "e7f36cc9-8733-4ba8-99da-b38401c40d26",
+        "source": "Separate authenticated public HTTP read after REA; annotation was seeded, not drawn by REA"
+      },
+      {
+        "mode": "mobile",
+        "documentId": "e8335d5c-8ed3-42a6-98a3-485a87613581",
+        "revision": 8,
+        "pageX": 10,
+        "anchorX": 0,
+        "annotation": "78c6bb2a-1572-4223-a7eb-d452c553d338",
+        "source": "Separate authenticated public HTTP read after REA; annotation was seeded, not drawn by REA"
+      }
+    ],
+    "preservedPreviousCaptureSource": "77ba75ec9645ab459bb92ca01554311839e2fa32b75db47233e8dc06dab6f1e1",
+    "previousCaptureLocation": "work/materials-rea-source77"
+  },
+  "docsAssessment": {
+    "status": "BOUNDARIES_CLEAR",
+    "read": [
+      "README.md",
+      "docs/START_HERE.md",
+      "docs/handoff.md",
+      "docs/handoffs/2026-11-07.md",
+      "docs/handoffs/confronto-programma-chat-2026-11-07.md",
+      "docs/history.md delta",
+      "docs/product-map.md delta",
+      "docs/adr/0020-original-materials.md",
+      "docs/sources/materials-2026-11-07.md",
+      "docs/dependencies.md delta",
+      "THIRD_PARTY_NOTICES and PDF licenses"
+    ],
+    "observations": [
+      "Source publication, merge, procedure adoption, current-source deploy and milestone acceptance remain distinct.",
+      "Native Mac/iPad, Safari/Pencil, commercial AI hosts, universal MCP/memory, collaboration, OCR and marketplace completeness are not claimed.",
+      "Private-chat research coverage is described by the researcher; this reviewer did not independently reread those private chats and does not certify their full contents.",
+      "PDF original erasure/GC, large corpora, full accessibility and physical performance remain explicit limits."
+    ]
+  },
+  "evidenceRead": [
+    {
+      "path": "outputs/ardesia-next/artifacts/verification.json",
+      "sha256": "bc2bed6065d695b58ff8a45ece4171526d337dda97c18fd6b39ee824b7451429",
+      "bytes": 1072
+    },
+    {
+      "path": "outputs/ardesia-next/artifacts/unit.json",
+      "sha256": "2f3aff5e3398082d3b6aeb985c9a16edd7b58944d520d450024a39b86e9c3dd8",
+      "bytes": 232188
+    },
+    {
+      "path": "outputs/ardesia-next/artifacts/server-runtime.json",
+      "sha256": "c0d9b117144931ffb88b429df96431f3d40879ecdd6b2e9e8702af84e1f31240",
+      "bytes": 929
+    },
+    {
+      "path": "outputs/ardesia-next/artifacts/mcp-runtime.json",
+      "sha256": "ac2f9be4e3d8886784f00039f3d6a89e8db1d1df7edaab310ae2e5b270960cae",
+      "bytes": 2584
+    },
+    {
+      "path": "outputs/ardesia-next/artifacts/budget.json",
+      "sha256": "b759b24f1643ad51e6ba38f37059f73dbea9c88bf8a59e65e3d5ffb3d160c63c",
+      "bytes": 31177
+    },
+    {
+      "path": "outputs/ardesia-next/artifacts/e2e.json",
+      "sha256": "52ffddb81b2de767c2a615a1a6d96f4fc5d440e48f0db9473002681e82d2a645",
+      "bytes": 218993
+    },
+    {
+      "path": "outputs/ardesia-next/artifacts/browser-evidence.json",
+      "sha256": "7377ef95333b71bf6190689a06160b261dd069c328db3652cec2b4b2ab87518f",
+      "bytes": 4703
+    },
+    {
+      "path": "outputs/ardesia-next/apps/web/dist/build-info.json",
+      "sha256": "1e291d5adf4bbfcfe310ccde4496f76bab3e966fd94b61b1078ce836132aa3e3",
+      "bytes": 507
+    },
+    {
+      "path": "outputs/ardesia-next/packages/mcp-core/dist/build-info.json",
+      "sha256": "b219a96a770d2be403d6e8583a30d4e026a8632b49b2253804d7a6fc6f927cd4",
+      "bytes": 357
+    },
+    {
+      "path": "work/materials-verify-corrected.log",
+      "sha256": "cbdf6d94b6dab3b8a307b17be18ab75bccb5d6a59d98d01fafa9adc44cef76e7",
+      "bytes": 36428
+    },
+    {
+      "path": "work/materials-browser-corrected.log",
+      "sha256": "4ea35bbda1d3e7c469567064d01a850ed650547b162aa77bf4354607d33d6d72",
+      "bytes": 32183
+    },
+    {
+      "path": "work/materials-verify-final.log",
+      "sha256": "79865285772ebf197b78da776561af6407b65eaf5fd70549e04533c4ef1d3d81",
+      "bytes": 36421
+    },
+    {
+      "path": "work/materials-browser-final.log",
+      "sha256": "2fd08b00d2ad91efd40028a9f893bc81b4feb4aef9fa335ab644785430638442",
+      "bytes": 34444
+    },
+    {
+      "path": "work/materials-full-first/e2e.json",
+      "sha256": "42a0615f399270951d6640636942d9e6ed75dd2015a884fd251b342b5ac07b40",
+      "bytes": 222989
+    },
+    {
+      "path": "work/materials-full-first/browser-evidence.json",
+      "sha256": "30144813ecdc570daefc9b440aad24e17ad472f5682a0af130be742f3a42230d",
+      "bytes": 4707
+    },
+    {
+      "path": "work/rea-materials/runtime/desktop-evidence.json",
+      "sha256": "2abdefa512aa03dc1b62c9b7197dc0b4ff3444dc3a7f7116098eb98cc8e6595c",
+      "bytes": 2433272
+    },
+    {
+      "path": "work/rea-materials/runtime/mobile-evidence.json",
+      "sha256": "eaab602b1bb57b308779b8470d6b480a312cb5240079bbd9ac10da764b128e93",
+      "bytes": 1597382
+    },
+    {
+      "path": "work/rea-materials/runtime/runtime-source.json",
+      "sha256": "2d2ab6d8e4ae8f171a483681dc8e71dcfbf972d1e3a331c9e5cb9af86b4aec76",
+      "bytes": 3022
+    },
+    {
+      "path": "work/rea-materials/rea-pdf-lifecycle.json",
+      "sha256": "88ffcdd60679e7ae2d0e39df54bc33acb19f1f75846bb9e638511e7fa13cc74a",
+      "bytes": 10358253
+    },
+    {
+      "path": "work/rea-materials/rea-import-supplement.json",
+      "sha256": "629124a01a14e4f0a9c17f8e9464cbfe7f28e4e4c71d75bc62ff4da3745c7827",
+      "bytes": 3508343
+    },
+    {
+      "path": "work/rea-materials/review/preliminary.json",
+      "sha256": "80479a2d0420997aaa12af3f27ffca56e6ade32fed9656778170adcb2681de79",
+      "bytes": 12240
+    },
+    {
+      "path": "work/rea-materials/review/followup.json",
+      "sha256": "dc91d059d2aa9fc2fd92be3db9696a49644a2a24b65f85bd6b512c551ed02a37",
+      "bytes": 10928
+    },
+    {
+      "path": "work/rea-materials/review/candidate.patch",
+      "sha256": "ef6c807327b87126be1574ade7a3e488be31ba39f5bf2059fdc501a8620b4152",
+      "bytes": 254262
+    }
+  ],
+  "reviewMethod": {
+    "testsExecuted": false,
+    "servicesStarted": false,
+    "installs": false,
+    "sourceWrites": false,
+    "indexWrites": false,
+    "gitOperations": false,
+    "remoteOperations": false,
+    "reportWritesOnly": [
+      "work/rea-materials/review/final-review.json",
+      "work/rea-materials/review/final-review.md",
+      "work/rea-materials/review/candidate.patch"
+    ],
+    "independence": "Separate non-author model context under /root/board_review. Read-only scope is instructional, not a technical ACL. No human scientific/editorial approval."
+  },
+  "localVerification": {
+    "sourceDigest": "290f597d24ea4ef92769faab9b309069ed9e50dd2fd9f8b778c460e186b12c82",
+    "verifyChecks": 8,
+    "unitTests": 552,
+    "unitFailed": 0,
+    "unitSkipped": 0,
+    "unitTodo": 0,
+    "unitParsedDigestIndependentlyConfirmed": true,
+    "m4PreparationDigestIndependentlyConfirmed": true,
+    "serverChecks": 5,
+    "mcpChecks": 15,
+    "mcpOfficialSdk": "2.4.0",
+    "serverAndMcpNodeRuntime": "v24.22.1",
+    "browserPassed": 191,
+    "browserFailed": 0,
+    "browserSkipped": 0,
+    "browserFlaky": 0,
+    "browserAllFirstAttempt": true,
+    "browserRetries": 0,
+    "browserRawParsedDigestIndependentlyConfirmed": true,
+    "browserDurationMs": 292062.855,
+    "materialBrowserScenarios": 10,
+    "projects": [
+      "desktop-chromium",
+      "mobile-chromium"
+    ],
+    "productAcceptance": "NOT_COMPLETE",
+    "deployment": "NOT_VERIFIED_FOR_CURRENT_SOURCE",
+    "publishedCommitVerified": false
+  },
+  "publicationAndAcceptanceLimits": [
+    "No GitHub/CI/merge/deployment operation was performed or independently observed by this reviewer.",
+    "A later commit with the same sourceDigest can be associated by root without rewriting these original reports; Verify/CI on the final published source remains separately required.",
+    "No change to cursor, queue, scheduler, procedure adoption or historical milestone acceptance is authorized by this review.",
+    "No native Mac/iPad, Safari/Pencil physical, commercial AI-host compatibility, human scientific/editorial, arbitrary PDF corpus or complete decoder security acceptance."
+  ],
+  "materialBrowserScenarioNames": [
+    "desktop-chromium::imports real PDF pages, preserves the original, anchors ink when moving and reopens offline",
+    "desktop-chromium::imports a decoded image and rejects corrupt files without adding objects",
+    "desktop-chromium::resumes an interrupted material upload after reopening with the same original and page IDs",
+    "desktop-chromium::updates an already prepared offline copy with the original in an unopened lesson",
+    "desktop-chromium::lets the owner recover the file and abandon a permanently rejected import",
+    "mobile-chromium::imports real PDF pages, preserves the original, anchors ink when moving and reopens offline",
+    "mobile-chromium::imports a decoded image and rejects corrupt files without adding objects",
+    "mobile-chromium::resumes an interrupted material upload after reopening with the same original and page IDs",
+    "mobile-chromium::updates an already prepared offline copy with the original in an unopened lesson",
+    "mobile-chromium::lets the owner recover the file and abandon a permanently rejected import"
+  ],
+  "intermediateFailuresRetained": {
+    "verifyLogs": [
+      {
+        "path": "work/materials-verify-corrected.log",
+        "sha256": "cbdf6d94b6dab3b8a307b17be18ab75bccb5d6a59d98d01fafa9adc44cef76e7"
+      },
+      {
+        "path": "work/materials-verify-fifth.log",
+        "sha256": "6587faebffc903d31615abb08914748f551bfcb398437ea5c431e468dd99f714"
+      },
+      {
+        "path": "work/materials-verify-final.log",
+        "sha256": "79865285772ebf197b78da776561af6407b65eaf5fd70549e04533c4ef1d3d81"
+      },
+      {
+        "path": "work/materials-verify-first.log",
+        "sha256": "55239f7c895a6f0195048ef8ada28e00579924933ee0a8b6a19f7649edb40a6c"
+      },
+      {
+        "path": "work/materials-verify-fourth.log",
+        "sha256": "3b1490903e3e8a2359624938d9036785dc2b70d6cd7e63a6139e4cda780bfe69"
+      },
+      {
+        "path": "work/materials-verify-second.log",
+        "sha256": "3b7e6f7f6ce2095f21b57b741d27edfc94b48ae7d4ee1bf5eabf58839877d360"
+      },
+      {
+        "path": "work/materials-verify-seventh.log",
+        "sha256": "63a9f0917d8f5e3b19c788ef43e37f54e8ba6ba2b728000eef63dfa06115626e"
+      },
+      {
+        "path": "work/materials-verify-sixth.log",
+        "sha256": "a2c6fb54fbdeafe00c3b323e60ed35920f33baa2681f42479eded7756d0768eb"
+      },
+      {
+        "path": "work/materials-verify-third.log",
+        "sha256": "a8b1b7b6d9c5c77be81dac5f18d7b294aeacd1b958a9a299811d2747d6c40571"
+      }
+    ],
+    "targetedBrowserReports": [
+      {
+        "path": "work/materials-browser-first/e2e.json",
+        "sha256": "9848f421e2929e2e38455dc72306ff21c4f98ea20e563039f11c8442333eeac5",
+        "stats": {
+          "startTime": "2026-11-07T17:55:49.078Z",
+          "duration": 16393.924,
+          "expected": 2,
+          "skipped": 0,
+          "unexpected": 2,
+          "flaky": 0
+        }
+      },
+      {
+        "path": "work/materials-browser-fourth/e2e.json",
+        "sha256": "723e8778f745d879638ec2989e514c3907f61124b99211cb42dd752dace8bbff",
+        "stats": {
+          "startTime": "2026-11-07T18:25:14.361Z",
+          "duration": 20194.516000000003,
+          "expected": 10,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        }
+      },
+      {
+        "path": "work/materials-browser-second/e2e.json",
+        "sha256": "ef303821550dd3b27251825f48af9306c41b269426e0ee93beb9c22ac948ef36",
+        "stats": {
+          "startTime": "2026-11-07T18:04:39.768Z",
+          "duration": 141403.88,
+          "expected": 2,
+          "skipped": 0,
+          "unexpected": 4,
+          "flaky": 0
+        }
+      },
+      {
+        "path": "work/materials-browser-third/e2e.json",
+        "sha256": "bde6147063d395318188f1bf4d7469f7f8bdae10a0c5415f5407755f476a18d0",
+        "stats": {
+          "startTime": "2026-11-07T18:17:08.234Z",
+          "duration": 224974.312,
+          "expected": 8,
+          "skipped": 0,
+          "unexpected": 2,
+          "flaky": 0
+        }
+      }
+    ],
+    "fullBrowserFirst": "work/materials-full-first",
+    "reaAttempts": [
+      "work/rea-materials/runtime/attempt-01",
+      "work/rea-materials/runtime/attempt-02"
+    ],
+    "note": "Historical attempts keep their original counts and identities. They are not silently replaced by the final191PASS."
+  },
+  "changedFilesFromBaseline": {
+    "count": 72,
+    "sha256ByPath": {
+      "README.md": "d7d4a32e517638060706f74ee528badd821f31ae64c91c0afd6de179eb2b70bc",
+      "apps/web/package.json": "636ae86256727f66589c662c5b12e85482ef628590116eb203ffa763dacecc1b",
+      "apps/web/public/THIRD_PARTY_NOTICES.txt": "0c5446e566b019bd51e9aec06b3d10e11b5435a89b9c50fa91379a76af95bb6e",
+      "apps/web/public/licenses/pdfjs/LICENSE": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "apps/web/public/licenses/pdfjs/LICENSE_CORE_JS": "b87653fff2d44426ab5cd4723cee3b1364dc8d35a0acdf098c54689543123bf8",
+      "apps/web/src/App.tsx": "21cbf04b5499f8f6c5b39476229d73a87b2dc632fc7ec1882b9acedf058c21f6",
+      "apps/web/src/OfflineWorkspace.tsx": "b8c7726ac7d94a7c6d0d25c90240951b1fa161a70efaec7020558efa8dc5f111",
+      "apps/web/src/RemoteWorkspace.tsx": "bfb2c5326e9997991a986a8d5839b38a24d89900ab3f1c30b2a5daafe5e27119",
+      "apps/web/src/components/Board.tsx": "33afbf29214ae1c8061e07169fb07373897ef80f75182e820480e1fa11182c22",
+      "apps/web/src/components/DocumentView.tsx": "ee31a82410bbfe6c7cd1d0ad2f09107cac10c168316b03fcc90f32d70caa46a8",
+      "apps/web/src/components/Inspector.tsx": "d7765d06b5081b332cfcf8f74023c4a893ca732230282a1446fe4d3696ebb42a",
+      "apps/web/src/components/ObjectContent.tsx": "bff10e6f4b186c6e728ffab17643fbb5e221d5ad0ff445948a1d236e33777cdc",
+      "apps/web/src/components/StudioChrome.tsx": "558a51e8d22b80340da2a1b64844baf3dd53565e127e8b9e5228879cf4472f93",
+      "apps/web/src/courses/CourseStudio.tsx": "655a5840504d889e4d51b869efa3b91300637b690755b814ff478b5dbe08f697",
+      "apps/web/src/handout/HandoutView.tsx": "be1ec84d7fc7926d3ecf55b625deee7d0b681e48d5b849113de74b915f013ae7",
+      "apps/web/src/handout/latex.ts": "f0b37164d4a1161aecd434b3dd7ebde03b8b79459480f73995a7dd813e352865",
+      "apps/web/src/materials/MaterialImport.tsx": "b956c185df2157448c5da75fb3e1e06e21446d46c026d2abfb89498a68ac65b3",
+      "apps/web/src/materials/MaterialView.tsx": "97c086b53de8d10340100371072321ea9ed5639b2a8cc92bdfae23e8446fcde6",
+      "apps/web/src/materials/files.ts": "b974fbef200100d453fa13605b1ea73ec87ca3cb3a0da7c6df6866951a839bcc",
+      "apps/web/src/materials/materials.css": "8c4af9e01c2f19fce888a718cd04a9dfe4e2916963f74ca23fb92f23b9a2d232",
+      "apps/web/src/materials/pdf-engine.ts": "9afe147a53727435783681d3added4a37d79e9e8a825834dae3e375b226f9013",
+      "apps/web/src/materials/render-queue.test.ts": "0575550c66d7db4b219458e0780f5a4e09a2e8a3485cda0eac9da74ccbc59c2f",
+      "apps/web/src/materials/render-queue.ts": "d15706898ed5b4360795710d1b83376db47c6a4c2c6eb9cfbb61baf2b6168715",
+      "apps/web/src/offline-client.test.ts": "7eb4cd7bc55bd3f9aa0ac25f6b219211eea2769b3ff1808f23b88f5beea50af9",
+      "docs/START_HERE.md": "a9df9e80e498ebe0d16ef912d6faa08476482e49b597a71cafafddf94c6a917c",
+      "docs/adr/0020-original-materials.md": "4012536c76815606875e1201259b98c8988ff18b189e165d5a34f7209e2a356c",
+      "docs/dependencies.md": "84536f9d632e79202cc7eaab600e6b3029b7c3b070c373c989d9551b37b332bf",
+      "docs/handoff.md": "4103fe3b85c372c0ab6969bc6bd20cc8d33cb267fd05b6dcdcda10f097a2465d",
+      "docs/handoffs/2026-11-07.md": "9d093de394f488c36ca948237d4c0b79013a05971292756ec84399f0870a31c8",
+      "docs/handoffs/confronto-programma-chat-2026-11-07.md": "122ffb1fb73c45a7f2753f810f0404fea9f7002449aa9f9204218fe5e7626fc0",
+      "docs/history.md": "b09b92d46dde4914c1f3a2c1719cc502d0cc5630f3519b34bb923042ff5d5bb0",
+      "docs/product-map.md": "bfbeb7cd43f5a6f12a7926a29e36ac451862d777ba9bfdd0d6bf8d28fd58694c",
+      "docs/sources/dependency-licenses.json": "ca6730207c6fe9872da4b1d1b67f4a914a96c091b079f5844d0be39f629c5448",
+      "docs/sources/materials-2026-11-07.md": "cd171fcb0727da65b03d92275a9e82b96ff46ee3cada3f6ef434fd09172e832d",
+      "e2e/materials.spec.ts": "c80c7696bde0b6ce60ca3addd5a6df9f103374b493928bdcbae1dc6942d92fb8",
+      "package-lock.json": "ae71d5325f07007e9b05ecb4294a773edd79f952cc848c24ff16b1e2b71cc30a",
+      "packages/contracts/src/index.ts": "81299107fa12403dead793458882ceb8633b318f58fb95d74ffd4d523201e972",
+      "packages/contracts/src/json.test.ts": "9b5c35c6d1d712ab1caf3a1287c8a5c2c8cd50597f24dcda4b8f05ffd3711024",
+      "packages/contracts/src/materials.ts": "ced940bccfb29ab3af8b3394b24a7e243ffb93a21c10ee769eee0fd21e24d666",
+      "packages/core/src/courses.test.ts": "a49533d420d3f04ede2e5e354db1c067167e24abf215f96d9fd885eea7274794",
+      "packages/core/src/extensions.test.ts": "2d9ad38137d47ed52984d36fd10f478ac9feb5df49ec224177e00713717aaf61",
+      "packages/core/src/feedback.test.ts": "a26ae95032f5cfdedf0ddcc55ed0d1be495bf96d49d0933b213c12a5103445f4",
+      "packages/core/src/index.ts": "187f72cafaa258707f9d61e9a5f5248c7201fb88c2be8bf5f6e10a3ba6478097",
+      "packages/core/src/lab.test.ts": "cc8ad3bacd9afb1f5e12b8ceed8323e0437ac8fe367f37adb9a6631d66f5e859",
+      "packages/core/src/learning.test.ts": "934d626ab5af1c6eb9d9d7ef84a46e283c35f0f3a6b6df3521c28a27ceb664fd",
+      "packages/core/src/marketplace.test.ts": "3704235be760afacd4d9bf04c2d70d0bf4a7783921c0e651b58553c0412f784a",
+      "packages/core/src/materials.test.ts": "375d98c6a3382bbd3cb8337cf1ff36f2cc0e2d5a33ddffbb8d9aacad996edaae",
+      "packages/core/src/materials.ts": "c250c994817ace2ce5cb8091b9e8926a3ceb0309933c90e98dcd84be968b79ff",
+      "packages/core/src/tutor.test.ts": "3679a12d62853db7b969055b0ebd9be19ccbaf66aca5d923bd7f811d49ef29a1",
+      "packages/mcp-core/README.md": "556a3f0a873eac8b1f6d9af6ce829e3d4a20b63a17364ccd23d061579e2b5465",
+      "packages/mcp-core/src/adapter.ts": "ddbe30100c7b1548d8d61c386168d014096cb57ca109a5453e53f98f46d14f97",
+      "packages/mcp-core/src/index.ts": "7626b2af22fae7fd311b86c490ef4edb8576946105eb4b0d749dc6b6d564ab12",
+      "packages/remote-client/README.md": "6b3aed7dbc53ca70cb40be341260a989524d188fbb8db36e439a01f79f867c3a",
+      "packages/remote-client/src/index.ts": "7a9b7aa0d83a7e4e1eca2d808aa231245d4ca3a46a2aa79a31ab5e6f53113f1b",
+      "packages/remote-client/src/materials.test.ts": "2124d2d97c9f407f9d836fb42e8a550b3cd41b6e175de36800480cd77b5339c4",
+      "packages/remote-client/src/materials.ts": "60764b1c0fdae497facf655ad04f228c575c316b564cfe79b67cc306fd51e736",
+      "packages/remote-client/src/offline.ts": "7007d8a6411537a80986a6e429365adc7449ab6f2aea54d44d589cac0189d04d",
+      "packages/server/README.md": "1948187dfabac17696b3f273c75dfc671f9243bab7a254edf8ba1f18e812ce70",
+      "packages/server/migrations/007_materials.sql": "accf5631eb1d3746f87df7097f138c47c1793809d9ef7b031dba48e1f4fcd04c",
+      "packages/server/src/backup.ts": "f11c1d8d9721268bba78ba0d168ef8d000eadd7208fb77a3a21938c15ae1c165",
+      "packages/server/src/database.ts": "4b5ff3ca51237aea2dada8f546fb9715ddb0cc057fe9077b6458b0cab5c72dd6",
+      "packages/server/src/materials.ts": "32cd83c42423d196ce9f2df6247478fba98812529d05ed013cacaaacb8654abf",
+      "packages/server/src/requests.ts": "df8293c55fee8be0cb8995da8ace84d811af06f35658086639daf457074b2503",
+      "packages/server/src/server.integration.test.ts": "a11d158093c8a7b9225b5c00c70ad01507766176904c9c4a1eb4d638ef606637",
+      "packages/server/src/store.ts": "a3df3b42da58840f6f08d8f68d1a63e5b0a6f257bc8b51e14087db92448612c9",
+      "tools/build-offline-shell.mjs": "a6d915264ac3b5c79829b060d4f195dfd07556f96eb3dddeb165ef9fbf5ef7f6",
+      "tools/build.mjs": "00c7373f0a4248e3ede9fd0f08d99efb0cfebd2f974b27d414b3679364fe8869",
+      "tools/check-budget.mjs": "783b523d569b9ee94aa7ddb7b6590f51b3a7d7ff2d0939b2cac40104961f1e7b",
+      "tools/mcp-runtime.test.mjs": "0f21326dd108a643c14a3ce1ed3d3a9e2fbc5aa7ee7d1323f81a1508a8b72874",
+      "tools/program-budget.mjs": "4f004c9e98a0754efdde70dc826b1428b9b7e5c263017e27b08d3012e689ea17",
+      "tools/program-budget.test.mjs": "e9580ff815fbd7eefe56e5461d03b8d56295708b87e7051ec7f9b4b9cb0488b0",
+      "tools/server.mjs": "cb6e3c7da0b2cc3aac243c800b35338e12404fc9f6ebfedbfdb1b22c9d55d23b"
+    }
+  },
+  "candidatePatch": {
+    "path": "work/rea-materials/review/candidate.patch",
+    "sha256": "ef6c807327b87126be1574ade7a3e488be31ba39f5bf2059fdc501a8620b4152",
+    "lines": 2724,
+    "method": "Independent unified byte/text diff against retained baseline, no Git."
+  }
+}

@@ -1,0 +1,175 @@
+
+> ardesia-next@0.1.0 test:e2e
+> node tools/e2e.mjs materials.spec.ts
+
+[2m[WebServer] [22m(node:74218) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22mWebSocket server error: Port 24678 is already in use
+
+Running 6 tests using 1 worker
+
+(node:74221) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:74221) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [desktop-chromium] › e2e/materials.spec.ts:25:1 › imports real PDF pages, preserves the original, anchors ink when moving and reopens offline (2.6s)
+(node:74229) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:74229) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 [desktop-chromium] › e2e/materials.spec.ts:145:1 › imports a decoded image and rejects corrupt files without adding objects (5.8s)
+(node:74238) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:74238) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 [desktop-chromium] › e2e/materials.spec.ts:200:1 › resumes an interrupted material upload after reopening with the same original and page IDs (1.4s)
+(node:74246) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:74246) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 [mobile-chromium] › e2e/materials.spec.ts:25:1 › imports real PDF pages, preserves the original, anchors ink when moving and reopens offline (2.0m)
+(node:74443) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:74443) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  5 [mobile-chromium] › e2e/materials.spec.ts:145:1 › imports a decoded image and rejects corrupt files without adding objects (5.9s)
+(node:74475) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:74475) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  6 [mobile-chromium] › e2e/materials.spec.ts:200:1 › resumes an interrupted material upload after reopening with the same original and page IDs (1.6s)
+
+
+  1) [desktop-chromium] › e2e/materials.spec.ts:25:1 › imports real PDF pages, preserves the original, anchors ink when moving and reopens offline 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m1237.9999634951223[39m
+    Received: [31m1238[39m
+
+      48 |   await expect.poll(async()=>((await personalProjection(page)).documents[0]!.objects.find(o=>o.id===materials[0]!.id)!.x)).toBe(materials[0]!.x+10);
+      49 |   await page.reload();await page.getByRole('button',{name:'Inquadra tutto',exact:true}).click();await expect(page.locator('.type-material [data-material-state="ready"]')).toHaveCount(2);
+    > 50 |   const renderedInk=page.locator(`[data-object-id="${before.id}"]`);expect(await renderedInk.evaluate(el=>Number.parseFloat((el as HTMLElement).style.left))).toBe(before.x+10);
+         |                                                                                                                                                               ^
+      51 |   await page.getByRole('button',{name:'Impostazioni',exact:true}).click();await page.getByRole('button',{name:'Rendi disponibile offline',exact:true}).click();
+      52 |   await expect(page.getByRole('button',{name:'Usa copia offline',exact:true})).toBeEnabled();
+      53 |   await page.getByRole('button',{name:'Usa copia offline',exact:true}).click();
+        at /Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/e2e/materials.spec.ts:50:159
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/materials-imports-real-PDF-31c3d--moving-and-reopens-offline-desktop-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/materials-imports-real-PDF-31c3d--moving-and-reopens-offline-desktop-chromium/error-context.md
+
+  2) [desktop-chromium] › e2e/materials.spec.ts:145:1 › imports a decoded image and rejects corrupt files without adding objects 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.type-material [data-material-state="ready"]')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('.type-material [data-material-state="ready"]')[22m
+
+
+      69 |   await expect(dialog.locator('[data-material-state="ready"]')).toBeVisible();
+      70 |   await dialog.getByRole('button',{name:'Aggiungi alla lavagna',exact:true}).click();await expect(dialog).toHaveCount(0);
+    > 71 |   await expect(page.locator('.type-material [data-material-state="ready"]')).toBeVisible();
+         |                                                                              ^
+      72 |   const object=(await personalProjection(page)).documents[0]!.objects.find(o=>o.type==='material')!;
+      73 |   expect(object).toMatchObject({type:'material',data:{mimeType:'image/png',sha256:digest(bytes),page:1,pageCount:1}});
+      74 |   await page.reload();await expect(page.locator('.type-material [data-material-state="ready"]')).toBeVisible();
+        at /Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/e2e/materials.spec.ts:71:78
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/materials-imports-a-decode-d40a4-iles-without-adding-objects-desktop-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/materials-imports-a-decode-d40a4-iles-without-adding-objects-desktop-chromium/error-context.md
+
+  3) [mobile-chromium] › e2e/materials.spec.ts:25:1 › imports real PDF pages, preserves the original, anchors ink when moving and reopens offline 
+
+    [31mTest timeout of 120000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 120000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: 'Inquadra tutto', exact: true })[22m
+    [2m    - locator resolved to <button>Inquadra tutto</button>[22m
+    [2m  - attempting click action[22m
+    [2m    2 × waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <aside class="inspector" aria-label="Proprietà dell’oggetto">…</aside> intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m    - waiting 20ms[22m
+    [2m    2 × waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <aside class="inspector" aria-label="Proprietà dell’oggetto">…</aside> intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 100ms[22m
+    [2m    230 × waiting for element to be visible, enabled and stable[22m
+    [2m        - element is visible, enabled and stable[22m
+    [2m        - scrolling into view if needed[22m
+    [2m        - done scrolling[22m
+    [2m        - <aside class="inspector" aria-label="Proprietà dell’oggetto">…</aside> intercepts pointer events[22m
+    [2m      - retrying click action[22m
+    [2m        - waiting 500ms[22m
+
+
+      34 |   await page.screenshot({path:info.outputPath('material-import.png'),fullPage:true});
+      35 |   await dialog.getByRole('button',{name:'Aggiungi alla lavagna',exact:true}).click();
+    > 36 |   await expect(dialog).toHaveCount(0);await page.getByRole('button',{name:'Inquadra tutto',exact:true}).click();await expect(page.locator('.type-material [data-material-state="ready"]')).toHaveCount(2);
+         |                                                                                                         ^
+      37 |   const saved=await personalProjection(page),lesson=saved.documents[0]!,materials=lesson.objects.filter(o=>o.type==='material');
+      38 |   expect(materials.map(o=>o.data.page)).toEqual([1,3]);expect(materials[0]!.data.sha256).toBe(digest(bytes));
+      39 |   const downloadPromise=page.waitForEvent('download');await page.getByRole('button',{name:'Scarica originale',exact:true}).click();
+        at /Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/e2e/materials.spec.ts:36:105
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/materials-imports-real-PDF-31c3d--moving-and-reopens-offline-mobile-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/materials-imports-real-PDF-31c3d--moving-and-reopens-offline-mobile-chromium/error-context.md
+
+  4) [mobile-chromium] › e2e/materials.spec.ts:145:1 › imports a decoded image and rejects corrupt files without adding objects 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.type-material [data-material-state="ready"]')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('.type-material [data-material-state="ready"]')[22m
+
+
+      69 |   await expect(dialog.locator('[data-material-state="ready"]')).toBeVisible();
+      70 |   await dialog.getByRole('button',{name:'Aggiungi alla lavagna',exact:true}).click();await expect(dialog).toHaveCount(0);
+    > 71 |   await expect(page.locator('.type-material [data-material-state="ready"]')).toBeVisible();
+         |                                                                              ^
+      72 |   const object=(await personalProjection(page)).documents[0]!.objects.find(o=>o.type==='material')!;
+      73 |   expect(object).toMatchObject({type:'material',data:{mimeType:'image/png',sha256:digest(bytes),page:1,pageCount:1}});
+      74 |   await page.reload();await expect(page.locator('.type-material [data-material-state="ready"]')).toBeVisible();
+        at /Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next/e2e/materials.spec.ts:71:78
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/materials-imports-a-decode-d40a4-iles-without-adding-objects-mobile-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/materials-imports-a-decode-d40a4-iles-without-adding-objects-mobile-chromium/error-context.md
+
+  4 failed
+    [desktop-chromium] › e2e/materials.spec.ts:25:1 › imports real PDF pages, preserves the original, anchors ink when moving and reopens offline 
+    [desktop-chromium] › e2e/materials.spec.ts:145:1 › imports a decoded image and rejects corrupt files without adding objects 
+    [mobile-chromium] › e2e/materials.spec.ts:25:1 › imports real PDF pages, preserves the original, anchors ink when moving and reopens offline 
+    [mobile-chromium] › e2e/materials.spec.ts:145:1 › imports a decoded image and rejects corrupt files without adding objects 
+  2 passed (2.4m)

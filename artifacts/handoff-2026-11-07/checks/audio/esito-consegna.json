@@ -1,0 +1,72 @@
+{
+  "kind": "ardesia-local-delivery",
+  "status": "VERIFIED_LOCAL_INCREMENT",
+  "increment": "personal-audio-and-replay",
+  "baseCommit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "branch": "codex/lavagna-continuity-20261107",
+  "sourceDigest": "eed657f78653ed3a4f0cc9a0e4ec3c8ce7f5b1abf2628720ac6985cf0dabea8b",
+  "uncommitted": true,
+  "remotePublished": false,
+  "generatedAt": "2026-11-07T10:49:41.755Z",
+  "verification": {
+    "passed": true,
+    "checks": 8,
+    "unitPassed": 403,
+    "browserPassed": 113,
+    "browserSkipped": 0,
+    "browserFlaky": 0,
+    "browserFailed": 0,
+    "serverChecks": 5,
+    "mcpChecks": 9,
+    "allJavaScriptGzipBytes": 211972,
+    "budgetBytes": 245760
+  },
+  "reports": "audio/",
+  "canonicalProductStatus": {
+    "report": "audio/status.json",
+    "productAcceptance": "NOT_COMPLETE",
+    "deployment": "NOT_VERIFIED_FOR_CURRENT_COMMIT"
+  },
+  "preview": "http://127.0.0.1:4180",
+  "manual": {
+    "report": "audio/manuale-mac.json",
+    "fixture": "audio/anteprima-audio.json",
+    "sourceDigest": "eed657f78653ed3a4f0cc9a0e4ec3c8ce7f5b1abf2628720ac6985cf0dabea8b",
+    "flow": "search quadruplica → replay16000ms/revision4 → play → Home/revision3 without stroke → current revision4 editable",
+    "physicalDevice": "Mac; Codex in-app browser",
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "nativeApp": false,
+    "physicalMicrophone": false,
+    "voice": "local synthetic Alice"
+  },
+  "patch": {
+    "path": "../ardesia-next.patch",
+    "sha256": "ed9dc25727f857c5ed92d4e1182e5104ea2062fa844c13039fd205a7186510ad",
+    "bytes": 531986,
+    "reverseApplyCheck": "PASS"
+  },
+  "review": {
+    "agent": "/root/board_review",
+    "report": "audio/review-indipendente.md",
+    "sourceReadOnly": true,
+    "testsExecutedBy": "/root",
+    "finalEvidenceCheck": "PASS",
+    "findingsP1P2": 0,
+    "scope": "personal audio local increment only"
+  },
+  "limits": {
+    "physicalMicrophoneSafariIPadApplePencil": "NOT_RUN",
+    "longSessionDrift": "NOT_RUN",
+    "nativeApps": "NOT_BUILT_XCODE_UNAVAILABLE",
+    "remoteM3Acceptance": "NOT_EVALUATED",
+    "mcpCloudAndCommercialHosts": "NOT_TESTED",
+    "audioMcpAsrGlobalSearch": "NOT_IMPLEMENTED",
+    "coldOfflineAudioCapture": "NOT_IMPLEMENTED",
+    "generalMultideviceCollaboration": "NOT_IMPLEMENTED",
+    "fullEcosystem": "IN_PROGRESS"
+  },
+  "historicalDelivery": "mcp/esito-consegna.json"
+}

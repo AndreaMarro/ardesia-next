@@ -90,11 +90,13 @@ describe('M3 Core lesson assignments and private learner continuity', () => {
     expect(core.listDocuments(student)).toEqual([]);
     expect(core.listInstallations(student)).toEqual([]);
     expect(core.getInstallation(student, release.pluginId)).toBeNull();
-    for (const actor of [student, second, outsider, {...teacher, role: 'student' as const}]) {
+    for (const actor of [student, second, outsider, otherTeacher]) {
       expect(() => core.getDocument(actor, 'lesson-one')).toThrowError(unavailable);
       expect(() => core.events(actor, 'lesson-one')).toThrowError(unavailable);
       expect(() => core.getObjectRevision(actor, 'lesson-one', lab.id, 1)).toThrowError(unavailable);
     }
+    // Ownership is independent of teaching role; HTTP derives both from the session.
+    expect(core.getDocument({...teacher,role:'student'},'lesson-one')).toEqual(core.getDocument(teacher,'lesson-one'));
     expect(() => core.getAssignedDocument(outsider, 'lesson-one')).toThrowError(unavailable);
     expect(() => core.getAssignedDocument(student, 'known-unassigned-id')).toThrowError(unavailable);
     await expect(core.executeLearning(student, {kind: 'assign-lesson', commandId: 'self-grant', documentId: 'lesson-one', studentId: outsider.actorId, expectedRevision: 0})).rejects.toMatchObject({code: 'FORBIDDEN'});
@@ -325,15 +327,15 @@ describe('M3 Core lesson assignments and private learner continuity', () => {
 describe('M3 read-only versioned migration', () => {
   it('opens v3 preserving all installation, consent, laboratory and idempotency evidence without writes', async () => {
     const {core} = await fixture(false);
-    const {assignments: _assignments, learnerWork: _work, ...old} = core.snapshot();
+    const {assignments: _assignments, learnerWork: _work, ...old} = preCourse(core.snapshot());
     const legacy = {...old, schemaVersion: 3};
     const storage = new ObservedStorage(legacy);
     const reopened = await createCore({...options(storage, 'migration'), pluginPolicy: verifier().policy});
-    expect(reopened.snapshot()).toEqual({...legacy, schemaVersion: 4, assignments: [], learnerWork: []});
+    expect(reopened.snapshot()).toEqual({...legacy, schemaVersion: 9, tutorRecords: [], assignments: [], learnerWork: [], courses: [], courseEditions: [], courseDeliveries: [], courseWork: []});
     expect(await storage.read()).toEqual(legacy);
     expect(storage.writes).toBe(0);
     await reopened.executeLearning(teacher, {kind: 'assign-lesson', commandId: 'new-assignment', documentId: 'lesson-one', studentId: student.actorId, expectedRevision: 0});
-    expect((await storage.read() as CoreSnapshot).schemaVersion).toBe(4);
+    expect((await storage.read() as CoreSnapshot).schemaVersion).toBe(9);
     expect(reopened.snapshot().events.slice(0, legacy.events.length)).toEqual(legacy.events);
     expect(reopened.snapshot().receipts.slice(0, legacy.receipts.length)).toEqual(legacy.receipts);
     expect(reopened.snapshot().installations).toEqual(legacy.installations);
@@ -364,7 +366,7 @@ describe('M3 read-only versioned migration', () => {
 
   it('refuses forged legacy learning fields, invalid history and newer commands mislabeled as v3', async () => {
     const {core} = await fixture(false);
-    const {assignments: _assignments, learnerWork: _work, ...old} = core.snapshot();
+    const {assignments: _assignments, learnerWork: _work, ...old} = preCourse(core.snapshot());
     for (const raw of [{...old, schemaVersion: 3, learnerWork: []}, {...old, schemaVersion: 3, receipts: []}]) {
       expect(migrateSnapshotForOpen(raw)).toBe(raw);
       const storage = new ObservedStorage(raw);
@@ -377,3 +379,8 @@ describe('M3 read-only versioned migration', () => {
     expect(migrateSnapshotForOpen(invalid)).toBe(invalid);
   });
 });
+
+function preCourse<T extends object>(snapshot: T) {
+  const {tutorRecords: _t, courses: _c, courseEditions: _e, courseDeliveries: _d, courseWork: _w, ...legacy} = snapshot as T & {tutorRecords?: unknown; courses?: unknown; courseEditions?: unknown; courseDeliveries?: unknown; courseWork?: unknown};
+  return legacy;
+}

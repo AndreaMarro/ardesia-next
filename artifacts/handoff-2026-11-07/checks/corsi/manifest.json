@@ -1,0 +1,902 @@
+{
+  "kind": "ardesia-delivery-file-manifest",
+  "generatedAt": "2026-11-07T15:13:54.073Z",
+  "sourceDigest": "081188333e269835da397aeed2959ce7a80f3d72552f1893c167f19f895f5458",
+  "files": [
+    {
+      "file": "Avvia Ardesia.command",
+      "sha256": "cf1f7fa8644a9abacbc3c28b1ebf27d39f3a230fbc896dea3a6a504bb89eacc9",
+      "bytes": 727
+    },
+    {
+      "file": "CORSI-E-STUDIO.md",
+      "sha256": "fd6c7ba51cc49806d27d55a4fb3ec57794f0b1f97e60b5e39845b7dd5d1ae7ad",
+      "bytes": 3802
+    },
+    {
+      "file": "CREATOR-E-STUDIO.md",
+      "sha256": "bc65602f36f6b26d74dfea84bbd3e814aadb08e361a3ea346e758d394e6fc8aa",
+      "bytes": 3973
+    },
+    {
+      "file": "LEGGIMI.md",
+      "sha256": "1f294e1e3d1f6100b3a23a9eb9fd870adf4d89755546c5a68eac195c1869547c",
+      "bytes": 4226
+    },
+    {
+      "file": "ardesia-next.patch",
+      "sha256": "1bf00406b9d302448bd8d6678a1e51119d0a0f434f775a17f64c62e3c575d766",
+      "bytes": 1061353
+    },
+    {
+      "file": "design/corsi-verifica.md",
+      "sha256": "b7ad26ff70349400effb4d6e104a6c82a9a466d2fbf4d3587efbf0a164f28c7b",
+      "bytes": 1910
+    },
+    {
+      "file": "rea-evidence/corsi/README.md",
+      "sha256": "3f3226629a6ca7df6cc1a361000015195aa950519727707131f51bc57b0facc3",
+      "bytes": 5419
+    },
+    {
+      "file": "rea-evidence/corsi/ardesia-desktop-activity-ready.png",
+      "sha256": "b6f0483ed32cfd5847823c808c245192dc0ae19f1aa3f3595617ea53eebba4de",
+      "bytes": 107254
+    },
+    {
+      "file": "rea-evidence/corsi/ardesia-desktop-edition-ready.png",
+      "sha256": "1c0169b8099087a9e7f99f20d530e90b1917bdd0e7242fbcb8707891acff6daa",
+      "bytes": 99327
+    },
+    {
+      "file": "rea-evidence/corsi/ardesia-desktop-editor-ready.png",
+      "sha256": "f21c9da4bb1654aa6fd31e2883cdeb584e702f3ba54755973fc91e549261b569",
+      "bytes": 142733
+    },
+    {
+      "file": "rea-evidence/corsi/ardesia-desktop-evidence.json",
+      "sha256": "9aabe88c7be447076bfafaeaad48883b384480eeae36078d78b0a171eebf5a4a",
+      "bytes": 3201464
+    },
+    {
+      "file": "rea-evidence/corsi/ardesia-desktop-resume-evidence.json",
+      "sha256": "01132fe375fbbf571dec6ecbfa89b36db71b329444f33125341c5e750bdf31b0",
+      "bytes": 619379
+    },
+    {
+      "file": "rea-evidence/corsi/ardesia-desktop-resume.json",
+      "sha256": "cf6fc63e942000f902fd75d46f5a0fa3e5220fbd2ce46d94a4bb3468b36fcc98",
+      "bytes": 2284
+    },
+    {
+      "file": "rea-evidence/corsi/ardesia-desktop-resume.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "rea-evidence/corsi/ardesia-desktop-resumed-activity.png",
+      "sha256": "bd6e83228c8e874a7d99e100e376c6838033a94e3ab18680c86f398ca55bae45",
+      "bytes": 110402
+    },
+    {
+      "file": "rea-evidence/corsi/ardesia-desktop-study-ready.png",
+      "sha256": "91c03d751036560ed14dfcbc437b164929e5a34011908309233f71a18586e5f3",
+      "bytes": 109552
+    },
+    {
+      "file": "rea-evidence/corsi/ardesia-desktop.json",
+      "sha256": "9f3b6e1b3001f38db8658f132191dbefaaa5010f5d89af2302dbb92058e12526",
+      "bytes": 6175
+    },
+    {
+      "file": "rea-evidence/corsi/ardesia-desktop.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "rea-evidence/corsi/ardesia-mobile-activity-ready.png",
+      "sha256": "9677b10d677ddf271d5e169e1072970f58c0670bd78a8178ad8afddac12910e0",
+      "bytes": 68768
+    },
+    {
+      "file": "rea-evidence/corsi/ardesia-mobile-edition-ready.png",
+      "sha256": "20cd8a828680162232bd8753e0e18121dbf0029d54e2907b6022a01880e846f1",
+      "bytes": 61205
+    },
+    {
+      "file": "rea-evidence/corsi/ardesia-mobile-editor-ready.png",
+      "sha256": "26b5b6c61ff78ca6318b14117fdbac160cfc373f47c127f9ef112fd2e84779ef",
+      "bytes": 57183
+    },
+    {
+      "file": "rea-evidence/corsi/ardesia-mobile-evidence.json",
+      "sha256": "943cbed68edb1c6209c0ec45a21d231adbfcd824d5a5bc01c16fa835e234eff1",
+      "bytes": 1825611
+    },
+    {
+      "file": "rea-evidence/corsi/ardesia-mobile-resumed-activity.png",
+      "sha256": "e44ccd46b18d52b2880515d322b5bdec4c43421d4a6459e3fddd817994ecf090",
+      "bytes": 60301
+    },
+    {
+      "file": "rea-evidence/corsi/ardesia-mobile-study-ready.png",
+      "sha256": "78275a4f4eba5e3ecb084ccf6cd20630bde706ca9beb48ffd422ca4c43137d22",
+      "bytes": 59480
+    },
+    {
+      "file": "rea-evidence/corsi/ardesia-mobile.json",
+      "sha256": "66788245830e29946b293345ec7ba989ff8ae3c2f0dce36c55a311c64f0a2959",
+      "bytes": 6342
+    },
+    {
+      "file": "rea-evidence/corsi/ardesia-mobile.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-book-evidence.json",
+      "sha256": "e5437755c166d51a79190fc0de06b1248ed6c4aa1398599ce6143ea49a72f845",
+      "bytes": 657889
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-book-observe.json",
+      "sha256": "7c4abcb5e066aa480a1e3f3650fb1259e540ee4aec4293240e315518bdafa666",
+      "bytes": 443
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-book.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-embed-evidence.json",
+      "sha256": "a7741ab3a4627007fb7ba568328bd1f24fa4c6d9d85170ed2178145aeb9659cb",
+      "bytes": 279841
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-embed-observe.json",
+      "sha256": "91cc0a6a69887966cd5f8b0bb037c7a09e4391e42087469fb9258c48da09cc59",
+      "bytes": 443
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-embed.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-feedback.png",
+      "sha256": "cda0193d095744885308bab497227e049aadbb01f5774d52074bbb87ea18061d",
+      "bytes": 131770
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-interactions-evidence.json",
+      "sha256": "46e4a082e8c82d8ed944821b94b40e17ca53b87377d8bab926ca972372c29f2f",
+      "bytes": 635
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-interactions-v2-evidence.json",
+      "sha256": "4a8dbdd1fd7f98ed4e2895f5bed0c0d496ad79aa9eee55f6c7a415645a856545",
+      "bytes": 6941837
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-interactions-v2.json",
+      "sha256": "32b6862b58d386ed00871cec1d1dddc9e9c8ab3c392e9045792e138d88c1226d",
+      "bytes": 2261
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-interactions-v2.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-interactions-v3-evidence.json",
+      "sha256": "d252290540214a62f12f320452f80802bf91fe397ad67012f7c09d1b9aa5426b",
+      "bytes": 4192967
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-interactions-v3.json",
+      "sha256": "1ed17b8c37ff243994ef8b29053689affe6f0b96c3ecadfbed5a0f2542a9ae89",
+      "bytes": 2554
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-interactions-v3.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-interactions.json",
+      "sha256": "83b639ede9df70452c46a4f7bfa1e071f6258205f003a69cdcf4bb38d60531a8",
+      "bytes": 2269
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-interactions.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-observe-evidence.json",
+      "sha256": "902738b7d195dfdb4f2b8798ad1b8f41153459c175600a778a506674f4775c69",
+      "bytes": 682092
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-observe.json",
+      "sha256": "b84172f7c370183b1c74f29ae79f3cac073c28a716455097a3d84ca85dd6ca13",
+      "bytes": 601
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-observe.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-previous-settled.png",
+      "sha256": "411e4bb36199babe29bc337a93ccca75bb75035bb24c0af7cc6a60daed618ec0",
+      "bytes": 277381
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-public-artifacts.json",
+      "sha256": "997f7459c3f7c5598f2ce539e78a6c1261d12e7bd76115abd3dcd8ba6e20c528",
+      "bytes": 4686
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-read-evidence.json",
+      "sha256": "1bf10879939da1d939b5fa7ce233380c409e3a70e26714456eb87137f22120ad",
+      "bytes": 1413657
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-read.json",
+      "sha256": "d646283f9d3619e0a63497a05fc549a6148d590b3bbba93a44856604413d4bfc",
+      "bytes": 588
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-read.png",
+      "sha256": "d90119af3f3962bfe0d9a67af2ebafa8e11625873ff8111a65fc1ead3e974a39",
+      "bytes": 277410
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-read.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-reopen-settled.png",
+      "sha256": "d90119af3f3962bfe0d9a67af2ebafa8e11625873ff8111a65fc1ead3e974a39",
+      "bytes": 277410
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-static-evidence.json",
+      "sha256": "75712e2dcc784824a4fe391c27d716ea9f15ef0391a1e50c1d1f17de55d00e92",
+      "bytes": 23982019
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-static.stderr",
+      "sha256": "9b4006bce4bf62db3541438791f1ebbb95474a07e0c26f3468533a40074a7d2c",
+      "bytes": 3054
+    },
+    {
+      "file": "rea-evidence/corsi/h5p-summary-settled.png",
+      "sha256": "c49602c0eb30152e225ae696a4a687e9561b0d956818f0eb08b1b13767b57a68",
+      "bytes": 77059
+    },
+    {
+      "file": "rea-evidence/corsi/release-desktop-evidence.json",
+      "sha256": "c0e2e2c6a9b2cbba4fd9f2dac654d6a434ba898c2e73ecd8e8deabba69b82637",
+      "bytes": 767234
+    },
+    {
+      "file": "rea-evidence/corsi/release-desktop.json",
+      "sha256": "fd9d7f21ca417e183e152bb3f3d3bad1202dccb4d86cb96f5224e431266d3a42",
+      "bytes": 2510
+    },
+    {
+      "file": "rea-evidence/corsi/release-desktop.png",
+      "sha256": "bd6e83228c8e874a7d99e100e376c6838033a94e3ab18680c86f398ca55bae45",
+      "bytes": 110402
+    },
+    {
+      "file": "rea-evidence/corsi/release-desktop.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "rea-evidence/corsi/release-mobile-evidence.json",
+      "sha256": "20d7d9a3414f6aa0e4702205a589464beb654fb90f11858c31eb55c7809739e0",
+      "bytes": 477220
+    },
+    {
+      "file": "rea-evidence/corsi/release-mobile.json",
+      "sha256": "ae91b57dc2e3a9153251a3f493f6342baf6dda5460e28b88eb28a7e6a26a5b78",
+      "bytes": 2507
+    },
+    {
+      "file": "rea-evidence/corsi/release-mobile.png",
+      "sha256": "e44ccd46b18d52b2880515d322b5bdec4c43421d4a6459e3fddd817994ecf090",
+      "bytes": 60301
+    },
+    {
+      "file": "rea-evidence/corsi/release-mobile.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "rea-evidence/corsi/release-runtime-source.json",
+      "sha256": "5454fd2245f728dea8df9f3f4524d29ed24303b1cabc8489df4f494c48355270",
+      "bytes": 1677
+    },
+    {
+      "file": "rea-evidence/corsi/review/independent-review.json",
+      "sha256": "5fe46e6beacb519bc9c09087508b0d2081d01d4c4dd990059efe61018679cb87",
+      "bytes": 10369
+    },
+    {
+      "file": "rea-evidence/corsi/review/summary-v3.png",
+      "sha256": "c49602c0eb30152e225ae696a4a687e9561b0d956818f0eb08b1b13767b57a68",
+      "bytes": 77059
+    },
+    {
+      "file": "rea-evidence/corsi/runtime-source.json",
+      "sha256": "ef5ed16986232d9569931eb3a364c708cfb25bbb8dfc4f145cddd89a6df1ab8c",
+      "bytes": 1729
+    },
+    {
+      "file": "rea-evidence/corsi/shipped/LICENSE",
+      "sha256": "7ab92e9f51962536ec96030ca56e0dcd0b7c7d7c76fefa38cc4f555ea3bd5e65",
+      "bytes": 1064
+    },
+    {
+      "file": "rea-evidence/corsi/shipped/h5p-interactive-book.js",
+      "sha256": "34011742a5f16d7eb2d54f4f1c7e043598e53966866434e93177911373e85f23",
+      "bytes": 93721
+    },
+    {
+      "file": "rea-evidence/corsi/shipped/library.json",
+      "sha256": "4dbc4ad64a42afecb115c0bd37eb337f341b08646473c5224ca78936c0ec20a6",
+      "bytes": 1153
+    },
+    {
+      "file": "verifiche/README.md",
+      "sha256": "68fe7be62ab41b49c52adc379209db134e0dc79a601b4d1702156d8aed860fd4",
+      "bytes": 1947
+    },
+    {
+      "file": "verifiche/corsi/README.md",
+      "sha256": "42e676f9fd091e879023b67dc15953879c70dc6d9a3b2d7936014b002da9b2b5",
+      "bytes": 3756
+    },
+    {
+      "file": "verifiche/corsi/browser-evidence.json",
+      "sha256": "5ba6c40e6a1ffd18073af2c29ce2aea6f7ae61788bb7228dde5562aaad82ac4b",
+      "bytes": 4703
+    },
+    {
+      "file": "verifiche/corsi/budget.json",
+      "sha256": "cd456f7f6ad9dd6a8c58d10722ef434c6191cd1ea376b1f5bed6f5d62958296f",
+      "bytes": 1229
+    },
+    {
+      "file": "verifiche/corsi/consegna-precedente/CREATOR-E-STUDIO.md",
+      "sha256": "bc65602f36f6b26d74dfea84bbd3e814aadb08e361a3ea346e758d394e6fc8aa",
+      "bytes": 3973
+    },
+    {
+      "file": "verifiche/corsi/consegna-precedente/LEGGIMI.md",
+      "sha256": "6e113e5caf7fe5903e4db1e0d149c6339b1d182a465ea23059d449b31ef7a98a",
+      "bytes": 4540
+    },
+    {
+      "file": "verifiche/corsi/consegna-precedente/ardesia-next.patch",
+      "sha256": "a53fee88305a622fa80e40ac95e729e7914bc6eba372d67a1eecaa9e54c1f1e5",
+      "bytes": 891928
+    },
+    {
+      "file": "verifiche/corsi/consegna.patch",
+      "sha256": "1bf00406b9d302448bd8d6678a1e51119d0a0f434f775a17f64c62e3c575d766",
+      "bytes": 1061353
+    },
+    {
+      "file": "verifiche/corsi/courses-e2e-release-02.log",
+      "sha256": "7449d812eef94977d2a342070c8a08e216d5c95139269d559c8814229e8a040a",
+      "bytes": 25497
+    },
+    {
+      "file": "verifiche/corsi/courses-status-release.log",
+      "sha256": "d1b039bd5b0aa59a71b9be856955b7adcdc47ad8731e544adfb7e73c7b590907",
+      "bytes": 16276
+    },
+    {
+      "file": "verifiche/corsi/courses-verify-release-02.log",
+      "sha256": "d9a8a87851c9dc242a72fbc90319aa28cb27f33d9b32f81828295ac0de90ce84",
+      "bytes": 33902
+    },
+    {
+      "file": "verifiche/corsi/e2e.json",
+      "sha256": "2ff9156aa593a9d3fa015f2439505e02267011653f466db3e7e4ed58d0c8e419",
+      "bytes": 174031
+    },
+    {
+      "file": "verifiche/corsi/esito-consegna.json",
+      "sha256": "e04c53f652c70f7995ce37f8e0d22fb8c920e6f28deaa313ea5205621d4ecca0",
+      "bytes": 6018
+    },
+    {
+      "file": "verifiche/corsi/intermedi/courses-build-03.log",
+      "sha256": "63c2ee480e0bc9322b70bdfd99cd75a1a4a04dd35016f44160cf00ebf309ccf2",
+      "bytes": 5444
+    },
+    {
+      "file": "verifiche/corsi/intermedi/courses-core-01.log",
+      "sha256": "6ed71bcb8bfa3597531c8a774fbe8d808c43768ca8c69907ef1e1baed3dab735",
+      "bytes": 333
+    },
+    {
+      "file": "verifiche/corsi/intermedi/courses-e2e-01.log",
+      "sha256": "736cf7ee110ce7dabac7fe2efecd85fa6782f502a85d592c234a282457f2b458",
+      "bytes": 2296
+    },
+    {
+      "file": "verifiche/corsi/intermedi/courses-e2e-02.log",
+      "sha256": "d73f3f21b6323e05fe5561aa215c2f55ddaa4d3380bd9ac690e5a53cec6ac9bf",
+      "bytes": 2834
+    },
+    {
+      "file": "verifiche/corsi/intermedi/courses-migrations-02.log",
+      "sha256": "10751dd9fb28ad99d05f51b27f815af01016c053c9f954cb61bdb0ea64fc6697",
+      "bytes": 4138
+    },
+    {
+      "file": "verifiche/corsi/intermedi/courses-typecheck-01.log",
+      "sha256": "3649f1e24f21faa7f7bc909071238893f54d0bab8b16bf33e3c76f2647814b8a",
+      "bytes": 4343
+    },
+    {
+      "file": "verifiche/corsi/intermedi/courses-typecheck-02.log",
+      "sha256": "7ba0855ee26fa168ecfb6ab90ee2b6fb55f4cae7609d6249167d74709fc35ee5",
+      "bytes": 48
+    },
+    {
+      "file": "verifiche/corsi/intermedi/courses-typecheck-03.log",
+      "sha256": "5f3bcae7596ab0db2a14bedb213d7eb9154da8afbdaeb01bb852458b0b627635",
+      "bytes": 293
+    },
+    {
+      "file": "verifiche/corsi/intermedi/courses-typecheck-04.log",
+      "sha256": "5f3bcae7596ab0db2a14bedb213d7eb9154da8afbdaeb01bb852458b0b627635",
+      "bytes": 293
+    },
+    {
+      "file": "verifiche/corsi/intermedi/courses-typecheck-05.log",
+      "sha256": "517b9e529ca6b51b5c6f1bd74d2801ba5d9ac79c00d237bb38964fb3330a72c3",
+      "bytes": 617
+    },
+    {
+      "file": "verifiche/corsi/intermedi/courses-typecheck-06.log",
+      "sha256": "e006105e6fc0990704c69426273455965351453fcffb4015e8ac994399b6d564",
+      "bytes": 754
+    },
+    {
+      "file": "verifiche/corsi/intermedi/courses-typecheck-07.log",
+      "sha256": "7ba0855ee26fa168ecfb6ab90ee2b6fb55f4cae7609d6249167d74709fc35ee5",
+      "bytes": 48
+    },
+    {
+      "file": "verifiche/corsi/intermedi/courses-unit-01.log",
+      "sha256": "c160fdad3a700d84bc106f752666bd0e3d5d3fe7cd2c32d089d03ce46f470c5b",
+      "bytes": 31478
+    },
+    {
+      "file": "verifiche/corsi/intermedi/courses-verify-01.log",
+      "sha256": "73208d441109e3038505c00ef6d434c070c9c43b17440c8eb82db1ea9888b550",
+      "bytes": 14697
+    },
+    {
+      "file": "verifiche/corsi/intermedi/courses-verify-02.log",
+      "sha256": "7a5f032d2d883b6e5bcb1689c7ca65b2ea5d968d3feb171122471b404cf2eb9f",
+      "bytes": 33984
+    },
+    {
+      "file": "verifiche/corsi/intermedi/courses-verify-03.log",
+      "sha256": "7bbd6500bb47bd5c46f9fd6a780f579c25a174e12fcd0c6f47daf8fca0ab4d80",
+      "bytes": 33929
+    },
+    {
+      "file": "verifiche/corsi/intermedi/courses-verify-final.log",
+      "sha256": "b03922b5c1b7093ccb6eae39c608f7ef7d5830d3421ef7d1ec8e9eaeef3ae094",
+      "bytes": 33912
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/browser-evidence.json",
+      "sha256": "47fca1d6328f0958535f2211223e1b54f35df43d9ec7bb57187bb4cddfd29e1b",
+      "bytes": 4706
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/budget.json",
+      "sha256": "760fe070d3dcb35383b9c4495b1eaa5de7a87caa493aa02f4b68b0014755d8b9",
+      "bytes": 1229
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/bundle-transport.json",
+      "sha256": "a3682e7093ed927c1efcd0305c32f52f13dff40c50c81a5eeb8bb21ae913459f",
+      "bytes": 897
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/desktop-chromium-m1-spring.png",
+      "sha256": "0df83e7db699c732e0211a79996b160c2650b4f5737a74adcc36c56ea001a357",
+      "bytes": 106696
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/desktop-chromium-m2-marketplace.png",
+      "sha256": "4ceb3b361c4343728b1b30258987a34712d97c4bc6baec4144e8275f203ce111",
+      "bytes": 159319
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/desktop-chromium-m4-flow.png",
+      "sha256": "3fd83bcf8a2e903b39bb7df5453bce723055f50101fe0b08ed9b1f5248f3b907",
+      "bytes": 95847
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/desktop-chromium-m4-pressure.png",
+      "sha256": "4356639df045420eb26027396fe99d9854b7437abdb465f90ee5cf8c442724c1",
+      "bytes": 95678
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/desktop-chromium-offline-ink.png",
+      "sha256": "c5ca29049518f297e581f054196cff20fccb1990acb9684bc1759d6f341620ca",
+      "bytes": 128434
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/desktop-chromium-workspace.png",
+      "sha256": "9b1fafcdb370e84d88a3e7db610f7a8b48cfb5a2ec84eb14d966a9eab5c0f3e8",
+      "bytes": 95794
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/e2e.json",
+      "sha256": "bc93733b9b44350ef46e3f5df4f11cc5dac1cafcf1b77823a4f15f463c9d2add",
+      "bytes": 182818
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/e2e.log",
+      "sha256": "bb56124da20986cd3085ebca3b4f190e4c552d8866471a06aab90b6560dc0c48",
+      "bytes": 33157
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/m4-preparation.json",
+      "sha256": "169c3c6ad2e3d4690f3f05df9dd8e0abdf34b41d0c7a17cb83809ebed0d794d3",
+      "bytes": 16306
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/mcp-runtime.json",
+      "sha256": "a262740d164588eb0763501e2bc365588df702ec0bdead431626c3bf24a0598d",
+      "bytes": 2032
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/mobile-chromium-m1-spring.png",
+      "sha256": "19d5e746d74ab178bfe9661056c75619b41e773da38354909509737d0f8d794a",
+      "bytes": 209512
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/mobile-chromium-m2-marketplace.png",
+      "sha256": "293a5ec401755ea39b0a4d093bfbdf12fd92d7ae758bec0fcfa978daf6abc816",
+      "bytes": 233958
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/mobile-chromium-m4-flow.png",
+      "sha256": "3e7d097e0fae7cb274cb11538a09f87ad5a82c56056b3ed48a4b037fd9e9c2a1",
+      "bytes": 207580
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/mobile-chromium-m4-pressure.png",
+      "sha256": "498a2de3995b9a2abd6effc8d6b2d25caf7663c99d9d67f9bac77623bdfe91b1",
+      "bytes": 204807
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/mobile-chromium-offline-ink.png",
+      "sha256": "ed341804553ed0e226d14f8602279af086de965d1cc7bd8245b30b644de19b5a",
+      "bytes": 310470
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/mobile-chromium-workspace.png",
+      "sha256": "b2653cb4456d68aab50d2086c7225fd45797480fa2df490af447f14f2780de2e",
+      "bytes": 217235
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/server-runtime.json",
+      "sha256": "09f46664821c806339d668e55d6fdaeeee513b5b91b92a9e52cb0dbd744163ad",
+      "bytes": 928
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/status.json",
+      "sha256": "e85de86751b017694c7d883467a0004596fcacd5915738f80a12dccbc51ffed3",
+      "bytes": 16222
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/.last-run.json",
+      "sha256": "bb73b00e59adae08ca43e2a26481e4c0dff53500e287c3cd625062019da0cd0d",
+      "bytes": 145
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/audio-records-synthetic-au-dedf7-s-a-transcript-after-reload-desktop-chromium/replay.png",
+      "sha256": "f2747203f158a962fe43c207d840b92c592ca7140e68d4c32e5867e9ac8562cd",
+      "bytes": 154303
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/audio-records-synthetic-au-dedf7-s-a-transcript-after-reload-mobile-chromium/replay.png",
+      "sha256": "327ec5d5825600cae79ac68ff41d4d370a9ea6261fb32461e838be4b5aa9191d",
+      "bytes": 246570
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/creator-Creator-composes-a-5c1ad-act-next-definition-version-desktop-chromium/creator-composition.png",
+      "sha256": "a8b416caf409d8368f27bbcedb4458cfc99cc4e6960530a3180ec9dabd7160f2",
+      "bytes": 145199
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/creator-Creator-composes-a-5c1ad-act-next-definition-version-mobile-chromium/creator-composition.png",
+      "sha256": "2334154b4193c2c8cab697cc0693640424685d289fa41435cf3e4a3d8d1eec51",
+      "bytes": 147720
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/creator-Creator-preserves--cec01-local-plot-variable-capture-desktop-chromium/future.ardesia.json",
+      "sha256": "de6ae2f3aad746805f4c8ac646d7175a130a467dedd20f51affe179312c4832b",
+      "bytes": 2033
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/creator-Creator-preserves--cec01-local-plot-variable-capture-mobile-chromium/future.ardesia.json",
+      "sha256": "dedbbb646250bf433f7104a77c7084b4a1eef611a6c760110fe3bd3521a77b3d",
+      "bytes": 2033
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/creator-Creator-rename-upd-7483e-source-lineage-for-reimport-desktop-chromium/extension.ardesia.json",
+      "sha256": "d70468b698bbe7a59765855a6e641b93ed6214eb928b052e9e59cd58848ac84c",
+      "bytes": 2939
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/creator-Creator-rename-upd-7483e-source-lineage-for-reimport-mobile-chromium/extension.ardesia.json",
+      "sha256": "b7de7584aedb6ba40092d5e0683cb63b05bb910e0987cdc6a41361a3762d67df",
+      "bytes": 2938
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/creator-studio-keeps-conte-a98a6-at-desktop-and-mobile-sizes-desktop-chromium/creator.png",
+      "sha256": "894a8c20dbbd76aa62016783d85f9ce711fe281336e3d81109c3a19cfbaff625",
+      "bytes": 93030
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/creator-studio-keeps-conte-a98a6-at-desktop-and-mobile-sizes-desktop-chromium/studio.png",
+      "sha256": "82a2d71ebe8deb88259e707e3425d592b39d842e60134190920fce384bd8cd69",
+      "bytes": 93014
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/creator-studio-keeps-conte-a98a6-at-desktop-and-mobile-sizes-mobile-chromium/creator.png",
+      "sha256": "2095036dad72622161aa293b8b2ed3e18e6a1f22fc8e772ac46d48eccfc1ffe1",
+      "bytes": 161932
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/creator-studio-keeps-conte-a98a6-at-desktop-and-mobile-sizes-mobile-chromium/studio.png",
+      "sha256": "7abd8a9f508578cfb74d85c6c5ed1c25e88fe213f62226e5e3b863bb68eb1837",
+      "bytes": 214400
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-desktop-chromium/learner-diary.png",
+      "sha256": "419dc6db03cfdb5eda292a84f46688a41696cd5dea912af048baa85e29431611",
+      "bytes": 110760
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-desktop-chromium/teacher-feedback.png",
+      "sha256": "aea86fbe6661a62ec79e11e742b097c776c2fb4fe909140c4fb92bb1f01edd4b",
+      "bytes": 184595
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-mobile-chromium/learner-diary.png",
+      "sha256": "650217e7ef43d3da279fb84ff43275e9910e1d9d8c10ad10158f92ce1424488c",
+      "bytes": 234912
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/feedback-feedback-correcti-a724c-urces-and-revocable-sharing-mobile-chromium/teacher-feedback.png",
+      "sha256": "cce3a5ba74f2fc63e4046e617912e1423625e71ca52661246cae47ca58922648",
+      "bytes": 295744
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-desktop-chromium/handout.pdf",
+      "sha256": "9acd369576797b25a4d1296ae02ee2a902dd27df0d7de03fa28a13d7211d2a0f",
+      "bytes": 271270
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-desktop-chromium/handout.png",
+      "sha256": "4d260eb0ae951aa33604c6866c7cd21a6c9d46a9b23da8747e5b2cd7b0d999f5",
+      "bytes": 183369
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-desktop-chromium/lesson.tex",
+      "sha256": "2d080eea3b677193d230fc6bacbaf87a4ce993def97ffbefd43a47476078c2f8",
+      "bytes": 33345
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-mobile-chromium/handout.pdf",
+      "sha256": "e42b0230414c641b364c2489711b8cbf49bfd43161bac10bb302a5d990e4ddbc",
+      "bytes": 271323
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-mobile-chromium/handout.png",
+      "sha256": "3e649ccc6d9aa1a1b44ea7e9f234df55ab240f1cdddc0b5f68115831bccc26da",
+      "bytes": 225437
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/handout-handout-exports-a--6e817-ink-without-mutating-drafts-mobile-chromium/lesson.tex",
+      "sha256": "442019691ebfb3a2f7f4f1462cfafba3f8b19696dd6b07b0319fb74106ee5cba",
+      "bytes": 33323
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/handout-offline-handout-us-6f48a-ves-pending-ink-recoverable-desktop-chromium/offline-handout.pdf",
+      "sha256": "c2961f071842336626976de7f42cec5546b502d53cfe7366a277d0649ffa7807",
+      "bytes": 223612
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/handout-offline-handout-us-6f48a-ves-pending-ink-recoverable-mobile-chromium/offline-handout.pdf",
+      "sha256": "a3b8a97b707333c224c0cfe0cfac9101c7ca294478f21bda10e7ef1c2421143d",
+      "bytes": 223815
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/m3-acceptance--QA-acceptan-d8529-eight-browser-counterproofs-desktop-chromium/test-failed-1.png",
+      "sha256": "2e5ccacb589a0279e602dd9b93c2e97c6e2868f5b8bf7cf529cba4686ff02ab7",
+      "bytes": 153996
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/m3-acceptance--QA-acceptan-d8529-eight-browser-counterproofs-desktop-chromium/test-failed-2.png",
+      "sha256": "45e7c0e69359cddd53ef6f093792feab3d165ac8d6b80b7861c67344c70e918d",
+      "bytes": 124791
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/m3-acceptance--QA-acceptan-d8529-eight-browser-counterproofs-desktop-chromium/test-failed-3.png",
+      "sha256": "9d68e86b6e5b5f8d2d7dc0edc8a71a5c4eafd43871d06a36b2bacc7df52dfc81",
+      "bytes": 26790
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/m3-acceptance--QA-acceptan-d8529-eight-browser-counterproofs-desktop-chromium/test-failed-4.png",
+      "sha256": "662da50e54f9e11887ea61cc0650bc314b310c10a669c49892b654a6081dee0e",
+      "bytes": 56929
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/m3-acceptance--QA-acceptan-d8529-eight-browser-counterproofs-mobile-chromium/test-failed-1.png",
+      "sha256": "60ff2f1147aa36e6c7bcd105913473bc532910cfac895ec92a978f398218d887",
+      "bytes": 128227
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/m3-acceptance--QA-acceptan-d8529-eight-browser-counterproofs-mobile-chromium/test-failed-2.png",
+      "sha256": "220fddc92512124e6a389a550103f279e1e23207e1d5c318fcd2999893919caf",
+      "bytes": 149836
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/m3-acceptance--QA-acceptan-d8529-eight-browser-counterproofs-mobile-chromium/test-failed-3.png",
+      "sha256": "7bd0b453cec94666167c5141efda8e7f4ac193d478ed33e7de254ad0e7f6fe29",
+      "bytes": 60762
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/m3-acceptance--QA-acceptan-d8529-eight-browser-counterproofs-mobile-chromium/test-failed-4.png",
+      "sha256": "7424e42231ea79c6fc47e0601ed92205aa7d20ce893528de484ecff5d65ecf62",
+      "bytes": 141463
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/poiseuille--M4-flow-learne-58714-ndent-reopen-and-revocation-desktop-chromium/m4-learner-flow.png",
+      "sha256": "1fbc4c816331780960d415f88042deca1de763336329ed0397c223197b222fd5",
+      "bytes": 521405
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/poiseuille--M4-flow-learne-58714-ndent-reopen-and-revocation-mobile-chromium/m4-learner-flow.png",
+      "sha256": "d2d7b6fb45c98e52a555ded17c4faf4318f3a2516c08040de40f5eed8c2987f5",
+      "bytes": 1678162
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/poiseuille--M4-pressure-le-54a82-ndent-reopen-and-revocation-desktop-chromium/m4-learner-pressure.png",
+      "sha256": "89e4b919a6b5de8e74c279b87034dceff48632cdfc940992c25c1c13c922828c",
+      "bytes": 526457
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/poiseuille--M4-pressure-le-54a82-ndent-reopen-and-revocation-mobile-chromium/m4-learner-pressure.png",
+      "sha256": "e4dfd08d7c24d804d568887d8e76e9f0529f0da105b9628de954d7bc573cb8ef",
+      "bytes": 1690875
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-desktop-chromium/student-first-session.png",
+      "sha256": "d6a534a66ed0f54d491c41cb1cfd2fc7446bb5c419b08ff8def1e4f598f2e48a",
+      "bytes": 418634
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-desktop-chromium/student-independent-session.png",
+      "sha256": "8ca78d1b1a3c7227af1513b2b58da705efa733ce245ffee3756d411fefe9a691",
+      "bytes": 417144
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-mobile-chromium/student-first-session.png",
+      "sha256": "2809d4cd97041e895645c280d47e67ca1484aa1a468bd413e3d34443b82aea98",
+      "bytes": 1292461
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/test-results/remote-continuity--M3-teac-537f4-across-independent-sessions-mobile-chromium/student-independent-session.png",
+      "sha256": "2809d4cd97041e895645c280d47e67ca1484aa1a468bd413e3d34443b82aea98",
+      "bytes": 1292461
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/unit.json",
+      "sha256": "828955cea0e2073e7ae4a065753c7c7ae49af40943b19b770b1bccb55fedf544",
+      "bytes": 202640
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/verification.json",
+      "sha256": "fe2c7880b21d06edf430970bd97491d983b098544e3018587e1a8f9c7b1a99f8",
+      "bytes": 1072
+    },
+    {
+      "file": "verifiche/corsi/intermedi/dd3/verify.log",
+      "sha256": "1b23de477588683e488542188a79589b32472094dac6fc255a04e19e85a1a643",
+      "bytes": 33933
+    },
+    {
+      "file": "verifiche/corsi/intermedi/mirato-12-browser-evidence.json",
+      "sha256": "461cd555bf1bd260882db410e6ebba5220ffac5f3a0b7928620b7dbe912c749c",
+      "bytes": 602
+    },
+    {
+      "file": "verifiche/corsi/intermedi/mirato-12-e2e.json",
+      "sha256": "1496927752390e7b31f98d4a9078a2007bce27cd84d2695f66d12021e5ccbe1a",
+      "bytes": 15971
+    },
+    {
+      "file": "verifiche/corsi/login-budget-dd3.json",
+      "sha256": "c63d41bf19b642c3cd3952f6c98cfa39a33d9cf6e9c0fed7d2b91553f78c4e71",
+      "bytes": 915
+    },
+    {
+      "file": "verifiche/corsi/manuale-mac.json",
+      "sha256": "fa5c2599ee631f0012a60a67d1c3588a34ced2329b8c4f07cbfba5d26e893a23",
+      "bytes": 1344
+    },
+    {
+      "file": "verifiche/corsi/mcp-runtime.json",
+      "sha256": "b469d7d0497715b8be6e74b954696627895fc397e5deedbe22b0ccc7bbf9c02b",
+      "bytes": 2032
+    },
+    {
+      "file": "verifiche/corsi/preview-migration.json",
+      "sha256": "2f01c768174494c8b572903e3082d8572bd6e47149eb74ce32212c3b9373fda2",
+      "bytes": 428
+    },
+    {
+      "file": "verifiche/corsi/review-indipendente.json",
+      "sha256": "419741442eb3cc139b870624b4a8bd79c77f3423f43fd8bb49597cab3204f00b",
+      "bytes": 3074
+    },
+    {
+      "file": "verifiche/corsi/review-indipendente.md",
+      "sha256": "a2c2a37924c29537e6b1f4b5cd72db1907bcd2dff284cdf2b6a0a37d3a5cb392",
+      "bytes": 1614
+    },
+    {
+      "file": "verifiche/corsi/server-runtime.json",
+      "sha256": "2f0ca269284014364443e02e6c18656c1efb9d4972c2c1b52970ac8df81de116",
+      "bytes": 928
+    },
+    {
+      "file": "verifiche/corsi/source-files.json",
+      "sha256": "1962ff2912829d0aa198959d522fa4f168e934ffd8fe365a89e082cdbe78a1ff",
+      "bytes": 54539
+    },
+    {
+      "file": "verifiche/corsi/status.json",
+      "sha256": "d1edeefb232f29d411caf523a6b47c99984801e31ef50f0b09561c4373c98585",
+      "bytes": 16222
+    },
+    {
+      "file": "verifiche/corsi/unit.json",
+      "sha256": "7efc4d5ffc6e6870ce31166b9c17637040e6207e9ea0d7c6a1518366575454ed",
+      "bytes": 202591
+    },
+    {
+      "file": "verifiche/corsi/verification.json",
+      "sha256": "fe398401dbfbb74f768b757ce938ab93d106204819c13d76162da6b7f69bbac6",
+      "bytes": 1072
+    },
+    {
+      "file": "verifiche/esito.json",
+      "sha256": "e04c53f652c70f7995ce37f8e0d22fb8c920e6f28deaa313ea5205621d4ecca0",
+      "bytes": 6018
+    }
+  ]
+}

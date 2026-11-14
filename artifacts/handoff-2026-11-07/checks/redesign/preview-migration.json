@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-11-07T13:36:43.579Z",
+  "database": "ardesia_local_preview",
+  "migration": {
+    "version": 4,
+    "digest": "4d65075ec977c1b9baae276a375bebf43c2efe561a41efda0f0807a3c67b1f5b"
+  },
+  "workspaces": 1,
+  "beforeHash": "645d502e1c02819cf192e46edcf101e78817374b5b9d8683ee95790b2b459972",
+  "afterHash": "645d502e1c02819cf192e46edcf101e78817374b5b9d8683ee95790b2b459972",
+  "workspaceDataUnchanged": true
+}

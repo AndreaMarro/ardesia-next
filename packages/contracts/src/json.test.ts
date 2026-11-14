@@ -63,7 +63,7 @@ describe('finite event JSON and historical wire compatibility', () => {
       ...(schemaVersion === 3 ? {installations: []} : {})};
     const bytes = JSON.stringify(original);
     const opened = CoreSnapshotSchema.parse(migrateSnapshotForOpen(original));
-    expect(opened.schemaVersion).toBe(4);
+    expect(opened.schemaVersion).toBe(9);
     expect(opened.events[0]?.payload).toEqual(legacyJson.parse(payload));
     expect(opened.receipts).toEqual([receipt]);
     expect(opened.documents).toEqual([document]);

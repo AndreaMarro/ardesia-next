@@ -1,0 +1,13 @@
+# Correzione del watchdog dopo la prima CI
+
+La [prima CI della PR #50](https://github.com/AndreaMarro/ardesia-next/actions/runs/42403006290), sul commit `045fa205c5a0fad97fefa774fc6f0de8a87c1aed`, ha concluso Verify con **551/552 test passati**. Il probe di allocazione QuickJS ha impiegato 2482 ms rispetto ai 2000 ms richiesti dal test sincrono; gli step successivi sono stati saltati. Log e report originali sono conservati qui. L'archivio GitHub originale aveva SHA-256 `259dedb16e9dc36991bc5a24f01b97ca615660b3a7c0dc2927e8038d65281439`; non viene duplicato perché includeva l'intera precedente consegna.
+
+Il [probe locale](probe.json) osserva una sola callback di interruzione, 1056–1216 ms quasi interamente in evalCode e teardown inferiore a 1 ms: un intrinsic nativo può ritardare il controllo cooperativo. La [diagnosi indipendente](diagnosis.md) distingue questo fatto dal watchdog esterno e rileva una lacuna reale: la prima esecuzione riceveva anche i 15 s del bootstrap.
+
+La correzione separa initialize/ready con nonce della sessione. Prima del ready non si inviano codice o stato utente; 15 s sono riservati a caricare WASM, 2 s valgono per **ogni** esecuzione. Tick solo dopo readiness, coda sempre limitata a 16, risposte duplicate/estranee/tardive inerti. Heap 16 MiB, stack 128 KiB e tutte le altre quote sono invariati. I limiti sono condivisi fra interprete e sessione.
+
+Il vecchio stress di memoria resta nei test dell'interprete e nel browser reale; la sua durata sincrona non viene più scambiata per una garanzia del Worker. Un'allocazione singola oltre 16 MiB è rifiutata anche disattivando nel solo test la callback cooperativa, isolando la prova della memoria. I test della sessione asseriscono esattamente 15.000 ms di bootstrap e 2.000 ms per prima e successive esecuzioni, senza allargare soglie, oltre a coda, consenso/versione, stop e riavvio. Questo non certifica tempo reale su browser sospesi o hardware arbitrario.
+
+Validazione locale della correzione: **Verify 8/8, 558/558 test; 12/12 scenari browser dedicati ai programmi**, zero falliti/saltati/flaky. Server 5/5 e MCP 15/15. Sorgente `0c4c2493f19cd14835d38c7d900725fae1ed4af0b2d03c3ae3b4f361f7e9fdee`; HEAD base `045fa205` più working tree, precedente al commit di pubblicazione. La suite browser completa della nuova sorgente spetta alla successiva CI: l'esito e il commit esatti sono nella [PR #50](https://github.com/AndreaMarro/ardesia-next/pull/50). Non si trasferiscono i 191 browser o i 42 passi REA della sorgente `290f597d…` a questa revisione.
+
+Review della patch: [relazione](review.md). La review indipendente non è un'accettazione dell'intero prodotto né della CI non ancora eseguita. Il prodotto resta **NOT_COMPLETE**, nessun merge/deploy remoto.

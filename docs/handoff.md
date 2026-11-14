@@ -1,5 +1,8 @@
 # Handoff operativo — Ardesia Next
 
+> Consegna applicativa del 7 novembre: [handoff oggettivo](handoffs/2026-11-07.md). Distingue candidato, main, procedura, preview e accettazione; non modifica il cursore né retrodata le prove.
+
+
 **Ingresso corrente dal 31 ottobre:** [START_HERE](START_HERE.md), [coordination.json](../operations/coordination.json) e [manuale operativo](operations.md). Questo documento conserva ownership e gate originali; le sezioni M0 e i riferimenti alla repository privata sono storici. Le osservazioni non sono un PASS trasferibile a un nuovo candidato. Lo [storico unico](history.md) indicizza le supersessioni; non creare nuovi handoff concorrenti.
 
 **Indice corrente:** [osservazioni infrastrutturali datate](../operations/m3-environment.json), [esecuzione locale/remota dei test](../e2e/README.md) e `npm run status` per i gate generati sulla revisione verificata. Le osservazioni di accesso/provisioning del 29 ottobre sono storiche; non ripetere risorse già presenti. Una regressione remota parziale non accetta M3.

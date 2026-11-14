@@ -19,3 +19,13 @@ export async function newLesson(core: CoreService, actor: Actor, title: string):
   await core.execute(actor, {kind: 'create-document', commandId: crypto.randomUUID(), documentId, expectedRevision: 0, title});
   return documentId;
 }
+
+/** Pending add-object footprints reserve placement; only ink is drawn as a visual draft. Never apply them to Core, Notebook, export or revision history. */
+export function pendingObjectsForDocument(pending: readonly import('@ardesia/remote-client').PendingCommand[], workspaceId: string, documentId: string): NewEducationalObject[] {
+  return pending.flatMap(entry => {
+    const request = entry.request;
+    return entry.workspaceId === workspaceId && request.action === 'command' && request.workspaceId === workspaceId
+      && request.command.documentId === documentId && request.command.kind === 'add-object'
+      ? [request.command.object] : [];
+  });
+}

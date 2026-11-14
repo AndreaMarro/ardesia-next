@@ -1,0 +1,80 @@
+{
+  "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "sourceDigest": "ab181bddd390c15fe74a1a09f29d0dc3c3208e4936d540943779a5cbdc576e8a",
+  "generatedAt": "2026-11-07T15:50:46.302Z",
+  "schemaVersion": 1,
+  "kind": "ardesia-mcp-stdio-local",
+  "remoteAcceptance": false,
+  "hostCompatibility": "NOT_TESTED",
+  "sdk": "2.4.0",
+  "runtime": "v24.22.1",
+  "checks": [
+    {
+      "name": "restricted-postgres-and-live-http",
+      "passed": true
+    },
+    {
+      "name": "official-client-stdio-discovery-readonly-strict-input",
+      "passed": true
+    },
+    {
+      "name": "real-core-create-compose-edit-search-exact-history",
+      "passed": true
+    },
+    {
+      "name": "official-client-new-type-create-edit-exact-history",
+      "passed": true
+    },
+    {
+      "name": "official-client-program-source-state-roundtrip-no-implicit-execution",
+      "passed": true
+    },
+    {
+      "name": "official-client-course-authoring-edition-privacy-and-revocation",
+      "passed": true
+    },
+    {
+      "name": "lost-response-process-restart-identical-receipt-no-duplicate",
+      "passed": true
+    },
+    {
+      "name": "concurrent-web-edit-cas-conflict",
+      "passed": true
+    },
+    {
+      "name": "student-private-records-excluded-and-assignment-revoked-live",
+      "passed": true
+    },
+    {
+      "name": "official-client-cancellation-and-eof-abort-upstream",
+      "passed": true
+    },
+    {
+      "name": "configuration-change-and-session-logout-fail-closed",
+      "passed": true
+    },
+    {
+      "name": "isolated-resource-cleanup",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "artifactSha256": "28bc0fb73484233790e59d5c6ef8b302b7080e39b91158a0aa633db40205db12",
+  "toolNamesReadOnly": [
+    "ardesia_list_workspaces",
+    "ardesia_search",
+    "ardesia_read_document",
+    "ardesia_read_object_revision",
+    "ardesia_search_courses",
+    "ardesia_read_course"
+  ],
+  "observed": {
+    "commandRequests": 15,
+    "successfulHttpWriteResponses": 13,
+    "exactDocumentRevision": 11,
+    "privateLearnerDataReturned": false,
+    "credentialsReturned": false,
+    "aiInferenceUsed": false
+  },
+  "durationMs": 2160
+}

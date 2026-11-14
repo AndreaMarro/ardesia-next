@@ -1,0 +1,123 @@
+{
+  "kind": "ardesia-local-delivery",
+  "status": "VERIFIED_LOCAL_INCREMENT",
+  "increment": "tutor-studio",
+  "baseCommit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "sourceDigest": "097a685d9d53c9ef56f9454e72d142b32df793216a5dd950719c27d31bc0e87e",
+  "generatedAt": "2026-11-07T16:38:21.069Z",
+  "branch": "codex/lavagna-continuity-20261107",
+  "uncommitted": true,
+  "remotePublished": false,
+  "verification": {
+    "checks": 8,
+    "unitPassed": 536,
+    "browserPassed": 171,
+    "browserFailed": 0,
+    "browserFlaky": 0,
+    "browserSkipped": 0,
+    "serverChecks": 5,
+    "mcpChecks": 13
+  },
+  "budget": {
+    "metric": "core-and-optional-program-runtime-v2",
+    "initialJavaScriptGzipBytes": 197425,
+    "coreGzipBytes": 257825,
+    "optionalGzipBytes": 291660,
+    "allGzipBytes": 549485,
+    "limits": {
+      "coreGzipBytes": 278528,
+      "initialJavaScriptGzipBytes": 245760,
+      "optionalGzipBytes": 327680,
+      "optionalRawBytes": 1048576
+    },
+    "previousCoreComparison": {
+      "metric": "all-non-program-assets-gzip",
+      "bytes": 257825,
+      "limit": 245760,
+      "passed": false
+    },
+    "legacyComparison": {
+      "metric": "all-javascript-gzip-bytes",
+      "bytes": 315442,
+      "limit": 245760,
+      "passed": false
+    }
+  },
+  "canonicalProductStatus": {
+    "productAcceptance": "NOT_COMPLETE",
+    "deployment": "NOT_VERIFIED_FOR_CURRENT_COMMIT"
+  },
+  "preview": "http://127.0.0.1:4180/",
+  "reports": "tutor/",
+  "review": {
+    "schemaVersion": 1,
+    "kind": "independent-review-delivery-wrapper",
+    "sourceDigest": "097a685d9d53c9ef56f9454e72d142b32df793216a5dd950719c27d31bc0e87e",
+    "verdict": "FAVORABLE_NO_P1_P2_FOUND",
+    "originalVerdict": "FAVOREVOLE_INCREMENTO_LOCALE_TUTOR",
+    "reviewer": "/root/board_review",
+    "originalGeneratedAt": "2026-11-07T16:37:03.439Z",
+    "generatedAt": "2026-11-07T16:38:20.824Z",
+    "statementVerbatim": "**Esito: favorevole all’incremento locale Tutor.** Nessun rilievo confermato aperto e nessun requisito residuo per questa review locale. Non è accettazione del prodotto completo o del deployment.",
+    "scope": "Incremento locale Tutor; nessuna accettazione dell’intero prodotto o del deployment.",
+    "independence": {
+      "separateAgentContext": true,
+      "readOnly": true,
+      "humanReview": false,
+      "testsExecutedByReviewer": false,
+      "testsAndREACapturesExecutedBy": "root"
+    },
+    "method": {
+      "sourceReview": true,
+      "artifactReadback": true,
+      "independentDigestAndSizeRecalculation": true,
+      "testsExecutedByReviewer": false,
+      "servicesStartedByReviewer": false,
+      "sourceModifiedByReviewer": false,
+      "remoteMutation": false
+    },
+    "confirmedOpenFindings": [],
+    "remainingLocalReviewRequirements": [],
+    "remainingAcceptanceRequirements": [
+      "Accettazione del prodotto completo e deployment sulla sorgente finale restano fuori dal parere locale.",
+      "Migrazione preview e relativi confronti di dati non sono attestati da questa review; usare evidenze specifiche se richiesti dal gate di rilascio.",
+      "Verifiche fisiche iPad/Apple Pencil, Safari, app native e carichi produttivi restano aperte."
+    ],
+    "originals": [
+      {
+        "file": "review-original.json",
+        "sha256": "24913cb98a276506d935680cf3592503d4d50cdf0ae4e110461e8778bc3e4dcf",
+        "bytes": 14424
+      },
+      {
+        "file": "review-original.md",
+        "sha256": "5fff17c68ff7c622f72cf57473d8421acd1a7c9696e8f3e2d3b71439114dba21",
+        "bytes": 3589
+      }
+    ],
+    "mappingNote": "Il codice inglese sintetizza il parere originale favorevole locale e l’assenza di rilievi confermati aperti. Non costituisce un ulteriore giudizio né accettazione umana, del prodotto completo o del deployment."
+  },
+  "rea": {
+    "version": "6.8.0",
+    "report": "../rea-evidence/tutor/README.md",
+    "sourceAssociation": "Separate build-info and served asset hashes; REA has no intrinsic source identity"
+  },
+  "patch": {
+    "path": "../ardesia-next.patch",
+    "sha256": "5af20e20939aa5035106f9418c0d165623859ff8629723abbfec7c73f44b99c2",
+    "bytes": 1280934,
+    "reverseApplyCheck": "PASS"
+  },
+  "limits": {
+    "nativeApps": "NOT_BUILT",
+    "iPadApplePencilSafari": "NOT_RUN",
+    "mobile": "VIEWPORT_EMULATION_ONLY",
+    "calendarProvider": "NOT_IMPLEMENTED",
+    "moneyTransfers": "NOT_IMPLEMENTED",
+    "fiscalAccountingCosts": "NOT_IMPLEMENTED",
+    "tutorOffline": "NOT_IMPLEMENTED",
+    "commercialAIHosts": "NOT_RUN",
+    "fullEcosystem": "IN_PROGRESS"
+  },
+  "previousDelivery": "programmable/esito-consegna.json"
+}

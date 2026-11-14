@@ -1,7 +1,17 @@
 import { z } from 'zod';
+import {MaterialDataSchema, InkAnchorSchema} from './materials.ts';
+export * from './materials.ts';
+import {ExtensionDataSchema} from './extensions.ts';
+export * from './extensions.ts';
+export * from './recordings.ts';
+export * from './courses.ts';
+export * from './tutor.ts';
+import {TutorRecordSchema, TutorEventSchema, TutorReceiptSchema} from './tutor.ts';
+export {projectDocumentRevision} from './document-history.ts';
+import {CourseSchema, CourseEditionSchema, CourseDeliverySchema, CourseWorkSchema, CourseEventSchema, CourseReceiptSchema} from './courses.ts';
 
-export const CONTRACT_VERSION = '0.4.0' as const;
-export const SNAPSHOT_VERSION = 4 as const;
+export const CONTRACT_VERSION = '0.10.0' as const;
+export const SNAPSHOT_VERSION = 9 as const;
 
 const identifier = z.string().min(1).max(200).regex(/^[A-Za-z0-9][A-Za-z0-9._:-]*$/);
 const title = z.string().trim().min(1).max(240);
@@ -15,6 +25,14 @@ export const ActorSchema = z.object({
   role: z.enum(['teacher', 'student']),
 }).strict();
 export type Actor = z.infer<typeof ActorSchema>;
+
+export const WorkspaceAccessSchema = z.enum(['owner', 'assigned']);
+export type WorkspaceAccess = z.infer<typeof WorkspaceAccessSchema>;
+/** Presentation of an authenticated server projection, never a grant from client input.
+ * Missing access preserves the old server contract: only teacher spaces were owned. */
+export function ownsWorkspace(value: {access?: WorkspaceAccess; actor: Actor}): boolean {
+  return (value.access ?? (value.actor.role === 'teacher' ? 'owner' : 'assigned')) === 'owner';
+}
 
 /** Canonical structural JSON used for persisted invariants; JSONB object key ordering is not data. */
 export function canonicalJson(value: unknown): string {
@@ -63,6 +81,7 @@ export const InkPointSchema = z.object({
   pressure: z.number().finite().min(0).max(1),
 }).strict();
 export const InkDataSchema = z.object({
+  anchor: InkAnchorSchema.optional(),
   points: z.array(InkPointSchema).min(1).max(20_000),
   color: z.string().regex(/^#[0-9a-fA-F]{6}$/),
   width: z.number().finite().min(0.5).max(40),
@@ -225,11 +244,13 @@ const inputFields = {
 };
 
 export const NewObjectSchema = z.discriminatedUnion('type', [
+  z.object({ ...inputFields, type: z.literal('material'), data: MaterialDataSchema }).strict(),
   z.object({ ...inputFields, type: z.literal('note'), data: NoteDataSchema }).strict(),
   z.object({ ...inputFields, type: z.literal('formula'), data: FormulaDataSchema }).strict(),
   z.object({ ...inputFields, type: z.literal('source'), data: SourceDataSchema }).strict(),
   z.object({ ...inputFields, type: z.literal('ink'), data: InkDataSchema }).strict(),
   z.object({ ...inputFields, type: z.literal('lab'), data: LabDataSchema }).strict(),
+  z.object({ ...inputFields, type: z.literal('extension'), data: ExtensionDataSchema }).strict(),
 ]);
 export type NewEducationalObject = z.infer<typeof NewObjectSchema>;
 
@@ -240,17 +261,21 @@ const objectFields = {
   revision,
 };
 export const EducationalObjectSchema = z.discriminatedUnion('type', [
+  z.object({ ...objectFields, type: z.literal('material'), data: MaterialDataSchema }).strict(),
   z.object({ ...objectFields, type: z.literal('note'), data: NoteDataSchema }).strict(),
   z.object({ ...objectFields, type: z.literal('formula'), data: FormulaDataSchema }).strict(),
   z.object({ ...objectFields, type: z.literal('source'), data: SourceDataSchema }).strict(),
   z.object({ ...objectFields, type: z.literal('ink'), data: InkDataSchema }).strict(),
   z.object({ ...objectFields, type: z.literal('lab'), data: LabDataSchema }).strict(),
+  z.object({ ...objectFields, type: z.literal('extension'), data: ExtensionDataSchema }).strict(),
 ]);
 export type EducationalObject = z.infer<typeof EducationalObjectSchema>;
+export type MaterialObject = Extract<EducationalObject, {type: 'material'}>;
 export type NoteObject = Extract<EducationalObject, { type: 'note' }>;
 export type FormulaObject = Extract<EducationalObject, { type: 'formula' }>;
 export type SourceObject = Extract<EducationalObject, { type: 'source' }>;
 export type InkObject = Extract<EducationalObject, { type: 'ink' }>;
+export type ExtensionObject = Extract<EducationalObject, { type: 'extension' }>;
 export type LabObject = Extract<EducationalObject, { type: 'lab' }>;
 
 /** Build an editable input without allowing callers to set status or authority fields. */
@@ -286,6 +311,7 @@ export const LessonDocumentSchema = z.object({
   for (const [index, object] of document.objects.entries()) {
     if (ids.has(object.id)) context.addIssue({ code: 'custom', message: 'Duplicate object ID', path: ['objects', index, 'id'] });
     ids.add(object.id);
+    if (object.type === 'ink' && object.data.anchor && !document.objects.some(o=>o.id===object.data.anchor!.objectId&&o.type==='material')) context.addIssue({code:'custom',message:'An annotation requires its material page',path:['objects',index,'data','anchor']});
     if (object.type === 'lab') {
       if (instances.has(object.data.instanceId)) context.addIssue({code: 'custom', message: 'Duplicate plugin instance ID', path: ['objects', index, 'data', 'instanceId']});
       instances.add(object.data.instanceId);
@@ -389,12 +415,25 @@ export type LearnerConsent = z.infer<typeof LearnerConsentSchema>;
 export const LearnerAttemptSchema = z.object({
   id: identifier, objectId: identifier, sourceObjectRevision: revision,
   answer: z.string().trim().min(1).max(10_000), createdAt: timestamp,
+  replyToFeedbackId: identifier.optional(),
 }).strict();
+export type LearnerAttempt = z.infer<typeof LearnerAttemptSchema>;
+export const FeedbackOutcomeSchema = z.enum(['revise', 'partial', 'demonstrated']);
+export const LearnerFeedbackSchema = z.object({
+  id: identifier, attemptId: identifier, authorId: identifier, createdAt: timestamp,
+  outcome: FeedbackOutcomeSchema, comment: z.string().trim().min(1).max(10_000),
+  nextStep: z.string().trim().max(4_000), supersedesFeedbackId: identifier.optional(),
+}).strict().superRefine((feedback, context) => {
+  if (feedback.outcome !== 'demonstrated' && !feedback.nextStep) context.addIssue({code: 'custom', message: 'Feedback requiring revision needs an explicit next step'});
+});
+export type LearnerFeedback = z.infer<typeof LearnerFeedbackSchema>;
 export const LearnerWorkSchema = z.object({
   documentId: identifier, studentId: identifier, revision,
   notes: z.string().max(100_000),
   labs: z.array(LearnerLabSchema).max(2_000),
   attempts: z.array(LearnerAttemptSchema).max(2_000),
+  // Absent in historical work/events. No defaults: old payloads and fingerprints stay exact.
+  feedback: z.array(LearnerFeedbackSchema).max(4_000).optional(),
   consents: z.array(LearnerConsentSchema).max(2_000),
   evidenceShared: z.boolean(), createdAt: timestamp, updatedAt: timestamp,
 }).strict().superRefine((work, context) => {
@@ -411,6 +450,22 @@ export const LearnerWorkSchema = z.object({
   }
   if (work.consents.some(consent => consent.actorId !== work.studentId)) {
     context.addIssue({code: 'custom', message: 'Learner consent must belong to the learner', path: ['consents']});
+  }
+  const attempts = new Map(work.attempts.map((attempt, index) => [attempt.id, {attempt, index}]));
+  const feedbackIds = new Set<string>(), latest = new Map<string, string>();
+  for (const feedback of work.feedback ?? []) {
+    if (feedbackIds.has(feedback.id) || !attempts.has(feedback.attemptId)
+      || feedback.supersedesFeedbackId !== latest.get(feedback.attemptId)) {
+      context.addIssue({code: 'custom', message: 'Feedback requires a unique identity, exact attempt and linear amendment history', path: ['feedback']});
+    }
+    feedbackIds.add(feedback.id); latest.set(feedback.attemptId, feedback.id);
+  }
+  for (const [index, attempt] of work.attempts.entries()) if (attempt.replyToFeedbackId) {
+    const feedback = work.feedback?.find(entry => entry.id === attempt.replyToFeedbackId);
+    const previous = feedback && attempts.get(feedback.attemptId);
+    if (!previous || previous.index >= index || previous.attempt.objectId !== attempt.objectId) {
+      context.addIssue({code: 'custom', message: 'A correction must refer to feedback on an earlier attempt for the same object', path: ['attempts', index]});
+    }
   }
 });
 export type LearnerWork = z.infer<typeof LearnerWorkSchema>;
@@ -429,6 +484,7 @@ export type AssignedLabAccess = z.infer<typeof AssignedLabAccessSchema>;
 export const LearningCommandKinds = [
   'assign-lesson', 'revoke-assignment', 'consent-lab', 'revoke-lab-consent',
   'save-learner-note', 'save-learner-lab', 'record-learner-attempt', 'share-learner-evidence',
+  'review-learner-attempt',
 ] as const;
 export const LearningCommandSchema = z.discriminatedUnion('kind', [
   z.object({...commandFields, kind: z.literal('assign-lesson'), studentId: identifier}).strict(),
@@ -439,7 +495,10 @@ export const LearningCommandSchema = z.discriminatedUnion('kind', [
   z.object({...commandFields, kind: z.literal('save-learner-lab'), expectedDocumentRevision: revision,
     objectId: identifier, instanceId: identifier, state: LabStateSchema}).strict(),
   z.object({...commandFields, kind: z.literal('record-learner-attempt'), expectedDocumentRevision: revision,
-    objectId: identifier, attemptId: identifier, answer: z.string().trim().min(1).max(10_000)}).strict(),
+    objectId: identifier, attemptId: identifier, answer: z.string().trim().min(1).max(10_000), replyToFeedbackId: identifier.optional()}).strict(),
+  z.object({...commandFields, kind: z.literal('review-learner-attempt'), studentId: identifier, attemptId: identifier,
+    feedbackId: identifier, outcome: FeedbackOutcomeSchema, comment: z.string().trim().min(1).max(10_000),
+    nextStep: z.string().trim().max(4_000), supersedesFeedbackId: identifier.optional()}).strict(),
   z.object({...commandFields, kind: z.literal('share-learner-evidence'), shared: z.boolean()}).strict(),
 ]);
 export type LearningCommand = z.infer<typeof LearningCommandSchema>;
@@ -456,9 +515,9 @@ export const LearningReceiptSchema = z.object({
 }).strict();
 export type LearningReceipt = z.infer<typeof LearningReceiptSchema>;
 
-export const WorkspaceEventSchema = /* @__PURE__ */ (() => z.union([CoreEventSchema, PluginEventSchema, LearningEventSchema]))();
+export const WorkspaceEventSchema = /* @__PURE__ */ (() => z.union([CoreEventSchema, PluginEventSchema, LearningEventSchema, CourseEventSchema, TutorEventSchema]))();
 export type WorkspaceEvent = z.infer<typeof WorkspaceEventSchema>;
-export const WorkspaceReceiptSchema = /* @__PURE__ */ (() => z.union([CommandReceiptSchema, PluginReceiptSchema, LearningReceiptSchema]))();
+export const WorkspaceReceiptSchema = /* @__PURE__ */ (() => z.union([CommandReceiptSchema, PluginReceiptSchema, LearningReceiptSchema, CourseReceiptSchema, TutorReceiptSchema]))();
 export type WorkspaceReceipt = z.infer<typeof WorkspaceReceiptSchema>;
 
 // Construction only allocates these schemas and registers validators. Marking the
@@ -471,6 +530,11 @@ export const CoreSnapshotSchema = /* @__PURE__ */ (() => z.object({
   installations: z.array(PluginInstallationSchema).max(1_000),
   assignments: z.array(LessonAssignmentSchema).max(10_000),
   learnerWork: z.array(LearnerWorkSchema).max(10_000),
+  tutorRecords: z.array(TutorRecordSchema).max(10_000),
+  courses: z.array(CourseSchema).max(500),
+  courseEditions: z.array(CourseEditionSchema).max(2_000),
+  courseDeliveries: z.array(CourseDeliverySchema).max(10_000),
+  courseWork: z.array(CourseWorkSchema).max(10_000),
   events: z.array(WorkspaceEventSchema).max(50_000),
   receipts: z.array(WorkspaceReceiptSchema).max(50_000),
 }).strict().superRefine((snapshot, context) => {
@@ -519,16 +583,52 @@ export const CoreSnapshotSchema = /* @__PURE__ */ (() => z.object({
       const key = installationKey(event.actorId, event.pluginId);
       if (!installationKeys.has(key) || event.installationRevision !== (latestInstallation.get(key) ?? 0) + 1) context.addIssue({code: 'custom', message: 'Invalid installation event or revision', path: ['events', index]});
       latestInstallation.set(key, event.installationRevision);
+    } else if ('tutorEntity' in event) {
+      if (event.tutorEntity !== event.payload.value.kind || event.entityId !== event.payload.value.id || event.entityRevision !== event.payload.value.revision || event.type !== event.payload.command.kind) {
+        context.addIssue({code: 'custom', message: 'Tutor event differs from its exact record', path: ['events', index]});
+      }
+    } else if ('courseEntity' in event) {
+      if (event.entityId !== event.payload.value.id || event.entityRevision !== event.payload.value.revision || event.type !== event.payload.command.kind) {
+        context.addIssue({code: 'custom', message: 'Course event identity differs from its value', path: ['events', index]});
+      }
     } else {
       const key = learningKey(event.lessonId, event.studentId);
       const streamKey = event.stream + ':' + key;
       const document = snapshot.documents.find(document => document.id === event.lessonId);
       const assignmentEvent = event.type === 'assign-lesson' || event.type === 'revoke-assignment';
+      const feedbackEvent = event.type === 'review-learner-attempt';
       if (!assignmentKeys.has(key) || event.learningRevision !== (latestLearning.get(streamKey)?.learningRevision ?? 0) + 1
         || (event.stream === 'assignment') !== assignmentEvent
-        || (assignmentEvent ? event.actorId !== document?.ownerId : event.actorId !== event.studentId)
+        || (assignmentEvent || feedbackEvent ? event.actorId !== document?.ownerId : event.actorId !== event.studentId)
         || (!assignmentEvent && !workKeys.has(key))) {
         context.addIssue({code: 'custom', message: 'Invalid learning stream identity or revision', path: ['events', index]});
+      }
+      if (!assignmentEvent) {
+        const data = event.payload && typeof event.payload === 'object' && !Array.isArray(event.payload) ? event.payload : null;
+        const work = LearnerWorkSchema.safeParse(data?.work);
+        const previous = data?.previous === null ? null : LearnerWorkSchema.safeParse(data?.previous);
+        const priorEvent = latestLearning.get(streamKey);
+        const priorPayload = priorEvent?.payload;
+        const prior = priorPayload && typeof priorPayload === 'object' && !Array.isArray(priorPayload) ? priorPayload.work : null;
+        if (!work.success || (previous && !previous.success) || canonicalJson(data?.previous ?? null) !== canonicalJson(prior)
+          || work.success && (work.data.documentId !== event.lessonId || work.data.studentId !== event.studentId || work.data.revision !== event.learningRevision)) {
+          context.addIssue({code: 'custom', message: 'Invalid learner work transition', path: ['events', index]});
+        } else if (work.success) {
+          const before = previous?.success ? previous.data : null;
+          const beforeFeedback = before?.feedback ?? [], afterFeedback = work.data.feedback ?? [];
+          const added = afterFeedback.at(-1);
+          if (feedbackEvent ? !before?.evidenceShared || !work.data.evidenceShared || afterFeedback.length !== beforeFeedback.length + 1
+            || canonicalJson(afterFeedback.slice(0, -1)) !== canonicalJson(beforeFeedback) || added?.authorId !== event.actorId || added?.createdAt !== event.occurredAt
+            || canonicalJson({...before, feedback: [], revision: 0, updatedAt: ''}) !== canonicalJson({...work.data, feedback: [], revision: 0, updatedAt: ''})
+            : canonicalJson(afterFeedback) !== canonicalJson(beforeFeedback)) {
+            context.addIssue({code: 'custom', message: 'Feedback can only be appended by the teacher to currently shared work', path: ['events', index]});
+          }
+          const beforeAttempts = before?.attempts ?? [];
+          if (canonicalJson(work.data.attempts.slice(0, beforeAttempts.length)) !== canonicalJson(beforeAttempts)
+            || work.data.attempts.length !== beforeAttempts.length + (event.type === 'record-learner-attempt' ? 1 : 0)) {
+            context.addIssue({code: 'custom', message: 'Attempts are immutable and only appended by their learner', path: ['events', index]});
+          }
+        }
       }
       latestLearning.set(streamKey, event);
     }
@@ -572,6 +672,16 @@ export const CoreSnapshotSchema = /* @__PURE__ */ (() => z.object({
           || event?.type !== 'change-plugin-release') context.addIssue({code: 'custom', message: 'Transition receipt does not cover a unique related document event', path: ['receipts', index, 'relatedEventIds']});
         receiptEventIds.add(relatedId);
       }
+    } else if ('tutorEntity' in receipt) {
+      if (!event || !('tutorEntity' in event) || event.tutorEntity !== receipt.tutorEntity || event.entityId !== receipt.entityId
+        || event.entityRevision !== receipt.entityRevision || event.payload.command.commandId !== receipt.commandId) {
+        context.addIssue({code: 'custom', message: 'Tutor receipt differs from its committed event', path: ['receipts', index]});
+      }
+    } else if ('courseEntity' in receipt) {
+      if (!event || !('courseEntity' in event) || event.courseEntity !== receipt.courseEntity || event.entityId !== receipt.entityId
+        || event.entityRevision !== receipt.entityRevision || event.payload.command.commandId !== receipt.commandId) {
+        context.addIssue({code: 'custom', message: 'Course receipt differs from its committed event', path: ['receipts', index]});
+      }
     } else {
       if (!event || !('lessonId' in event) || event.lessonId !== receipt.lessonId || event.studentId !== receipt.studentId
         || event.stream !== receipt.stream || event.learningRevision !== receipt.learningRevision) {
@@ -602,22 +712,88 @@ const MarketplaceSnapshotV3Schema = /* @__PURE__ */ (() => z.object({
 
 /** Versioned read-only migration. Historical bytes, consent and receipts are never rewritten on open. */
 export function migrateSnapshotForOpen(input: unknown): unknown {
+  if (input && typeof input === 'object' && 'schemaVersion' in input && [1,2,3,4,5,6,7,8].includes(input.schemaVersion as number)) {
+    const raw = input as Record<string, unknown>;
+    const array = (v: unknown): any[] => Array.isArray(v) ? v : [];
+    const candidates = array(raw.documents).flatMap(d => array(d?.objects));
+    for (const event of array(raw.events)) if (event && typeof event.documentId === 'string') {
+      candidates.push(event.payload?.object, event.payload?.previous);
+      for (const pair of array(event.payload?.objects)) candidates.push(pair?.object, pair?.previous);
+    }
+    for (const work of array(raw.learnerWork)) candidates.push(...array(work?.annotations));
+    if (candidates.some(o => o?.type === 'material' || o?.type === 'ink' && o.data?.anchor !== undefined)) return input;
+    if (input.schemaVersion === 8) {const parsed = CoreSnapshotSchema.safeParse({...input, schemaVersion: SNAPSHOT_VERSION}); return parsed.success ? parsed.data : input;}
+  }
+  const emptyTutor = {tutorRecords: []};
+  if (input && typeof input === 'object' && 'schemaVersion' in input && [1,2,3,4,5,6,7].includes(input.schemaVersion as number)) {
+    const events = 'events' in input && Array.isArray(input.events) ? input.events : [];
+    const receipts = 'receipts' in input && Array.isArray(input.receipts) ? input.receipts : [];
+    if ('tutorRecords' in input || [...events, ...receipts].some(entry => entry && typeof entry === 'object' && 'tutorEntity' in entry)) return input;
+    if (input.schemaVersion === 7) {
+      const candidate = CoreSnapshotSchema.safeParse({...input, ...emptyTutor, schemaVersion: SNAPSHOT_VERSION});
+      return candidate.success ? candidate.data : input;
+    }
+  }
+  const emptyCourses = {courses: [], courseEditions: [], courseDeliveries: [], courseWork: []};
+  if (input && typeof input === 'object' && 'schemaVersion' in input && [1,2,3,4,5,6].includes(input.schemaVersion as number)) {
+    if (Object.keys(emptyCourses).some(key => key in input)) return input;
+    const events = 'events' in input && Array.isArray(input.events) ? input.events : [];
+    const receipts = 'receipts' in input && Array.isArray(input.receipts) ? input.receipts : [];
+    if ([...events, ...receipts].some(entry => entry && typeof entry === 'object' && 'courseEntity' in entry)) return input;
+  }
+  if (input && typeof input === 'object' && 'schemaVersion' in input && input.schemaVersion === 6) {
+    const candidate = CoreSnapshotSchema.safeParse({...input, ...emptyCourses, ...emptyTutor, schemaVersion: SNAPSHOT_VERSION});
+    return candidate.success ? candidate.data : input;
+  }
+  if(input&&typeof input==='object'&&'schemaVersion'in input&&[1,2,3,4,5].includes(input.schemaVersion as number)){
+    // Only authoritative object slots carry wire types. Plugin state and other JSON are opaque.
+    const own=(value:unknown,name:string):unknown=>value&&typeof value==='object'?Object.getOwnPropertyDescriptor(value,name)?.value:undefined;
+    const array=(value:unknown):unknown[]=>Array.isArray(value)?value:[];
+    const objects=(document:unknown)=>array(own(document,'objects'));
+    const candidates=array(own(input,'documents')).flatMap(objects);
+    for(const event of array(own(input,'events'))){
+      if(typeof own(event,'documentId')!=='string')continue;
+      const payload=own(event,'payload');
+      candidates.push(own(payload,'object'),own(payload,'previous'));
+      if(own(event,'type')==='plugin-release-changed')for(const change of array(own(payload,'objects')))candidates.push(own(change,'object'),own(change,'previous'));
+      if(own(event,'type')==='create-document')candidates.push(...objects(own(payload,'document')));
+    }
+    if(candidates.some(object=>own(object,'type')==='extension'))return input;
+  }
+  if (input && typeof input === 'object' && 'schemaVersion' in input && input.schemaVersion === 5) {
+    const candidate = CoreSnapshotSchema.safeParse({...input, ...emptyCourses, ...emptyTutor, schemaVersion: SNAPSHOT_VERSION});
+    if (!candidate.success) return input;
+    return candidate.data;
+  }
+  if (input && typeof input === 'object' && 'schemaVersion' in input && input.schemaVersion === 4) {
+    // v4 has no feedback command or fields, including in historical previous/work payloads.
+    const raw = input as Record<string, unknown>;
+    const oldWork = (work: unknown): boolean => !!work && typeof work === 'object' && !Array.isArray(work)
+      && !('feedback' in work) && 'attempts' in work && Array.isArray(work.attempts)
+      && work.attempts.every(attempt => !!attempt && typeof attempt === 'object' && !('replyToFeedbackId' in attempt));
+    if (!Array.isArray(raw.learnerWork) || !raw.learnerWork.every(oldWork) || !Array.isArray(raw.events)
+      || !raw.events.every(event => event && typeof event === 'object' && event.type !== 'review-learner-attempt'
+        && (!('lessonId' in event) || event.stream !== 'learner-work' || event.payload && oldWork(event.payload.work)
+          && (event.payload.previous === null || oldWork(event.payload.previous))))) return input;
+    const migrated = CoreSnapshotSchema.safeParse({...raw, ...emptyCourses, ...emptyTutor, schemaVersion: SNAPSHOT_VERSION});
+    return migrated.success ? migrated.data : input;
+  }
   const legacy = LegacySnapshotSchema.safeParse(input);
   let candidate: unknown;
   if (legacy.success) {
     if (legacy.data.schemaVersion === 1 && legacy.data.documents.some(doc => doc.objects.some(object => object.type === 'lab'))) return input;
-    candidate = {...legacy.data, schemaVersion: SNAPSHOT_VERSION, installations: [], assignments: [], learnerWork: []};
+    candidate = {...legacy.data, ...emptyCourses, ...emptyTutor, schemaVersion: SNAPSHOT_VERSION, installations: [], assignments: [], learnerWork: []};
   } else {
     const marketplace = MarketplaceSnapshotV3Schema.safeParse(input);
     if (!marketplace.success) return input;
-    candidate = {...marketplace.data, schemaVersion: SNAPSHOT_VERSION, assignments: [], learnerWork: []};
+    candidate = {...marketplace.data, ...emptyCourses, ...emptyTutor, schemaVersion: SNAPSHOT_VERSION, assignments: [], learnerWork: []};
   }
   const checked = CoreSnapshotSchema.safeParse(candidate);
   return checked.success ? checked.data : input;
 }
 
 export function emptySnapshot(workspaceId = 'local-workspace'): CoreSnapshot {
-  return {schemaVersion: SNAPSHOT_VERSION, workspaceId, documents: [], installations: [], assignments: [], learnerWork: [], events: [], receipts: []};
+  return {schemaVersion: SNAPSHOT_VERSION, workspaceId, tutorRecords: [], documents: [], installations: [], assignments: [], learnerWork: [], courses: [], courseEditions: [], courseDeliveries: [], courseWork: [], events: [], receipts: []};
 }
 
 export const CoreErrorCodes = [
@@ -638,3 +814,12 @@ export class CoreError extends Error {
   }
 }
 
+
+export * from './programs.ts';
+
+/** Resolve page-anchored ink without mutating persisted geometry or source bytes. */
+export function materialPosition<T extends NewEducationalObject | EducationalObject>(object: T, objects: readonly (NewEducationalObject | EducationalObject)[]): T {
+  if (object.type !== 'ink' || !object.data.anchor) return object;
+  const anchor = object.data.anchor, target = objects.find(value => value.id === anchor.objectId && value.type === 'material');
+  return target ? {...object, x: object.x + target.x - anchor.x, y: object.y + target.y - anchor.y} : object;
+}

@@ -86,12 +86,13 @@ One same-origin JSON endpoint: `POST /api/m3`.
 | `session` | none | Verified account and expiry |
 | `logout` | none | `{signedOut: true}` and cookie deletion |
 | `list-workspaces` | none | Authorized `{workspaceId, title, workspaceRevision}[]` |
-| `create-workspace` | `commandId`, `title` | Empty workspace projection; teacher only |
+| `create-workspace` | `commandId`, `title` | Empty owned workspace projection; either account role |
 | `open-workspace` | `workspaceId` | Authorized projection |
 | `command` | `workspaceId`, `command` | `{receipt, projection}` using `Core.execute` |
 | `plugin-command` | `workspaceId`, `command` | `{receipt, projection}` using `Core.executePlugin` |
 | `learning-command` | `workspaceId`, `command` | `{receipt, projection}` using `Core.executeLearning` |
-| `import-local` | `expectedAccountId`, `commandId`, `title`, `snapshotText` | New workspace projection; teacher only |
+| `read-attempt-source` | `workspaceId`, `documentId`, `attemptId`, optional `studentId` | Exact object revision referenced by an authorized attempt; no general student history access |
+| `import-local` | `expectedAccountId`, `commandId`, `title`, `snapshotText` | New owned workspace projection; either account role |
 | `export-personal` | `workspaceId` | `ardesia-personal-v1` envelope with the authorized projection |
 
 A projection contains `workspaceId`, `title`, monotonically increasing
@@ -136,14 +137,14 @@ automatic round-trip import.
 ## Backup and restore
 
 `exportBackup(operatorPool)` makes a consistent repeatable-read logical backup
-of Core snapshots, identity bindings, import archives and creation receipts.
-The version-2 backup contains account IDs/roles and disabled-account timestamps required for validation; it excludes passwords,
+of Core snapshots, identity bindings, import archives, creation receipts and recording media.
+The version-3 backup contains account IDs/roles and disabled-account timestamps required for validation; it excludes passwords,
 password hashes, session tokens and rate-limit records. Its SHA-256 detects
 corruption; it does not authenticate an untrusted backup's author.
 
 `restoreBackup(operatorPool, backup)` validates the digest, Core contracts,
 complete referenced identities, owner bindings and imported source digests.
-It requires an empty migrated target and independently provisioned accounts with
+It accepts complete v2 backups without media and v3 with verified recording manifests and bytes. It requires an empty migrated target and independently provisioned accounts with
 the exact saved IDs and roles, and refuses overwrites. Restore is one transaction.
 Restore preserves disabled status from both source and target, revokes affected sessions and refuses older backups without that account status. It never re-enables an account.
 
@@ -181,3 +182,16 @@ node tools/database.mjs revoke-sessions account-id
 ```
 
 Backup output is created with mode `0600` and refuses an existing path. Restore targets must be empty and independently provisioned. The CLI emits a bounded error code, not driver messages, credentials or SQL. These operations are explicit; no deployment request invokes them.
+
+
+Personal recording actions share the existing authenticated endpoint and workspace transaction:
+`list-recordings`/`search-recordings` require documentId (search also query), `read-recording` requires recordingId,
+`recording-command` accepts the public Core recording command, and `put-recording-part`/`read-recording-part` require recordingId and index (put also base64).
+Only the lesson owner can access any of these operations; assignments do not grant access. Migration002 is explicit and additive.
+See [ADR0012](../../docs/adr/0012-personal-recordings.md) for media identity, recovery, erasure and restore boundaries.
+
+Course actions `course-command` and `read-course-lesson` use the same authenticated transaction and exact history. `courseSpace` projects author drafts/editions, explicit deliveries and only authorized personal work. Active student accounts are checked on assignment; self-study is explicit for either owner role. Revoked participants may export their own answers but cannot read course material. Migration005 expands the snapshot CHECK to4–7 without rewriting existing rows. Snapshot7 and owner/participant binding are validated on restore; see [ADR0016](../../docs/adr/0016-versioned-courses.md).
+
+## Material originals (SQL007, backupv4)
+
+Authenticated `prepare-material`, `put-material-part`, `finish-material`, `read-material` and `read-material-part` share the workspace transaction/lock. Owners upload; assigned readers need a current referenced page, course readers an exact authorized edition/unit. Revocation is checked on every read. Original and chunk SHA256, header/MIME, immutability and quota are checked; header validation is not full sanitization. Bytes are separate from snapshot9/events in the same PostgreSQL authority. Backupv4 validates bytes plus current/historical references before empty-target restore, with explicit v2/v3 compatibility. [ADR0020](../../docs/adr/0020-original-materials.md) lists caps, retained originals and rollback limitations.

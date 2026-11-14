@@ -1,0 +1,492 @@
+
+> ardesia-next@0.1.0 test
+> vitest run packages/core/src/materials.test.ts packages/server/src/server.integration.test.ts
+
+
+ RUN  v5.0.5 /Users/progettibelli/Documents/Codex/2026-11-07/costruisci-ardesia-un-ecosistema-educativo-per/outputs/ardesia-next
+
+ ❯ packages/server/src/server.integration.test.ts (33 tests | 23 failed) 8664ms
+   ✓ M4 distributed release policy (1)
+     ✓ accepts the exact signed Poiseuille pressure and flow states through the shipped Host 50ms
+   ✓ PostgreSQL transport policy (3)
+     ✓ enables verified TLS for a remote URL and retains an explicitly trusted CA after pg parses it 4ms
+     ✓ refuses remote URL and option downgrades instead of letting pg replace certificate verification 0ms
+     ✓ checks the actual query-selected host and recognizes only explicit loopback endpoints 0ms
+   ❯ M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) (29)
+     ✓ uses a restricted runtime role and hashes credentials/tokens instead of persisting them 2ms
+     ✓ continues to connect to the real isolated loopback database without requiring TLS 2ms
+     × rejects unauthenticated, CSRF, forged role/owner fields and account-switch requests 8ms
+     × creates learner-owned spaces without role promotion and rejects authoring in assigned containers 3ms
+     × persists exact course editions, private work and revocation through restricted PostgreSQL without implicit lesson grants 4ms
+     × denies IDOR and filters private work from the teacher and second student 2ms
+     × serializes competing revisions and returns the original receipt after a lost response 1ms
+     × rolls back the entire snapshot, receipt and event when storage rejects the update 1ms
+     × checks revoked assignments before duplicate receipts or reads and honors evidence revocation 1ms
+     × preserves exact laboratory IDs/state across independent sessions and rejects stale plugin or consent use 1ms
+     × M4 Poiseuille PostgreSQL preserves exact revisions and private student state; rejects invalid writes and revocation 2ms
+     × rejects tampered releases and scientific states using the signed Host runtime 1ms
+     × serializes competing tutor bookings and payments, retains v7 bytes on reads and excludes students 1ms
+     × migrates stored v4 on read without writes and keeps feedback, source access and retries authorized 1ms
+     × imports v1/v2/v3 explicitly into fresh containers and preserves original bytes, IDs and receipts 5ms
+     × reserves imported actor identities against later account provisioning 2ms
+     × rejects an existing alias collision before listing or returning any private workspace data 2ms
+     × serializes racing account provisioning and legacy import without admitting an identity collision 165ms
+     × preserves imported learner owner aliases and permits personal audio without a teaching role 2ms
+     × withdraws device plugin consent through Core during import, requiring explicit remote reconsent 8ms
+     ✓ rejects corrupt imports atomically without deleting any local source 2ms
+     × stores exact recording bytes and transcripts through restricted HTTP transactions, with recovery, isolation and erasure 1ms
+     × stores immutable originals, enforces lesson authorization and revocation, validates backups and denies forged pages 1ms
+     × validates extension integrity before restoring even when the backup has no audio 1ms
+     × backs up and restores synthetic data into an empty database without passwords, sessions or overwrites 1ms
+     × restores disabled source accounts and never re-enables disabled targets, with session revocation in the same transaction 1076ms
+     ✓ rejects expired, revoked and logged-out sessions before reads or retries 168ms
+     ✓ isolates project login budgets while fresh sessions keep identity and the thirteenth valid login stays forbidden 4142ms
+     ✓ applies durable rate limits and fails closed when the service is not configured 1957ms
+ ✓ packages/core/src/materials.test.ts (2 tests) 15ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 23 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > rejects unauthenticated, CSRF, forged role/owner fields and account-switch requests
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ workspace packages/server/src/server.integration.test.ts:48:27
+     46| async function workspace(title = 'Synthetic M3') {
+     47|   const response = await request({action: 'create-workspace', commandI…
+     48|   expect(response.status).toBe(200); return response.body.result as Wo…
+       |                           ^
+     49| }
+     50| async function command(identity: Identity, workspaceId: string, comman…
+ ❯ packages/server/src/server.integration.test.ts:188:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > creates learner-owned spaces without role promotion and rejects authoring in assigned containers
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ packages/server/src/server.integration.test.ts:197:72
+    195|   it('creates learner-owned spaces without role promotion and rejects …
+    196|     const input={action:'create-workspace',title:'Spazio privato dello…
+    197|     const created=await request(input,studentA);expect(created.status)…
+       |                                                                        ^
+    198|     const w=created.body.result;
+    199|     expect(w).toMatchObject({access:'owner',actor:{actorId:studentA.id…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > persists exact course editions, private work and revocation through restricted PostgreSQL without implicit lesson grants
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ workspace packages/server/src/server.integration.test.ts:48:27
+     46| async function workspace(title = 'Synthetic M3') {
+     47|   const response = await request({action: 'create-workspace', commandI…
+     48|   expect(response.status).toBe(200); return response.body.result as Wo…
+       |                           ^
+     49| }
+     50| async function command(identity: Identity, workspaceId: string, comman…
+ ❯ packages/server/src/server.integration.test.ts:223:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > denies IDOR and filters private work from the teacher and second student
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ workspace packages/server/src/server.integration.test.ts:48:27
+     46| async function workspace(title = 'Synthetic M3') {
+     47|   const response = await request({action: 'create-workspace', commandI…
+     48|   expect(response.status).toBe(200); return response.body.result as Wo…
+       |                           ^
+     49| }
+     50| async function command(identity: Identity, workspaceId: string, comman…
+ ❯ packages/server/src/server.integration.test.ts:259:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > serializes competing revisions and returns the original receipt after a lost response
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ workspace packages/server/src/server.integration.test.ts:48:27
+     46| async function workspace(title = 'Synthetic M3') {
+     47|   const response = await request({action: 'create-workspace', commandI…
+     48|   expect(response.status).toBe(200); return response.body.result as Wo…
+       |                           ^
+     49| }
+     50| async function command(identity: Identity, workspaceId: string, comman…
+ ❯ packages/server/src/server.integration.test.ts:278:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > rolls back the entire snapshot, receipt and event when storage rejects the update
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ workspace packages/server/src/server.integration.test.ts:48:27
+     46| async function workspace(title = 'Synthetic M3') {
+     47|   const response = await request({action: 'create-workspace', commandI…
+     48|   expect(response.status).toBe(200); return response.body.result as Wo…
+       |                           ^
+     49| }
+     50| async function command(identity: Identity, workspaceId: string, comman…
+ ❯ packages/server/src/server.integration.test.ts:292:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > checks revoked assignments before duplicate receipts or reads and honors evidence revocation
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ workspace packages/server/src/server.integration.test.ts:48:27
+     46| async function workspace(title = 'Synthetic M3') {
+     47|   const response = await request({action: 'create-workspace', commandI…
+     48|   expect(response.status).toBe(200); return response.body.result as Wo…
+       |                           ^
+     49| }
+     50| async function command(identity: Identity, workspaceId: string, comman…
+ ❯ packages/server/src/server.integration.test.ts:307:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > preserves exact laboratory IDs/state across independent sessions and rejects stale plugin or consent use
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ workspace packages/server/src/server.integration.test.ts:48:27
+     46| async function workspace(title = 'Synthetic M3') {
+     47|   const response = await request({action: 'create-workspace', commandI…
+     48|   expect(response.status).toBe(200); return response.body.result as Wo…
+       |                           ^
+     49| }
+     50| async function command(identity: Identity, workspaceId: string, comman…
+ ❯ packages/server/src/server.integration.test.ts:322:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > M4 Poiseuille PostgreSQL preserves exact revisions and private student state; rejects invalid writes and revocation
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ workspace packages/server/src/server.integration.test.ts:48:27
+     46| async function workspace(title = 'Synthetic M3') {
+     47|   const response = await request({action: 'create-workspace', commandI…
+     48|   expect(response.status).toBe(200); return response.body.result as Wo…
+       |                           ^
+     49| }
+     50| async function command(identity: Identity, workspaceId: string, comman…
+ ❯ packages/server/src/server.integration.test.ts:353:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > rejects tampered releases and scientific states using the signed Host runtime
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ workspace packages/server/src/server.integration.test.ts:48:27
+     46| async function workspace(title = 'Synthetic M3') {
+     47|   const response = await request({action: 'create-workspace', commandI…
+     48|   expect(response.status).toBe(200); return response.body.result as Wo…
+       |                           ^
+     49| }
+     50| async function command(identity: Identity, workspaceId: string, comman…
+ ❯ packages/server/src/server.integration.test.ts:405:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > serializes competing tutor bookings and payments, retains v7 bytes on reads and excludes students
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ workspace packages/server/src/server.integration.test.ts:48:27
+     46| async function workspace(title = 'Synthetic M3') {
+     47|   const response = await request({action: 'create-workspace', commandI…
+     48|   expect(response.status).toBe(200); return response.body.result as Wo…
+       |                           ^
+     49| }
+     50| async function command(identity: Identity, workspaceId: string, comman…
+ ❯ packages/server/src/server.integration.test.ts:416:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > migrates stored v4 on read without writes and keeps feedback, source access and retries authorized
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ workspace packages/server/src/server.integration.test.ts:48:27
+     46| async function workspace(title = 'Synthetic M3') {
+     47|   const response = await request({action: 'create-workspace', commandI…
+     48|   expect(response.status).toBe(200); return response.body.result as Wo…
+       |                           ^
+     49| }
+     50| async function command(identity: Identity, workspaceId: string, comman…
+ ❯ packages/server/src/server.integration.test.ts:445:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > imports v1/v2/v3 explicitly into fresh containers and preserves original bytes, IDs and receipts
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ packages/server/src/server.integration.test.ts:489:85
+    487|       const snapshotText = JSON.stringify(raw, null, 2), commandId = r…
+    488|       const requestBody = {action: 'import-local', expectedAccountId: …
+    489|       const imported = await request(requestBody, teacher); expect(imp…
+       |                                                                                     ^
+    490|       expect(imported.body.result.actor.actorId).toBe('device-owner');
+    491|       expect(imported.body.result.documents[0].id).toBe('local-doc');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > reserves imported actor identities against later account provisioning
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ packages/server/src/server.integration.test.ts:509:29
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > rejects an existing alias collision before listing or returning any private workspace data
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ packages/server/src/server.integration.test.ts:520:29
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > serializes racing account provisioning and legacy import without admitting an identity collision
+AssertionError: expected 'SERVICE_UNAVAILABLE' to be 'IMPORT_OWNER_COLLISION' // Object.is equality
+
+Expected: "IMPORT_OWNER_COLLISION"
+Received: "SERVICE_UNAVAILABLE"
+
+ ❯ packages/server/src/server.integration.test.ts:554:52
+    552|     try{
+    553|       if(imported.value.status===200){expect(provisioned).toMatchObjec…
+    554|       else{expect(imported.value.body.error?.code).toBe('IMPORT_OWNER_…
+       |                                                    ^
+    555|       const overlap=await admin.query('SELECT a.id FROM ardesia_next.a…
+    556|       expect(overlap.rows).toEqual([]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > preserves imported learner owner aliases and permits personal audio without a teaching role
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ packages/server/src/server.integration.test.ts:565:27
+    563|     const {assignments:_a,learnerWork:_w,...legacy}=preCourse(local.sn…
+    564|     const result=await request({action:'import-local',expectedAccountI…
+    565|     expect(result.status).toBe(200);const w=result.body.result;
+       |                           ^
+    566|     expect(w).toMatchObject({access:'owner',actor:{actorId,role:'stude…
+    567|     const recordingId=randomUUID(),bytes=Buffer.from('Synthetic learne…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > withdraws device plugin consent through Core during import, requiring explicit remote reconsent
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ packages/server/src/server.integration.test.ts:585:29
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > stores exact recording bytes and transcripts through restricted HTTP transactions, with recovery, isolation and erasure
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ workspace packages/server/src/server.integration.test.ts:48:27
+     46| async function workspace(title = 'Synthetic M3') {
+     47|   const response = await request({action: 'create-workspace', commandI…
+     48|   expect(response.status).toBe(200); return response.body.result as Wo…
+       |                           ^
+     49| }
+     50| async function command(identity: Identity, workspaceId: string, comman…
+ ❯ packages/server/src/server.integration.test.ts:601:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > stores immutable originals, enforces lesson authorization and revocation, validates backups and denies forged pages
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ workspace packages/server/src/server.integration.test.ts:48:27
+     46| async function workspace(title = 'Synthetic M3') {
+     47|   const response = await request({action: 'create-workspace', commandI…
+     48|   expect(response.status).toBe(200); return response.body.result as Wo…
+       |                           ^
+     49| }
+     50| async function command(identity: Identity, workspaceId: string, comman…
+ ❯ packages/server/src/server.integration.test.ts:657:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > validates extension integrity before restoring even when the backup has no audio
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ workspace packages/server/src/server.integration.test.ts:48:27
+     46| async function workspace(title = 'Synthetic M3') {
+     47|   const response = await request({action: 'create-workspace', commandI…
+     48|   expect(response.status).toBe(200); return response.body.result as Wo…
+       |                           ^
+     49| }
+     50| async function command(identity: Identity, workspaceId: string, comman…
+ ❯ packages/server/src/server.integration.test.ts:687:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > backs up and restores synthetic data into an empty database without passwords, sessions or overwrites
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ workspace packages/server/src/server.integration.test.ts:48:27
+     46| async function workspace(title = 'Synthetic M3') {
+     47|   const response = await request({action: 'create-workspace', commandI…
+     48|   expect(response.status).toBe(200); return response.body.result as Wo…
+       |                           ^
+     49| }
+     50| async function command(identity: Identity, workspaceId: string, comman…
+ ❯ packages/server/src/server.integration.test.ts:701:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/23]⎯
+
+ FAIL  packages/server/src/server.integration.test.ts > M3 real PostgreSQL authority (requires M3_TEST_DATABASE_URL) > restores disabled source accounts and never re-enables disabled targets, with session revocation in the same transaction
+AssertionError: promise resolved "{ workspaces: +0, imports: +0 }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "imports": 0,
++   "workspaces": 0,
+  }
+
+ ❯ packages/server/src/server.integration.test.ts:795:55
+    793|       await restorePool.query("CREATE FUNCTION ardesia_next.reject_res…
+    794|       await restorePool.query('CREATE TRIGGER synthetic_restore_failur…
+    795|       await expect(restoreBackup(restorePool, backup)).rejects.toThrow…
+       |                                                       ^
+    796|       expect((await restorePool.query('SELECT disabled_at FROM ardesia…
+    797|       expect((await restorePool.query('SELECT count(*) FROM ardesia_ne…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/23]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  23 failed | 12 passed (35)
+   Start at  18:49:04
+   Duration  8.99s (tests 98%, transform 1%, import 1%)
+

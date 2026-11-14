@@ -1,0 +1,35 @@
+{
+  "commit": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+  "sourceDigest": "e7569a0c5af69f47f59467bc6dddc3afa89fcb4d6ebd7d17c8548e449b7728cb",
+  "generatedAt": "2026-11-07T08:58:00.763Z",
+  "schemaVersion": 1,
+  "kind": "ardesia-server-runtime-local",
+  "remoteAcceptance": false,
+  "runtime": "v24.22.1",
+  "checks": [
+    {
+      "name": "isolated-native-bootstrap",
+      "passed": true
+    },
+    {
+      "name": "restricted-postgres-runtime",
+      "passed": true
+    },
+    {
+      "name": "authenticated-persisted-worker",
+      "passed": true
+    },
+    {
+      "name": "cold-reopen-and-logout",
+      "passed": true
+    },
+    {
+      "name": "isolated-resource-cleanup",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "functionSha256": "dd55c5a69abfd774d4509ce7fccb3bd8f4b82a474a86790481c5d7474f3937b9",
+  "pluginSha256": "713b10ce53337e5bb03f0da86afec8a1266a8229115e9d1f571cf49766814148",
+  "durationMs": 1026
+}
