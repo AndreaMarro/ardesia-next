@@ -72,7 +72,16 @@ function offlineFiles(directory, prefix='', bounded={count:2,bytes:Buffer.byteLe
   return result;
 }
 const files = offlineFiles(out);
-const entries = [['simulazione.html',html(true)], ...files.map(file=>[file,readFileSync(out+'/'+file)]), ['LEGGIMI.txt','Ardesia Next · prova libera di Fisica\nEstrai tutti i file nella stessa cartella e apri simulazione.html.\nLa prova e le demo funzionano offline con JavaScript. I collegamenti a fonti e contatti esterni richiedono rete.\nLe risposte restano solo nella memoria della pagina: esporta il risultato prima di chiudere.\nContenuti DRAFT, approvazione scientifica umana pendente. Prova non ufficiale, non sorvegliata.\nSHA-256 sorgente: '+sha+'\n']];
+function offlineFile(file) {
+  const bytes=readFileSync(out+'/'+file);
+  if(!file.endsWith('.html'))return bytes;
+  const text=bytes.toString('utf8')
+    .replace("<a class='button' href='/#corsi'>Apri lo spazio di studio →</a>","<p class='notice'>Questa copia serve alla lettura e alla pratica offline. Per salvare il lavoro nello spazio Ardesia occorre un accesso online fornito separatamente.</p>")
+    .replace(/<a\b[^>]*href=["']\.\/ardesia-prova-fisica-offline\.zip["'][^>]*>[\s\S]*?<\/a>/g,"<span>Stai usando la copia offline: lezioni, laboratori e prova sono già in questa cartella.</span>");
+  if(/\b(?:href|src)\s*=\s*["']?\s*\//i.test(text))throw Error('Generated offline page contains a root-relative URL: '+file);
+  return Buffer.from(text);
+}
+const entries = [['simulazione.html',html(true)], ...files.map(file=>[file,offlineFile(file)]), ['LEGGIMI.txt','Ardesia Next · prova libera di Fisica\nEstrai tutti i file nella stessa cartella e apri simulazione.html.\nLa prova e le demo funzionano offline con JavaScript. I collegamenti a fonti e contatti esterni richiedono rete. Lo spazio Ardesia con salvataggio richiede un accesso online fornito separatamente.\nLe risposte restano solo nella memoria della pagina: esporta il risultato prima di chiudere.\nContenuti DRAFT, approvazione scientifica umana pendente. Prova non ufficiale, non sorvegliata.\nSHA-256 sorgente: '+sha+'\n']];
 if(entries.length>offlineLimits.files)throw Error('Offline archive file count limit');
 let totalBytes=0;for(const [,value] of entries){const bytes=Buffer.byteLength(value);if(bytes>offlineLimits.fileBytes)throw Error('Offline archive file size limit');totalBytes+=bytes;}
 if(totalBytes>offlineLimits.totalBytes)throw Error('Offline archive total size limit');

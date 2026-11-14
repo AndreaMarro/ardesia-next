@@ -1,6 +1,8 @@
 import {test,expect} from '@playwright/test';
-import {readFileSync} from 'node:fs';
-import {resolve} from 'node:path';
+import {readFileSync,mkdtempSync,mkdirSync,writeFileSync,rmSync} from 'node:fs';
+import {resolve,dirname,sep} from 'node:path';
+import {tmpdir} from 'node:os';
+import {unzipSync} from 'fflate';
 import {pathToFileURL} from 'node:url';
 
 test('the public reading edition exposes every complete lesson and its worked practice',async({page,request})=>{
@@ -55,17 +57,44 @@ test('a timed practice submits at the deadline when its confirmation dialog is o
  expect(result.items[0].answer).toBe('A');expect(result.blank).toBe(30);
 });
 
-test('static experiences start from file URLs without a network',async({browser})=>{
+test('the downloaded ZIP contains complete lessons and starts its interactive experiences offline',async({page,browser})=>{
+ await page.goto('/fisica/simulazione.html');
+ const pending=page.waitForEvent('download');await page.locator('a[download]').click();
+ const bytes=readFileSync((await (await pending).path())!);
+ const archive=unzipSync(bytes),folder=mkdtempSync(resolve(tmpdir(),'ardesia-physics-offline-'));
  const context=await browser.newContext({offline:true,viewport:{width:390,height:844}});
  try{
+  expect(Object.keys(archive).filter(name=>/^sf-2026-u.+\.html$/.test(name))).toHaveLength(38);
+  for(const [name,content] of Object.entries(archive)){
+   const target=resolve(folder,name);expect(target.startsWith(folder+sep)).toBe(true);
+   mkdirSync(dirname(target),{recursive:true});writeFileSync(target,content);
+   if(name.endsWith('.html'))expect(Buffer.from(content).toString()).not.toMatch(/(?:href|src)=["']\//);
+  }
+  const broken=await page.evaluate(({files,pages})=>{
+   const parsed=new Map(Object.entries(pages).map(([name,text])=>[name,new DOMParser().parseFromString(text,'text/html')]));
+   const errors:string[]=[];
+   for(const [name,document] of parsed)for(const element of document.querySelectorAll('[href],[src]')){
+    const value=element.getAttribute('href')??element.getAttribute('src')!;
+    const url=new URL(value,'https://offline.invalid/'+name);
+    if(url.origin!=='https://offline.invalid')continue;
+    const target=decodeURIComponent(url.pathname.slice(1));
+    if(!files.includes(target))errors.push(name+' → '+value);
+    else if(url.hash&&parsed.has(target)&&!parsed.get(target)!.getElementById(decodeURIComponent(url.hash.slice(1))))errors.push(name+' → '+value);
+   }
+   return errors;
+  },{files:Object.keys(archive),pages:Object.fromEntries(Object.entries(archive).filter(([name])=>name.endsWith('.html')).map(([name,bytes])=>[name,Buffer.from(bytes).toString()]))});
+  expect(broken).toEqual([]);
   const page=await context.newPage();const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(pathToFileURL(resolve('apps/web/dist/fisica/simulazione.html')).href);
+  await page.goto(pathToFileURL(resolve(folder,'simulazione.html')).href);
   await page.locator('#start-practice').click();await expect(page.locator('#question-title')).toBeVisible();
-  await page.goto(pathToFileURL(resolve('apps/web/dist/fisica/campo.html')).href);
+  await page.goto(pathToFileURL(resolve(folder,'campo.html')).href);
   await expect(page.locator('input[type=range]').first()).toBeEnabled();
   await expect(page.locator('#field-strength')).toContainText('28,086');
   await page.locator('#charge').fill('2');await page.locator('#charge').dispatchEvent('input');
   await expect(page.locator('#field-strength')).toContainText('56,172');
+  await page.goto(pathToFileURL(resolve(folder,'sf-2026-u1-01.html')).href);
+  await expect(page.locator('#teoria')).toBeVisible();
+  await expect(page.getByText('Per salvare il lavoro nello spazio Ardesia',{exact:false})).toBeVisible();
   expect(errors).toEqual([]);
- }finally{await context.close();}
+ }finally{await context.close();rmSync(folder,{recursive:true,force:true});}
 });
