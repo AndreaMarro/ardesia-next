@@ -1,0 +1,104 @@
+{
+  "commit": "c7f1f2a34141990ddd880bd6d4d1da2c124551db",
+  "sourceDigest": "9b1c81331ffe6bb4bb4dbec4bfe42d856ab892125af8715f5082019b71f04cc1",
+  "generatedAt": "2026-11-14T13:45:11.573Z",
+  "schemaVersion": 1,
+  "kind": "ardesia-mcp-stdio-local",
+  "remoteAcceptance": false,
+  "hostCompatibility": "NOT_TESTED",
+  "sdk": "2.4.0",
+  "runtime": "v24.22.2",
+  "checks": [
+    {
+      "name": "restricted-postgres-and-live-http",
+      "passed": true
+    },
+    {
+      "name": "official-client-stdio-discovery-readonly-strict-input",
+      "passed": true
+    },
+    {
+      "name": "real-core-create-compose-edit-search-exact-history",
+      "passed": true
+    },
+    {
+      "name": "official-client-new-type-create-edit-exact-history",
+      "passed": true
+    },
+    {
+      "name": "official-client-original-material-manifest-chunk-and-scope",
+      "passed": true
+    },
+    {
+      "name": "official-client-original-audio-transcript-history-exact-lesson-reconstruction",
+      "passed": true
+    },
+    {
+      "name": "official-client-program-source-state-roundtrip-no-implicit-execution",
+      "passed": true
+    },
+    {
+      "name": "official-client-tutor-search-history-write-and-exact-retry",
+      "passed": true
+    },
+    {
+      "name": "official-client-course-authoring-edition-privacy-and-revocation",
+      "passed": true
+    },
+    {
+      "name": "lost-response-process-restart-identical-receipt-no-duplicate",
+      "passed": true
+    },
+    {
+      "name": "concurrent-web-edit-cas-conflict",
+      "passed": true
+    },
+    {
+      "name": "official-client-student-owned-type-course-history-and-assigned-write-refusal",
+      "passed": true
+    },
+    {
+      "name": "student-private-records-excluded-and-assignment-revoked-live",
+      "passed": true
+    },
+    {
+      "name": "official-client-cancellation-and-eof-abort-upstream",
+      "passed": true
+    },
+    {
+      "name": "configuration-change-and-session-logout-fail-closed",
+      "passed": true
+    },
+    {
+      "name": "isolated-resource-cleanup",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "artifactSha256": "197ba2c9d690c10915ad03aeffe89d9db6bb2d7efda537ee62e48fc01880cb20",
+  "toolNamesReadOnly": [
+    "ardesia_list_workspaces",
+    "ardesia_search",
+    "ardesia_read_material",
+    "ardesia_read_document",
+    "ardesia_read_object_revision",
+    "ardesia_search_recordings",
+    "ardesia_read_recording",
+    "ardesia_read_transcript",
+    "ardesia_read_recording_part",
+    "ardesia_read_document_revision",
+    "ardesia_search_courses",
+    "ardesia_read_course",
+    "ardesia_search_tutor",
+    "ardesia_read_tutor"
+  ],
+  "observed": {
+    "commandRequests": 19,
+    "successfulHttpWriteResponses": 17,
+    "exactDocumentRevision": 12,
+    "privateLearnerDataReturned": false,
+    "credentialsReturned": false,
+    "aiInferenceUsed": false
+  },
+  "durationMs": 7615
+}

@@ -6,11 +6,12 @@
   "repository": "AndreaMarro/ardesia-next",
   "source": {
     "branch": "work/mission-20261114",
-    "headSha": "64c847d068ba78e02be5aabd36a9facef80aa85b",
-    "localCommit": "0990a2684f882a1cd9e5a6be02c9935f7cb6d771",
-    "tree": "34ab0949d40699bbff704ad65c6536ff990fa0be",
-    "sourceDigest": "1958abd9b5587a8871bac9bb2ee5573023278aa1d12de8cfa1c72a7eb114e2b1",
-    "sameTreeVerified": true
+    "headSha": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
+    "localCommit": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
+    "tree": "267dad7567aa8edf5d03f145fee8311af701c49d",
+    "sourceDigest": "9b1c81331ffe6bb4bb4dbec4bfe42d856ab892125af8715f5082019b71f04cc1",
+    "sameTreeVerified": true,
+    "prTestedHead": "c7f1f2a34141990ddd880bd6d4d1da2c124551db"
   },
   "integration": {
     "prs": [
@@ -19,7 +20,8 @@
       52,
       53,
       54,
-      55
+      55,
+      56
     ],
     "mainBefore55": "fd437dbce846a00e87296639189706de8406a544",
     "originalMainCi": {
@@ -58,13 +60,55 @@
       "unhandledErrors": 1,
       "cause": "SQLSTATE57P01: forced cleanup raced with actual pg-pool client shutdown in the isolated readiness fixture.",
       "rerun": false
+    },
+    "pr56": {
+      "number": 56,
+      "state": "MERGED",
+      "head": "c7f1f2a34141990ddd880bd6d4d1da2c124551db",
+      "mergeCommit": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
+      "ciRunId": 43601139187,
+      "result": "PASS",
+      "attempt": 1,
+      "artifactId": 14117337891,
+      "artifactBytes": 107263680,
+      "artifactSha256": "f4488a9d606e303a4842cb5f7f9fd1f1b095ebb0ff20fed823a9111fe1aa44c2",
+      "verify": 8,
+      "unit": 707,
+      "browser": {
+        "total": 299,
+        "desktop": 150,
+        "mobile": 149,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0,
+        "globalErrors": 0,
+        "retry": 0,
+        "durationMs": 1747093.548
+      },
+      "server": 5,
+      "mcp": 16,
+      "unitReportDigest": "920b7f2871547800027c721f6f538e20da3bc8134f3cd0b12bfb6c4b1789b4b8",
+      "m3ReportDigest": "6ed1d8cae2aba3c876d54f756c6c7d6858a72f7ac3909fc3e55103f12dea2a97",
+      "m4PreparationDigest": "b1dc9c956efca49b6b5667712321046a9a00649ef5aac9f05b4ad3d780dcb7c0",
+      "reviewContext": "pr_chain_review; technical review only; not human acceptance",
+      "rootReadOriginalReports": true,
+      "independentReadOriginalReports": true
+    },
+    "mainAfter56": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
+    "mainCiAfter56": {
+      "runId": 43604178775,
+      "headSha": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
+      "event": "push",
+      "attempt": 1,
+      "result": "PENDING"
     }
   },
   "changes": [
     "Runtime requires exact canonical migration registry1–10 before readiness/login/data; no runtime DDL or silent migrations; logout revocation remains available.",
     "Italian schema upgrade state and recovery-preserving local export.",
     "Mobile destination rail uses nonshrinking54px controls and horizontal scrolling, first/last reachable.",
-    "Build/preflight use shared exact QuickJS policy; legitimate Creator capability accepted with no weakening of identity, protection, Origin or error sanitation."
+    "Build/preflight use shared exact QuickJS policy; legitimate Creator capability accepted with no weakening of identity, protection, Origin or error sanitation.",
+    "Readiness fixture cleanup waits for actual backend closure with bounded refusal and ordinary DROP; held-connection counterproof. Original57P01 failure preserved; no runtime or SQL changes in PR56."
   ],
   "localVerification": {
     "commit": "0990a2684f882a1cd9e5a6be02c9935f7cb6d771",
@@ -206,7 +250,7 @@
     "Native macOS companion has existing historical M4 evidence; this Linux session cannot rebuild/retest it",
     "Backup is a Neon branch-copy qualified through a child; not a portable application exportBackup/restoreBackup proof"
   ],
-  "nextAction": "Preserve original CI43601139187 on c7f1f2a; after exact artifact verification, integrate PR56 normally and update protected preview if appropriate. Current preview64 is technically verified and protected, but authenticated continuity and canonical alias promotion still require the existing authorized Mac credential channel.",
+  "nextAction": "Observe original automatic main CI43604178775 on af4352e without rerun; inspect its artifact, then deploy exact main to protected Preview if PASS. Live SQL1–10 already applied: do not rerun migration. Preserve stable alias until authorized credentials enable controlled switch and immediate smoke.",
   "deployment": {
     "id": "dpl_AWqtg2fbfPcc7kMrCsZJW6zSgp57",
     "url": "https://ardesia-next-nr9wdtwij-andreas-projects-6d4e9791.vercel.app",
@@ -243,10 +287,12 @@
     "typecheck": "PASS",
     "independentSourceReview": "PASS",
     "ciRunId": 43601139187,
-    "ci": "PENDING"
+    "ci": "PASS",
+    "state": "MERGED",
+    "mergeCommit": "af4352e0bd810bcb1f0d2e9158d52553826971e5"
   },
-  "recordedAt": "2026-11-14 13:46:48 UTC",
-  "phase": "WAITING_CI_FOR_PR56",
+  "recordedAt": "2026-11-14T14:20:42.000Z",
+  "phase": "MAIN_CI_PENDING_AFTER_NORMAL_MERGE",
   "originalReports": {
     "directory": "operations/evidence/mission-2026-11-14",
     "ciReportsPreservedByteForByte": 9,
@@ -306,6 +352,102 @@
         "sha256": "320b70b43add7610504c7ae5618b03966c43725ea53de06041aa3d8df0284e55",
         "gitBlob": "b389bd970ed9e559a686a49e9e402aea16b8950d"
       }
-    }
-  }
+    },
+    "pr56OriginalInventory": [
+      {
+        "name": "browser-evidence.json",
+        "chars": 4704,
+        "bytes": 4704,
+        "sha256": "923d05b86df74d92a5b87e047485961602af06e150628c099470a5ab1c52d65e",
+        "gitBlob": "431d1dc465131ed345edd16d41263ad0ff8fcd45"
+      },
+      {
+        "name": "budget.json",
+        "chars": 33539,
+        "bytes": 33539,
+        "sha256": "672fa7d7eeaf9f6a00ac9cc1d5a7fede11d1445b090de712e937fdf591b519ca",
+        "gitBlob": "44d8e685e5071d399be949ba5d391194ca34a133"
+      },
+      {
+        "name": "e2e.json",
+        "chars": 388385,
+        "bytes": 388427,
+        "sha256": "cc0c0f841b0224c464cd42f9c665fa4a1d84032539c8cc4b7773945058bc5ce1",
+        "gitBlob": "07d4760e0106a3f0767c7fd1f15fcf1a86f36c15"
+      },
+      {
+        "name": "m4-preparation.json",
+        "chars": 208202,
+        "bytes": 208202,
+        "sha256": "fa6ffa26a935d801aef15dabe4b03a9713df50143c064c14da029118aa2ac0d9",
+        "gitBlob": "cabd466a06b54948603e96de470d533bac06ef0c"
+      },
+      {
+        "name": "mcp-runtime.json",
+        "chars": 2880,
+        "bytes": 2880,
+        "sha256": "ece4b76359b0e4735e8181a97c12123ee8dcac5e088be444b5190f16ace6068a",
+        "gitBlob": "0c001ee25b13e2081f09fc6ad6df24ff6365b9c0"
+      },
+      {
+        "name": "server-runtime.json",
+        "chars": 929,
+        "bytes": 929,
+        "sha256": "d735bbfbc0e483f4e8f44299994370901d363f81bc96080665d061c5c7078409",
+        "gitBlob": "3f7f4aed0bd0ddf37bc567f8d2b43bdc27d50a1a"
+      },
+      {
+        "name": "status.json",
+        "chars": 16292,
+        "bytes": 16292,
+        "sha256": "0534ce17eb16da1dbcbd36fd4bbf79329f1156bfa8e241101cc3817d3afe40ac",
+        "gitBlob": "581a453335c5b7fac07ba4b2dd954c79ebb11d94"
+      },
+      {
+        "name": "unit.json",
+        "chars": 296760,
+        "bytes": 296818,
+        "sha256": "920b7f2871547800027c721f6f538e20da3bc8134f3cd0b12bfb6c4b1789b4b8",
+        "gitBlob": "f0c41e4c501d67a138cd8683783849aeef6a012f"
+      },
+      {
+        "name": "verification.json",
+        "chars": 1072,
+        "bytes": 1072,
+        "sha256": "6c51b3a6c7d8438343e50d507523c369cb33694a9f7bade2268100d169134c91",
+        "gitBlob": "237532eaa195f11444adbe808b047af993c3cb57"
+      }
+    ],
+    "pr56ReportsPreservedByteForByte": 9
+  },
+  "previousRuntimeSource": {
+    "branch": "work/mission-20261114",
+    "headSha": "64c847d068ba78e02be5aabd36a9facef80aa85b",
+    "localCommit": "0990a2684f882a1cd9e5a6be02c9935f7cb6d771",
+    "tree": "34ab0949d40699bbff704ad65c6536ff990fa0be",
+    "sourceDigest": "1958abd9b5587a8871bac9bb2ee5573023278aa1d12de8cfa1c72a7eb114e2b1",
+    "sameTreeVerified": true
+  },
+  "readinessScope": "Canonical migration registry versions/digests are checked; exhaustive physical DDL introspection is not provided.",
+  "courseCoverage": {
+    "courses": 5,
+    "lessons": 38,
+    "editorialObjectives": 200,
+    "readerQuestions": 279,
+    "originalProblems": 79,
+    "assessments": 200,
+    "legacyDistinctIds": 259,
+    "legacyPlacements": 290,
+    "examEditions": 2,
+    "questionsPerExam": 31,
+    "primaryLessonsCoveredByExams": 30,
+    "lessonsNotPrimarilyCovered": 8,
+    "objectivesLinkedToLabs": 71,
+    "objectivesWithoutLabLinks": 129,
+    "humanApproval": false,
+    "coverageRowsComplete": 0,
+    "scienceStatus": "HUMAN_REVIEW_PENDING",
+    "opticsFindingTC01Integrated": true
+  },
+  "aliasSequence": "Verify identity/protection/authorized health and data compatibility; controlled switch to stable Origin when credentials and immediate smoke are available; then authenticated smoke and acceptance or compatible rollback. No current switch is authorized by an unavailable test capability."
 }
