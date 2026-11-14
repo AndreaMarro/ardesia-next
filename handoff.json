@@ -1,1 +1,94 @@
-{"schemaVersion":"2.0.0","kind":"ardesia-sequential-state","repository":"AndreaMarro/ardesia-next","acceptanceEvidence":false,"revision":169,"updatedAt":"2026-11-14T12:35:50.157Z","procedureRef":"e83c98098bb4da0324a97460776b1898b5a05ee5","activeRun":{"runId":"mission-20261114-integration","actor":"codex","startedAt":"2026-11-14T12:24:00.000Z","claimedAt":"2026-11-14T12:34:04.340Z","writeUntil":"2026-11-14T13:09:00.000Z","closeBy":"2026-11-14T13:19:00.000Z"},"packet":{"id":"mission-20261114-product-delivery","taskId":"M5-PRODUCT","nextActor":"codex","disposition":"READY","kind":"implementation","notBefore":"2026-11-14T12:24:00.000Z","expiresAt":"2026-11-14T13:19:00.000Z","source":{"baseSha":"f7adf5db02913e25fbab0b1da071f650b4f78676","headSha":"708f5a9c54d60043f7b06a7d87ea1e8b50f84922","sourceDigest":"658c2d9b9ba80c9c608bb12f61493b35dfe26ac2c91eb09ca65257480aa74dd1","branch":"work/mission-20261114","pr":null},"goal":"Accettazione prodotto e percorso di rilascio stabile","allowedPaths":["apps/web","packages","e2e","tools","docs","operations"],"exitCriteria":["Criteri D01–D68 pertinenti, scienza/UX/accessibilità/sicurezza/performance/recovery verificati sul candidato.","Prove umane e device fisici richieste restano separate dalla CI; produzione richiede proprio mandato.","Gli ambiti non ancora accettati della mappa rimangono nel backlog: M5 non equivale alla visione interamente realizzata."],"evidence":[],"blockers":[],"nextAction":"Mandato diretto straordinario del titolare 14 novembre: consolidare PR50–54 preservando ancestry, sviluppare e collaudare accesso/persistenza/UX, distribuire solo in ambiente protetto autorizzato. Assegnazione esplicita di M5-PRODUCT al root della sessione; sostituisce la priorita automatica ENG-E2/OPS004 per questa missione, non i criteri di accettazione M5 o le protezioni. Storico precedente preservato nella ref parent f9fc78b. Cortex escluso. Scope isolato, un writer; timer conservativo di claim invariato. Blocker accesso Vercel e account ancora da risolvere; nessun prodotto completo dichiarato.","review":null},"lastRun":{"runId":"ardesia-e2-20261104T210103Z","actor":"codex","startedAt":"2026-11-04T21:01:03.000Z","claimedAt":"2026-11-04T21:03:13.734Z","writeUntil":"2026-11-04T21:46:03.000Z","closeBy":"2026-11-04T21:56:03.000Z","packetId":"e2-readiness-contract-20261104T210103Z","finishedAt":"2026-11-04T21:46:05.529Z","outcome":"COMPLETE_INCREMENT","late":false,"summary":"E2 completed on exact adopted e83; own head/merge Verify8/329/83 and independent review, readiness P2 RED9/GREEN10/config160, historical two real M4/E1 deliveries audited applicable without reruns. Canonical E2 row awaits existing OPS004 own metadata Verify/review/adoption. Closing-only checkpoint releases original claim; no new admin source near write cutoff, no budget/deadline renewal. Private resume13tests reviewed DRAFT. All historical failures and intermediate refresh omission preserved."}}
+{
+  "schemaVersion": "2.0.0",
+  "kind": "ardesia-sequential-state",
+  "repository": "AndreaMarro/ardesia-next",
+  "acceptanceEvidence": false,
+  "revision": 170,
+  "updatedAt": "2026-11-14T13:07:42.278Z",
+  "procedureRef": "e83c98098bb4da0324a97460776b1898b5a05ee5",
+  "activeRun": null,
+  "packet": {
+    "id": "mission-20261114-product-delivery",
+    "taskId": "M5-PRODUCT",
+    "nextActor": "codex",
+    "disposition": "WAITING_CI",
+    "kind": "implementation",
+    "notBefore": "2026-11-14T12:24:00.000Z",
+    "expiresAt": "2026-11-15T12:24:00.000Z",
+    "source": {
+      "baseSha": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+      "headSha": "64c847d068ba78e02be5aabd36a9facef80aa85b",
+      "sourceDigest": "1958abd9b5587a8871bac9bb2ee5573023278aa1d12de8cfa1c72a7eb114e2b1",
+      "branch": "work/mission-20261114",
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/55"
+    },
+    "goal": "Accettazione prodotto e percorso di rilascio stabile",
+    "allowedPaths": [
+      "apps/web",
+      "packages",
+      "e2e",
+      "tools",
+      "docs",
+      "operations"
+    ],
+    "exitCriteria": [
+      "Criteri D01–D68 pertinenti, scienza/UX/accessibilità/sicurezza/performance/recovery verificati sul candidato.",
+      "Prove umane e device fisici richieste restano separate dalla CI; produzione richiede proprio mandato.",
+      "Gli ambiti non ancora accettati della mappa rimangono nel backlog: M5 non equivale alla visione interamente realizzata."
+    ],
+    "evidence": [
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/43597742073",
+        "headSha": "64c847d068ba78e02be5aabd36a9facef80aa85b",
+        "sourceDigest": "1958abd9b5587a8871bac9bb2ee5573023278aa1d12de8cfa1c72a7eb114e2b1",
+        "result": "PENDING",
+        "scope": "Original full CI for PR55 published source; do not rerun or infer PASS from local tests.",
+        "access": "metadata",
+        "artifactDigest": null
+      },
+      {
+        "kind": "check",
+        "name": "local-final-tree",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/55",
+        "headSha": "0990a2684f882a1cd9e5a6be02c9935f7cb6d771",
+        "sourceDigest": "1958abd9b5587a8871bac9bb2ee5573023278aa1d12de8cfa1c72a7eb114e2b1",
+        "result": "PASS",
+        "scope": "Locally executed Verify8/8,706unit,20preflight,10browser,server5,MCP16; EXACT same Git tree34ab0949 as remote64c847d. Browser desktop/mobile emulation, no remote/hardware acceptance.",
+        "access": "artifact",
+        "artifactDigest": null
+      },
+      {
+        "kind": "observation",
+        "name": "neon-clone-upgrade",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/55",
+        "headSha": "64c847d068ba78e02be5aabd36a9facef80aa85b",
+        "sourceDigest": "1958abd9b5587a8871bac9bb2ee5573023278aa1d12de8cfa1c72a7eb114e2b1",
+        "result": "PASS",
+        "scope": "Reviewed canonical44statement migration2–10 applied ONLY to Neon child br-noisy-surf-bavgwbsg of no-compute backup br-cool-mode-ba064ruw. Seven table fingerprints/counts preserved,9workspace snapshot4; runtime metadata only2columns; live DB/alias unchanged.",
+        "access": "metadata",
+        "artifactDigest": "c96a316766a3179d5afc5a35a9867565d6b54ebe21b3b8444cec6390cf41e8d9"
+      }
+    ],
+    "blockers": [
+      "REMOTE_APPLICATION_CREDENTIALS_UNAVAILABLE",
+      "BROWSER_VERCEL_LOGIN_REQUIRED"
+    ],
+    "nextAction": "Preserve this same increment while original CI43597742073 runs. PR50–54 are merged; mainfd437db CI43595915646 PASS. After original PR55 exact-source artifact/review, integrate normally, apply the independently reviewed canonical migration to guarded live Neon state and create an existing-project protected Preview from preview/m3. Preserve prior staging alias until authenticated continuity is available. No new source work while waiting, no Cortex, no M5/human/commercial acceptance. Implementation run is released within its original budget; a subsequent delivery run must claim anew at its actual start, without takeover or timer renewal.",
+    "review": null
+  },
+  "lastRun": {
+    "runId": "mission-20261114-integration",
+    "actor": "codex",
+    "startedAt": "2026-11-14T12:24:00.000Z",
+    "claimedAt": "2026-11-14T12:34:04.340Z",
+    "writeUntil": "2026-11-14T13:09:00.000Z",
+    "closeBy": "2026-11-14T13:19:00.000Z",
+    "packetId": "mission-20261114-product-delivery",
+    "finishedAt": "2026-11-14T13:07:42.278Z",
+    "outcome": "WAITING_CI",
+    "late": false,
+    "summary": "Source phase delivered PR50–54 into main plus reviewed PR55; original final CI pending. Local final Verify/browser passed. Neon backup and isolated upgrade qualification preserve all seven tables; live DB and alias unchanged. Release original claim within budget; same increment continues only after original CI and new truthful delivery-phase claim."
+  }
+}
