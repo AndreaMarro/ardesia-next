@@ -3,6 +3,12 @@ import {PROGRAM_RENDERER,ProgramBodySchema,COMPOSITION_RENDERER,CompositionBodyS
 import {createCore,MemoryStorage} from './index';
 
 const owner={actorId:'creator',role:'teacher' as const};
+async function rejectsCurrentWithoutWrites(snapshot:unknown){
+  expect((snapshot as {schemaVersion:unknown}).schemaVersion).toBe(11);
+  const bytes=JSON.stringify(snapshot);let writes=0;
+  await expect(createCore({storage:{read:async()=>snapshot,write:async()=>{writes++;}}})).rejects.toMatchObject({code:'INVALID_SNAPSHOT'});
+  expect(writes).toBe(0);expect(JSON.stringify(snapshot)).toBe(bytes);
+}
 async function data(overrides:Partial<ExtensionDefinition>={}):Promise<ExtensionData>{
   const definition:ExtensionDefinition={format:'ardesia-extension/1',typeId:'personal.unseen-coincidence-counter',version:1,name:'Coincidenze',description:'Tipo non presente nel frontend',license:'CC0-1.0',renderer:COMPOSITION_RENDERER,fallback:'Conta coincidenze e calcola il doppio.',body:{fields:[{key:'count',label:'Coincidenze',kind:'number',initial:0,min:0,max:100}],nodes:[{id:'section',kind:'group',props:{layout:'stack'},children:[{id:'result',kind:'value',props:{label:'Doppio',expression:'count*2'}},{id:'button',kind:'action',props:{label:'Conta',field:'count',expression:'count+1'}}]}]},...overrides};
   return {definition,definitionDigest:await extensionDefinitionDigest(definition),state:{count:0}};
@@ -97,7 +103,7 @@ describe('versioned user-created types on the existing Core authority',()=>{
     const live=await fixture(),first=await data();await live.core.execute(owner,{kind:'add-object',commandId:'add',documentId:'lesson',expectedRevision:1,object:object(first)});
     const snapshot=live.core.snapshot();await expect(createCore({storage:new MemoryStorage({...snapshot,schemaVersion:5})})).rejects.toMatchObject({code:'INVALID_SNAPSHOT'});
     const corrupt=structuredClone(snapshot);const o=corrupt.documents[0]!.objects[0]!;if(o.type==='extension')o.data.definition.name='Tampered';
-    await expect(createCore({storage:new MemoryStorage(corrupt)})).rejects.toMatchObject({code:'INVALID_SNAPSHOT'});
+    await rejectsCurrentWithoutWrites(corrupt);
   });
   it('rejects recursive/accessor/prototype content before accepting a command',async()=>{
     const value=await data(),cycle:Record<string,unknown>={};cycle.self=cycle;
@@ -123,10 +129,10 @@ describe('versioned user-created types on the existing Core authority',()=>{
     const corrupt=structuredClone(snapshot);
     const event=corrupt.events.find(e=>e.type==='add-object')!;
     (event.payload as unknown as {object:{data:{state:unknown}}}).object.data.state={count:'corrupted'};
-    await expect(createCore({storage:new MemoryStorage(corrupt)})).rejects.toMatchObject({code:'INVALID_SNAPSHOT'});
+    await rejectsCurrentWithoutWrites(corrupt);
     const tampered=structuredClone(snapshot),removed=tampered.events.find(e=>e.type==='remove-object')!;
     (removed.payload as unknown as {previous:{data:ExtensionData}}).previous.data.definition.name='Corrupt deleted release';
-    await expect(createCore({storage:new MemoryStorage(tampered)})).rejects.toMatchObject({code:'INVALID_SNAPSHOT'});
+    await rejectsCurrentWithoutWrites(tampered);
   });
   it('preserves imported lineage and exact source attribution while assigning the real current author',async()=>{
     const {core,storage}=await fixture(),first=await data();first.lineage=[{

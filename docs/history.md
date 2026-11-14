@@ -707,3 +707,14 @@ Il titolare richiede successivamente pubblicazioni frequenti su GitHub e deploy 
 Le38lezioni diventano leggibili da collegamenti diretti, con279problemi/verifiche e soluzioni derivati dai cinque pacchetti, sempreDRAFT. Aggiunti31quesiti originali con105feedback e runtime per pratica libera/50minuti; nuovo laboratorioC4 campo/potenziale3D confallback2D e pacchettoZIP autonomo. Review scientifica AI e tecnica indipendente, conservati fallimentifile:// e cameramobile poi corretti. Hash dei cinque pacchetti, fonti, manifest e test permanenti proteggono corrispondenza e recupero. [Decisione e costi](adr/0025-public-physics-practice.md); [ricevute](sources/physics-2026-27/reviews-2026-11-14/README.md).
 
 Il mandato allegato del14novembre richiede esplicitamente di riprendere Cortex e supera per questa sessione la precedente sospensione. Cortex0.2 migliora selezione dichiarazioni/snippet mantenendo limiti, invalidazione e failclosed;25test e confronto congelato10query. Non sono attestati risparmi economici o equivalenza ai modelli cloud. Prove finali,CI e pubblicazione restano legate allahead esatta e non alle sole ricevute intermedie.
+
+
+### Terzo incremento — seconda prova, video, quaderno e prestazioni
+
+Aggiunta la provaB con31quesiti originali e105feedback:62quesiti totali A/B, ripasso indirizzato alla lezione canonica e pulsante± per tastiera mobile. Controllo indipendente scientifico e tecnico, inclusa correzione del superamento80caratteri via±. Il video C4 di38secondi mostra V=0 con E≠0 nel punto medio di un dipolo, con trascrizione e sorgenti di produzione riproducibili; pacchetto offline contiene entrambe le prove e il video.
+
+Companion macOS AppKit/SwiftUI, senza secondoCore: penna, gomma, pagine, undo/redo, formato locale validato ePDF vettoriale. App reale provata, documento2pagine importato nel Core e annotato con persistenza. Firma locale ad hoc, nonnotarizzato; nessuna attestazione iPad/Pencil o sincronizzazione. La baseline salva manualmente.
+
+La riapertura degli snapshot correnti evita i parser di migrazione obsoleti, mantenendo tutte le validazioni. Core/MemoryStorage C2:−30,72%; test completo browser/server/PostgreSQL locale:36,575→32,472secondi mediani,−11,22%, trecampioni prima/tre dopo. Limiti e dati grezzi nel [rapporto](sources/physics-2026-27/import-performance-2026-11-14/README.md).
+
+Cortex/Qwenlocale realmente provato:nessun nuovo file recuperato, ordinamento e latenza peggiori; resta escluso dal percorso predefinito. [Protocollo congelato e risultato negativo](sources/cortex-local-2026-11-14/REPORT.md), senza claim di token/costi risparmiati. Review e verifiche rimangono distinte da approvazione umana, CI e deployment.

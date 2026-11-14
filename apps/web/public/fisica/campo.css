@@ -3,3 +3,5 @@
 .camera-controls[hidden]{display:none}#field-map{touch-action:pan-y}
 
 .site-head>a{display:inline-flex;min-height:44px;align-items:center}.site-head>.brand{display:block}
+
+.video-lesson video{display:block;width:100%;border-radius:12px;background:#f6f3ea;border:1px solid #c8cfc4}.video-lesson pre{font:inherit;white-space:pre-wrap;overflow-wrap:anywhere;max-width:900px}.video-lesson a{display:inline-block;min-height:44px;padding:10px 0}

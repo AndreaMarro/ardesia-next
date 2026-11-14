@@ -53,14 +53,14 @@ La prima priorità verificabile è ridurre il contesto da leggere senza perdere 
 | Memoria e recupero | Implementati: indice persistente, BM25, hash, budget, invalidazione | Confronto con `rg` su ticket reali, recall dei file necessari e latenza |
 | World model software | Non implementato; il manifest è identità del corpus, non un modello causale | Grafo statico di import/export e contratti, seguito da previsione dell'impatto confrontata con test reali |
 | Controllore deterministico | La CLI compie soltanto index/search con limiti; non modifica codice | Wrapper su comandi di verifica esplicitamente consentiti, ricevute per hash e selezione test validata contro regressione completa |
-| Modelli locali MLX/llama.cpp | Non scaricati o eseguiti | Mac M4: memoria totale, latenza, accuratezza patch e percentuale di escalation su stesso insieme di ticket |
+| Modelli locali | Qwen2.5-coder1.5B via Ollama provato sul Mac M4: nessun beneficio di recupero; escluso dal percorso predefinito | [Protocollo, risultati e limiti](../../docs/sources/cortex-local-2026-11-14/REPORT.md); nuovi casi separati prima di rivalutare |
 | CfC/Liquid, SSM | Non implementati o valutati | Tracce sufficienti di task e risultati; confronto con regole e classificatore semplice su split temporale |
 | Timestral | Non utilizzato | Identificare implementazione/versione/licenza e task di previsione concreto; serie temporali comparabili, non singole CI |
 | JEPA | Non implementato | Rappresentazione e obiettivo predittivo del software definiti, dati e test contro baseline statiche; una rappresentazione non dimostra causalità |
 | Neuromorfismo/evoluzione | Non implementati | Vantaggio misurato rispetto a ricerca limitata e caching; nessuna auto-modifica di codice o policy in produzione |
 | MCP/REA | Nessun server o integrazione dichiarati | Adattatore al medesimo JSON, stessi limiti e provenienza; benchmark di riuso e licenze, nessuna autorità parallela |
 
-L'eventuale metacontrollore deve osservare esito, costo, latenza e incertezza di azioni delimitate e scegliere l'escalation, senza inventare successi. Un modello locale di piccole dimensioni può essere candidato per classificazione/reranking o patch piccole; non si dichiara equivalente a un modello cloud prima del confronto. I 16 GB vanno condivisi con sistema, IDE, browser e database: l'assenza di modelli in questo prototipo è intenzionale e non rallenta i minicorsi.
+L'eventuale metacontrollore deve osservare esito, costo, latenza e incertezza di azioni delimitate e scegliere l'escalation, senza inventare successi. Un modello locale di piccole dimensioni può essere candidato per classificazione/reranking o patch piccole; non si dichiara equivalente a un modello cloud prima del confronto. I 16 GB vanno condivisi con sistema, IDE, browser e database: il modello locale valutato non è nel percorso predefinito, perché la controprova non ha mostrato benefici.
 
 ## Recupero storico
 

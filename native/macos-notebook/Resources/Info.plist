@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>CFBundleExecutable</key><string>ArdesiaNotebook</string>
+  <key>CFBundleIdentifier</key><string>it.ardesia.quaderno</string>
+  <key>CFBundleName</key><string>Ardesia Quaderno</string>
+  <key>CFBundleDisplayName</key><string>Ardesia Quaderno</string>
+  <key>CFBundlePackageType</key><string>APPL</string>
+  <key>CFBundleShortVersionString</key><string>0.1.0</string>
+  <key>CFBundleVersion</key><string>1</string>
+  <key>LSMinimumSystemVersion</key><string>13.0</string>
+  <key>NSPrincipalClass</key><string>ANNotebookApplication</string>
+  <key>CFBundleDevelopmentRegion</key><string>it</string>
+  <key>CFBundleLocalizations</key><array><string>it</string></array>
+  <key>NSHighResolutionCapable</key><true/>
+  <key>NSHumanReadableCopyright</key><string>Ardesia · Quaderno locale sperimentale</string>
+  <key>CFBundleDocumentTypes</key><array><dict>
+    <key>CFBundleTypeName</key><string>Quaderno Ardesia</string>
+    <key>CFBundleTypeRole</key><string>Editor</string>
+    <key>LSHandlerRank</key><string>Owner</string>
+    <key>LSItemContentTypes</key><array><string>it.ardesia.notebook.document</string></array>
+    <key>NSDocumentClass</key><string>ANNotebookDocument</string>
+  </dict></array>
+  <key>UTExportedTypeDeclarations</key><array><dict>
+    <key>UTTypeIdentifier</key><string>it.ardesia.notebook.document</string>
+    <key>UTTypeDescription</key><string>Quaderno Ardesia</string>
+    <key>UTTypeConformsTo</key><array><string>public.json</string></array>
+    <key>UTTypeTagSpecification</key><dict>
+      <key>public.filename-extension</key><array><string>ardesiaquaderno</string></array>
+      <key>public.mime-type</key><string>application/vnd.ardesia.notebook+json</string>
+    </dict>
+  </dict></array>
+</dict></plist>

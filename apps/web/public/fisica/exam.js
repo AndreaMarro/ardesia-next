@@ -47,7 +47,7 @@
         !Array.isArray(exam.questions) || exam.questions.length !== 31 || !Array.isArray(exam.sources)) return null;
       const ids = new Set();
       for (const q of exam.questions) {
-        if (typeof q.id !== 'string' || ids.has(q.id) || !/^c[1-5]$/.test(q.courseId) || !/^U[1-7]$/.test(q.syllabusUnit) ||
+        if (typeof q.id !== 'string' || ids.has(q.id) || !/^c[1-5]$/.test(q.courseId) || !/^U[1-7]$/.test(q.syllabusUnit) || !/^sf-2026-u[1-7]-[0-9]{2}$/.test(q.unitId) ||
           ['topic','title','prompt','explanation','recoveryHint'].some(key => typeof q[key] !== 'string')) return null;
         ids.add(q.id);
         if (q.type === 'choice') {
@@ -160,7 +160,20 @@
         input.setAttribute('aria-invalid', String(!valid));
         $('input-help').textContent = valid ? 'Solo il numero, nell’unità già indicata. Virgola e punto sono equivalenti; puoi usare e per la notazione scientifica.' : 'Usa un numero, senza unità o formule (esempio: 2,5 oppure 2.5e1). Puoi correggerlo o lasciare bianco; un testo non valido consegnato è contato come errato.';
       });
-      area.append(label, input);
+      const sign=make('button','± Cambia segno','secondary sign-toggle');
+      sign.type='button';sign.setAttribute('aria-label','Cambia segno della risposta numerica');
+      sign.addEventListener('click',()=>{
+        if(!ensureActive())return;
+        const value=input.value.trim();
+        const next=/^[-−]/.test(value)?value.slice(1):'-'+value.replace(/^\+/,'');
+        if(next.length>input.maxLength){
+          const message='Il segno supererebbe il limite di 80 caratteri. Accorcia il numero prima di cambiare segno.';
+          $('input-help').textContent=message;announce(message);input.focus();return;
+        }
+        input.value=next;
+        input.dispatchEvent(new Event('input',{bubbles:true}));input.focus();
+      });
+      area.append(label, input, sign);
       const valid = normalize(input.value) !== null;
       input.setAttribute('aria-invalid', String(!valid));
       $('input-help').textContent = valid ? 'Solo il numero, nell’unità già indicata. Virgola e punto sono equivalenti; puoi usare e per la notazione scientifica.' : 'La risposta contiene un formato non valido: correggilo oppure lascia bianco.';
@@ -258,7 +271,7 @@
         article.append(make('p', `Valore corretto: ${q.acceptedAnswers[0]}, nell’unità richiesta.`, 'correct-answer'));
       }
       article.append(make('h3', 'Il ragionamento'), make('p', q.explanation), make('h3', 'Il prossimo passo'), make('p', q.recoveryHint));
-      const link = make('a', `Riprendi ${courseNames[q.courseId]} →`); link.href = `./${q.courseId}.html#programma`;
+      const link = make('a', `Riprendi la lezione: ${q.topic} →`); link.href = `./${q.unitId}.html`;
       article.append(link); list.append(article);
     });
   }

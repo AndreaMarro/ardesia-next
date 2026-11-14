@@ -1,0 +1,145 @@
+<template id="dipole-board-template">
+<style>
+    @font-face { font-family:"Ardesia Display"; src:local("Georgia"); font-weight:400; font-style:normal; }
+    :root { --paper:#f6f3ea; --ink:#203c35; --plus:#b54829; --minus:#376784; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:var(--paper); }
+    body { color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-variant-numeric:tabular-nums; }
+    #root,.board { width:100%; height:100%; }
+    .scene-content { width:100%; height:100%; padding:54px 88px 42px; display:flex; flex-direction:column; gap:15px; }
+    #masthead { display:flex; align-items:center; justify-content:space-between; flex:0 0 32px; font-size:28px; font-weight:600; letter-spacing:2px; }
+    .draft { letter-spacing:1px; font-size:28px; font-weight:500; }
+    h1 { flex:0 0 92px; font:400 76px/1.12 "Ardesia Display",serif; letter-spacing:-2px; }
+    #setup { flex:0 0 42px; display:flex; align-items:center; justify-content:space-between; gap:30px; font-size:29px; }
+    #assumptions { font-size:28px; }
+    #diagram { width:100%; height:342px; flex:0 0 342px; overflow:visible; }
+    svg text { font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif; fill:var(--ink); font-variant-numeric:tabular-nums; }
+    .charge-label { font-size:31px; font-weight:600; }
+    .charge-symbol { font-size:49px; font-weight:500; fill:var(--paper); }
+    .distance-label { font-size:28px; }
+    #calculations { display:grid; grid-template-columns:1fr 1fr; gap:76px; height:245px; flex:0 0 245px; }
+    .calculation { display:flex; flex-direction:column; gap:10px; border-top:2px solid rgba(32,60,53,.24); padding-top:17px; }
+    .eyebrow { font-size:28px; letter-spacing:1.1px; font-weight:700; }
+    .formula { font:400 35px/1.15 "Ardesia Display",serif; }
+    .contributions { display:flex; gap:34px; align-items:center; font-size:34px; line-height:1.2; }
+    .positive { color:var(--plus); }
+    .negative { color:var(--minus); }
+    .result-row { display:flex; align-items:center; gap:30px; }
+    #potential-result { font-size:60px; line-height:1.1; font-weight:800; letter-spacing:-1px; }
+    .note { max-width:230px; font-size:28px; line-height:1.3; }
+    #field-legend { display:flex; gap:34px; font-size:31px; }
+    .legend-item { display:flex; flex-direction:column; gap:5px; }
+    .legend-top { display:flex; align-items:center; gap:12px; }
+    .legend-arrow { width:57px; height:21px; overflow:visible; }
+    .direction { font-size:28px; }
+    #field-result { font-size:48px; font-weight:800; line-height:1.1; letter-spacing:-.5px; }
+    #conclusion { display:flex; flex-direction:column; gap:10px; flex:0 0 91px; justify-content:flex-end; }
+    #takeaway { font:400 40px/1.1 "Ardesia Display",serif; letter-spacing:-.3px; }
+    #try-lab { font-size:28px; }
+    #source-line { margin-top:auto; display:flex; justify-content:space-between; font-size:28px; line-height:1.2; }
+    sub { font-size:.65em; vertical-align:-.24em; }
+  </style>
+
+  <div id="root" data-composition-id="dipole" data-duration="38" data-width="1920" data-height="1080">
+    <section id="board" class="board" data-hold aria-label="Una tavola continua: il centro del dipolo">
+      <div class="scene-content">
+        <header id="masthead"><span>ARDESIA · C4 / ELETTROSTATICA</span><span class="draft">DRAFT · BOZZA DIDATTICA</span></header>
+        <h1 id="question">V = 0 non significa E = 0.</h1>
+        <div id="setup"><span>Due cariche opposte. P è il punto medio.</span><span id="assumptions">Modello ideale nel vuoto · V(∞) = 0</span></div>
+        <svg id="diagram" viewBox="0 0 1744 342" role="img" aria-label="Carica positiva a sinistra, carica negativa a destra, punto P al centro a 0,80 metri da ciascuna. Il campo risultante in P è verso destra.">
+          <g id="axis" stroke="#203c35" stroke-width="2" opacity=".55" data-layout-ignore>
+            <path d="M240 126H1535" stroke-dasharray="5 9"/>
+            <path d="M1534 119L1547 126L1534 133" fill="none"/>
+          </g>
+          <text id="x-direction" x="1570" y="136" font-size="30">+x</text>
+          <g id="positive-charge">
+            <text x="340" y="58" text-anchor="middle" class="charge-label" style="fill:var(--plus)">q₊ = +1 nC</text>
+            <circle cx="340" cy="126" r="35" fill="#b54829"/>
+            <text x="340" y="143" text-anchor="middle" class="charge-symbol">+</text>
+          </g>
+          <g id="negative-charge">
+            <text x="1404" y="58" text-anchor="middle" class="charge-label" style="fill:var(--minus)">q₋ = −1 nC</text>
+            <circle cx="1404" cy="126" r="35" fill="#376784"/>
+            <text x="1404" y="142" text-anchor="middle" class="charge-symbol">−</text>
+          </g>
+          <g id="resultant-field" data-layout-ignore>
+            <path d="M872 126H1103" stroke="#203c35" stroke-width="9" stroke-linecap="round"/>
+            <path d="M1094 109L1124 126L1094 143Z" fill="#203c35"/>
+          </g>
+          <text id="result-label" x="1010" y="88" font-size="34" font-weight="700" text-anchor="middle">E ≠ 0</text>
+          <g id="observation-point">
+            <circle cx="872" cy="126" r="9" fill="#203c35"/>
+            <text x="872" y="184" text-anchor="middle" font-size="37" font-weight="700">P</text>
+          </g>
+          <g id="distances">
+            <path d="M340 220V244M340 232H1404M872 220V244M1404 220V244" stroke="#203c35" stroke-width="2" opacity=".55"/>
+            <text x="606" y="281" text-anchor="middle" class="distance-label">r = 0,80 m</text>
+            <text x="1138" y="281" text-anchor="middle" class="distance-label">r = 0,80 m</text>
+          </g>
+          <text id="diagram-note" x="872" y="330" text-anchor="middle" font-size="28">Cariche ferme e puntiformi · freccia del campo qualitativa, con origine in P</text>
+        </svg>
+        <div id="calculations">
+          <section id="potential-panel" class="calculation" aria-label="Somma dei potenziali">
+            <h2 id="potential-heading" class="eyebrow">01 · POTENZIALE: SOMMA SCALARE</h2>
+            <p id="potential-formula" class="formula">V(P) = V₊ + V₋ = kq₊/r + kq₋/r</p>
+            <div class="contributions">
+              <span id="potential-plus" class="positive">V₊ ≈ +11,234 V</span>
+              <span id="potential-minus" class="negative">V₋ ≈ −11,234 V</span>
+            </div>
+            <div class="result-row"><strong id="potential-result">V(P) = 0 V</strong><p id="potential-note" class="note">Stesso modulo, segno opposto.</p></div>
+          </section>
+          <section id="field-panel" class="calculation" aria-label="Somma dei campi elettrici">
+            <h2 id="field-heading" class="eyebrow">02 · CAMPO: SOMMA VETTORIALE</h2>
+            <p id="field-formula" class="formula">|E₊| = |E₋| = kq/r², con q = 1 nC</p>
+            <div id="field-legend">
+              <div id="field-plus" class="legend-item positive"><div class="legend-top"><span>E₊ ≈ 14,043 N/C</span><svg class="legend-arrow" id="plus-arrow" viewBox="0 0 57 21" aria-hidden="true"><path d="M1 10.5H48M40 2L53 10.5L40 19" stroke="currentColor" stroke-width="3.5" fill="none"/></svg></div><span class="direction">Via da +q: verso +x</span></div>
+              <div id="field-minus" class="legend-item negative"><div class="legend-top"><span>E₋ ≈ 14,043 N/C</span><svg class="legend-arrow" id="minus-arrow" viewBox="0 0 57 21" aria-hidden="true"><path d="M1 10.5H48M40 2L53 10.5L40 19" stroke="currentColor" stroke-width="3.5" fill="none"/></svg></div><span class="direction">Verso −q: verso +x</span></div>
+            </div>
+            <strong id="field-result">Eₓ(P) ≈ +28,086 N/C</strong>
+          </section>
+        </div>
+        <div id="conclusion"><p id="takeaway">V somma numeri con segno. E somma vettori.</p><p id="try-lab">Ora prova il laboratorio: sposta P e osserva come cambiano V ed E.</p></div>
+        <footer id="source-line"><span>k = 8,9875517923 × 10⁹ N·m²/C²</span><span>Arrotondamento: 3 decimali</span></footer>
+      </div>
+    </section>
+  </div>
+  
+<script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({paused:true});
+    // One uninterrupted board. Still intervals are intentional reading time.
+    tl.from("#masthead", {y:-12,opacity:0,duration:0.55,ease:"power2.out"}, 0.15);
+    tl.from("#question", {y:18,opacity:0,duration:0.8,ease:"sine.out"}, 0.45);
+    tl.from("#setup", {x:-12,opacity:0,duration:0.65,ease:"power1.out"}, 1.05);
+    tl.from("#positive-charge circle, #positive-charge .charge-label", {opacity:0,duration:0.55,ease:"power3.out"}, 1.8);
+    tl.from("#positive-charge .charge-symbol", {opacity:0,duration:0.3,ease:"power1.out"}, 2.4);
+    tl.from("#negative-charge circle, #negative-charge .charge-label", {opacity:0,duration:0.75,ease:"sine.inOut"}, 2.0);
+    tl.from("#negative-charge .charge-symbol", {opacity:0,duration:0.3,ease:"sine.out"}, 2.8);
+    tl.from("#axis", {opacity:0,duration:0.55,ease:"none"}, 2.25);
+    tl.from("#x-direction", {opacity:0,duration:0.45,ease:"power1.out"}, 2.4);
+    tl.from("#observation-point", {opacity:0,duration:0.6,ease:"power4.out"}, 2.6);
+    tl.from("#distances", {y:8,opacity:0,duration:0.7,ease:"sine.out"}, 3.1);
+    tl.from("#diagram-note", {opacity:0,duration:0.6,ease:"none"}, 3.6);
+    tl.from("#source-line", {opacity:0,duration:0.5,ease:"power1.inOut"}, 3.8);
+    tl.from("#potential-panel", {opacity:0,duration:0.55,ease:"sine.out"}, 6.0);
+    tl.from("#potential-heading", {x:-12,opacity:0,duration:0.55,ease:"power3.out"}, 6.1);
+    tl.from("#potential-formula", {y:9,opacity:0,duration:0.65,ease:"power1.out"}, 7.0);
+    tl.from("#potential-plus", {x:-16,opacity:0,duration:0.6,ease:"power2.out"}, 8.5);
+    tl.from("#potential-minus", {x:16,opacity:0,duration:0.7,ease:"sine.out"}, 9.5);
+    tl.from("#potential-result", {scale:0.96,opacity:0,transformOrigin:"left center",duration:0.7,ease:"power3.out"}, 11.4);
+    tl.from("#potential-note", {opacity:0,duration:0.65,ease:"sine.inOut"}, 12.3);
+    tl.from("#field-panel", {opacity:0,duration:0.65,ease:"power1.out"}, 16.0);
+    tl.from("#field-heading", {x:12,opacity:0,duration:0.55,ease:"power4.out"}, 16.1);
+    tl.from("#field-formula", {y:8,opacity:0,duration:0.65,ease:"sine.out"}, 16.8);
+    tl.from("#field-plus", {opacity:0,duration:0.6,ease:"power2.out"}, 18.0);
+    tl.from("#plus-arrow", {scaleX:0,transformOrigin:"left center",duration:0.75,ease:"power3.out"}, 18.5);
+    tl.from("#field-minus", {opacity:0,duration:0.7,ease:"sine.out"}, 20.7);
+    tl.from("#minus-arrow", {scaleX:0,transformOrigin:"left center",duration:0.8,ease:"power2.out"}, 21.2);
+    tl.from("#field-result", {y:12,opacity:0,duration:0.75,ease:"power4.out"}, 24.1);
+    tl.from("#resultant-field", {scaleX:0,opacity:0,svgOrigin:"872 126",duration:1.1,ease:"sine.out"}, 24.5);
+    tl.from("#result-label", {opacity:0,duration:0.7,ease:"power1.out"}, 25.2);
+    tl.from("#takeaway", {y:10,opacity:0,duration:0.8,ease:"power3.out"}, 29.7);
+    tl.from("#try-lab", {opacity:0,duration:0.7,ease:"sine.inOut"}, 33.0);
+    window.__timelines.dipole = tl;
+  </script>
+</template>

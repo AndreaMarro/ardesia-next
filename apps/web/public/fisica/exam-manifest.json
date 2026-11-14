@@ -3,40 +3,70 @@
   "status": "DRAFT",
   "humanApproval": false,
   "sourceFile": "docs/sources/physics-2026-27/editorial/exam-2026-a.json",
-  "sourceSha256": "36a1cb61bbba42a2f7de734dce2c170659095ace26a1e9ac71e49c9757c2aa53",
+  "sourceSha256": "0fe70d30a5bbc59ae0201c8307248c59e9c0ce7b29f4d1fe36cbc1bea1576f46",
   "questionCount": 31,
   "choice": 21,
   "completion": 10,
   "embeddedData": {
     "format": "inert application/json",
-    "rawBytes": 43684,
-    "gzipBytes": 13275,
-    "sha256": "8a88afcc696a1b471cb3ccbd38ffd137031a601624a93b59353024b967b52a00"
+    "rawBytes": 44459,
+    "gzipBytes": 13418,
+    "sha256": "2ee332cac7081f2f8923e6a416ffbf8f4c2aa0979479ee4297c2a6476fa356bd"
   },
+  "editionCount": 2,
+  "totalQuestionCount": 62,
+  "editions": [
+    {
+      "label": "A",
+      "file": "simulazione.html",
+      "sourceFile": "docs/sources/physics-2026-27/editorial/exam-2026-a.json",
+      "sourceSha256": "0fe70d30a5bbc59ae0201c8307248c59e9c0ce7b29f4d1fe36cbc1bea1576f46",
+      "embeddedData": {
+        "rawBytes": 44459,
+        "gzipBytes": 13418
+      }
+    },
+    {
+      "label": "B",
+      "file": "simulazione-b.html",
+      "sourceFile": "docs/sources/physics-2026-27/editorial/exam-2026-b.json",
+      "sourceSha256": "e427742505d5c2e3ffb82348f6dd90293db59f758aec10b13c5d298b04d7830f",
+      "embeddedData": {
+        "rawBytes": 54157,
+        "gzipBytes": 16158
+      }
+    }
+  ],
   "files": [
     {
       "file": "simulazione.html",
-      "bytes": 52056,
-      "sha256": "2f95b53b2038a795d8e1ef487a2f4b92560441cab4e40dd9473ce91b805e2942"
+      "bytes": 53014,
+      "sha256": "14925d4689127204076f172d522bfd302e49fd571c77ead56a0c9e5e9597043a"
+    },
+    {
+      "file": "simulazione-b.html",
+      "bytes": 62712,
+      "sha256": "02d189b0faf4a95e51e16be444bc0aa615f86f48a235caef95695aa5af0aa82f"
     },
     {
       "file": "exam.js",
-      "bytes": 19731,
-      "sha256": "a95627b3b2177ca60a5e3470c5b71b31cf71c9f78456e2f605980b8b0e8db4b9"
+      "bytes": 20512,
+      "sha256": "d703db2d19db0eb42b25a5b63f7a04a25b6ebb9485272e15e38c93ac89abb459"
     },
     {
       "file": "exam.css",
-      "bytes": 8709,
-      "sha256": "1ef631cbd63dd0ab4ef83da7fe01b3524e7cec12139a8a32fe05fec014c4d205"
+      "bytes": 9044,
+      "sha256": "f8b260e8db72e820cf213a78ca2e9c18cdca882cdc4e199834fbd9e8058a3f98"
     },
     {
       "file": "ardesia-prova-fisica-offline.zip",
-      "bytes": 1092913,
-      "sha256": "1a01f92d18f0df4ec1fd28a240c9c84283b029ec7cee5b09cd27a32fdd8a7128"
+      "bytes": 3264492,
+      "sha256": "ef2a165ee871e94dab89330f96f3c712916a52473e532d594462f06fd1294c8e"
     }
   ],
   "offlineFiles": [
     "simulazione.html",
+    "simulazione-b.html",
     "c1.html",
     "c2.html",
     "c3.html",
@@ -47,6 +77,10 @@
     "campo.js",
     "demo.css",
     "demo.js",
+    "dipolo-c4-poster.png",
+    "dipolo-c4.mp4",
+    "dipolo-c4.txt",
+    "dipolo-c4.vtt",
     "exam.css",
     "exam.js",
     "index.html",

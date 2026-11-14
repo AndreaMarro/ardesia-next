@@ -68,7 +68,8 @@
       "recoveryHint": "Scrivi separatamente le dimensioni dei due membri; non dedurre il significato di una grandezza dalla sola lettera.",
       "difficulty": "base",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u1-02"
     },
     {
       "id": "physics-2026-original-a-02",
@@ -110,7 +111,8 @@
       "recoveryHint": "Disegna le tre posizioni sullo stesso asse e distingui freccia risultante da somma delle lunghezze.",
       "difficulty": "base",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u2-01"
     },
     {
       "id": "physics-2026-original-a-03",
@@ -152,7 +154,8 @@
       "recoveryHint": "Tratta il moto orizzontale e quello verticale come due equazioni indipendenti con lo stesso tempo.",
       "difficulty": "intermedio",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u2-01"
     },
     {
       "id": "physics-2026-original-a-04",
@@ -194,7 +197,8 @@
       "recoveryHint": "Usa f_s ≤ μ_sN come vincolo; imposta prima l’equilibrio, poi verifica che il vincolo sia rispettato.",
       "difficulty": "intermedio",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u2-02"
     },
     {
       "id": "physics-2026-original-a-05",
@@ -236,7 +240,8 @@
       "recoveryHint": "Proietta la forza lungo lo spostamento prima di moltiplicare per la distanza.",
       "difficulty": "intermedio",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u2-03"
     },
     {
       "id": "physics-2026-original-a-06",
@@ -278,7 +283,8 @@
       "recoveryHint": "Distingui impulso, forza media e forza di picco: solo i primi due sono legati direttamente da I = F_mediaΔt.",
       "difficulty": "avanzato",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u2-04"
     },
     {
       "id": "physics-2026-original-a-07",
@@ -320,7 +326,8 @@
       "recoveryHint": "Individua il riferimento dello strumento prima di usare la legge di Stevino.",
       "difficulty": "base",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u3-02"
     },
     {
       "id": "physics-2026-original-a-08",
@@ -362,7 +369,8 @@
       "recoveryHint": "Imposta l’uguaglianza fra peso dell’intero blocco e peso dell’acqua spostata; solo dopo calcola il complemento.",
       "difficulty": "intermedio",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u3-02"
     },
     {
       "id": "physics-2026-original-a-09",
@@ -404,7 +412,8 @@
       "recoveryHint": "Applica prima la continuità, poi Bernoulli; non confondere la pressione statica con il termine ρv²/2.",
       "difficulty": "intermedio",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u3-03"
     },
     {
       "id": "physics-2026-original-a-10",
@@ -446,7 +455,8 @@
       "recoveryHint": "Prima di usare una proporzionalità scrivi quale grandezza la pompa mantiene costante.",
       "difficulty": "avanzato",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u3-04"
     },
     {
       "id": "physics-2026-original-a-11",
@@ -488,7 +498,8 @@
       "recoveryHint": "Rappresenta gli spostamenti come grandezze con segno rispetto alla stessa posizione di equilibrio.",
       "difficulty": "intermedio",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u4-02"
     },
     {
       "id": "physics-2026-original-a-12",
@@ -530,7 +541,8 @@
       "recoveryHint": "Calcola prima il rapporto delle intensità, poi applica il logaritmo: non inserire direttamente il rapporto delle distanze con il coefficiente 10.",
       "difficulty": "avanzato",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u4-04"
     },
     {
       "id": "physics-2026-original-a-13",
@@ -572,7 +584,8 @@
       "recoveryHint": "Scrivi un unico bilancio del calore includendo le due masse; verifica che la temperatura cada fra i due valori iniziali.",
       "difficulty": "intermedio",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u5-02"
     },
     {
       "id": "physics-2026-original-a-14",
@@ -614,7 +627,8 @@
       "recoveryHint": "Fissa il sistema e la convenzione del lavoro; poi assegna i segni ai trasferimenti, prima di sommare.",
       "difficulty": "intermedio",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u5-04"
     },
     {
       "id": "physics-2026-original-a-15",
@@ -656,7 +670,8 @@
       "recoveryHint": "Usa temperature in kelvin e distingui conservazione dell’energia dal limite imposto dal secondo principio.",
       "difficulty": "avanzato",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u5-05"
     },
     {
       "id": "physics-2026-original-a-16",
@@ -698,7 +713,8 @@
       "recoveryHint": "Mantieni il segno della carica e usa sempre potenziale finale meno iniziale.",
       "difficulty": "intermedio",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u6-02"
     },
     {
       "id": "physics-2026-original-a-17",
@@ -740,7 +756,8 @@
       "recoveryHint": "In un parallelo controlla quale grandezza è comune ai rami: qui la tensione è imposta dal generatore.",
       "difficulty": "intermedio",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u6-04"
     },
     {
       "id": "physics-2026-original-a-18",
@@ -782,7 +799,8 @@
       "recoveryHint": "Decidi prima se resta costante Q oppure V; scegli poi la formula dell’energia che rende esplicito quel vincolo.",
       "difficulty": "avanzato",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u6-05"
     },
     {
       "id": "physics-2026-original-a-19",
@@ -824,7 +842,8 @@
       "recoveryHint": "Per capire se una forza modifica l’energia cinetica, valuta il prodotto scalare fra forza e velocità.",
       "difficulty": "intermedio",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u6-06"
     },
     {
       "id": "physics-2026-original-a-20",
@@ -866,7 +885,8 @@
       "recoveryHint": "Separa energia di un singolo fotone da energia totale trasportata ogni secondo.",
       "difficulty": "avanzato",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u7-03"
     },
     {
       "id": "physics-2026-original-a-21",
@@ -908,7 +928,8 @@
       "recoveryHint": "Lavora con i reciproci delle distanze e controlla il segno di q prima di interpretare il risultato.",
       "difficulty": "intermedio",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u7-07"
     },
     {
       "id": "physics-2026-original-a-22",
@@ -927,7 +948,8 @@
       "recoveryHint": "Trasforma prima i cm² in m²:1 cm² = 10⁻⁴ m²; converti in kPa solo alla fine.",
       "difficulty": "base",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u1-02"
     },
     {
       "id": "physics-2026-original-a-23",
@@ -946,7 +968,8 @@
       "recoveryHint": "Misura entrambi i bracci rispetto allo stesso perno; il braccio più corto richiede la forza maggiore.",
       "difficulty": "intermedio",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u2-05"
     },
     {
       "id": "physics-2026-original-a-24",
@@ -966,7 +989,8 @@
       "recoveryHint": "Usa una media pesata con le masse, non la media aritmetica delle posizioni.",
       "difficulty": "intermedio",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u2-05"
     },
     {
       "id": "physics-2026-original-a-25",
@@ -985,7 +1009,8 @@
       "recoveryHint": "Confronta gli incrementi di pressione ai due pistoni; non uguagliare direttamente le forze.",
       "difficulty": "intermedio",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u3-02"
     },
     {
       "id": "physics-2026-original-a-26",
@@ -1004,7 +1029,8 @@
       "recoveryHint": "In parallelo la differenza di pressione è comune e si sommano le portate;1 m³ = 10⁶ mL.",
       "difficulty": "avanzato",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u3-04"
     },
     {
       "id": "physics-2026-original-a-27",
@@ -1023,7 +1049,8 @@
       "recoveryHint": "Identifica le grandezze costanti nella legge dei gas e usa sempre kelvin nei rapporti di temperatura.",
       "difficulty": "base",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u5-01"
     },
     {
       "id": "physics-2026-original-a-28",
@@ -1045,7 +1072,8 @@
       "recoveryHint": "Stabilisci a quale sistema si riferisce l’entropia e usa il calore reversibile con il segno corretto.",
       "difficulty": "intermedio",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u5-05"
     },
     {
       "id": "physics-2026-original-a-29",
@@ -1065,7 +1093,8 @@
       "recoveryHint": "Usa la variazione di flusso, non il flusso iniziale; la durata va espressa in secondi.",
       "difficulty": "intermedio",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u6-07"
     },
     {
       "id": "physics-2026-original-a-30",
@@ -1084,7 +1113,8 @@
       "recoveryHint": "Nel collegamento in serie somma i reciproci delle capacità e poi inverti il risultato.",
       "difficulty": "intermedio",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u6-05"
     },
     {
       "id": "physics-2026-original-a-31",
@@ -1103,7 +1133,8 @@
       "recoveryHint": "Conta il numero di emivite e applica un dimezzamento per ciascuna, senza sottrarre linearmente.",
       "difficulty": "intermedio",
       "status": "DRAFT",
-      "humanApproval": false
+      "humanApproval": false,
+      "unitId": "sf-2026-u7-05"
     }
   ]
 }

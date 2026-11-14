@@ -57,6 +57,39 @@ test('a timed practice submits at the deadline when its confirmation dialog is o
  expect(result.items[0].answer).toBe('A');expect(result.blank).toBe(30);
 });
 
+test('edition B uses new questions, accepts the mobile sign control and links exact recovery lessons',async({page})=>{
+ const source=JSON.parse(readFileSync('docs/sources/physics-2026-27/editorial/exam-2026-b.json','utf8'));
+ await page.goto('/fisica/simulazione.html');
+ await page.getByRole('link',{name:'Prova B · nuove domande',exact:true}).click();
+ await expect(page.locator('.edition-picker [aria-current=page]')).toHaveText('Prova B · nuove domande');
+ await page.locator('#start-practice').click();
+ for(const [index,q] of source.questions.entries()){
+  if(q.type==='choice')await page.locator(`input[value=${q.correctChoice}]`).check();
+  else{
+   const answer=q.acceptedAnswers[0];
+   if(/^[-−]/.test(answer)){
+    const long='0'.repeat(79)+'2';await page.locator('#completion-answer').fill(long);
+    await page.getByRole('button',{name:'Cambia segno della risposta numerica',exact:true}).click();
+    await expect(page.locator('#completion-answer')).toHaveValue(long);
+    await expect(page.locator('#input-help')).toContainText('80 caratteri');
+   }
+   await page.locator('#completion-answer').fill(answer.replace(/^[-−]/,''));
+   if(/^[-−]/.test(answer)){
+    await page.getByRole('button',{name:'Cambia segno della risposta numerica',exact:true}).click();
+    await expect(page.locator('#completion-answer')).toHaveValue(answer.replace('−','-'));
+   }
+  }
+  if(index<30)await page.locator('#next').click();
+ }
+ await page.locator('#submit-exam').click();await page.locator('#confirm-submit').click();
+ const pending=page.waitForEvent('download');await page.locator('#export-result').click();
+ const result=JSON.parse(readFileSync((await (await pending).path())!,'utf8'));
+ expect(result.score).toBe(31);expect(result.examId).toBe(source.id);expect(result.items.every((item:{id:string})=>item.id.startsWith('physics-2026-original-b-'))).toBe(true);
+ const first=page.locator('.review-item').first();await first.locator('summary').first().click();
+ await expect(first.locator('a')).toHaveAttribute('href',`./${source.questions[0].unitId}.html`);
+ await first.locator('a').click();await expect(page.locator('#teoria')).toBeVisible();
+});
+
 test('the downloaded ZIP contains complete lessons and starts its interactive experiences offline',async({page,browser})=>{
  await page.goto('/fisica/simulazione.html');
  const pending=page.waitForEvent('download');await page.locator('a[download]').click();

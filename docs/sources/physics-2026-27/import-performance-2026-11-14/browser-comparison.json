@@ -1,0 +1,46 @@
+{
+  "workload": "Complete existing C2 catalog start, save private response, reload and resume; desktop Chromium with local PostgreSQL",
+  "design": "Three sequential baseline runs, then three sequential candidate runs; shared Mac, not randomized or hardware-isolated",
+  "before": [
+    {
+      "status": "passed",
+      "durationMs": 36575,
+      "startTime": "2026-11-14T02:50:58.606Z"
+    },
+    {
+      "status": "passed",
+      "durationMs": 36463,
+      "startTime": "2026-11-14T02:51:35.566Z"
+    },
+    {
+      "status": "passed",
+      "durationMs": 37707,
+      "startTime": "2026-11-14T02:52:12.428Z"
+    }
+  ],
+  "after": [
+    {
+      "status": "passed",
+      "durationMs": 32547,
+      "startTime": "2026-11-14T02:56:58.103Z"
+    },
+    {
+      "status": "passed",
+      "durationMs": 32472,
+      "startTime": "2026-11-14T02:57:31.131Z"
+    },
+    {
+      "status": "passed",
+      "durationMs": 32467,
+      "startTime": "2026-11-14T02:58:03.989Z"
+    }
+  ],
+  "beforeMedianMs": 36575,
+  "afterMedianMs": 32472,
+  "reductionPercent": 11.21804511278196,
+  "implementation": "Own data property schemaVersion === SNAPSHOT_VERSION fast path; all caller validation preserved",
+  "reportHashes": {
+    "before": "8294ed1ba2b403a6ab5f089b99dba698f0bfbc1ef304cd49aa1163d45b35c391",
+    "after": "08ea1af1ae5da92b20c25944037499cc6d34d06622b8b700fa3541a00b26cbdc"
+  }
+}

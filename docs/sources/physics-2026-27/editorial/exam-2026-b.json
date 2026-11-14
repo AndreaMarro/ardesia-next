@@ -1,0 +1,1139 @@
+{
+  "schemaVersion": 1,
+  "id": "physics-2026-original-b",
+  "title": "Fisica · Prova ragionata B",
+  "subtitle": "Una seconda prova originale: nuovi contesti e ragionamenti per allenarsi al formato 2026/2027",
+  "status": "DRAFT",
+  "humanApproval": false,
+  "calibration": "Editoriale: difficoltà non calibrata su studenti",
+  "durationMinutes": 50,
+  "score": {
+    "correct": 1,
+    "wrong": -0.1,
+    "blank": 0
+  },
+  "sourceScope": "Il formato e il perimetro disciplinare derivano dalle fonti istituzionali; i quesiti sono originali e non sono prove ufficiali.",
+  "sources": [
+    {
+      "title": "Sapienza · guida semestre aperto 2026/2027",
+      "url": "https://www.uniroma1.it/it/pagina/semestre-aperto-2026-2027-guida-alla-frequenza-dei-corsi",
+      "checkedOn": "2026-11-14"
+    },
+    {
+      "title": "Syllabus Fisica 2026 · copia Sapienza",
+      "url": "https://www.uniroma1.it/sites/default/files/field_file_allegati/syllabus_fisica_finale_2026.pdf",
+      "checkedOn": "2026-11-14",
+      "sha256": "2650dee32028c3414d67952c4be63db511fa184b10395b921caa9b76adb4c60f"
+    }
+  ],
+  "instructions": "21 quesiti a scelta singola e 10 a completamento. Nei completamenti scrivi soltanto il valore numerico nell’unità indicata. Puoi lasciare una risposta in bianco. Le soluzioni servono al ripasso dopo la consegna.",
+  "questions": [
+    {
+      "id": "physics-2026-original-b-01",
+      "courseId": "c1",
+      "syllabusUnit": "U1",
+      "unitId": "sf-2026-u1-04",
+      "topic": "Componenti e modulo di un vettore",
+      "title": "Due componenti, una forza",
+      "prompt": "Una forza nel piano ha componenti Fₓ = −3 N e Fᵧ = +4 N lungo assi cartesiani ortogonali. Quali sono il suo modulo e il quadrante verso cui punta, con x positivo a destra e y positivo in alto?",
+      "explanation": "Il modulo è |F| = √(Fₓ² + Fᵧ²) = √(9 + 16) N = 5 N. Le componenti, espresse nella stessa unità, sono ortogonali; perciò si usa Pitagora. I segni restano essenziali per la direzione: Fₓ < 0 e Fᵧ > 0 corrispondono al secondo quadrante. Il risultato 25 riguarda |F|² e ha unità N².",
+      "recoveryHint": "Separa due domande: quanto è lungo il vettore e verso quale zona del piano punta.",
+      "difficulty": "base",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "7 N; secondo quadrante.",
+          "feedback": "Il quadrante è corretto, ma sommare i moduli delle componenti non dà il modulo del vettore quando le componenti sono perpendicolari."
+        },
+        {
+          "id": "B",
+          "text": "1 N; secondo quadrante.",
+          "feedback": "Sottrarre 3 N da 4 N sarebbe appropriato per contributi collineari opposti, non per componenti ortogonali."
+        },
+        {
+          "id": "C",
+          "text": "5 N; secondo quadrante.",
+          "feedback": "Esatto: il modulo è √(3² + 4²) N = 5 N; x negativo e y positivo individuano il secondo quadrante."
+        },
+        {
+          "id": "D",
+          "text": "5 N; quarto quadrante.",
+          "feedback": "Il modulo è corretto, ma il quarto quadrante avrebbe x positivo e y negativo: sono i segni del vettore opposto."
+        },
+        {
+          "id": "E",
+          "text": "25 N; secondo quadrante.",
+          "feedback": "3² + 4² dà il quadrato del modulo, pari a 25 N²: manca la radice quadrata."
+        }
+      ],
+      "correctChoice": "C"
+    },
+    {
+      "id": "physics-2026-original-b-02",
+      "courseId": "c1",
+      "syllabusUnit": "U2",
+      "unitId": "sf-2026-u2-01",
+      "topic": "Grafico velocità-tempo",
+      "title": "Una velocità che cambia segno",
+      "prompt": "Nel moto rettilineo di un carrello, la velocità varia linearmente da +4 m/s a t = 0 s fino a −2 m/s a t = 6 s. Quale coppia indica lo spostamento e la distanza totale percorsa in questi 6 s?",
+      "explanation": "La pendenza è a = (−2 − 4)/6 = −1 m/s², quindi v si annulla a t = 4 s. Da 0 a 4 s l’area positiva del triangolo è (4 s)(4 m/s)/2 = 8 m; da 4 a 6 s l’area con segno è −(2 s)(2 m/s)/2 = −2 m. Lo spostamento è 8 − 2 = 6 m e la distanza 8 + 2 = 10 m. Il prodotto velocità × tempo ha dimensione di lunghezza.",
+      "recoveryHint": "Nel grafico v(t), individua prima gli attraversamenti dello zero; conserva il segno soltanto quando calcoli lo spostamento.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "+6 m; 10 m.",
+          "feedback": "Esatto: l’area con segno è 8 − 2 = 6 m; sommando invece i moduli delle due aree si ottengono 10 m."
+        },
+        {
+          "id": "B",
+          "text": "+6 m; 6 m.",
+          "feedback": "6 m è lo spostamento, ma il carrello inverte il verso: la distanza deve includere anche il tratto percorso tornando indietro."
+        },
+        {
+          "id": "C",
+          "text": "−6 m; 10 m.",
+          "feedback": "La distanza è corretta; il tratto con velocità positiva produce però un’area maggiore di quello con velocità negativa."
+        },
+        {
+          "id": "D",
+          "text": "+18 m; 18 m.",
+          "feedback": "La media dei moduli delle velocità agli estremi non basta: |v| scende a zero e poi risale, quindi occorre separare i due intervalli."
+        },
+        {
+          "id": "E",
+          "text": "+10 m; 10 m.",
+          "feedback": "10 m è la somma delle lunghezze percorse; attribuire segno positivo anche al tratto di ritorno sovrastima lo spostamento."
+        }
+      ],
+      "correctChoice": "A"
+    },
+    {
+      "id": "physics-2026-original-b-03",
+      "courseId": "c1",
+      "syllabusUnit": "U2",
+      "unitId": "sf-2026-u2-02",
+      "topic": "Forza risultante e reazione normale",
+      "title": "La lettura nell’ascensore",
+      "prompt": "Una persona di massa 60 kg è ferma rispetto al pavimento di un ascensore che accelera verso il basso con modulo 2 m/s². Una pedana ideale misura la forza normale, in newton. Usa g = 10 m/s² e trascura altre forze verticali sulla persona. Quanto legge la pedana?",
+      "explanation": "Nel riferimento del suolo, assunto inerziale, la persona ha la stessa accelerazione dell’ascensore: aᵧ = −2 m/s². La seconda legge dà N − mg = maᵧ. Pertanto N = 60 kg · (10 − 2) m/s² = 480 N, positivo e compatibile con il contatto. Essere ferma rispetto alla cabina non significa essere priva di accelerazione rispetto al suolo.",
+      "recoveryHint": "Disegna peso e normale sulla persona e scegli un riferimento inerziale prima di scrivere la seconda legge.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "600 N.",
+          "feedback": "600 N è il peso mg; la lettura coincide con il peso solo quando l’accelerazione verticale è nulla."
+        },
+        {
+          "id": "B",
+          "text": "720 N.",
+          "feedback": "Questo valore richiederebbe un’accelerazione di 2 m/s² verso l’alto: qui il verso è opposto."
+        },
+        {
+          "id": "C",
+          "text": "120 N.",
+          "feedback": "120 N è il modulo della forza risultante ma; la pedana misura una sola forza, la normale, non la risultante."
+        },
+        {
+          "id": "D",
+          "text": "0 N.",
+          "feedback": "La normale si annullerebbe in caduta libera con accelerazione di modulo g, non con 2 m/s²."
+        },
+        {
+          "id": "E",
+          "text": "480 N.",
+          "feedback": "Esatto: con asse positivo verso l’alto, N − mg = −ma e quindi N = 60(10 − 2) N = 480 N."
+        }
+      ],
+      "correctChoice": "E"
+    },
+    {
+      "id": "physics-2026-original-b-04",
+      "courseId": "c1",
+      "syllabusUnit": "U2",
+      "unitId": "sf-2026-u2-04",
+      "topic": "Urto completamente anelastico",
+      "title": "Due carrelli restano uniti",
+      "prompt": "Su un binario orizzontale senza attrito, un carrello di massa 1 kg si muove a +6 m/s e urta un secondo carrello di massa 2 kg inizialmente fermo. I due restano uniti; l’impulso esterno orizzontale è trascurabile. Quali sono la velocità comune e la diminuzione dell’energia cinetica totale?",
+      "explanation": "La quantità di moto orizzontale iniziale è (1 kg)(6 m/s) = 6 kg·m/s. Dopo l’urto (1 + 2) kg · v = 6 kg·m/s, dunque v = 2 m/s. Kᵢ = ½·1·6² = 18 J e K𝒻 = ½·3·2² = 6 J: Kᵢ − K𝒻 = 12 J. Questa energia viene convertita in altre forme interne; non scompare dal bilancio energetico complessivo. Le ipotesi consentono di conservare la quantità di moto, non l’energia cinetica.",
+      "recoveryHint": "Usa la quantità di moto per trovare la velocità, poi calcola separatamente le due energie cinetiche.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "+2 m/s; 0 J.",
+          "feedback": "La velocità è corretta, ma in un urto completamente anelastico l’energia cinetica non si conserva."
+        },
+        {
+          "id": "B",
+          "text": "+2 m/s; 12 J.",
+          "feedback": "Esatto: la quantità di moto dà 6/3 = 2 m/s; l’energia cinetica passa da 18 J a 6 J, diminuendo di 12 J."
+        },
+        {
+          "id": "C",
+          "text": "+3 m/s; 4,5 J.",
+          "feedback": "Una media aritmetica delle velocità ignorerebbe le masse diverse. Con 3 m/s la quantità di moto finale sarebbe 9 kg·m/s, non 6."
+        },
+        {
+          "id": "D",
+          "text": "+6 m/s; 0 J.",
+          "feedback": "Il carrello inizialmente fermo deve acquistare quantità di moto: mantenere 6 m/s per entrambi non conserva quella totale."
+        },
+        {
+          "id": "E",
+          "text": "+2 m/s; 6 J.",
+          "feedback": "6 J è l’energia cinetica finale, non la sua diminuzione: occorre sottrarla dai 18 J iniziali."
+        }
+      ],
+      "correctChoice": "B"
+    },
+    {
+      "id": "physics-2026-original-b-05",
+      "courseId": "c1",
+      "syllabusUnit": "U2",
+      "unitId": "sf-2026-u2-01",
+      "topic": "Moto circolare uniforme",
+      "title": "Stessa velocità, curva più larga",
+      "prompt": "Un piccolo corpo di massa m percorre una circonferenza a velocità di modulo costante v. In una seconda prova il raggio raddoppia e il modulo della velocità resta v. Rispetto alla prima prova, come cambia la forza risultante necessaria per il moto circolare uniforme?",
+      "explanation": "L’accelerazione centripeta vale a = v²/r ed è diretta verso il centro. La risultante è quindi F = mv²/r. Nella seconda prova F₂/F₁ = r₁/r₂ = 1/2. Le dimensioni sono kg·(m²/s²)/m = kg·m/s² = N. La forza centripeta è il nome della risultante radiale richiesta, non una forza aggiuntiva da sommare alle interazioni reali.",
+      "recoveryHint": "Nel moto circolare uniforme cambia la direzione della velocità, anche quando il suo modulo non cambia.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Il modulo resta uguale, perché il modulo della velocità non cambia.",
+          "feedback": "Anche se la rapidità resta costante, la direzione della velocità cambia: la curvatura della traiettoria conta."
+        },
+        {
+          "id": "B",
+          "text": "Il modulo raddoppia e la forza punta verso il centro.",
+          "feedback": "Il verso è corretto, ma la dipendenza dal raggio è inversa, non diretta."
+        },
+        {
+          "id": "C",
+          "text": "La forza risultante è nulla in entrambe le prove.",
+          "feedback": "Una risultante nulla mantiene costante il vettore velocità e produce un moto rettilineo, non circolare."
+        },
+        {
+          "id": "D",
+          "text": "Il modulo si dimezza e la forza punta verso il centro.",
+          "feedback": "Esatto: F = mv²/r; a massa e rapidità fissate, raddoppiare r dimezza la risultante centripeta."
+        },
+        {
+          "id": "E",
+          "text": "Il modulo si dimezza e la forza è tangente alla traiettoria.",
+          "feedback": "Il rapporto dei moduli è corretto; una forza tangenziale cambierebbe invece il modulo della velocità."
+        }
+      ],
+      "correctChoice": "D"
+    },
+    {
+      "id": "physics-2026-original-b-06",
+      "courseId": "c2",
+      "syllabusUnit": "U3",
+      "unitId": "sf-2026-u3-02",
+      "topic": "Paradosso idrostatico",
+      "title": "Vasi diversi, stessa base",
+      "prompt": "Due recipienti aperti hanno fondi orizzontali della stessa area, contengono lo stesso liquido in quiete fino alla stessa altezza e sono sottoposti alla stessa pressione atmosferica. Le pareti hanno forme diverse, così i volumi di liquido sono diversi. Come si confrontano la forza esercitata dal liquido su ciascun fondo e i pesi delle due quantità di liquido?",
+      "explanation": "Su entrambi i fondi p = pₐₜₘ + ρgh e la forza del liquido è F = pA: densità, altezza, pressione esterna e area sono uguali. Anche il contributo rispetto all’atmosfera ρghA è uguale. I pesi ρVg differiscono perché i volumi differiscono. Le forze verticali esercitate dalle pareti spiegano perché la forza sul fondo non debba uguagliare il solo peso del liquido. Una pressione in Pa moltiplicata per un’area in m² dà una forza in N.",
+      "recoveryHint": "Distingui la pressione locale sul fondo dal bilancio di tutte le forze che agiscono sull’intero liquido.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Le forze sui fondi sono uguali; i pesi dei liquidi sono diversi.",
+          "feedback": "Esatto: la pressione sul fondo dipende da altezza e densità, mentre il peso dipende dal volume totale."
+        },
+        {
+          "id": "B",
+          "text": "La forza è maggiore sul fondo del recipiente con più liquido; i pesi sono diversi.",
+          "feedback": "La maggiore quantità di liquido non aumenta automaticamente la pressione alla stessa profondità: anche le pareti possono esercitare forze verticali sul liquido."
+        },
+        {
+          "id": "C",
+          "text": "Le forze sui fondi e i pesi dei liquidi sono entrambi uguali.",
+          "feedback": "Le forze sui fondi sono uguali, ma volumi diversi dello stesso liquido hanno masse e pesi diversi."
+        },
+        {
+          "id": "D",
+          "text": "Le pressioni sui fondi sono diverse, perché le forme dei recipienti sono diverse.",
+          "feedback": "La legge idrostatica non contiene la forma delle pareti: stessa quota rispetto alla superficie libera significa stessa pressione."
+        },
+        {
+          "id": "E",
+          "text": "Le forze sui fondi sono nulle, perché il liquido non accelera.",
+          "feedback": "L’equilibrio impone risultante nulla sul liquido, non l’assenza delle singole forze di pressione."
+        }
+      ],
+      "correctChoice": "A"
+    },
+    {
+      "id": "physics-2026-original-b-07",
+      "courseId": "c2",
+      "syllabusUnit": "U3",
+      "unitId": "sf-2026-u3-04",
+      "topic": "Profilo laminare e parete",
+      "title": "Dove scorre più veloce?",
+      "prompt": "Un fluido newtoniano scorre in regime laminare stazionario completamente sviluppato in un tubo cilindrico rigido. Vale la condizione di non slittamento alla parete e la portata è non nulla. Quale descrizione è compatibile con il profilo parabolico della velocità assiale?",
+      "explanation": "Nel modello di Poiseuille v(r) = vₘₐₓ[1 − (r/R)²], con R raggio interno del tubo. Il rapporto r/R è adimensionale, perciò v mantiene l’unità m/s. Sull’asse r = 0 si ha v = vₘₐₓ; alla parete r = R si ha v = 0. Il modello richiede moto laminare completamente sviluppato, fluido newtoniano e parete ferma: non descrive qualunque flusso reale.",
+      "recoveryHint": "Prima di usare una formula per la portata, controlla cosa impongono la simmetria sull’asse e il non slittamento alla parete.",
+      "difficulty": "base",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "La velocità è la stessa, non nulla, sull’asse e alla parete.",
+          "feedback": "Questo sarebbe un profilo uniforme a tappo e violerebbe la condizione di velocità nulla alla parete ferma."
+        },
+        {
+          "id": "B",
+          "text": "La velocità è nulla sull’asse e massima alla parete.",
+          "feedback": "Nel moto di Poiseuille è l’opposto: l’attrito viscoso e la parete ferma frenano gli strati più esterni."
+        },
+        {
+          "id": "C",
+          "text": "La velocità è massima sull’asse e nulla alla parete.",
+          "feedback": "Esatto: il profilo parabolico ha il massimo al centro e si annulla sulla parete per il non slittamento."
+        },
+        {
+          "id": "D",
+          "text": "La velocità è nulla sia sull’asse sia alla parete e massima a metà raggio.",
+          "feedback": "Un massimo anulare non è il profilo parabolico assiale del modello descritto."
+        },
+        {
+          "id": "E",
+          "text": "La velocità è massima sull’asse e alla parete conserva lo stesso valore.",
+          "feedback": "Il massimo centrale è corretto, ma una velocità non nulla sulla parete ferma contraddice il non slittamento."
+        }
+      ],
+      "correctChoice": "C"
+    },
+    {
+      "id": "physics-2026-original-b-08",
+      "courseId": "c2",
+      "syllabusUnit": "U3",
+      "unitId": "sf-2026-u3-05",
+      "topic": "Pressione di curvatura",
+      "title": "Due gocce dello stesso liquido",
+      "prompt": "Due gocce sferiche dello stesso liquido sono in equilibrio nello stesso gas e hanno la stessa tensione superficiale. Una goccia ha raggio minore dell’altra; il peso è trascurabile rispetto agli effetti di superficie. Come si confronta la differenza di pressione tra interno ed esterno delle due gocce?",
+      "explanation": "La descrizione qualitativa della legge di Laplace collega la differenza di pressione alla tensione superficiale e alla curvatura. A tensione superficiale fissata, la goccia più piccola ha curvatura maggiore e quindi pressione interna meno pressione esterna maggiore. Si confrontano gocce con una sola interfaccia liquido-gas, non bolle di sapone a due interfacce. Non occorre una formula quantitativa per rispondere.",
+      "recoveryHint": "Confronta la curvatura, non la quantità totale di liquido. Tieni separati equilibrio di superficie e viscosità.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "È uguale, perché la tensione superficiale è la stessa.",
+          "feedback": "La tensione superficiale conta, ma conta anche la curvatura dell’interfaccia: raggi diversi non danno la stessa differenza di pressione."
+        },
+        {
+          "id": "B",
+          "text": "È maggiore nella goccia più grande, perché contiene più liquido.",
+          "feedback": "La pressione di curvatura non è determinata dal volume totale: una superficie più curva richiede una differenza maggiore."
+        },
+        {
+          "id": "C",
+          "text": "È nulla in entrambe, perché le gocce sono in equilibrio.",
+          "feedback": "L’equilibrio della superficie curva richiede proprio un bilancio tra differenza di pressione e tensione superficiale."
+        },
+        {
+          "id": "D",
+          "text": "Non si può confrontare senza conoscere la viscosità dei due liquidi.",
+          "feedback": "La viscosità riguarda la risposta al moto; qui si confronta un equilibrio di superficie con uguale tensione superficiale."
+        },
+        {
+          "id": "E",
+          "text": "È maggiore nella goccia più piccola.",
+          "feedback": "Esatto: a uguale tensione superficiale, una curvatura maggiore richiede una maggiore pressione interna rispetto all’esterno."
+        }
+      ],
+      "correctChoice": "E"
+    },
+    {
+      "id": "physics-2026-original-b-09",
+      "courseId": "c2",
+      "syllabusUnit": "U3",
+      "unitId": "sf-2026-u3-03",
+      "topic": "Bernoulli e dislivello",
+      "title": "Un tubo che sale",
+      "prompt": "Acqua ideale incomprimibile scorre in regime stazionario in un tubo di sezione costante. Fra un punto A e un punto B il tubo sale di 2 m. Non ci sono pompe o perdite dissipative fra i due punti. Usa ρ = 1000 kg/m³ e g = 10 m/s². Quanto vale p_B − p_A?",
+      "explanation": "La sezione costante e l’incomprimibilità danno la stessa velocità nei due punti. In p + ½ρv² + ρgz = costante il termine cinetico si cancella: p_B − p_A = −ρg·2 m = −20.000 Pa = −20 kPa. Dimensionalmente ρgΔz ha unità kg·m⁻³·m·s⁻²·m = Pa. Si assume un flusso che rimanga nel regime descritto e una pressione sufficiente a evitare cavitazione.",
+      "recoveryHint": "Cancella i termini uguali nei due punti prima di sostituire i numeri: sezione costante non significa pressione costante.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "0 kPa.",
+          "feedback": "La velocità resta uguale, ma cresce l’energia potenziale gravitazionale per unità di volume: il termine di pressione deve compensarla."
+        },
+        {
+          "id": "B",
+          "text": "+20 kPa.",
+          "feedback": "Il modulo è corretto, ma il segno è opposto: salire richiede una diminuzione del termine di pressione."
+        },
+        {
+          "id": "C",
+          "text": "−2 kPa.",
+          "feedback": "Questo valore perde un fattore 10 nel prodotto ρgΔz: 1000·10·2 Pa = 20.000 Pa."
+        },
+        {
+          "id": "D",
+          "text": "−20 kPa.",
+          "feedback": "Esatto: dalla continuità v_B = v_A, perciò Bernoulli dà p_B − p_A = −ρg(z_B − z_A)."
+        },
+        {
+          "id": "E",
+          "text": "−40 kPa.",
+          "feedback": "Non compare un fattore 2 nel contributo gravitazionale ρgΔz; il fattore 1/2 riguarda invece l’energia cinetica."
+        }
+      ],
+      "correctChoice": "D"
+    },
+    {
+      "id": "physics-2026-original-b-10",
+      "courseId": "c5",
+      "syllabusUnit": "U4",
+      "unitId": "sf-2026-u4-01",
+      "topic": "Passaggio tra mezzi",
+      "title": "La frequenza attraversa il confine",
+      "prompt": "Un’onda armonica attraversa la giunzione fra due tratti di corda, in un sistema lineare con giunzione ferma. Nel secondo tratto la velocità di propagazione è metà di quella nel primo. La sorgente mantiene la stessa frequenza. Per l’onda trasmessa, come cambiano frequenza e lunghezza d’onda?",
+      "explanation": "Per un’interfaccia ferma e una risposta lineare, la frequenza temporale della perturbazione trasmessa è quella imposta dalla sorgente. Dalla relazione v = fλ segue λ₂/λ₁ = v₂/v₁ = 1/2. Le unità sono (s⁻¹)(m) = m/s. Può esserci anche un’onda riflessa e può cambiare l’ampiezza, ma questi aspetti non alterano la conclusione sulla frequenza.",
+      "recoveryHint": "Distingui ciò che impone la sorgente, cioè f, da ciò che dipende dal mezzo, cioè v.",
+      "difficulty": "base",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "La frequenza si dimezza e la lunghezza d’onda resta uguale.",
+          "feedback": "La giunzione viene forzata dalla stessa oscillazione temporale: non dimezza la frequenza della sorgente."
+        },
+        {
+          "id": "B",
+          "text": "La frequenza resta uguale e la lunghezza d’onda si dimezza.",
+          "feedback": "Esatto: f resta fissata dalla sorgente e λ = v/f si dimezza quando v si dimezza."
+        },
+        {
+          "id": "C",
+          "text": "La frequenza resta uguale e la lunghezza d’onda raddoppia.",
+          "feedback": "A frequenza fissata la lunghezza d’onda è direttamente proporzionale alla velocità, non inversamente."
+        },
+        {
+          "id": "D",
+          "text": "La frequenza raddoppia e la lunghezza d’onda diventa un quarto.",
+          "feedback": "Il prodotto darebbe metà velocità, ma attribuisce alla giunzione un cambiamento di frequenza assente nel modello."
+        },
+        {
+          "id": "E",
+          "text": "La frequenza e la lunghezza d’onda si dimezzano entrambe.",
+          "feedback": "Il loro prodotto sarebbe un quarto della velocità iniziale, oltre a cambiare indebitamente la frequenza."
+        }
+      ],
+      "correctChoice": "B"
+    },
+    {
+      "id": "physics-2026-original-b-11",
+      "courseId": "c5",
+      "syllabusUnit": "U4",
+      "unitId": "sf-2026-u4-02",
+      "topic": "Interferenza e onda stazionaria",
+      "title": "La distanza fra i nodi",
+      "prompt": "Su una corda si forma un’onda stazionaria per sovrapposizione di due onde armoniche uguali che viaggiano in versi opposti. Due nodi consecutivi distano 0,40 m e la frequenza è 50 Hz. Qual è la velocità di propagazione delle due onde componenti?",
+      "explanation": "Nella sovrapposizione di onde uguali contropropaganti, i nodi consecutivi sono separati da mezza lunghezza d’onda. Dunque λ = 0,80 m e v = λf = (0,80 m)(50 s⁻¹) = 40 m/s. Il fatto che il disegno risultante sia stazionario non rende nulla la velocità delle onde componenti nel mezzo.",
+      "recoveryHint": "Non confondere la velocità di un disegno di interferenza con quella delle onde che si sovrappongono.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "20 m/s.",
+          "feedback": "Questo risultato usa la distanza fra nodi consecutivi come se fosse una lunghezza d’onda intera; essa vale invece λ/2."
+        },
+        {
+          "id": "B",
+          "text": "80 m/s.",
+          "feedback": "Hai raddoppiato due volte la distanza fra nodi: per ricavare λ basta un solo fattore 2."
+        },
+        {
+          "id": "C",
+          "text": "40 m/s.",
+          "feedback": "Esatto: λ = 2·0,40 m = 0,80 m e v = fλ = 50·0,80 m/s = 40 m/s."
+        },
+        {
+          "id": "D",
+          "text": "125 m/s.",
+          "feedback": "Dividere 50 Hz per 0,40 m non produce una velocità: le dimensioni sarebbero m⁻¹s⁻¹."
+        },
+        {
+          "id": "E",
+          "text": "0 m/s.",
+          "feedback": "I nodi del profilo stazionario non si spostano, ma le due onde che lo compongono si propagano con velocità non nulla."
+        }
+      ],
+      "correctChoice": "C"
+    },
+    {
+      "id": "physics-2026-original-b-12",
+      "courseId": "c5",
+      "syllabusUnit": "U4",
+      "unitId": "sf-2026-u4-05",
+      "topic": "Doppler qualitativo",
+      "title": "La sorgente si avvicina",
+      "prompt": "Una sorgente sonora emette una nota a frequenza costante e si avvicina a un osservatore fermo rispetto all’aria. La velocità della sorgente è inferiore a quella del suono; l’aria è ferma. Quale confronto qualitativo è corretto durante l’avvicinamento?",
+      "explanation": "Fra due emissioni successive la sorgente si sposta verso l’osservatore. I fronti si trovano quindi più vicini davanti alla sorgente, pur propagandosi alla velocità del suono fissata dal mezzo. L’osservatore riceve più fronti al secondo: la frequenza percepita è maggiore. È una previsione qualitativa; non si richiede una formula Doppler né si confonde frequenza con intensità.",
+      "recoveryHint": "Immagina due fronti emessi in istanti successivi e confronta la loro distanza davanti alla sorgente.",
+      "difficulty": "base",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "La frequenza ricevuta è maggiore di quella emessa; la frequenza emessa non cambia.",
+          "feedback": "Esatto: i fronti davanti alla sorgente risultano più ravvicinati e arrivano più spesso all’osservatore."
+        },
+        {
+          "id": "B",
+          "text": "Aumentano sia la frequenza ricevuta sia quella emessa dalla sorgente.",
+          "feedback": "L’effetto Doppler cambia la frequenza ricevuta; il testo specifica che l’oscillazione della sorgente mantiene la propria frequenza."
+        },
+        {
+          "id": "C",
+          "text": "La frequenza ricevuta è minore di quella emessa; la frequenza emessa non cambia.",
+          "feedback": "Una frequenza ricevuta minore descriverebbe l’allontanamento, non l’avvicinamento nelle condizioni date."
+        },
+        {
+          "id": "D",
+          "text": "Le due frequenze restano uguali; cambia soltanto l’intensità.",
+          "feedback": "La distanza può influire anche sull’intensità, ma il moto relativo lungo la linea di ascolto modifica gli intervalli di arrivo dei fronti."
+        },
+        {
+          "id": "E",
+          "text": "La frequenza ricevuta è maggiore perché il suono viaggia più rapidamente nell’aria davanti alla sorgente.",
+          "feedback": "La conclusione sulla frequenza è corretta, ma la spiegazione no: nel modello la velocità del suono rispetto all’aria non aumenta con la velocità della sorgente."
+        }
+      ],
+      "correctChoice": "A"
+    },
+    {
+      "id": "physics-2026-original-b-13",
+      "courseId": "c3",
+      "syllabusUnit": "U5",
+      "unitId": "sf-2026-u5-04",
+      "topic": "Trasformazione isoterma",
+      "title": "Si espande senza raffreddarsi",
+      "prompt": "Una quantità fissa di gas ideale si espande quasi staticamente restando a temperatura costante grazie allo scambio con un serbatoio termico. Indica con W il lavoro compiuto dal gas e con Q il calore assorbito dal gas. Quale relazione descrive il processo?",
+      "explanation": "Per un gas ideale con quantità e composizione fissate, U dipende soltanto da T: nell’isoterma ΔU = 0. L’espansione quasi statica contro pressione positiva comporta W > 0. Il primo principio, con W lavoro del gas, è ΔU = Q − W, quindi Q = W > 0. Tutti i termini sono energie in joule; il gas può ricevere calore senza aumentare la propria temperatura.",
+      "recoveryHint": "Scrivi prima la convenzione dei segni e chiediti da quale variabile dipende l’energia interna del modello scelto.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Q = 0 e ΔU = −W < 0.",
+          "feedback": "Questo bilancio descrive un’espansione adiabatica con lavoro positivo, non l’isoterma di un gas ideale."
+        },
+        {
+          "id": "B",
+          "text": "ΔU > 0 perché il volume aumenta.",
+          "feedback": "Per una quantità fissa di gas ideale l’energia interna dipende dalla temperatura, non direttamente dal volume."
+        },
+        {
+          "id": "C",
+          "text": "ΔU = 0 e Q = −W < 0.",
+          "feedback": "Con la convenzione indicata, ΔU = Q − W: se il gas compie lavoro positivo a energia interna costante, deve assorbire calore."
+        },
+        {
+          "id": "D",
+          "text": "ΔU = 0 e Q = W > 0.",
+          "feedback": "Esatto: l’energia interna resta costante e il calore assorbito compensa il lavoro di espansione."
+        },
+        {
+          "id": "E",
+          "text": "Q = W = 0 perché la temperatura non cambia.",
+          "feedback": "Temperatura costante non significa assenza di scambi energetici: calore e lavoro possono essere entrambi non nulli e compensarsi."
+        }
+      ],
+      "correctChoice": "D"
+    },
+    {
+      "id": "physics-2026-original-b-14",
+      "courseId": "c3",
+      "syllabusUnit": "U5",
+      "unitId": "sf-2026-u5-03",
+      "topic": "Conduzione termica",
+      "title": "Una parete più spessa",
+      "prompt": "Una parete piana omogenea conduce calore in regime stazionario. Si sostituisce con una parete dello stesso materiale, con area dimezzata e spessore doppio. Le temperature delle due facce restano le stesse; trascura altri modi di trasmissione e resistenze di contatto. Come cambia la potenza termica trasmessa?",
+      "explanation": "Per conduzione stazionaria unidimensionale il modulo della potenza è P = kA|ΔT|/L. A materiale e temperature fissati, P₂/P₁ = (A₂/A₁)(L₁/L₂) = (1/2)(1/2) = 1/4. Con k in W/(m·K), il prodotto kAΔT/L si esprime in W. Il risultato dipende dalle ipotesi sulla geometria e sull’assenza di altri contributi termici.",
+      "recoveryHint": "Costruisci il rapporto fra le due potenze: le grandezze che non cambiano si cancellano.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Si dimezza.",
+          "feedback": "Questo considera soltanto il dimezzamento dell’area: anche raddoppiare lo spessore riduce il flusso di un fattore 2."
+        },
+        {
+          "id": "B",
+          "text": "Raddoppia.",
+          "feedback": "Uno spessore maggiore ostacola la conduzione; non rende la parete un conduttore più efficace."
+        },
+        {
+          "id": "C",
+          "text": "Resta uguale.",
+          "feedback": "Area e spessore agiscono in versi opposti nella formula, ma qui entrambe le modifiche riducono la potenza."
+        },
+        {
+          "id": "D",
+          "text": "Quadruplica.",
+          "feedback": "Il rapporto è invertito: la nuova parete ha minore area utile e maggiore distanza da attraversare."
+        },
+        {
+          "id": "E",
+          "text": "Diventa un quarto.",
+          "feedback": "Esatto: la potenza è proporzionale ad A/L, che passa da A/L a (A/2)/(2L) = A/(4L)."
+        }
+      ],
+      "correctChoice": "E"
+    },
+    {
+      "id": "physics-2026-original-b-15",
+      "courseId": "c3",
+      "syllabusUnit": "U5",
+      "unitId": "sf-2026-u5-02",
+      "topic": "Calore latente",
+      "title": "Il termometro resta fermo",
+      "prompt": "Una miscela di ghiaccio puro e acqua liquida è in equilibrio a 0 °C alla pressione di 1 atm. Le si fornisce lentamente calore mantenendo la pressione costante. Finché è ancora presente del ghiaccio, quale comportamento ideale ci si aspetta?",
+      "explanation": "Alla pressione fissata, ghiaccio puro e acqua liquida possono coesistere in equilibrio alla temperatura di fusione. Il calore Q assorbito fonde una massa m secondo Q = mL𝒻, con L𝒻 in J/kg: la temperatura resta costante finché rimane ghiaccio. Dopo la fusione completa, ulteriore calore può aumentare la temperatura dell’acqua. Si assume equilibrio sufficientemente lento, senza impurità e senza altri assorbitori di calore significativi.",
+      "recoveryHint": "Quando due fasi coesistono, chiediti se l’energia cambia la temperatura o la frazione di materiale in ciascuna fase.",
+      "difficulty": "base",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "La temperatura aumenta e la massa di ghiaccio resta costante.",
+          "feedback": "Durante la fusione in equilibrio, il calore serve a cambiare fase: non innalza subito la temperatura della miscela."
+        },
+        {
+          "id": "B",
+          "text": "La temperatura resta a 0 °C e la massa di ghiaccio diminuisce.",
+          "feedback": "Esatto: il calore fornito viene assorbito come calore latente di fusione finché coesistono le due fasi."
+        },
+        {
+          "id": "C",
+          "text": "Temperatura e massa di ghiaccio restano entrambe costanti.",
+          "feedback": "La temperatura resta costante, ma l’energia fornita deve produrre una trasformazione: una parte del ghiaccio fonde."
+        },
+        {
+          "id": "D",
+          "text": "La temperatura resta a 0 °C e la massa di ghiaccio aumenta.",
+          "feedback": "Aumentare la massa solida richiederebbe solidificazione con cessione di calore, non assorbimento."
+        },
+        {
+          "id": "E",
+          "text": "La temperatura aumenta mentre la massa di ghiaccio diminuisce.",
+          "feedback": "Nel modello di sostanza pura in equilibrio alla pressione fissata, fusione e riscaldamento della miscela non procedono così simultaneamente."
+        }
+      ],
+      "correctChoice": "B"
+    },
+    {
+      "id": "physics-2026-original-b-16",
+      "courseId": "c4",
+      "syllabusUnit": "U6",
+      "unitId": "sf-2026-u6-03",
+      "topic": "Induzione elettrostatica",
+      "title": "Vicino senza toccare",
+      "prompt": "Una sfera metallica inizialmente neutra è isolata e viene avvicinata a una bacchetta con carica positiva. Non ci sono contatto, collegamento a terra o scariche. Raggiunto l’equilibrio elettrostatico, quale affermazione è corretta?",
+      "explanation": "Il sistema sfera non riceve né perde carica: la somma delle cariche, misurata in coulomb, resta zero. Il campo della bacchetta causa però una redistribuzione degli elettroni mobili, con eccesso negativo dal lato vicino e difetto elettronico dal lato lontano. Nell’equilibrio il campo totale dentro il metallo è nullo. Induzione e trasferimento netto di carica sono fenomeni distinti.",
+      "recoveryHint": "Verifica prima se esiste un percorso per trasferire carica; poi considera come può redistribuirsi quella già presente.",
+      "difficulty": "base",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "La sfera acquista una carica totale negativa per induzione.",
+          "feedback": "Senza un canale di trasferimento di carica, l’induzione redistribuisce le cariche della sfera ma non ne cambia la carica totale."
+        },
+        {
+          "id": "B",
+          "text": "La sfera acquista una carica totale positiva come la bacchetta.",
+          "feedback": "La vicinanza non trasferisce automaticamente carica: qui sono esclusi contatto, terra e scariche."
+        },
+        {
+          "id": "C",
+          "text": "Gli elettroni si redistribuiscono verso il lato vicino alla bacchetta; la carica totale della sfera resta nulla.",
+          "feedback": "Esatto: l’attrazione della bacchetta sposta gli elettroni di conduzione, lasciando una separazione di carica a somma nulla."
+        },
+        {
+          "id": "D",
+          "text": "Il lato vicino alla bacchetta diventa positivo e quello lontano negativo.",
+          "feedback": "I segni sono invertiti: gli elettroni negativi sono attratti verso la bacchetta positiva."
+        },
+        {
+          "id": "E",
+          "text": "Le cariche nella sfera non si redistribuiscono finché non avviene il contatto.",
+          "feedback": "Un conduttore risponde al campo esterno anche senza contatto, tramite il moto dei suoi elettroni liberi."
+        }
+      ],
+      "correctChoice": "C"
+    },
+    {
+      "id": "physics-2026-original-b-17",
+      "courseId": "c4",
+      "syllabusUnit": "U6",
+      "unitId": "sf-2026-u6-04",
+      "topic": "Resistività e geometria",
+      "title": "Un filo allungato",
+      "prompt": "Un filo omogeneo viene deformato in modo che la lunghezza raddoppi e il volume resti costante. Si assume che resistività e temperatura non cambino e che la sezione resti uniforme. Rispetto alla resistenza iniziale R, quanto vale la nuova resistenza?",
+      "explanation": "Il volume è V = LA. Se L₂ = 2L₁ e V resta costante, A₂ = A₁/2. Dalla legge R = ρL/A segue R₂/R₁ = 2/(1/2) = 4. La resistività ρ ha unità Ω·m, quindi ρL/A si misura in Ω. L’ipotesi di resistività invariata è esplicita: nella deformazione di un materiale reale può non essere esatta.",
+      "recoveryHint": "Non cambiare una sola dimensione: usa il vincolo sul volume per trovare anche la nuova area.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "4R.",
+          "feedback": "Esatto: raddoppiare la lunghezza a volume costante dimezza l’area; entrambi gli effetti raddoppiano la resistenza."
+        },
+        {
+          "id": "B",
+          "text": "2R.",
+          "feedback": "Questo considera la lunghezza raddoppiata, ma dimentica che la sezione deve dimezzarsi per conservare il volume."
+        },
+        {
+          "id": "C",
+          "text": "R/2.",
+          "feedback": "Una lunghezza maggiore non riduce la resistenza; inoltre la sezione diminuisce, aumentando ulteriormente R."
+        },
+        {
+          "id": "D",
+          "text": "R.",
+          "feedback": "Volume costante non significa rapporto lunghezza/area costante: la resistenza dipende proprio da quel rapporto."
+        },
+        {
+          "id": "E",
+          "text": "R/4.",
+          "feedback": "Il fattore 4 è invertito: il filo più lungo e più sottile oppone maggiore resistenza."
+        }
+      ],
+      "correctChoice": "A"
+    },
+    {
+      "id": "physics-2026-original-b-18",
+      "courseId": "c4",
+      "syllabusUnit": "U6",
+      "unitId": "sf-2026-u6-07",
+      "topic": "Verso dell’induzione",
+      "title": "Il magnete prima avanza, poi arretra",
+      "prompt": "Il polo nord di un magnete è rivolto verso una spira conduttrice chiusa e si muove lungo il suo asse, prima avvicinandosi e poi allontanandosi senza attraversarla. La corrente segue la variazione di flusso senza ritardi apprezzabili; considera tratti di moto lontani dall’istante di inversione. Per il campo magnetico indotto al centro della spira, quale coppia di versi lungo l’asse è corretta?",
+      "explanation": "Davanti a un polo nord il campo esterno esce dal magnete: al centro della spira punta lontano dal magnete. Nell’avvicinamento questo flusso aumenta; il campo indotto punta allora verso il magnete per contrastarne l’aumento. Nell’allontanamento il flusso esterno diminuisce; il campo indotto punta lontano dal magnete per contrastarne la diminuzione. Si considera il regime in cui l’autoinduzione non ritarda apprezzabilmente la risposta della corrente; non l’istante di inversione del moto. Lenz riguarda la variazione del flusso, non l’opposizione automatica al campo esterno.",
+      "recoveryHint": "Stabilisci prima il verso del campo esterno, poi se il suo flusso cresce o diminuisce. Il campo indotto contrasta la variazione.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Lontano dal magnete durante l’avvicinamento; verso il magnete durante l’allontanamento.",
+          "feedback": "Sono i versi opposti a quelli richiesti da Lenz: così il campo indotto favorirebbe la variazione del flusso invece di contrastarla."
+        },
+        {
+          "id": "B",
+          "text": "Lontano dal magnete in entrambi i casi.",
+          "feedback": "Questo verso contrasta la diminuzione del flusso durante l’allontanamento, ma favorirebbe il suo aumento durante l’avvicinamento."
+        },
+        {
+          "id": "C",
+          "text": "Verso il magnete in entrambi i casi.",
+          "feedback": "È corretto durante l’avvicinamento; quando il magnete si allontana, la variazione del flusso cambia segno e il campo indotto si inverte."
+        },
+        {
+          "id": "D",
+          "text": "Il campo indotto è nullo in entrambi i casi se la velocità è costante.",
+          "feedback": "Anche a velocità costante cambia il campo del magnete che attraversa la spira, quindi cambia il flusso."
+        },
+        {
+          "id": "E",
+          "text": "Verso il magnete durante l’avvicinamento; lontano dal magnete durante l’allontanamento.",
+          "feedback": "Esatto: il campo indotto contrasta prima l’aumento e poi la diminuzione del flusso del magnete."
+        }
+      ],
+      "correctChoice": "E"
+    },
+    {
+      "id": "physics-2026-original-b-19",
+      "courseId": "c5",
+      "syllabusUnit": "U7",
+      "unitId": "sf-2026-u7-07",
+      "topic": "Rifrazione",
+      "title": "La luce entra nel vetro",
+      "prompt": "Un raggio di luce monocromatica passa dall’aria, di indice circa 1, a un vetro trasparente di indice 1,5. L’incidenza è obliqua e l’interfaccia è ferma. Per il raggio trasmesso, quale combinazione è corretta?",
+      "explanation": "La frequenza resta la stessa in un’interfaccia immobile. Nel vetro la velocità di fase è v = c/1,5 e quindi λ = v/f diminuisce rispetto all’aria. La legge n₁sinθ₁ = n₂sinθ₂ dà sinθ₂ < sinθ₁ e, per gli angoli considerati, θ₂ < θ₁: il raggio si avvicina alla normale. Gli indici e i seni sono adimensionali. Non si sta descrivendo la componente riflessa.",
+      "recoveryHint": "Usa separatamente la relazione v = fλ e la legge di Snell, con angoli sempre misurati dalla normale.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Frequenza minore, lunghezza d’onda minore, deviazione verso la normale.",
+          "feedback": "Lunghezza d’onda e deviazione sono corrette, ma la frequenza non cambia attraversando un’interfaccia ferma."
+        },
+        {
+          "id": "B",
+          "text": "Frequenza invariata, lunghezza d’onda minore, deviazione verso la normale.",
+          "feedback": "Esatto: nel vetro v = c/n diminuisce, f resta invariata e la legge di Snell dà un angolo minore rispetto alla normale."
+        },
+        {
+          "id": "C",
+          "text": "Frequenza minore, lunghezza d’onda invariata, deviazione verso la normale.",
+          "feedback": "La velocità minore non deriva da una frequenza minore: è la lunghezza d’onda a ridursi."
+        },
+        {
+          "id": "D",
+          "text": "Frequenza invariata, lunghezza d’onda maggiore, deviazione lontano dalla normale.",
+          "feedback": "Questi cambiamenti descriverebbero il passaggio verso un indice minore, non dall’aria al vetro."
+        },
+        {
+          "id": "E",
+          "text": "Frequenza maggiore, lunghezza d’onda minore, deviazione verso la normale.",
+          "feedback": "La frequenza è fissata dalla sorgente e dalla continuità temporale all’interfaccia: non cresce entrando nel vetro."
+        }
+      ],
+      "correctChoice": "B"
+    },
+    {
+      "id": "physics-2026-original-b-20",
+      "courseId": "c5",
+      "syllabusUnit": "U7",
+      "unitId": "sf-2026-u7-05",
+      "topic": "Trasformazioni nucleari",
+      "title": "Che cosa cambia nel beta meno?",
+      "prompt": "Un nucleo con numero di massa A = 14 e numero atomico Z = 6 subisce un decadimento β⁻. Quali sono A e Z del nucleo figlio, trascurando eventuali successivi decadimenti?",
+      "explanation": "Nel decadimento β⁻ la trasformazione fondamentale è n → p + e⁻ + antineutrino elettronico. Il numero totale di protoni più neutroni resta A = 14, mentre i protoni aumentano di uno: Z passa da 6 a 7. A e Z sono conteggi adimensionali, non masse in chilogrammi; il difetto di massa energetico non modifica questa regola di conteggio.",
+      "recoveryHint": "Conta separatamente nucleoni e protoni: la parola «beta» non significa che venga espulso un nucleone.",
+      "difficulty": "base",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "A = 14, Z = 5.",
+          "feedback": "Una diminuzione di Z a massa invariata è associata a trasformazioni come β⁺ o cattura elettronica, non al β⁻."
+        },
+        {
+          "id": "B",
+          "text": "A = 13, Z = 7.",
+          "feedback": "Nel β⁻ un neutrone diventa un protone: il numero totale di nucleoni non diminuisce."
+        },
+        {
+          "id": "C",
+          "text": "A = 10, Z = 4.",
+          "feedback": "Questa variazione corrisponde all’emissione di una particella alfa, non a un decadimento beta meno."
+        },
+        {
+          "id": "D",
+          "text": "A = 14, Z = 7.",
+          "feedback": "Esatto: un neutrone del nucleo si trasforma in protone, con emissione di elettrone e antineutrino elettronico."
+        },
+        {
+          "id": "E",
+          "text": "A = 14, Z = 6.",
+          "feedback": "Questi numeri resterebbero invariati in una transizione gamma; nel β⁻ cambia il numero di protoni."
+        }
+      ],
+      "correctChoice": "D"
+    },
+    {
+      "id": "physics-2026-original-b-21",
+      "courseId": "c4",
+      "syllabusUnit": "U6",
+      "unitId": "sf-2026-u6-02",
+      "topic": "Sovrapposizione di campo e potenziale",
+      "title": "Il punto medio fra due cariche",
+      "prompt": "Due cariche puntiformi uguali e positive, +q, sono fissate nei punti x = −a e x = +a nel vuoto, con a > 0. Si pone il potenziale uguale a zero all’infinito. Quale coppia descrive campo elettrico e potenziale nel punto medio x = 0?",
+      "explanation": "Ciascuna carica dista a dal punto medio e produce un campo di modulo kq/a². Il contributo della carica a sinistra punta a destra, quello della carica a destra punta a sinistra: E = 0. I potenziali invece si sommano algebricamente: V = kq/a + kq/a = 2kq/a > 0, in volt. Un campo nullo in un punto non impone potenziale nullo in quel punto; è inoltre essenziale aver specificato il riferimento del potenziale.",
+      "recoveryHint": "Somma il campo come vettore e il potenziale come scalare. Non trasferire automaticamente una cancellazione dall’uno all’altro.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Campo verso destra; potenziale nullo.",
+          "feedback": "I contributi del campo sono uguali e opposti, mentre i potenziali hanno entrambi segno positivo: nessuna delle due conclusioni è corretta."
+        },
+        {
+          "id": "B",
+          "text": "Campo nullo; potenziale nullo.",
+          "feedback": "Il campo vettoriale si annulla, ma il potenziale è scalare: i due contributi positivi si sommano, non si cancellano."
+        },
+        {
+          "id": "C",
+          "text": "Campo nullo; potenziale positivo.",
+          "feedback": "Esatto: i campi opposti si cancellano e il potenziale vale 2kq/a > 0 con il riferimento all’infinito."
+        },
+        {
+          "id": "D",
+          "text": "Campo verso destra; potenziale positivo.",
+          "feedback": "Il segno del potenziale è corretto, ma la simmetria impone due campi di uguale modulo e verso opposto."
+        },
+        {
+          "id": "E",
+          "text": "Campo verso sinistra; potenziale negativo.",
+          "feedback": "La simmetria non privilegia la sinistra e cariche positive producono contributi positivi al potenziale riferito all’infinito."
+        }
+      ],
+      "correctChoice": "C"
+    },
+    {
+      "id": "physics-2026-original-b-22",
+      "courseId": "c1",
+      "syllabusUnit": "U1",
+      "unitId": "sf-2026-u1-02",
+      "topic": "Conversioni di volume",
+      "title": "Il volume nella micropipetta",
+      "prompt": "Una micropipetta contiene 0,250 mL di liquido. Esprimi lo stesso volume in millimetri cubi: ____ mm³. Inserisci solo il numero.",
+      "explanation": "1 mL = 1 cm³. Poiché 1 cm = 10 mm, il volume corrispondente è 1 cm³ = (10 mm)³ = 1000 mm³. Quindi 0,250 mL = 0,250·1000 = 250 mm³. La conversione riguarda un volume: il fattore di conversione della lunghezza deve essere elevato al cubo.",
+      "recoveryHint": "Scrivi l’equivalenza fra millilitro e centimetro cubo; poi converti tutte e tre le dimensioni.",
+      "difficulty": "base",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "completion",
+      "acceptedAnswers": [
+        "250",
+        "250,0",
+        "250.0"
+      ]
+    },
+    {
+      "id": "physics-2026-original-b-23",
+      "courseId": "c1",
+      "syllabusUnit": "U2",
+      "unitId": "sf-2026-u2-03",
+      "topic": "Potenza meccanica utile",
+      "title": "Sollevare in sei secondi",
+      "prompt": "Un motore solleva verticalmente un carico di 20 kg a velocità costante per 3 m in 6 s. Usa g = 10 m/s² e considera soltanto la potenza meccanica utile trasmessa al carico. La potenza media utile è ____ W. Inserisci solo il numero.",
+      "explanation": "A velocità costante la forza del motore sul carico bilancia il peso. Il lavoro utile è W = mgh = (20 kg)(10 m/s²)(3 m) = 600 J. La potenza media è P = W/Δt = 600 J/6 s = 100 W. Non si sta calcolando la potenza elettrica assorbita dal motore, che richiederebbe il rendimento.",
+      "recoveryHint": "Distingui l’energia trasferita dalla rapidità del trasferimento: prima mgh, poi dividi per il tempo.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "completion",
+      "acceptedAnswers": [
+        "100",
+        "100,0",
+        "100.0"
+      ]
+    },
+    {
+      "id": "physics-2026-original-b-24",
+      "courseId": "c1",
+      "syllabusUnit": "U2",
+      "unitId": "sf-2026-u2-01",
+      "topic": "Arresto uniformemente accelerato",
+      "title": "Il segno della frenata",
+      "prompt": "Un carrello ha velocità iniziale +6 m/s. Frena con accelerazione costante e si ferma dopo uno spostamento di +9 m, senza invertire il verso prima dell’arresto. L’asse positivo è orientato come la velocità iniziale. L’accelerazione è ____ m/s². Inserisci solo il numero, con il segno necessario.",
+      "explanation": "La relazione v𝒻² = vᵢ² + 2aΔx dà 0 = 36 + 2a·9, quindi a = −36/18 = −2 m/s². Il segno negativo indica accelerazione opposta alla velocità iniziale. Come controllo, il tempo di arresto è 3 s e la velocità media è 3 m/s: il prodotto dà proprio 9 m. La combinazione v²/Δx ha unità m/s².",
+      "recoveryHint": "Non riportare solo il modulo della decelerazione: il testo chiede la componente dell’accelerazione lungo un asse definito.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "completion",
+      "acceptedAnswers": [
+        "-2",
+        "-2,0",
+        "-2.0"
+      ]
+    },
+    {
+      "id": "physics-2026-original-b-25",
+      "courseId": "c2",
+      "syllabusUnit": "U3",
+      "unitId": "sf-2026-u3-02",
+      "topic": "Barometro e densità",
+      "title": "La stessa pressione con un altro liquido",
+      "prompt": "In un barometro ideale una pressione esterna sostiene una colonna di mercurio alta 0,75 m. Alla stessa pressione e con lo stesso g, si sostituisce il mercurio con acqua. Usa densità 13.600 kg/m³ per il mercurio e 1000 kg/m³ per l’acqua; considera nullo il contributo di pressione sopra ciascuna colonna e trascura capillarità e pressione di vapore. L’altezza della colonna d’acqua sarebbe ____ m. Inserisci solo il numero.",
+      "explanation": "Per entrambe le colonne p = ρgh. Eguagliando la stessa pressione si ha ρ_Hg g h_Hg = ρ_acqua g h_acqua. Il fattore g si cancella: h_acqua = (13.600/1000)·0,75 m = 10,2 m. Il rapporto delle densità è adimensionale. La colonna del liquido meno denso deve essere più alta. È un confronto ideale: nella realizzazione con acqua la pressione di vapore non sarebbe esattamente nulla.",
+      "recoveryHint": "A parità di pressione confronta il prodotto densità × altezza; non mantenere l’altezza quando cambia il liquido.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "completion",
+      "acceptedAnswers": [
+        "10,2",
+        "10.2",
+        "10,20",
+        "10.20"
+      ]
+    },
+    {
+      "id": "physics-2026-original-b-26",
+      "courseId": "c5",
+      "syllabusUnit": "U4",
+      "unitId": "sf-2026-u4-04",
+      "topic": "Propagazione del suono",
+      "title": "Il tempo dell’eco",
+      "prompt": "Un breve impulso sonoro viene emesso verso una parete piana e il suo eco torna allo stesso punto dopo 0,30 s. Il percorso è perpendicolare alla parete, la velocità del suono è 340 m/s e il ritardo dello strumento è trascurabile. La distanza fra il punto di emissione e la parete è ____ m. Inserisci solo il numero.",
+      "explanation": "Il tempo comprende andata e ritorno, perciò il percorso totale è 2d. Dalla relazione 2d = vΔt segue d = (340 m/s)(0,30 s)/2 = 51 m. Il prodotto velocità × tempo dà una lunghezza. Si assume un unico eco identificato dalla parete indicata e velocità costante lungo il percorso.",
+      "recoveryHint": "Disegna il percorso completo dell’impulso prima di usare la formula distanza = velocità × tempo.",
+      "difficulty": "base",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "completion",
+      "acceptedAnswers": [
+        "51",
+        "51,0",
+        "51.0"
+      ]
+    },
+    {
+      "id": "physics-2026-original-b-27",
+      "courseId": "c3",
+      "syllabusUnit": "U5",
+      "unitId": "sf-2026-u5-02",
+      "topic": "Misura del calore specifico",
+      "title": "Risalire a una proprietà del materiale",
+      "prompt": "Un campione omogeneo di massa 0,40 kg cede 1200 J di calore e la sua temperatura diminuisce di 4 K. Non cambia fase e non compie lavoro apprezzabile; il calore specifico è costante nell’intervallo. Il calore specifico del materiale è ____ J/(kg·K). Inserisci solo il numero.",
+      "explanation": "Con la convenzione del calore assorbito dal campione, Q = −1200 J e ΔT = −4 K. Dalla relazione Q = mcΔT si ricava c = (−1200)/(0,40·−4) = 750 J/(kg·K). I due segni negativi si cancellano. La capacità termica dell’intero campione sarebbe invece C = mc = 300 J/K: non è la grandezza chiesta.",
+      "recoveryHint": "Distingui calore specifico e capacità termica, e usa segni coerenti per calore ceduto e raffreddamento.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "completion",
+      "acceptedAnswers": [
+        "750",
+        "750,0",
+        "750.0"
+      ]
+    },
+    {
+      "id": "physics-2026-original-b-28",
+      "courseId": "c3",
+      "syllabusUnit": "U5",
+      "unitId": "sf-2026-u5-05",
+      "topic": "Lavoro in un ciclo",
+      "title": "L’area del rettangolo p-V",
+      "prompt": "Un gas compie quasi staticamente il ciclo seguente, con p pressione del gas e V volume: da (V = 1 L, p = 100 kPa) a (1 L, 300 kPa), poi a (3 L, 300 kPa), poi a (3 L, 100 kPa), infine al punto iniziale. Considera positivo il lavoro compiuto dal gas. Il lavoro netto del ciclo è ____ J. Inserisci solo il numero, con segno negativo soltanto se necessario.",
+      "explanation": "Nei due tratti a volume costante il lavoro è nullo. Nell’espansione a 300 kPa il lavoro è 300 kPa·(3 − 1) L = 600 J; nella compressione a 100 kPa è 100 kPa·(1 − 3) L = −200 J. Il totale è 400 J, positivo: il ciclo è percorso in senso orario nel piano V orizzontale, p verticale. Si usa 1 kPa·L = (1000 Pa)(0,001 m³) = 1 J. L’energia interna ritorna al valore iniziale, ma il lavoro netto non è per questo nullo.",
+      "recoveryHint": "Somma i lavori dei quattro tratti con il loro segno; la chiusura del ciclo annulla ΔU, non necessariamente il lavoro.",
+      "difficulty": "avanzato",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "completion",
+      "acceptedAnswers": [
+        "400",
+        "400,0",
+        "400.0",
+        "+400"
+      ]
+    },
+    {
+      "id": "physics-2026-original-b-29",
+      "courseId": "c4",
+      "syllabusUnit": "U6",
+      "unitId": "sf-2026-u6-04",
+      "topic": "Corrente e trasporto di carica",
+      "title": "Contare gli elettroni",
+      "prompt": "Attraverso una sezione di un filo passano 1,0·10¹⁶ elettroni in 0,50 s, tutti nello stesso verso. Usa il modulo della carica elementare e = 1,6·10⁻¹⁹ C. Il modulo della corrente media è ____ mA. Inserisci solo il numero.",
+      "explanation": "Il modulo della carica trasportata è |ΔQ| = Ne = (1,0·10¹⁶)(1,6·10⁻¹⁹ C) = 1,6·10⁻³ C. Il modulo della corrente media è |I| = |ΔQ|/Δt = 3,2·10⁻³ C/s = 3,2 mA. Il verso convenzionale della corrente è opposto al moto degli elettroni; il testo chiede soltanto il modulo, quindi la risposta è positiva.",
+      "recoveryHint": "Converti prima il numero di portatori in carica, poi dividi per il tempo e converti ampere in milliampere.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "completion",
+      "acceptedAnswers": [
+        "3,2",
+        "3.2",
+        "3,20",
+        "3.20"
+      ]
+    },
+    {
+      "id": "physics-2026-original-b-30",
+      "courseId": "c4",
+      "syllabusUnit": "U6",
+      "unitId": "sf-2026-u6-06",
+      "topic": "Forza su un filo percorso da corrente",
+      "title": "Il tratto dentro il campo",
+      "prompt": "Un tratto rettilineo di filo lungo 0,40 m, percorso da corrente continua di 3,0 A, è interamente immerso in un campo magnetico uniforme di modulo 0,20 T. Il filo è perpendicolare al campo. Il modulo della forza magnetica sul tratto è ____ N. Inserisci solo il numero.",
+      "explanation": "Per un tratto rettilineo in campo uniforme F = ILB sinθ. Qui θ = 90° e sinθ = 1, quindi F = (3,0 A)(0,40 m)(0,20 T) = 0,24 N. Il prodotto A·m·T equivale a N. La lunghezza da usare è quella immersa nel campo; una diversa orientazione richiederebbe il fattore seno.",
+      "recoveryHint": "Controlla quale tratto di filo è nel campo e l’angolo fra direzione della corrente e campo magnetico.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "completion",
+      "acceptedAnswers": [
+        "0,24",
+        "0.24",
+        "0,240",
+        "0.240"
+      ]
+    },
+    {
+      "id": "physics-2026-original-b-31",
+      "courseId": "c5",
+      "syllabusUnit": "U7",
+      "unitId": "sf-2026-u7-04",
+      "topic": "Attenuazione di Lambert-Beer",
+      "title": "Due strati dello stesso assorbitore",
+      "prompt": "Un fascio monocromatico di intensità iniziale 50 W/m² attraversa un assorbitore omogeneo. Uno spessore di 2 cm trasmette il 40% dell’intensità incidente. Vale la legge esponenziale di Lambert-Beer, con lo stesso coefficiente di attenuazione in tutto il materiale; trascura riflessioni e contributi di radiazione diffusa nel fascio osservato. Dopo 4 cm l’intensità trasmessa è ____ W/m². Inserisci solo il numero.",
+      "explanation": "Per I(x) = I₀e^(−μx), la trasmittanza di due spessori uguali si moltiplica: I(4 cm)/I₀ = [I(2 cm)/I₀]² = 0,40² = 0,16. Quindi I(4 cm) = (50 W/m²)·0,16 = 8 W/m². μx è adimensionale. Ogni strato trasmette il 40% di ciò che riceve, non sottrae il 60% dell’intensità iniziale a ogni passaggio. Si calcola il fascio trasmesso, senza dedurre una dose biologica.",
+      "recoveryHint": "Applica la percentuale al fascio che entra in ogni strato; nella legge esponenziale le trasmittanze si moltiplicano.",
+      "difficulty": "intermedio",
+      "status": "DRAFT",
+      "humanApproval": false,
+      "type": "completion",
+      "acceptedAnswers": [
+        "8",
+        "8,0",
+        "8.0"
+      ]
+    }
+  ]
+}

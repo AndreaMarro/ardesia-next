@@ -1,0 +1,2871 @@
+{
+  "started_at_utc": "2026-11-14T02:18:28.125378+00:00",
+  "ended_at_utc": "2026-11-14T02:20:45.913250+00:00",
+  "protocol_sha256": "7374b2ea4b65d6adae3886666a75bf04a678d001f0f78443734542cca31ec7dd",
+  "summary": [
+    {
+      "repeat": 0,
+      "cases": 10,
+      "baseline": {
+        "hit4": 4,
+        "hit1": 3,
+        "mrr4": 0.3333333333333333
+      },
+      "expanded": {
+        "hit4": 3,
+        "hit1": 2,
+        "mrr4": 0.23333333333333334
+      },
+      "hybrid_rerank": {
+        "hit4": 4,
+        "hit1": 2,
+        "mrr4": 0.2833333333333333
+      },
+      "hybrid_wins": [],
+      "hybrid_regressions": [],
+      "invalid_expansions": 6,
+      "invalid_ranks": 3,
+      "baseline_median_s": 1.5546457516029477,
+      "hybrid_median_s": 4.21667320933193,
+      "threshold_met": false
+    },
+    {
+      "repeat": 1,
+      "cases": 10,
+      "baseline": {
+        "hit4": 4,
+        "hit1": 3,
+        "mrr4": 0.3333333333333333
+      },
+      "expanded": {
+        "hit4": 3,
+        "hit1": 2,
+        "mrr4": 0.23333333333333334
+      },
+      "hybrid_rerank": {
+        "hit4": 4,
+        "hit1": 2,
+        "mrr4": 0.2833333333333333
+      },
+      "hybrid_wins": [],
+      "hybrid_regressions": [],
+      "invalid_expansions": 6,
+      "invalid_ranks": 3,
+      "baseline_median_s": 1.5595937510952353,
+      "hybrid_median_s": 2.827348919585347,
+      "threshold_met": false
+    }
+  ],
+  "results": [
+    {
+      "id": "pdf_import",
+      "repeat": 0,
+      "query": "Quando carico un PDF nella lezione voglio scegliere le pagine e riprendere dopo un errore senza aggiungerle due volte.",
+      "expected": "apps/web/src/materials/MaterialImport.tsx",
+      "baseline": {
+        "paths": [
+          "docs/sources/materials-2026-11-07.md",
+          "docs/handoffs/core-continuity-2026-11-07.md",
+          "apps/web/src/materials/MaterialImport.tsx",
+          "docs/adr/0022-canonical-notebooks.md",
+          "docs/adr/0020-original-materials.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": false,
+          "rank": 3,
+          "reciprocal_rank4": 0.3333333333333333
+        },
+        "durations_s": [
+          1.696127125993371,
+          1.6917610839009285,
+          1.7530134581029415
+        ],
+        "evidence_bytes": 7900,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": false,
+        "keywords": {
+          "keywords": [
+            "typescript",
+            "react",
+            "pdf",
+            "page",
+            "selection",
+            "error",
+            "recovery",
+            "no-duplicate"
+          ]
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:18:39.297028Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"pdf\",\n    \"page\",\n    \"selection\",\n    \"error\",\n    \"recovery\",\n    \"no-duplicate\"\n  ]\n}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 1238774875,
+          "load_duration": 520851500,
+          "prompt_eval_count": 112,
+          "prompt_eval_cached_count": 0,
+          "prompt_eval_duration": 191687000,
+          "eval_count": 45,
+          "eval_duration": 521255000,
+          "wall_seconds": 1.2449147924780846,
+          "input_utf8_bytes": 394,
+          "input_sha256": "4bdf3caf33fb8de9063e50b8fe04ad6b9d174e68b1768e3f04cc7aee35f8fae9"
+        },
+        "paths": [
+          "docs/sources/materials-2026-11-07.md",
+          "docs/handoffs/core-continuity-2026-11-07.md",
+          "apps/web/src/materials/MaterialImport.tsx",
+          "docs/adr/0022-canonical-notebooks.md",
+          "docs/adr/0020-original-materials.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": false,
+          "rank": 3,
+          "reciprocal_rank4": 0.3333333333333333
+        },
+        "wall_seconds": 1.2449358329176903,
+        "evidence_bytes": 7900
+      },
+      "hybrid_rerank": {
+        "valid": true,
+        "candidate_count": 5,
+        "candidate_target_present": true,
+        "paths": [
+          "docs/adr/0020-original-materials.md",
+          "docs/adr/0022-canonical-notebooks.md",
+          "apps/web/src/materials/MaterialImport.tsx",
+          "docs/handoffs/core-continuity-2026-11-07.md",
+          "docs/sources/materials-2026-11-07.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": false,
+          "rank": 3,
+          "reciprocal_rank4": 0.3333333333333333
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:18:40.389139Z",
+          "response": "{\"ids\": [4, 3, 2, 1, 0]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 1084718917,
+          "load_duration": 502750,
+          "prompt_eval_count": 915,
+          "prompt_eval_cached_count": 24,
+          "prompt_eval_duration": 866431000,
+          "eval_count": 19,
+          "eval_duration": 213303000,
+          "wall_seconds": 1.0933462511748075,
+          "input_utf8_bytes": 3148,
+          "input_sha256": "4994f5feecec6e36db2c2bb2a31f08de3c76f00d0ce5fa37c887f40364f79d69"
+        },
+        "end_to_end_seconds": 4.034409210085869
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:38:40.391236+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ink_recovery",
+      "repeat": 0,
+      "query": "Dopo un conflitto voglio vedere dove finiranno i tratti della penna prima di confermare il recupero.",
+      "expected": "apps/web/src/components/InkConflictRecovery.tsx",
+      "baseline": {
+        "paths": [
+          "docs/handoffs/core-continuity-2026-11-07.md",
+          "docs/superpowers/plans/2026-11-02-engineering-delivery.md",
+          "docs/adr/0021-core-continuity.md",
+          "apps/web/src/OfflineWorkspace.tsx"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "durations_s": [
+          1.3298481665551662,
+          1.3272040002048016,
+          1.3090169169008732
+        ],
+        "evidence_bytes": 7871,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": true,
+        "keywords": {
+          "keywords": [
+            "typescript",
+            "react",
+            "tratte",
+            "penna",
+            "conflitto",
+            "recupero"
+          ]
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:18:44.892744Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"tratte\",\n    \"penna\",\n    \"conflitto\",\n    \"recupero\"\n  ]\n}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 523264042,
+          "load_duration": 424542,
+          "prompt_eval_count": 108,
+          "prompt_eval_cached_count": 76,
+          "prompt_eval_duration": 64224999,
+          "eval_count": 40,
+          "eval_duration": 454703000,
+          "wall_seconds": 0.5292973350733519,
+          "input_utf8_bytes": 376,
+          "input_sha256": "1e78cf6fed331e0e96c756a5e428fa31568ad05c0c772ce39c412b0c34c62683"
+        },
+        "paths": [
+          "package.json",
+          "docs/sources/dependency-licenses.json",
+          "docs/adr/0011-mcp-core-stdio.md",
+          "docs/dependencies.md",
+          "docs/handoffs/core-continuity-2026-11-07.md",
+          "docs/superpowers/plans/2026-11-02-engineering-delivery.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "wall_seconds": 1.4045359157025814,
+        "evidence_bytes": 7937
+      },
+      "hybrid_rerank": {
+        "valid": false,
+        "candidate_count": 8,
+        "candidate_target_present": false,
+        "paths": [
+          "docs/handoffs/core-continuity-2026-11-07.md",
+          "docs/superpowers/plans/2026-11-02-engineering-delivery.md",
+          "docs/adr/0021-core-continuity.md",
+          "apps/web/src/OfflineWorkspace.tsx"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:18:47.433492Z",
+          "response": "{\"ids\": [4, 5, 6, 7, 2, 3, 1]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 1659391417,
+          "load_duration": 470709,
+          "prompt_eval_count": 1517,
+          "prompt_eval_cached_count": 24,
+          "prompt_eval_duration": 1362665000,
+          "eval_count": 25,
+          "eval_duration": 291826000,
+          "wall_seconds": 1.6671972926706076,
+          "input_utf8_bytes": 4541,
+          "input_sha256": "c6a712a41534a6ca84dee959bf30703b26f7e3f42312ce00fa98acfb847342af"
+        },
+        "end_to_end_seconds": 4.3989372085779905
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:38:47.436017+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "learning_next",
+      "repeat": 0,
+      "query": "Lo studente deve capire quale risposta correggere adesso e vedere su quali feedback si basa il suggerimento.",
+      "expected": "apps/web/src/components/LearningNextStep.tsx",
+      "baseline": {
+        "paths": [
+          "docs/adr/0024-learning-evidence.md",
+          "apps/web/public/fisica/sf-2026-u6-01.html",
+          "docs/adr/0013-learner-feedback.md",
+          "apps/web/public/fisica/sf-2026-u3-01.html",
+          "apps/web/src/components/LearningNextStep.tsx"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": 5,
+          "reciprocal_rank4": 0
+        },
+        "durations_s": [
+          2.080843834206462,
+          2.0701527912169695,
+          2.0506617091596127
+        ],
+        "evidence_bytes": 7851,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": true,
+        "keywords": {
+          "keywords": [
+            "typescript",
+            "react",
+            "student",
+            "feedback",
+            "suggestion",
+            "correctness"
+          ]
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:18:54.128601Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"student\",\n    \"feedback\",\n    \"suggestion\",\n    \"correctness\"\n  ]\n}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 478963750,
+          "load_duration": 499917,
+          "prompt_eval_count": 108,
+          "prompt_eval_cached_count": 76,
+          "prompt_eval_duration": 64376999,
+          "eval_count": 36,
+          "eval_duration": 408592000,
+          "wall_seconds": 0.485102167353034,
+          "input_utf8_bytes": 384,
+          "input_sha256": "3d7fb82071c9e542e0ec14ffb11e9b9ea2c88fe0d573f126681890f33ecf866e"
+        },
+        "paths": [
+          "package.json",
+          "docs/sources/dependency-licenses.json",
+          "docs/dependencies.md",
+          ".codex/agents/ardesia_reviewer.toml",
+          "tools/check-boundaries.mjs",
+          "docs/sources/legacy-review.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "wall_seconds": 1.0811263341456652,
+        "evidence_bytes": 7979
+      },
+      "hybrid_rerank": {
+        "valid": false,
+        "candidate_count": 11,
+        "candidate_target_present": true,
+        "paths": [
+          "docs/adr/0024-learning-evidence.md",
+          "apps/web/public/fisica/sf-2026-u6-01.html",
+          "docs/adr/0013-learner-feedback.md",
+          "apps/web/public/fisica/sf-2026-u3-01.html",
+          "apps/web/src/components/LearningNextStep.tsx"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": 5,
+          "reciprocal_rank4": 0
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:18:56.816693Z",
+          "response": "{\"ids\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 2085860208,
+          "load_duration": 956916,
+          "prompt_eval_count": 1832,
+          "prompt_eval_cached_count": 24,
+          "prompt_eval_duration": 1667134000,
+          "eval_count": 35,
+          "eval_duration": 412881000,
+          "wall_seconds": 2.094235459342599,
+          "input_utf8_bytes": 6115,
+          "input_sha256": "807f4cd32090beafe7ce09c1ab29f0a98c109dcc1a63daeb1bce943b2521d367"
+        },
+        "end_to_end_seconds": 5.245514584705234
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:38:56.819645+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "raster_performance",
+      "repeat": 0,
+      "query": "Il rendering di più materiali deve rispettare un turno ed evitare immagini raster troppo grandi che consumano memoria.",
+      "expected": "apps/web/src/materials/render-queue.ts",
+      "baseline": {
+        "paths": [
+          "docs/handoffs/2026-11-07.md",
+          "docs/adr/0020-original-materials.md",
+          "apps/web/src/handout/assets.ts",
+          "docs/sources/materials-2026-11-07.md",
+          "docs/sources/tutor-economics-2026-11-07.md",
+          "docs/design-verification.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "durations_s": [
+          1.7647014167159796,
+          1.728661336004734,
+          1.722135666757822
+        ],
+        "evidence_bytes": 7954,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": false,
+        "keywords": {
+          "keywords": [
+            "typescript",
+            "react",
+            "material",
+            "rendering",
+            "turn",
+            "memory",
+            "image",
+            "raster"
+          ]
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:19:02.635197Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"material\",\n    \"rendering\",\n    \"turn\",\n    \"memory\",\n    \"image\",\n    \"raster\"\n  ]\n}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 587999000,
+          "load_duration": 415459,
+          "prompt_eval_count": 109,
+          "prompt_eval_cached_count": 76,
+          "prompt_eval_duration": 87872000,
+          "eval_count": 44,
+          "eval_duration": 493172000,
+          "wall_seconds": 0.5941096674650908,
+          "input_utf8_bytes": 395,
+          "input_sha256": "b1e8c7eb121f6424e71042d7576e2c72dccfdf2e4e6a78d3751c239da00a210a"
+        },
+        "paths": [
+          "docs/handoffs/2026-11-07.md",
+          "docs/adr/0020-original-materials.md",
+          "apps/web/src/handout/assets.ts",
+          "docs/sources/materials-2026-11-07.md",
+          "docs/sources/tutor-economics-2026-11-07.md",
+          "docs/design-verification.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "wall_seconds": 0.5941384993493557,
+        "evidence_bytes": 7954
+      },
+      "hybrid_rerank": {
+        "valid": false,
+        "candidate_count": 6,
+        "candidate_target_present": false,
+        "paths": [
+          "docs/handoffs/2026-11-07.md",
+          "docs/adr/0020-original-materials.md",
+          "apps/web/src/handout/assets.ts",
+          "docs/sources/materials-2026-11-07.md",
+          "docs/sources/tutor-economics-2026-11-07.md",
+          "docs/design-verification.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:19:03.842656Z",
+          "response": "{\"ids\": [0, 1, 2, 3, 4]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 1200434750,
+          "load_duration": 448083,
+          "prompt_eval_count": 1095,
+          "prompt_eval_cached_count": 24,
+          "prompt_eval_duration": 979821000,
+          "eval_count": 19,
+          "eval_duration": 216405000,
+          "wall_seconds": 1.2090467903763056,
+          "input_utf8_bytes": 3385,
+          "input_sha256": "dda844d6a87e35ac2bf29d168bfb22e11ef94b6e1ec6a7ea2c967eb155905288"
+        },
+        "end_to_end_seconds": 3.5318466257303953
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:39:03.844907+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "course_resume",
+      "repeat": 0,
+      "query": "L'aggiunta di un corso di fisica si è interrotta e devo riprendere dalla raccolta senza duplicare le lezioni.",
+      "expected": "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+      "baseline": {
+        "paths": [
+          "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+          "docs/history.md",
+          "docs/handoffs/2026-11-13-physics.md",
+          "README.md",
+          "docs/m2-delivery.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": true,
+          "rank": 1,
+          "reciprocal_rank4": 1.0
+        },
+        "durations_s": [
+          1.6607744600623846,
+          1.642100790515542,
+          1.6464601252228022
+        ],
+        "evidence_bytes": 7969,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": false,
+        "keywords": null,
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:19:10.974708Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"typescript-react\",\n    \"typescript-react-app\",\n    \"typescript-react-project\",\n    \"typescript-react-apps\",\n    \"typescript-react-applications\",\n    \"typescript-react-applications-projects\",\n    \"typescript-react-applications-projects-projects\",\n    \"typescript-react-applications-projects-projects-projects\",\n    \"typescript-react-applications-projects-projects-projects-projects\",\n    \"typescript-react-applications-projects-projects-projects-projects-projects\",\n    \"typescript-react-applications-projects-projects-projects-projects-projects-projects\",\n    \"typescript-react-applications-projects-projects-projects-projects-projects-projects-projects\",\n    \"typescript-react-applications-projects-projects-projects-projects-projects-projects-projects-projects\",\n    \"typescript-react-applications-",
+          "done": true,
+          "done_reason": "length",
+          "total_duration": 2167396250,
+          "load_duration": 476792,
+          "prompt_eval_count": 114,
+          "prompt_eval_cached_count": 76,
+          "prompt_eval_duration": 84315000,
+          "eval_count": 180,
+          "eval_duration": 2078100000,
+          "wall_seconds": 2.1738973315805197,
+          "input_utf8_bytes": 386,
+          "input_sha256": "95cf3e02d04f6b944e0a9e25e704ed7d35deb1f048ad638b1f5c680fd378d0f6"
+        },
+        "paths": [
+          "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+          "docs/history.md",
+          "docs/handoffs/2026-11-13-physics.md",
+          "README.md",
+          "docs/m2-delivery.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": true,
+          "rank": 1,
+          "reciprocal_rank4": 1.0
+        },
+        "wall_seconds": 2.173949582502246,
+        "evidence_bytes": 7969
+      },
+      "hybrid_rerank": {
+        "valid": true,
+        "candidate_count": 5,
+        "candidate_target_present": true,
+        "paths": [
+          "README.md",
+          "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+          "docs/history.md",
+          "docs/handoffs/2026-11-13-physics.md",
+          "docs/m2-delivery.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": false,
+          "rank": 2,
+          "reciprocal_rank4": 0.5
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:19:11.97041Z",
+          "response": "{\"ids\": [3, 0, 1, 2, 4]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 988169917,
+          "load_duration": 475125,
+          "prompt_eval_count": 875,
+          "prompt_eval_cached_count": 24,
+          "prompt_eval_duration": 765877000,
+          "eval_count": 19,
+          "eval_duration": 217890000,
+          "wall_seconds": 0.9961986672133207,
+          "input_utf8_bytes": 2984,
+          "input_sha256": "ed5f685b6502ec5a668510eff1ef75f2c774224c85b62918ba3216b0d7868d26"
+        },
+        "end_to_end_seconds": 4.816608374938369
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:39:11.972048+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "course_import_validation",
+      "repeat": 0,
+      "query": "Prima di importare un pacchetto di fisica devo controllare lo schema e costruire gli oggetti del corso.",
+      "expected": "apps/web/src/courses/physics/import.ts",
+      "baseline": {
+        "paths": [
+          "docs/sources/physics-2026-27/chat-pro-pressure-review.md",
+          "docs/sources/physics-2026-27/recovery-audit.md",
+          "docs/release-runbook.md",
+          "docs/adr/0016-versioned-courses.md",
+          "docs/adr/0004-m1-plugin-runtime.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "durations_s": [
+          1.1990242917090654,
+          1.182072376832366,
+          1.1857299990952015
+        ],
+        "evidence_bytes": 7856,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": true,
+        "keywords": {
+          "keywords": [
+            "typescript",
+            "react",
+            "schema",
+            "objects",
+            "course",
+            "import"
+          ]
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:19:16.040456Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"schema\",\n    \"objects\",\n    \"course\",\n    \"import\"\n  ]\n}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 490230250,
+          "load_duration": 396791,
+          "prompt_eval_count": 111,
+          "prompt_eval_cached_count": 76,
+          "prompt_eval_duration": 96483000,
+          "eval_count": 34,
+          "eval_duration": 387847000,
+          "wall_seconds": 0.49665291607379913,
+          "input_utf8_bytes": 379,
+          "input_sha256": "f7814e56abf6d170f8ec08d773f06e2e928fe2f30ace900fa31f640fea49f448"
+        },
+        "paths": [
+          "apps/web/src/handout/HandoutView.tsx",
+          "package.json",
+          "docs/sources/dependency-licenses.json",
+          "apps/web/src/courses/physics/CourseMaterials.tsx",
+          "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+          "tools/check-boundaries.mjs"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "wall_seconds": 1.3695055842399597,
+        "evidence_bytes": 7971
+      },
+      "hybrid_rerank": {
+        "valid": true,
+        "candidate_count": 11,
+        "candidate_target_present": false,
+        "paths": [
+          "docs/sources/physics-2026-27/chat-pro-pressure-review.md",
+          "docs/sources/physics-2026-27/recovery-audit.md",
+          "docs/release-runbook.md",
+          "docs/adr/0016-versioned-courses.md",
+          "docs/adr/0004-m1-plugin-runtime.md",
+          "apps/web/src/handout/HandoutView.tsx",
+          "package.json",
+          "docs/sources/dependency-licenses.json",
+          "apps/web/src/courses/physics/CourseMaterials.tsx",
+          "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+          "tools/check-boundaries.mjs"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:19:19.098121Z",
+          "response": "{\"ids\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 2178367334,
+          "load_duration": 472125,
+          "prompt_eval_count": 1892,
+          "prompt_eval_cached_count": 24,
+          "prompt_eval_duration": 1722478000,
+          "eval_count": 38,
+          "eval_duration": 450532000,
+          "wall_seconds": 2.1868390813469887,
+          "input_utf8_bytes": 6145,
+          "input_sha256": "59c96a390182cec88087eee187d9636e4bba24c1b95b721fd1ead83b57200f8c"
+        },
+        "end_to_end_seconds": 4.74207466468215
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:39:19.101179+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tutor_economics",
+      "repeat": 0,
+      "query": "Nel gestionale voglio distinguere gli incassi dai compensi maturati e capire come il tempo dei pacchetti influenza il margine.",
+      "expected": "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+      "baseline": {
+        "paths": [
+          "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+          "docs/sources/tutor-economics-2026-11-07.md",
+          "docs/adr/0018-tutor-studio.md",
+          "apps/web/src/tutor/TutorStudio.tsx",
+          "README.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": true,
+          "rank": 1,
+          "reciprocal_rank4": 1.0
+        },
+        "durations_s": [
+          1.4613881260156631,
+          1.4634655397385359,
+          1.4536869581788778
+        ],
+        "evidence_bytes": 7821,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": false,
+        "keywords": {
+          "keywords": [
+            "typescript",
+            "react",
+            "billing",
+            "income",
+            "compensation",
+            "maturity",
+            "package",
+            "time",
+            "margin",
+            "analysis"
+          ]
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:19:24.179139Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"billing\",\n    \"income\",\n    \"compensation\",\n    \"maturity\",\n    \"package\",\n    \"time\",\n    \"margin\",\n    \"analysis\"\n  ]\n}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 687054958,
+          "load_duration": 411000,
+          "prompt_eval_count": 112,
+          "prompt_eval_cached_count": 76,
+          "prompt_eval_duration": 77999000,
+          "eval_count": 52,
+          "eval_duration": 601928000,
+          "wall_seconds": 0.6933562085032463,
+          "input_utf8_bytes": 402,
+          "input_sha256": "f7368bdb82b824cc9bb3a041f001d9e57a67f6f20c616339c73b8ff7156dec21"
+        },
+        "paths": [
+          "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+          "docs/sources/tutor-economics-2026-11-07.md",
+          "docs/adr/0018-tutor-studio.md",
+          "apps/web/src/tutor/TutorStudio.tsx",
+          "README.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": true,
+          "rank": 1,
+          "reciprocal_rank4": 1.0
+        },
+        "wall_seconds": 0.6933770850300789,
+        "evidence_bytes": 7821
+      },
+      "hybrid_rerank": {
+        "valid": true,
+        "candidate_count": 5,
+        "candidate_target_present": true,
+        "paths": [
+          "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+          "docs/sources/tutor-economics-2026-11-07.md",
+          "docs/adr/0018-tutor-studio.md",
+          "apps/web/src/tutor/TutorStudio.tsx",
+          "README.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": true,
+          "rank": 1,
+          "reciprocal_rank4": 1.0
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:19:25.20722Z",
+          "response": "{\"ids\": [0, 1, 2, 3, 4]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 1020825875,
+          "load_duration": 410125,
+          "prompt_eval_count": 897,
+          "prompt_eval_cached_count": 24,
+          "prompt_eval_duration": 796998000,
+          "eval_count": 19,
+          "eval_duration": 219691000,
+          "wall_seconds": 1.02926829084754,
+          "input_utf8_bytes": 3113,
+          "input_sha256": "f3ff59c840006edc1b4503311505ad7b210a820d4774513ca26fe3e031e1187a"
+        },
+        "end_to_end_seconds": 3.184033501893282
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:39:25.209283+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "offline_export",
+      "repeat": 0,
+      "query": "Senza connessione voglio esportare la copia personale delle lezioni insieme ai tratti in attesa di conferma.",
+      "expected": "apps/web/src/OfflineWorkspace.tsx",
+      "baseline": {
+        "paths": [
+          "apps/web/src/OfflineWorkspace.tsx",
+          "README.md",
+          "docs/adr/0020-original-materials.md",
+          "docs/adr/0010-own-lessons-offline.md",
+          "docs/adr/0021-core-continuity.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": true,
+          "rank": 1,
+          "reciprocal_rank4": 1.0
+        },
+        "durations_s": [
+          1.3097921255975962,
+          1.315898708999157,
+          1.3032513335347176
+        ],
+        "evidence_bytes": 7917,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": true,
+        "keywords": {
+          "keywords": [
+            "typescript",
+            "react",
+            "export",
+            "personal",
+            "lessons",
+            "conferma"
+          ]
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:19:29.649944Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"export\",\n    \"personal\",\n    \"lessons\",\n    \"conferma\"\n  ]\n}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 498669916,
+          "load_duration": 465833,
+          "prompt_eval_count": 111,
+          "prompt_eval_cached_count": 76,
+          "prompt_eval_duration": 87534000,
+          "eval_count": 36,
+          "eval_duration": 406475000,
+          "wall_seconds": 0.5050156265497208,
+          "input_utf8_bytes": 384,
+          "input_sha256": "20bc461ea31bfe8efd10f3482b6ec320a0dc93a6553c527eea9fabfc912d75de"
+        },
+        "paths": [
+          "package.json",
+          "docs/sources/dependency-licenses.json",
+          "docs/dependencies.md",
+          "e2e/README.md",
+          "docs/architecture.md",
+          "tools/ui-runtime.mjs"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "wall_seconds": 1.2970115449279547,
+        "evidence_bytes": 7983
+      },
+      "hybrid_rerank": {
+        "valid": true,
+        "candidate_count": 11,
+        "candidate_target_present": true,
+        "paths": [
+          "apps/web/src/OfflineWorkspace.tsx",
+          "README.md",
+          "docs/adr/0020-original-materials.md",
+          "docs/adr/0010-own-lessons-offline.md",
+          "docs/adr/0021-core-continuity.md",
+          "package.json",
+          "docs/sources/dependency-licenses.json",
+          "docs/dependencies.md",
+          "e2e/README.md",
+          "docs/architecture.md",
+          "tools/ui-runtime.mjs"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": true,
+          "rank": 1,
+          "reciprocal_rank4": 1.0
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:19:32.51257Z",
+          "response": "{\"ids\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 2064309000,
+          "load_duration": 453000,
+          "prompt_eval_count": 1771,
+          "prompt_eval_cached_count": 24,
+          "prompt_eval_duration": 1607581000,
+          "eval_count": 38,
+          "eval_duration": 451355000,
+          "wall_seconds": 2.0727802515029907,
+          "input_utf8_bytes": 6025,
+          "input_sha256": "749915f0f79361e3af4a86025e48ea95e805878b2368233002411fb8a1e9d089"
+        },
+        "end_to_end_seconds": 4.679583922028542
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:39:32.515555+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "recording_recovery",
+      "repeat": 0,
+      "query": "I comandi di una registrazione interrotta devono essere recuperabili soltanto nel giusto account e spazio di lavoro.",
+      "expected": "apps/web/src/recordings/recovery.ts",
+      "baseline": {
+        "paths": [
+          "docs/adr/0010-own-lessons-offline.md",
+          "packages/mcp-core/README.md",
+          "README.md",
+          "docs/sources/physics-2026-27/chat-pro-pressure-review.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "durations_s": [
+          1.5254327487200499,
+          1.5135912485420704,
+          1.5163036677986383
+        ],
+        "evidence_bytes": 7824,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": false,
+        "keywords": {
+          "keywords": [
+            "typescript",
+            "react",
+            "registration",
+            "recovery",
+            "account",
+            "space",
+            "work"
+          ]
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:19:37.61493Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"registration\",\n    \"recovery\",\n    \"account\",\n    \"space\",\n    \"work\"\n  ]\n}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 531802625,
+          "load_duration": 495834,
+          "prompt_eval_count": 109,
+          "prompt_eval_cached_count": 76,
+          "prompt_eval_duration": 82354000,
+          "eval_count": 39,
+          "eval_duration": 442345000,
+          "wall_seconds": 0.5380312502384186,
+          "input_utf8_bytes": 392,
+          "input_sha256": "cfadd88855907051f7d429927f4174d69be2c6bef17fc3af3fe257cfec7958dc"
+        },
+        "paths": [
+          "docs/adr/0010-own-lessons-offline.md",
+          "packages/mcp-core/README.md",
+          "README.md",
+          "docs/sources/physics-2026-27/chat-pro-pressure-review.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "wall_seconds": 0.538053710013628,
+        "evidence_bytes": 7824
+      },
+      "hybrid_rerank": {
+        "valid": true,
+        "candidate_count": 4,
+        "candidate_target_present": false,
+        "paths": [
+          "docs/adr/0010-own-lessons-offline.md",
+          "packages/mcp-core/README.md",
+          "README.md",
+          "docs/sources/physics-2026-27/chat-pro-pressure-review.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:19:38.428662Z",
+          "response": "{\"ids\": [0, 1, 2, 3]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 806784750,
+          "load_duration": 475875,
+          "prompt_eval_count": 725,
+          "prompt_eval_cached_count": 24,
+          "prompt_eval_duration": 622827000,
+          "eval_count": 16,
+          "eval_duration": 179841000,
+          "wall_seconds": 0.8146166242659092,
+          "input_utf8_bytes": 2572,
+          "input_sha256": "011a555783f5ab76b436a116d1e33f6c411c258f9a1bea2b76fb0d0ccc9b97c5"
+        },
+        "end_to_end_seconds": 2.8689740020781755
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:39:38.430368+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "creator_preview",
+      "repeat": 0,
+      "query": "L'anteprima del programma interattivo deve essere caricata solo quando la avvio e conservare la definizione se il caricamento fallisce.",
+      "expected": "apps/web/src/creator/ProgramPreview.tsx",
+      "baseline": {
+        "paths": [
+          "packages/mcp-core/README.md",
+          "docs/adr/0010-own-lessons-offline.md",
+          "docs/adr/0017-programmable-creator.md",
+          "docs/recurring-work.md",
+          "docs/superpowers/plans/2026-11-02-engineering-delivery.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "durations_s": [
+          1.6229300405830145,
+          1.5859799589961767,
+          1.592987835407257
+        ],
+        "evidence_bytes": 7983,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": false,
+        "keywords": {
+          "keywords": [
+            "typescript",
+            "react",
+            "interactive",
+            "program",
+            "loading",
+            "save",
+            "failure"
+          ]
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:19:43.756657Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"interactive\",\n    \"program\",\n    \"loading\",\n    \"save\",\n    \"failure\"\n  ]\n}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 512166417,
+          "load_duration": 507750,
+          "prompt_eval_count": 113,
+          "prompt_eval_cached_count": 76,
+          "prompt_eval_duration": 78374000,
+          "eval_count": 38,
+          "eval_duration": 429699000,
+          "wall_seconds": 0.5184593740850687,
+          "input_utf8_bytes": 411,
+          "input_sha256": "648c4260640fa32264e773478706a3095ae6253d7755af0f8fa7f5b679d193f9"
+        },
+        "paths": [
+          "packages/mcp-core/README.md",
+          "docs/adr/0010-own-lessons-offline.md",
+          "docs/adr/0017-programmable-creator.md",
+          "docs/recurring-work.md",
+          "docs/superpowers/plans/2026-11-02-engineering-delivery.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "wall_seconds": 0.5184830818325281,
+        "evidence_bytes": 7983
+      },
+      "hybrid_rerank": {
+        "valid": true,
+        "candidate_count": 5,
+        "candidate_target_present": false,
+        "paths": [
+          "docs/adr/0010-own-lessons-offline.md",
+          "docs/adr/0017-programmable-creator.md",
+          "docs/recurring-work.md",
+          "docs/superpowers/plans/2026-11-02-engineering-delivery.md",
+          "packages/mcp-core/README.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:19:44.779063Z",
+          "response": "{\"ids\": [1, 2, 3, 4, 0]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 1015266500,
+          "load_duration": 656542,
+          "prompt_eval_count": 906,
+          "prompt_eval_cached_count": 24,
+          "prompt_eval_duration": 796165000,
+          "eval_count": 19,
+          "eval_duration": 214518000,
+          "wall_seconds": 1.0236825421452522,
+          "input_utf8_bytes": 3133,
+          "input_sha256": "cb4714c31e92893a32bdf456bfa3a8ea4336233dbd83c61114e659105049d0e2"
+        },
+        "end_to_end_seconds": 3.1351534593850374
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:39:44.781194+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "creator_preview",
+      "repeat": 1,
+      "query": "L'anteprima del programma interattivo deve essere caricata solo quando la avvio e conservare la definizione se il caricamento fallisce.",
+      "expected": "apps/web/src/creator/ProgramPreview.tsx",
+      "baseline": {
+        "paths": [
+          "packages/mcp-core/README.md",
+          "docs/adr/0010-own-lessons-offline.md",
+          "docs/adr/0017-programmable-creator.md",
+          "docs/recurring-work.md",
+          "docs/superpowers/plans/2026-11-02-engineering-delivery.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "durations_s": [
+          1.594851417466998,
+          1.5882859155535698,
+          1.5992330014705658
+        ],
+        "evidence_bytes": 7983,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": false,
+        "keywords": {
+          "keywords": [
+            "typescript",
+            "react",
+            "interactive",
+            "program",
+            "loading",
+            "save",
+            "failure"
+          ]
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:19:50.046701Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"interactive\",\n    \"program\",\n    \"loading\",\n    \"save\",\n    \"failure\"\n  ]\n}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 469946750,
+          "load_duration": 447958,
+          "prompt_eval_count": 113,
+          "prompt_eval_cached_count": 112,
+          "prompt_eval_duration": 29413000,
+          "eval_count": 38,
+          "eval_duration": 435958000,
+          "wall_seconds": 0.4763645399361849,
+          "input_utf8_bytes": 411,
+          "input_sha256": "648c4260640fa32264e773478706a3095ae6253d7755af0f8fa7f5b679d193f9"
+        },
+        "paths": [
+          "packages/mcp-core/README.md",
+          "docs/adr/0010-own-lessons-offline.md",
+          "docs/adr/0017-programmable-creator.md",
+          "docs/recurring-work.md",
+          "docs/superpowers/plans/2026-11-02-engineering-delivery.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "wall_seconds": 0.47638879157602787,
+        "evidence_bytes": 7983
+      },
+      "hybrid_rerank": {
+        "valid": true,
+        "candidate_count": 5,
+        "candidate_target_present": false,
+        "paths": [
+          "docs/adr/0010-own-lessons-offline.md",
+          "docs/adr/0017-programmable-creator.md",
+          "docs/recurring-work.md",
+          "docs/superpowers/plans/2026-11-02-engineering-delivery.md",
+          "packages/mcp-core/README.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:19:50.296084Z",
+          "response": "{\"ids\": [1, 2, 3, 4, 0]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 242085875,
+          "load_duration": 494209,
+          "prompt_eval_count": 906,
+          "prompt_eval_cached_count": 905,
+          "prompt_eval_duration": 23308000,
+          "eval_count": 19,
+          "eval_duration": 213101000,
+          "wall_seconds": 0.25036683306097984,
+          "input_utf8_bytes": 3133,
+          "input_sha256": "cb4714c31e92893a32bdf456bfa3a8ea4336233dbd83c61114e659105049d0e2"
+        },
+        "end_to_end_seconds": 2.321607042104006
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:39:50.297964+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "recording_recovery",
+      "repeat": 1,
+      "query": "I comandi di una registrazione interrotta devono essere recuperabili soltanto nel giusto account e spazio di lavoro.",
+      "expected": "apps/web/src/recordings/recovery.ts",
+      "baseline": {
+        "paths": [
+          "docs/adr/0010-own-lessons-offline.md",
+          "packages/mcp-core/README.md",
+          "README.md",
+          "docs/sources/physics-2026-27/chat-pro-pressure-review.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "durations_s": [
+          1.5243360847234726,
+          1.5161644592881203,
+          1.5270765013992786
+        ],
+        "evidence_bytes": 7824,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": false,
+        "keywords": {
+          "keywords": [
+            "typescript",
+            "react",
+            "registration",
+            "recovery",
+            "account",
+            "space",
+            "work"
+          ]
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:19:55.412413Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"registration\",\n    \"recovery\",\n    \"account\",\n    \"space\",\n    \"work\"\n  ]\n}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 534354750,
+          "load_duration": 483167,
+          "prompt_eval_count": 109,
+          "prompt_eval_cached_count": 76,
+          "prompt_eval_duration": 87049000,
+          "eval_count": 39,
+          "eval_duration": 443098000,
+          "wall_seconds": 0.5407290402799845,
+          "input_utf8_bytes": 392,
+          "input_sha256": "cfadd88855907051f7d429927f4174d69be2c6bef17fc3af3fe257cfec7958dc"
+        },
+        "paths": [
+          "docs/adr/0010-own-lessons-offline.md",
+          "packages/mcp-core/README.md",
+          "README.md",
+          "docs/sources/physics-2026-27/chat-pro-pressure-review.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "wall_seconds": 0.5407518353313208,
+        "evidence_bytes": 7824
+      },
+      "hybrid_rerank": {
+        "valid": true,
+        "candidate_count": 4,
+        "candidate_target_present": false,
+        "paths": [
+          "docs/adr/0010-own-lessons-offline.md",
+          "packages/mcp-core/README.md",
+          "README.md",
+          "docs/sources/physics-2026-27/chat-pro-pressure-review.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:19:55.625399Z",
+          "response": "{\"ids\": [0, 1, 2, 3]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 205666542,
+          "load_duration": 452792,
+          "prompt_eval_count": 725,
+          "prompt_eval_cached_count": 724,
+          "prompt_eval_duration": 22991000,
+          "eval_count": 16,
+          "eval_duration": 176898000,
+          "wall_seconds": 0.21374729089438915,
+          "input_utf8_bytes": 2572,
+          "input_sha256": "011a555783f5ab76b436a116d1e33f6c411c258f9a1bea2b76fb0d0ccc9b97c5"
+        },
+        "end_to_end_seconds": 2.2788352109491825
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:39:55.627062+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "offline_export",
+      "repeat": 1,
+      "query": "Senza connessione voglio esportare la copia personale delle lezioni insieme ai tratti in attesa di conferma.",
+      "expected": "apps/web/src/OfflineWorkspace.tsx",
+      "baseline": {
+        "paths": [
+          "apps/web/src/OfflineWorkspace.tsx",
+          "README.md",
+          "docs/adr/0020-original-materials.md",
+          "docs/adr/0010-own-lessons-offline.md",
+          "docs/adr/0021-core-continuity.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": true,
+          "rank": 1,
+          "reciprocal_rank4": 1.0
+        },
+        "durations_s": [
+          1.2940973322838545,
+          1.285700960084796,
+          1.34331183321774
+        ],
+        "evidence_bytes": 7917,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": true,
+        "keywords": {
+          "keywords": [
+            "typescript",
+            "react",
+            "export",
+            "personal",
+            "lessons",
+            "conferma"
+          ]
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:20:00.057298Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"export\",\n    \"personal\",\n    \"lessons\",\n    \"conferma\"\n  ]\n}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 494632709,
+          "load_duration": 536500,
+          "prompt_eval_count": 111,
+          "prompt_eval_cached_count": 76,
+          "prompt_eval_duration": 85659000,
+          "eval_count": 36,
+          "eval_duration": 404989000,
+          "wall_seconds": 0.5010056644678116,
+          "input_utf8_bytes": 384,
+          "input_sha256": "20bc461ea31bfe8efd10f3482b6ec320a0dc93a6553c527eea9fabfc912d75de"
+        },
+        "paths": [
+          "package.json",
+          "docs/sources/dependency-licenses.json",
+          "docs/dependencies.md",
+          "e2e/README.md",
+          "docs/architecture.md",
+          "tools/ui-runtime.mjs"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "wall_seconds": 1.3136190418154001,
+        "evidence_bytes": 7983
+      },
+      "hybrid_rerank": {
+        "valid": true,
+        "candidate_count": 11,
+        "candidate_target_present": true,
+        "paths": [
+          "apps/web/src/OfflineWorkspace.tsx",
+          "README.md",
+          "docs/adr/0020-original-materials.md",
+          "docs/adr/0010-own-lessons-offline.md",
+          "docs/adr/0021-core-continuity.md",
+          "package.json",
+          "docs/sources/dependency-licenses.json",
+          "docs/dependencies.md",
+          "e2e/README.md",
+          "docs/architecture.md",
+          "tools/ui-runtime.mjs"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": true,
+          "rank": 1,
+          "reciprocal_rank4": 1.0
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:20:01.365595Z",
+          "response": "{\"ids\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 489351000,
+          "load_duration": 439292,
+          "prompt_eval_count": 1771,
+          "prompt_eval_cached_count": 1770,
+          "prompt_eval_duration": 27253000,
+          "eval_count": 38,
+          "eval_duration": 450842000,
+          "wall_seconds": 0.4977304171770811,
+          "input_utf8_bytes": 6025,
+          "input_sha256": "749915f0f79361e3af4a86025e48ea95e805878b2368233002411fb8a1e9d089"
+        },
+        "end_to_end_seconds": 3.1054467912763357
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:40:01.368316+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tutor_economics",
+      "repeat": 1,
+      "query": "Nel gestionale voglio distinguere gli incassi dai compensi maturati e capire come il tempo dei pacchetti influenza il margine.",
+      "expected": "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+      "baseline": {
+        "paths": [
+          "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+          "docs/sources/tutor-economics-2026-11-07.md",
+          "docs/adr/0018-tutor-studio.md",
+          "apps/web/src/tutor/TutorStudio.tsx",
+          "README.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": true,
+          "rank": 1,
+          "reciprocal_rank4": 1.0
+        },
+        "durations_s": [
+          1.5096166264265776,
+          1.4698860011994839,
+          1.4632296655327082
+        ],
+        "evidence_bytes": 7821,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": false,
+        "keywords": {
+          "keywords": [
+            "typescript",
+            "react",
+            "billing",
+            "income",
+            "compensation",
+            "maturity",
+            "package",
+            "time",
+            "margin",
+            "analysis"
+          ]
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:20:06.500767Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"billing\",\n    \"income\",\n    \"compensation\",\n    \"maturity\",\n    \"package\",\n    \"time\",\n    \"margin\",\n    \"analysis\"\n  ]\n}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 678113500,
+          "load_duration": 420209,
+          "prompt_eval_count": 112,
+          "prompt_eval_cached_count": 76,
+          "prompt_eval_duration": 79621000,
+          "eval_count": 52,
+          "eval_duration": 592366000,
+          "wall_seconds": 0.684388792142272,
+          "input_utf8_bytes": 402,
+          "input_sha256": "f7368bdb82b824cc9bb3a041f001d9e57a67f6f20c616339c73b8ff7156dec21"
+        },
+        "paths": [
+          "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+          "docs/sources/tutor-economics-2026-11-07.md",
+          "docs/adr/0018-tutor-studio.md",
+          "apps/web/src/tutor/TutorStudio.tsx",
+          "README.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": true,
+          "rank": 1,
+          "reciprocal_rank4": 1.0
+        },
+        "wall_seconds": 0.6844087466597557,
+        "evidence_bytes": 7821
+      },
+      "hybrid_rerank": {
+        "valid": true,
+        "candidate_count": 5,
+        "candidate_target_present": true,
+        "paths": [
+          "apps/web/src/tutor/TutorEconomicsPanel.tsx",
+          "docs/sources/tutor-economics-2026-11-07.md",
+          "docs/adr/0018-tutor-studio.md",
+          "apps/web/src/tutor/TutorStudio.tsx",
+          "README.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": true,
+          "rank": 1,
+          "reciprocal_rank4": 1.0
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:20:06.752283Z",
+          "response": "{\"ids\": [0, 1, 2, 3, 4]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 244218958,
+          "load_duration": 473083,
+          "prompt_eval_count": 897,
+          "prompt_eval_cached_count": 896,
+          "prompt_eval_duration": 23184000,
+          "eval_count": 19,
+          "eval_duration": 214384000,
+          "wall_seconds": 0.2525704987347126,
+          "input_utf8_bytes": 3113,
+          "input_sha256": "f3ff59c840006edc1b4503311505ad7b210a820d4774513ca26fe3e031e1187a"
+        },
+        "end_to_end_seconds": 2.406865246593952
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:40:06.754176+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "course_import_validation",
+      "repeat": 1,
+      "query": "Prima di importare un pacchetto di fisica devo controllare lo schema e costruire gli oggetti del corso.",
+      "expected": "apps/web/src/courses/physics/import.ts",
+      "baseline": {
+        "paths": [
+          "docs/sources/physics-2026-27/chat-pro-pressure-review.md",
+          "docs/sources/physics-2026-27/recovery-audit.md",
+          "docs/release-runbook.md",
+          "docs/adr/0016-versioned-courses.md",
+          "docs/adr/0004-m1-plugin-runtime.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "durations_s": [
+          1.1891217082738876,
+          1.184144627302885,
+          1.1884672921150923
+        ],
+        "evidence_bytes": 7856,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": true,
+        "keywords": {
+          "keywords": [
+            "typescript",
+            "react",
+            "schema",
+            "objects",
+            "course",
+            "import"
+          ]
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:20:10.802477Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"schema\",\n    \"objects\",\n    \"course\",\n    \"import\"\n  ]\n}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 474121000,
+          "load_duration": 509708,
+          "prompt_eval_count": 111,
+          "prompt_eval_cached_count": 76,
+          "prompt_eval_duration": 86412000,
+          "eval_count": 34,
+          "eval_duration": 383582000,
+          "wall_seconds": 0.48039899952709675,
+          "input_utf8_bytes": 379,
+          "input_sha256": "f7814e56abf6d170f8ec08d773f06e2e928fe2f30ace900fa31f640fea49f448"
+        },
+        "paths": [
+          "apps/web/src/handout/HandoutView.tsx",
+          "package.json",
+          "docs/sources/dependency-licenses.json",
+          "apps/web/src/courses/physics/CourseMaterials.tsx",
+          "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+          "tools/check-boundaries.mjs"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "wall_seconds": 1.3478050455451012,
+        "evidence_bytes": 7971
+      },
+      "hybrid_rerank": {
+        "valid": true,
+        "candidate_count": 11,
+        "candidate_target_present": false,
+        "paths": [
+          "docs/sources/physics-2026-27/chat-pro-pressure-review.md",
+          "docs/sources/physics-2026-27/recovery-audit.md",
+          "docs/release-runbook.md",
+          "docs/adr/0016-versioned-courses.md",
+          "docs/adr/0004-m1-plugin-runtime.md",
+          "apps/web/src/handout/HandoutView.tsx",
+          "package.json",
+          "docs/sources/dependency-licenses.json",
+          "apps/web/src/courses/physics/CourseMaterials.tsx",
+          "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+          "tools/check-boundaries.mjs"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:20:12.167763Z",
+          "response": "{\"ids\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 491424000,
+          "load_duration": 542958,
+          "prompt_eval_count": 1892,
+          "prompt_eval_cached_count": 1891,
+          "prompt_eval_duration": 28155000,
+          "eval_count": 38,
+          "eval_duration": 453146000,
+          "wall_seconds": 0.500274084508419,
+          "input_utf8_bytes": 6145,
+          "input_sha256": "59c96a390182cec88087eee187d9636e4bba24c1b95b721fd1ead83b57200f8c"
+        },
+        "end_to_end_seconds": 3.0365464221686125
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:40:12.17095+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "course_resume",
+      "repeat": 1,
+      "query": "L'aggiunta di un corso di fisica si è interrotta e devo riprendere dalla raccolta senza duplicare le lezioni.",
+      "expected": "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+      "baseline": {
+        "paths": [
+          "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+          "docs/history.md",
+          "docs/handoffs/2026-11-13-physics.md",
+          "README.md",
+          "docs/m2-delivery.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": true,
+          "rank": 1,
+          "reciprocal_rank4": 1.0
+        },
+        "durations_s": [
+          1.7968102488666773,
+          1.6512786261737347,
+          1.6485270839184523
+        ],
+        "evidence_bytes": 7969,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": false,
+        "keywords": null,
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:20:19.453617Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"typescript-react\",\n    \"typescript-react-app\",\n    \"typescript-react-project\",\n    \"typescript-react-apps\",\n    \"typescript-react-applications\",\n    \"typescript-react-applications-projects\",\n    \"typescript-react-applications-projects-projects\",\n    \"typescript-react-applications-projects-projects-projects\",\n    \"typescript-react-applications-projects-projects-projects-projects\",\n    \"typescript-react-applications-projects-projects-projects-projects-projects\",\n    \"typescript-react-applications-projects-projects-projects-projects-projects-projects\",\n    \"typescript-react-applications-projects-projects-projects-projects-projects-projects-projects\",\n    \"typescript-react-applications-projects-projects-projects-projects-projects-projects-projects-projects\",\n    \"typescript-react-applications-",
+          "done": true,
+          "done_reason": "length",
+          "total_duration": 2173291791,
+          "load_duration": 480583,
+          "prompt_eval_count": 114,
+          "prompt_eval_cached_count": 76,
+          "prompt_eval_duration": 84586000,
+          "eval_count": 180,
+          "eval_duration": 2082425000,
+          "wall_seconds": 2.179824583232403,
+          "input_utf8_bytes": 386,
+          "input_sha256": "95cf3e02d04f6b944e0a9e25e704ed7d35deb1f048ad638b1f5c680fd378d0f6"
+        },
+        "paths": [
+          "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+          "docs/history.md",
+          "docs/handoffs/2026-11-13-physics.md",
+          "README.md",
+          "docs/m2-delivery.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": true,
+          "rank": 1,
+          "reciprocal_rank4": 1.0
+        },
+        "wall_seconds": 2.179874248802662,
+        "evidence_bytes": 7969
+      },
+      "hybrid_rerank": {
+        "valid": true,
+        "candidate_count": 5,
+        "candidate_target_present": true,
+        "paths": [
+          "README.md",
+          "apps/web/src/courses/physics/PhysicsCatalog.tsx",
+          "docs/history.md",
+          "docs/handoffs/2026-11-13-physics.md",
+          "docs/m2-delivery.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": false,
+          "rank": 2,
+          "reciprocal_rank4": 0.5
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:20:19.70445Z",
+          "response": "{\"ids\": [3, 0, 1, 2, 4]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 243447125,
+          "load_duration": 454834,
+          "prompt_eval_count": 875,
+          "prompt_eval_cached_count": 874,
+          "prompt_eval_duration": 23251000,
+          "eval_count": 19,
+          "eval_duration": 214286000,
+          "wall_seconds": 0.25159404054284096,
+          "input_utf8_bytes": 2984,
+          "input_sha256": "ed5f685b6502ec5a668510eff1ef75f2c774224c85b62918ba3216b0d7868d26"
+        },
+        "end_to_end_seconds": 4.0827469155192375
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:40:19.706296+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "raster_performance",
+      "repeat": 1,
+      "query": "Il rendering di più materiali deve rispettare un turno ed evitare immagini raster troppo grandi che consumano memoria.",
+      "expected": "apps/web/src/materials/render-queue.ts",
+      "baseline": {
+        "paths": [
+          "docs/handoffs/2026-11-07.md",
+          "docs/adr/0020-original-materials.md",
+          "apps/web/src/handout/assets.ts",
+          "docs/sources/materials-2026-11-07.md",
+          "docs/sources/tutor-economics-2026-11-07.md",
+          "docs/design-verification.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "durations_s": [
+          1.7602615393698215,
+          1.7491497918963432,
+          1.7495859172195196
+        ],
+        "evidence_bytes": 7954,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": false,
+        "keywords": {
+          "keywords": [
+            "typescript",
+            "react",
+            "material",
+            "rendering",
+            "turn",
+            "memory",
+            "image",
+            "raster"
+          ]
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:20:25.568418Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"material\",\n    \"rendering\",\n    \"turn\",\n    \"memory\",\n    \"image\",\n    \"raster\"\n  ]\n}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 590859625,
+          "load_duration": 517334,
+          "prompt_eval_count": 109,
+          "prompt_eval_cached_count": 76,
+          "prompt_eval_duration": 86567000,
+          "eval_count": 44,
+          "eval_duration": 499746000,
+          "wall_seconds": 0.5972271263599396,
+          "input_utf8_bytes": 395,
+          "input_sha256": "b1e8c7eb121f6424e71042d7576e2c72dccfdf2e4e6a78d3751c239da00a210a"
+        },
+        "paths": [
+          "docs/handoffs/2026-11-07.md",
+          "docs/adr/0020-original-materials.md",
+          "apps/web/src/handout/assets.ts",
+          "docs/sources/materials-2026-11-07.md",
+          "docs/sources/tutor-economics-2026-11-07.md",
+          "docs/design-verification.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "wall_seconds": 0.5972603354603052,
+        "evidence_bytes": 7954
+      },
+      "hybrid_rerank": {
+        "valid": false,
+        "candidate_count": 6,
+        "candidate_target_present": false,
+        "paths": [
+          "docs/handoffs/2026-11-07.md",
+          "docs/adr/0020-original-materials.md",
+          "apps/web/src/handout/assets.ts",
+          "docs/sources/materials-2026-11-07.md",
+          "docs/sources/tutor-economics-2026-11-07.md",
+          "docs/design-verification.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:20:25.823144Z",
+          "response": "{\"ids\": [0, 1, 2, 3, 4]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 247255166,
+          "load_duration": 484541,
+          "prompt_eval_count": 1095,
+          "prompt_eval_cached_count": 1094,
+          "prompt_eval_duration": 23231000,
+          "eval_count": 19,
+          "eval_duration": 214568000,
+          "wall_seconds": 0.25595954433083534,
+          "input_utf8_bytes": 3385,
+          "input_sha256": "dda844d6a87e35ac2bf29d168bfb22e11ef94b6e1ec6a7ea2c967eb155905288"
+        },
+        "end_to_end_seconds": 2.60280579701066
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:40:25.825166+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "learning_next",
+      "repeat": 1,
+      "query": "Lo studente deve capire quale risposta correggere adesso e vedere su quali feedback si basa il suggerimento.",
+      "expected": "apps/web/src/components/LearningNextStep.tsx",
+      "baseline": {
+        "paths": [
+          "docs/adr/0024-learning-evidence.md",
+          "apps/web/public/fisica/sf-2026-u6-01.html",
+          "docs/adr/0013-learner-feedback.md",
+          "apps/web/public/fisica/sf-2026-u3-01.html",
+          "apps/web/src/components/LearningNextStep.tsx"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": 5,
+          "reciprocal_rank4": 0
+        },
+        "durations_s": [
+          2.109552960842848,
+          2.1577179599553347,
+          2.121497455984354
+        ],
+        "evidence_bytes": 7851,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": true,
+        "keywords": {
+          "keywords": [
+            "typescript",
+            "react",
+            "student",
+            "feedback",
+            "suggestion",
+            "correctness"
+          ]
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:20:32.700257Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"student\",\n    \"feedback\",\n    \"suggestion\",\n    \"correctness\"\n  ]\n}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 473785625,
+          "load_duration": 507584,
+          "prompt_eval_count": 108,
+          "prompt_eval_cached_count": 76,
+          "prompt_eval_duration": 60411000,
+          "eval_count": 36,
+          "eval_duration": 407703000,
+          "wall_seconds": 0.48005041666328907,
+          "input_utf8_bytes": 384,
+          "input_sha256": "3d7fb82071c9e542e0ec14ffb11e9b9ea2c88fe0d573f126681890f33ecf866e"
+        },
+        "paths": [
+          "package.json",
+          "docs/sources/dependency-licenses.json",
+          "docs/dependencies.md",
+          ".codex/agents/ardesia_reviewer.toml",
+          "tools/check-boundaries.mjs",
+          "docs/sources/legacy-review.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "wall_seconds": 1.0839561689645052,
+        "evidence_bytes": 7979
+      },
+      "hybrid_rerank": {
+        "valid": false,
+        "candidate_count": 11,
+        "candidate_target_present": true,
+        "paths": [
+          "docs/adr/0024-learning-evidence.md",
+          "apps/web/public/fisica/sf-2026-u6-01.html",
+          "docs/adr/0013-learner-feedback.md",
+          "apps/web/public/fisica/sf-2026-u3-01.html",
+          "apps/web/src/components/LearningNextStep.tsx"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": 5,
+          "reciprocal_rank4": 0
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:20:33.767417Z",
+          "response": "{\"ids\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 456800959,
+          "load_duration": 471500,
+          "prompt_eval_count": 1832,
+          "prompt_eval_cached_count": 1831,
+          "prompt_eval_duration": 27806000,
+          "eval_count": 35,
+          "eval_duration": 418154000,
+          "wall_seconds": 0.46562408097088337,
+          "input_utf8_bytes": 6115,
+          "input_sha256": "807f4cd32090beafe7ce09c1ab29f0a98c109dcc1a63daeb1bce943b2521d367"
+        },
+        "end_to_end_seconds": 3.6710777059197426
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:40:33.770562+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ink_recovery",
+      "repeat": 1,
+      "query": "Dopo un conflitto voglio vedere dove finiranno i tratti della penna prima di confermare il recupero.",
+      "expected": "apps/web/src/components/InkConflictRecovery.tsx",
+      "baseline": {
+        "paths": [
+          "docs/handoffs/core-continuity-2026-11-07.md",
+          "docs/superpowers/plans/2026-11-02-engineering-delivery.md",
+          "docs/adr/0021-core-continuity.md",
+          "apps/web/src/OfflineWorkspace.tsx"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "durations_s": [
+          1.3478989582508802,
+          1.421281998977065,
+          1.3546375427395105
+        ],
+        "evidence_bytes": 7871,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": true,
+        "keywords": {
+          "keywords": [
+            "typescript",
+            "react",
+            "tratte",
+            "penna",
+            "conflitto",
+            "recupero"
+          ]
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:20:38.428349Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"tratte\",\n    \"penna\",\n    \"conflitto\",\n    \"recupero\"\n  ]\n}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 521305250,
+          "load_duration": 437042,
+          "prompt_eval_count": 108,
+          "prompt_eval_cached_count": 76,
+          "prompt_eval_duration": 60864000,
+          "eval_count": 40,
+          "eval_duration": 453555000,
+          "wall_seconds": 0.52751374989748,
+          "input_utf8_bytes": 376,
+          "input_sha256": "1e78cf6fed331e0e96c756a5e428fa31568ad05c0c772ce39c412b0c34c62683"
+        },
+        "paths": [
+          "package.json",
+          "docs/sources/dependency-licenses.json",
+          "docs/adr/0011-mcp-core-stdio.md",
+          "docs/dependencies.md",
+          "docs/handoffs/core-continuity-2026-11-07.md",
+          "docs/superpowers/plans/2026-11-02-engineering-delivery.md"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "wall_seconds": 1.4493928756564856,
+        "evidence_bytes": 7937
+      },
+      "hybrid_rerank": {
+        "valid": false,
+        "candidate_count": 8,
+        "candidate_target_present": false,
+        "paths": [
+          "docs/handoffs/core-continuity-2026-11-07.md",
+          "docs/superpowers/plans/2026-11-02-engineering-delivery.md",
+          "docs/adr/0021-core-continuity.md",
+          "apps/web/src/OfflineWorkspace.tsx"
+        ],
+        "metrics": {
+          "hit4": false,
+          "hit1": false,
+          "rank": null,
+          "reciprocal_rank4": 0
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:20:39.689021Z",
+          "response": "{\"ids\": [4, 5, 6, 7, 2, 3, 1]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 332383125,
+          "load_duration": 469458,
+          "prompt_eval_count": 1517,
+          "prompt_eval_cached_count": 1516,
+          "prompt_eval_duration": 27984000,
+          "eval_count": 25,
+          "eval_duration": 293681000,
+          "wall_seconds": 0.34074096009135246,
+          "input_utf8_bytes": 4541,
+          "input_sha256": "c6a712a41534a6ca84dee959bf30703b26f7e3f42312ce00fa98acfb847342af"
+        },
+        "end_to_end_seconds": 3.1447713784873486
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:40:39.691738+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pdf_import",
+      "repeat": 1,
+      "query": "Quando carico un PDF nella lezione voglio scegliere le pagine e riprendere dopo un errore senza aggiungerle due volte.",
+      "expected": "apps/web/src/materials/MaterialImport.tsx",
+      "baseline": {
+        "paths": [
+          "docs/sources/materials-2026-11-07.md",
+          "docs/handoffs/core-continuity-2026-11-07.md",
+          "apps/web/src/materials/MaterialImport.tsx",
+          "docs/adr/0022-canonical-notebooks.md",
+          "docs/adr/0020-original-materials.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": false,
+          "rank": 3,
+          "reciprocal_rank4": 0.3333333333333333
+        },
+        "durations_s": [
+          1.7512781247496605,
+          1.7591442484408617,
+          1.7533259578049183
+        ],
+        "evidence_bytes": 7900,
+        "retrieval": {
+          "strategy": "definition-hint-and-match-lines",
+          "candidate_limit": 120,
+          "candidates": 120,
+          "candidate_limit_reached": true,
+          "snippet_byte_limit": 1800
+        }
+      },
+      "expanded": {
+        "valid": false,
+        "keywords": {
+          "keywords": [
+            "typescript",
+            "react",
+            "pdf",
+            "page",
+            "selection",
+            "error",
+            "recovery",
+            "no-duplicate"
+          ]
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:20:45.573019Z",
+          "response": "{\n  \"keywords\": [\n    \"typescript\",\n    \"react\",\n    \"pdf\",\n    \"page\",\n    \"selection\",\n    \"error\",\n    \"recovery\",\n    \"no-duplicate\"\n  ]\n}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 604883667,
+          "load_duration": 426708,
+          "prompt_eval_count": 112,
+          "prompt_eval_cached_count": 76,
+          "prompt_eval_duration": 86506000,
+          "eval_count": 45,
+          "eval_duration": 511781000,
+          "wall_seconds": 0.6112159583717585,
+          "input_utf8_bytes": 394,
+          "input_sha256": "4bdf3caf33fb8de9063e50b8fe04ad6b9d174e68b1768e3f04cc7aee35f8fae9"
+        },
+        "paths": [
+          "docs/sources/materials-2026-11-07.md",
+          "docs/handoffs/core-continuity-2026-11-07.md",
+          "apps/web/src/materials/MaterialImport.tsx",
+          "docs/adr/0022-canonical-notebooks.md",
+          "docs/adr/0020-original-materials.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": false,
+          "rank": 3,
+          "reciprocal_rank4": 0.3333333333333333
+        },
+        "wall_seconds": 0.6112397518008947,
+        "evidence_bytes": 7900
+      },
+      "hybrid_rerank": {
+        "valid": true,
+        "candidate_count": 5,
+        "candidate_target_present": true,
+        "paths": [
+          "docs/adr/0020-original-materials.md",
+          "docs/adr/0022-canonical-notebooks.md",
+          "apps/web/src/materials/MaterialImport.tsx",
+          "docs/handoffs/core-continuity-2026-11-07.md",
+          "docs/sources/materials-2026-11-07.md"
+        ],
+        "metrics": {
+          "hit4": true,
+          "hit1": false,
+          "rank": 3,
+          "reciprocal_rank4": 0.3333333333333333
+        },
+        "raw_model": {
+          "model": "qwen2.5-coder:1.5b",
+          "created_at": "2026-11-14T02:20:45.825552Z",
+          "response": "{\"ids\": [4, 3, 2, 1, 0]}",
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 245297292,
+          "load_duration": 472333,
+          "prompt_eval_count": 915,
+          "prompt_eval_cached_count": 914,
+          "prompt_eval_duration": 23000000,
+          "eval_count": 19,
+          "eval_duration": 214366000,
+          "wall_seconds": 0.25358570739626884,
+          "input_utf8_bytes": 3148,
+          "input_sha256": "4994f5feecec6e36db2c2bb2a31f08de3c76f00d0ce5fa37c887f40364f79d69"
+        },
+        "end_to_end_seconds": 2.618151417002082
+      },
+      "model_residency": {
+        "models": [
+          {
+            "name": "qwen2.5-coder:1.5b",
+            "model": "qwen2.5-coder:1.5b",
+            "size": 1367049502,
+            "digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen2",
+              "families": [
+                "qwen2"
+              ],
+              "parameter_size": "1.5B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-11-14T03:40:45.827475+01:00",
+            "size_vram": 1367049502,
+            "context_length": 8192,
+            "runner": "llamacpp"
+          }
+        ]
+      }
+    }
+  ]
+}

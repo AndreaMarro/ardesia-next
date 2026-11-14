@@ -752,6 +752,9 @@ const MarketplaceSnapshotV3Schema = /* @__PURE__ */ (() => z.object({
 
 /** Versioned read-only migration. Historical bytes, consent and receipts are never rewritten on open. */
 export function migrateSnapshotForOpen(input: unknown): unknown {
+  // Current JSON snapshots need no migration; callers still run the complete current schema.
+  // Inspect only an own data property so accessor and inherited versions keep the existing path.
+  if (input && typeof input === 'object' && Object.getOwnPropertyDescriptor(input, 'schemaVersion')?.value === SNAPSHOT_VERSION) return input;
   const emptyNotebooks = {notebookLibraries: []};
   if (input && typeof input === 'object' && 'schemaVersion' in input && [1,2,3,4,5,6,7,8,9,10].includes(input.schemaVersion as number)) {
     const raw = input as Record<string, unknown>;

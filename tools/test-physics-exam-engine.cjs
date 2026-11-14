@@ -61,3 +61,18 @@ test('inert data parsing preserves hostile text and rejects malformed schema bef
   data.exam.questions[0].correctChoice='A';data.exam.questions[1].id=data.exam.questions[0].id;
   assert.equal(engine.parseData(JSON.stringify(data)),null);
 });
+
+test('both editions validate independently, grade signed numbers, and reject unsafe recovery paths',()=>{
+ for(const suffix of ['a','b']){
+  const edition=JSON.parse(fs.readFileSync(`docs/sources/physics-2026-27/editorial/exam-2026-${suffix}.json`,'utf8'));
+  const payload={sourceFile:`exam-${suffix}.json`,sourceSha256:'a'.repeat(64),exam:edition};
+  assert.equal(engine.parseData(JSON.stringify(payload)).exam.id,edition.id);
+  const answers=Object.fromEntries(edition.questions.map(q=>[q.id,q.type==='choice'?q.correctChoice:q.acceptedAnswers[0]]));
+  assert.equal(engine.summarize(edition,answers).score,31);
+  const invalid=JSON.parse(JSON.stringify(payload));invalid.exam.questions[0].unitId='../unrelated';
+  assert.equal(engine.parseData(JSON.stringify(invalid)),null);
+ }
+ const b=JSON.parse(fs.readFileSync('docs/sources/physics-2026-27/editorial/exam-2026-b.json','utf8'));
+ const signed=b.questions.find(q=>q.id==='physics-2026-original-b-24');
+ assert.equal(engine.grade(signed,'−2'),'correct');assert.equal(engine.grade(signed,'2'),'wrong');
+});
