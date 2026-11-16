@@ -3,24 +3,31 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 174,
-  "updatedAt": "2026-11-14T14:53:24.143Z",
+  "revision": 175,
+  "updatedAt": "2026-11-16T13:16:53.849Z",
   "procedureRef": "e83c98098bb4da0324a97460776b1898b5a05ee5",
-  "activeRun": null,
+  "activeRun": {
+    "runId": "mission-20261116-cycle1",
+    "actor": "codex",
+    "startedAt": "2026-11-16T13:16:53.849Z",
+    "claimedAt": "2026-11-16T13:16:53.849Z",
+    "writeUntil": "2026-11-16T14:01:53.849Z",
+    "closeBy": "2026-11-16T14:11:53.849Z"
+  },
   "packet": {
-    "id": "mission-20261114-product-delivery",
+    "id": "mission-20261116-product-experience",
     "taskId": "M5-PRODUCT",
     "nextActor": "codex",
-    "disposition": "BLOCKED",
+    "disposition": "READY",
     "kind": "implementation",
-    "notBefore": "2026-11-14T12:24:00.000Z",
-    "expiresAt": "2026-11-15T12:24:00.000Z",
+    "notBefore": "2026-11-16T13:16:53.849Z",
+    "expiresAt": "2026-11-17T13:16:53.849Z",
     "source": {
-      "baseSha": "f7adf5db02913e25fbab0b1da071f650b4f78676",
+      "baseSha": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
       "headSha": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
       "sourceDigest": "9b1c81331ffe6bb4bb4dbec4bfe42d856ab892125af8715f5082019b71f04cc1",
-      "branch": "work/mission-20261114",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/56"
+      "branch": "work/mission-20261116",
+      "pr": null
     },
     "goal": "Accettazione prodotto e percorso di rilascio stabile",
     "allowedPaths": [
@@ -36,85 +43,10 @@
       "Prove umane e device fisici richieste restano separate dalla CI; produzione richiede proprio mandato.",
       "Gli ambiti non ancora accettati della mappa rimangono nel backlog: M5 non equivale alla visione interamente realizzata."
     ],
-    "evidence": [
-      {
-        "kind": "ci",
-        "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/43604178775",
-        "headSha": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
-        "sourceDigest": "9b1c81331ffe6bb4bb4dbec4bfe42d856ab892125af8715f5082019b71f04cc1",
-        "result": "PASS",
-        "scope": "Original push/main attempt1. Artifact14117773054 read by root and independent reviewer:8Verify,707unit,299browser150desktop149mobile,0skip/unexpected/flaky/globalerrors/retry,5server16MCP.13original JSON reports preserved; no remote or hardware acceptance.",
-        "access": "artifact",
-        "artifactDigest": "c2232b2e96f7703a0f167499af810006f29b4e7df2e23209defcab0fe1c53f99"
-      },
-      {
-        "kind": "ci",
-        "name": "verify-pr56",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/43601139187",
-        "headSha": "c7f1f2a34141990ddd880bd6d4d1da2c124551db",
-        "sourceDigest": "9b1c81331ffe6bb4bb4dbec4bfe42d856ab892125af8715f5082019b71f04cc1",
-        "result": "PASS",
-        "scope": "Original attempt1,707unit299browser,0skip/retry/flaky/globalerrors; raw fixture review and cross-digests verified. Runtime/SQL unchanged; normal merge af4352 has identical tree.",
-        "access": "artifact",
-        "artifactDigest": "f4488a9d606e303a4842cb5f7f9fd1f1b095ebb0ff20fed823a9111fe1aa44c2"
-      },
-      {
-        "kind": "review",
-        "name": "independent-source-merge-and-ci",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/43604178775",
-        "headSha": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
-        "sourceDigest": "9b1c81331ffe6bb4bb4dbec4bfe42d856ab892125af8715f5082019b71f04cc1",
-        "result": "PASS",
-        "scope": "Separate pr_chain_review context inspected raw c7 diff, merge parents/tree and original main artifact. No source/CI blocker for protected Preview; not a human scientific/product approval.",
-        "access": "metadata",
-        "artifactDigest": null
-      },
-      {
-        "kind": "observation",
-        "name": "final-protected-preview-and-neon",
-        "reference": "operations/evidence/mission-2026-11-14/deployment-final-independent-observation.json",
-        "headSha": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
-        "sourceDigest": "9b1c81331ffe6bb4bb4dbec4bfe42d856ab892125af8715f5082019b71f04cc1",
-        "result": "PASS",
-        "scope": "Fresh independent14:46–14:47UTC: dpl_A54WGJbaDfHZgfRozEvC5Gmo6yVN READY/SHAaf4352/refpreview-m3/targetnull,SSOall;new/stable root302,newAPI/build-info401;stablealias old90 unchanged. Neon registry1–10 exactSHA SQL digests,9snapshot4,3QAenabled,restricted privileges. Runtimebuild-info/authhealth/binding/login/continuity NOT_RUN.",
-        "access": "artifact",
-        "artifactDigest": "fb8645a82de49feffc91f1ec937b755ab9e18ba620932997d96f5259a21ab242"
-      },
-      {
-        "kind": "ci",
-        "name": "verify-original-pr55",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/43597742073",
-        "headSha": "64c847d068ba78e02be5aabd36a9facef80aa85b",
-        "sourceDigest": "1958abd9b5587a8871bac9bb2ee5573023278aa1d12de8cfa1c72a7eb114e2b1",
-        "result": "PASS",
-        "scope": "Original artifact14115467951:8Verify,706unit,299browser,0skip/flaky/unexpected/retry;9original reports preserved byte-for-byte. Historical source evidence, not transferred current acceptance.",
-        "access": "artifact",
-        "artifactDigest": "7db1d49a1499560b997bde79fe60c159acbbded91b2a64f38fa0941f8875d77c"
-      },
-      {
-        "kind": "ci",
-        "name": "main-shutdown-failure-retained",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/43599951215",
-        "headSha": "0fcbd9d6239ee3253f36001a437fa8dc0fa8a8b0",
-        "sourceDigest": "1958abd9b5587a8871bac9bb2ee5573023278aa1d12de8cfa1c72a7eb114e2b1",
-        "result": "FAIL",
-        "scope": "706 tests passed but verification process failed for uncaught57P01 in forced isolated-fixture cleanup. Failure retained,no rerun; fixed in PR56 and independently verified on its merge.",
-        "access": "artifact",
-        "artifactDigest": "0a8fec0a8737f417c2b16cc9ff38a0207299d1e69b33e366570402d0a9c34674"
-      }
-    ],
-    "blockers": [
-      "REMOTE_APPLICATION_CREDENTIALS_UNAVAILABLE",
-      "BROWSER_VERCEL_LOGIN_REQUIRED"
-    ],
-    "nextAction": "Open the existing authorized Ardesia/Vercel context on the owner's Mac or connect that device. Verify the documented private channel without exposing secrets. With exact checkout af4352e and credentials available, perform prerequisite identity/protection/authorized health/data-compatibility checks, controlled stable-alias switch and immediate canonical-Origin preflight/login/continuity smoke in new synthetic workspaces; check an authorized distinct empty restore target before application restore. Stable alias still90adcf. SQL1–10 ALREADY APPLIED: do not rerun migration, reset data, recreate accounts or bypass SSO. Current claim closes BLOCKED on remote access, not complete M5.",
-    "review": {
-      "authorContextId": "root",
-      "reviewerContextId": "pr_chain_review",
-      "sourceSha": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/43604178775"
-    }
+    "evidence": [],
+    "blockers": [],
+    "nextAction": "Direct owner mandate 16 November 2026: improve public learning journey using existing laboratories; real local UX/media evidence, same-head Verify/review, protected preview and isolated static publication through authorized channels. Remote Core credentials unavailable blocks only authenticated remote acceptance. No SSO/security change, spending or acceptance.",
+    "review": null
   },
   "lastRun": {
     "runId": "mission-20261114-final-delivery",
