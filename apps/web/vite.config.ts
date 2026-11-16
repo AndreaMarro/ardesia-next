@@ -14,7 +14,8 @@ export default defineConfig({
       charset: 'ascii', minify: {compress: {target: 'es2022'}, mangle: true},
       codeSplitting: {groups: [
         {name: 'math', test: /node_modules[\\/]katex[\\/]/, priority: 10},
-        {name: 'foundation', test: /packages[\\/](?:contracts|remote-client)[\\/]|node_modules[\\/](?:preact|zod)[\\/]/},
+        // Keep the already-eager workspace with its shared dependencies; study tools stay lazy.
+        {name: 'foundation', test: /packages[\\/](?:contracts|remote-client)[\\/]|node_modules[\\/](?:preact|zod)[\\/]|apps[\\/]web[\\/]src[\\/]RemoteWorkspace\.tsx$/},
       ]},
     }},
     sourcemap: false, chunkSizeWarningLimit: 450,

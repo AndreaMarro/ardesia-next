@@ -12,6 +12,7 @@ import {buildMcp} from './build-mcp.mjs';
 import {verifyMcpRuntime} from './mcp-runtime.test.mjs';
 import './build-physics-demo.mjs';
 import './build-physics-lessons.mjs';
+import './build-physics-journey.mjs';
 import {buildPhysicsField} from './build-physics-field.mjs';
 buildPhysicsField();
 await import('./build-physics-exam.mjs');
