@@ -3,31 +3,24 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 177,
-  "updatedAt": "2026-11-16T15:31:23.979Z",
+  "revision": 178,
+  "updatedAt": "2026-11-16T16:08:34.658Z",
   "procedureRef": "e83c98098bb4da0324a97460776b1898b5a05ee5",
-  "activeRun": {
-    "runId": "mission-20261116-resume",
-    "actor": "codex",
-    "startedAt": "2026-11-16T15:18:44.314Z",
-    "claimedAt": "2026-11-16T15:31:23.979Z",
-    "writeUntil": "2026-11-16T16:03:44.314Z",
-    "closeBy": "2026-11-16T16:13:44.314Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "mission-20261116-product-experience",
     "taskId": "M5-PRODUCT",
     "nextActor": "codex",
-    "disposition": "INTERRUPTED",
+    "disposition": "BLOCKED",
     "kind": "implementation",
     "notBefore": "2026-11-16T13:16:53.849Z",
     "expiresAt": "2026-11-17T13:16:53.849Z",
     "source": {
       "baseSha": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
-      "headSha": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
-      "sourceDigest": "9b1c81331ffe6bb4bb4dbec4bfe42d856ab892125af8715f5082019b71f04cc1",
+      "headSha": "a042b03c99c2be9c2377dc4e204e988284978c10",
+      "sourceDigest": "6131c7b33cf8af096762b1a8a3c1cf426a268a1bfadfce208539e30184365f32",
       "branch": "work/mission-20261116",
-      "pr": null
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/57"
     },
     "goal": "Accettazione prodotto e percorso di rilascio stabile",
     "allowedPaths": [
@@ -43,22 +36,86 @@
       "Prove umane e device fisici richieste restano separate dalla CI; produzione richiede proprio mandato.",
       "Gli ambiti non ancora accettati della mappa rimangono nel backlog: M5 non equivale alla visione interamente realizzata."
     ],
-    "evidence": [],
-    "blockers": [],
-    "nextAction": "Owner requested continuation of the previous Pro chat on 16 November 2026. Preserve original working tree; resume its exact recovered increment in an isolated checkout; publish only with expected remote refs and final verification. Prior terminal status is not independently observable; no native terminal receipt is asserted.",
-    "review": null
+    "evidence": [
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/43898076188",
+        "headSha": "a042b03c99c2be9c2377dc4e204e988284978c10",
+        "sourceDigest": "6131c7b33cf8af096762b1a8a3c1cf426a268a1bfadfce208539e30184365f32",
+        "result": "PASS",
+        "scope": "Original artifact14244340007 read by root and independent stato_github: Verify8/8;707unit;305browser;0skips/flakes/retries/errors;5server;16MCP;4operator;benchmark; exact identities and report bindings.",
+        "access": "artifact",
+        "artifactDigest": "8d97e776b480d6700c9c6055c22026344a2e688424f3783a91580fcef8ba95fd"
+      },
+      {
+        "kind": "review",
+        "name": "independent-source-review",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/57#pullrequestreview-5922902446",
+        "headSha": "a042b03c99c2be9c2377dc4e204e988284978c10",
+        "sourceDigest": "6131c7b33cf8af096762b1a8a3c1cf426a268a1bfadfce208539e30184365f32",
+        "result": "PASS",
+        "scope": "Non-author context revisione_incremento read raw source and compared22files to exact commit. Offline transcript P2 closed, no blocking findings in reviewed scope; no human scientific approval.",
+        "access": "artifact",
+        "artifactDigest": null
+      },
+      {
+        "kind": "observation",
+        "name": "public-static-delivery",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/57#issuecomment-6921805121",
+        "headSha": "a042b03c99c2be9c2377dc4e204e988284978c10",
+        "sourceDigest": "6131c7b33cf8af096762b1a8a3c1cf426a268a1bfadfce208539e30184365f32",
+        "result": "PASS",
+        "scope": "PR57 merged26e414777970d1eaddedc7069b78d4a9f6f738f2 with identical tree; static production dpl_EsakT62irj4odW3W7vMbGGygixKo READY from a042, anonymous browser journey and transcript verified. Core SSO all and staging preserved. HTTP byte/API probes blocked by runner proxy403, not verified.",
+        "access": "artifact",
+        "artifactDigest": null
+      },
+      {
+        "kind": "observation",
+        "name": "current-core-remote-acceptance",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/57#issuecomment-6921805121",
+        "headSha": "a042b03c99c2be9c2377dc4e204e988284978c10",
+        "sourceDigest": "6131c7b33cf8af096762b1a8a3c1cf426a268a1bfadfce208539e30184365f32",
+        "result": "NOT_RUN",
+        "scope": "Authorized private Mac QA channel unavailable in this session. READY protected preview is not personal login or remote continuity acceptance. Human science/device/product gates remain open.",
+        "access": "metadata",
+        "artifactDigest": null
+      },
+      {
+        "kind": "ci",
+        "name": "post-merge-verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/43903013030",
+        "headSha": "26e414777970d1eaddedc7069b78d4a9f6f738f2",
+        "sourceDigest": "6131c7b33cf8af096762b1a8a3c1cf426a268a1bfadfce208539e30184365f32",
+        "result": "PENDING",
+        "scope": "Automatic main workflow, distinct from passed candidate CI; same Git tree independently confirmed. Do not rerun identical tests solely for handoff.",
+        "access": "metadata",
+        "artifactDigest": null
+      }
+    ],
+    "blockers": [
+      "CURRENT-CANDIDATE-REMOTE-QA",
+      "HUMAN-AND-PHYSICAL-ACCEPTANCE"
+    ],
+    "nextAction": "The owner-directed recovered product increment is delivered and merged; see PR57 receipt and public Poiseuille pilot. Read the existing automatic post-merge CI result when available, without rerunning it. M5 remains deferred/not accepted: obtain human scientific approval on the exact edition, physical device evidence, and current-candidate Core remote QA through already-authorized channels. Preserve historical M3 acceptance. The historical queue refused readiness for deferred M5; no queue gate was marked passed or bypassed, and this bounded direct-owner continuation does not complete the M5 task. No new scheduler, secret reset, access change or paid service.",
+    "review": {
+      "authorContextId": "mission-20261116-resume-root",
+      "reviewerContextId": "mission-20261116-revisione_incremento",
+      "sourceSha": "a042b03c99c2be9c2377dc4e204e988284978c10",
+      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/57#pullrequestreview-5922902446"
+    }
   },
   "lastRun": {
-    "runId": "mission-20261116-cycle1",
+    "runId": "mission-20261116-resume",
     "actor": "codex",
-    "startedAt": "2026-11-16T13:16:53.849Z",
-    "claimedAt": "2026-11-16T13:16:53.849Z",
-    "writeUntil": "2026-11-16T14:01:53.849Z",
-    "closeBy": "2026-11-16T14:11:53.849Z",
+    "startedAt": "2026-11-16T15:18:44.314Z",
+    "claimedAt": "2026-11-16T15:31:23.979Z",
+    "writeUntil": "2026-11-16T16:03:44.314Z",
+    "closeBy": "2026-11-16T16:13:44.314Z",
     "packetId": "mission-20261116-product-experience",
-    "finishedAt": "2026-11-16T15:29:08.651Z",
-    "outcome": "INTERRUPTED",
-    "late": true,
-    "summary": "Owner-directed continuation in current chat: recovered and preserved 68 original modified files byte-for-byte (snapshot SHA256 543bdc86882f9157cd9f2c76bb242a24116b3911a810535abdef8b6f9e65c731). Main and cursor refs reconfirmed, proposed source branch still absent, old working tree unchanged. Administrative handoff to the present integrator is based on the new owner instruction, not expiry; no claim of observed native terminal status or remote product acceptance."
+    "finishedAt": "2026-11-16T16:08:34.658Z",
+    "outcome": "BLOCKED",
+    "late": false,
+    "summary": "Recovered increment delivered: PR57 merged after original CI707unit/305browser and independent review; public static Poiseuille verified, authentic media preserved. M5 remains unaccepted; current remote QA and human/physical evidence outstanding. Automatic post-merge CI pending; no source writes after deadline."
   }
 }
