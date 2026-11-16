@@ -3,22 +3,15 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 175,
-  "updatedAt": "2026-11-16T13:16:53.849Z",
+  "revision": 176,
+  "updatedAt": "2026-11-16T15:29:08.651Z",
   "procedureRef": "e83c98098bb4da0324a97460776b1898b5a05ee5",
-  "activeRun": {
-    "runId": "mission-20261116-cycle1",
-    "actor": "codex",
-    "startedAt": "2026-11-16T13:16:53.849Z",
-    "claimedAt": "2026-11-16T13:16:53.849Z",
-    "writeUntil": "2026-11-16T14:01:53.849Z",
-    "closeBy": "2026-11-16T14:11:53.849Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "mission-20261116-product-experience",
     "taskId": "M5-PRODUCT",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "INTERRUPTED",
     "kind": "implementation",
     "notBefore": "2026-11-16T13:16:53.849Z",
     "expiresAt": "2026-11-17T13:16:53.849Z",
@@ -45,20 +38,20 @@
     ],
     "evidence": [],
     "blockers": [],
-    "nextAction": "Direct owner mandate 16 November 2026: improve public learning journey using existing laboratories; real local UX/media evidence, same-head Verify/review, protected preview and isolated static publication through authorized channels. Remote Core credentials unavailable blocks only authenticated remote acceptance. No SSO/security change, spending or acceptance.",
+    "nextAction": "Owner requested continuation of the previous Pro chat on 16 November 2026. Preserve original working tree; resume its exact recovered increment in an isolated checkout; publish only with expected remote refs and final verification. Prior terminal status is not independently observable; no native terminal receipt is asserted.",
     "review": null
   },
   "lastRun": {
-    "runId": "mission-20261114-final-delivery",
+    "runId": "mission-20261116-cycle1",
     "actor": "codex",
-    "startedAt": "2026-11-14T14:18:02.000Z",
-    "claimedAt": "2026-11-14T14:18:07.257Z",
-    "writeUntil": "2026-11-14T15:03:02.000Z",
-    "closeBy": "2026-11-14T15:13:02.000Z",
-    "packetId": "mission-20261114-product-delivery",
-    "finishedAt": "2026-11-14T14:53:24.143Z",
-    "outcome": "BLOCKED",
-    "late": false,
-    "summary": "PR50-56 integrated; exact main af4352 passed original CI707unit299browser and independent artifact review. Protected Previewaf4352 READY with SSO/all; stable alias preserved. Live SQL1-10 already applied with existing data preserved. Original reports, offline deliverable and18-area assessment retained. Remote authenticated use remains blocked on the existing private Mac credential channel; no M5 acceptance asserted."
+    "startedAt": "2026-11-16T13:16:53.849Z",
+    "claimedAt": "2026-11-16T13:16:53.849Z",
+    "writeUntil": "2026-11-16T14:01:53.849Z",
+    "closeBy": "2026-11-16T14:11:53.849Z",
+    "packetId": "mission-20261116-product-experience",
+    "finishedAt": "2026-11-16T15:29:08.651Z",
+    "outcome": "INTERRUPTED",
+    "late": true,
+    "summary": "Owner-directed continuation in current chat: recovered and preserved 68 original modified files byte-for-byte (snapshot SHA256 543bdc86882f9157cd9f2c76bb242a24116b3911a810535abdef8b6f9e65c731). Main and cursor refs reconfirmed, proposed source branch still absent, old working tree unchanged. Administrative handoff to the present integrator is based on the new owner instruction, not expiry; no claim of observed native terminal status or remote product acceptance."
   }
 }
