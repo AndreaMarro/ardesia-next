@@ -28,6 +28,28 @@ test('one object survives board → notebook → reader → reload with provenan
   expect(await page.evaluate(()=>document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
 
+test('narrow screens keep navigation touch targets usable and every destination reachable', async ({page}, testInfo) => {
+  await page.setViewportSize({width:360, height:800});
+  await page.goto('/');
+  const rail = page.getByRole('navigation', {name:'Spazio personale', exact:true});
+  await expect(rail).toBeVisible();
+  const sizes = await rail.getByRole('button').evaluateAll(buttons => buttons.map(button => {
+    const rect = button.getBoundingClientRect(); return {width:rect.width, height:rect.height};
+  }));
+  expect(sizes.length).toBeGreaterThan(5);
+  for (const size of sizes) {expect(size.width).toBeGreaterThanOrEqual(44); expect(size.height).toBeGreaterThanOrEqual(44);}
+  const settings = rail.getByRole('button', {name:'Impostazioni', exact:true});
+  await settings.scrollIntoViewIfNeeded();
+  if (testInfo.project.use.hasTouch) await settings.tap(); else await settings.click();
+  await expect(page.getByText('Le modifiche confermate sono salvate nel tuo account.', {exact:false})).toBeVisible();
+  await page.keyboard.press('Escape');
+  const library = rail.getByRole('button', {name:'Apri libreria', exact:true});
+  await library.scrollIntoViewIfNeeded();
+  if (testInfo.project.use.hasTouch) await library.tap(); else await library.click();
+  await expect(page.getByRole('button', {name:/Oscillazioni: osserva, misura, spiega/}).first()).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
 test('a new lesson can create and update a note and reopen it from the library', async ({page}) => {
   await page.goto('/');
   await page.getByRole('button',{name:'Nuova lezione',exact:true}).click();

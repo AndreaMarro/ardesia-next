@@ -3,6 +3,7 @@ import {dirname} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {resolveE2ETarget} from '../e2e/target.ts';
 import {identity} from './evidence.mjs';
+import {matchesBuildPolicy} from './build-policy.mjs';
 
 export const preflightPath = 'artifacts/remote-continuity/preflight.json';
 const header = 'x-vercel-trusted-oidc-idp-token';
@@ -120,8 +121,7 @@ export async function runRemotePreflight({env = process.env, expected, fetchImpl
 
     currentCheck = 'buildIdentity';
     const built = await request('/build-info.json', true), b = built.body;
-    if (built.status !== 200 || !plainObject(b) || b.application !== 'ardesia-next' || b.milestone !== 'M3'
-      || b.persistence !== 'remote-postgres-required' || b.thirdPartyExecution !== false
+    if (built.status !== 200 || !matchesBuildPolicy(b)
       || !/^[a-f0-9]{40}$/.test(b.commit ?? '') || !/^[a-f0-9]{64}$/.test(b.sourceDigest ?? '')) reject('INVALID_BUILD_IDENTITY');
     report.observedBuild = {commit: b.commit, sourceDigest: b.sourceDigest, application: b.application, milestone: b.milestone};
     if (b.commit !== config.expected.commit || b.sourceDigest !== config.expected.sourceDigest) reject('BUILD_IDENTITY_MISMATCH');
@@ -145,8 +145,8 @@ export async function runRemotePreflight({env = process.env, expected, fetchImpl
     recorded(currentCheck, {status: foreign.status, code: 'ORIGIN_REJECTED'});
     currentCheck = 'buildIdentityRecheck';
     const recheck = await request('/build-info.json', true);
-    if (recheck.status !== 200 || recheck.body?.commit !== config.expected.commit
-      || recheck.body?.sourceDigest !== config.expected.sourceDigest || recheck.body?.application !== 'ardesia-next') reject('BUILD_IDENTITY_CHANGED');
+    if (recheck.status !== 200 || !matchesBuildPolicy(recheck.body) || recheck.body.commit !== config.expected.commit
+      || recheck.body.sourceDigest !== config.expected.sourceDigest) reject('BUILD_IDENTITY_CHANGED');
     recorded(currentCheck, {status: recheck.status});
     report.passed = true;
   } catch (error) {

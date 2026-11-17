@@ -36,6 +36,22 @@ Missing configuration must compose `createApiHandler({store: null, ...})`. Healt
 then returns HTTP 503 with `configured: false`; every command fails closed.
 Deployment protection remains separate from the application cookie.
 
+Configured connections are ready only when every recorded migration and digest
+matches the canonical SQL registry shipped in the server. Missing, unreadable,
+changed or newer migration metadata returns HTTP 503 `SERVICE_UPGRADE_REQUIRED`;
+health, login and authenticated workspace operations never migrate the database.
+The check is repeated inside each data transaction under the shared form of the
+operator's migration lock. Origin, strict request validation and unauthenticated
+rejections retain their existing order. Connectivity failures remain generic.
+Authenticated logout still revokes its session and expires the cookie during an
+upgrade; it uses the original session contract and grants no data access.
+
+SQL010 grants the runtime only `SELECT(version,digest)` on `schema_migrations`.
+It changes no workspace, account or credential and grants no migration writes.
+Run the canonical operator migration explicitly before deploying this server.
+A successful health result attests the migration registry and database access;
+it does not replace a login, save/reopen or product acceptance test.
+
 ## Database provisioning and migrations
 
 Only use a **dedicated Next database**. `migrate(pool)` is an explicit operator

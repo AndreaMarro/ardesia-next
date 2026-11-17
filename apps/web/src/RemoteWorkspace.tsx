@@ -34,7 +34,7 @@ export function RemoteWorkspace() {
   const [coursesOpen, setCoursesOpen] = useState(() => location.hash === '#corsi');
   function courses(open: boolean) {setCoursesOpen(open); history.replaceState(null, '', open ? '#corsi' : location.pathname);}
   const [loading, setLoading] = useState(true), [busy, setBusy] = useState(false);
-  const [configured, setConfigured] = useState<boolean | null>(null);
+  const [configured, setConfigured] = useState<boolean | 'upgrade' | null>(null);
   const [username, setUsername] = useState(''), [password, setPassword] = useState('');
   const [error, setError] = useState(''), [manage, setManage] = useState(false);
   const [inkRecoveryOpen, setInkRecoveryOpen] = useState(false);
@@ -56,7 +56,7 @@ export function RemoteWorkspace() {
   }
   useEffect(() => {
     let stopped = false;
-    void fetch('/api/m3', {cache: 'no-store'}).then(response => response.json()).then(value => {if (!stopped) setConfigured(value?.result?.configured === true);}).catch(() => {if (!stopped) setConfigured(null);});
+    void fetch('/api/m3', {cache: 'no-store'}).then(response => response.json()).then(value => {if (!stopped) setConfigured(value?.error?.code === 'SERVICE_UPGRADE_REQUIRED' ? 'upgrade' : value?.result?.configured === true);}).catch(() => {if (!stopped) setConfigured(null);});
     void client.session().then(discover).catch(async reason => {
       if (['NETWORK_ERROR', 'REQUEST_TIMEOUT'].includes(reason?.code)) {
         try {await client.openOffline(); return;} catch { /* Show the original connectivity failure if no usable copy exists. */ }
@@ -135,10 +135,11 @@ export function RemoteWorkspace() {
   if (!state.account) return <main className="account-page"><div className="account-card"><a className="wordmark" href="#">Ardesia<span>.</span></a><h1>Il tuo spazio</h1>
     <p>Accedi al tuo account.</p>
     {configured === false && <p role="status" className="service-unavailable">Servizio non configurato. Puoi esportare il lavoro precedente.</p>}
+    {configured === 'upgrade' && <p role="status" className="service-unavailable">L’accesso richiede un aggiornamento del servizio. Contatta chi gestisce lo spazio. Puoi esportare il lavoro precedente.</p>}
     {banner}<form className="account-form" onSubmit={event => {event.preventDefault(); void perform(async () => {await client.login(username.trim(), password); setPassword(''); await discover();});}}>
       <label>Nome utente<input aria-label="Nome utente" autoComplete="username" value={username} onChange={event => setUsername(event.target.value)} required maxLength={100}/></label>
       <label>Password<input aria-label="Password" type="password" autoComplete="current-password" value={password} onChange={event => setPassword(event.target.value)} required maxLength={256}/></label>
-      <button className="primary-button" disabled={busy || configured === false}>Accedi</button>
+      <button className="primary-button" disabled={busy || configured === false || configured === 'upgrade'}>Accedi</button>
     </form>{recovery()}</div></main>;
   const account = state.account;
   const personal = projection ? ownsWorkspace(projection) : false;

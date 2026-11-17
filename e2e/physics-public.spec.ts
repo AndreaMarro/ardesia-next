@@ -220,6 +220,18 @@ test('the downloaded ZIP contains complete lessons and starts its interactive ex
    return errors;
   },{files:Object.keys(archive),pages:Object.fromEntries(Object.entries(archive).filter(([name])=>name.endsWith('.html')).map(([name,bytes])=>[name,Buffer.from(bytes).toString()]))});
   expect(broken).toEqual([]);
+  // Local file origins may reject VTT; the full transcript must also work without scripts.
+  const transcriptContext=await browser.newContext({offline:true,javaScriptEnabled:false,viewport:{width:390,height:844}});
+  try{
+   const transcriptPage=await transcriptContext.newPage(),requests:string[]=[];
+   transcriptPage.on('request',request=>{if(/^https?:/.test(request.url()))requests.push(request.url());});
+   await transcriptPage.goto(pathToFileURL(resolve(folder,'index.html')).href);
+   await transcriptPage.getByText('Leggi la trascrizione completa del video',{exact:true}).click();
+   await expect(transcriptPage.locator('#demo-transcript li')).toHaveCount(12);
+   await expect(transcriptPage.locator('#demo-transcript')).toContainText('un sedicesimo della portata');
+   await expect(transcriptPage.locator('#demo-transcript')).toContainText('Stesso punto due grandezze diverse');
+   expect(requests).toEqual([]);
+  }finally{await transcriptContext.close();}
   const offlinePage=await context.newPage();const errors:string[]=[];offlinePage.on('pageerror',e=>errors.push(e.message));
   await offlinePage.goto(pathToFileURL(resolve(folder,'simulazione.html')).href);
   await offlinePage.locator('#start-practice').click();await expect(offlinePage.locator('#question-title')).toBeVisible();
@@ -238,7 +250,7 @@ test('the downloaded ZIP contains complete lessons and starts its interactive ex
   await expect(offlinePage.locator('#work-feedback')).toContainText('corretta');
   await offlinePage.goto(pathToFileURL(resolve(folder,'sf-2026-u1-01.html')).href);
   await expect(offlinePage.locator('#teoria')).toBeVisible();
-  await expect(offlinePage.getByText('Per salvare il lavoro nello spazio Ardesia',{exact:false})).toBeVisible();
+  await expect(offlinePage.getByText('Lettura e confronto sono disponibili senza account. Lavagna, quaderno e plugin appartengono allo spazio riservato Ardesia.',{exact:false})).toBeVisible();
   expect(errors).toEqual([]);
  }finally{await context.close();rmSync(folder,{recursive:true,force:true});}
 });

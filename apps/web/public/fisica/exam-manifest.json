@@ -60,8 +60,8 @@
     },
     {
       "file": "ardesia-prova-fisica-offline.zip",
-      "bytes": 3389909,
-      "sha256": "517f47d0d75b6b5812d36c62c339591a917c212d4ac47dbba64c49fb94509916"
+      "bytes": 5304028,
+      "sha256": "f0b7d83f68e3c7845a7ff36b5d60a3901b4c54ea573157fedea8422f1abf215b"
     }
   ],
   "offlineFiles": [
@@ -84,7 +84,13 @@
     "exam.css",
     "exam.js",
     "index.html",
+    "journey.css",
     "lessons.css",
+    "media/ardesia-demo-poster.png",
+    "media/ardesia-demo.mp4",
+    "media/ardesia-demo.vtt",
+    "poiseuille-journey.js",
+    "poiseuille.html",
     "quaderno-esperimenti.pdf",
     "sf-2026-u1-01.html",
     "sf-2026-u1-02.html",
@@ -129,6 +135,7 @@
     "urti.css",
     "urti.html",
     "urti.js",
+    "vercel.json",
     "LEGGIMI.txt"
   ],
   "offlineLimits": {

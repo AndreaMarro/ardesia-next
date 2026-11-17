@@ -100,8 +100,8 @@
  .app-shell .board-navigation button {min-width:44px;padding:0 6px;font-size:11px;}
  .app-shell .board-navigation button:last-child {max-width:70px;}
  .app-shell .pen-options {left:12px;top:116px;}
- .app-shell .studio-rail {position:absolute;top:auto;bottom:0;left:0;right:0;width:auto;height:62px;transform:none;display:flex;flex-direction:row;justify-content:space-around;border:0;border-top:1px solid var(--line);border-radius:0;box-shadow:none;padding:3px 6px;}
- .app-shell .studio-rail button {min-height:54px;width:54px;gap:3px;}
+ .app-shell .studio-rail {position:absolute;top:auto;bottom:0;left:0;right:0;width:auto;height:62px;transform:none;display:flex;flex-direction:row;justify-content:flex-start;overflow-x:auto;overscroll-behavior-x:contain;border:0;border-top:1px solid var(--line);border-radius:0;box-shadow:none;padding:3px 6px;}
+ .app-shell .studio-rail button {min-height:54px;width:54px;flex:0 0 54px;gap:3px;}
  .app-shell .studio-rail button+button {border:0;}
  .app-shell .board-toolbar {bottom:12px;padding:5px;gap:0;width:max-content;max-width:calc(100% - 16px);overflow-x:auto;}
  .app-shell .board-toolbar button {width:44px;min-width:44px;}
