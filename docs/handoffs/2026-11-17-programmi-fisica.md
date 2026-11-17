@@ -78,7 +78,7 @@ Usa la verifica finale nell’ultimo incontro di ciascun percorso. Valuta tre el
 
 **Svolgimento e riscontro.** Con impulso orizzontale esterno trascurabile p=0,60 kg·m/s; v_f=0,60/0,50=1,2 m/s. K_i=0,60 J e K_f=0,36 J: ceduti ad altre forme 0,24 J.
 
-**Recupero e verifica.** Se poni K_i=K_f, verifica la natura dell’urto. Ticket: cambia direzione del secondo carrello e rifai solo il bilancio di p.
+**Recupero e verifica.** Se poni K_i=K_f, verifica la natura dell’urto. Ticket: prima dell’urto assegna al secondo carrello v₂=−1,0 m/s e rifai il bilancio di p. Controllo: p=0,40 kg·m/s, quindi v_f=0,80 m/s.
 
 **Letture Ardesia.** [U2-03](https://ardesia-fisica-preview.vercel.app/sf-2026-u2-03.html) · [U2-04](https://ardesia-fisica-preview.vercel.app/sf-2026-u2-04.html)
 
