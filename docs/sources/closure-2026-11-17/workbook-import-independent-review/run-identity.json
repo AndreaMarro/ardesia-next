@@ -1,0 +1,24 @@
+{
+  "source": {
+    "commit": "708f5a9c54d60043f7b06a7d87ea1e8b50f84922",
+    "sourceDigest": "0e79ecbe3764fe413d225a1fd673da3740a18cb784a492314859d189ee52aadb",
+    "generatedAt": "2026-11-14T04:21:57.398Z"
+  },
+  "built": {
+    "commit": "708f5a9c54d60043f7b06a7d87ea1e8b50f84922",
+    "sourceDigest": "0e79ecbe3764fe413d225a1fd673da3740a18cb784a492314859d189ee52aadb",
+    "generatedAt": "2026-11-14T04:17:50.119Z",
+    "application": "ardesia-next",
+    "milestone": "M3",
+    "persistence": "remote-postgres-required",
+    "remoteAcceptance": "INCOMPLETE",
+    "thirdPartyExecution": true,
+    "programRuntime": {
+      "abi": "ardesia.program/1",
+      "policy": "ephemeral-explicit-consent-no-io",
+      "engine": "quickjs-emscripten@0.32.0"
+    }
+  },
+  "mode": "local",
+  "origin": "http://127.0.0.1:4177"
+}

@@ -1,0 +1,58 @@
+import {test, expect} from '@playwright/test';
+import {readFileSync} from 'node:fs';
+
+for (const edition of ['a', 'b']) {
+  test(`review filters focus edition ${edition.toUpperCase()} without changing the complete export or next attempt`, async ({page}) => {
+    const source = JSON.parse(readFileSync(`docs/sources/physics-2026-27/editorial/exam-2026-${edition}.json`, 'utf8'));
+    await page.goto(`/fisica/simulazione${edition === 'a' ? '' : '-b'}.html`);
+    await page.locator('#start-practice').click();
+    await page.locator(`input[value=${source.questions[0].correctChoice}]`).check();
+    await page.locator('#flag-question').click();
+    await page.locator('#next').click();
+    const wrong = source.questions[1].choices.find((choice: {id: string}) => choice.id !== source.questions[1].correctChoice).id;
+    await page.locator(`input[value=${wrong}]`).check();
+    await page.locator('#submit-exam').click();
+    await page.locator('#confirm-submit').click();
+    const visible = page.locator('#review-list > details:not([hidden])');
+    const filter = page.getByLabel('Mostra nel ripasso', {exact: true});
+    await expect(visible).toHaveCount(31);
+    await filter.selectOption('wrong');
+    await expect(visible).toHaveCount(1);
+    await expect(visible.locator('summary').first()).toContainText(`2. ${source.questions[1].title}`);
+    await expect(page.locator('#review-count')).toContainText('1 di 31');
+    let pending = page.waitForEvent('download');
+    await page.locator('#export-result').click();
+    const result = JSON.parse(readFileSync((await (await pending).path())!, 'utf8'));
+    expect(result.items).toHaveLength(31);
+    expect(result.score).toBe(.9);
+    expect(result.flagged).toEqual([source.questions[0].id]);
+    expect([result.correct, result.wrong, result.blank]).toEqual([1, 1, 29]);
+    pending = page.waitForEvent('download');
+    await page.locator('#export-readable').click();
+    const html = readFileSync((await (await pending).path())!, 'utf8');
+    expect(html.match(/<article>/g)).toHaveLength(31);
+    await filter.selectOption('blank');
+    await expect(visible).toHaveCount(29);
+    await filter.selectOption('flagged');
+    await expect(visible).toHaveCount(1);
+    await expect(visible.locator('summary').first()).toContainText('Segnata da rivedere');
+    await expect(visible).toHaveClass(/verdict-correct/);
+    await filter.selectOption('correct');
+    await expect(visible).toHaveCount(1);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+    await page.locator('#new-attempt').click();
+    await page.locator('#confirm-restart').click();
+    await page.locator('#start-practice').click();
+    await page.locator('#submit-exam').click();
+    await page.locator('#confirm-submit').click();
+    await expect(filter).toHaveValue('all');
+    await expect(visible).toHaveCount(31);
+    await filter.selectOption('flagged');
+    await expect(visible).toHaveCount(0);
+    await expect(page.locator('#review-count')).toContainText('Nessuna domanda');
+    await filter.selectOption('correct');
+    await expect(visible).toHaveCount(0);
+    await filter.selectOption('all');
+    await expect(visible).toHaveCount(31);
+  });
+}

@@ -1,0 +1,19 @@
+{
+  "limit": 344064,
+  "initialCoreGzipBytes": 344114,
+  "initialStatus": "FAIL",
+  "otherVerifyChecksPassed": 7,
+  "change": "Reuse existing Inspector labels and icons in the drawer; shorten newly added filter counter copy. No budget, asset classification or validation change.",
+  "probes": [
+    344110,
+    344151,
+    344077,
+    344064,
+    344072,
+    344058
+  ],
+  "probeResultsAreNotFinalVerification": true,
+  "finalEvidence": "See final source commit Verify/CI artifacts linked by the closure PR.",
+  "initialLogRawSHA256": "e22cb7afec9f67ff90c1e82de11214faa45934605d0a82c9c817dbc87b0da32b",
+  "archivedLogNormalization": "Trailing whitespace stripped only; original retained in local work."
+}

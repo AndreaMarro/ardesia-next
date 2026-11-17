@@ -1,0 +1,78 @@
+{
+  "checks" : [
+    {
+      "name" : "editable roundtrip retains IDs, pressure, pages and Unicode",
+      "status" : "PASS"
+    },
+    {
+      "name" : "finite coordinates and pressure bounds",
+      "status" : "PASS"
+    },
+    {
+      "name" : "version, duplicate identities, empty pages and point budget rejected",
+      "status" : "PASS"
+    },
+    {
+      "name" : "malformed, oversize and nonfinite JSON rejected",
+      "status" : "PASS"
+    },
+    {
+      "name" : "unknown fields rejected instead of silently dropped",
+      "status" : "PASS"
+    },
+    {
+      "name" : "atomic save and invalid write preserve original",
+      "status" : "PASS"
+    },
+    {
+      "name" : "eraser uses segment sweep and dots, not bounding boxes",
+      "status" : "PASS"
+    },
+    {
+      "name" : "page clipping never fabricates edge paths",
+      "status" : "PASS"
+    },
+    {
+      "name" : "PDF pages, A4 dimensions, rendering and Ardesia byte budget",
+      "status" : "PASS"
+    },
+    {
+      "name" : "PDF original bytes\/hash retained once; schema 2 roundtrip and repeated import deduplication",
+      "status" : "PASS"
+    },
+    {
+      "name" : "legacy schema 1 stays readable and writable without invented metadata",
+      "status" : "PASS"
+    },
+    {
+      "name" : "PDF input bounds, encrypted\/truncated\/corrupt files and invalid page geometry rejected",
+      "status" : "PASS"
+    },
+    {
+      "name" : "strict schema 2 rejects unknown fields, altered payload\/digest and invalid references",
+      "status" : "PASS"
+    },
+    {
+      "name" : "atomic import refuses total page\/file budgets including base64 expansion",
+      "status" : "PASS"
+    },
+    {
+      "name" : "cached PDF byte accounting equals actual canonical JSON, including base64 escaping",
+      "status" : "PASS"
+    },
+    {
+      "name" : "annotation appearances are drawn into exported backgrounds; original source unchanged",
+      "status" : "PASS"
+    },
+    {
+      "name" : "crop, all right-angle rotations, letterboxing, ink overlay and vector text survive PDF export",
+      "status" : "PASS"
+    },
+    {
+      "name" : "real seven-page workbook: original bytes, 50 strokes, validation and vector export",
+      "status" : "PASS"
+    }
+  ],
+  "failed" : 0,
+  "passed" : 18
+}

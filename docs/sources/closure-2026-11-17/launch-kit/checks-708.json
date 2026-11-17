@@ -1,0 +1,126 @@
+{
+  "checks": [
+    {
+      "name": "current inventory",
+      "pass": true
+    },
+    {
+      "name": "prior launch ZIP without checkpoint",
+      "pass": true
+    },
+    {
+      "name": "malformed ZIP",
+      "pass": true
+    },
+    {
+      "name": "missing thermodynamics script",
+      "pass": true
+    },
+    {
+      "name": "missing wave comparison control",
+      "pass": true
+    },
+    {
+      "name": "missing resume input",
+      "pass": true
+    },
+    {
+      "name": "changed workbook rejected",
+      "pass": true
+    },
+    {
+      "name": "human approval cannot be invented",
+      "pass": true
+    },
+    {
+      "name": "five generated files",
+      "pass": true
+    },
+    {
+      "name": "public immutable SHA and bytes verified",
+      "pass": true
+    },
+    {
+      "name": "student instruction tutti",
+      "pass": true
+    },
+    {
+      "name": "student instruction index.html",
+      "pass": true
+    },
+    {
+      "name": "student instruction stessa prova A/B e della stessa edizione",
+      "pass": true
+    },
+    {
+      "name": "student instruction scadenza originale",
+      "pass": true
+    },
+    {
+      "name": "student instruction non si mette in pausa",
+      "pass": true
+    },
+    {
+      "name": "student instruction JSON del risultato finale non servono a riprendere",
+      "pass": true
+    },
+    {
+      "name": "student instruction quaderno-esperimenti.pdf",
+      "pass": true
+    },
+    {
+      "name": "student instruction 7 pagine",
+      "pass": true
+    },
+    {
+      "name": "student instruction DRAFT",
+      "pass": true
+    },
+    {
+      "name": "student instruction revisione scientifica umana pendente",
+      "pass": true
+    },
+    {
+      "name": "lab entry urti.html",
+      "pass": true
+    },
+    {
+      "name": "lab entry index.html",
+      "pass": true
+    },
+    {
+      "name": "lab entry termodinamica.html",
+      "pass": true
+    },
+    {
+      "name": "lab entry campo.html",
+      "pass": true
+    },
+    {
+      "name": "lab entry c5.html",
+      "pass": true
+    },
+    {
+      "name": "no sale call to action",
+      "pass": true
+    },
+    {
+      "name": "no app promise",
+      "pass": true
+    },
+    {
+      "name": "download mismatch writes nothing",
+      "pass": true
+    },
+    {
+      "name": "short SHA rejected before network/write",
+      "pass": true
+    },
+    {
+      "name": "existing preview never overwritten",
+      "pass": true
+    }
+  ],
+  "count": 30,
+  "allPass": true
+}

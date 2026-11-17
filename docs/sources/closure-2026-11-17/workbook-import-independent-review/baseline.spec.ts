@@ -1,0 +1,53 @@
+import {readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {test, expect, personalProjection} from '/Users/progettibelli/Documents/Codex/2026-11-14/e/work/ardesia-next/e2e/fixtures';
+
+test('imports all seven physics workbook pages, preserves the original and reopens ink on the solutions page', async ({page}, info) => {
+  test.setTimeout(120000);
+  const bytes = await readFile('apps/web/public/fisica/quaderno-esperimenti.pdf');
+  const hash = createHash('sha256').update(bytes).digest('hex');
+  const errors: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.goto('/');
+  await page.getByRole('button', {name: 'Importa materiale', exact: true}).click();
+  const dialog = page.getByRole('dialog', {name: 'Porta un materiale nella lezione'});
+  await dialog.getByLabel('File da importare').setInputFiles({name: 'Quaderno C1–C5.pdf', mimeType: 'application/pdf', buffer: bytes});
+  await expect(dialog.locator('[data-material-state="ready"]')).toBeVisible();
+  await dialog.getByLabel('Pagine da importare').fill('1-7');
+  await dialog.getByLabel('Diritti del materiale').fill('Materiale didattico originale Ardesia; licenza font incorporata nel PDF');
+  await dialog.getByRole('button', {name: 'Aggiungi alla lavagna', exact: true}).click();
+  await expect(dialog).toHaveCount(0);
+  const materials = (await personalProjection(page)).documents[0]!.objects.filter(object => object.type === 'material');
+  expect(materials.map(object => object.data.page)).toEqual([1, 2, 3, 4, 5, 6, 7]);
+  expect(new Set(materials.map(object => object.data.assetId)).size).toBe(1);
+  for (const material of materials) {
+    expect(material.data.sha256).toBe(hash);
+    expect(material.data.pageCount).toBe(7);
+  }
+  const download = page.waitForEvent('download');
+  await page.getByRole('button', {name: 'Scarica originale', exact: true}).click();
+  expect(await readFile((await (await download).path())!)).toEqual(bytes);
+  await page.getByRole('button', {name: 'Chiudi proprietà', exact: true}).click();
+  await page.getByRole('button', {name: 'Inquadra tutto', exact: true}).click();
+  await expect(page.locator('.type-material [data-material-state="ready"]')).toHaveCount(7);
+  const lastPage = materials[6]!;
+  // The object drawer reaches every page even beyond the minimum-zoom viewport.
+  await page.getByRole('button', {name: 'Oggetti', exact: true}).click();
+  await page.getByRole('button', {name: 'Seleziona Quaderno C1–C5.pdf · p. 7', exact: true}).click();
+  await page.getByRole('button', {name: 'Chiudi proprietà', exact: true}).click();
+  await page.getByRole('button', {name: 'Penna', exact: true}).click();
+  const box = (await page.locator(`[data-object-id="${lastPage.id}"]`).boundingBox())!;
+  await page.mouse.move(box.x + box.width * .2, box.y + box.height * .8);
+  await page.mouse.down();
+  await page.mouse.move(box.x + box.width * .7, box.y + box.height * .85, {steps: 10});
+  await page.mouse.up();
+  await expect.poll(async () => (await personalProjection(page)).documents[0]!.objects.filter(object => object.type === 'ink').length).toBe(1);
+  const ink = (await personalProjection(page)).documents[0]!.objects.find(object => object.type === 'ink')!;
+  expect(ink.data.anchor?.objectId).toBe(lastPage.id);
+  await page.reload();
+  await page.getByRole('button', {name: 'Inquadra tutto', exact: true}).click();
+  await expect(page.locator('.type-material [data-material-state="ready"]')).toHaveCount(7);
+  expect((await personalProjection(page)).documents[0]!.objects.find(object => object.id === ink.id)?.data).toEqual(ink.data);
+  expect(errors).toEqual([]);
+  await page.screenshot({path: info.outputPath('physics-workbook-import.png'), fullPage: false});
+});

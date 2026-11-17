@@ -6,8 +6,8 @@ import {PROGRAM_RENDERER, canonicalJson, toObjectInput, type EducationalObject, 
 import {draftConflictMessage, removedDraftMessage, type SaveObject} from '../workspace';
 import {MathFormula} from './MathFormula';
 import {LabInspector} from './LabInspector';
-const labels = {material: 'Materiale originale',note: 'Nota testuale', formula: 'Formula', source: 'Fonte', ink: 'Annotazione', lab: 'Laboratorio', extension: 'Oggetto componibile'};
-const icons = {material: Link2,note: Type, formula: SquareFunction, source: Link2, ink: SquarePen, lab: FlaskConical, extension: SquarePen};
+export const labels = {material: 'Materiale originale',note: 'Nota testuale', formula: 'Formula', source: 'Fonte', ink: 'Annotazione', lab: 'Laboratorio', extension: 'Oggetto componibile'};
+export const icons = {material: Link2,note: Type, formula: SquareFunction, source: Link2, ink: SquarePen, lab: FlaskConical, extension: SquarePen};
 type Props = {object: EducationalObject; missing?: boolean; onClose: () => void; onDirtyChange: (dirty: boolean) => void; onSave: SaveObject; onRemove: (id: string) => Promise<boolean>; onHandout?:()=>void; onDefinition?:()=>void};
 
 export function Inspector(props: Props) {

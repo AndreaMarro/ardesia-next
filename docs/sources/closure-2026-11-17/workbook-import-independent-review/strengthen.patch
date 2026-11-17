@@ -1,0 +1,16 @@
+--- a/e2e/physics-workbook-import.spec.ts
++++ b/e2e/physics-workbook-import.spec.ts
+@@ -48,6 +48,13 @@
+   await page.getByRole('button', {name: 'Inquadra tutto', exact: true}).click();
+   await expect(page.locator('.type-material [data-material-state="ready"]')).toHaveCount(7);
+   expect((await personalProjection(page)).documents[0]!.objects.find(object => object.id === ink.id)?.data).toEqual(ink.data);
++  await page.getByRole('button', {name: 'Oggetti', exact: true}).click();
++  await page.getByRole('button', {name: 'Seleziona Quaderno C1–C5.pdf · p. 7', exact: true}).click();
++  await page.getByRole('button', {name: 'Chiudi proprietà', exact: true}).click();
++  const renderedInk = page.locator(`[data-object-id="${ink.id}"]`);
++  await expect(renderedInk).toBeInViewport();
++  await expect(renderedInk.locator('svg path')).toHaveAttribute('d', /\S+/);
++  await expect(page.locator(`[data-object-id="${lastPage.id}"] [data-material-state="ready"]`)).toBeVisible();
+   expect(errors).toEqual([]);
+   await page.screenshot({path: info.outputPath('physics-workbook-import.png'), fullPage: false});
+ });

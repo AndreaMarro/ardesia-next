@@ -1,0 +1,27 @@
+{
+  "base": "26e414777970d1eaddedc7069b78d4a9f6f738f2",
+  "productFiles": {
+    "apps/web/public/fisica/ardesia-prova-fisica-offline.zip": "5bae4d004a45f04a9d6745fbf95eba3265cbe55f94b4d33aa5f940f0c29f204a",
+    "apps/web/public/fisica/exam-manifest.json": "378f810387be9a7bdd131ecea8e4d9126cb203b4c3974436e15cbfcefb1172c4",
+    "apps/web/public/fisica/exam.css": "c3401c68935c6b71578e5839f9903711662e571ecdc35125fe6e4d15705f3edb",
+    "apps/web/public/fisica/exam.js": "bd7789f360a5b54df2c5f6590e5a01f2c61d569cdc0794162fc5c741b325b7d9",
+    "apps/web/public/fisica/simulazione-b.html": "8af7626ae07f5fc65b39d3bce91e99e06f8ccec0e1c539960ecb6a618640a4fa",
+    "apps/web/public/fisica/simulazione.html": "df893174f182902fccf348771de35d239ee85604d0be46273f5965db2738ccf2",
+    "apps/web/src/App.tsx": "f784fea6d821b1923651b2529e19f3a949601fe8dbc3dd89cd864783c231406e",
+    "apps/web/src/components/Inspector.tsx": "7d031db2d3b81f518505d35f5caceaa5d577b0001e95259858b29fb893a1dcbb",
+    "e2e/physics-review-filter.spec.ts": "ed377737944bc646e95b3c04bf1bf3b38fb3f13a2ee6a2c19a7b5d6809a6907b",
+    "e2e/physics-workbook-import.spec.ts": "870556cdb1e7cbfc9fe1b71bf0a76b651fe2109fb24bf65a465f2152b7d72916",
+    "tools/build-physics-exam.mjs": "26b2be944dd30b6079963db2b90cfdd160b360766925ac80a57d339b47c2f212",
+    "tools/physics-runtime/exam.js": "4466b6b598524fd8956faa54cabb49d2405edfa395d9aa6a8093254e38cdb800"
+  },
+  "runtimeOnlyDelta": "Two shorter count/empty-state messages; identical remaining bytes",
+  "zipOnlyChangedEntries": [
+    "simulazione.html",
+    "simulazione-b.html",
+    "exam.css",
+    "exam.js"
+  ],
+  "zipFiles": 72,
+  "zipSha256": "5bae4d004a45f04a9d6745fbf95eba3265cbe55f94b4d33aa5f940f0c29f204a",
+  "manifestMatches": true
+}

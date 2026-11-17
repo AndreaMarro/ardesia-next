@@ -1,0 +1,719 @@
+{
+  "count": 178,
+  "checks": [
+    {
+      "name": "fixture grading a/320",
+      "pass": true
+    },
+    {
+      "name": "default31 a/320",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership wrong a/320",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained wrong a/320",
+      "pass": true
+    },
+    {
+      "name": "status count wrong a/320",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged wrong a/320",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged wrong a/320",
+      "pass": true
+    },
+    {
+      "name": "all31 exported wrong a/320",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership blank a/320",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained blank a/320",
+      "pass": true
+    },
+    {
+      "name": "status count blank a/320",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged blank a/320",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged blank a/320",
+      "pass": true
+    },
+    {
+      "name": "all31 exported blank a/320",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership flagged a/320",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained flagged a/320",
+      "pass": true
+    },
+    {
+      "name": "status count flagged a/320",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged flagged a/320",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged flagged a/320",
+      "pass": true
+    },
+    {
+      "name": "all31 exported flagged a/320",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership correct a/320",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained correct a/320",
+      "pass": true
+    },
+    {
+      "name": "status count correct a/320",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged correct a/320",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged correct a/320",
+      "pass": true
+    },
+    {
+      "name": "all31 exported correct a/320",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership all a/320",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained all a/320",
+      "pass": true
+    },
+    {
+      "name": "status count all a/320",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged all a/320",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged all a/320",
+      "pass": true
+    },
+    {
+      "name": "all31 exported all a/320",
+      "pass": true
+    },
+    {
+      "name": "detail open state preserved a/320",
+      "pass": true
+    },
+    {
+      "name": "content unchanged a/320",
+      "pass": true
+    },
+    {
+      "name": "flags visible label a/320",
+      "pass": true
+    },
+    {
+      "name": "no overflow a/320",
+      "pass": true
+    },
+    {
+      "name": "select target >=44 a/320",
+      "pass": true
+    },
+    {
+      "name": "native select receives focus a/320",
+      "pass": true
+    },
+    {
+      "name": "reset all on new attempt a/320",
+      "pass": true
+    },
+    {
+      "name": "empty filter wrong a/320",
+      "pass": true
+    },
+    {
+      "name": "empty filter correct a/320",
+      "pass": true
+    },
+    {
+      "name": "empty filter flagged a/320",
+      "pass": true
+    },
+    {
+      "name": "new attempt31 blank a/320",
+      "pass": true
+    },
+    {
+      "name": "all returns31 a/320",
+      "pass": true
+    },
+    {
+      "name": "fixture grading a/1280",
+      "pass": true
+    },
+    {
+      "name": "default31 a/1280",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership wrong a/1280",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained wrong a/1280",
+      "pass": true
+    },
+    {
+      "name": "status count wrong a/1280",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged wrong a/1280",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged wrong a/1280",
+      "pass": true
+    },
+    {
+      "name": "all31 exported wrong a/1280",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership blank a/1280",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained blank a/1280",
+      "pass": true
+    },
+    {
+      "name": "status count blank a/1280",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged blank a/1280",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged blank a/1280",
+      "pass": true
+    },
+    {
+      "name": "all31 exported blank a/1280",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership flagged a/1280",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained flagged a/1280",
+      "pass": true
+    },
+    {
+      "name": "status count flagged a/1280",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged flagged a/1280",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged flagged a/1280",
+      "pass": true
+    },
+    {
+      "name": "all31 exported flagged a/1280",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership correct a/1280",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained correct a/1280",
+      "pass": true
+    },
+    {
+      "name": "status count correct a/1280",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged correct a/1280",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged correct a/1280",
+      "pass": true
+    },
+    {
+      "name": "all31 exported correct a/1280",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership all a/1280",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained all a/1280",
+      "pass": true
+    },
+    {
+      "name": "status count all a/1280",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged all a/1280",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged all a/1280",
+      "pass": true
+    },
+    {
+      "name": "all31 exported all a/1280",
+      "pass": true
+    },
+    {
+      "name": "detail open state preserved a/1280",
+      "pass": true
+    },
+    {
+      "name": "content unchanged a/1280",
+      "pass": true
+    },
+    {
+      "name": "flags visible label a/1280",
+      "pass": true
+    },
+    {
+      "name": "no overflow a/1280",
+      "pass": true
+    },
+    {
+      "name": "select target >=44 a/1280",
+      "pass": true
+    },
+    {
+      "name": "native select receives focus a/1280",
+      "pass": true
+    },
+    {
+      "name": "reset all on new attempt a/1280",
+      "pass": true
+    },
+    {
+      "name": "empty filter wrong a/1280",
+      "pass": true
+    },
+    {
+      "name": "empty filter correct a/1280",
+      "pass": true
+    },
+    {
+      "name": "empty filter flagged a/1280",
+      "pass": true
+    },
+    {
+      "name": "new attempt31 blank a/1280",
+      "pass": true
+    },
+    {
+      "name": "all returns31 a/1280",
+      "pass": true
+    },
+    {
+      "name": "fixture grading b/320",
+      "pass": true
+    },
+    {
+      "name": "default31 b/320",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership wrong b/320",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained wrong b/320",
+      "pass": true
+    },
+    {
+      "name": "status count wrong b/320",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged wrong b/320",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged wrong b/320",
+      "pass": true
+    },
+    {
+      "name": "all31 exported wrong b/320",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership blank b/320",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained blank b/320",
+      "pass": true
+    },
+    {
+      "name": "status count blank b/320",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged blank b/320",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged blank b/320",
+      "pass": true
+    },
+    {
+      "name": "all31 exported blank b/320",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership flagged b/320",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained flagged b/320",
+      "pass": true
+    },
+    {
+      "name": "status count flagged b/320",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged flagged b/320",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged flagged b/320",
+      "pass": true
+    },
+    {
+      "name": "all31 exported flagged b/320",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership correct b/320",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained correct b/320",
+      "pass": true
+    },
+    {
+      "name": "status count correct b/320",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged correct b/320",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged correct b/320",
+      "pass": true
+    },
+    {
+      "name": "all31 exported correct b/320",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership all b/320",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained all b/320",
+      "pass": true
+    },
+    {
+      "name": "status count all b/320",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged all b/320",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged all b/320",
+      "pass": true
+    },
+    {
+      "name": "all31 exported all b/320",
+      "pass": true
+    },
+    {
+      "name": "detail open state preserved b/320",
+      "pass": true
+    },
+    {
+      "name": "content unchanged b/320",
+      "pass": true
+    },
+    {
+      "name": "flags visible label b/320",
+      "pass": true
+    },
+    {
+      "name": "no overflow b/320",
+      "pass": true
+    },
+    {
+      "name": "select target >=44 b/320",
+      "pass": true
+    },
+    {
+      "name": "native select receives focus b/320",
+      "pass": true
+    },
+    {
+      "name": "reset all on new attempt b/320",
+      "pass": true
+    },
+    {
+      "name": "empty filter wrong b/320",
+      "pass": true
+    },
+    {
+      "name": "empty filter correct b/320",
+      "pass": true
+    },
+    {
+      "name": "empty filter flagged b/320",
+      "pass": true
+    },
+    {
+      "name": "new attempt31 blank b/320",
+      "pass": true
+    },
+    {
+      "name": "all returns31 b/320",
+      "pass": true
+    },
+    {
+      "name": "fixture grading b/1280",
+      "pass": true
+    },
+    {
+      "name": "default31 b/1280",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership wrong b/1280",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained wrong b/1280",
+      "pass": true
+    },
+    {
+      "name": "status count wrong b/1280",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged wrong b/1280",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged wrong b/1280",
+      "pass": true
+    },
+    {
+      "name": "all31 exported wrong b/1280",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership blank b/1280",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained blank b/1280",
+      "pass": true
+    },
+    {
+      "name": "status count blank b/1280",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged blank b/1280",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged blank b/1280",
+      "pass": true
+    },
+    {
+      "name": "all31 exported blank b/1280",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership flagged b/1280",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained flagged b/1280",
+      "pass": true
+    },
+    {
+      "name": "status count flagged b/1280",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged flagged b/1280",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged flagged b/1280",
+      "pass": true
+    },
+    {
+      "name": "all31 exported flagged b/1280",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership correct b/1280",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained correct b/1280",
+      "pass": true
+    },
+    {
+      "name": "status count correct b/1280",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged correct b/1280",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged correct b/1280",
+      "pass": true
+    },
+    {
+      "name": "all31 exported correct b/1280",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership all b/1280",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained all b/1280",
+      "pass": true
+    },
+    {
+      "name": "status count all b/1280",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged all b/1280",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged all b/1280",
+      "pass": true
+    },
+    {
+      "name": "all31 exported all b/1280",
+      "pass": true
+    },
+    {
+      "name": "detail open state preserved b/1280",
+      "pass": true
+    },
+    {
+      "name": "content unchanged b/1280",
+      "pass": true
+    },
+    {
+      "name": "flags visible label b/1280",
+      "pass": true
+    },
+    {
+      "name": "no overflow b/1280",
+      "pass": true
+    },
+    {
+      "name": "select target >=44 b/1280",
+      "pass": true
+    },
+    {
+      "name": "native select receives focus b/1280",
+      "pass": true
+    },
+    {
+      "name": "reset all on new attempt b/1280",
+      "pass": true
+    },
+    {
+      "name": "empty filter wrong b/1280",
+      "pass": true
+    },
+    {
+      "name": "empty filter correct b/1280",
+      "pass": true
+    },
+    {
+      "name": "empty filter flagged b/1280",
+      "pass": true
+    },
+    {
+      "name": "new attempt31 blank b/1280",
+      "pass": true
+    },
+    {
+      "name": "all returns31 b/1280",
+      "pass": true
+    },
+    {
+      "name": "no JavaScript errors",
+      "pass": true
+    },
+    {
+      "name": "no HTTP requests",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "requests": []
+}

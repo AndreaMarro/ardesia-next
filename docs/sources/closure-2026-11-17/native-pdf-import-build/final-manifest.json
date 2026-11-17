@@ -1,0 +1,310 @@
+{
+  "baseCommit": "a6df5523c71113e22ea7e3e5ab35348bf8b3ad95",
+  "sourceFiles": [
+    {
+      "file": ".codex/environments/environment.toml",
+      "bytes": 188,
+      "sha256": "f707a598d540dc1e8218be227720f1a0aaaff33711be672b92644731fc720f25"
+    },
+    {
+      "file": ".gitignore",
+      "bytes": 48,
+      "sha256": "75f6c25b67666e99ede42518ee69334a32483f890ac2cb43a2160d81883a19d2"
+    },
+    {
+      "file": "Package.swift",
+      "bytes": 712,
+      "sha256": "21490fa07a8d873765dfe5d5785b3dc1c4128f481d88ab057dd7b8366744eb6f"
+    },
+    {
+      "file": "README.md",
+      "bytes": 12377,
+      "sha256": "ad0bb6d936264de4c3fd7a7e778b2ede1cf4c2afe18ba93e01270f014693429f"
+    },
+    {
+      "file": "Resources/Info.plist",
+      "bytes": 1916,
+      "sha256": "5bbe79bcffcad47843a5ec8f30fcb5796edf8c04b7a421be39b12a97b2791f41"
+    },
+    {
+      "file": "Sources/ArdesiaNotebook/App/main.swift",
+      "bytes": 4923,
+      "sha256": "86a7dc2407299a93ed8a849867f828558324d0199e021123a6fc0c67606e30b6"
+    },
+    {
+      "file": "Sources/ArdesiaNotebook/Stores/NotebookDocument.swift",
+      "bytes": 15416,
+      "sha256": "a77f3d74ccb09120ed013edc4f53308d1d9c432e4ea9d89e4c8612ca66011e56"
+    },
+    {
+      "file": "Sources/ArdesiaNotebook/Views/ContentView.swift",
+      "bytes": 7162,
+      "sha256": "5919e015c672033ae2f10c4a5f8f8a9c7765f4bacf88ac84f316968342427565"
+    },
+    {
+      "file": "Sources/ArdesiaNotebook/Views/DrawingToolbar.swift",
+      "bytes": 2657,
+      "sha256": "015ebe9b85851ae4b91013db4b582a43c858c4951b1771e711c634ee093f9e08"
+    },
+    {
+      "file": "Sources/ArdesiaNotebook/Views/InkCanvas.swift",
+      "bytes": 12103,
+      "sha256": "6e9cca03d66a9dbe7a7ed80ef56f4461479c701ec829b41fca239e83cc77d025"
+    },
+    {
+      "file": "Sources/NotebookCore/InkGeometry.swift",
+      "bytes": 2936,
+      "sha256": "d31d7c7361fa0b0f0fd6ac69e17d30f9a6a9c37dddbae2998c7f49f02034df7b"
+    },
+    {
+      "file": "Sources/NotebookCore/Notebook.swift",
+      "bytes": 7601,
+      "sha256": "572c2b38d26ee77de2b1331d1203172e0f117a37d91d92ec6339937a292cdde9"
+    },
+    {
+      "file": "Sources/NotebookCore/NotebookCodec.swift",
+      "bytes": 6022,
+      "sha256": "1c4ce535a61cfebde3e832adaa7dd063389e34d699297d8d5f3876d85beefe00"
+    },
+    {
+      "file": "Sources/NotebookCore/NotebookPDF.swift",
+      "bytes": 5791,
+      "sha256": "15b55e2e6d191c1b9825632b0bcab7dad15bdfd7ccbb62f38ff5a4616e740e27"
+    },
+    {
+      "file": "Sources/NotebookCore/NotebookPDFAsset.swift",
+      "bytes": 9572,
+      "sha256": "bb73b816d1b376c00b72a00d557cd1c6605568ef0b4f9c5d96b8e6215cb06fd3"
+    },
+    {
+      "file": "Tests/NotebookChecks/PDFImportChecks.swift",
+      "bytes": 15363,
+      "sha256": "14b46ba6066559c36c4c1bc3264348d312278822fcd77043891dd18ce4a40e46"
+    },
+    {
+      "file": "Tests/NotebookChecks/main.swift",
+      "bytes": 8957,
+      "sha256": "2ca748b64dd2ebc6b58546215b1053179a8540614ecc2820bfcb8b55b042a422"
+    },
+    {
+      "file": "Tests/NotebookLifecycleChecks/main.swift",
+      "bytes": 9397,
+      "sha256": "391f535f7882b0ff64e3bb0d26a18bbc3f484ae49698315354e28223bb778aef"
+    },
+    {
+      "file": "script/build_and_run.sh",
+      "bytes": 2614,
+      "sha256": "cf5a56f93fdad3c809af888e15354222b2801d6402934e23d65d2a5dca98c745"
+    },
+    {
+      "file": "script/check-lifecycle.sh",
+      "bytes": 6880,
+      "sha256": "3cf8d9d14e699d92c5ad5b3d2c8212823a48a34306c852ac80ae69166b56320d"
+    },
+    {
+      "file": "script/check.sh",
+      "bytes": 831,
+      "sha256": "5894642a02749e7bc099bd51b273365a5b18065b4e43f0d3e94957629b308f14"
+    }
+  ],
+  "changedFiles": [
+    "README.md",
+    "Sources/ArdesiaNotebook/App/main.swift",
+    "Sources/ArdesiaNotebook/Stores/NotebookDocument.swift",
+    "Sources/ArdesiaNotebook/Views/ContentView.swift",
+    "Sources/ArdesiaNotebook/Views/DrawingToolbar.swift",
+    "Sources/ArdesiaNotebook/Views/InkCanvas.swift",
+    "Sources/NotebookCore/Notebook.swift",
+    "Sources/NotebookCore/NotebookCodec.swift",
+    "Sources/NotebookCore/NotebookPDF.swift",
+    "Sources/NotebookCore/NotebookPDFAsset.swift",
+    "Tests/NotebookChecks/PDFImportChecks.swift",
+    "Tests/NotebookChecks/main.swift",
+    "Tests/NotebookLifecycleChecks/main.swift",
+    "script/check-lifecycle.sh"
+  ],
+  "sourceDigest": "34c611d0590d789ac3af52c0cd485ac288921a2e9f511f5bfde1db43e9ee7e12",
+  "patchSha256": "7c7e60e43c1a3157c460d3e38ba2a532ea89f3978ed76cc74bfc969212c4b351",
+  "bundle": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/native-pdf-import-build/bundles/build.ikANMx/Ardesia Quaderno.app",
+  "binarySha256": "a003455e2911446bb7f3770b94bc5073967747b45a348c941aaf257f6ad6ff83",
+  "coreChecks": {
+    "checks": [
+      {
+        "name": "editable roundtrip retains IDs, pressure, pages and Unicode",
+        "status": "PASS"
+      },
+      {
+        "name": "finite coordinates and pressure bounds",
+        "status": "PASS"
+      },
+      {
+        "name": "version, duplicate identities, empty pages and point budget rejected",
+        "status": "PASS"
+      },
+      {
+        "name": "malformed, oversize and nonfinite JSON rejected",
+        "status": "PASS"
+      },
+      {
+        "name": "unknown fields rejected instead of silently dropped",
+        "status": "PASS"
+      },
+      {
+        "name": "atomic save and invalid write preserve original",
+        "status": "PASS"
+      },
+      {
+        "name": "eraser uses segment sweep and dots, not bounding boxes",
+        "status": "PASS"
+      },
+      {
+        "name": "page clipping never fabricates edge paths",
+        "status": "PASS"
+      },
+      {
+        "name": "PDF pages, A4 dimensions, rendering and Ardesia byte budget",
+        "status": "PASS"
+      },
+      {
+        "name": "PDF original bytes/hash retained once; schema 2 roundtrip and repeated import deduplication",
+        "status": "PASS"
+      },
+      {
+        "name": "legacy schema 1 stays readable and writable without invented metadata",
+        "status": "PASS"
+      },
+      {
+        "name": "PDF input bounds, encrypted/truncated/corrupt files and invalid page geometry rejected",
+        "status": "PASS"
+      },
+      {
+        "name": "strict schema 2 rejects unknown fields, altered payload/digest and invalid references",
+        "status": "PASS"
+      },
+      {
+        "name": "atomic import refuses total page/file budgets including base64 expansion",
+        "status": "PASS"
+      },
+      {
+        "name": "cached PDF byte accounting equals actual canonical JSON, including base64 escaping",
+        "status": "PASS"
+      },
+      {
+        "name": "annotation appearances are drawn into exported backgrounds; original source unchanged",
+        "status": "PASS"
+      },
+      {
+        "name": "crop, all right-angle rotations, letterboxing, ink overlay and vector text survive PDF export",
+        "status": "PASS"
+      },
+      {
+        "name": "real seven-page workbook: original bytes, 50 strokes, validation and vector export",
+        "status": "PASS"
+      }
+    ],
+    "failed": 0,
+    "passed": 18
+  },
+  "lifecycleChecks": {
+    "checks": [
+      {
+        "case": "save",
+        "status": "PASS",
+        "processExitCode": 0,
+        "exactSavedBytes": true,
+        "embeddedPDF": false,
+        "exactPDFBytesAndDigest": null,
+        "expectedStrokes": 1,
+        "sha256": "c6cc639106bd3dd94f3b148a35d44725f428fcb5408877939e2f9413d083d0d8"
+      },
+      {
+        "case": "close",
+        "status": "PASS",
+        "processExitCode": 0,
+        "exactSavedBytes": true,
+        "embeddedPDF": false,
+        "exactPDFBytesAndDigest": null,
+        "expectedStrokes": 1,
+        "sha256": "2754ce17d75eac0e9b9ab98dd7392958210bbcf75b4f28517eef007f35133059"
+      },
+      {
+        "case": "quit",
+        "status": "PASS",
+        "processExitCode": 0,
+        "exactSavedBytes": true,
+        "embeddedPDF": false,
+        "exactPDFBytesAndDigest": null,
+        "expectedStrokes": 1,
+        "sha256": "80d02973ee345fd4eec83e27a26e35238838945c3183d5b59c03906342f1897c"
+      },
+      {
+        "case": "nested",
+        "status": "PASS",
+        "processExitCode": 0,
+        "exactSavedBytes": true,
+        "embeddedPDF": false,
+        "exactPDFBytesAndDigest": null,
+        "expectedStrokes": 1,
+        "sha256": "e98a604488d2ee92bf6e40c9f4d6b8ee9628dec604e40b5081a6140402b0f086"
+      },
+      {
+        "case": "save-pdf",
+        "status": "PASS",
+        "processExitCode": 0,
+        "exactSavedBytes": true,
+        "embeddedPDF": true,
+        "exactPDFBytesAndDigest": true,
+        "expectedStrokes": 1,
+        "sha256": "3b83ccc826f02b9dc56296b18d23382b9e7d8d0b1eeb415ddde520656b836b7d",
+        "performance": {
+          "append50Seconds": 0.17730700969696045,
+          "canvasRenderSeconds": 0.006374955177307129,
+          "inputBytes": 88064,
+          "notebookBytes": 279641,
+          "points": 5000,
+          "strokes": 50
+        }
+      },
+      {
+        "case": "close-pdf",
+        "status": "PASS",
+        "processExitCode": 0,
+        "exactSavedBytes": true,
+        "embeddedPDF": true,
+        "exactPDFBytesAndDigest": true,
+        "expectedStrokes": 1,
+        "sha256": "a373c0297140e20c5d3d2a648d27fee1e4b99b46945979bfeb22d04ed3f91c85"
+      },
+      {
+        "case": "quit-pdf",
+        "status": "PASS",
+        "processExitCode": 0,
+        "exactSavedBytes": true,
+        "embeddedPDF": true,
+        "exactPDFBytesAndDigest": true,
+        "expectedStrokes": 1,
+        "sha256": "4f93634854eb500e5c1ebc7af4aa21508fe489dad52af8a798f64481f6972b61"
+      },
+      {
+        "case": "nested-pdf",
+        "status": "PASS",
+        "processExitCode": 0,
+        "exactSavedBytes": true,
+        "embeddedPDF": true,
+        "exactPDFBytesAndDigest": true,
+        "expectedStrokes": 1,
+        "sha256": "74fb8483041f620eb62455a4854bd70c5feb801304c1d59895d300edd50929ff"
+      }
+    ],
+    "passed": 8,
+    "failed": 0,
+    "fixtureCleanup": "complete",
+    "scope": "Real NSDocument/NSApplication lifecycle; offscreen synthetic events, no OS UI input"
+  },
+  "realSourcePDF": {
+    "path": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/lab-workbook/Quaderno-degli-esperimenti-C1-C5.pdf",
+    "bytes": 88064,
+    "sha256": "7d91231930f53ade5ac7b2661bece8605e81b295d68f217c6881d6cd4cc70043",
+    "pages": 7
+  }
+}

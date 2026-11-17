@@ -1,0 +1,46 @@
+[
+  {
+    "name": "normalize",
+    "identical": true
+  },
+  {
+    "name": "expired",
+    "identical": true
+  },
+  {
+    "name": "remaining",
+    "identical": true
+  },
+  {
+    "name": "grade",
+    "identical": true
+  },
+  {
+    "name": "summarize",
+    "identical": true
+  },
+  {
+    "name": "accept",
+    "identical": true
+  },
+  {
+    "name": "createSession",
+    "identical": true
+  },
+  {
+    "name": "parseData",
+    "identical": true
+  },
+  {
+    "name": "reviewDocument",
+    "identical": true
+  },
+  {
+    "name": "attempt",
+    "identical": true
+  },
+  {
+    "name": "parseAttempt",
+    "identical": true
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-11-14T04:19:01.989014+00:00",
+  "head": "708f5a9c54d60043f7b06a7d87ea1e8b50f84922",
+  "dirtySource": true,
+  "files": {
+    "e2e/physics-workbook-import.spec.ts": "f280baccaab0366cce33b8c4379442a9880cab396bdb856067f1ca2612f2c1f1",
+    "apps/web/src/App.tsx": "29f2852fbde833b1d19cf319cb0c93369882ad8bd78a06a476b520c4a6f5f50c",
+    "apps/web/public/fisica/quaderno-esperimenti.pdf": "7d91231930f53ade5ac7b2661bece8605e81b295d68f217c6881d6cd4cc70043"
+  },
+  "stats": {
+    "startTime": "2026-11-14T04:17:53.569Z",
+    "duration": 10574.315,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "findings": [
+    "Seven-page PDF imports with a single asset ID; original byte-identical; last-page anchored ink survives reload.",
+    "Initial test drew outside mobile viewport at minimum10percentzoom; test fixed to use actual object drawer and select page7. No product gesture defect inferred.",
+    "Drawer mislabeled materials as annotations; label corrected to Materiale importato."
+  ],
+  "limits": [
+    "viewport emulation, not physical phone/Pencil",
+    "local PostgreSQL only",
+    "not remote M3 acceptance"
+  ]
+}

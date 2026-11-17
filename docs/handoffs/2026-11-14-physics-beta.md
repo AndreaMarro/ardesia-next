@@ -1,5 +1,7 @@
 # Beta Fisica - consegna del 14 novembre
 
+> Fotografia storica. La PR54 è stata successivamente integrata; per la chiusura del lavoro locale e lo stato aggiornato vedere [handoff del17novembre](2026-11-17-closure.md).
+
 Sessione autonoma di cinque ore sul Mac mini M4, isolata dalla PR53 `8fbebc1`. I sorgenti sono nella draft [PR54](https://github.com/AndreaMarro/ardesia-next/pull/54), branch `codex/physics-beta-20261114`. Il mandato autorizza pubblicazioni frequenti e preview Vercel protette. CI e deploy vengono riportati nella PR per ogni SHA; il PASS di una revisione non si trasferisce alla successiva. Main, produzione, SSO e alias canonico staging restano separati.
 
 ## Esperienze disponibili nel candidato

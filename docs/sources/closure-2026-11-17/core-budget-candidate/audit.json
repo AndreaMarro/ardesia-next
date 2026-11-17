@@ -1,0 +1,79 @@
+{
+  "sourceCommit": "708f5a9c54d60043f7b06a7d87ea1e8b50f84922",
+  "node": "24.22.1",
+  "baselineCoreGzipBytes": 343465,
+  "coreLimit": 344064,
+  "initialLimit": 245760,
+  "baselineViteCoreGzipBytes": 266899,
+  "targetMinimumSaving": 2048,
+  "variantCountExcludingBaseline": 31,
+  "fullBuildCountIncludingBaseline": 25,
+  "recompressionVariants": 7,
+  "pureProbe": {
+    "schemaInitializersWrapped": 127,
+    "files": 8,
+    "before": 266899,
+    "after": 266835,
+    "delta": -64,
+    "restored": true
+  },
+  "sourceRestoration": [
+    {
+      "file": "apps/web/vite.config.ts",
+      "baselineSha256": "7bf3a8672c47bdd424d0ccf3f5c5e0b26b080e755bd1f9f97da701a86dcaa46d",
+      "restoredSha256": "7bf3a8672c47bdd424d0ccf3f5c5e0b26b080e755bd1f9f97da701a86dcaa46d",
+      "equal": true
+    },
+    {
+      "file": "packages/contracts/src/courses.ts",
+      "baselineSha256": "1ca6dc69e02a74ca3644a105b95ecb1b634756c9095e11d8499f2be3672d22cf",
+      "restoredSha256": "1ca6dc69e02a74ca3644a105b95ecb1b634756c9095e11d8499f2be3672d22cf",
+      "equal": true
+    },
+    {
+      "file": "packages/contracts/src/extensions.ts",
+      "baselineSha256": "468bc67e763461e682402830efbd77d2c601437f45615a6ba96accb1a3f0102d",
+      "restoredSha256": "468bc67e763461e682402830efbd77d2c601437f45615a6ba96accb1a3f0102d",
+      "equal": true
+    },
+    {
+      "file": "packages/contracts/src/index.ts",
+      "baselineSha256": "885cce9eeaff9ea0ae0b44a80a91f8e68f494a9d01a517bfc30a38128979d4ce",
+      "restoredSha256": "885cce9eeaff9ea0ae0b44a80a91f8e68f494a9d01a517bfc30a38128979d4ce",
+      "equal": true
+    },
+    {
+      "file": "packages/contracts/src/knowledge.ts",
+      "baselineSha256": "e53cc5052dd50aa66944a83dc4f107516b11bf0a61c2819d364fae8281f61643",
+      "restoredSha256": "e53cc5052dd50aa66944a83dc4f107516b11bf0a61c2819d364fae8281f61643",
+      "equal": true
+    },
+    {
+      "file": "packages/contracts/src/materials.ts",
+      "baselineSha256": "ced940bccfb29ab3af8b3394b24a7e243ffb93a21c10ee769eee0fd21e24d666",
+      "restoredSha256": "ced940bccfb29ab3af8b3394b24a7e243ffb93a21c10ee769eee0fd21e24d666",
+      "equal": true
+    },
+    {
+      "file": "packages/contracts/src/programs.ts",
+      "baselineSha256": "466df56aad0428d9c25a7e7deee64cd98b0719048040d0dbb4fccb5a1093d160",
+      "restoredSha256": "466df56aad0428d9c25a7e7deee64cd98b0719048040d0dbb4fccb5a1093d160",
+      "equal": true
+    },
+    {
+      "file": "packages/contracts/src/recordings.ts",
+      "baselineSha256": "9e40ed7acde18c894c118ade01b7aafb86d27d13729d119c2c9faece82e0ddae",
+      "restoredSha256": "9e40ed7acde18c894c118ade01b7aafb86d27d13729d119c2c9faece82e0ddae",
+      "equal": true
+    },
+    {
+      "file": "packages/contracts/src/tutor.ts",
+      "baselineSha256": "852bdccceecc916fce252ae96a3410e67334b1755eebaaa045f5c7436bf846b1",
+      "restoredSha256": "852bdccceecc916fce252ae96a3410e67334b1755eebaaa045f5c7436bf846b1",
+      "equal": true
+    }
+  ],
+  "result": "NO_QUALIFIED_CANDIDATE",
+  "equivalenceTests": "NOT_RUN: no alternative approached the required 2048-byte improvement; no change proposed",
+  "integration": "None; root repository not modified by this audit"
+}

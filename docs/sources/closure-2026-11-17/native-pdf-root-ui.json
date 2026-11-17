@@ -1,0 +1,22 @@
+{
+  "status": "PARTIAL_NOT_INTEGRATED",
+  "date": "2026-11-17",
+  "sourceDigest": "34c611d0590d789ac3af52c0cd485ac288921a2e9f511f5bfde1db43e9ee7e12",
+  "passed": [
+    "visible system import panel of real workbook",
+    "1 blank + 7 imported pages",
+    "undo back to 1 and redo back to 8",
+    "PDF first page rendering",
+    "cancel second import preserves 8 pages",
+    "named save",
+    "test app quit observed",
+    "saved document parsed: 8 pages, 1 asset, original PDF byte-identical SHA256 7d91231930f53ade5ac7b2661bece8605e81b295d68f217c6881d6cd4cc70043"
+  ],
+  "notRun": [
+    "visible ink-save-reopen workflow",
+    "minimum window layout",
+    "integrated bundle build"
+  ],
+  "limitation": "CUA drag failed with windowNotFoundAtPosition; no product drawing defect inferred. Save name field interpreted the full path as a basename; isolated fixture moved out of public assets after app quit.",
+  "decision": "Preserve patch, author and independent review as candidate; stable companion unchanged."
+}

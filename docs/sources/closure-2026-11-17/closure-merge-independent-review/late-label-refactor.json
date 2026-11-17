@@ -1,0 +1,42 @@
+{
+  "baseHead": "504a841359b63ff320f8bda0e721ae08e745d8c3",
+  "appSha256": "f784fea6d821b1923651b2529e19f3a949601fe8dbc3dd89cd864783c231406e",
+  "inspectorSha256": "7d031db2d3b81f518505d35f5caceaa5d577b0001e95259858b29fb893a1dcbb",
+  "scope": "Reuse existing Inspector labels/icons; no other App/Inspector changes after normalization",
+  "labels": {
+    "material": "Materiale originale",
+    "note": "Nota testuale",
+    "formula": "Formula",
+    "source": "Fonte",
+    "ink": "Annotazione",
+    "lab": "Laboratorio",
+    "extension": "Oggetto componibile"
+  },
+  "icons": {
+    "material": "Link2",
+    "note": "Type",
+    "formula": "SquareFunction",
+    "source": "Link2",
+    "ink": "SquarePen",
+    "lab": "FlaskConical",
+    "extension": "SquarePen"
+  },
+  "allSevenTypesCovered": true,
+  "iconsExactlyEquivalent": true,
+  "intentionalCopyChanges": {
+    "source": [
+      "Collegamento",
+      "Fonte"
+    ],
+    "lab": [
+      "Laboratorio scientifico",
+      "Laboratorio"
+    ],
+    "material": [
+      "Materiale importato",
+      "Materiale originale"
+    ]
+  },
+  "commandsHandlersPermissionsUnchanged": true,
+  "buildAndBudget": "Owned by root, pending at review"
+}

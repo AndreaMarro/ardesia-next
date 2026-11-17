@@ -1,0 +1,31 @@
+{
+  "verdict": "PASS_FOR_ROOT_INTEGRATION_AND_UI_QA",
+  "closedUTC": "2026-11-17T16:41:01.711363+00:00",
+  "reviewerProductionWrites": false,
+  "independentCountercaseSuites": 13,
+  "independentDocumentAndBoundarySuites": 5,
+  "replayedRealLifecycleCases": 8,
+  "sourceDigest": "34c611d0590d789ac3af52c0cd485ac288921a2e9f511f5bfde1db43e9ee7e12",
+  "patchSha256": "7c7e60e43c1a3157c460d3e38ba2a532ea89f3978ed76cc74bfc969212c4b351",
+  "sourceFilesVerified": 21,
+  "candidateChangesDuringReview": false,
+  "limits": [
+    "Visible import-panel workflow and minimum-window UI owned by root",
+    "Not a universal PDF conformance or visual-fidelity certification",
+    "No Apple Pencil, iPad, cloud sync or notarization claim"
+  ],
+  "checks": [
+    {
+      "file": "countercases.json",
+      "sha256": "d2fcf7b4a772db6199f273f1059345b2b0e35e0fc4c70ebcf6727b848c52c796"
+    },
+    {
+      "file": "document-and-boundaries.json",
+      "sha256": "0da98881959fad6933876744d2af2b79dfd44c5be0886a2be6f4a073d1eb0c2c"
+    },
+    {
+      "file": "lifecycle-replay.json",
+      "sha256": "3d5e9b8709ba5dc255b89efe18dd86cfd2a09f241f8facf8218a1a13319b34e5"
+    }
+  ]
+}

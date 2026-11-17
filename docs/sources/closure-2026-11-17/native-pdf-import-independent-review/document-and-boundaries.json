@@ -1,0 +1,26 @@
+{
+  "checks" : [
+    {
+      "name" : "actual NSDocument import is one undo group;redo restores exact IDs and bytes",
+      "passed" : true
+    },
+    {
+      "name" : "duplicate\/reorder\/delete last reference prune atomically and undo restores original",
+      "passed" : true
+    },
+    {
+      "name" : "failed full-document import preserves model,selected page and undo action",
+      "passed" : true
+    },
+    {
+      "name" : "12MiB boundary accepted and +1 byte rejected before parser",
+      "passed" : true
+    },
+    {
+      "name" : "32MiB canonical size,dedup at limit and import failure preserve model\/history",
+      "passed" : true
+    }
+  ],
+  "failed" : 0,
+  "passed" : 5
+}

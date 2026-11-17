@@ -1,0 +1,26 @@
+const {chromium}=require('../ardesia-next/node_modules/@playwright/test'),fs=require('fs'),path=require('path'),assert=require('assert/strict');
+(async()=>{const root=__dirname,b=await chromium.launch(),checks=[],errors=[],requests=[];const ok=(name,x)=>{assert.ok(x,name);checks.push({name,pass:true})};const download=async(p,id)=>{await p.waitForTimeout(1100);const wait=p.waitForEvent('download');await p.locator(id).click();const d=await wait;return fs.readFileSync(await d.path(),'utf8')};
+try{for(const edition of ['a','b'])for(const width of [320,1280]){
+ const c=await b.newContext({offline:true,acceptDownloads:true,viewport:{width,height:900}}),p=await c.newPage(),label=edition+'/'+width;p.on('pageerror',e=>errors.push(e.message));p.on('request',r=>{if(/^https?:/.test(r.url()))requests.push(r.url())});
+ await p.goto('file://'+path.join(root,'build/apps/web/public/fisica',edition==='a'?'simulazione.html':'simulazione-b.html'));
+ const source=await p.locator('#exam-data').evaluate(el=>JSON.parse(el.textContent)),now=Date.now();const data={schemaVersion:1,kind:'ardesia-physics-attempt',examId:source.exam.id,sourceSha256:source.sourceSha256,mode:'practice',startedAt:now-10000,deadline:null,index:30,answers:{},flagged:[0,1,2,17,30].map(i=>source.exam.questions[i].id)};
+ for(const[q,i]of source.exam.questions.map((q,i)=>[q,i]))data.answers[q.id]=i%3===0?(q.type==='choice'?q.correctChoice:q.acceptedAnswers[0]):i%3===1?(q.type==='choice'?q.choices.find(x=>x.id!==q.correctChoice).id:'not-a-number'):'';
+ await p.locator('#resume-file').setInputFiles({name:'review-fixture.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(data))});await p.locator('#submit-exam').click();await p.locator('#confirm-submit').click();
+ const json=await download(p,'#export-result'),html=await download(p,'#export-readable'),result=JSON.parse(json);ok('fixture grading '+label,result.correct===11&&result.wrong===10&&result.blank===10&&result.score===10);
+ const filter=p.getByLabel('Mostra nel ripasso',{exact:true}),items=p.locator('#review-list > details'),shown=p.locator('#review-list > details:not([hidden])');ok('default31 '+label,await filter.inputValue()==='all'&&await shown.count()===31);
+ const allText=await items.allTextContents();await items.first().locator(':scope > summary').click();
+ for(const value of ['wrong','blank','flagged','correct','all']){
+  await filter.selectOption(value);const expected=result.items.map((item,i)=>({item,i})).filter(({item})=>value==='all'||(value==='flagged'?data.flagged.includes(item.id):item.verdict===value));
+  const summaries=await shown.locator(':scope > summary').allTextContents();ok('exact filter membership '+value+' '+label,summaries.length===expected.length&&expected.every(({i},j)=>summaries[j].startsWith((i+1)+'. ')));
+  ok('all DOM rows retained '+value+' '+label,await items.count()===31);ok('status count '+value+' '+label,(await p.locator('#review-count').innerText()).startsWith(expected.length+' di 31'));
+  ok('JSON unchanged '+value+' '+label,await download(p,'#export-result')===json);ok('HTML unchanged '+value+' '+label,await download(p,'#export-readable')===html);ok('all31 exported '+value+' '+label,(html.match(/<article>/g)||[]).length===31);
+ }
+ ok('detail open state preserved '+label,await items.first().getAttribute('open')!==null);ok('content unchanged '+label,JSON.stringify(await items.allTextContents())===JSON.stringify(allText));
+ await filter.selectOption('flagged');ok('flags visible label '+label,(await shown.locator(':scope > summary').allTextContents()).every(s=>s.includes('Segnata da rivedere')));ok('no overflow '+label,await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));ok('select target >=44 '+label,(await filter.boundingBox()).height>=44);
+ await filter.focus();ok('native select receives focus '+label,await filter.evaluate(el=>el===document.activeElement));await filter.selectOption('all');
+ if(width===320){await filter.scrollIntoViewIfNeeded();await p.screenshot({path:path.join(root,'mobile-'+edition+'.png'),fullPage:false})}
+ await p.locator('#new-attempt').click();await p.locator('#confirm-restart').click();await p.locator('#start-practice').click();await p.locator('#submit-exam').click();await p.locator('#confirm-submit').click();ok('reset all on new attempt '+label,await filter.inputValue()==='all'&&await shown.count()===31);
+ for(const value of ['wrong','correct','flagged']){await filter.selectOption(value);ok('empty filter '+value+' '+label,await shown.count()===0&&(await p.locator('#review-count').innerText()).includes('Nessuna domanda'))}
+ await filter.selectOption('blank');ok('new attempt31 blank '+label,await shown.count()===31);await filter.selectOption('all');ok('all returns31 '+label,await shown.count()===31);
+ await c.close();
+}ok('no JavaScript errors',errors.length===0);ok('no HTTP requests',requests.length===0);fs.writeFileSync(path.join(root,'checks.json'),JSON.stringify({count:checks.length,checks,errors,requests},null,2));console.log('PASS '+checks.length+' checks');}catch(e){fs.writeFileSync(path.join(root,'failure.json'),JSON.stringify({error:String(e),checks,errors,requests},null,2));throw e}finally{await b.close()}})();
