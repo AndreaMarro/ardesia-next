@@ -3,31 +3,24 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 179,
-  "updatedAt": "2026-11-17T20:02:20.608Z",
+  "revision": 180,
+  "updatedAt": "2026-11-17T20:23:16.445Z",
   "procedureRef": "e83c98098bb4da0324a97460776b1898b5a05ee5",
-  "activeRun": {
-    "runId": "mission-20261117-fisica",
-    "actor": "codex",
-    "startedAt": "2026-11-17T19:49:54.823Z",
-    "claimedAt": "2026-11-17T20:02:20.608Z",
-    "writeUntil": "2026-11-17T20:34:54.823Z",
-    "closeBy": "2026-11-17T20:44:54.823Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "mission-20261117-six-physics-offers",
     "taskId": "M5-PRODUCT",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "WAITING_CI",
     "kind": "implementation",
     "notBefore": "2026-11-17T20:02:20.608Z",
     "expiresAt": "2026-11-17T22:59:00.000Z",
     "source": {
       "baseSha": "26e414777970d1eaddedc7069b78d4a9f6f738f2",
-      "headSha": "26e414777970d1eaddedc7069b78d4a9f6f738f2",
-      "sourceDigest": "6131c7b33cf8af096762b1a8a3c1cf426a268a1bfadfce208539e30184365f32",
+      "headSha": "a95933fd5992105ccd2b4e236789fe656c12696a",
+      "sourceDigest": "6afca8764ce47219b12178e41cea5d2ff4ce41461d1f9aed33516912e0a88294",
       "branch": "work/mission-20261117-fisica",
-      "pr": null
+      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/59"
     },
     "goal": "Accettazione prodotto e percorso di rilascio stabile",
     "allowedPaths": [
@@ -40,22 +33,49 @@
       "Prove umane e device fisici richieste restano separate dalla CI; produzione richiede proprio mandato.",
       "Gli ambiti non ancora accettati della mappa rimangono nel backlog: M5 non equivale alla visione interamente realizzata."
     ],
-    "evidence": [],
-    "blockers": [],
-    "nextAction": "Direct owner mandate 17 November 2026 following the 16 November bounded precedent: commercial interest catalog and scientific DRAFT pilot via the existing isolated static physics project. Same-head review/CI for integration. Local synthetic product observations only. No canonical queue gate, remote Core release, security or acceptance changes.",
+    "evidence": [
+      {
+        "kind": "ci",
+        "name": "verify",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/44167076483",
+        "headSha": "a95933fd5992105ccd2b4e236789fe656c12696a",
+        "sourceDigest": "6afca8764ce47219b12178e41cea5d2ff4ce41461d1f9aed33516912e0a88294",
+        "result": "PENDING",
+        "scope": "Exact head: Verify step, QA integration and benchmark succeeded. Full workflow browser tests pending.",
+        "access": "metadata",
+        "artifactDigest": null
+      },
+      {
+        "kind": "observation",
+        "name": "anonymous-static-publication",
+        "reference": "https://ardesia-fisica-preview.vercel.app/catalogo.html",
+        "headSha": "a95933fd5992105ccd2b4e236789fe656c12696a",
+        "sourceDigest": "6afca8764ce47219b12178e41cea5d2ff4ce41461d1f9aed33516912e0a88294",
+        "result": "PASS",
+        "scope": "Production static dpl_9pJ14c1uXp22A5qe1YnjcbPaMrnw. Anonymous Chrome six coded links and C6 plan. Nine resources 200 byte-identical. Core protected.",
+        "access": "metadata",
+        "artifactDigest": null
+      }
+    ],
+    "blockers": [
+      "FINAL_WORKFLOW_BROWSER_IN_PROGRESS",
+      "CURRENT_CANDIDATE_AUTHENTICATED_REMOTE_QA",
+      "HUMAN_SCIENCE_AND_PHYSICAL_DEVICE_ACCEPTANCE"
+    ],
+    "nextAction": "Preserve the shipped static catalog and the protected Core. Read original workflow 44167076483 and its reports. PR59 remains draft until full same-head CI, independent review receipt and applicable integration checks; no M5 gate changes. Owner needs authorized Core login and physical Mac/iPad lessons; scientific DRAFT remains. Current session ended after static publication and synthetic product proof.",
     "review": null
   },
   "lastRun": {
-    "runId": "mission-20261116-resume",
+    "runId": "mission-20261117-fisica",
     "actor": "codex",
-    "startedAt": "2026-11-16T15:18:44.314Z",
-    "claimedAt": "2026-11-16T15:31:23.979Z",
-    "writeUntil": "2026-11-16T16:03:44.314Z",
-    "closeBy": "2026-11-16T16:13:44.314Z",
-    "packetId": "mission-20261116-product-experience",
-    "finishedAt": "2026-11-16T16:08:34.658Z",
-    "outcome": "BLOCKED",
+    "startedAt": "2026-11-17T19:49:54.823Z",
+    "claimedAt": "2026-11-17T20:02:20.608Z",
+    "writeUntil": "2026-11-17T20:34:54.823Z",
+    "closeBy": "2026-11-17T20:44:54.823Z",
+    "packetId": "mission-20261117-six-physics-offers",
+    "finishedAt": "2026-11-17T20:23:16.445Z",
+    "outcome": "WAITING_CI",
     "late": false,
-    "summary": "Recovered increment delivered: PR57 merged after original CI707unit/305browser and independent review; public static Poiseuille verified, authentic media preserved. M5 remains unaccepted; current remote QA and human/physical evidence outstanding. Automatic post-merge CI pending; no source writes after deadline."
+    "summary": "Direct owner delivery: catalog with six offers and public Fluidi pilot shipped on the exact SHA; 26 meeting plans, promotional assets and synthetic Core media delivered. PR59 draft pending full Verify workflow; Core remote/device/human gate preserved."
   }
 }
