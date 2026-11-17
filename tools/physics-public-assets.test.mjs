@@ -47,7 +47,9 @@ test('every relative public page resource and local anchor resolves, and offline
   }
  }
  const exam=json(base+'/exam-manifest.json');
- for(const file of [...htmlFiles,'exam.js','campo.js','demo.js','urti.js','termodinamica.js','quaderno-esperimenti.pdf'])assert.ok(exam.offlineFiles.includes(file),file+' missing in offline edition');
+ const lessonPages=htmlFiles.filter(file=>file!=='catalogo.html');
+ assert.ok(!exam.offlineFiles.some(file=>file==='catalogo.html'||file.startsWith('offerta/')),'online offers stay outside the teaching archive');
+ for(const file of [...lessonPages,'exam.js','campo.js','demo.js','urti.js','termodinamica.js','quaderno-esperimenti.pdf'])assert.ok(exam.offlineFiles.includes(file),file+' missing in offline edition');
  for(const entry of exam.files)assert.equal(entry.sha256,hash(base+'/'+entry.file));
  assert.equal(exam.sourceSha256,hash(exam.sourceFile));
 });
