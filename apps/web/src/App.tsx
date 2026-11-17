@@ -12,7 +12,7 @@ import type {AudioCapture, CaptureStatus} from './recordings/capture';
 import type {RecordingAccess} from '@ardesia/remote-client';
 import type {LessonDocument} from '@ardesia/contracts';
 import {useLayoutEffect, useMemo, useRef, useState} from 'react';
-import {SquarePen, History, Type, SquareFunction, Link2, X, FlaskConical} from './components/Icons';
+import {History, X} from './components/Icons';
 import type {CoreService} from '@ardesia/core';
 import {canonicalJson, CoreError, toObjectInput, notebookPages, notebookPageSize, type EducationalObject, type NewEducationalObject} from '@ardesia/contracts';
 import {newLesson, type EditCommand} from './workspace';
@@ -22,7 +22,7 @@ import type {Actor} from '@ardesia/contracts';
 import {SharingDialog} from './components/SharingDialog';
 import {Board} from './components/Board';
 import {DocumentView} from './components/DocumentView';
-import {Inspector} from './components/Inspector';
+import {Inspector, labels as objectLabels, icons} from './components/Inspector';
 import {WorkspaceDialogs, type DialogName} from './components/WorkspaceDialogs';
 import {Dialog} from './components/Dialog';
 import {createFirstPartyLab, firstPartyLabName, type LabCondition} from './plugins/first-party';
@@ -117,7 +117,6 @@ export function App({core, actor, onEdit, saveStatus, onAccount, onExport, onCou
     sources:creator.provenance.sources.flatMap(ref=>{try{const source=core.getObjectRevision(actor,documentId,ref.sourceId,ref.revision);return source.type==='source'?[{id:source.id,revision:source.revision,title:source.title,...source.data,referenceLocator:ref.locator}]:[];}catch{return[];}}),
     missingSources:creator.provenance.sources.filter(ref=>{try{return core.getObjectRevision(actor,documentId,ref.sourceId,ref.revision).type!=='source';}catch{return true;}}),
   }:undefined;
-  const icons = {material:Link2,note:Type,formula:SquareFunction,source:Link2,ink:SquarePen,lab:FlaskConical,extension:SquarePen};
   return <div className={`app-shell ${!replay && inspectorOpen && edited ? 'with-inspector' : ''} ${replay?'is-replaying':''}`} inert={switching} aria-busy={switching} data-revision={viewDocument.revision} data-ui-version={version}>
     <a href="#workspace" className="skip-link">Vai alla lezione</a>
     <StudioChrome title={viewDocument.title} replay={!!replay} canExport={!replay&&!inkActive&&!audioBusy}
@@ -149,7 +148,7 @@ export function App({core, actor, onEdit, saveStatus, onAccount, onExport, onCou
         onAdd={add} writingStatus={captureStatus==='recording'?'Registrazione audio attiva · '+saveStatus:captureStatus==='requesting'?'Attesa microfono · '+saveStatus:captureStatus==='stopping'?'Salvataggio audio · '+saveStatus:saveStatus} onWritingMode={enter=>{if(inkActiveRef.current)return;const action=()=>{setInspectorOpen(false);setObjectsOpen(false);enter();};if(editorDirty||creatorDirty)setPendingNavigation(()=>action);else action();}} onInkActiveChange={active => {inkActiveRef.current = active; setInkActive(active);}} onInk={(object, sampleTimes,recovered) => {if(!recovered)capture.current?.ink(object.id, sampleTimes); return run({kind:'add-object',object},{kind:'remove-object',objectId:object.id});}}
         canUndo={undo.length>0} onUndo={() => {const last=undo.at(-1);if(last) void run(last).then(ok => {if(ok)setUndo(history=>history.slice(0,-1));});}}/>
         : <DocumentView document={document} mode={mode} onSelect={select}/>}
-      {objectsOpen && <section id="lesson-objects" className="object-strip" aria-label="Fonti e oggetti"><div className="object-drawer-heading"><h2>Fonti e oggetti</h2><button className="icon-button" aria-label="Chiudi elenco oggetti" onClick={()=>setObjectsOpen(false)}><X size={18}/></button></div><div className="object-strip-items">{viewDocument.objects.map(object => {const Icon=icons[object.type];return <button key={object.id} disabled={!!replay} onClick={() => select(object.id)} aria-label={`Seleziona ${object.title}`}><span className={`mini-object type-${object.type}`}><Icon size={19}/></span><span><strong>{object.title}</strong><small>{object.type==='note'?'Nota testuale':object.type==='formula'?'Formula':object.type==='source'?'Collegamento':object.type==='lab'?'Laboratorio scientifico':object.type==='extension'?'Oggetto componibile':object.type==='material'?'Materiale importato':'Annotazione'}</small></span></button>;})}</div></section>}
+      {objectsOpen && <section id="lesson-objects" className="object-strip" aria-label="Fonti e oggetti"><div className="object-drawer-heading"><h2>Fonti e oggetti</h2><button className="icon-button" aria-label="Chiudi elenco oggetti" onClick={()=>setObjectsOpen(false)}><X size={18}/></button></div><div className="object-strip-items">{viewDocument.objects.map(object => {const Icon=icons[object.type];return <button key={object.id} disabled={!!replay} onClick={() => select(object.id)} aria-label={`Seleziona ${object.title}`}><span className={`mini-object type-${object.type}`}><Icon size={19}/></span><span><strong>{object.title}</strong><small>{objectLabels[object.type]}</small></span></button>;})}</div></section>}
       </div>
       </div>
     </main>

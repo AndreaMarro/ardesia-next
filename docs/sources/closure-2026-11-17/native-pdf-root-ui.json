@@ -9,7 +9,8 @@
     "PDF first page rendering",
     "cancel second import preserves 8 pages",
     "named save",
-    "test app quit observed"
+    "test app quit observed",
+    "saved document parsed: 8 pages, 1 asset, original PDF byte-identical SHA256 7d91231930f53ade5ac7b2661bece8605e81b295d68f217c6881d6cd4cc70043"
   ],
   "notRun": [
     "visible ink-save-reopen workflow",

@@ -6,6 +6,46 @@
       "sha256": "855d5a69781774652075fe7edb9095cf368268ea7c3d5b0ad02ac33825ea83cc"
     },
     {
+      "path": "README.md",
+      "bytes": 2151,
+      "sha256": "e6af04450a0480ae82d657a4612b2e380670ac7ddf81b7dc9a1f7fe386d70a50"
+    },
+    {
+      "path": "budget-reconciliation.json",
+      "bytes": 705,
+      "sha256": "a28205443a1d7678e2bf1f704a592b618aa201f959d4382379379dec13d51d8f"
+    },
+    {
+      "path": "closure-merge-independent-review/checks.json",
+      "bytes": 4343,
+      "sha256": "102e51862ab39419c39a7674a401f665d98ffd53da40a2827eb54d4c610e6b7e"
+    },
+    {
+      "path": "closure-merge-independent-review/handoff-reviewed.md",
+      "bytes": 5609,
+      "sha256": "174c09aa63c7d4c7bfcd569c992b1043185df52f9cd8f149249ab8019c46d79c"
+    },
+    {
+      "path": "closure-merge-independent-review/late-label-refactor.json",
+      "bytes": 1181,
+      "sha256": "675a70c88114cf92624a77130137572396b529a78662651267fbed1433bc05c2"
+    },
+    {
+      "path": "closure-merge-independent-review/manifest.json",
+      "bytes": 648,
+      "sha256": "f6346dbd994629ad0f756b853411f3d2d6d32845ddf642998bba58c72594daa5"
+    },
+    {
+      "path": "closure-merge-independent-review/review.md",
+      "bytes": 3744,
+      "sha256": "8dd36808055ef139b804e4dddc62bd6a0169f40f134448d562bf3e61bfe0d421"
+    },
+    {
+      "path": "closure-merge-independent-review/working-source-identity.json",
+      "bytes": 1745,
+      "sha256": "4c4a0d5dfb77205e001c851911be3eeedab69072cbc4fb84ab455d7965846bc2"
+    },
+    {
       "path": "core-budget-candidate/REPORT.md",
       "bytes": 3776,
       "sha256": "d7bfdb2476ef1370e503be7114bcc9cb8a35b3ba1fe30811dde347ebe9a88f07"
@@ -179,6 +219,11 @@
       "path": "exam-review-filter-independent-review/reviewed-after-label-fix.patch",
       "bytes": 11318,
       "sha256": "2788048c7246f256faf7411c0f0813ce8deca61186cf0496d75aa120d406ffc3"
+    },
+    {
+      "path": "initial-verify-budget-failure.log",
+      "bytes": 48228,
+      "sha256": "92c99d86fe2de73f18bac638e7da7df5cd822e71df9ec7b6e69b92fb159a3b19"
     },
     {
       "path": "launch-kit/708-contact.json",
@@ -367,8 +412,8 @@
     },
     {
       "path": "native-pdf-root-ui.json",
-      "bytes": 864,
-      "sha256": "c43f06b2aca28d3e95c2d82448baebbe2fee80f5462d20657fec7059f262dc83"
+      "bytes": 1012,
+      "sha256": "8e758b3be09ec1d3a3bb9734a37d491c230510206f6987e2867efe9f4667aa67"
     },
     {
       "path": "prior-ci-708.json",

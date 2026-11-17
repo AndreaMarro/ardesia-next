@@ -333,7 +333,7 @@
       item.hidden = !(filter === 'all' || (filter === 'flagged' ? item.dataset.flagged === 'true' : item.dataset.verdict === filter));
       if (!item.hidden) visible++;
     }
-    $('review-count').textContent = visible ? `${visible} di ${exam.questions.length} domande mostrate.` : 'Nessuna domanda in questo gruppo. Puoi scegliere un altro filtro.';
+    $('review-count').textContent = visible ? `${visible} di ${exam.questions.length} domande.` : 'Nessuna domanda.';
   }
   $('review-filter').addEventListener('change', filterReview);
   function download(text, type, name) {
