@@ -3,107 +3,47 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 178,
-  "updatedAt": "2026-11-16T16:08:34.658Z",
+  "revision": 179,
+  "updatedAt": "2026-11-17T20:02:20.608Z",
   "procedureRef": "e83c98098bb4da0324a97460776b1898b5a05ee5",
-  "activeRun": null,
+  "activeRun": {
+    "runId": "mission-20261117-fisica",
+    "actor": "codex",
+    "startedAt": "2026-11-17T19:49:54.823Z",
+    "claimedAt": "2026-11-17T20:02:20.608Z",
+    "writeUntil": "2026-11-17T20:34:54.823Z",
+    "closeBy": "2026-11-17T20:44:54.823Z"
+  },
   "packet": {
-    "id": "mission-20261116-product-experience",
+    "id": "mission-20261117-six-physics-offers",
     "taskId": "M5-PRODUCT",
     "nextActor": "codex",
-    "disposition": "BLOCKED",
+    "disposition": "READY",
     "kind": "implementation",
-    "notBefore": "2026-11-16T13:16:53.849Z",
-    "expiresAt": "2026-11-17T13:16:53.849Z",
+    "notBefore": "2026-11-17T20:02:20.608Z",
+    "expiresAt": "2026-11-17T22:59:00.000Z",
     "source": {
-      "baseSha": "af4352e0bd810bcb1f0d2e9158d52553826971e5",
-      "headSha": "a042b03c99c2be9c2377dc4e204e988284978c10",
+      "baseSha": "26e414777970d1eaddedc7069b78d4a9f6f738f2",
+      "headSha": "26e414777970d1eaddedc7069b78d4a9f6f738f2",
       "sourceDigest": "6131c7b33cf8af096762b1a8a3c1cf426a268a1bfadfce208539e30184365f32",
-      "branch": "work/mission-20261116",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/57"
+      "branch": "work/mission-20261117-fisica",
+      "pr": null
     },
     "goal": "Accettazione prodotto e percorso di rilascio stabile",
     "allowedPaths": [
-      "apps/web",
-      "packages",
-      "e2e",
+      "apps/web/public/fisica",
       "tools",
-      "docs",
-      "operations"
+      "docs"
     ],
     "exitCriteria": [
       "Criteri D01–D68 pertinenti, scienza/UX/accessibilità/sicurezza/performance/recovery verificati sul candidato.",
       "Prove umane e device fisici richieste restano separate dalla CI; produzione richiede proprio mandato.",
       "Gli ambiti non ancora accettati della mappa rimangono nel backlog: M5 non equivale alla visione interamente realizzata."
     ],
-    "evidence": [
-      {
-        "kind": "ci",
-        "name": "verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/43898076188",
-        "headSha": "a042b03c99c2be9c2377dc4e204e988284978c10",
-        "sourceDigest": "6131c7b33cf8af096762b1a8a3c1cf426a268a1bfadfce208539e30184365f32",
-        "result": "PASS",
-        "scope": "Original artifact14244340007 read by root and independent stato_github: Verify8/8;707unit;305browser;0skips/flakes/retries/errors;5server;16MCP;4operator;benchmark; exact identities and report bindings.",
-        "access": "artifact",
-        "artifactDigest": "8d97e776b480d6700c9c6055c22026344a2e688424f3783a91580fcef8ba95fd"
-      },
-      {
-        "kind": "review",
-        "name": "independent-source-review",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/57#pullrequestreview-5922902446",
-        "headSha": "a042b03c99c2be9c2377dc4e204e988284978c10",
-        "sourceDigest": "6131c7b33cf8af096762b1a8a3c1cf426a268a1bfadfce208539e30184365f32",
-        "result": "PASS",
-        "scope": "Non-author context revisione_incremento read raw source and compared22files to exact commit. Offline transcript P2 closed, no blocking findings in reviewed scope; no human scientific approval.",
-        "access": "artifact",
-        "artifactDigest": null
-      },
-      {
-        "kind": "observation",
-        "name": "public-static-delivery",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/57#issuecomment-6921805121",
-        "headSha": "a042b03c99c2be9c2377dc4e204e988284978c10",
-        "sourceDigest": "6131c7b33cf8af096762b1a8a3c1cf426a268a1bfadfce208539e30184365f32",
-        "result": "PASS",
-        "scope": "PR57 merged26e414777970d1eaddedc7069b78d4a9f6f738f2 with identical tree; static production dpl_EsakT62irj4odW3W7vMbGGygixKo READY from a042, anonymous browser journey and transcript verified. Core SSO all and staging preserved. HTTP byte/API probes blocked by runner proxy403, not verified.",
-        "access": "artifact",
-        "artifactDigest": null
-      },
-      {
-        "kind": "observation",
-        "name": "current-core-remote-acceptance",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/57#issuecomment-6921805121",
-        "headSha": "a042b03c99c2be9c2377dc4e204e988284978c10",
-        "sourceDigest": "6131c7b33cf8af096762b1a8a3c1cf426a268a1bfadfce208539e30184365f32",
-        "result": "NOT_RUN",
-        "scope": "Authorized private Mac QA channel unavailable in this session. READY protected preview is not personal login or remote continuity acceptance. Human science/device/product gates remain open.",
-        "access": "metadata",
-        "artifactDigest": null
-      },
-      {
-        "kind": "ci",
-        "name": "post-merge-verify",
-        "reference": "https://github.com/AndreaMarro/ardesia-next/actions/runs/43903013030",
-        "headSha": "26e414777970d1eaddedc7069b78d4a9f6f738f2",
-        "sourceDigest": "6131c7b33cf8af096762b1a8a3c1cf426a268a1bfadfce208539e30184365f32",
-        "result": "PENDING",
-        "scope": "Automatic main workflow, distinct from passed candidate CI; same Git tree independently confirmed. Do not rerun identical tests solely for handoff.",
-        "access": "metadata",
-        "artifactDigest": null
-      }
-    ],
-    "blockers": [
-      "CURRENT-CANDIDATE-REMOTE-QA",
-      "HUMAN-AND-PHYSICAL-ACCEPTANCE"
-    ],
-    "nextAction": "The owner-directed recovered product increment is delivered and merged; see PR57 receipt and public Poiseuille pilot. Read the existing automatic post-merge CI result when available, without rerunning it. M5 remains deferred/not accepted: obtain human scientific approval on the exact edition, physical device evidence, and current-candidate Core remote QA through already-authorized channels. Preserve historical M3 acceptance. The historical queue refused readiness for deferred M5; no queue gate was marked passed or bypassed, and this bounded direct-owner continuation does not complete the M5 task. No new scheduler, secret reset, access change or paid service.",
-    "review": {
-      "authorContextId": "mission-20261116-resume-root",
-      "reviewerContextId": "mission-20261116-revisione_incremento",
-      "sourceSha": "a042b03c99c2be9c2377dc4e204e988284978c10",
-      "reference": "https://github.com/AndreaMarro/ardesia-next/pull/57#pullrequestreview-5922902446"
-    }
+    "evidence": [],
+    "blockers": [],
+    "nextAction": "Direct owner mandate 17 November 2026 following the 16 November bounded precedent: commercial interest catalog and scientific DRAFT pilot via the existing isolated static physics project. Same-head review/CI for integration. Local synthetic product observations only. No canonical queue gate, remote Core release, security or acceptance changes.",
+    "review": null
   },
   "lastRun": {
     "runId": "mission-20261116-resume",
