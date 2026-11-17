@@ -1,0 +1,41 @@
+[
+  {
+    "case": "invalid-sha",
+    "rejected": true,
+    "reason": "Use the complete immutable Git commit SHA"
+  },
+  {
+    "case": "legacy-no-readable-report",
+    "rejected": true,
+    "reason": "Readable report feature is absent: use its matching historical kit instead"
+  },
+  {
+    "case": "invalid-zip",
+    "rejected": true,
+    "reason": "File is not a zip file"
+  },
+  {
+    "case": "current-frozen-zip",
+    "inventory": {
+      "lessons": 38,
+      "lessonQuestions": 279,
+      "editions": [
+        {
+          "label": "A",
+          "examId": "physics-2026-original-a",
+          "questions": 31,
+          "sourceSha256": "0fe70d30a5bbc59ae0201c8307248c59e9c0ce7b29f4d1fe36cbc1bea1576f46"
+        },
+        {
+          "label": "B",
+          "examId": "physics-2026-original-b",
+          "questions": 31,
+          "sourceSha256": "e427742505d5c2e3ffb82348f6dd90293db59f758aec10b13c5d298b04d7830f"
+        }
+      ],
+      "offlineFiles": 62,
+      "readableReport": true
+    },
+    "accepted": true
+  }
+]

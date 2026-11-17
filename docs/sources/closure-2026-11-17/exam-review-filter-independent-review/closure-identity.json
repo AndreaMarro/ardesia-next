@@ -1,0 +1,18 @@
+{
+  "tools/build-physics-exam.mjs": {
+    "sha256": "26b2be944dd30b6079963db2b90cfdd160b360766925ac80a57d339b47c2f212",
+    "matchesFrozen": true
+  },
+  "tools/physics-runtime/exam.js": {
+    "sha256": "7842ebd678ef796d66a23468fef116f4fdb98cd2b0855d8a3d253198461233f7",
+    "matchesFrozen": true
+  },
+  "apps/web/public/fisica/exam.css": {
+    "sha256": "c3401c68935c6b71578e5839f9903711662e571ecdc35125fe6e4d15705f3edb",
+    "matchesFrozen": true
+  },
+  "e2e/physics-review-filter.spec.ts": {
+    "sha256": "ed377737944bc646e95b3c04bf1bf3b38fb3f13a2ee6a2c19a7b5d6809a6907b",
+    "matchesFrozen": true
+  }
+}

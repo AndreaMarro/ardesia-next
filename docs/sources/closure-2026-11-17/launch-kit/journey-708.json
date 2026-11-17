@@ -1,0 +1,38 @@
+{
+  "labs": [
+    {
+      "course": "C1",
+      "file": "urti.html",
+      "control": "#m1",
+      "visibleResponse": true
+    },
+    {
+      "course": "C2",
+      "file": "index.html",
+      "control": "#radius",
+      "visibleResponse": true
+    },
+    {
+      "course": "C3",
+      "file": "termodinamica.html",
+      "control": "#volume",
+      "visibleResponse": true
+    },
+    {
+      "course": "C4",
+      "file": "campo.html",
+      "control": "#charge",
+      "visibleResponse": true
+    },
+    {
+      "course": "C5",
+      "file": "c5.html",
+      "control": "#wave-cancelled",
+      "visibleResponse": true
+    }
+  ],
+  "workbookLink": true,
+  "C5FromHome": true,
+  "errors": [],
+  "requests": []
+}

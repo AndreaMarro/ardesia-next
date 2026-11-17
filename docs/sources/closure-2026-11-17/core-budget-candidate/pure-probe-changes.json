@@ -1,0 +1,169 @@
+[
+  {
+    "file": "courses.ts",
+    "schemas": [
+      "CourseSpaceSchema",
+      "CourseReceiptSchema",
+      "CourseEventSchema",
+      "entity",
+      "CourseAuthorCommandSchema",
+      "CourseCommandSchema",
+      "CourseWorkSchema",
+      "CourseHelpSchema",
+      "CourseStageSchema",
+      "CourseDeliverySchema",
+      "CourseEditionSchema",
+      "CourseSchema",
+      "CourseInputSchema",
+      "CourseUnitSchema",
+      "CourseUnitInputSchema",
+      "CourseSourceSchema",
+      "timestamp",
+      "text",
+      "title",
+      "revision",
+      "id"
+    ]
+  },
+  {
+    "file": "extensions.ts",
+    "schemas": [
+      "ExtensionDataSchema",
+      "ExtensionLineageSchema",
+      "ExtensionDefinitionSchema",
+      "CompositionBodySchema",
+      "Expression",
+      "Node",
+      "CompositionFieldSchema",
+      "Primitive",
+      "Json",
+      "short",
+      "key"
+    ]
+  },
+  {
+    "file": "index.ts",
+    "schemas": [
+      "LearningReceiptSchema",
+      "LearningEventSchema",
+      "LearningCommandSchema",
+      "AssignedLabAccessSchema",
+      "LearnerWorkSchema",
+      "LearnerFeedbackSchema",
+      "FeedbackOutcomeSchema",
+      "LearnerAttemptSchema",
+      "LearnerConsentSchema",
+      "LearnerLabSchema",
+      "LessonAssignmentSchema",
+      "PluginReceiptSchema",
+      "CommandReceiptSchema",
+      "CoreEventSchema",
+      "CoreCommandSchema",
+      "LessonDocumentSchema",
+      "ConnectionSchema",
+      "EducationalObjectSchema",
+      "NewObjectSchema",
+      "PluginCommandSchema",
+      "PluginInstallationSchema",
+      "PluginConsentSchema",
+      "PluginReleaseSchema",
+      "capabilityList",
+      "digest",
+      "pluginId",
+      "LabDataSchema",
+      "LabStateSchema",
+      "semver",
+      "EventJsonSchema",
+      "InkDataSchema",
+      "InkPointSchema",
+      "SourceDataSchema",
+      "FormulaDataSchema",
+      "NoteDataSchema",
+      "ProvenanceSchema",
+      "ProvenanceInputSchema",
+      "SourceReferenceSchema",
+      "WorkspaceAccessSchema",
+      "ActorSchema",
+      "timestamp",
+      "revision",
+      "dimension",
+      "coordinate",
+      "title",
+      "identifier"
+    ]
+  },
+  {
+    "file": "knowledge.ts",
+    "schemas": [
+      "ConceptLinkStateSchema",
+      "revision",
+      "id"
+    ]
+  },
+  {
+    "file": "materials.ts",
+    "schemas": [
+      "InkAnchorSchema",
+      "MaterialDataSchema",
+      "MaterialStateSchema",
+      "MaterialManifestSchema",
+      "MaterialPageSchema",
+      "MaterialMimeSchema",
+      "digest",
+      "id"
+    ]
+  },
+  {
+    "file": "programs.ts",
+    "schemas": [
+      "ProgramEventSchema",
+      "ProgramBodySchema",
+      "ProgramStateSchema"
+    ]
+  },
+  {
+    "file": "recordings.ts",
+    "schemas": [
+      "RecordingSearchSchema",
+      "RecordingCommandSchema",
+      "RecordingStateSchema",
+      "RecordingReceiptSchema",
+      "RecordingSummarySchema",
+      "RecordingTranscriptSchema",
+      "TranscriptCueSchema",
+      "RecordingCaptureSchema",
+      "RecordingMarkSchema",
+      "RecordingPartSchema",
+      "RecordingMimeSchema",
+      "digest",
+      "time",
+      "revision",
+      "id"
+    ]
+  },
+  {
+    "file": "tutor.ts",
+    "schemas": [
+      "TutorSpaceSchema",
+      "TutorReceiptSchema",
+      "TutorEventSchema",
+      "entity",
+      "TutorCommandSchema",
+      "TutorRecordSchema",
+      "TutorPaymentSchema",
+      "TutorInputSchema",
+      "TutorAppointmentInputSchema",
+      "TutorPackageInputSchema",
+      "TutorGroupInputSchema",
+      "TutorRequestInputSchema",
+      "TutorContactInputSchema",
+      "custom",
+      "currency",
+      "amount",
+      "timestamp",
+      "text",
+      "title",
+      "id"
+    ]
+  }
+]

@@ -1,0 +1,78 @@
+{
+  "run": 43555267457,
+  "artifact": 14098912326,
+  "artifactSHA256": "8266aafcb2ca4ced771348f5d2831ff4d1fbe9949413d2d8d8e1c27bd310e2fe",
+  "verification": {
+    "commit": "708f5a9c54d60043f7b06a7d87ea1e8b50f84922",
+    "sourceDigest": "658c2d9b9ba80c9c608bb12f61493b35dfe26ac2c91eb09ca65257480aa74dd1",
+    "generatedAt": "2026-11-14T04:10:38.006Z",
+    "checks": [
+      {
+        "name": "config-source",
+        "exitCode": 0,
+        "passed": true
+      },
+      {
+        "name": "types",
+        "exitCode": 0,
+        "passed": true
+      },
+      {
+        "name": "boundaries",
+        "exitCode": 0,
+        "passed": true
+      },
+      {
+        "name": "release-evidence",
+        "exitCode": 0,
+        "passed": true
+      },
+      {
+        "name": "unit",
+        "exitCode": 0,
+        "passed": true
+      },
+      {
+        "name": "signed-plugin",
+        "exitCode": 0,
+        "passed": true
+      },
+      {
+        "name": "build",
+        "exitCode": 0,
+        "passed": true
+      },
+      {
+        "name": "bundle-budget",
+        "exitCode": 0,
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "unitReportDigest": "5987ff9c4374f153d55fccc5af57a51be9fd67605f7064563fcab986ec05e250",
+    "m4PreparationDigest": "50cb373e48d22ef1bec0f780fa79ee8443e8bc4d5faa2b41743fec44bdf8c0c8"
+  },
+  "unitPassed": 699,
+  "browserStats": {
+    "startTime": "2026-11-14T04:13:05.993Z",
+    "duration": 1231851.094,
+    "expected": 295,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "budget": {
+    "commit": "708f5a9c54d60043f7b06a7d87ea1e8b50f84922",
+    "sourceDigest": "658c2d9b9ba80c9c608bb12f61493b35dfe26ac2c91eb09ca65257480aa74dd1",
+    "coreGzipBytes": 343465,
+    "initialJavaScriptGzipBytes": 223294,
+    "limits": {
+      "coreGzipBytes": 344064,
+      "initialJavaScriptGzipBytes": 245760,
+      "optionalGzipBytes": 327680,
+      "optionalRawBytes": 1048576,
+      "pdfGzipBytes": 3145728,
+      "pdfRawBytes": 6291456
+    }
+  }
+}

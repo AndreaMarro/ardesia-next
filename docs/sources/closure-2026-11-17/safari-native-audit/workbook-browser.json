@@ -1,0 +1,204 @@
+{
+  "config": {
+    "configFile": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/ardesia-next/playwright.config.ts",
+    "rootDir": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/ardesia-next/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "artifacts/e2e.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/ardesia-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/ardesia-next/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/ardesia-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-chromium",
+        "name": "mobile-chromium",
+        "testDir": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/ardesia-next/e2e",
+        "testIgnore": [
+          "**/pointer-desktop.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": false,
+      "timeout": 60000
+    }
+  },
+  "suites": [
+    {
+      "title": "physics-workbook-import.spec.ts",
+      "file": "physics-workbook-import.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "imports all seven physics workbook pages, preserves the original and reopens ink on the solutions page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3818,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T04:15:16.762Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8338ffcf80469b21abfd-db2704fa40b82e23a4f0",
+          "file": "physics-workbook-import.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "imports all seven physics workbook pages, preserves the original and reopens ink on the solutions page",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7616,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at /Users/progettibelli/Documents/Codex/2026-11-14/e/work/ardesia-next/e2e/physics-workbook-import.spec.ts:40:3",
+                    "location": {
+                      "file": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/ardesia-next/e2e/physics-workbook-import.spec.ts",
+                      "column": 3,
+                      "line": 40
+                    },
+                    "snippet": "  38 |   await page.mouse.move(box.x + box.width * .7, box.y + box.height * .85, {steps: 10});\n  39 |   await page.mouse.up();\n> 40 |   await expect.poll(async () => (await personalProjection(page)).documents[0]!.objects.filter(object => object.type === 'ink').length).toBe(1);\n     |   ^\n  41 |   const ink = (await personalProjection(page)).documents[0]!.objects.find(object => object.type === 'ink')!;\n  42 |   expect(ink.data.anchor?.objectId).toBe(lastPage.id);\n  43 |   await page.reload();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/ardesia-next/e2e/physics-workbook-import.spec.ts",
+                        "column": 3,
+                        "line": 40
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  38 |   await page.mouse.move(box.x + box.width * .7, box.y + box.height * .85, {steps: 10});\n  39 |   await page.mouse.up();\n> 40 |   await expect.poll(async () => (await personalProjection(page)).documents[0]!.objects.filter(object => object.type === 'ink').length).toBe(1);\n     |   ^\n  41 |   const ink = (await personalProjection(page)).documents[0]!.objects.find(object => object.type === 'ink')!;\n  42 |   expect(ink.data.anchor?.objectId).toBe(lastPage.id);\n  43 |   await page.reload();\n    at /Users/progettibelli/Documents/Codex/2026-11-14/e/work/ardesia-next/e2e/physics-workbook-import.spec.ts:40:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T04:15:21.003Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/ardesia-next/test-results/physics-workbook-import-im-0ac78-s-ink-on-the-solutions-page-mobile-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/ardesia-next/test-results/physics-workbook-import-im-0ac78-s-ink-on-the-solutions-page-mobile-chromium/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/ardesia-next/e2e/physics-workbook-import.spec.ts",
+                    "column": 3,
+                    "line": 40
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8338ffcf80469b21abfd-26b144d131a4101fbad6",
+          "file": "physics-workbook-import.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-14T04:15:14.566Z",
+    "duration": 14167.267,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

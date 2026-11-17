@@ -1,0 +1,90 @@
+{
+  "files": [
+    {
+      "file": ".codex/environments/environment.toml",
+      "sha256": "f707a598d540dc1e8218be227720f1a0aaaff33711be672b92644731fc720f25"
+    },
+    {
+      "file": ".gitignore",
+      "sha256": "75f6c25b67666e99ede42518ee69334a32483f890ac2cb43a2160d81883a19d2"
+    },
+    {
+      "file": "Package.swift",
+      "sha256": "21490fa07a8d873765dfe5d5785b3dc1c4128f481d88ab057dd7b8366744eb6f"
+    },
+    {
+      "file": "README.md",
+      "sha256": "ad0bb6d936264de4c3fd7a7e778b2ede1cf4c2afe18ba93e01270f014693429f"
+    },
+    {
+      "file": "Resources/Info.plist",
+      "sha256": "5bbe79bcffcad47843a5ec8f30fcb5796edf8c04b7a421be39b12a97b2791f41"
+    },
+    {
+      "file": "Sources/ArdesiaNotebook/App/main.swift",
+      "sha256": "86a7dc2407299a93ed8a849867f828558324d0199e021123a6fc0c67606e30b6"
+    },
+    {
+      "file": "Sources/ArdesiaNotebook/Stores/NotebookDocument.swift",
+      "sha256": "a77f3d74ccb09120ed013edc4f53308d1d9c432e4ea9d89e4c8612ca66011e56"
+    },
+    {
+      "file": "Sources/ArdesiaNotebook/Views/ContentView.swift",
+      "sha256": "5919e015c672033ae2f10c4a5f8f8a9c7765f4bacf88ac84f316968342427565"
+    },
+    {
+      "file": "Sources/ArdesiaNotebook/Views/DrawingToolbar.swift",
+      "sha256": "015ebe9b85851ae4b91013db4b582a43c858c4951b1771e711c634ee093f9e08"
+    },
+    {
+      "file": "Sources/ArdesiaNotebook/Views/InkCanvas.swift",
+      "sha256": "6e9cca03d66a9dbe7a7ed80ef56f4461479c701ec829b41fca239e83cc77d025"
+    },
+    {
+      "file": "Sources/NotebookCore/InkGeometry.swift",
+      "sha256": "d31d7c7361fa0b0f0fd6ac69e17d30f9a6a9c37dddbae2998c7f49f02034df7b"
+    },
+    {
+      "file": "Sources/NotebookCore/Notebook.swift",
+      "sha256": "572c2b38d26ee77de2b1331d1203172e0f117a37d91d92ec6339937a292cdde9"
+    },
+    {
+      "file": "Sources/NotebookCore/NotebookCodec.swift",
+      "sha256": "1c4ce535a61cfebde3e832adaa7dd063389e34d699297d8d5f3876d85beefe00"
+    },
+    {
+      "file": "Sources/NotebookCore/NotebookPDF.swift",
+      "sha256": "15b55e2e6d191c1b9825632b0bcab7dad15bdfd7ccbb62f38ff5a4616e740e27"
+    },
+    {
+      "file": "Sources/NotebookCore/NotebookPDFAsset.swift",
+      "sha256": "bb73b816d1b376c00b72a00d557cd1c6605568ef0b4f9c5d96b8e6215cb06fd3"
+    },
+    {
+      "file": "Tests/NotebookChecks/PDFImportChecks.swift",
+      "sha256": "14b46ba6066559c36c4c1bc3264348d312278822fcd77043891dd18ce4a40e46"
+    },
+    {
+      "file": "Tests/NotebookChecks/main.swift",
+      "sha256": "2ca748b64dd2ebc6b58546215b1053179a8540614ecc2820bfcb8b55b042a422"
+    },
+    {
+      "file": "Tests/NotebookLifecycleChecks/main.swift",
+      "sha256": "391f535f7882b0ff64e3bb0d26a18bbc3f484ae49698315354e28223bb778aef"
+    },
+    {
+      "file": "script/build_and_run.sh",
+      "sha256": "cf5a56f93fdad3c809af888e15354222b2801d6402934e23d65d2a5dca98c745"
+    },
+    {
+      "file": "script/check-lifecycle.sh",
+      "sha256": "3cf8d9d14e699d92c5ad5b3d2c8212823a48a34306c852ac80ae69166b56320d"
+    },
+    {
+      "file": "script/check.sh",
+      "sha256": "5894642a02749e7bc099bd51b273365a5b18065b4e43f0d3e94957629b308f14"
+    }
+  ],
+  "patchSha256": "7c7e60e43c1a3157c460d3e38ba2a532ea89f3978ed76cc74bfc969212c4b351",
+  "sourceDigest": "34c611d0590d789ac3af52c0cd485ac288921a2e9f511f5bfde1db43e9ee7e12"
+}

@@ -1,0 +1,21 @@
+{
+  ".codex/environments/environment.toml": "f707a598d540dc1e8218be227720f1a0aaaff33711be672b92644731fc720f25",
+  ".gitignore": "75f6c25b67666e99ede42518ee69334a32483f890ac2cb43a2160d81883a19d2",
+  "Package.swift": "21490fa07a8d873765dfe5d5785b3dc1c4128f481d88ab057dd7b8366744eb6f",
+  "README.md": "1d5920559bdf8e6871083c2c02b727cab54a399bdc50be3f265643de58b87384",
+  "Resources/Info.plist": "5bbe79bcffcad47843a5ec8f30fcb5796edf8c04b7a421be39b12a97b2791f41",
+  "Sources/ArdesiaNotebook/App/main.swift": "3cdef91960ba1329f3ed83e97e3119ca7ff177581c808cc1d3ced1371472d421",
+  "Sources/ArdesiaNotebook/Stores/NotebookDocument.swift": "3c1c82b3172f027e5c7deda01bdbc3005921be5dd882b9696a63247aefb03e55",
+  "Sources/ArdesiaNotebook/Views/ContentView.swift": "afaea91cba69a2085f9978a4016049402e084749864b98457f7589400a935f5e",
+  "Sources/ArdesiaNotebook/Views/DrawingToolbar.swift": "e3e27444ab91ceaa65fd00b7730ac477ed2551867221e18dbeb86285e504c4ce",
+  "Sources/ArdesiaNotebook/Views/InkCanvas.swift": "562af2dd9458a19e045c01ef7c0bb242adeaa3724e0d840182f05917a2289de8",
+  "Sources/NotebookCore/InkGeometry.swift": "d31d7c7361fa0b0f0fd6ac69e17d30f9a6a9c37dddbae2998c7f49f02034df7b",
+  "Sources/NotebookCore/Notebook.swift": "3df941c6fa272caefbfccdb2a5d6fcaa2d79ce292921cbb63806ac001c0714b4",
+  "Sources/NotebookCore/NotebookCodec.swift": "8030261caf9f0bf16d0e55a979f29992e40cd069b64d9574010dc32951650443",
+  "Sources/NotebookCore/NotebookPDF.swift": "56c124352d532df39cdd96c44152d5e011cdf62ab687dbdba8efea7c7fa88f2f",
+  "Tests/NotebookChecks/main.swift": "261068d70b53a4547f3bff8fb1e494f1b37c5868aa4509f87aa6007fc99d63f1",
+  "Tests/NotebookLifecycleChecks/main.swift": "6c632666d57a133f7df58b09fac6ceb558254aab63c527033949fbf9fb6896be",
+  "script/build_and_run.sh": "cf5a56f93fdad3c809af888e15354222b2801d6402934e23d65d2a5dca98c745",
+  "script/check-lifecycle.sh": "bf7ca89890bd5f046cba1ca72183ae0c217338de6399f9a45ddbc4c0869b4be0",
+  "script/check.sh": "5894642a02749e7bc099bd51b273365a5b18065b4e43f0d3e94957629b308f14"
+}

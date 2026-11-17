@@ -1,0 +1,123 @@
+{
+  "error": "TimeoutError: page.waitForEvent: Timeout 30000ms exceeded while waiting for event \"download\"\n=========================== logs ===========================\nwaiting for event \"download\"\n============================================================",
+  "checks": [
+    {
+      "name": "fixture grading a/320",
+      "pass": true
+    },
+    {
+      "name": "default31 a/320",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership wrong a/320",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained wrong a/320",
+      "pass": true
+    },
+    {
+      "name": "status count wrong a/320",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged wrong a/320",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged wrong a/320",
+      "pass": true
+    },
+    {
+      "name": "all31 exported wrong a/320",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership blank a/320",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained blank a/320",
+      "pass": true
+    },
+    {
+      "name": "status count blank a/320",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged blank a/320",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged blank a/320",
+      "pass": true
+    },
+    {
+      "name": "all31 exported blank a/320",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership flagged a/320",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained flagged a/320",
+      "pass": true
+    },
+    {
+      "name": "status count flagged a/320",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged flagged a/320",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged flagged a/320",
+      "pass": true
+    },
+    {
+      "name": "all31 exported flagged a/320",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership correct a/320",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained correct a/320",
+      "pass": true
+    },
+    {
+      "name": "status count correct a/320",
+      "pass": true
+    },
+    {
+      "name": "JSON unchanged correct a/320",
+      "pass": true
+    },
+    {
+      "name": "HTML unchanged correct a/320",
+      "pass": true
+    },
+    {
+      "name": "all31 exported correct a/320",
+      "pass": true
+    },
+    {
+      "name": "exact filter membership all a/320",
+      "pass": true
+    },
+    {
+      "name": "all DOM rows retained all a/320",
+      "pass": true
+    },
+    {
+      "name": "status count all a/320",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "requests": []
+}

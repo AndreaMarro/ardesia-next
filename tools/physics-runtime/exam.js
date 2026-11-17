@@ -296,10 +296,13 @@
   }
   function renderReview(summary) {
     const list = $('review-list'); list.replaceChildren();
+    $('review-filter').value = 'all';
     summary.items.forEach((item, index) => {
       const q = exam.questions[index];
       const article = make('details', undefined, `review-item verdict-${item.verdict}`);
-      const heading = make('summary', `${index + 1}. ${q.title} — ${labels[item.verdict]}`);
+      article.dataset.verdict = item.verdict;
+      article.dataset.flagged = String(session.flagged.has(q.id));
+      const heading = make('summary', `${index + 1}. ${q.title} — ${labels[item.verdict]}${session.flagged.has(q.id) ? ' · ⚑ Segnata da rivedere' : ''}`);
       article.append(heading, make('p', q.prompt, 'review-prompt'));
       const answer = item.answer.trim();
       if (q.type === 'choice') {
@@ -321,7 +324,18 @@
       const link = make('a', `Riprendi la lezione: ${q.topic} →`); link.href = `./${q.unitId}.html`;
       article.append(link); list.append(article);
     });
+    filterReview();
   }
+  function filterReview() {
+    const filter = $('review-filter').value;
+    let visible = 0;
+    for (const item of $('review-list').children) {
+      item.hidden = !(filter === 'all' || (filter === 'flagged' ? item.dataset.flagged === 'true' : item.dataset.verdict === filter));
+      if (!item.hidden) visible++;
+    }
+    $('review-count').textContent = visible ? `${visible} di ${exam.questions.length} domande mostrate.` : 'Nessuna domanda in questo gruppo. Puoi scegliere un altro filtro.';
+  }
+  $('review-filter').addEventListener('change', filterReview);
   function download(text, type, name) {
     const url=URL.createObjectURL(new Blob([text],{type}));
     const a=make('a');a.href=url;a.download=name;

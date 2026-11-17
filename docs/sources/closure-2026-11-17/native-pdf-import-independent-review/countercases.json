@@ -1,0 +1,58 @@
+{
+  "checks" : [
+    {
+      "name" : "schema1 canonical output and editable identity remain stable",
+      "passed" : true
+    },
+    {
+      "name" : "18 forged schema\/reference\/payload countercases reject",
+      "passed" : true
+    },
+    {
+      "name" : "64 total pages accepted exactly;65 refused without mutation",
+      "passed" : true
+    },
+    {
+      "name" : "same bytes imported twice share one immutable asset",
+      "passed" : true
+    },
+    {
+      "name" : "invalid PDF geometry rejects",
+      "passed" : true
+    },
+    {
+      "name" : "original source bytes remain after invalid atomic write",
+      "passed" : true
+    },
+    {
+      "name" : "inherited offset crop+rotation 0,vector text and clipped margins",
+      "passed" : true
+    },
+    {
+      "name" : "inherited offset crop+rotation 90,vector text and clipped margins",
+      "passed" : true
+    },
+    {
+      "name" : "inherited offset crop+rotation 180,vector text and clipped margins",
+      "passed" : true
+    },
+    {
+      "name" : "inherited offset crop+rotation 270,vector text and clipped margins",
+      "passed" : true
+    },
+    {
+      "name" : "inherited offset crop+rotation -90,vector text and clipped margins",
+      "passed" : true
+    },
+    {
+      "name" : "inherited offset crop+rotation 450,vector text and clipped margins",
+      "passed" : true
+    },
+    {
+      "name" : "partially out-of-media CropBox uses visible intersection",
+      "passed" : true
+    }
+  ],
+  "failed" : 0,
+  "passed" : 13
+}

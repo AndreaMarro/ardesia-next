@@ -1,0 +1,234 @@
+[
+  {
+    "name": "oxc",
+    "total": 267617,
+    "entries": [
+      {
+        "file": "assets/browser-D4EssyxD.js",
+        "gzip": 2317
+      },
+      {
+        "file": "assets/ExtensionView-C2cCgjxF.js",
+        "gzip": 9025
+      },
+      {
+        "file": "assets/MathFormula-DqFk3eIz.js",
+        "gzip": 5055
+      },
+      {
+        "file": "assets/board-geometry-DIQ7HfY6.js",
+        "gzip": 1138
+      },
+      {
+        "file": "assets/foundation-COLMotJH.js",
+        "gzip": 64068
+      },
+      {
+        "file": "assets/math-DKOJF3HM.js",
+        "gzip": 76343
+      },
+      {
+        "file": "assets/index-Cr2nm2Q_.js",
+        "gzip": 68272
+      },
+      {
+        "file": "assets/InkConflictRecovery-DA8aCJZu.js",
+        "gzip": 1699
+      },
+      {
+        "file": "assets/PhysicsCatalog-CenCzjYo.js",
+        "gzip": 3459
+      },
+      {
+        "file": "assets/HandoutView-Bw1EAF-q.js",
+        "gzip": 12099
+      },
+      {
+        "file": "assets/KnowledgeStudio-Czb_7t0O.js",
+        "gzip": 3886
+      },
+      {
+        "file": "assets/PhysicsWorkbench-Dr96gGbl.js",
+        "gzip": 9078
+      },
+      {
+        "file": "assets/TutorStudio-5vTgifRh.js",
+        "gzip": 11178
+      }
+    ]
+  },
+  {
+    "name": "rolldownOnly",
+    "total": 270059,
+    "entries": [
+      {
+        "file": "assets/browser-CkKD_37g.js",
+        "gzip": 2352
+      },
+      {
+        "file": "assets/ExtensionView-BustPUUG.js",
+        "gzip": 9091
+      },
+      {
+        "file": "assets/MathFormula-DN_VZ-kB.js",
+        "gzip": 5092
+      },
+      {
+        "file": "assets/board-geometry-DIQ7HfY6.js",
+        "gzip": 1138
+      },
+      {
+        "file": "assets/foundation-DcJhROT1.js",
+        "gzip": 64485
+      },
+      {
+        "file": "assets/math-qUInRI0n.js",
+        "gzip": 76410
+      },
+      {
+        "file": "assets/index-CVEsJsnp.js",
+        "gzip": 69638
+      },
+      {
+        "file": "assets/InkConflictRecovery-ZtxFaozP.js",
+        "gzip": 1737
+      },
+      {
+        "file": "assets/PhysicsCatalog-TO_gGZFH.js",
+        "gzip": 3483
+      },
+      {
+        "file": "assets/HandoutView-BFi46tB1.js",
+        "gzip": 12173
+      },
+      {
+        "file": "assets/KnowledgeStudio-DKFNn9SA.js",
+        "gzip": 3962
+      },
+      {
+        "file": "assets/PhysicsWorkbench-CD0b-4ie.js",
+        "gzip": 9113
+      },
+      {
+        "file": "assets/TutorStudio-BLI7uqk8.js",
+        "gzip": 11385
+      }
+    ]
+  },
+  {
+    "name": "terserNoCompress",
+    "total": 267645,
+    "entries": [
+      {
+        "file": "assets/browser-D-RiiALC.js",
+        "gzip": 2315
+      },
+      {
+        "file": "assets/ExtensionView-D53O9ZkQ.js",
+        "gzip": 9026
+      },
+      {
+        "file": "assets/MathFormula-iwQw3OtA.js",
+        "gzip": 5056
+      },
+      {
+        "file": "assets/board-geometry-DIQ7HfY6.js",
+        "gzip": 1138
+      },
+      {
+        "file": "assets/foundation-CaWgl9H9.js",
+        "gzip": 64065
+      },
+      {
+        "file": "assets/math-DKOJF3HM.js",
+        "gzip": 76343
+      },
+      {
+        "file": "assets/index-DdPFyrKY.js",
+        "gzip": 68286
+      },
+      {
+        "file": "assets/InkConflictRecovery-Cr7x3SVJ.js",
+        "gzip": 1698
+      },
+      {
+        "file": "assets/PhysicsCatalog-16sHvAq1.js",
+        "gzip": 3461
+      },
+      {
+        "file": "assets/HandoutView-8mNHlznm.js",
+        "gzip": 12103
+      },
+      {
+        "file": "assets/KnowledgeStudio-CYe6KTq9.js",
+        "gzip": 3893
+      },
+      {
+        "file": "assets/PhysicsWorkbench-BOX5x24T.js",
+        "gzip": 9079
+      },
+      {
+        "file": "assets/TutorStudio-DEM1wvzc.js",
+        "gzip": 11182
+      }
+    ]
+  },
+  {
+    "name": "terserNoMangle",
+    "total": 266772,
+    "entries": [
+      {
+        "file": "assets/browser-C_qs0HFi.js",
+        "gzip": 2323
+      },
+      {
+        "file": "assets/ExtensionView-WZSO_YwR.js",
+        "gzip": 9014
+      },
+      {
+        "file": "assets/MathFormula-CJKrrRLy.js",
+        "gzip": 5046
+      },
+      {
+        "file": "assets/board-geometry-y6mnw6f8.js",
+        "gzip": 1138
+      },
+      {
+        "file": "assets/foundation-ByOPu4mL.js",
+        "gzip": 63870
+      },
+      {
+        "file": "assets/math-C70LSRHn.js",
+        "gzip": 75986
+      },
+      {
+        "file": "assets/index-DvDsjSiz.js",
+        "gzip": 68139
+      },
+      {
+        "file": "assets/InkConflictRecovery-D_NCYyLn.js",
+        "gzip": 1691
+      },
+      {
+        "file": "assets/PhysicsCatalog-DX33c0nj.js",
+        "gzip": 3452
+      },
+      {
+        "file": "assets/HandoutView-OXbMCvdl.js",
+        "gzip": 11983
+      },
+      {
+        "file": "assets/KnowledgeStudio-CJPtFj5w.js",
+        "gzip": 3880
+      },
+      {
+        "file": "assets/PhysicsWorkbench-BRpOqOgp.js",
+        "gzip": 9073
+      },
+      {
+        "file": "assets/TutorStudio-DEdMsjI8.js",
+        "gzip": 11177
+      }
+    ]
+  }
+]

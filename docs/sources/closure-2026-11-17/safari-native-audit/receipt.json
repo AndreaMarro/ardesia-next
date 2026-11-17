@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-11-14T04:13:02.516567+00:00",
+  "sourceSha": "708f5a9c54d60043f7b06a7d87ea1e8b50f84922",
+  "environment": "Native Safari on macOS; private window; file:// from public/fisica",
+  "checks": {
+    "C3_compression": {
+      "volumeRatio": 0.5,
+      "pressureRatio": 2,
+      "temperatureK": 300,
+      "deltaU_J": 0,
+      "workA_J": -1247.17,
+      "workB_J": -2494.34,
+      "predictions": "both correct"
+    },
+    "C3_transfer": "selected -2000 J; correct explanation shown",
+    "C4_webgl": "3D WebGL attivo observed",
+    "C4_positive_pair": {
+      "potential_V": 22.469,
+      "field_N_per_C": 0
+    },
+    "C4_canvas": "2D mode shown",
+    "C4_video": "playing time advanced from0to19seconds; paused successfully"
+  },
+  "cleanup": "Only task private window closed; original2tabs observed preserved",
+  "limits": [
+    "network not disabled",
+    "physical iPad and Apple Pencil NOT_RUN",
+    "exam resume in native Safari NOT_RUN"
+  ],
+  "screenshot": "outputs/evidenze/safari-video-c4.png"
+}

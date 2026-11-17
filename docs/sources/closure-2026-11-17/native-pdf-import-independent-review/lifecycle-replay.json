@@ -1,0 +1,96 @@
+{
+  "checks": [
+    {
+      "case": "save",
+      "status": "PASS",
+      "processExitCode": 0,
+      "exactSavedBytes": true,
+      "embeddedPDF": false,
+      "exactPDFBytesAndDigest": null,
+      "expectedStrokes": 1,
+      "sha256": "31f3f4e579640247cac1ce2ec02d3b502a453ea6ebe35f0019f4391278953965"
+    },
+    {
+      "case": "close",
+      "status": "PASS",
+      "processExitCode": 0,
+      "exactSavedBytes": true,
+      "embeddedPDF": false,
+      "exactPDFBytesAndDigest": null,
+      "expectedStrokes": 1,
+      "sha256": "784f3b336b92aa9311329570d2162cd75b6083d6a8561275bf7ae3d46aaa24d2"
+    },
+    {
+      "case": "quit",
+      "status": "PASS",
+      "processExitCode": 0,
+      "exactSavedBytes": true,
+      "embeddedPDF": false,
+      "exactPDFBytesAndDigest": null,
+      "expectedStrokes": 1,
+      "sha256": "3e157149be6ac5a63f585255f0f36a17c0be2ed3ddd99098bd0fc087aa64b757"
+    },
+    {
+      "case": "nested",
+      "status": "PASS",
+      "processExitCode": 0,
+      "exactSavedBytes": true,
+      "embeddedPDF": false,
+      "exactPDFBytesAndDigest": null,
+      "expectedStrokes": 1,
+      "sha256": "983a1300927801ec5b48192804c027702b2294deb6899e3c77d16b296f545ab6"
+    },
+    {
+      "case": "save-pdf",
+      "status": "PASS",
+      "processExitCode": 0,
+      "exactSavedBytes": true,
+      "embeddedPDF": true,
+      "exactPDFBytesAndDigest": true,
+      "expectedStrokes": 1,
+      "sha256": "9cb834cb2322a5343cf2edb3f70171555d70797516852af2e9d683532eb5e95f",
+      "performance": {
+        "append50Seconds": 0.17012202739715576,
+        "canvasRenderSeconds": 0.006422996520996094,
+        "inputBytes": 88064,
+        "notebookBytes": 279641,
+        "points": 5000,
+        "strokes": 50
+      }
+    },
+    {
+      "case": "close-pdf",
+      "status": "PASS",
+      "processExitCode": 0,
+      "exactSavedBytes": true,
+      "embeddedPDF": true,
+      "exactPDFBytesAndDigest": true,
+      "expectedStrokes": 1,
+      "sha256": "913e25c3d7b17060eaa68a3fd9267ca7469a22443bf3545c87aaf2847e71d231"
+    },
+    {
+      "case": "quit-pdf",
+      "status": "PASS",
+      "processExitCode": 0,
+      "exactSavedBytes": true,
+      "embeddedPDF": true,
+      "exactPDFBytesAndDigest": true,
+      "expectedStrokes": 1,
+      "sha256": "6f32d1646bf2509c63961236153928b382921debf79b6c067f8d3e2c289e4739"
+    },
+    {
+      "case": "nested-pdf",
+      "status": "PASS",
+      "processExitCode": 0,
+      "exactSavedBytes": true,
+      "embeddedPDF": true,
+      "exactPDFBytesAndDigest": true,
+      "expectedStrokes": 1,
+      "sha256": "f6c0f2989a60d50af2733df49e18f24c2140b3c140f93abe8fafa5f492ef948a"
+    }
+  ],
+  "passed": 8,
+  "failed": 0,
+  "fixtureCleanup": "complete",
+  "scope": "Real NSDocument/NSApplication lifecycle; offscreen synthetic events, no OS UI input"
+}

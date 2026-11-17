@@ -1,0 +1,246 @@
+{
+  "config": {
+    "configFile": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/workbook-import-independent-review/playwright.config.ts",
+    "rootDir": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/workbook-import-independent-review",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/workbook-import-independent-review/playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/workbook-import-independent-review/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/workbook-import-independent-review",
+        "testIgnore": [],
+        "testMatch": [
+          "*.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/workbook-import-independent-review/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-chromium",
+        "name": "mobile-chromium",
+        "testDir": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/workbook-import-independent-review",
+        "testIgnore": [
+          "**/pointer-desktop.spec.ts"
+        ],
+        "testMatch": [
+          "*.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview",
+      "url": "http://127.0.0.1:4177",
+      "reuseExistingServer": false,
+      "timeout": 60000,
+      "cwd": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/ardesia-next"
+    }
+  },
+  "suites": [
+    {
+      "title": "baseline.spec.ts",
+      "file": "baseline.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "imports all seven physics workbook pages, preserves the original and reopens ink on the solutions page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3425,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T04:21:59.897Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2923076b323a8336a93-8f72a785f5b697998b7d",
+          "file": "baseline.spec.ts",
+          "line": 5,
+          "column": 5
+        },
+        {
+          "title": "imports all seven physics workbook pages, preserves the original and reopens ink on the solutions page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3725,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T04:22:07.345Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2923076b323a8336a93-e4d9b44870ecf125926d",
+          "file": "baseline.spec.ts",
+          "line": 5,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "strengthened.spec.ts",
+      "file": "strengthened.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "imports all seven physics workbook pages, preserves the original and reopens ink on the solutions page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3625,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T04:22:03.493Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f9ff7f7e50ef9dc8a7f1-7483eb7b3683bf3dfd21",
+          "file": "strengthened.spec.ts",
+          "line": 5,
+          "column": 5
+        },
+        {
+          "title": "imports all seven physics workbook pages, preserves the original and reopens ink on the solutions page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3591,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T04:22:11.164Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f9ff7f7e50ef9dc8a7f1-f5efa5031696f5cd158f",
+          "file": "strengthened.spec.ts",
+          "line": 5,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-14T04:21:57.712Z",
+    "duration": 17081.529,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

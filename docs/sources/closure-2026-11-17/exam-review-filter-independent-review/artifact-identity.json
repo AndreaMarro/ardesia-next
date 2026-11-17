@@ -1,0 +1,27 @@
+{
+  "exam.js": {
+    "sha256": "050c4f2c6a18b138d876e9ff668b6613a0b89ea33455b4877cf4ac8907409415",
+    "bytes": 20415,
+    "rootMatches": true
+  },
+  "exam.css": {
+    "sha256": "c3401c68935c6b71578e5839f9903711662e571ecdc35125fe6e4d15705f3edb",
+    "bytes": 9449,
+    "rootMatches": true
+  },
+  "simulazione.html": {
+    "sha256": "896c74f2911cc3f1711f54162046d3ee78392dc4826cbd047de45d654942c3e6",
+    "bytes": 54358,
+    "rootMatches": true
+  },
+  "simulazione-b.html": {
+    "sha256": "0a1aed2b8dbd94c29d403b7f7c17e576abe97023e793a677dac886b27fc84f93",
+    "bytes": 64056,
+    "rootMatches": true
+  },
+  "ardesia-prova-fisica-offline.zip": {
+    "sha256": "866646351694a56d491873bb7475ee7df6dfe0a518461a1684ddeb066d7d1613",
+    "bytes": 3392080,
+    "rootMatches": false
+  }
+}
