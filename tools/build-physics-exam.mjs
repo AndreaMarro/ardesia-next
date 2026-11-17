@@ -74,6 +74,8 @@ function offlineFiles(directory, prefix='', bounded={count:variants.length+1,byt
   const result=[];
   for (const entry of readdirSync(directory,{withFileTypes:true}).sort((a,b)=>a.name.localeCompare(b.name,'en'))) {
     const relative=prefix+entry.name;
+    // The commercial catalog contains live WhatsApp links. Keep the student archive on the teaching edition.
+    if (prefix === '' && ['catalogo.html', 'offerta'].includes(entry.name)) continue;
     if (entry.isDirectory()) result.push(...offlineFiles(directory+'/'+entry.name,relative+'/',bounded));
     else if (entry.isFile() && /\.(?:html|css|js|json|mp4|png|vtt|txt|pdf)$/.test(entry.name) && !variants.some(v=>v.file===relative) && entry.name !== 'exam-data.js' && !/manifest.*\.json$/i.test(entry.name)) {
       const bytes=statSync(directory+'/'+entry.name).size;
@@ -89,6 +91,7 @@ function offlineFile(file) {
   const bytes=readFileSync(out+'/'+file);
   if(!file.endsWith('.html'))return bytes;
   const text=bytes.toString('utf8')
+    .replace(/<a data-online-only href="\.\/catalogo\.html">[^<]*<\/a>/g,'')
     .replace("<a class='button' href='/#corsi'>Apri lo spazio di studio →</a>","<p class='notice'>Questa copia serve alla lettura e alla pratica offline. Per salvare il lavoro nello spazio Ardesia occorre un accesso online fornito separatamente.</p>")
     .replace(/<a\b[^>]*href=["']\.\/ardesia-prova-fisica-offline\.zip["'][^>]*>[\s\S]*?<\/a>/g,"<span>Stai usando la copia offline: lezioni, laboratori e prova sono già in questa cartella.</span>");
   if(/\b(?:href|src)\s*=\s*["']?\s*\//i.test(text))throw Error('Generated offline page contains a root-relative URL: '+file);
