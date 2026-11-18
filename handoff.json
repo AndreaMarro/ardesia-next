@@ -3,18 +3,25 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 186,
-  "updatedAt": "2026-11-18T22:27:46Z",
+  "revision": 187,
+  "updatedAt": "2026-11-18T22:28:15Z",
   "procedureRef": "e83c98098bb4da0324a97460776b1898b5a05ee5",
-  "activeRun": null,
+  "activeRun": {
+    "runId": "owner-20261118-physics-recovery-lot6",
+    "actor": "codex",
+    "startedAt": "2026-11-18T22:22:00.000Z",
+    "claimedAt": "2026-11-18T22:28:15Z",
+    "writeUntil": "2026-11-18T23:07:00.000Z",
+    "closeBy": "2026-11-18T23:17:00.000Z"
+  },
   "packet": {
-    "id": "owner-20261118-physics-recovery",
+    "id": "owner-20261118-physics-recovery-lot6",
     "taskId": "M5-PRODUCT",
     "nextActor": "codex",
-    "disposition": "INTERRUPTED",
+    "disposition": "READY",
     "kind": "implementation",
-    "notBefore": "2026-11-18T20:09:16.517Z",
-    "expiresAt": "2026-11-18T20:55:00.000Z",
+    "notBefore": "2026-11-18T22:28:15Z",
+    "expiresAt": "2026-11-18T23:17:00.000Z",
     "source": {
       "baseSha": "26294e3a68d73c238acfbcf0d25759b50ffcf625",
       "headSha": "26294e3a68d73c238acfbcf0d25759b50ffcf625",
@@ -70,7 +77,7 @@
       }
     ],
     "blockers": [],
-    "nextAction": "Owner-authorized continuation: preserve and publish recovered lots 4–5 (172 revised records and exact-source browser receipts), then complete next coherent active-question batch within session capacity. Retain existing M5 acceptance limits.",
+    "nextAction": "Direct owner mandate received in current chat authorizes substantive scientific/didactic question revision and integration on isolated branch/protected preview. Recover 172 exact-source reviewed records, preserve final evidence, then revise the 89 remaining active IDs. One root writer; no production, account, SSO, scheduler or acceptance changes. Canonical M5 task criteria preserved; old deferred status is superseded only for this preparation increment by the explicit owner mandate.",
     "review": null
   },
   "lastRun": {
