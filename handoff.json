@@ -3,30 +3,38 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 180,
-  "updatedAt": "2026-11-17T20:23:16.445Z",
+  "revision": 182,
+  "updatedAt": "2026-11-18T19:23:19.773Z",
   "procedureRef": "e83c98098bb4da0324a97460776b1898b5a05ee5",
-  "activeRun": null,
+  "activeRun": {
+    "runId": "owner-20261118-physics-review-lot4",
+    "actor": "codex",
+    "startedAt": "2026-11-18T19:23:10.000Z",
+    "claimedAt": "2026-11-18T19:23:19.773Z",
+    "writeUntil": "2026-11-18T20:08:10.000Z",
+    "closeBy": "2026-11-18T20:18:10.000Z"
+  },
   "packet": {
-    "id": "mission-20261117-six-physics-offers",
+    "id": "owner-20261118-physics-review-lot4",
     "taskId": "M5-PRODUCT",
     "nextActor": "codex",
-    "disposition": "WAITING_CI",
+    "disposition": "READY",
     "kind": "implementation",
-    "notBefore": "2026-11-17T20:02:20.608Z",
-    "expiresAt": "2026-11-17T22:59:00.000Z",
+    "notBefore": "2026-11-18T19:23:10Z",
+    "expiresAt": "2026-11-18T20:18:10.000Z",
     "source": {
-      "baseSha": "26e414777970d1eaddedc7069b78d4a9f6f738f2",
-      "headSha": "a95933fd5992105ccd2b4e236789fe656c12696a",
-      "sourceDigest": "6afca8764ce47219b12178e41cea5d2ff4ce41461d1f9aed33516912e0a88294",
-      "branch": "work/mission-20261117-fisica",
-      "pr": "https://github.com/AndreaMarro/ardesia-next/pull/59"
+      "baseSha": "26294e3a68d73c238acfbcf0d25759b50ffcf625",
+      "headSha": "26294e3a68d73c238acfbcf0d25759b50ffcf625",
+      "sourceDigest": "6ea2da5ba301836ab384197044e24ded1ad1f969fcc57c4bdfa0d2f6560d8ac2",
+      "branch": "codex/physics-question-review-lot4",
+      "pr": null
     },
     "goal": "Accettazione prodotto e percorso di rilascio stabile",
     "allowedPaths": [
       "apps/web/public/fisica",
       "tools",
-      "docs"
+      "docs",
+      "e2e"
     ],
     "exitCriteria": [
       "Criteri D01–D68 pertinenti, scienza/UX/accessibilità/sicurezza/performance/recovery verificati sul candidato.",
@@ -55,14 +63,21 @@
         "scope": "Production static dpl_9pJ14c1uXp22A5qe1YnjcbPaMrnw. Anonymous Chrome six coded links and C6 plan. Nine resources 200 byte-identical. Core protected.",
         "access": "metadata",
         "artifactDigest": null
+      },
+      {
+        "kind": "observation",
+        "name": "prior-lot-preserved",
+        "reference": "https://github.com/AndreaMarro/ardesia-next/pull/61",
+        "headSha": "26294e3a68d73c238acfbcf0d25759b50ffcf625",
+        "sourceDigest": "6ea2da5ba301836ab384197044e24ded1ad1f969fcc57c4bdfa0d2f6560d8ac2",
+        "result": "PASS",
+        "scope": "Original PR61 CI metadata success observed; raw artifacts not reread in this run. Direct owner attached mandate authorizes further question revision. Prior PR59 remains separate and preserved.",
+        "access": "metadata",
+        "artifactDigest": null
       }
     ],
-    "blockers": [
-      "FINAL_WORKFLOW_BROWSER_IN_PROGRESS",
-      "CURRENT_CANDIDATE_AUTHENTICATED_REMOTE_QA",
-      "HUMAN_SCIENCE_AND_PHYSICAL_DEVICE_ACCEPTANCE"
-    ],
-    "nextAction": "Preserve the shipped static catalog and the protected Core. Read original workflow 44167076483 and its reports. PR59 remains draft until full same-head CI, independent review receipt and applicable integration checks; no M5 gate changes. Owner needs authorized Core login and physical Mac/iPad lessons; scientific DRAFT remains. Current session ended after static publication and synthetic product proof.",
+    "blockers": [],
+    "nextAction": "Direct owner mandate Testo incollato.txt, 18 November: preserve PR58–61, revise 40 additional active questions C1–C5 with traceable calculations, same-data PDF and UI evidence. Isolated branch and protected preview; no production, SSO, M5 acceptance or scheduler change.",
     "review": null
   },
   "lastRun": {
