@@ -3,25 +3,25 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 182,
-  "updatedAt": "2026-11-18T19:23:19.773Z",
+  "revision": 185,
+  "updatedAt": "2026-11-18T20:09:16.517Z",
   "procedureRef": "e83c98098bb4da0324a97460776b1898b5a05ee5",
   "activeRun": {
-    "runId": "owner-20261118-physics-review-lot4",
+    "runId": "owner-20261118-physics-recovery",
     "actor": "codex",
-    "startedAt": "2026-11-18T19:23:10.000Z",
-    "claimedAt": "2026-11-18T19:23:19.773Z",
-    "writeUntil": "2026-11-18T20:08:10.000Z",
-    "closeBy": "2026-11-18T20:18:10.000Z"
+    "startedAt": "2026-11-18T20:00:00.000Z",
+    "claimedAt": "2026-11-18T20:09:16.517Z",
+    "writeUntil": "2026-11-18T20:45:00.000Z",
+    "closeBy": "2026-11-18T20:55:00.000Z"
   },
   "packet": {
-    "id": "owner-20261118-physics-review-lot4",
+    "id": "owner-20261118-physics-recovery",
     "taskId": "M5-PRODUCT",
     "nextActor": "codex",
     "disposition": "READY",
     "kind": "implementation",
-    "notBefore": "2026-11-18T19:23:10Z",
-    "expiresAt": "2026-11-18T20:18:10.000Z",
+    "notBefore": "2026-11-18T20:09:16.517Z",
+    "expiresAt": "2026-11-18T20:55:00.000Z",
     "source": {
       "baseSha": "26294e3a68d73c238acfbcf0d25759b50ffcf625",
       "headSha": "26294e3a68d73c238acfbcf0d25759b50ffcf625",
@@ -77,20 +77,20 @@
       }
     ],
     "blockers": [],
-    "nextAction": "Direct owner mandate Testo incollato.txt, 18 November: preserve PR58–61, revise 40 additional active questions C1–C5 with traceable calculations, same-data PDF and UI evidence. Isolated branch and protected preview; no production, SSO, M5 acceptance or scheduler change.",
+    "nextAction": "Direct owner continuation in the current chat: recover and publish lot4, then revise the next active questions if resources allow. One root writer, same M5-PRODUCT scope and criteria, isolated branch/protected preview, no production or SSO/scheduler changes.",
     "review": null
   },
   "lastRun": {
-    "runId": "mission-20261117-fisica",
+    "runId": "owner-20261118-physics-review-lot4",
     "actor": "codex",
-    "startedAt": "2026-11-17T19:49:54.823Z",
-    "claimedAt": "2026-11-17T20:02:20.608Z",
-    "writeUntil": "2026-11-17T20:34:54.823Z",
-    "closeBy": "2026-11-17T20:44:54.823Z",
-    "packetId": "mission-20261117-six-physics-offers",
-    "finishedAt": "2026-11-17T20:23:16.445Z",
-    "outcome": "WAITING_CI",
+    "startedAt": "2026-11-18T19:23:10.000Z",
+    "claimedAt": "2026-11-18T19:23:19.773Z",
+    "writeUntil": "2026-11-18T20:08:10.000Z",
+    "closeBy": "2026-11-18T20:18:10.000Z",
+    "packetId": "owner-20261118-physics-review-lot4",
+    "finishedAt": "2026-11-18T20:09:16.517Z",
+    "outcome": "INTERRUPTED",
     "late": false,
-    "summary": "Direct owner delivery: catalog with six offers and public Fluidi pilot shipped on the exact SHA; 26 meeting plans, promotional assets and synthetic Core media delivered. PR59 draft pending full Verify workflow; Core remote/device/human gate preserved."
+    "summary": "Interrupted chat recovered on direct owner request; uncommitted lot4 preserved before changes. Process inventory has no prior source writers; source branch absent remotely, PR61 and main unchanged."
   }
 }
