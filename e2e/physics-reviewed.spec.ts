@@ -13,7 +13,9 @@ test('guided questions open in the real lessons and keep feedback, hints and sol
   await question.getByRole('radio',{name:/^B\. .*diviso/}).check();
   await question.getByRole('button',{name:'Controlla la risposta'}).click();
   await expect(question.locator('output')).toHaveText('Rivedi la scelta.');
-  await expect(question.getByText(/rapporto delle ampiezze/)).toBeVisible();
+  await expect(question.locator('[data-practice-option=B]')).toContainText('rapporto delle ampiezze');
+  await expect(question.locator('[data-practice-option=B]')).toBeVisible();
+  await expect(question.locator('[data-practice-option=C]')).toBeHidden();
   await question.getByRole('radio',{name:/^A\. .*diviso/}).check();
   await expect(question.locator('output')).toBeEmpty();
   await question.getByRole('button',{name:'Controlla la risposta'}).click();
