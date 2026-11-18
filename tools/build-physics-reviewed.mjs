@@ -41,7 +41,7 @@ function questionHTML(q) {
   const response = q.answer.kind === 'choice' ? `${q.answer.id}. ${q.options.find(o=>o.id === q.answer.id).text}`
     : q.answer.kind === 'text' ? q.answer.accepted[0] : `${q.answer.exact}${q.answer.unit==='1'?'':' '+q.answer.unit}`;
   const visual = diagram(q.figure, q.id);
-  return `<details class='reader-question reviewed-question' id='${q.id}'><summary>${esc(q.title)} <small>· ${esc(q.origin.level)}</small></summary>
+  return `<details class='reviewed-question' id='${q.id}'><summary>${esc(q.title)} <small>· ${esc(q.origin.level)}</small></summary>
     ${paragraph(q.prompt)}${q.figure?.stage==='prompt'?visual:''}${answerForm(q)}
     ${q.hints.map((hint,i)=>`<details class='reviewed-hint'><summary>${q.hints.length===1?'Suggerimento':`Suggerimento ${i+1}`}</summary>${paragraph(hint)}</details>`).join('')}
     <details class='reviewed-solution'><summary>Leggi lo svolgimento completo</summary><p><strong>Risposta.</strong> ${inline(response)}</p>${q.figure?.stage==='solution'?visual:''}${q.solution.map(paragraph).join('')}</details>
