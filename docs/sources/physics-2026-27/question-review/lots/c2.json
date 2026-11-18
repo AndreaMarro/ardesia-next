@@ -1,0 +1,788 @@
+[
+  {
+    "id": "u3-archimedes-force-03",
+    "title": "La spinta cambia con la profondità?",
+    "prompt": "Un corpo rigido è completamente immerso in un liquido in quiete, incomprimibile e di densità uniforme. Viene portato a una profondità maggiore e mantenuto fermo, sempre completamente immerso e senza toccare pareti o fondo. La gravità è uniforme. Come cambia la spinta di Archimede?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Raddoppia ogni volta che raddoppia la profondità.",
+        "feedback": "È la pressione idrostatica relativa alla superficie a crescere con la profondità. La spinta dipende dalla risultante delle pressioni su tutto il corpo."
+      },
+      {
+        "id": "B",
+        "text": "Aumenta, perché aumentano le pressioni su tutte le facce.",
+        "feedback": "L’aumento della pressione interessa anche le facce che ricevono spinte verso il basso: non basta considerare la pressione sulla faccia inferiore."
+      },
+      {
+        "id": "C",
+        "text": "Diminuisce, perché il corpo si allontana dalla superficie.",
+        "feedback": "Allontanarsi dalla superficie non riduce il volume di liquido spostato, che qui resta invariato."
+      },
+      {
+        "id": "D",
+        "text": "Resta uguale, perché densità del liquido e volume immerso non cambiano.",
+        "feedback": "La spinta vale $F_A=\\rho gV$; tutti e tre i fattori restano costanti."
+      },
+      {
+        "id": "E",
+        "text": "Diventa necessariamente uguale al peso del corpo.",
+        "feedback": "L’uguaglianza fra spinta e peso richiede che siano le sole forze verticali in equilibrio. Un corpo mantenuto immerso può anche essere sostenuto o trattenuto."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "D"
+    },
+    "hints": [
+      "Distingui la pressione in un singolo punto dalla forza risultante su tutte le superfici del corpo.",
+      "Pensa a un piccolo prisma: abbassandolo, aumenta la pressione sia sulla faccia superiore sia su quella inferiore. Confronta la differenza fra queste due pressioni."
+    ],
+    "solution": [
+      "La spinta di Archimede equivale al peso del liquido spostato: $F_A=\\rho gV$, dove $V$ è il volume immerso. Il corpo è rigido e resta completamente immerso, quindi $V$ non cambia. Anche $\\rho$ e $g$ sono costanti: la spinta resta uguale, risposta D.",
+      "La pressione locale aumenta con la profondità, ma la spinta è la risultante di tutte le forze di pressione. Per un prisma verticale di altezza $H$ e area di base $S$, la differenza fra pressione inferiore e superiore è $\\rho gH$, indipendentemente dalla profondità del prisma. La forza verticale risultante vale dunque $\\rho gHS=\\rho gV$.",
+      "Essere fermo non significa necessariamente che la spinta uguagli il peso: la forza che mantiene il corpo nella posizione assegnata può contribuire all’equilibrio."
+    ],
+    "check": "Controprova idrostatica per prisma: p(z+H)−p(z)=rho*g*H, quindi risultante rho*g*H*S indipendente da z. Ipotesi rigidità, immersione completa, densità e g costanti esplicitate. Unica affermazione sempre valida D.",
+    "reason": "Eliminate le convenzioni duplicate e sostituito il distrattore sulla visibilità con una confusione plausibile fra pressione e spinta. Il primo aiuto orienta alla risultante senza anticiparne l’invarianza."
+  },
+  {
+    "id": "u3-venturi-area-ratio-01",
+    "title": "Pressione nel restringimento di un condotto",
+    "prompt": "Acqua di densità $\\rho=1000\\,\\mathrm{kg/m^3}$ scorre in un condotto orizzontale. La sezione larga ha area $A_1$ doppia di quella stretta: $A_1/A_2=2$. Nella sezione larga la velocità è $v_1=2\\,\\mathrm{m/s}$. Il moto è stazionario; trattiamo l’acqua come incomprimibile, trascuriamo le perdite viscose e consideriamo uniforme la velocità in ogni sezione. Quanto vale $p_1-p_2$ in $\\mathrm{kPa}$? Inserisci solo il numero.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "6",
+      "unit": "kPa"
+    },
+    "hints": [
+      "In ogni secondo deve attraversare le due sezioni lo stesso volume d’acqua. Usa questo fatto per confrontare le velocità.",
+      "Trova $v_2$ dalla continuità $A_1v_1=A_2v_2$. Poi confronta pressione ed energia cinetica con Bernoulli: le due sezioni sono alla stessa quota."
+    ],
+    "solution": [
+      "In un flusso stazionario incomprimibile senza diramazioni la portata è la stessa nelle due sezioni. Dalla continuità $A_1v_1=A_2v_2$ segue $v_2=(A_1/A_2)v_1=2\\times2=4\\,\\mathrm{m/s}$.",
+      "Le quote sono uguali e le perdite trascurabili, quindi Bernoulli dà $p_1+\\rho v_1^2/2=p_2+\\rho v_2^2/2$. Sottraendo, $p_1-p_2=\\rho(v_2^2-v_1^2)/2$.",
+      "Sostituendo in unità SI: $p_1-p_2=(1000/2)(16-4)$, cioè $6000\\,\\mathrm{Pa}$, quindi $6\\,\\mathrm{kPa}$. Il numero da inserire è $6$.",
+      "La pressione statica è minore nella sezione più veloce. Per controllo, la diminuzione di energia di pressione per unità di massa è $(p_1-p_2)/\\rho=6\\,\\mathrm{J/kg}$, uguale all’aumento di energia cinetica specifica $(v_2^2-v_1^2)/2=6\\,\\mathrm{J/kg}$. Nel modello ideale questa conversione non è una perdita dissipativa."
+    ],
+    "check": "Continuità v2=4 m/s; Bernoulli delta p=6000 Pa=6 kPa. Controprova energia per massa: 6000/1000=(16−4)/2=6 J/kg. Differenza positiva, modello orizzontale ideale coerente.",
+    "reason": "Eliminata la duplicazione integrale delle ipotesi, esplicitata la continuità e distinta la diminuzione di pressione statica da una perdita dissipativa. Figura segnala che il rapporto riguarda le aree, non i diametri.",
+    "figure": {
+      "stage": "prompt",
+      "alt": "Condotto orizzontale con sezione larga 1 a sinistra e sezione stretta 2 a destra. Il flusso procede da 1 a 2 e l’area 1 è doppia dell’area 2.",
+      "caption": "Sezione longitudinale schematica, non in scala: il rapporto 2 riguarda le aree, non le altezze disegnate. Le sezioni sono alla stessa quota.",
+      "lines": [
+        [
+          35,
+          48,
+          155,
+          48
+        ],
+        [
+          155,
+          48,
+          235,
+          70
+        ],
+        [
+          235,
+          70,
+          365,
+          70
+        ],
+        [
+          35,
+          132,
+          155,
+          132
+        ],
+        [
+          155,
+          132,
+          235,
+          110
+        ],
+        [
+          235,
+          110,
+          365,
+          110
+        ]
+      ],
+      "labels": [
+        {
+          "x": 100,
+          "y": 27,
+          "text": "1: area A1"
+        },
+        {
+          "x": 298,
+          "y": 38,
+          "text": "2: area A2"
+        },
+        {
+          "x": 100,
+          "y": 160,
+          "text": "v1 = 2 m/s"
+        },
+        {
+          "x": 295,
+          "y": 146,
+          "text": "A1 = 2 A2"
+        }
+      ],
+      "arrows": [
+        [
+          60,
+          90,
+          135,
+          90
+        ],
+        [
+          260,
+          90,
+          345,
+          90
+        ]
+      ]
+    }
+  },
+  {
+    "id": "u3-hydraulic-series-06",
+    "title": "Ripartire una differenza di pressione",
+    "prompt": "Due tratti idraulici lineari sono collegati in serie, senza diramazioni. Per ciascuno vale $\\Delta p=RQ$, dove $Q$ è la portata volumetrica. Le resistenze sono $R_1=2\\,\\mathrm{kPa\\,s/L}$ e $R_2=4\\,\\mathrm{kPa\\,s/L}$; la differenza di pressione totale è $12\\,\\mathrm{kPa}$. Il fluido è incomprimibile, il regime è stazionario e non c’è accumulo fra i tratti. Qual è la differenza di pressione sul primo tratto?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$2\\,\\mathrm{kPa}$",
+        "feedback": "$2$ è il valore della portata in litri al secondo; per ottenere una differenza di pressione occorre moltiplicare per la resistenza del tratto."
+      },
+      {
+        "id": "B",
+        "text": "$4\\,\\mathrm{kPa}$",
+        "feedback": "La portata comune è $2\\,\\mathrm{L/s}$, dunque $\\Delta p_1=R_1Q=4\\,\\mathrm{kPa}$."
+      },
+      {
+        "id": "C",
+        "text": "$6\\,\\mathrm{kPa}$",
+        "feedback": "La differenza totale si dividerebbe a metà solo per resistenze uguali; qui il secondo tratto ha resistenza doppia."
+      },
+      {
+        "id": "D",
+        "text": "$8\\,\\mathrm{kPa}$",
+        "feedback": "Questa è la differenza di pressione sul secondo tratto, che ha resistenza doppia del primo."
+      },
+      {
+        "id": "E",
+        "text": "$12\\,\\mathrm{kPa}$",
+        "feedback": "È la differenza totale sui due tratti; anche il secondo tratto richiede una differenza di pressione."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "B"
+    },
+    "hints": [
+      "Quale grandezza deve essere uguale nei due tratti se non ci sono né diramazioni né accumulo di fluido?",
+      "Esprimi le due differenze di pressione con la stessa portata e sommale per ottenere quella totale."
+    ],
+    "solution": [
+      "La conservazione del volume impone la stessa portata $Q$ nei due tratti. Le differenze di pressione invece si sommano: $\\Delta p_{\\mathrm{tot}}=R_1Q+R_2Q$, cioè $(R_1+R_2)Q$.",
+      "La portata è $Q=12/(2+4)=2\\,\\mathrm{L/s}$: dividendo $\\mathrm{kPa}$ per $\\mathrm{kPa\\,s/L}$ si ottiene correttamente $\\mathrm{L/s}$.",
+      "Nel primo tratto vale $\\Delta p_1=R_1Q=2\\times2=4\\,\\mathrm{kPa}$, risposta B. Nel secondo vale $\\Delta p_2=4\\times2=8\\,\\mathrm{kPa}$; la somma è $12\\,\\mathrm{kPa}$.",
+      "Un controllo diretto usa il rapporto: a portata comune, $\\Delta p_1/\\Delta p_2=R_1/R_2=1/2$. Il primo tratto assorbe perciò un terzo della differenza totale, cioè $4\\,\\mathrm{kPa}$."
+    ],
+    "check": "Controprove distinte: somma 4+8=12 kPa e rapporto 4/8=R1/R2=1/2. Portata comune 2 L/s; unità kPa s/L×L/s=kPa. B unica.",
+    "reason": "Precisata la differenza fra portata comune e pressioni additive, aggiunti feedback che distinguono errori di unità, ripartizione e tratto; schema delle resistenze in serie.",
+    "figure": {
+      "stage": "prompt",
+      "alt": "Due resistenze idrauliche R1 e R2 in serie, percorse dalla medesima portata Q da sinistra a destra.",
+      "caption": "Schema delle resistenze, non della forma del condotto; non in scala. La differenza di pressione complessiva è 12 kPa.",
+      "lines": [
+        [
+          25,
+          88,
+          65,
+          88
+        ],
+        [
+          65,
+          65,
+          170,
+          65
+        ],
+        [
+          170,
+          65,
+          170,
+          111
+        ],
+        [
+          170,
+          111,
+          65,
+          111
+        ],
+        [
+          65,
+          111,
+          65,
+          65
+        ],
+        [
+          170,
+          88,
+          230,
+          88
+        ],
+        [
+          230,
+          65,
+          335,
+          65
+        ],
+        [
+          335,
+          65,
+          335,
+          111
+        ],
+        [
+          335,
+          111,
+          230,
+          111
+        ],
+        [
+          230,
+          111,
+          230,
+          65
+        ],
+        [
+          335,
+          88,
+          375,
+          88
+        ]
+      ],
+      "labels": [
+        {
+          "x": 117,
+          "y": 93,
+          "text": "R1"
+        },
+        {
+          "x": 283,
+          "y": 93,
+          "text": "R2"
+        },
+        {
+          "x": 117,
+          "y": 139,
+          "text": "2 kPa s/L"
+        },
+        {
+          "x": 283,
+          "y": 139,
+          "text": "4 kPa s/L"
+        },
+        {
+          "x": 200,
+          "y": 25,
+          "text": "Q"
+        }
+      ],
+      "arrows": [
+        [
+          175,
+          42,
+          225,
+          42
+        ]
+      ]
+    }
+  },
+  {
+    "id": "u3-poiseuille-flow-08",
+    "title": "Quale pressione mantiene la portata?",
+    "prompt": "Un fluido newtoniano incomprimibile scorre in un tubo cilindrico rigido. Vale la legge di Poiseuille $Q=\\pi r^4\\Delta p/(8\\eta L)$, con $r$ raggio interno, $L$ lunghezza ed $\\eta$ viscosità. Confrontiamo due tubi: nel secondo il raggio raddoppia e la lunghezza quadruplica, mentre viscosità e portata imposta restano uguali. Il moto è laminare e sviluppato in entrambi, con velocità nulla alla parete. Quale rapporto $\\Delta p_B/\\Delta p_A$ serve a mantenere la portata?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$16$",
+        "feedback": "Il raggio compare alla quarta potenza, ma aumentando il raggio la pressione necessaria diminuisce a portata fissata; inoltre cambia la lunghezza."
+      },
+      {
+        "id": "B",
+        "text": "$\\frac{1}{16}$",
+        "feedback": "Questo sarebbe il fattore dovuto al solo raddoppio del raggio. Devi includere anche la lunghezza quadruplicata."
+      },
+      {
+        "id": "C",
+        "text": "$\\frac{1}{4}$",
+        "feedback": "A portata e viscosità costanti, $\\Delta p$ è proporzionale a $L/r^4$: il fattore complessivo è $4/16$."
+      },
+      {
+        "id": "D",
+        "text": "$1$",
+        "feedback": "La lunghezza cresce di un fattore quattro, ma il raggio entra alla quarta potenza: i due cambiamenti non si compensano."
+      },
+      {
+        "id": "E",
+        "text": "$4$",
+        "feedback": "Questo è il fattore dovuto alla sola lunghezza. Il raggio maggiore riduce fortemente la resistenza."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "C"
+    },
+    "hints": [
+      "La portata è imposta e deve restare uguale. Stai cercando come regolare la differenza di pressione al variare della geometria.",
+      "Isola $\\Delta p$ nella legge data, poi forma il rapporto fra B e A. I fattori che non cambiano si semplificano."
+    ],
+    "solution": [
+      "La legge di Poiseuille descrive la resistenza viscosa di un flusso laminare sviluppato. Qui le sue ipotesi valgono per entrambi i tubi, quindi possiamo confrontarli mantenendo fissi $Q$ ed $\\eta$.",
+      "Isolando la differenza di pressione si ottiene $\\Delta p=8\\eta LQ/(\\pi r^4)$. A portata costante, una lunghezza maggiore richiede più pressione, mentre un raggio maggiore ne richiede meno.",
+      "Nel rapporto si cancellano $8$, $\\eta$, $Q$ e $\\pi$: $\\frac{\\Delta p_B}{\\Delta p_A}=\\frac{L_B}{L_A}\\left(\\frac{r_A}{r_B}\\right)^4$, che qui vale $4(1/2)^4=1/4$. La risposta è C.",
+      "Controlliamo nella legge iniziale: il fattore $r^4$ cresce di $16$, la pressione viene moltiplicata per $1/4$ e la lunghezza per $4$. La portata cambia del fattore $16(1/4)/4=1$, come richiesto."
+    ],
+    "check": "Rapporto esatto Fraction(4,2**4)=1/4; controprova della portata 16×(1/4)/4=1. Verificata la dipendenza dal raggio, non dall’area, e le ipotesi in entrambe le configurazioni.",
+    "reason": "Riordinata la consegna attorno alla portata imposta, rimossi blocchi ripetitivi e fornito un controllo per sostituzione nella relazione originaria; primo aiuto senza risposta anticipata."
+  },
+  {
+    "id": "u3-bernoulli-height-speed-09",
+    "title": "Pressione disponibile e quota del getto",
+    "prompt": "Un grande serbatoio pressurizzato alimenta un getto d’acqua a quota $h>0$ sopra la superficie libera. La velocità alla superficie è trascurabile; il getto ha velocità $v>0$. Poniamo $\\rho=1000\\,\\mathrm{kg/m^3}$ e $g=10\\,\\mathrm{m/s^2}$ e trascuriamo le perdite viscose nel moto stazionario. Indichiamo con $\\Delta p=p_s-p_u$ la differenza fra pressione alla superficie del serbatoio e pressione all’uscita. Quale formula ricava $h$ da $\\Delta p$ e $v$? Usa grandezze in unità SI e considera $\\Delta p>\\rho v^2/2$.",
+    "options": [
+      {
+        "id": "A",
+        "text": "$h=\\frac{2(\\Delta p-\\rho v^2/2)}{\\rho g}$",
+        "feedback": "Il numeratore è la pressione disponibile per la quota, ma il fattore $2$ esterno non appartiene al termine gravitazionale $\\rho gh$."
+      },
+      {
+        "id": "B",
+        "text": "$h=\\frac{\\Delta p-\\rho v^2/2}{2\\rho g}$",
+        "feedback": "Il fattore $2$ al denominatore dimezza la quota senza rispettare il bilancio di energia."
+      },
+      {
+        "id": "C",
+        "text": "$h=\\frac{\\Delta p+\\rho v^2/2}{\\rho g}$",
+        "feedback": "L’energia cinetica del getto usa una parte della differenza di pressione disponibile; occorre sottrarla, non aggiungerla."
+      },
+      {
+        "id": "D",
+        "text": "$h=\\frac{\\Delta p}{\\rho g}$",
+        "feedback": "Questa espressione trascura l’energia cinetica del getto. Qui la velocità all’uscita non è nulla."
+      },
+      {
+        "id": "E",
+        "text": "$h=\\frac{\\Delta p-\\rho v^2/2}{\\rho g}$",
+        "feedback": "Dal bilancio $\\Delta p=\\rho gh+\\rho v^2/2$ si sottrae il contributo cinetico e si divide per $\\rho g$."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "E"
+    },
+    "hints": [
+      "La differenza di pressione fornisce energia sia per salire sia per acquistare velocità. Individua questi due contributi.",
+      "Poni a quota zero la superficie del serbatoio e scrivi Bernoulli fra la superficie e l’uscita. Il termine cinetico iniziale è trascurabile."
+    ],
+    "solution": [
+      "Scegliamo la superficie del serbatoio come riferimento della quota. Bernoulli fra superficie e uscita dà $p_s=p_u+\\rho gh+\\rho v^2/2$: la pressione iniziale sostiene sia l’aumento di quota sia l’energia cinetica del getto.",
+      "Con $\\Delta p=p_s-p_u$ otteniamo $\\Delta p=\\rho gh+\\rho v^2/2$. Sottraiamo la parte cinetica: $\\rho gh=\\Delta p-\\rho v^2/2$, quindi $h=(\\Delta p-\\rho v^2/2)/(\\rho g)$. La risposta è E.",
+      "Il numeratore ha unità di pressione e il denominatore unità di pressione per metro: il risultato è una lunghezza. La condizione $\\Delta p>\\rho v^2/2$ garantisce $h>0$.",
+      "Per esempio, con $\\Delta p=12\\,\\mathrm{kPa}=12000\\,\\mathrm{Pa}$ e $v=2\\,\\mathrm{m/s}$, il contributo cinetico è $2000\\,\\mathrm{Pa}$; restano $10000\\,\\mathrm{Pa}$ per la quota, dunque $h=1\\,\\mathrm{m}$. Per unità di massa, i $12\\,\\mathrm{J/kg}$ disponibili si dividono in $10\\,\\mathrm{J/kg}$ di energia potenziale e $2\\,\\mathrm{J/kg}$ di energia cinetica."
+    ],
+    "check": "Equivalenza legacy: usando Δp numerica in kPa, rho=1000,g=10, h=Δp/10−v²/20. Controprova energetica 12000/1000=10×1+2²/2. Dominio Δp>rho*v²/2 e v>0 rende E unica fra le opzioni.",
+    "reason": "Corretta la contraddizione della vecchia consegna che diceva di cercare Δp pur chiedendo h. Resa dimensionale la formula e sostituiti ±1 arbitrari con errori fisici riconoscibili, conservando chiave E."
+  },
+  {
+    "id": "u3-soap-film-force-09",
+    "title": "Due facce di una pellicola saponata",
+    "prompt": "Una pellicola saponata è tesa su un telaio con un lato mobile rettilineo lungo $\\ell$. Le due facce della pellicola hanno la stessa tensione superficiale $\\gamma$. Una forza esterna $F$, perpendicolare al lato mobile e nel piano del telaio, lo mantiene in equilibrio contrastando la contrazione della pellicola. Trascuriamo peso e attrito del lato mobile. Quale espressione fornisce il valore numerico di $\\gamma$ in $\\mathrm{mN/m}$ quando si inseriscono il valore di $F$ in $\\mathrm{mN}$ e quello di $\\ell$ in $\\mathrm{cm}$?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\frac{50F}{\\ell}$",
+        "feedback": "Le due facce danno $F=2\\gamma\\ell$ con lunghezza in metri. Convertendo i centimetri, il fattore finale è $100/2=50$."
+      },
+      {
+        "id": "B",
+        "text": "$\\frac{100F}{\\ell}$",
+        "feedback": "La conversione da centimetri a metri è presente, ma manca il fattore due dovuto alle due facce della pellicola."
+      },
+      {
+        "id": "C",
+        "text": "$\\frac{25F}{\\ell}$",
+        "feedback": "Le facce sono due, non quattro. Dividere ulteriormente per due sottostima la tensione superficiale."
+      },
+      {
+        "id": "D",
+        "text": "$\\frac{F}{50\\ell}$",
+        "feedback": "La conversione della lunghezza è stata applicata nel verso opposto. Una lunghezza espressa in metri ha un valore numerico cento volte più piccolo."
+      },
+      {
+        "id": "E",
+        "text": "$\\frac{F}{2\\ell}$",
+        "feedback": "Questa espressione funzionerebbe inserendo la lunghezza in metri. Inserendola in centimetri, il risultato numerico è cento volte troppo piccolo."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "A"
+    },
+    "hints": [
+      "La pellicola ha due superfici a contatto con l’aria. Considera quante contribuiscono alla trazione sul lato mobile.",
+      "Scrivi prima il bilancio delle forze usando una lunghezza in metri. Solo dopo converti la lunghezza assegnata in centimetri."
+    ],
+    "solution": [
+      "Ciascuna faccia tira il lato mobile con forza di modulo $\\gamma\\ell$, se $\\ell$ è espresso in metri e $\\gamma$ in forza per metro. Le due facce contribuiscono nello stesso verso: in equilibrio la forza esterna ha modulo $F=2\\gamma\\ell$.",
+      "Indichiamo con $F_{\\mathrm{mN}}$ il valore numerico della forza in millinewton e con $\\ell_{\\mathrm{cm}}$ quello della lunghezza in centimetri. La lunghezza in metri è $\\ell_{\\mathrm{cm}}/100$, perciò $F_{\\mathrm{mN}}=2\\gamma_{\\mathrm{mN/m}}\\ell_{\\mathrm{cm}}/100$.",
+      "Risolvendo, $\\gamma_{\\mathrm{mN/m}}=50F_{\\mathrm{mN}}/\\ell_{\\mathrm{cm}}$. È l’espressione A. Per esempio, $F=2\\,\\mathrm{mN}$ e $\\ell=5\\,\\mathrm{cm}$ danno $\\gamma=20\\,\\mathrm{mN/m}$; infatti $2\\times20\\times0{,}05=2\\,\\mathrm{mN}$.",
+      "Il fattore due si può controllare anche con il lavoro: spostando il lato di un piccolo tratto $\\delta x$, l’area complessiva cresce di $2\\ell\\delta x$. L’energia superficiale aumenta di $\\gamma\\,2\\ell\\delta x$, uguale al lavoro esterno $F\\delta x$ in uno spostamento quasistatico."
+    ],
+    "check": "Conversione 5 cm=0,05 m, esempio F=2 mN -> gamma=20 mN/m; verifica F=2gamma ell. Controprova lavoro-area Fδx=gamma(2ellδx). Opzioni cinque multipli distinti di F/ell, A unica per valori positivi.",
+    "reason": "Eliminata la contraddizione fra forza cercata e tensione richiesta. Distinte grandezze fisiche e valori numerici nelle unità; rimossi distrattori ±1 e aggiunta figura delle due facce della medesima pellicola.",
+    "figure": {
+      "stage": "solution",
+      "alt": "Telaio con tre lati fissi e lato verticale mobile a destra. La forza esterna tira il lato verso destra; le due facce della pellicola lo tirano verso sinistra.",
+      "caption": "Vista frontale schematica, non in scala. Le due facce appartengono alla stessa pellicola, davanti e dietro il piano del disegno.",
+      "lines": [
+        [
+          65,
+          35,
+          245,
+          35
+        ],
+        [
+          65,
+          35,
+          65,
+          145
+        ],
+        [
+          65,
+          145,
+          245,
+          145
+        ],
+        [
+          245,
+          35,
+          245,
+          145
+        ],
+        [
+          45,
+          35,
+          45,
+          145
+        ],
+        [
+          40,
+          35,
+          50,
+          35
+        ],
+        [
+          40,
+          145,
+          50,
+          145
+        ]
+      ],
+      "labels": [
+        {
+          "x": 27,
+          "y": 95,
+          "text": "l"
+        },
+        {
+          "x": 148,
+          "y": 74,
+          "text": "Pellicola"
+        },
+        {
+          "x": 317,
+          "y": 73,
+          "text": "F esterna"
+        },
+        {
+          "x": 151,
+          "y": 137,
+          "text": "Due facce"
+        }
+      ],
+      "arrows": [
+        [
+          245,
+          92,
+          360,
+          92
+        ],
+        [
+          235,
+          110,
+          165,
+          110
+        ]
+      ]
+    }
+  },
+  {
+    "id": "u3-bernoulli-height-speed-13",
+    "title": "Un getto più alto e più veloce",
+    "prompt": "Un grande serbatoio pressurizzato alimenta un getto d’acqua a quota $h$ sopra la superficie libera. La velocità alla superficie è trascurabile; il getto ha rapidità $v>0$. Il moto è stazionario e le perdite viscose sono trascurabili, con $\\rho=1000\\,\\mathrm{kg/m^3}$ e $g=10\\,\\mathrm{m/s^2}$. Indichiamo con $\\Delta p$ la pressione alla superficie meno quella all’uscita. Nella configurazione A: $h_A=1\\,\\mathrm{m}$ e $v_A=2\\,\\mathrm{m/s}$. Nella configurazione B: $h_B=2\\,\\mathrm{m}$ e $\\Delta p_B=(7/3)\\Delta p_A$. Quanto deve valere $v_B/v_A$? Inserisci il numero esatto.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "2",
+      "unit": "1"
+    },
+    "hints": [
+      "La differenza di pressione fornisce energia per la quota e per il moto. Determina prima quanta ne occorre nella configurazione A.",
+      "Usa $\\Delta p=\\rho gh+\\rho v^2/2$. Dopo aver calcolato la pressione richiesta in B, sottrai il contributo necessario per raggiungere la nuova quota.",
+      "Il termine rimasto è $\\rho v_B^2/2$. Ricava prima $v_B^2$, poi prendi la radice positiva perché $v_B$ è una rapidità."
+    ],
+    "solution": [
+      "Bernoulli fra superficie e uscita dà $\\Delta p=\\rho gh+\\rho v^2/2$. In A il termine di quota vale $1000\\times10\\times1=10000\\,\\mathrm{Pa}$ e quello cinetico vale $1000\\times2^2/2=2000\\,\\mathrm{Pa}$. Quindi $\\Delta p_A=12000\\,\\mathrm{Pa}=12\\,\\mathrm{kPa}$.",
+      "La differenza richiesta in B è $\\Delta p_B=(7/3)\\times12=28\\,\\mathrm{kPa}$. Per raggiungere $h_B=2\\,\\mathrm{m}$ occorrono già $\\rho gh_B=20000\\,\\mathrm{Pa}=20\\,\\mathrm{kPa}$.",
+      "Restano $8\\,\\mathrm{kPa}=8000\\,\\mathrm{Pa}$ per il termine cinetico. Dunque $\\rho v_B^2/2=8000\\,\\mathrm{Pa}$ e $v_B^2=2\\times8000/1000=16\\,\\mathrm{m^2/s^2}$. La rapidità positiva è $v_B=4\\,\\mathrm{m/s}$.",
+      "Il rapporto cercato è $v_B/v_A=4/2=2$. Per controllo, le energie specifiche sono $10+2=12\\,\\mathrm{J/kg}$ in A e $20+8=28\\,\\mathrm{J/kg}$ in B: il rapporto è proprio $28/12=7/3$."
+    ],
+    "check": "Calcolo ΔpA=12000 Pa, ΔpB=28000 Pa, vB²=16 e ramo vB>0 ->4 m/s; ratio2. Controprova energia per massa 28/12=7/3, quota uscita sopra la superficie esplicita.",
+    "reason": "Sostituita «grandezza d’uscita» con differenza di pressione e chiarita la pressione di riferimento; separati quota e termine cinetico per evitare di attribuire tutto l’aumento di pressione alla velocità.",
+    "figure": {
+      "stage": "prompt",
+      "alt": "Serbatoio pressurizzato a sinistra, con superficie dell’acqua come quota zero. Un tubo sale verso un’uscita a destra, più alta di h, da cui esce un getto con rapidità v.",
+      "caption": "Schema non in scala. h è il dislivello verticale fra superficie e uscita; non è la lunghezza del tubo.",
+      "lines": [
+        [
+          40,
+          40,
+          150,
+          40
+        ],
+        [
+          40,
+          40,
+          40,
+          145
+        ],
+        [
+          40,
+          145,
+          170,
+          145
+        ],
+        [
+          150,
+          40,
+          150,
+          135
+        ],
+        [
+          40,
+          95,
+          150,
+          95
+        ],
+        [
+          150,
+          135,
+          245,
+          135
+        ],
+        [
+          170,
+          145,
+          255,
+          145
+        ],
+        [
+          245,
+          135,
+          245,
+          45
+        ],
+        [
+          255,
+          145,
+          255,
+          55
+        ],
+        [
+          245,
+          45,
+          320,
+          45
+        ],
+        [
+          255,
+          55,
+          320,
+          55
+        ],
+        [
+          180,
+          50,
+          180,
+          95
+        ],
+        [
+          175,
+          50,
+          185,
+          50
+        ],
+        [
+          175,
+          95,
+          185,
+          95
+        ]
+      ],
+      "labels": [
+        {
+          "x": 92,
+          "y": 66,
+          "text": "Pressione ps"
+        },
+        {
+          "x": 96,
+          "y": 119,
+          "text": "Acqua"
+        },
+        {
+          "x": 198,
+          "y": 78,
+          "text": "h"
+        },
+        {
+          "x": 296,
+          "y": 27,
+          "text": "Uscita pu"
+        },
+        {
+          "x": 352,
+          "y": 35,
+          "text": "v"
+        },
+        {
+          "x": 184,
+          "y": 115,
+          "text": "Quota 0"
+        }
+      ],
+      "arrows": [
+        [
+          320,
+          50,
+          375,
+          50
+        ]
+      ]
+    }
+  },
+  {
+    "id": "u3-apparent-weight-13",
+    "title": "La lettura del dinamometro in acqua",
+    "prompt": "Un dinamometro sostiene, uno alla volta, due campioni interamente immersi in acqua in quiete, senza contatto con pareti o fondo. Il filo è verticale e ciascun campione è fermo e più denso dell’acqua. Poniamo $\\rho=1\\,\\mathrm{kg/L}$ e $g=10\\,\\mathrm{m/s^2}$. Il campione A ha massa $m_A=3\\,\\mathrm{kg}$ e volume $V_A=1\\,\\mathrm{L}$. Il campione B ha massa $m_B=4\\,\\mathrm{kg}$: quale rapporto $V_B/V_A$ rende la lettura del dinamometro in B uguale alla metà di quella in A? Inserisci il numero esatto.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "3",
+      "unit": "1"
+    },
+    "hints": [
+      "Il dinamometro misura la tensione del filo. Disegna le forze sul campione: oltre al peso, l’acqua esercita una forza verso l’alto.",
+      "In equilibrio la tensione più la spinta di Archimede bilanciano il peso. Calcola la lettura per A e poi quella richiesta per B.",
+      "Per B usa $T_B+\\rho gV_B=m_Bg$. Ricava il volume dalla spinta necessaria e confrontalo con $V_A$."
+    ],
+    "solution": [
+      "Sul campione agiscono il peso $mg$ verso il basso, la tensione $T$ e la spinta di Archimede $\\rho gV$ verso l’alto. L’equilibrio verticale dà $T+\\rho gV-mg=0$, cioè $T=mg-\\rho gV$. Il dinamometro misura $T$.",
+      "Il campione A pesa $30\\,\\mathrm{N}$ e sposta $1\\,\\mathrm{L}$ d’acqua, di massa $1\\,\\mathrm{kg}$. Riceve quindi una spinta di $10\\,\\mathrm{N}$, e il dinamometro legge $T_A=30-10=20\\,\\mathrm{N}$. La lettura richiesta per B è $T_B=10\\,\\mathrm{N}$.",
+      "Il campione B pesa $40\\,\\mathrm{N}$; l’acqua deve perciò fornire una spinta di $40-10=30\\,\\mathrm{N}$. Da $\\rho gV_B=30\\,\\mathrm{N}$ si ricava $V_B=30/(1\\times10)=3\\,\\mathrm{L}$. Il rapporto è $V_B/V_A=3/1=3$.",
+      "Per controllo, la densità di B è $4/3\\,\\mathrm{kg/L}$, maggiore di quella dell’acqua: il corpo può rimanere appeso con tensione positiva. Infatti $40-30=10\\,\\mathrm{N}$. Il prodotto $\\rho V$ è una massa; la coincidenza numerica fra litri spostati e chilogrammi d’acqua dipende dal valore $\\rho=1\\,\\mathrm{kg/L}$."
+    ],
+    "check": "Bilancio TA=30−10=20 N, TB=10 N; VB=(40−10)/(1×10)=3 L. Controprova densità 4/3>1 kg/L e tensione 10 N>0; ratio3. Nessuna sottrazione dimensionale fra kg e L.",
+    "reason": "Sostituito il corpo che cambiava implicitamente massa e volume con due campioni; nominata la lettura del dinamometro e chiarito il ruolo della densità. Aggiunto diagramma delle forze sul caso risolto.",
+    "figure": {
+      "stage": "solution",
+      "alt": "Sul campione B: peso di 40 newton verso il basso; tensione di 10 newton e spinta di Archimede di 30 newton verso l’alto. Le forze verticali si bilanciano.",
+      "caption": "Diagramma delle forze sul campione B, non in scala. Le frecce verso l’alto sono separate per leggibilità.",
+      "lines": [
+        [
+          175,
+          82,
+          225,
+          82
+        ],
+        [
+          225,
+          82,
+          225,
+          112
+        ],
+        [
+          225,
+          112,
+          175,
+          112
+        ],
+        [
+          175,
+          112,
+          175,
+          82
+        ]
+      ],
+      "labels": [
+        {
+          "x": 200,
+          "y": 102,
+          "text": "B"
+        },
+        {
+          "x": 115,
+          "y": 20,
+          "text": "T = 10 N"
+        },
+        {
+          "x": 283,
+          "y": 20,
+          "text": "FA = 30 N"
+        },
+        {
+          "x": 286,
+          "y": 157,
+          "text": "Peso = 40 N"
+        }
+      ],
+      "arrows": [
+        [
+          185,
+          82,
+          185,
+          30
+        ],
+        [
+          215,
+          82,
+          215,
+          30
+        ],
+        [
+          200,
+          112,
+          200,
+          166
+        ]
+      ]
+    }
+  }
+]

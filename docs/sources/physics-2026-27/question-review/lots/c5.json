@@ -1,0 +1,862 @@
+[
+  {
+    "id": "u4-wave-wavelength-03",
+    "title": "Come si muove l’aria quando passa il suono?",
+    "prompt": "Un’onda sonora di piccola ampiezza si propaga in aria inizialmente ferma lungo la direzione orizzontale. Rispetto a quella direzione, come oscillano le particelle d’aria?",
+    "answer": {
+      "kind": "choice",
+      "id": "D"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": "Ruotano attorno alla sorgente.",
+        "feedback": "La sorgente mette in moto le particelle vicine, ma il modello non prevede orbite attorno alla sorgente."
+      },
+      {
+        "id": "B",
+        "text": "Restano ferme, senza variazioni di pressione.",
+        "feedback": "La pressione varia proprio perché gli strati di aria si avvicinano e si allontanano."
+      },
+      {
+        "id": "C",
+        "text": "Si spostano dalla sorgente fino all’ascoltatore.",
+        "feedback": "Immagina di seguire un solo strato di aria: percorre una piccola distanza avanti e indietro."
+      },
+      {
+        "id": "D",
+        "text": "Oscillano parallelamente alla propagazione, generando compressioni e rarefazioni.",
+        "feedback": "Hai separato il moto locale degli strati dal viaggio della perturbazione."
+      },
+      {
+        "id": "E",
+        "text": "Oscillano perpendicolarmente, come i punti di una corda tesa.",
+        "feedback": "La corda può spostarsi di lato. Qui la compressione richiede un movimento lungo la direzione di propagazione."
+      }
+    ],
+    "hints": [
+      "Segui un piccolo strato d’aria invece di seguire il fronte dell’onda."
+    ],
+    "solution": [
+      "Pensa all’aria come a una fila di strati sottili. Se uno strato si sposta verso il vicino, lo spazio fra i due diminuisce e la pressione sale. Se si allontana, lo spazio aumenta e la pressione scende. Per cambiare quella distanza, il moto deve avere la stessa direzione della propagazione.",
+      "Durante il passaggio dell’onda, lo strato oscilla attorno alla propria posizione di equilibrio. La perturbazione procede mentre ogni strato compie un piccolo moto locale. È il significato di onda longitudinale in questo modello."
+    ],
+    "check": "Nel modello acustico lineare piano, la variazione relativa di densità coincide al primo ordine con l’opposto della derivata spaziale dello spostamento longitudinale. Un’oscillazione trasversale uniforme fra piani non comprime gli strati. Chiave D.",
+    "reason": "Distinta l’oscillazione locale dalla propagazione usando l’immagine fisica degli strati. Restano le cinque alternative e la chiave D.",
+    "figure": {
+      "stage": "solution",
+      "alt": "Strati d’aria più vicini a sinistra e più distanti a destra. Le frecce della propagazione e dell’oscillazione sono orizzontali.",
+      "caption": "Vista laterale schematica, senza scala. La spaziatura indica una variazione di densità.",
+      "lines": [
+        [
+          46,
+          63,
+          46,
+          114
+        ],
+        [
+          63,
+          63,
+          63,
+          114
+        ],
+        [
+          80,
+          63,
+          80,
+          114
+        ],
+        [
+          97,
+          63,
+          97,
+          114
+        ],
+        [
+          114,
+          63,
+          114,
+          114
+        ],
+        [
+          176,
+          63,
+          176,
+          114
+        ],
+        [
+          239,
+          63,
+          239,
+          114
+        ],
+        [
+          304,
+          63,
+          304,
+          114
+        ],
+        [
+          367,
+          63,
+          367,
+          114
+        ]
+      ],
+      "labels": [
+        {
+          "x": 83,
+          "y": 140,
+          "text": "Compressione"
+        },
+        {
+          "x": 270,
+          "y": 140,
+          "text": "Rarefazione"
+        },
+        {
+          "x": 248,
+          "y": 20,
+          "text": "Propagazione"
+        },
+        {
+          "x": 90,
+          "y": 171,
+          "text": "Oscillazione locale"
+        }
+      ],
+      "arrows": [
+        [
+          186,
+          33,
+          313,
+          33
+        ],
+        [
+          65,
+          151,
+          112,
+          151
+        ],
+        [
+          112,
+          151,
+          65,
+          151
+        ]
+      ]
+    }
+  },
+  {
+    "id": "u7-lens-magnification-03",
+    "title": "Da che parte punta l’immagine della lente?",
+    "prompt": "Una singola lente sottile convergente forma un’immagine reale di un oggetto reale posto perpendicolarmente all’asse ottico. Nel modello dei raggi parassiali, che cosa si può dire dell’orientamento dell’immagine?",
+    "answer": {
+      "kind": "choice",
+      "id": "D"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": "Dipende dal colore della lente.",
+        "feedback": "L’indice può dipendere dalla lunghezza d’onda e spostare il fuoco. L’orientamento di questa immagine reale segue la geometria."
+      },
+      {
+        "id": "B",
+        "text": "È diritta perché più grande.",
+        "feedback": "Altezza in valore assoluto e orientamento sono informazioni distinte."
+      },
+      {
+        "id": "C",
+        "text": "L’immagine reale non ha altezza.",
+        "feedback": "Uno schermo nel piano immagine mostra una figura con altezza misurabile."
+      },
+      {
+        "id": "D",
+        "text": "È capovolta rispetto all’oggetto.",
+        "feedback": "Una punta sopra l’asse viene riprodotta sotto l’asse."
+      },
+      {
+        "id": "E",
+        "text": "È sempre diritta.",
+        "feedback": "Traccia il raggio dalla punta attraverso il centro ottico e guarda da quale lato dell’asse prosegue."
+      }
+    ],
+    "hints": [
+      "Parti dalla punta dell’oggetto. Dove passa il suo raggio dopo aver attraversato il centro della lente?"
+    ],
+    "solution": [
+      "Il raggio che parte dalla punta e attraversa il centro ottico prosegue rettilineo nel modello di lente sottile. Se la punta parte sopra l’asse, il raggio passa sotto l’asse dall’altro lato della lente. Qui si forma l’immagine reale.",
+      "Con distanze positive $p$ per l’oggetto e $q$ per l’immagine reale, i due triangoli sul raggio centrale danno $\\frac{y^{\\prime}}{y}=-\\frac{q}{p}$. Il segno meno indica l’inversione. Il modulo $q/p$ determina invece se l’immagine è ingrandita o rimpicciolita."
+    ],
+    "check": "Controllo geometrico: intercetta y>0 a x=−p e passaggio per l’origine implicano y′=−yq/p<0 a x=q>0. La figura mostra raggi concorrenti e due altezze opposte. Chiave D.",
+    "reason": "Rese esplicite le condizioni di lente sottile e oggetto trasversale. Svolgimento motivato con il raggio centrale e la similitudine invece della sola regola mnemonica.",
+    "figure": {
+      "stage": "solution",
+      "alt": "Oggetto sopra l’asse a sinistra. Il raggio centrale attraversa la lente e incontra il raggio rifratto sotto l’asse, a destra.",
+      "caption": "Costruzione di esempio. La posizione dell’intersezione varia con la distanza dell’oggetto dalla lente.",
+      "lines": [
+        [
+          22,
+          85,
+          383,
+          85
+        ],
+        [
+          188,
+          20,
+          188,
+          152
+        ],
+        [
+          60,
+          43,
+          316,
+          127
+        ],
+        [
+          60,
+          43,
+          188,
+          43
+        ],
+        [
+          188,
+          43,
+          316,
+          127
+        ]
+      ],
+      "labels": [
+        {
+          "x": 63,
+          "y": 25,
+          "text": "Oggetto"
+        },
+        {
+          "x": 190,
+          "y": 174,
+          "text": "Lente"
+        },
+        {
+          "x": 322,
+          "y": 153,
+          "text": "Immagine"
+        },
+        {
+          "x": 362,
+          "y": 75,
+          "text": "Asse"
+        }
+      ],
+      "arrows": [
+        [
+          60,
+          85,
+          60,
+          43
+        ],
+        [
+          316,
+          85,
+          316,
+          127
+        ]
+      ]
+    }
+  },
+  {
+    "id": "u4-coherent-constructive-06",
+    "title": "Quando due onde si compensano solo in parte",
+    "prompt": "Due onde coerenti con la stessa frequenza e polarizzazione arrivano nello stesso punto di un mezzo lineare. Le ampiezze sono $3\\,\\mathrm{mm}$ e $4\\,\\mathrm{mm}$. All’inizio sono in fase. Poi la fase di una delle due cambia di $\\pi$ e le ampiezze restano invariate. Se l’intensità è proporzionale al quadrato dell’ampiezza risultante, quanto vale $I_\\mathrm{finale}/I_\\mathrm{iniziale}$?",
+    "answer": {
+      "kind": "choice",
+      "id": "A"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\frac{1}{49}$",
+        "feedback": "Hai confrontato i quadrati delle due ampiezze risultanti, nel verso richiesto."
+      },
+      {
+        "id": "B",
+        "text": "$\\frac{1}{7}$",
+        "feedback": "Questo è il rapporto delle ampiezze. Per l’intensità occorre quadrarlo."
+      },
+      {
+        "id": "C",
+        "text": "$7$",
+        "feedback": "Hai invertito il rapporto delle ampiezze. La fase finale rende minore l’ampiezza."
+      },
+      {
+        "id": "D",
+        "text": "$49$",
+        "feedback": "I quadrati sono quelli pertinenti. Controlla quale stato va al numeratore."
+      },
+      {
+        "id": "E",
+        "text": "$1$",
+        "feedback": "Le ampiezze individuali restano fisse. La loro somma dipende dalla fase relativa."
+      }
+    ],
+    "hints": [
+      "Prima di pensare all’intensità, confronta quello che fanno le due onde quando raggiungono insieme una cresta.",
+      "Quando una è a una cresta e l’altra al minimo, somma gli spostamenti con il loro segno."
+    ],
+    "solution": [
+      "In fase, quando entrambe sono alla cresta gli spostamenti si sommano: $A_\\mathrm{iniziale}=3+4=7\\,\\mathrm{mm}$. In opposizione di fase gli spostamenti hanno segno opposto. L’ampiezza è il modulo della differenza: $A_\\mathrm{finale}=|4-3|=1\\,\\mathrm{mm}$.",
+      "Lo stesso fattore di proporzionalità vale per le due intensità. Quindi $\\frac{I_\\mathrm{finale}}{I_\\mathrm{iniziale}}=\\left(\\frac{1}{7}\\right)^2=\\frac{1}{49}$. Il risultato minore di uno è coerente con la compensazione parziale."
+    ],
+    "check": "Ricalcolo con la relazione d’interferenza: 3²+4²+2·3·4·cos(φ) vale 49 per φ=0 e 1 per φ=π. Chiave A, rapporto adimensionale.",
+    "reason": "La traccia unica fissa cosa cambia e cosa resta costante. L’indizio anticipa il confronto fisico, mentre lo svolgimento spiega ampiezze firmate e rapporto.",
+    "figure": {
+      "stage": "solution",
+      "alt": "Due segmenti orientati nello stesso verso si aggiungono fino a sette. Un segmento opposto al primo riduce la risultante a uno.",
+      "caption": "Schema delle ampiezze lungo la stessa direzione. Lunghezze proporzionali a 3, 4 e 1 mm.",
+      "lines": [
+        [
+          75,
+          65,
+          75,
+          143
+        ],
+        [
+          285,
+          57,
+          285,
+          75
+        ],
+        [
+          105,
+          125,
+          105,
+          143
+        ]
+      ],
+      "labels": [
+        {
+          "x": 52,
+          "y": 70,
+          "text": "In fase"
+        },
+        {
+          "x": 130,
+          "y": 44,
+          "text": "3 mm"
+        },
+        {
+          "x": 227,
+          "y": 44,
+          "text": "4 mm"
+        },
+        {
+          "x": 47,
+          "y": 126,
+          "text": "Opposta"
+        },
+        {
+          "x": 179,
+          "y": 164,
+          "text": "−3 mm"
+        },
+        {
+          "x": 134,
+          "y": 115,
+          "text": "4 mm"
+        }
+      ],
+      "arrows": [
+        [
+          75,
+          64,
+          165,
+          64
+        ],
+        [
+          165,
+          64,
+          285,
+          64
+        ],
+        [
+          75,
+          118,
+          195,
+          118
+        ],
+        [
+          195,
+          142,
+          105,
+          142
+        ]
+      ]
+    },
+    "lab": {
+      "href": "c5.html#interferenza",
+      "activity": "Prevedi se invertire la fase basta a spegnere il moto. Nel laboratorio passa da onde in fase a «Opposte e diverse». Osserva l’onda risultante e spiega perché rimane uno spostamento. Il laboratorio mostra lo spostamento, da cui qui ricavi il rapporto delle intensità."
+    }
+  },
+  {
+    "id": "u7-snell-refracted-sine-06",
+    "title": "Un raggio attraversa una lastra",
+    "prompt": "Una lastra trasparente di indice $n=\\frac{3}{2}$ ha facce piane e parallele. All’esterno c’è aria su entrambi i lati, con indice $1$. Un raggio entra con $\\sin\\theta_\\mathrm{in}=\\frac{3}{5}$ ed esce dalla faccia opposta. Gli angoli sono misurati dalla normale. Quanto vale $\\sin\\theta_\\mathrm{out}$?",
+    "answer": {
+      "kind": "choice",
+      "id": "B"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": "$1$",
+        "feedback": "Un seno pari a uno descriverebbe un raggio radente. Il passaggio finale in aria recupera l’angolo incidente."
+      },
+      {
+        "id": "B",
+        "text": "$\\frac{3}{5}$",
+        "feedback": "Le facce parallele permettono di usare lo stesso angolo interno in entrambi i passaggi."
+      },
+      {
+        "id": "C",
+        "text": "$\\frac{2}{5}$",
+        "feedback": "Questo è il seno dell’angolo nella lastra: manca la seconda rifrazione."
+      },
+      {
+        "id": "D",
+        "text": "$\\frac{9}{10}$",
+        "feedback": "Hai moltiplicato una volta sola per l’indice usando l’angolo sbagliato."
+      },
+      {
+        "id": "E",
+        "text": "$\\frac{1}{5}$",
+        "feedback": "Ricostruisci i due passaggi separatamente, mantenendo l’angolo interno fra le due equazioni."
+      }
+    ],
+    "hints": [
+      "Disegna una normale per ciascuna faccia. Che relazione c’è fra le due normali?",
+      "Prima segui il raggio dall’aria alla lastra. Usa l’angolo interno ottenuto come angolo d’incidenza sulla seconda faccia."
+    ],
+    "solution": [
+      "All’ingresso la legge di Snell dà $1\\cdot\\frac{3}{5}=\\frac{3}{2}\\sin\\theta_\\mathrm{lastra}$, quindi $\\sin\\theta_\\mathrm{lastra}=\\frac{2}{5}$. Il raggio si avvicina alla normale quando entra nel mezzo con indice maggiore.",
+      "Le facce hanno normali parallele, perciò il raggio arriva sulla seconda con lo stesso angolo interno. Uscendo in aria si allontana dalla normale: $1\\cdot\\sin\\theta_\\mathrm{out}=\\frac{3}{2}\\cdot\\frac{2}{5}=\\frac{3}{5}$.",
+      "Ingresso e uscita hanno la stessa direzione. La lastra può comunque traslare lateralmente il raggio, come mostra il disegno."
+    ],
+    "check": "Controllo: la componente tangenziale del vettore d’onda si conserva a entrambe le facce parallele, dunque il seno di uscita coincide con quello di ingresso a parità di mezzo. Interno 2/5 < soglia 2/3, quindi uscita possibile. Chiave B.",
+    "reason": "Svolgimento separa angolo interno ed emergente. La figura mostra entrambe le normali e la corrispondenza geometrica.",
+    "figure": {
+      "stage": "solution",
+      "alt": "Il raggio entra obliquo dall’aria, devia verso le normali orizzontali nella lastra, poi emerge in aria parallelo all’ingresso.",
+      "caption": "Schema senza scala. Le rette orizzontali sono le normali locali alle due facce.",
+      "lines": [
+        [
+          123,
+          29,
+          123,
+          161
+        ],
+        [
+          278,
+          29,
+          278,
+          161
+        ],
+        [
+          88,
+          114,
+          154,
+          114
+        ],
+        [
+          247,
+          86,
+          309,
+          86
+        ]
+      ],
+      "labels": [
+        {
+          "x": 61,
+          "y": 27,
+          "text": "Aria"
+        },
+        {
+          "x": 201,
+          "y": 27,
+          "text": "Lastra"
+        },
+        {
+          "x": 338,
+          "y": 27,
+          "text": "Aria"
+        },
+        {
+          "x": 198,
+          "y": 155,
+          "text": "Facce parallele"
+        }
+      ],
+      "arrows": [
+        [
+          65,
+          157,
+          123,
+          114
+        ],
+        [
+          123,
+          114,
+          278,
+          86
+        ],
+        [
+          278,
+          86,
+          336,
+          43
+        ]
+      ]
+    }
+  },
+  {
+    "id": "u4-echo-ranging-09",
+    "title": "L’eco misura un’andata e un ritorno",
+    "prompt": "Un trasduttore invia un impulso sonoro verso una parete posta a distanza $d$. L’impulso torna allo stesso trasduttore dopo un intervallo $\\Delta t$. La velocità del suono è costante lungo il tragitto e il ritardo dello strumento è trascurabile. Quale espressione restituisce la velocità $c$?",
+    "answer": {
+      "kind": "choice",
+      "id": "A"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\frac{2d}{\\Delta t}$",
+        "feedback": "L’intervallo misurato comprende due volte la distanza dalla parete."
+      },
+      {
+        "id": "B",
+        "text": "$\\frac{4d}{\\Delta t}$",
+        "feedback": "La distanza d è un tratto di sola andata. Contane uno al ritorno."
+      },
+      {
+        "id": "C",
+        "text": "$\\frac{d}{\\Delta t}$",
+        "feedback": "Qui dividi il tragitto di sola andata per il tempo di tutto il viaggio."
+      },
+      {
+        "id": "D",
+        "text": "$\\frac{2d+\\Delta t}{\\Delta t}$",
+        "feedback": "Non puoi sommare metri e secondi."
+      },
+      {
+        "id": "E",
+        "text": "$\\frac{2d-\\Delta t}{\\Delta t}$",
+        "feedback": "Non puoi sottrarre un tempo a una lunghezza."
+      }
+    ],
+    "hints": [
+      "Segna dove si trova l’impulso quando parte, quando si riflette e quando il trasduttore lo riceve."
+    ],
+    "solution": [
+      "Il cronometro parte alla trasmissione e si ferma al ricevimento. Durante quell’intervallo l’impulso percorre $d$ fino alla parete e $d$ per ripassare sulla stessa linea. Il cammino totale è $2d$.",
+      "Con velocità costante, la velocità si ottiene dividendo lo spazio percorso per il tempo: $c=\\frac{2d}{\\Delta t}$. Il risultato ha unità di lunghezza divisa per tempo. Se la parete si allontana del doppio nello stesso mezzo, raddoppia anche il tempo, lasciando invariata la velocità ricavata."
+    ],
+    "check": "Metodo alternativo: il tempo di sola andata è Δt/2 per simmetria dei cammini e velocità costante; d/(Δt/2) dà la chiave A.",
+    "reason": "Eliminata la formula anticipata dal testo. Lo studente deve ricostruire la distanza totale; i distrattori dimensionalmente incoerenti vengono spiegati.",
+    "figure": {
+      "stage": "prompt",
+      "alt": "Trasduttore a sinistra e parete a destra separati da d. Due frecce indicano il viaggio di andata e ritorno.",
+      "caption": "Stessa traiettoria all’andata e al ritorno. Le frecce sono distanziate per renderle leggibili.",
+      "lines": [
+        [
+          45,
+          55,
+          45,
+          131
+        ],
+        [
+          356,
+          45,
+          356,
+          143
+        ],
+        [
+          45,
+          150,
+          356,
+          150
+        ]
+      ],
+      "labels": [
+        {
+          "x": 57,
+          "y": 36,
+          "text": "Sorgente"
+        },
+        {
+          "x": 349,
+          "y": 27,
+          "text": "Parete"
+        },
+        {
+          "x": 199,
+          "y": 62,
+          "text": "Andata"
+        },
+        {
+          "x": 198,
+          "y": 123,
+          "text": "Ritorno"
+        },
+        {
+          "x": 199,
+          "y": 173,
+          "text": "d"
+        }
+      ],
+      "arrows": [
+        [
+          46,
+          77,
+          353,
+          77
+        ],
+        [
+          353,
+          100,
+          46,
+          100
+        ]
+      ]
+    }
+  },
+  {
+    "id": "u7-photon-packet-frequency-09",
+    "title": "Quanti fotoni ci sono nel pacchetto?",
+    "prompt": "Un pacchetto contiene $N$ fotoni tutti della stessa frequenza $f=f_{14}\\,10^{14}\\,\\mathrm{Hz}$. Per il calcolo usa $h=6{,}6\\cdot10^{-34}\\,\\mathrm{J}\\,\\mathrm{s}$. L’energia totale misurata è $E_{20}\\,10^{-20}\\,\\mathrm{J}$. Quale espressione restituisce il numero $N$ in funzione dei valori numerici $f_{14}$ ed $E_{20}$?",
+    "answer": {
+      "kind": "choice",
+      "id": "E"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\frac{10E_{20}}{33f_{14}}$",
+        "feedback": "Il coefficiente 10 al numeratore conterebbe il doppio dei fotoni."
+      },
+      {
+        "id": "B",
+        "text": "$\\frac{5E_{20}}{66f_{14}}$",
+        "feedback": "Il denominatore contiene un fattore 2 in più: ogni fotone avrebbe il doppio dell’energia."
+      },
+      {
+        "id": "C",
+        "text": "$\\frac{5E_{20}/33+f_{14}}{f_{14}}$",
+        "feedback": "Sommi un fotone senza che la misura includa alcun contributo aggiuntivo."
+      },
+      {
+        "id": "D",
+        "text": "$\\frac{5E_{20}/33-f_{14}}{f_{14}}$",
+        "feedback": "Questa forma sottrae un fotone. L’energia misurata è quella dell’intero pacchetto."
+      },
+      {
+        "id": "E",
+        "text": "$\\frac{5E_{20}}{33f_{14}}$",
+        "feedback": "Dividi l’energia totale per l’energia di un singolo fotone in unità coerenti."
+      }
+    ],
+    "hints": [
+      "Prima di usare l’energia totale, ricava quella portata da un solo fotone.",
+      "Per fare il rapporto, esprimi entrambe le energie in unità di $10^{-20}\\,\\mathrm{J}$."
+    ],
+    "solution": [
+      "Un fotone di frequenza $f$ porta energia $hf$. Qui il prodotto delle potenze è $10^{-34}\\cdot10^{14}=10^{-20}$, quindi un fotone porta $6{,}6f_{14}\\,10^{-20}\\,\\mathrm{J}$.",
+      "Tutti i fotoni hanno questa stessa energia. Il numero cercato si trova dividendo l’energia del pacchetto per quella di un fotone. Si semplifica l’unità comune e rimane $N=\\frac{E_{20}}{6{,}6f_{14}}=\\frac{5E_{20}}{33f_{14}}$.",
+      "Per esempio, se $f_{14}=5$ e $E_{20}=66$, ciascun fotone vale 33 nelle unità dichiarate e il pacchetto ne contiene due. Poiché si contano fotoni, il risultato deve essere un intero per dati ideali coerenti."
+    ],
+    "check": "Controprova con f=5×10¹⁴ Hz: hf=3,3×10⁻¹⁹ J, doppio=6,6×10⁻¹⁹ J. L’opzione E restituisce 2 con E₂₀=66 e f₁₄=5; gli altri valori sono 4, 1, 3, 1.",
+    "reason": "Corretta la collisione fra simbolo dell’energia e valore numerico mediante E₂₀. Ricostruita l’impostazione senza dare la formula inversa nella consegna."
+  },
+  {
+    "id": "u4-oscillator-energy-13",
+    "title": "Più energia con una molla più rigida",
+    "prompt": "Una massa oscilla senza attrito su una molla ideale di costante $k_\\mathrm{A}=2\\,\\mathrm{N/m}$ con ampiezza $A_\\mathrm{A}=2\\,\\mathrm{m}$. Si sostituisce la molla con una di costante $k_\\mathrm{B}=4\\,\\mathrm{N/m}$. Quale rapporto $A_\\mathrm{B}/A_\\mathrm{A}$ occorre perché l’energia meccanica dell’oscillazione sia $\\frac{9}{2}$ volte quella iniziale? Misura l’energia potenziale a partire dall’equilibrio.",
+    "answer": {
+      "kind": "rational",
+      "exact": "3/2",
+      "unit": "1"
+    },
+    "options": [],
+    "hints": [
+      "Cerca un istante dell’oscillazione in cui è più facile calcolare l’energia totale.",
+      "Imposta il rapporto delle due energie prima di sostituire le ampiezze."
+    ],
+    "solution": [
+      "Agli estremi la massa si ferma per invertire il moto. L’energia cinetica è zero e quella totale coincide con l’energia elastica $E=\\frac12 kA^2$. In assenza di attrito la stessa energia vale durante tutto il moto.",
+      "In ciascuna oscillazione vale la stessa relazione. Dividendo la seconda energia per la prima ottieni $\\frac{E_\\mathrm{B}}{E_\\mathrm{A}}=\\frac{k_\\mathrm{B}}{k_\\mathrm{A}}\\left(\\frac{A_\\mathrm{B}}{A_\\mathrm{A}}\\right)^2=2\\left(\\frac{A_\\mathrm{B}}{A_\\mathrm{A}}\\right)^2$.",
+      "Ponendo il rapporto uguale a $\\frac{9}{2}$, il quadrato del rapporto fra ampiezze è $\\frac{9}{4}$. Si prende la radice positiva perché l’ampiezza è una distanza dall’equilibrio. Con $A_\\mathrm{B}=3\\,\\mathrm{m}$ le energie sono $4\\,\\mathrm{J}$ e $18\\,\\mathrm{J}$, che hanno il rapporto richiesto."
+    ],
+    "check": "Controprova con lavoro: l’area sotto F=kx fino ad A è il triangolo di base A e altezza kA. I due casi con A_B=3 conservano la proporzione 18/4=9/2. Rapporto esatto 3/2.",
+    "reason": "Chiarito l’istante fisico in cui usare l’energia elastica e separata la scelta della radice positiva dal controllo numerico."
+  },
+  {
+    "id": "u7-radioactive-survivors-16",
+    "title": "Risali all’inizio di un decadimento",
+    "prompt": "Un campione contiene un solo radionuclide e non riceve nuovi nuclei. A $t=1\\,\\mathrm{h}$ rimangono in media 48 milioni di nuclei genitori. A $t=3\\,\\mathrm{h}$ ne rimangono 12 milioni. Il decadimento è esponenziale. Quanti milioni di nuclei genitori erano presenti in media a $t=0$?",
+    "answer": {
+      "kind": "choice",
+      "id": "E"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": "48",
+        "feedback": "È il valore misurato dopo un’ora. Occorre ancora risalire al tempo zero."
+      },
+      {
+        "id": "B",
+        "text": "72",
+        "feedback": "L’andamento non perde lo stesso numero di nuclei a ogni ora: perde la stessa frazione."
+      },
+      {
+        "id": "C",
+        "text": "192",
+        "feedback": "Tornando indietro di due ore quadruplichi il numero. Da 1 h all’origine passa solo un’ora."
+      },
+      {
+        "id": "D",
+        "text": "24",
+        "feedback": "Andando indietro nel tempo risali a un valore maggiore del dato a un’ora."
+      },
+      {
+        "id": "E",
+        "text": "96",
+        "feedback": "Hai ricavato il fattore di dimezzamento nel tempo e lo hai invertito per risalire all’origine."
+      }
+    ],
+    "hints": [
+      "Confronta le due misure con un rapporto. Nei due intervalli di un’ora la popolazione subisce lo stesso fattore di riduzione."
+    ],
+    "solution": [
+      "Da 1 h a 3 h trascorrono due ore. La popolazione diventa $12/48=1/4$ di quella di partenza. La legge esponenziale applica lo stesso fattore in intervalli uguali: due ore corrispondono a due dimezzamenti e l’emivita è un’ora.",
+      "Per tornare da 1 h a 0 h bisogna invertire un solo dimezzamento. Si ottengono 96 milioni. Controlla andando avanti: 96, 48, 24 e 12 milioni a intervalli di un’ora. Questa successione descrive il valore medio del modello."
+    ],
+    "check": "Controprova: in N(t)=N₀e^(−λt), pari distanze temporali danno N(0)/N(1)=√(N(1)/N(3))=2. I due dati si ricostruiscono da 96×(1/2)^t. Chiave E.",
+    "reason": "Semplificata l’inferenza con fattori moltiplicativi, messo in evidenza il carattere medio. Diagramma della serie oraria usato come controllo.",
+    "figure": {
+      "stage": "solution",
+      "alt": "Quattro punti: 96 milioni a zero ore, 48 a un’ora, 24 a due ore e 12 a tre ore. I livelli scendono per fattori due.",
+      "caption": "Asse orizzontale in ore e asse verticale lineare in milioni. I segmenti collegano le letture orarie per orientarsi.",
+      "lines": [
+        [
+          57,
+          145,
+          367,
+          145
+        ],
+        [
+          57,
+          145,
+          57,
+          26
+        ],
+        [
+          57,
+          34,
+          150,
+          89
+        ],
+        [
+          150,
+          89,
+          243,
+          117
+        ],
+        [
+          243,
+          117,
+          336,
+          131
+        ],
+        [
+          57,
+          145,
+          57,
+          150
+        ],
+        [
+          150,
+          145,
+          150,
+          150
+        ],
+        [
+          243,
+          145,
+          243,
+          150
+        ],
+        [
+          336,
+          145,
+          336,
+          150
+        ]
+      ],
+      "labels": [
+        {
+          "x": 56,
+          "y": 17,
+          "text": "Milioni"
+        },
+        {
+          "x": 82,
+          "y": 39,
+          "text": "96"
+        },
+        {
+          "x": 147,
+          "y": 77,
+          "text": "48"
+        },
+        {
+          "x": 243,
+          "y": 105,
+          "text": "24"
+        },
+        {
+          "x": 336,
+          "y": 119,
+          "text": "12"
+        },
+        {
+          "x": 57,
+          "y": 174,
+          "text": "0"
+        },
+        {
+          "x": 150,
+          "y": 174,
+          "text": "1"
+        },
+        {
+          "x": 243,
+          "y": 174,
+          "text": "2"
+        },
+        {
+          "x": 336,
+          "y": 174,
+          "text": "3 h"
+        }
+      ],
+      "arrows": [
+        [
+          336,
+          145,
+          373,
+          145
+        ]
+      ]
+    }
+  }
+]

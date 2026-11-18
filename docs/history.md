@@ -779,3 +779,8 @@ Review tecnica indipendente del diff originale: un finding P2 riprodotto sui sot
 ## OPS-20261117-CLOSURE — chiusura del lavoro locale interrotto
 
 Fonte: nuova richiesta diretta del titolare il17novembre, «Finisci il lavoro in corso fai handoff e metti tutto su github». Autorizza consolidamento, verifiche e pubblicazione del lavoro esistente; non riavvia le cinque ore scadute il14novembre. Conservate le autorizzazioni GitHub/preview protetta. Riletti main26e4147, PR54MERGED e cursore revision178 senzaactiveRun; branch di chiusura distinta, nessuna mutazione al cursore. Le nuove PR55–57 sono preservate nel merge locale; conflitti soloZIP/manifest rigenerati. Filtro ripasso e test importweb completati; candidatoPDFnativo e risultati negativi budget archiviati con limiti espliciti. Nessun mergeproduzione, cambioaccessi, messaggio promozionale o approvazione scientifica. [Handoff](handoffs/2026-11-17-closure.md).
+
+
+## OPS-20261118-QUESTION-REVIEW
+
+Mandato diretto del titolare del 18 novembre, letto integralmente. Revisione della banca legacy con priorità ai quesiti attivi e prova in tutti i cinque percorsi. I due lotti recuperano 52 ID, con continuità delle edizioni già consegnate e anteprima separata dagli altri lavori. [Regole, risultati e prove](handoffs/2026-11-18-physics-questions.md). Il mandato autorizza questo incremento applicativo isolato e non riassegna il lavoro canonico M5.

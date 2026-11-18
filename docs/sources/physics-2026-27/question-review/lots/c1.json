@@ -1,0 +1,724 @@
+[
+  {
+    "id": "u1-area-conversion-01",
+    "title": "Cambiare unità di superficie",
+    "prompt": "Una vecchia unità di lunghezza equivale a due nuove unità di lunghezza. Un terreno misura $2$ vecchie unità di superficie: ciascuna è il quadrato costruito sulla vecchia unità di lunghezza. Qual è il valore numerico della stessa area nelle nuove unità di superficie? Inserisci solo il numero.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "8",
+      "unit": "1"
+    },
+    "hints": [
+      "Immagina di ricoprire lo stesso terreno con quadrati più piccoli. Il cambio di unità riguarda entrambi i lati di ogni quadrato.",
+      "Disegna un quadrato di lato pari alla vecchia unità. Dividi ciascun lato in due nuove unità e conta le nuove unità di superficie contenute al suo interno."
+    ],
+    "solution": [
+      "Ogni vecchia unità di superficie è un quadrato il cui lato misura $2$ nuove unità di lunghezza. Al suo interno trovano posto $2\\times2=4$ nuovi quadrati unitari.",
+      "Il terreno occupa due vecchi quadrati, quindi la sua misura nella nuova unità è $2\\times4=8$. Il numero da inserire è $8$.",
+      "La superficie del terreno non cambia: aumenta il numero di unità necessario a misurarla, perché l’unità scelta è più piccola. Tornando indietro, $8/4=2$ vecchie unità."
+    ],
+    "check": "Conteggio geometrico indipendente: 2 griglie da 2×2 contengono 8 celle. Conversione inversa 8/4=2. La risposta è un valore numerico, unità di valutazione 1.",
+    "reason": "Eliminata la richiesta innaturale «valore numerico ... in 1» e il blocco di convenzioni non pertinente. Distinte unità lineare e superficiale; aggiunta una griglia che rende visibile il fattore quadratico.",
+    "figure": {
+      "stage": "solution",
+      "alt": "Due quadrati uguali separati da un piccolo spazio; ciascuno è diviso in quattro celle. Le otto celle rappresentano le nuove unità di superficie.",
+      "caption": "Griglia geometrica: ciascun quadrato grande vale una vecchia unità di superficie; ciascuna cella vale una nuova unità.",
+      "lines": [
+        [
+          80,
+          50,
+          160,
+          50
+        ],
+        [
+          80,
+          130,
+          160,
+          130
+        ],
+        [
+          80,
+          50,
+          80,
+          130
+        ],
+        [
+          120,
+          50,
+          120,
+          130
+        ],
+        [
+          160,
+          50,
+          160,
+          130
+        ],
+        [
+          80,
+          90,
+          160,
+          90
+        ],
+        [
+          184,
+          50,
+          264,
+          50
+        ],
+        [
+          184,
+          130,
+          264,
+          130
+        ],
+        [
+          184,
+          50,
+          184,
+          130
+        ],
+        [
+          224,
+          50,
+          224,
+          130
+        ],
+        [
+          264,
+          50,
+          264,
+          130
+        ],
+        [
+          184,
+          90,
+          264,
+          90
+        ]
+      ],
+      "labels": [
+        {
+          "x": 120,
+          "y": 30,
+          "text": "Quadrato 1"
+        },
+        {
+          "x": 224,
+          "y": 30,
+          "text": "Quadrato 2"
+        },
+        {
+          "x": 172,
+          "y": 153,
+          "text": "8 celle in totale"
+        }
+      ],
+      "arrows": []
+    }
+  },
+  {
+    "id": "u2-mean-velocity-03",
+    "title": "Tornare al punto di partenza",
+    "prompt": "Una persona percorre $6\\,\\mathrm{m}$ verso est e poi torna al punto di partenza percorrendo $6\\,\\mathrm{m}$ verso ovest. L’intero tragitto dura $4\\,\\mathrm{s}$. Quali sono, nell’ordine, il modulo della velocità media vettoriale e la rapidità media sull’intero tragitto?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$6\\,\\mathrm{m/s}$ e $3\\,\\mathrm{m/s}$",
+        "feedback": "Il primo valore non si ricava dalla lunghezza di un tratto: la velocità media vettoriale usa lo spostamento fra partenza e arrivo."
+      },
+      {
+        "id": "B",
+        "text": "$0\\,\\mathrm{m/s}$ e $3\\,\\mathrm{m/s}$",
+        "feedback": "Partenza e arrivo coincidono, mentre la distanza complessivamente percorsa è $12\\,\\mathrm{m}$."
+      },
+      {
+        "id": "C",
+        "text": "$3\\,\\mathrm{m/s}$ e $0\\,\\mathrm{m/s}$",
+        "feedback": "Hai scambiato le due grandezze: si annulla lo spostamento, non la distanza percorsa."
+      },
+      {
+        "id": "D",
+        "text": "$3\\,\\mathrm{m/s}$ e $3\\,\\mathrm{m/s}$",
+        "feedback": "$12/4$ calcola la rapidità media. Per la velocità media vettoriale conta invece la differenza fra posizione finale e iniziale."
+      },
+      {
+        "id": "E",
+        "text": "$0\\,\\mathrm{m/s}$ e $0\\,\\mathrm{m/s}$",
+        "feedback": "Il ritorno al punto di partenza annulla lo spostamento, ma la persona ha comunque camminato per $12\\,\\mathrm{m}$."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "B"
+    },
+    "hints": [
+      "Distingui ciò che dipende soltanto dai punti di partenza e arrivo da ciò che dipende da tutto il percorso.",
+      "Scegli l’est come verso positivo. Scrivi separatamente lo spostamento totale e la somma delle lunghezze dei due tratti; dividi poi ciascuno per il tempo totale."
+    ],
+    "solution": [
+      "Poniamo l’origine nel punto di partenza e scegliamo positivo il verso est. Il primo tratto produce uno spostamento di $+6\\,\\mathrm{m}$, il ritorno di $-6\\,\\mathrm{m}$: lo spostamento totale è nullo.",
+      "La velocità media vettoriale è $\\overline{v}_x=\\Delta x/\\Delta t=0/4=0\\,\\mathrm{m/s}$; anche il suo modulo è zero.",
+      "La rapidità media usa invece la distanza percorsa, $6+6=12\\,\\mathrm{m}$. Vale quindi $12/4=3\\,\\mathrm{m/s}$. La risposta è B.",
+      "Non occorre conoscere il tempo impiegato in ciascun tratto, né supporre che la persona cammini sempre alla stessa rapidità. Entrambe le medie si riferiscono ai $4\\,\\mathrm{s}$ complessivi."
+    ],
+    "check": "Controllo con coordinate x0=0, x1=6, x2=0: differenza finale 0, variazione totale |6−0|+|0−6|=12; medie 0 e 3 m/s. Nessuna assunzione di tempi parziali uguali.",
+    "reason": "Reso esplicito l’ordine delle due grandezze, rimossa la convenzione vuota, aggiunti feedback distinti e rappresentazione dei due versi sullo stesso segmento.",
+    "figure": {
+      "stage": "prompt",
+      "alt": "La persona va dalla partenza a ovest fino a un punto 6 metri a est, poi percorre lo stesso segmento al contrario.",
+      "caption": "Schema del medesimo segmento, non in scala. Le due frecce sono separate solo per leggibilità; il tempo totale è 4 s.",
+      "lines": [],
+      "labels": [
+        {
+          "x": 70,
+          "y": 100,
+          "text": "Partenza"
+        },
+        {
+          "x": 325,
+          "y": 100,
+          "text": "Est"
+        },
+        {
+          "x": 200,
+          "y": 37,
+          "text": "Andata: 6 m"
+        },
+        {
+          "x": 200,
+          "y": 148,
+          "text": "Ritorno: 6 m"
+        }
+      ],
+      "arrows": [
+        [
+          70,
+          62,
+          325,
+          62
+        ],
+        [
+          325,
+          122,
+          70,
+          122
+        ]
+      ]
+    }
+  },
+  {
+    "id": "u1-scientific-scale-08",
+    "title": "La potenza di dieci più vicina",
+    "prompt": "Una lunghezza misura $3\\times10^5\\,\\mathrm{m}$. In questo quesito, l’ordine di grandezza è la potenza di dieci più vicina sulla scala logaritmica: fra $10^n$ e $10^{n+1}$ la soglia è $\\sqrt{10}\\,10^n$. Qual è l’ordine di grandezza della lunghezza?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$10^4\\,\\mathrm{m}$",
+        "feedback": "Questa potenza è trenta volte più piccola della lunghezza: $10^5\\,\\mathrm{m}$ è più vicina."
+      },
+      {
+        "id": "B",
+        "text": "$10^5\\,\\mathrm{m}$",
+        "feedback": "Il coefficiente $3$ è inferiore alla soglia $\\sqrt{10}$, poiché $9<10$."
+      },
+      {
+        "id": "C",
+        "text": "$10^6\\,\\mathrm{m}$",
+        "feedback": "Per passare alla potenza superiore il coefficiente dovrebbe superare $\\sqrt{10}$; qui basta confrontare i quadrati $9$ e $10$."
+      },
+      {
+        "id": "D",
+        "text": "$10^7\\,\\mathrm{m}$",
+        "feedback": "Questa potenza è oltre trenta volte più grande della lunghezza; non è una delle due potenze fra cui essa si trova."
+      },
+      {
+        "id": "E",
+        "text": "$10^3\\,\\mathrm{m}$",
+        "feedback": "Questa potenza è trecento volte più piccola della lunghezza, quindi è molto lontana sulla scala logaritmica."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "B"
+    },
+    "hints": [
+      "Individua le due potenze consecutive fra cui cade la lunghezza. La vicinanza richiesta è moltiplicativa, come sulla scala logaritmica.",
+      "Confronta il coefficiente della notazione scientifica con la soglia indicata. Puoi confrontare i loro quadrati, perché entrambi sono positivi."
+    ],
+    "solution": [
+      "La lunghezza si trova fra $10^5\\,\\mathrm{m}$ e $10^6\\,\\mathrm{m}$. Per la convenzione indicata, la soglia fra le due è $\\sqrt{10}\\times10^5\\,\\mathrm{m}$.",
+      "Poiché $3^2=9<10$, risulta $3<\\sqrt{10}$. La lunghezza è dalla parte della potenza inferiore: l’ordine di grandezza è $10^5\\,\\mathrm{m}$, risposta B.",
+      "Un controllo equivalente consiste nel confrontare i fattori: la lunghezza è $3$ volte la potenza inferiore, mentre la potenza superiore è $10/3$ volte la lunghezza. Siccome $3<10/3$, la prima è più vicina sulla scala logaritmica."
+    ],
+    "check": "Confronto esatto 9<10 e controllo indipendente dei fattori 3<10/3. Convenzione logaritmica già corretta in Next preservata.",
+    "reason": "Spostato dalla consegna al secondo aiuto il suggerimento risolutivo sui quadrati; conservata la convenzione logaritmica e rimosse le ripetizioni finali."
+  },
+  {
+    "id": "u2-uniform-position-07",
+    "title": "Posizione e spostamento non coincidono",
+    "prompt": "Un punto si muove lungo un asse con velocità costante $v=+2\\,\\mathrm{m/s}$. All’istante $t=0$ si trova nella posizione $s_0=2\\,\\mathrm{m}$. Chiamiamo $s_A$ la sua posizione a $t_A=2\\,\\mathrm{s}$ e $s_B$ quella a $t_B=4\\,\\mathrm{s}$, misurate rispetto alla stessa origine. Quanto vale il rapporto $s_B/s_A$?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\frac{2}{3}$",
+        "feedback": "Questo rapporto non segue dalle due posizioni: occorre aggiungere la posizione iniziale allo spostamento in entrambi gli istanti."
+      },
+      {
+        "id": "B",
+        "text": "$\\frac{5}{3}$",
+        "feedback": "Le posizioni sono $6\\,\\mathrm{m}$ e $10\\,\\mathrm{m}$: il rapporto è $10/6=5/3$."
+      },
+      {
+        "id": "C",
+        "text": "$\\frac{10}{3}$",
+        "feedback": "Il numeratore corrisponde alla posizione finale, ma la posizione a $2\\,\\mathrm{s}$ è $6\\,\\mathrm{m}$, non $3\\,\\mathrm{m}$."
+      },
+      {
+        "id": "D",
+        "text": "$\\frac{5}{6}$",
+        "feedback": "Il rapporto non può essere minore di uno: entrambe le posizioni sono positive e il punto continua nel verso positivo."
+      },
+      {
+        "id": "E",
+        "text": "$\\frac{8}{3}$",
+        "feedback": "Usa le posizioni $s_0+vt$ in entrambi gli istanti, senza mescolare una posizione con uno spostamento."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "B"
+    },
+    "hints": [
+      "Il punto non parte dall’origine. Chiediti quale differenza c’è fra posizione e spazio percorso dopo l’istante iniziale.",
+      "Scrivi $s(t)=s_0+vt$ e calcola le due posizioni prima di formare il rapporto."
+    ],
+    "solution": [
+      "La velocità costante indica che il punto avanza di $2\\,\\mathrm{m}$ ogni secondo. La posizione si ottiene aggiungendo questo avanzamento alla coordinata iniziale: $s(t)=s_0+vt$.",
+      "A $2\\,\\mathrm{s}$ vale $s_A=2\\,\\mathrm{m}+(2\\,\\mathrm{m/s})(2\\,\\mathrm{s})=6\\,\\mathrm{m}$. A $4\\,\\mathrm{s}$ vale $s_B=2\\,\\mathrm{m}+(2\\,\\mathrm{m/s})(4\\,\\mathrm{s})=10\\,\\mathrm{m}$.",
+      "Il rapporto è $s_B/s_A=10/6=5/3$, risposta B. Le unità di lunghezza si semplificano.",
+      "Nel grafico si leggono queste due posizioni sull’asse verticale; la pendenza della retta rappresenta invece la velocità. Raddoppiando il tempo raddoppia lo spostamento dall’istante iniziale, da $4$ a $8\\,\\mathrm{m}$, ma non la posizione, perché $s_0$ non è zero."
+    ],
+    "check": "Controllo per incrementi: s(2)=2+4=6; s(4)=s(2)+4=10; rapporto esatto 5/3. Il grafico ha intercetta 2 m e pendenza 2 m/s. Unicità fra le cinque frazioni.",
+    "reason": "Recuperato dalla banca integrale per coprire il secondo quesito facile C1; sostituiti gli astratti stati con due istanti dello stesso moto e aggiunto un grafico con assi e scale espliciti.",
+    "figure": {
+      "stage": "solution",
+      "alt": "Grafico posizione-tempo: retta da t=0 s, s=2 m a t=4 s, s=10 m; a t=2 s la posizione è 6 m.",
+      "caption": "Grafico in scala: asse orizzontale t in secondi, verticale s in metri. Le tacche corrispondono ai valori indicati.",
+      "lines": [
+        [
+          70,
+          126,
+          310,
+          30
+        ],
+        [
+          190,
+          146,
+          190,
+          154
+        ],
+        [
+          310,
+          146,
+          310,
+          154
+        ],
+        [
+          66,
+          126,
+          74,
+          126
+        ],
+        [
+          66,
+          78,
+          74,
+          78
+        ],
+        [
+          66,
+          30,
+          74,
+          30
+        ],
+        [
+          190,
+          78,
+          190,
+          142
+        ],
+        [
+          310,
+          30,
+          310,
+          142
+        ]
+      ],
+      "labels": [
+        {
+          "x": 56,
+          "y": 164,
+          "text": "0"
+        },
+        {
+          "x": 190,
+          "y": 167,
+          "text": "2"
+        },
+        {
+          "x": 310,
+          "y": 167,
+          "text": "4"
+        },
+        {
+          "x": 370,
+          "y": 166,
+          "text": "t (s)"
+        },
+        {
+          "x": 42,
+          "y": 130,
+          "text": "2"
+        },
+        {
+          "x": 42,
+          "y": 82,
+          "text": "6"
+        },
+        {
+          "x": 42,
+          "y": 34,
+          "text": "10"
+        },
+        {
+          "x": 115,
+          "y": 22,
+          "text": "s (m)"
+        }
+      ],
+      "arrows": [
+        [
+          70,
+          150,
+          373,
+          150
+        ],
+        [
+          70,
+          150,
+          70,
+          12
+        ]
+      ]
+    }
+  },
+  {
+    "id": "u2-atwood-09",
+    "title": "Ricavare una massa dall’accelerazione",
+    "prompt": "Due masse $M>m>0$ sono collegate da una fune inestensibile e di massa trascurabile, su una carrucola senza massa e senza attrito. La massa $M$ scende e $m$ sale con accelerazione di modulo $a$, dove $0<a<g$ e $g=10\\,\\mathrm{m/s^2}$. Il modello fornisce $a=g(M-m)/(M+m)$. Se conosci $a$ e $m$, quale espressione dà $M$?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$M=\\frac{m(g+a)}{2(g-a)}$",
+        "feedback": "Il fattore $2$ al denominatore non compare raccogliendo i termini con $M$ nell’equazione del sistema."
+      },
+      {
+        "id": "B",
+        "text": "$M=\\frac{m(g-a)}{g+a}$",
+        "feedback": "Questa espressione darebbe $M<m$, in contrasto con il verso del moto specificato."
+      },
+      {
+        "id": "C",
+        "text": "$M=\\frac{m(g+a)}{g}$",
+        "feedback": "Manca il termine $-a$ al denominatore: anche $M$ contribuisce alla massa totale da accelerare."
+      },
+      {
+        "id": "D",
+        "text": "$M=\\frac{m(g+a)}{g-a}$",
+        "feedback": "Raccogliendo i termini con $M$ si ottiene $M(g-a)=m(g+a)$."
+      },
+      {
+        "id": "E",
+        "text": "$M=\\frac{2m(g+a)}{g-a}$",
+        "feedback": "Il fattore $2$ al numeratore raddoppia la massa richiesta senza rispettare l’equazione data."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "D"
+    },
+    "hints": [
+      "La differenza dei pesi mette in moto entrambe le masse. Quando inverti la relazione, ricorda che $M$ compare sia al numeratore sia al denominatore.",
+      "Moltiplica per $M+m$ e porta tutti i termini contenenti $M$ dallo stesso lato."
+    ],
+    "solution": [
+      "La fune ideale impone lo stesso modulo di accelerazione e la stessa tensione $T$ sui due lati. Scegliendo positivo il verso di moto di ciascuna massa, la seconda legge di Newton dà $Mg-T=Ma$ e $T-mg=ma$. Sommando, la tensione si elimina: $(M-m)g=(M+m)a$.",
+      "Per isolare $M$, sviluppiamo i prodotti: $Mg-mg=Ma+ma$. Portiamo i termini con $M$ a sinistra e gli altri a destra: $Mg-Ma=mg+ma$, cioè $M(g-a)=m(g+a)$.",
+      "Poiché $g-a>0$, possiamo dividere e ottenere $M=m(g+a)/(g-a)$, risposta D. Il rapporto fra accelerazioni è adimensionale, quindi il risultato ha l’unità di una massa.",
+      "Il risultato è maggiore di $m$, come richiesto. Per esempio, con $m=1\\,\\mathrm{kg}$ e $a=6\\,\\mathrm{m/s^2}$ si trova $M=4\\,\\mathrm{kg}$: le due equazioni di Newton danno entrambe $T=16\\,\\mathrm{N}$. Inoltre, quando $a$ tende a zero, $M$ tende a $m$."
+    ],
+    "check": "Algebra inversa e controprova Newton: m=1,a=6,g=10,M=4 danno T=16 N da entrambi i corpi. Dominio 0<a<g; ogni distrattore differisce dalla corretta nel dominio. Forma equivalente all’originale −m(a+10)/(a−10).",
+    "reason": "Rimossi i distrattori che sommavano grandezze dimensionalmente incompatibili; conservati gli ID e la chiave D. Sostituito A con a per l’accelerazione, aggiunta la motivazione fisica della formula e il dominio della sua inversione."
+  },
+  {
+    "id": "u2-biceps-lever-09",
+    "title": "Il braccio della forza muscolare",
+    "prompt": "Un avambraccio orizzontale è in equilibrio. Un carico esercita una forza verticale $W$ verso il basso a distanza $\\ell=0{,}30\\,\\mathrm{m}$ dal gomito. La forza muscolare $F$ produce un momento opposto e ha braccio perpendicolare $b$, con $0<b<\\ell$. Trascuriamo il peso dell’avambraccio. Quale espressione permette di ricavare $W$?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$W=\\frac{F\\ell}{b}$",
+        "feedback": "Il rapporto dei bracci è invertito. Il muscolo agisce con il braccio più corto e deve esercitare una forza maggiore del carico."
+      },
+      {
+        "id": "B",
+        "text": "$W=\\frac{Fb}{\\ell}$",
+        "feedback": "I momenti rispetto al gomito devono avere uguale modulo: $Fb=W\\ell$."
+      },
+      {
+        "id": "C",
+        "text": "$W=\\frac{2Fb}{\\ell}$",
+        "feedback": "Il fattore $2$ non deriva dall’equilibrio: qui si confrontano i momenti di una forza muscolare e di un carico."
+      },
+      {
+        "id": "D",
+        "text": "$W=\\frac{Fb}{2\\ell}$",
+        "feedback": "Il braccio del carico è $\\ell$, non $2\\ell$."
+      },
+      {
+        "id": "E",
+        "text": "$W=F$",
+        "feedback": "Le forze non agiscono con lo stesso braccio. L’equilibrio dei momenti non richiede che i loro moduli siano uguali."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "B"
+    },
+    "hints": [
+      "Considera la rotazione attorno al gomito. Quale effetto produce ciascuna forza, e a quale distanza dalla sua retta d’azione?",
+      "Il momento di una forza è il suo modulo moltiplicato per il braccio perpendicolare. Scrivi l’equilibrio fra i due momenti opposti."
+    ],
+    "solution": [
+      "Scegliamo il gomito come polo dei momenti. La reazione esercitata dall’articolazione passa per il polo e ha momento nullo. Restano il momento del muscolo, $Fb$, e quello del carico, $W\\ell$, che tendono a ruotare l’avambraccio in versi opposti.",
+      "L’equilibrio impone $Fb-W\\ell=0$. Dividendo per $\\ell$ otteniamo $W=Fb/\\ell$, risposta B. Per $\\ell=0{,}30\\,\\mathrm{m}$, se $F$ è espresso in newton e $b$ in metri, il valore numerico di $W$ in newton è $10Fb/3$.",
+      "Il braccio $b$ è la distanza perpendicolare fra il gomito e la retta d’azione di $F$: non è la lunghezza del muscolo. Poiché $b<\\ell$, risulta $W<F$.",
+      "Per controllare, prendiamo $F=100\\,\\mathrm{N}$ e $b=0{,}03\\,\\mathrm{m}$. Si trova $W=10\\,\\mathrm{N}$; entrambi i momenti valgono $3\\,\\mathrm{N\\,m}$."
+    ],
+    "check": "Controprova dei momenti: 100 N×0,03 m=10 N×0,30 m=3 Nm. Tutte le opzioni hanno dimensione di forza; B unica per F>0 e 0<b<ell. Formula equivalente alla chiave legacy.",
+    "reason": "Esplicitato il significato di braccio perpendicolare; sostituiti i distrattori con aggiunte ±1 e motivato il polo dei momenti. Conservata chiave B."
+  },
+  {
+    "id": "u2-atwood-13",
+    "title": "Due configurazioni della macchina di Atwood",
+    "prompt": "Due masse $M>m>0$ sono collegate da una fune inestensibile e di massa trascurabile su una carrucola senza massa e senza attrito. Poniamo $g=10\\,\\mathrm{m/s^2}$. In ogni configurazione $M$ scende e $m$ sale. Nella configurazione A le masse sono $M_A=4\\,\\mathrm{kg}$ e $m_A=1\\,\\mathrm{kg}$. Nella configurazione B si usa $M_B=6\\,\\mathrm{kg}$ e si vuole un’accelerazione di modulo $a_B=\\frac{5}{6}a_A$. Quale rapporto $m_B/m_A$ è necessario? Inserisci il numero esatto.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "2",
+      "unit": "1"
+    },
+    "hints": [
+      "Cambiare una massa modifica sia la differenza dei pesi sia la massa totale da accelerare. Calcola prima l’accelerazione della configurazione A.",
+      "Usa $a=g(M-m)/(M+m)$ per trovare l’accelerazione richiesta in B; poi lascia $m_B$ come incognita.",
+      "Nell’equazione per B, moltiplica per $M_B+m_B$ e raccogli i termini contenenti $m_B$. Solo alla fine forma il rapporto con $m_A$."
+    ],
+    "solution": [
+      "Le due masse hanno accelerazioni di uguale modulo. Sommando le rispettive equazioni di Newton, la tensione interna si elimina e si ottiene $(M-m)g=(M+m)a$, dunque $a=g(M-m)/(M+m)$.",
+      "Nella configurazione A: $a_A=10(4-1)/(4+1)=6\\,\\mathrm{m/s^2}$. L’obiettivo in B è quindi $a_B=(5/6)\\times6=5\\,\\mathrm{m/s^2}$.",
+      "Inseriamo $M_B=6\\,\\mathrm{kg}$ nella relazione. Scrivendo le masse in chilogrammi e le accelerazioni in $\\mathrm{m/s^2}$, l’equazione numerica è $5(6+m_B)=10(6-m_B)$. Si ha $30+5m_B=60-10m_B$, quindi $15m_B=30$ e $m_B=2\\,\\mathrm{kg}$.",
+      "Il rapporto cercato è $m_B/m_A=2/1=2$. La massa minore rimane inferiore alla maggiore, e l’accelerazione è positiva e minore di $g$.",
+      "Come controllo distinto, nella configurazione B il corpo leggero richiede $T=m_B(g+a_B)$, cioè $2(10+5)$, quindi $30\\,\\mathrm{N}$; il corpo pesante richiede $T=M_B(g-a_B)$, cioè $6(10-5)$, quindi $30\\,\\mathrm{N}$. Le due tensioni coincidono."
+    ],
+    "check": "Risultato razionale 2; controprova indipendente con le tensioni: A 16=16 N, B 30=30 N; 0<a<g e M>m in entrambe le configurazioni.",
+    "reason": "Sostituita «grandezza d’uscita» con accelerazione, esplicitate le due configurazioni e aggiunto il controllo con le singole forze; schema direzionale senza anticipare la risposta.",
+    "figure": {
+      "stage": "prompt",
+      "alt": "Fune sopra una carrucola, massa m a sinistra e M a destra. La massa m accelera verso l’alto e M verso il basso.",
+      "caption": "Schema non in scala, valido per entrambe le configurazioni. Le frecce indicano le accelerazioni, non le forze.",
+      "lines": [
+        [
+          166,
+          45,
+          166,
+          108
+        ],
+        [
+          166,
+          45,
+          178,
+          25
+        ],
+        [
+          178,
+          25,
+          222,
+          25
+        ],
+        [
+          222,
+          25,
+          234,
+          45
+        ],
+        [
+          234,
+          45,
+          234,
+          108
+        ],
+        [
+          234,
+          45,
+          234,
+          65
+        ],
+        [
+          234,
+          65,
+          222,
+          85
+        ],
+        [
+          222,
+          85,
+          178,
+          85
+        ],
+        [
+          178,
+          85,
+          166,
+          65
+        ],
+        [
+          166,
+          65,
+          166,
+          45
+        ],
+        [
+          194,
+          55,
+          206,
+          55
+        ],
+        [
+          200,
+          49,
+          200,
+          61
+        ],
+        [
+          146,
+          108,
+          186,
+          108
+        ],
+        [
+          186,
+          108,
+          186,
+          145
+        ],
+        [
+          186,
+          145,
+          146,
+          145
+        ],
+        [
+          146,
+          145,
+          146,
+          108
+        ],
+        [
+          214,
+          108,
+          254,
+          108
+        ],
+        [
+          254,
+          108,
+          254,
+          145
+        ],
+        [
+          254,
+          145,
+          214,
+          145
+        ],
+        [
+          214,
+          145,
+          214,
+          108
+        ]
+      ],
+      "labels": [
+        {
+          "x": 166,
+          "y": 131,
+          "text": "m"
+        },
+        {
+          "x": 234,
+          "y": 131,
+          "text": "M"
+        },
+        {
+          "x": 95,
+          "y": 85,
+          "text": "a"
+        },
+        {
+          "x": 305,
+          "y": 85,
+          "text": "a"
+        }
+      ],
+      "arrows": [
+        [
+          117,
+          125,
+          117,
+          53
+        ],
+        [
+          282,
+          53,
+          282,
+          125
+        ]
+      ]
+    }
+  },
+  {
+    "id": "u2-centripetal-acceleration-13",
+    "title": "Raddoppiare l’accelerazione centripeta",
+    "prompt": "Un punto compie un moto circolare uniforme. Nella situazione A la rapidità è $v_A=2\\,\\mathrm{m/s}$ e il raggio è $r_A=2\\,\\mathrm{m}$. Nella situazione B la rapidità è $v_B=4\\,\\mathrm{m/s}$. Quale rapporto $r_B/r_A$ permette di ottenere un’accelerazione centripeta di modulo $a_B=2a_A$? Inserisci il numero esatto.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "2",
+      "unit": "1"
+    },
+    "hints": [
+      "Anche se la rapidità è costante, la direzione della velocità cambia. Considera come il modulo dell’accelerazione dipende da rapidità e raggio.",
+      "Nella relazione $a=v^2/r$, il raddoppio della rapidità agisce al quadrato. Confronta il fattore richiesto per l’accelerazione con quello prodotto dalla rapidità."
+    ],
+    "solution": [
+      "Nel moto circolare uniforme l’accelerazione è diretta verso il centro e ha modulo $a=v^2/r$. La rapidità costante annulla l’accelerazione tangenziale, ma non quella dovuta al cambiamento di direzione.",
+      "Nella situazione A vale $a_A=(2\\,\\mathrm{m/s})^2/(2\\,\\mathrm{m})=2\\,\\mathrm{m/s^2}$. In B vogliamo quindi $a_B=4\\,\\mathrm{m/s^2}$.",
+      "Ricaviamo il raggio: $r_B=v_B^2/a_B$, cioè $(4\\,\\mathrm{m/s})^2/(4\\,\\mathrm{m/s^2})$, quindi $4\\,\\mathrm{m}$. Il rapporto è $r_B/r_A=4/2=2$.",
+      "Il controllo per proporzioni evita di ripetere i calcoli assoluti: $a_B/a_A=(v_B/v_A)^2/(r_B/r_A)$, cioè $2^2/2$, quindi $2$. Raddoppiando anche il raggio, l’aumento di quattro volte dovuto alla rapidità si riduce al fattore due richiesto."
+    ],
+    "check": "Calcolo dimensionale aA=2 m/s², aB=4 m/s², rB=4 m; controllo indipendente del rapporto 4/2=2. Raggi e moduli positivi.",
+    "reason": "Rimossa l’espressione generica «grandezza d’uscita» e condensati i microstep in un ragionamento completo; chiarita la differenza fra rapidità costante e vettore velocità costante."
+  }
+]

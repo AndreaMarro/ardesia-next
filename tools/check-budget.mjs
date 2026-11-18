@@ -23,6 +23,7 @@ const totals=programBudgetTotals(files);
 const initialJavaScriptGzipBytes=files.filter(file=>initialFiles.has(file.file)).reduce((sum,file)=>sum+file.gzipBytes,0);
 const report={...identity(),metric:'core-and-optional-runtimes-v3',...totals,limits:PROGRAM_BUDGET,
   initialJavaScriptGzipBytes,deferredJavaScriptGzipBytes:totals.allJavaScriptGzipBytes-initialJavaScriptGzipBytes,
+  previous336KiBCoreComparison:{bytes:totals.coreGzipBytes,limit:344064,passed:totals.coreGzipBytes<=344064},
   previous320KiBCoreComparison:{bytes:totals.coreGzipBytes,limit:327680,passed:totals.coreGzipBytes<=327680},
   previous312KiBCoreComparison:{bytes:totals.coreGzipBytes,limit:319488,passed:totals.coreGzipBytes<=319488},
   previous304KiBCoreComparison:{bytes:totals.coreGzipBytes,limit:311296,passed:totals.coreGzipBytes<=311296},

@@ -1,0 +1,910 @@
+[
+  {
+    "id": "u5-first-law-expansion-01",
+    "title": "Calore in ingresso, lavoro in uscita",
+    "prompt": "Un sistema chiuso assorbe $100\\,\\mathrm{J}$ di calore e compie $40\\,\\mathrm{J}$ di lavoro sull’ambiente. Le sue energie cinetica e potenziale macroscopiche non cambiano. Di quanto varia l’energia interna? Usa il segno positivo per un aumento ed esprimi il risultato in joule.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "60",
+      "unit": "J"
+    },
+    "hints": [
+      "Segui separatamente l’energia che entra nel sistema e quella che ne esce.",
+      "Il lavoro compiuto sull’ambiente porta energia fuori dal sistema; ciò che rimane modifica $U$."
+    ],
+    "solution": [
+      "Il sistema non scambia materia, ma riceve energia come calore e la cede come lavoro. Poiché non cambiano le energie macroscopiche del moto e della posizione, il bilancio riguarda soltanto l’energia interna.",
+      "Con $Q>0$ per il calore ricevuto e $W>0$ per il lavoro compiuto dal sistema, il primo principio è $\\Delta U=Q-W$. Quindi $\\Delta U=100\\,\\mathrm{J}-40\\,\\mathrm{J}=+60\\,\\mathrm{J}$.",
+      "Il segno positivo indica un aumento. Il controllo è il bilancio inverso: dei $100\\,\\mathrm{J}$ entrati, $40\\,\\mathrm{J}$ sono usciti come lavoro e $60\\,\\mathrm{J}$ sono rimasti nel sistema. Sommare i due scambi darebbe invece $140\\,\\mathrm{J}$ e conterebbe il lavoro uscente come energia ricevuta."
+    ],
+    "check": "Ricalcolo esatto: 100−40=60 J; controprova conservativa 60+40=100 J. Q e W hanno la stessa dimensione; nessuna conversione. Caso limite W=Q restituisce ΔU=0. Nessuna approvazione umana.",
+    "reason": "Rimossi duplicazione integrale delle ipotesi e preambolo generico. La convenzione dei segni viene motivata nello svolgimento, senza anticipare la formula nella consegna. Dati e risposta 60 J invariati."
+  },
+  {
+    "id": "u5-engine-efficiency-03",
+    "title": "Una sola sorgente: basta conservare l’energia?",
+    "prompt": "Una macchina torna allo stato iniziale dopo ogni ciclo. Il suo unico effetto sull’ambiente sarebbe assorbire calore da una sola sorgente e convertirlo interamente in lavoro. Non avvengono altri cambiamenti. Quale affermazione è corretta?",
+    "options": [
+      {
+        "id": "A",
+        "text": "È consentita se viene usato un gas monoatomico.",
+        "feedback": "Il fluido di lavoro non elimina il vincolo del secondo principio: la proibizione riguarda gli effetti complessivi del ciclo."
+      },
+      {
+        "id": "B",
+        "text": "È consentita perché soddisfa da sola il primo principio.",
+        "feedback": "Il bilancio $Q=W$ conserva l’energia, ma la conservazione non garantisce che un processo sia fisicamente realizzabile."
+      },
+      {
+        "id": "C",
+        "text": "È vietata dal secondo principio nella forma di Kelvin-Planck.",
+        "feedback": "È proprio il caso escluso da Kelvin-Planck: conversione integrale in lavoro del calore di una sola sorgente come unico effetto di un ciclo."
+      },
+      {
+        "id": "D",
+        "text": "È vietata soltanto perché il lavoro non può essere energia.",
+        "feedback": "Il lavoro è una modalità di trasferimento di energia. Il problema non è la natura energetica del lavoro, ma la direzione consentita delle trasformazioni."
+      },
+      {
+        "id": "E",
+        "text": "È sempre una macchina di Carnot.",
+        "feedback": "Una macchina di Carnot scambia calore con due sorgenti a temperature diverse; non realizza il ciclo descritto con una sola sorgente."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "C"
+    },
+    "hints": [
+      "Considera insieme tre dettagli: il ritorno allo stato iniziale, il numero di sorgenti e l’assenza di altri effetti.",
+      "La conservazione dell’energia stabilisce un bilancio. Cerca il principio che pone anche un limite alla possibilità di realizzare quel bilancio."
+    ],
+    "solution": [
+      "Il ritorno allo stato iniziale implica $\\Delta U=0$ per ciclo. Il primo principio ammetterebbe dunque $Q=W$: l’energia assorbita sarebbe esattamente uguale al lavoro prodotto.",
+      "Il secondo principio impone però una condizione ulteriore. L’enunciato di Kelvin-Planck esclude una macchina ciclica il cui unico effetto sia prelevare calore da una sola sorgente e convertirlo integralmente in lavoro. La risposta è C.",
+      "La parola “ciclica” è essenziale: in una singola espansione isoterma reversibile di un gas ideale può accadere $Q=W$, ma il gas cambia volume e non torna allo stato iniziale. Quel processo non è un controesempio all’enunciato."
+    ],
+    "check": "Verifica concettuale delle condizioni di Kelvin-Planck: ciclo, unica sorgente, unico effetto. Controesempio controllato: espansione isoterma ideale Q=W non ciclica, quindi fuori dalle ipotesi. Tutti e cinque i distrattori controllati; chiave C unica.",
+    "reason": "Eliminata la ripetizione della natura ciclica e sostituito il secondo indizio originale, che svelava già la risposta. Aggiunta la distinzione specifica fra bilancio energetico e realizzabilità. Opzioni e chiave C conservate."
+  },
+  {
+    "id": "u5-isothermal-chambers-06",
+    "title": "Come si ripartisce il gas fra due recipienti uguali?",
+    "prompt": "Due recipienti rigidi di uguale volume contengono lo stesso gas ideale, inizialmente alla stessa temperatura ma a pressioni diverse. Si apre il collegamento, senza perdere gas, e si attende l’equilibrio mantenendo uniforme la temperatura. Il volume del collegamento è trascurabile. Quale frazione del numero totale di molecole si trova alla fine in ciascun recipiente?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\frac12$",
+        "feedback": "All’equilibrio pressione e temperatura sono comuni; volumi uguali contengono quindi lo stesso numero di molecole."
+      },
+      {
+        "id": "B",
+        "text": "$\\frac23$",
+        "feedback": "Non può essere la frazione contenuta in ciascuno dei due recipienti: la somma sarebbe $4/3$ del totale."
+      },
+      {
+        "id": "C",
+        "text": "Dipende soltanto dal rapporto fra le pressioni iniziali.",
+        "feedback": "Le pressioni iniziali determinano quante molecole ci sono in totale, ma non rompono l’uguaglianza finale fra volumi, pressione e temperatura dei due recipienti."
+      },
+      {
+        "id": "D",
+        "text": "$\\frac14$",
+        "feedback": "Questa frazione in ciascun recipiente lascerebbe metà delle molecole fuori dal conteggio, mentre il collegamento ha volume trascurabile."
+      },
+      {
+        "id": "E",
+        "text": "$\\frac13$",
+        "feedback": "Con questa frazione in ciascun recipiente mancherebbe un terzo delle molecole, non essendoci perdite o un terzo volume significativo."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "A"
+    },
+    "hints": [
+      "Distingui le condizioni iniziali dalle condizioni che devono essere uguali quando il gas ha raggiunto l’equilibrio.",
+      "Usa $pV=Nk_B T$ separatamente per i due recipienti allo stato finale: quali quantità del rapporto sono uguali?"
+    ],
+    "solution": [
+      "All’equilibrio finale i due recipienti hanno la stessa pressione $p_f$ e la stessa temperatura $T_f$. Hanno inoltre lo stesso volume $V$ per costruzione. La legge del gas ideale scritta con il numero di molecole dà $N_1=p_fV/(k_BT_f)$ e $N_2=p_fV/(k_BT_f)$; dunque $N_1=N_2$.",
+      "Non essendoci perdite e potendo trascurare il gas nel collegamento, $N_{\\mathrm{tot}}=N_1+N_2=2N_1$. Perciò $N_1/N_{\\mathrm{tot}}=N_2/N_{\\mathrm{tot}}=1/2$, risposta A.",
+      "Le pressioni iniziali diverse non sono irrilevanti: fissano il numero totale di molecole e la pressione finale. Non cambiano però questa frazione. Come controllo, se i volumi finali fossero $V$ e $2V$ alle stesse $p_f,T_f$, le frazioni sarebbero $1/3$ e $2/3$: è l’uguaglianza dei volumi a rendere possibile la divisione a metà."
+    ],
+    "check": "Metodo indipendente: somma degli inventari iniziali e p_finale=(p1+p2)/2 a T fissa e volumi V,V; N1_finale=N2_finale=Ntot/2. Controprova con volumi V,2V dà rapporto 1:2. Chiave A e valore 1/2 preservati.",
+    "reason": "Sostituiti gli indizi generici con un confronto esplicito fra stati iniziali e finali; chiarito il ruolo delle pressioni iniziali. Conservati tutti i distrattori e la risposta. Livello facile originale.",
+    "figure": {
+      "stage": "prompt",
+      "alt": "Due recipienti rigidi di uguale volume V sono collegati da un tubo. Si considera lo stato finale di equilibrio.",
+      "caption": "Schema dei due volumi comunicanti; il tubo ha volume trascurabile. Disegno non in scala.",
+      "lines": [
+        [
+          45,
+          45,
+          155,
+          45
+        ],
+        [
+          155,
+          45,
+          155,
+          135
+        ],
+        [
+          155,
+          135,
+          45,
+          135
+        ],
+        [
+          45,
+          135,
+          45,
+          45
+        ],
+        [
+          245,
+          45,
+          355,
+          45
+        ],
+        [
+          355,
+          45,
+          355,
+          135
+        ],
+        [
+          355,
+          135,
+          245,
+          135
+        ],
+        [
+          245,
+          135,
+          245,
+          45
+        ],
+        [
+          155,
+          83,
+          245,
+          83
+        ],
+        [
+          155,
+          97,
+          245,
+          97
+        ]
+      ],
+      "labels": [
+        {
+          "x": 100,
+          "y": 90,
+          "text": "V"
+        },
+        {
+          "x": 300,
+          "y": 90,
+          "text": "V"
+        },
+        {
+          "x": 200,
+          "y": 25,
+          "text": "Collegamento aperto"
+        }
+      ]
+    }
+  },
+  {
+    "id": "u5-isobaric-work-06",
+    "title": "Quanto si sposta il volume sotto il pistone?",
+    "prompt": "Un gas si espande lentamente spingendo un pistone contro una pressione esterna costante di $2\\,\\mathrm{kPa}$. Attrito e altre forme di lavoro sono trascurabili. Il gas compie $6\\,\\mathrm{J}$ di lavoro sull’ambiente. Di quanti litri aumenta il suo volume?",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "3",
+      "unit": "L"
+    },
+    "hints": [
+      "Associa il lavoro al movimento del pistone: quale regione rappresenta questo trasferimento di energia in un diagramma pressione-volume?",
+      "Per una pressione costante l’area sotto il tratto orizzontale è un rettangolo. Controlla quanto vale $1\\,\\mathrm{kPa}\\cdot1\\,\\mathrm{L}$ in joule."
+    ],
+    "solution": [
+      "Il lavoro di frontiera è $W=\\int p_{\\mathrm{ext}}\\,dV$. La pressione esterna resta costante e il gas si espande: l’integrale diventa $W=p_{\\mathrm{ext}}(V_f-V_i)=p_{\\mathrm{ext}}\\Delta V$, positivo perché $\\Delta V>0$. Non serve conoscere la posizione iniziale del pistone.",
+      "Nel diagramma $p$-$V$ il lavoro è l’area del rettangolo di altezza $2\\,\\mathrm{kPa}$ e base $\\Delta V$. Poiché $1\\,\\mathrm{kPa}\\cdot1\\,\\mathrm{L}=10^3\\,\\mathrm{Pa}\\cdot10^{-3}\\,\\mathrm{m^3}$, cioè $1\\,\\mathrm{J}$, i dati sono già numericamente compatibili.",
+      "Isolando la base si ottiene $\\Delta V=W/p_{\\mathrm{ext}}=6\\,\\mathrm{J}/(2\\,\\mathrm{kPa})=3\\,\\mathrm{L}$. Il controllo in unità SI dà $2000\\,\\mathrm{Pa}\\times0{,}003\\,\\mathrm{m^3}=6\\,\\mathrm{J}$.",
+      "A parità di lavoro, una pressione doppia richiederebbe un aumento di volume dimezzato: il risultato segue quindi una proporzionalità inversa, non diretta."
+    ],
+    "check": "Ricalcolo indipendente meccanico: scegliendo A=0,01 m², F=pA=20 N e spostamento W/F=0,3 m, A·s=0,003 m³=3 L. Controllo dimensionale e segno positivo dell’espansione. Risposta esatta 3 L.",
+    "reason": "Corretto il testo che prima dichiarava di chiedere W ma poi chiedeva ΔV. Rimossi duplicazioni e ramo fisico boilerplate; conservati p=2 kPa, W=6 J e risposta 3 L. Record facile aggiunto dal sorgente integrale perché bank-selection contiene un solo C3 facile.",
+    "figure": {
+      "stage": "prompt",
+      "alt": "Diagramma con volume sull’asse orizzontale e pressione esterna sull’asse verticale. La trasformazione è orizzontale a 2 kPa, da Vi a Vf; la base del rettangolo è incognita.",
+      "caption": "Schema p-V: il tratto orizzontale rappresenta la pressione costante. L’asse dei volumi non ha una scala numerica.",
+      "lines": [
+        [
+          60,
+          140,
+          365,
+          140
+        ],
+        [
+          60,
+          140,
+          60,
+          25
+        ],
+        [
+          120,
+          140,
+          120,
+          65
+        ],
+        [
+          120,
+          65,
+          300,
+          65
+        ],
+        [
+          300,
+          65,
+          300,
+          140
+        ]
+      ],
+      "arrows": [
+        [
+          60,
+          140,
+          365,
+          140
+        ],
+        [
+          60,
+          140,
+          60,
+          25
+        ],
+        [
+          195,
+          65,
+          235,
+          65
+        ]
+      ],
+      "labels": [
+        {
+          "x": 30,
+          "y": 65,
+          "text": "2"
+        },
+        {
+          "x": 105,
+          "y": 25,
+          "text": "p (kPa)"
+        },
+        {
+          "x": 360,
+          "y": 162,
+          "text": "V (L)"
+        },
+        {
+          "x": 120,
+          "y": 160,
+          "text": "Vi"
+        },
+        {
+          "x": 300,
+          "y": 160,
+          "text": "Vf"
+        },
+        {
+          "x": 210,
+          "y": 115,
+          "text": "ΔV ?"
+        }
+      ]
+    }
+  },
+  {
+    "id": "u5-calorimeter-capacity-09",
+    "title": "Ricavare la massa senza dimenticare il recipiente",
+    "prompt": "In un calorimetro isolato si mescolano due porzioni della stessa sostanza, senza cambiamenti di fase. Il calore specifico è $c=1\\,\\mathrm{J/(g\\,K)}$: la porzione calda, di massa incognita $m_h$, parte da $80\\,{}^\\circ\\mathrm C$; quella fredda, di massa nota $m_c$, parte da $20\\,{}^\\circ\\mathrm C$. Anche il recipiente parte da $20\\,{}^\\circ\\mathrm C$ e ha capacità termica $2\\,\\mathrm{J/K}$. Si misura una temperatura di equilibrio $20<T_f<80$. Quale espressione restituisce il valore numerico di $m_h$ in grammi, inserendo $m_c$ in grammi e $T_f$ in gradi Celsius?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{(m_c+2)(T_f-20)}{80-T_f}$",
+        "feedback": "Il numeratore include il calore assorbito sia dalla porzione fredda sia dal recipiente; il denominatore è il raffreddamento della parte calda."
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{2(m_c+2)(T_f-20)}{80-T_f}$",
+        "feedback": "Il fattore 2 moltiplica senza motivo tutta la massa richiesta: il contributo del recipiente è già incluso nel termine m_c+2."
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{(m_c+2)(T_f-20)}{2(80-T_f)}$",
+        "feedback": "Il fattore 2 al denominatore dimezza il calore ceduto dalla massa calda rispetto a quello necessario."
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{-T_f m_c-T_f+20m_c-40}{T_f-80}$",
+        "feedback": "L’espansione del prodotto della parte fredda non dà questi termini: il recipiente deve contribuire con 2(T_f−20), con entrambi i segni coerenti."
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{-T_f m_c-3T_f+20m_c+120}{T_f-80}$",
+        "feedback": "I coefficienti 3 e 120 non corrispondono alla capacità 2 J/K del recipiente inizialmente a 20 °C."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "A"
+    },
+    "hints": [
+      "Nel bilancio separa chi si raffredda da chi si riscalda. Il recipiente appartiene a uno di questi gruppi.",
+      "Il calore specifico del materiale e la capacità termica del recipiente sono grandezze diverse: il secondo contributo è già una capacità, quindi non va moltiplicato per una massa.",
+      "Il calore ceduto dalla parte calda è $m_h c(80-T_f)$; uguaglialo alla somma dei due contributi assorbiti e isola $m_h$."
+    ],
+    "solution": [
+      "Il sistema è isolato: il calore perso dalla porzione calda viene assorbito dalla porzione fredda e dal recipiente. Con $20<T_f<80$, tutte e tre le quantità scritte come moduli sono positive.",
+      "Il bilancio è $m_hc(80-T_f)$ uguale a $m_cc(T_f-20)+C_{\\mathrm{rec}}(T_f-20)$. Dividendo per $c$, la capacità del recipiente equivale a una massa $C_{\\mathrm{rec}}/c=2\\,\\mathrm g$ della sostanza. Si può quindi raccogliere il secondo membro.",
+      "Per i valori numerici nelle unità indicate, $m_h(80-T_f)$ vale $(m_c+2)(T_f-20)$ e dunque $m_h=\\frac{(m_c+2)(T_f-20)}{80-T_f}$. È l’opzione A, equivalente alla forma espansa del record originale. Le differenze di temperatura hanno lo stesso valore numerico in kelvin e in gradi Celsius; non si sta facendo un rapporto fra temperature assolute.",
+      "Per controllare, scegli $m_c=2\\,\\mathrm g$ e $T_f=40\\,{}^\\circ\\mathrm C$: la formula dà $m_h=2\\,\\mathrm g$. Il caldo cede $2\\times1\\times40=80\\,\\mathrm J$; il freddo assorbe 40 J e il recipiente altri 40 J. Ignorare il recipiente richiederebbe solo metà dell’energia e porterebbe a una massa errata.",
+      "Il denominatore spiega anche il limite fisico: avvicinare $T_f$ a 80 °C con una quantità fredda fissata richiede una massa calda sempre maggiore. Con entrambe le masse positive l’equilibrio non può raggiungere esattamente una delle temperature iniziali."
+    ],
+    "check": "Verifica simbolica: moltiplicare A per(80−Tf) restituisce(m_c+2)(Tf−20); la forma originale A è identica cambiando segno a numeratore e denominatore. A m_c=2,Tf=40 le cinque opzioni valgono2,4,1,3,1: soloA soddisfa80J=40J+40J. Dominio20<Tf<80; massepositive.",
+    "reason": "Rimosso il problema ridotto a isolare una formula già fornita. Esplicitata la massa termica equivalente del recipiente e il dominio della temperatura finale. OpzioniA/B/C riscritte in forme algebricamente equivalenti, D/E conservate; valore corretto e chiaveA invariati."
+  },
+  {
+    "id": "u5-composite-wall-series-09",
+    "title": "Due strati, una sola potenza termica",
+    "prompt": "Una parete di area $A=1\\,\\mathrm{m^2}$ comprende due strati attraversati in successione dal calore. Le conducibilità sono $k_1=1\\,\\mathrm{W/(m\\,K)}$ e $k_2=2\\,\\mathrm{W/(m\\,K)}$; lo spessore $L_2$ è noto, mentre $L_1$ è incognito. Le facce esterne sono mantenute a una differenza di temperatura di $60\\,\\mathrm K$. In regime stazionario, con contatto perfetto e perdite laterali trascurabili, si misura una potenza termica $P>0$. Quale espressione dà $L_1$ in metri, inserendo $L_2$ in metri e $P$ in watt? I dati sono compatibili con entrambi gli spessori positivi.",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{30}{P}-\\dfrac{L_2}{4}$",
+        "feedback": "Questa espressione dimezza tutto lo spessore corretto; non conserva la resistenza termica totale misurata."
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{60}{P}-\\dfrac{L_2}{2}+1$",
+        "feedback": "Il termine aggiuntivo 1, nelle unità numeriche indicate, introduce uno spessore di 1 m non giustificato dai dati."
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{60}{P}-\\dfrac{L_2}{2}-1$",
+        "feedback": "La sottrazione di 1 m non deriva da alcun contributo di resistenza della parete."
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{60}{P}-\\dfrac{L_2}{2}$",
+        "feedback": "Dalla resistenza totale si sottrae il contributo del secondo strato e si ricava lo spessore del primo."
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{120}{P}-L_2$",
+        "feedback": "Questa espressione raddoppia tutto lo spessore corretto; produrrebbe una resistenza maggiore di quella ricavata dalla potenza."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "D"
+    },
+    "hints": [
+      "Nel regime stazionario lo stesso flusso attraversa prima uno strato e poi l’altro: può accumularsi continuamente energia all’interfaccia?",
+      "La caduta di temperatura di ogni strato è $\\Delta T_i=P L_i/(k_i A)$. Somma le due cadute prima di isolare lo spessore incognito."
+    ],
+    "solution": [
+      "In regime stazionario non si accumula energia nella parete. La potenza che attraversa il primo strato è quindi la stessa che attraversa il secondo. Non si sommano due potenze: si sommano le cadute di temperatura lungo il percorso del calore.",
+      "La legge di Fourier per uno strato piano dà $\\Delta T_i=P L_i/(k_iA)$. Ne segue $60\\,\\mathrm K=P[L_1/(k_1A)+L_2/(k_2A)]$. La quantità fra parentesi è la resistenza termica totale, in K/W.",
+      "Con i dati assegnati, se si usano i valori numerici in metri e watt, $60=P(L_1+L_2/2)$. Dividendo per P e sottraendo il termine noto si trova $L_1=60/P-L_2/2$, opzione D. Nella relazione con le unità complete è $L_1=k_1A(\\Delta T/P)-k_1L_2/k_2$.",
+      "Il risultato deve essere positivo: occorre $60/P>L_2/2$. Se la disuguaglianza non fosse soddisfatta, non si dovrebbe accettare uno spessore negativo: i dati sarebbero incompatibili con il modello dichiarato.",
+      "Come controllo, poni $L_2=2\\,\\mathrm m$ e $P=20\\,\\mathrm W$: si trova $L_1=2\\,\\mathrm m$. Le resistenze sono 2 K/W e 1 K/W, quindi le cadute sono 40 K e 20 K; la loro somma restituisce 60 K."
+    ],
+    "check": "Verificaindipendente per cadute termiche: L1=2m,L2=2m,P=20W produceΔT1=40K,ΔT2=20K. Sostituzione simbolica D nel bilancio dà60=P(60/P). Allo stesso puntoA/B/C/D/E danno1/3/1/2/4m: unicaD. DominioL1>0 esplicitato; unitàK/W verificate.",
+    "reason": "Sostituito l’isolamento meccanico di una formula già esposta con il bilancio fisico in serie. Chiarita la convenzione dei valori numerici per i distrattori±1 e aggiunta verifica del dominio. IDopzioni, espressioni equivalenti e chiave D preservati.",
+    "figure": {
+      "stage": "prompt",
+      "alt": "Sezione di due strati in serie fra la faccia calda e la faccia fredda. La potenza P attraversa entrambi; spessori L1 e L2 e conducibilità k1 e k2 sono indicati.",
+      "caption": "Sezione schematica, non in scala: il calore attraversa i due materiali in successione.",
+      "lines": [
+        [
+          85,
+          45,
+          205,
+          45
+        ],
+        [
+          205,
+          45,
+          315,
+          45
+        ],
+        [
+          85,
+          45,
+          85,
+          140
+        ],
+        [
+          205,
+          45,
+          205,
+          140
+        ],
+        [
+          315,
+          45,
+          315,
+          140
+        ],
+        [
+          85,
+          140,
+          315,
+          140
+        ]
+      ],
+      "arrows": [
+        [
+          20,
+          90,
+          75,
+          90
+        ],
+        [
+          325,
+          90,
+          380,
+          90
+        ]
+      ],
+      "labels": [
+        {
+          "x": 40,
+          "y": 65,
+          "text": "P"
+        },
+        {
+          "x": 355,
+          "y": 65,
+          "text": "P"
+        },
+        {
+          "x": 140,
+          "y": 80,
+          "text": "k1 = 1"
+        },
+        {
+          "x": 260,
+          "y": 80,
+          "text": "k2 = 2"
+        },
+        {
+          "x": 140,
+          "y": 160,
+          "text": "L1 ?"
+        },
+        {
+          "x": 260,
+          "y": 160,
+          "text": "L2"
+        },
+        {
+          "x": 200,
+          "y": 23,
+          "text": "ΔT totale = 60 K"
+        }
+      ]
+    }
+  },
+  {
+    "id": "u5-ideal-expansion-entropy-16",
+    "title": "Due espansioni, una sola produzione di entropia",
+    "prompt": "Lo stesso campione di gas ideale compie due trasformazioni successive. Prima raddoppia il volume mediante un’espansione isoterma reversibile, scambiando calore con una sorgente. Poi, in un recipiente rigido e isolato, si espande liberamente nel vuoto fino a quadruplicare il volume raggiunto al termine della prima trasformazione. Fra l’inizio e la fine la variazione di entropia del gas è $12\\,\\mathrm{J/K}$. Quanto aumenta complessivamente l’entropia del gas più la sorgente? Per due stati del gas alla stessa temperatura puoi usare $\\Delta S=nR\\ln(V_f/V_i)$. La sorgente interviene soltanto nel primo tratto; i dispositivi meccanici ideali non producono entropia.",
+    "options": [
+      {
+        "id": "A",
+        "text": "$0\\,\\mathrm{J/K}$",
+        "feedback": "Solo il primo tratto è reversibile. L’espansione libera del secondo tratto produce entropia pur non scambiando calore."
+      },
+      {
+        "id": "B",
+        "text": "$4\\,\\mathrm{J/K}$",
+        "feedback": "Questo è l’aumento di entropia del gas nel primo tratto, compensato dalla diminuzione della sorgente."
+      },
+      {
+        "id": "C",
+        "text": "$6\\,\\mathrm{J/K}$",
+        "feedback": "Le due trasformazioni non producono incrementi uguali nel gas: il secondo rapporto di volumi è 4, il primo è 2."
+      },
+      {
+        "id": "D",
+        "text": "$8\\,\\mathrm{J/K}$",
+        "feedback": "La sorgente compensa il primo incremento del gas; rimane l’incremento dell’espansione libera, che vale 8 J/K."
+      },
+      {
+        "id": "E",
+        "text": "$12\\,\\mathrm{J/K}$",
+        "feedback": "12 J/K è la variazione del solo gas; nel totale occorre includere anche la diminuzione di entropia della sorgente."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "D"
+    },
+    "hints": [
+      "Tieni due conti separati, uno per il gas e uno per la sorgente. Il gas scambia calore in entrambi i tratti?",
+      "Nell’espansione libera isolata $Q=W=0$. Per il gas ideale questo mantiene uguale la temperatura fra gli stati di equilibrio; puoi quindi usare la relazione entropica fornita.",
+      "Confronta $\\ln2$ e $\\ln4$: il secondo incremento del gas è il doppio del primo. In quale tratto la sorgente lo compensa?"
+    ],
+    "solution": [
+      "Indichiamo con $V_0$ il volume iniziale. I volumi di equilibrio successivi sono $2V_0$ e $8V_0$, perché il secondo aumento è di un fattore 4 rispetto al nuovo volume. Nel primo tratto la temperatura resta costante per ipotesi. Nel secondo, isolamento e vuoto esterno danno $Q=0$ e $W=0$, quindi $\\Delta U=0$. Per un gas ideale l’energia interna dipende soltanto dalla temperatura: gli stati iniziale e finale del secondo tratto hanno quindi la stessa T.",
+      "Le variazioni del gas sono $\\Delta S_1=nR\\ln2$ e $\\Delta S_2=nR\\ln4=2nR\\ln2$. Il totale dato è $12=3nR\\ln2$, in J/K. Perciò $\\Delta S_1=4\\,\\mathrm{J/K}$ e $\\Delta S_2=8\\,\\mathrm{J/K}$.",
+      "Il primo tratto è reversibile: il gas riceve calore alla temperatura della sorgente, e la variazione di entropia della sorgente è $\\Delta S_{\\mathrm{sorg}}=-\\Delta S_1=-4\\,\\mathrm{J/K}$. Nel secondo tratto la sorgente non interviene.",
+      "Per gas più sorgente risulta dunque $\\Delta S_{\\mathrm{tot}}=12-4=8\\,\\mathrm{J/K}$, opzione D. Il totale positivo è coerente con l’irreversibilità dell’espansione libera.",
+      "Non sarebbe lecito scrivere $\\Delta S_2=Q_2/T=0$: la relazione con il calore del processo richiede reversibilità. L’entropia del gas si può calcolare fra gli stessi stati tramite un percorso reversibile ausiliario, anche quando il processo effettivo è irreversibile."
+    ],
+    "check": "Controllo indipendente per sistema allargato: ΔStot1=0; ΔStot2=nR ln4. Dal totale gas nR ln8=12 si ha ΔStot=12 ln4/ln8=8 J/K. Identità logaritmica e temperatura costante dell’ideale libero verificate. Tutti distrattori distinti; chiave D invariata.",
+    "reason": "Resi espliciti i volumi V0→2V0→8V0 e la differenza fra entropia scambiata e prodotta. Sostituiti indizi generici; corretta preventivamente la lettura errata Q=0⇒ΔS=0 senza cambiare dati o risposta.",
+    "figure": {
+      "stage": "solution",
+      "alt": "Tre stati successivi del gas con volumi V0, 2V0 e 8V0. Il primo collegamento è reversibile con sorgente; il secondo è espansione libera isolata.",
+      "caption": "Schema dei passaggi: il fattore 4 del secondo tratto si applica al volume 2V0, non a V0.",
+      "lines": [
+        [
+          15,
+          65,
+          85,
+          65
+        ],
+        [
+          85,
+          65,
+          85,
+          120
+        ],
+        [
+          85,
+          120,
+          15,
+          120
+        ],
+        [
+          15,
+          120,
+          15,
+          65
+        ],
+        [
+          155,
+          65,
+          225,
+          65
+        ],
+        [
+          225,
+          65,
+          225,
+          120
+        ],
+        [
+          225,
+          120,
+          155,
+          120
+        ],
+        [
+          155,
+          120,
+          155,
+          65
+        ],
+        [
+          315,
+          65,
+          385,
+          65
+        ],
+        [
+          385,
+          65,
+          385,
+          120
+        ],
+        [
+          385,
+          120,
+          315,
+          120
+        ],
+        [
+          315,
+          120,
+          315,
+          65
+        ]
+      ],
+      "arrows": [
+        [
+          90,
+          92,
+          150,
+          92
+        ],
+        [
+          230,
+          92,
+          310,
+          92
+        ]
+      ],
+      "labels": [
+        {
+          "x": 50,
+          "y": 95,
+          "text": "V0"
+        },
+        {
+          "x": 190,
+          "y": 95,
+          "text": "2V0"
+        },
+        {
+          "x": 350,
+          "y": 95,
+          "text": "8V0"
+        },
+        {
+          "x": 120,
+          "y": 35,
+          "text": "Reversibile"
+        },
+        {
+          "x": 270,
+          "y": 35,
+          "text": "Libera isolata"
+        },
+        {
+          "x": 120,
+          "y": 151,
+          "text": "ΔS gas = 4 J/K"
+        },
+        {
+          "x": 270,
+          "y": 151,
+          "text": "ΔS gas = 8 J/K"
+        }
+      ]
+    }
+  },
+  {
+    "id": "u5-isothermal-work-16",
+    "title": "Il lavoro netto non è il calore dell’isoterma calda",
+    "prompt": "Un campione chiuso di gas ideale percorre questo ciclo: espansione isoterma reversibile da $V$ a $4V$ alla temperatura $T_h$; raffreddamento isocoro fino a $T_h/2$; compressione isoterma reversibile da $4V$ a $V$ alla temperatura $T_h/2$; riscaldamento isocoro fino allo stato iniziale. Il lavoro netto compiuto dal gas è $12\\,\\mathrm J$. Quanto calore assorbe durante la sola isoterma calda? Usa $W=nRT\\ln(V_f/V_i)$ per un’isoterma reversibile, con lavoro positivo se compiuto dal gas. Sono presenti soltanto scambi di calore e lavoro di frontiera; i calori delle isocore non fanno parte della quantità richiesta.",
+    "options": [
+      {
+        "id": "A",
+        "text": "$18\\,\\mathrm J$",
+        "feedback": "Non è la somma di 12 J e una sua metà: la compressione assorbe metà del lavoro dell’espansione calda, che è ancora incognito."
+      },
+      {
+        "id": "B",
+        "text": "$24\\,\\mathrm J$",
+        "feedback": "La compressione fredda cancella metà del lavoro dell’espansione calda. Il lavoro netto di 12 J è quindi metà di Q_h."
+      },
+      {
+        "id": "C",
+        "text": "$36\\,\\mathrm J$",
+        "feedback": "Il rapporto fra i moduli dei lavori è 2:1, non 3:2; 36 J non restituisce il lavoro netto dato."
+      },
+      {
+        "id": "D",
+        "text": "$6\\,\\mathrm J$",
+        "feedback": "Questo valore tratta il calore dell’isoterma calda come metà del lavoro netto; invece è l’espansione calda a dover fornire anche il lavoro assorbito dalla compressione."
+      },
+      {
+        "id": "E",
+        "text": "$12\\,\\mathrm J$",
+        "feedback": "Il lavoro netto è la somma algebrica di tutti i tratti: non coincide con quello della sola isoterma calda."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "B"
+    },
+    "hints": [
+      "Separa i quattro tratti e individua quelli nei quali il volume cambia. Non sommare i moduli dei lavori.",
+      "Le due isoterme percorrono lo stesso intervallo di volumi in versi opposti. Confronta le temperature e il segno dei logaritmi.",
+      "Per il gas ideale lungo un’isoterma $\\Delta U=0$. Dopo aver ricavato il lavoro dell’espansione calda, usa questo fatto per ottenere il calore richiesto."
+    ],
+    "solution": [
+      "Nelle due isocore $dV=0$: il lavoro di frontiera è nullo. Indichiamo con $W_h$ il lavoro positivo dell’espansione calda. La legge fornita dà $W_h=nRT_h\\ln4$.",
+      "Nella compressione fredda il rapporto dei volumi è $V_f/V_i=1/4$ e la temperatura è dimezzata. Perciò $W_c=nR(T_h/2)\\ln(1/4)$. Poiché $\\ln(1/4)=-\\ln4$, si ha $W_c=-W_h/2$. Il segno negativo indica lavoro compiuto sul gas.",
+      "Il lavoro netto del ciclo è $W_{\\mathrm{netto}}=W_h+W_c=W_h/2$. Dato che vale 12 J, $W_h=24\\,\\mathrm J$ e $W_c=-12\\,\\mathrm J$. La somma $24-12=12\\,\\mathrm J$ verifica il dato.",
+      "Lungo l’isoterma calda la temperatura del gas ideale non varia, quindi $\\Delta U_h=0$. Il primo principio dà $Q_h=W_h=24\\,\\mathrm J$, opzione B. Non occorre conoscere il calore specifico del gas.",
+      "Questo non è necessariamente il calore totale assorbito nel ciclo: anche l’isocora di riscaldamento può richiedere calore. La domanda isola volutamente l’isoterma calda. Nel diagramma p-V, il lavoro netto positivo corrisponde all’area racchiusa dal percorso orario."
+    ],
+    "check": "Metodo indipendente: a parità d’intervallo V→4V, p_c(V)=p_h(V)/2. L’area della compressione ha metà modulo e segno opposto; l’area netta 12 J implica area espansione 24 J. Verifica primo principio locale Qh=Wh e globale somma lavori 24−12=12. Chiave B invariata.",
+    "reason": "Sostituiti i suggerimenti intercambiabili con confronti di percorsi, segni e temperature. Distinto calore della sola isoterma da calore complessivo assorbito. Dati, cinque opzioni e chiave B conservati.",
+    "figure": {
+      "stage": "prompt",
+      "alt": "Ciclo nel piano p-V: isoterma calda superiore percorsa da V a 4V, isocora di raffreddamento a 4V, isoterma fredda inferiore percorsa verso V e isocora di riscaldamento a V.",
+      "caption": "Grafico p-V con pressione in unità relative. Le tracce campionano p proporzionale a T/V; le frecce indicano il verso del ciclo.",
+      "lines": [
+        [
+          50,
+          145,
+          370,
+          145
+        ],
+        [
+          50,
+          145,
+          50,
+          20
+        ],
+        [
+          70,
+          40.0,
+          86.0,
+          57.5
+        ],
+        [
+          86.0,
+          57.5,
+          110.0,
+          75.0
+        ],
+        [
+          110.0,
+          75.0,
+          150,
+          92.5
+        ],
+        [
+          150,
+          92.5,
+          190.0,
+          103.0
+        ],
+        [
+          190.0,
+          103.0,
+          230,
+          110.0
+        ],
+        [
+          230,
+          110.0,
+          270.0,
+          115.0
+        ],
+        [
+          270.0,
+          115.0,
+          310,
+          118.75
+        ],
+        [
+          70,
+          92.5,
+          86.0,
+          101.25
+        ],
+        [
+          86.0,
+          101.25,
+          110.0,
+          110.0
+        ],
+        [
+          110.0,
+          110.0,
+          150,
+          118.75
+        ],
+        [
+          150,
+          118.75,
+          190.0,
+          124.0
+        ],
+        [
+          190.0,
+          124.0,
+          230,
+          127.5
+        ],
+        [
+          230,
+          127.5,
+          270.0,
+          130.0
+        ],
+        [
+          270.0,
+          130.0,
+          310,
+          131.875
+        ],
+        [
+          70,
+          40,
+          70,
+          92.5
+        ],
+        [
+          310,
+          118.75,
+          310,
+          131.875
+        ]
+      ],
+      "arrows": [
+        [
+          110.0,
+          75.0,
+          150,
+          92.5
+        ],
+        [
+          310,
+          118.75,
+          310,
+          131.875
+        ],
+        [
+          230,
+          127.5,
+          190.0,
+          124.0
+        ],
+        [
+          70,
+          92.5,
+          70,
+          40
+        ]
+      ],
+      "labels": [
+        {
+          "x": 35,
+          "y": 22,
+          "text": "p"
+        },
+        {
+          "x": 380,
+          "y": 148,
+          "text": "V"
+        },
+        {
+          "x": 70,
+          "y": 165,
+          "text": "V"
+        },
+        {
+          "x": 310,
+          "y": 165,
+          "text": "4V"
+        },
+        {
+          "x": 205,
+          "y": 57,
+          "text": "Th"
+        },
+        {
+          "x": 175,
+          "y": 131,
+          "text": "Th/2"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,114 @@
+[
+  {
+    "id": "u6-midpoint-electric-field-01",
+    "method": "vector sum k*q*dx/|dx|^3 with SI charges",
+    "result": "18",
+    "expected": "18",
+    "passed": true
+  },
+  {
+    "id": "u6-midpoint-electric-field-01",
+    "method": "symmetry counterexample equal charges",
+    "result": "0",
+    "expected": "0",
+    "passed": true
+  },
+  {
+    "id": "u6-lorentz-force-03",
+    "method": "(v cross B) dot v",
+    "result": "0",
+    "expected": "0",
+    "passed": true
+  },
+  {
+    "id": "u6-lorentz-force-03",
+    "method": "(v cross B) dot v",
+    "result": "0",
+    "expected": "0",
+    "passed": true
+  },
+  {
+    "id": "u6-lorentz-force-03",
+    "method": "(v cross B) dot v",
+    "result": "0",
+    "expected": "0",
+    "passed": true
+  },
+  {
+    "id": "u6-two-series-resistors-06",
+    "method": "test source1V, current1/2A, bypass branch0V",
+    "result": "2",
+    "expected": "2",
+    "passed": true
+  },
+  {
+    "id": "u6-work-potential-difference-08",
+    "method": "energy gain in eV at charge\u22121 elementary unit",
+    "result": "5.0",
+    "expected": "5.0",
+    "passed": true
+  },
+  {
+    "id": "u6-work-potential-difference-08",
+    "method": "SI energy divided by joules perkeV",
+    "result": "5.0",
+    "expected": "5.0",
+    "passed": true
+  },
+  {
+    "id": "u6-capacitor-energy-09",
+    "method": "triangular work forU4,V2",
+    "result": "4",
+    "expected": "4",
+    "passed": true
+  },
+  {
+    "id": "u6-capacitor-energy-09",
+    "method": "triangular work forU9,V3",
+    "result": "9",
+    "expected": "9",
+    "passed": true
+  },
+  {
+    "id": "u6-capacitor-energy-09",
+    "method": "triangular work forU5,V1",
+    "result": "5",
+    "expected": "5",
+    "passed": true
+  },
+  {
+    "id": "u6-faraday-average-emf-09",
+    "method": "SI integral emf2V\u00b7duration0.005s /10 turns, convertmWb",
+    "result": "1",
+    "expected": "1",
+    "passed": true
+  },
+  {
+    "id": "u6-accelerated-magnetic-radius-13",
+    "method": "absolute rA2m;vB\u221a2m/s;targetrB\u221a2/2m \u21d2B_B",
+    "result": "2.0",
+    "expected": "2.0",
+    "passed": true
+  },
+  {
+    "id": "u6-connected-plate-separation-charge-13",
+    "method": "C0=3\u03bcF,VA4V,sA2 \u21d2QfA",
+    "result": "6",
+    "expected": "6",
+    "passed": true
+  },
+  {
+    "id": "u6-connected-plate-separation-charge-13",
+    "method": "C0=3\u03bcF,VB3V,sB3 \u21d2QfB",
+    "result": "3",
+    "expected": "3",
+    "passed": true
+  },
+  {
+    "id": "u6-connected-plate-separation-charge-13",
+    "method": "required geometric ratio",
+    "result": "3/2",
+    "expected": "3/2",
+    "passed": true
+  }
+]

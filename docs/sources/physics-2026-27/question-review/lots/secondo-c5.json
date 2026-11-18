@@ -1,0 +1,70 @@
+[
+  {
+    "id": "u7-wavelength-in-medium-04",
+    "title": "Quanto rallenta la fase luminosa nel mezzo?",
+    "prompt": "Per una certa luce monocromatica un materiale trasparente ha indice di rifrazione $n=\\frac32$. Nel vuoto la luce ha velocità $c=3\\cdot10^8\\,\\mathrm{m/s}$. Qual è la velocità di fase nel materiale?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$1{,}5\\cdot10^8\\,\\mathrm{m/s}$",
+        "feedback": "Questo valore corrisponderebbe a dividere la velocità nel vuoto per due, quindi a un indice 2."
+      },
+      {
+        "id": "B",
+        "text": "$6\\cdot10^8\\,\\mathrm{m/s}$",
+        "feedback": "Prova a ricavare l’indice dal risultato. Un valore sopra c darebbe qui un indice minore di uno."
+      },
+      {
+        "id": "C",
+        "text": "$2\\cdot10^8\\,\\mathrm{m/s}$",
+        "feedback": "Dividendo c per questa velocità ritrovi l’indice 3/2."
+      },
+      {
+        "id": "D",
+        "text": "$4{,}5\\cdot10^8\\,\\mathrm{m/s}$",
+        "feedback": "Hai moltiplicato per l’indice. Nella definizione la velocità nel mezzo è al denominatore."
+      },
+      {
+        "id": "E",
+        "text": "$3\\cdot10^8\\,\\mathrm{m/s}$",
+        "feedback": "Questa è la velocità nel vuoto. Per ritrovarla nel mezzo occorrerebbe un indice 1."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "C"
+    },
+    "hints": [
+      "L’indice confronta le velocità della fase nei due mezzi. Chiediti se, con indice maggiore di uno, la velocità nel materiale debba essere più alta o più bassa."
+    ],
+    "solution": [
+      "L’indice di rifrazione a questa frequenza è il rapporto $n=\\frac{c}{v}$. Per trovare $v$, moltiplica per $v$ e dividi per $n$. Si ottiene $v=\\frac{c}{n}$.",
+      "Dividere per $\\frac32$ equivale a moltiplicare per $\\frac23$, quindi $v=3\\cdot10^8\\cdot\\frac23=2\\cdot10^8\\,\\mathrm{m/s}$. L’indice è adimensionale e il risultato mantiene le unità di $c$.",
+      "Controllo: il tempo per avanzare di una stessa distanza è una volta e mezza quello nel vuoto, perché $c/v=3/2$. Il risultato riguarda la fase alla frequenza indicata."
+    ],
+    "check": "Ricalcolo indipendente: in un metro la fase impiega 5 ns nel mezzo contro 10/3 ns nel vuoto. Il rapporto dei tempi è 3/2. Delle cinque velocità, solo C dà l’indice assegnato.",
+    "reason": "Tolto il blocco di ipotesi ripetuto e mantenuti i cinque valori e la chiave. Aggiunta una motivazione per il verso della relazione e un controllo sui tempi."
+  },
+  {
+    "id": "u7-critical-angle-sine-13",
+    "title": "Cambiare i due indici senza perdere la soglia",
+    "prompt": "Un raggio attraversa un’interfaccia piana fra due mezzi trasparenti. Parte dal mezzo di indice $n_i$ e incontra quello di indice $n_e<n_i$. L’angolo critico $\\theta_c$ si misura dalla normale. Nel caso A, $n_{i,\\mathrm A}=2$ e $n_{e,\\mathrm A}=1$. Nel caso B, $n_{e,\\mathrm B}=2$ e il seno dell’angolo critico deve essere $\\frac43$ volte quello del caso A. Quale rapporto $n_{i,\\mathrm B}/n_{i,\\mathrm A}$ serve?",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "3/2",
+      "unit": "1"
+    },
+    "hints": [
+      "Parti dal raggio rifratto al limite: quale direzione ha rispetto alla superficie e alla normale?",
+      "Imposta separatamente i due seni critici. Il requisito cambia il seno dell’angolo e l’indice del mezzo di arrivo."
+    ],
+    "solution": [
+      "Alla soglia il raggio refratto è radente alla superficie, quindi il suo angolo rispetto alla normale è $90^\\circ$. Snell diventa $n_i\\sin\\theta_c=n_e$, da cui $\\sin\\theta_c=n_e/n_i$. La soglia esiste perché il rapporto è minore di uno.",
+      "Nel caso A, $\\sin\\theta_{c,\\mathrm A}=\\frac12$. Il valore richiesto nel caso B è $\\frac43\\cdot\\frac12=\\frac23$. Con $n_{e,\\mathrm B}=2$ serve $n_{i,\\mathrm B}=2/(\\frac23)=3$. Il rapporto tra gli indici di partenza è quindi $\\frac32$.",
+      "Per controllare il risultato, inserisci $n_{i,\\mathrm B}=3$ nella legge di Snell al limite: si ottiene $3\\cdot\\frac23=2$. L’indice di partenza supera ancora quello di arrivo e il seno è nel dominio fisico."
+    ],
+    "check": "Ricalcolo per rapporti: (n_e,B/n_e,A)/(sinθ_c,B/sinθ_c,A)=2/(4/3)=3/2. Con n_i,B=3>2 il ramo fisico è coerente.",
+    "reason": "Sostituita la locuzione «grandezza d’uscita» con una richiesta esplicita sul seno. Distinte le due configurazioni e controllato il dominio della soglia."
+  }
+]

@@ -1,0 +1,325 @@
+[
+  {
+    "id": "u5-emitted-blackbody-power-01",
+    "title": "Da un’area piccola, quanta radiazione esce?",
+    "prompt": "Una superficie nera ideale ha area emittente $A=5\\,\\mathrm{cm^2}$ e temperatura assoluta $T=100\\theta\\,\\mathrm K$, con $\\theta=2$. Calcola la sola potenza emessa, in milliwatt, usando $P=\\sigma AT^4$ e $\\sigma=6\\cdot10^{-8}\\,\\mathrm{W/(m^2\\,K^4)}$. Non sottrarre la radiazione che la superficie potrebbe assorbire dall’ambiente.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "48",
+      "unit": "mW"
+    },
+    "hints": [
+      "Il parametro $\\theta$ non è la temperatura da elevare alla quarta nella formula SI. Ricava prima $T$ in kelvin.",
+      "Converti anche l’area: un centimetro quadrato è un quadrato di lato un centesimo di metro. Solo alla fine passa dai watt ai milliwatt."
+    ],
+    "solution": [
+      "La temperatura vale $T=100\\cdot2\\,\\mathrm K=200\\,\\mathrm K$. L’area è $A=5(10^{-2}\\,\\mathrm m)^2=5\\cdot10^{-4}\\,\\mathrm{m^2}$. Il quadrato nella conversione dell’area è essenziale: il fattore non è $10^{-2}$.",
+      "La quarta potenza della temperatura è $(200\\,\\mathrm K)^4=1{,}6\\cdot10^9\\,\\mathrm{K^4}$. La potenza emessa per unità di area è quindi $\\sigma T^4=96\\,\\mathrm{W/m^2}$. Moltiplicando per l’area si ottiene $P=96\\cdot5\\cdot10^{-4}\\,\\mathrm W$, cioè $0{,}048\\,\\mathrm W$, quindi $48\\,\\mathrm{mW}$.",
+      "Il risultato riguarda l’emissione. Per conoscere lo scambio netto con un ambiente radiativo occorrerebbero anche le sue condizioni: una superficie può emettere e contemporaneamente assorbire radiazione.",
+      "Come controllo della dipendenza da $T$, dimezzare la temperatura assoluta ridurrebbe questa potenza di un fattore $2^4=16$, a $3\\,\\mathrm{mW}$. La legge non usa la temperatura in gradi Celsius."
+    ],
+    "check": "Ricalcolo in SI: 6e−8 × 5e−4 × 200^4 × 1000 = 48 mW. Verifica alternativa del coefficiente: P[mW]=(3/5)A[cm²]θ^4=(3/5)×5×16. Dimezzamento T:48/16=3 mW. Dati, risposta e unità originali preservati.",
+    "reason": "Eliminati le ipotesi ripetute e i passaggi aritmetici isolati dalla fisica. Separati temperatura scalata, conversione dell’area, flusso emissivo e potenza; mantenuta la distinzione fra emissione e scambio netto."
+  },
+  {
+    "id": "u5-carnot-efficiency-09",
+    "title": "Quale sorgente calda serve per quel rendimento?",
+    "prompt": "Una macchina reversibile opera soltanto fra due sorgenti a temperature assolute $T_h>T_c>0$. Il rendimento misurato è $\\eta_C$, con $0<\\eta_C<1$, e si conosce $T_c$. Per scrivere le opzioni come numeri, definiamo $t_c=T_c/(1\\,\\mathrm K)$ e $t_h=T_h/(1\\,\\mathrm K)$. Quale espressione fornisce $t_h$?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{\\eta_C-t_c-1}{\\eta_C-1}$",
+        "feedback": "Questa espressione è $1+t_c/(1-\\eta_C)$: aggiunge un kelvin alla temperatura corretta senza alcun motivo fisico."
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{-\\eta_C-t_c+1}{\\eta_C-1}$",
+        "feedback": "Questa espressione è $t_c/(1-\\eta_C)-1$: sottrae un kelvin alla temperatura ricavata dal bilancio reversibile."
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{-t_c}{\\eta_C-1}$",
+        "feedback": "I due segni meno si compensano: si divide la temperatura fredda per $1-\\eta_C$, un numero positivo minore di uno."
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{-2t_c}{\\eta_C-1}$",
+        "feedback": "Il fattore 2 raddoppia la temperatura necessaria. Reintroducendola nella legge di Carnot non si ritrova il rendimento assegnato."
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{-t_c}{2\\eta_C-2}$",
+        "feedback": "Il denominatore è $2(\\eta_C-1)$: questa temperatura è metà di quella richiesta, non la stessa espressione riscritta."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "C"
+    },
+    "hints": [
+      "La reversibilità lega il rapporto dei calori scambiati al rapporto delle temperature assolute. Collega quel rapporto alla frazione di calore trasformata in lavoro.",
+      "Dopo aver scritto il rendimento di Carnot, isola prima il rapporto $T_c/T_h$. Controlla che la temperatura calda trovata sia maggiore di quella fredda."
+    ],
+    "solution": [
+      "Indichiamo con $Q_h$ e $Q_c$ i moduli dei calori ricevuto e ceduto in un ciclo. La conservazione dell’energia dà $\\eta_C=1-Q_c/Q_h$. Per il ciclo reversibile il bilancio di entropia impone $Q_c/T_c=Q_h/T_h$, quindi $\\eta_C=1-T_c/T_h$.",
+      "Portando il rapporto delle temperature da solo si ottiene $1-\\eta_C=T_c/T_h$. Moltiplicando per $T_h$ e dividendo per $1-\\eta_C>0$ risulta $T_h=T_c/(1-\\eta_C)$. Anche i valori numerici in kelvin soddisfano $t_h=t_c/(1-\\eta_C)=-t_c/(\\eta_C-1)$: opzione C.",
+      "Il denominatore è compreso fra zero e uno, perciò $T_h>T_c$, come richiesto. Per esempio, con $T_c=200\\,\\mathrm K$ e $\\eta_C=1/2$ si trova $T_h=400\\,\\mathrm K$; sostituendo si recupera $1-200/400=1/2$.",
+      "A temperatura fredda fissata, un rendimento più vicino a uno richiede una temperatura calda sempre maggiore. Il valore uno non si raggiunge con due temperature finite e positive. Non si può sostituire un rapporto di temperature Celsius al rapporto delle temperature assolute."
+    ],
+    "check": "Algebra indipendente: A=t_c/(1−η)+1, B=t_c/(1−η)−1, C=t_c/(1−η), D=2C, E=C/2. Esempio t_c=200,η=1/2 produce 401,399,400,800,200; solo C ricostruisce η. Valori numerici e chiave C originali preservati; definizioni t_c,t_h rendono dimensionalmente leciti i distrattori con ±1.",
+    "reason": "Tolte la formula già risolta nella consegna e le dieci sezioni ripetitive. Ricostruito il nesso fra rendimento, calori e reversibilità. Esplicitata la natura numerica delle opzioni originali, che altrimenti sommavano temperature e numeri adimensionali."
+  },
+  {
+    "id": "u6-parallel-capacitors-06",
+    "title": "Polarità opposte: quale carica rimane sui nodi?",
+    "prompt": "Un condensatore da $1\\,\\mathrm{\\mu F}$ è carico a $6\\,\\mathrm V$ e uno da $2\\,\\mathrm{\\mu F}$ a $3\\,\\mathrm V$. Dopo aver scollegato entrambi dai generatori, si collega l’armatura positiva del primo alla negativa del secondo e si uniscono fra loro le due armature rimaste. Le capacità non cambiano e non vi sono perdite attraverso i dielettrici. Si attende che il transitorio si esaurisca, grazie alla debole dissipazione nei collegamenti. Qual è la tensione finale fra i due nodi?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$0\\,\\mathrm V$",
+        "feedback": "Su ciascun nodo si riuniscono cariche iniziali uguali in modulo e opposte in segno. Nessun generatore ne aggiunge altre."
+      },
+      {
+        "id": "B",
+        "text": "$2\\,\\mathrm V$",
+        "feedback": "Questo valore si ottiene dividendo $6\\,\\mathrm{\\mu C}$ per la capacità totale, ma trascura la carica iniziale di segno opposto portata dal secondo condensatore."
+      },
+      {
+        "id": "C",
+        "text": "$3\\,\\mathrm V$",
+        "feedback": "È la tensione iniziale del secondo condensatore; il collegamento permette alle cariche di redistribuirsi e non la mantiene fissata."
+      },
+      {
+        "id": "D",
+        "text": "$4\\,\\mathrm V$",
+        "feedback": "È il risultato del collegamento con polarità concordi: $(6+6)\\,\\mathrm{\\mu C}/(3\\,\\mathrm{\\mu F})$. Qui le cariche vanno invece sommate con segni opposti."
+      },
+      {
+        "id": "E",
+        "text": "$6\\,\\mathrm V$",
+        "feedback": "Il primo condensatore non è un generatore ideale: dopo lo scollegamento la sua tensione può cambiare."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "A"
+    },
+    "hints": [
+      "Non confrontare soltanto le tensioni iniziali: ricava la carica su ogni armatura con $Q=CV$.",
+      "Scegli uno dei due nodi finali e somma, con il loro segno, le cariche iniziali delle due armature che lo formeranno."
+    ],
+    "solution": [
+      "I moduli delle cariche iniziali sono $Q_1=1\\,\\mathrm{\\mu F}\\cdot6\\,\\mathrm V=6\\,\\mathrm{\\mu C}$ e $Q_2=2\\,\\mathrm{\\mu F}\\cdot3\\,\\mathrm V=6\\,\\mathrm{\\mu C}$. Capacità diverse non impediscono di avere cariche uguali in modulo.",
+      "Il nodo formato dal positivo del primo e dal negativo del secondo porta la carica totale $Q_A=+6-6=0$, in microcoulomb. Il collegamento ridistribuisce carica fra le armature dello stesso nodo, ma non trasferisce carica attraverso i dielettrici: $Q_A$ si conserva.",
+      "A transitorio concluso i condensatori hanno la stessa tensione $V_f$ fra i due nodi e capacità totale $C_1+C_2=3\\,\\mathrm{\\mu F}$. Pertanto $Q_A=(C_1+C_2)V_f$ impone $V_f=0\\,\\mathrm V$, risposta A.",
+      "L’energia elettrostatica iniziale non era nulla: $U_i=\\frac12(C_1V_1^2+C_2V_2^2)$. I due contributi sono $18\\,\\mathrm{\\mu J}$ e $9\\,\\mathrm{\\mu J}$, per un totale di $27\\,\\mathrm{\\mu J}$. Alla fine è nulla: nel modello con collegamenti dissipativi l’energia iniziale è stata convertita in calore. La conservazione della carica su ciascun nodo non implica conservazione della sola energia elettrica immagazzinata."
+    ],
+    "check": "Ricalcolo delle cariche ±CV: 6 μC e −6 μC sul nodo A, opposte sul nodo B; capacità totale 3 μF, V_f=0. Energia iniziale 27 μJ, finale 0; dissipazione nel collegamento rende possibile lo stato finale. Caso di controllo polarità concordi: V_f=4 V e energia finale24 μJ. Chiave A e cinque valori originali preservati.",
+    "reason": "Chiariti entrambi i collegamenti e il meccanismo che consente di arrivare allo stato finale: una rete LC perfettamente priva di dissipazione potrebbe continuare a oscillare. Distinti conservazione della carica sui nodi e bilancio energetico; feedback specifici per ciascuna alternativa."
+  },
+  {
+    "id": "u6-plane-capacitance-08",
+    "title": "Dal potenziale al campo fra due piastre",
+    "prompt": "Due armature piane parallele, molto estese rispetto alla loro separazione, distano $2\\,\\mathrm{cm}$. Quella a sinistra è mantenuta a $+40\\,\\mathrm V$, quella a destra a $0\\,\\mathrm V$. Nel modello elettrostatico, trascurando gli effetti di bordo, qual è il campo elettrico nella regione interna?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Un campo nullo perché la carica totale delle due armature può essere zero.",
+        "feedback": "Due cariche totali uguali e opposte non annullano il campo ovunque. Nello spazio interno i campi delle due piastre si sommano."
+      },
+      {
+        "id": "B",
+        "text": "Un campo di $80\\,\\mathrm{V/m}$ che cresce da sinistra a destra.",
+        "feedback": "Il potenziale cambia con la posizione, ma la sua pendenza è costante nel modello piano. Il modulo del campo richiede una divisione per la distanza in metri, non $40\\cdot2$."
+      },
+      {
+        "id": "C",
+        "text": "Un campo uniforme di $2\\cdot10^3\\,\\mathrm{V/m}$, perpendicolare alle piastre e diretto da sinistra a destra.",
+        "feedback": "La separazione vale 0,02 m e il verso del campo segue il potenziale decrescente."
+      },
+      {
+        "id": "D",
+        "text": "Un campo uniforme di $2\\cdot10^3\\,\\mathrm{V/m}$, perpendicolare alle piastre e diretto da destra a sinistra.",
+        "feedback": "Il modulo è corretto. Il campo elettrico punta però dal potenziale maggiore a quello minore, quindi verso destra."
+      },
+      {
+        "id": "E",
+        "text": "Un campo parallelo alle piastre di $20\\,\\mathrm{V/m}$.",
+        "feedback": "Le piastre sono equipotenziali: il campo elettrostatico alla superficie di un conduttore non ha una componente tangenziale. Inoltre 20 V/m su 0,02 m darebbe soltanto 0,4 V."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "C"
+    },
+    "hints": [
+      "Determina separatamente geometria del campo, verso e modulo. Il fatto che il potenziale cambi non significa che cambi anche il campo.",
+      "Prendi un asse $x$ da sinistra a destra. Usa $E_x=-\\Delta V/\\Delta x$ per un campo uniforme, convertendo prima i centimetri in metri."
+    ],
+    "solution": [
+      "Nel modello senza bordi il campo fra le piastre è uniforme e perpendicolare alle superfici. La distanza è $d=2\\,\\mathrm{cm}=0{,}02\\,\\mathrm m$.",
+      "Con l’asse $x$ diretto verso destra, la variazione del potenziale è $V_{\\mathrm{destra}}-V_{\\mathrm{sinistra}}=-40\\,\\mathrm V$. Quindi $E_x=\\frac{40\\,\\mathrm V}{0{,}02\\,\\mathrm m}$, pari a $+2000\\,\\mathrm{V/m}$. Il segno positivo indica il verso da sinistra a destra: risposta C.",
+      "Il controllo inverso è $\\Delta V=-E_xd$, cioè $-2000\\cdot0{,}02\\,\\mathrm V$, quindi $-40\\,\\mathrm V$, proprio la diminuzione assegnata. La tensione fra le piastre è 40 V; il numero 2000 misura invece la variazione di potenziale per metro.",
+      "Una carica di prova positiva sarebbe spinta verso destra; un elettrone subirebbe una forza verso sinistra. Il verso del campo è definito usando una carica positiva, indipendentemente dalla carica che vi si introduce."
+    ],
+    "check": "Pendenza del potenziale: (0−40)/0,02=−2000 V/m; E_x=−dV/dx=+2000 V/m. Inversione ΔV=−E_xd=−40 V. Distrattore E:20×0,02=0,4 V. Chiave C e valori delle opzioni preservati.",
+    "reason": "Eliminati formule ripetute e conclusioni generiche. Distinti potenziale lineare e campo uniforme, conversione delle unità e segno del gradiente. Figura della sola geometria posta nella consegna senza anticipare il campo.",
+    "figure": {
+      "stage": "prompt",
+      "alt": "Due piastre verticali: sinistra a più 40 V, destra a zero V, separate di 2 cm. Non è disegnato il campo da determinare.",
+      "caption": "Schema della regione centrale fra le armature; gli effetti dei bordi sono trascurati.",
+      "lines": [
+        [
+          100,
+          40,
+          100,
+          130
+        ],
+        [
+          300,
+          40,
+          300,
+          130
+        ],
+        [
+          100,
+          148,
+          300,
+          148
+        ],
+        [
+          100,
+          141,
+          100,
+          155
+        ],
+        [
+          300,
+          141,
+          300,
+          155
+        ]
+      ],
+      "labels": [
+        {
+          "x": 100,
+          "y": 22,
+          "text": "+40 V"
+        },
+        {
+          "x": 300,
+          "y": 22,
+          "text": "0 V"
+        },
+        {
+          "x": 200,
+          "y": 166,
+          "text": "2 cm"
+        }
+      ]
+    }
+  },
+  {
+    "id": "u6-force-current-wire-01",
+    "title": "La forza sul tratto immerso nel campo",
+    "prompt": "Un tratto rettilineo di filo lungo $3\\,\\mathrm{cm}$ è interamente immerso in un campo magnetico uniforme di modulo $1\\,\\mathrm T$. Nel tratto scorre una corrente di $2\\,\\mathrm A$, perpendicolare al campo. Quanto vale il modulo della forza magnetica su questo tratto, espresso in millinewton?",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "60",
+      "unit": "mN"
+    },
+    "hints": [
+      "Considera solo il tratto indicato, non l’intero circuito. La forza dipende anche dall’angolo fra corrente e campo.",
+      "Nella relazione $F=BIL\\sin\\theta$, qui $\\theta=90^\\circ$. Prima del prodotto, esprimi la lunghezza in metri."
+    ],
+    "solution": [
+      "Per un tratto rettilineo in un campo uniforme, $\\mathbf F=I\\boldsymbol\\ell\\times\\mathbf B$, dove $\\boldsymbol\\ell$ ha il verso della corrente convenzionale e modulo pari alla lunghezza nel campo. La perpendicolarità rende $\\sin\\theta=1$, perciò $F=BIL$.",
+      "La lunghezza è $L=3\\,\\mathrm{cm}=0{,}03\\,\\mathrm m$. Si ottiene $F=1\\,\\mathrm T\\cdot2\\,\\mathrm A\\cdot0{,}03\\,\\mathrm m$, cioè $0{,}06\\,\\mathrm N$, quindi $60\\,\\mathrm{mN}$. L’unità è coerente perché $\\mathrm T=\\mathrm{N/(A\\,m)}$.",
+      "Il campo e la corrente possono cambiare verso senza cambiare il modulo della forza; invertire soltanto uno dei due inverte però la forza. Se invece il tratto fosse parallelo al campo, il prodotto vettoriale sarebbe nullo: non si potrebbe usare $F=BIL$ senza il fattore angolare."
+    ],
+    "check": "Ricalcolo SI:1×2×0,03=0,06 N=60 mN. Metodo per unità di lunghezza:F/L=BI=2 N/m, quindi 2 mN/mm×30 mm=60 mN. Caso parallelo sin0=0. Risposta 60 mN invariata.",
+    "reason": "Concentrata la consegna sul tratto effettivamente immerso. Lo svolgimento collega la formula al prodotto vettoriale e giustifica la conversione finale senza sequenze aritmetiche meccaniche.",
+    "figure": {
+      "stage": "prompt",
+      "alt": "Tratto di filo orizzontale con corrente verso destra e lunghezza 3 cm; quattro frecce verticali verso l’alto rappresentano un campo magnetico uniforme perpendicolare al filo.",
+      "caption": "Una possibile orientazione coerente con la perpendicolarità richiesta. La forza non è disegnata.",
+      "lines": [
+        [
+          95,
+          100,
+          305,
+          100
+        ],
+        [
+          95,
+          120,
+          95,
+          132
+        ],
+        [
+          305,
+          120,
+          305,
+          132
+        ],
+        [
+          95,
+          126,
+          305,
+          126
+        ]
+      ],
+      "arrows": [
+        [
+          120,
+          115,
+          120,
+          45
+        ],
+        [
+          180,
+          115,
+          180,
+          45
+        ],
+        [
+          240,
+          115,
+          240,
+          45
+        ],
+        [
+          300,
+          115,
+          300,
+          45
+        ],
+        [
+          170,
+          100,
+          220,
+          100
+        ]
+      ],
+      "labels": [
+        {
+          "x": 205,
+          "y": 18,
+          "text": "B = 1 T"
+        },
+        {
+          "x": 200,
+          "y": 82,
+          "text": "I = 2 A"
+        },
+        {
+          "x": 200,
+          "y": 151,
+          "text": "3 cm"
+        }
+      ]
+    }
+  }
+]

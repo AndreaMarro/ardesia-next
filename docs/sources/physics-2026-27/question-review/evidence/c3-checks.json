@@ -1,0 +1,91 @@
+[
+  {
+    "id": "u5-first-law-expansion-01",
+    "method": "conservation remainder",
+    "result": "60",
+    "expected": "60",
+    "passed": true
+  },
+  {
+    "id": "u5-isothermal-chambers-06",
+    "method": "inventories for unequal initial pressures 2,8 at identical V/T: final pressure5, each inventory5/total10",
+    "result": "1/2",
+    "expected": "1/2",
+    "passed": true
+  },
+  {
+    "id": "u5-isobaric-work-06",
+    "method": "mechanical force20N on area0.01m2 and travel6J/20N, volume in litres",
+    "result": "3",
+    "expected": "3",
+    "passed": true
+  },
+  {
+    "id": "u5-calorimeter-capacity-09",
+    "method": "heat balance Tf=30,mc=3",
+    "result": "50",
+    "expected": "50",
+    "passed": true
+  },
+  {
+    "id": "u5-calorimeter-capacity-09",
+    "method": "heat balance Tf=40,mc=2",
+    "result": "80",
+    "expected": "80",
+    "passed": true
+  },
+  {
+    "id": "u5-calorimeter-capacity-09",
+    "method": "heat balance Tf=60,mc=8",
+    "result": "400",
+    "expected": "400",
+    "passed": true
+  },
+  {
+    "id": "u5-calorimeter-capacity-09",
+    "method": "heat balance Tf=75,mc=1",
+    "result": "165",
+    "expected": "165",
+    "passed": true
+  },
+  {
+    "id": "u5-composite-wall-series-09",
+    "method": "series temperature drops P=20,L2=2",
+    "result": "60",
+    "expected": "60",
+    "passed": true
+  },
+  {
+    "id": "u5-composite-wall-series-09",
+    "method": "series temperature drops P=10,L2=4",
+    "result": "60",
+    "expected": "60",
+    "passed": true
+  },
+  {
+    "id": "u5-composite-wall-series-09",
+    "method": "series temperature drops P=15,L2=2",
+    "result": "60",
+    "expected": "60",
+    "passed": true
+  },
+  {
+    "id": "u5-ideal-expansion-entropy-16",
+    "method": "entropy increments in ratio ln2:ln4=1:2; reservoir cancels first",
+    "result": "8",
+    "expected": "8",
+    "passed": true
+  },
+  {
+    "id": "u5-isothermal-work-16",
+    "method": "hot curve minus half-height cold curve has net12J",
+    "result": "24",
+    "expected": "24",
+    "passed": true
+  },
+  {
+    "id": "u5-engine-efficiency-03",
+    "method": "Kelvin-Planck: cyclic single-reservoir sole effect; noncyclic isothermal counterexample checked",
+    "passed": true
+  }
+]

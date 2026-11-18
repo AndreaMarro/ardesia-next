@@ -1,0 +1,427 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=20mm,bottom=25mm]{geometry}
+\usepackage{fontspec}
+\usepackage{amsmath,amssymb,xcolor,tikz,fancyhdr}
+\setmainfont{lmroman10-regular.otf}[BoldFont=lmroman10-bold.otf,ItalicFont=lmroman10-italic.otf]
+\setsansfont{lmsans10-regular.otf}[BoldFont=lmsans10-bold.otf]
+\definecolor{forest}{HTML}{265F51}
+\definecolor{ink}{HTML}{172C25}
+\color{ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{.38em}
+\setlength{\emergencystretch}{2em}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\small Andrea Marro 3461653930 se serve chiedi!}
+\renewcommand{\headrulewidth}{0pt}
+\begin{document}
+% u2-mean-velocity-03 · 2e691b5743bd312ba8180da48324599138821a2db0896c88fffcba1411552967
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} Tornare al punto di partenza}\par\smallskip
+Una persona percorre \(6\,\mathrm{m}\) verso est e poi torna al punto di partenza percorrendo \(6\,\mathrm{m}\) verso ovest. L’intero tragitto dura \(4\,\mathrm{s}\). Quali sono, nell’ordine, il modulo della velocità media vettoriale e la rapidità media sull’intero tragitto?\par
+
+\begin{center}
+\begin{tikzpicture}[x=.32mm,y=.32mm]
+\path[use as bounding box] (0,-2) rectangle (400,180);
+\draw[->,draw=forest,line width=.6pt] (70,118) -- (325,118);
+\draw[->,draw=forest,line width=.6pt] (325,58) -- (70,58);
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (70,80) {Partenza};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (325,80) {Est};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (200,143) {Andata: 6 m};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (200,32) {Ritorno: 6 m};
+\end{tikzpicture}\par
+\small\itshape Schema del medesimo segmento, non in scala. Le due frecce sono separate solo per leggibilità; il tempo totale è 4 s.
+\end{center}
+\begin{list}{}{\setlength{\leftmargin}{1.4em}\setlength{\itemsep}{.1em}\setlength{\parsep}{0pt}}\small
+\item[A.] \(6\,\mathrm{m/s}\) e \(3\,\mathrm{m/s}\)
+\item[B.] \(0\,\mathrm{m/s}\) e \(3\,\mathrm{m/s}\)
+\item[C.] \(3\,\mathrm{m/s}\) e \(0\,\mathrm{m/s}\)
+\item[D.] \(3\,\mathrm{m/s}\) e \(3\,\mathrm{m/s}\)
+\item[E.] \(0\,\mathrm{m/s}\) e \(0\,\mathrm{m/s}\)
+\end{list}
+{\small\textbf{Suggerimenti.} Distingui ciò che dipende soltanto dai punti di partenza e arrivo da ciò che dipende da tutto il percorso. Scegli l’est come verso positivo. Scrivi separatamente lo spostamento totale e la somma delle lunghezze dei due tratti; dividi poi ciascuno per il tempo totale.\par}
+\medskip\noindent\textbf{Risposta.} B. \(0\,\mathrm{m/s}\) e \(3\,\mathrm{m/s}\)\par
+
+
+Poniamo l’origine nel punto di partenza e scegliamo positivo il verso est. Il primo tratto produce uno spostamento di \(+6\,\mathrm{m}\), il ritorno di \(-6\,\mathrm{m}\): lo spostamento totale è nullo.\par
+
+La velocità media vettoriale è \(\overline{v}_x=\Delta x/\Delta t=0/4=0\,\mathrm{m/s}\); anche il suo modulo è zero.\par
+
+La rapidità media usa invece la distanza percorsa, \(6+6=12\,\mathrm{m}\). Vale quindi \(12/4=3\,\mathrm{m/s}\). La risposta è B.\par
+
+Non occorre conoscere il tempo impiegato in ciascun tratto, né supporre che la persona cammini sempre alla stessa rapidità. Entrambe le medie si riferiscono ai \(4\,\mathrm{s}\) complessivi.\par
+
+\end{samepage}
+\newpage
+% u2-atwood-13 · ff1602482dc59debf7f46fd6fa32ad87ee236967dd8ac520542f1d56b83d6491
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} Due configurazioni della macchina di Atwood}\par\smallskip
+Due masse \(M>m>0\) sono collegate da una fune inestensibile e di massa trascurabile su una carrucola senza massa e senza attrito. Poniamo \(g=10\,\mathrm{m/s^2}\). In ogni configurazione \(M\) scende e \(m\) sale. Nella configurazione A le masse sono \(M_A=4\,\mathrm{kg}\) e \(m_A=1\,\mathrm{kg}\). Nella configurazione B si usa \(M_B=6\,\mathrm{kg}\) e si vuole un’accelerazione di modulo \(a_B=\frac{5}{6}a_A\). Quale rapporto \(m_B/m_A\) è necessario? Inserisci il numero esatto.\par
+
+\begin{center}
+\begin{tikzpicture}[x=.32mm,y=.32mm]
+\path[use as bounding box] (0,-2) rectangle (400,180);
+\draw[draw=forest,line width=.6pt] (166,135) -- (166,72);
+\draw[draw=forest,line width=.6pt] (166,135) -- (178,155);
+\draw[draw=forest,line width=.6pt] (178,155) -- (222,155);
+\draw[draw=forest,line width=.6pt] (222,155) -- (234,135);
+\draw[draw=forest,line width=.6pt] (234,135) -- (234,72);
+\draw[draw=forest,line width=.6pt] (234,135) -- (234,115);
+\draw[draw=forest,line width=.6pt] (234,115) -- (222,95);
+\draw[draw=forest,line width=.6pt] (222,95) -- (178,95);
+\draw[draw=forest,line width=.6pt] (178,95) -- (166,115);
+\draw[draw=forest,line width=.6pt] (166,115) -- (166,135);
+\draw[draw=forest,line width=.6pt] (194,125) -- (206,125);
+\draw[draw=forest,line width=.6pt] (200,131) -- (200,119);
+\draw[draw=forest,line width=.6pt] (146,72) -- (186,72);
+\draw[draw=forest,line width=.6pt] (186,72) -- (186,35);
+\draw[draw=forest,line width=.6pt] (186,35) -- (146,35);
+\draw[draw=forest,line width=.6pt] (146,35) -- (146,72);
+\draw[draw=forest,line width=.6pt] (214,72) -- (254,72);
+\draw[draw=forest,line width=.6pt] (254,72) -- (254,35);
+\draw[draw=forest,line width=.6pt] (254,35) -- (214,35);
+\draw[draw=forest,line width=.6pt] (214,35) -- (214,72);
+\draw[->,draw=forest,line width=.6pt] (117,55) -- (117,127);
+\draw[->,draw=forest,line width=.6pt] (282,127) -- (282,55);
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (166,49) {m};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (234,49) {M};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (95,95) {a};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (305,95) {a};
+\end{tikzpicture}\par
+\small\itshape Schema non in scala, valido per entrambe le configurazioni. Le frecce indicano le accelerazioni, non le forze.
+\end{center}
+
+{\small\textbf{Suggerimenti.} Cambiare una massa modifica sia la differenza dei pesi sia la massa totale da accelerare. Calcola prima l’accelerazione della configurazione A. Usa \(a=g(M-m)/(M+m)\) per trovare l’accelerazione richiesta in B; poi lascia \(m_B\) come incognita. Nell’equazione per B, moltiplica per \(M_B+m_B\) e raccogli i termini contenenti \(m_B\). Solo alla fine forma il rapporto con \(m_A\).\par}
+\medskip\noindent\textbf{Risposta.} 2\par
+
+
+Le due masse hanno accelerazioni di uguale modulo. Sommando le rispettive equazioni di Newton, la tensione interna si elimina e si ottiene \((M-m)g=(M+m)a\), dunque \(a=g(M-m)/(M+m)\).\par
+
+Nella configurazione A: \(a_A=10(4-1)/(4+1)=6\,\mathrm{m/s^2}\). L’obiettivo in B è quindi \(a_B=(5/6)\times6=5\,\mathrm{m/s^2}\).\par
+
+Inseriamo \(M_B=6\,\mathrm{kg}\) nella relazione. Scrivendo le masse in chilogrammi e le accelerazioni in \(\mathrm{m/s^2}\), l’equazione numerica è \(5(6+m_B)=10(6-m_B)\). Si ha \(30+5m_B=60-10m_B\), quindi \(15m_B=30\) e \(m_B=2\,\mathrm{kg}\).\par
+
+Il rapporto cercato è \(m_B/m_A=2/1=2\). La massa minore rimane inferiore alla maggiore, e l’accelerazione è positiva e minore di \(g\).\par
+
+Come controllo distinto, nella configurazione B il corpo leggero richiede \(T=m_B(g+a_B)\), cioè \(2(10+5)\), quindi \(30\,\mathrm{N}\); il corpo pesante richiede \(T=M_B(g-a_B)\), cioè \(6(10-5)\), quindi \(30\,\mathrm{N}\). Le due tensioni coincidono.\par
+
+\end{samepage}
+\newpage
+% u3-venturi-area-ratio-01 · 557f39a2df4f41902ae7141efa791f9283a74fb137f028cfa34626666ef83de9
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} Pressione nel restringimento di un condotto}\par\smallskip
+Acqua di densità \(\rho=1000\,\mathrm{kg/m^3}\) scorre in un condotto orizzontale. La sezione larga ha area \(A_1\) doppia di quella stretta: \(A_1/A_2=2\). Nella sezione larga la velocità è \(v_1=2\,\mathrm{m/s}\). Il moto è stazionario; trattiamo l’acqua come incomprimibile, trascuriamo le perdite viscose e consideriamo uniforme la velocità in ogni sezione. Quanto vale \(p_1-p_2\) in \(\mathrm{kPa}\)? Inserisci solo il numero.\par
+
+\begin{center}
+\begin{tikzpicture}[x=.32mm,y=.32mm]
+\path[use as bounding box] (0,-2) rectangle (400,180);
+\draw[draw=forest,line width=.6pt] (35,132) -- (155,132);
+\draw[draw=forest,line width=.6pt] (155,132) -- (235,110);
+\draw[draw=forest,line width=.6pt] (235,110) -- (365,110);
+\draw[draw=forest,line width=.6pt] (35,48) -- (155,48);
+\draw[draw=forest,line width=.6pt] (155,48) -- (235,70);
+\draw[draw=forest,line width=.6pt] (235,70) -- (365,70);
+\draw[->,draw=forest,line width=.6pt] (60,90) -- (135,90);
+\draw[->,draw=forest,line width=.6pt] (260,90) -- (345,90);
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (100,153) {1: area A1};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (298,142) {2: area A2};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (100,20) {v1 = 2 m/s};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (295,34) {A1 = 2 A2};
+\end{tikzpicture}\par
+\small\itshape Sezione longitudinale schematica, non in scala: il rapporto 2 riguarda le aree, non le altezze disegnate. Le sezioni sono alla stessa quota.
+\end{center}
+
+{\small\textbf{Suggerimenti.} In ogni secondo deve attraversare le due sezioni lo stesso volume d’acqua. Usa questo fatto per confrontare le velocità. Trova \(v_2\) dalla continuità \(A_1v_1=A_2v_2\). Poi confronta pressione ed energia cinetica con Bernoulli: le due sezioni sono alla stessa quota.\par}
+\medskip\noindent\textbf{Risposta.} 6 kPa\par
+
+
+In un flusso stazionario incomprimibile senza diramazioni la portata è la stessa nelle due sezioni. Dalla continuità \(A_1v_1=A_2v_2\) segue \(v_2=(A_1/A_2)v_1=2\times2=4\,\mathrm{m/s}\).\par
+
+Le quote sono uguali e le perdite trascurabili, quindi Bernoulli dà \(p_1+\rho v_1^2/2=p_2+\rho v_2^2/2\). Sottraendo, \(p_1-p_2=\rho(v_2^2-v_1^2)/2\).\par
+
+Sostituendo in unità SI: \(p_1-p_2=(1000/2)(16-4)\), cioè \(6000\,\mathrm{Pa}\), quindi \(6\,\mathrm{kPa}\). Il numero da inserire è \(6\).\par
+
+La pressione statica è minore nella sezione più veloce. Per controllo, la diminuzione di energia di pressione per unità di massa è \((p_1-p_2)/\rho=6\,\mathrm{J/kg}\), uguale all’aumento di energia cinetica specifica \((v_2^2-v_1^2)/2=6\,\mathrm{J/kg}\). Nel modello ideale questa conversione non è una perdita dissipativa.\par
+
+\end{samepage}
+\newpage
+% u3-soap-film-force-09 · 10a9fe73f2a90e1031a6794f092c583c85b5f16ef85c238800b33684ea765736
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} Due facce di una pellicola saponata}\par\smallskip
+Una pellicola saponata è tesa su un telaio con un lato mobile rettilineo lungo \(\ell\). Le due facce della pellicola hanno la stessa tensione superficiale \(\gamma\). Una forza esterna \(F\), perpendicolare al lato mobile e nel piano del telaio, lo mantiene in equilibrio contrastando la contrazione della pellicola. Trascuriamo peso e attrito del lato mobile. Quale espressione fornisce il valore numerico di \(\gamma\) in \(\mathrm{mN/m}\) quando si inseriscono il valore di \(F\) in \(\mathrm{mN}\) e quello di \(\ell\) in \(\mathrm{cm}\)?\par
+
+
+\begin{list}{}{\setlength{\leftmargin}{1.4em}\setlength{\itemsep}{.1em}\setlength{\parsep}{0pt}}\small
+\item[A.] \(\frac{50F}{\ell}\)
+\item[B.] \(\frac{100F}{\ell}\)
+\item[C.] \(\frac{25F}{\ell}\)
+\item[D.] \(\frac{F}{50\ell}\)
+\item[E.] \(\frac{F}{2\ell}\)
+\end{list}
+{\small\textbf{Suggerimenti.} La pellicola ha due superfici a contatto con l’aria. Considera quante contribuiscono alla trazione sul lato mobile. Scrivi prima il bilancio delle forze usando una lunghezza in metri. Solo dopo converti la lunghezza assegnata in centimetri.\par}
+\medskip\noindent\textbf{Risposta.} A. \(\frac{50F}{\ell}\)\par
+
+\begin{center}
+\begin{tikzpicture}[x=.32mm,y=.32mm]
+\path[use as bounding box] (0,-2) rectangle (400,180);
+\draw[draw=forest,line width=.6pt] (65,145) -- (245,145);
+\draw[draw=forest,line width=.6pt] (65,145) -- (65,35);
+\draw[draw=forest,line width=.6pt] (65,35) -- (245,35);
+\draw[draw=forest,line width=.6pt] (245,145) -- (245,35);
+\draw[draw=forest,line width=.6pt] (45,145) -- (45,35);
+\draw[draw=forest,line width=.6pt] (40,145) -- (50,145);
+\draw[draw=forest,line width=.6pt] (40,35) -- (50,35);
+\draw[->,draw=forest,line width=.6pt] (245,88) -- (360,88);
+\draw[->,draw=forest,line width=.6pt] (235,70) -- (165,70);
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (27,85) {l};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (148,106) {Pellicola};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (317,107) {F esterna};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (151,43) {Due facce};
+\end{tikzpicture}\par
+\small\itshape Vista frontale schematica, non in scala. Le due facce appartengono alla stessa pellicola, davanti e dietro il piano del disegno.
+\end{center}
+Ciascuna faccia tira il lato mobile con forza di modulo \(\gamma\ell\), se \(\ell\) è espresso in metri e \(\gamma\) in forza per metro. Le due facce contribuiscono nello stesso verso: in equilibrio la forza esterna ha modulo \(F=2\gamma\ell\).\par
+
+Indichiamo con \(F_{\mathrm{mN}}\) il valore numerico della forza in millinewton e con \(\ell_{\mathrm{cm}}\) quello della lunghezza in centimetri. La lunghezza in metri è \(\ell_{\mathrm{cm}}/100\), perciò \(F_{\mathrm{mN}}=2\gamma_{\mathrm{mN/m}}\ell_{\mathrm{cm}}/100\).\par
+
+Risolvendo, \(\gamma_{\mathrm{mN/m}}=50F_{\mathrm{mN}}/\ell_{\mathrm{cm}}\). È l’espressione A. Per esempio, \(F=2\,\mathrm{mN}\) e \(\ell=5\,\mathrm{cm}\) danno \(\gamma=20\,\mathrm{mN/m}\); infatti \(2\times20\times0{,}05=2\,\mathrm{mN}\).\par
+
+Il fattore due si può controllare anche con il lavoro: spostando il lato di un piccolo tratto \(\delta x\), l’area complessiva cresce di \(2\ell\delta x\). L’energia superficiale aumenta di \(\gamma\,2\ell\delta x\), uguale al lavoro esterno \(F\delta x\) in uno spostamento quasistatico.\par
+
+\end{samepage}
+\newpage
+% u5-engine-efficiency-03 · e37619da97dc1e4f5d33cc4d6b2273976a1544e3e15a05d1029eb6cd988a850c
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} Una sola sorgente: basta conservare l’energia?}\par\smallskip
+Una macchina torna allo stato iniziale dopo ogni ciclo. Il suo unico effetto sull’ambiente sarebbe assorbire calore da una sola sorgente e convertirlo interamente in lavoro. Non avvengono altri cambiamenti. Quale affermazione è corretta?\par
+
+
+\begin{list}{}{\setlength{\leftmargin}{1.4em}\setlength{\itemsep}{.1em}\setlength{\parsep}{0pt}}\small
+\item[A.] È consentita se viene usato un gas monoatomico.
+\item[B.] È consentita perché soddisfa da sola il primo principio.
+\item[C.] È vietata dal secondo principio nella forma di Kelvin-Planck.
+\item[D.] È vietata soltanto perché il lavoro non può essere energia.
+\item[E.] È sempre una macchina di Carnot.
+\end{list}
+{\small\textbf{Suggerimenti.} Considera insieme tre dettagli: il ritorno allo stato iniziale, il numero di sorgenti e l’assenza di altri effetti. La conservazione dell’energia stabilisce un bilancio. Cerca il principio che pone anche un limite alla possibilità di realizzare quel bilancio.\par}
+\medskip\noindent\textbf{Risposta.} C. È vietata dal secondo principio nella forma di Kelvin-Planck.\par
+
+
+Il ritorno allo stato iniziale implica \(\Delta U=0\) per ciclo. Il primo principio ammetterebbe dunque \(Q=W\): l’energia assorbita sarebbe esattamente uguale al lavoro prodotto.\par
+
+Il secondo principio impone però una condizione ulteriore. L’enunciato di Kelvin-Planck esclude una macchina ciclica il cui unico effetto sia prelevare calore da una sola sorgente e convertirlo integralmente in lavoro. La risposta è C.\par
+
+La parola “ciclica” è essenziale: in una singola espansione isoterma reversibile di un gas ideale può accadere \(Q=W\), ma il gas cambia volume e non torna allo stato iniziale. Quel processo non è un controesempio all’enunciato.\par
+
+\end{samepage}
+\newpage
+% u5-isobaric-work-06 · 82647a58426b880ee7cd5b092a00ac5c95e56be99254c9b8cfe26d036b4f9d35
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} Quanto si sposta il volume sotto il pistone?}\par\smallskip
+Un gas si espande lentamente spingendo un pistone contro una pressione esterna costante di \(2\,\mathrm{kPa}\). Attrito e altre forme di lavoro sono trascurabili. Il gas compie \(6\,\mathrm{J}\) di lavoro sull’ambiente. Di quanti litri aumenta il suo volume?\par
+
+\begin{center}
+\begin{tikzpicture}[x=.32mm,y=.32mm]
+\path[use as bounding box] (0,-2) rectangle (400,180);
+\draw[draw=forest,line width=.6pt] (60,40) -- (365,40);
+\draw[draw=forest,line width=.6pt] (60,40) -- (60,155);
+\draw[draw=forest,line width=.6pt] (120,40) -- (120,115);
+\draw[draw=forest,line width=.6pt] (120,115) -- (300,115);
+\draw[draw=forest,line width=.6pt] (300,115) -- (300,40);
+\draw[->,draw=forest,line width=.6pt] (60,40) -- (365,40);
+\draw[->,draw=forest,line width=.6pt] (60,40) -- (60,155);
+\draw[->,draw=forest,line width=.6pt] (195,115) -- (235,115);
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (30,115) {2};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (105,155) {p (kPa)};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (360,18) {V (L)};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (120,20) {Vi};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (300,20) {Vf};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (210,65) {\(\Delta\)V ?};
+\end{tikzpicture}\par
+\small\itshape Schema p-V: il tratto orizzontale rappresenta la pressione costante. L’asse dei volumi non ha una scala numerica.
+\end{center}
+
+{\small\textbf{Suggerimenti.} Associa il lavoro al movimento del pistone: quale regione rappresenta questo trasferimento di energia in un diagramma pressione-volume? Per una pressione costante l’area sotto il tratto orizzontale è un rettangolo. Controlla quanto vale \(1\,\mathrm{kPa}\cdot1\,\mathrm{L}\) in joule.\par}
+\medskip\noindent\textbf{Risposta.} 3 L\par
+
+
+Il lavoro di frontiera è \(W=\int p_{\mathrm{ext}}\,dV\). La pressione esterna resta costante e il gas si espande: l’integrale diventa \(W=p_{\mathrm{ext}}(V_f-V_i)=p_{\mathrm{ext}}\Delta V\), positivo perché \(\Delta V>0\). Non serve conoscere la posizione iniziale del pistone.\par
+
+Nel diagramma \(p\)-\(V\) il lavoro è l’area del rettangolo di altezza \(2\,\mathrm{kPa}\) e base \(\Delta V\). Poiché \(1\,\mathrm{kPa}\cdot1\,\mathrm{L}=10^3\,\mathrm{Pa}\cdot10^{-3}\,\mathrm{m^3}\), cioè \(1\,\mathrm{J}\), i dati sono già numericamente compatibili.\par
+
+Isolando la base si ottiene \(\Delta V=W/p_{\mathrm{ext}}=6\,\mathrm{J}/(2\,\mathrm{kPa})=3\,\mathrm{L}\). Il controllo in unità SI dà \(2000\,\mathrm{Pa}\times0{,}003\,\mathrm{m^3}=6\,\mathrm{J}\).\par
+
+A parità di lavoro, una pressione doppia richiederebbe un aumento di volume dimezzato: il risultato segue quindi una proporzionalità inversa, non diretta.\par
+
+\end{samepage}
+\newpage
+% u6-midpoint-electric-field-01 · cdc5b3df83461462b19194f8d8fd77e8cd986ee21c2b05543a63a591aa0bb774
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} Due cariche positive non danno due campi concordi}\par\smallskip
+Due cariche puntiformi fisse si trovano nel vuoto: \(Q_s=+3\,\mathrm{nC}\) a \(1\,\mathrm m\) a sinistra di un punto \(P\), e \(Q_d=+1\,\mathrm{nC}\) a \(1\,\mathrm m\) a destra di \(P\). Calcola la componente \(E_x\) del campo elettrico in \(P\), scegliendo come verso positivo quello verso destra. Usa \(k_e=9\times10^9\,\mathrm{N\,m^2/C^2}\) ed esprimi il risultato in N/C, con il suo segno.\par
+
+\begin{center}
+\begin{tikzpicture}[x=.32mm,y=.32mm]
+\path[use as bounding box] (0,-2) rectangle (400,180);
+\draw[draw=forest,line width=.6pt] (60,90) -- (340,90);
+\draw[draw=forest,line width=.6pt] (60,96) -- (60,84);
+\draw[draw=forest,line width=.6pt] (200,96) -- (200,84);
+\draw[draw=forest,line width=.6pt] (340,96) -- (340,84);
+\draw[->,draw=forest,line width=.6pt] (285,35) -- (365,35);
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (60,118) {+3 nC};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (200,118) {P};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (340,118) {+1 nC};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (130,68) {1 m};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (270,68) {1 m};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (375,35) {+x};
+\end{tikzpicture}\par
+\small\itshape Configurazione lungo una retta. Le distanze uguali sono significative; il disegno è schematico.
+\end{center}
+
+{\small\textbf{Suggerimenti.} Immagina una piccola carica di prova positiva in P: verso quale lato viene respinta da ciascuna sorgente? Calcola separatamente i due moduli con \(E=k_e|Q|/r^2\), poi assegna i segni rispetto all’asse scelto.\par}
+\medskip\noindent\textbf{Risposta.} 18 N/C\par
+
+
+Il campo prodotto da una carica positiva è diretto verso l’esterno della carica. In P la sorgente di sinistra produce quindi un campo verso destra, mentre quella di destra produce un campo verso sinistra: i contributi sono opposti anche se le due cariche hanno lo stesso segno.\par
+
+Convertiamo le cariche: \(3\,\mathrm{nC}=3\times10^{-9}\,\mathrm C\) e \(1\,\mathrm{nC}=10^{-9}\,\mathrm C\). A distanza 1 m i moduli sono \(E_s=27\,\mathrm{N/C}\), dal prodotto \((9\times10^9)(3\times10^{-9})\) diviso per \(1^2\) ed \(E_d=9\,\mathrm{N/C}\).\par
+
+Con l’asse positivo verso destra, \(E_x=+27-9=+18\,\mathrm{N/C}\). Il campo risultante punta verso destra, perché a pari distanza prevale la sorgente più grande, situata a sinistra.\par
+
+Il controllo per simmetria è immediato: sostituendo la carica sinistra con +1 nC i due contributi dovrebbero cancellarsi. La differenza lo conferma; la somma dei moduli darebbe invece un campo non nullo anche in quella configurazione simmetrica.\par
+
+\end{samepage}
+\newpage
+% u6-capacitor-energy-09 · 053d79d1f09b52e640448854a4e78d85e0998d8650d1f18878a4e83cdea2a000
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} Dall’energia alla capacità}\par\smallskip
+Un condensatore lineare ideale ha capacità \(C>0\) e tensione ai capi \(V>0\). Si conoscono la tensione V e l’energia U immagazzinata. Quale espressione restituisce il valore numerico di C in microfarad, inserendo U in microjoule e V in volt?\par
+
+
+\begin{list}{}{\setlength{\leftmargin}{1.4em}\setlength{\itemsep}{.1em}\setlength{\parsep}{0pt}}\small
+\item[A.] \(\dfrac{2U}{V^2}\)
+\item[B.] \(\dfrac{4U}{V^2}\)
+\item[C.] \(\dfrac{U}{V^2}\)
+\item[D.] \(\dfrac{2U}{V^2}+1\)
+\item[E.] \(\dfrac{2U}{V^2}-1\)
+\end{list}
+{\small\textbf{Suggerimenti.} Durante la carica la tensione del condensatore resta già uguale al suo valore finale, oppure cresce insieme alla carica? Il grafico della tensione in funzione della carica è una retta: il lavoro per caricare il condensatore corrisponde all’area sottesa, che è un triangolo.\par}
+\medskip\noindent\textbf{Risposta.} A. \(\dfrac{2U}{V^2}\)\par
+
+\begin{center}
+\begin{tikzpicture}[x=.32mm,y=.32mm]
+\path[use as bounding box] (0,-2) rectangle (400,180);
+\draw[draw=forest,line width=.6pt] (60,40) -- (365,40);
+\draw[draw=forest,line width=.6pt] (60,40) -- (60,160);
+\draw[draw=forest,line width=.6pt] (60,40) -- (305,140);
+\draw[draw=forest,line width=.6pt] (305,140) -- (305,40);
+\draw[draw=forest,line width=.6pt] (60,140) -- (305,140);
+\draw[->,draw=forest,line width=.6pt] (60,40) -- (365,40);
+\draw[->,draw=forest,line width=.6pt] (60,40) -- (60,160);
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (40,140) {V};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (305,20) {Q};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (380,40) {q};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (74,158) {v};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (225,66) {Area = QV/2};
+\end{tikzpicture}\par
+\small\itshape Per un condensatore lineare la pendenza è 1/C. L’area sotto v(q) rappresenta il lavoro di carica; schema senza scala numerica.
+\end{center}
+Per un condensatore lineare \(v(q)=q/C\). Quando la carica cresce da 0 a Q, la tensione cresce da 0 a V. L’energia immagazzinata è il lavoro di carica: \(U=\int_0^Q v(q)\,dq\), cioè \(Q^2/(2C)\), quindi \(QV/2\). Il fattore 1/2 non è una convenzione: deriva dall’area triangolare sotto la retta.\par
+
+Usando \(Q=CV\) si ottiene \(U=CV^2/2\). Moltiplichiamo entrambi i membri per 2 e dividiamo per \(V^2\), non nullo per ipotesi: \(C=2U/V^2\), opzione A.\par
+
+La relazione vale anche nelle unità numeriche richieste: \(\mathrm{J/V^2}=\mathrm F\) e i prefissi micro di U e C hanno lo stesso fattore \(10^{-6}\). Non compare quindi un ulteriore fattore di conversione.\par
+
+Per una controprova, se \(U=4\,\mu\mathrm J\) e \(V=2\,\mathrm V\), si ricava \(C=2\,\mu\mathrm F\). La carica finale è \(Q=CV=4\,\mu\mathrm C\) e il lavoro triangolare è \(QV/2=4\,\mu\mathrm J\), come richiesto.\par
+
+\end{samepage}
+\newpage
+% u7-snell-refracted-sine-06 · 0fdac1c276d946fe223cff057d08f4b2f0fb243bd078bc460b69596571f92eda
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} Un raggio attraversa una lastra}\par\smallskip
+Una lastra trasparente di indice \(n=\frac{3}{2}\) ha facce piane e parallele. All’esterno c’è aria su entrambi i lati, con indice \(1\). Un raggio entra con \(\sin\theta_\mathrm{in}=\frac{3}{5}\) ed esce dalla faccia opposta. Gli angoli sono misurati dalla normale. Quanto vale \(\sin\theta_\mathrm{out}\)?\par
+
+
+\begin{list}{}{\setlength{\leftmargin}{1.4em}\setlength{\itemsep}{.1em}\setlength{\parsep}{0pt}}\small
+\item[A.] \(1\)
+\item[B.] \(\frac{3}{5}\)
+\item[C.] \(\frac{2}{5}\)
+\item[D.] \(\frac{9}{10}\)
+\item[E.] \(\frac{1}{5}\)
+\end{list}
+{\small\textbf{Suggerimenti.} Disegna una normale per ciascuna faccia. Che relazione c’è fra le due normali? Prima segui il raggio dall’aria alla lastra. Usa l’angolo interno ottenuto come angolo d’incidenza sulla seconda faccia.\par}
+\medskip\noindent\textbf{Risposta.} B. \(\frac{3}{5}\)\par
+
+\begin{center}
+\begin{tikzpicture}[x=.32mm,y=.32mm]
+\path[use as bounding box] (0,-2) rectangle (400,180);
+\draw[draw=forest,line width=.6pt] (123,151) -- (123,19);
+\draw[draw=forest,line width=.6pt] (278,151) -- (278,19);
+\draw[draw=forest,line width=.6pt] (88,66) -- (154,66);
+\draw[draw=forest,line width=.6pt] (247,94) -- (309,94);
+\draw[->,draw=forest,line width=.6pt] (65,23) -- (123,66);
+\draw[->,draw=forest,line width=.6pt] (123,66) -- (278,94);
+\draw[->,draw=forest,line width=.6pt] (278,94) -- (336,137);
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (61,153) {Aria};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (201,153) {Lastra};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (338,153) {Aria};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (198,25) {Facce parallele};
+\end{tikzpicture}\par
+\small\itshape Schema senza scala. Le rette orizzontali sono le normali locali alle due facce.
+\end{center}
+All’ingresso la legge di Snell dà \(1\cdot\frac{3}{5}=\frac{3}{2}\sin\theta_\mathrm{lastra}\), quindi \(\sin\theta_\mathrm{lastra}=\frac{2}{5}\). Il raggio si avvicina alla normale quando entra nel mezzo con indice maggiore.\par
+
+Le facce hanno normali parallele, perciò il raggio arriva sulla seconda con lo stesso angolo interno. Uscendo in aria si allontana dalla normale: \(1\cdot\sin\theta_\mathrm{out}=\frac{3}{2}\cdot\frac{2}{5}=\frac{3}{5}\).\par
+
+Ingresso e uscita hanno la stessa direzione. La lastra può comunque traslare lateralmente il raggio, come mostra il disegno.\par
+
+\end{samepage}
+\newpage
+% u7-radioactive-survivors-16 · efd00b80149da7ffe53f07bc544c50bfc005b65df3fad4a8483fcf05fcbac963
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} Risali all’inizio di un decadimento}\par\smallskip
+Un campione contiene un solo radionuclide e non riceve nuovi nuclei. A \(t=1\,\mathrm{h}\) rimangono in media 48 milioni di nuclei genitori. A \(t=3\,\mathrm{h}\) ne rimangono 12 milioni. Il decadimento è esponenziale. Quanti milioni di nuclei genitori erano presenti in media a \(t=0\)?\par
+
+
+\begin{list}{}{\setlength{\leftmargin}{1.4em}\setlength{\itemsep}{.1em}\setlength{\parsep}{0pt}}\small
+\item[A.] 48
+\item[B.] 72
+\item[C.] 192
+\item[D.] 24
+\item[E.] 96
+\end{list}
+{\small\textbf{Suggerimento.} Confronta le due misure con un rapporto. Nei due intervalli di un’ora la popolazione subisce lo stesso fattore di riduzione.\par}
+\medskip\noindent\textbf{Risposta.} E. 96\par
+
+\begin{center}
+\begin{tikzpicture}[x=.32mm,y=.32mm]
+\path[use as bounding box] (0,-2) rectangle (400,180);
+\draw[draw=forest,line width=.6pt] (57,35) -- (367,35);
+\draw[draw=forest,line width=.6pt] (57,35) -- (57,154);
+\draw[draw=forest,line width=.6pt] (57,146) -- (150,91);
+\draw[draw=forest,line width=.6pt] (150,91) -- (243,63);
+\draw[draw=forest,line width=.6pt] (243,63) -- (336,49);
+\draw[draw=forest,line width=.6pt] (57,35) -- (57,30);
+\draw[draw=forest,line width=.6pt] (150,35) -- (150,30);
+\draw[draw=forest,line width=.6pt] (243,35) -- (243,30);
+\draw[draw=forest,line width=.6pt] (336,35) -- (336,30);
+\draw[->,draw=forest,line width=.6pt] (336,35) -- (373,35);
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (56,163) {Milioni};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (82,141) {96};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (147,103) {48};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (243,75) {24};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (336,61) {12};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (57,6) {0};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (150,6) {1};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (243,6) {2};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (336,6) {3 h};
+\end{tikzpicture}\par
+\small\itshape Asse orizzontale in ore e asse verticale lineare in milioni. I segmenti collegano le letture orarie per orientarsi.
+\end{center}
+Da 1 h a 3 h trascorrono due ore. La popolazione diventa \(12/48=1/4\) di quella di partenza. La legge esponenziale applica lo stesso fattore in intervalli uguali: due ore corrispondono a due dimezzamenti e l’emivita è un’ora.\par
+
+Per tornare da 1 h a 0 h bisogna invertire un solo dimezzamento. Si ottengono 96 milioni. Controlla andando avanti: 96, 48, 24 e 12 milioni a intervalli di un’ora. Questa successione descrive il valore medio del modello.\par
+
+\end{samepage}
+
+\end{document}

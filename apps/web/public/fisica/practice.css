@@ -1,0 +1,27 @@
+.reviewed-practice { scroll-margin-top: 1rem; }
+.reviewed-question { margin-block: .8rem; scroll-margin-top: 1rem; }
+.reviewed-question:target { outline: 2px solid currentColor; outline-offset: 4px; }
+.reviewed-question summary { min-height: 44px; align-content: center; }
+.reviewed-question form { display: grid; gap: .65rem; margin-block: 1rem; }
+.reviewed-question fieldset { min-inline-size: 0; border: 0; margin: 0; padding: 0; }
+.reviewed-question legend { font-weight: 650; margin-bottom: .35rem; }
+.reviewed-option { display: flex; align-items: baseline; gap: .55rem; min-height: 44px; padding: .45rem; border-radius: .35rem; }
+.reviewed-option:focus-within { outline: 2px solid currentColor; }
+.reviewed-option input { flex: none; }
+.reviewed-question input[type=text] { width: min(100%, 19rem); min-height: 44px; padding: .45rem; border-radius: .35rem; }
+.reviewed-question button { justify-self: start; min-height: 44px; font: inherit; cursor: pointer; }
+.reviewed-question output { font-weight: 650; }
+.reviewed-question [hidden] { display: none !important; }
+.reviewed-question math { font-size: 1.05em; }
+.reviewed-question .prose, .reviewed-option { overflow-wrap: anywhere; }
+.reviewed-figure { margin: 1rem 0; padding: .6rem; color: #18372d; background: #faf8f0; border-radius: .4rem; }
+.reviewed-figure svg { display: block; width: 100%; max-width: 34rem; margin: auto; height: auto; }
+.reviewed-figure figcaption { padding: .45rem .3rem .2rem; font-size: .92rem; }
+.reviewed-figure line { stroke: #266456; stroke-width: 1.7; }
+.reviewed-figure path { fill: #266456; }
+.reviewed-figure text { fill: #18372d; font: 17px system-ui, sans-serif; }
+.reviewed-solution { padding-inline-start: .75rem; border-inline-start: 3px solid #477f70; }
+.reviewed-catalog li a { display: inline-flex; align-items: center; min-height: 44px; }
+
+.practice-math { display: inline-block; vertical-align: middle; max-inline-size: 100%; overflow-x: auto; overflow-y: hidden; }
+@media print { .practice-math { overflow: visible; } }

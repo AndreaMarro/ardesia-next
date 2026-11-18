@@ -1,0 +1,591 @@
+[
+  {
+    "id": "u6-midpoint-electric-field-01",
+    "title": "Due cariche positive non danno due campi concordi",
+    "prompt": "Due cariche puntiformi fisse si trovano nel vuoto: $Q_s=+3\\,\\mathrm{nC}$ a $1\\,\\mathrm m$ a sinistra di un punto $P$, e $Q_d=+1\\,\\mathrm{nC}$ a $1\\,\\mathrm m$ a destra di $P$. Calcola la componente $E_x$ del campo elettrico in $P$, scegliendo come verso positivo quello verso destra. Usa $k_e=9\\times10^9\\,\\mathrm{N\\,m^2/C^2}$ ed esprimi il risultato in N/C, con il suo segno.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "18",
+      "unit": "N/C"
+    },
+    "hints": [
+      "Immagina una piccola carica di prova positiva in P: verso quale lato viene respinta da ciascuna sorgente?",
+      "Calcola separatamente i due moduli con $E=k_e|Q|/r^2$, poi assegna i segni rispetto all’asse scelto."
+    ],
+    "solution": [
+      "Il campo prodotto da una carica positiva è diretto verso l’esterno della carica. In P la sorgente di sinistra produce quindi un campo verso destra, mentre quella di destra produce un campo verso sinistra: i contributi sono opposti anche se le due cariche hanno lo stesso segno.",
+      "Convertiamo le cariche: $3\\,\\mathrm{nC}=3\\times10^{-9}\\,\\mathrm C$ e $1\\,\\mathrm{nC}=10^{-9}\\,\\mathrm C$. A distanza 1 m i moduli sono $E_s=27\\,\\mathrm{N/C}$, dal prodotto $(9\\times10^9)(3\\times10^{-9})$ diviso per $1^2$ ed $E_d=9\\,\\mathrm{N/C}$.",
+      "Con l’asse positivo verso destra, $E_x=+27-9=+18\\,\\mathrm{N/C}$. Il campo risultante punta verso destra, perché a pari distanza prevale la sorgente più grande, situata a sinistra.",
+      "Il controllo per simmetria è immediato: sostituendo la carica sinistra con +1 nC i due contributi dovrebbero cancellarsi. La differenza lo conferma; la somma dei moduli darebbe invece un campo non nullo anche in quella configurazione simmetrica."
+    ],
+    "check": "Somma vettoriale indipendente: per sorgenti x=−1,+1 m e punto0, E_i=kq_i(0−x_i)/|x_i|³ produce+27−9=+18 N/C. Controprova q_s=q_d dà0. Conversione nC→C e dimensioni verificate. Risposta18 N/C preservata.",
+    "reason": "Rimosse ipotesi ripetute e indizio numerico che anticipava quasi tutto il calcolo. Chiarita la differenza fra segno della carica e verso del suo campo, con verifica per simmetria. Dati e risposta invariati.",
+    "figure": {
+      "stage": "prompt",
+      "alt": "Due cariche positive ai lati di P: +3 nC a sinistra e +1 nC a destra, entrambe a 1 m. L’asse x positivo punta verso destra.",
+      "caption": "Configurazione lungo una retta. Le distanze uguali sono significative; il disegno è schematico.",
+      "lines": [
+        [
+          60,
+          90,
+          340,
+          90
+        ],
+        [
+          60,
+          84,
+          60,
+          96
+        ],
+        [
+          200,
+          84,
+          200,
+          96
+        ],
+        [
+          340,
+          84,
+          340,
+          96
+        ]
+      ],
+      "arrows": [
+        [
+          285,
+          145,
+          365,
+          145
+        ]
+      ],
+      "labels": [
+        {
+          "x": 60,
+          "y": 62,
+          "text": "+3 nC"
+        },
+        {
+          "x": 200,
+          "y": 62,
+          "text": "P"
+        },
+        {
+          "x": 340,
+          "y": 62,
+          "text": "+1 nC"
+        },
+        {
+          "x": 130,
+          "y": 112,
+          "text": "1 m"
+        },
+        {
+          "x": 270,
+          "y": 112,
+          "text": "1 m"
+        },
+        {
+          "x": 375,
+          "y": 145,
+          "text": "+x"
+        }
+      ]
+    },
+    "lab": {
+      "href": "campo.html",
+      "activity": "Nel laboratorio scegli le due cariche positive e centra la sonda. Prevedi se il campo si annulla. Passa al dipolo, così cambia il segno della carica di destra, poi osserva il modulo e la direzione. Spiega perché nel primo caso i contributi si oppongono e nel secondo si sommano."
+    }
+  },
+  {
+    "id": "u6-lorentz-force-03",
+    "title": "Una forza può curvare il moto senza accelerarne la rapidità",
+    "prompt": "Una particella carica si muove in un campo magnetico uniforme e costante nel tempo. Nel modello considerato agisce soltanto la forza magnetica: non vi sono campo elettrico, altre forze o perdite per irraggiamento. Quale proprietà rimane costante per qualunque orientazione iniziale della velocità?",
+    "options": [
+      {
+        "id": "A",
+        "text": "La direzione del moto anche quando la velocità è perpendicolare a B.",
+        "feedback": "Quando la velocità è perpendicolare al campo, la forza magnetica ne cambia continuamente la direzione: si ha una traiettoria circolare nel modello assegnato."
+      },
+      {
+        "id": "B",
+        "text": "La posizione nello spazio.",
+        "feedback": "Una particella con velocità iniziale non nulla continua a muoversi; il campo non la blocca."
+      },
+      {
+        "id": "C",
+        "text": "La quantità di moto vettoriale in ogni situazione.",
+        "feedback": "Il modulo della quantità di moto resta costante, ma la sua direzione può cambiare: il vettore non è in generale costante."
+      },
+      {
+        "id": "D",
+        "text": "Il modulo della velocità e quindi l’energia cinetica.",
+        "feedback": "La forza magnetica è sempre perpendicolare alla velocità e ha potenza nulla; non modifica l’energia cinetica."
+      },
+      {
+        "id": "E",
+        "text": "Il vettore velocità in ogni situazione.",
+        "feedback": "Solo in casi particolari, come velocità parallela al campo, il vettore rimane costante. La domanda richiede una proprietà valida per ogni orientazione."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "D"
+    },
+    "hints": [
+      "Distingui il modulo di una velocità dalla sua direzione. Una forza può modificare l’uno senza modificare l’altra?",
+      "Per capire se varia l’energia cinetica, considera l’angolo fra la forza magnetica e la velocità, non soltanto il fatto che la forza possa essere non nulla."
+    ],
+    "solution": [
+      "La forza magnetica è $\\mathbf F=q\\,\\mathbf v\\times\\mathbf B$. Quando non è nulla, è perpendicolare alla velocità. La sua potenza istantanea è pertanto $\\mathbf F\\cdot\\mathbf v=0$: non compie lavoro sulla particella.",
+      "Dal teorema dell’energia cinetica segue che K resta costante; a massa costante resta quindi costante anche il modulo di $\\mathbf v$. La risposta è D. Questo non impedisce che cambino la direzione della velocità e la traiettoria.",
+      "Per esempio, con velocità perpendicolare a B si ottiene un moto circolare uniforme: la rapidità è costante ma il vettore velocità ruota. Con velocità parallela a B la forza è nulla e il moto è rettilineo uniforme. Entrambi i casi rispettano la stessa risposta."
+    ],
+    "check": "Verifica vettoriale esatta: (v×B)·v=0 per ogni v,B, quindi dK/dt=0. Controprove: v⊥B produce direzionevariabile; v∥B dàforzanulla. Scartate le opzioni con proprietà vettoriali costanti “in ogni situazione”; chiave D unica.",
+    "reason": "Sostituiti tre suggerimenti generici con indicazioni su direzione e lavoro. Esplicitato il modello senza irraggiamento, già implicito nell’assenza di altre interazioni. Conservate le cinque alternative e la chiave D."
+  },
+  {
+    "id": "u6-two-series-resistors-06",
+    "title": "Il filo cambia i collegamenti",
+    "prompt": "Due resistori da $2\\,\\Omega$ e $4\\,\\Omega$ sono inizialmente in serie fra i morsetti esterni A e B. Si aggiunge un filo ideale, di resistenza nulla, che collega soltanto i due capi del resistore da $4\\,\\Omega$, come nello schema. Qual è la resistenza equivalente finale vista fra A e B?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\frac43\\,\\Omega$",
+        "feedback": "È il valore del parallelo fra 2 Ω e 4 Ω, ma questi due resistori non sono collegati agli stessi due nodi."
+      },
+      {
+        "id": "B",
+        "text": "$0\\,\\Omega$",
+        "feedback": "Il filo non collega direttamente A e B: il resistore da 2 Ω resta lungo ogni percorso fra i morsetti."
+      },
+      {
+        "id": "C",
+        "text": "$2\\,\\Omega$",
+        "feedback": "Il ramo da 4 Ω ha tensione nulla ai suoi capi; resta soltanto la resistenza da 2 Ω fra A e B."
+      },
+      {
+        "id": "D",
+        "text": "$4\\,\\Omega$",
+        "feedback": "Il resistore bypassato è proprio quello da 4 Ω. Non è il componente che continua a determinare la resistenza esterna."
+      },
+      {
+        "id": "E",
+        "text": "$6\\,\\Omega$",
+        "feedback": "6 Ω era la resistenza prima di aggiungere il filo. Dopo il collegamento non passa la stessa corrente in entrambi i resistori."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "C"
+    },
+    "hints": [
+      "Evidenzia i due nodi uniti dal filo: il filo ideale può sostenere una differenza di potenziale fra le sue estremità?",
+      "Il resistore da 4 Ω ha gli stessi due capi del filo. Usa la sua tensione per stabilire se vi passa corrente; poi guarda che cosa rimane fra A e B."
+    ],
+    "solution": [
+      "Un filo ideale collega due punti allo stesso potenziale. Il resistore da 4 Ω, essendo collegato fra quegli stessi punti, ha quindi $\\Delta V_4=0$ e corrente $I_4=\\Delta V_4/(4\\,\\Omega)=0$. Non occorre rimuoverlo fisicamente: resta nel circuito, ma è bypassato.",
+      "Dal punto di vista dei morsetti A e B, il gruppo formato da filo e resistore da 4 Ω ha resistenza equivalente nulla. È ancora in serie al resistore da 2 Ω; dunque $R_{\\mathrm{eq}}=2\\,\\Omega+0\\,\\Omega=2\\,\\Omega$, risposta C.",
+      "Un controllo quantitativo consiste nell’applicare idealmente 1 V fra A e B: la corrente totale sarebbe 0,5 A, tutta nel ramo del filo dopo il primo resistore. Il rapporto $1\\,\\mathrm V/(0{,}5\\,\\mathrm A)=2\\,\\Omega$ conferma l’equivalente."
+    ],
+    "check": "Analisi nodale indipendente con V_AB=1V: il corto impone stesso potenziale ai capi4Ω, I4=0; I_AB=1/2A eReq=2Ω. Controprova: rimuovendo il filo si torna a6Ω. ChiaveC e tutti valori opzioni originali preservati.",
+    "reason": "Rimosso il preambolo che anticipava il cambiamento di topologia. Aggiunto schema preciso dei nodi e spiegazione attraverso tensione e corrente, evitando lo slogan “la corrente sceglie la via più facile”.",
+    "figure": {
+      "stage": "prompt",
+      "alt": "Il resistore da 2 Ω è fra A e il nodo centrale. Da quel nodo al morsetto B ci sono due rami: il resistore da 4 Ω e un filo ideale che lo bypassa.",
+      "caption": "Circuito finale. Il filo superiore unisce soltanto i capi del resistore da 4 Ω.",
+      "lines": [
+        [
+          30,
+          110,
+          90,
+          110
+        ],
+        [
+          90,
+          95,
+          145,
+          95
+        ],
+        [
+          145,
+          95,
+          145,
+          125
+        ],
+        [
+          145,
+          125,
+          90,
+          125
+        ],
+        [
+          90,
+          125,
+          90,
+          95
+        ],
+        [
+          145,
+          110,
+          210,
+          110
+        ],
+        [
+          210,
+          110,
+          235,
+          110
+        ],
+        [
+          235,
+          95,
+          290,
+          95
+        ],
+        [
+          290,
+          95,
+          290,
+          125
+        ],
+        [
+          290,
+          125,
+          235,
+          125
+        ],
+        [
+          235,
+          125,
+          235,
+          95
+        ],
+        [
+          290,
+          110,
+          370,
+          110
+        ],
+        [
+          210,
+          110,
+          210,
+          50
+        ],
+        [
+          210,
+          50,
+          325,
+          50
+        ],
+        [
+          325,
+          50,
+          325,
+          110
+        ]
+      ],
+      "labels": [
+        {
+          "x": 25,
+          "y": 140,
+          "text": "A"
+        },
+        {
+          "x": 375,
+          "y": 140,
+          "text": "B"
+        },
+        {
+          "x": 117,
+          "y": 77,
+          "text": "2 Ω"
+        },
+        {
+          "x": 263,
+          "y": 145,
+          "text": "4 Ω"
+        },
+        {
+          "x": 267,
+          "y": 30,
+          "text": "Filo ideale"
+        }
+      ]
+    }
+  },
+  {
+    "id": "u6-work-potential-difference-08",
+    "title": "L’elettrone va verso un potenziale maggiore",
+    "prompt": "Un elettrone, di carica $q=-e$ con $e>0$, parte da fermo in un punto di potenziale $V_i=-2\\,\\mathrm{kV}$ e raggiunge un punto di potenziale $V_f=+3\\,\\mathrm{kV}$. Agisce soltanto la forza elettrostatica. Qual è la sua energia cinetica finale, espressa in keV? Ricorda che $1\\,\\mathrm{eV}=e\\cdot1\\,\\mathrm V$.",
+    "options": [
+      {
+        "id": "A",
+        "text": "$2\\,\\mathrm{keV}$",
+        "feedback": "Il valore iniziale del potenziale da solo non determina il lavoro: serve la differenza fra punto finale e iniziale."
+      },
+      {
+        "id": "B",
+        "text": "$3\\,\\mathrm{keV}$",
+        "feedback": "Il valore finale da solo dipende dalla scelta dello zero del potenziale; l’energia acquistata dipende invece dalla differenza."
+      },
+      {
+        "id": "C",
+        "text": "$5\\,\\mathrm{keV}$",
+        "feedback": "La differenza di potenziale è +5 kV; per la carica negativa l’energia potenziale diminuisce di 5 keV e quella cinetica aumenta della stessa quantità."
+      },
+      {
+        "id": "D",
+        "text": "$-5\\,\\mathrm{keV}$",
+        "feedback": "Questo è il cambiamento di energia potenziale, non l’energia cinetica finale. Partendo da fermo, l’energia cinetica non può risultare negativa."
+      },
+      {
+        "id": "E",
+        "text": "$1\\,\\mathrm{keV}$",
+        "feedback": "Sottrarre i moduli 3−2 perde il segno del potenziale iniziale: la differenza corretta è 3−(−2)=5 kV."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "C"
+    },
+    "hints": [
+      "Prima calcola la differenza finale meno iniziale, mantenendo il segno negativo del potenziale di partenza.",
+      "Il potenziale V non è l’energia potenziale: quest’ultima è $U=qV$. Considera il segno della carica dell’elettrone prima di passare all’energia cinetica."
+    ],
+    "solution": [
+      "La differenza di potenziale è $\\Delta V=V_f-V_i$. Sottraendo $-2\\,\\mathrm{kV}$ da $3\\,\\mathrm{kV}$ otteniamo $+5\\,\\mathrm{kV}$. Per l’elettrone, $\\Delta U=q\\Delta V$. Il prodotto $(-e)(5\\,\\mathrm{kV})$ vale $-5\\,\\mathrm{keV}$.",
+      "La forza elettrostatica è conservativa e non agiscono altre forze: $\\Delta K=-\\Delta U=+5\\,\\mathrm{keV}$. Poiché l’elettrone parte da fermo, $K_i=0$ e $K_f=5\\,\\mathrm{keV}$, risposta C.",
+      "Non serve sostituire il valore numerico di e in coulomb: la definizione di elettronvolt converte direttamente il prodotto fra una carica elementare e una differenza di potenziale. In unità SI, il controllo dà $K_f=e\\cdot5000\\,\\mathrm V\\simeq8{,}01\\times10^{-16}\\,\\mathrm J$.",
+      "Il segno ha un significato fisico: per una carica negativa aumentare V significa diminuire U. L’elettrone può dunque acquistare energia cinetica andando verso il potenziale maggiore. Spostare entrambi i potenziali di una stessa costante non cambierebbe il risultato."
+    ],
+    "check": "Controprova indipendente cambiando lo zero: Vi=0,Vf=5kV mantiene qΔV=−5keV. EnergiaSI con e=1.602176634e−19C dà8.01088317e−16J e divisa per1keV dà5. Kf≥0; unicità chiaveC.",
+    "reason": "Sostituiti indizi generici e sviluppati separatamente differenza di potenziale, energia potenziale ed energia cinetica. Esplicitato il controllo per cambio dello zero. Dati, alternative e risposta5keV invariati."
+  },
+  {
+    "id": "u6-capacitor-energy-09",
+    "title": "Dall’energia alla capacità",
+    "prompt": "Un condensatore lineare ideale ha capacità $C>0$ e tensione ai capi $V>0$. Si conoscono la tensione V e l’energia U immagazzinata. Quale espressione restituisce il valore numerico di C in microfarad, inserendo U in microjoule e V in volt?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{2U}{V^2}$",
+        "feedback": "Il fattore 2 recupera il dimezzamento dovuto alla crescita della tensione durante la carica."
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{4U}{V^2}$",
+        "feedback": "Questo fattore darebbe, una volta sostituito nella legge dell’energia, il doppio dell’energia misurata."
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{U}{V^2}$",
+        "feedback": "Manca il fattore 2: la capacità così ottenuta immagazzinerebbe soltanto metà dell’energia assegnata alla tensione V."
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{2U}{V^2}+1$",
+        "feedback": "Aggiungere 1 al valore numerico in microfarad introduce una capacità supplementare non prevista dai dati."
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{2U}{V^2}-1$",
+        "feedback": "Sottrarre 1 microfarad non è giustificato; inoltre può produrre una capacità negativa per dati fisicamente ammissibili."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "A"
+    },
+    "hints": [
+      "Durante la carica la tensione del condensatore resta già uguale al suo valore finale, oppure cresce insieme alla carica?",
+      "Il grafico della tensione in funzione della carica è una retta: il lavoro per caricare il condensatore corrisponde all’area sottesa, che è un triangolo."
+    ],
+    "solution": [
+      "Per un condensatore lineare $v(q)=q/C$. Quando la carica cresce da 0 a Q, la tensione cresce da 0 a V. L’energia immagazzinata è il lavoro di carica: $U=\\int_0^Q v(q)\\,dq$, cioè $Q^2/(2C)$, quindi $QV/2$. Il fattore 1/2 non è una convenzione: deriva dall’area triangolare sotto la retta.",
+      "Usando $Q=CV$ si ottiene $U=CV^2/2$. Moltiplichiamo entrambi i membri per 2 e dividiamo per $V^2$, non nullo per ipotesi: $C=2U/V^2$, opzione A.",
+      "La relazione vale anche nelle unità numeriche richieste: $\\mathrm{J/V^2}=\\mathrm F$ e i prefissi micro di U e C hanno lo stesso fattore $10^{-6}$. Non compare quindi un ulteriore fattore di conversione.",
+      "Per una controprova, se $U=4\\,\\mu\\mathrm J$ e $V=2\\,\\mathrm V$, si ricava $C=2\\,\\mu\\mathrm F$. La carica finale è $Q=CV=4\\,\\mu\\mathrm C$ e il lavoro triangolare è $QV/2=4\\,\\mu\\mathrm J$, come richiesto."
+    ],
+    "check": "Verifica indipendente mediante area V(q): U=QV/2 eC=Q/V⇒C=2U/V². TestU4μJ,V2V:C2μF,Q4μC,energia4μJ. Sostituzione simbolica della chiave inCV²/2 restituisceU. UnitàJ/V²=F; prefissimicrocancellati.",
+    "reason": "Eliminata dalla consegna la formula già risolutiva; resa comprensibile l’origine del fattore 1/2 mediante il grafico. La notazione dei distrattori±1 è precisata come valore numerico inμF, evitando somme dimensionalmente ambigue. ChiaveA e valori preservati.",
+    "figure": {
+      "stage": "solution",
+      "alt": "Grafico della tensione v in funzione della carica q, con una retta dall’origine al punto (Q,V). L’energia è l’area del triangolo sotto la retta.",
+      "caption": "Per un condensatore lineare la pendenza è 1/C. L’area sotto v(q) rappresenta il lavoro di carica; schema senza scala numerica.",
+      "lines": [
+        [
+          60,
+          140,
+          365,
+          140
+        ],
+        [
+          60,
+          140,
+          60,
+          20
+        ],
+        [
+          60,
+          140,
+          305,
+          40
+        ],
+        [
+          305,
+          40,
+          305,
+          140
+        ],
+        [
+          60,
+          40,
+          305,
+          40
+        ]
+      ],
+      "arrows": [
+        [
+          60,
+          140,
+          365,
+          140
+        ],
+        [
+          60,
+          140,
+          60,
+          20
+        ]
+      ],
+      "labels": [
+        {
+          "x": 40,
+          "y": 40,
+          "text": "V"
+        },
+        {
+          "x": 305,
+          "y": 160,
+          "text": "Q"
+        },
+        {
+          "x": 380,
+          "y": 140,
+          "text": "q"
+        },
+        {
+          "x": 74,
+          "y": 22,
+          "text": "v"
+        },
+        {
+          "x": 225,
+          "y": 114,
+          "text": "Area = QV/2"
+        }
+      ]
+    }
+  },
+  {
+    "id": "u6-faraday-average-emf-09",
+    "title": "Dalla f.e.m. media alla variazione di flusso",
+    "prompt": "Una bobina ha $N=10$ spire con lo stesso orientamento. Fra due istanti separati da $\\Delta t>0$, il flusso magnetico concatenato con ciascuna spira varia della stessa quantità $\\Delta\\Phi$. Si misura il modulo $|\\overline{\\mathcal E}|$ della f.e.m. media sull’intervallo. Quale espressione dà $|\\Delta\\Phi|$ in milliweber, inserendo $|\\overline{\\mathcal E}|$ in volt e $\\Delta t$ in millisecondi? Si chiede la variazione per una sola spira, non la somma su tutte le spire.",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{|\\overline{\\mathcal E}|\\,\\Delta t}{10}$",
+        "feedback": "Il prodotto f.e.m. media per intervallo dà la variazione del flusso totale concatenato; dividendolo per 10 si ottiene quella di ciascuna spira."
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{|\\overline{\\mathcal E}|\\,\\Delta t}{5}$",
+        "feedback": "Dividere per 5 equivale a usare soltanto metà delle 10 spire e raddoppia il risultato."
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{|\\overline{\\mathcal E}|\\,\\Delta t}{20}$",
+        "feedback": "Dividere per 20 conteggia il doppio delle spire presenti e dimezza la variazione richiesta."
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{|\\overline{\\mathcal E}|\\,\\Delta t}{10}+1$",
+        "feedback": "Il termine aggiuntivo 1 mWb non discende né dal numero di spire né dalla conversione delle unità."
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{|\\overline{\\mathcal E}|\\,\\Delta t}{10}-1$",
+        "feedback": "Non è previsto un offset di 1 mWb; una f.e.m. media nulla deve corrispondere a variazione netta nulla, non negativa."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "A"
+    },
+    "hints": [
+      "Distingui il flusso di una singola spira dal flusso concatenato con l’intera bobina.",
+      "La legge di Faraday riguarda la variazione netta fra i due estremi dell’intervallo. Nella media compare un rapporto fra variazione di flusso totale e durata.",
+      "Dopo aver isolato il flusso per spira, controlla l’unità del prodotto volt per millisecondo."
+    ],
+    "solution": [
+      "Con un orientamento fissato delle spire, la legge media di Faraday è $\\overline{\\mathcal E}=-N\\Delta\\Phi/\\Delta t$. La f.e.m. indicata è la media algebrica sull’intervallo, di cui si prende poi il modulo: non è la media dei moduli istantanei.",
+      "Poiché si cerca un modulo e le 10 spire hanno uguale variazione di flusso, $|\\overline{\\mathcal E}|=10|\\Delta\\Phi|/\\Delta t$. Moltiplicando per l’intervallo e dividendo per 10 si ricava $|\\Delta\\Phi|=|\\overline{\\mathcal E}|\\Delta t/10$, opzione A.",
+      "Le unità sono compatibili senza fattori aggiuntivi: $1\\,\\mathrm{V\\,ms}=10^{-3}\\,\\mathrm{V\\,s}$, cioè $10^{-3}\\,\\mathrm{Wb}$, quindi $1\\,\\mathrm{mWb}$. Il segno meno della legge orientata esprime la legge di Lenz, ma non rende negativo il modulo richiesto.",
+      "Per controllare, una f.e.m. media di 2 V durante 5 ms corrisponde a 1 mWb per spira. Le 10 spire danno una variazione totale di 0,01 Wb, che divisa per 0,005 s restituisce 2 V. Se il flusso oscillasse tornando al valore iniziale, la variazione netta e la f.e.m. media algebrica sarebbero nulle anche con f.e.m. istantanea non sempre nulla."
+    ],
+    "check": "Controllo indipendente integrale: ∫εdt=−N(Φf−Φi); per 2V×0.005s/10 si ottiene0.001Wb=1mWb. Ricostruzione NΔΦ/Δt=2V. Distinta mediaalgebrica da media|ε|, gestendo il caso di flusso non monotono. ChiaveA invariata.",
+    "reason": "Esplicitati il flusso per spira e la distinzione fra modulo della media e media dei moduli, ambigua nella formulazione generica. Precisati orientamento comune e unitàms/mWb. Tutte le espressioni e la chiaveA restano equivalenti all’originale."
+  },
+  {
+    "id": "u6-accelerated-magnetic-radius-13",
+    "title": "Accelerare meno e curvare di più",
+    "prompt": "Una particella ideale, con $|q|/m=1\\,\\mathrm{C/kg}$, parte da ferma e acquista energia cinetica attraversando una differenza di potenziale favorevole di modulo U. Entra poi perpendicolarmente in un campo magnetico uniforme di modulo B, in una regione separata senza campo elettrico. Il moto è non relativistico. Nella prova A si usano $U_A=2\\,\\mathrm V$ e $B_A=1\\,\\mathrm T$. Nella prova B si pone $U_B=1\\,\\mathrm V$ e si vuole un raggio $r_B=(\\sqrt2/4)r_A$. Quale rapporto $B_B/B_A$ è necessario? Esprimi un numero senza unità.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "2",
+      "unit": "1"
+    },
+    "hints": [
+      "La tensione determina la rapidità all’uscita della prima regione; il campo magnetico determina la curvatura nella seconda. Tieni separate le due funzioni.",
+      "Usa prima il bilancio energetico fra lavoro elettrico ed energia cinetica, poi la forza magnetica come forza centripeta.",
+      "Confrontando le due prove, massa e modulo della carica si eliminano. Il rapporto delle rapidità dipende dalla radice del rapporto delle tensioni."
+    ],
+    "solution": [
+      "Nella regione elettrica, la particella parte da ferma e guadagna energia $|q|U$. Quindi $mv^2/2=|q|U$ e $v=\\sqrt{2|q|U/m}$. Dimezzare U non dimezza la rapidità: la moltiplica per $1/\\sqrt2$.",
+      "Nella regione magnetica la velocità è perpendicolare a B. La forza $|q|vB$ fornisce l’accelerazione centripeta: $mv^2/r=|q|vB$, da cui $r=mv/(|q|B)$. Il campo cambia la direzione, non la rapidità già acquisita.",
+      "Per la stessa particella, $r_B/r_A=\\sqrt{U_B/U_A}\\,(B_A/B_B)$. Sostituendo i rapporti richiesti, $\\sqrt2/4=(1/\\sqrt2)(B_A/B_B)$. Pertanto $B_B/B_A=(1/\\sqrt2)/(\\sqrt2/4)=2$.",
+      "La controprova con i valori assoluti è possibile grazie al rapporto carica/massa fornito. Nella prova A si ha $v_A=2\\,\\mathrm{m/s}$ e $r_A=2\\,\\mathrm m$. Con $U_B=1\\,\\mathrm V$ e $B_B=2\\,\\mathrm T$, si hanno $v_B=\\sqrt2\\,\\mathrm{m/s}$ e $r_B=\\sqrt2/2\\,\\mathrm m$; il rapporto dei raggi è proprio $\\sqrt2/4$.",
+      "Il risultato è anche qualitativamente coerente: la riduzione della tensione restringe già l’orbita, ma per arrivare al raggio ancora minore richiesto bisogna aumentare il campo, non diminuirlo."
+    ],
+    "check": "Verifica indipendente con bilanci assoluti: vA²=2·1·2=4, rA=vA/B_A=2; rBtarget=(√2/4)·2=√2/2; velocitàB=√2 eB_B=vB/rB=2T. Rapporto2 esatto, regimev≪c. Risposta originale conservata.",
+    "reason": "Rinominata la vaga “grandezza d’uscita” come raggio e distinte esplicitamente le due prove. Aggiunti due principi fisici collegati con motivazione e una controprova assoluta indipendente dal rapporto. Dati e risposta2 invariati."
+  },
+  {
+    "id": "u6-connected-plate-separation-charge-13",
+    "title": "Il generatore resta collegato in ciascuna prova",
+    "prompt": "Si svolgono due prove separate A e B con un condensatore piano ideale. Ogni prova parte dalla stessa geometria iniziale, con distanza $d_0$ fra le armature; si aumenta poi la distanza fino a $d=s\\,d_0$, con $s\\ge1$. Area e dielettrico non cambiano e si trascurano gli effetti di bordo. Durante ciascun allontanamento il condensatore resta collegato a un generatore ideale che mantiene costante la propria tensione; la tensione può essere diversa nelle due prove. Nella prova A la carica iniziale ha modulo $Q_{0,A}=12\\,\\mu\\mathrm C$ e $s_A=2$. Nella prova B la carica iniziale è $Q_{0,B}=9\\,\\mu\\mathrm C$. Quale rapporto $s_B/s_A$ rende la carica finale della prova B metà della carica finale della prova A?",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "3/2",
+      "unit": "1"
+    },
+    "hints": [
+      "Con il generatore collegato, individua quale grandezza resta fissata mentre le armature si allontanano. La carica del condensatore è obbligata a restare costante?",
+      "Nel modello piano la capacità è inversamente proporzionale alla distanza: confronta la capacità finale con quella iniziale di ogni prova.",
+      "Calcola prima la carica finale della prova A e la carica finale desiderata nella prova B. Solo dopo ricava il fattore geometrico della seconda prova."
+    ],
+    "solution": [
+      "La capacità di un condensatore piano è $C=\\varepsilon A/d$. Se la distanza passa da $d_0$ a $s d_0$, la capacità diventa $C_0/s$. Il generatore mantiene la tensione V costante durante la singola prova, perciò $Q_f=CV=(C_0V)/s=Q_0/s$. La carica può fluire verso il generatore mentre le armature si allontanano.",
+      "Nella prova A, $Q_{f,A}=12\\,\\mu\\mathrm C/2=6\\,\\mu\\mathrm C$. La prova B deve terminare con $Q_{f,B}=3\\,\\mu\\mathrm C$. Partendo da $Q_{0,B}=9\\,\\mu\\mathrm C$, occorre $s_B=Q_{0,B}/Q_{f,B}=9/3=3$.",
+      "La domanda chiede il rapporto fra i fattori di allontanamento, non il solo fattore della seconda prova: $s_B/s_A=3/2$. Entrambi rispettano il vincolo $s\\ge1$.",
+      "Come controllo per rapporti, $\\frac{Q_{f,B}}{Q_{f,A}}=\\frac{Q_{0,B}}{Q_{0,A}}\\cdot\\frac{s_A}{s_B}$. Con i dati delle due prove il prodotto vale $(9/12)(2/3)=1/2$. Poiché la geometria iniziale è uguale, le cariche iniziali diverse corrispondono a tensioni iniziali diverse nelle due prove: non contraddicono la tensione costante durante ciascun allontanamento.",
+      "Se il condensatore fosse invece scollegato prima di muovere le armature, sarebbe la carica a restare costante e cambierebbe la tensione. Usare quel modello qui darebbe una conclusione errata sul ruolo della distanza."
+    ],
+    "check": "Controllo indipendente numerico scegliendoC0=3μF: VA=4V,VB=3V; CfA=1.5μF⇒QA6μC; CfB=1μF⇒QB3μC. sA2,sB3 e rapporto3/2. Verifica s≥1 e distinzione fra prove separate e unico processo. Risposta3/2 preservata.",
+    "reason": "Risolta un’ambiguità sostanziale: l’originale passava daQ0=12 a9μC senza chiarire che erano due prove con possibile diversa tensione e scriveva un rapporto di s malformato. Ora la costanza del generatore è locale a ogni prova, la geometria iniziale è esplicita e il rapporto richiesto è sB/sA. Dati e risposta invariati."
+  }
+]

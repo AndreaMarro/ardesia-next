@@ -47,7 +47,27 @@ test('every relative public page resource and local anchor resolves, and offline
   }
  }
  const exam=json(base+'/exam-manifest.json');
- for(const file of [...htmlFiles,'exam.js','campo.js','demo.js','urti.js','termodinamica.js','quaderno-esperimenti.pdf'])assert.ok(exam.offlineFiles.includes(file),file+' missing in offline edition');
+ for(const file of [...htmlFiles,'exam.js','campo.js','demo.js','urti.js','termodinamica.js','quaderno-esperimenti.pdf','practice.js','practice.css'])assert.ok(exam.offlineFiles.includes(file),file+' missing in offline edition');
  for(const entry of exam.files)assert.equal(entry.sha256,hash(base+'/'+entry.file));
  assert.equal(exam.sourceSha256,hash(exam.sourceFile));
+});
+
+test('each reviewed bank record has exactly one interactive lesson entry and an indexed origin', () => {
+ const manifest=json(base+'/practice-manifest.json');
+ const catalog=read(base+'/'+manifest.catalog);
+ const editorial='docs/sources/physics-2026-27/question-review';
+ const origins=new Map(json(editorial+'/origins.json').map(origin=>[origin.id,origin]));
+ assert.equal(manifest.catalogSHA256,hash(base+'/'+manifest.catalog));
+ assert.equal(manifest.humanApproval,false);
+ assert.equal(manifest.rows.length,origins.size);
+ assert.equal(new Set(manifest.rows.map(row=>row.id)).size,origins.size);
+ for(const row of manifest.rows){
+  const origin=origins.get(row.id);
+  assert.equal(row.originalSHA256,origin.sha256);
+  assert.equal(row.lesson,origin.lessonId+'.html');
+  assert.ok(catalog.includes('./'+row.lesson+'#'+row.id));
+  const page=read(base+'/'+row.lesson);
+  assert.equal(page.split("id='"+row.id+"'").length,2);
+  assert.ok(page.includes("src='./practice.js'"));
+ }
 });

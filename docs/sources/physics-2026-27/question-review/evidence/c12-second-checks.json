@@ -1,0 +1,171 @@
+{
+  "timestamp": "2026-11-18T16:25:03.139073+01:00",
+  "questions": 5,
+  "figures": 2,
+  "checksPassed": 25,
+  "checks": [
+    {
+      "id": "unique-new-ids",
+      "status": "pass",
+      "method": "5 ID nuovi, distinti dal primo lotto e presenti in bank-selection"
+    },
+    {
+      "id": "u1-vector-projection-03:key",
+      "status": "pass",
+      "method": "Chiave originale, formato e unità conservati"
+    },
+    {
+      "id": "u1-vector-projection-03:options",
+      "status": "pass",
+      "method": "Identificativi opzioni e ordine conservati"
+    },
+    {
+      "id": "u1-vector-projection-03:fields",
+      "status": "pass",
+      "method": "Campi obbligatori presenti; primo aiuto revisionato senza indicazione della chiave"
+    },
+    {
+      "id": "u1-vector-projection-03:figure",
+      "status": "pass",
+      "method": "Schema deterministico e coordinate entro viewBox"
+    },
+    {
+      "id": "u2-center-mass-weighted-03:key",
+      "status": "pass",
+      "method": "Chiave originale, formato e unità conservati"
+    },
+    {
+      "id": "u2-center-mass-weighted-03:options",
+      "status": "pass",
+      "method": "Identificativi opzioni e ordine conservati"
+    },
+    {
+      "id": "u2-center-mass-weighted-03:fields",
+      "status": "pass",
+      "method": "Campi obbligatori presenti; primo aiuto revisionato senza indicazione della chiave"
+    },
+    {
+      "id": "u3-torricelli-flow-01:key",
+      "status": "pass",
+      "method": "Chiave originale, formato e unità conservati"
+    },
+    {
+      "id": "u3-torricelli-flow-01:options",
+      "status": "pass",
+      "method": "Identificativi opzioni e ordine conservati"
+    },
+    {
+      "id": "u3-torricelli-flow-01:fields",
+      "status": "pass",
+      "method": "Campi obbligatori presenti; primo aiuto revisionato senza indicazione della chiave"
+    },
+    {
+      "id": "u3-two-liquid-floating-01:key",
+      "status": "pass",
+      "method": "Chiave originale, formato e unità conservati"
+    },
+    {
+      "id": "u3-two-liquid-floating-01:options",
+      "status": "pass",
+      "method": "Identificativi opzioni e ordine conservati"
+    },
+    {
+      "id": "u3-two-liquid-floating-01:fields",
+      "status": "pass",
+      "method": "Campi obbligatori presenti; primo aiuto revisionato senza indicazione della chiave"
+    },
+    {
+      "id": "u3-two-liquid-floating-01:figure",
+      "status": "pass",
+      "method": "Schema deterministico e coordinate entro viewBox"
+    },
+    {
+      "id": "u3-viscous-dissipation-01:key",
+      "status": "pass",
+      "method": "Chiave originale, formato e unità conservati"
+    },
+    {
+      "id": "u3-viscous-dissipation-01:options",
+      "status": "pass",
+      "method": "Identificativi opzioni e ordine conservati"
+    },
+    {
+      "id": "u3-viscous-dissipation-01:fields",
+      "status": "pass",
+      "method": "Campi obbligatori presenti; primo aiuto revisionato senza indicazione della chiave"
+    },
+    {
+      "id": "projection",
+      "status": "pass",
+      "method": "Prodotto esatto, bound proiezione e opzioni univoche; geometria secondo quadrante"
+    },
+    {
+      "id": "center-mass",
+      "status": "pass",
+      "method": "Equazioni individuali: accelerazioni 6 e −3 m/s² danno aCM=0; conservazione P=(m1+m2)vCM"
+    },
+    {
+      "id": "torricelli",
+      "status": "pass",
+      "method": "Bernoulli con radice positiva e conversione indipendente cilindro 10000 mm³=10 mL"
+    },
+    {
+      "id": "two-liquids",
+      "status": "pass",
+      "method": "Bilancio densità e controprova volume 4 L, masse spostate 1,5+1,5=3 kg"
+    },
+    {
+      "id": "dissipation",
+      "status": "pass",
+      "method": "Pressione×portata in SI e lavoro su volume 6 L in 2 s"
+    },
+    {
+      "id": "katex",
+      "status": "pass",
+      "method": "79 formule KaTeX strict,error/trust:false"
+    },
+    {
+      "id": "figure-render",
+      "status": "pass",
+      "method": "2 SVG senza etichette fuori dal viewBox; screenshot locale desktop ispezionato"
+    }
+  ],
+  "manifest": [
+    {
+      "id": "u1-vector-projection-03",
+      "course": "C1",
+      "level": "base",
+      "workingOriginalSha256": "d681ba16cd9976321d4c954c1610b92897f8838d6f80d0f875d2bc1f7afd43b0"
+    },
+    {
+      "id": "u2-center-mass-weighted-03",
+      "course": "C1",
+      "level": "base",
+      "workingOriginalSha256": "dab1450620cf3edba851eeec3f8fd35fdf6fda3ecad44cc2aca3ee4a6bc4089e"
+    },
+    {
+      "id": "u3-torricelli-flow-01",
+      "course": "C2",
+      "level": "base",
+      "workingOriginalSha256": "158d09e8a9dd0948bc2de615faca84fac3d192e966ceda97c6181a2dd4d36096"
+    },
+    {
+      "id": "u3-two-liquid-floating-01",
+      "course": "C2",
+      "level": "base",
+      "workingOriginalSha256": "c1e2ea65254f911d758bb7a8a8a203e5007b651e1993c6b67756bf6077f9f116"
+    },
+    {
+      "id": "u3-viscous-dissipation-01",
+      "course": "C2",
+      "level": "base",
+      "workingOriginalSha256": "f509f4754e9d717a76124b5ef5874e92b72704ba96964a1a417e6ebe2dd824a0"
+    }
+  ],
+  "limits": [
+    "Verifica automatica, non revisione umana.",
+    "Anteprima SVG locale, non prova della UI o del PDF integrato.",
+    "Tutti e cinque attivi in Next e di livello editoriale base.",
+    "Dispense originali autentiche non individuate nel perimetro consultato."
+  ]
+}
