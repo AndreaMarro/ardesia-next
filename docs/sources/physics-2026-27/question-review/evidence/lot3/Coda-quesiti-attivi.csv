@@ -1,0 +1,170 @@
+﻿id,lezioni,livello,titolo,segnalazioni,numero_segnalazioni,posizioni
+u1-scientific-scale-13,sf-2026-u1-01,difficile,Valore di una notazione scientifica — Variazione compensata,chiarire il ruolo dell’unità 1,1,1
+u1-area-conversion-13,sf-2026-u1-02,difficile,Conversione di un’area — Variazione compensata,chiarire il ruolo dell’unità 1,1,1
+u1-vector-angle-ratio-13,sf-2026-u1-03,difficile,Pendenza e direzione di un vettore — Variazione compensata,chiarire il ruolo dell’unità 1,1,1
+u1-scalar-product-13,sf-2026-u1-04,difficile,Prodotto scalare di vettori paralleli — Variazione compensata,chiarire il ruolo dell’unità 1,1,1
+u2-biceps-lever-13,sf-2026-u2-05,difficile,Leva ideale dell’avambraccio — Variazione compensata,chiarire il ruolo dell’unità 1,1,1
+u4-oscillator-energy-09,sf-2026-u4-03,medio,Energia immagazzinata nella molla — Ricavare una formula inversa,confrontare testo alternativa e risposta,1,1
+u5-gas-density-13,sf-2026-u5-01,difficile,Densità di un gas dal suo stato — Variazione compensata,chiarire il ruolo dell’unità 1,1,1
+u5-compression-heating-13,sf-2026-u5-04,difficile,Compressione con lavoro fatto sul sistema — Variazione compensata,chiarire il ruolo dell’unità 1,1,1
+u5-carnot-efficiency-01,sf-2026-u5-05,base,Limite reversibile fra due sorgenti — Calcolo diretto,chiarire il ruolo dell’unità 1,1,1
+u7-alpha-mass-number-13,sf-2026-u7-05,difficile,Numero di massa dopo emissioni alfa — Variazione compensata,chiarire il ruolo dell’unità 1,1,1
+u1-scalar-product-03,sf-2026-u1-02 sf-2026-u1-04,base,"Distinguere ortogonalità, prodotto scalare e prodotto vettoriale",,0,2
+u3-volume-flow-03,sf-2026-u3-03 sf-2026-u3-04,base,Distinguere una velocità locale dalla velocità media che determina la portata.,,0,2
+u4-oscillator-energy-01,sf-2026-u4-01 sf-2026-u4-03,base,Energia immagazzinata nella molla — Calcolo diretto,,0,2
+u5-ideal-expansion-entropy-03,sf-2026-u5-01 sf-2026-u5-05,base,Riconoscere l’entropia come funzione di stato e distinguere variazione e produzione.,,0,2
+u5-isobaric-monatomic-heat-03,sf-2026-u5-02 sf-2026-u5-04,base,Calcolare la variazione di energia interna di un gas ideale e distinguerla da calore e lavoro.,,0,2
+u5-isochoric-heat-01,sf-2026-u5-02 sf-2026-u5-04,base,Calore scambiato a volume costante — Calcolo diretto,,0,2
+u5-free-expansion-pressure-03,sf-2026-u5-04 sf-2026-u5-05,base,"Collegare primo principio, idealità del gas e irreversibilità.",,0,2
+u5-reversible-isothermal-entropy-03,sf-2026-u5-04 sf-2026-u5-05,base,Separare variazione di entropia di una parte e produzione totale.,,0,2
+u6-dielectric-connected-charge-03,sf-2026-u6-04 sf-2026-u6-05,base,Distinguere il vincolo di tensione imposta dal vincolo di carica conservata,,0,2
+u1-scientific-scale-03,sf-2026-u1-01,base,Rapporto fra potenze di dieci,,0,1
+u1-scientific-scale-09,sf-2026-u1-01,medio,Valore di una notazione scientifica — Ricavare una formula inversa,,0,1
+u1-area-conversion-02,sf-2026-u1-02,base,Conversione di un’area — Controllo delle unità,,0,1
+u1-area-conversion-09,sf-2026-u1-02,medio,Conversione di un’area — Ricavare una formula inversa,,0,1
+u1-volume-conversion-03,sf-2026-u1-02,base,Grandezze intensive ed estensive,,0,1
+u2-uniform-position-03,sf-2026-u1-02,base,Intercetta e pendenza del grafico posizione-tempo,,0,1
+u1-vector-angle-ratio-03,sf-2026-u1-03,base,Seno e coseno nel triangolo rettangolo,,0,1
+u1-scalar-product-09,sf-2026-u1-04,medio,Prodotto scalare di vettori paralleli — Ricavare una formula inversa,,0,1
+u1-vector-sum-01,sf-2026-u1-04,base,Somma di spostamenti concordi — Calcolo diretto,,0,1
+u2-centripetal-acceleration-03,sf-2026-u2-01,base,"Distinguere rapidità, velocità vettoriale e accelerazione",,0,1
+u2-freefall-time-03,sf-2026-u2-01,base,Indipendenza dell’accelerazione dalla massa,,0,1
+u2-mean-acceleration-01,sf-2026-u2-01,base,Accelerazione media con velocità iniziale — Calcolo diretto,,0,1
+u2-projectile-range-01,sf-2026-u2-01,base,Gittata da componenti iniziali — Calcolo diretto,,0,1
+u2-rest-accelerated-distance-03,sf-2026-u2-01,base,Distanza percorsa in intervalli successivi,,0,1
+u2-uniform-displacement-01,sf-2026-u2-01,base,Spostamento nel moto uniforme — Calcolo diretto,,0,1
+u2-uniform-position-01,sf-2026-u2-01,base,Posizione con origine non nulla — Calcolo diretto,,0,1
+u2-atwood-03,sf-2026-u2-02,base,Tensione e peso durante un’accelerazione,,0,1
+u2-hooke-force-01,sf-2026-u2-02,base,Modulo della forza di una molla — Calcolo diretto,,0,1
+u2-incline-normal-01,sf-2026-u2-02,base,Reazione normale di un piano — Calcolo diretto,,0,1
+u2-opposed-force-acceleration-01,sf-2026-u2-02,base,Accelerazione da forze opposte — Calcolo diretto,,0,1
+u2-opposed-force-acceleration-03,sf-2026-u2-02,base,Forze di azione e reazione,,0,1
+u2-static-threshold-03,sf-2026-u2-02,base,Attrito statico effettivo e soglia,,0,1
+u2-uniform-displacement-03,sf-2026-u2-02,base,Inerzia e risultante nulla,,0,1
+u2-gravitational-energy-01,sf-2026-u2-03,base,Variazione di energia gravitazionale — Calcolo diretto,,0,1
+u2-gravitational-energy-03,sf-2026-u2-03,base,Lavoro del peso su un percorso chiuso,,0,1
+u2-kinetic-work-difference-03,sf-2026-u2-03,base,Segno del lavoro totale e variazione di energia cinetica,,0,1
+u2-mechanical-power-03,sf-2026-u2-03,base,Potenza di una forza e bilancio delle potenze,,0,1
+u2-oblique-work-01,sf-2026-u2-03,base,Lavoro di una forza obliqua — Calcolo diretto,,0,1
+u2-spring-energy-01,sf-2026-u2-03,base,Energia potenziale elastica — Calcolo diretto,,0,1
+u2-spring-launch-01,sf-2026-u2-03,base,Lancio orizzontale con una molla — Calcolo diretto,,0,1
+u2-impulse-03,sf-2026-u2-04,base,Compensazione fra forza e durata,,0,1
+u2-inelastic-rest-03,sf-2026-u2-04,base,Quantità di moto in un urto anelastico,,0,1
+u2-biceps-lever-01,sf-2026-u2-05,base,Leva ideale dell’avambraccio — Calcolo diretto,,0,1
+u2-lever-equilibrium-03,sf-2026-u2-05,base,Invarianza delle distanze interne,,0,1
+u2-torque-perpendicular-03,sf-2026-u2-05,base,Braccio nullo e momento nullo,,0,1
+u3-couette-force-03,sf-2026-u3-01,base,Distinguere solidi e fluidi attraverso la risposta agli sforzi tangenziali.,,0,1
+u3-density-01,sf-2026-u3-01,base,Densità media di un campione omogeneo — Calcolo diretto,,0,1
+u3-density-05,sf-2026-u3-01,facile,Densità media di un campione omogeneo — Risolvere per la prima grandezza,,0,1
+u3-pressure-area-01,sf-2026-u3-01,base,Forza normale distribuita su una superficie — Calcolo diretto,,0,1
+u3-pressure-area-03,sf-2026-u3-01,base,Distinguere una forza totale dalla sua distribuzione per unità di area.,,0,1
+u3-apparent-weight-01,sf-2026-u3-02,base,Lettura di un dinamometro in immersione — Calcolo diretto,,0,1
+u3-differential-manometer-01,sf-2026-u3-02,base,Pressione di un gas da manometro differenziale — Calcolo diretto,,0,1
+u3-floating-fraction-03,sf-2026-u3-02,base,Usare la natura intensiva della densità nel galleggiamento.,,0,1
+u3-hydraulic-force-03,sf-2026-u3-02,base,"Collegare Pascal, conservazione del volume e lavoro meccanico.",,0,1
+u3-hydraulic-stroke-01,sf-2026-u3-02,base,Spostamenti dei pistoni e volume conservato — Calcolo diretto,,0,1
+u3-hydrostatic-weighing-01,sf-2026-u3-02,base,Densità ricavata da due pesate — Calcolo diretto,,0,1
+u3-layered-liquids-01,sf-2026-u3-02,base,Pressione sotto due strati immiscibili — Calcolo diretto,,0,1
+u3-loaded-raft-depth-01,sf-2026-u3-02,base,Immersione di un galleggiante prismatico caricato — Calcolo diretto,,0,1
+u3-maximum-payload-01,sf-2026-u3-02,base,Capacità residua di carico di una piattaforma — Calcolo diretto,,0,1
+u3-stevino-absolute-01,sf-2026-u3-02,base,Pressione assoluta in un recipiente pressurizzato — Calcolo diretto,,0,1
+u3-stevino-gauge-03,sf-2026-u3-02,base,Riconoscere l’indipendenza della pressione idrostatica dalla forma del recipiente.,,0,1
+u3-torricelli-speed-01,sf-2026-u3-02,base,Velocità di efflusso sotto un battente — Calcolo diretto,,0,1
+u3-bernoulli-height-speed-01,sf-2026-u3-03,base,Pressione necessaria per quota e velocità — Calcolo diretto,,0,1
+u3-bernoulli-horizontal-01,sf-2026-u3-03,base,Pressione in due sezioni orizzontali — Calcolo diretto,,0,1
+u3-bernoulli-horizontal-04,sf-2026-u3-03,base,Pressione in due sezioni orizzontali — Confronto controllato,,0,1
+u3-constriction-velocity-01,sf-2026-u3-03,base,Velocità tra due sezioni di un condotto — Calcolo diretto,,0,1
+u3-junction-balance-01,sf-2026-u3-03,base,Portata sconosciuta in una biforcazione — Calcolo diretto,,0,1
+u3-mass-flow-01,sf-2026-u3-03,base,Massa trasportata per secondo — Calcolo diretto,,0,1
+u3-poiseuille-flow-03,sf-2026-u3-03,base,"Riconoscere il dominio fisico di applicazione di una legge, oltre la sola formula.",,0,1
+u3-pressure-gradient-fixed-speed-03,sf-2026-u3-03,base,Definire l’incomprimibilità e distinguerla dalla viscosità e dall’uniformità del moto.,,0,1
+u3-transport-time-01,sf-2026-u3-03,base,Tempo per trasferire un volume assegnato — Calcolo diretto,,0,1
+u3-venturi-area-ratio-03,sf-2026-u3-03,base,Separare conversione di energia in Bernoulli e dissipazione viscosa.,,0,1
+u3-couette-force-01,sf-2026-u3-04,base,Forza per far scorrere una piastra su uno strato viscoso — Calcolo diretto,,0,1
+u3-network-stages-01,sf-2026-u3-04,base,Rete di stadi in serie e canali paralleli — Calcolo diretto,,0,1
+u3-pressure-gradient-fixed-speed-01,sf-2026-u3-04,base,Gradiente di pressione a velocità media imposta — Calcolo diretto,,0,1
+u3-capillary-rise-01,sf-2026-u3-05,base,Altezza di risalita in un capillare bagnante — Calcolo diretto,,0,1
+u3-laplace-droplet-03,sf-2026-u3-05,base,Comprendere qualitativamente la relazione fra curvatura e pressione.,,0,1
+u3-soap-film-force-01,sf-2026-u3-05,base,Forza di una lamina con due superfici — Calcolo diretto,,0,1
+u3-surface-work-01,sf-2026-u3-05,base,Lavoro per creare superficie liquida — Calcolo diretto,,0,1
+u4-echo-ranging-03,sf-2026-u4-01,base,Distinguere propagazione dell’energia e trasporto macroscopico del mezzo,,0,1
+u4-wave-displacement-projection-01,sf-2026-u4-01,base,Spostamento locale da ampiezza e fase — Calcolo diretto,,0,1
+u4-wave-phase-space-01,sf-2026-u4-01,base,Fase fra due punti del mezzo — Calcolo diretto,,0,1
+u4-coherent-constructive-01,sf-2026-u4-02,base,Ampiezze concordi nello stesso punto — Calcolo diretto,,0,1
+u4-spherical-intensity-01,sf-2026-u4-03,base,Suono distribuito su sfere — Calcolo diretto,,0,1
+u4-sound-decibel-03,sf-2026-u4-04,base,"Separare intensità fisica, livello in decibel e percezione sonora",,0,1
+u4-sound-decibel-08,sf-2026-u4-04,facile,Interpretare un livello di zero decibel,,0,1
+u4-spherical-intensity-03,sf-2026-u4-04,base,Riconoscere che la propagazione del suono richiede materia,,0,1
+u4-wave-energy-through-area-03,sf-2026-u4-04,base,"Spiegare la propagazione del suono in gas, liquidi e solidi senza attribuire una velocità universale",,0,1
+u4-beats-envelope-03,sf-2026-u4-05,base,Riconoscere qualitativamente l’effetto Doppler senza richiedere formule aggiuntive,,0,1
+u5-gas-density-01,sf-2026-u5-01,base,Densità di un gas dal suo stato — Calcolo diretto,,0,1
+u5-ideal-gas-pressure-01,sf-2026-u5-01,base,Pressione di un campione ideale a quantità fissata — Calcolo diretto,,0,1
+u5-ideal-gas-pressure-03,sf-2026-u5-01,base,Separare equazione di stato e bilancio energetico del processo.,,0,1
+u5-sensible-heat-03,sf-2026-u5-01,base,Distinguere sistema chiuso e sistema isolato.,,0,1
+u5-temperature-difference-01,sf-2026-u5-01,base,Intervallo termico fra due temperature Celsius — Calcolo diretto,,0,1
+u5-temperature-difference-03,sf-2026-u5-01,base,Distinguere intervalli di temperatura e rapporti di temperature assolute.,,0,1
+u5-calorimeter-capacity-01,sf-2026-u5-02,base,Miscela con recipiente che assorbe calore — Calcolo diretto,,0,1
+u5-freezing-time-01,sf-2026-u5-02,base,Tempo per raffreddare e congelare un campione — Calcolo diretto,,0,1
+u5-ice-final-temperature-01,sf-2026-u5-02,base,Temperatura finale dopo fusione completa — Calcolo diretto,,0,1
+u5-isobaric-monatomic-heat-01,sf-2026-u5-02,base,Calore per riscaldare un gas monoatomico a pressione costante — Calcolo diretto,,0,1
+u5-latent-heat-03,sf-2026-u5-02,base,Riconoscere energia di cambiamento di fase a temperatura costante.,,0,1
+u5-sensible-heat-01,sf-2026-u5-02,base,Calore per aumentare la temperatura di un corpo — Calcolo diretto,,0,1
+u5-subzero-ice-melting-01,sf-2026-u5-02,base,Riscaldare ghiaccio sotto zero e fonderlo — Calcolo diretto,,0,1
+u5-two-body-calorimetry-01,sf-2026-u5-02,base,Temperatura di equilibrio fra due capacità termiche — Calcolo diretto,,0,1
+u5-two-body-calorimetry-03,sf-2026-u5-02,base,Distinguere capacità termica complessiva e calore specifico attraverso C=mc.,,0,1
+u5-warm-water-and-ice-01,sf-2026-u5-02,base,Equilibrio fra acqua tiepida e ghiaccio a zero — Calcolo diretto,,0,1
+u5-composite-wall-series-01,sf-2026-u5-03,base,Parete composta da due strati in serie — Calcolo diretto,,0,1
+u5-convective-loss-01,sf-2026-u5-03,base,Potenza ceduta da una superficie a un ambiente — Calcolo diretto,,0,1
+u5-interface-temperature-01,sf-2026-u5-03,base,Temperatura di contatto fra due resistenze termiche — Calcolo diretto,,0,1
+u5-net-blackbody-exchange-03,sf-2026-u5-03,base,Distinguere un flusso lordo da uno scambio netto in equilibrio.,,0,1
+u5-parallel-heat-losses-01,sf-2026-u5-03,base,Somma di dispersione conduttiva e convettiva — Calcolo diretto,,0,1
+u5-plane-conduction-03,sf-2026-u5-03,base,Distinguere i meccanismi di trasferimento del calore.,,0,1
+u5-adiabatic-monatomic-01,sf-2026-u5-04,base,Temperatura in una compressione adiabatica reversibile — Calcolo diretto,,0,1
+u5-compression-heating-01,sf-2026-u5-04,base,Compressione con lavoro fatto sul sistema — Calcolo diretto,,0,1
+u5-isobaric-work-03,sf-2026-u5-04,base,Determinare il segno del lavoro lungo un percorso isobaro e il suo inverso.,,0,1
+u5-isochoric-heat-03,sf-2026-u5-04,base,Comprendere il lavoro di frontiera in una trasformazione isocora.,,0,1
+u5-isothermal-work-01,sf-2026-u5-04,base,Lavoro in espansione reversibile misurato per raddoppi — Calcolo diretto,,0,1
+u5-carnot-efficiency-03,sf-2026-u5-05,base,Comprendere l’indipendenza del limite di Carnot dal fluido di lavoro.,,0,1
+u5-carnot-work-temperature-gap-01,sf-2026-u5-05,base,Lavoro di un ciclo reversibile a rapporto volumetrico fissato — Calcolo diretto,,0,1
+u5-cyclic-work-01,sf-2026-u5-05,base,Lavoro netto di un ciclo con due scambi termici — Calcolo diretto,,0,1
+u5-engine-average-power-01,sf-2026-u5-05,base,Potenza media di una macchina a rendimento noto — Calcolo diretto,,0,1
+u5-entropy-hot-cold-03,sf-2026-u5-05,base,Comprendere perché conservazione dell’energia e aumento di entropia sono compatibili.,,0,1
+u5-statistical-entropy-03,sf-2026-u5-05,base,Interpretare il logaritmo nella definizione statistica dell’entropia.,,0,1
+u6-charge-accelerating-voltage-01,sf-2026-u6-01,base,Velocità dopo una differenza di potenziale — Calcolo diretto,,0,1
+u6-coulomb-force-01,sf-2026-u6-01,base,Forza fra cariche puntiformi — Calcolo diretto,,0,1
+u6-point-electric-field-03,sf-2026-u6-01,base,Interpretare geometricamente le linee di campo e distinguere campo e traiettoria,,0,1
+u6-point-electric-potential-08,sf-2026-u6-02,facile,Identificare una superficie equipotenziale sferica,,0,1
+u6-capacitor-energy-03,sf-2026-u6-03,base,Comprendere la polarizzazione dei dielettrici senza confonderla con conduzione o ionizzazione,,0,1
+u6-force-uniform-electric-field-03,sf-2026-u6-03,base,Distinguere polarizzazione per induzione e acquisizione di carica netta in un conduttore isolato,,0,1
+u6-plane-capacitance-03,sf-2026-u6-03,base,Riconoscere campo nullo ed equipotenzialità del conduttore in equilibrio,,0,1
+u6-current-charge-time-01,sf-2026-u6-04,base,Carica che attraversa una sezione — Calcolo diretto,,0,1
+u6-joule-power-08,sf-2026-u6-04,facile,Confrontare le correnti tramite la potenza assorbita,,0,1
+u6-ohmic-current-01,sf-2026-u6-04,base,Corrente in un resistore ideale — Calcolo diretto,,0,1
+u6-two-parallel-resistors-06,sf-2026-u6-04,facile,Collegare la rimozione di un ramo alla corrente totale a tensione fissata,,0,1
+u6-wire-stretched-fixed-volume-03,sf-2026-u6-04,base,Distinguere resistività del materiale e resistenza del componente,,0,1
+u6-capacitor-charge-01,sf-2026-u6-05,base,Carica su una singola armatura — Calcolo diretto,,0,1
+u6-capacitor-energy-01,sf-2026-u6-05,base,Energia di carica del condensatore — Calcolo diretto,,0,1
+u6-series-capacitors-03,sf-2026-u6-05,base,Applicare la conservazione della carica al nodo intermedio di condensatori in serie,,0,1
+u6-series-capacitors-06,sf-2026-u6-05,facile,Confrontare la capacità equivalente degli stessi componenti in due topologie,,0,1
+u6-current-charge-time-03,sf-2026-u6-06,base,Descrivere qualitativamente il campo magnetico prodotto da una corrente rettilinea,,0,1
+u6-magnetic-circle-radius-03,sf-2026-u6-06,base,Distinguere l’effetto del segno della carica sul raggio e sul verso della curvatura,,0,1
+u6-magnetic-orbit-period-03,sf-2026-u6-06,base,Riconoscere il caso di forza di Lorentz nulla per moto parallelo al campo,,0,1
+u6-faraday-average-emf-03,sf-2026-u6-07,base,Applicare Lenz alla variazione del flusso distinguendola dal valore del campo,,0,1
+u6-magnetic-flux-03,sf-2026-u6-07,base,Riconoscere la continuità delle linee magnetiche,,0,1
+u7-em-wave-field-power-03,sf-2026-u7-01,base,Riconoscere la struttura trasversale dell’onda elettromagnetica piana,,0,1
+u7-photon-packet-frequency-03,sf-2026-u7-02,base,Ordinare lo spettro elettromagnetico attraverso la relazione E = hf,,0,1
+u7-photon-packet-frequency-01,sf-2026-u7-03,base,Energia di un pacchetto monocromatico — Calcolo diretto,,0,1
+u7-beer-transmitted-intensity-16,sf-2026-u7-04,difficile,attenuazione due percorsi e media areale,,0,1
+u7-infer-attenuation-coefficient-16,sf-2026-u7-04,difficile,attenuazione con fondo costante da tre spessori,,0,1
+u7-alpha-mass-number-03,sf-2026-u7-05,base,Conservare numero di nucleoni e carica nel decadimento alfa,,0,1
+u7-alpha-mass-number-09,sf-2026-u7-05,medio,Numero di massa dopo emissioni alfa — Ricavare una formula inversa,,0,1
+u7-beta-minus-atomic-number-03,sf-2026-u7-05,base,"Distinguere decadimento beta meno, ionizzazione elettronica e decadimento alfa",,0,1
+u7-gamma-transition-energy-03,sf-2026-u7-05,base,Distinguere de-eccitazione gamma e trasformazioni che cambiano A o Z,,0,1
+u7-radioactive-activity-01,sf-2026-u7-05,base,Decadimenti attesi nell’unità di tempo — Calcolo diretto,,0,1
+u7-radioactive-activity-03,sf-2026-u7-05,base,"Distinguere beta più da beta meno, alfa e ionizzazione",,0,1
+u7-radioactive-survivors-03,sf-2026-u7-05,base,Interpretare correttamente il significato statistico dell’emivita,,0,1
+u7-photon-rate-power-03,sf-2026-u7-06,base,Distinguere energia per fotone e intensità nella condizione energetica di ionizzazione,,0,1
+u7-critical-angle-sine-03,sf-2026-u7-07,base,Riconoscere verso del passaggio e soglia angolare della riflessione totale,,0,1
+u7-critical-angle-sine-09,sf-2026-u7-07,medio,Condizione di riflessione totale — Ricavare una formula inversa,,0,1
+u7-plane-mirror-ray-direction-03,sf-2026-u7-07,base,Applicare la legge della riflessione con un riferimento angolare coerente,,0,1
+u7-thin-lens-real-image-03,sf-2026-u7-07,base,"Collegare posizione entro il fuoco, segno di q e natura dell’immagine",,0,1

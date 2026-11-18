@@ -44,3 +44,22 @@ test('numeric practice accepts equivalent fractions and decimal commas without g
   }
   expect(await page.evaluate(()=>({local:localStorage.length,session:sessionStorage.length}))).toEqual({local:0,session:0});
 });
+
+test('an associated lesson links to one exercise with separate prediction and solution diagrams', async ({page}) => {
+  await page.goto('/fisica/sf-2026-u7-01.html#esercizi-guidati');
+  const link=page.getByRole('link',{name:'Assorbire di più quando cresce la potenza',exact:true});
+  await link.click();
+  await expect(page).toHaveURL(/sf-2026-u7-04\.html#u7-absorbed-radiant-power-13$/);
+  const question=page.locator('#u7-absorbed-radiant-power-13');
+  await expect(question).toHaveAttribute('open','');
+  await expect(question.getByRole('img',{name:/potenza incidente rispettivamente/})).toBeVisible();
+  const secondDiagram=question.locator('.reviewed-solution svg');
+  await expect(secondDiagram).toBeHidden();
+  const answer=question.getByRole('textbox',{name:'La tua risposta',exact:true});
+  await answer.fill('0,5');
+  await answer.press('Enter');
+  await expect(question.locator('output')).toHaveText('Risposta corretta.');
+  await question.getByText('Leggi lo svolgimento completo',{exact:true}).press('Enter');
+  await expect(secondDiagram).toBeVisible();
+  await expect(secondDiagram).toHaveAttribute('aria-label',/9 watt assorbiti e 3 trasmessi/);
+});

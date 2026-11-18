@@ -69,5 +69,11 @@ test('each reviewed bank record has exactly one interactive lesson entry and an 
   const page=read(base+'/'+row.lesson);
   assert.equal(page.split("id='"+row.id+"'").length,2);
   assert.ok(page.includes("src='./practice.js'"));
+  assert.deepEqual(row.linkedLessons,origin.linkedLessons.map(id=>id+'.html'));
+  for (const other of row.linkedLessons.filter(file=>file!==row.lesson)) {
+   const linkedPage=read(base+'/'+other);
+   assert.ok(linkedPage.includes("href='./"+row.lesson+'#'+row.id+"'"));
+   assert.ok(!linkedPage.includes("id='"+row.id+"'"));
+  }
  }
 });

@@ -1,0 +1,467 @@
+[
+  {
+    "id": "u1-vector-angle-ratio-09",
+    "title": "Ricostruire la componente orizzontale",
+    "prompt": "Un vettore nel primo quadrante ha componente orizzontale $a>0$ e verticale $b>0$, entrambe espresse in metri. L’angolo $\\theta$ è misurato dal semiasse orizzontale positivo. Conosci $b$ e il valore $T=\\tan\\theta$, che è positivo e adimensionale. Quale formula permette di trovare $a$?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$a=-\\frac{b}{T}$",
+        "feedback": "Il segno negativo collocherebbe la componente orizzontale nel verso opposto a quello assegnato."
+      },
+      {
+        "id": "B",
+        "text": "$a=\\frac{b}{T+1}$",
+        "feedback": "Il rapporto dei cateti è $T=b/a$. Non compare una costante da aggiungere alla tangente."
+      },
+      {
+        "id": "C",
+        "text": "$a=\\frac{b}{T}$",
+        "feedback": "Nel triangolo delle componenti il cateto opposto è $b$ e quello adiacente è $a$: $T=b/a$."
+      },
+      {
+        "id": "D",
+        "text": "$a=\\frac{2b}{T}$",
+        "feedback": "Il fattore due non compare nella definizione di tangente. Con questo valore il rapporto $b/a$ sarebbe $T/2$."
+      },
+      {
+        "id": "E",
+        "text": "$a=\\frac{b}{2T}$",
+        "feedback": "Questa componente renderebbe il rapporto $b/a$ uguale a $2T$, invece che a $T$."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "C"
+    },
+    "hints": [
+      "Disegna il triangolo rettangolo formato dal vettore e dalle sue componenti. Individua il cateto opposto all’angolo indicato.",
+      "La tangente è il rapporto fra cateto opposto e cateto adiacente. Scrivi questo rapporto e moltiplica prima per la componente che sta al denominatore."
+    ],
+    "solution": [
+      "Nel triangolo delle componenti, $b$ è il cateto opposto a $\\theta$ e $a$ quello adiacente. Perciò $T=b/a$. Il modulo del vettore, cioè l’ipotenusa, non entra in questo rapporto.",
+      "Moltiplichiamo entrambi i membri per $a$: $aT=b$. Poiché $T>0$, possiamo dividere per $T$ e ottenere $a=b/T$, risposta C.",
+      "Le unità sono coerenti: dividendo una lunghezza per una quantità adimensionale si ottiene una lunghezza. Per esempio, con $b=3\\,\\mathrm{m}$ e $T=3/4$ risulta $a=4\\,\\mathrm{m}$. Nel triangolo così ricostruito, il rapporto dei cateti è di nuovo $3/4$."
+    ],
+    "reason": "Sostituiti i distrattori che sommavano T adimensionale e b in metri. Conservata C, esplicitata l’unità delle componenti e aggiunto un triangolo che chiarisce il rapporto pertinente.",
+    "check": "Inversione aT=b e controprova geometrica b=3 m,T=3/4 ->a=4 m, b/a=3/4. Nel dominio T,b>0 gli altri valori sono negativo, minore, doppio o metà della risposta corretta.",
+    "figure": {
+      "stage": "prompt",
+      "alt": "Vettore nel primo quadrante, con componente a lungo x e componente b verticale. L’angolo theta è misurato dal semiasse x positivo.",
+      "caption": "Schema non in scala. I due cateti rappresentano le componenti, non due vettori di modulo uguale.",
+      "lines": [
+        [
+          290,
+          45,
+          290,
+          140
+        ],
+        [
+          90,
+          140,
+          290,
+          140
+        ],
+        [
+          275,
+          140,
+          275,
+          125
+        ],
+        [
+          275,
+          125,
+          290,
+          125
+        ]
+      ],
+      "labels": [
+        {
+          "x": 190,
+          "y": 163,
+          "text": "a"
+        },
+        {
+          "x": 315,
+          "y": 97,
+          "text": "b"
+        },
+        {
+          "x": 370,
+          "y": 160,
+          "text": "x"
+        },
+        {
+          "x": 110,
+          "y": 32,
+          "text": "y"
+        },
+        {
+          "x": 180,
+          "y": 128,
+          "text": "theta"
+        }
+      ],
+      "arrows": [
+        [
+          90,
+          140,
+          355,
+          140
+        ],
+        [
+          90,
+          140,
+          90,
+          25
+        ],
+        [
+          90,
+          140,
+          290,
+          45
+        ]
+      ]
+    }
+  },
+  {
+    "id": "u1-vector-product-01",
+    "title": "Quanto vale il prodotto vettoriale?",
+    "prompt": "Due vettori adimensionali $\\mathbf{A}$ e $\\mathbf{B}$ sono perpendicolari e hanno entrambi modulo $2$. Quanto vale il modulo $C=|\\mathbf{A}\\times\\mathbf{B}|$ del loro prodotto vettoriale? È richiesto soltanto il modulo, non il verso. Inserisci il numero esatto.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "4",
+      "unit": "1"
+    },
+    "hints": [
+      "Il prodotto vettoriale dipende dall’angolo fra i vettori. Puoi rappresentarne il modulo mediante l’area del parallelogramma costruito sui due vettori.",
+      "Per due vettori perpendicolari il parallelogramma è un rettangolo. In alternativa usa $C=ab\\sin\\theta$ con l’angolo assegnato."
+    ],
+    "solution": [
+      "Il modulo del prodotto vettoriale è $C=ab\\sin\\theta$. Qui l’angolo è retto e $\\sin90^\\circ=1$, quindi $C=2\\times2=4$.",
+      "Geometricamente, il parallelogramma costruito sui due vettori è un quadrato di lato $2$ e area numerica $4$. È una seconda lettura dello stesso risultato.",
+      "Il numero da inserire è $4$. Poiché i vettori sono adimensionali, anche il prodotto lo è: non occorre aggiungere un’unità. La regola della mano destra serve a stabilire il verso del prodotto, che non è richiesto."
+    ],
+    "reason": "Eliminata la richiesta «modulo ... in 1» e distinto il modulo dal verso. Il confronto con l’area evita di confondere prodotto vettoriale e scalare, nullo per vettori perpendicolari.",
+    "check": "Calcolo 2×2×sin90°=4. Controprova determinante dei vettori (2,0,0) e (0,2,0): componente z=4; modulo4. Rotazioni o inversioni dei versi non cambiano il modulo."
+  },
+  {
+    "id": "u2-gravity-ratio-01",
+    "title": "Massa doppia e distanza doppia",
+    "prompt": "Una massa di prova $m$ subisce una forza gravitazionale di modulo $F_A$ per effetto di una massa $M$ posta a distanza $r$. In una seconda situazione, la massa attrattiva è $2M$ e la distanza fra i centri è $2r$; la massa di prova resta uguale. Tratta i corpi come puntiformi, oppure come distribuzioni sfericamente simmetriche non sovrapposte. Quanto vale $F_B/F_A$? Inserisci il numero esatto.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "1/2",
+      "unit": "1"
+    },
+    "hints": [
+      "La massa attrattiva e la distanza non entrano nello stesso modo nella legge di gravitazione. Considera separatamente l’effetto di ciascun cambiamento.",
+      "Scrivi $F=GMm/r^2$ in entrambe le situazioni e forma il rapporto. I fattori che restano identici si semplificano."
+    ],
+    "solution": [
+      "La forza gravitazionale ha modulo $F=GMm/r^2$. Raddoppiare la massa attrattiva, da solo, moltiplicherebbe la forza per $2$. Raddoppiare la distanza, da solo, la dividerebbe per $2^2=4$.",
+      "Combinando i due effetti, $F_B/F_A=2/4=1/2$. La nuova forza è quindi metà della precedente. Il rapporto è adimensionale perché si dividono due forze.",
+      "Il controllo può essere fatto mantenendo espliciti i simboli: $F_B=G(2M)m/(2r)^2$. Il numeratore è doppio, il denominatore quadruplo; il risultato è $F_A/2$. La distanza da usare è quella fra i centri, non quella fra le superfici dei corpi."
+    ],
+    "reason": "Rese concrete le due situazioni al posto dei parametri astratti alfa/beta; chiarita l’ipotesi necessaria per corpi estesi, non la sola forma apparentemente sferica.",
+    "check": "Rapporto esatto2/2²=1/2. Controprova con costante comune K=Gm e valori simbolici F_A=KM/r², F_B=2KM/(4r²). Nessuna assunzione di gravità uniforme."
+  },
+  {
+    "id": "u2-centripetal-acceleration-09",
+    "title": "Dall’accelerazione alla rapidità",
+    "prompt": "Un punto percorre una circonferenza di raggio $r>0$ con rapidità costante $v>0$. Misuri il modulo $a_c>0$ dell’accelerazione centripeta. Quale formula permette di ricavare $v$ da $a_c$ e $r$?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$v=-\\sqrt{a_cr}$",
+        "feedback": "La rapidità è un modulo positivo: non si sceglie la radice negativa."
+      },
+      {
+        "id": "B",
+        "text": "$v=\\sqrt{a_cr}$",
+        "feedback": "Dalla relazione $a_c=v^2/r$ segue $v^2=a_cr$; per la rapidità si prende la radice positiva."
+      },
+      {
+        "id": "C",
+        "text": "$v=2\\sqrt{a_cr}$",
+        "feedback": "Il fattore due renderebbe l’accelerazione calcolata quattro volte quella misurata."
+      },
+      {
+        "id": "D",
+        "text": "$v=\\frac{\\sqrt{a_cr}}{2}$",
+        "feedback": "Dimezzando la rapidità rispetto alla radice, l’accelerazione risulterebbe un quarto di quella assegnata."
+      },
+      {
+        "id": "E",
+        "text": "$v=\\sqrt{2a_cr}$",
+        "feedback": "Il fattore due sotto radice appartiene ad altre relazioni, ma non a $a_c=v^2/r$."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "B"
+    },
+    "hints": [
+      "La rapidità è costante, ma cambia la direzione della velocità. Ricorda quale accelerazione descrive questo cambiamento nel moto circolare.",
+      "Parti da $a_c=v^2/r$ e isola prima $v^2$. La scelta del segno dipende dal fatto che si chiede una rapidità."
+    ],
+    "solution": [
+      "Nel moto circolare uniforme il cambiamento di direzione della velocità produce un’accelerazione verso il centro, di modulo $a_c=v^2/r$. La rapidità costante implica accelerazione tangenziale nulla, non accelerazione totale nulla.",
+      "Moltiplicando per il raggio otteniamo $v^2=a_cr$. La rapidità è positiva, perciò $v=\\sqrt{a_cr}$: risposta B.",
+      "Il prodotto $a_cr$ ha unità $\\mathrm{m^2/s^2}$; la radice ha unità $\\mathrm{m/s}$. Per esempio, $a_c=8\\,\\mathrm{m/s^2}$ e $r=2\\,\\mathrm{m}$ danno $v=4\\,\\mathrm{m/s}$. Reinserendo il valore, $v^2/r=16/2=8\\,\\mathrm{m/s^2}$."
+    ],
+    "reason": "Sostituiti ±1 privi di unità con errori di segno o fattore coerenti dimensionalmente; distinta rapidità da componente orientata e conservata la chiave B.",
+    "check": "Ramo positivo della radice e controllo dimensionale; controprova a_c=8,r=2,v=4 ->v²/r=8. Per a_c r>0 solo B restituisce l’accelerazione assegnata."
+  },
+  {
+    "id": "u2-gravitational-energy-09",
+    "title": "La massa dall’aumento di energia potenziale",
+    "prompt": "Un corpo viene portato a una quota maggiore di $h>0$ in un campo gravitazionale uniforme con $g=10\\,\\mathrm{m/s^2}$. L’aumento di energia potenziale è $U>0$. Quale espressione permette di ricavare la massa $m$ del corpo da $U$ e $h$?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$m=\\frac{U}{gh}$",
+        "feedback": "L’aumento di energia potenziale è $mgh$: dividendo per $gh$ rimane la massa."
+      },
+      {
+        "id": "B",
+        "text": "$m=\\frac{2U}{gh}$",
+        "feedback": "Il fattore due raddoppierebbe l’aumento di energia rispetto a quello misurato."
+      },
+      {
+        "id": "C",
+        "text": "$m=\\frac{U}{2gh}$",
+        "feedback": "Il fattore due al denominatore darebbe un aumento di energia pari alla metà del dato."
+      },
+      {
+        "id": "D",
+        "text": "$m=-\\frac{U}{gh}$",
+        "feedback": "La massa non può essere negativa; qui anche aumento di energia e dislivello sono positivi."
+      },
+      {
+        "id": "E",
+        "text": "$m=\\frac{3U}{gh}$",
+        "feedback": "Nella relazione gravitazionale non compare un fattore tre: conta il prodotto fra peso e dislivello."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "A"
+    },
+    "hints": [
+      "In un campo uniforme, il peso non cambia durante il sollevamento. Collega l’aumento di energia al peso e al dislivello.",
+      "Scrivi $U=mgh$. Individua quali fattori moltiplicano la massa e dividi entrambi i membri per il loro prodotto."
+    ],
+    "solution": [
+      "Nel campo gravitazionale uniforme il peso ha modulo $mg$ e l’aumento di energia potenziale per un sollevamento $h$ è $U=mgh$. Il valore dipende dalla differenza di quota, non dalla scelta della quota zero.",
+      "Dividiamo per $gh$, positivo e non nullo: $m=U/(gh)$, risposta A. Con $g=10\\,\\mathrm{m/s^2}$, inserendo $U$ in joule e $h$ in metri si ottiene il valore della massa in chilogrammi.",
+      "Per controllo, prendiamo $U=60\\,\\mathrm{J}$ e $h=3\\,\\mathrm{m}$. Il peso richiesto è $U/h=20\\,\\mathrm{N}$ e la massa è $20/10=2\\,\\mathrm{kg}$. La forza di gravità compie lavoro $-60\\,\\mathrm{J}$ durante la salita, opposto alla variazione di energia potenziale."
+    ],
+    "reason": "Resa dimensionale la formula, rimossi i distrattori che sommavano U/10 a h e chiarita la differenza fra variazione di energia e lavoro della gravità. Chiave A conservata.",
+    "check": "Inversione U=mgh. Controprova distinta: U/h fornisce il peso20N per U60J,h3m, dunque massa2kg; lavoro gravitazionale−60J. Tutti i distrattori sono multipli distinti per U,g,h>0."
+  },
+  {
+    "id": "u2-gravitational-energy-13",
+    "title": "Quadruplicare l’energia del sollevamento",
+    "prompt": "Confronta due sollevamenti nello stesso campo gravitazionale uniforme, con $g=10\\,\\mathrm{m/s^2}$. Nel caso A, una massa $m_A=2\\,\\mathrm{kg}$ sale di $h_A=2\\,\\mathrm{m}$. Nel caso B la massa è $m_B=4\\,\\mathrm{kg}$ e si vuole che l’aumento di energia potenziale sia $U_B=4U_A$. Quale rapporto $h_B/h_A$ è necessario? Inserisci il numero esatto.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "2",
+      "unit": "1"
+    },
+    "hints": [
+      "La massa è già cambiata: considera quanta parte dell’aumento di energia richiesto è prodotta da questo cambiamento.",
+      "Usa $U=mgh$ nei due casi e forma il rapporto $U_B/U_A$. Il valore di $g$ si semplifica perché è lo stesso."
+    ],
+    "solution": [
+      "Nel caso A, l’aumento di energia è $U_A=m_Agh_A$. Sostituendo i dati, $U_A=2\\times10\\times2=40\\,\\mathrm{J}$. Nel caso B servono quindi $U_B=160\\,\\mathrm{J}$.",
+      "La massa B pesa $m_Bg=40\\,\\mathrm{N}$. Per ottenere l’aumento assegnato occorre $h_B=U_B/(m_Bg)$, cioè $h_B=160/40=4\\,\\mathrm{m}$. Il rapporto cercato è $h_B/h_A=4/2=2$.",
+      "Il controllo per proporzioni è immediato: a parità di $g$, l’energia è proporzionale al prodotto massa per dislivello. La massa raddoppia e il dislivello raddoppia; il loro prodotto diventa quattro volte quello iniziale."
+    ],
+    "reason": "Sostituita «grandezza d’uscita» con aumento di energia potenziale e nominati due sollevamenti distinti. Eliminata l’unità 1 dalla richiesta, mantenuta correttamente nel criterio numerico.",
+    "check": "Ricalcolo U_A40J,U_B160J,h_B4m,rapporto2. Controprova indipendente per pesi: lavoro contro gravità A20N×2m=40J, B40N×4m=160J."
+  },
+  {
+    "id": "u2-impulse-09",
+    "title": "La forza da un impulso misurato",
+    "prompt": "Una forza risultante costante, di modulo $F>0$ e direzione e verso fissi, agisce su un corpo per un intervallo $\\Delta t>0$. Il modulo del suo impulso è $J>0$. Quale espressione permette di ricavare $F$ da $J$ e $\\Delta t$?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$F=-\\frac{J}{\\Delta t}$",
+        "feedback": "Il quesito chiede il modulo della forza, che è positivo. Il segno non va aggiunto a una relazione fra moduli positivi."
+      },
+      {
+        "id": "B",
+        "text": "$F=\\frac{J}{\\Delta t}$",
+        "feedback": "Per una risultante costante, l’impulso è il prodotto della forza per la durata."
+      },
+      {
+        "id": "C",
+        "text": "$F=\\frac{2J}{\\Delta t}$",
+        "feedback": "Questa forza produrrebbe un impulso doppio di quello misurato nello stesso intervallo."
+      },
+      {
+        "id": "D",
+        "text": "$F=\\frac{J}{2\\Delta t}$",
+        "feedback": "Questa forza produrrebbe metà dell’impulso assegnato nello stesso intervallo."
+      },
+      {
+        "id": "E",
+        "text": "$F=\\frac{3J}{\\Delta t}$",
+        "feedback": "Il fattore tre non è presente nella definizione di impulso di una forza costante."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "B"
+    },
+    "hints": [
+      "L’impulso tiene conto sia dell’intensità della forza sia del tempo per cui agisce. Puoi rappresentarlo con un grafico forza-tempo.",
+      "Per una forza costante, l’area nel grafico forza-tempo è un rettangolo. Scrivi area uguale a base per altezza e isola la forza."
+    ],
+    "solution": [
+      "L’impulso della risultante coincide con la variazione di quantità di moto. Quando la forza mantiene modulo, direzione e verso costanti, il suo modulo vale $J=F\\Delta t$. Nel grafico forza-tempo è l’area di un rettangolo.",
+      "Dividendo per la durata positiva, otteniamo $F=J/\\Delta t$, risposta B. L’unità è corretta: $\\mathrm{N\\,s}$ diviso $\\mathrm{s}$ dà $\\mathrm{N}$.",
+      "Per esempio, un impulso di $12\\,\\mathrm{N\\,s}$ in $3\\,\\mathrm{s}$ richiede $F=4\\,\\mathrm{N}$. Come controllo tramite Newton, su una massa di $2\\,\\mathrm{kg}$ questa forza dà $a=2\\,\\mathrm{m/s^2}$. In tre secondi la velocità cambia di $6\\,\\mathrm{m/s}$ e la quantità di moto di $12\\,\\mathrm{kg\\,m/s}$."
+    ],
+    "reason": "Sostituiti i distrattori che sommavano impulso e durata; motivato il prodotto tramite area e variazione di quantità di moto. Chiave B conservata.",
+    "check": "Controprova Newton con m2kg,F4N,t3s ->a2m/s²,delta v6m/s,delta p12kg m/s=J. Opzioni multipli distinti di J/dt per J,dt>0."
+  },
+  {
+    "id": "u2-impulse-13",
+    "title": "Forza e durata per un impulso maggiore",
+    "prompt": "Confronta due azioni di una forza risultante, costante in modulo, direzione e verso durante ciascun intervallo. Nel caso A, $F_A=2\\,\\mathrm{N}$ agisce per $\\Delta t_A=2\\,\\mathrm{s}$. Nel caso B, $F_B=4\\,\\mathrm{N}$ deve produrre un impulso di modulo $J_B=4J_A$. Quanto deve valere $\\Delta t_B/\\Delta t_A$? Inserisci il numero esatto.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "2",
+      "unit": "1"
+    },
+    "hints": [
+      "Una forza maggiore non determina da sola l’impulso: conta anche la durata. Confronta il cambiamento richiesto per l’impulso con quello già assegnato alla forza.",
+      "Calcola l’impulso in A con $J=F\\Delta t$. Poi ricava la durata in B dall’impulso richiesto e dalla nuova forza."
+    ],
+    "solution": [
+      "Nel caso A, l’impulso vale $J_A=F_A\\Delta t_A=4\\,\\mathrm{N\\,s}$. In B ne occorrono quattro volte tanti, cioè $J_B=16\\,\\mathrm{N\\,s}$.",
+      "La durata richiesta è $\\Delta t_B=J_B/F_B$. Quindi $\\Delta t_B=16/4=4\\,\\mathrm{s}$ e il rapporto cercato è $\\Delta t_B/\\Delta t_A=2$.",
+      "Nel grafico forza-tempo, l’impulso è l’area sotto la forza. Il rettangolo B ha altezza doppia e base doppia di A: la sua area è quattro volte maggiore. Questo conferma il rapporto senza ripetere l’inversione della formula."
+    ],
+    "reason": "Esplicitato che si confrontano impulsi della risultante e sostituita la variabile generica d’uscita. Il grafico mostra perché forza doppia e durata doppia producono impulso quadruplo.",
+    "check": "Calcolo esatto J_A4Ns,J_B16Ns,t_B4s,rapporto2. Controprova geometrica aree rettangoli: A2×2=4, B4×4=16; stesso riferimento e scale dei due assi.",
+    "figure": {
+      "stage": "solution",
+      "alt": "Grafico forza-tempo dei due casi: rettangolo A largo 2 secondi e alto 2 newton; rettangolo B largo 4 secondi e alto 4 newton.",
+      "caption": "Confronto in scala sugli stessi assi: il rettangolo piccolo è A, quello grande è B. Si confrontano due esperimenti, non forze contemporanee.",
+      "lines": [
+        [
+          65,
+          100,
+          185,
+          100
+        ],
+        [
+          185,
+          100,
+          185,
+          145
+        ],
+        [
+          65,
+          55,
+          305,
+          55
+        ],
+        [
+          305,
+          55,
+          305,
+          145
+        ],
+        [
+          60,
+          100,
+          70,
+          100
+        ],
+        [
+          60,
+          55,
+          70,
+          55
+        ],
+        [
+          185,
+          141,
+          185,
+          149
+        ],
+        [
+          305,
+          141,
+          305,
+          149
+        ]
+      ],
+      "labels": [
+        {
+          "x": 35,
+          "y": 32,
+          "text": "F (N)"
+        },
+        {
+          "x": 42,
+          "y": 105,
+          "text": "2"
+        },
+        {
+          "x": 42,
+          "y": 60,
+          "text": "4"
+        },
+        {
+          "x": 185,
+          "y": 168,
+          "text": "2"
+        },
+        {
+          "x": 305,
+          "y": 168,
+          "text": "4"
+        },
+        {
+          "x": 367,
+          "y": 169,
+          "text": "t (s)"
+        },
+        {
+          "x": 120,
+          "y": 128,
+          "text": "A"
+        },
+        {
+          "x": 242,
+          "y": 83,
+          "text": "B"
+        }
+      ],
+      "arrows": [
+        [
+          65,
+          145,
+          374,
+          145
+        ],
+        [
+          65,
+          145,
+          65,
+          25
+        ]
+      ]
+    }
+  }
+]

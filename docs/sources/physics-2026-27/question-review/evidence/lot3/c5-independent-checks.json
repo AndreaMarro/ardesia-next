@@ -1,0 +1,149 @@
+{
+  "timestamp": "2026-11-18T17:55:12.595108+01:00",
+  "reviewer": "experience_review; revisore automatico distinto dall’autore C5",
+  "sourceSha256": "9fe482669ca25990aea29abd018ab23943dc32bd1421957a6b57daac54ff8dfc",
+  "questions": 8,
+  "checksPassed": 27,
+  "checks": [
+    {
+      "name": "source_membership",
+      "status": "pass",
+      "method": "8 record confrontati con la sorgente immutabile, non con proprie riscritture"
+    },
+    {
+      "name": "u7-photon-packet-frequency-13:key",
+      "status": "pass",
+      "method": "Risposta razionale e unità conservate"
+    },
+    {
+      "name": "u4-echo-ranging-13:key",
+      "status": "pass",
+      "method": "Risposta razionale e unità conservate"
+    },
+    {
+      "name": "u7-absorbed-radiant-power-09:key",
+      "status": "pass",
+      "method": "Chiave corretta legacy conservata"
+    },
+    {
+      "name": "u7-absorbed-radiant-power-09:options",
+      "status": "pass",
+      "method": "ID opzioni e ordine conservati"
+    },
+    {
+      "name": "u7-absorbed-radiant-power-13:key",
+      "status": "pass",
+      "method": "Risposta razionale e unità conservate"
+    },
+    {
+      "name": "u4-coherent-constructive-09:key",
+      "status": "pass",
+      "method": "Chiave corretta legacy conservata"
+    },
+    {
+      "name": "u4-coherent-constructive-09:options",
+      "status": "pass",
+      "method": "ID opzioni e ordine conservati"
+    },
+    {
+      "name": "u4-coherent-constructive-13:key",
+      "status": "pass",
+      "method": "Risposta razionale e unità conservate"
+    },
+    {
+      "name": "u7-wavelength-in-medium-03:key",
+      "status": "pass",
+      "method": "Chiave corretta legacy conservata"
+    },
+    {
+      "name": "u7-wavelength-in-medium-03:options",
+      "status": "pass",
+      "method": "ID opzioni e ordine conservati"
+    },
+    {
+      "name": "u4-wave-phase-time-03:key",
+      "status": "pass",
+      "method": "Chiave corretta legacy conservata"
+    },
+    {
+      "name": "u4-wave-phase-time-03:options",
+      "status": "pass",
+      "method": "ID opzioni e ordine conservati"
+    },
+    {
+      "name": "photon",
+      "status": "pass",
+      "method": "Energie esatte:33 e132 in unità10^-20J; frequenza doppia con conteggio doppio"
+    },
+    {
+      "name": "echo",
+      "status": "pass",
+      "method": "Percorsi60m e40m, tempi6s e2s. Valori ideali, non descrizione di tessuti biologici"
+    },
+    {
+      "name": "absorption_inverse",
+      "status": "pass",
+      "method": "Bilancio indipendente8W=6W+2W; tau fra0e1 garantisce denominatorepositivo"
+    },
+    {
+      "name": "absorption_formula",
+      "status": "pass",
+      "method": "Identità verificata algebricamente P_ass/(1−tau)×(1−tau)=P_ass; C coincide solo nel caso particolaretau=1/2, non come formula generale"
+    },
+    {
+      "name": "absorption_ratio",
+      "status": "pass",
+      "method": "Assorbimenti4e9W, trasmissioneB3W, rapporto quote1/2"
+    },
+    {
+      "name": "absorption_stages",
+      "status": "pass",
+      "method": "Prompt mostra soli ingressi8/12W e domanda sulle uscite; bilancio risolto compare soltanto nello svolgimento"
+    },
+    {
+      "name": "absorption_scale",
+      "status": "pass",
+      "method": "Tutte le barre condividono scala20unitàSVG/W e originex74; partizioni4+4e9+3 esatte"
+    },
+    {
+      "name": "coherent_inverse",
+      "status": "pass",
+      "method": "Ampiezze additive in fase e dominioAtot>A2>0; non additività delle intensità"
+    },
+    {
+      "name": "coherent_signal",
+      "status": "pass",
+      "method": "Somma esplicita di due segnali cosinusoidali in4fasi distinte; conferma del coefficienteAtot=A1+A2"
+    },
+    {
+      "name": "coherent_ratio",
+      "status": "pass",
+      "method": "Totali3e5mm; secondaonda3mm e rapporto3/2; controllo incrementi1+1=2mm"
+    },
+    {
+      "name": "refraction",
+      "status": "pass",
+      "method": "Interfaccia ferma lineare: medesima periodicità temporale; esempio n1=1,n2=1,5 dà diverse velocità/lunghezze e stessafrequenza"
+    },
+    {
+      "name": "period_frequency",
+      "status": "pass",
+      "method": "Conteggio5cicli in2s, frequenza5/2Hz"
+    },
+    {
+      "name": "phase_graph",
+      "status": "pass",
+      "method": "Tre attraversamenti della stessa fase a0/0,4/0,8s; passo120SVG costante; curva cresce dopo gli attraversamenti"
+    },
+    {
+      "name": "render360",
+      "status": "pass",
+      "method": "8record,105formule KaTeX; viewport360×800 conCSS reale, nessunoverflow o scroll locale; etichette nei limiti"
+    }
+  ],
+  "limits": [
+    "Verifica automatica indipendente, non revisione umana.",
+    "Preview locale col CSS prodotto, non percorso live completo.",
+    "Nessuna prova su hardware mobile o screen reader reali."
+  ]
+}

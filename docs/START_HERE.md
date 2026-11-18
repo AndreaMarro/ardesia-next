@@ -1,5 +1,7 @@
 # Ardesia Next — ingresso unico
 
+> [Terzo lotto di quesiti Fisica](handoffs/2026-11-18-physics-questions-lot3.md).
+
 > [Revisione dei quesiti Fisica del 18 novembre](handoffs/2026-11-18-physics-questions.md).
 
 > Chiusura del 17 novembre: [handoff, sorgenti recuperate e limiti](handoffs/2026-11-17-closure.md).

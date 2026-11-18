@@ -1,0 +1,990 @@
+{
+  "questions": 16,
+  "figures": 4,
+  "originalLevels": {
+    "u5-gas-density-09": "medio",
+    "u5-calorimeter-capacity-13": "difficile",
+    "u5-composite-wall-series-13": "difficile",
+    "u5-compression-heating-09": "medio",
+    "u5-carnot-efficiency-13": "difficile",
+    "u5-engine-efficiency-01": "base",
+    "u5-refrigerator-cop-01": "base",
+    "u5-first-law-expansion-03": "base",
+    "u6-capacitor-charge-09": "medio",
+    "u6-capacitor-charge-13": "difficile",
+    "u6-accelerated-magnetic-radius-09": "medio",
+    "u6-symmetric-electric-potential-06": "facile",
+    "u6-capacitor-energy-13": "difficile",
+    "u6-connected-plate-separation-charge-09": "medio",
+    "u6-faraday-average-emf-13": "difficile",
+    "u6-dielectric-isolated-voltage-03": "base"
+  },
+  "structuralChecks": [
+    {
+      "id": "u5-gas-density-09",
+      "method": "Active ID",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u5-gas-density-09",
+      "method": "In remaining queue",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u5-gas-density-09",
+      "method": "Not already reviewed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u5-gas-density-09",
+      "method": "Answer preserved",
+      "actual": "B",
+      "expected": "B",
+      "passed": true
+    },
+    {
+      "id": "u5-gas-density-09",
+      "method": "Option IDs preserved",
+      "actual": "A,B,C,D,E",
+      "expected": "A,B,C,D,E",
+      "passed": true
+    },
+    {
+      "id": "u5-calorimeter-capacity-13",
+      "method": "Active ID",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u5-calorimeter-capacity-13",
+      "method": "In remaining queue",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u5-calorimeter-capacity-13",
+      "method": "Not already reviewed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u5-calorimeter-capacity-13",
+      "method": "Answer preserved",
+      "actual": "2",
+      "expected": "2",
+      "passed": true
+    },
+    {
+      "id": "u5-calorimeter-capacity-13",
+      "method": "Option IDs preserved",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "id": "u5-composite-wall-series-13",
+      "method": "Active ID",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u5-composite-wall-series-13",
+      "method": "In remaining queue",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u5-composite-wall-series-13",
+      "method": "Not already reviewed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u5-composite-wall-series-13",
+      "method": "Answer preserved",
+      "actual": "2",
+      "expected": "2",
+      "passed": true
+    },
+    {
+      "id": "u5-composite-wall-series-13",
+      "method": "Option IDs preserved",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "id": "u5-compression-heating-09",
+      "method": "Active ID",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u5-compression-heating-09",
+      "method": "In remaining queue",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u5-compression-heating-09",
+      "method": "Not already reviewed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u5-compression-heating-09",
+      "method": "Answer preserved",
+      "actual": "D",
+      "expected": "D",
+      "passed": true
+    },
+    {
+      "id": "u5-compression-heating-09",
+      "method": "Option IDs preserved",
+      "actual": "A,B,C,D,E",
+      "expected": "A,B,C,D,E",
+      "passed": true
+    },
+    {
+      "id": "u5-carnot-efficiency-13",
+      "method": "Active ID",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u5-carnot-efficiency-13",
+      "method": "In remaining queue",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u5-carnot-efficiency-13",
+      "method": "Not already reviewed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u5-carnot-efficiency-13",
+      "method": "Answer preserved",
+      "actual": "1/200",
+      "expected": "1/200",
+      "passed": true
+    },
+    {
+      "id": "u5-carnot-efficiency-13",
+      "method": "Option IDs preserved",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "id": "u5-engine-efficiency-01",
+      "method": "Active ID",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u5-engine-efficiency-01",
+      "method": "In remaining queue",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u5-engine-efficiency-01",
+      "method": "Not already reviewed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u5-engine-efficiency-01",
+      "method": "Answer preserved",
+      "actual": "4/5",
+      "expected": "4/5",
+      "passed": true
+    },
+    {
+      "id": "u5-engine-efficiency-01",
+      "method": "Option IDs preserved",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "id": "u5-refrigerator-cop-01",
+      "method": "Active ID",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u5-refrigerator-cop-01",
+      "method": "In remaining queue",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u5-refrigerator-cop-01",
+      "method": "Not already reviewed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u5-refrigerator-cop-01",
+      "method": "Answer preserved",
+      "actual": "5",
+      "expected": "5",
+      "passed": true
+    },
+    {
+      "id": "u5-refrigerator-cop-01",
+      "method": "Option IDs preserved",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "id": "u5-first-law-expansion-03",
+      "method": "Active ID",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u5-first-law-expansion-03",
+      "method": "In remaining queue",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u5-first-law-expansion-03",
+      "method": "Not already reviewed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u5-first-law-expansion-03",
+      "method": "Answer preserved",
+      "actual": "E",
+      "expected": "E",
+      "passed": true
+    },
+    {
+      "id": "u5-first-law-expansion-03",
+      "method": "Option IDs preserved",
+      "actual": "A,B,C,D,E",
+      "expected": "A,B,C,D,E",
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-charge-09",
+      "method": "Active ID",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-charge-09",
+      "method": "In remaining queue",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-charge-09",
+      "method": "Not already reviewed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-charge-09",
+      "method": "Answer preserved",
+      "actual": "D",
+      "expected": "D",
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-charge-09",
+      "method": "Option IDs preserved",
+      "actual": "A,B,C,D,E",
+      "expected": "A,B,C,D,E",
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-charge-13",
+      "method": "Active ID",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-charge-13",
+      "method": "In remaining queue",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-charge-13",
+      "method": "Not already reviewed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-charge-13",
+      "method": "Answer preserved",
+      "actual": "5/3",
+      "expected": "5/3",
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-charge-13",
+      "method": "Option IDs preserved",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "id": "u6-accelerated-magnetic-radius-09",
+      "method": "Active ID",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u6-accelerated-magnetic-radius-09",
+      "method": "In remaining queue",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u6-accelerated-magnetic-radius-09",
+      "method": "Not already reviewed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u6-accelerated-magnetic-radius-09",
+      "method": "Answer preserved",
+      "actual": "A",
+      "expected": "A",
+      "passed": true
+    },
+    {
+      "id": "u6-accelerated-magnetic-radius-09",
+      "method": "Option IDs preserved",
+      "actual": "A,B,C,D,E",
+      "expected": "A,B,C,D,E",
+      "passed": true
+    },
+    {
+      "id": "u6-symmetric-electric-potential-06",
+      "method": "Active ID",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u6-symmetric-electric-potential-06",
+      "method": "In remaining queue",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u6-symmetric-electric-potential-06",
+      "method": "Not already reviewed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u6-symmetric-electric-potential-06",
+      "method": "Answer preserved",
+      "actual": "C",
+      "expected": "C",
+      "passed": true
+    },
+    {
+      "id": "u6-symmetric-electric-potential-06",
+      "method": "Option IDs preserved",
+      "actual": "A,B,C,D,E",
+      "expected": "A,B,C,D,E",
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-energy-13",
+      "method": "Active ID",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-energy-13",
+      "method": "In remaining queue",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-energy-13",
+      "method": "Not already reviewed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-energy-13",
+      "method": "Answer preserved",
+      "actual": "3/2",
+      "expected": "3/2",
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-energy-13",
+      "method": "Option IDs preserved",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "id": "u6-connected-plate-separation-charge-09",
+      "method": "Active ID",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u6-connected-plate-separation-charge-09",
+      "method": "In remaining queue",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u6-connected-plate-separation-charge-09",
+      "method": "Not already reviewed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u6-connected-plate-separation-charge-09",
+      "method": "Answer preserved",
+      "actual": "A",
+      "expected": "A",
+      "passed": true
+    },
+    {
+      "id": "u6-connected-plate-separation-charge-09",
+      "method": "Option IDs preserved",
+      "actual": "A,B,C,D,E",
+      "expected": "A,B,C,D,E",
+      "passed": true
+    },
+    {
+      "id": "u6-faraday-average-emf-13",
+      "method": "Active ID",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u6-faraday-average-emf-13",
+      "method": "In remaining queue",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u6-faraday-average-emf-13",
+      "method": "Not already reviewed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u6-faraday-average-emf-13",
+      "method": "Answer preserved",
+      "actual": "3/2",
+      "expected": "3/2",
+      "passed": true
+    },
+    {
+      "id": "u6-faraday-average-emf-13",
+      "method": "Option IDs preserved",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "id": "u6-dielectric-isolated-voltage-03",
+      "method": "Active ID",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u6-dielectric-isolated-voltage-03",
+      "method": "In remaining queue",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u6-dielectric-isolated-voltage-03",
+      "method": "Not already reviewed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u6-dielectric-isolated-voltage-03",
+      "method": "Answer preserved",
+      "actual": "A",
+      "expected": "A",
+      "passed": true
+    },
+    {
+      "id": "u6-dielectric-isolated-voltage-03",
+      "method": "Option IDs preserved",
+      "actual": "A,B,C,D,E",
+      "expected": "A,B,C,D,E",
+      "passed": true
+    }
+  ],
+  "scientificChecks": [
+    {
+      "id": "u5-gas-density-09",
+      "method": "SI pressure at density1kg/m³,T300K",
+      "actual": 75,
+      "expected": 75,
+      "passed": true
+    },
+    {
+      "id": "u5-gas-density-09",
+      "method": "Independent 1L mole balance",
+      "actual": 75,
+      "expected": 75,
+      "passed": true
+    },
+    {
+      "id": "u5-gas-density-09",
+      "method": "All options at rho1,T300",
+      "actual": "74,75,150,37.5,76",
+      "expected": "74,75,150,37.5,76",
+      "passed": true
+    },
+    {
+      "id": "u5-calorimeter-capacity-13",
+      "method": "A final temperature weighted capacity",
+      "actual": 40,
+      "expected": 40,
+      "passed": true
+    },
+    {
+      "id": "u5-calorimeter-capacity-13",
+      "method": "B target Celsius reading",
+      "actual": 44,
+      "expected": 44,
+      "passed": true
+    },
+    {
+      "id": "u5-calorimeter-capacity-13",
+      "method": "B inferred cold mass",
+      "actual": 4,
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "id": "u5-calorimeter-capacity-13",
+      "method": "B thermal balance",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "id": "u5-calorimeter-capacity-13",
+      "method": "Mass ratio",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "id": "u5-composite-wall-series-13",
+      "method": "Original power",
+      "actual": 30,
+      "expected": 30,
+      "passed": true
+    },
+    {
+      "id": "u5-composite-wall-series-13",
+      "method": "New power",
+      "actual": 15,
+      "expected": 15,
+      "passed": true
+    },
+    {
+      "id": "u5-composite-wall-series-13",
+      "method": "Layer drops in new wall",
+      "actual": 60,
+      "expected": 60,
+      "passed": true
+    },
+    {
+      "id": "u5-composite-wall-series-13",
+      "method": "Only first layer changed",
+      "actual": 20,
+      "expected": 20,
+      "passed": true
+    },
+    {
+      "id": "u5-compression-heating-09",
+      "method": "All options at50J and30J",
+      "actual": "10,21,19,20,40",
+      "expected": "10,21,19,20,40",
+      "passed": true
+    },
+    {
+      "id": "u5-compression-heating-09",
+      "method": "Reconstruct energy",
+      "actual": 50,
+      "expected": 50,
+      "passed": true
+    },
+    {
+      "id": "u5-carnot-efficiency-13",
+      "method": "B cold temperature",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "id": "u5-carnot-efficiency-13",
+      "method": "Required temperature ratio",
+      "actual": 0.005,
+      "expected": 0.005,
+      "passed": true
+    },
+    {
+      "id": "u5-carnot-efficiency-13",
+      "method": "Replay efficiency ratio",
+      "actual": 1.3333333333333335,
+      "expected": 1.3333333333333333,
+      "passed": true
+    },
+    {
+      "id": "u5-engine-efficiency-01",
+      "method": "Useful energy fraction",
+      "actual": 0.8,
+      "expected": 0.8,
+      "passed": true
+    },
+    {
+      "id": "u5-engine-efficiency-01",
+      "method": "Fractions sum to1",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "id": "u5-refrigerator-cop-01",
+      "method": "Cooling COP",
+      "actual": 5,
+      "expected": 5,
+      "passed": true
+    },
+    {
+      "id": "u5-refrigerator-cop-01",
+      "method": "Hot heat by energy balance",
+      "actual": 120,
+      "expected": 120,
+      "passed": true
+    },
+    {
+      "id": "u5-refrigerator-cop-01",
+      "method": "Heating COP differs by1",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "id": "u5-first-law-expansion-03",
+      "method": "Same deltaU heat path",
+      "actual": 10,
+      "expected": 10,
+      "passed": true
+    },
+    {
+      "id": "u5-first-law-expansion-03",
+      "method": "Same deltaU work path",
+      "actual": 10,
+      "expected": 10,
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-charge-09",
+      "method": "SI capacity in microfarad",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-charge-09",
+      "method": "All option values for q6,v3",
+      "actual": "1,3,1,2,4",
+      "expected": "1,3,1,2,4",
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-charge-13",
+      "method": "Initial plate charge",
+      "actual": 6,
+      "expected": 6,
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-charge-13",
+      "method": "Required final charge",
+      "actual": 5,
+      "expected": 5,
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-charge-13",
+      "method": "Required voltage ratio",
+      "actual": 1.6666666666666667,
+      "expected": 1.6666666666666667,
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-charge-13",
+      "method": "Replay charge fraction",
+      "actual": 0.8333333333333334,
+      "expected": 0.8333333333333334,
+      "passed": true
+    },
+    {
+      "id": "u6-accelerated-magnetic-radius-09",
+      "method": "q/m1,r2,B1 gives speed2",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "id": "u6-accelerated-magnetic-radius-09",
+      "method": "Kinetic energy per mass equals accelerating work",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "id": "u6-accelerated-magnetic-radius-09",
+      "method": "All options at r2,B1",
+      "actual": "2,4,1,3,1",
+      "expected": "2,4,1,3,1",
+      "passed": true
+    },
+    {
+      "id": "u6-accelerated-magnetic-radius-09",
+      "method": "Doubled radius requires fourfold voltage",
+      "actual": 4,
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "id": "u6-symmetric-electric-potential-06",
+      "method": "New zero",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "id": "u6-symmetric-electric-potential-06",
+      "method": "New potential R",
+      "actual": -12,
+      "expected": -12,
+      "passed": true
+    },
+    {
+      "id": "u6-symmetric-electric-potential-06",
+      "method": "Potential difference invariant",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-energy-13",
+      "method": "Initial energy microjoules",
+      "actual": 4,
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-energy-13",
+      "method": "Final energy microjoules",
+      "actual": 18,
+      "expected": 18,
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-energy-13",
+      "method": "Energy ratio",
+      "actual": 4.5,
+      "expected": 4.5,
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-energy-13",
+      "method": "Voltage ratio from QV/2 and Q=CV",
+      "actual": 1.5,
+      "expected": 1.5,
+      "passed": true
+    },
+    {
+      "id": "u6-capacitor-energy-13",
+      "method": "Charge ratio differs from energy ratio",
+      "actual": 3,
+      "expected": 3,
+      "passed": true
+    },
+    {
+      "id": "u6-connected-plate-separation-charge-09",
+      "method": "All restored option functions s2,Q3",
+      "actual": "6,12,3,7,5",
+      "expected": "6,12,3,7,5",
+      "passed": true
+    },
+    {
+      "id": "u6-connected-plate-separation-charge-09",
+      "method": "Fixed voltage SI example C0=2μF,V3,s2",
+      "actual": 3,
+      "expected": 3,
+      "passed": true
+    },
+    {
+      "id": "u6-connected-plate-separation-charge-09",
+      "method": "Recover initial charge",
+      "actual": 6,
+      "expected": 6,
+      "passed": true
+    },
+    {
+      "id": "u6-connected-plate-separation-charge-09",
+      "method": "No geometry change",
+      "actual": 3,
+      "expected": 3,
+      "passed": true
+    },
+    {
+      "id": "u6-faraday-average-emf-13",
+      "method": "SI initial emf",
+      "actual": 30,
+      "expected": 30,
+      "passed": true
+    },
+    {
+      "id": "u6-faraday-average-emf-13",
+      "method": "SI required duration seconds",
+      "actual": 0.003,
+      "expected": 0.003,
+      "passed": true
+    },
+    {
+      "id": "u6-faraday-average-emf-13",
+      "method": "Duration ratio",
+      "actual": 1.5,
+      "expected": 1.5,
+      "passed": true
+    },
+    {
+      "id": "u6-faraday-average-emf-13",
+      "method": "Emf ratio recovered",
+      "actual": 1.3333333333333333,
+      "expected": 1.3333333333333333,
+      "passed": true
+    },
+    {
+      "id": "u6-dielectric-isolated-voltage-03",
+      "method": "Doubled permittivity capacitance",
+      "actual": 4,
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "id": "u6-dielectric-isolated-voltage-03",
+      "method": "Initial voltage",
+      "actual": 3,
+      "expected": 3,
+      "passed": true
+    },
+    {
+      "id": "u6-dielectric-isolated-voltage-03",
+      "method": "Final voltage",
+      "actual": 1.5,
+      "expected": 1.5,
+      "passed": true
+    },
+    {
+      "id": "u6-dielectric-isolated-voltage-03",
+      "method": "Initial energy microjoules",
+      "actual": 9,
+      "expected": 9,
+      "passed": true
+    },
+    {
+      "id": "u6-dielectric-isolated-voltage-03",
+      "method": "Final energy microjoules",
+      "actual": 4.5,
+      "expected": 4.5,
+      "passed": true
+    },
+    {
+      "id": "u6-dielectric-isolated-voltage-03",
+      "method": "Charge recovered final",
+      "actual": 6,
+      "expected": 6,
+      "passed": true
+    }
+  ],
+  "math": {
+    "count": 313,
+    "strictKatex": true,
+    "maxAvailableWidth": 328,
+    "overflow": []
+  },
+  "humanApproval": false,
+  "sha256": {
+    "c3.json": "210d9cce14e885c67c0173b1fd090a14082061e349f70617e74e741c57d55936",
+    "c4.json": "7e8532577955c73b929a245154c1e4a3c8fcd3e985a7b1fc858f4da75bb20fe2",
+    "originals.json": "31224b4c55f52f406fd3341633767815d7d37af788f142feb5d65c4e52fbf889"
+  }
+}

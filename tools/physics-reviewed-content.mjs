@@ -34,8 +34,11 @@ const question = z.object({
   reason: content,
   check: content,
   figure: figure.optional(),
+  solutionFigure: figure.optional(),
   lab: z.object({href: z.enum(['urti.html','poiseuille.html','termodinamica.html','campo.html','c5.html#interferenza']), activity: content}).strict().optional()
-}).strict();
+}).strict().refine(q => !q.solutionFigure ||
+  (q.figure?.stage === 'prompt' && q.solutionFigure.stage === 'solution'),
+  'A second diagram must continue a prompt diagram in the solution.');
 
 export function parts(value) {
   const split = value.split('$');
@@ -52,6 +55,13 @@ export function loadReviewedQuestions() {
   const units = JSON.parse(readFileSync('docs/sources/physics-2026-27/editorial/units.json','utf8'));
   const origins = new Map(records.map(origin => [origin.id, origin]));
   const unitIds = new Map(units.map(unit => [unit.unitId, unit]));
+  const assigned = new Map();
+  for (const unit of units) {
+    for (const id of unit.exerciseIds) {
+      if (!assigned.has(id)) assigned.set(id, []);
+      assigned.get(id).push(unit.unitId);
+    }
+  }
   const ids = new Set();
   const questions = [];
   for (const name of readdirSync(reviewDirectory+'/lots').sort()) {
@@ -61,6 +71,12 @@ export function loadReviewedQuestions() {
       const origin = origins.get(q.id);
       const unit = unitIds.get(origin?.lessonId);
       if (!origin || !unit || origin.taxonomyUnit !== unit.syllabusUnitId || ids.has(q.id)) throw Error('Provenienza o lezione incoerente: '+q.id);
+      const expectedLessons = assigned.get(q.id) ?? [origin.lessonId];
+      if (JSON.stringify(origin.linkedLessons) !== JSON.stringify(expectedLessons) ||
+          !expectedLessons.includes(origin.lessonId) ||
+          expectedLessons.some(id=>unitIds.get(id).courseId !== unit.courseId)) {
+        throw Error('Collegamenti alle lezioni incoerenti: '+q.id);
+      }
       const choice = q.answer.kind === 'choice';
       if (choice ? origin.format !== 'multiple_choice' || q.options.map(o=>o.id).join('') !== 'ABCDE' ||
         new Set(q.options.map(o=>o.text)).size !== 5 || q.answer.id !== origin.answer.correctOptionId

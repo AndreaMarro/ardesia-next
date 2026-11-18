@@ -21,7 +21,7 @@
 .reviewed-figure path { fill: #266456; }
 .reviewed-figure text { fill: #18372d; font: 17px system-ui, sans-serif; }
 .reviewed-solution { padding-inline-start: .75rem; border-inline-start: 3px solid #477f70; }
-.reviewed-catalog li a { display: inline-flex; align-items: center; min-height: 44px; }
+.reviewed-catalog li a, .reviewed-links a { display: inline-flex; align-items: center; min-height: 44px; }
 
 .practice-math { display: inline-block; vertical-align: middle; max-inline-size: 100%; overflow-x: auto; overflow-y: hidden; }
 @media print { .practice-math { overflow: visible; } }

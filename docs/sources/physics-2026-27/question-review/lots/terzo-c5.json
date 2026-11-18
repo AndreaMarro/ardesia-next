@@ -1,0 +1,917 @@
+[
+  {
+    "id": "u7-photon-packet-frequency-13",
+    "title": "Due pacchetti, quattro volte l’energia",
+    "prompt": "Il pacchetto A contiene $5$ fotoni di frequenza $f_\\mathrm A=10^{14}\\,\\mathrm{Hz}$. Nel pacchetto B ci sono $10$ fotoni, tutti di una nuova frequenza $f_\\mathrm B$. L’energia totale di B deve essere quattro volte quella di A. Quanto deve valere il rapporto $f_\\mathrm B/f_\\mathrm A$? Se usi un valore numerico, prendi $h=6{,}6\\cdot 10^{-34}\\,\\mathrm{J\\,s}$.",
+    "answer": {
+      "kind": "rational",
+      "unit": "1",
+      "exact": "2"
+    },
+    "hints": [
+      "Se usassi ancora la frequenza di A, come cambierebbe l’energia totale passando da cinque a dieci fotoni?",
+      "Confronta l’energia per fotone nei due pacchetti dopo aver tenuto conto del diverso numero di fotoni."
+    ],
+    "solution": [
+      "Ogni fotone porta energia $hf$. Poiché i fotoni di uno stesso pacchetto hanno tutti la stessa frequenza, l’energia del pacchetto è $E=Nhf$.",
+      "Il rapporto $E_\\mathrm B/E_\\mathrm A$ è il prodotto del rapporto dei conteggi e del rapporto delle frequenze. La costante $h$ si semplifica. I conteggi danno già un fattore $10/5=2$. Per ottenere il fattore totale $4$ serve ancora un fattore $4/2=2$ nella frequenza.",
+      "Come verifica, un fotone di A vale $6{,}6\\cdot 10^{-20}\\,\\mathrm J$. Cinque fotoni danno $3{,}3\\cdot 10^{-19}\\,\\mathrm J$. In B ciascun fotone ha il doppio di quell’energia e ce ne sono dieci. Il totale è $1{,}32\\cdot 10^{-18}\\,\\mathrm J$, quattro volte il valore iniziale."
+    ],
+    "check": "Controprova in unità di 10⁻²⁰ J: 5×6,6 = 33 e 10×13,2 = 132. Le frequenze 10¹⁴ e 2×10¹⁴ Hz sono positive e il rapporto è 2.",
+    "reason": "Sostituita la notazione ambigua “f₁₄ = 1 10¹⁴ Hz” con una frequenza fisica. Separato il numero di fotoni dalla frequenza. Vincolo e risposta conservati.",
+    "options": []
+  },
+  {
+    "id": "u4-echo-ranging-13",
+    "title": "Quanto deve accorciarsi il tempo dell’eco?",
+    "prompt": "Confronta due misure ideali di eco. In ciascuna l’impulso parte da un trasduttore, si riflette su una parete e torna per la stessa via. Nella misura A la velocità è $10\\,\\mathrm{m/s}$ e il tempo di andata e ritorno è $6\\,\\mathrm s$. Nella misura B la velocità vale $20\\,\\mathrm{m/s}$ e la distanza dalla parete deve essere due terzi di quella di A. Il ritardo dello strumento è trascurabile. Quanto vale il rapporto $\\Delta t_\\mathrm B/\\Delta t_\\mathrm A$?",
+    "answer": {
+      "kind": "rational",
+      "unit": "1",
+      "exact": "1/3"
+    },
+    "hints": [
+      "Disegna i due percorsi della stessa misura. Quale tratto di cammino corrisponde alla distanza cercata?",
+      "Puoi trovare separatamente le due distanze e poi ricostruire il tempo della misura B."
+    ],
+    "solution": [
+      "In A il percorso completo misura $10\\cdot 6=60\\,\\mathrm m$. La parete è a metà del cammino totale, quindi dista $30\\,\\mathrm m$.",
+      "La parete della prova B deve distare $(2/3)\\cdot30=20\\,\\mathrm m$. L’impulso percorre complessivamente $40\\,\\mathrm m$. A $20\\,\\mathrm{m/s}$ arriva di nuovo al trasduttore dopo $2\\,\\mathrm s$. Il rapporto dei tempi è $2/6=1/3$.",
+      "Il valore è minore di uno per due ragioni distinte. In B il cammino è più corto e la velocità è maggiore. Per controllare, nella stessa equazione $2d=c\\Delta t$ il fattore $2$ si cancella fra i casi. Il tempo quindi cambia di un fattore $(2/3)/2=1/3$."
+    ],
+    "check": "Ricalcolo per confronto adimensionale: c_B/c_A=2 e d_B/d_A=2/3. Quindi t_B/t_A=(d_B/d_A)/(c_B/c_A)=1/3. Effettuato anche il controllo numerico con 30 m e 20 m.",
+    "reason": "Sostituita la generica “grandezza d’uscita” con la distanza dalla parete. Lo schema anticipa soltanto la geometria dell’eco.",
+    "options": [],
+    "figure": {
+      "stage": "prompt",
+      "alt": "Un trasduttore e una parete delimitano la distanza d. Due frecce mostrano i versi di andata e ritorno.",
+      "caption": "In ogni misura si percorre due volte la distanza dalla parete. Schema senza scala.",
+      "lines": [
+        [
+          68,
+          65,
+          68,
+          130
+        ],
+        [
+          329,
+          52,
+          329,
+          143
+        ],
+        [
+          68,
+          152,
+          329,
+          152
+        ]
+      ],
+      "labels": [
+        {
+          "x": 70,
+          "y": 41,
+          "text": "Trasduttore"
+        },
+        {
+          "x": 328,
+          "y": 41,
+          "text": "Parete"
+        },
+        {
+          "x": 196,
+          "y": 74,
+          "text": "Andata"
+        },
+        {
+          "x": 198,
+          "y": 126,
+          "text": "Ritorno"
+        },
+        {
+          "x": 197,
+          "y": 172,
+          "text": "d"
+        }
+      ],
+      "arrows": [
+        [
+          73,
+          83,
+          325,
+          83
+        ],
+        [
+          325,
+          99,
+          73,
+          99
+        ]
+      ]
+    }
+  },
+  {
+    "id": "u7-absorbed-radiant-power-09",
+    "title": "Dalla potenza assorbita a quella in ingresso",
+    "prompt": "Uno strato assorbe la potenza $P_\\mathrm{ass}$ e trasmette una frazione $\\tau$ della potenza incidente $P_0$, con $0<\\tau<1$. La riflessione è trascurabile. Quale espressione permette di trovare $P_0$ conoscendo la potenza assorbita e la frazione trasmessa?",
+    "answer": {
+      "kind": "choice",
+      "id": "E"
+    },
+    "hints": [
+      "Se conosci la frazione che esce dallo strato, quale frazione resta al suo interno?",
+      "Esprimi la potenza assorbita come frazione della potenza incidente prima di isolare l’incognita."
+    ],
+    "solution": [
+      "In assenza di riflessione, la potenza incidente si divide fra trasmissione e assorbimento. Se attraversa lo strato la frazione $\\tau$, resta la frazione $1-\\tau$. Perciò $P_\\mathrm{ass}=(1-\\tau)P_0$.",
+      "Dividendo entrambi i membri per $1-\\tau$ si ottiene $P_0=P_\\mathrm{ass}/(1-\\tau)$. Il denominatore è adimensionale e positivo. Il risultato è in watt ed è maggiore della potenza assorbita.",
+      "Immagina $\\tau=1/4$ e $P_\\mathrm{ass}=6\\,\\mathrm W$. La risposta dà $P_0=8\\,\\mathrm W$. Escono $2\\,\\mathrm W$ e i $6\\,\\mathrm W$ restanti coincidono con la misura."
+    ],
+    "check": "Controllo indipendente per quote: se tre quarti sono 6 W, un quarto è 2 W e l’intero è 8 W. Per τ=1/4 A dà 16 W, B 4 W, C 24 W, D 4,5 W ed E 8 W e solo E ricostruisce 6 W assorbiti.",
+    "reason": "Eliminata la formula già data nel testo e riformulati C e D per evitare somme di watt e frazioni. La chiave E è algebricamente equivalente all’originale.",
+    "options": [
+      {
+        "id": "A",
+        "text": "$2P_\\mathrm{ass}/(1-\\tau)$",
+        "feedback": "Il bilancio non contiene il fattore 2. Lo strato divide la potenza in due contributi, che non sono in generale uguali."
+      },
+      {
+        "id": "B",
+        "text": "$P_\\mathrm{ass}/[2(1-\\tau)]$",
+        "feedback": "Hai raddoppiato la frazione di assorbimento nel denominatore. La frazione di potenza che resta nello strato è una sola."
+      },
+      {
+        "id": "C",
+        "text": "$P_\\mathrm{ass}/\\tau$",
+        "feedback": "La misura riguarda la quota assorbita, mentre il denominatore è la quota trasmessa."
+      },
+      {
+        "id": "D",
+        "text": "$P_\\mathrm{ass}(1-\\tau)$",
+        "feedback": "Il prodotto per questa frazione porta dall’incidente all’assorbito. Per tornare indietro devi dividere."
+      },
+      {
+        "id": "E",
+        "text": "$P_\\mathrm{ass}/(1-\\tau)$",
+        "feedback": "Hai ricostruito l’ingresso dividendo la misura per la frazione assorbita."
+      }
+    ],
+    "figure": {
+      "stage": "prompt",
+      "alt": "Una freccia di potenza incidente entra nello strato e una freccia di potenza trasmessa ne esce.",
+      "caption": "Schema di bilancio. Le lunghezze delle frecce non rappresentano valori.",
+      "lines": [
+        [
+          152,
+          41,
+          243,
+          41
+        ],
+        [
+          152,
+          132,
+          243,
+          132
+        ],
+        [
+          152,
+          41,
+          152,
+          132
+        ],
+        [
+          243,
+          41,
+          243,
+          132
+        ]
+      ],
+      "labels": [
+        {
+          "x": 84,
+          "y": 64,
+          "text": "Incidente"
+        },
+        {
+          "x": 198,
+          "y": 92,
+          "text": "Strato"
+        },
+        {
+          "x": 317,
+          "y": 64,
+          "text": "Trasmessa"
+        }
+      ],
+      "arrows": [
+        [
+          29,
+          88,
+          150,
+          88
+        ],
+        [
+          245,
+          88,
+          371,
+          88
+        ]
+      ]
+    }
+  },
+  {
+    "id": "u7-absorbed-radiant-power-13",
+    "title": "Assorbire di più quando cresce la potenza",
+    "prompt": "Uno strato riceve $8\\,\\mathrm W$ nella prova A e ne trasmette la metà. Nella prova B riceve $12\\,\\mathrm W$. In entrambe le prove la riflessione è trascurabile. Per ottenere in B una potenza assorbita pari a $9/4$ volte quella della prova A, quale rapporto $\\tau_\\mathrm B/\\tau_\\mathrm A$ deve avere la frazione trasmessa?",
+    "answer": {
+      "kind": "rational",
+      "unit": "1",
+      "exact": "1/2"
+    },
+    "hints": [
+      "Dalla potenza incidente di A, togli la quota che attraversa lo strato.",
+      "In B calcola prima quanta potenza deve rimanere nello strato e poi quanta ne può uscire."
+    ],
+    "solution": [
+      "In A metà degli $8\\,\\mathrm W$ esce dallo strato. L’altra metà resta, quindi si assorbono $4\\,\\mathrm W$.",
+      "In B l’assorbimento deve salire a $(9/4)\\cdot4=9\\,\\mathrm W$. Dei $12\\,\\mathrm W$ in ingresso ne restano allora $12-9=3\\,\\mathrm W$ da trasmettere.",
+      "La frazione trasmessa di B è $3/12=1/4$, mentre quella di A è $1/2$. Il rapporto richiesto è $(1/4)/(1/2)=1/2$. Controllando il bilancio, l’assorbimento di B è effettivamente $9\\,\\mathrm W$ e si mantiene al di sotto dell’ingresso."
+    ],
+    "check": "Ricalcolo su rapporti: la quota assorbita iniziale vale 1/2. L’assorbimento cresce 9/4 volte mentre l’ingresso cresce 3/2 volte. La quota assorbita B vale (1/2)(9/4)/(3/2)=3/4. Quindi τ_B=1/4 e τ_B/τ_A=1/2.",
+    "reason": "Distingue quota e potenza e collega due figure allo stesso bilancio. La figura iniziale mostra solo gli ingressi. Quella nello svolgimento scompone entrambe le potenze.",
+    "options": [],
+    "figure": {
+      "stage": "prompt",
+      "alt": "Le prove A e B hanno lo stesso schema di ingresso, con potenza incidente rispettivamente di 8 e 12 watt.",
+      "caption": "Controlla i dati in ingresso. Le frecce sono schematiche e non in scala.",
+      "lines": [
+        [
+          153,
+          21,
+          218,
+          21
+        ],
+        [
+          153,
+          72,
+          218,
+          72
+        ],
+        [
+          153,
+          21,
+          153,
+          72
+        ],
+        [
+          218,
+          21,
+          218,
+          72
+        ],
+        [
+          153,
+          104,
+          218,
+          104
+        ],
+        [
+          153,
+          155,
+          218,
+          155
+        ],
+        [
+          153,
+          104,
+          153,
+          155
+        ],
+        [
+          218,
+          104,
+          218,
+          155
+        ]
+      ],
+      "labels": [
+        {
+          "x": 186,
+          "y": 52,
+          "text": "Strato A"
+        },
+        {
+          "x": 186,
+          "y": 135,
+          "text": "Strato B"
+        },
+        {
+          "x": 80,
+          "y": 35,
+          "text": "8 W"
+        },
+        {
+          "x": 80,
+          "y": 119,
+          "text": "12 W"
+        },
+        {
+          "x": 304,
+          "y": 34,
+          "text": "Esce?"
+        },
+        {
+          "x": 304,
+          "y": 118,
+          "text": "Esce?"
+        }
+      ],
+      "arrows": [
+        [
+          24,
+          49,
+          150,
+          49
+        ],
+        [
+          221,
+          49,
+          375,
+          49
+        ],
+        [
+          24,
+          133,
+          150,
+          133
+        ],
+        [
+          221,
+          133,
+          375,
+          133
+        ]
+      ]
+    },
+    "solutionFigure": {
+      "stage": "solution",
+      "alt": "Due barre rappresentano la potenza. In A, 4 watt assorbiti e 4 trasmessi. In B, 9 watt assorbiti e 3 trasmessi.",
+      "caption": "Barre in scala con la stessa origine. La lunghezza totale rappresenta la potenza incidente.",
+      "lines": [
+        [
+          74,
+          50,
+          234,
+          50
+        ],
+        [
+          74,
+          75,
+          234,
+          75
+        ],
+        [
+          74,
+          50,
+          74,
+          75
+        ],
+        [
+          154,
+          50,
+          154,
+          75
+        ],
+        [
+          234,
+          50,
+          234,
+          75
+        ],
+        [
+          74,
+          130,
+          314,
+          130
+        ],
+        [
+          74,
+          155,
+          314,
+          155
+        ],
+        [
+          74,
+          130,
+          74,
+          155
+        ],
+        [
+          254,
+          130,
+          254,
+          155
+        ],
+        [
+          314,
+          130,
+          314,
+          155
+        ]
+      ],
+      "labels": [
+        {
+          "x": 42,
+          "y": 68,
+          "text": "A"
+        },
+        {
+          "x": 115,
+          "y": 42,
+          "text": "4 W"
+        },
+        {
+          "x": 195,
+          "y": 42,
+          "text": "4 W"
+        },
+        {
+          "x": 115,
+          "y": 94,
+          "text": "Assorbiti"
+        },
+        {
+          "x": 195,
+          "y": 94,
+          "text": "Trasmessi"
+        },
+        {
+          "x": 42,
+          "y": 149,
+          "text": "B"
+        },
+        {
+          "x": 161,
+          "y": 122,
+          "text": "9 W"
+        },
+        {
+          "x": 283,
+          "y": 122,
+          "text": "3 W"
+        },
+        {
+          "x": 161,
+          "y": 174,
+          "text": "Assorbiti"
+        },
+        {
+          "x": 283,
+          "y": 174,
+          "text": "Trasmessi"
+        }
+      ],
+      "arrows": []
+    }
+  },
+  {
+    "id": "u4-coherent-constructive-09",
+    "title": "Risalire all’ampiezza della prima onda",
+    "prompt": "Due onde armoniche nello stesso mezzo lineare hanno pari frequenza e polarizzazione e arrivano in fase nello stesso punto. Conosci l’ampiezza totale $A_\\mathrm{tot}$ e quella della seconda onda $A_2$, con $0<A_2<A_\\mathrm{tot}$. Quale espressione restituisce l’ampiezza $A_1$ della prima onda?",
+    "answer": {
+      "kind": "choice",
+      "id": "C"
+    },
+    "hints": [
+      "Pensa all’istante in cui entrambe le onde sono alla cresta. Quale segno hanno i due spostamenti?",
+      "Scrivi prima la somma degli spostamenti in quell’istante e poi ricava il contributo mancante."
+    ],
+    "solution": [
+      "Nello stesso punto le oscillazioni hanno la stessa fase. Nell’istante di cresta lo spostamento di ciascuna vale la sua ampiezza e ha lo stesso segno. Per sovrapposizione lineare, l’ampiezza totale è dunque $A_\\mathrm{tot}=A_1+A_2$.",
+      "Togliendo da ambo i membri $A_2$, resta $A_1=A_\\mathrm{tot}-A_2$. La risposta è positiva nelle condizioni date. Se la fase non fosse la stessa, in generale non potresti usare questa sottrazione per ritrovare il contributo mancante.",
+      "Per esempio, una misura di $7\\,\\mathrm{mm}$ con seconda onda da $4\\,\\mathrm{mm}$ lascia $3\\,\\mathrm{mm}$ alla prima. La somma ricostruisce i $7\\,\\mathrm{mm}$ misurati."
+    ],
+    "check": "Assumendo la forma y₁=A₁cos(ωt) e y₂=A₂cos(ωt), y₁+y₂=(A₁+A₂)cos(ωt). Con A_tot=7 mm e A₂=4 mm la sola C restituisce A₁=3 mm.",
+    "reason": "Spostata la formula risolutiva nello svolgimento. Riscritti i due distrattori con unità implicita +1 o −1 usando espressioni dimensionalmente coerenti.",
+    "options": [
+      {
+        "id": "A",
+        "text": "$A_\\mathrm{tot}+A_2$",
+        "feedback": "Hai aggiunto ancora il contributo della seconda onda a una misura che lo contiene già."
+      },
+      {
+        "id": "B",
+        "text": "$A_2-A_\\mathrm{tot}$",
+        "feedback": "La differenza ha il verso sbagliato. L’ampiezza della prima onda dev’essere positiva."
+      },
+      {
+        "id": "C",
+        "text": "$A_\\mathrm{tot}-A_2$",
+        "feedback": "Hai tolto il contributo noto proprio perché le due creste si sommano."
+      },
+      {
+        "id": "D",
+        "text": "$2(A_\\mathrm{tot}-A_2)$",
+        "feedback": "La differenza è già l’ampiezza cercata. Raddoppiarla confonde ampiezza e escursione da massimo a minimo."
+      },
+      {
+        "id": "E",
+        "text": "$(A_\\mathrm{tot}-A_2)/2$",
+        "feedback": "Non c’è un fattore due da dividere. La differenza delle due ampiezze fornite è l’ampiezza della prima onda."
+      }
+    ]
+  },
+  {
+    "id": "u4-coherent-constructive-13",
+    "title": "Aumentare la somma di due onde in fase",
+    "prompt": "Due onde armoniche coerenti con pari frequenza e polarizzazione arrivano in fase nello stesso punto di un mezzo lineare. Nella prova A le ampiezze sono $A_{1,\\mathrm A}=1\\,\\mathrm{mm}$ e $A_{2,\\mathrm A}=2\\,\\mathrm{mm}$. Nella prova B la prima ampiezza sale a $2\\,\\mathrm{mm}$ e l’ampiezza totale deve essere $5/3$ volte quella di A. Quanto vale il rapporto $A_{2,\\mathrm B}/A_{2,\\mathrm A}$?",
+    "answer": {
+      "kind": "rational",
+      "unit": "1",
+      "exact": "3/2"
+    },
+    "hints": [
+      "Confronta le creste nello stesso istante, quando i due spostamenti hanno lo stesso segno.",
+      "Calcola l’ampiezza totale richiesta in B prima di togliere il contributo della prima onda."
+    ],
+    "solution": [
+      "Quando entrambi i contributi toccano la cresta, gli spostamenti si sommano. In A questo dà $1+2=3\\,\\mathrm{mm}$.",
+      "In B la cresta deve raggiungere $(5/3)\\cdot3=5\\,\\mathrm{mm}$. La prima onda ne fornisce $2\\,\\mathrm{mm}$, quindi alla seconda ne servono $5-2=3\\,\\mathrm{mm}$.",
+      "Confrontando le ampiezze della sola seconda onda, il rapporto è $3/2$. Si può verificare contando l’aumento totale, che è di $2\\,\\mathrm{mm}$: il primo contributo cresce di uno, e il secondo di uno. In fase opposta la stessa conclusione non vale."
+    ],
+    "check": "Controprova per incrementi: totale A=3, obiettivo B=5, differenza positiva 2 mm. La prima cresce di 1 mm quindi la seconda cresce di 1 mm e passa a 3 mm. Il rapporto è 3/2.",
+    "reason": "Esplicitato che il fattore 5/3 riguarda l’ampiezza totale. Il controllo per incrementi aiuta a non applicare lo stesso moltiplicatore alla seconda onda.",
+    "options": []
+  },
+  {
+    "id": "u7-wavelength-in-medium-03",
+    "title": "Che cosa attraversa il vetro senza cambiare ritmo?",
+    "prompt": "Un raggio monocromatico attraversa obliquamente la superficie ferma tra aria e vetro trasparente. Gli indici sono diversi e una parte della luce entra nel vetro. Quale grandezza dell’onda trasmessa conserva il valore di quella incidente?",
+    "answer": {
+      "kind": "choice",
+      "id": "B"
+    },
+    "hints": [
+      "Osserva sempre lo stesso punto sulla superficie. Il campo incidente impone lì un ritmo di oscillazione."
+    ],
+    "solution": [
+      "La luce incidente forza una risposta alla superficie. In un mezzo fermo, lineare e senza modulazione temporale, la risposta trasmessa segue la stessa periodicità, quindi conserva la frequenza $f$.",
+      "Nel vetro la velocità di fase è diversa. Dato che $v=\\lambda f$, cambia la lunghezza d’onda $\\lambda$. Con incidenza obliqua può cambiare anche la direzione. La frequenza nel mezzo dipende ancora dalla sorgente."
+    ],
+    "check": "Controprova dal raccordo temporale alla superficie: il fattore oscillante deve avere la stessa pulsazione ai due lati e per tutti gli istanti. Se n varia, c/n e (c/n)/f cambiano mentre f rimane fissata.",
+    "reason": "Specificati incidenza obliqua e indici diversi per rimuovere il caso di uguaglianza degli angoli a incidenza normale. La soluzione motiva l’invariante dal raccordo nel tempo.",
+    "options": [
+      {
+        "id": "A",
+        "text": "L’angolo rispetto alla normale.",
+        "feedback": "All’interfaccia obliqua la direzione cambia secondo la legge di Snell."
+      },
+      {
+        "id": "B",
+        "text": "La frequenza.",
+        "feedback": "I campi sulle due facce della stessa interfaccia devono oscillare con lo stesso ritmo."
+      },
+      {
+        "id": "C",
+        "text": "La lunghezza d’onda.",
+        "feedback": "A frequenza fissata, cambiare la velocità di fase cambia la distanza tra due creste."
+      },
+      {
+        "id": "D",
+        "text": "La velocità di fase.",
+        "feedback": "La velocità di fase dipende dall’indice del mezzo."
+      },
+      {
+        "id": "E",
+        "text": "L’indice di rifrazione.",
+        "feedback": "Aria e vetro sono assunti con indici diversi, quindi questa proprietà cambia."
+      }
+    ]
+  },
+  {
+    "id": "u4-wave-phase-time-03",
+    "title": "Dal tempo di un giro alla frequenza",
+    "prompt": "Un’oscillazione impiega $2/5$ di secondo per ripetersi identica. Quante oscillazioni al secondo compie?",
+    "answer": {
+      "kind": "choice",
+      "id": "B"
+    },
+    "hints": [
+      "Segna su un asse quanto tempo occupano due periodi interi. Quanto manca per arrivare a un secondo?"
+    ],
+    "solution": [
+      "Il periodo $T$ è il tempo per un ciclo. La frequenza è il numero di cicli per unità di tempo, quindi in un secondo ci sono $1/T$ cicli.",
+      "Il valore è $1/(2/5)=5/2\\,\\mathrm{Hz}$. Come controllo, cinque cicli da $2/5\\,\\mathrm s$ durano in tutto $2\\,\\mathrm s$, ossia $2{,}5$ cicli al secondo. Sul grafico, dopo un periodo il segnale ritorna allo stesso spostamento con lo stesso verso del moto."
+    ],
+    "check": "Ricalcolo da conteggio: 5×2/5 s=2 s, quindi 5/2 Hz. Nessuna delle altre opzioni fornisce un periodo 2/5 s quando si calcola il reciproco.",
+    "reason": "Confrontata direttamente l’unità di periodo e frequenza. L’asse temporale evidenzia la ripetizione della stessa fase.",
+    "options": [
+      {
+        "id": "A",
+        "text": "$1/2\\,\\mathrm{Hz}$",
+        "feedback": "Due quinti di secondo sono meno di un secondo. Una frequenza inferiore a 1 Hz implicherebbe il contrario."
+      },
+      {
+        "id": "B",
+        "text": "$5/2\\,\\mathrm{Hz}$",
+        "feedback": "Un secondo contiene due periodi interi e la metà del successivo."
+      },
+      {
+        "id": "C",
+        "text": "$2/5\\,\\mathrm{Hz}$",
+        "feedback": "Hai usato il periodo come frequenza. Il dato misura secondi per ciclo, mentre la richiesta è in cicli al secondo."
+      },
+      {
+        "id": "D",
+        "text": "$5\\,\\mathrm{Hz}$",
+        "feedback": "Cinque cicli occupano due secondi. Devi calcolare quanti cicli corrispondono a un solo secondo."
+      },
+      {
+        "id": "E",
+        "text": "$10\\,\\mathrm{Hz}$",
+        "feedback": "Con dieci cicli al secondo il periodo sarebbe un decimo di secondo, più breve del dato."
+      }
+    ],
+    "figure": {
+      "stage": "solution",
+      "alt": "Il grafico mostra uno spostamento periodico che attraversa lo zero crescendo a 0, 0,4 e 0,8 secondi.",
+      "caption": "Il tempo in secondi cresce verso destra. Lo spostamento ha scala verticale illustrativa. Le tacche indicano lo stesso punto di tre cicli consecutivi.",
+      "lines": [
+        [
+          64,
+          92.0,
+          72,
+          78.98
+        ],
+        [
+          72,
+          78.98,
+          80,
+          68.22
+        ],
+        [
+          80,
+          68.22,
+          88,
+          61.57
+        ],
+        [
+          88,
+          61.57,
+          96,
+          60.18
+        ],
+        [
+          96,
+          60.18,
+          104,
+          64.29
+        ],
+        [
+          104,
+          64.29,
+          112,
+          73.19
+        ],
+        [
+          112,
+          73.19,
+          120,
+          85.35
+        ],
+        [
+          120,
+          85.35,
+          128,
+          98.65
+        ],
+        [
+          128,
+          98.65,
+          136,
+          110.81
+        ],
+        [
+          136,
+          110.81,
+          144,
+          119.71
+        ],
+        [
+          144,
+          119.71,
+          152,
+          123.82
+        ],
+        [
+          152,
+          123.82,
+          160,
+          122.43
+        ],
+        [
+          160,
+          122.43,
+          168,
+          115.78
+        ],
+        [
+          168,
+          115.78,
+          176,
+          105.02
+        ],
+        [
+          176,
+          105.02,
+          184,
+          92.0
+        ],
+        [
+          184,
+          92.0,
+          192,
+          78.98
+        ],
+        [
+          192,
+          78.98,
+          200,
+          68.22
+        ],
+        [
+          200,
+          68.22,
+          208,
+          61.57
+        ],
+        [
+          208,
+          61.57,
+          216,
+          60.18
+        ],
+        [
+          216,
+          60.18,
+          224,
+          64.29
+        ],
+        [
+          224,
+          64.29,
+          232,
+          73.19
+        ],
+        [
+          232,
+          73.19,
+          240,
+          85.35
+        ],
+        [
+          240,
+          85.35,
+          248,
+          98.65
+        ],
+        [
+          248,
+          98.65,
+          256,
+          110.81
+        ],
+        [
+          256,
+          110.81,
+          264,
+          119.71
+        ],
+        [
+          264,
+          119.71,
+          272,
+          123.82
+        ],
+        [
+          272,
+          123.82,
+          280,
+          122.43
+        ],
+        [
+          280,
+          122.43,
+          288,
+          115.78
+        ],
+        [
+          288,
+          115.78,
+          296,
+          105.02
+        ],
+        [
+          296,
+          105.02,
+          304,
+          92.0
+        ],
+        [
+          304,
+          92.0,
+          312,
+          78.98
+        ],
+        [
+          312,
+          78.98,
+          320,
+          68.22
+        ],
+        [
+          320,
+          68.22,
+          328,
+          61.57
+        ],
+        [
+          328,
+          61.57,
+          336,
+          60.18
+        ],
+        [
+          64,
+          88,
+          64,
+          98
+        ],
+        [
+          184,
+          88,
+          184,
+          98
+        ],
+        [
+          304,
+          88,
+          304,
+          98
+        ],
+        [
+          184,
+          94,
+          184,
+          151
+        ],
+        [
+          304,
+          94,
+          304,
+          151
+        ]
+      ],
+      "labels": [
+        {
+          "x": 84,
+          "y": 29,
+          "text": "Spostamento"
+        },
+        {
+          "x": 64,
+          "y": 172,
+          "text": "0"
+        },
+        {
+          "x": 184,
+          "y": 172,
+          "text": "0,4"
+        },
+        {
+          "x": 304,
+          "y": 172,
+          "text": "0,8"
+        },
+        {
+          "x": 366,
+          "y": 119,
+          "text": "t (s)"
+        }
+      ],
+      "arrows": [
+        [
+          61,
+          92,
+          375,
+          92
+        ],
+        [
+          64,
+          151,
+          64,
+          37
+        ]
+      ]
+    }
+  }
+]

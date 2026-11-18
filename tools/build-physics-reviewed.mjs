@@ -41,34 +41,52 @@ function questionHTML(q) {
   const response = q.answer.kind === 'choice' ? `${q.answer.id}. ${q.options.find(o=>o.id === q.answer.id).text}`
     : q.answer.kind === 'text' ? q.answer.accepted[0] : `${q.answer.exact}${q.answer.unit==='1'?'':' '+q.answer.unit}`;
   const visual = diagram(q.figure, q.id);
+  const workedVisual = q.solutionFigure ? diagram(q.solutionFigure, q.id+'-solution') : q.figure?.stage==='solution' ? visual : '';
   return `<details class='reviewed-question' id='${q.id}'><summary>${esc(q.title)} <small>· ${esc(q.origin.level)}</small></summary>
     ${paragraph(q.prompt)}${q.figure?.stage==='prompt'?visual:''}${answerForm(q)}
     ${q.hints.map((hint,i)=>`<details class='reviewed-hint'><summary>${q.hints.length===1?'Suggerimento':`Suggerimento ${i+1}`}</summary>${paragraph(hint)}</details>`).join('')}
-    <details class='reviewed-solution'><summary>Leggi lo svolgimento completo</summary><p><strong>Risposta.</strong> ${inline(response)}</p>${q.figure?.stage==='solution'?visual:''}${q.solution.map(paragraph).join('')}</details>
+    <details class='reviewed-solution'><summary>Leggi lo svolgimento completo</summary><p><strong>Risposta.</strong> ${inline(response)}</p>${workedVisual}${q.solution.map(paragraph).join('')}</details>
     ${q.lab?`<div class='reader-lab'>${paragraph(q.lab.activity)}<a class='button' href='./${q.lab.href}'>Apri il laboratorio collegato →</a></div>`:''}
   </details>`.replace(/[ \t]+$/gm, '');
 }
 
 const questions = loadReviewedQuestions();
 const grouped = Map.groupBy(questions, q => q.unitId);
+const linkedFrom = new Map();
+for (const q of questions) {
+  for (const id of q.origin.linkedLessons) {
+    if (id === q.unitId) continue;
+    if (!linkedFrom.has(id)) linkedFrom.set(id, []);
+    linkedFrom.get(id).push(q);
+  }
+}
+const link = q => `<a href='./${q.unitId}.html#${q.id}'>${esc(q.title)}</a>`;
 export const reviewedAssetTags = "<link rel='stylesheet' href='./practice.css'><script defer src='./practice.js'></script>";
 export function reviewedLesson(unitId) {
-  const rows = grouped.get(unitId);
-  return rows ? `<section class='reviewed-practice' id='esercizi-guidati'><h3>Esercizi guidati</h3><p>Prova una risposta, chiedi un suggerimento e confronta i passaggi. Il controllo è disponibile nella pagina corrente. <a href='./esercizi-guidati.html'>Vedi tutti gli esercizi guidati</a>.</p>${rows.map(questionHTML).join('')}</section>` : '';
+  const rows = grouped.get(unitId) ?? [];
+  const links = linkedFrom.get(unitId) ?? [];
+  if (!rows.length && !links.length) return '';
+  return `<section class='reviewed-practice' id='esercizi-guidati'><h3>Esercizi guidati</h3>${rows.length
+    ? '<p>Prova una risposta, apri un indizio se ti serve e confronta i passaggi.</p>'+rows.map(questionHTML).join('')
+    : ''}${links.length
+    ? '<h4>Esercizi collegati a questa lezione</h4><ul class="reviewed-links">'+links.map(q=>'<li>'+link(q)+'</li>').join('')+'</ul>'
+    : ''}<p><a href='./esercizi-guidati.html'>Vedi tutti gli esercizi guidati</a></p></section>`;
 }
 
 export function writeReviewedCatalog() {
   const listings = courses.map((course,index) => {
     const rows = questions.filter(q => q.courseId === course.id);
     if (!rows.length) return '';
-    return `<section id='c${index+1}'><h2>C${index+1} · ${esc(course.input.title)}</h2><ul>${rows.map(q => `<li><a href='./${q.unitId}.html#${q.id}'>${esc(q.title)}</a> <small>· ${esc(q.origin.level)}</small></li>`).join('')}</ul><a href='./c${index+1}.html#programma'>Torna alle lezioni del percorso →</a></section>`;
+    return `<section id='c${index+1}'><h2>C${index+1} · ${esc(course.input.title)}</h2><ul>${rows.map(q => `<li>${link(q)} <small>· ${esc(q.origin.level)}</small></li>`).join('')}</ul><a href='./c${index+1}.html#programma'>Torna alle lezioni del percorso →</a></section>`;
   }).join('');
-  const html = frame('Esercizi guidati di Fisica', `<div class='lesson-reader reviewed-catalog'><h1>Esercizi guidati</h1><p class='reader-outcome'>Scegli un quesito. Ogni collegamento apre la lezione con suggerimenti, risposta e svolgimento.</p>${listings}</div>`)
+  const navigation = '<nav class="reader-jump" aria-label="Percorsi">'+courses.map((course, i)=>
+    '<a href="#c'+(i+1)+'">C'+(i+1)+' · '+esc(course.input.title)+'</a>').join('')+'</nav>';
+  const html = frame('Esercizi guidati di Fisica', `<div class='lesson-reader reviewed-catalog'><h1>Esercizi guidati</h1><p class='reader-outcome'>Scegli un quesito. Ogni collegamento apre la lezione con suggerimenti, risposta e svolgimento.</p>${navigation}${listings}</div>`)
     .replace('</head>', "<link rel='stylesheet' href='./lessons.css'><link rel='stylesheet' href='./practice.css'></head>");
   const page = 'esercizi-guidati.html';
   writeFileSync(out+'/'+page, html);
   writeFileSync(out+'/practice-manifest.json', JSON.stringify({
     status:'DRAFT', humanApproval:false, catalog:page, catalogSHA256:sha256(html),
-    rows:questions.map(q=>({id:q.id,level:q.origin.level,courseId:q.courseId,lesson:q.unitId+'.html',figure:!!q.figure,originalBlob:q.origin.blob,originalSHA256:q.origin.sha256}))
+    rows:questions.map(q=>({id:q.id,level:q.origin.level,courseId:q.courseId,lesson:q.unitId+'.html',figure:!!q.figure,stagedFigure:!!q.solutionFigure,linkedLessons:q.origin.linkedLessons.map(id=>id+'.html'),originalBlob:q.origin.blob,originalSHA256:q.origin.sha256}))
   },null,2)+'\n');
 }

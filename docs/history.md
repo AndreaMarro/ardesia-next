@@ -784,3 +784,8 @@ Fonte: nuova richiesta diretta del titolare il17novembre, «Finisci il lavoro in
 ## OPS-20261118-QUESTION-REVIEW
 
 Mandato diretto del titolare del 18 novembre, letto integralmente. Revisione della banca legacy con priorità ai quesiti attivi e prova in tutti i cinque percorsi. I due lotti recuperano 52 ID, con continuità delle edizioni già consegnate e anteprima separata dagli altri lavori. [Regole, risultati e prove](handoffs/2026-11-18-physics-questions.md). Il mandato autorizza questo incremento applicativo isolato e non riassegna il lavoro canonico M5.
+
+
+## OPS-20261118-QUESTION-REVIEW-LOT3
+
+Nuovo invio diretto del mandato sulla banca Fisica, letto e riconciliato con il risultato già verificato della PR60. Terzo lotto sulla branch isolata, con 40 esercizi già attivi, associazioni secondarie, disegno in due stadi e PDF campione. Nessuna riassegnazione del lavoro canonico M5. [Consegna](handoffs/2026-11-18-physics-questions-lot3.md).
