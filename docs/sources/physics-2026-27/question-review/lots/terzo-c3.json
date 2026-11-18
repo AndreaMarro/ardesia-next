@@ -1,0 +1,460 @@
+[
+  {
+    "id": "u5-gas-density-09",
+    "title": "La pressione ricavata dalla densità",
+    "prompt": "Un gas ideale ha massa molare $M=32\\,\\mathrm{g/mol}$. Usa $R=8\\,\\mathrm{J/(mol\\,K)}$. Sono note la densità e la temperatura assoluta. Nelle opzioni $\\rho$ e $T$ indicano i loro valori numerici rispettivamente in $\\mathrm{g/L}$ e kelvin. Quale espressione restituisce il valore numerico della pressione assoluta in kilopascal?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\rho T/4-1$",
+        "feedback": "Sottrae arbitrariamente $1\\,\\mathrm{kPa}$ al valore ricavato dalla legge del gas. Non è una conversione da pressione relativa ad assoluta."
+      },
+      {
+        "id": "B",
+        "text": "$\\rho T/4$",
+        "feedback": "Il rapporto $M/R$ vale 4 nelle unità compatibili dichiarate. Per ricavare la pressione si moltiplica la densità per la temperatura e si divide per 4."
+      },
+      {
+        "id": "C",
+        "text": "$\\rho T/2$",
+        "feedback": "Raddoppia la pressione richiesta. A temperatura fissa predirebbe una densità doppia di quella misurata."
+      },
+      {
+        "id": "D",
+        "text": "$\\rho T/8$",
+        "feedback": "Dimezza la pressione richiesta. Il fattore di conversione non introduce un ulteriore 2."
+      },
+      {
+        "id": "E",
+        "text": "$\\rho T/4+1$",
+        "feedback": "Aggiunge $1\\,\\mathrm{kPa}$ senza che il testo preveda un riferimento manometrico o un offset."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "B"
+    },
+    "hints": [
+      "Parti da $pV=nRT$ e usa la massa molare per sostituire il numero di moli con la massa. Quale rapporto compare dividendo per il volume?",
+      "Controlla le unità prima del coefficiente numerico: $1\\,\\mathrm{g/L}=1\\,\\mathrm{kg/m^3}$ e $1\\,\\mathrm{kPa}=1000\\,\\mathrm{Pa}$."
+    ],
+    "solution": [
+      "Poiché $m=nM$, dividere la legge dei gas per il volume permette di collegare pressione e densità. In termini di grandezze fisiche si ottiene $p=\\rho RT/M$. La densità qui è massa per volume, non numero di moli per volume.",
+      "In SI la massa molare è $0{,}032\\,\\mathrm{kg/mol}$. Una densità espressa in $\\mathrm{g/L}$ mantiene lo stesso valore numerico passando a $\\mathrm{kg/m^3}$. Quindi il coefficiente $R/M$ vale $8/0{,}032=250$ nelle unità SI.",
+      "Il valore della pressione in pascal è dunque $250\\rho T$. Per passare ai kilopascal si divide per 1000: il risultato è $\\rho T/4$, opzione B.",
+      "Per controllare, considera $\\rho=1\\,\\mathrm{g/L}$ e $T=300\\,\\mathrm K$. Si trova $p=75\\,\\mathrm{kPa}$. Un litro contiene $1\\,\\mathrm g$, cioè $1/32$ di mole: il prodotto $nRT$ vale $75\\,\\mathrm J$, uguale a $pV$. A temperatura fissa, raddoppiare la densità raddoppia la pressione."
+    ],
+    "check": "Controllo SI: p=1 kg/m³ × 8 J/(mol K) × 300 K /0,032 kg/mol =75000 Pa. Controprova su 1 L: n=1/32 mol, nRT=75 J=pV. Opzioni per ρ=1,T=300:74,75,150,37,5,76 kPa; B unica. Le formule operano esplicitamente sui valori numerici, rendendo leciti gli offset originali ±1. Nessuna modifica alla chiave B.",
+    "reason": "Tolti la relazione già risolta e i preamboli duplicati. La conversione fra g/L e kg/m³ è ricostruita prima dell’algebra. Conservate tutte le espressioni originali e chiarito il loro significato numerico."
+  },
+  {
+    "id": "u5-calorimeter-capacity-13",
+    "title": "Cambiare le masse senza ignorare il recipiente",
+    "prompt": "Si confrontano due prove in un calorimetro isolato, senza cambiamenti di fase. La sostanza ha calore specifico costante $c=1\\,\\mathrm{J/(g\\,K)}$ e il recipiente capacità termica $2\\,\\mathrm{J/K}$. In ogni prova la porzione calda parte da $80\\,{}^\\circ\\mathrm C$; quella fredda e il recipiente da $20\\,{}^\\circ\\mathrm C$. Nella prova A entrambe le masse sono $2\\,\\mathrm g$. Nella prova B la massa calda è $4\\,\\mathrm g$. Si vuole che la lettura finale in gradi Celsius sia $11/10$ della lettura finale di A. Quale rapporto $m_{c,B}/m_{c,A}$ serve fra le masse fredde? Il rapporto richiesto è adimensionale.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "2",
+      "unit": "1"
+    },
+    "hints": [
+      "Nella prova A il recipiente riceve calore insieme alla porzione fredda. La temperatura finale non è la semplice media fra 80 °C e 20 °C.",
+      "Ricava prima la lettura finale di A e poi quella richiesta per B. Nel secondo bilancio lascia incognita soltanto la massa fredda."
+    ],
+    "solution": [
+      "Il recipiente assorbe, per ogni kelvin di aumento, lo stesso calore di $2\\,\\mathrm g$ della sostanza. In A, la porzione calda ha capacità $2\\,\\mathrm{J/K}$; porzione fredda e recipiente insieme hanno capacità $4\\,\\mathrm{J/K}$.",
+      "Indichiamo con $t_A$ la lettura finale in gradi Celsius. Il bilancio numerico in joule è $2(80-t_A)=4(t_A-20)$. Da $160-2t_A=4t_A-80$ segue $t_A=40$. Il recipiente sposta l’equilibrio verso la temperatura iniziale fredda.",
+      "La lettura desiderata in B è quindi $t_B=(11/10)40=44$. Questo è un rapporto di letture Celsius, come specificato: non significa che la temperatura assoluta sia cresciuta del 10%.",
+      "Indichiamo con $m$ il valore numerico in grammi della massa fredda di B. Il bilancio è $4(80-44)=(m+2)(44-20)$. Il caldo cede $144\\,\\mathrm J$; ogni grammo freddo assorbe $24\\,\\mathrm J$ e il recipiente ne assorbe $48\\,\\mathrm J$. Restano $96\\,\\mathrm J$ per la porzione fredda, quindi $m_{c,B}=4\\,\\mathrm g$.",
+      "Il rapporto è $m_{c,B}/m_{c,A}=4/2=2$. Controllo diretto: in B la porzione fredda assorbe $96\\,\\mathrm J$ e il recipiente $48\\,\\mathrm J$, per un totale di $144\\,\\mathrm J$, uguale al calore ceduto."
+    ],
+    "check": "Due bilanci indipendenti: prova A,2×(80−40)=(2+2)×(40−20)=80 J; prova B,4×(80−44)=(4+2)×(44−20)=144 J. Rapporto masse fredde 4/2=2. T assoluta passa da 313,15 a317,15 K, il cui rapporto non è 11/10; mantenuta l’esplicita convenzione Celsius originale. Chiave esatta 2 preservata.",
+    "reason": "Trasformata la generica variazione compensata in due esperimenti chiaramente separati. Chiariti il ruolo energetico del recipiente, il rapporto adimensionale delle masse e il significato del fattore 11/10 applicato alle letture Celsius."
+  },
+  {
+    "id": "u5-composite-wall-series-13",
+    "title": "Raddoppiare la resistenza termica della parete",
+    "prompt": "Una parete di area $1\\,\\mathrm{m^2}$ è formata da due strati attraversati in successione dal calore. Le conducibilità sono $k_1=1\\,\\mathrm{W/(m\\,K)}$ e $k_2=2\\,\\mathrm{W/(m\\,K)}$. Fra le facce esterne si mantengono $60\\,\\mathrm K$ di differenza. Nella parete A gli spessori sono $L_{1,A}=1\\,\\mathrm m$ e $L_{2,A}=2\\,\\mathrm m$. Si progetta la parete B con $L_{1,B}=2\\,\\mathrm m$, mantenendo materiali e area. Quanto deve valere $L_{2,B}/L_{2,A}$ affinché la potenza termica si dimezzi? Considera regime stazionario, contatto perfetto e perdite laterali trascurabili.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "2",
+      "unit": "1"
+    },
+    "hints": [
+      "La stessa potenza termica attraversa entrambi gli strati. Per sommare i loro effetti, usa le resistenze termiche, non le conducibilità.",
+      "A differenza di temperatura fissata, dimezzare la potenza richiede di raddoppiare $R_{\\mathrm{tot}}$. Quanto di questa resistenza fornisce già il primo strato della nuova parete?"
+    ],
+    "solution": [
+      "Per ciascuno strato la resistenza termica è $R_i=L_i/(k_iA)$. Le cadute di temperatura si sommano perché gli strati sono in serie; quindi $P=\\Delta T/(R_1+R_2)$.",
+      "Nella parete A si ha $R_{1,A}=1\\,\\mathrm{K/W}$ e $R_{2,A}=1\\,\\mathrm{K/W}$. La resistenza totale è $2\\,\\mathrm{K/W}$ e la potenza vale $P_A=60/2=30\\,\\mathrm W$.",
+      "Per ottenere $P_B=15\\,\\mathrm W$ serve $R_{\\mathrm{tot},B}=60/15=4\\,\\mathrm{K/W}$. Il nuovo primo strato fornisce $R_{1,B}=2\\,\\mathrm{K/W}$, perciò il secondo deve fornire gli altri $2\\,\\mathrm{K/W}$.",
+      "Da $L_{2,B}=R_{2,B}k_2A$ segue $L_{2,B}=4\\,\\mathrm m$. Il rapporto richiesto è $4/2=2$, senza unità. Come controllo, entrambe le resistenze sono raddoppiate e la loro somma è passata da 2 a $4\\,\\mathrm{K/W}$.",
+      "Cambiare soltanto il primo spessore non basterebbe: lasciando $L_2=2\\,\\mathrm m$, la resistenza totale sarebbe $3\\,\\mathrm{K/W}$ e la potenza $20\\,\\mathrm W$, non 15 W."
+    ],
+    "check": "Controprova con Fourier per strato: in A P=30 W e ogni strato ha ΔT=30 K; in B con L1=2,L2=4,P=15 W, entrambe le cadute restano 30 K. Totale 60 K. Caso secondo strato invariato produce 20 W. Rapporto 2 esatto; risposta originale valida.",
+    "reason": "Eliminata l’espressione vaga grandezza d’uscita. Lo studente confronta potenze e resistenze prima di ricavare uno spessore. Le due geometrie sono rese esplicite senza suggerire lo spessore incognito.",
+    "figure": {
+      "stage": "prompt",
+      "alt": "Due sezioni di parete. A: primo strato spesso 1 m, secondo spesso 2 m. B: primo strato spesso 2 m, secondo spessore incognito. Il calore attraversa gli strati da sinistra a destra.",
+      "caption": "Sezioni schematiche, non in scala. In entrambe le pareti il salto totale è 60 K.",
+      "lines": [
+        [
+          90,
+          28,
+          90,
+          77
+        ],
+        [
+          190,
+          28,
+          190,
+          77
+        ],
+        [
+          330,
+          28,
+          330,
+          77
+        ],
+        [
+          90,
+          28,
+          330,
+          28
+        ],
+        [
+          90,
+          77,
+          330,
+          77
+        ],
+        [
+          90,
+          106,
+          90,
+          155
+        ],
+        [
+          220,
+          106,
+          220,
+          155
+        ],
+        [
+          330,
+          106,
+          330,
+          155
+        ],
+        [
+          90,
+          106,
+          330,
+          106
+        ],
+        [
+          90,
+          155,
+          330,
+          155
+        ]
+      ],
+      "arrows": [
+        [
+          18,
+          53,
+          74,
+          53
+        ],
+        [
+          18,
+          131,
+          74,
+          131
+        ]
+      ],
+      "labels": [
+        {
+          "x": 45,
+          "y": 19,
+          "text": "Parete A"
+        },
+        {
+          "x": 140,
+          "y": 51,
+          "text": "L1 = 1 m"
+        },
+        {
+          "x": 260,
+          "y": 51,
+          "text": "L2 = 2 m"
+        },
+        {
+          "x": 45,
+          "y": 97,
+          "text": "Parete B"
+        },
+        {
+          "x": 155,
+          "y": 130,
+          "text": "L1 = 2 m"
+        },
+        {
+          "x": 275,
+          "y": 130,
+          "text": "L2 ?"
+        }
+      ]
+    }
+  },
+  {
+    "id": "u5-compression-heating-09",
+    "title": "Quale parte dell’energia entra come calore?",
+    "prompt": "Un sistema chiuso riceve calore e viene contemporaneamente compresso. Il lavoro compiuto dall’ambiente sul sistema è $L_{\\mathrm{on}}>0$ e l’aumento misurato dell’energia interna è $\\Delta U$. Le energie cinetica e potenziale macroscopiche non cambiano. Quale espressione dà il calore assorbito $Q$? I dati soddisfano $\\Delta U>L_{\\mathrm{on}}$.",
+    "options": [
+      {
+        "id": "A",
+        "text": "$\\Delta U/2-L_{\\mathrm{on}}/2$",
+        "feedback": "Dimezza il calore che rimane dopo aver sottratto il contributo del lavoro. Il primo principio non richiede questa divisione."
+      },
+      {
+        "id": "B",
+        "text": "$\\Delta U-L_{\\mathrm{on}}+1\\,\\mathrm J$",
+        "feedback": "Introducendo $1\\,\\mathrm J$ aggiuntivo, calore e lavoro fornirebbero un’energia maggiore di $\\Delta U$."
+      },
+      {
+        "id": "C",
+        "text": "$\\Delta U-L_{\\mathrm{on}}-1\\,\\mathrm J$",
+        "feedback": "Sottraendo $1\\,\\mathrm J$ non si riuscirebbe a ricostruire tutta l’energia interna acquistata."
+      },
+      {
+        "id": "D",
+        "text": "$\\Delta U-L_{\\mathrm{on}}$",
+        "feedback": "Dall’aumento totale sottrai l’energia già entrata mediante il lavoro di compressione."
+      },
+      {
+        "id": "E",
+        "text": "$2\\Delta U-2L_{\\mathrm{on}}$",
+        "feedback": "Questa espressione vale il doppio del calore necessario e sovrastima l’energia ricevuta."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "D"
+    },
+    "hints": [
+      "Calore assorbito e lavoro compiuto sul sistema fanno entrambi entrare energia. Disegna due ingressi verso lo stesso sistema.",
+      "L’aumento di energia interna include entrambi i contributi. Sottrai quello che conosci per trovare l’altro."
+    ],
+    "solution": [
+      "Il sistema non scambia materia e le energie macroscopiche non variano. L’energia ricevuta si ritrova dunque nell’energia interna. Con il lavoro definito positivo quando è compiuto sul sistema, il bilancio è $\\Delta U=Q+L_{\\mathrm{on}}$.",
+      "Sottraendo il lavoro da entrambi i membri si ottiene $Q=\\Delta U-L_{\\mathrm{on}}$, opzione D. Il vincolo $\\Delta U>L_{\\mathrm{on}}$ assicura che questo calore sia positivo, coerentemente con la parola assorbito.",
+      "Per esempio, se l’aumento è $50\\,\\mathrm J$ e il lavoro di compressione è $30\\,\\mathrm J$, il calore ricevuto è $20\\,\\mathrm J$. Il controllo è $20+30=50$, in joule.",
+      "Usando invece il lavoro compiuto dal sistema, si avrebbe $W_{\\mathrm{by}}=-L_{\\mathrm{on}}$ e $\\Delta U=Q-W_{\\mathrm{by}}$. Si ottiene lo stesso risultato: il segno dipende dalla convenzione, non da due leggi fisiche diverse."
+    ],
+    "check": "Bilancio indipendente dei flussi entranti:50 J=20 J+30 J. Opzioni a ΔU 50, L_on 30:10,21,19,20,40 J; D unica. Limite ΔU=L_on restituisce Q=0. Offset originali ±1 resi dimensionalmente espliciti come ±1 J; valori e chiave D preservati.",
+    "reason": "Sostituito il comando di isolare una formula già fornita con un bilancio fisico. La condizione di calore positivo è verificabile. Aggiunta l’unità agli offset dei distrattori senza cambiarne i valori numerici."
+  },
+  {
+    "id": "u5-carnot-efficiency-13",
+    "title": "Confrontare due macchine a temperature molto diverse",
+    "prompt": "Nel modello di Carnot, una macchina A opera reversibilmente tra $400\\,\\mathrm K$ e $200\\,\\mathrm K$. Una seconda macchina B deve avere rendimento pari a $4/3$ di quello di A e una sorgente calda a $3\\,\\mathrm K$. Quale rapporto $T_{c,B}/T_{c,A}$ è necessario fra le temperature delle sorgenti fredde? Ogni macchina scambia calore soltanto con le proprie due sorgenti ideali. Si confrontano i rendimenti teorici; tutte le temperature sono assolute.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "1/200",
+      "unit": "1"
+    },
+    "hints": [
+      "Calcola il rendimento di A usando il rapporto fra le sue temperature. Moltiplica quel rendimento per $4/3$, non le temperature.",
+      "Per B, il rendimento determina $T_{c,B}/T_{h,B}$. Ricava prima $T_{c,B}$, poi confrontala con la sorgente fredda di A."
+    ],
+    "solution": [
+      "Per una macchina reversibile fra due sorgenti vale $\\eta=1-T_c/T_h$. Per A si trova $\\eta_A=1-200/400=1/2$.",
+      "Il rendimento richiesto per B è $\\eta_B=(4/3)(1/2)=2/3$. Di conseguenza $T_{c,B}/T_{h,B}=1/3$. Poiché la sorgente calda di B è a $3\\,\\mathrm K$, quella fredda deve essere a $1\\,\\mathrm K$.",
+      "Il rapporto richiesto è $T_{c,B}/T_{c,A}=1/200$. È adimensionale perché si dividono due temperature assolute nella stessa unità. I vincoli sono rispettati: $0<1\\,\\mathrm K<3\\,\\mathrm K$.",
+      "Il controllo dei rendimenti dà $1-1/3=2/3$ per B e $1-200/400=1/2$ per A. Il loro rapporto è proprio $4/3$. Il rendimento di Carnot dipende dal rapporto delle temperature; una sorgente calda a temperatura assoluta maggiore, da sola, non garantisce un rendimento superiore.",
+      "Le temperature di B sono quelle prescritte nel modello ideale. Questo confronto teorico non stabilisce la potenza ottenibile né la realizzabilità pratica di un dispositivo criogenico."
+    ],
+    "check": "Ricalcolo:η_A=1/2,η_B=2/3,Tc_B=3×(1−2/3)=1 K,rapporto1/200. Controprova entrambi i vincoli di sorgente e η_B/η_A=4/3. Dato 3 K conservato, senza reinterpretarlo come 300 K. Risposta originale 1/200 valida nel modello ideale.",
+    "reason": "Separate le due macchine, eliminato grandezza d’uscita e chiarita la natura adimensionale del rapporto. Il dato insolito 3 K è mantenuto esplicitamente nel modello ideale; non viene trattato come un refuso né come una promessa pratica."
+  },
+  {
+    "id": "u5-engine-efficiency-01",
+    "title": "Quanta energia ricevuta diventa lavoro?",
+    "prompt": "In ogni ciclo una macchina termica assorbe $100\\,\\mathrm J$ dalla sorgente calda e cede $20\\,\\mathrm J$ a quella fredda. Non riceve altre forme di energia. Quanto vale il rendimento? Esprimilo come frazione o numero decimale, non come percentuale.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "4/5",
+      "unit": "1"
+    },
+    "hints": [
+      "Alla fine di un ciclo la macchina torna allo stato iniziale. Quanta dell’energia ricevuta non è stata ceduta alla sorgente fredda?",
+      "Il rendimento confronta il lavoro utile prodotto con il calore ricevuto dalla sorgente calda. Il denominatore non è il calore ceduto."
+    ],
+    "solution": [
+      "Essendo un ciclo, la variazione di energia interna della macchina è nulla. Dei $100\\,\\mathrm J$ ricevuti, $20\\,\\mathrm J$ escono come calore; il lavoro netto prodotto è quindi $W=100-20=80\\,\\mathrm J$.",
+      "Il rendimento è la frazione del calore entrante trasformata in lavoro: $\\eta=W/Q_h$. Con i dati vale $\\eta=80/100=4/5$, cioè $0{,}8$. È un numero senza unità perché si dividono due energie.",
+      "La stessa prestazione si può descrivere come 80%, ma qui va inserito $4/5$ oppure $0{,}8$. Il rapporto $Q_c/Q_h=1/5$ indica invece la frazione ceduta alla sorgente fredda; le due frazioni sommano a uno.",
+      "Non servono le temperature delle sorgenti per questo bilancio. Senza di esse non si può però dedurre che la macchina sia reversibile o confrontare il rendimento con il limite di Carnot."
+    ],
+    "check": "Bilancio:W=100−20=80 J,η=80/100=4/5,quota ceduta20/100=1/5; somma 1. η fra 0 e 1. Nessuna inferenza di reversibilità. Risposta 4/5 originale preservata; unità 1 spiegata come adimensionalità.",
+    "reason": "Rimossa la richiesta opaca rendimento in 1. Distinti lavoro, frazione utile e percentuale; il controllo energetico sostituisce le istruzioni generiche."
+  },
+  {
+    "id": "u5-refrigerator-cop-01",
+    "title": "Un frigorifero può avere un coefficiente maggiore di uno?",
+    "prompt": "In ogni ciclo un frigorifero sottrae $100\\,\\mathrm J$ al vano freddo e richiede $20\\,\\mathrm J$ di lavoro elettrico. Calcola il coefficiente di prestazione frigorifero, definito come calore sottratto al vano freddo per unità di lavoro fornito. Esprimi il risultato come numero senza unità.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "5",
+      "unit": "1"
+    },
+    "hints": [
+      "Identifica l’effetto utile del frigorifero: togliere calore al vano freddo. Individua poi l’energia che bisogna fornire per ottenere quell’effetto.",
+      "Dividi l’energia sottratta al freddo per il lavoro richiesto. Non imporre a questo rapporto il limite di uno proprio del rendimento di una macchina termica."
+    ],
+    "solution": [
+      "Per il frigorifero l’effetto utile è il trasferimento di calore dal vano freddo, mentre il costo energetico è il lavoro ricevuto. La definizione dà $\\mathrm{COP}=Q_c/W$. Con i dati si ottiene $\\mathrm{COP}=100/20=5$.",
+      "Il risultato significa che, nelle condizioni assegnate, ogni joule di lavoro permette di sottrarre cinque joule al vano freddo. Le energie al numeratore e al denominatore non sono la stessa energia prima e dopo una conversione: il dispositivo trasferisce anche energia già presente nel vano.",
+      "Per il bilancio dell’intero ciclo il calore ceduto all’ambiente caldo è $Q_h=Q_c+W=120\\,\\mathrm J$. Il controllo è quindi: 100 J entrano dal vano freddo, 20 J come lavoro, 120 J escono verso l’ambiente caldo.",
+      "Un COP pari a 5 non viola la conservazione dell’energia. Il rapporto $Q_h/W=6$ descriverebbe invece la prestazione come pompa di calore per riscaldare il lato caldo, una quantità diversa da quella richiesta."
+    ],
+    "check": "COP=100/20=5. Bilancio ciclico Qh=100+20=120 J. Controprova pompa di calore COP_h=120/20=6=COP_f+1. Risposta originale 5 preservata; nessuna confusione con rendimento di motore termico.",
+    "reason": "Reso esplicito il significato operativo del coefficiente, rimosse le ripetizioni e spiegato perché il valore può superare uno. Figura di bilancio posta nello svolgimento.",
+    "figure": {
+      "stage": "solution",
+      "alt": "Cento joule entrano nel frigorifero dal vano freddo; venti joule entrano come lavoro; centoventi joule escono verso l’ambiente caldo.",
+      "caption": "Bilancio di un ciclo: le energie in ingresso e in uscita si compensano.",
+      "lines": [
+        [
+          145,
+          62,
+          255,
+          62
+        ],
+        [
+          255,
+          62,
+          255,
+          116
+        ],
+        [
+          255,
+          116,
+          145,
+          116
+        ],
+        [
+          145,
+          116,
+          145,
+          62
+        ]
+      ],
+      "arrows": [
+        [
+          35,
+          89,
+          138,
+          89
+        ],
+        [
+          262,
+          89,
+          365,
+          89
+        ],
+        [
+          200,
+          161,
+          200,
+          124
+        ]
+      ],
+      "labels": [
+        {
+          "x": 200,
+          "y": 89,
+          "text": "Frigorifero"
+        },
+        {
+          "x": 81,
+          "y": 38,
+          "text": "Vano freddo"
+        },
+        {
+          "x": 81,
+          "y": 68,
+          "text": "100 J"
+        },
+        {
+          "x": 322,
+          "y": 38,
+          "text": "Ambiente caldo"
+        },
+        {
+          "x": 322,
+          "y": 68,
+          "text": "120 J"
+        },
+        {
+          "x": 260,
+          "y": 151,
+          "text": "Lavoro: 20 J"
+        }
+      ]
+    }
+  },
+  {
+    "id": "u5-first-law-expansion-03",
+    "title": "Che cosa chiamiamo calore?",
+    "prompt": "Si osserva uno scambio di energia fra un sistema e l’ambiente. Quale affermazione usa correttamente il termine calore?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Il calore è il lavoro immagazzinato nel sistema.",
+        "feedback": "Calore e lavoro descrivono modalità di trasferimento dell’energia; nessuno dei due è una quantità conservata nel corpo sotto quel nome."
+      },
+      {
+        "id": "B",
+        "text": "Il calore è una funzione di stato indipendente dal percorso.",
+        "feedback": "Fra gli stessi stati, processi diversi possono scambiare quantità diverse di calore. L’energia interna è una funzione di stato, il calore scambiato no."
+      },
+      {
+        "id": "C",
+        "text": "Il calore è una sostanza contenuta nel corpo.",
+        "feedback": "Un corpo ha energia interna. Il termine calore identifica energia durante un trasferimento, non una sostanza posseduta."
+      },
+      {
+        "id": "D",
+        "text": "Il calore è sempre uguale alla temperatura.",
+        "feedback": "Il calore scambiato si misura in joule, la temperatura in kelvin. Una temperatura elevata non specifica da sola quanta energia viene trasferita."
+      },
+      {
+        "id": "E",
+        "text": "Il calore è energia trasferita a causa di una differenza di temperatura.",
+        "feedback": "La differenza di temperatura distingue questo trasferimento energetico dal lavoro, per esempio quello esercitato da un pistone."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "E"
+    },
+    "hints": [
+      "Chiediti se il termine descrive ciò che un corpo possiede in uno stato oppure ciò che attraversa il confine durante un processo.",
+      "Confronta due modi di fornire energia a un gas: metterlo a contatto con un corpo più caldo oppure comprimerlo con un pistone."
+    ],
+    "solution": [
+      "Se un gas riceve energia attraverso una parete a contatto con un corpo più caldo, quel trasferimento avviene come calore. Se riceve energia perché un pistone lo comprime, il trasferimento avviene come lavoro. La causa e la modalità dello scambio sono diverse, pur potendo entrambe aumentare l’energia interna.",
+      "La definizione corretta è quindi E: energia trasferita a causa di una differenza di temperatura. Si parla di calore scambiato durante un processo, non di calore contenuto nello stato finale.",
+      "Il primo principio rende evidente la distinzione: con lavoro positivo se compiuto dal sistema, $\\Delta U=Q-W$. La variazione $\\Delta U$ è fissata dagli stati iniziale e finale; i singoli scambi $Q$ e $W$ dipendono dal processo seguito.",
+      "Per esempio, uno stesso aumento $\\Delta U=10\\,\\mathrm J$ è compatibile con $Q=10\\,\\mathrm J$, $W=0$, oppure con $Q=0$, $W=-10\\,\\mathrm J$. L’esempio separa il bilancio energetico dalla natura del trasferimento."
+    ],
+    "check": "Controllo concettuale delle cinque alternative: calore come trasferimento dovuto a differenza termica, non sostanza, temperatura o funzione di stato. Due bilanci ΔU=Q−W forniscono 10 J con coppie (10,0) e(0,−10). Chiave E invariata. Non si sostiene che calore e lavoro siano contenuti nel corpo.",
+    "reason": "Tolto dalla consegna il suggerimento che forniva già la definizione corretta. Gli indizi guidano al confine del sistema e allo scambio; il confronto fra riscaldamento e compressione rende specifico lo svolgimento."
+  }
+]

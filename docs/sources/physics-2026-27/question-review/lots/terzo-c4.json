@@ -1,0 +1,504 @@
+[
+  {
+    "id": "u6-capacitor-charge-09",
+    "title": "Una misura di carica per ricavare la capacità",
+    "prompt": "Su ciascuna armatura di un condensatore lineare ideale si misura una carica di modulo $Q$; la tensione fra le armature ha modulo $V>0$. Sia $q$ il valore numerico di $Q$ in microcoulomb e $v$ quello di $V$ in volt. Quale espressione restituisce il valore numerico della capacità in microfarad?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$q/(2v)$",
+        "feedback": "Dimezza la capacità. La carica data riguarda già una singola armatura: non va divisa per due."
+      },
+      {
+        "id": "B",
+        "text": "$(q+v)/v$",
+        "feedback": "Vale $q/v+1$: aggiunge arbitrariamente $1\\,\\mathrm{\\mu F}$ alla capacità misurata. Le variabili delle opzioni sono numeri, non grandezze da sommare con unità diverse."
+      },
+      {
+        "id": "C",
+        "text": "$(q-v)/v$",
+        "feedback": "Vale $q/v-1$: sottrae arbitrariamente $1\\,\\mathrm{\\mu F}$. La misura non richiede questa correzione."
+      },
+      {
+        "id": "D",
+        "text": "$q/v$",
+        "feedback": "Per un condensatore lineare il rapporto fra carica di una singola armatura e tensione è la capacità. Microcoulomb divisi per volt danno microfarad."
+      },
+      {
+        "id": "E",
+        "text": "$2q/v$",
+        "feedback": "Somma i moduli delle cariche delle due armature. La definizione di capacità usa il modulo su una sola armatura, non quella somma."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "D"
+    },
+    "hints": [
+      "La capacità quantifica quanta carica compare su una singola armatura per ogni volt fra le armature.",
+      "Usa la relazione fra $Q$, $C$ e $V$, poi controlla il prefisso: il fattore micro compare sia nella carica sia nella capacità."
+    ],
+    "solution": [
+      "Per il condensatore lineare vale $Q=CV$, con $Q$ pari al modulo della carica su una delle due armature. L’altra porta carica opposta; la carica complessiva del condensatore può essere zero senza che la capacità sia zero.",
+      "Dividendo per la tensione positiva si ottiene $C=Q/V$. Poiché $1\\,\\mathrm{\\mu C}/\\mathrm V=1\\,\\mathrm{\\mu F}$, i valori numerici nelle unità dichiarate soddisfano $C[\\mathrm{\\mu F}]=q/v$. La risposta è D.",
+      "Per esempio, con $Q=6\\,\\mathrm{\\mu C}$ e $V=3\\,\\mathrm V$ si trova $C=2\\,\\mathrm{\\mu F}$. Il controllo inverso dà $CV=6\\,\\mathrm{\\mu C}$ su ciascuna armatura, con segni opposti.",
+      "Il rapporto resta costante al variare della tensione solo finché il condensatore rimane nel modello lineare assegnato. Non occorre sommare né sottrarre fra loro le cariche delle due armature per definire questa capacità."
+    ],
+    "check": "Controllo SI:6e−6 C/3 V=2e−6 F. Opzioni q 6, v 3:1,3,1,2,4 μF; D unica corretta. Duplicati fra distrattori A/C nell’esempio non rendono ambigua la chiave. Esplicitata la natura numerica di q,v per rendere lecite le espressioni originali q±v. Chiave D e funzioni numeriche preservate.",
+    "reason": "Rimossa la formula già pronta dalla consegna. Distinta carica su una singola armatura, somma dei moduli e carica totale. Le opzioni originali vengono interpretate esplicitamente su valori numerici, evitando somme dimensionalmente improprie."
+  },
+  {
+    "id": "u6-capacitor-charge-13",
+    "title": "Meno capacità, ma quasi la stessa carica",
+    "prompt": "Si confrontano due configurazioni di un condensatore lineare. Nella configurazione A la capacità è $2\\,\\mathrm{\\mu F}$ e la tensione positiva $3\\,\\mathrm V$. Nella configurazione B la capacità è $1\\,\\mathrm{\\mu F}$ e la tensione viene regolata in modo che il modulo della carica su ciascuna armatura sia $5/6$ di quello iniziale. Quanto deve valere $V_B/V_A$? Il condensatore non è isolato durante la regolazione; il rapporto richiesto non ha unità.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "5/3",
+      "unit": "1"
+    },
+    "hints": [
+      "La carica è proporzionale sia alla capacità sia alla tensione. Se la capacità si dimezza e la tensione resta uguale, che cosa accade alla carica?",
+      "Imposta il rapporto $Q_B/Q_A$ come prodotto di un rapporto di capacità e uno di tensioni. Poi imponi il valore richiesto $5/6$."
+    ],
+    "solution": [
+      "Per la configurazione A si ha $Q_A=C_AV_A=6\\,\\mathrm{\\mu C}$. La carica desiderata in B è $Q_B=(5/6)Q_A=5\\,\\mathrm{\\mu C}$.",
+      "Con capacità $C_B=1\\,\\mathrm{\\mu F}$, per ottenere quella carica occorre $V_B=Q_B/C_B=5\\,\\mathrm V$. Pertanto $V_B/V_A=5/3$.",
+      "Lo stesso risultato si ottiene senza calcolare le cariche: $Q_B/Q_A=(C_B/C_A)(V_B/V_A)$. Il rapporto delle capacità è $1/2$, quindi il rapporto delle tensioni deve valere $(5/6)/(1/2)=5/3$.",
+      "La tensione deve aumentare anche se la carica richiesta diminuisce: il dimezzamento della capacità sarebbe da solo una riduzione della carica più forte di quella richiesta. Il controllo finale è $1\\,\\mathrm{\\mu F}\\cdot5\\,\\mathrm V=5\\,\\mathrm{\\mu C}$ contro i $6\\,\\mathrm{\\mu C}$ iniziali."
+    ],
+    "check": "Doppia soluzione: cariche 6→5 μC e tensioni 3→5 V; oppure rapporto (5/6)/(1/2)=5/3. Riproduce Q_B/Q_A=5/6. Controprova V costante darebbe Q_B/Q_A=1/2, mostrando perché V deve crescere. Risposta 5/3 valida e preservata.",
+    "reason": "Separati stato iniziale, capacità finale e obiettivo sulla carica. Chiarito che la tensione viene regolata e la carica può variare: non si tratta di un condensatore elettricamente isolato. Il rapporto senza unità è motivato."
+  },
+  {
+    "id": "u6-accelerated-magnetic-radius-09",
+    "title": "Dalla curva nel magnete alla tensione di accelerazione",
+    "prompt": "Una particella parte da ferma e acquista energia attraversando una differenza di potenziale favorevole di modulo $U$. Poi entra perpendicolarmente in un campo magnetico uniforme di modulo $B$, in una regione senza campo elettrico, e descrive un arco di raggio $r$. Sono noti $|q|/m=1\\,\\mathrm{C/kg}$ e il regime non relativistico; trascura perdite di energia. Nelle opzioni $r$ e $B$ sono i valori numerici in metri e tesla. Quale espressione dà il valore numerico di $U$ in volt?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$r^2B^2/2$",
+        "feedback": "Il raggio determina la velocità nel campo magnetico; l’energia cinetica determina poi la tensione. Il fattore $1/2$ deriva dall’energia cinetica."
+      },
+      {
+        "id": "B",
+        "text": "$r^2B^2$",
+        "feedback": "Raddoppia l’energia richiesta: manca il fattore un mezzo dell’energia cinetica."
+      },
+      {
+        "id": "C",
+        "text": "$r^2B^2/4$",
+        "feedback": "Dimezza la tensione corretta. Il fattore un mezzo va applicato una volta sola."
+      },
+      {
+        "id": "D",
+        "text": "$r^2B^2/2+1$",
+        "feedback": "Aggiunge $1\\,\\mathrm V$ senza una corrispondente energia cinetica iniziale o un’altra sorgente di energia."
+      },
+      {
+        "id": "E",
+        "text": "$r^2B^2/2-1$",
+        "feedback": "Sottrae $1\\,\\mathrm V$ senza che siano previste perdite o un contributo iniziale da correggere."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "A"
+    },
+    "hints": [
+      "Nella regione magnetica la forza devia la velocità senza cambiarne il modulo. Collega il raggio alla forza centripeta.",
+      "Ricava prima $v$ da $|q|vB=mv^2/r$. Poi usa l’energia acquistata nella regione elettrica, dove la particella era partita da ferma."
+    ],
+    "solution": [
+      "Nella regione magnetica la velocità è perpendicolare al campo. L’uguaglianza fra forza magnetica e forza centripeta dà $|q|vB=mv^2/r$. Poiché $v>0$, segue $v=|q|Br/m$.",
+      "Nella precedente regione elettrica il lavoro positivo sulla particella è $|q|U$. La partenza da ferma impone $|q|U=mv^2/2$. Sostituendo la velocità si trova $U=|q|B^2r^2/(2m)$.",
+      "Con il rapporto assegnato $|q|/m=1\\,\\mathrm{C/kg}$, i valori numerici nelle unità SI danno $U=r^2B^2/2$, opzione A. Il rapporto carica/massa resta parte della legge fisica: non si sta equiparando dimensionalmente un volt al solo prodotto $\\mathrm{T^2m^2}$.",
+      "Controllo: con $r=2\\,\\mathrm m$ e $B=1\\,\\mathrm T$ si ottiene $v=2\\,\\mathrm{m/s}$ e $U=2\\,\\mathrm V$. Il lavoro per unità di massa è $2\\,\\mathrm{J/kg}$, uguale a $v^2/2$. Il campo magnetico cambia la direzione del moto ma non fornisce questa energia."
+    ],
+    "check": "Controprova per q/m=1 C/kg,r 2 m, B 1 T: v=2 m/s, energia cinetica per massa=2 J/kg, U=2 V. Opzioni numeriche 2,4,1,3,1; A unica. Verifica scalare: a B fisso r doppio richiede U quadrupla. I simboli nelle opzioni sono valori SI, mentre la soluzione mantiene q/m nella relazione dimensionale. Chiave A preservata.",
+    "reason": "Separati chiaramente accelerazione elettrica e curvatura magnetica. Lo svolgimento deriva la tensione dai due bilanci invece di invertire una radice già fornita. Rimosso il titolo fuorviante selettore, non essendoci un selettore di velocità a campi incrociati."
+  },
+  {
+    "id": "u6-symmetric-electric-potential-06",
+    "title": "Cambiare lo zero senza cambiare il campo",
+    "prompt": "Con lo zero del potenziale all’infinito, due punti hanno $V_P=18\\,\\mathrm V$ e $V_R=6\\,\\mathrm V$. Si sceglie ora il punto P come zero del potenziale, senza modificare le cariche sorgenti. Quanto vale il nuovo potenziale $V_R^{\\prime}$?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$24\\,\\mathrm V$",
+        "feedback": "Sommare 18 V farebbe diventare il potenziale di P uguale a 36 V, anziché a zero."
+      },
+      {
+        "id": "B",
+        "text": "$0\\,\\mathrm V$",
+        "feedback": "Solo P è stato scelto come nuovo zero. R non aveva lo stesso potenziale di P, quindi non può diventare anch’esso zero."
+      },
+      {
+        "id": "C",
+        "text": "$-12\\,\\mathrm V$",
+        "feedback": "Si sottrae lo stesso valore, 18 V, a tutti i potenziali. R rimane 12 V al di sotto di P."
+      },
+      {
+        "id": "D",
+        "text": "$12\\,\\mathrm V$",
+        "feedback": "Questo è il modulo della differenza. Il potenziale di R è minore di quello del nuovo riferimento, quindi il suo valore è negativo."
+      },
+      {
+        "id": "E",
+        "text": "$6\\,\\mathrm V$",
+        "feedback": "È il valore riferito allo zero precedente. Cambiare il riferimento richiede la stessa traslazione numerica in tutti i punti."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "C"
+    },
+    "hints": [
+      "Trova quale costante devi sommare al vecchio potenziale di P per renderlo zero.",
+      "Applica quella stessa costante al potenziale di R. La differenza fra i potenziali dei due punti deve restare invariata."
+    ],
+    "solution": [
+      "Un cambio di riferimento ha la forma $V^{\\prime}=V+c$, con la stessa costante in ogni punto. La condizione $V_P^{\\prime}=0$ dà $c=-18\\,\\mathrm V$.",
+      "Per R si ottiene quindi $V_R^{\\prime}=6\\,\\mathrm V-18\\,\\mathrm V=-12\\,\\mathrm V$, opzione C. Il segno meno indica che R si trova a potenziale inferiore rispetto al nuovo zero.",
+      "Prima del cambio, $V_R-V_P=-12\\,\\mathrm V$. Dopo il cambio, $V_R^{\\prime}-V_P^{\\prime}=-12\\,\\mathrm V$. Un trasferimento di carica fra P e R richiede dunque lo stesso lavoro di prima: sono invariate le differenze di potenziale, non i singoli valori.",
+      "Anche il campo elettrico rimane invariato, perché aggiungere una costante non cambia il gradiente del potenziale. Non sono state spostate cariche né modificati i campi."
+    ],
+    "check": "Traslazione con costante −18 V: P18→0,R6→−12. Controllo differenza finale −12−0=6−18. Gradiente della costante nullo; forza e lavoro fra punti invariati. Chiave C e valore −12 V preservati.",
+    "reason": "Tolto il preambolo che annunciava la procedura. Gli indizi portano a determinare la costante usando P; il controllo si basa su una grandezza misurabile invariata. La figura nello svolgimento confronta le due scale senza attribuire significato fisico allo zero.",
+    "figure": {
+      "stage": "solution",
+      "alt": "Due scale verticali dei potenziali. Prima: P a 18 V e R a 6 V. Dopo: P a 0 V e R a meno 12 V. Le due separazioni verticali sono uguali.",
+      "caption": "Cambiano le etichette dello zero; la differenza fra R e P resta −12 V.",
+      "lines": [
+        [
+          90,
+          45,
+          90,
+          145
+        ],
+        [
+          310,
+          45,
+          310,
+          145
+        ],
+        [
+          80,
+          65,
+          100,
+          65
+        ],
+        [
+          80,
+          125,
+          100,
+          125
+        ],
+        [
+          300,
+          65,
+          320,
+          65
+        ],
+        [
+          300,
+          125,
+          320,
+          125
+        ]
+      ],
+      "arrows": [
+        [
+          140,
+          95,
+          260,
+          95
+        ]
+      ],
+      "labels": [
+        {
+          "x": 90,
+          "y": 22,
+          "text": "Prima"
+        },
+        {
+          "x": 310,
+          "y": 22,
+          "text": "Dopo"
+        },
+        {
+          "x": 135,
+          "y": 65,
+          "text": "P: 18 V"
+        },
+        {
+          "x": 135,
+          "y": 125,
+          "text": "R: 6 V"
+        },
+        {
+          "x": 350,
+          "y": 65,
+          "text": "P: 0 V"
+        },
+        {
+          "x": 350,
+          "y": 125,
+          "text": "R: −12 V"
+        },
+        {
+          "x": 200,
+          "y": 79,
+          "text": "−18 V a tutti"
+        }
+      ]
+    }
+  },
+  {
+    "id": "u6-capacitor-energy-13",
+    "title": "Quanto deve crescere la tensione per accumulare più energia?",
+    "prompt": "Un condensatore lineare nella configurazione A ha capacità $2\\,\\mathrm{\\mu F}$ e tensione positiva $2\\,\\mathrm V$. Nella configurazione B la capacità è $4\\,\\mathrm{\\mu F}$ e si regola la tensione affinché l’energia immagazzinata sia $9/2$ di quella iniziale. Quale rapporto $V_B/V_A$ serve? Le configurazioni sono alimentate: non è imposta la conservazione della carica. Esprimi il rapporto come numero senza unità.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "3/2",
+      "unit": "1"
+    },
+    "hints": [
+      "Per un condensatore lineare, l’energia non cresce linearmente con la tensione. Distingui il ruolo della capacità da quello della tensione.",
+      "Scrivi il rapporto usando $U=CV^2/2$. Dividi per il rapporto delle capacità prima di estrarre la radice positiva."
+    ],
+    "solution": [
+      "L’energia elettrostatica è $U=CV^2/2$. Nella configurazione A vale $U_A=4\\,\\mathrm{\\mu J}$. L’energia desiderata è quindi $U_B=18\\,\\mathrm{\\mu J}$.",
+      "Prendendo il rapporto delle due energie, il fattore $1/2$ si semplifica. Si ha $U_B/U_A=(C_B/C_A)(V_B/V_A)^2$. Il rapporto delle capacità è 2.",
+      "Deve quindi valere $2(V_B/V_A)^2=9/2$. Il quadrato del rapporto delle tensioni è $9/4$; essendo le tensioni positive si sceglie $V_B/V_A=3/2$.",
+      "La tensione finale è $V_B=3\\,\\mathrm V$. Il controllo diretto dà $U_B=(4\\,\\mathrm{\\mu F})(3\\,\\mathrm V)^2/2$, cioè $18\\,\\mathrm{\\mu J}$; dividendo per i $4\\,\\mathrm{\\mu J}$ iniziali si ritrova $9/2$.",
+      "La carica, invece, passa da $4\\,\\mathrm{\\mu C}$ a $12\\,\\mathrm{\\mu C}$: il rapporto delle cariche è 3, diverso sia dal rapporto delle tensioni sia da quello delle energie. Il vincolo assegnato riguarda l’energia."
+    ],
+    "check": "Calcolo energetico diretto:UA=0,5×2×2²=4 μJ; UB=0,5×4×3²=18 μJ. Rapporto 18/4=9/2. Metodo indipendente via QV/2:QA 4, QB 12 μC,energie 4 e 18 μJ. Tensioni positive selezionano radice +3/2. Risposta originale 3/2 valida.",
+    "reason": "Precisata la regolazione elettrica, eliminata la generica grandezza d’uscita. Confrontati energia, carica e tensione per prevenire un ragionamento lineare improprio. Calcoli brevi separati per schermo mobile."
+  },
+  {
+    "id": "u6-connected-plate-separation-charge-09",
+    "title": "Ricostruire la carica prima di allontanare le piastre",
+    "prompt": "Un condensatore piano resta collegato a un generatore ideale che mantiene costante la tensione. La distanza iniziale $d_0$ fra le armature diventa $d=sd_0$, con $s\\ge1$. Area e dielettrico non cambiano; trascura gli effetti di bordo. Alla fine il modulo della carica su un’armatura è $Q$. Quale espressione dà il modulo iniziale $Q_0$?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$Qs$",
+        "feedback": "La capacità e la carica diminuiscono dello stesso fattore quando la tensione resta costante. Per risalire alla carica iniziale si moltiplica per s."
+      },
+      {
+        "id": "B",
+        "text": "$2Qs$",
+        "feedback": "Raddoppia senza motivo la carica iniziale. Il fatto che ci siano due armature non raddoppia la carica usata in Q=CV."
+      },
+      {
+        "id": "C",
+        "text": "$Qs/2$",
+        "feedback": "Dimezza la carica iniziale: le due armature portano cariche opposte, ma la domanda riguarda il modulo su una sola armatura."
+      },
+      {
+        "id": "D",
+        "text": "$Qs+1\\,\\mathrm{\\mu C}$",
+        "feedback": "La variazione geometrica produce un fattore moltiplicativo; non aggiunge un offset fisso di $1\\,\\mathrm{\\mu C}$."
+      },
+      {
+        "id": "E",
+        "text": "$Qs-1\\,\\mathrm{\\mu C}$",
+        "feedback": "La relazione non prevede una sottrazione fissa di $1\\,\\mathrm{\\mu C}$. Anche nel caso $s=1$ questo termine darebbe una variazione senza alcun cambiamento geometrico."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "A"
+    },
+    "hints": [
+      "Individua prima il vincolo mantenuto dal generatore. Non applicare la conservazione della carica di un condensatore isolato.",
+      "La capacità di un condensatore piano è inversamente proporzionale alla distanza. Collega il rapporto delle capacità a quello delle cariche alla stessa tensione."
+    ],
+    "solution": [
+      "Per geometria piana vale $C=\\varepsilon A/d$. Se la distanza passa da $d_0$ a $sd_0$, la capacità diventa $C=C_0/s$. Il fattore $s=d/d_0$ è adimensionale.",
+      "Il generatore mantiene la stessa tensione $V$ prima e dopo. Usando $Q=CV$ e $Q_0=C_0V$ si ricava $Q/Q_0=C/C_0=1/s$. Quindi $Q_0=Qs$, risposta A.",
+      "La carica del condensatore può diminuire perché il collegamento al generatore consente il passaggio di carica. Se il condensatore fosse isolato, sarebbe invece la tensione a variare: quel problema avrebbe un vincolo diverso.",
+      "Controllo: per $s=2$ e $Q=3\\,\\mathrm{\\mu C}$ risulta $Q_0=6\\,\\mathrm{\\mu C}$. Raddoppiare la distanza dimezza capacità e carica, lasciando la tensione uguale. Per $s=1$ la formula restituisce $Q_0=Q$, come deve accadere se nulla cambia."
+    ],
+    "check": "Errore testuale originale confermato: opzione A mostrava Q·s=d/d0 e answer.text Q·s=d/d0 μC; exact=y*z e chiave A erano validi. Ripristinate tutte le opzioni dalle espressioni exact:Qs,2Qs,Qs/2,Qs±1 μC. Verifica s 2, Q 3 μC:valori 6,12,3,7,5 μC; A unica. Controprova s 1 ⇒ Q0=Q. Modello C=εA/d e V costante verificato.",
+    "reason": "Corretta la contaminazione del testo delle alternative con la definizione s=d/d0, mantenendo ID, funzioni numeriche exact e chiave A. Ripristinato il significato di Q0 senza uguagliarlo erroneamente a un rapporto di lunghezze. Aggiunte unità agli offset e distinta l’alimentazione dall’isolamento.",
+    "figure": {
+      "stage": "prompt",
+      "alt": "Due stati dello stesso condensatore piano a tensione costante. Nello stato iniziale due piastre distano d0 e portano carica di modulo Q0. Nello stato finale la distanza è s d0 e la carica di modulo Q.",
+      "caption": "Geometrie schematiche, non in scala. Il generatore mantiene la stessa tensione nei due stati.",
+      "lines": [
+        [
+          45,
+          49,
+          45,
+          125
+        ],
+        [
+          115,
+          49,
+          115,
+          125
+        ],
+        [
+          240,
+          49,
+          240,
+          125
+        ],
+        [
+          355,
+          49,
+          355,
+          125
+        ],
+        [
+          45,
+          143,
+          115,
+          143
+        ],
+        [
+          45,
+          137,
+          45,
+          149
+        ],
+        [
+          115,
+          137,
+          115,
+          149
+        ],
+        [
+          240,
+          143,
+          355,
+          143
+        ],
+        [
+          240,
+          137,
+          240,
+          149
+        ],
+        [
+          355,
+          137,
+          355,
+          149
+        ]
+      ],
+      "arrows": [
+        [
+          145,
+          88,
+          205,
+          88
+        ]
+      ],
+      "labels": [
+        {
+          "x": 80,
+          "y": 22,
+          "text": "Inizio: Q0 ?"
+        },
+        {
+          "x": 298,
+          "y": 22,
+          "text": "Fine: Q"
+        },
+        {
+          "x": 80,
+          "y": 164,
+          "text": "d0"
+        },
+        {
+          "x": 298,
+          "y": 164,
+          "text": "s d0"
+        },
+        {
+          "x": 175,
+          "y": 60,
+          "text": "V costante"
+        }
+      ]
+    }
+  },
+  {
+    "id": "u6-faraday-average-emf-13",
+    "title": "Più flusso, ma quanto tempo in più?",
+    "prompt": "Una bobina ha 10 spire identiche orientate concordemente. Nella prova A il flusso magnetico attraverso ciascuna spira varia di $6\\,\\mathrm{mWb}$ in $2\\,\\mathrm{ms}$. Nella prova B varia di $12\\,\\mathrm{mWb}$. Si vuole che il modulo della f.e.m. media in B sia $4/3$ di quello in A. Quanto deve valere $\\Delta t_B/\\Delta t_A$? Le variazioni indicate sono moduli della differenza fra flusso finale e iniziale; per f.e.m. media si intende la media algebrica sull’intervallo.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "3/2",
+      "unit": "1"
+    },
+    "hints": [
+      "La legge di Faraday mette in rapporto variazione del flusso e tempo impiegato. Il numero di spire è lo stesso nelle due prove.",
+      "La variazione di flusso raddoppia. A durata uguale raddoppierebbe anche il modulo della f.e.m. media: per limitarne l’aumento a 4/3 serve più o meno tempo?"
+    ],
+    "solution": [
+      "Integrando la legge di Faraday sull’intervallo si ottiene $|\\overline{\\mathcal E}|=N|\\Delta\\Phi|/\\Delta t$. Il flusso è quello di una singola spira; le 10 spire contribuiscono con lo stesso orientamento.",
+      "Nella prova A la f.e.m. media ha modulo $10\\cdot6/2=30\\,\\mathrm V$. Infatti $1\\,\\mathrm{mWb}/\\mathrm{ms}=1\\,\\mathrm V$: i due prefissi milli si semplificano.",
+      "In B serve un modulo pari a $(4/3)30=40\\,\\mathrm V$. Perciò $\\Delta t_B=10\\cdot12/40=3\\,\\mathrm{ms}$ e il rapporto richiesto è $3/2$.",
+      "La controprova tramite rapporti dà $|\\overline{\\mathcal E}_B|/|\\overline{\\mathcal E}_A|=2/(3/2)=4/3$. Il flusso cambia di più e anche l’intervallo aumenta, perciò la f.e.m. media cresce meno che nel semplice raddoppio.",
+      "Non serve conoscere l’andamento istante per istante per calcolare la media algebrica: bastano gli estremi del flusso e la durata. La media dei moduli istantanei sarebbe una quantità diversa e non è quella richiesta."
+    ],
+    "check": "SI:EA=10×0,006/0,002=30 V; EB richiesta 40 V; tempoB=10×0,012/40=0,003 s. Rapporto 0,003/0,002=3/2. Controprova rapporto f.e.m.=2/(3/2)=4/3. Media algebrica distinta da media dei moduli; N invariato si cancella nel rapporto. Risposta 3/2 preservata.",
+    "reason": "Chiariti flusso per spira, media algebrica e unità compatibili. Sostituita la variazione compensata generica con un confronto fisico fra raddoppio del flusso e aumento della durata. Non assunta una f.e.m. costante durante il processo."
+  },
+  {
+    "id": "u6-dielectric-isolated-voltage-03",
+    "title": "Che cosa resta fissato dopo aver scollegato il condensatore?",
+    "prompt": "Un condensatore piano carico viene scollegato dal generatore e le sue armature restano elettricamente isolate, senza perdite. Si inserisce poi un dielettrico ideale che riempie tutto lo spazio fra le armature, mantenendo fisse area e distanza. Il materiale ha permittività relativa $\\varepsilon_r>1$. Quale grandezza resta fissata dal vincolo di isolamento?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Il modulo della carica libera su ciascuna armatura.",
+        "feedback": "Non c’è un percorso conduttivo attraverso cui carica libera possa entrare o uscire dalle armature. La polarizzazione del dielettrico non cambia questo vincolo."
+      },
+      {
+        "id": "B",
+        "text": "La differenza di potenziale.",
+        "feedback": "La tensione sarebbe fissata da un generatore ancora collegato. Qui la capacità aumenta mentre la carica resta fissa, perciò la tensione diminuisce."
+      },
+      {
+        "id": "C",
+        "text": "L’energia elettrostatica.",
+        "feedback": "A carica fissata l’energia dipende dalla capacità. Durante l’inserimento può essere scambiata energia meccanica, quindi la sola energia del campo non deve restare costante."
+      },
+      {
+        "id": "D",
+        "text": "La capacità.",
+        "feedback": "La capacità dipende anche dalla permittività del materiale fra le armature: il dielettrico la aumenta."
+      },
+      {
+        "id": "E",
+        "text": "Il campo elettrico fra le armature.",
+        "feedback": "La polarizzazione del dielettrico modifica il campo; nel modello piano completamente riempito il suo modulo diminuisce."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "A"
+    },
+    "hints": [
+      "Ripensa al collegamento elettrico: dopo aver rimosso il generatore, esiste un percorso per portare nuova carica libera sulle armature?",
+      "Il dielettrico cambia la capacità. Distingui quale fattore di $Q=CV$ è fissato dal collegamento e quale può adattarsi."
+    ],
+    "solution": [
+      "L’isolamento impedisce alla carica libera di passare da un’armatura all’altra o verso l’ambiente. Il modulo della carica libera su ciascuna armatura rimane quindi quello iniziale: risposta A.",
+      "Il dielettrico si polarizza: compaiono cariche legate al materiale, distinte dalla carica libera dei conduttori. Con area e distanza fisse, il riempimento completo dà $C_f=\\varepsilon_r C_i$.",
+      "Poiché $Q$ rimane fisso, la tensione diventa $V_f=V_i/\\varepsilon_r$. Anche il campo interno diminuisce: nel modello piano $E=V/d$, quindi $E_f=E_i/\\varepsilon_r$.",
+      "L’energia si può scrivere $U=Q^2/(2C)$; dunque $U_f=U_i/\\varepsilon_r$. La diminuzione non viola la conservazione dell’energia complessiva: nell’inserimento il campo può compiere lavoro meccanico sul dielettrico o su chi ne controlla il moto.",
+      "Come controllo, se $\\varepsilon_r=2$, la capacità raddoppia, tensione e campo si dimezzano e la carica libera resta uguale. Se invece il generatore fosse rimasto collegato, sarebbe costante la tensione e la carica aumenterebbe: è il collegamento a decidere il vincolo."
+    ],
+    "check": "Controprova numerica C_i 2 μF,Q 6 μC,εr 2:Ci 2 → Cf 4 μF,Vi 3 → Vf 1,5 V,Ui 9 → Uf 4,5 μJ. Q iniziale=finale 6 μC; E scala con V a d fisso. εr>1 e riempimento completo rendono non costanti tutte le altre opzioni. Chiave A preservata.",
+    "reason": "Esplicitati isolamento delle singole armature, dielettrico non conduttore, geometria e permittività maggiore di uno. Distinte cariche libere e di polarizzazione; il bilancio energetico evita l’idea di energia del campo necessariamente conservata."
+  }
+]

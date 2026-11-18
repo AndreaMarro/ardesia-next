@@ -7560,6 +7560,168 @@
   "exactPromptGroups": [],
   "repeatedSemanticSignatures": [],
   "numericTemplateGroups": [],
+  "similarPromptPairs": {
+    "method": "Token trigram Jaccard >= 0.82, same physicalModel, no convention block",
+    "count": 13,
+    "pairs": [
+      {
+        "ids": [
+          "u3-mixing-mass-balance-05",
+          "u3-mixing-mass-balance-06"
+        ],
+        "model": "U3-mixing-mass-balance",
+        "tasks": [
+          "inverse_first_input",
+          "inverse_second_input"
+        ],
+        "tokenTrigramJaccard": 0.864
+      },
+      {
+        "ids": [
+          "u3-layered-liquids-05",
+          "u3-layered-liquids-06"
+        ],
+        "model": "U3-layered-liquids",
+        "tasks": [
+          "inverse_first_input",
+          "inverse_second_input"
+        ],
+        "tokenTrigramJaccard": 0.859
+      },
+      {
+        "ids": [
+          "u5-calorimeter-capacity-05",
+          "u5-calorimeter-capacity-06"
+        ],
+        "model": "U5-calorimeter-capacity",
+        "tasks": [
+          "inverse_first_input",
+          "inverse_second_input"
+        ],
+        "tokenTrigramJaccard": 0.859
+      },
+      {
+        "ids": [
+          "u2-gravity-ratio-05",
+          "u2-gravity-ratio-06"
+        ],
+        "model": "U2-gravity-ratio",
+        "tasks": [
+          "inverse_first_input",
+          "inverse_second_input"
+        ],
+        "tokenTrigramJaccard": 0.854
+      },
+      {
+        "ids": [
+          "u7-two-layer-transmission-05",
+          "u7-two-layer-transmission-06"
+        ],
+        "model": "U7-two-layer-transmission",
+        "tasks": [
+          "inverse_first_input",
+          "inverse_second_input"
+        ],
+        "tokenTrigramJaccard": 0.844
+      },
+      {
+        "ids": [
+          "u5-net-blackbody-exchange-05",
+          "u5-net-blackbody-exchange-06"
+        ],
+        "model": "U5-net-blackbody-exchange",
+        "tasks": [
+          "inverse_first_input",
+          "inverse_second_input"
+        ],
+        "tokenTrigramJaccard": 0.843
+      },
+      {
+        "ids": [
+          "u3-parallel-flow-divider-05",
+          "u3-parallel-flow-divider-06"
+        ],
+        "model": "U3-parallel-flow-divider",
+        "tasks": [
+          "inverse_first_input",
+          "inverse_second_input"
+        ],
+        "tokenTrigramJaccard": 0.842
+      },
+      {
+        "ids": [
+          "u5-parallel-thermal-panels-05",
+          "u5-parallel-thermal-panels-06"
+        ],
+        "model": "U5-parallel-thermal-panels",
+        "tasks": [
+          "inverse_first_input",
+          "inverse_second_input"
+        ],
+        "tokenTrigramJaccard": 0.842
+      },
+      {
+        "ids": [
+          "u7-radioisotope-mixture-05",
+          "u7-radioisotope-mixture-06"
+        ],
+        "model": "U7-radioisotope-mixture",
+        "tasks": [
+          "inverse_first_input",
+          "inverse_second_input"
+        ],
+        "tokenTrigramJaccard": 0.842
+      },
+      {
+        "ids": [
+          "u5-two-body-calorimetry-05",
+          "u5-two-body-calorimetry-06"
+        ],
+        "model": "U5-two-body-calorimetry",
+        "tasks": [
+          "inverse_first_input",
+          "inverse_second_input"
+        ],
+        "tokenTrigramJaccard": 0.838
+      },
+      {
+        "ids": [
+          "u3-bernoulli-horizontal-05",
+          "u3-bernoulli-horizontal-06"
+        ],
+        "model": "U3-bernoulli-horizontal",
+        "tasks": [
+          "inverse_first_input",
+          "inverse_second_input"
+        ],
+        "tokenTrigramJaccard": 0.831
+      },
+      {
+        "ids": [
+          "u3-communicating-columns-05",
+          "u3-communicating-columns-06"
+        ],
+        "model": "U3-communicating-columns",
+        "tasks": [
+          "inverse_first_input",
+          "inverse_second_input"
+        ],
+        "tokenTrigramJaccard": 0.828
+      },
+      {
+        "ids": [
+          "u6-voltage-divider-05",
+          "u6-voltage-divider-06"
+        ],
+        "model": "U6-voltage-divider",
+        "tasks": [
+          "inverse_first_input",
+          "inverse_second_input"
+        ],
+        "tokenTrigramJaccard": 0.821
+      }
+    ]
+  },
   "legacySolutionStepNotation": {
     "plainLegacyNotation": 32727
   },
@@ -8159,6 +8321,6 @@
   "selectedNext": 259,
   "nextPracticePlacements": 290,
   "explicitlyAssignedNext": 259,
-  "reviewedOrigins": 52,
+  "reviewedOrigins": 92,
   "scope": "Flags require editorial review. Global check does not infer physical correctness or test the legacy UI."
 }

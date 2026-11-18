@@ -3,6 +3,7 @@ import argparse
 from collections import Counter, defaultdict
 from hashlib import sha1, sha256
 import json
+from itertools import combinations
 from pathlib import Path
 import re
 import unicodedata
@@ -47,6 +48,7 @@ def audit(source, selected_path, units_path, lots, source_tree):
     canonical_prompts = defaultdict(list)
     signatures = defaultdict(list)
     numeric_templates = defaultdict(list)
+    similar_prompt_candidates = defaultdict(list)
     formula_styles = Counter()
     unit_flags = []
     all_records = {}
@@ -93,6 +95,14 @@ def audit(source, selected_path, units_path, lots, source_tree):
                 generic_hints[row['hints'][0]] += 1
             canonical_prompts[normalize(row['prompt'])].append(qid)
             signatures[row['semanticSignature']].append(qid)
+            descriptor = row['semanticDescriptor']
+            if descriptor.get('physicalModel') and descriptor.get('reasoningTask'):
+                # Omit the recurring convention block. Keep units and the question text.
+                core = re.split(r'\n\s*Ipotesi e convenzioni:', row['prompt'], maxsplit=1)[0]
+                tokens = re.findall(r'\w+|[+−×=/]', normalize(core))
+                triples = set(zip(tokens, tokens[1:], tokens[2:]))
+                if len(triples) >= 8:
+                    similar_prompt_candidates[descriptor['physicalModel']].append((qid, descriptor['reasoningTask'], triples))
             if row['format'] == 'completion':
                 masked = re.sub(r'(?<![\w])[-−+]?\d+(?:[.,]\d+)?(?:/\d+)?', '#', normalize(row['prompt']))
                 numeric_templates[(row['familyId'], masked)].append(qid)
@@ -109,7 +119,10 @@ def audit(source, selected_path, units_path, lots, source_tree):
     selected = read(selected_path)
     units = read(units_path)
     assigned = {qid for row in units for qid in row['exerciseIds']}
-    references = {qid: row for row in units for qid in row['exerciseIds']}
+    references = defaultdict(list)
+    for row in units:
+        for qid in row['exerciseIds']:
+            references[qid].append(row)
     selected_ids = {q['id'] for q in selected}
     if not selected_ids <= ids.keys() or not assigned <= selected_ids:
         raise ValueError('Broken selected bank references')
@@ -119,12 +132,22 @@ def audit(source, selected_path, units_path, lots, source_tree):
             qid = revision['id']
             original, path, blob = all_records[qid]
             taxonomy_unit = original['taxonomy']['unitId']
-            lesson = references.get(qid) or next(row for row in units if row['familyId'] == Path(path).stem)
+            placements = references.get(qid)
+            lesson = placements[-1] if placements else next(row for row in units if row['familyId'] == Path(path).stem)
+            linked_lessons = [row['unitId'] for row in placements or [lesson]]
             origins.append(dict(id=qid, lessonId=lesson['unitId'], taxonomyUnit=taxonomy_unit,
                                 level=original['difficulty']['level'], format=original['format'],
                                 answer=original['answer'], path=path, blob=blob,
                                 sha256=sha256(json.dumps(original, ensure_ascii=False, separators=(',', ':'), sort_keys=True).encode()).hexdigest(),
-                                previouslyAssigned=qid in assigned))
+                                previouslyAssigned=qid in assigned, linkedLessons=linked_lessons))
+    similar = []
+    for model, group in sorted(similar_prompt_candidates.items()):
+        for (left, left_task, a), (right, right_task, b) in combinations(sorted(group), 2):
+            overlap = len(a & b) / len(a | b)
+            if overlap >= .82:
+                similar.append(dict(ids=[left, right], model=model, tasks=[left_task, right_task],
+                                    tokenTrigramJaccard=round(overlap, 3)))
+    similar.sort(key=lambda row: (-row['tokenTrigramJaccard'], row['ids']))
     duplicates = {key: count for key, count in ids.items() if count != 1}
     repeated = lambda values: [rows for rows in values.values() if len(rows)>1]
     report = dict(snapshot='5cfbdcb055ba3ba136f97fb56e997f06e6cf3605', count=len(census),
@@ -133,7 +156,9 @@ def audit(source, selected_path, units_path, lots, source_tree):
                   answerLabelMismatches=key_errors, taxonomyLinkErrors=link_errors, visualFieldRecords=visual_fields,
                   standardSolutionPhrases=shared_checks, frequentFirstHints=generic_hints.most_common(12),
                   exactPromptGroups=repeated(canonical_prompts), repeatedSemanticSignatures=repeated(signatures),
-                  numericTemplateGroups=repeated(numeric_templates), legacySolutionStepNotation=formula_styles,
+                  numericTemplateGroups=repeated(numeric_templates),
+                  similarPromptPairs=dict(method='Token trigram Jaccard >= 0.82, same physicalModel, no convention block', count=len(similar), pairs=similar),
+                  legacySolutionStepNotation=formula_styles,
                   dimensionlessPlaceholderRecords=unit_flags, selectedNext=len(selected_ids),
                   nextPracticePlacements=sum(len(row['exerciseIds']) for row in units),
                   explicitlyAssignedNext=len(assigned), reviewedOrigins=len(origins),

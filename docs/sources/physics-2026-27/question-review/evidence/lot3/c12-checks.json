@@ -1,0 +1,328 @@
+{
+  "timestamp": "2026-11-18T17:53:04.087846+01:00",
+  "questions": 16,
+  "courses": {
+    "C1": 8,
+    "C2": 8
+  },
+  "flagged": 13,
+  "figures": 5,
+  "passed": 62,
+  "checks": [
+    {
+      "name": "selection",
+      "status": "pass",
+      "method": "16 nuovi ID presenti nella coda; nessuna sovrapposizione coi primi52"
+    },
+    {
+      "name": "u1-vector-angle-ratio-09:original_hash",
+      "status": "pass",
+      "method": "Originale immutabile coincide con provenienza Next"
+    },
+    {
+      "name": "u1-vector-angle-ratio-09:key",
+      "status": "pass",
+      "method": "Chiave originale conservata"
+    },
+    {
+      "name": "u1-vector-angle-ratio-09:options",
+      "status": "pass",
+      "method": "Identificativi e ordine opzioni conservati"
+    },
+    {
+      "name": "u1-vector-product-01:original_hash",
+      "status": "pass",
+      "method": "Originale immutabile coincide con provenienza Next"
+    },
+    {
+      "name": "u1-vector-product-01:key",
+      "status": "pass",
+      "method": "Valore razionale e unità conservati"
+    },
+    {
+      "name": "u2-gravity-ratio-01:original_hash",
+      "status": "pass",
+      "method": "Originale immutabile coincide con provenienza Next"
+    },
+    {
+      "name": "u2-gravity-ratio-01:key",
+      "status": "pass",
+      "method": "Valore razionale e unità conservati"
+    },
+    {
+      "name": "u2-centripetal-acceleration-09:original_hash",
+      "status": "pass",
+      "method": "Originale immutabile coincide con provenienza Next"
+    },
+    {
+      "name": "u2-centripetal-acceleration-09:key",
+      "status": "pass",
+      "method": "Chiave originale conservata"
+    },
+    {
+      "name": "u2-centripetal-acceleration-09:options",
+      "status": "pass",
+      "method": "Identificativi e ordine opzioni conservati"
+    },
+    {
+      "name": "u2-gravitational-energy-09:original_hash",
+      "status": "pass",
+      "method": "Originale immutabile coincide con provenienza Next"
+    },
+    {
+      "name": "u2-gravitational-energy-09:key",
+      "status": "pass",
+      "method": "Chiave originale conservata"
+    },
+    {
+      "name": "u2-gravitational-energy-09:options",
+      "status": "pass",
+      "method": "Identificativi e ordine opzioni conservati"
+    },
+    {
+      "name": "u2-gravitational-energy-13:original_hash",
+      "status": "pass",
+      "method": "Originale immutabile coincide con provenienza Next"
+    },
+    {
+      "name": "u2-gravitational-energy-13:key",
+      "status": "pass",
+      "method": "Valore razionale e unità conservati"
+    },
+    {
+      "name": "u2-impulse-09:original_hash",
+      "status": "pass",
+      "method": "Originale immutabile coincide con provenienza Next"
+    },
+    {
+      "name": "u2-impulse-09:key",
+      "status": "pass",
+      "method": "Chiave originale conservata"
+    },
+    {
+      "name": "u2-impulse-09:options",
+      "status": "pass",
+      "method": "Identificativi e ordine opzioni conservati"
+    },
+    {
+      "name": "u2-impulse-13:original_hash",
+      "status": "pass",
+      "method": "Originale immutabile coincide con provenienza Next"
+    },
+    {
+      "name": "u2-impulse-13:key",
+      "status": "pass",
+      "method": "Valore razionale e unità conservati"
+    },
+    {
+      "name": "u3-couette-force-09:original_hash",
+      "status": "pass",
+      "method": "Originale immutabile coincide con provenienza Next"
+    },
+    {
+      "name": "u3-couette-force-09:key",
+      "status": "pass",
+      "method": "Chiave originale conservata"
+    },
+    {
+      "name": "u3-couette-force-09:options",
+      "status": "pass",
+      "method": "Identificativi e ordine opzioni conservati"
+    },
+    {
+      "name": "u3-couette-force-13:original_hash",
+      "status": "pass",
+      "method": "Originale immutabile coincide con provenienza Next"
+    },
+    {
+      "name": "u3-couette-force-13:key",
+      "status": "pass",
+      "method": "Valore razionale e unità conservati"
+    },
+    {
+      "name": "u3-apparent-weight-09:original_hash",
+      "status": "pass",
+      "method": "Originale immutabile coincide con provenienza Next"
+    },
+    {
+      "name": "u3-apparent-weight-09:key",
+      "status": "pass",
+      "method": "Chiave originale conservata"
+    },
+    {
+      "name": "u3-apparent-weight-09:options",
+      "status": "pass",
+      "method": "Identificativi e ordine opzioni conservati"
+    },
+    {
+      "name": "u3-droplet-fragmentation-01:original_hash",
+      "status": "pass",
+      "method": "Originale immutabile coincide con provenienza Next"
+    },
+    {
+      "name": "u3-droplet-fragmentation-01:key",
+      "status": "pass",
+      "method": "Chiave originale conservata"
+    },
+    {
+      "name": "u3-droplet-fragmentation-01:options",
+      "status": "pass",
+      "method": "Identificativi e ordine opzioni conservati"
+    },
+    {
+      "name": "u3-soap-film-force-13:original_hash",
+      "status": "pass",
+      "method": "Originale immutabile coincide con provenienza Next"
+    },
+    {
+      "name": "u3-soap-film-force-13:key",
+      "status": "pass",
+      "method": "Valore razionale e unità conservati"
+    },
+    {
+      "name": "u3-hydraulic-parallel-06:original_hash",
+      "status": "pass",
+      "method": "Originale immutabile coincide con provenienza Next"
+    },
+    {
+      "name": "u3-hydraulic-parallel-06:key",
+      "status": "pass",
+      "method": "Chiave originale conservata"
+    },
+    {
+      "name": "u3-hydraulic-parallel-06:options",
+      "status": "pass",
+      "method": "Identificativi e ordine opzioni conservati"
+    },
+    {
+      "name": "u3-capillary-rise-07:original_hash",
+      "status": "pass",
+      "method": "Originale immutabile coincide con provenienza Next"
+    },
+    {
+      "name": "u3-capillary-rise-07:key",
+      "status": "pass",
+      "method": "Chiave originale conservata"
+    },
+    {
+      "name": "u3-capillary-rise-07:options",
+      "status": "pass",
+      "method": "Identificativi e ordine opzioni conservati"
+    },
+    {
+      "name": "u3-parabolic-profile-03:original_hash",
+      "status": "pass",
+      "method": "Originale immutabile coincide con provenienza Next"
+    },
+    {
+      "name": "u3-parabolic-profile-03:key",
+      "status": "pass",
+      "method": "Chiave originale conservata"
+    },
+    {
+      "name": "u3-parabolic-profile-03:options",
+      "status": "pass",
+      "method": "Identificativi e ordine opzioni conservati"
+    },
+    {
+      "name": "vector_angle",
+      "status": "pass",
+      "method": "Inversione e controprova triangolo3-4-5; T adimensionale"
+    },
+    {
+      "name": "vector_angle_options",
+      "status": "pass",
+      "method": "Campioni razionali e argomento generale T+1>T, altri valori −a,2a,a/2; corretta unica per b,T>0"
+    },
+    {
+      "name": "vector_cross",
+      "status": "pass",
+      "method": "Determinante di (2,0,0) e (0,2,0); modulo4, distinto dal prodotto scalare0"
+    },
+    {
+      "name": "gravity_ratio",
+      "status": "pass",
+      "method": "Inversa quadratica e sostituzione K=Gm, masseM e2M, distanzer e2r"
+    },
+    {
+      "name": "centripetal",
+      "status": "pass",
+      "method": "Radice positiva v4m/s da a8,r2; reinserimento restituisce a8; negative e fattori alterati non corretti"
+    },
+    {
+      "name": "potential_inverse",
+      "status": "pass",
+      "method": "Peso U/h20N, massa2kg e lavoro della gravità−60J distinto da aumentoU"
+    },
+    {
+      "name": "potential_ratio",
+      "status": "pass",
+      "method": "Due lavori contro gravità: 20N×2m e40N×4m; confronto4"
+    },
+    {
+      "name": "impulse_inverse",
+      "status": "pass",
+      "method": "Controprova Newton: massa2,F4 ->a2; dt3 ->delta v6 e delta p12"
+    },
+    {
+      "name": "impulse_ratio",
+      "status": "pass",
+      "method": "Integrali dei due rettangoli forza-tempo: aree4 e16Ns"
+    },
+    {
+      "name": "couette_inverse",
+      "status": "pass",
+      "method": "Sforzo locale eta gradv2000Pa×area0,01m²=20N; eta ricavata1Pa s"
+    },
+    {
+      "name": "couette_ratio",
+      "status": "pass",
+      "method": "Gradiente raddoppia e viscosità raddoppia: tensione e forza quadruplicano"
+    },
+    {
+      "name": "apparent_mass",
+      "status": "pass",
+      "method": "Bilancio forze30N=20+10, massa3kg e densità>acqua"
+    },
+    {
+      "name": "droplet",
+      "status": "pass",
+      "method": "Volume conservato; area finale8pi mm², gamma0,01N/m ->2pi/25 microJ; conversione mm²->m² e J->microJ si compensano"
+    },
+    {
+      "name": "droplet_options",
+      "status": "pass",
+      "method": "Cinque coefficienti distinti; distrattoreC usa erroneamente8 aree iniziali; D una sola gocciolina"
+    },
+    {
+      "name": "soap_ratio",
+      "status": "pass",
+      "method": "Forze2 e2,5mN; lunghezze0,02 e0,05m, rapporto5/2"
+    },
+    {
+      "name": "parallel",
+      "status": "pass",
+      "method": "Pressione6kPa comune; Q1=3,Q2=2 L/s. ChiusuraQ2 lasciaQ1 e riduce totale5->3"
+    },
+    {
+      "name": "capillary",
+      "status": "pass",
+      "method": "Altezze10 e5mm; controprova equilibrio perimetro×gamma contro peso rho*g*area*h"
+    },
+    {
+      "name": "parabolic",
+      "status": "pass",
+      "method": "Valori normalizzati ai tre raggi; derivata−2s/R²≤0 garantisce massimo all’asse"
+    },
+    {
+      "name": "profile_diagram",
+      "status": "pass",
+      "method": "Frecce a metà raggio lunghe3/4 della freccia centrale"
+    }
+  ],
+  "limits": [
+    "Controlli scientifici automatici e controprove con metodi distinti; non revisione umana.",
+    "I livelli sono editoriali legacy, non calibrati su studenti.",
+    "Non è stato autenticato un corpus di dispense originali di Andrea: applicati i requisiti espliciti del mandato."
+  ]
+}

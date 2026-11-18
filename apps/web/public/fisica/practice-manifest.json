@@ -2,7 +2,7 @@
   "status": "DRAFT",
   "humanApproval": false,
   "catalog": "esercizi-guidati.html",
-  "catalogSHA256": "33440aeed4d47923c2f80e6b54d4501eccb19862d1db5dba03bdf733a78c2a8b",
+  "catalogSHA256": "9bc4e31c53e121a910aa52ba1cd15e15b64b60e9f4f8c101bf4731f32538c425",
   "rows": [
     {
       "id": "u1-area-conversion-01",
@@ -10,6 +10,10 @@
       "courseId": "sf-2026-strumenti-meccanica",
       "lesson": "sf-2026-u1-02.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u1-02.html"
+      ],
       "originalBlob": "5f6af9b5a57692e121bd3df5e9813a54097b80dd",
       "originalSHA256": "7d1b8669d47098f4bec2c7c3a8cc2bc081c44e2b03efa0b3ab44fb66a9a3fd96"
     },
@@ -19,6 +23,10 @@
       "courseId": "sf-2026-strumenti-meccanica",
       "lesson": "sf-2026-u2-01.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u2-01.html"
+      ],
       "originalBlob": "e01c8ef116a886088c0582a6a7deb03a01e35670",
       "originalSHA256": "2e691b5743bd312ba8180da48324599138821a2db0896c88fffcba1411552967"
     },
@@ -28,6 +36,10 @@
       "courseId": "sf-2026-strumenti-meccanica",
       "lesson": "sf-2026-u1-01.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u1-01.html"
+      ],
       "originalBlob": "5f6af9b5a57692e121bd3df5e9813a54097b80dd",
       "originalSHA256": "caa22de5bec635e68550a5f18d8adc31ec9fda75934e9047ae0efc3ecc2def54"
     },
@@ -37,6 +49,10 @@
       "courseId": "sf-2026-strumenti-meccanica",
       "lesson": "sf-2026-u2-01.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u2-01.html"
+      ],
       "originalBlob": "e01c8ef116a886088c0582a6a7deb03a01e35670",
       "originalSHA256": "3a9a448f75423faca0d3035385e71e0d401a02187c99af0141ae6c3581950466"
     },
@@ -46,6 +62,10 @@
       "courseId": "sf-2026-strumenti-meccanica",
       "lesson": "sf-2026-u2-02.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u2-02.html"
+      ],
       "originalBlob": "d9d0f4d8104f3a56e33bdb508dbfeac74a1e9556",
       "originalSHA256": "9f5b93c1ba207a0fa42cfc5c8244fa6519b62070bedbf9e563f364add7c97a33"
     },
@@ -55,6 +75,10 @@
       "courseId": "sf-2026-strumenti-meccanica",
       "lesson": "sf-2026-u2-05.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u2-05.html"
+      ],
       "originalBlob": "d08587923a0d2757ccc98bb0d79c1e24ad4d2f19",
       "originalSHA256": "81f5d030cc415119b54346f93110d898b032e1b91abc110726db7257a4f5b489"
     },
@@ -64,6 +88,10 @@
       "courseId": "sf-2026-strumenti-meccanica",
       "lesson": "sf-2026-u2-02.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u2-02.html"
+      ],
       "originalBlob": "d9d0f4d8104f3a56e33bdb508dbfeac74a1e9556",
       "originalSHA256": "ff1602482dc59debf7f46fd6fa32ad87ee236967dd8ac520542f1d56b83d6491"
     },
@@ -73,6 +101,10 @@
       "courseId": "sf-2026-strumenti-meccanica",
       "lesson": "sf-2026-u2-01.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u2-01.html"
+      ],
       "originalBlob": "d8d94050a15e0f30dd3a3ea1f4d5808173ef7019",
       "originalSHA256": "b46720ae4348ae578321eceb2be4d24772c6ae377cec01b3dcd66d0a9bf38c87"
     },
@@ -82,6 +114,10 @@
       "courseId": "sf-2026-fluidi",
       "lesson": "sf-2026-u3-02.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u3-02.html"
+      ],
       "originalBlob": "9e926d9ae2a1957656a99630c10db15a1d92128a",
       "originalSHA256": "de86f427e31f23119e76daef576ca10fb24d0fd462ebef9fd219a997e8053741"
     },
@@ -91,6 +127,10 @@
       "courseId": "sf-2026-fluidi",
       "lesson": "sf-2026-u3-03.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u3-03.html"
+      ],
       "originalBlob": "04cdfa05a7dedb844d6317e6172a2bbb05b07702",
       "originalSHA256": "557f39a2df4f41902ae7141efa791f9283a74fb137f028cfa34626666ef83de9"
     },
@@ -100,6 +140,10 @@
       "courseId": "sf-2026-fluidi",
       "lesson": "sf-2026-u3-04.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u3-04.html"
+      ],
       "originalBlob": "e9e23f2525a847229c11a14225869d54e53ee52e",
       "originalSHA256": "fe32d9d067fd97a4da81c1cfb70ca38754f8c0467b2adf99728d4ce55f0c2384"
     },
@@ -109,6 +153,10 @@
       "courseId": "sf-2026-fluidi",
       "lesson": "sf-2026-u3-04.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u3-04.html"
+      ],
       "originalBlob": "e9e23f2525a847229c11a14225869d54e53ee52e",
       "originalSHA256": "c48eeb3ae20611fa913311ae0d8862ec1f7d432445f659b7e14178183b097e4a"
     },
@@ -118,6 +166,10 @@
       "courseId": "sf-2026-fluidi",
       "lesson": "sf-2026-u3-03.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u3-03.html"
+      ],
       "originalBlob": "04cdfa05a7dedb844d6317e6172a2bbb05b07702",
       "originalSHA256": "581e739dd98bbe058ce654759fe63b62c018e46b2d0795203020998dd25836cd"
     },
@@ -127,6 +179,10 @@
       "courseId": "sf-2026-fluidi",
       "lesson": "sf-2026-u3-05.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u3-05.html"
+      ],
       "originalBlob": "7d4c05d8ca0b4cc1aba005b2978d9df56ba9ec3f",
       "originalSHA256": "10a9fe73f2a90e1031a6794f092c583c85b5f16ef85c238800b33684ea765736"
     },
@@ -136,6 +192,10 @@
       "courseId": "sf-2026-fluidi",
       "lesson": "sf-2026-u3-03.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u3-03.html"
+      ],
       "originalBlob": "04cdfa05a7dedb844d6317e6172a2bbb05b07702",
       "originalSHA256": "b5adaa1ede2b402d0aa1ac31710aad6dc741f589aca942896c97c252e4c199e4"
     },
@@ -145,6 +205,10 @@
       "courseId": "sf-2026-fluidi",
       "lesson": "sf-2026-u3-02.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u3-02.html"
+      ],
       "originalBlob": "9e926d9ae2a1957656a99630c10db15a1d92128a",
       "originalSHA256": "05a2445715286183c2d8f1d562f9cd6e8effe6386bd741ccfc49f0edcdf98ed8"
     },
@@ -154,6 +218,10 @@
       "courseId": "sf-2026-termodinamica",
       "lesson": "sf-2026-u5-04.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u5-04.html"
+      ],
       "originalBlob": "204c774973d96fad70335af39b67211f7e7bc518",
       "originalSHA256": "b397f3cb53b55bef09f5c57227d7e12da505ff9a3e0e9b402f8eebd8fb89def6"
     },
@@ -163,6 +231,10 @@
       "courseId": "sf-2026-termodinamica",
       "lesson": "sf-2026-u5-05.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u5-05.html"
+      ],
       "originalBlob": "943de52422241a61acb9dd866fd4e7747acbd1c1",
       "originalSHA256": "e37619da97dc1e4f5d33cc4d6b2273976a1544e3e15a05d1029eb6cd988a850c"
     },
@@ -172,6 +244,10 @@
       "courseId": "sf-2026-termodinamica",
       "lesson": "sf-2026-u5-01.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u5-01.html"
+      ],
       "originalBlob": "204c774973d96fad70335af39b67211f7e7bc518",
       "originalSHA256": "f0787e950be6474a3c4a6237903ee43d89d0259925de6f58cbe00288a0972157"
     },
@@ -181,6 +257,10 @@
       "courseId": "sf-2026-termodinamica",
       "lesson": "sf-2026-u5-01.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u5-01.html"
+      ],
       "originalBlob": "204c774973d96fad70335af39b67211f7e7bc518",
       "originalSHA256": "82647a58426b880ee7cd5b092a00ac5c95e56be99254c9b8cfe26d036b4f9d35"
     },
@@ -190,6 +270,10 @@
       "courseId": "sf-2026-termodinamica",
       "lesson": "sf-2026-u5-02.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u5-02.html"
+      ],
       "originalBlob": "7cd5ded1afa7c686ef0e72fe65e14d42b232dd60",
       "originalSHA256": "a143244713171a6f1cc57e02322820fc69117288b6d0de1086390fdfd54b2b1d"
     },
@@ -199,6 +283,10 @@
       "courseId": "sf-2026-termodinamica",
       "lesson": "sf-2026-u5-03.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u5-03.html"
+      ],
       "originalBlob": "c3bd8f3795d7aabcda1ba0e9d8a25b130355464e",
       "originalSHA256": "c78765fef6962e6c01b52f4cfd15f52423bb0c27c03187c532100c08a25ab581"
     },
@@ -208,6 +296,11 @@
       "courseId": "sf-2026-termodinamica",
       "lesson": "sf-2026-u5-05.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u5-04.html",
+        "sf-2026-u5-05.html"
+      ],
       "originalBlob": "c3abb7f2a0f3fbca5c07baf5ab845942833f4d7d",
       "originalSHA256": "063b89aff1e471e1ebd9977558228f9e03da573c5b2cf22f32c0872aa2d98de1"
     },
@@ -217,6 +310,11 @@
       "courseId": "sf-2026-termodinamica",
       "lesson": "sf-2026-u5-05.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u5-04.html",
+        "sf-2026-u5-05.html"
+      ],
       "originalBlob": "204c774973d96fad70335af39b67211f7e7bc518",
       "originalSHA256": "58fc09dca920dd2d949b77e3be76636724ce943044b0f88096d9382b09b43b42"
     },
@@ -226,6 +324,10 @@
       "courseId": "sf-2026-elettricita-magnetismo",
       "lesson": "sf-2026-u6-01.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u6-01.html"
+      ],
       "originalBlob": "befdd6011122168c27fd32e77c8c0fc0cd9c2ebb",
       "originalSHA256": "cdc5b3df83461462b19194f8d8fd77e8cd986ee21c2b05543a63a591aa0bb774"
     },
@@ -235,6 +337,10 @@
       "courseId": "sf-2026-elettricita-magnetismo",
       "lesson": "sf-2026-u6-06.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u6-06.html"
+      ],
       "originalBlob": "2817db8d6b69f7dc1d75e46ed9075ed82035153a",
       "originalSHA256": "b5d41d1ec100cb0dbbdc4fe7f5acdc8feefc13afecfa18381260a12f8f233e67"
     },
@@ -244,6 +350,10 @@
       "courseId": "sf-2026-elettricita-magnetismo",
       "lesson": "sf-2026-u6-04.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u6-04.html"
+      ],
       "originalBlob": "9bb43653dc611e26beda37768cd8309a9a2c498b",
       "originalSHA256": "b483fac80cb74b0aeb842999f6f23306de505dfea6154b937f98326fa02d2ade"
     },
@@ -253,6 +363,10 @@
       "courseId": "sf-2026-elettricita-magnetismo",
       "lesson": "sf-2026-u6-02.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u6-02.html"
+      ],
       "originalBlob": "befdd6011122168c27fd32e77c8c0fc0cd9c2ebb",
       "originalSHA256": "4db6c8204a9e898b26603db284d300680057fa7742c027f2ded6c5095474e5e9"
     },
@@ -262,6 +376,10 @@
       "courseId": "sf-2026-elettricita-magnetismo",
       "lesson": "sf-2026-u6-03.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u6-03.html"
+      ],
       "originalBlob": "e413f185592c610cbf77436f540e4ece12ff6f3e",
       "originalSHA256": "053d79d1f09b52e640448854a4e78d85e0998d8650d1f18878a4e83cdea2a000"
     },
@@ -271,6 +389,10 @@
       "courseId": "sf-2026-elettricita-magnetismo",
       "lesson": "sf-2026-u6-07.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u6-07.html"
+      ],
       "originalBlob": "401b58cc58838730989da7883b895477aa8eb274",
       "originalSHA256": "e387b85acc0218b8c6f96b419832a734617e293ade087ff05273b271867e0844"
     },
@@ -280,6 +402,11 @@
       "courseId": "sf-2026-elettricita-magnetismo",
       "lesson": "sf-2026-u6-06.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u6-02.html",
+        "sf-2026-u6-06.html"
+      ],
       "originalBlob": "401b58cc58838730989da7883b895477aa8eb274",
       "originalSHA256": "af15a83378fe7b4794837e1983490f07c71d5d7ad14e6b7957d27b90196cba89"
     },
@@ -289,6 +416,10 @@
       "courseId": "sf-2026-elettricita-magnetismo",
       "lesson": "sf-2026-u6-04.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u6-04.html"
+      ],
       "originalBlob": "2817db8d6b69f7dc1d75e46ed9075ed82035153a",
       "originalSHA256": "a1fdd7712d5acedc65697dc3088983d90db2b5f541e6eaf32526e64b90b2e1d5"
     },
@@ -298,6 +429,10 @@
       "courseId": "sf-2026-onde-ottica-radiazioni",
       "lesson": "sf-2026-u4-01.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u4-01.html"
+      ],
       "originalBlob": "5c62fa61e3fdf7852efd01a021a6a557c26954a5",
       "originalSHA256": "2fc984c5738307acf02771cc602a983bfb7378f70c92001079dc8495978b71c3"
     },
@@ -307,6 +442,10 @@
       "courseId": "sf-2026-onde-ottica-radiazioni",
       "lesson": "sf-2026-u7-07.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u7-07.html"
+      ],
       "originalBlob": "14be79febfd083e40399d376a997b42b5f860ac2",
       "originalSHA256": "e898d04be4ee082ca7d69509e1ab45ac8a66e017189fb99c6c0c2a07953151b7"
     },
@@ -316,6 +455,10 @@
       "courseId": "sf-2026-onde-ottica-radiazioni",
       "lesson": "sf-2026-u4-02.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u4-02.html"
+      ],
       "originalBlob": "3a3c3387504a3044c8a7469e1fb46120dc4d8c86",
       "originalSHA256": "6589df71249656241d35d124b9bab6ee6888cecd20cbf58cda96587e670da6d6"
     },
@@ -325,6 +468,10 @@
       "courseId": "sf-2026-onde-ottica-radiazioni",
       "lesson": "sf-2026-u7-07.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u7-07.html"
+      ],
       "originalBlob": "a9e5a8c5aab54de7d48e79915be9e8c4c69ea595",
       "originalSHA256": "0fdac1c276d946fe223cff057d08f4b2f0fb243bd078bc460b69596571f92eda"
     },
@@ -334,6 +481,11 @@
       "courseId": "sf-2026-onde-ottica-radiazioni",
       "lesson": "sf-2026-u4-04.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u4-01.html",
+        "sf-2026-u4-04.html"
+      ],
       "originalBlob": "5c62fa61e3fdf7852efd01a021a6a557c26954a5",
       "originalSHA256": "e20fb2e338253be51bf6825b08a1182890881b3eda72a40bfbd65f2a5a1c2db4"
     },
@@ -343,6 +495,12 @@
       "courseId": "sf-2026-onde-ottica-radiazioni",
       "lesson": "sf-2026-u7-06.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u7-02.html",
+        "sf-2026-u7-03.html",
+        "sf-2026-u7-06.html"
+      ],
       "originalBlob": "f510f700b62cef9a5c21260df44a46b6fadeebca",
       "originalSHA256": "72456e1f6a08104edd2c641669e0ac5219692ff233e1ff7b589b275dd0575740"
     },
@@ -352,6 +510,10 @@
       "courseId": "sf-2026-onde-ottica-radiazioni",
       "lesson": "sf-2026-u4-03.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u4-03.html"
+      ],
       "originalBlob": "5c62fa61e3fdf7852efd01a021a6a557c26954a5",
       "originalSHA256": "0e347db162874460d3f7977c6ecffb763b4c2a589b8386b101efb9592d56187e"
     },
@@ -361,6 +523,10 @@
       "courseId": "sf-2026-onde-ottica-radiazioni",
       "lesson": "sf-2026-u7-05.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u7-05.html"
+      ],
       "originalBlob": "a9e5a8c5aab54de7d48e79915be9e8c4c69ea595",
       "originalSHA256": "efd00b80149da7ffe53f07bc544c50bfc005b65df3fad4a8483fcf05fcbac963"
     },
@@ -370,6 +536,10 @@
       "courseId": "sf-2026-strumenti-meccanica",
       "lesson": "sf-2026-u1-04.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u1-04.html"
+      ],
       "originalBlob": "5f6af9b5a57692e121bd3df5e9813a54097b80dd",
       "originalSHA256": "dd1cae5d56677f6dec9e41e6ae43b9d744aa17ae7636804e933dcf1b24fc34d2"
     },
@@ -379,6 +549,10 @@
       "courseId": "sf-2026-strumenti-meccanica",
       "lesson": "sf-2026-u2-05.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u2-05.html"
+      ],
       "originalBlob": "d08587923a0d2757ccc98bb0d79c1e24ad4d2f19",
       "originalSHA256": "815faf1f8234a52df51acd59f1de775ef48427d1b1aa2bf71a34c9d63eaab457"
     },
@@ -388,6 +562,10 @@
       "courseId": "sf-2026-fluidi",
       "lesson": "sf-2026-u3-02.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u3-02.html"
+      ],
       "originalBlob": "04cdfa05a7dedb844d6317e6172a2bbb05b07702",
       "originalSHA256": "04881237295418bde4a96484247e219d5fcf1b3a8da0ba02eb31a6aab86ca83b"
     },
@@ -397,6 +575,10 @@
       "courseId": "sf-2026-fluidi",
       "lesson": "sf-2026-u3-02.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u3-02.html"
+      ],
       "originalBlob": "9e926d9ae2a1957656a99630c10db15a1d92128a",
       "originalSHA256": "7e2933a34d2d7f13c5115ace36544a9ce2a41cc0d40a77c5b11117bdcb281596"
     },
@@ -406,6 +588,10 @@
       "courseId": "sf-2026-fluidi",
       "lesson": "sf-2026-u3-04.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u3-04.html"
+      ],
       "originalBlob": "e9e23f2525a847229c11a14225869d54e53ee52e",
       "originalSHA256": "d620bb0860462ee89177a2f2b1a6792cda7b5a6f7d2e07c314f2ecf260d1cf3e"
     },
@@ -415,6 +601,10 @@
       "courseId": "sf-2026-termodinamica",
       "lesson": "sf-2026-u5-03.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u5-03.html"
+      ],
       "originalBlob": "c3bd8f3795d7aabcda1ba0e9d8a25b130355464e",
       "originalSHA256": "5f52557fef0221052f4444839b60408b5f3a35dd380ba4646f06b6e0044324b4"
     },
@@ -424,6 +614,10 @@
       "courseId": "sf-2026-termodinamica",
       "lesson": "sf-2026-u5-05.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u5-05.html"
+      ],
       "originalBlob": "943de52422241a61acb9dd866fd4e7747acbd1c1",
       "originalSHA256": "eddcc233f0a4990e97e466328ce3e29d95cf3d77b5cd7c3f0f7910847ea0ead0"
     },
@@ -433,6 +627,11 @@
       "courseId": "sf-2026-elettricita-magnetismo",
       "lesson": "sf-2026-u6-05.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u6-01.html",
+        "sf-2026-u6-05.html"
+      ],
       "originalBlob": "2817db8d6b69f7dc1d75e46ed9075ed82035153a",
       "originalSHA256": "80944fb512f5b542b2f9417342ae73193299658e5d5a9a014095a82e09fae8b3"
     },
@@ -442,6 +641,11 @@
       "courseId": "sf-2026-elettricita-magnetismo",
       "lesson": "sf-2026-u6-05.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u6-01.html",
+        "sf-2026-u6-05.html"
+      ],
       "originalBlob": "e413f185592c610cbf77436f540e4ece12ff6f3e",
       "originalSHA256": "888831f84e1b2e7da3acef1d86542ff8b2a945fe77ee78f6746b840c3301bed8"
     },
@@ -451,6 +655,10 @@
       "courseId": "sf-2026-elettricita-magnetismo",
       "lesson": "sf-2026-u6-06.html",
       "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u6-06.html"
+      ],
       "originalBlob": "401b58cc58838730989da7883b895477aa8eb274",
       "originalSHA256": "4253b7f175d6108b6aacfa94b5294a28fc81a40716a634f69fe120accfd12302"
     },
@@ -460,6 +668,11 @@
       "courseId": "sf-2026-onde-ottica-radiazioni",
       "lesson": "sf-2026-u7-07.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u7-01.html",
+        "sf-2026-u7-07.html"
+      ],
       "originalBlob": "f510f700b62cef9a5c21260df44a46b6fadeebca",
       "originalSHA256": "510e7f86558c4667e3ac3145b53f0cd1d8c6d33b2d686a6325576ba2014af54a"
     },
@@ -469,8 +682,545 @@
       "courseId": "sf-2026-onde-ottica-radiazioni",
       "lesson": "sf-2026-u7-07.html",
       "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u7-07.html"
+      ],
       "originalBlob": "a9e5a8c5aab54de7d48e79915be9e8c4c69ea595",
       "originalSHA256": "07b2f009d874f15a00d242bcfb2a87b9221e43be69e44b383e3666665639d77c"
+    },
+    {
+      "id": "u1-vector-angle-ratio-09",
+      "level": "medio",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "lesson": "sf-2026-u1-03.html",
+      "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u1-03.html"
+      ],
+      "originalBlob": "5f6af9b5a57692e121bd3df5e9813a54097b80dd",
+      "originalSHA256": "7d5d7c2982a6e7860d3d65bae05a7819c63052cec68be7a187bcd991154e57c3"
+    },
+    {
+      "id": "u1-vector-product-01",
+      "level": "base",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "lesson": "sf-2026-u1-04.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u1-04.html"
+      ],
+      "originalBlob": "5f6af9b5a57692e121bd3df5e9813a54097b80dd",
+      "originalSHA256": "d67f72b3d3222dc38fc94edc65482f0d6707250326b1c9ce191d3b581ba85a76"
+    },
+    {
+      "id": "u2-gravity-ratio-01",
+      "level": "base",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "lesson": "sf-2026-u2-02.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u2-02.html"
+      ],
+      "originalBlob": "48a362e8b8fb8a8f2ce854712ed6cf18c1111633",
+      "originalSHA256": "9efff4000f6ca2c25abd1d8c7dffe73187b51850e61ed80ba01dcb9e556f920d"
+    },
+    {
+      "id": "u2-centripetal-acceleration-09",
+      "level": "medio",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "lesson": "sf-2026-u2-01.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u2-01.html"
+      ],
+      "originalBlob": "d8d94050a15e0f30dd3a3ea1f4d5808173ef7019",
+      "originalSHA256": "93258b2d5f34151b893868c7eb1356c11ff01de37cd51e54e5174c390386bc58"
+    },
+    {
+      "id": "u2-gravitational-energy-09",
+      "level": "medio",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "lesson": "sf-2026-u2-03.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u2-03.html"
+      ],
+      "originalBlob": "980812df913b904cbb81ee844592dedb7942b26e",
+      "originalSHA256": "2c4bff6a5f99cd2c5c53cbd1526cdbf7db0534189c59b8ee50c6ab1370cee6c4"
+    },
+    {
+      "id": "u2-gravitational-energy-13",
+      "level": "difficile",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "lesson": "sf-2026-u2-03.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u2-03.html"
+      ],
+      "originalBlob": "980812df913b904cbb81ee844592dedb7942b26e",
+      "originalSHA256": "89e2e5870aea5dcb090c57b4bf7bdd050507f937e7dc93e311cf6b4b16a4ee3d"
+    },
+    {
+      "id": "u2-impulse-09",
+      "level": "medio",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "lesson": "sf-2026-u2-04.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u2-04.html"
+      ],
+      "originalBlob": "d08587923a0d2757ccc98bb0d79c1e24ad4d2f19",
+      "originalSHA256": "4fbdd2871ed999eed1276b98d1c81cf464c3c30ab83e504b48c8789eb49b7025"
+    },
+    {
+      "id": "u2-impulse-13",
+      "level": "difficile",
+      "courseId": "sf-2026-strumenti-meccanica",
+      "lesson": "sf-2026-u2-04.html",
+      "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u2-04.html"
+      ],
+      "originalBlob": "d08587923a0d2757ccc98bb0d79c1e24ad4d2f19",
+      "originalSHA256": "0113faf3eb4c380d2805b98e8519de55e75d82b0755bb65025de353c8755479e"
+    },
+    {
+      "id": "u3-couette-force-09",
+      "level": "medio",
+      "courseId": "sf-2026-fluidi",
+      "lesson": "sf-2026-u3-04.html",
+      "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u3-01.html",
+        "sf-2026-u3-04.html"
+      ],
+      "originalBlob": "e9e23f2525a847229c11a14225869d54e53ee52e",
+      "originalSHA256": "6ee73ca5c3886a562c7cb1d7d6eb5863cd738f2a5e2054e051993bcbab38e725"
+    },
+    {
+      "id": "u3-couette-force-13",
+      "level": "difficile",
+      "courseId": "sf-2026-fluidi",
+      "lesson": "sf-2026-u3-04.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u3-01.html",
+        "sf-2026-u3-04.html"
+      ],
+      "originalBlob": "e9e23f2525a847229c11a14225869d54e53ee52e",
+      "originalSHA256": "a01a781fecdb5ffec574a002dd00fd73c4e67a6030ce5671458567daccfe1615"
+    },
+    {
+      "id": "u3-apparent-weight-09",
+      "level": "medio",
+      "courseId": "sf-2026-fluidi",
+      "lesson": "sf-2026-u3-02.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u3-02.html"
+      ],
+      "originalBlob": "9e926d9ae2a1957656a99630c10db15a1d92128a",
+      "originalSHA256": "551736ca9a5310520ab9490d9d627058bdf560215e152c281bd4f703b1802102"
+    },
+    {
+      "id": "u3-droplet-fragmentation-01",
+      "level": "base",
+      "courseId": "sf-2026-fluidi",
+      "lesson": "sf-2026-u3-05.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u3-05.html"
+      ],
+      "originalBlob": "7d4c05d8ca0b4cc1aba005b2978d9df56ba9ec3f",
+      "originalSHA256": "6535a485cd2951223db548edd1b974a1f7ba13a7a1cf08b373438c650aba60eb"
+    },
+    {
+      "id": "u3-soap-film-force-13",
+      "level": "difficile",
+      "courseId": "sf-2026-fluidi",
+      "lesson": "sf-2026-u3-05.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u3-05.html"
+      ],
+      "originalBlob": "7d4c05d8ca0b4cc1aba005b2978d9df56ba9ec3f",
+      "originalSHA256": "8a773a5d02a7ac09a512aecb01402a75e00ff552f013c71eca00b4b45a3effa9"
+    },
+    {
+      "id": "u3-hydraulic-parallel-06",
+      "level": "facile",
+      "courseId": "sf-2026-fluidi",
+      "lesson": "sf-2026-u3-04.html",
+      "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u3-04.html"
+      ],
+      "originalBlob": "e9e23f2525a847229c11a14225869d54e53ee52e",
+      "originalSHA256": "34ef9366199b93bf842d4258ca1a096d83090fc51fde80fe5c3d1b6622d4a94d"
+    },
+    {
+      "id": "u3-capillary-rise-07",
+      "level": "facile",
+      "courseId": "sf-2026-fluidi",
+      "lesson": "sf-2026-u3-05.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u3-05.html"
+      ],
+      "originalBlob": "7d4c05d8ca0b4cc1aba005b2978d9df56ba9ec3f",
+      "originalSHA256": "75603a516881b2623847cb95b00c832048d668f76a43956b3b4d7881c85287ed"
+    },
+    {
+      "id": "u3-parabolic-profile-03",
+      "level": "base",
+      "courseId": "sf-2026-fluidi",
+      "lesson": "sf-2026-u3-04.html",
+      "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u3-03.html",
+        "sf-2026-u3-04.html"
+      ],
+      "originalBlob": "e9e23f2525a847229c11a14225869d54e53ee52e",
+      "originalSHA256": "3caf3d8af61c15e4789fdf815c7890ccec8aefa07942eb404876a47fbf561af6"
+    },
+    {
+      "id": "u5-gas-density-09",
+      "level": "medio",
+      "courseId": "sf-2026-termodinamica",
+      "lesson": "sf-2026-u5-01.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u5-01.html"
+      ],
+      "originalBlob": "204c774973d96fad70335af39b67211f7e7bc518",
+      "originalSHA256": "b7d8ce60775b15bd3b59d07d0285d87b2f20bd7acbdb0e7b8ad64ce2c05f51c9"
+    },
+    {
+      "id": "u5-calorimeter-capacity-13",
+      "level": "difficile",
+      "courseId": "sf-2026-termodinamica",
+      "lesson": "sf-2026-u5-02.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u5-02.html"
+      ],
+      "originalBlob": "7cd5ded1afa7c686ef0e72fe65e14d42b232dd60",
+      "originalSHA256": "d56edacd7dd559ff048d57e595ea7816aec79ddf50afbde2f1d0d4d9be0cd66e"
+    },
+    {
+      "id": "u5-composite-wall-series-13",
+      "level": "difficile",
+      "courseId": "sf-2026-termodinamica",
+      "lesson": "sf-2026-u5-03.html",
+      "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u5-03.html"
+      ],
+      "originalBlob": "c3bd8f3795d7aabcda1ba0e9d8a25b130355464e",
+      "originalSHA256": "fc8d0e1d490ffdd31d2069fad772615211127aec2ba26c1cb5c211b2bc2c619e"
+    },
+    {
+      "id": "u5-compression-heating-09",
+      "level": "medio",
+      "courseId": "sf-2026-termodinamica",
+      "lesson": "sf-2026-u5-04.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u5-04.html"
+      ],
+      "originalBlob": "204c774973d96fad70335af39b67211f7e7bc518",
+      "originalSHA256": "63d2fb3ad3325a984b7a530b70543b1df03ac8e3db50b3edaaa30a311da4beac"
+    },
+    {
+      "id": "u5-carnot-efficiency-13",
+      "level": "difficile",
+      "courseId": "sf-2026-termodinamica",
+      "lesson": "sf-2026-u5-05.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u5-05.html"
+      ],
+      "originalBlob": "943de52422241a61acb9dd866fd4e7747acbd1c1",
+      "originalSHA256": "6bfbce4aa9865b72aa56665235e0e94891278ac0fbb385cf3bb3e18632061a92"
+    },
+    {
+      "id": "u5-engine-efficiency-01",
+      "level": "base",
+      "courseId": "sf-2026-termodinamica",
+      "lesson": "sf-2026-u5-05.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u5-05.html"
+      ],
+      "originalBlob": "943de52422241a61acb9dd866fd4e7747acbd1c1",
+      "originalSHA256": "99b4d5d3a859fb9f73b5453e6709dc0f2f7e000123a06575fee689be117de7f1"
+    },
+    {
+      "id": "u5-refrigerator-cop-01",
+      "level": "base",
+      "courseId": "sf-2026-termodinamica",
+      "lesson": "sf-2026-u5-05.html",
+      "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u5-05.html"
+      ],
+      "originalBlob": "943de52422241a61acb9dd866fd4e7747acbd1c1",
+      "originalSHA256": "ca31d0a2e84135a79ed9b4ad2c9812701c5cce38e9226741cad1267286d5d3e1"
+    },
+    {
+      "id": "u5-first-law-expansion-03",
+      "level": "base",
+      "courseId": "sf-2026-termodinamica",
+      "lesson": "sf-2026-u5-04.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u5-02.html",
+        "sf-2026-u5-04.html"
+      ],
+      "originalBlob": "204c774973d96fad70335af39b67211f7e7bc518",
+      "originalSHA256": "df84f2374553159340555f18fb29f5addee2502aa0103aaf0887dc4842629a89"
+    },
+    {
+      "id": "u6-capacitor-charge-09",
+      "level": "medio",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "lesson": "sf-2026-u6-05.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u6-01.html",
+        "sf-2026-u6-05.html"
+      ],
+      "originalBlob": "e413f185592c610cbf77436f540e4ece12ff6f3e",
+      "originalSHA256": "da881760b354abb3948d68e591b41be9200b857402faff608a3aa86fdebf5e37"
+    },
+    {
+      "id": "u6-capacitor-charge-13",
+      "level": "difficile",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "lesson": "sf-2026-u6-05.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u6-01.html",
+        "sf-2026-u6-05.html"
+      ],
+      "originalBlob": "e413f185592c610cbf77436f540e4ece12ff6f3e",
+      "originalSHA256": "597f35810638c67e4e69697793341322165dc2ef90c717c69f53feaf7190d5ac"
+    },
+    {
+      "id": "u6-accelerated-magnetic-radius-09",
+      "level": "medio",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "lesson": "sf-2026-u6-06.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u6-02.html",
+        "sf-2026-u6-06.html"
+      ],
+      "originalBlob": "401b58cc58838730989da7883b895477aa8eb274",
+      "originalSHA256": "b66e83fdd7b8052988e94a06d655061a6255c39b3a16952a2ad394e0e5277814"
+    },
+    {
+      "id": "u6-symmetric-electric-potential-06",
+      "level": "facile",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "lesson": "sf-2026-u6-02.html",
+      "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u6-02.html"
+      ],
+      "originalBlob": "befdd6011122168c27fd32e77c8c0fc0cd9c2ebb",
+      "originalSHA256": "313995e6ac473ff112e68d247bd7e2b9a5333b6084663d40ff2034016483d28f"
+    },
+    {
+      "id": "u6-capacitor-energy-13",
+      "level": "difficile",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "lesson": "sf-2026-u6-03.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u6-03.html"
+      ],
+      "originalBlob": "e413f185592c610cbf77436f540e4ece12ff6f3e",
+      "originalSHA256": "5164ae520f06c172fd66bf3524e037c6685581ec91b293a441ecce4b11c96432"
+    },
+    {
+      "id": "u6-connected-plate-separation-charge-09",
+      "level": "medio",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "lesson": "sf-2026-u6-04.html",
+      "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u6-04.html"
+      ],
+      "originalBlob": "2817db8d6b69f7dc1d75e46ed9075ed82035153a",
+      "originalSHA256": "a30718ec7c0d6e570c86c049bf721cfaad86736d9d0a5f3c9369e9a29640c605"
+    },
+    {
+      "id": "u6-faraday-average-emf-13",
+      "level": "difficile",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "lesson": "sf-2026-u6-07.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u6-07.html"
+      ],
+      "originalBlob": "401b58cc58838730989da7883b895477aa8eb274",
+      "originalSHA256": "979480edbde217ce40188594e981aeade7bc55300afa450400035e28633fd5de"
+    },
+    {
+      "id": "u6-dielectric-isolated-voltage-03",
+      "level": "base",
+      "courseId": "sf-2026-elettricita-magnetismo",
+      "lesson": "sf-2026-u6-05.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u6-05.html"
+      ],
+      "originalBlob": "2817db8d6b69f7dc1d75e46ed9075ed82035153a",
+      "originalSHA256": "6758a992021f59863cf0f2e98c2701a6f27a0bc6e097dda58cd6432356c7cd0a"
+    },
+    {
+      "id": "u7-photon-packet-frequency-13",
+      "level": "difficile",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "lesson": "sf-2026-u7-06.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u7-02.html",
+        "sf-2026-u7-03.html",
+        "sf-2026-u7-06.html"
+      ],
+      "originalBlob": "f510f700b62cef9a5c21260df44a46b6fadeebca",
+      "originalSHA256": "5c80256817380b2afbe4757beac1ab91b59736751222b7c9b37f5d432973638f"
+    },
+    {
+      "id": "u4-echo-ranging-13",
+      "level": "difficile",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "lesson": "sf-2026-u4-04.html",
+      "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u4-01.html",
+        "sf-2026-u4-04.html"
+      ],
+      "originalBlob": "5c62fa61e3fdf7852efd01a021a6a557c26954a5",
+      "originalSHA256": "cb884d3113faf6e6fb754b61a17a42069657b3bc1204a201991dfa3c400a6e9c"
+    },
+    {
+      "id": "u7-absorbed-radiant-power-09",
+      "level": "medio",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "lesson": "sf-2026-u7-04.html",
+      "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u7-01.html",
+        "sf-2026-u7-04.html"
+      ],
+      "originalBlob": "f510f700b62cef9a5c21260df44a46b6fadeebca",
+      "originalSHA256": "c87f90390aac080ffe079cc304a2b3bd03bb5b16879221dbd4e18e891b53cc17"
+    },
+    {
+      "id": "u7-absorbed-radiant-power-13",
+      "level": "difficile",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "lesson": "sf-2026-u7-04.html",
+      "figure": true,
+      "stagedFigure": true,
+      "linkedLessons": [
+        "sf-2026-u7-01.html",
+        "sf-2026-u7-04.html"
+      ],
+      "originalBlob": "f510f700b62cef9a5c21260df44a46b6fadeebca",
+      "originalSHA256": "ffea834bc3c0f1d7b6c824058750a1930db72d6a9f7c4c730fe1e23dca5b8f7a"
+    },
+    {
+      "id": "u4-coherent-constructive-09",
+      "level": "medio",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "lesson": "sf-2026-u4-02.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u4-02.html"
+      ],
+      "originalBlob": "3a3c3387504a3044c8a7469e1fb46120dc4d8c86",
+      "originalSHA256": "434ecbc314ea95e17b48b4baa78aa62b1a94f93d1dcdf07507a34b19e2ad0318"
+    },
+    {
+      "id": "u4-coherent-constructive-13",
+      "level": "difficile",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "lesson": "sf-2026-u4-02.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u4-02.html"
+      ],
+      "originalBlob": "3a3c3387504a3044c8a7469e1fb46120dc4d8c86",
+      "originalSHA256": "53708fa09a2b147e5f6e653a0a8755d2b7514e09711d846027c44b435df575a2"
+    },
+    {
+      "id": "u7-wavelength-in-medium-03",
+      "level": "base",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "lesson": "sf-2026-u7-07.html",
+      "figure": false,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u7-01.html",
+        "sf-2026-u7-07.html"
+      ],
+      "originalBlob": "f510f700b62cef9a5c21260df44a46b6fadeebca",
+      "originalSHA256": "b4dbbc24f03848d45ee7a324d9a4adbbd792d0c102940800b266e8fd7778edde"
+    },
+    {
+      "id": "u4-wave-phase-time-03",
+      "level": "base",
+      "courseId": "sf-2026-onde-ottica-radiazioni",
+      "lesson": "sf-2026-u4-01.html",
+      "figure": true,
+      "stagedFigure": false,
+      "linkedLessons": [
+        "sf-2026-u4-01.html"
+      ],
+      "originalBlob": "5c62fa61e3fdf7852efd01a021a6a557c26954a5",
+      "originalSHA256": "ad645b163b3bd23f7430283c65d1251b13c42d677e90c8fcbba96e4cf7e01f3a"
     }
   ]
 }

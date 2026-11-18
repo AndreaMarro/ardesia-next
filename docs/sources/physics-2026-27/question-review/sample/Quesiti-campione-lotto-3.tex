@@ -1,0 +1,468 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=20mm,bottom=25mm]{geometry}
+\usepackage{fontspec}
+\usepackage{amsmath,amssymb,xcolor,tikz,fancyhdr}
+\setmainfont{lmroman10-regular.otf}[BoldFont=lmroman10-bold.otf,ItalicFont=lmroman10-italic.otf]
+\setsansfont{lmsans10-regular.otf}[BoldFont=lmsans10-bold.otf]
+\definecolor{forest}{HTML}{265F51}
+\definecolor{ink}{HTML}{172C25}
+\color{ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{.38em}
+\setlength{\emergencystretch}{2em}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\small Andrea Marro 3461653930 se serve chiedi!}
+\renewcommand{\headrulewidth}{0pt}
+\begin{document}
+% u1-vector-angle-ratio-09 · 7d5d7c2982a6e7860d3d65bae05a7819c63052cec68be7a187bcd991154e57c3
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} Ricostruire la componente orizzontale}\par\smallskip
+Un vettore nel primo quadrante ha componente orizzontale \(a>0\) e verticale \(b>0\), entrambe espresse in metri. L’angolo \(\theta\) è misurato dal semiasse orizzontale positivo. Conosci \(b\) e il valore \(T=\tan\theta\), che è positivo e adimensionale. Quale formula permette di trovare \(a\)?\par
+
+\begin{center}
+\begin{tikzpicture}[x=.32mm,y=.32mm]
+\path[use as bounding box] (0,-2) rectangle (400,180);
+\draw[draw=forest,line width=.6pt] (290,135) -- (290,40);
+\draw[draw=forest,line width=.6pt] (90,40) -- (290,40);
+\draw[draw=forest,line width=.6pt] (275,40) -- (275,55);
+\draw[draw=forest,line width=.6pt] (275,55) -- (290,55);
+\draw[->,draw=forest,line width=.6pt] (90,40) -- (355,40);
+\draw[->,draw=forest,line width=.6pt] (90,40) -- (90,155);
+\draw[->,draw=forest,line width=.6pt] (90,40) -- (290,135);
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (190,17) {a};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (315,83) {b};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (370,20) {x};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (110,148) {y};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (180,52) {theta};
+\end{tikzpicture}\par
+\small\itshape Schema non in scala. I due cateti rappresentano le componenti, non due vettori di modulo uguale.
+\end{center}
+\begin{list}{}{\setlength{\leftmargin}{1.4em}\setlength{\itemsep}{.1em}\setlength{\parsep}{0pt}}\small
+\item[A.] \(a=-\frac{b}{T}\)
+\item[B.] \(a=\frac{b}{T+1}\)
+\item[C.] \(a=\frac{b}{T}\)
+\item[D.] \(a=\frac{2b}{T}\)
+\item[E.] \(a=\frac{b}{2T}\)
+\end{list}
+{\small\textbf{Suggerimenti.} Disegna il triangolo rettangolo formato dal vettore e dalle sue componenti. Individua il cateto opposto all’angolo indicato. La tangente è il rapporto fra cateto opposto e cateto adiacente. Scrivi questo rapporto e moltiplica prima per la componente che sta al denominatore.\par}
+\medskip\noindent\textbf{Risposta.} C. \(a=\frac{b}{T}\)\par
+
+
+Nel triangolo delle componenti, \(b\) è il cateto opposto a \(\theta\) e \(a\) quello adiacente. Perciò \(T=b/a\). Il modulo del vettore, cioè l’ipotenusa, non entra in questo rapporto.\par
+
+Moltiplichiamo entrambi i membri per \(a\): \(aT=b\). Poiché \(T>0\), possiamo dividere per \(T\) e ottenere \(a=b/T\), risposta C.\par
+
+Le unità sono coerenti: dividendo una lunghezza per una quantità adimensionale si ottiene una lunghezza. Per esempio, con \(b=3\,\mathrm{m}\) e \(T=3/4\) risulta \(a=4\,\mathrm{m}\). Nel triangolo così ricostruito, il rapporto dei cateti è di nuovo \(3/4\).\par
+
+\end{samepage}
+\newpage
+% u2-impulse-13 · 0113faf3eb4c380d2805b98e8519de55e75d82b0755bb65025de353c8755479e
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} Forza e durata per un impulso maggiore}\par\smallskip
+Confronta due azioni di una forza risultante, costante in modulo, direzione e verso durante ciascun intervallo. Nel caso A, \(F_A=2\,\mathrm{N}\) agisce per \(\Delta t_A=2\,\mathrm{s}\). Nel caso B, \(F_B=4\,\mathrm{N}\) deve produrre un impulso di modulo \(J_B=4J_A\). Quanto deve valere \(\Delta t_B/\Delta t_A\)? Inserisci il numero esatto.\par
+
+
+
+{\small\textbf{Suggerimenti.} Una forza maggiore non determina da sola l’impulso: conta anche la durata. Confronta il cambiamento richiesto per l’impulso con quello già assegnato alla forza. Calcola l’impulso in A con \(J=F\Delta t\). Poi ricava la durata in B dall’impulso richiesto e dalla nuova forza.\par}
+\medskip\noindent\textbf{Risposta.} 2\par
+
+\begin{center}
+\begin{tikzpicture}[x=.32mm,y=.32mm]
+\path[use as bounding box] (0,-2) rectangle (400,180);
+\draw[draw=forest,line width=.6pt] (65,80) -- (185,80);
+\draw[draw=forest,line width=.6pt] (185,80) -- (185,35);
+\draw[draw=forest,line width=.6pt] (65,125) -- (305,125);
+\draw[draw=forest,line width=.6pt] (305,125) -- (305,35);
+\draw[draw=forest,line width=.6pt] (60,80) -- (70,80);
+\draw[draw=forest,line width=.6pt] (60,125) -- (70,125);
+\draw[draw=forest,line width=.6pt] (185,39) -- (185,31);
+\draw[draw=forest,line width=.6pt] (305,39) -- (305,31);
+\draw[->,draw=forest,line width=.6pt] (65,35) -- (374,35);
+\draw[->,draw=forest,line width=.6pt] (65,35) -- (65,155);
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (35,148) {F (N)};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (42,75) {2};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (42,120) {4};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (185,12) {2};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (305,12) {4};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (367,11) {t (s)};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (120,52) {A};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (242,97) {B};
+\end{tikzpicture}\par
+\small\itshape Confronto in scala sugli stessi assi: il rettangolo piccolo è A, quello grande è B. Si confrontano due esperimenti, non forze contemporanee.
+\end{center}
+Nel caso A, l’impulso vale \(J_A=F_A\Delta t_A=4\,\mathrm{N\,s}\). In B ne occorrono quattro volte tanti, cioè \(J_B=16\,\mathrm{N\,s}\).\par
+
+La durata richiesta è \(\Delta t_B=J_B/F_B\). Quindi \(\Delta t_B=16/4=4\,\mathrm{s}\) e il rapporto cercato è \(\Delta t_B/\Delta t_A=2\).\par
+
+Nel grafico forza-tempo, l’impulso è l’area sotto la forza. Il rettangolo B ha altezza doppia e base doppia di A: la sua area è quattro volte maggiore. Questo conferma il rapporto senza ripetere l’inversione della formula.\par
+
+\end{samepage}
+\newpage
+% u3-droplet-fragmentation-01 · 6535a485cd2951223db548edd1b974a1f7ba13a7a1cf08b373438c650aba60eb
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} Otto goccioline: quanta energia di superficie?}\par\smallskip
+Una goccia sferica di raggio \(R=1\,\mathrm{mm}\) viene divisa in otto goccioline sferiche uguali, conservando il volume totale. La tensione superficiale resta \(\gamma=10\,\mathrm{mN/m}\). Quanto vale l’energia superficiale totale finale, non il suo aumento? Per una sfera valgono \(V=4\pi r^3/3\) e \(A=4\pi r^2\); l’energia superficiale è \(E_s=\gamma A_{\mathrm{tot}}\).\par
+
+
+\begin{list}{}{\setlength{\leftmargin}{1.4em}\setlength{\itemsep}{.1em}\setlength{\parsep}{0pt}}\small
+\item[A.] \(\frac{4\pi}{25}\,\mathrm{\mu J}\)
+\item[B.] \(\frac{\pi}{25}\,\mathrm{\mu J}\)
+\item[C.] \(\frac{8\pi}{25}\,\mathrm{\mu J}\)
+\item[D.] \(\frac{\pi}{100}\,\mathrm{\mu J}\)
+\item[E.] \(\frac{2\pi}{25}\,\mathrm{\mu J}\)
+\end{list}
+{\small\textbf{Suggerimenti.} Conservare il volume totale non significa conservare la superficie. Trova prima il raggio di una delle otto goccioline. Dalla conservazione del volume ottieni \(8r^3=R^3\). Usa il raggio trovato per calcolare l’area di una gocciolina e poi moltiplica per otto. Converti la tensione superficiale in newton per metro e l’area in metri quadrati. Alla fine converti i joule in microjoule.\par}
+\medskip\noindent\textbf{Risposta.} E. \(\frac{2\pi}{25}\,\mathrm{\mu J}\)\par
+
+
+Gli otto volumi finali devono sommare al volume iniziale. Eliminando il fattore comune \(4\pi/3\) si trova \(8r^3=R^3\). Quindi \(r=R/2=0{,}5\,\mathrm{mm}\).\par
+
+L’area di una gocciolina è \(4\pi(0{,}5)^2=\pi\,\mathrm{mm^2}\). Le otto goccioline hanno area totale \(A_{\mathrm{tot}}=8\pi\,\mathrm{mm^2}\). In unità SI vale \(A_{\mathrm{tot}}=8\pi\times10^{-6}\,\mathrm{m^2}\).\par
+
+La tensione superficiale è \(\gamma=0{,}01\,\mathrm{N/m}\). Moltiplicando per l’area si ottiene \(E_s=8\pi\times10^{-8}\,\mathrm{J}\). Poiché un microjoule vale \(10^{-6}\,\mathrm{J}\), il risultato è \(E_s=0{,}08\pi\,\mathrm{\mu J}\), cioè \(2\pi/25\,\mathrm{\mu J}\): risposta E.\par
+
+Controllo per proporzioni: ogni raggio dimezza, quindi ogni area diventa un quarto; otto aree così ridotte sommano a due volte l’area iniziale. L’energia iniziale era \(\pi/25\,\mathrm{\mu J}\) e quella finale è il doppio. L’aumento è invece la loro differenza.\par
+
+\end{samepage}
+\newpage
+% u3-parabolic-profile-03 · 3caf3d8af61c15e4789fdf815c7890ccec8aefa07942eb404876a47fbf561af6
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} La velocità sull’asse e sulla parete}\par\smallskip
+Un fluido newtoniano scorre in regime laminare sviluppato in un tubo cilindrico di raggio R e parete ferma. La velocità assiale ha profilo \(v(s)=v_{\max}[1-(s/R)^2]\), con \(v_{\max}>0\) e s distanza dall’asse, compresa fra zero e R. Vale la condizione di aderenza alla parete. Quali sono le velocità sull’asse e sulla parete?\par
+
+
+\begin{list}{}{\setlength{\leftmargin}{1.4em}\setlength{\itemsep}{.1em}\setlength{\parsep}{0pt}}\small
+\item[A.] Zero sull’asse e massima sulla parete.
+\item[B.] Massima sull’asse e zero sulla parete.
+\item[C.] Uniforme e uguale al massimo in ogni punto.
+\item[D.] Negativa sull’asse e positiva sulla parete.
+\item[E.] Zero sia sull’asse sia sulla parete.
+\end{list}
+{\small\textbf{Suggerimenti.} La variabile s è una distanza dall’asse, non la distanza percorsa lungo il tubo. Associa ad asse e parete i rispettivi valori di s. Sostituisci separatamente s=0 e s=R nel profilo. Poi confronta il risultato alla parete con la condizione di aderenza.\par}
+\medskip\noindent\textbf{Risposta.} B. Massima sull’asse e zero sulla parete.\par
+
+\begin{center}
+\begin{tikzpicture}[x=.32mm,y=.32mm]
+\path[use as bounding box] (0,-2) rectangle (400,180);
+\draw[draw=forest,line width=.6pt] (65,145) -- (330,145);
+\draw[draw=forest,line width=.6pt] (65,35) -- (330,35);
+\draw[->,draw=forest,line width=.6pt] (110,117.5) -- (200,117.5);
+\draw[->,draw=forest,line width=.6pt] (110,90) -- (230,90);
+\draw[->,draw=forest,line width=.6pt] (110,62.5) -- (200,62.5);
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (192,158) {Parete: v = 0};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (192,10) {Parete: v = 0};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (322,85) {Asse};
+\end{tikzpicture}\par
+\small\itshape Sezione longitudinale schematica. Le lunghezze delle frecce indicano velocità relative: al centro 1, a metà raggio 3/4. Non sono traiettorie diverse.
+\end{center}
+Sull’asse del tubo s=0. Nel profilo assegnato il termine quadratico si annulla, quindi \(v(0)=v_{\max}\). È la velocità massima, perché allontanandosi dall’asse viene sottratta una quantità crescente.\par
+
+Alla parete s=R. Il rapporto s/R vale uno e il fattore fra parentesi è zero: \(v(R)=0\). È coerente con l’aderenza: il fluido a contatto con una parete ferma ha la sua stessa velocità. La risposta è B.\par
+
+Come controllo intermedio, a distanza \(s=R/2\) risulta \(v=3v_{\max}/4\). Il profilo diminuisce dal massimo sull’asse fino a zero alla parete e non diventa negativo nel dominio fisico. Non bisogna confondere \(v_{\max}\) con la velocità media sull’intera sezione.\par
+
+\end{samepage}
+\newpage
+% u5-refrigerator-cop-01 · ca31d0a2e84135a79ed9b4ad2c9812701c5cce38e9226741cad1267286d5d3e1
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} Un frigorifero può avere un coefficiente maggiore di uno?}\par\smallskip
+In ogni ciclo un frigorifero sottrae \(100\,\mathrm J\) al vano freddo e richiede \(20\,\mathrm J\) di lavoro elettrico. Calcola il coefficiente di prestazione frigorifero, definito come calore sottratto al vano freddo per unità di lavoro fornito. Esprimi il risultato come numero senza unità.\par
+
+
+
+{\small\textbf{Suggerimenti.} Identifica l’effetto utile del frigorifero: togliere calore al vano freddo. Individua poi l’energia che bisogna fornire per ottenere quell’effetto. Dividi l’energia sottratta al freddo per il lavoro richiesto. Non imporre a questo rapporto il limite di uno proprio del rendimento di una macchina termica.\par}
+\medskip\noindent\textbf{Risposta.} 5\par
+
+\begin{center}
+\begin{tikzpicture}[x=.32mm,y=.32mm]
+\path[use as bounding box] (0,-2) rectangle (400,180);
+\draw[draw=forest,line width=.6pt] (145,118) -- (255,118);
+\draw[draw=forest,line width=.6pt] (255,118) -- (255,64);
+\draw[draw=forest,line width=.6pt] (255,64) -- (145,64);
+\draw[draw=forest,line width=.6pt] (145,64) -- (145,118);
+\draw[->,draw=forest,line width=.6pt] (35,91) -- (138,91);
+\draw[->,draw=forest,line width=.6pt] (262,91) -- (365,91);
+\draw[->,draw=forest,line width=.6pt] (200,19) -- (200,56);
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (200,91) {Frigorifero};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (81,142) {Vano freddo};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (81,112) {100 J};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (322,142) {Ambiente caldo};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (322,112) {120 J};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (260,29) {Lavoro: 20 J};
+\end{tikzpicture}\par
+\small\itshape Bilancio di un ciclo: le energie in ingresso e in uscita si compensano.
+\end{center}
+Per il frigorifero l’effetto utile è il trasferimento di calore dal vano freddo, mentre il costo energetico è il lavoro ricevuto. La definizione dà \(\mathrm{COP}=Q_c/W\). Con i dati si ottiene \(\mathrm{COP}=100/20=5\).\par
+
+Il risultato significa che, nelle condizioni assegnate, ogni joule di lavoro permette di sottrarre cinque joule al vano freddo. Le energie al numeratore e al denominatore non sono la stessa energia prima e dopo una conversione: il dispositivo trasferisce anche energia già presente nel vano.\par
+
+Per il bilancio dell’intero ciclo il calore ceduto all’ambiente caldo è \(Q_h=Q_c+W=120\,\mathrm J\). Il controllo è quindi: 100 J entrano dal vano freddo, 20 J come lavoro, 120 J escono verso l’ambiente caldo.\par
+
+Un COP pari a 5 non viola la conservazione dell’energia. Il rapporto \(Q_h/W=6\) descriverebbe invece la prestazione come pompa di calore per riscaldare il lato caldo, una quantità diversa da quella richiesta.\par
+
+\end{samepage}
+\newpage
+% u5-first-law-expansion-03 · df84f2374553159340555f18fb29f5addee2502aa0103aaf0887dc4842629a89
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} Che cosa chiamiamo calore?}\par\smallskip
+Si osserva uno scambio di energia fra un sistema e l’ambiente. Quale affermazione usa correttamente il termine calore?\par
+
+
+\begin{list}{}{\setlength{\leftmargin}{1.4em}\setlength{\itemsep}{.1em}\setlength{\parsep}{0pt}}\small
+\item[A.] Il calore è il lavoro immagazzinato nel sistema.
+\item[B.] Il calore è una funzione di stato indipendente dal percorso.
+\item[C.] Il calore è una sostanza contenuta nel corpo.
+\item[D.] Il calore è sempre uguale alla temperatura.
+\item[E.] Il calore è energia trasferita a causa di una differenza di temperatura.
+\end{list}
+{\small\textbf{Suggerimenti.} Chiediti se il termine descrive ciò che un corpo possiede in uno stato oppure ciò che attraversa il confine durante un processo. Confronta due modi di fornire energia a un gas: metterlo a contatto con un corpo più caldo oppure comprimerlo con un pistone.\par}
+\medskip\noindent\textbf{Risposta.} E. Il calore è energia trasferita a causa di una differenza di temperatura.\par
+
+
+Se un gas riceve energia attraverso una parete a contatto con un corpo più caldo, quel trasferimento avviene come calore. Se riceve energia perché un pistone lo comprime, il trasferimento avviene come lavoro. La causa e la modalità dello scambio sono diverse, pur potendo entrambe aumentare l’energia interna.\par
+
+La definizione corretta è quindi E: energia trasferita a causa di una differenza di temperatura. Si parla di calore scambiato durante un processo, non di calore contenuto nello stato finale.\par
+
+Il primo principio rende evidente la distinzione: con lavoro positivo se compiuto dal sistema, \(\Delta U=Q-W\). La variazione \(\Delta U\) è fissata dagli stati iniziale e finale; i singoli scambi \(Q\) e \(W\) dipendono dal processo seguito.\par
+
+Per esempio, uno stesso aumento \(\Delta U=10\,\mathrm J\) è compatibile con \(Q=10\,\mathrm J\), \(W=0\), oppure con \(Q=0\), \(W=-10\,\mathrm J\). L’esempio separa il bilancio energetico dalla natura del trasferimento.\par
+
+\end{samepage}
+\newpage
+% u6-symmetric-electric-potential-06 · 313995e6ac473ff112e68d247bd7e2b9a5333b6084663d40ff2034016483d28f
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} Cambiare lo zero senza cambiare il campo}\par\smallskip
+Con lo zero del potenziale all’infinito, due punti hanno \(V_P=18\,\mathrm V\) e \(V_R=6\,\mathrm V\). Si sceglie ora il punto P come zero del potenziale, senza modificare le cariche sorgenti. Quanto vale il nuovo potenziale \(V_R^{\prime}\)?\par
+
+
+\begin{list}{}{\setlength{\leftmargin}{1.4em}\setlength{\itemsep}{.1em}\setlength{\parsep}{0pt}}\small
+\item[A.] \(24\,\mathrm V\)
+\item[B.] \(0\,\mathrm V\)
+\item[C.] \(-12\,\mathrm V\)
+\item[D.] \(12\,\mathrm V\)
+\item[E.] \(6\,\mathrm V\)
+\end{list}
+{\small\textbf{Suggerimenti.} Trova quale costante devi sommare al vecchio potenziale di P per renderlo zero. Applica quella stessa costante al potenziale di R. La differenza fra i potenziali dei due punti deve restare invariata.\par}
+\medskip\noindent\textbf{Risposta.} C. \(-12\,\mathrm V\)\par
+
+\begin{center}
+\begin{tikzpicture}[x=.32mm,y=.32mm]
+\path[use as bounding box] (0,-2) rectangle (400,180);
+\draw[draw=forest,line width=.6pt] (90,135) -- (90,35);
+\draw[draw=forest,line width=.6pt] (310,135) -- (310,35);
+\draw[draw=forest,line width=.6pt] (80,115) -- (100,115);
+\draw[draw=forest,line width=.6pt] (80,55) -- (100,55);
+\draw[draw=forest,line width=.6pt] (300,115) -- (320,115);
+\draw[draw=forest,line width=.6pt] (300,55) -- (320,55);
+\draw[->,draw=forest,line width=.6pt] (140,85) -- (260,85);
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (90,158) {Prima};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (310,158) {Dopo};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (135,115) {P: 18 V};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (135,55) {R: 6 V};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (350,115) {P: 0 V};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (350,55) {R: \(-\)12 V};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (200,101) {\(-\)18 V a tutti};
+\end{tikzpicture}\par
+\small\itshape Cambiano le etichette dello zero; la differenza fra R e P resta \(-\)12 V.
+\end{center}
+Un cambio di riferimento ha la forma \(V^{\prime}=V+c\), con la stessa costante in ogni punto. La condizione \(V_P^{\prime}=0\) dà \(c=-18\,\mathrm V\).\par
+
+Per R si ottiene quindi \(V_R^{\prime}=6\,\mathrm V-18\,\mathrm V=-12\,\mathrm V\), opzione C. Il segno meno indica che R si trova a potenziale inferiore rispetto al nuovo zero.\par
+
+Prima del cambio, \(V_R-V_P=-12\,\mathrm V\). Dopo il cambio, \(V_R^{\prime}-V_P^{\prime}=-12\,\mathrm V\). Un trasferimento di carica fra P e R richiede dunque lo stesso lavoro di prima: sono invariate le differenze di potenziale, non i singoli valori.\par
+
+Anche il campo elettrico rimane invariato, perché aggiungere una costante non cambia il gradiente del potenziale. Non sono state spostate cariche né modificati i campi.\par
+
+\end{samepage}
+\newpage
+% u6-connected-plate-separation-charge-09 · a30718ec7c0d6e570c86c049bf721cfaad86736d9d0a5f3c9369e9a29640c605
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} Ricostruire la carica prima di allontanare le piastre}\par\smallskip
+Un condensatore piano resta collegato a un generatore ideale che mantiene costante la tensione. La distanza iniziale \(d_0\) fra le armature diventa \(d=sd_0\), con \(s\ge1\). Area e dielettrico non cambiano; trascura gli effetti di bordo. Alla fine il modulo della carica su un’armatura è \(Q\). Quale espressione dà il modulo iniziale \(Q_0\)?\par
+
+\begin{center}
+\begin{tikzpicture}[x=.32mm,y=.32mm]
+\path[use as bounding box] (0,-2) rectangle (400,180);
+\draw[draw=forest,line width=.6pt] (45,131) -- (45,55);
+\draw[draw=forest,line width=.6pt] (115,131) -- (115,55);
+\draw[draw=forest,line width=.6pt] (240,131) -- (240,55);
+\draw[draw=forest,line width=.6pt] (355,131) -- (355,55);
+\draw[draw=forest,line width=.6pt] (45,37) -- (115,37);
+\draw[draw=forest,line width=.6pt] (45,43) -- (45,31);
+\draw[draw=forest,line width=.6pt] (115,43) -- (115,31);
+\draw[draw=forest,line width=.6pt] (240,37) -- (355,37);
+\draw[draw=forest,line width=.6pt] (240,43) -- (240,31);
+\draw[draw=forest,line width=.6pt] (355,43) -- (355,31);
+\draw[->,draw=forest,line width=.6pt] (145,92) -- (205,92);
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (80,158) {Inizio: Q0 ?};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (298,158) {Fine: Q};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (80,16) {d0};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (298,16) {s d0};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (175,120) {V costante};
+\end{tikzpicture}\par
+\small\itshape Geometrie schematiche, non in scala. Il generatore mantiene la stessa tensione nei due stati.
+\end{center}
+\begin{list}{}{\setlength{\leftmargin}{1.4em}\setlength{\itemsep}{.1em}\setlength{\parsep}{0pt}}\small
+\item[A.] \(Qs\)
+\item[B.] \(2Qs\)
+\item[C.] \(Qs/2\)
+\item[D.] \(Qs+1\,\mathrm{\mu C}\)
+\item[E.] \(Qs-1\,\mathrm{\mu C}\)
+\end{list}
+{\small\textbf{Suggerimenti.} Individua prima il vincolo mantenuto dal generatore. Non applicare la conservazione della carica di un condensatore isolato. La capacità di un condensatore piano è inversamente proporzionale alla distanza. Collega il rapporto delle capacità a quello delle cariche alla stessa tensione.\par}
+\medskip\noindent\textbf{Risposta.} A. \(Qs\)\par
+
+
+Per geometria piana vale \(C=\varepsilon A/d\). Se la distanza passa da \(d_0\) a \(sd_0\), la capacità diventa \(C=C_0/s\). Il fattore \(s=d/d_0\) è adimensionale.\par
+
+Il generatore mantiene la stessa tensione \(V\) prima e dopo. Usando \(Q=CV\) e \(Q_0=C_0V\) si ricava \(Q/Q_0=C/C_0=1/s\). Quindi \(Q_0=Qs\), risposta A.\par
+
+La carica del condensatore può diminuire perché il collegamento al generatore consente il passaggio di carica. Se il condensatore fosse isolato, sarebbe invece la tensione a variare: quel problema avrebbe un vincolo diverso.\par
+
+Controllo: per \(s=2\) e \(Q=3\,\mathrm{\mu C}\) risulta \(Q_0=6\,\mathrm{\mu C}\). Raddoppiare la distanza dimezza capacità e carica, lasciando la tensione uguale. Per \(s=1\) la formula restituisce \(Q_0=Q\), come deve accadere se nulla cambia.\par
+
+\end{samepage}
+\newpage
+% u7-absorbed-radiant-power-13 · ffea834bc3c0f1d7b6c824058750a1930db72d6a9f7c4c730fe1e23dca5b8f7a
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} Assorbire di più quando cresce la potenza}\par\smallskip
+Uno strato riceve \(8\,\mathrm W\) nella prova A e ne trasmette la metà. Nella prova B riceve \(12\,\mathrm W\). In entrambe le prove la riflessione è trascurabile. Per ottenere in B una potenza assorbita pari a \(9/4\) volte quella della prova A, quale rapporto \(\tau_\mathrm B/\tau_\mathrm A\) deve avere la frazione trasmessa?\par
+
+\begin{center}
+\begin{tikzpicture}[x=.32mm,y=.32mm]
+\path[use as bounding box] (0,-2) rectangle (400,180);
+\draw[draw=forest,line width=.6pt] (153,159) -- (218,159);
+\draw[draw=forest,line width=.6pt] (153,108) -- (218,108);
+\draw[draw=forest,line width=.6pt] (153,159) -- (153,108);
+\draw[draw=forest,line width=.6pt] (218,159) -- (218,108);
+\draw[draw=forest,line width=.6pt] (153,76) -- (218,76);
+\draw[draw=forest,line width=.6pt] (153,25) -- (218,25);
+\draw[draw=forest,line width=.6pt] (153,76) -- (153,25);
+\draw[draw=forest,line width=.6pt] (218,76) -- (218,25);
+\draw[->,draw=forest,line width=.6pt] (24,131) -- (150,131);
+\draw[->,draw=forest,line width=.6pt] (221,131) -- (375,131);
+\draw[->,draw=forest,line width=.6pt] (24,47) -- (150,47);
+\draw[->,draw=forest,line width=.6pt] (221,47) -- (375,47);
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (186,128) {Strato A};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (186,45) {Strato B};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (80,145) {8 W};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (80,61) {12 W};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (304,146) {Esce?};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (304,62) {Esce?};
+\end{tikzpicture}\par
+\small\itshape Controlla i dati in ingresso. Le frecce sono schematiche e non in scala.
+\end{center}
+
+{\small\textbf{Suggerimenti.} Dalla potenza incidente di A, togli la quota che attraversa lo strato. In B calcola prima quanta potenza deve rimanere nello strato e poi quanta ne può uscire.\par}
+\medskip\noindent\textbf{Risposta.} 1/2\par
+
+\begin{center}
+\begin{tikzpicture}[x=.32mm,y=.32mm]
+\path[use as bounding box] (0,-2) rectangle (400,180);
+\draw[draw=forest,line width=.6pt] (74,130) -- (234,130);
+\draw[draw=forest,line width=.6pt] (74,105) -- (234,105);
+\draw[draw=forest,line width=.6pt] (74,130) -- (74,105);
+\draw[draw=forest,line width=.6pt] (154,130) -- (154,105);
+\draw[draw=forest,line width=.6pt] (234,130) -- (234,105);
+\draw[draw=forest,line width=.6pt] (74,50) -- (314,50);
+\draw[draw=forest,line width=.6pt] (74,25) -- (314,25);
+\draw[draw=forest,line width=.6pt] (74,50) -- (74,25);
+\draw[draw=forest,line width=.6pt] (254,50) -- (254,25);
+\draw[draw=forest,line width=.6pt] (314,50) -- (314,25);
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (42,112) {A};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (115,138) {4 W};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (195,138) {4 W};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (115,86) {Assorbiti};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (195,86) {Trasmessi};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (42,31) {B};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (161,58) {9 W};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (283,58) {3 W};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (161,6) {Assorbiti};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (283,6) {Trasmessi};
+\end{tikzpicture}\par
+\small\itshape Barre in scala con la stessa origine. La lunghezza totale rappresenta la potenza incidente.
+\end{center}
+In A metà degli \(8\,\mathrm W\) esce dallo strato. L’altra metà resta, quindi si assorbono \(4\,\mathrm W\).\par
+
+In B l’assorbimento deve salire a \((9/4)\cdot4=9\,\mathrm W\). Dei \(12\,\mathrm W\) in ingresso ne restano allora \(12-9=3\,\mathrm W\) da trasmettere.\par
+
+La frazione trasmessa di B è \(3/12=1/4\), mentre quella di A è \(1/2\). Il rapporto richiesto è \((1/4)/(1/2)=1/2\). Controllando il bilancio, l’assorbimento di B è effettivamente \(9\,\mathrm W\) e si mantiene al di sotto dell’ingresso.\par
+
+\end{samepage}
+\newpage
+% u4-wave-phase-time-03 · ad645b163b3bd23f7430283c65d1251b13c42d677e90c8fcbba96e4cf7e01f3a
+\begin{samepage}
+\noindent{\sffamily\large\bfseries\color{forest} Dal tempo di un giro alla frequenza}\par\smallskip
+Un’oscillazione impiega \(2/5\) di secondo per ripetersi identica. Quante oscillazioni al secondo compie?\par
+
+
+\begin{list}{}{\setlength{\leftmargin}{1.4em}\setlength{\itemsep}{.1em}\setlength{\parsep}{0pt}}\small
+\item[A.] \(1/2\,\mathrm{Hz}\)
+\item[B.] \(5/2\,\mathrm{Hz}\)
+\item[C.] \(2/5\,\mathrm{Hz}\)
+\item[D.] \(5\,\mathrm{Hz}\)
+\item[E.] \(10\,\mathrm{Hz}\)
+\end{list}
+{\small\textbf{Suggerimento.} Segna su un asse quanto tempo occupano due periodi interi. Quanto manca per arrivare a un secondo?\par}
+\medskip\noindent\textbf{Risposta.} B. \(5/2\,\mathrm{Hz}\)\par
+
+\begin{center}
+\begin{tikzpicture}[x=.32mm,y=.32mm]
+\path[use as bounding box] (0,-2) rectangle (400,180);
+\draw[draw=forest,line width=.6pt] (64,88) -- (72,101.02);
+\draw[draw=forest,line width=.6pt] (72,101.02) -- (80,111.78);
+\draw[draw=forest,line width=.6pt] (80,111.78) -- (88,118.43);
+\draw[draw=forest,line width=.6pt] (88,118.43) -- (96,119.82);
+\draw[draw=forest,line width=.6pt] (96,119.82) -- (104,115.71);
+\draw[draw=forest,line width=.6pt] (104,115.71) -- (112,106.81);
+\draw[draw=forest,line width=.6pt] (112,106.81) -- (120,94.65);
+\draw[draw=forest,line width=.6pt] (120,94.65) -- (128,81.35);
+\draw[draw=forest,line width=.6pt] (128,81.35) -- (136,69.19);
+\draw[draw=forest,line width=.6pt] (136,69.19) -- (144,60.290000000000006);
+\draw[draw=forest,line width=.6pt] (144,60.290000000000006) -- (152,56.18000000000001);
+\draw[draw=forest,line width=.6pt] (152,56.18000000000001) -- (160,57.56999999999999);
+\draw[draw=forest,line width=.6pt] (160,57.56999999999999) -- (168,64.22);
+\draw[draw=forest,line width=.6pt] (168,64.22) -- (176,74.98);
+\draw[draw=forest,line width=.6pt] (176,74.98) -- (184,88);
+\draw[draw=forest,line width=.6pt] (184,88) -- (192,101.02);
+\draw[draw=forest,line width=.6pt] (192,101.02) -- (200,111.78);
+\draw[draw=forest,line width=.6pt] (200,111.78) -- (208,118.43);
+\draw[draw=forest,line width=.6pt] (208,118.43) -- (216,119.82);
+\draw[draw=forest,line width=.6pt] (216,119.82) -- (224,115.71);
+\draw[draw=forest,line width=.6pt] (224,115.71) -- (232,106.81);
+\draw[draw=forest,line width=.6pt] (232,106.81) -- (240,94.65);
+\draw[draw=forest,line width=.6pt] (240,94.65) -- (248,81.35);
+\draw[draw=forest,line width=.6pt] (248,81.35) -- (256,69.19);
+\draw[draw=forest,line width=.6pt] (256,69.19) -- (264,60.290000000000006);
+\draw[draw=forest,line width=.6pt] (264,60.290000000000006) -- (272,56.18000000000001);
+\draw[draw=forest,line width=.6pt] (272,56.18000000000001) -- (280,57.56999999999999);
+\draw[draw=forest,line width=.6pt] (280,57.56999999999999) -- (288,64.22);
+\draw[draw=forest,line width=.6pt] (288,64.22) -- (296,74.98);
+\draw[draw=forest,line width=.6pt] (296,74.98) -- (304,88);
+\draw[draw=forest,line width=.6pt] (304,88) -- (312,101.02);
+\draw[draw=forest,line width=.6pt] (312,101.02) -- (320,111.78);
+\draw[draw=forest,line width=.6pt] (320,111.78) -- (328,118.43);
+\draw[draw=forest,line width=.6pt] (328,118.43) -- (336,119.82);
+\draw[draw=forest,line width=.6pt] (64,92) -- (64,82);
+\draw[draw=forest,line width=.6pt] (184,92) -- (184,82);
+\draw[draw=forest,line width=.6pt] (304,92) -- (304,82);
+\draw[draw=forest,line width=.6pt] (184,86) -- (184,29);
+\draw[draw=forest,line width=.6pt] (304,86) -- (304,29);
+\draw[->,draw=forest,line width=.6pt] (61,88) -- (375,88);
+\draw[->,draw=forest,line width=.6pt] (64,29) -- (64,143);
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (84,151) {Spostamento};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (64,8) {0};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (184,8) {0,4};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (304,8) {0,8};
+\node[text=ink,font=\sffamily\footnotesize,anchor=base] at (366,61) {t (s)};
+\end{tikzpicture}\par
+\small\itshape Il tempo in secondi cresce verso destra. Lo spostamento ha scala verticale illustrativa. Le tacche indicano lo stesso punto di tre cicli consecutivi.
+\end{center}
+Il periodo \(T\) è il tempo per un ciclo. La frequenza è il numero di cicli per unità di tempo, quindi in un secondo ci sono \(1/T\) cicli.\par
+
+Il valore è \(1/(2/5)=5/2\,\mathrm{Hz}\). Come controllo, cinque cicli da \(2/5\,\mathrm s\) durano in tutto \(2\,\mathrm s\), ossia \(2{,}5\) cicli al secondo. Sul grafico, dopo un periodo il segnale ritorna allo stesso spostamento con lo stesso verso del moto.\par
+
+\end{samepage}
+
+\end{document}

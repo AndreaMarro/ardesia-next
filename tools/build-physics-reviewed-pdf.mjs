@@ -3,8 +3,8 @@ import {readFileSync, writeFileSync} from 'node:fs';
 import {loadReviewedQuestions, parts, reviewDirectory} from './physics-reviewed-content.mjs';
 
 const output = process.argv[2];
-if (!output) throw Error('Usage: node tools/build-physics-reviewed-pdf.mjs OUTPUT.tex');
-const sample = JSON.parse(readFileSync(reviewDirectory+'/pdf-sample.json','utf8'));
+if (!output) throw Error('Usage: node tools/build-physics-reviewed-pdf.mjs OUTPUT.tex [SAMPLE.json]');
+const sample = JSON.parse(readFileSync(process.argv[3] ?? reviewDirectory+'/pdf-sample.json','utf8'));
 const byId = new Map(loadReviewedQuestions().map(q=>[q.id,q]));
 const rows = sample.map(id => {
   const row = byId.get(id);
@@ -15,7 +15,7 @@ const courses = Map.groupBy(rows, q=>q.courseId);
 if (rows.length !== 10 || new Set(sample).size !== 10 || courses.size !== 5 || [...courses.values()].some(items=>items.length!==2))
   throw Error('The sample needs two distinct questions per course.');
 
-const commands = new Set('frac dfrac tfrac sqrt cdot times mathrm mathbf mathit text left right big Big sin cos tan ln log exp pi theta alpha beta delta Delta mu rho lambda omega Omega phi varphi gamma Gamma pm mp prime circ approx le ge leq geq neq equiv propto vec hat bar overline int sum infty quad qquad textstyle displaystyle textsuperscript lvert rvert mathop tau varepsilon epsilon sigma Sigma partial degree overrightarrow angstrom dot ell'.split(' '));
+const commands = new Set('frac dfrac tfrac sqrt cdot times mathrm mathbf mathit text left right big Big sin cos tan ln log exp pi theta alpha beta delta Delta mu rho lambda omega Omega phi varphi gamma Gamma pm mp prime circ approx le ge leq geq neq equiv propto vec hat bar overline int sum infty quad qquad textstyle displaystyle textsuperscript lvert rvert mathop tau varepsilon epsilon sigma Sigma partial degree overrightarrow angstrom dot ell max'.split(' '));
 const escaped = new Map(Object.entries({
   '\\': '\\textbackslash{}', '{':'\\{', '}':'\\}', '%':'\\%', '&':'\\&', '#':'\\#', '$':'\\$', '_':'\\_', '^':'\\textasciicircum{}', '~':'\\textasciitilde{}',
   '−':'\\(-\\)', '×':'\\(\\times\\)', '→':'\\(\\rightarrow\\)', '←':'\\(\\leftarrow\\)', 'Δ':'\\(\\Delta\\)', 'μ':'\\(\\mu\\)', 'Ω':'\\(\\Omega\\)',
@@ -65,7 +65,7 @@ const samplePages = rows.map((q,i) => {
     choices?'\\begin{list}{}{\\setlength{\\leftmargin}{1.4em}\\setlength{\\itemsep}{.1em}\\setlength{\\parsep}{0pt}}\\small\n'+choices+'\n\\end{list}':'',
     '{\\small\\textbf{'+(q.hints.length===1?'Suggerimento':'Suggerimenti')+'.} '+q.hints.map(tex).join(' ')+'\\par}',
     '\\medskip\\noindent\\textbf{Risposta.} '+para(answer),
-    q.figure?.stage==='solution'?tikz(q.figure):'',
+    q.solutionFigure ? tikz(q.solutionFigure) : q.figure?.stage==='solution' ? tikz(q.figure) : '',
     ...q.solution.map(para),
     '\\end{samepage}',
     i===rows.length-1?'':'\\newpage'
