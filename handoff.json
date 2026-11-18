@@ -3,22 +3,15 @@
   "kind": "ardesia-sequential-state",
   "repository": "AndreaMarro/ardesia-next",
   "acceptanceEvidence": false,
-  "revision": 185,
-  "updatedAt": "2026-11-18T20:09:16.517Z",
+  "revision": 186,
+  "updatedAt": "2026-11-18T22:27:46Z",
   "procedureRef": "e83c98098bb4da0324a97460776b1898b5a05ee5",
-  "activeRun": {
-    "runId": "owner-20261118-physics-recovery",
-    "actor": "codex",
-    "startedAt": "2026-11-18T20:00:00.000Z",
-    "claimedAt": "2026-11-18T20:09:16.517Z",
-    "writeUntil": "2026-11-18T20:45:00.000Z",
-    "closeBy": "2026-11-18T20:55:00.000Z"
-  },
+  "activeRun": null,
   "packet": {
     "id": "owner-20261118-physics-recovery",
     "taskId": "M5-PRODUCT",
     "nextActor": "codex",
-    "disposition": "READY",
+    "disposition": "INTERRUPTED",
     "kind": "implementation",
     "notBefore": "2026-11-18T20:09:16.517Z",
     "expiresAt": "2026-11-18T20:55:00.000Z",
@@ -77,20 +70,20 @@
       }
     ],
     "blockers": [],
-    "nextAction": "Direct owner continuation in the current chat: recover and publish lot4, then revise the next active questions if resources allow. One root writer, same M5-PRODUCT scope and criteria, isolated branch/protected preview, no production or SSO/scheduler changes.",
+    "nextAction": "Owner-authorized continuation: preserve and publish recovered lots 4–5 (172 revised records and exact-source browser receipts), then complete next coherent active-question batch within session capacity. Retain existing M5 acceptance limits.",
     "review": null
   },
   "lastRun": {
-    "runId": "owner-20261118-physics-review-lot4",
+    "runId": "owner-20261118-physics-recovery",
     "actor": "codex",
-    "startedAt": "2026-11-18T19:23:10.000Z",
-    "claimedAt": "2026-11-18T19:23:19.773Z",
-    "writeUntil": "2026-11-18T20:08:10.000Z",
-    "closeBy": "2026-11-18T20:18:10.000Z",
-    "packetId": "owner-20261118-physics-review-lot4",
-    "finishedAt": "2026-11-18T20:09:16.517Z",
+    "startedAt": "2026-11-18T20:00:00.000Z",
+    "claimedAt": "2026-11-18T20:09:16.517Z",
+    "writeUntil": "2026-11-18T20:45:00.000Z",
+    "closeBy": "2026-11-18T20:55:00.000Z",
+    "packetId": "owner-20261118-physics-recovery",
+    "finishedAt": "2026-11-18T22:27:46Z",
     "outcome": "INTERRUPTED",
-    "late": false,
-    "summary": "Interrupted chat recovered on direct owner request; uncommitted lot4 preserved before changes. Process inventory has no prior source writers; source branch absent remotely, PR61 and main unchanged."
+    "late": true,
+    "summary": "Direct owner request in current chat reports interrupted predecessor. Work preserved in untouched checkout; 731 source files hashed, manifest SHA256 10b78c573c65d767bca9fd573bb2c4dc3488667695b5240142dbe55974551c11. No prior source writers observed in process inventory. Remote lot4 ref absent; main and PR61 unchanged. Recovery is owner-authorized, not inferred from lease expiry. Old M5 deferred row predates current owner mandate; no queue/gate/scheduler/security changes."
   }
 }
