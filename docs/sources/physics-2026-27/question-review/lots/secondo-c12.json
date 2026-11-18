@@ -1,0 +1,301 @@
+[
+  {
+    "id": "u1-vector-projection-03",
+    "title": "Il segno di una componente",
+    "prompt": "Un vettore adimensionale $\\mathbf{A}$ ha modulo $10$ e forma un angolo di $120^\\circ$ con il verso positivo dell’asse $x$. Sapendo che $\\cos120^\\circ=-1/2$, quanto vale la componente orientata $A_x$?",
+    "options": [
+      {
+        "id": "A",
+        "text": "$10$",
+        "feedback": "Una componente uguale al modulo richiederebbe che il vettore fosse diretto lungo il semiasse positivo."
+      },
+      {
+        "id": "B",
+        "text": "$0$",
+        "feedback": "La componente sarebbe nulla se il vettore fosse perpendicolare all’asse, cioè con angolo di $90^\\circ$."
+      },
+      {
+        "id": "C",
+        "text": "$-5$",
+        "feedback": "La proiezione vale $10\\cos120^\\circ=-5$; il segno indica il verso negativo dell’asse."
+      },
+      {
+        "id": "D",
+        "text": "$5$",
+        "feedback": "Il valore assoluto è corretto, ma manca il segno della proiezione: il vettore forma un angolo ottuso con il verso positivo."
+      },
+      {
+        "id": "E",
+        "text": "$-10$",
+        "feedback": "Il segno è coerente, ma una componente di modulo $10$ richiederebbe un vettore parallelo all’asse, rivolto nel verso negativo."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "C"
+    },
+    "hints": [
+      "Una componente lungo un asse orientato può avere segno, anche se il modulo del vettore è sempre non negativo.",
+      "La componente sull’asse da cui è misurato l’angolo è $A_x=|\\mathbf{A}|\\cos\\theta$. Usa il coseno fornito nella consegna."
+    ],
+    "solution": [
+      "La componente $A_x$ è la proiezione orientata del vettore sull’asse $x$. Poiché l’angolo è misurato dal verso positivo di questo asse, $A_x=|\\mathbf{A}|\\cos\\theta$.",
+      "Con i dati assegnati si ottiene $A_x=10(-1/2)=-5$, risposta C. Il segno negativo indica che la proiezione punta verso il semiasse negativo; non rappresenta una lunghezza negativa.",
+      "Il disegno permette un controllo indipendente del segno: a $120^\\circ$ il vettore punta a sinistra e verso l’alto. Inoltre $|A_x|=5$ è minore del modulo $10$, come deve essere per una proiezione."
+    ],
+    "check": "Calcolo esatto 10×(−1/2)=−5; controprova geometrica: secondo quadrante e |Ax|≤|A|. Opzioni {10,0,−5,5,−10} distinte, C unica.",
+    "reason": "Conservato il ragionamento scientifico valido di Next e rimosse tre code generiche. Precisata l’adimensionalità e aggiunta una proiezione geometrica coerente con 120 gradi.",
+    "figure": {
+      "stage": "solution",
+      "alt": "Vettore di modulo 10 dal punto O verso l’alto a sinistra. La proiezione sull’asse x arriva a sinistra di O e vale meno 5.",
+      "caption": "Geometria in scala uniforme sui due assi: il vettore forma 120° con il semiasse positivo x. Le linee verticali indicano la proiezione.",
+      "lines": [
+        [
+          150,
+          33.39746,
+          150,
+          120
+        ],
+        [
+          146,
+          120,
+          154,
+          120
+        ]
+      ],
+      "labels": [
+        {
+          "x": 215,
+          "y": 138,
+          "text": "O"
+        },
+        {
+          "x": 360,
+          "y": 139,
+          "text": "x"
+        },
+        {
+          "x": 130,
+          "y": 20,
+          "text": "A: modulo 10"
+        },
+        {
+          "x": 151,
+          "y": 143,
+          "text": "-5"
+        },
+        {
+          "x": 218,
+          "y": 23,
+          "text": "y"
+        },
+        {
+          "x": 195,
+          "y": 165,
+          "text": "Ax = -5"
+        }
+      ],
+      "arrows": [
+        [
+          65,
+          120,
+          370,
+          120
+        ],
+        [
+          200,
+          155,
+          200,
+          15
+        ],
+        [
+          200,
+          120,
+          150,
+          33.39746
+        ]
+      ]
+    }
+  },
+  {
+    "id": "u2-center-mass-weighted-03",
+    "title": "Moto interno e centro di massa",
+    "prompt": "Due corpi sono collegati da una molla di massa trascurabile e si muovono su un piano orizzontale senza attrito. In un riferimento inerziale, la risultante delle forze esterne orizzontali sul sistema dei due corpi è nulla. Come si muove orizzontalmente il loro centro di massa?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Oscilla necessariamente come la molla.",
+        "feedback": "Le oscillazioni descrivono il moto relativo dei due corpi. Non implicano un’accelerazione del centro di massa."
+      },
+      {
+        "id": "B",
+        "text": "Accelera verso il corpo più pesante.",
+        "feedback": "La diversa massa cambia le accelerazioni dei singoli corpi, ma non crea una forza esterna sul sistema."
+      },
+      {
+        "id": "C",
+        "text": "Ha velocità costante, eventualmente nulla.",
+        "feedback": "La risultante esterna nulla implica accelerazione nulla del centro di massa; la sua velocità rimane quella iniziale."
+      },
+      {
+        "id": "D",
+        "text": "È sempre fermo, qualunque sia la sua velocità iniziale.",
+        "feedback": "Accelerazione nulla significa velocità costante, non necessariamente velocità nulla."
+      },
+      {
+        "id": "E",
+        "text": "Ha la stessa accelerazione del corpo più leggero.",
+        "feedback": "Il centro di massa dipende da entrambi i corpi. Il corpo più leggero può accelerare per la forza elastica mentre il centro di massa non accelera."
+      }
+    ],
+    "answer": {
+      "kind": "choice",
+      "id": "C"
+    },
+    "hints": [
+      "Distingui le forze esterne al sistema dalle forze con cui i due corpi interagiscono attraverso la molla.",
+      "Somma le equazioni del moto dei due corpi: le forze elastiche interne sono opposte. Quale informazione resta sull’accelerazione del centro di massa?"
+    ],
+    "solution": [
+      "Il moto del centro di massa è governato dalla risultante esterna: $(m_1+m_2)a_{\\mathrm{CM},x}=F_{\\mathrm{ext},x}$. Le forze elastiche sono interne; per la molla di massa trascurabile hanno moduli uguali e versi opposti, quindi si compensano nella somma.",
+      "Dato che $F_{\\mathrm{ext},x}=0$, risulta $a_{\\mathrm{CM},x}=0$. La velocità del centro di massa è costante, eventualmente nulla: risposta C. Se era inizialmente fermo resta fermo; se era in movimento continua con la stessa velocità.",
+      "Come controllo, la quantità di moto orizzontale totale $P_x=m_1v_{1x}+m_2v_{2x}$ si conserva e $v_{\\mathrm{CM},x}=P_x/(m_1+m_2)$. I singoli corpi possono accelerare e oscillare, pur mantenendo questa media pesata costante."
+    ],
+    "check": "Controllo distinto via conservazione della quantità di moto P=(m1+m2)vCM. Esempio m1=1,m2=2,F1=6,F2=−6 -> a1=6,a2=−3, aCM=(6−6)/3=0. Il riferimento inerziale e la massa trascurabile della molla sono espliciti.",
+    "reason": "Chiarita la scelta del sistema e la massa della molla, lasciate le opzioni scientificamente valide, rimosso il boilerplate dopo la spiegazione. Conservata chiave C."
+  },
+  {
+    "id": "u3-torricelli-flow-01",
+    "title": "Dal battente alla portata del getto",
+    "prompt": "Un grande serbatoio contiene un liquido ideale e scarica da un piccolo foro di area $A=1\\,\\mathrm{mm^2}$. All’istante considerato, il foro si trova $H=5\\,\\mathrm{m}$ sotto la superficie libera. La pressione sopra il liquido e quella all’uscita sono uguali; la velocità della superficie è trascurabile. Usa $g=10\\,\\mathrm{m/s^2}$ e il modello ideale con coefficiente di efflusso uguale a uno. Qual è la portata volumetrica istantanea in $\\mathrm{mL/s}$? Inserisci solo il numero.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "10",
+      "unit": "mL/s"
+    },
+    "hints": [
+      "Per sapere quanto volume esce ogni secondo servono sia l’area del foro sia la velocità del liquido. Il dislivello determina quest’ultima.",
+      "Applica Bernoulli fra superficie e uscita, quindi usa $Q=Av$. Prima del prodotto, porta area e velocità in unità compatibili."
+    ],
+    "solution": [
+      "Fra superficie e uscita le pressioni si compensano. Trascurando la velocità iniziale e le perdite, l’energia potenziale per unità di massa $gH$ diventa energia cinetica $v^2/2$. Si ottiene $v=\\sqrt{2gH}=\\sqrt{2\\times10\\times5}=10\\,\\mathrm{m/s}$.",
+      "Nel modello ideale, la portata è area del foro per velocità. Convertiamo $1\\,\\mathrm{mm^2}=10^{-6}\\,\\mathrm{m^2}$: $Q=Av=10^{-6}\\times10=10^{-5}\\,\\mathrm{m^3/s}$.",
+      "Poiché $1\\,\\mathrm{mL}=10^{-6}\\,\\mathrm{m^3}$, troviamo $Q=10\\,\\mathrm{mL/s}$. Il numero da inserire è $10$.",
+      "Un controllo geometrico: a questa velocità, in un secondo attraversa il foro un cilindro di liquido lungo $10\\,\\mathrm{m}=10000\\,\\mathrm{mm}$. La sua sezione è $1\\,\\mathrm{mm^2}$ e il volume è $10000\\,\\mathrm{mm^3}=10\\,\\mathrm{mL}$. Se il serbatoio si svuota, il battente e la portata cambiano nel tempo: il risultato vale all’istante indicato."
+    ],
+    "check": "Calcolo v²=100 m²/s², ramo positivo v=10; Q=10^-5 m³/s=10 mL/s. Controprova cilindro 1 mm²×10000 mm=10000 mm³=10 mL. Nessun coefficiente reale introdotto.",
+    "reason": "Eliminati microstep sulle radici ripetute e sostituiti con il bilancio energetico completo. Esplicitata la portata istantanea e mostrata la conversione quadratica dell’area."
+  },
+  {
+    "id": "u3-two-liquid-floating-01",
+    "title": "Galleggiare fra due liquidi",
+    "prompt": "Un solido omogeneo galleggia in equilibrio all’interfaccia fra due liquidi immiscibili in quiete, senza appoggi o fili. È interamente immerso nei due liquidi. Il liquido superiore ha densità $\\rho_a=1/2\\,\\mathrm{kg/L}$, quello inferiore $\\rho_b=3/2\\,\\mathrm{kg/L}$ e il solido $\\rho_c=3/4\\,\\mathrm{kg/L}$. Trascuriamo la tensione interfacciale. Quale frazione $f_b$ del volume totale si trova nel liquido inferiore? Inserisci il numero esatto, anche come frazione.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "1/4",
+      "unit": "1"
+    },
+    "hints": [
+      "Entrambi i liquidi esercitano una spinta. Dividi il volume del solido in una parte superiore e una inferiore prima di scrivere l’equilibrio.",
+      "Se il volume totale è $V$, i due volumi sono $f_bV$ e $(1-f_b)V$. Somma le rispettive spinte e uguagliale al peso del solido."
+    ],
+    "solution": [
+      "Il solido è libero e fermo: il suo peso deve uguagliare la somma delle due spinte. La parte inferiore sposta volume $f_bV$ del liquido più denso, mentre quella superiore sposta $(1-f_b)V$ dell’altro liquido.",
+      "L’equilibrio è $\\rho_cVg=\\rho_bf_bVg+\\rho_a(1-f_b)Vg$. Dividendo per $Vg$, si ottiene $\\rho_c=\\rho_a+(\\rho_b-\\rho_a)f_b$, quindi $f_b=(\\rho_c-\\rho_a)/(\\rho_b-\\rho_a)$.",
+      "Sostituiamo le densità nella stessa unità: $f_b=(3/4-1/2)/(3/2-1/2)$, cioè $(1/4)/1$, quindi $1/4$. Un quarto del volume è nel liquido inferiore e tre quarti in quello superiore.",
+      "Controlliamo scegliendo, solo per comodità, $V=4\\,\\mathrm{L}$. Il solido ha massa $3\\,\\mathrm{kg}$; sposta $1\\,\\mathrm{L}$ del liquido inferiore, di massa $1{,}5\\,\\mathrm{kg}$, e $3\\,\\mathrm{L}$ di quello superiore, anch’essi di massa $1{,}5\\,\\mathrm{kg}$. Il peso totale del liquido spostato uguaglia quello del solido. La frazione ottenuta è fra zero e uno, come richiede l’immersione parziale in entrambi."
+    ],
+    "check": "Frazione esatta (3/4−1/2)/(3/2−1/2)=1/4. Controprova con V=4 L: massa corpo 3 kg, masse fluido spostato 1,5+1,5=3 kg. Ordine delle densità stabile; 0<f<1. Equilibrio e assenza di appoggi aggiunti perché indispensabili.",
+    "reason": "Risolta un’ipotesi sottintesa: essere immerso all’interfaccia non basta a imporre l’equilibrio di galleggiamento. Precisate libertà del corpo e quiete; rimossi passaggi ripetitivi e aggiunto schema dei due volumi.",
+    "figure": {
+      "stage": "solution",
+      "alt": "Un prisma di volume 4 litri attraversa l’interfaccia: 3 litri nel liquido superiore e 1 litro in quello inferiore. Il prisma illustra il controllo di equilibrio.",
+      "caption": "Esempio prismatico con altezze proporzionali ai volumi: 3/4 sopra e 1/4 sotto l’interfaccia. La forma del solido non è un dato necessario al calcolo.",
+      "lines": [
+        [
+          40,
+          105,
+          360,
+          105
+        ],
+        [
+          165,
+          30,
+          235,
+          30
+        ],
+        [
+          235,
+          30,
+          235,
+          130
+        ],
+        [
+          235,
+          130,
+          165,
+          130
+        ],
+        [
+          165,
+          130,
+          165,
+          30
+        ]
+      ],
+      "labels": [
+        {
+          "x": 95,
+          "y": 57,
+          "text": "0,5 kg/L"
+        },
+        {
+          "x": 303,
+          "y": 146,
+          "text": "1,5 kg/L"
+        },
+        {
+          "x": 200,
+          "y": 70,
+          "text": "3 L"
+        },
+        {
+          "x": 200,
+          "y": 123,
+          "text": "1 L"
+        },
+        {
+          "x": 306,
+          "y": 91,
+          "text": "Interfaccia"
+        }
+      ],
+      "arrows": []
+    }
+  },
+  {
+    "id": "u3-viscous-dissipation-01",
+    "title": "La potenza dissipata dal flusso",
+    "prompt": "Un elemento idraulico resistivo è percorso da un fluido incomprimibile in regime stazionario, con portata $Q=3\\,\\mathrm{L/s}$. La caduta di pressione dovuta all’attrito segue $\\Delta p=RQ$, con $R=2\\,\\mathrm{kPa\\,s/L}$. Le sezioni d’ingresso e uscita hanno stessa area e stessa quota e nell’elemento non ci sono pompe o turbine. Quale potenza meccanica viene trasformata in energia interna per attrito? Rispondi in watt inserendo solo il numero.",
+    "options": [],
+    "answer": {
+      "kind": "rational",
+      "exact": "18",
+      "unit": "W"
+    },
+    "hints": [
+      "La pressione compie lavoro quando sposta un volume di liquido. Collega il volume che attraversa l’elemento ogni secondo alla caduta di pressione.",
+      "Per trasferire un volume $\\Delta V$ contro una differenza di pressione serve lavoro $\\Delta p\\,\\Delta V$. Dividi per il tempo e usa la portata."
+    ],
+    "solution": [
+      "La differenza di pressione è $\\Delta p=RQ=2\\times3=6\\,\\mathrm{kPa}$. Con uguali quota e velocità media all’ingresso e all’uscita, la diminuzione di energia meccanica è associata alla resistenza viscosa, non a un aumento di quota o di velocità.",
+      "Il lavoro di pressione per il volume $\\Delta V$ è $\\Delta p\\,\\Delta V$. Dividendo per il tempo otteniamo la potenza dissipata $P_d=\\Delta p\\,Q=RQ^2$.",
+      "Convertendo in SI: $\\Delta p=6000\\,\\mathrm{Pa}$ e $Q=3\\times10^{-3}\\,\\mathrm{m^3/s}$. Quindi $P_d=6000\\times0{,}003=18\\,\\mathrm{W}$. In queste unità pratiche, $1\\,\\mathrm{kPa}\\times1\\,\\mathrm{L/s}=1\\,\\mathrm{W}$.",
+      "Come controllo, in due secondi passano $6\\,\\mathrm{L}=0{,}006\\,\\mathrm{m^3}$; il lavoro dissipato è $6000\\times0{,}006=36\\,\\mathrm{J}$, cioè $18\\,\\mathrm{J}$ ogni secondo. Il risultato è positivo, coerentemente con una dissipazione."
+    ],
+    "check": "Δp=6 kPa, P=6000 Pa×0,003 m³/s=18 W. Controprova lavoro su 6 L in 2 s:36 J/2 s=18 W. Assenza variazioni quota/energia cinetica e lavoro macchine esplicitata per identificare la dissipazione.",
+    "reason": "Resa concreta la trasformazione di energia e chiarito perché una caduta di pressione qui rappresenta dissipazione. Rimossi passaggi generici e mostrata esplicitamente l’equivalenza kPa L/s=W."
+  }
+]

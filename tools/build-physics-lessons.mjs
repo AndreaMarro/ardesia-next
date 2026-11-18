@@ -3,6 +3,7 @@ import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {gzipSync} from 'node:zlib';
 import {esc,frame} from './build-physics-demo.mjs';
+import {reviewedLesson, reviewedAssetTags, writeReviewedCatalog} from './build-physics-reviewed.mjs';
 const root='docs/sources/physics-2026-27/editorial/';
 const courses=JSON.parse(readFileSync(root+'courses.json','utf8'));
 const out='apps/web/public/fisica';mkdirSync(out,{recursive:true});
@@ -34,6 +35,7 @@ for(const [index,course] of courses.entries()){
   const previous=course.input.units[position-1],next=course.input.units[position+1];
   const laboratory=laboratories[unit.id];
   const labLink=laboratory?`<div class='reader-lab'><p class='eyebrow'>Metti in movimento il modello</p><h3>${esc(laboratory[1])}</h3><p>Apri il laboratorio collegato a questa lezione. Leggi le ipotesi del modello e confronta ciò che osservi con la tua previsione.</p><a class='button' href='./${esc(laboratory[0])}'>Apri il laboratorio della lezione →</a></div>`:'';
+  const reviewed = reviewedLesson(unit.id);
   const body=`<div class='lesson-reader'>
    <a href='./c${index+1}.html#programma'>← C${index+1} · ${esc(course.input.title)}</a>
    <p class='eyebrow'>Lezione ${position+1} di ${course.input.units.length} · edizione di lettura</p>
@@ -44,15 +46,16 @@ for(const [index,course] of courses.entries()){
    <article><section><h2>Prima di cominciare</h2>${paragraphs(unit.prerequisites)}</section>
    <section id='teoria'><p class='eyebrow'>Il modello, i passaggi, i limiti</p><h2>Costruisci il ragionamento.</h2>${paragraphs(unit.explanation)}</section>
    <section id='indagine'><p class='eyebrow'>Una previsione prima della risposta</p><h2>Esplora l’idea.</h2><h3>Che cosa ti aspetti?</h3>${paragraphs(unit.prediction)}${labLink}<h3>Metti alla prova la previsione</h3>${paragraphs(unit.activity)}<details><summary>Apri il confronto guidato</summary>${paragraphs(unit.referenceFeedback)}</details></section>
-   <section id='pratica'><p class='eyebrow'>${questions.length} problemi e verifiche</p><h2>Ora prova tu.</h2><p>Lavora su carta o nella tua lavagna prima di aprire lo svolgimento. Questi esercizi non assegnano voti e non registrano tentativi.</p>${practice}<h3>Cambia contesto</h3>${paragraphs(unit.transfer)}</section>
+   <section id='pratica'><p class='eyebrow'>${questions.length} problemi e verifiche</p><h2>Ora prova tu.</h2><p>Lavora su carta o nella tua lavagna prima di aprire lo svolgimento. Questi esercizi non assegnano voti e non registrano tentativi.</p>${reviewed}${practice}<h3>Cambia contesto</h3>${paragraphs(unit.transfer)}</section>
    <section id='recupero'><h2>Se un passaggio non torna.</h2>${paragraphs(unit.recovery)}<p><a href='./simulazione.html'>Allenati con la prova completa da 31 domande →</a></p></section>
    <section class='reader-sources'><h2>Fonti e versione</h2><ul>${sources}</ul><p class='notice'>Edizione in bozza. La copertura degli obiettivi e i controlli automatici non sostituiscono la revisione scientifica umana.</p></section>
    <nav class='reader-next' aria-label='Lezione precedente e successiva'>${previous?`<a href='./${esc(previous.id)}.html'>← ${esc(previous.title)}</a>`:'<span></span>'}${next?`<a href='./${esc(next.id)}.html'>${esc(next.title)} →</a>`:`<a href='./c${index+1}.html#programma'>Torna al percorso →</a>`}</nav>
    </article></div></div>`;
-  const html=frame(unit.title,body).replace('</head>',`<link rel='stylesheet' href='./lessons.css'></head>`);
+  const html=frame(unit.title,body).replace('</head>',`<link rel='stylesheet' href='./lessons.css'>${reviewed?reviewedAssetTags:''}</head>`);
   const file=unit.id+'.html';writeFileSync(out+'/'+file,html);
   pages.push({file,unitId:unit.id,courseId:course.id,questions:questions.length,sha256:createHash('sha256').update(html).digest('hex'),rawBytes:Buffer.byteLength(html),gzipBytes:gzipSync(html).length});
  }
 }
 writeFileSync(out+'/lessons-manifest.json',JSON.stringify({format:'ardesia-reading-edition/1',status:'DRAFT',humanApproval:false,pages,sourcePacks,sourceSha256:createHash('sha256').update(readFileSync(root+'courses.json')).digest('hex'),totalRawBytes:pages.reduce((n,p)=>n+p.rawBytes,0),totalGzipBytes:pages.reduce((n,p)=>n+p.gzipBytes,0)},null,2)+'\n');
+writeReviewedCatalog();
 console.log(`Physics reading edition: ${pages.length} complete lessons, no account or progress storage.`);

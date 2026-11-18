@@ -1,0 +1,8164 @@
+{
+  "snapshot": "5cfbdcb055ba3ba136f97fb56e997f06e6cf3605",
+  "count": 4000,
+  "distinctIds": 4000,
+  "levels": {
+    "base": 1000,
+    "facile": 1000,
+    "medio": 1000,
+    "difficile": 1000
+  },
+  "byTaxonomyUnit": {
+    "U1": {
+      "base": 40,
+      "facile": 40,
+      "medio": 40,
+      "difficile": 40
+    },
+    "U2": {
+      "base": 232,
+      "facile": 232,
+      "medio": 232,
+      "difficile": 232
+    },
+    "U3": {
+      "base": 200,
+      "facile": 200,
+      "medio": 200,
+      "difficile": 200
+    },
+    "U4": {
+      "base": 68,
+      "facile": 68,
+      "medio": 68,
+      "difficile": 68
+    },
+    "U5": {
+      "base": 168,
+      "facile": 168,
+      "medio": 168,
+      "difficile": 168
+    },
+    "U6": {
+      "base": 200,
+      "facile": 200,
+      "medio": 200,
+      "difficile": 200
+    },
+    "U7": {
+      "base": 92,
+      "facile": 92,
+      "medio": 92,
+      "difficile": 92
+    }
+  },
+  "formats": {
+    "completion": 1463,
+    "multiple_choice": 2537
+  },
+  "files": [
+    {
+      "path": "questions/U1-01.json",
+      "count": 160,
+      "sha256": "679ad061bdd77bcde2f4cfcaa7f28d91d693c1ca78c7e4c454d942aaec14c694",
+      "blob": "5f6af9b5a57692e121bd3df5e9813a54097b80dd"
+    },
+    {
+      "path": "questions/U2-01.json",
+      "count": 160,
+      "sha256": "c96078ec4fabf9c86cb76d09e86e079127cb5f136d58dfe4b0614525fd96bf17",
+      "blob": "e01c8ef116a886088c0582a6a7deb03a01e35670"
+    },
+    {
+      "path": "questions/U2-02.json",
+      "count": 160,
+      "sha256": "542b01ce15f3e735f4ae83c2dece4c597c31626d083b851b82942e060740715f",
+      "blob": "d8d94050a15e0f30dd3a3ea1f4d5808173ef7019"
+    },
+    {
+      "path": "questions/U2-03.json",
+      "count": 160,
+      "sha256": "40cced973a548d292f64415e2ef09a45d53325ea75e8039e36a979db994143b1",
+      "blob": "d9d0f4d8104f3a56e33bdb508dbfeac74a1e9556"
+    },
+    {
+      "path": "questions/U2-04.json",
+      "count": 160,
+      "sha256": "78b540e0bf35105eb6a849b3fa85937b84071c8080425e7b7ddf8f2e2d5eb980",
+      "blob": "980812df913b904cbb81ee844592dedb7942b26e"
+    },
+    {
+      "path": "questions/U2-05.json",
+      "count": 160,
+      "sha256": "ca4b67d9fca458788cd042232205f5bf7282b18529cf23571dca7acedb003260",
+      "blob": "d08587923a0d2757ccc98bb0d79c1e24ad4d2f19"
+    },
+    {
+      "path": "questions/U2-06.json",
+      "count": 128,
+      "sha256": "3ed00200df3de10c5f73e819a253021207c7071ed0140be136c35d3dbc9305a0",
+      "blob": "48a362e8b8fb8a8f2ce854712ed6cf18c1111633"
+    },
+    {
+      "path": "questions/U3-01.json",
+      "count": 160,
+      "sha256": "10054c831ff185bc7412f5f7dd68c1cefc7feea26889fac792856ffa3f9e0e8b",
+      "blob": "42c05ce2acc597a6af305c3381478f7e4adb4250"
+    },
+    {
+      "path": "questions/U3-02.json",
+      "count": 160,
+      "sha256": "8773e764bf72bb14dfb8613f28fb9118e73de75bcc289c4dbf63e14cff4431f2",
+      "blob": "9e926d9ae2a1957656a99630c10db15a1d92128a"
+    },
+    {
+      "path": "questions/U3-03.json",
+      "count": 160,
+      "sha256": "f91a9585e8334d0e3e6861d20711c7008f1e16955e8b8ecd3e5c26ae730d0f3f",
+      "blob": "04cdfa05a7dedb844d6317e6172a2bbb05b07702"
+    },
+    {
+      "path": "questions/U3-04.json",
+      "count": 160,
+      "sha256": "d781e78ea810d8cf95430f3b544af44eabf02088f90300bacb8399fc21894693",
+      "blob": "e9e23f2525a847229c11a14225869d54e53ee52e"
+    },
+    {
+      "path": "questions/U3-05.json",
+      "count": 160,
+      "sha256": "df12f4657bef73dcb5c0d24f2e099d6534abce442b7615c511b74a670f392e1f",
+      "blob": "7d4c05d8ca0b4cc1aba005b2978d9df56ba9ec3f"
+    },
+    {
+      "path": "questions/U4-01.json",
+      "count": 160,
+      "sha256": "dd28d70f85f8bbb4063f65973dd6ec398b424620a1d98694cc79541cb37c9d55",
+      "blob": "5c62fa61e3fdf7852efd01a021a6a557c26954a5"
+    },
+    {
+      "path": "questions/U4-02.json",
+      "count": 112,
+      "sha256": "aaac791b1d778fa845633e06245ca6071fe9c18f8aa0316ee7b1301f5c0e4aa9",
+      "blob": "3a3c3387504a3044c8a7469e1fb46120dc4d8c86"
+    },
+    {
+      "path": "questions/U5-01.json",
+      "count": 160,
+      "sha256": "3eed8f64e97002c31d1e55bb612508d5e71766fee62f3d02fc6c3e994b6be863",
+      "blob": "204c774973d96fad70335af39b67211f7e7bc518"
+    },
+    {
+      "path": "questions/U5-02.json",
+      "count": 160,
+      "sha256": "66ade7951eecbdbea93c529a628b01c2e8bf393959f757a2cf82aeb03cabb95c",
+      "blob": "943de52422241a61acb9dd866fd4e7747acbd1c1"
+    },
+    {
+      "path": "questions/U5-03.json",
+      "count": 160,
+      "sha256": "417d221f47f7e8e3b1f3af5f9a38fb9eebc7f344371b9e64b699e3892039fe6b",
+      "blob": "7cd5ded1afa7c686ef0e72fe65e14d42b232dd60"
+    },
+    {
+      "path": "questions/U5-04.json",
+      "count": 160,
+      "sha256": "dd52bd4155f765395f5cd10f89259dd35a1dab194da5942ee067e73578a1ff16",
+      "blob": "c3bd8f3795d7aabcda1ba0e9d8a25b130355464e"
+    },
+    {
+      "path": "questions/U5-05.json",
+      "count": 32,
+      "sha256": "e8f90aea8c862df7110419c599fbd2b7160d32b370a098146feb303553194378",
+      "blob": "c3abb7f2a0f3fbca5c07baf5ab845942833f4d7d"
+    },
+    {
+      "path": "questions/U6-01.json",
+      "count": 160,
+      "sha256": "a981cd7c03f402ee7b2f66e1de79e9f2cea686ffe3178cd19bcb8d17b66c122a",
+      "blob": "befdd6011122168c27fd32e77c8c0fc0cd9c2ebb"
+    },
+    {
+      "path": "questions/U6-02.json",
+      "count": 160,
+      "sha256": "fc81a187db9ee2f6d17bf299b333defd87a754ad04fc7efaddd2c40737ecc24d",
+      "blob": "9bb43653dc611e26beda37768cd8309a9a2c498b"
+    },
+    {
+      "path": "questions/U6-03.json",
+      "count": 160,
+      "sha256": "0bd13e1748174df8c30e06641ad153b8e44ab98df47f31c9f1aba7f925f88077",
+      "blob": "e413f185592c610cbf77436f540e4ece12ff6f3e"
+    },
+    {
+      "path": "questions/U6-04.json",
+      "count": 160,
+      "sha256": "179bf1cacfb83482e32bb41e99cb78296990faafba1fe9ce3b0e3cbc3a6a09cf",
+      "blob": "2817db8d6b69f7dc1d75e46ed9075ed82035153a"
+    },
+    {
+      "path": "questions/U6-05.json",
+      "count": 160,
+      "sha256": "383a0881e644ab8d95bde40b9b3b3a748eaf0baaeaab941e895077251fd087fe",
+      "blob": "401b58cc58838730989da7883b895477aa8eb274"
+    },
+    {
+      "path": "questions/U7-01.json",
+      "count": 160,
+      "sha256": "609dec0246ff1cd1b89afed2ea7258c0f65ff8e853735ce9196fe24829fc1233",
+      "blob": "f510f700b62cef9a5c21260df44a46b6fadeebca"
+    },
+    {
+      "path": "questions/U7-02.json",
+      "count": 160,
+      "sha256": "43ad92dba82bc16829a60f11071965f30bf0d8e115def3c1dc5eb2a3e229aeb7",
+      "blob": "a9e5a8c5aab54de7d48e79915be9e8c4c69ea595"
+    },
+    {
+      "path": "questions/U7-03.json",
+      "count": 48,
+      "sha256": "6db63e941006bc0ceed36d502c46b1d48d814a82c12874e6121e37c3d25a904e",
+      "blob": "14be79febfd083e40399d376a997b42b5f860ac2"
+    }
+  ],
+  "duplicateIds": {},
+  "schemaErrors": [],
+  "answerLabelMismatches": [
+    [
+      "u1-area-conversion-08",
+      "E",
+      "3000 kg/m³",
+      "3000"
+    ],
+    [
+      "u1-volume-conversion-08",
+      "E",
+      "750 mL",
+      "750"
+    ],
+    [
+      "u1-scientific-scale-07",
+      "A",
+      "40 nPa",
+      "40"
+    ],
+    [
+      "u1-scientific-scale-08",
+      "B",
+      "100000 m",
+      "10⁵ m"
+    ],
+    [
+      "u1-scientific-scale-10",
+      "D",
+      "10^(κ₂·n - n)·κ₁",
+      "10^(n·(κ₂ - 1))·κ₁"
+    ],
+    [
+      "u1-vector-sum-03",
+      "D",
+      "a + b m",
+      "a + b"
+    ],
+    [
+      "u1-vector-sum-06",
+      "E",
+      "5 m",
+      "5"
+    ],
+    [
+      "u1-vector-sum-08",
+      "A",
+      "4 m",
+      "4"
+    ],
+    [
+      "u1-vector-sum-09",
+      "D",
+      "D - b m",
+      "D - b"
+    ],
+    [
+      "u1-vector-sum-12",
+      "A",
+      "6 m",
+      "6"
+    ],
+    [
+      "u1-vector-sum-15",
+      "E",
+      "4 m",
+      "4"
+    ],
+    [
+      "u1-vector-sum-16",
+      "C",
+      "2 m",
+      "2"
+    ],
+    [
+      "u1-vector-difference-03",
+      "A",
+      "a - b m",
+      "a - b"
+    ],
+    [
+      "u1-vector-difference-08",
+      "D",
+      "3 m",
+      "3"
+    ],
+    [
+      "u1-vector-difference-09",
+      "D",
+      "D + b m",
+      "D + b"
+    ],
+    [
+      "u1-vector-difference-12",
+      "A",
+      "7/2 m",
+      "7/2"
+    ],
+    [
+      "u1-vector-difference-15",
+      "D",
+      "6 m",
+      "6"
+    ],
+    [
+      "u1-vector-difference-16",
+      "D",
+      "1 m",
+      "1"
+    ],
+    [
+      "u1-vector-perpendicular-03",
+      "B",
+      "√(a^2 + b^2) m",
+      "√(a^2 + b^2)"
+    ],
+    [
+      "u1-vector-perpendicular-06",
+      "A",
+      "2 m",
+      "2"
+    ],
+    [
+      "u1-vector-perpendicular-08",
+      "C",
+      "5 m",
+      "5"
+    ],
+    [
+      "u1-vector-perpendicular-09",
+      "B",
+      "√(R^2 - b^2) m",
+      "√(R^2 - b^2)"
+    ],
+    [
+      "u1-vector-perpendicular-12",
+      "C",
+      "15/2 m",
+      "15/2"
+    ],
+    [
+      "u1-vector-perpendicular-15",
+      "E",
+      "16/3 m",
+      "16/3"
+    ],
+    [
+      "u1-vector-perpendicular-16",
+      "E",
+      "4 m",
+      "4"
+    ],
+    [
+      "u1-vector-product-06",
+      "A",
+      "-6",
+      "−6"
+    ],
+    [
+      "u1-vector-projection-08",
+      "C",
+      "2 m",
+      "2"
+    ],
+    [
+      "u1-vector-projection-09",
+      "E",
+      "P/c m",
+      "P/c"
+    ],
+    [
+      "u1-vector-projection-12",
+      "A",
+      "4 m",
+      "4"
+    ],
+    [
+      "u1-vector-projection-15",
+      "D",
+      "8 m",
+      "8"
+    ],
+    [
+      "u1-vector-angle-ratio-09",
+      "C",
+      "b/T m",
+      "b/T"
+    ],
+    [
+      "u1-vector-angle-ratio-15",
+      "E",
+      "4 m",
+      "4"
+    ],
+    [
+      "u2-uniform-displacement-08",
+      "A",
+      "18 km/h",
+      "18"
+    ],
+    [
+      "u2-uniform-displacement-09",
+      "E",
+      "D/t m/s",
+      "D/t"
+    ],
+    [
+      "u2-uniform-displacement-12",
+      "C",
+      "10 m",
+      "10"
+    ],
+    [
+      "u2-uniform-displacement-15",
+      "C",
+      "4 m/s",
+      "4"
+    ],
+    [
+      "u2-uniform-displacement-16",
+      "C",
+      "2 s",
+      "2"
+    ],
+    [
+      "u2-uniform-position-08",
+      "E",
+      "6 m",
+      "6"
+    ],
+    [
+      "u2-uniform-position-09",
+      "E",
+      "s - 2·t m",
+      "s - 2·t"
+    ],
+    [
+      "u2-uniform-position-12",
+      "B",
+      "9 m",
+      "9"
+    ],
+    [
+      "u2-uniform-position-15",
+      "C",
+      "4 m",
+      "4"
+    ],
+    [
+      "u2-uniform-position-16",
+      "E",
+      "2 s",
+      "2"
+    ],
+    [
+      "u2-mean-velocity-08",
+      "D",
+      "1 m/s",
+      "1"
+    ],
+    [
+      "u2-mean-velocity-09",
+      "B",
+      "V·Δt m",
+      "V·Δt"
+    ],
+    [
+      "u2-mean-velocity-12",
+      "B",
+      "5/4 m/s",
+      "5/4"
+    ],
+    [
+      "u2-mean-velocity-15",
+      "E",
+      "4 m",
+      "4"
+    ],
+    [
+      "u2-roundtrip-average-03",
+      "D",
+      "2·v₁·v₂/(v₁ + v₂) m/s",
+      "2·v₁·v₂/(v₁ + v₂)"
+    ],
+    [
+      "u2-roundtrip-average-08",
+      "D",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u2-roundtrip-average-09",
+      "A",
+      "-V·v₂/(V - 2·v₂) m/s",
+      "-V·v₂/(V - 2·v₂)"
+    ],
+    [
+      "u2-roundtrip-average-12",
+      "A",
+      "3 m/s",
+      "3"
+    ],
+    [
+      "u2-roundtrip-average-15",
+      "B",
+      "4 m/s",
+      "4"
+    ],
+    [
+      "u2-roundtrip-average-16",
+      "E",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u2-equal-time-average-03",
+      "A",
+      "v₁/2 + v₂/2 m/s",
+      "v₁/2 + v₂/2"
+    ],
+    [
+      "u2-equal-time-average-08",
+      "B",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u2-equal-time-average-09",
+      "B",
+      "2·V - v₂ m/s",
+      "2·V - v₂"
+    ],
+    [
+      "u2-equal-time-average-12",
+      "B",
+      "3 m/s",
+      "3"
+    ],
+    [
+      "u2-equal-time-average-15",
+      "A",
+      "4 m/s",
+      "4"
+    ],
+    [
+      "u2-equal-time-average-16",
+      "E",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u2-mean-acceleration-03",
+      "A",
+      "v_f/2 - vᵢ/2 m/s²",
+      "v_f/2 - vᵢ/2"
+    ],
+    [
+      "u2-mean-acceleration-08",
+      "C",
+      "5/2 m/s²",
+      "5/2"
+    ],
+    [
+      "u2-mean-acceleration-09",
+      "A",
+      "2·A + vᵢ m/s",
+      "2·A + vᵢ"
+    ],
+    [
+      "u2-mean-acceleration-12",
+      "A",
+      "5/2 m/s²",
+      "5/2"
+    ],
+    [
+      "u2-mean-acceleration-15",
+      "B",
+      "10 m/s",
+      "10"
+    ],
+    [
+      "u2-mean-acceleration-16",
+      "D",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u2-rest-accelerated-distance-09",
+      "D",
+      "2·D/t^2 m/s²",
+      "2·D/t^2"
+    ],
+    [
+      "u2-rest-accelerated-distance-12",
+      "B",
+      "18 m",
+      "18"
+    ],
+    [
+      "u2-rest-accelerated-distance-15",
+      "E",
+      "4 m/s²",
+      "4"
+    ],
+    [
+      "u2-rest-accelerated-distance-16",
+      "D",
+      "2 s",
+      "2"
+    ],
+    [
+      "u2-accelerated-final-speed-03",
+      "B",
+      "v₀ + 2·t m/s",
+      "v₀ + 2·t"
+    ],
+    [
+      "u2-accelerated-final-speed-08",
+      "C",
+      "6 m/s",
+      "6"
+    ],
+    [
+      "u2-accelerated-final-speed-09",
+      "D",
+      "V - 2·t m/s",
+      "V - 2·t"
+    ],
+    [
+      "u2-accelerated-final-speed-12",
+      "C",
+      "9 m/s",
+      "9"
+    ],
+    [
+      "u2-accelerated-final-speed-15",
+      "D",
+      "4 m/s",
+      "4"
+    ],
+    [
+      "u2-accelerated-final-speed-16",
+      "A",
+      "2 s",
+      "2"
+    ],
+    [
+      "u2-stopping-distance-03",
+      "D",
+      "v^2/(2·a) m",
+      "v^2/(2·a)"
+    ],
+    [
+      "u2-stopping-distance-08",
+      "B",
+      "1 m",
+      "1"
+    ],
+    [
+      "u2-stopping-distance-09",
+      "C",
+      "√(2)·√(D)·√(a) m/s",
+      "√(2)·√(D)·√(a)"
+    ],
+    [
+      "u2-stopping-distance-12",
+      "C",
+      "3/2 m",
+      "3/2"
+    ],
+    [
+      "u2-stopping-distance-15",
+      "B",
+      "4 m/s",
+      "4"
+    ],
+    [
+      "u2-stopping-distance-16",
+      "D",
+      "2 m/s²",
+      "2"
+    ],
+    [
+      "u2-stopping-time-03",
+      "A",
+      "v/a s",
+      "v/a"
+    ],
+    [
+      "u2-stopping-time-08",
+      "E",
+      "1 s",
+      "1"
+    ],
+    [
+      "u2-stopping-time-09",
+      "C",
+      "T·a m/s",
+      "T·a"
+    ],
+    [
+      "u2-stopping-time-12",
+      "D",
+      "5/4 s",
+      "5/4"
+    ],
+    [
+      "u2-stopping-time-15",
+      "A",
+      "4 m/s",
+      "4"
+    ],
+    [
+      "u2-freefall-time-08",
+      "E",
+      "2 s",
+      "2"
+    ],
+    [
+      "u2-freefall-time-09",
+      "E",
+      "T^2·g/2 m",
+      "T^2·g/2"
+    ],
+    [
+      "u2-freefall-time-12",
+      "C",
+      "3/2 s",
+      "3/2"
+    ],
+    [
+      "u2-freefall-time-15",
+      "A",
+      "8 m",
+      "8"
+    ],
+    [
+      "u2-freefall-speed-03",
+      "A",
+      "√(2)·√(g)·√(h) m/s",
+      "√(2)·√(g)·√(h)"
+    ],
+    [
+      "u2-freefall-speed-08",
+      "D",
+      "16 m",
+      "16"
+    ],
+    [
+      "u2-freefall-speed-09",
+      "D",
+      "V^2/(2·h) m/s²",
+      "V^2/(2·h)"
+    ],
+    [
+      "u2-freefall-speed-12",
+      "C",
+      "5 m/s",
+      "5"
+    ],
+    [
+      "u2-freefall-speed-15",
+      "A",
+      "8 m/s²",
+      "8"
+    ],
+    [
+      "u2-freefall-speed-16",
+      "D",
+      "1 m",
+      "1"
+    ],
+    [
+      "u2-vertical-maximum-03",
+      "D",
+      "v₀^2/(2·g) m",
+      "v₀^2/(2·g)"
+    ],
+    [
+      "u2-vertical-maximum-08",
+      "A",
+      "1 m",
+      "1"
+    ],
+    [
+      "u2-vertical-maximum-09",
+      "D",
+      "√(2)·√(H)·√(g) m/s",
+      "√(2)·√(H)·√(g)"
+    ],
+    [
+      "u2-vertical-maximum-12",
+      "B",
+      "3/2 m",
+      "3/2"
+    ],
+    [
+      "u2-vertical-maximum-15",
+      "D",
+      "4 m/s",
+      "4"
+    ],
+    [
+      "u2-vertical-maximum-16",
+      "B",
+      "2 m/s²",
+      "2"
+    ],
+    [
+      "u2-vertical-flight-03",
+      "E",
+      "2·v₀/g s",
+      "2·v₀/g"
+    ],
+    [
+      "u2-vertical-flight-08",
+      "B",
+      "2 s",
+      "2"
+    ],
+    [
+      "u2-vertical-flight-09",
+      "C",
+      "T·g/2 m/s",
+      "T·g/2"
+    ],
+    [
+      "u2-vertical-flight-12",
+      "A",
+      "5/2 s",
+      "5/2"
+    ],
+    [
+      "u2-vertical-flight-15",
+      "D",
+      "4 m/s",
+      "4"
+    ],
+    [
+      "u2-projectile-range-03",
+      "B",
+      "u·w/5 m",
+      "u·w/5"
+    ],
+    [
+      "u2-projectile-range-06",
+      "C",
+      "2 m",
+      "2"
+    ],
+    [
+      "u2-projectile-range-08",
+      "B",
+      "4/5 m",
+      "4/5"
+    ],
+    [
+      "u2-projectile-range-09",
+      "D",
+      "5·R/w m/s",
+      "5·R/w"
+    ],
+    [
+      "u2-projectile-range-12",
+      "A",
+      "2 m",
+      "2"
+    ],
+    [
+      "u2-projectile-range-15",
+      "E",
+      "4 m/s",
+      "4"
+    ],
+    [
+      "u2-projectile-range-16",
+      "E",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u2-projectile-one-second-03",
+      "A",
+      "-g/2 + w m",
+      "-g/2 + w"
+    ],
+    [
+      "u2-projectile-one-second-08",
+      "C",
+      "3 m",
+      "3"
+    ],
+    [
+      "u2-projectile-one-second-09",
+      "E",
+      "-2·H + 2·w m/s²",
+      "-2·H + 2·w"
+    ],
+    [
+      "u2-projectile-one-second-12",
+      "B",
+      "7/2 m",
+      "7/2"
+    ],
+    [
+      "u2-projectile-one-second-15",
+      "E",
+      "4 m/s²",
+      "4"
+    ],
+    [
+      "u2-projectile-one-second-16",
+      "B",
+      "4 m/s",
+      "4"
+    ],
+    [
+      "u2-centripetal-acceleration-08",
+      "A",
+      "2 m/s²",
+      "2"
+    ],
+    [
+      "u2-centripetal-acceleration-09",
+      "B",
+      "√(A)·√(r) m/s",
+      "√(A)·√(r)"
+    ],
+    [
+      "u2-centripetal-acceleration-12",
+      "E",
+      "3 m/s²",
+      "3"
+    ],
+    [
+      "u2-centripetal-acceleration-15",
+      "A",
+      "4 m/s",
+      "4"
+    ],
+    [
+      "u2-centripetal-acceleration-16",
+      "D",
+      "2 m",
+      "2"
+    ],
+    [
+      "u2-circular-speed-03",
+      "B",
+      "2·π·r/T m/s",
+      "2·π·r/T"
+    ],
+    [
+      "u2-circular-speed-06",
+      "C",
+      "π s",
+      "π"
+    ],
+    [
+      "u2-circular-speed-08",
+      "B",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u2-circular-speed-09",
+      "A",
+      "V·T/(2·π) m",
+      "V·T/(2·π)"
+    ],
+    [
+      "u2-circular-speed-12",
+      "E",
+      "1 + 2·π m/s",
+      "1 + 2·π"
+    ],
+    [
+      "u2-circular-speed-15",
+      "B",
+      "2 m",
+      "2"
+    ],
+    [
+      "u2-frequency-count-03",
+      "A",
+      "N/t Hz",
+      "N/t"
+    ],
+    [
+      "u2-frequency-count-08",
+      "D",
+      "1 Hz",
+      "1"
+    ],
+    [
+      "u2-frequency-count-12",
+      "A",
+      "5/4 Hz",
+      "5/4"
+    ],
+    [
+      "u2-circular-force-03",
+      "A",
+      "m·v^2/2 N",
+      "m·v^2/2"
+    ],
+    [
+      "u2-circular-force-08",
+      "E",
+      "4 N",
+      "4"
+    ],
+    [
+      "u2-circular-force-09",
+      "C",
+      "2·F/v^2 kg",
+      "2·F/v^2"
+    ],
+    [
+      "u2-circular-force-12",
+      "E",
+      "18 N",
+      "18"
+    ],
+    [
+      "u2-circular-force-15",
+      "A",
+      "4 kg",
+      "4"
+    ],
+    [
+      "u2-circular-force-16",
+      "E",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u2-opposed-force-acceleration-08",
+      "D",
+      "2 m/s²",
+      "2"
+    ],
+    [
+      "u2-opposed-force-acceleration-09",
+      "E",
+      "2·A + R N",
+      "2·A + R"
+    ],
+    [
+      "u2-opposed-force-acceleration-12",
+      "B",
+      "5/2 m/s²",
+      "5/2"
+    ],
+    [
+      "u2-opposed-force-acceleration-15",
+      "B",
+      "10 N",
+      "10"
+    ],
+    [
+      "u2-opposed-force-acceleration-16",
+      "C",
+      "2 N",
+      "2"
+    ],
+    [
+      "u2-elevator-apparent-weight-03",
+      "C",
+      "m·(a + 10) N",
+      "m·(a + 10)"
+    ],
+    [
+      "u2-elevator-apparent-weight-08",
+      "E",
+      "480 N",
+      "480"
+    ],
+    [
+      "u2-elevator-apparent-weight-09",
+      "D",
+      "N/(a + 10) kg",
+      "N/(a + 10)"
+    ],
+    [
+      "u2-elevator-apparent-weight-12",
+      "C",
+      "660 N",
+      "660"
+    ],
+    [
+      "u2-elevator-apparent-weight-15",
+      "B",
+      "60 kg",
+      "60"
+    ],
+    [
+      "u2-elevator-apparent-weight-16",
+      "D",
+      "2 m/s²",
+      "2"
+    ],
+    [
+      "u2-two-blocks-system-03",
+      "A",
+      "F/(m + 2) m/s²",
+      "F/(m + 2)"
+    ],
+    [
+      "u2-two-blocks-system-08",
+      "D",
+      "1/2 m/s²",
+      "1/2"
+    ],
+    [
+      "u2-two-blocks-system-09",
+      "C",
+      "A·(m + 2) N",
+      "A·(m + 2)"
+    ],
+    [
+      "u2-two-blocks-system-12",
+      "A",
+      "7/12 m/s²",
+      "7/12"
+    ],
+    [
+      "u2-two-blocks-system-15",
+      "D",
+      "4 N",
+      "4"
+    ],
+    [
+      "u2-two-blocks-system-16",
+      "C",
+      "2 kg",
+      "2"
+    ],
+    [
+      "u2-atwood-06",
+      "C",
+      "15 N",
+      "15"
+    ],
+    [
+      "u2-atwood-08",
+      "C",
+      "6 m/s²",
+      "6"
+    ],
+    [
+      "u2-atwood-09",
+      "D",
+      "-m·(A + 10)/(A - 10) kg",
+      "-m·(A + 10)/(A - 10)"
+    ],
+    [
+      "u2-atwood-12",
+      "C",
+      "11/2 m/s²",
+      "11/2"
+    ],
+    [
+      "u2-atwood-15",
+      "E",
+      "6 kg",
+      "6"
+    ],
+    [
+      "u2-incline-acceleration-03",
+      "B",
+      "g·s m/s²",
+      "g·s"
+    ],
+    [
+      "u2-incline-acceleration-08",
+      "A",
+      "5 m/s²",
+      "5"
+    ],
+    [
+      "u2-incline-acceleration-09",
+      "A",
+      "A/s m/s²",
+      "A/s"
+    ],
+    [
+      "u2-incline-acceleration-12",
+      "C",
+      "17/2 m/s²",
+      "17/2"
+    ],
+    [
+      "u2-incline-acceleration-15",
+      "C",
+      "20 m/s²",
+      "20"
+    ],
+    [
+      "u2-incline-normal-03",
+      "D",
+      "10·m·c N",
+      "10·m·c"
+    ],
+    [
+      "u2-incline-normal-08",
+      "A",
+      "10 N",
+      "10"
+    ],
+    [
+      "u2-incline-normal-09",
+      "A",
+      "N/(10·c) kg",
+      "N/(10·c)"
+    ],
+    [
+      "u2-incline-normal-12",
+      "D",
+      "21 N",
+      "21"
+    ],
+    [
+      "u2-incline-normal-15",
+      "C",
+      "4 kg",
+      "4"
+    ],
+    [
+      "u2-kinetic-friction-03",
+      "E",
+      "μ_d·N N",
+      "μ_d·N"
+    ],
+    [
+      "u2-kinetic-friction-08",
+      "A",
+      "2 N",
+      "2"
+    ],
+    [
+      "u2-kinetic-friction-12",
+      "D",
+      "3/2 N",
+      "3/2"
+    ],
+    [
+      "u2-kinetic-friction-16",
+      "E",
+      "4 N",
+      "4"
+    ],
+    [
+      "u2-static-threshold-08",
+      "D",
+      "10 N",
+      "10"
+    ],
+    [
+      "u2-static-threshold-12",
+      "D",
+      "20 N",
+      "20"
+    ],
+    [
+      "u2-static-threshold-16",
+      "D",
+      "2 kg",
+      "2"
+    ],
+    [
+      "u2-incline-friction-03",
+      "D",
+      "g·(3 - 4·μ)/5 m/s²",
+      "g·(3 - 4·μ)/5"
+    ],
+    [
+      "u2-incline-friction-08",
+      "C",
+      "2 m/s²",
+      "2"
+    ],
+    [
+      "u2-incline-friction-09",
+      "B",
+      "-5·A/(4·μ - 3) m/s²",
+      "-5·A/(4·μ - 3)"
+    ],
+    [
+      "u2-incline-friction-12",
+      "C",
+      "5 m/s²",
+      "5"
+    ],
+    [
+      "u2-incline-friction-15",
+      "E",
+      "20 m/s²",
+      "20"
+    ],
+    [
+      "u2-hooke-force-03",
+      "D",
+      "k·ℓ N",
+      "k·ℓ"
+    ],
+    [
+      "u2-hooke-force-08",
+      "A",
+      "4 N",
+      "4"
+    ],
+    [
+      "u2-hooke-force-09",
+      "A",
+      "F/ℓ N/m",
+      "F/ℓ"
+    ],
+    [
+      "u2-hooke-force-12",
+      "C",
+      "10 N",
+      "10"
+    ],
+    [
+      "u2-hooke-force-15",
+      "E",
+      "4 N/m",
+      "4"
+    ],
+    [
+      "u2-hooke-force-16",
+      "D",
+      "2 m",
+      "2"
+    ],
+    [
+      "u2-parallel-springs-03",
+      "B",
+      "k₁ + k₂ N/m",
+      "k₁ + k₂"
+    ],
+    [
+      "u2-parallel-springs-06",
+      "D",
+      "2 N",
+      "2"
+    ],
+    [
+      "u2-parallel-springs-08",
+      "D",
+      "4 N/m",
+      "4"
+    ],
+    [
+      "u2-parallel-springs-09",
+      "E",
+      "K - k₂ N/m",
+      "K - k₂"
+    ],
+    [
+      "u2-parallel-springs-12",
+      "A",
+      "6 N/m",
+      "6"
+    ],
+    [
+      "u2-parallel-springs-15",
+      "E",
+      "4 N/m",
+      "4"
+    ],
+    [
+      "u2-parallel-springs-16",
+      "A",
+      "2 N/m",
+      "2"
+    ],
+    [
+      "u2-series-springs-03",
+      "A",
+      "k₁·k₂/(k₁ + k₂) N/m",
+      "k₁·k₂/(k₁ + k₂)"
+    ],
+    [
+      "u2-series-springs-08",
+      "B",
+      "1 N/m",
+      "1"
+    ],
+    [
+      "u2-series-springs-09",
+      "B",
+      "-K·k₂/(K - k₂) N/m",
+      "-K·k₂/(K - k₂)"
+    ],
+    [
+      "u2-series-springs-12",
+      "A",
+      "3/2 N/m",
+      "3/2"
+    ],
+    [
+      "u2-series-springs-15",
+      "E",
+      "4 N/m",
+      "4"
+    ],
+    [
+      "u2-series-springs-16",
+      "E",
+      "2 N/m",
+      "2"
+    ],
+    [
+      "u2-static-spring-extension-03",
+      "C",
+      "10·m/k m",
+      "10·m/k"
+    ],
+    [
+      "u2-static-spring-extension-08",
+      "D",
+      "10 m",
+      "10"
+    ],
+    [
+      "u2-static-spring-extension-09",
+      "E",
+      "ℓ·k/10 kg",
+      "ℓ·k/10"
+    ],
+    [
+      "u2-static-spring-extension-12",
+      "C",
+      "25/2 m",
+      "25/2"
+    ],
+    [
+      "u2-static-spring-extension-15",
+      "A",
+      "4 kg",
+      "4"
+    ],
+    [
+      "u2-spring-energy-03",
+      "D",
+      "k·ℓ^2/2 J",
+      "k·ℓ^2/2"
+    ],
+    [
+      "u2-spring-energy-08",
+      "A",
+      "4 J",
+      "4"
+    ],
+    [
+      "u2-spring-energy-09",
+      "B",
+      "2·U/ℓ^2 N/m",
+      "2·U/ℓ^2"
+    ],
+    [
+      "u2-spring-energy-12",
+      "C",
+      "18 J",
+      "18"
+    ],
+    [
+      "u2-spring-energy-15",
+      "A",
+      "4 N/m",
+      "4"
+    ],
+    [
+      "u2-spring-energy-16",
+      "D",
+      "2 m",
+      "2"
+    ],
+    [
+      "u2-gravitational-energy-08",
+      "D",
+      "40 J",
+      "40"
+    ],
+    [
+      "u2-gravitational-energy-09",
+      "A",
+      "U/(10·h) kg",
+      "U/(10·h)"
+    ],
+    [
+      "u2-gravitational-energy-12",
+      "B",
+      "100 J",
+      "100"
+    ],
+    [
+      "u2-gravitational-energy-15",
+      "D",
+      "4 kg",
+      "4"
+    ],
+    [
+      "u2-gravitational-energy-16",
+      "E",
+      "2 m",
+      "2"
+    ],
+    [
+      "u2-oblique-work-03",
+      "D",
+      "F·s/2 J",
+      "F·s/2"
+    ],
+    [
+      "u2-oblique-work-08",
+      "C",
+      "2 J",
+      "2"
+    ],
+    [
+      "u2-oblique-work-09",
+      "C",
+      "2·W/s N",
+      "2·W/s"
+    ],
+    [
+      "u2-oblique-work-12",
+      "E",
+      "5 J",
+      "5"
+    ],
+    [
+      "u2-oblique-work-15",
+      "E",
+      "4 N",
+      "4"
+    ],
+    [
+      "u2-oblique-work-16",
+      "E",
+      "2 m",
+      "2"
+    ],
+    [
+      "u2-kinetic-work-difference-08",
+      "E",
+      "15 J",
+      "15"
+    ],
+    [
+      "u2-kinetic-work-difference-09",
+      "E",
+      "√(W + vᵢ^2) m/s",
+      "√(W + vᵢ^2)"
+    ],
+    [
+      "u2-kinetic-work-difference-12",
+      "B",
+      "47/2 J",
+      "47/2"
+    ],
+    [
+      "u2-kinetic-work-difference-15",
+      "C",
+      "6 m/s",
+      "6"
+    ],
+    [
+      "u2-kinetic-work-difference-16",
+      "D",
+      "1 m/s",
+      "1"
+    ],
+    [
+      "u2-mechanical-power-08",
+      "C",
+      "4 W",
+      "4"
+    ],
+    [
+      "u2-mechanical-power-09",
+      "A",
+      "P/v N",
+      "P/v"
+    ],
+    [
+      "u2-mechanical-power-12",
+      "C",
+      "10 W",
+      "10"
+    ],
+    [
+      "u2-mechanical-power-15",
+      "A",
+      "4 N",
+      "4"
+    ],
+    [
+      "u2-mechanical-power-16",
+      "E",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u2-lift-time-03",
+      "C",
+      "20·m/P s",
+      "20·m/P"
+    ],
+    [
+      "u2-lift-time-08",
+      "A",
+      "20 s",
+      "20"
+    ],
+    [
+      "u2-lift-time-09",
+      "D",
+      "T·P/20 kg",
+      "T·P/20"
+    ],
+    [
+      "u2-lift-time-12",
+      "D",
+      "25 s",
+      "25"
+    ],
+    [
+      "u2-lift-time-15",
+      "D",
+      "4 kg",
+      "4"
+    ],
+    [
+      "u2-efficiency-09",
+      "B",
+      "η·E_in J",
+      "η·E_in"
+    ],
+    [
+      "u2-efficiency-15",
+      "C",
+      "1 J",
+      "1"
+    ],
+    [
+      "u2-impulse-08",
+      "D",
+      "4 N·s",
+      "4"
+    ],
+    [
+      "u2-impulse-09",
+      "B",
+      "J/Δt N",
+      "J/Δt"
+    ],
+    [
+      "u2-impulse-12",
+      "D",
+      "10 N·s",
+      "10"
+    ],
+    [
+      "u2-impulse-15",
+      "C",
+      "4 N",
+      "4"
+    ],
+    [
+      "u2-impulse-16",
+      "D",
+      "2 s",
+      "2"
+    ],
+    [
+      "u2-momentum-03",
+      "B",
+      "m·v kg·m/s",
+      "m·v"
+    ],
+    [
+      "u2-momentum-08",
+      "C",
+      "4 kg·m/s",
+      "4"
+    ],
+    [
+      "u2-momentum-09",
+      "D",
+      "p/v kg",
+      "p/v"
+    ],
+    [
+      "u2-momentum-12",
+      "A",
+      "10 kg·m/s",
+      "10"
+    ],
+    [
+      "u2-momentum-15",
+      "D",
+      "4 kg",
+      "4"
+    ],
+    [
+      "u2-momentum-16",
+      "E",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u2-inelastic-rest-08",
+      "E",
+      "1 m/s",
+      "1"
+    ],
+    [
+      "u2-inelastic-rest-09",
+      "A",
+      "-2·V/(V - v) kg",
+      "-2·V/(V - v)"
+    ],
+    [
+      "u2-inelastic-rest-12",
+      "B",
+      "11/6 m/s",
+      "11/6"
+    ],
+    [
+      "u2-inelastic-rest-15",
+      "D",
+      "4 kg",
+      "4"
+    ],
+    [
+      "u2-inelastic-rest-16",
+      "A",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u2-inelastic-opposed-03",
+      "D",
+      "u/2 - w/2 m/s",
+      "u/2 - w/2"
+    ],
+    [
+      "u2-inelastic-opposed-08",
+      "C",
+      "3/2 m/s",
+      "3/2"
+    ],
+    [
+      "u2-inelastic-opposed-09",
+      "B",
+      "2·V + w m/s",
+      "2·V + w"
+    ],
+    [
+      "u2-inelastic-opposed-12",
+      "C",
+      "7/4 m/s",
+      "7/4"
+    ],
+    [
+      "u2-inelastic-opposed-15",
+      "A",
+      "6 m/s",
+      "6"
+    ],
+    [
+      "u2-inelastic-opposed-16",
+      "C",
+      "1 m/s",
+      "1"
+    ],
+    [
+      "u2-recoil-03",
+      "B",
+      "m·v/2 m/s",
+      "m·v/2"
+    ],
+    [
+      "u2-recoil-08",
+      "E",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u2-recoil-09",
+      "C",
+      "2·U/v kg",
+      "2·U/v"
+    ],
+    [
+      "u2-recoil-12",
+      "B",
+      "5 m/s",
+      "5"
+    ],
+    [
+      "u2-recoil-15",
+      "C",
+      "4 kg",
+      "4"
+    ],
+    [
+      "u2-recoil-16",
+      "A",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u2-center-mass-weighted-08",
+      "B",
+      "1 m",
+      "1"
+    ],
+    [
+      "u2-center-mass-weighted-09",
+      "B",
+      "-2·X/(X - d) kg",
+      "-2·X/(X - d)"
+    ],
+    [
+      "u2-center-mass-weighted-12",
+      "C",
+      "11/6 m",
+      "11/6"
+    ],
+    [
+      "u2-center-mass-weighted-15",
+      "D",
+      "4 kg",
+      "4"
+    ],
+    [
+      "u2-center-mass-weighted-16",
+      "A",
+      "2 m",
+      "2"
+    ],
+    [
+      "u2-center-mass-equal-03",
+      "A",
+      "x₁/2 + x₂/2 m",
+      "x₁/2 + x₂/2"
+    ],
+    [
+      "u2-center-mass-equal-06",
+      "B",
+      "3 m",
+      "3"
+    ],
+    [
+      "u2-center-mass-equal-08",
+      "C",
+      "2 m",
+      "2"
+    ],
+    [
+      "u2-center-mass-equal-09",
+      "C",
+      "2·X - x₂ m",
+      "2·X - x₂"
+    ],
+    [
+      "u2-center-mass-equal-12",
+      "E",
+      "3 m",
+      "3"
+    ],
+    [
+      "u2-center-mass-equal-15",
+      "C",
+      "4 m",
+      "4"
+    ],
+    [
+      "u2-center-mass-equal-16",
+      "E",
+      "2 m",
+      "2"
+    ],
+    [
+      "u2-torque-perpendicular-08",
+      "A",
+      "4 N·m",
+      "4"
+    ],
+    [
+      "u2-torque-perpendicular-09",
+      "D",
+      "M/r N",
+      "M/r"
+    ],
+    [
+      "u2-torque-perpendicular-12",
+      "A",
+      "10 N·m",
+      "10"
+    ],
+    [
+      "u2-torque-perpendicular-15",
+      "C",
+      "4 N",
+      "4"
+    ],
+    [
+      "u2-torque-perpendicular-16",
+      "E",
+      "2 m",
+      "2"
+    ],
+    [
+      "u2-lever-equilibrium-08",
+      "B",
+      "2 N",
+      "2"
+    ],
+    [
+      "u2-lever-equilibrium-09",
+      "C",
+      "2·F/b N",
+      "2·F/b"
+    ],
+    [
+      "u2-lever-equilibrium-12",
+      "E",
+      "5 N",
+      "5"
+    ],
+    [
+      "u2-lever-equilibrium-15",
+      "A",
+      "4 N",
+      "4"
+    ],
+    [
+      "u2-lever-equilibrium-16",
+      "B",
+      "2 m",
+      "2"
+    ],
+    [
+      "u2-biceps-lever-03",
+      "B",
+      "3·W/(10·b) N",
+      "3·W/(10·b)"
+    ],
+    [
+      "u2-biceps-lever-08",
+      "C",
+      "60 N",
+      "60"
+    ],
+    [
+      "u2-biceps-lever-09",
+      "B",
+      "10·F·b/3 N",
+      "10·F·b/3"
+    ],
+    [
+      "u2-biceps-lever-12",
+      "E",
+      "75 N",
+      "75"
+    ],
+    [
+      "u2-biceps-lever-15",
+      "D",
+      "20 N",
+      "20"
+    ],
+    [
+      "u2-force-couple-08",
+      "E",
+      "4 N·m",
+      "4"
+    ],
+    [
+      "u2-force-couple-09",
+      "E",
+      "M/d N",
+      "M/d"
+    ],
+    [
+      "u2-force-couple-12",
+      "D",
+      "10 N·m",
+      "10"
+    ],
+    [
+      "u2-force-couple-15",
+      "B",
+      "4 N",
+      "4"
+    ],
+    [
+      "u2-force-couple-16",
+      "D",
+      "2 m",
+      "2"
+    ],
+    [
+      "u2-circular-orbit-03",
+      "D",
+      "√(μ)/√(r) m/s",
+      "√(μ)/√(r)"
+    ],
+    [
+      "u2-circular-orbit-08",
+      "C",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u2-circular-orbit-09",
+      "A",
+      "V^2·r m³/s²",
+      "V^2·r"
+    ],
+    [
+      "u2-circular-orbit-12",
+      "C",
+      "√(2)/4 + 1 m/s",
+      "√(2)/4 + 1"
+    ],
+    [
+      "u2-circular-orbit-15",
+      "E",
+      "16 m³/s²",
+      "16"
+    ],
+    [
+      "u2-descent-with-loss-03",
+      "A",
+      "√(20·h - 2·L) m/s",
+      "√(20·h - 2·L)"
+    ],
+    [
+      "u2-descent-with-loss-08",
+      "E",
+      "4 m/s",
+      "4"
+    ],
+    [
+      "u2-descent-with-loss-09",
+      "D",
+      "V^2/20 + L/10 m",
+      "V^2/20 + L/10"
+    ],
+    [
+      "u2-descent-with-loss-12",
+      "D",
+      "6 m/s",
+      "6"
+    ],
+    [
+      "u2-descent-with-loss-15",
+      "B",
+      "2 m",
+      "2"
+    ],
+    [
+      "u2-descent-with-loss-16",
+      "B",
+      "2 m",
+      "2"
+    ],
+    [
+      "u2-spring-launch-03",
+      "A",
+      "√(2)·ℓ/√(m) m/s",
+      "√(2)·ℓ/√(m)"
+    ],
+    [
+      "u2-spring-launch-08",
+      "A",
+      "1 m/s",
+      "1"
+    ],
+    [
+      "u2-spring-launch-09",
+      "B",
+      "2·ℓ^2/V^2 kg",
+      "2·ℓ^2/V^2"
+    ],
+    [
+      "u2-spring-launch-12",
+      "D",
+      "1/2 + √(2) m/s",
+      "1/2 + √(2)"
+    ],
+    [
+      "u2-spring-launch-15",
+      "E",
+      "8 kg",
+      "8"
+    ],
+    [
+      "u2-spring-launch-16",
+      "E",
+      "1 m",
+      "1"
+    ],
+    [
+      "u2-elastic-target-speed-03",
+      "A",
+      "2·m·u/(m + 2) m/s",
+      "2·m·u/(m + 2)"
+    ],
+    [
+      "u2-elastic-target-speed-08",
+      "D",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u2-elastic-target-speed-09",
+      "B",
+      "-2·V/(V - 2·u) kg",
+      "-2·V/(V - 2·u)"
+    ],
+    [
+      "u2-elastic-target-speed-12",
+      "E",
+      "11/3 m/s",
+      "11/3"
+    ],
+    [
+      "u2-elastic-target-speed-15",
+      "C",
+      "4 kg",
+      "4"
+    ],
+    [
+      "u2-elastic-target-speed-16",
+      "A",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u2-collision-energy-loss-03",
+      "E",
+      "m·u^2/4 J",
+      "m·u^2/4"
+    ],
+    [
+      "u2-collision-energy-loss-08",
+      "C",
+      "2 J",
+      "2"
+    ],
+    [
+      "u2-collision-energy-loss-09",
+      "B",
+      "4·E/u^2 kg",
+      "4·E/u^2"
+    ],
+    [
+      "u2-collision-energy-loss-12",
+      "E",
+      "9 J",
+      "9"
+    ],
+    [
+      "u2-collision-energy-loss-15",
+      "C",
+      "4 kg",
+      "4"
+    ],
+    [
+      "u2-collision-energy-loss-16",
+      "A",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u2-horizontal-braking-friction-03",
+      "C",
+      "v^2/(20·μ) m",
+      "v^2/(20·μ)"
+    ],
+    [
+      "u2-horizontal-braking-friction-08",
+      "D",
+      "1 m",
+      "1"
+    ],
+    [
+      "u2-horizontal-braking-friction-09",
+      "A",
+      "2·√(5)·√(D)·√(μ) m/s",
+      "2·√(5)·√(D)·√(μ)"
+    ],
+    [
+      "u2-horizontal-braking-friction-12",
+      "E",
+      "3/2 m",
+      "3/2"
+    ],
+    [
+      "u2-horizontal-braking-friction-15",
+      "D",
+      "4 m/s",
+      "4"
+    ],
+    [
+      "u3-pressure-area-08",
+      "D",
+      "4 Pa",
+      "4"
+    ],
+    [
+      "u3-pressure-area-09",
+      "C",
+      "p·A N",
+      "p·A"
+    ],
+    [
+      "u3-pressure-area-12",
+      "E",
+      "9/2 Pa",
+      "9/2"
+    ],
+    [
+      "u3-pressure-area-15",
+      "C",
+      "20 N",
+      "20"
+    ],
+    [
+      "u3-density-03",
+      "E",
+      "m/V kg/L",
+      "m/V"
+    ],
+    [
+      "u3-density-08",
+      "A",
+      "3/2 kg/L",
+      "3/2"
+    ],
+    [
+      "u3-density-09",
+      "D",
+      "ρ·V kg",
+      "ρ·V"
+    ],
+    [
+      "u3-density-12",
+      "E",
+      "23/20 kg/L",
+      "23/20"
+    ],
+    [
+      "u3-density-15",
+      "D",
+      "4 kg",
+      "4"
+    ],
+    [
+      "u3-stevino-gauge-08",
+      "A",
+      "20 kPa",
+      "20"
+    ],
+    [
+      "u3-stevino-gauge-09",
+      "D",
+      "Δp/(10·h) kg/L",
+      "Δp/(10·h)"
+    ],
+    [
+      "u3-stevino-gauge-12",
+      "D",
+      "40 kPa",
+      "40"
+    ],
+    [
+      "u3-stevino-gauge-15",
+      "D",
+      "2 kg/L",
+      "2"
+    ],
+    [
+      "u3-stevino-gauge-16",
+      "A",
+      "2 m",
+      "2"
+    ],
+    [
+      "u3-stevino-absolute-08",
+      "B",
+      "120 kPa",
+      "120"
+    ],
+    [
+      "u3-stevino-absolute-09",
+      "A",
+      "p - 10·h kPa",
+      "p - 10·h"
+    ],
+    [
+      "u3-stevino-absolute-12",
+      "B",
+      "105 kPa",
+      "105"
+    ],
+    [
+      "u3-stevino-absolute-15",
+      "B",
+      "80 kPa",
+      "80"
+    ],
+    [
+      "u3-stevino-absolute-16",
+      "A",
+      "2 m",
+      "2"
+    ],
+    [
+      "u3-layered-liquids-03",
+      "A",
+      "10·h_a + 8·h_o kPa",
+      "10·h_a + 8·h_o"
+    ],
+    [
+      "u3-layered-liquids-08",
+      "B",
+      "18 kPa",
+      "18"
+    ],
+    [
+      "u3-layered-liquids-09",
+      "C",
+      "p_r/10 - 4·h_o/5 m",
+      "p_r/10 - 4·h_o/5"
+    ],
+    [
+      "u3-layered-liquids-12",
+      "E",
+      "27 kPa",
+      "27"
+    ],
+    [
+      "u3-layered-liquids-15",
+      "A",
+      "2 m",
+      "2"
+    ],
+    [
+      "u3-layered-liquids-16",
+      "E",
+      "1 m",
+      "1"
+    ],
+    [
+      "u3-communicating-columns-03",
+      "A",
+      "10·ρ_1/ρ_2 cm",
+      "10·ρ_1/ρ_2"
+    ],
+    [
+      "u3-communicating-columns-08",
+      "A",
+      "5 cm",
+      "5"
+    ],
+    [
+      "u3-communicating-columns-09",
+      "B",
+      "h_2·ρ_2/10 kg/L",
+      "h_2·ρ_2/10"
+    ],
+    [
+      "u3-communicating-columns-12",
+      "A",
+      "13/2 cm",
+      "13/2"
+    ],
+    [
+      "u3-communicating-columns-15",
+      "B",
+      "4/5 kg/L",
+      "4/5"
+    ],
+    [
+      "u3-differential-manometer-03",
+      "C",
+      "p_1 - Δh/10 kPa",
+      "p_1 - Δh/10"
+    ],
+    [
+      "u3-differential-manometer-08",
+      "C",
+      "98 kPa",
+      "98"
+    ],
+    [
+      "u3-differential-manometer-09",
+      "B",
+      "p_2 + Δh/10 kPa",
+      "p_2 + Δh/10"
+    ],
+    [
+      "u3-differential-manometer-12",
+      "A",
+      "177/2 kPa",
+      "177/2"
+    ],
+    [
+      "u3-differential-manometer-15",
+      "E",
+      "80 kPa",
+      "80"
+    ],
+    [
+      "u3-differential-manometer-16",
+      "B",
+      "20 cm",
+      "20"
+    ],
+    [
+      "u3-vertical-wall-force-08",
+      "B",
+      "40 kN",
+      "40"
+    ],
+    [
+      "u3-vertical-wall-force-09",
+      "C",
+      "F/(5·h^2) m",
+      "F/(5·h^2)"
+    ],
+    [
+      "u3-vertical-wall-force-12",
+      "B",
+      "60 kN",
+      "60"
+    ],
+    [
+      "u3-vertical-wall-force-15",
+      "E",
+      "1 m",
+      "1"
+    ],
+    [
+      "u3-vertical-wall-force-16",
+      "C",
+      "2 m",
+      "2"
+    ],
+    [
+      "u3-hydraulic-force-08",
+      "E",
+      "10 N",
+      "10"
+    ],
+    [
+      "u3-hydraulic-force-09",
+      "D",
+      "F_o/A_o N",
+      "F_o/A_o"
+    ],
+    [
+      "u3-hydraulic-force-12",
+      "E",
+      "11 N",
+      "11"
+    ],
+    [
+      "u3-hydraulic-force-15",
+      "A",
+      "3 N",
+      "3"
+    ],
+    [
+      "u3-hydraulic-force-16",
+      "A",
+      "5 cm²",
+      "5"
+    ],
+    [
+      "u3-hydraulic-stroke-03",
+      "C",
+      "20·d_o/A_i cm",
+      "20·d_o/A_i"
+    ],
+    [
+      "u3-hydraulic-stroke-08",
+      "E",
+      "10 cm",
+      "10"
+    ],
+    [
+      "u3-hydraulic-stroke-09",
+      "C",
+      "20·d_o/d_i cm²",
+      "20·d_o/d_i"
+    ],
+    [
+      "u3-hydraulic-stroke-12",
+      "A",
+      "25/2 cm",
+      "25/2"
+    ],
+    [
+      "u3-hydraulic-stroke-15",
+      "E",
+      "4 cm²",
+      "4"
+    ],
+    [
+      "u3-archimedes-force-08",
+      "C",
+      "20 N",
+      "20"
+    ],
+    [
+      "u3-archimedes-force-09",
+      "A",
+      "F_A/(10·V) kg/L",
+      "F_A/(10·V)"
+    ],
+    [
+      "u3-archimedes-force-12",
+      "E",
+      "30 N",
+      "30"
+    ],
+    [
+      "u3-archimedes-force-15",
+      "B",
+      "4/5 kg/L",
+      "4/5"
+    ],
+    [
+      "u3-archimedes-force-16",
+      "B",
+      "2 L",
+      "2"
+    ],
+    [
+      "u3-floating-fraction-09",
+      "B",
+      "f·ρ_l kg/L",
+      "f·ρ_l"
+    ],
+    [
+      "u3-floating-fraction-15",
+      "E",
+      "4/5 kg/L",
+      "4/5"
+    ],
+    [
+      "u3-apparent-weight-03",
+      "B",
+      "10·m - 10·V N",
+      "10·m - 10·V"
+    ],
+    [
+      "u3-apparent-weight-08",
+      "C",
+      "20 N",
+      "20"
+    ],
+    [
+      "u3-apparent-weight-09",
+      "C",
+      "T/10 + V kg",
+      "T/10 + V"
+    ],
+    [
+      "u3-apparent-weight-12",
+      "E",
+      "15 N",
+      "15"
+    ],
+    [
+      "u3-apparent-weight-15",
+      "B",
+      "4 kg",
+      "4"
+    ],
+    [
+      "u3-apparent-weight-16",
+      "B",
+      "1 L",
+      "1"
+    ],
+    [
+      "u3-maximum-payload-03",
+      "E",
+      "V·(1 - ρ_p) kg",
+      "V·(1 - ρ_p)"
+    ],
+    [
+      "u3-maximum-payload-08",
+      "B",
+      "10 kg",
+      "10"
+    ],
+    [
+      "u3-maximum-payload-09",
+      "C",
+      "(-m_max + V)/V kg/L",
+      "(-m_max + V)/V"
+    ],
+    [
+      "u3-maximum-payload-12",
+      "B",
+      "9 kg",
+      "9"
+    ],
+    [
+      "u3-maximum-payload-15",
+      "A",
+      "4/5 kg/L",
+      "4/5"
+    ],
+    [
+      "u3-maximum-payload-16",
+      "E",
+      "20 L",
+      "20"
+    ],
+    [
+      "u3-loaded-raft-depth-03",
+      "D",
+      "(M + 2)/A dm",
+      "(M + 2)/A"
+    ],
+    [
+      "u3-loaded-raft-depth-08",
+      "E",
+      "2 dm",
+      "2"
+    ],
+    [
+      "u3-loaded-raft-depth-09",
+      "B",
+      "h_i·A - 2 kg",
+      "h_i·A - 2"
+    ],
+    [
+      "u3-loaded-raft-depth-12",
+      "B",
+      "7/4 dm",
+      "7/4"
+    ],
+    [
+      "u3-loaded-raft-depth-15",
+      "D",
+      "4 kg",
+      "4"
+    ],
+    [
+      "u3-loaded-raft-depth-16",
+      "D",
+      "2 dm²",
+      "2"
+    ],
+    [
+      "u3-two-liquid-floating-03",
+      "B",
+      "(ρ_c - 1/2)/(ρ_b - 1/2)",
+      "(2·ρ_c - 1)/(2·ρ_b - 1)"
+    ],
+    [
+      "u3-two-liquid-floating-09",
+      "B",
+      "f_b·ρ_b - f_b/2 + 1/2 kg/L",
+      "f_b·ρ_b - f_b/2 + 1/2"
+    ],
+    [
+      "u3-two-liquid-floating-15",
+      "C",
+      "1 kg/L",
+      "1"
+    ],
+    [
+      "u3-two-liquid-floating-16",
+      "B",
+      "3/2 kg/L",
+      "3/2"
+    ],
+    [
+      "u3-hydrostatic-weighing-03",
+      "A",
+      "W_a/(W_a - W_i) kg/L",
+      "W_a/(W_a - W_i)"
+    ],
+    [
+      "u3-hydrostatic-weighing-08",
+      "E",
+      "2 kg/L",
+      "2"
+    ],
+    [
+      "u3-hydrostatic-weighing-09",
+      "A",
+      "ρ_c·W_i/(ρ_c - 1) N",
+      "ρ_c·W_i/(ρ_c - 1)"
+    ],
+    [
+      "u3-hydrostatic-weighing-12",
+      "C",
+      "3 kg/L",
+      "3"
+    ],
+    [
+      "u3-hydrostatic-weighing-15",
+      "D",
+      "20 N",
+      "20"
+    ],
+    [
+      "u3-volume-flow-08",
+      "C",
+      "6 cm³/s",
+      "6"
+    ],
+    [
+      "u3-volume-flow-09",
+      "E",
+      "Q/v cm²",
+      "Q/v"
+    ],
+    [
+      "u3-volume-flow-12",
+      "E",
+      "9 cm³/s",
+      "9"
+    ],
+    [
+      "u3-volume-flow-15",
+      "E",
+      "3 cm²",
+      "3"
+    ],
+    [
+      "u3-volume-flow-16",
+      "D",
+      "3 cm/s",
+      "3"
+    ],
+    [
+      "u3-mass-flow-03",
+      "D",
+      "ρ·Q kg/s",
+      "ρ·Q"
+    ],
+    [
+      "u3-mass-flow-08",
+      "A",
+      "4 kg/s",
+      "4"
+    ],
+    [
+      "u3-mass-flow-09",
+      "B",
+      "ṁ/Q kg/L",
+      "ṁ/Q"
+    ],
+    [
+      "u3-mass-flow-12",
+      "C",
+      "16/5 kg/s",
+      "16/5"
+    ],
+    [
+      "u3-mass-flow-15",
+      "D",
+      "4/5 kg/L",
+      "4/5"
+    ],
+    [
+      "u3-mass-flow-16",
+      "B",
+      "4 L/s",
+      "4"
+    ],
+    [
+      "u3-constriction-velocity-03",
+      "E",
+      "2·A_1/A_2 cm/s",
+      "2·A_1/A_2"
+    ],
+    [
+      "u3-constriction-velocity-08",
+      "B",
+      "4 cm/s",
+      "4"
+    ],
+    [
+      "u3-constriction-velocity-09",
+      "D",
+      "v_2·A_2/2 cm²",
+      "v_2·A_2/2"
+    ],
+    [
+      "u3-constriction-velocity-12",
+      "A",
+      "5 cm/s",
+      "5"
+    ],
+    [
+      "u3-constriction-velocity-15",
+      "D",
+      "3 cm²",
+      "3"
+    ],
+    [
+      "u3-identical-branches-03",
+      "D",
+      "24/(N·A) cm/s",
+      "24/(N·A)"
+    ],
+    [
+      "u3-identical-branches-08",
+      "C",
+      "6 cm/s",
+      "6"
+    ],
+    [
+      "u3-identical-branches-12",
+      "A",
+      "13/3 cm/s",
+      "13/3"
+    ],
+    [
+      "u3-identical-branches-16",
+      "B",
+      "2 cm²",
+      "2"
+    ],
+    [
+      "u3-junction-balance-03",
+      "E",
+      "Q_e - Q_1 L/s",
+      "Q_e - Q_1"
+    ],
+    [
+      "u3-junction-balance-08",
+      "E",
+      "6 L/s",
+      "6"
+    ],
+    [
+      "u3-junction-balance-09",
+      "E",
+      "Q_2 + Q_1 L/s",
+      "Q_2 + Q_1"
+    ],
+    [
+      "u3-junction-balance-12",
+      "C",
+      "13/2 L/s",
+      "13/2"
+    ],
+    [
+      "u3-junction-balance-15",
+      "A",
+      "12 L/s",
+      "12"
+    ],
+    [
+      "u3-junction-balance-16",
+      "B",
+      "4 L/s",
+      "4"
+    ],
+    [
+      "u3-mixing-mass-balance-03",
+      "C",
+      "(Q_1 + 3·Q_2)/(Q_1 + Q_2) g/L",
+      "(Q_1 + 3·Q_2)/(Q_1 + Q_2)"
+    ],
+    [
+      "u3-mixing-mass-balance-08",
+      "E",
+      "2 g/L",
+      "2"
+    ],
+    [
+      "u3-mixing-mass-balance-09",
+      "D",
+      "Q_2·(3 - c)/(c - 1) L/s",
+      "Q_2·(3 - c)/(c - 1)"
+    ],
+    [
+      "u3-mixing-mass-balance-12",
+      "C",
+      "21/10 g/L",
+      "21/10"
+    ],
+    [
+      "u3-mixing-mass-balance-15",
+      "C",
+      "3 L/s",
+      "3"
+    ],
+    [
+      "u3-hydraulic-power-03",
+      "B",
+      "Δp·Q W",
+      "Δp·Q"
+    ],
+    [
+      "u3-hydraulic-power-08",
+      "C",
+      "6 W",
+      "6"
+    ],
+    [
+      "u3-hydraulic-power-09",
+      "D",
+      "P/Q kPa",
+      "P/Q"
+    ],
+    [
+      "u3-hydraulic-power-12",
+      "E",
+      "13 W",
+      "13"
+    ],
+    [
+      "u3-hydraulic-power-15",
+      "E",
+      "4 kPa",
+      "4"
+    ],
+    [
+      "u3-hydraulic-power-16",
+      "D",
+      "3 L/s",
+      "3"
+    ],
+    [
+      "u3-bernoulli-horizontal-03",
+      "A",
+      "v_1^2/2 - v_2^2/2 + 100 kPa",
+      "v_1^2/2 - v_2^2/2 + 100"
+    ],
+    [
+      "u3-bernoulli-horizontal-08",
+      "A",
+      "94 kPa",
+      "94"
+    ],
+    [
+      "u3-bernoulli-horizontal-09",
+      "B",
+      "√(2·p_2 + v_2^2 - 200) m/s",
+      "√(2·p_2 + v_2^2 - 200)"
+    ],
+    [
+      "u3-bernoulli-horizontal-12",
+      "C",
+      "100 kPa",
+      "100"
+    ],
+    [
+      "u3-bernoulli-horizontal-15",
+      "A",
+      "4 m/s",
+      "4"
+    ],
+    [
+      "u3-bernoulli-horizontal-16",
+      "A",
+      "4 m/s",
+      "4"
+    ],
+    [
+      "u3-bernoulli-height-speed-03",
+      "E",
+      "10·h + v^2/2 kPa",
+      "10·h + v^2/2"
+    ],
+    [
+      "u3-bernoulli-height-speed-08",
+      "E",
+      "12 kPa",
+      "12"
+    ],
+    [
+      "u3-bernoulli-height-speed-09",
+      "E",
+      "Δp/10 - v^2/20 m",
+      "Δp/10 - v^2/20"
+    ],
+    [
+      "u3-bernoulli-height-speed-12",
+      "B",
+      "20 kPa",
+      "20"
+    ],
+    [
+      "u3-bernoulli-height-speed-15",
+      "E",
+      "2 m",
+      "2"
+    ],
+    [
+      "u3-bernoulli-height-speed-16",
+      "C",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u3-venturi-area-ratio-08",
+      "D",
+      "6 kPa",
+      "6"
+    ],
+    [
+      "u3-venturi-area-ratio-10",
+      "E",
+      "κ₂^2·(κ₁·r - 1)·(κ₁·r + 1)/((r - 1)·(r + 1))",
+      "κ₂^2·(κ₁^2·r^2 - 1)/(r^2 - 1)"
+    ],
+    [
+      "u3-venturi-area-ratio-12",
+      "A",
+      "35 kPa",
+      "35"
+    ],
+    [
+      "u3-venturi-area-ratio-16",
+      "B",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u3-torricelli-speed-03",
+      "B",
+      "√(2)·√(g)·√(H) m/s",
+      "√(2)·√(g)·√(H)"
+    ],
+    [
+      "u3-torricelli-speed-08",
+      "E",
+      "10 m/s",
+      "10"
+    ],
+    [
+      "u3-torricelli-speed-09",
+      "E",
+      "v^2/(2·H) m/s²",
+      "v^2/(2·H)"
+    ],
+    [
+      "u3-torricelli-speed-12",
+      "B",
+      "2·√(5) + 5 m/s",
+      "2·√(5) + 5"
+    ],
+    [
+      "u3-torricelli-speed-15",
+      "C",
+      "2 m/s²",
+      "2"
+    ],
+    [
+      "u3-torricelli-speed-16",
+      "A",
+      "5 m",
+      "5"
+    ],
+    [
+      "u3-torricelli-flow-03",
+      "A",
+      "2·√(5)·A·√(H) mL/s",
+      "2·√(5)·A·√(H)"
+    ],
+    [
+      "u3-torricelli-flow-08",
+      "A",
+      "10 mL/s",
+      "10"
+    ],
+    [
+      "u3-torricelli-flow-09",
+      "E",
+      "√(5)·Q/(10·√(H)) mm²",
+      "√(5)·Q/(10·√(H))"
+    ],
+    [
+      "u3-torricelli-flow-12",
+      "A",
+      "25 mL/s",
+      "25"
+    ],
+    [
+      "u3-torricelli-flow-15",
+      "A",
+      "2 mm²",
+      "2"
+    ],
+    [
+      "u3-torricelli-flow-16",
+      "C",
+      "5 m",
+      "5"
+    ],
+    [
+      "u3-horizontal-jet-range-03",
+      "C",
+      "2·√(H)·√(h) m",
+      "2·√(H)·√(h)"
+    ],
+    [
+      "u3-horizontal-jet-range-08",
+      "C",
+      "4 m",
+      "4"
+    ],
+    [
+      "u3-horizontal-jet-range-09",
+      "D",
+      "R^2/(4·h) m",
+      "R^2/(4·h)"
+    ],
+    [
+      "u3-horizontal-jet-range-12",
+      "E",
+      "2 + 4·√(2) m",
+      "2 + 4·√(2)"
+    ],
+    [
+      "u3-horizontal-jet-range-15",
+      "B",
+      "4 m",
+      "4"
+    ],
+    [
+      "u3-horizontal-jet-range-16",
+      "C",
+      "4 m",
+      "4"
+    ],
+    [
+      "u3-reservoir-emptying-03",
+      "C",
+      "√(5)·r·√(H)/5 s",
+      "√(5)·r·√(H)/5"
+    ],
+    [
+      "u3-reservoir-emptying-08",
+      "A",
+      "100 s",
+      "100"
+    ],
+    [
+      "u3-reservoir-emptying-12",
+      "D",
+      "250 s",
+      "250"
+    ],
+    [
+      "u3-reservoir-emptying-16",
+      "A",
+      "5 m",
+      "5"
+    ],
+    [
+      "u3-transport-time-03",
+      "A",
+      "V/Q s",
+      "V/Q"
+    ],
+    [
+      "u3-transport-time-08",
+      "E",
+      "4 s",
+      "4"
+    ],
+    [
+      "u3-transport-time-09",
+      "A",
+      "t·Q L",
+      "t·Q"
+    ],
+    [
+      "u3-transport-time-12",
+      "B",
+      "9/2 s",
+      "9/2"
+    ],
+    [
+      "u3-transport-time-15",
+      "C",
+      "20 L",
+      "20"
+    ],
+    [
+      "u3-poiseuille-flow-01",
+      "B",
+      "π/10 cm³/s",
+      "π/10"
+    ],
+    [
+      "u3-poiseuille-flow-09",
+      "E",
+      "10^(1/4)·Q^(1/4)·η^(1/4)/π^(1/4) cm",
+      "10^(1/4)·Q^(1/4)·η^(1/4)/π^(1/4)"
+    ],
+    [
+      "u3-poiseuille-flow-12",
+      "A",
+      "9·π/20 cm³/s",
+      "9·π/20"
+    ],
+    [
+      "u3-poiseuille-flow-15",
+      "E",
+      "2 cm",
+      "2"
+    ],
+    [
+      "u3-poiseuille-flow-16",
+      "C",
+      "1 mPa s",
+      "1"
+    ],
+    [
+      "u3-hydraulic-series-03",
+      "E",
+      "R_1 + R_2 kPa s/L",
+      "R_1 + R_2"
+    ],
+    [
+      "u3-hydraulic-series-08",
+      "D",
+      "5 kPa s/L",
+      "5"
+    ],
+    [
+      "u3-hydraulic-series-09",
+      "E",
+      "R_eq - R_2 kPa s/L",
+      "R_eq - R_2"
+    ],
+    [
+      "u3-hydraulic-series-12",
+      "A",
+      "15/2 kPa s/L",
+      "15/2"
+    ],
+    [
+      "u3-hydraulic-series-15",
+      "E",
+      "4 kPa s/L",
+      "4"
+    ],
+    [
+      "u3-hydraulic-series-16",
+      "E",
+      "3 kPa s/L",
+      "3"
+    ],
+    [
+      "u3-hydraulic-parallel-03",
+      "C",
+      "R_1·R_2/(R_1 + R_2) kPa s/L",
+      "R_1·R_2/(R_1 + R_2)"
+    ],
+    [
+      "u3-hydraulic-parallel-08",
+      "E",
+      "1 kPa s/L",
+      "1"
+    ],
+    [
+      "u3-hydraulic-parallel-09",
+      "C",
+      "-R_eq·R_2/(R_eq - R_2) kPa s/L",
+      "-R_eq·R_2/(R_eq - R_2)"
+    ],
+    [
+      "u3-hydraulic-parallel-12",
+      "A",
+      "3/2 kPa s/L",
+      "3/2"
+    ],
+    [
+      "u3-hydraulic-parallel-15",
+      "C",
+      "3 kPa s/L",
+      "3"
+    ],
+    [
+      "u3-hydraulic-parallel-16",
+      "C",
+      "2 kPa s/L",
+      "2"
+    ],
+    [
+      "u3-parallel-flow-divider-03",
+      "B",
+      "10·R_2/(R_1 + R_2) L/s",
+      "10·R_2/(R_1 + R_2)"
+    ],
+    [
+      "u3-parallel-flow-divider-08",
+      "B",
+      "5 L/s",
+      "5"
+    ],
+    [
+      "u3-parallel-flow-divider-09",
+      "D",
+      "R_2·(10 - Q_1)/Q_1 kPa s/L",
+      "R_2·(10 - Q_1)/Q_1"
+    ],
+    [
+      "u3-parallel-flow-divider-12",
+      "A",
+      "11/2 L/s",
+      "11/2"
+    ],
+    [
+      "u3-parallel-flow-divider-15",
+      "E",
+      "3 kPa s/L",
+      "3"
+    ],
+    [
+      "u3-viscous-dissipation-03",
+      "B",
+      "R·Q^2 W",
+      "R·Q^2"
+    ],
+    [
+      "u3-viscous-dissipation-08",
+      "D",
+      "18 W",
+      "18"
+    ],
+    [
+      "u3-viscous-dissipation-09",
+      "E",
+      "P_d/Q^2 kPa s/L",
+      "P_d/Q^2"
+    ],
+    [
+      "u3-viscous-dissipation-12",
+      "E",
+      "15 W",
+      "15"
+    ],
+    [
+      "u3-viscous-dissipation-15",
+      "E",
+      "3 kPa s/L",
+      "3"
+    ],
+    [
+      "u3-viscous-dissipation-16",
+      "E",
+      "3 L/s",
+      "3"
+    ],
+    [
+      "u3-parabolic-profile-08",
+      "D",
+      "3 cm/s",
+      "3"
+    ],
+    [
+      "u3-parabolic-profile-09",
+      "C",
+      "-v/(u^2 - 1) cm/s",
+      "-v/(u^2 - 1)"
+    ],
+    [
+      "u3-parabolic-profile-10",
+      "B",
+      "κ₁·(κ₂·u - 1)·(κ₂·u + 1)/((u - 1)·(u + 1))",
+      "κ₁·(κ₂^2·u^2 - 1)/(u^2 - 1)"
+    ],
+    [
+      "u3-parabolic-profile-12",
+      "C",
+      "11/2 cm/s",
+      "11/2"
+    ],
+    [
+      "u3-parabolic-profile-15",
+      "D",
+      "9 cm/s",
+      "9"
+    ],
+    [
+      "u3-couette-force-08",
+      "B",
+      "20 N",
+      "20"
+    ],
+    [
+      "u3-couette-force-09",
+      "B",
+      "F/(10·v) Pa s",
+      "F/(10·v)"
+    ],
+    [
+      "u3-couette-force-12",
+      "A",
+      "50 N",
+      "50"
+    ],
+    [
+      "u3-couette-force-15",
+      "D",
+      "2 Pa s",
+      "2"
+    ],
+    [
+      "u3-couette-force-16",
+      "A",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u3-pressure-gradient-fixed-speed-09",
+      "A",
+      "G·r^2/80 mPa s",
+      "G·r^2/80"
+    ],
+    [
+      "u3-pressure-gradient-fixed-speed-12",
+      "B",
+      "60 Pa/m",
+      "60"
+    ],
+    [
+      "u3-pressure-gradient-fixed-speed-15",
+      "A",
+      "2 mPa s",
+      "2"
+    ],
+    [
+      "u3-pressure-gradient-fixed-speed-16",
+      "C",
+      "1 mm",
+      "1"
+    ],
+    [
+      "u3-network-stages-03",
+      "A",
+      "2·N_s/N_p kPa s/L",
+      "2·N_s/N_p"
+    ],
+    [
+      "u3-network-stages-08",
+      "E",
+      "1 kPa s/L",
+      "1"
+    ],
+    [
+      "u3-network-stages-12",
+      "E",
+      "2 kPa s/L",
+      "2"
+    ],
+    [
+      "u3-accelerating-liquid-column-03",
+      "D",
+      "L·a/10 N",
+      "L·a/10"
+    ],
+    [
+      "u3-accelerating-liquid-column-08",
+      "B",
+      "1 N",
+      "1"
+    ],
+    [
+      "u3-accelerating-liquid-column-09",
+      "A",
+      "10·F/a m",
+      "10·F/a"
+    ],
+    [
+      "u3-accelerating-liquid-column-12",
+      "E",
+      "9/10 N",
+      "9/10"
+    ],
+    [
+      "u3-accelerating-liquid-column-15",
+      "C",
+      "4 m",
+      "4"
+    ],
+    [
+      "u3-accelerating-liquid-column-16",
+      "E",
+      "5 m/s²",
+      "5"
+    ],
+    [
+      "u3-soap-film-force-03",
+      "C",
+      "γ·ℓ/50 mN",
+      "γ·ℓ/50"
+    ],
+    [
+      "u3-soap-film-force-08",
+      "D",
+      "2 mN",
+      "2"
+    ],
+    [
+      "u3-soap-film-force-09",
+      "A",
+      "50·F/ℓ mN/m",
+      "50·F/ℓ"
+    ],
+    [
+      "u3-soap-film-force-12",
+      "B",
+      "9/4 mN",
+      "9/4"
+    ],
+    [
+      "u3-soap-film-force-15",
+      "A",
+      "25 mN/m",
+      "25"
+    ],
+    [
+      "u3-soap-film-force-16",
+      "B",
+      "2 cm",
+      "2"
+    ],
+    [
+      "u3-surface-work-03",
+      "C",
+      "γ·ΔA/10 µJ",
+      "γ·ΔA/10"
+    ],
+    [
+      "u3-surface-work-08",
+      "D",
+      "10 µJ",
+      "10"
+    ],
+    [
+      "u3-surface-work-09",
+      "E",
+      "10·W/ΔA mN/m",
+      "10·W/ΔA"
+    ],
+    [
+      "u3-surface-work-12",
+      "E",
+      "25/2 µJ",
+      "25/2"
+    ],
+    [
+      "u3-surface-work-15",
+      "D",
+      "50 mN/m",
+      "50"
+    ],
+    [
+      "u3-surface-work-16",
+      "A",
+      "5 cm²",
+      "5"
+    ],
+    [
+      "u3-laplace-droplet-08",
+      "D",
+      "20 Pa",
+      "20"
+    ],
+    [
+      "u3-laplace-droplet-09",
+      "B",
+      "Δp·r/2 mN/m",
+      "Δp·r/2"
+    ],
+    [
+      "u3-laplace-droplet-12",
+      "B",
+      "35/2 Pa",
+      "35/2"
+    ],
+    [
+      "u3-laplace-droplet-15",
+      "D",
+      "30 mN/m",
+      "30"
+    ],
+    [
+      "u3-alveolar-surfactant-balance-03",
+      "B",
+      "γ_g·u mN/m",
+      "γ_g·u"
+    ],
+    [
+      "u3-alveolar-surfactant-balance-08",
+      "A",
+      "20 mN/m",
+      "20"
+    ],
+    [
+      "u3-alveolar-surfactant-balance-09",
+      "C",
+      "γ_p/u mN/m",
+      "γ_p/u"
+    ],
+    [
+      "u3-alveolar-surfactant-balance-12",
+      "B",
+      "15 mN/m",
+      "15"
+    ],
+    [
+      "u3-alveolar-surfactant-balance-15",
+      "B",
+      "30 mN/m",
+      "30"
+    ],
+    [
+      "u3-two-droplet-pressure-03",
+      "E",
+      "-20/r_2 + 20/r_1 Pa",
+      "-20/r_2 + 20/r_1"
+    ],
+    [
+      "u3-two-droplet-pressure-08",
+      "A",
+      "15 Pa",
+      "15"
+    ],
+    [
+      "u3-two-droplet-pressure-09",
+      "E",
+      "20·r_2/(p_1−p_2·r_2 + 20) mm",
+      "20·r_2/(p_1−p_2·r_2 + 20)"
+    ],
+    [
+      "u3-two-droplet-pressure-12",
+      "D",
+      "21/2 Pa",
+      "21/2"
+    ],
+    [
+      "u3-two-droplet-pressure-15",
+      "A",
+      "2 mm",
+      "2"
+    ],
+    [
+      "u3-two-droplet-pressure-16",
+      "A",
+      "4 mm",
+      "4"
+    ],
+    [
+      "u3-capillary-rise-03",
+      "E",
+      "γ/(5·r) mm",
+      "γ/(5·r)"
+    ],
+    [
+      "u3-capillary-rise-08",
+      "E",
+      "10 mm",
+      "10"
+    ],
+    [
+      "u3-capillary-rise-09",
+      "E",
+      "5·h·r mN/m",
+      "5·h·r"
+    ],
+    [
+      "u3-capillary-rise-12",
+      "A",
+      "7 mm",
+      "7"
+    ],
+    [
+      "u3-capillary-rise-15",
+      "B",
+      "40 mN/m",
+      "40"
+    ],
+    [
+      "u3-drop-detachment-01",
+      "C",
+      "4·π µL",
+      "4·π"
+    ],
+    [
+      "u3-drop-detachment-03",
+      "A",
+      "π·r·γ/5 µL",
+      "π·r·γ/5"
+    ],
+    [
+      "u3-drop-detachment-08",
+      "E",
+      "4·π µL",
+      "4·π"
+    ],
+    [
+      "u3-drop-detachment-09",
+      "A",
+      "5·V_lim/(π·γ) mm",
+      "5·V_lim/(π·γ)"
+    ],
+    [
+      "u3-drop-detachment-12",
+      "E",
+      "7·π µL",
+      "7·π"
+    ],
+    [
+      "u3-drop-detachment-15",
+      "D",
+      "2 mm",
+      "2"
+    ],
+    [
+      "u3-drop-detachment-16",
+      "A",
+      "20 mN/m",
+      "20"
+    ],
+    [
+      "u3-droplet-fragmentation-01",
+      "E",
+      "2·π/25 µJ",
+      "2·π/25"
+    ],
+    [
+      "u3-droplet-fragmentation-03",
+      "D",
+      "π·R^2·N^(1/3)/25 µJ",
+      "π·R^2·N^(1/3)/25"
+    ],
+    [
+      "u3-droplet-fragmentation-08",
+      "E",
+      "2·π/25 µJ",
+      "2·π/25"
+    ],
+    [
+      "u3-droplet-fragmentation-09",
+      "E",
+      "5·√(E_s)/(√(π)·N^(1/6)) mm",
+      "5·√(E_s)/(√(π)·N^(1/6))"
+    ],
+    [
+      "u3-droplet-fragmentation-12",
+      "E",
+      "7·π/25 µJ",
+      "7·π/25"
+    ],
+    [
+      "u3-droplet-fragmentation-15",
+      "D",
+      "2 mm",
+      "2"
+    ],
+    [
+      "u4-wave-wavelength-08",
+      "A",
+      "4 m",
+      "4"
+    ],
+    [
+      "u4-wave-wavelength-09",
+      "D",
+      "λ·f m/s",
+      "λ·f"
+    ],
+    [
+      "u4-wave-wavelength-12",
+      "A",
+      "9/2 m",
+      "9/2"
+    ],
+    [
+      "u4-wave-wavelength-15",
+      "C",
+      "1 m/s",
+      "1"
+    ],
+    [
+      "u4-echo-ranging-08",
+      "C",
+      "30 m",
+      "30"
+    ],
+    [
+      "u4-echo-ranging-09",
+      "A",
+      "2·d/Δt m/s",
+      "2·d/Δt"
+    ],
+    [
+      "u4-echo-ranging-12",
+      "A",
+      "25 m",
+      "25"
+    ],
+    [
+      "u4-echo-ranging-15",
+      "E",
+      "40 m/s",
+      "40"
+    ],
+    [
+      "u4-echo-ranging-16",
+      "C",
+      "6 s",
+      "6"
+    ],
+    [
+      "u4-oscillator-period-03",
+      "B",
+      "√(m)/√(k) s",
+      "√(m)/√(k)"
+    ],
+    [
+      "u4-oscillator-period-08",
+      "B",
+      "1/2 s",
+      "1/2"
+    ],
+    [
+      "u4-oscillator-period-09",
+      "D",
+      "τ = T/(2π)^2·k kg",
+      "τ = T/(2π)^2·k"
+    ],
+    [
+      "u4-oscillator-period-12",
+      "A",
+      "5/4 s",
+      "5/4"
+    ],
+    [
+      "u4-oscillator-period-15",
+      "E",
+      "9 kg",
+      "9"
+    ],
+    [
+      "u4-oscillator-max-speed-03",
+      "B",
+      "A·ω m/s",
+      "A·ω"
+    ],
+    [
+      "u4-oscillator-max-speed-08",
+      "C",
+      "6 m/s",
+      "6"
+    ],
+    [
+      "u4-oscillator-max-speed-09",
+      "E",
+      "v_max/ω m",
+      "v_max/ω"
+    ],
+    [
+      "u4-oscillator-max-speed-12",
+      "C",
+      "5 m/s",
+      "5"
+    ],
+    [
+      "u4-oscillator-max-speed-15",
+      "D",
+      "4 m",
+      "4"
+    ],
+    [
+      "u4-oscillator-max-speed-16",
+      "B",
+      "3 rad/s",
+      "3"
+    ],
+    [
+      "u4-oscillator-max-acceleration-03",
+      "D",
+      "A·ω^2 m/s²",
+      "A·ω^2"
+    ],
+    [
+      "u4-oscillator-max-acceleration-08",
+      "A",
+      "4 m/s²",
+      "4"
+    ],
+    [
+      "u4-oscillator-max-acceleration-09",
+      "A",
+      "a_max/ω^2 m",
+      "a_max/ω^2"
+    ],
+    [
+      "u4-oscillator-max-acceleration-12",
+      "E",
+      "11 m/s²",
+      "11"
+    ],
+    [
+      "u4-oscillator-max-acceleration-15",
+      "A",
+      "3 m",
+      "3"
+    ],
+    [
+      "u4-oscillator-max-acceleration-16",
+      "D",
+      "2 rad/s",
+      "2"
+    ],
+    [
+      "u4-oscillator-energy-08",
+      "C",
+      "4 J",
+      "4"
+    ],
+    [
+      "u4-oscillator-energy-09",
+      "C",
+      "2·E/A^2 N/m",
+      "2·E/A^2"
+    ],
+    [
+      "u4-oscillator-energy-12",
+      "A",
+      "11 J",
+      "11"
+    ],
+    [
+      "u4-oscillator-energy-15",
+      "C",
+      "1 N/m",
+      "1"
+    ],
+    [
+      "u4-oscillator-energy-16",
+      "C",
+      "2 m",
+      "2"
+    ],
+    [
+      "u4-wave-phase-space-03",
+      "A",
+      "Δs/λ giri",
+      "Δs/λ"
+    ],
+    [
+      "u4-wave-phase-space-08",
+      "A",
+      "1/4 giri",
+      "1/4"
+    ],
+    [
+      "u4-wave-phase-space-09",
+      "E",
+      "ν·λ m",
+      "ν·λ"
+    ],
+    [
+      "u4-wave-phase-space-12",
+      "E",
+      "3/8 giri",
+      "3/8"
+    ],
+    [
+      "u4-wave-phase-space-15",
+      "B",
+      "2 m",
+      "2"
+    ],
+    [
+      "u4-wave-phase-time-08",
+      "B",
+      "6 giri",
+      "6"
+    ],
+    [
+      "u4-wave-phase-time-09",
+      "C",
+      "N/Δt Hz",
+      "N/Δt"
+    ],
+    [
+      "u4-wave-phase-time-12",
+      "B",
+      "7 giri",
+      "7"
+    ],
+    [
+      "u4-wave-phase-time-15",
+      "A",
+      "3 Hz",
+      "3"
+    ],
+    [
+      "u4-wave-phase-time-16",
+      "E",
+      "3 s",
+      "3"
+    ],
+    [
+      "u4-spherical-intensity-08",
+      "A",
+      "1 W/m²",
+      "1"
+    ],
+    [
+      "u4-spherical-intensity-09",
+      "D",
+      "I·r^2 W",
+      "I·r^2"
+    ],
+    [
+      "u4-spherical-intensity-12",
+      "E",
+      "3/4 W/m²",
+      "3/4"
+    ],
+    [
+      "u4-spherical-intensity-15",
+      "A",
+      "16 W",
+      "16"
+    ],
+    [
+      "u4-spherical-intensity-16",
+      "A",
+      "2 m",
+      "2"
+    ],
+    [
+      "u4-wave-energy-through-area-08",
+      "A",
+      "12 J",
+      "12"
+    ],
+    [
+      "u4-wave-energy-through-area-09",
+      "B",
+      "E/(2·A) W/m²",
+      "E/(2·A)"
+    ],
+    [
+      "u4-wave-energy-through-area-12",
+      "E",
+      "14 J",
+      "14"
+    ],
+    [
+      "u4-wave-energy-through-area-15",
+      "B",
+      "1 W/m²",
+      "1"
+    ],
+    [
+      "u4-wave-energy-through-area-16",
+      "A",
+      "3 m²",
+      "3"
+    ],
+    [
+      "u4-wave-amplitude-energy-03",
+      "B",
+      "I₀·s = A/A₀^2 W/m²",
+      "I₀·s = A/A₀^2"
+    ],
+    [
+      "u4-wave-amplitude-energy-08",
+      "E",
+      "4 W/m²",
+      "4"
+    ],
+    [
+      "u4-wave-amplitude-energy-09",
+      "E",
+      "I/s = A/A₀^2 W/m²",
+      "I/s = A/A₀^2"
+    ],
+    [
+      "u4-wave-amplitude-energy-12",
+      "C",
+      "11 W/m²",
+      "11"
+    ],
+    [
+      "u4-wave-amplitude-energy-15",
+      "B",
+      "4 W/m²",
+      "4"
+    ],
+    [
+      "u4-sound-decibel-09",
+      "D",
+      "10^(L/10)·I_r W/m²",
+      "10^(L/10)·I_r"
+    ],
+    [
+      "u4-sound-decibel-10",
+      "A",
+      "(ln(κ₁) - ln(κ₂) + ln(I) - ln(I_r))/(ln(I) - ln(I_r))",
+      "ln(κ₁·I/(κ₂·I_r))/ln(I/I_r)"
+    ],
+    [
+      "u4-sound-decibel-12",
+      "D",
+      "ln(200^(5/ln(10))) dB",
+      "5·ln(200)/ln(10)"
+    ],
+    [
+      "u4-sound-decibel-15",
+      "B",
+      "10000 W/m²",
+      "10000"
+    ],
+    [
+      "u4-incoherent-sound-sum-03",
+      "A",
+      "I₁ + I₂ W/m²",
+      "I₁ + I₂"
+    ],
+    [
+      "u4-incoherent-sound-sum-08",
+      "A",
+      "3 W/m²",
+      "3"
+    ],
+    [
+      "u4-incoherent-sound-sum-09",
+      "A",
+      "I_tot - I₂ W/m²",
+      "I_tot - I₂"
+    ],
+    [
+      "u4-incoherent-sound-sum-12",
+      "B",
+      "4 W/m²",
+      "4"
+    ],
+    [
+      "u4-incoherent-sound-sum-15",
+      "E",
+      "3 W/m²",
+      "3"
+    ],
+    [
+      "u4-incoherent-sound-sum-16",
+      "C",
+      "2 W/m²",
+      "2"
+    ],
+    [
+      "u4-coherent-constructive-03",
+      "E",
+      "A₁ + A₂ mm",
+      "A₁ + A₂"
+    ],
+    [
+      "u4-coherent-constructive-08",
+      "C",
+      "3 mm",
+      "3"
+    ],
+    [
+      "u4-coherent-constructive-09",
+      "C",
+      "A_tot - A₂ mm",
+      "A_tot - A₂"
+    ],
+    [
+      "u4-coherent-constructive-12",
+      "C",
+      "4 mm",
+      "4"
+    ],
+    [
+      "u4-coherent-constructive-15",
+      "E",
+      "3 mm",
+      "3"
+    ],
+    [
+      "u4-coherent-constructive-16",
+      "C",
+      "2 mm",
+      "2"
+    ],
+    [
+      "u4-coherent-destructive-03",
+      "D",
+      "A₁ - A₂ mm",
+      "A₁ - A₂"
+    ],
+    [
+      "u4-coherent-destructive-08",
+      "B",
+      "3 mm",
+      "3"
+    ],
+    [
+      "u4-coherent-destructive-09",
+      "B",
+      "A_res + A₂ mm",
+      "A_res + A₂"
+    ],
+    [
+      "u4-coherent-destructive-12",
+      "E",
+      "5/2 mm",
+      "5/2"
+    ],
+    [
+      "u4-coherent-destructive-15",
+      "B",
+      "8 mm",
+      "8"
+    ],
+    [
+      "u4-coherent-destructive-16",
+      "A",
+      "1 mm",
+      "1"
+    ],
+    [
+      "u4-beats-envelope-08",
+      "C",
+      "2 Hz",
+      "2"
+    ],
+    [
+      "u4-beats-envelope-09",
+      "A",
+      "f_b + f₂ Hz",
+      "f_b + f₂"
+    ],
+    [
+      "u4-beats-envelope-12",
+      "D",
+      "3/2 Hz",
+      "3/2"
+    ],
+    [
+      "u4-beats-envelope-15",
+      "B",
+      "303 Hz",
+      "303"
+    ],
+    [
+      "u4-wave-displacement-projection-03",
+      "D",
+      "A·c_φ mm",
+      "A·c_φ"
+    ],
+    [
+      "u4-wave-displacement-projection-08",
+      "B",
+      "2 mm",
+      "2"
+    ],
+    [
+      "u4-wave-displacement-projection-09",
+      "C",
+      "s/c_φ mm",
+      "s/c_φ"
+    ],
+    [
+      "u4-wave-displacement-projection-12",
+      "D",
+      "5/2 mm",
+      "5/2"
+    ],
+    [
+      "u4-wave-displacement-projection-15",
+      "A",
+      "1 mm",
+      "1"
+    ],
+    [
+      "u5-temperature-difference-08",
+      "E",
+      "20 K",
+      "20"
+    ],
+    [
+      "u5-temperature-difference-09",
+      "D",
+      "ΔT + T_f °C",
+      "ΔT + T_f"
+    ],
+    [
+      "u5-temperature-difference-12",
+      "B",
+      "35 K",
+      "35"
+    ],
+    [
+      "u5-temperature-difference-15",
+      "B",
+      "60 °C",
+      "60"
+    ],
+    [
+      "u5-temperature-difference-16",
+      "E",
+      "20 °C",
+      "20"
+    ],
+    [
+      "u5-ideal-gas-pressure-09",
+      "E",
+      "p·V K",
+      "p·V"
+    ],
+    [
+      "u5-ideal-gas-pressure-12",
+      "D",
+      "101/2 kPa",
+      "101/2"
+    ],
+    [
+      "u5-ideal-gas-pressure-15",
+      "D",
+      "600 K",
+      "600"
+    ],
+    [
+      "u5-gas-density-03",
+      "E",
+      "4·p/T g/L",
+      "4·p/T"
+    ],
+    [
+      "u5-gas-density-09",
+      "B",
+      "ρ·T/4 kPa",
+      "ρ·T/4"
+    ],
+    [
+      "u5-gas-density-12",
+      "E",
+      "5/2 g/L",
+      "5/2"
+    ],
+    [
+      "u5-gas-density-15",
+      "A",
+      "160 kPa",
+      "160"
+    ],
+    [
+      "u5-isothermal-chambers-03",
+      "A",
+      "p_1/2 + p_2/2 kPa",
+      "p_1/2 + p_2/2"
+    ],
+    [
+      "u5-isothermal-chambers-08",
+      "C",
+      "150 kPa",
+      "150"
+    ],
+    [
+      "u5-isothermal-chambers-09",
+      "A",
+      "2·p_f - p_2 kPa",
+      "2·p_f - p_2"
+    ],
+    [
+      "u5-isothermal-chambers-12",
+      "B",
+      "200 kPa",
+      "200"
+    ],
+    [
+      "u5-isothermal-chambers-15",
+      "A",
+      "200 kPa",
+      "200"
+    ],
+    [
+      "u5-isothermal-chambers-16",
+      "E",
+      "200 kPa",
+      "200"
+    ],
+    [
+      "u5-isothermal-work-03",
+      "E",
+      "W_2·ln(r)/ln(2) J",
+      "W_2·ln(r)/ln(2)"
+    ],
+    [
+      "u5-isothermal-work-08",
+      "E",
+      "10 J",
+      "10"
+    ],
+    [
+      "u5-isothermal-work-09",
+      "B",
+      "W·ln(2)/ln(r) J",
+      "W·ln(2)/ln(r)"
+    ],
+    [
+      "u5-isothermal-work-10",
+      "A",
+      "κ₁·(ln(κ₂) + ln(r))/ln(r)",
+      "ln((κ₂·r)^κ₁)/ln(r)"
+    ],
+    [
+      "u5-isothermal-work-12",
+      "B",
+      "25 J",
+      "25"
+    ],
+    [
+      "u5-isothermal-work-15",
+      "C",
+      "20 J",
+      "20"
+    ],
+    [
+      "u5-isochoric-heat-08",
+      "E",
+      "20 J",
+      "20"
+    ],
+    [
+      "u5-isochoric-heat-09",
+      "D",
+      "Q/ΔT J/K",
+      "Q/ΔT"
+    ],
+    [
+      "u5-isochoric-heat-12",
+      "E",
+      "50 J",
+      "50"
+    ],
+    [
+      "u5-isochoric-heat-15",
+      "C",
+      "4 J/K",
+      "4"
+    ],
+    [
+      "u5-isochoric-heat-16",
+      "B",
+      "10 K",
+      "10"
+    ],
+    [
+      "u5-isobaric-monatomic-heat-08",
+      "E",
+      "50 J",
+      "50"
+    ],
+    [
+      "u5-isobaric-monatomic-heat-09",
+      "A",
+      "2·Q/(5·ΔT) J/K",
+      "2·Q/(5·ΔT)"
+    ],
+    [
+      "u5-isobaric-monatomic-heat-12",
+      "A",
+      "125 J",
+      "125"
+    ],
+    [
+      "u5-isobaric-monatomic-heat-15",
+      "D",
+      "4 J/K",
+      "4"
+    ],
+    [
+      "u5-isobaric-monatomic-heat-16",
+      "B",
+      "10 K",
+      "10"
+    ],
+    [
+      "u5-isobaric-work-08",
+      "D",
+      "6 J",
+      "6"
+    ],
+    [
+      "u5-isobaric-work-09",
+      "C",
+      "W/ΔV kPa",
+      "W/ΔV"
+    ],
+    [
+      "u5-isobaric-work-12",
+      "B",
+      "13 J",
+      "13"
+    ],
+    [
+      "u5-isobaric-work-15",
+      "B",
+      "4 kPa",
+      "4"
+    ],
+    [
+      "u5-isobaric-work-16",
+      "B",
+      "3 L",
+      "3"
+    ],
+    [
+      "u5-first-law-expansion-08",
+      "B",
+      "60 J",
+      "60"
+    ],
+    [
+      "u5-first-law-expansion-09",
+      "E",
+      "ΔU + W J",
+      "ΔU + W"
+    ],
+    [
+      "u5-first-law-expansion-12",
+      "D",
+      "100 J",
+      "100"
+    ],
+    [
+      "u5-first-law-expansion-15",
+      "C",
+      "200 J",
+      "200"
+    ],
+    [
+      "u5-first-law-expansion-16",
+      "B",
+      "40 J",
+      "40"
+    ],
+    [
+      "u5-compression-heating-03",
+      "C",
+      "Q + L_on J",
+      "Q + L_on"
+    ],
+    [
+      "u5-compression-heating-08",
+      "E",
+      "50 J",
+      "50"
+    ],
+    [
+      "u5-compression-heating-09",
+      "D",
+      "ΔU - L_on J",
+      "ΔU - L_on"
+    ],
+    [
+      "u5-compression-heating-12",
+      "C",
+      "70 J",
+      "70"
+    ],
+    [
+      "u5-compression-heating-15",
+      "E",
+      "40 J",
+      "40"
+    ],
+    [
+      "u5-compression-heating-16",
+      "E",
+      "30 J",
+      "30"
+    ],
+    [
+      "u5-cyclic-work-03",
+      "B",
+      "Q_h - Q_c J",
+      "Q_h - Q_c"
+    ],
+    [
+      "u5-cyclic-work-08",
+      "C",
+      "60 J",
+      "60"
+    ],
+    [
+      "u5-cyclic-work-09",
+      "B",
+      "W + Q_c J",
+      "W + Q_c"
+    ],
+    [
+      "u5-cyclic-work-12",
+      "E",
+      "100 J",
+      "100"
+    ],
+    [
+      "u5-cyclic-work-15",
+      "E",
+      "200 J",
+      "200"
+    ],
+    [
+      "u5-cyclic-work-16",
+      "C",
+      "40 J",
+      "40"
+    ],
+    [
+      "u5-engine-efficiency-09",
+      "D",
+      "-Q_c/(η - 1) J",
+      "-Q_c/(η - 1)"
+    ],
+    [
+      "u5-engine-efficiency-15",
+      "A",
+      "200 J",
+      "200"
+    ],
+    [
+      "u5-engine-average-power-03",
+      "C",
+      "Q_h/(4·t) W",
+      "Q_h/(4·t)"
+    ],
+    [
+      "u5-engine-average-power-08",
+      "D",
+      "10 W",
+      "10"
+    ],
+    [
+      "u5-engine-average-power-09",
+      "C",
+      "4·P·t J",
+      "4·P·t"
+    ],
+    [
+      "u5-engine-average-power-12",
+      "D",
+      "41/8 W",
+      "41/8"
+    ],
+    [
+      "u5-engine-average-power-15",
+      "D",
+      "160 J",
+      "160"
+    ],
+    [
+      "u5-carnot-efficiency-09",
+      "C",
+      "-T_c/(η_C - 1) K",
+      "-T_c/(η_C - 1)"
+    ],
+    [
+      "u5-carnot-efficiency-15",
+      "C",
+      "3 K",
+      "3"
+    ],
+    [
+      "u5-refrigerator-cop-09",
+      "E",
+      "COP·W J",
+      "COP·W"
+    ],
+    [
+      "u5-refrigerator-cop-15",
+      "D",
+      "200 J",
+      "200"
+    ],
+    [
+      "u5-reversible-refrigerator-09",
+      "A",
+      "T_c + T_c/COP_C K",
+      "T_c + T_c/COP_C"
+    ],
+    [
+      "u5-reversible-refrigerator-15",
+      "B",
+      "500 K",
+      "500"
+    ],
+    [
+      "u5-carnot-work-temperature-gap-03",
+      "D",
+      "T_h - T_c J",
+      "T_h - T_c"
+    ],
+    [
+      "u5-carnot-work-temperature-gap-08",
+      "D",
+      "200 J",
+      "200"
+    ],
+    [
+      "u5-carnot-work-temperature-gap-09",
+      "B",
+      "W + T_c K",
+      "W + T_c"
+    ],
+    [
+      "u5-carnot-work-temperature-gap-12",
+      "E",
+      "250 J",
+      "250"
+    ],
+    [
+      "u5-carnot-work-temperature-gap-15",
+      "E",
+      "600 K",
+      "600"
+    ],
+    [
+      "u5-carnot-work-temperature-gap-16",
+      "E",
+      "200 K",
+      "200"
+    ],
+    [
+      "u5-adiabatic-monatomic-03",
+      "E",
+      "T_1·r^(2/3) K",
+      "T_1·r^(2/3)"
+    ],
+    [
+      "u5-adiabatic-monatomic-08",
+      "D",
+      "400 K",
+      "400"
+    ],
+    [
+      "u5-adiabatic-monatomic-09",
+      "B",
+      "T_2/r^(2/3) K",
+      "T_2/r^(2/3)"
+    ],
+    [
+      "u5-adiabatic-monatomic-12",
+      "E",
+      "1100 K",
+      "1100"
+    ],
+    [
+      "u5-adiabatic-monatomic-15",
+      "B",
+      "200 K",
+      "200"
+    ],
+    [
+      "u5-free-expansion-pressure-08",
+      "D",
+      "50 kPa",
+      "50"
+    ],
+    [
+      "u5-free-expansion-pressure-09",
+      "E",
+      "p_f·(V_v + 1) kPa",
+      "p_f·(V_v + 1)"
+    ],
+    [
+      "u5-free-expansion-pressure-12",
+      "E",
+      "151/6 kPa",
+      "151/6"
+    ],
+    [
+      "u5-free-expansion-pressure-15",
+      "B",
+      "200 kPa",
+      "200"
+    ],
+    [
+      "u5-free-expansion-pressure-16",
+      "D",
+      "1 L",
+      "1"
+    ],
+    [
+      "u5-sensible-heat-08",
+      "C",
+      "40 J",
+      "40"
+    ],
+    [
+      "u5-sensible-heat-09",
+      "A",
+      "Q/(2·ΔT) g",
+      "Q/(2·ΔT)"
+    ],
+    [
+      "u5-sensible-heat-12",
+      "B",
+      "100 J",
+      "100"
+    ],
+    [
+      "u5-sensible-heat-15",
+      "A",
+      "4 g",
+      "4"
+    ],
+    [
+      "u5-sensible-heat-16",
+      "C",
+      "10 K",
+      "10"
+    ],
+    [
+      "u5-heating-with-losses-03",
+      "C",
+      "120/(P - P_d) s",
+      "120/(P - P_d)"
+    ],
+    [
+      "u5-heating-with-losses-08",
+      "B",
+      "8 s",
+      "8"
+    ],
+    [
+      "u5-heating-with-losses-09",
+      "E",
+      "P_d + 120/t W",
+      "P_d + 120/t"
+    ],
+    [
+      "u5-heating-with-losses-12",
+      "A",
+      "7 s",
+      "7"
+    ],
+    [
+      "u5-heating-with-losses-15",
+      "B",
+      "30 W",
+      "30"
+    ],
+    [
+      "u5-heating-with-losses-16",
+      "A",
+      "5 W",
+      "5"
+    ],
+    [
+      "u5-temperature-after-heating-03",
+      "B",
+      "P·t/10 + 20 °C",
+      "P·t/10 + 20"
+    ],
+    [
+      "u5-temperature-after-heating-08",
+      "A",
+      "25 °C",
+      "25"
+    ],
+    [
+      "u5-temperature-after-heating-09",
+      "D",
+      "10·(T_f - 20)/t W",
+      "10·(T_f - 20)/t"
+    ],
+    [
+      "u5-temperature-after-heating-12",
+      "A",
+      "65/2 °C",
+      "65/2"
+    ],
+    [
+      "u5-temperature-after-heating-15",
+      "A",
+      "10 W",
+      "10"
+    ],
+    [
+      "u5-temperature-after-heating-16",
+      "E",
+      "10 s",
+      "10"
+    ],
+    [
+      "u5-two-body-calorimetry-08",
+      "D",
+      "50 °C",
+      "50"
+    ],
+    [
+      "u5-two-body-calorimetry-09",
+      "B",
+      "C_2·(20 - T_f)/(T_f - 80) J/K",
+      "C_2·(20 - T_f)/(T_f - 80)"
+    ],
+    [
+      "u5-two-body-calorimetry-12",
+      "A",
+      "47 °C",
+      "47"
+    ],
+    [
+      "u5-two-body-calorimetry-15",
+      "C",
+      "3 J/K",
+      "3"
+    ],
+    [
+      "u5-calorimeter-capacity-08",
+      "B",
+      "40 °C",
+      "40"
+    ],
+    [
+      "u5-calorimeter-capacity-09",
+      "A",
+      "(-T_f·m_c - 2·T_f + 20·m_c + 40)/(T_f - 80) g",
+      "(-T_f·m_c - 2·T_f + 20·m_c + 40)/(T_f - 80)"
+    ],
+    [
+      "u5-calorimeter-capacity-12",
+      "A",
+      "42 °C",
+      "42"
+    ],
+    [
+      "u5-calorimeter-capacity-15",
+      "C",
+      "4 g",
+      "4"
+    ],
+    [
+      "u5-calorimeter-capacity-16",
+      "C",
+      "2 g",
+      "2"
+    ],
+    [
+      "u5-latent-heat-08",
+      "C",
+      "200 J",
+      "200"
+    ],
+    [
+      "u5-latent-heat-09",
+      "C",
+      "Q/L g",
+      "Q/L"
+    ],
+    [
+      "u5-latent-heat-12",
+      "E",
+      "500 J",
+      "500"
+    ],
+    [
+      "u5-latent-heat-15",
+      "B",
+      "4 g",
+      "4"
+    ],
+    [
+      "u5-latent-heat-16",
+      "B",
+      "100 J/g",
+      "100"
+    ],
+    [
+      "u5-subzero-ice-melting-03",
+      "C",
+      "m·(2·θ + 300) J",
+      "2·m·(θ + 150)"
+    ],
+    [
+      "u5-subzero-ice-melting-08",
+      "B",
+      "320 J",
+      "320"
+    ],
+    [
+      "u5-subzero-ice-melting-09",
+      "B",
+      "Q/(2·(θ + 150)) g",
+      "Q/(2·(θ + 150))"
+    ],
+    [
+      "u5-subzero-ice-melting-12",
+      "A",
+      "500 J",
+      "500"
+    ],
+    [
+      "u5-subzero-ice-melting-15",
+      "C",
+      "2 g",
+      "2"
+    ],
+    [
+      "u5-subzero-ice-melting-16",
+      "D",
+      "10 K",
+      "10"
+    ],
+    [
+      "u5-steam-condensation-cooling-03",
+      "B",
+      "m·(4·ΔT + 2400) J",
+      "4·m·(ΔT + 600)"
+    ],
+    [
+      "u5-steam-condensation-cooling-08",
+      "A",
+      "2500 J",
+      "2500"
+    ],
+    [
+      "u5-steam-condensation-cooling-09",
+      "D",
+      "Q_c/(4·(ΔT + 600)) g",
+      "Q_c/(4·(ΔT + 600))"
+    ],
+    [
+      "u5-steam-condensation-cooling-12",
+      "D",
+      "3850 J",
+      "3850"
+    ],
+    [
+      "u5-steam-condensation-cooling-15",
+      "B",
+      "2 g",
+      "2"
+    ],
+    [
+      "u5-steam-condensation-cooling-16",
+      "C",
+      "25 K",
+      "25"
+    ],
+    [
+      "u5-ice-final-temperature-03",
+      "E",
+      "(Q - 300·m)/(4·m) °C",
+      "Q/(4·m) - 75"
+    ],
+    [
+      "u5-ice-final-temperature-08",
+      "E",
+      "5 °C",
+      "5"
+    ],
+    [
+      "u5-ice-final-temperature-09",
+      "D",
+      "4·m·(T_f + 75) J",
+      "4·m·(T_f + 75)"
+    ],
+    [
+      "u5-ice-final-temperature-12",
+      "D",
+      "55/2 °C",
+      "55/2"
+    ],
+    [
+      "u5-ice-final-temperature-15",
+      "C",
+      "1000 J",
+      "1000"
+    ],
+    [
+      "u5-warm-water-and-ice-03",
+      "A",
+      "(200·m_a - 300·m_i)/(4·m_a + 4·m_i) °C",
+      "25·(2·m_a - 3·m_i)/(m_a + m_i)"
+    ],
+    [
+      "u5-warm-water-and-ice-08",
+      "D",
+      "25 °C",
+      "25"
+    ],
+    [
+      "u5-warm-water-and-ice-09",
+      "E",
+      "-m_i·(T_f + 75)/(T_f - 50) g",
+      "-m_i·(T_f + 75)/(T_f - 50)"
+    ],
+    [
+      "u5-warm-water-and-ice-12",
+      "B",
+      "275/14 °C",
+      "275/14"
+    ],
+    [
+      "u5-warm-water-and-ice-15",
+      "D",
+      "8 g",
+      "8"
+    ],
+    [
+      "u5-freezing-time-03",
+      "D",
+      "380·m/P s",
+      "380·m/P"
+    ],
+    [
+      "u5-freezing-time-08",
+      "C",
+      "38 s",
+      "38"
+    ],
+    [
+      "u5-freezing-time-09",
+      "C",
+      "t·P/380 g",
+      "t·P/380"
+    ],
+    [
+      "u5-freezing-time-12",
+      "C",
+      "399 s",
+      "399"
+    ],
+    [
+      "u5-freezing-time-15",
+      "A",
+      "2 g",
+      "2"
+    ],
+    [
+      "u5-plane-conduction-08",
+      "A",
+      "20 W",
+      "20"
+    ],
+    [
+      "u5-plane-conduction-09",
+      "E",
+      "P/ΔT W/(m K)",
+      "P/ΔT"
+    ],
+    [
+      "u5-plane-conduction-12",
+      "B",
+      "50 W",
+      "50"
+    ],
+    [
+      "u5-plane-conduction-15",
+      "B",
+      "4 W/(m K)",
+      "4"
+    ],
+    [
+      "u5-plane-conduction-16",
+      "E",
+      "10 K",
+      "10"
+    ],
+    [
+      "u5-composite-wall-series-03",
+      "D",
+      "60/(L_1 + L_2/2) W",
+      "120/(2·L_1 + L_2)"
+    ],
+    [
+      "u5-composite-wall-series-08",
+      "E",
+      "30 W",
+      "30"
+    ],
+    [
+      "u5-composite-wall-series-09",
+      "D",
+      "-L_2/2 + 60/P m",
+      "-L_2/2 + 60/P"
+    ],
+    [
+      "u5-composite-wall-series-12",
+      "A",
+      "45/2 W",
+      "45/2"
+    ],
+    [
+      "u5-composite-wall-series-15",
+      "E",
+      "2 m",
+      "2"
+    ],
+    [
+      "u5-composite-wall-series-16",
+      "C",
+      "2 m",
+      "2"
+    ],
+    [
+      "u5-parallel-thermal-panels-03",
+      "B",
+      "10·A_1 + 20·A_2 W",
+      "10·A_1 + 20·A_2"
+    ],
+    [
+      "u5-parallel-thermal-panels-08",
+      "A",
+      "30 W",
+      "30"
+    ],
+    [
+      "u5-parallel-thermal-panels-09",
+      "E",
+      "P_tot/10 - 2·A_2 m²",
+      "P_tot/10 - 2·A_2"
+    ],
+    [
+      "u5-parallel-thermal-panels-12",
+      "B",
+      "45 W",
+      "45"
+    ],
+    [
+      "u5-parallel-thermal-panels-15",
+      "B",
+      "2 m²",
+      "2"
+    ],
+    [
+      "u5-parallel-thermal-panels-16",
+      "E",
+      "1 m²",
+      "1"
+    ],
+    [
+      "u5-interface-temperature-03",
+      "A",
+      "100·R_c/(R_h + R_c) °C",
+      "100·R_c/(R_h + R_c)"
+    ],
+    [
+      "u5-interface-temperature-08",
+      "B",
+      "50 °C",
+      "50"
+    ],
+    [
+      "u5-interface-temperature-09",
+      "E",
+      "R_c·(100 - T_i)/T_i K/W",
+      "R_c·(100 - T_i)/T_i"
+    ],
+    [
+      "u5-interface-temperature-12",
+      "D",
+      "55 °C",
+      "55"
+    ],
+    [
+      "u5-interface-temperature-15",
+      "B",
+      "3 K/W",
+      "3"
+    ],
+    [
+      "u5-convective-loss-03",
+      "E",
+      "h·(T_s - 20) W",
+      "h·(T_s - 20)"
+    ],
+    [
+      "u5-convective-loss-08",
+      "D",
+      "50 W",
+      "50"
+    ],
+    [
+      "u5-convective-loss-09",
+      "B",
+      "P/(T_s - 20) W/(m² K)",
+      "P/(T_s - 20)"
+    ],
+    [
+      "u5-convective-loss-12",
+      "A",
+      "125 W",
+      "125"
+    ],
+    [
+      "u5-convective-loss-15",
+      "A",
+      "10 W/(m² K)",
+      "10"
+    ],
+    [
+      "u5-convective-loss-16",
+      "E",
+      "30 °C",
+      "30"
+    ],
+    [
+      "u5-emitted-blackbody-power-03",
+      "C",
+      "3·θ^4·A/5 mW",
+      "3·θ^4·A/5"
+    ],
+    [
+      "u5-emitted-blackbody-power-08",
+      "C",
+      "48 mW",
+      "48"
+    ],
+    [
+      "u5-emitted-blackbody-power-12",
+      "C",
+      "267 mW",
+      "267"
+    ],
+    [
+      "u5-emitted-blackbody-power-16",
+      "D",
+      "5 cm²",
+      "5"
+    ],
+    [
+      "u5-net-blackbody-exchange-08",
+      "C",
+      "480 W",
+      "480"
+    ],
+    [
+      "u5-net-blackbody-exchange-10",
+      "C",
+      "(κ₁·θ_s - κ₂·θ_a)·(κ₁·θ_s + κ₂·θ_a)·(κ₁^2·θ_s^2 + κ₂^2·θ_a^2)/((θ_s - θ_a)·(θ_s + θ_a)·(θ_s^2 + θ_a^2))",
+      "(κ₁^4·θ_s^4 - κ₂^4·θ_a^4)/(θ_s^4 - θ_a^4)"
+    ],
+    [
+      "u5-net-blackbody-exchange-12",
+      "A",
+      "960 W",
+      "960"
+    ],
+    [
+      "u5-parallel-heat-losses-03",
+      "C",
+      "ΔT·(h + 5) W",
+      "ΔT·(h + 5)"
+    ],
+    [
+      "u5-parallel-heat-losses-08",
+      "E",
+      "100 W",
+      "100"
+    ],
+    [
+      "u5-parallel-heat-losses-09",
+      "B",
+      "P/(h + 5) K",
+      "P/(h + 5)"
+    ],
+    [
+      "u5-parallel-heat-losses-12",
+      "D",
+      "200 W",
+      "200"
+    ],
+    [
+      "u5-parallel-heat-losses-15",
+      "E",
+      "20 K",
+      "20"
+    ],
+    [
+      "u5-parallel-heat-losses-16",
+      "A",
+      "5 W/(m² K)",
+      "5"
+    ],
+    [
+      "u5-reversible-isothermal-entropy-08",
+      "E",
+      "2 J/K",
+      "2"
+    ],
+    [
+      "u5-reversible-isothermal-entropy-09",
+      "B",
+      "ΔS·T J",
+      "ΔS·T"
+    ],
+    [
+      "u5-reversible-isothermal-entropy-12",
+      "D",
+      "3/2 J/K",
+      "3/2"
+    ],
+    [
+      "u5-reversible-isothermal-entropy-15",
+      "A",
+      "1200 J",
+      "1200"
+    ],
+    [
+      "u5-entropy-hot-cold-08",
+      "A",
+      "3/2 J/K",
+      "3/2"
+    ],
+    [
+      "u5-entropy-hot-cold-09",
+      "E",
+      "600·T_h/(ΔS_tot·T_h + 600) K",
+      "600·T_h/(ΔS_tot·T_h + 600)"
+    ],
+    [
+      "u5-entropy-hot-cold-12",
+      "A",
+      "5/4 J/K",
+      "5/4"
+    ],
+    [
+      "u5-entropy-hot-cold-15",
+      "B",
+      "300 K",
+      "300"
+    ],
+    [
+      "u5-entropy-hot-cold-16",
+      "E",
+      "400 K",
+      "400"
+    ],
+    [
+      "u5-ideal-expansion-entropy-08",
+      "B",
+      "2 J/K",
+      "2"
+    ],
+    [
+      "u5-ideal-expansion-entropy-09",
+      "A",
+      "ΔS·ln(2)/ln(r) J/K",
+      "ΔS·ln(2)/ln(r)"
+    ],
+    [
+      "u5-ideal-expansion-entropy-10",
+      "A",
+      "κ₁·(ln(κ₂) + ln(r))/ln(r)",
+      "ln((κ₂·r)^κ₁)/ln(r)"
+    ],
+    [
+      "u5-ideal-expansion-entropy-12",
+      "A",
+      "5 J/K",
+      "5"
+    ],
+    [
+      "u5-ideal-expansion-entropy-15",
+      "D",
+      "4 J/K",
+      "4"
+    ],
+    [
+      "u5-statistical-entropy-10",
+      "E",
+      "(ln(κ₁) - ln(κ₂) + ln(Ω_f) - ln(Ω_i))/(ln(Ω_f) - ln(Ω_i))",
+      "ln(κ₁·Ω_f/(κ₂·Ω_i))/ln(Ω_f/Ω_i)"
+    ],
+    [
+      "u6-coulomb-force-03",
+      "E",
+      "90·Q/r^2 N",
+      "90·Q/r^2"
+    ],
+    [
+      "u6-coulomb-force-08",
+      "B",
+      "10 N",
+      "10"
+    ],
+    [
+      "u6-coulomb-force-09",
+      "E",
+      "F·r^2/90 μC",
+      "F·r^2/90"
+    ],
+    [
+      "u6-coulomb-force-12",
+      "D",
+      "95 N",
+      "95"
+    ],
+    [
+      "u6-coulomb-force-15",
+      "D",
+      "2 μC",
+      "2"
+    ],
+    [
+      "u6-coulomb-force-16",
+      "B",
+      "3 cm",
+      "3"
+    ],
+    [
+      "u6-point-electric-field-08",
+      "A",
+      "1 N/C",
+      "1"
+    ],
+    [
+      "u6-point-electric-field-09",
+      "B",
+      "E·r^2/9 nC",
+      "E·r^2/9"
+    ],
+    [
+      "u6-point-electric-field-12",
+      "E",
+      "5 N/C",
+      "5"
+    ],
+    [
+      "u6-point-electric-field-15",
+      "B",
+      "2 nC",
+      "2"
+    ],
+    [
+      "u6-point-electric-field-16",
+      "C",
+      "3 m",
+      "3"
+    ],
+    [
+      "u6-point-electric-potential-03",
+      "B",
+      "9·Q/r V",
+      "9·Q/r"
+    ],
+    [
+      "u6-point-electric-potential-09",
+      "B",
+      "V·r/9 nC",
+      "V·r/9"
+    ],
+    [
+      "u6-point-electric-potential-12",
+      "C",
+      "21/2 V",
+      "21/2"
+    ],
+    [
+      "u6-point-electric-potential-15",
+      "A",
+      "2 nC",
+      "2"
+    ],
+    [
+      "u6-midpoint-electric-field-03",
+      "E",
+      "9·Q_s - 9·Q_d N/C",
+      "9·Q_s - 9·Q_d"
+    ],
+    [
+      "u6-midpoint-electric-field-08",
+      "D",
+      "18 N/C",
+      "18"
+    ],
+    [
+      "u6-midpoint-electric-field-09",
+      "C",
+      "E_x/9 + Q_d nC",
+      "E_x/9 + Q_d"
+    ],
+    [
+      "u6-midpoint-electric-field-12",
+      "C",
+      "27 N/C",
+      "27"
+    ],
+    [
+      "u6-midpoint-electric-field-15",
+      "C",
+      "2 nC",
+      "2"
+    ],
+    [
+      "u6-midpoint-electric-field-16",
+      "E",
+      "1 nC",
+      "1"
+    ],
+    [
+      "u6-symmetric-electric-potential-06",
+      "C",
+      "-12 V",
+      "−12 V"
+    ],
+    [
+      "u6-symmetric-electric-potential-08",
+      "B",
+      "9 V",
+      "9"
+    ],
+    [
+      "u6-symmetric-electric-potential-09",
+      "A",
+      "V_P/3 - Q₂ nC",
+      "V_P/3 - Q₂"
+    ],
+    [
+      "u6-symmetric-electric-potential-12",
+      "C",
+      "12 V",
+      "12"
+    ],
+    [
+      "u6-symmetric-electric-potential-15",
+      "E",
+      "3 nC",
+      "3"
+    ],
+    [
+      "u6-symmetric-electric-potential-16",
+      "B",
+      "2 nC",
+      "2"
+    ],
+    [
+      "u6-force-uniform-electric-field-08",
+      "C",
+      "6 mN",
+      "6"
+    ],
+    [
+      "u6-force-uniform-electric-field-09",
+      "E",
+      "F/E μC",
+      "F/E"
+    ],
+    [
+      "u6-force-uniform-electric-field-12",
+      "C",
+      "5 mN",
+      "5"
+    ],
+    [
+      "u6-force-uniform-electric-field-15",
+      "A",
+      "4 μC",
+      "4"
+    ],
+    [
+      "u6-force-uniform-electric-field-16",
+      "B",
+      "3 kN/C",
+      "3"
+    ],
+    [
+      "u6-work-potential-difference-03",
+      "D",
+      "q·ΔV μJ",
+      "q·ΔV"
+    ],
+    [
+      "u6-work-potential-difference-09",
+      "E",
+      "W/ΔV μC",
+      "W/ΔV"
+    ],
+    [
+      "u6-work-potential-difference-12",
+      "D",
+      "11/2 μJ",
+      "11/2"
+    ],
+    [
+      "u6-work-potential-difference-15",
+      "C",
+      "4 μC",
+      "4"
+    ],
+    [
+      "u6-work-potential-difference-16",
+      "D",
+      "3 V",
+      "3"
+    ],
+    [
+      "u6-charge-accelerating-voltage-03",
+      "E",
+      "√(2)·√(U)/√(m) m/s",
+      "√(2)·√(U)/√(m)"
+    ],
+    [
+      "u6-charge-accelerating-voltage-08",
+      "A",
+      "2 m/s",
+      "2"
+    ],
+    [
+      "u6-charge-accelerating-voltage-09",
+      "B",
+      "v^2·m/2 kV",
+      "v^2·m/2"
+    ],
+    [
+      "u6-charge-accelerating-voltage-12",
+      "A",
+      "5/2 m/s",
+      "5/2"
+    ],
+    [
+      "u6-charge-accelerating-voltage-15",
+      "D",
+      "8 kV",
+      "8"
+    ],
+    [
+      "u6-electric-transverse-displacement-03",
+      "E",
+      "E·t^2/2 m",
+      "E·t^2/2"
+    ],
+    [
+      "u6-electric-transverse-displacement-08",
+      "E",
+      "1 m",
+      "1"
+    ],
+    [
+      "u6-electric-transverse-displacement-09",
+      "E",
+      "2·s/t^2 kN/C",
+      "2·s/t^2"
+    ],
+    [
+      "u6-electric-transverse-displacement-12",
+      "A",
+      "3/2 m",
+      "3/2"
+    ],
+    [
+      "u6-electric-transverse-displacement-15",
+      "C",
+      "1 kN/C",
+      "1"
+    ],
+    [
+      "u6-electric-transverse-displacement-16",
+      "D",
+      "1 s",
+      "1"
+    ],
+    [
+      "u6-electric-gravity-balance-03",
+      "A",
+      "10·m/q N/C",
+      "10·m/q"
+    ],
+    [
+      "u6-electric-gravity-balance-08",
+      "C",
+      "5 N/C",
+      "5"
+    ],
+    [
+      "u6-electric-gravity-balance-09",
+      "C",
+      "E·q/10 mg",
+      "E·q/10"
+    ],
+    [
+      "u6-electric-gravity-balance-12",
+      "B",
+      "25/2 N/C",
+      "25/2"
+    ],
+    [
+      "u6-electric-gravity-balance-15",
+      "B",
+      "3 mg",
+      "3"
+    ],
+    [
+      "u6-zero-field-distance-ratio-09",
+      "E",
+      "d₁/d₂^2·Q₂ nC",
+      "d₁/d₂^2·Q₂"
+    ],
+    [
+      "u6-zero-field-distance-ratio-15",
+      "A",
+      "4 nC",
+      "4"
+    ],
+    [
+      "u6-orthogonal-electric-fields-03",
+      "B",
+      "√(E₁^2 + E₂^2) N/C",
+      "√(E₁^2 + E₂^2)"
+    ],
+    [
+      "u6-orthogonal-electric-fields-06",
+      "A",
+      "45 gradi",
+      "45°"
+    ],
+    [
+      "u6-orthogonal-electric-fields-08",
+      "C",
+      "5 N/C",
+      "5"
+    ],
+    [
+      "u6-orthogonal-electric-fields-09",
+      "A",
+      "√(E^2 - E₂^2) N/C",
+      "√(E^2 - E₂^2)"
+    ],
+    [
+      "u6-orthogonal-electric-fields-12",
+      "B",
+      "9 N/C",
+      "9"
+    ],
+    [
+      "u6-orthogonal-electric-fields-15",
+      "B",
+      "6 N/C",
+      "6"
+    ],
+    [
+      "u6-orthogonal-electric-fields-16",
+      "C",
+      "4 N/C",
+      "4"
+    ],
+    [
+      "u6-current-charge-time-08",
+      "D",
+      "3 A",
+      "3"
+    ],
+    [
+      "u6-current-charge-time-09",
+      "E",
+      "I·Δt mC",
+      "I·Δt"
+    ],
+    [
+      "u6-current-charge-time-12",
+      "D",
+      "7/2 A",
+      "7/2"
+    ],
+    [
+      "u6-current-charge-time-15",
+      "E",
+      "10 mC",
+      "10"
+    ],
+    [
+      "u6-ohmic-current-03",
+      "E",
+      "V/R A",
+      "V/R"
+    ],
+    [
+      "u6-ohmic-current-08",
+      "E",
+      "4 A",
+      "4"
+    ],
+    [
+      "u6-ohmic-current-09",
+      "B",
+      "I·R V",
+      "I·R"
+    ],
+    [
+      "u6-ohmic-current-12",
+      "E",
+      "7/2 A",
+      "7/2"
+    ],
+    [
+      "u6-ohmic-current-15",
+      "C",
+      "6 V",
+      "6"
+    ],
+    [
+      "u6-wire-resistance-03",
+      "D",
+      "L/(50·A) Ω",
+      "L/(50·A)"
+    ],
+    [
+      "u6-wire-resistance-08",
+      "A",
+      "1 Ω",
+      "1"
+    ],
+    [
+      "u6-wire-resistance-09",
+      "E",
+      "50·R·A m",
+      "50·R·A"
+    ],
+    [
+      "u6-wire-resistance-12",
+      "B",
+      "5/2 Ω",
+      "5/2"
+    ],
+    [
+      "u6-wire-resistance-15",
+      "E",
+      "1 m",
+      "1"
+    ],
+    [
+      "u6-wire-stretched-fixed-volume-08",
+      "B",
+      "4 Ω",
+      "4"
+    ],
+    [
+      "u6-wire-stretched-fixed-volume-09",
+      "B",
+      "R/s = L/L₀^2 Ω",
+      "R/s = L/L₀^2"
+    ],
+    [
+      "u6-wire-stretched-fixed-volume-12",
+      "D",
+      "11 Ω",
+      "11"
+    ],
+    [
+      "u6-wire-stretched-fixed-volume-15",
+      "E",
+      "3 Ω",
+      "3"
+    ],
+    [
+      "u6-two-series-resistors-03",
+      "D",
+      "R₁ + R₂ Ω",
+      "R₁ + R₂"
+    ],
+    [
+      "u6-two-series-resistors-08",
+      "B",
+      "5 Ω",
+      "5"
+    ],
+    [
+      "u6-two-series-resistors-09",
+      "E",
+      "R_eq - R₂ Ω",
+      "R_eq - R₂"
+    ],
+    [
+      "u6-two-series-resistors-12",
+      "C",
+      "13/2 Ω",
+      "13/2"
+    ],
+    [
+      "u6-two-series-resistors-15",
+      "E",
+      "1 Ω",
+      "1"
+    ],
+    [
+      "u6-two-series-resistors-16",
+      "B",
+      "3 Ω",
+      "3"
+    ],
+    [
+      "u6-two-parallel-resistors-08",
+      "B",
+      "1 Ω",
+      "1"
+    ],
+    [
+      "u6-two-parallel-resistors-09",
+      "E",
+      "-R_eq·R₂/(R_eq - R₂) Ω",
+      "-R_eq·R₂/(R_eq - R₂)"
+    ],
+    [
+      "u6-two-parallel-resistors-12",
+      "E",
+      "3/2 Ω",
+      "3/2"
+    ],
+    [
+      "u6-two-parallel-resistors-15",
+      "C",
+      "1 Ω",
+      "1"
+    ],
+    [
+      "u6-two-parallel-resistors-16",
+      "B",
+      "2 Ω",
+      "2"
+    ],
+    [
+      "u6-series-parallel-resistor-network-03",
+      "E",
+      "r·R/(r + R) + r Ω",
+      "r·(r + 2·R)/(r + R)"
+    ],
+    [
+      "u6-series-parallel-resistor-network-08",
+      "D",
+      "3 Ω",
+      "3"
+    ],
+    [
+      "u6-series-parallel-resistor-network-09",
+      "A",
+      "R_tot/2 - R + √(R_tot^2 + 4·R^2)/2 Ω",
+      "R_tot/2 - R + √(R_tot^2 + 4·R^2)/2"
+    ],
+    [
+      "u6-series-parallel-resistor-network-12",
+      "D",
+      "4 Ω",
+      "4"
+    ],
+    [
+      "u6-series-parallel-resistor-network-15",
+      "A",
+      "4 Ω",
+      "4"
+    ],
+    [
+      "u6-series-parallel-resistor-network-16",
+      "E",
+      "2 Ω",
+      "2"
+    ],
+    [
+      "u6-identical-series-resistors-03",
+      "D",
+      "r·N Ω",
+      "r·N"
+    ],
+    [
+      "u6-identical-series-resistors-08",
+      "E",
+      "6 Ω",
+      "6"
+    ],
+    [
+      "u6-identical-series-resistors-09",
+      "D",
+      "R/N Ω",
+      "R/N"
+    ],
+    [
+      "u6-identical-series-resistors-12",
+      "A",
+      "9 Ω",
+      "9"
+    ],
+    [
+      "u6-identical-series-resistors-15",
+      "A",
+      "4 Ω",
+      "4"
+    ],
+    [
+      "u6-identical-parallel-resistors-03",
+      "A",
+      "r/N Ω",
+      "r/N"
+    ],
+    [
+      "u6-identical-parallel-resistors-08",
+      "C",
+      "4 Ω",
+      "4"
+    ],
+    [
+      "u6-identical-parallel-resistors-09",
+      "A",
+      "R·N Ω",
+      "R·N"
+    ],
+    [
+      "u6-identical-parallel-resistors-12",
+      "E",
+      "7/2 Ω",
+      "7/2"
+    ],
+    [
+      "u6-identical-parallel-resistors-15",
+      "D",
+      "6 Ω",
+      "6"
+    ],
+    [
+      "u6-voltage-divider-03",
+      "A",
+      "12·R₂/(R₁ + R₂) V",
+      "12·R₂/(R₁ + R₂)"
+    ],
+    [
+      "u6-voltage-divider-08",
+      "B",
+      "6 V",
+      "6"
+    ],
+    [
+      "u6-voltage-divider-09",
+      "A",
+      "R₂·(12 - V₂)/V₂ Ω",
+      "R₂·(12 - V₂)/V₂"
+    ],
+    [
+      "u6-voltage-divider-12",
+      "D",
+      "9/2 V",
+      "9/2"
+    ],
+    [
+      "u6-voltage-divider-15",
+      "E",
+      "1 Ω",
+      "1"
+    ],
+    [
+      "u6-current-divider-03",
+      "C",
+      "12·R₂/(R₁ + R₂) mA",
+      "12·R₂/(R₁ + R₂)"
+    ],
+    [
+      "u6-current-divider-08",
+      "D",
+      "6 mA",
+      "6"
+    ],
+    [
+      "u6-current-divider-09",
+      "A",
+      "R₂·(12 - I₁)/I₁ Ω",
+      "R₂·(12 - I₁)/I₁"
+    ],
+    [
+      "u6-current-divider-12",
+      "C",
+      "9/2 mA",
+      "9/2"
+    ],
+    [
+      "u6-current-divider-15",
+      "B",
+      "1 Ω",
+      "1"
+    ],
+    [
+      "u6-joule-power-03",
+      "D",
+      "I^2·R W",
+      "I^2·R"
+    ],
+    [
+      "u6-joule-power-09",
+      "C",
+      "√(P)/√(R) A",
+      "√(P)/√(R)"
+    ],
+    [
+      "u6-joule-power-12",
+      "D",
+      "8 W",
+      "8"
+    ],
+    [
+      "u6-joule-power-15",
+      "B",
+      "3 A",
+      "3"
+    ],
+    [
+      "u6-joule-power-16",
+      "A",
+      "3 Ω",
+      "3"
+    ],
+    [
+      "u6-joule-energy-voltage-time-03",
+      "C",
+      "V^2·t/2 J",
+      "V^2·t/2"
+    ],
+    [
+      "u6-joule-energy-voltage-time-08",
+      "D",
+      "6 J",
+      "6"
+    ],
+    [
+      "u6-joule-energy-voltage-time-09",
+      "C",
+      "√(2)·√(E)/√(t) V",
+      "√(2)·√(E)/√(t)"
+    ],
+    [
+      "u6-joule-energy-voltage-time-12",
+      "E",
+      "11 J",
+      "11"
+    ],
+    [
+      "u6-joule-energy-voltage-time-15",
+      "D",
+      "6 V",
+      "6"
+    ],
+    [
+      "u6-joule-energy-voltage-time-16",
+      "A",
+      "3 s",
+      "3"
+    ],
+    [
+      "u6-line-load-efficiency-09",
+      "D",
+      "-η·R_c/(η - 1) Ω",
+      "-η·R_c/(η - 1)"
+    ],
+    [
+      "u6-line-load-efficiency-15",
+      "B",
+      "4 Ω",
+      "4"
+    ],
+    [
+      "u6-fuse-latent-heating-03",
+      "D",
+      "m/(10·I^2) s",
+      "m/(10·I^2)"
+    ],
+    [
+      "u6-fuse-latent-heating-08",
+      "A",
+      "1 s",
+      "1"
+    ],
+    [
+      "u6-fuse-latent-heating-09",
+      "B",
+      "10·t·I^2 mg",
+      "10·t·I^2"
+    ],
+    [
+      "u6-fuse-latent-heating-12",
+      "E",
+      "3/2 s",
+      "3/2"
+    ],
+    [
+      "u6-fuse-latent-heating-15",
+      "D",
+      "1 mg",
+      "1"
+    ],
+    [
+      "u6-fuse-latent-heating-16",
+      "C",
+      "1 A",
+      "1"
+    ],
+    [
+      "u6-plane-capacitance-09",
+      "A",
+      "C·d cm²",
+      "C·d"
+    ],
+    [
+      "u6-plane-capacitance-12",
+      "D",
+      "150 pF",
+      "150"
+    ],
+    [
+      "u6-plane-capacitance-15",
+      "E",
+      "1 cm²",
+      "1"
+    ],
+    [
+      "u6-capacitor-charge-03",
+      "D",
+      "C·V μC",
+      "C·V"
+    ],
+    [
+      "u6-capacitor-charge-08",
+      "A",
+      "6 μC",
+      "6"
+    ],
+    [
+      "u6-capacitor-charge-09",
+      "D",
+      "Q/V μF",
+      "Q/V"
+    ],
+    [
+      "u6-capacitor-charge-12",
+      "D",
+      "11/2 μC",
+      "11/2"
+    ],
+    [
+      "u6-capacitor-charge-15",
+      "E",
+      "4 μF",
+      "4"
+    ],
+    [
+      "u6-capacitor-charge-16",
+      "E",
+      "3 V",
+      "3"
+    ],
+    [
+      "u6-capacitor-energy-08",
+      "D",
+      "4 μJ",
+      "4"
+    ],
+    [
+      "u6-capacitor-energy-09",
+      "A",
+      "2·U/V^2 μF",
+      "2·U/V^2"
+    ],
+    [
+      "u6-capacitor-energy-12",
+      "B",
+      "11 μJ",
+      "11"
+    ],
+    [
+      "u6-capacitor-energy-15",
+      "E",
+      "1 μF",
+      "1"
+    ],
+    [
+      "u6-capacitor-energy-16",
+      "B",
+      "2 V",
+      "2"
+    ],
+    [
+      "u6-parallel-capacitors-03",
+      "C",
+      "C₁ + C₂ μF",
+      "C₁ + C₂"
+    ],
+    [
+      "u6-parallel-capacitors-08",
+      "A",
+      "5 μF",
+      "5"
+    ],
+    [
+      "u6-parallel-capacitors-09",
+      "E",
+      "C_eq - C₂ μF",
+      "C_eq - C₂"
+    ],
+    [
+      "u6-parallel-capacitors-12",
+      "D",
+      "13/2 μF",
+      "13/2"
+    ],
+    [
+      "u6-parallel-capacitors-15",
+      "E",
+      "1 μF",
+      "1"
+    ],
+    [
+      "u6-parallel-capacitors-16",
+      "A",
+      "3 μF",
+      "3"
+    ],
+    [
+      "u6-series-capacitors-08",
+      "D",
+      "1 μF",
+      "1"
+    ],
+    [
+      "u6-series-capacitors-09",
+      "D",
+      "-C_eq·C₂/(C_eq - C₂) μF",
+      "-C_eq·C₂/(C_eq - C₂)"
+    ],
+    [
+      "u6-series-capacitors-12",
+      "C",
+      "3/2 μF",
+      "3/2"
+    ],
+    [
+      "u6-series-capacitors-15",
+      "B",
+      "1 μF",
+      "1"
+    ],
+    [
+      "u6-series-capacitors-16",
+      "E",
+      "2 μF",
+      "2"
+    ],
+    [
+      "u6-series-capacitor-voltage-03",
+      "B",
+      "12·C₂/(C₁ + C₂) V",
+      "12·C₂/(C₁ + C₂)"
+    ],
+    [
+      "u6-series-capacitor-voltage-08",
+      "A",
+      "6 V",
+      "6"
+    ],
+    [
+      "u6-series-capacitor-voltage-09",
+      "C",
+      "C₂·(12 - V₁)/V₁ μF",
+      "C₂·(12 - V₁)/V₁"
+    ],
+    [
+      "u6-series-capacitor-voltage-12",
+      "D",
+      "9/2 V",
+      "9/2"
+    ],
+    [
+      "u6-series-capacitor-voltage-15",
+      "E",
+      "1 μF",
+      "1"
+    ],
+    [
+      "u6-capacitor-charge-sharing-03",
+      "E",
+      "2·V₀/(C + 2) V",
+      "2·V₀/(C + 2)"
+    ],
+    [
+      "u6-capacitor-charge-sharing-08",
+      "C",
+      "3 V",
+      "3"
+    ],
+    [
+      "u6-capacitor-charge-sharing-09",
+      "C",
+      "V_f·(C + 2)/2 V",
+      "V_f·(C + 2)/2"
+    ],
+    [
+      "u6-capacitor-charge-sharing-12",
+      "B",
+      "7/2 V",
+      "7/2"
+    ],
+    [
+      "u6-capacitor-charge-sharing-15",
+      "C",
+      "15 V",
+      "15"
+    ],
+    [
+      "u6-capacitor-charge-sharing-16",
+      "C",
+      "2 μF",
+      "2"
+    ],
+    [
+      "u6-capacitor-sharing-energy-loss-03",
+      "C",
+      "(V₁ - V₂)^2/4 μJ",
+      "(V₁ - V₂)^2/4"
+    ],
+    [
+      "u6-capacitor-sharing-energy-loss-08",
+      "A",
+      "1 μJ",
+      "1"
+    ],
+    [
+      "u6-capacitor-sharing-energy-loss-09",
+      "D",
+      "2·√(ΔU_persa) + V₂ V",
+      "2·√(ΔU_persa) + V₂"
+    ],
+    [
+      "u6-capacitor-sharing-energy-loss-12",
+      "A",
+      "5/2 μJ",
+      "5/2"
+    ],
+    [
+      "u6-capacitor-sharing-energy-loss-15",
+      "A",
+      "2 V",
+      "2"
+    ],
+    [
+      "u6-capacitor-sharing-energy-loss-16",
+      "D",
+      "2 V",
+      "2"
+    ],
+    [
+      "u6-dielectric-isolated-voltage-08",
+      "E",
+      "6 V",
+      "6"
+    ],
+    [
+      "u6-dielectric-isolated-voltage-09",
+      "B",
+      "V·κ V",
+      "V·κ"
+    ],
+    [
+      "u6-dielectric-isolated-voltage-12",
+      "A",
+      "9/2 V",
+      "9/2"
+    ],
+    [
+      "u6-dielectric-isolated-voltage-15",
+      "C",
+      "8 V",
+      "8"
+    ],
+    [
+      "u6-dielectric-connected-charge-08",
+      "C",
+      "8 μC",
+      "8"
+    ],
+    [
+      "u6-dielectric-connected-charge-09",
+      "C",
+      "Q/(2·κ) μF",
+      "Q/(2·κ)"
+    ],
+    [
+      "u6-dielectric-connected-charge-12",
+      "D",
+      "7 μC",
+      "7"
+    ],
+    [
+      "u6-dielectric-connected-charge-15",
+      "B",
+      "4 μF",
+      "4"
+    ],
+    [
+      "u6-isolated-plate-separation-energy-03",
+      "E",
+      "U₀·s = d/d₀ μJ",
+      "U₀·s = d/d₀"
+    ],
+    [
+      "u6-isolated-plate-separation-energy-08",
+      "D",
+      "4 μJ",
+      "4"
+    ],
+    [
+      "u6-isolated-plate-separation-energy-09",
+      "A",
+      "U/s = d/d₀ μJ",
+      "U/s = d/d₀"
+    ],
+    [
+      "u6-isolated-plate-separation-energy-12",
+      "B",
+      "13/2 μJ",
+      "13/2"
+    ],
+    [
+      "u6-isolated-plate-separation-energy-15",
+      "E",
+      "4 μJ",
+      "4"
+    ],
+    [
+      "u6-connected-plate-separation-charge-03",
+      "A",
+      "Q₀/s = d/d₀ μC",
+      "Q₀/s = d/d₀"
+    ],
+    [
+      "u6-connected-plate-separation-charge-08",
+      "D",
+      "6 μC",
+      "6"
+    ],
+    [
+      "u6-connected-plate-separation-charge-09",
+      "A",
+      "Q·s = d/d₀ μC",
+      "Q·s = d/d₀"
+    ],
+    [
+      "u6-connected-plate-separation-charge-12",
+      "A",
+      "9/2 μC",
+      "9/2"
+    ],
+    [
+      "u6-connected-plate-separation-charge-15",
+      "D",
+      "8 μC",
+      "8"
+    ],
+    [
+      "u6-lorentz-force-08",
+      "D",
+      "6 μN",
+      "6"
+    ],
+    [
+      "u6-lorentz-force-09",
+      "E",
+      "F_B/B km/s",
+      "F_B/B"
+    ],
+    [
+      "u6-lorentz-force-12",
+      "C",
+      "5 μN",
+      "5"
+    ],
+    [
+      "u6-lorentz-force-15",
+      "E",
+      "4 km/s",
+      "4"
+    ],
+    [
+      "u6-lorentz-force-16",
+      "B",
+      "3 mT",
+      "3"
+    ],
+    [
+      "u6-force-current-wire-03",
+      "C",
+      "10·I·L mN",
+      "10·I·L"
+    ],
+    [
+      "u6-force-current-wire-08",
+      "E",
+      "60 mN",
+      "60"
+    ],
+    [
+      "u6-force-current-wire-09",
+      "A",
+      "F/(10·L) A",
+      "F/(10·L)"
+    ],
+    [
+      "u6-force-current-wire-12",
+      "B",
+      "50 mN",
+      "50"
+    ],
+    [
+      "u6-force-current-wire-15",
+      "C",
+      "4 A",
+      "4"
+    ],
+    [
+      "u6-force-current-wire-16",
+      "B",
+      "3 cm",
+      "3"
+    ],
+    [
+      "u6-magnetic-circle-radius-08",
+      "D",
+      "2 m",
+      "2"
+    ],
+    [
+      "u6-magnetic-circle-radius-09",
+      "E",
+      "r·B m/s",
+      "r·B"
+    ],
+    [
+      "u6-magnetic-circle-radius-12",
+      "E",
+      "5/2 m",
+      "5/2"
+    ],
+    [
+      "u6-magnetic-circle-radius-15",
+      "B",
+      "1 m/s",
+      "1"
+    ],
+    [
+      "u6-accelerated-magnetic-radius-03",
+      "E",
+      "√(2)·√(U)/B m",
+      "√(2)·√(U)/B"
+    ],
+    [
+      "u6-accelerated-magnetic-radius-08",
+      "A",
+      "2 m",
+      "2"
+    ],
+    [
+      "u6-accelerated-magnetic-radius-09",
+      "A",
+      "r^2·B^2/2 V",
+      "r^2·B^2/2"
+    ],
+    [
+      "u6-accelerated-magnetic-radius-12",
+      "B",
+      "√(2)/4 + 1 m",
+      "√(2)/4 + 1"
+    ],
+    [
+      "u6-accelerated-magnetic-radius-15",
+      "B",
+      "8 V",
+      "8"
+    ],
+    [
+      "u6-accelerated-magnetic-radius-16",
+      "C",
+      "1 T",
+      "1"
+    ],
+    [
+      "u6-magnetic-orbit-period-08",
+      "A",
+      "1/2 s",
+      "1/2"
+    ],
+    [
+      "u6-magnetic-orbit-period-09",
+      "C",
+      "τ·B mg",
+      "τ·B"
+    ],
+    [
+      "u6-magnetic-orbit-period-12",
+      "C",
+      "5/4 s",
+      "5/4"
+    ],
+    [
+      "u6-magnetic-orbit-period-15",
+      "C",
+      "3 mg",
+      "3"
+    ],
+    [
+      "u6-magnetic-flux-08",
+      "B",
+      "6 Wb",
+      "6"
+    ],
+    [
+      "u6-magnetic-flux-09",
+      "B",
+      "Φ/A T",
+      "Φ/A"
+    ],
+    [
+      "u6-magnetic-flux-12",
+      "D",
+      "5 Wb",
+      "5"
+    ],
+    [
+      "u6-magnetic-flux-15",
+      "B",
+      "4 T",
+      "4"
+    ],
+    [
+      "u6-magnetic-flux-16",
+      "C",
+      "3 m²",
+      "3"
+    ],
+    [
+      "u6-faraday-average-emf-08",
+      "D",
+      "30 V",
+      "30"
+    ],
+    [
+      "u6-faraday-average-emf-09",
+      "A",
+      "|ε_media|·Δt/10 mWb",
+      "|ε_media|·Δt/10"
+    ],
+    [
+      "u6-faraday-average-emf-12",
+      "B",
+      "35 V",
+      "35"
+    ],
+    [
+      "u6-faraday-average-emf-15",
+      "A",
+      "10 mWb",
+      "10"
+    ],
+    [
+      "u6-motional-emf-03",
+      "A",
+      "B·v/2 V",
+      "B·v/2"
+    ],
+    [
+      "u6-motional-emf-08",
+      "E",
+      "3 V",
+      "3"
+    ],
+    [
+      "u6-motional-emf-09",
+      "B",
+      "2·|ε|/v T",
+      "2·|ε|/v"
+    ],
+    [
+      "u6-motional-emf-12",
+      "B",
+      "5/2 V",
+      "5/2"
+    ],
+    [
+      "u6-motional-emf-15",
+      "E",
+      "4 T",
+      "4"
+    ],
+    [
+      "u6-motional-emf-16",
+      "E",
+      "3 m/s",
+      "3"
+    ],
+    [
+      "u6-motional-induced-current-03",
+      "B",
+      "2·v/R A",
+      "2·v/R"
+    ],
+    [
+      "u6-motional-induced-current-08",
+      "A",
+      "4 A",
+      "4"
+    ],
+    [
+      "u6-motional-induced-current-09",
+      "C",
+      "I·R/2 m/s",
+      "I·R/2"
+    ],
+    [
+      "u6-motional-induced-current-12",
+      "A",
+      "5/2 A",
+      "5/2"
+    ],
+    [
+      "u6-motional-induced-current-15",
+      "E",
+      "3 m/s",
+      "3"
+    ],
+    [
+      "u6-induced-transferred-charge-03",
+      "D",
+      "ΔΦ/R mC",
+      "ΔΦ/R"
+    ],
+    [
+      "u6-induced-transferred-charge-08",
+      "C",
+      "3 mC",
+      "3"
+    ],
+    [
+      "u6-induced-transferred-charge-09",
+      "E",
+      "Q·R mWb",
+      "Q·R"
+    ],
+    [
+      "u6-induced-transferred-charge-12",
+      "D",
+      "7/2 mC",
+      "7/2"
+    ],
+    [
+      "u6-induced-transferred-charge-15",
+      "D",
+      "10 mWb",
+      "10"
+    ],
+    [
+      "u6-magnetic-helix-pitch-08",
+      "D",
+      "2 m",
+      "2"
+    ],
+    [
+      "u6-magnetic-helix-pitch-09",
+      "B",
+      "p/(2π)·B m/s",
+      "p/(2π)·B"
+    ],
+    [
+      "u6-magnetic-helix-pitch-12",
+      "A",
+      "5/4 m",
+      "5/4"
+    ],
+    [
+      "u6-magnetic-helix-pitch-15",
+      "D",
+      "3 m/s",
+      "3"
+    ],
+    [
+      "u7-wavelength-in-medium-04",
+      "C",
+      "200000000 m/s",
+      "2×10⁸ m/s"
+    ],
+    [
+      "u7-wavelength-in-medium-08",
+      "B",
+      "300 nm",
+      "300"
+    ],
+    [
+      "u7-wavelength-in-medium-09",
+      "E",
+      "λ·n nm",
+      "λ·n"
+    ],
+    [
+      "u7-wavelength-in-medium-12",
+      "C",
+      "1250/3 nm",
+      "1250/3"
+    ],
+    [
+      "u7-wavelength-in-medium-15",
+      "A",
+      "800 nm",
+      "800"
+    ],
+    [
+      "u7-photon-packet-frequency-08",
+      "D",
+      "33 10⁻²⁰ J",
+      "33"
+    ],
+    [
+      "u7-photon-packet-frequency-12",
+      "D",
+      "165/2 10⁻²⁰ J",
+      "165/2"
+    ],
+    [
+      "u7-photon-packet-frequency-16",
+      "B",
+      "1 10¹⁴ Hz",
+      "1"
+    ],
+    [
+      "u7-photon-rate-power-08",
+      "B",
+      "50 10⁶ s⁻¹",
+      "50"
+    ],
+    [
+      "u7-photon-rate-power-09",
+      "A",
+      "33·Ṅ·f₁₅/50 pW",
+      "33·Ṅ·f₁₅/50"
+    ],
+    [
+      "u7-photon-rate-power-12",
+      "A",
+      "1675/66 10⁶ s⁻¹",
+      "1675/66"
+    ],
+    [
+      "u7-photon-rate-power-15",
+      "E",
+      "66 pW",
+      "66"
+    ],
+    [
+      "u7-em-wave-field-power-08",
+      "E",
+      "3/10 W",
+      "3/10"
+    ],
+    [
+      "u7-em-wave-field-power-09",
+      "A",
+      "500·√(30)·√(P)/√(A) V/m",
+      "500·√(30)·√(P)/√(A)"
+    ],
+    [
+      "u7-em-wave-field-power-12",
+      "E",
+      "27/20 W",
+      "27/20"
+    ],
+    [
+      "u7-em-wave-field-power-15",
+      "D",
+      "300 V/m",
+      "300"
+    ],
+    [
+      "u7-em-wave-field-power-16",
+      "B",
+      "100 cm²",
+      "100"
+    ],
+    [
+      "u7-absorbed-radiant-power-03",
+      "C",
+      "P₀·(1 - τ) W",
+      "P₀·(1 - τ)"
+    ],
+    [
+      "u7-absorbed-radiant-power-08",
+      "D",
+      "4 W",
+      "4"
+    ],
+    [
+      "u7-absorbed-radiant-power-09",
+      "E",
+      "-P_ass/(τ - 1) W",
+      "-P_ass/(τ - 1)"
+    ],
+    [
+      "u7-absorbed-radiant-power-12",
+      "C",
+      "13/2 W",
+      "13/2"
+    ],
+    [
+      "u7-absorbed-radiant-power-15",
+      "E",
+      "12 W",
+      "12"
+    ],
+    [
+      "u7-photon-packet-wavelength-03",
+      "A",
+      "1980·N/λ 10⁻¹⁹ J",
+      "1980·N/λ"
+    ],
+    [
+      "u7-photon-packet-wavelength-08",
+      "D",
+      "3 10⁻¹⁹ J",
+      "3"
+    ],
+    [
+      "u7-photon-packet-wavelength-12",
+      "A",
+      "15/2 10⁻¹⁹ J",
+      "15/2"
+    ],
+    [
+      "u7-beer-transmitted-intensity-08",
+      "D",
+      "32 mW/m²",
+      "32"
+    ],
+    [
+      "u7-beer-transmitted-intensity-09",
+      "B",
+      "2^d·I mW/m²",
+      "2^d·I"
+    ],
+    [
+      "u7-beer-transmitted-intensity-10",
+      "B",
+      "2^(-κ₂·d + d)·κ₁",
+      "2^(d·(1 - κ₂))·κ₁"
+    ],
+    [
+      "u7-beer-transmitted-intensity-12",
+      "B",
+      "20 mW/m²",
+      "20"
+    ],
+    [
+      "u7-beer-transmitted-intensity-15",
+      "A",
+      "32 mW/m²",
+      "32"
+    ],
+    [
+      "u7-optical-depth-09",
+      "D",
+      "τ/d cm⁻¹",
+      "τ/d"
+    ],
+    [
+      "u7-optical-depth-15",
+      "B",
+      "4 cm⁻¹",
+      "4"
+    ],
+    [
+      "u7-optical-depth-16",
+      "E",
+      "2 cm",
+      "2"
+    ],
+    [
+      "u7-two-layer-transmission-09",
+      "A",
+      "-2·d₂ - ln(I/I₀)/ln(2) cm",
+      "-2·d₂ - ln(I/I₀)/ln(2)"
+    ],
+    [
+      "u7-two-layer-transmission-15",
+      "C",
+      "2 cm",
+      "2"
+    ],
+    [
+      "u7-two-layer-transmission-16",
+      "B",
+      "1 cm",
+      "1"
+    ],
+    [
+      "u7-infer-attenuation-coefficient-03",
+      "C",
+      "ln(64/I)/(d·ln(2)) cm⁻¹",
+      "ln((64/I)^(1/(d·ln(2))))"
+    ],
+    [
+      "u7-infer-attenuation-coefficient-08",
+      "C",
+      "4 cm⁻¹",
+      "4"
+    ],
+    [
+      "u7-infer-attenuation-coefficient-09",
+      "A",
+      "2^(-a = μ/(ln2)·d + 6) mW/m²",
+      "2^(-a = μ/(ln2)·d + 6)"
+    ],
+    [
+      "u7-infer-attenuation-coefficient-10",
+      "C",
+      "(-ln(κ₁) - ln(I) + 6·ln(2))/(κ₂·(-ln(I) + 6·ln(2)))",
+      "ln((κ₁·I/64)^(1/κ₂))/ln(I/64)"
+    ],
+    [
+      "u7-infer-attenuation-coefficient-12",
+      "A",
+      "5/2 cm⁻¹",
+      "5/2"
+    ],
+    [
+      "u7-infer-attenuation-coefficient-15",
+      "D",
+      "16 mW/m²",
+      "16"
+    ],
+    [
+      "u7-radioactive-survivors-08",
+      "B",
+      "32 10⁶ nuclei",
+      "32"
+    ],
+    [
+      "u7-radioactive-survivors-09",
+      "E",
+      "2^t·N 10⁶ nuclei",
+      "2^t·N"
+    ],
+    [
+      "u7-radioactive-survivors-10",
+      "D",
+      "2^(-κ₂·t + t)·κ₁",
+      "2^(t·(1 - κ₂))·κ₁"
+    ],
+    [
+      "u7-radioactive-survivors-12",
+      "C",
+      "20 10⁶ nuclei",
+      "20"
+    ],
+    [
+      "u7-radioactive-survivors-15",
+      "C",
+      "32 10⁶ nuclei",
+      "32"
+    ],
+    [
+      "u7-radioactive-survivors-16",
+      "E",
+      "96 10⁶ nuclei",
+      "96 milioni"
+    ],
+    [
+      "u7-radioactive-activity-08",
+      "E",
+      "7 Bq",
+      "7"
+    ],
+    [
+      "u7-radioactive-activity-09",
+      "B",
+      "10·A·T½/7 nuclei",
+      "10·A·T½/7"
+    ],
+    [
+      "u7-radioactive-activity-12",
+      "A",
+      "77/20 Bq",
+      "77/20"
+    ],
+    [
+      "u7-radioactive-activity-15",
+      "E",
+      "40 nuclei",
+      "40"
+    ],
+    [
+      "u7-radioactive-decayed-count-03",
+      "A",
+      "N₀·(1 - 1/2^t) 10⁶ nuclei",
+      "N₀ - N₀/2^t"
+    ],
+    [
+      "u7-radioactive-decayed-count-08",
+      "B",
+      "32 10⁶ nuclei",
+      "32"
+    ],
+    [
+      "u7-radioactive-decayed-count-09",
+      "A",
+      "2^t·N_dec/(2^t - 1) 10⁶ nuclei",
+      "2^t·N_dec/(2^t - 1)"
+    ],
+    [
+      "u7-radioactive-decayed-count-10",
+      "B",
+      "2^(-κ₂·t + t)·κ₁·(2^(κ₂·t) - 1)/(2^t - 1)",
+      "2^(t·(1 - κ₂))·κ₁·(2^(κ₂·t) - 1)/(2^t - 1)"
+    ],
+    [
+      "u7-radioactive-decayed-count-12",
+      "E",
+      "28 10⁶ nuclei",
+      "28"
+    ],
+    [
+      "u7-radioactive-decayed-count-15",
+      "E",
+      "32 10⁶ nuclei",
+      "32"
+    ],
+    [
+      "u7-radioactive-decayed-count-16",
+      "D",
+      "2 h",
+      "2"
+    ],
+    [
+      "u7-radioisotope-mixture-03",
+      "C",
+      "A₁/2 + A₂/4 Bq",
+      "A₁/2 + A₂/4"
+    ],
+    [
+      "u7-radioisotope-mixture-08",
+      "D",
+      "6 Bq",
+      "6"
+    ],
+    [
+      "u7-radioisotope-mixture-09",
+      "D",
+      "2·A_tot - A₂/2 Bq",
+      "2·A_tot - A₂/2"
+    ],
+    [
+      "u7-radioisotope-mixture-12",
+      "B",
+      "9 Bq",
+      "9"
+    ],
+    [
+      "u7-radioisotope-mixture-15",
+      "D",
+      "16 Bq",
+      "16"
+    ],
+    [
+      "u7-radioisotope-mixture-16",
+      "A",
+      "8 Bq",
+      "8"
+    ],
+    [
+      "u7-gamma-transition-energy-08",
+      "A",
+      "80 keV",
+      "80"
+    ],
+    [
+      "u7-gamma-transition-energy-09",
+      "B",
+      "E_γ + E_f keV",
+      "E_γ + E_f"
+    ],
+    [
+      "u7-gamma-transition-energy-12",
+      "D",
+      "81/2 keV",
+      "81/2"
+    ],
+    [
+      "u7-gamma-transition-energy-15",
+      "D",
+      "120 keV",
+      "120"
+    ],
+    [
+      "u7-gamma-transition-energy-16",
+      "E",
+      "20 keV",
+      "20"
+    ],
+    [
+      "u7-thin-lens-real-image-08",
+      "E",
+      "4/3 cm",
+      "4/3"
+    ],
+    [
+      "u7-thin-lens-real-image-09",
+      "A",
+      "q·p/(q + p) cm",
+      "q·p/(q + p)"
+    ],
+    [
+      "u7-thin-lens-real-image-12",
+      "E",
+      "13/6 cm",
+      "13/6"
+    ],
+    [
+      "u7-thin-lens-real-image-15",
+      "B",
+      "2 cm",
+      "2"
+    ],
+    [
+      "u7-thin-lens-real-image-16",
+      "C",
+      "4 cm",
+      "4"
+    ],
+    [
+      "u7-lens-magnification-09",
+      "E",
+      "M·p cm",
+      "M·p"
+    ],
+    [
+      "u7-lens-magnification-15",
+      "E",
+      "9 cm",
+      "9"
+    ],
+    [
+      "u7-plane-mirror-ray-direction-08",
+      "B",
+      "60 gradi",
+      "60"
+    ],
+    [
+      "u7-plane-mirror-ray-direction-09",
+      "C",
+      "β/2 + α/2 gradi",
+      "β/2 + α/2"
+    ],
+    [
+      "u7-plane-mirror-ray-direction-12",
+      "E",
+      "165/2 gradi",
+      "165/2"
+    ],
+    [
+      "u7-plane-mirror-ray-direction-15",
+      "E",
+      "60 gradi",
+      "60"
+    ],
+    [
+      "u7-plane-mirror-ray-direction-16",
+      "C",
+      "30 gradi",
+      "30"
+    ],
+    [
+      "u7-projected-image-height-03",
+      "C",
+      "2·h_o/(p - 2) cm",
+      "2·h_o/(p - 2)"
+    ],
+    [
+      "u7-projected-image-height-08",
+      "E",
+      "1 cm",
+      "1"
+    ],
+    [
+      "u7-projected-image-height-09",
+      "C",
+      "|h_i|·(p - 2)/2 cm",
+      "|h_i|·(p - 2)/2"
+    ],
+    [
+      "u7-projected-image-height-12",
+      "E",
+      "5/2 cm",
+      "5/2"
+    ],
+    [
+      "u7-projected-image-height-15",
+      "C",
+      "2 cm",
+      "2"
+    ],
+    [
+      "u7-projected-image-height-16",
+      "D",
+      "4 cm",
+      "4"
+    ]
+  ],
+  "taxonomyLinkErrors": [],
+  "visualFieldRecords": [],
+  "standardSolutionPhrases": {
+    "symbols": 3864,
+    "result": 3864,
+    "both": 3864
+  },
+  "frequentFirstHints": [
+    [
+      "Individua la grandezza richiesta e le quantità che restano fissate.",
+      4000
+    ]
+  ],
+  "exactPromptGroups": [],
+  "repeatedSemanticSignatures": [],
+  "numericTemplateGroups": [],
+  "legacySolutionStepNotation": {
+    "plainLegacyNotation": 32727
+  },
+  "dimensionlessPlaceholderRecords": [
+    "u1-area-conversion-01",
+    "u1-area-conversion-05",
+    "u1-area-conversion-06",
+    "u1-area-conversion-11",
+    "u1-area-conversion-13",
+    "u1-area-conversion-14",
+    "u1-volume-conversion-01",
+    "u1-volume-conversion-05",
+    "u1-volume-conversion-06",
+    "u1-volume-conversion-11",
+    "u1-volume-conversion-13",
+    "u1-volume-conversion-14",
+    "u1-scientific-scale-01",
+    "u1-scientific-scale-05",
+    "u1-scientific-scale-06",
+    "u1-scientific-scale-11",
+    "u1-scientific-scale-13",
+    "u1-scientific-scale-14",
+    "u1-vector-sum-11",
+    "u1-vector-sum-13",
+    "u1-vector-difference-11",
+    "u1-vector-difference-13",
+    "u1-vector-perpendicular-11",
+    "u1-vector-perpendicular-13",
+    "u1-scalar-product-01",
+    "u1-scalar-product-05",
+    "u1-scalar-product-11",
+    "u1-scalar-product-13",
+    "u1-scalar-product-14",
+    "u1-vector-product-01",
+    "u1-vector-product-05",
+    "u1-vector-product-11",
+    "u1-vector-product-13",
+    "u1-vector-product-14",
+    "u1-vector-projection-06",
+    "u1-vector-projection-11",
+    "u1-vector-projection-13",
+    "u1-vector-angle-ratio-01",
+    "u1-vector-angle-ratio-11",
+    "u1-vector-angle-ratio-13",
+    "u2-uniform-displacement-11",
+    "u2-uniform-displacement-13",
+    "u2-uniform-position-11",
+    "u2-uniform-position-13",
+    "u2-mean-velocity-11",
+    "u2-mean-velocity-13",
+    "u2-roundtrip-average-11",
+    "u2-roundtrip-average-13",
+    "u2-equal-time-average-11",
+    "u2-equal-time-average-13",
+    "u2-mean-acceleration-11",
+    "u2-mean-acceleration-13",
+    "u2-rest-accelerated-distance-11",
+    "u2-rest-accelerated-distance-13",
+    "u2-accelerated-final-speed-11",
+    "u2-accelerated-final-speed-13",
+    "u2-stopping-distance-11",
+    "u2-stopping-distance-13",
+    "u2-stopping-time-11",
+    "u2-stopping-time-13",
+    "u2-freefall-time-11",
+    "u2-freefall-time-13",
+    "u2-freefall-speed-11",
+    "u2-freefall-speed-13",
+    "u2-vertical-maximum-11",
+    "u2-vertical-maximum-13",
+    "u2-vertical-flight-11",
+    "u2-vertical-flight-13",
+    "u2-projectile-range-11",
+    "u2-projectile-range-13",
+    "u2-projectile-one-second-11",
+    "u2-projectile-one-second-13",
+    "u2-centripetal-acceleration-11",
+    "u2-centripetal-acceleration-13",
+    "u2-frequency-count-05",
+    "u2-frequency-count-11",
+    "u2-frequency-count-13",
+    "u2-frequency-count-14",
+    "u2-circular-force-11",
+    "u2-circular-force-13",
+    "u2-opposed-force-acceleration-11",
+    "u2-opposed-force-acceleration-13",
+    "u2-elevator-apparent-weight-11",
+    "u2-elevator-apparent-weight-13",
+    "u2-two-blocks-system-11",
+    "u2-two-blocks-system-13",
+    "u2-atwood-11",
+    "u2-atwood-13",
+    "u2-incline-acceleration-06",
+    "u2-incline-acceleration-11",
+    "u2-incline-acceleration-13",
+    "u2-incline-normal-06",
+    "u2-incline-normal-11",
+    "u2-incline-normal-13",
+    "u2-kinetic-friction-05",
+    "u2-kinetic-friction-11",
+    "u2-kinetic-friction-13",
+    "u2-kinetic-friction-14",
+    "u2-static-threshold-05",
+    "u2-static-threshold-11",
+    "u2-static-threshold-13",
+    "u2-static-threshold-14",
+    "u2-incline-friction-06",
+    "u2-incline-friction-11",
+    "u2-incline-friction-13",
+    "u2-hooke-force-11",
+    "u2-hooke-force-13",
+    "u2-parallel-springs-11",
+    "u2-parallel-springs-13",
+    "u2-series-springs-11",
+    "u2-series-springs-13",
+    "u2-static-spring-extension-11",
+    "u2-static-spring-extension-13",
+    "u2-spring-energy-11",
+    "u2-spring-energy-13",
+    "u2-gravitational-energy-11",
+    "u2-gravitational-energy-13",
+    "u2-oblique-work-11",
+    "u2-oblique-work-13",
+    "u2-kinetic-work-difference-11",
+    "u2-kinetic-work-difference-13",
+    "u2-mechanical-power-11",
+    "u2-mechanical-power-13",
+    "u2-lift-time-11",
+    "u2-lift-time-13",
+    "u2-efficiency-01",
+    "u2-efficiency-11",
+    "u2-efficiency-13",
+    "u2-impulse-11",
+    "u2-impulse-13",
+    "u2-momentum-11",
+    "u2-momentum-13",
+    "u2-inelastic-rest-11",
+    "u2-inelastic-rest-13",
+    "u2-inelastic-opposed-11",
+    "u2-inelastic-opposed-13",
+    "u2-recoil-11",
+    "u2-recoil-13",
+    "u2-center-mass-weighted-11",
+    "u2-center-mass-weighted-13",
+    "u2-center-mass-equal-11",
+    "u2-center-mass-equal-13",
+    "u2-torque-perpendicular-11",
+    "u2-torque-perpendicular-13",
+    "u2-lever-equilibrium-11",
+    "u2-lever-equilibrium-13",
+    "u2-biceps-lever-11",
+    "u2-biceps-lever-13",
+    "u2-force-couple-11",
+    "u2-force-couple-13",
+    "u2-gravity-ratio-01",
+    "u2-gravity-ratio-05",
+    "u2-gravity-ratio-06",
+    "u2-gravity-ratio-11",
+    "u2-gravity-ratio-13",
+    "u2-gravity-ratio-14",
+    "u2-circular-orbit-13",
+    "u2-descent-with-loss-11",
+    "u2-descent-with-loss-13",
+    "u2-spring-launch-13",
+    "u2-elastic-target-speed-11",
+    "u2-elastic-target-speed-13",
+    "u2-collision-energy-loss-11",
+    "u2-collision-energy-loss-13",
+    "u2-horizontal-braking-friction-06",
+    "u2-horizontal-braking-friction-11",
+    "u2-horizontal-braking-friction-13",
+    "u3-pressure-area-11",
+    "u3-pressure-area-13",
+    "u3-density-11",
+    "u3-density-13",
+    "u3-stevino-gauge-11",
+    "u3-stevino-gauge-13",
+    "u3-stevino-absolute-11",
+    "u3-stevino-absolute-13",
+    "u3-layered-liquids-11",
+    "u3-layered-liquids-13",
+    "u3-communicating-columns-11",
+    "u3-communicating-columns-13",
+    "u3-differential-manometer-11",
+    "u3-differential-manometer-13",
+    "u3-vertical-wall-force-11",
+    "u3-vertical-wall-force-13",
+    "u3-hydraulic-force-11",
+    "u3-hydraulic-force-13",
+    "u3-hydraulic-stroke-11",
+    "u3-hydraulic-stroke-13",
+    "u3-archimedes-force-11",
+    "u3-archimedes-force-13",
+    "u3-floating-fraction-01",
+    "u3-floating-fraction-11",
+    "u3-floating-fraction-13",
+    "u3-apparent-weight-11",
+    "u3-apparent-weight-13",
+    "u3-maximum-payload-11",
+    "u3-maximum-payload-13",
+    "u3-loaded-raft-depth-11",
+    "u3-loaded-raft-depth-13",
+    "u3-two-liquid-floating-01",
+    "u3-two-liquid-floating-11",
+    "u3-two-liquid-floating-13",
+    "u3-hydrostatic-weighing-11",
+    "u3-hydrostatic-weighing-13",
+    "u3-volume-flow-11",
+    "u3-volume-flow-13",
+    "u3-mass-flow-11",
+    "u3-mass-flow-13",
+    "u3-constriction-velocity-11",
+    "u3-constriction-velocity-13",
+    "u3-identical-branches-05",
+    "u3-identical-branches-11",
+    "u3-identical-branches-13",
+    "u3-identical-branches-14",
+    "u3-junction-balance-11",
+    "u3-junction-balance-13",
+    "u3-mixing-mass-balance-11",
+    "u3-mixing-mass-balance-13",
+    "u3-hydraulic-power-11",
+    "u3-hydraulic-power-13",
+    "u3-bernoulli-horizontal-11",
+    "u3-bernoulli-horizontal-13",
+    "u3-bernoulli-height-speed-11",
+    "u3-bernoulli-height-speed-13",
+    "u3-venturi-area-ratio-05",
+    "u3-venturi-area-ratio-11",
+    "u3-venturi-area-ratio-13",
+    "u3-venturi-area-ratio-14",
+    "u3-torricelli-speed-13",
+    "u3-torricelli-flow-11",
+    "u3-torricelli-flow-13",
+    "u3-horizontal-jet-range-13",
+    "u3-reservoir-emptying-05",
+    "u3-reservoir-emptying-11",
+    "u3-reservoir-emptying-13",
+    "u3-reservoir-emptying-14",
+    "u3-transport-time-11",
+    "u3-transport-time-13",
+    "u3-poiseuille-flow-11",
+    "u3-poiseuille-flow-13",
+    "u3-hydraulic-series-11",
+    "u3-hydraulic-series-13",
+    "u3-hydraulic-parallel-11",
+    "u3-hydraulic-parallel-13",
+    "u3-parallel-flow-divider-11",
+    "u3-parallel-flow-divider-13",
+    "u3-viscous-dissipation-11",
+    "u3-viscous-dissipation-13",
+    "u3-parabolic-profile-06",
+    "u3-parabolic-profile-11",
+    "u3-parabolic-profile-13",
+    "u3-couette-force-11",
+    "u3-couette-force-13",
+    "u3-pressure-gradient-fixed-speed-11",
+    "u3-pressure-gradient-fixed-speed-13",
+    "u3-network-stages-05",
+    "u3-network-stages-06",
+    "u3-network-stages-11",
+    "u3-network-stages-13",
+    "u3-network-stages-14",
+    "u3-accelerating-liquid-column-11",
+    "u3-accelerating-liquid-column-13",
+    "u3-soap-film-force-11",
+    "u3-soap-film-force-13",
+    "u3-surface-work-11",
+    "u3-surface-work-13",
+    "u3-laplace-droplet-11",
+    "u3-laplace-droplet-13",
+    "u3-alveolar-surfactant-balance-06",
+    "u3-alveolar-surfactant-balance-11",
+    "u3-alveolar-surfactant-balance-13",
+    "u3-two-droplet-pressure-11",
+    "u3-two-droplet-pressure-13",
+    "u3-capillary-rise-11",
+    "u3-capillary-rise-13",
+    "u3-drop-detachment-11",
+    "u3-drop-detachment-13",
+    "u3-droplet-fragmentation-06",
+    "u3-droplet-fragmentation-11",
+    "u3-droplet-fragmentation-13",
+    "u4-wave-wavelength-11",
+    "u4-wave-wavelength-13",
+    "u4-echo-ranging-11",
+    "u4-echo-ranging-13",
+    "u4-oscillator-period-11",
+    "u4-oscillator-period-13",
+    "u4-oscillator-max-speed-11",
+    "u4-oscillator-max-speed-13",
+    "u4-oscillator-max-acceleration-11",
+    "u4-oscillator-max-acceleration-13",
+    "u4-oscillator-energy-11",
+    "u4-oscillator-energy-13",
+    "u4-wave-phase-space-11",
+    "u4-wave-phase-space-13",
+    "u4-wave-phase-time-11",
+    "u4-wave-phase-time-13",
+    "u4-spherical-intensity-11",
+    "u4-spherical-intensity-13",
+    "u4-wave-energy-through-area-11",
+    "u4-wave-energy-through-area-13",
+    "u4-wave-amplitude-energy-11",
+    "u4-wave-amplitude-energy-13",
+    "u4-sound-decibel-13",
+    "u4-incoherent-sound-sum-11",
+    "u4-incoherent-sound-sum-13",
+    "u4-coherent-constructive-11",
+    "u4-coherent-constructive-13",
+    "u4-coherent-destructive-11",
+    "u4-coherent-destructive-13",
+    "u4-beats-envelope-11",
+    "u4-beats-envelope-13",
+    "u4-wave-displacement-projection-06",
+    "u4-wave-displacement-projection-11",
+    "u4-wave-displacement-projection-13",
+    "u5-temperature-difference-11",
+    "u5-temperature-difference-13",
+    "u5-ideal-gas-pressure-11",
+    "u5-ideal-gas-pressure-13",
+    "u5-gas-density-11",
+    "u5-gas-density-13",
+    "u5-isothermal-chambers-11",
+    "u5-isothermal-chambers-13",
+    "u5-isothermal-work-06",
+    "u5-isothermal-work-11",
+    "u5-isothermal-work-13",
+    "u5-isochoric-heat-11",
+    "u5-isochoric-heat-13",
+    "u5-isobaric-monatomic-heat-11",
+    "u5-isobaric-monatomic-heat-13",
+    "u5-isobaric-work-11",
+    "u5-isobaric-work-13",
+    "u5-first-law-expansion-11",
+    "u5-first-law-expansion-13",
+    "u5-compression-heating-11",
+    "u5-compression-heating-13",
+    "u5-cyclic-work-11",
+    "u5-cyclic-work-13",
+    "u5-engine-efficiency-01",
+    "u5-engine-efficiency-11",
+    "u5-engine-efficiency-13",
+    "u5-engine-average-power-11",
+    "u5-engine-average-power-13",
+    "u5-carnot-efficiency-01",
+    "u5-carnot-efficiency-11",
+    "u5-carnot-efficiency-13",
+    "u5-refrigerator-cop-01",
+    "u5-refrigerator-cop-11",
+    "u5-refrigerator-cop-13",
+    "u5-reversible-refrigerator-01",
+    "u5-reversible-refrigerator-11",
+    "u5-reversible-refrigerator-13",
+    "u5-carnot-work-temperature-gap-11",
+    "u5-carnot-work-temperature-gap-13",
+    "u5-adiabatic-monatomic-06",
+    "u5-adiabatic-monatomic-11",
+    "u5-adiabatic-monatomic-13",
+    "u5-free-expansion-pressure-11",
+    "u5-free-expansion-pressure-13",
+    "u5-sensible-heat-11",
+    "u5-sensible-heat-13",
+    "u5-heating-with-losses-11",
+    "u5-heating-with-losses-13",
+    "u5-temperature-after-heating-11",
+    "u5-temperature-after-heating-13",
+    "u5-two-body-calorimetry-11",
+    "u5-two-body-calorimetry-13",
+    "u5-calorimeter-capacity-11",
+    "u5-calorimeter-capacity-13",
+    "u5-latent-heat-11",
+    "u5-latent-heat-13",
+    "u5-subzero-ice-melting-11",
+    "u5-subzero-ice-melting-13",
+    "u5-steam-condensation-cooling-11",
+    "u5-steam-condensation-cooling-13",
+    "u5-ice-final-temperature-11",
+    "u5-ice-final-temperature-13",
+    "u5-warm-water-and-ice-11",
+    "u5-warm-water-and-ice-13",
+    "u5-freezing-time-11",
+    "u5-freezing-time-13",
+    "u5-plane-conduction-11",
+    "u5-plane-conduction-13",
+    "u5-composite-wall-series-11",
+    "u5-composite-wall-series-13",
+    "u5-parallel-thermal-panels-11",
+    "u5-parallel-thermal-panels-13",
+    "u5-interface-temperature-11",
+    "u5-interface-temperature-13",
+    "u5-convective-loss-11",
+    "u5-convective-loss-13",
+    "u5-emitted-blackbody-power-05",
+    "u5-emitted-blackbody-power-11",
+    "u5-emitted-blackbody-power-13",
+    "u5-emitted-blackbody-power-14",
+    "u5-net-blackbody-exchange-05",
+    "u5-net-blackbody-exchange-06",
+    "u5-net-blackbody-exchange-11",
+    "u5-net-blackbody-exchange-13",
+    "u5-net-blackbody-exchange-14",
+    "u5-parallel-heat-losses-11",
+    "u5-parallel-heat-losses-13",
+    "u5-reversible-isothermal-entropy-11",
+    "u5-reversible-isothermal-entropy-13",
+    "u5-entropy-hot-cold-11",
+    "u5-entropy-hot-cold-13",
+    "u5-ideal-expansion-entropy-06",
+    "u5-ideal-expansion-entropy-11",
+    "u5-ideal-expansion-entropy-13",
+    "u5-statistical-entropy-01",
+    "u5-statistical-entropy-05",
+    "u5-statistical-entropy-06",
+    "u5-statistical-entropy-11",
+    "u5-statistical-entropy-13",
+    "u5-statistical-entropy-14",
+    "u6-coulomb-force-11",
+    "u6-coulomb-force-13",
+    "u6-point-electric-field-11",
+    "u6-point-electric-field-13",
+    "u6-point-electric-potential-11",
+    "u6-point-electric-potential-13",
+    "u6-midpoint-electric-field-11",
+    "u6-midpoint-electric-field-13",
+    "u6-symmetric-electric-potential-11",
+    "u6-symmetric-electric-potential-13",
+    "u6-force-uniform-electric-field-11",
+    "u6-force-uniform-electric-field-13",
+    "u6-work-potential-difference-11",
+    "u6-work-potential-difference-13",
+    "u6-charge-accelerating-voltage-11",
+    "u6-charge-accelerating-voltage-13",
+    "u6-electric-transverse-displacement-11",
+    "u6-electric-transverse-displacement-13",
+    "u6-electric-gravity-balance-11",
+    "u6-electric-gravity-balance-13",
+    "u6-zero-field-distance-ratio-01",
+    "u6-zero-field-distance-ratio-11",
+    "u6-zero-field-distance-ratio-13",
+    "u6-orthogonal-electric-fields-11",
+    "u6-orthogonal-electric-fields-13",
+    "u6-current-charge-time-11",
+    "u6-current-charge-time-13",
+    "u6-ohmic-current-11",
+    "u6-ohmic-current-13",
+    "u6-wire-resistance-11",
+    "u6-wire-resistance-13",
+    "u6-wire-stretched-fixed-volume-06",
+    "u6-wire-stretched-fixed-volume-11",
+    "u6-wire-stretched-fixed-volume-13",
+    "u6-two-series-resistors-11",
+    "u6-two-series-resistors-13",
+    "u6-two-parallel-resistors-11",
+    "u6-two-parallel-resistors-13",
+    "u6-series-parallel-resistor-network-11",
+    "u6-series-parallel-resistor-network-13",
+    "u6-identical-series-resistors-06",
+    "u6-identical-series-resistors-11",
+    "u6-identical-series-resistors-13",
+    "u6-identical-parallel-resistors-06",
+    "u6-identical-parallel-resistors-11",
+    "u6-identical-parallel-resistors-13",
+    "u6-voltage-divider-11",
+    "u6-voltage-divider-13",
+    "u6-current-divider-11",
+    "u6-current-divider-13",
+    "u6-joule-power-11",
+    "u6-joule-power-13",
+    "u6-joule-energy-voltage-time-11",
+    "u6-joule-energy-voltage-time-13",
+    "u6-line-load-efficiency-01",
+    "u6-line-load-efficiency-11",
+    "u6-line-load-efficiency-13",
+    "u6-fuse-latent-heating-11",
+    "u6-fuse-latent-heating-13",
+    "u6-plane-capacitance-11",
+    "u6-plane-capacitance-13",
+    "u6-capacitor-charge-11",
+    "u6-capacitor-charge-13",
+    "u6-capacitor-energy-11",
+    "u6-capacitor-energy-13",
+    "u6-parallel-capacitors-11",
+    "u6-parallel-capacitors-13",
+    "u6-series-capacitors-11",
+    "u6-series-capacitors-13",
+    "u6-series-capacitor-voltage-11",
+    "u6-series-capacitor-voltage-13",
+    "u6-capacitor-charge-sharing-11",
+    "u6-capacitor-charge-sharing-13",
+    "u6-capacitor-sharing-energy-loss-11",
+    "u6-capacitor-sharing-energy-loss-13",
+    "u6-dielectric-isolated-voltage-06",
+    "u6-dielectric-isolated-voltage-11",
+    "u6-dielectric-isolated-voltage-13",
+    "u6-dielectric-connected-charge-06",
+    "u6-dielectric-connected-charge-11",
+    "u6-dielectric-connected-charge-13",
+    "u6-isolated-plate-separation-energy-06",
+    "u6-isolated-plate-separation-energy-11",
+    "u6-isolated-plate-separation-energy-13",
+    "u6-connected-plate-separation-charge-06",
+    "u6-connected-plate-separation-charge-11",
+    "u6-connected-plate-separation-charge-13",
+    "u6-lorentz-force-11",
+    "u6-lorentz-force-13",
+    "u6-force-current-wire-11",
+    "u6-force-current-wire-13",
+    "u6-magnetic-circle-radius-11",
+    "u6-magnetic-circle-radius-13",
+    "u6-accelerated-magnetic-radius-13",
+    "u6-magnetic-orbit-period-11",
+    "u6-magnetic-orbit-period-13",
+    "u6-magnetic-flux-11",
+    "u6-magnetic-flux-13",
+    "u6-faraday-average-emf-11",
+    "u6-faraday-average-emf-13",
+    "u6-motional-emf-11",
+    "u6-motional-emf-13",
+    "u6-motional-induced-current-11",
+    "u6-motional-induced-current-13",
+    "u6-induced-transferred-charge-11",
+    "u6-induced-transferred-charge-13",
+    "u6-magnetic-helix-pitch-11",
+    "u6-magnetic-helix-pitch-13",
+    "u7-wavelength-in-medium-06",
+    "u7-wavelength-in-medium-11",
+    "u7-wavelength-in-medium-13",
+    "u7-photon-packet-frequency-05",
+    "u7-photon-packet-frequency-11",
+    "u7-photon-packet-frequency-13",
+    "u7-photon-packet-frequency-14",
+    "u7-photon-rate-power-11",
+    "u7-photon-rate-power-13",
+    "u7-em-wave-field-power-11",
+    "u7-em-wave-field-power-13",
+    "u7-absorbed-radiant-power-06",
+    "u7-absorbed-radiant-power-11",
+    "u7-absorbed-radiant-power-13",
+    "u7-photon-packet-wavelength-05",
+    "u7-photon-packet-wavelength-11",
+    "u7-photon-packet-wavelength-13",
+    "u7-photon-packet-wavelength-14",
+    "u7-beer-transmitted-intensity-11",
+    "u7-beer-transmitted-intensity-13",
+    "u7-optical-depth-01",
+    "u7-optical-depth-11",
+    "u7-optical-depth-13",
+    "u7-two-layer-transmission-01",
+    "u7-two-layer-transmission-11",
+    "u7-two-layer-transmission-13",
+    "u7-infer-attenuation-coefficient-11",
+    "u7-infer-attenuation-coefficient-13",
+    "u7-radioactive-survivors-11",
+    "u7-radioactive-survivors-13",
+    "u7-radioactive-activity-11",
+    "u7-radioactive-activity-13",
+    "u7-radioactive-decayed-count-11",
+    "u7-radioactive-decayed-count-13",
+    "u7-radioisotope-mixture-11",
+    "u7-radioisotope-mixture-13",
+    "u7-alpha-mass-number-01",
+    "u7-alpha-mass-number-05",
+    "u7-alpha-mass-number-06",
+    "u7-alpha-mass-number-11",
+    "u7-alpha-mass-number-13",
+    "u7-alpha-mass-number-14",
+    "u7-beta-minus-atomic-number-01",
+    "u7-beta-minus-atomic-number-05",
+    "u7-beta-minus-atomic-number-06",
+    "u7-beta-minus-atomic-number-11",
+    "u7-beta-minus-atomic-number-13",
+    "u7-beta-minus-atomic-number-14",
+    "u7-gamma-transition-energy-11",
+    "u7-gamma-transition-energy-13",
+    "u7-snell-refracted-sine-01",
+    "u7-snell-refracted-sine-05",
+    "u7-snell-refracted-sine-11",
+    "u7-snell-refracted-sine-13",
+    "u7-snell-refracted-sine-14",
+    "u7-critical-angle-sine-01",
+    "u7-critical-angle-sine-05",
+    "u7-critical-angle-sine-06",
+    "u7-critical-angle-sine-11",
+    "u7-critical-angle-sine-13",
+    "u7-critical-angle-sine-14",
+    "u7-thin-lens-real-image-11",
+    "u7-thin-lens-real-image-13",
+    "u7-lens-magnification-01",
+    "u7-lens-magnification-11",
+    "u7-lens-magnification-13",
+    "u7-plane-mirror-ray-direction-11",
+    "u7-plane-mirror-ray-direction-13",
+    "u7-projected-image-height-11",
+    "u7-projected-image-height-13"
+  ],
+  "selectedNext": 259,
+  "nextPracticePlacements": 290,
+  "explicitlyAssignedNext": 259,
+  "reviewedOrigins": 52,
+  "scope": "Flags require editorial review. Global check does not infer physical correctness or test the legacy UI."
+}

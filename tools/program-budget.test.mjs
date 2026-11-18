@@ -34,6 +34,6 @@ test('public exam and field runtimes always count in the core, including when de
  report.files.push({file:'fisica/exam.js',rawBytes:20000,gzipBytes:6200,initial:false},{file:'fisica/campo.js',rawBytes:20000,gzipBytes:7400,initial:false});
  Object.assign(report,programBudgetTotals(report.files));
  assert.equal(report.coreGzipBytes,242600);assert.equal(report.optionalGzipBytes,255000);
- assert.equal(PROGRAM_BUDGET.coreGzipBytes,344064);assert.equal(PROGRAM_BUDGET.initialJavaScriptGzipBytes,245760);
+ assert.equal(PROGRAM_BUDGET.coreGzipBytes,345088);assert.equal(PROGRAM_BUDGET.initialJavaScriptGzipBytes,245760);
  assert.equal(programBudgetMatches(report),true);
 });

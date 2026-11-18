@@ -1,0 +1,210 @@
+{
+  "source": "/Users/progettibelli/Documents/Codex/2026-11-14/e/work/ardesia-next/docs/sources/physics-2026-27/question-review/lots/c5.json",
+  "sha256": "a609c81e3d05cdfd226b2d273a8547ec4159d77e3e8113b47adf6a8812fab3c3",
+  "questions": 8,
+  "checks": [
+    {
+      "id": "u4-wave-wavelength-03",
+      "method": "Preserved answer key/value",
+      "actual": "D",
+      "expected": "D",
+      "pass": true
+    },
+    {
+      "id": "u4-wave-wavelength-03",
+      "method": "Preserved option IDs",
+      "actual": "A,B,C,D,E",
+      "expected": "A,B,C,D,E",
+      "pass": true
+    },
+    {
+      "id": "u7-lens-magnification-03",
+      "method": "Preserved answer key/value",
+      "actual": "D",
+      "expected": "D",
+      "pass": true
+    },
+    {
+      "id": "u7-lens-magnification-03",
+      "method": "Preserved option IDs",
+      "actual": "A,B,C,D,E",
+      "expected": "A,B,C,D,E",
+      "pass": true
+    },
+    {
+      "id": "u4-coherent-constructive-06",
+      "method": "Preserved answer key/value",
+      "actual": "A",
+      "expected": "A",
+      "pass": true
+    },
+    {
+      "id": "u4-coherent-constructive-06",
+      "method": "Preserved option IDs",
+      "actual": "A,B,C,D,E",
+      "expected": "A,B,C,D,E",
+      "pass": true
+    },
+    {
+      "id": "u7-snell-refracted-sine-06",
+      "method": "Preserved answer key/value",
+      "actual": "B",
+      "expected": "B",
+      "pass": true
+    },
+    {
+      "id": "u7-snell-refracted-sine-06",
+      "method": "Preserved option IDs",
+      "actual": "A,B,C,D,E",
+      "expected": "A,B,C,D,E",
+      "pass": true
+    },
+    {
+      "id": "u4-echo-ranging-09",
+      "method": "Preserved answer key/value",
+      "actual": "A",
+      "expected": "A",
+      "pass": true
+    },
+    {
+      "id": "u4-echo-ranging-09",
+      "method": "Preserved option IDs",
+      "actual": "A,B,C,D,E",
+      "expected": "A,B,C,D,E",
+      "pass": true
+    },
+    {
+      "id": "u7-photon-packet-frequency-09",
+      "method": "Preserved answer key/value",
+      "actual": "E",
+      "expected": "E",
+      "pass": true
+    },
+    {
+      "id": "u7-photon-packet-frequency-09",
+      "method": "Preserved option IDs",
+      "actual": "A,B,C,D,E",
+      "expected": "A,B,C,D,E",
+      "pass": true
+    },
+    {
+      "id": "u4-oscillator-energy-13",
+      "method": "Preserved answer key/value",
+      "actual": "3/2",
+      "expected": "3/2",
+      "pass": true
+    },
+    {
+      "id": "u4-oscillator-energy-13",
+      "method": "Preserved option IDs",
+      "actual": "",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "id": "u7-radioactive-survivors-16",
+      "method": "Preserved answer key/value",
+      "actual": "E",
+      "expected": "E",
+      "pass": true
+    },
+    {
+      "id": "u7-radioactive-survivors-16",
+      "method": "Preserved option IDs",
+      "actual": "A,B,C,D,E",
+      "expected": "A,B,C,D,E",
+      "pass": true
+    },
+    {
+      "id": "u4-coherent-constructive-06",
+      "method": "Interference energy ratio",
+      "actual": 0.02040816326530612,
+      "expected": 0.02040816326530612,
+      "pass": true
+    },
+    {
+      "id": "u7-snell-refracted-sine-06",
+      "method": "Snell internal sine",
+      "actual": 0.39999999999999997,
+      "expected": 0.4,
+      "pass": true
+    },
+    {
+      "id": "u7-snell-refracted-sine-06",
+      "method": "Snell emerging sine",
+      "actual": 0.6000000000000001,
+      "expected": 0.6,
+      "pass": true
+    },
+    {
+      "id": "u7-lens-magnification-03",
+      "method": "Equal-distance example central ray y′",
+      "actual": -42,
+      "expected": -42,
+      "pass": true
+    },
+    {
+      "id": "u4-echo-ranging-09",
+      "method": "Round trip d=170m,t=1s",
+      "actual": 340,
+      "expected": 340,
+      "pass": true
+    },
+    {
+      "id": "u7-photon-packet-frequency-09",
+      "method": "Planck packet count",
+      "actual": 2,
+      "expected": 2,
+      "pass": true
+    },
+    {
+      "id": "u7-photon-packet-frequency-09",
+      "method": "All options at E20=66,f14=5",
+      "actual": "4,1,3,1,2",
+      "expected": "4,1,3,1,2",
+      "pass": true
+    },
+    {
+      "id": "u4-oscillator-energy-13",
+      "method": "Mechanical energy ratio",
+      "actual": 4.5,
+      "expected": 4.5,
+      "pass": true
+    },
+    {
+      "id": "u4-oscillator-energy-13",
+      "method": "Positive amplitude ratio",
+      "actual": 1.5,
+      "expected": 1.5,
+      "pass": true
+    },
+    {
+      "id": "u7-radioactive-survivors-16",
+      "method": "Log decay constant",
+      "actual": 0.6931471805599453,
+      "expected": 0.6931471805599453,
+      "pass": true
+    },
+    {
+      "id": "u7-radioactive-survivors-16",
+      "method": "Recover N0",
+      "actual": 96,
+      "expected": 96,
+      "pass": true
+    },
+    {
+      "id": "u7-radioactive-survivors-16",
+      "method": "Replay later datum",
+      "actual": 12.000000000000004,
+      "expected": 12,
+      "pass": true
+    }
+  ],
+  "math": {
+    "expressions": 76,
+    "doubledBackslashExpressions": 0,
+    "rawFailures": [],
+    "normalizedFailures": []
+  },
+  "humanApproval": false
+}

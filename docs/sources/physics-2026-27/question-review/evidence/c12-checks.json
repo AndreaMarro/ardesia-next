@@ -1,0 +1,709 @@
+{
+  "timestamp": "2026-11-18T16:21:31.512638+01:00",
+  "verifier": "Python 3 standard library; fractions.Fraction per aritmetica esatta; revisione scientifica automatica experience_review",
+  "scope": "16 C1/C2; non revisione umana, non verifica UI/PDF",
+  "checks": [
+    {
+      "name": "count_unique",
+      "status": "pass",
+      "detail": "16 record e 16 ID unici"
+    },
+    {
+      "name": "coverage",
+      "status": "pass",
+      "detail": "{('C1', 'base'): 2, ('C1', 'facile'): 2, ('C1', 'medio'): 2, ('C1', 'difficile'): 2, ('C2', 'base'): 2, ('C2', 'facile'): 2, ('C2', 'medio'): 2, ('C2', 'difficile'): 2}"
+    },
+    {
+      "name": "u1-area-conversion-01:fields",
+      "status": "pass",
+      "detail": "Tutti i campi contrattuali presenti; opzioni vuote ammesse per completion"
+    },
+    {
+      "name": "u1-area-conversion-01:source",
+      "status": "pass",
+      "detail": "Originale legacy e workingOriginal recuperabili con SHA-256 canonico"
+    },
+    {
+      "name": "u1-area-conversion-01:shard",
+      "status": "pass",
+      "detail": "SHA-256 shard sorgente invariato"
+    },
+    {
+      "name": "u1-area-conversion-01:provenance",
+      "status": "pass",
+      "detail": "Hash originale uguale alla provenienza conservata in Next"
+    },
+    {
+      "name": "u1-area-conversion-01:exact_answer",
+      "status": "pass",
+      "detail": "Formato completion, valore razionale e unità conservati"
+    },
+    {
+      "name": "u1-area-conversion-01:figure",
+      "status": "pass",
+      "detail": "Stadio, alt, didascalia e coordinate entro viewBox 400×180; nessuna formula LaTeX nelle etichette"
+    },
+    {
+      "name": "u2-mean-velocity-03:fields",
+      "status": "pass",
+      "detail": "Tutti i campi contrattuali presenti; opzioni vuote ammesse per completion"
+    },
+    {
+      "name": "u2-mean-velocity-03:source",
+      "status": "pass",
+      "detail": "Originale legacy e workingOriginal recuperabili con SHA-256 canonico"
+    },
+    {
+      "name": "u2-mean-velocity-03:shard",
+      "status": "pass",
+      "detail": "SHA-256 shard sorgente invariato"
+    },
+    {
+      "name": "u2-mean-velocity-03:provenance",
+      "status": "pass",
+      "detail": "Hash originale uguale alla provenienza conservata in Next"
+    },
+    {
+      "name": "u2-mean-velocity-03:option_ids",
+      "status": "pass",
+      "detail": "ID e ordine opzioni conservati"
+    },
+    {
+      "name": "u2-mean-velocity-03:correct_key",
+      "status": "pass",
+      "detail": "Chiave corretta conservata; testo/formule revisionati"
+    },
+    {
+      "name": "u2-mean-velocity-03:feedback",
+      "status": "pass",
+      "detail": "Feedback specifico per ogni opzione"
+    },
+    {
+      "name": "u2-mean-velocity-03:figure",
+      "status": "pass",
+      "detail": "Stadio, alt, didascalia e coordinate entro viewBox 400×180; nessuna formula LaTeX nelle etichette"
+    },
+    {
+      "name": "u1-scientific-scale-08:fields",
+      "status": "pass",
+      "detail": "Tutti i campi contrattuali presenti; opzioni vuote ammesse per completion"
+    },
+    {
+      "name": "u1-scientific-scale-08:source",
+      "status": "pass",
+      "detail": "Originale legacy e workingOriginal recuperabili con SHA-256 canonico"
+    },
+    {
+      "name": "u1-scientific-scale-08:shard",
+      "status": "pass",
+      "detail": "SHA-256 shard sorgente invariato"
+    },
+    {
+      "name": "u1-scientific-scale-08:provenance",
+      "status": "pass",
+      "detail": "Hash originale uguale alla provenienza conservata in Next"
+    },
+    {
+      "name": "u1-scientific-scale-08:option_ids",
+      "status": "pass",
+      "detail": "ID e ordine opzioni conservati"
+    },
+    {
+      "name": "u1-scientific-scale-08:correct_key",
+      "status": "pass",
+      "detail": "Chiave corretta conservata; testo/formule revisionati"
+    },
+    {
+      "name": "u1-scientific-scale-08:feedback",
+      "status": "pass",
+      "detail": "Feedback specifico per ogni opzione"
+    },
+    {
+      "name": "u2-uniform-position-07:fields",
+      "status": "pass",
+      "detail": "Tutti i campi contrattuali presenti; opzioni vuote ammesse per completion"
+    },
+    {
+      "name": "u2-uniform-position-07:source",
+      "status": "pass",
+      "detail": "Originale legacy e workingOriginal recuperabili con SHA-256 canonico"
+    },
+    {
+      "name": "u2-uniform-position-07:shard",
+      "status": "pass",
+      "detail": "SHA-256 shard sorgente invariato"
+    },
+    {
+      "name": "u2-uniform-position-07:option_ids",
+      "status": "pass",
+      "detail": "ID e ordine opzioni conservati"
+    },
+    {
+      "name": "u2-uniform-position-07:correct_key",
+      "status": "pass",
+      "detail": "Chiave corretta conservata; testo/formule revisionati"
+    },
+    {
+      "name": "u2-uniform-position-07:feedback",
+      "status": "pass",
+      "detail": "Feedback specifico per ogni opzione"
+    },
+    {
+      "name": "u2-uniform-position-07:figure",
+      "status": "pass",
+      "detail": "Stadio, alt, didascalia e coordinate entro viewBox 400×180; nessuna formula LaTeX nelle etichette"
+    },
+    {
+      "name": "u2-atwood-09:fields",
+      "status": "pass",
+      "detail": "Tutti i campi contrattuali presenti; opzioni vuote ammesse per completion"
+    },
+    {
+      "name": "u2-atwood-09:source",
+      "status": "pass",
+      "detail": "Originale legacy e workingOriginal recuperabili con SHA-256 canonico"
+    },
+    {
+      "name": "u2-atwood-09:shard",
+      "status": "pass",
+      "detail": "SHA-256 shard sorgente invariato"
+    },
+    {
+      "name": "u2-atwood-09:provenance",
+      "status": "pass",
+      "detail": "Hash originale uguale alla provenienza conservata in Next"
+    },
+    {
+      "name": "u2-atwood-09:option_ids",
+      "status": "pass",
+      "detail": "ID e ordine opzioni conservati"
+    },
+    {
+      "name": "u2-atwood-09:correct_key",
+      "status": "pass",
+      "detail": "Chiave corretta conservata; testo/formule revisionati"
+    },
+    {
+      "name": "u2-atwood-09:feedback",
+      "status": "pass",
+      "detail": "Feedback specifico per ogni opzione"
+    },
+    {
+      "name": "u2-biceps-lever-09:fields",
+      "status": "pass",
+      "detail": "Tutti i campi contrattuali presenti; opzioni vuote ammesse per completion"
+    },
+    {
+      "name": "u2-biceps-lever-09:source",
+      "status": "pass",
+      "detail": "Originale legacy e workingOriginal recuperabili con SHA-256 canonico"
+    },
+    {
+      "name": "u2-biceps-lever-09:shard",
+      "status": "pass",
+      "detail": "SHA-256 shard sorgente invariato"
+    },
+    {
+      "name": "u2-biceps-lever-09:provenance",
+      "status": "pass",
+      "detail": "Hash originale uguale alla provenienza conservata in Next"
+    },
+    {
+      "name": "u2-biceps-lever-09:option_ids",
+      "status": "pass",
+      "detail": "ID e ordine opzioni conservati"
+    },
+    {
+      "name": "u2-biceps-lever-09:correct_key",
+      "status": "pass",
+      "detail": "Chiave corretta conservata; testo/formule revisionati"
+    },
+    {
+      "name": "u2-biceps-lever-09:feedback",
+      "status": "pass",
+      "detail": "Feedback specifico per ogni opzione"
+    },
+    {
+      "name": "u2-atwood-13:fields",
+      "status": "pass",
+      "detail": "Tutti i campi contrattuali presenti; opzioni vuote ammesse per completion"
+    },
+    {
+      "name": "u2-atwood-13:source",
+      "status": "pass",
+      "detail": "Originale legacy e workingOriginal recuperabili con SHA-256 canonico"
+    },
+    {
+      "name": "u2-atwood-13:shard",
+      "status": "pass",
+      "detail": "SHA-256 shard sorgente invariato"
+    },
+    {
+      "name": "u2-atwood-13:provenance",
+      "status": "pass",
+      "detail": "Hash originale uguale alla provenienza conservata in Next"
+    },
+    {
+      "name": "u2-atwood-13:exact_answer",
+      "status": "pass",
+      "detail": "Formato completion, valore razionale e unità conservati"
+    },
+    {
+      "name": "u2-atwood-13:figure",
+      "status": "pass",
+      "detail": "Stadio, alt, didascalia e coordinate entro viewBox 400×180; nessuna formula LaTeX nelle etichette"
+    },
+    {
+      "name": "u2-centripetal-acceleration-13:fields",
+      "status": "pass",
+      "detail": "Tutti i campi contrattuali presenti; opzioni vuote ammesse per completion"
+    },
+    {
+      "name": "u2-centripetal-acceleration-13:source",
+      "status": "pass",
+      "detail": "Originale legacy e workingOriginal recuperabili con SHA-256 canonico"
+    },
+    {
+      "name": "u2-centripetal-acceleration-13:shard",
+      "status": "pass",
+      "detail": "SHA-256 shard sorgente invariato"
+    },
+    {
+      "name": "u2-centripetal-acceleration-13:provenance",
+      "status": "pass",
+      "detail": "Hash originale uguale alla provenienza conservata in Next"
+    },
+    {
+      "name": "u2-centripetal-acceleration-13:exact_answer",
+      "status": "pass",
+      "detail": "Formato completion, valore razionale e unità conservati"
+    },
+    {
+      "name": "u3-archimedes-force-03:fields",
+      "status": "pass",
+      "detail": "Tutti i campi contrattuali presenti; opzioni vuote ammesse per completion"
+    },
+    {
+      "name": "u3-archimedes-force-03:source",
+      "status": "pass",
+      "detail": "Originale legacy e workingOriginal recuperabili con SHA-256 canonico"
+    },
+    {
+      "name": "u3-archimedes-force-03:shard",
+      "status": "pass",
+      "detail": "SHA-256 shard sorgente invariato"
+    },
+    {
+      "name": "u3-archimedes-force-03:provenance",
+      "status": "pass",
+      "detail": "Hash originale uguale alla provenienza conservata in Next"
+    },
+    {
+      "name": "u3-archimedes-force-03:option_ids",
+      "status": "pass",
+      "detail": "ID e ordine opzioni conservati"
+    },
+    {
+      "name": "u3-archimedes-force-03:correct_key",
+      "status": "pass",
+      "detail": "Chiave corretta conservata; testo/formule revisionati"
+    },
+    {
+      "name": "u3-archimedes-force-03:feedback",
+      "status": "pass",
+      "detail": "Feedback specifico per ogni opzione"
+    },
+    {
+      "name": "u3-venturi-area-ratio-01:fields",
+      "status": "pass",
+      "detail": "Tutti i campi contrattuali presenti; opzioni vuote ammesse per completion"
+    },
+    {
+      "name": "u3-venturi-area-ratio-01:source",
+      "status": "pass",
+      "detail": "Originale legacy e workingOriginal recuperabili con SHA-256 canonico"
+    },
+    {
+      "name": "u3-venturi-area-ratio-01:shard",
+      "status": "pass",
+      "detail": "SHA-256 shard sorgente invariato"
+    },
+    {
+      "name": "u3-venturi-area-ratio-01:provenance",
+      "status": "pass",
+      "detail": "Hash originale uguale alla provenienza conservata in Next"
+    },
+    {
+      "name": "u3-venturi-area-ratio-01:exact_answer",
+      "status": "pass",
+      "detail": "Formato completion, valore razionale e unità conservati"
+    },
+    {
+      "name": "u3-venturi-area-ratio-01:figure",
+      "status": "pass",
+      "detail": "Stadio, alt, didascalia e coordinate entro viewBox 400×180; nessuna formula LaTeX nelle etichette"
+    },
+    {
+      "name": "u3-hydraulic-series-06:fields",
+      "status": "pass",
+      "detail": "Tutti i campi contrattuali presenti; opzioni vuote ammesse per completion"
+    },
+    {
+      "name": "u3-hydraulic-series-06:source",
+      "status": "pass",
+      "detail": "Originale legacy e workingOriginal recuperabili con SHA-256 canonico"
+    },
+    {
+      "name": "u3-hydraulic-series-06:shard",
+      "status": "pass",
+      "detail": "SHA-256 shard sorgente invariato"
+    },
+    {
+      "name": "u3-hydraulic-series-06:provenance",
+      "status": "pass",
+      "detail": "Hash originale uguale alla provenienza conservata in Next"
+    },
+    {
+      "name": "u3-hydraulic-series-06:option_ids",
+      "status": "pass",
+      "detail": "ID e ordine opzioni conservati"
+    },
+    {
+      "name": "u3-hydraulic-series-06:correct_key",
+      "status": "pass",
+      "detail": "Chiave corretta conservata; testo/formule revisionati"
+    },
+    {
+      "name": "u3-hydraulic-series-06:feedback",
+      "status": "pass",
+      "detail": "Feedback specifico per ogni opzione"
+    },
+    {
+      "name": "u3-hydraulic-series-06:figure",
+      "status": "pass",
+      "detail": "Stadio, alt, didascalia e coordinate entro viewBox 400×180; nessuna formula LaTeX nelle etichette"
+    },
+    {
+      "name": "u3-poiseuille-flow-08:fields",
+      "status": "pass",
+      "detail": "Tutti i campi contrattuali presenti; opzioni vuote ammesse per completion"
+    },
+    {
+      "name": "u3-poiseuille-flow-08:source",
+      "status": "pass",
+      "detail": "Originale legacy e workingOriginal recuperabili con SHA-256 canonico"
+    },
+    {
+      "name": "u3-poiseuille-flow-08:shard",
+      "status": "pass",
+      "detail": "SHA-256 shard sorgente invariato"
+    },
+    {
+      "name": "u3-poiseuille-flow-08:provenance",
+      "status": "pass",
+      "detail": "Hash originale uguale alla provenienza conservata in Next"
+    },
+    {
+      "name": "u3-poiseuille-flow-08:option_ids",
+      "status": "pass",
+      "detail": "ID e ordine opzioni conservati"
+    },
+    {
+      "name": "u3-poiseuille-flow-08:correct_key",
+      "status": "pass",
+      "detail": "Chiave corretta conservata; testo/formule revisionati"
+    },
+    {
+      "name": "u3-poiseuille-flow-08:feedback",
+      "status": "pass",
+      "detail": "Feedback specifico per ogni opzione"
+    },
+    {
+      "name": "u3-bernoulli-height-speed-09:fields",
+      "status": "pass",
+      "detail": "Tutti i campi contrattuali presenti; opzioni vuote ammesse per completion"
+    },
+    {
+      "name": "u3-bernoulli-height-speed-09:source",
+      "status": "pass",
+      "detail": "Originale legacy e workingOriginal recuperabili con SHA-256 canonico"
+    },
+    {
+      "name": "u3-bernoulli-height-speed-09:shard",
+      "status": "pass",
+      "detail": "SHA-256 shard sorgente invariato"
+    },
+    {
+      "name": "u3-bernoulli-height-speed-09:provenance",
+      "status": "pass",
+      "detail": "Hash originale uguale alla provenienza conservata in Next"
+    },
+    {
+      "name": "u3-bernoulli-height-speed-09:option_ids",
+      "status": "pass",
+      "detail": "ID e ordine opzioni conservati"
+    },
+    {
+      "name": "u3-bernoulli-height-speed-09:correct_key",
+      "status": "pass",
+      "detail": "Chiave corretta conservata; testo/formule revisionati"
+    },
+    {
+      "name": "u3-bernoulli-height-speed-09:feedback",
+      "status": "pass",
+      "detail": "Feedback specifico per ogni opzione"
+    },
+    {
+      "name": "u3-soap-film-force-09:fields",
+      "status": "pass",
+      "detail": "Tutti i campi contrattuali presenti; opzioni vuote ammesse per completion"
+    },
+    {
+      "name": "u3-soap-film-force-09:source",
+      "status": "pass",
+      "detail": "Originale legacy e workingOriginal recuperabili con SHA-256 canonico"
+    },
+    {
+      "name": "u3-soap-film-force-09:shard",
+      "status": "pass",
+      "detail": "SHA-256 shard sorgente invariato"
+    },
+    {
+      "name": "u3-soap-film-force-09:provenance",
+      "status": "pass",
+      "detail": "Hash originale uguale alla provenienza conservata in Next"
+    },
+    {
+      "name": "u3-soap-film-force-09:option_ids",
+      "status": "pass",
+      "detail": "ID e ordine opzioni conservati"
+    },
+    {
+      "name": "u3-soap-film-force-09:correct_key",
+      "status": "pass",
+      "detail": "Chiave corretta conservata; testo/formule revisionati"
+    },
+    {
+      "name": "u3-soap-film-force-09:feedback",
+      "status": "pass",
+      "detail": "Feedback specifico per ogni opzione"
+    },
+    {
+      "name": "u3-soap-film-force-09:figure",
+      "status": "pass",
+      "detail": "Stadio, alt, didascalia e coordinate entro viewBox 400×180; nessuna formula LaTeX nelle etichette"
+    },
+    {
+      "name": "u3-bernoulli-height-speed-13:fields",
+      "status": "pass",
+      "detail": "Tutti i campi contrattuali presenti; opzioni vuote ammesse per completion"
+    },
+    {
+      "name": "u3-bernoulli-height-speed-13:source",
+      "status": "pass",
+      "detail": "Originale legacy e workingOriginal recuperabili con SHA-256 canonico"
+    },
+    {
+      "name": "u3-bernoulli-height-speed-13:shard",
+      "status": "pass",
+      "detail": "SHA-256 shard sorgente invariato"
+    },
+    {
+      "name": "u3-bernoulli-height-speed-13:provenance",
+      "status": "pass",
+      "detail": "Hash originale uguale alla provenienza conservata in Next"
+    },
+    {
+      "name": "u3-bernoulli-height-speed-13:exact_answer",
+      "status": "pass",
+      "detail": "Formato completion, valore razionale e unità conservati"
+    },
+    {
+      "name": "u3-bernoulli-height-speed-13:figure",
+      "status": "pass",
+      "detail": "Stadio, alt, didascalia e coordinate entro viewBox 400×180; nessuna formula LaTeX nelle etichette"
+    },
+    {
+      "name": "u3-apparent-weight-13:fields",
+      "status": "pass",
+      "detail": "Tutti i campi contrattuali presenti; opzioni vuote ammesse per completion"
+    },
+    {
+      "name": "u3-apparent-weight-13:source",
+      "status": "pass",
+      "detail": "Originale legacy e workingOriginal recuperabili con SHA-256 canonico"
+    },
+    {
+      "name": "u3-apparent-weight-13:shard",
+      "status": "pass",
+      "detail": "SHA-256 shard sorgente invariato"
+    },
+    {
+      "name": "u3-apparent-weight-13:provenance",
+      "status": "pass",
+      "detail": "Hash originale uguale alla provenienza conservata in Next"
+    },
+    {
+      "name": "u3-apparent-weight-13:exact_answer",
+      "status": "pass",
+      "detail": "Formato completion, valore razionale e unità conservati"
+    },
+    {
+      "name": "u3-apparent-weight-13:figure",
+      "status": "pass",
+      "detail": "Stadio, alt, didascalia e coordinate entro viewBox 400×180; nessuna formula LaTeX nelle etichette"
+    },
+    {
+      "name": "area_grid",
+      "status": "pass",
+      "detail": "Conteggio celle, poi conversione inversa"
+    },
+    {
+      "name": "mean_velocity",
+      "status": "pass",
+      "detail": "Coordinate finali contro variazione totale lungo il percorso"
+    },
+    {
+      "name": "log_scale",
+      "status": "pass",
+      "detail": "Confronto esatto soglia quadratica e fattori moltiplicativi; riscontro logaritmico numerico"
+    },
+    {
+      "name": "uniform_position",
+      "status": "pass",
+      "detail": "Posizioni ottenute per incrementi successivi; pendenza (10−6)/(4−2)=2"
+    },
+    {
+      "name": "atwood_inverse",
+      "status": "pass",
+      "detail": "12 coppie esatte m,a: inversione, unicità opzioni e tensioni concordi; prova generale: (g+a)/(g−a)>1, C/D=(g−a)/g<1, A=D/2,E=2D,B<m"
+    },
+    {
+      "name": "lever_torque",
+      "status": "pass",
+      "detail": "Momenti indipendenti 3 Nm; W<F. Unicità: A>F>B, E=F>B, C=2B,D=B/2 (nessuna uguaglianza con B)"
+    },
+    {
+      "name": "atwood_configurations",
+      "status": "pass",
+      "detail": "Calcolo della massa e controprova delle tensioni in entrambe le configurazioni"
+    },
+    {
+      "name": "centripetal_ratio",
+      "status": "pass",
+      "detail": "Raggio dal valore assoluto e controllo indipendente per rapporti"
+    },
+    {
+      "name": "archimedes_depth",
+      "status": "pass",
+      "detail": "Prisma a 3 quote diverse: differenza pressioni×area=rho*g*volume; algebra indipendente da z"
+    },
+    {
+      "name": "venturi",
+      "status": "pass",
+      "detail": "Continuità e controprova energia specifica 6 J/kg; conversione 6000 Pa=6 kPa"
+    },
+    {
+      "name": "hydraulic_series",
+      "status": "pass",
+      "detail": "Somma delle pressioni e rapporto delle resistenze indipendenti"
+    },
+    {
+      "name": "poiseuille",
+      "status": "pass",
+      "detail": "Rapporto della pressione e sostituzione inversa nella portata"
+    },
+    {
+      "name": "bernoulli_inverse",
+      "status": "pass",
+      "detail": "h=1 m; energia/kg 12=10+2. Unicità generale per h>0 e v>0: A=2h,B=h/2,C=h+v²/g,D=h+v²/(2g)"
+    },
+    {
+      "name": "soap_film",
+      "status": "pass",
+      "detail": "Conversione e controprova lavoro-energia per dx=1 cm; le opzioni sono multipli distinti e positivi di F/ell"
+    },
+    {
+      "name": "bernoulli_configurations",
+      "status": "pass",
+      "detail": "Ramo positivo vB=4 m/s e controprova 28/12=7/3 delle energie specifiche"
+    },
+    {
+      "name": "apparent_weight",
+      "status": "pass",
+      "detail": "Volume 3 L; densità B maggiore dell’acqua e filo realmente in tensione"
+    },
+    {
+      "name": "u2-uniform-position-07:unique_numeric",
+      "status": "pass",
+      "detail": "Cinque valori distinti e risposta ricalcolata uguale alla chiave"
+    },
+    {
+      "name": "u3-hydraulic-series-06:unique_numeric",
+      "status": "pass",
+      "detail": "Cinque valori distinti e risposta ricalcolata uguale alla chiave"
+    },
+    {
+      "name": "u3-poiseuille-flow-08:unique_numeric",
+      "status": "pass",
+      "detail": "Cinque valori distinti e risposta ricalcolata uguale alla chiave"
+    },
+    {
+      "name": "figures_per_course",
+      "status": "pass",
+      "detail": "{'C1': 4, 'C2': 5}"
+    }
+  ],
+  "passed": 130,
+  "coverage": [
+    {
+      "course": "C1",
+      "level": "base",
+      "count": 2
+    },
+    {
+      "course": "C1",
+      "level": "facile",
+      "count": 2
+    },
+    {
+      "course": "C1",
+      "level": "medio",
+      "count": 2
+    },
+    {
+      "course": "C1",
+      "level": "difficile",
+      "count": 2
+    },
+    {
+      "course": "C2",
+      "level": "base",
+      "count": 2
+    },
+    {
+      "course": "C2",
+      "level": "facile",
+      "count": 2
+    },
+    {
+      "course": "C2",
+      "level": "medio",
+      "count": 2
+    },
+    {
+      "course": "C2",
+      "level": "difficile",
+      "count": 2
+    }
+  ],
+  "figures": {
+    "C1": 4,
+    "C2": 5
+  },
+  "limits": [
+    "Unicità simbolica: argomenti algebrici documentati e campioni razionali; nessun CAS esterno.",
+    "La valutazione dello stile e del primo suggerimento è una revisione editoriale automatica.",
+    "Figura locale e formule controllate separatamente dal prodotto integrato."
+  ]
+}

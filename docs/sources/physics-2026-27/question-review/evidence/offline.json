@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "browser": "Chromium",
+  "offline": true,
+  "from": "actual downloadable ZIP",
+  "input": "6/4",
+  "results": [
+    "deep link opened",
+    "fraction equivalent to 3/2 accepted",
+    "solution with MathML visible",
+    "no JS errors"
+  ]
+}

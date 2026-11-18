@@ -1,0 +1,7 @@
+# ADR 0026 — Esercizi guidati nelle lezioni di Fisica
+
+18 novembre 2026. La banca legacy è una fonte editoriale con revisione immutabile. I due lotti aggiungono esercizi interattivi alle lezioni di lettura C1–C5. L'oggetto didattico pubblico contiene feedback, indizi e svolgimento, con la chiave verificata contro il record d'origine. Lo stesso file editoriale genera formule MathML, disegni SVG e il campione LaTeX/TikZ. Le edizioni riservate e le consegne già create continuano a conservare la loro revisione originale.
+
+Il feedback lavora nella pagina corrente con un runtime caricato solo nelle lezioni che hanno esercizi guidati. Il primo build ha misurato **344.927 byte gzip Core** contro il limite precedente di 344.064. Il budget aggregato passa da **336 a 337 KiB** per ospitare il runtime misurato. Rimangono gli stessi conteggi e classificazioni, con limite JS iniziale di 240 KiB e soglie restrittive esistenti per Program e PDF. Il report conserva il confronto con 336 KiB. Formule e figure sono statiche e non caricano una seconda libreria di matematica sul browser.
+
+L'utente può riprovare e consultare lo svolgimento. Gli esercizi guidati non assegnano un punteggio né registrano risposte. I flussi già disponibili per salvare e riaprire un lavoro Core, una prova A/B o un'attività Poiseuille sono distinti. La rimozione di questa integrazione si fa con un revert di generatori, link e runtime, senza migrazioni dati.

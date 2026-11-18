@@ -1,0 +1,312 @@
+{
+  "questions": 5,
+  "courseCounts": {
+    "C3": 2,
+    "C4": 3
+  },
+  "figures": 2,
+  "sha256": "299353ed9c0e0dec1681dbe5f61f7f764c936767f2d51ea1d1191bc5131af6a4",
+  "answersPreserved": true,
+  "math": {
+    "expressions": 97,
+    "strictKatexRender": true,
+    "version": "0.19.1"
+  },
+  "checks": [
+    {
+      "id": "u5-emitted-blackbody-power-01",
+      "method": "Selected from active bank",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u5-emitted-blackbody-power-01",
+      "method": "Not in first C3/C4 batch",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u5-emitted-blackbody-power-01",
+      "method": "Unchanged answer",
+      "actual": "48",
+      "expected": "48",
+      "passed": true
+    },
+    {
+      "id": "u5-emitted-blackbody-power-01",
+      "method": "Unchanged option IDs",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "id": "u5-carnot-efficiency-09",
+      "method": "Selected from active bank",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u5-carnot-efficiency-09",
+      "method": "Not in first C3/C4 batch",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u5-carnot-efficiency-09",
+      "method": "Unchanged answer",
+      "actual": "C",
+      "expected": "C",
+      "passed": true
+    },
+    {
+      "id": "u5-carnot-efficiency-09",
+      "method": "Unchanged option IDs",
+      "actual": "A,B,C,D,E",
+      "expected": "A,B,C,D,E",
+      "passed": true
+    },
+    {
+      "id": "u6-parallel-capacitors-06",
+      "method": "Selected from active bank",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u6-parallel-capacitors-06",
+      "method": "Not in first C3/C4 batch",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u6-parallel-capacitors-06",
+      "method": "Unchanged answer",
+      "actual": "A",
+      "expected": "A",
+      "passed": true
+    },
+    {
+      "id": "u6-parallel-capacitors-06",
+      "method": "Unchanged option IDs",
+      "actual": "A,B,C,D,E",
+      "expected": "A,B,C,D,E",
+      "passed": true
+    },
+    {
+      "id": "u6-plane-capacitance-08",
+      "method": "Selected from active bank",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u6-plane-capacitance-08",
+      "method": "Not in first C3/C4 batch",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u6-plane-capacitance-08",
+      "method": "Unchanged answer",
+      "actual": "C",
+      "expected": "C",
+      "passed": true
+    },
+    {
+      "id": "u6-plane-capacitance-08",
+      "method": "Unchanged option IDs",
+      "actual": "A,B,C,D,E",
+      "expected": "A,B,C,D,E",
+      "passed": true
+    },
+    {
+      "id": "u6-force-current-wire-01",
+      "method": "Selected from active bank",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "id": "u6-force-current-wire-01",
+      "method": "Not in first C3/C4 batch",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "id": "u6-force-current-wire-01",
+      "method": "Unchanged answer",
+      "actual": "60",
+      "expected": "60",
+      "passed": true
+    },
+    {
+      "id": "u6-force-current-wire-01",
+      "method": "Unchanged option IDs",
+      "actual": "",
+      "expected": "",
+      "passed": true
+    },
+    {
+      "id": "u5-emitted-blackbody-power-01",
+      "method": "SI Stefan-Boltzmann in milliwatt",
+      "actual": 48,
+      "expected": 48,
+      "passed": true
+    },
+    {
+      "id": "u5-emitted-blackbody-power-01",
+      "method": "Scaled-variable route",
+      "actual": 48,
+      "expected": 48,
+      "passed": true
+    },
+    {
+      "id": "u5-emitted-blackbody-power-01",
+      "method": "Halved absolute temperature",
+      "actual": 3,
+      "expected": 3,
+      "passed": true
+    },
+    {
+      "id": "u5-carnot-efficiency-09",
+      "method": "Evaluate all Carnot options",
+      "actual": "401,399,400,800,200",
+      "expected": "401,399,400,800,200",
+      "passed": true
+    },
+    {
+      "id": "u5-carnot-efficiency-09",
+      "method": "Replay correct Carnot efficiency",
+      "actual": 0.5,
+      "expected": 0.5,
+      "passed": true
+    },
+    {
+      "id": "u5-carnot-efficiency-09",
+      "method": "Only C meets specified efficiency",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "id": "u6-parallel-capacitors-06",
+      "method": "Opposite charge node balance",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "id": "u6-parallel-capacitors-06",
+      "method": "Common final voltage",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "id": "u6-parallel-capacitors-06",
+      "method": "Initial energy in microjoules",
+      "actual": 27,
+      "expected": 27,
+      "passed": true
+    },
+    {
+      "id": "u6-parallel-capacitors-06",
+      "method": "Same-polarity distractor D",
+      "actual": 4,
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "id": "u6-parallel-capacitors-06",
+      "method": "Same-polarity final energy",
+      "actual": 24,
+      "expected": 24,
+      "passed": true
+    },
+    {
+      "id": "u6-plane-capacitance-08",
+      "method": "Negative potential gradient",
+      "actual": 2000,
+      "expected": 2000,
+      "passed": true
+    },
+    {
+      "id": "u6-plane-capacitance-08",
+      "method": "Recover potential difference",
+      "actual": -40,
+      "expected": -40,
+      "passed": true
+    },
+    {
+      "id": "u6-plane-capacitance-08",
+      "method": "Distractor E predicts wrong voltage",
+      "actual": 0.4,
+      "expected": 0.4,
+      "passed": true
+    },
+    {
+      "id": "u6-force-current-wire-01",
+      "method": "SI magnetic force to mN",
+      "actual": 60,
+      "expected": 60,
+      "passed": true
+    },
+    {
+      "id": "u6-force-current-wire-01",
+      "method": "Independent force per millimetre",
+      "actual": 60,
+      "expected": 60,
+      "passed": true
+    },
+    {
+      "id": "u6-force-current-wire-01",
+      "method": "Parallel limiting case",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "scientificReview": "AI review of all prompts, alternatives, hints and solutions. No numerical answer changes. Carnot numerical variables clarify dimensionally inconsistent distractors; capacitor weak connection dissipation makes the final-state assumption explicit.",
+  "humanApproval": false,
+  "figureReview": "Both diagrams rendered at 400×180 with browser SVG and visually inspected: plate labels/separation readable; wire length, current and perpendicular uniform magnetic field readable; no answer direction or force is revealed.",
+  "source": {
+    "path": "work/ardesia-next/docs/sources/physics-2026-27/editorial/bank-selection.json",
+    "sha256": "fdd548b9e404d40613560e150959198d4477fef8fbf1e5ec24e4116d4eab46f4"
+  },
+  "records": [
+    {
+      "id": "u5-emitted-blackbody-power-01",
+      "originalLevel": "base",
+      "figure": null
+    },
+    {
+      "id": "u5-carnot-efficiency-09",
+      "originalLevel": "medio",
+      "figure": null
+    },
+    {
+      "id": "u6-parallel-capacitors-06",
+      "originalLevel": "facile",
+      "figure": null
+    },
+    {
+      "id": "u6-plane-capacitance-08",
+      "originalLevel": "facile",
+      "figure": "prompt"
+    },
+    {
+      "id": "u6-force-current-wire-01",
+      "originalLevel": "base",
+      "figure": "prompt"
+    }
+  ],
+  "scientificCheckCount": 17,
+  "structuralProvenanceCheckCount": 20
+}
